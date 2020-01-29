@@ -1,23 +1,80 @@
 {
-  "name": "blade",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@razorpay/blade",
+  "author": "kamleshchandnani",
+  "version": "0.0.1",
+  "license": "MIT",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@storybook/addon-knobs": "5.3.9",
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/react": "9.3.2",
+    "@testing-library/user-event": "7.1.2",
+    "prop-types": "15.7.2",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "styled-components": "5.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.8.3",
+    "@babel/preset-env": "7.8.3",
+    "@babel/preset-react": "7.8.3",
+    "@storybook/addon-actions": "5.3.9",
+    "@storybook/addon-docs": "5.3.9",
+    "@storybook/addon-links": "5.3.8",
+    "@storybook/addon-storyshots": "5.3.8",
+    "@storybook/addons": "5.3.8",
+    "@storybook/react": "5.3.8",
+    "@storybook/theming": "5.3.9",
+    "babel-eslint": "10.0.3",
+    "babel-loader": "8.0.6",
+    "babel-plugin-styled-components": "1.10.7",
+    "cz-conventional-changelog": "3.1.0",
+    "eslint": "6.8.0",
+    "eslint-config-kentcdodds": "14.7.0",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-react": "7.18.0",
+    "husky": "4.2.1",
+    "lint-staged": "10.0.4",
+    "prettier": "1.19.1",
+    "react-test-renderer": "16.12.0",
+    "semantic-release": "17.0.1",
+    "stylelint": "13.0.0",
+    "stylelint-config-recommended": "3.0.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-processor-styled-components": "1.9.0"
+  },
+  "peerDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "styled-components": "^4.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "web": "npm run web:storybook",
+    "web:storybook": "start-storybook -c ./.storybook/web -p 9009 -s public",
+    "web:storybook:build": "build-storybook -c ./.storybook/web -o public",
+    "native": "",
+    "native:storybook": "",
+    "chromatic": "CHROMATIC_APP_CODE=gx0k8mh119 chromatic"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(js|jsx)": [
+      "eslint",
+      "stylelint"
+    ],
+    "*.(js|json|jsx)": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "browserslist": {
     "production": [
