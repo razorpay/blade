@@ -41,13 +41,3 @@ target 'blade' do
 
   use_native_modules!
 end
-
-target 'blade-tvOS' do
-  # Pods for blade-tvOS
-
-  target 'blade-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end
