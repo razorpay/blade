@@ -63,8 +63,8 @@
     "web": "npm run web:storybook",
     "web:storybook": "BABEL_ENV=web-development start-storybook -c ./storybook/web -p 9009 -s public",
     "web:storybook:build": "BABEL_ENV=web-production build-storybook -c ./storybook/web -o public",
-    "native": "",
-    "native:storybook": "",
+    "native:ios": "react-native run-ios",
+    "native:android": "react-native run-android",
     "chromatic": "CHROMATIC_APP_CODE=gx0k8mh119 chromatic"
   },
   "husky": {
