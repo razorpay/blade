@@ -1,4 +1,5 @@
 module.exports = {
+  resetCache: true,
   transformer: {
     getTransformOptions: () => ({
       transform: {
