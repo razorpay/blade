@@ -1,3 +1,56 @@
 module.exports = {
-  presets: ['@babel/preset-env'],
+  env: {
+    development: {
+      presets: ['module:metro-react-native-babel-preset'],
+      plugins: [
+        [
+          'module-resolver',
+          {
+            alias: {
+              '@storybook/react': '@storybook/react-native',
+            },
+          },
+        ],
+      ],
+    },
+    production: {
+      presets: ['module:metro-react-native-babel-preset'],
+      plugins: [
+        [
+          'module-resolver',
+          {
+            alias: {
+              '@storybook/react': '@storybook/react-native',
+            },
+          },
+        ],
+      ],
+    },
+    'web-development': {
+      presets: ['@babel/preset-env', '@babel/preset-react'],
+      plugins: [
+        [
+          'babel-plugin-styled-components',
+          {
+            displayName: true,
+            pure: false,
+            ssr: true,
+          },
+        ],
+      ],
+    },
+    'web-production': {
+      presets: ['@babel/preset-env', '@babel/preset-react'],
+      plugins: [
+        [
+          'babel-plugin-styled-components',
+          {
+            displayName: true,
+            pure: true,
+            ssr: true,
+          },
+        ],
+      ],
+    },
+  },
 };
