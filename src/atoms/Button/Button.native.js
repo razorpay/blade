@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 const StyledButton = styled.TouchableOpacity`
   background-color: ${'#202c41'};
-  padding-vertical: 14px;
+  padding-top: 14px;
   border-radius: 6px;
   border-width: 1px;
-  margin-vertical: 7px;
+  margin-top: 7px;
 `;
 
 const StyledText = styled.Text`
