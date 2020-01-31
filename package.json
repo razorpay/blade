@@ -6,7 +6,7 @@
   "dependencies": {
     "@storybook/addon-knobs": "5.3.9",
     "@testing-library/jest-dom": "4.2.4",
-    "@testing-library/react": "9.3.2",
+    "@testing-library/react": "9.4.0",
     "@testing-library/user-event": "7.1.2",
     "prop-types": "15.7.2",
     "react": "16.9.0",
@@ -30,6 +30,7 @@
     "@storybook/react": "5.3.8",
     "@storybook/react-native": "5.3.9",
     "@storybook/theming": "5.3.9",
+    "@testing-library/react-native": "5.0.3",
     "babel-eslint": "10.0.3",
     "babel-jest": "24.9.0",
     "babel-loader": "8.0.6",
@@ -65,7 +66,11 @@
     "web:storybook:build": "BABEL_ENV=web-production build-storybook -c ./storybook/web -o public",
     "native:ios": "react-native run-ios",
     "native:android": "react-native run-android",
-    "chromatic": "CHROMATIC_APP_CODE=gx0k8mh119 chromatic"
+    "chromatic": "CHROMATIC_APP_CODE=gx0k8mh119 chromatic",
+    "test:native": "BABEL_ENV=development jest -c ./jest.native.config.js",
+    "test:native:coverage": "yarn run test:native --coverage",
+    "test:web": "BABEL_ENV=web-development jest -c ./jest.web.config.js",
+    "test:web:coverage": "yarn run test:web --coverage"
   },
   "husky": {
     "hooks": {
