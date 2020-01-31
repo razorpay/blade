@@ -4,6 +4,11 @@ import { render, fireEvent } from '@testing-library/react-native';
 import Button from '../index';
 
 describe('Renders <Button /> correctly', () => {
+  it('snapshot testing', () => {
+    const { container } = render(<Button onClick={() => {}}>{'Click Me'}</Button>);
+    expect(container).toMatchSnapshot();
+  });
+
   it('renders button title correctly, defaultProps are assigned', () => {
     const { getByText, baseElement } = render(<Button onClick={() => {}}>{'Click Me'}</Button>);
     const button = getByText('Click Me');
