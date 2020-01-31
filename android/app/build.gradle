@@ -76,7 +76,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "storybook/native",
+    entryFile: "storybook/native/index.js",
     enableHermes: false,  // clean and rebuild if changing
 ]
 
