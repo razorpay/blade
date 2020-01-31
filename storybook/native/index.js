@@ -1,8 +1,7 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
 import { getStorybookUI, configure, addDecorator } from '@storybook/react-native';
-import { ThemeProvider } from 'styled-components';
-import SpaceAround from '../../src/decorators/SpaceAround/SpaceAround.native';
+import styled, { ThemeProvider } from 'styled-components';
 
 import './rn-addons';
 
@@ -12,6 +11,10 @@ const theme = {};
 configure(() => {
   require('../../src/atoms/Button/Button.stories');
 }, module);
+
+const SpaceAround = styled.View`
+  margin: 20px;
+`;
 
 addDecorator((Story) => (
   <ThemeProvider theme={theme}>
