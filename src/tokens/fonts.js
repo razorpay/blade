@@ -2,7 +2,7 @@ const fonts = {
   family: {
     lato: 'Lato',
   },
-  sizes: {
+  size: {
     xxs: '10px',
     xs: '12px',
     s: '13px',
@@ -23,7 +23,7 @@ const fonts = {
     m: 1.25,
     l: 1.5,
   },
-  letterSpaceing: {
+  letterSpacing: {
     s: 0,
     m: 0.5,
     l: 1,
