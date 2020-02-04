@@ -27,7 +27,7 @@ module.exports = {
       ],
     },
     'web-development': {
-      presets: ['@babel/preset-env', '@babel/preset-react'],
+      presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
       plugins: [
         [
           'babel-plugin-styled-components',
@@ -40,7 +40,7 @@ module.exports = {
       ],
     },
     'web-production': {
-      presets: ['@babel/preset-env', '@babel/preset-react'],
+      presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
       plugins: [
         [
           'babel-plugin-styled-components',
