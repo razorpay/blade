@@ -76,8 +76,8 @@
   },
   "scripts": {
     "web": "npm run web:storybook",
-    "web:storybook": "BABEL_ENV=web-development start-storybook -c ./storybook/web -p 9009 -s public",
-    "web:storybook:build": "BABEL_ENV=web-production build-storybook -c ./storybook/web -o public",
+    "web:storybook": "BABEL_ENV=web-development start-storybook -c ./storybook/web -p 9009 -s docs",
+    "web:storybook:build": "BABEL_ENV=web-production build-storybook -c ./storybook/web -o docs",
     "build": "tsc && node ./src/scripts/build.js",
     "native:ios": "react-native run-ios",
     "native:android": "react-native run-android",
