@@ -69,7 +69,7 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 const newPackageJson = {
   ...packageJson,
   files: [
-    'assets/**',
+    'public/**',
     ...components.map((component) =>
       component.includes('tokens') ? 'theme/**/*' : `${component.split('/').pop()}/**/*`,
     ),
