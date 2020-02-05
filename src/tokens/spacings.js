@@ -1,14 +1,13 @@
-const unit = 8;
-
 const spacings = {
-  xxs: `${unit / 4}px`,
-  xs: `${unit / 2}px`,
-  s: `${unit}px`,
-  m: `${(3 * unit) / 2}px`,
-  l: `${unit * 2}px`,
-  xl: `${(5 * unit) / 2}px`,
-  xxl: `${unit * 3}px`,
-  xxxl: `${unit * 4}px`,
+  unit: 8,
+  xxs: '2px',
+  xs: '4px',
+  s: '8px',
+  m: '12px',
+  l: '16px',
+  xl: '20px',
+  xxl: '24px',
+  xxxl: '32px',
 };
 
 export default spacings;
