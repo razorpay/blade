@@ -68,9 +68,12 @@ const packageJsonPath = path.resolve(process.env.PWD, 'package.json');
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 const newPackageJson = {
   ...packageJson,
-  files: components.map((component) =>
-    component.includes('tokens') ? 'theme/**/*' : `${component.split('/').pop()}/**/*`,
-  ),
+  files: [
+    'assets/**',
+    ...components.map((component) =>
+      component.includes('tokens') ? 'theme/**/*' : `${component.split('/').pop()}/**/*`,
+    ),
+  ],
 };
 fs.writeFileSync(packageJsonPath, JSON.stringify(newPackageJson, null, 2));
 console.log(chalk.green('✅ publish files created in package.json'));
