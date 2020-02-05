@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "declarationMap": false
+  },
+  "include": ["./src/atoms/**/*.native.js"]
+}

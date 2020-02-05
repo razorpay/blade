@@ -61,6 +61,13 @@ components.forEach(async (component) => {
     if (writeFileErr) throw writeFileErr;
     console.log(chalk.green(`✅ generated exports for ${componentName}`));
   });
+
+  //rename ${componentName}.d.ts file to index.d.ts
+  const componentDistFile = path.resolve(component, `${componentName}.native.d.ts`);
+  fs.rename(componentDistFile, path.resolve(componentName, `index.d.ts`), (renameFileErr) => {
+    if (renameFileErr) throw renameFileErr;
+    console.log(chalk.green(`✅ generated types for ${componentName}`));
+  });
 });
 
 //generate package.json
