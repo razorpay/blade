@@ -12,6 +12,7 @@ configure(() => {
   require('../../src/atoms/Button/Button.stories');
 }, module);
 
+// add decorators
 const SpaceAround = styled.View`
   margin: 20px;
 `;
@@ -24,10 +25,12 @@ addDecorator((Story) => (
   </ThemeProvider>
 ));
 
+// configure storybook
 const StorybookUIRoot = getStorybookUI({
   asyncStorage: require('@react-native-community/async-storage'),
 });
 
+// register app
 AppRegistry.registerComponent('blade', () => StorybookUIRoot);
 
 export default StorybookUIRoot;
