@@ -26,7 +26,7 @@ addDecorator((Story) => (
 
 // configure storybook
 const StorybookUIRoot = getStorybookUI({
-  asyncStorage: require('@react-native-community/async-storage'),
+  asyncStorage: require('@react-native-community/async-storage').AsyncStorage,
 });
 
 // register app
