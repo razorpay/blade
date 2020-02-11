@@ -1,10 +1,11 @@
-import React from 'react';
-import { AppRegistry } from 'react-native';
+import React, { useCallback } from 'react';
+import { AppRegistry, StatusBar } from 'react-native';
 import { getStorybookUI, configure, addDecorator } from '@storybook/react-native';
 import styled, { ThemeProvider } from 'styled-components';
-
 import theme from '../../src/tokens/theme';
 import './rn-addons';
+import AsyncStorage from '@react-native-community/async-storage';
+import storybookTheme from './storybookTheme';
 
 // import stories
 configure(() => {
@@ -17,19 +18,85 @@ const SpaceAround = styled.View`
 `;
 
 addDecorator((Story) => (
-  <ThemeProvider theme={theme}>
-    <SpaceAround>
-      <Story />
-    </SpaceAround>
-  </ThemeProvider>
+  <SpaceAround>
+    <Story />
+  </SpaceAround>
 ));
 
-// configure storybook
-const StorybookUIRoot = getStorybookUI({
-  asyncStorage: require('@react-native-community/async-storage').AsyncStorage,
-});
+const SafeAreaWrapper = styled.SafeAreaView`
+  flex: 1;
+  background-color: ${(props) => (props.isDarkTheme ? '#1E2445' : '#fff')};
+`;
+
+const ThemeSwitch = styled.Switch`
+  margin-left: 10px;
+  margin-right: 10px;
+`;
+
+const SwitchContainer = styled.View`
+  width: ${'100%'};
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px;
+`;
+
+const ThemeName = styled.Text`
+  color: ${(props) => (!props.isDarkTheme ? '#1E2445' : '#fff')};
+  font-size: 14px;
+`;
+
+const App = () => {
+  const [isDarkTheme, setDarkTheme] = React.useState(false);
+
+  const setTheme = useCallback((themeName) => {
+    AsyncStorage.setItem('theme', themeName);
+  }, []);
+
+  AsyncStorage.getItem('theme').then((storedTheme) => {
+    if (storedTheme && storedTheme === 'dark') {
+      setDarkTheme(true);
+    } else {
+      setDarkTheme(false);
+    }
+  });
+
+  // configure storybook
+  const StorybookUIRoot = getStorybookUI({
+    theme: isDarkTheme ? storybookTheme.dark : storybookTheme.light,
+    asyncStorage: AsyncStorage,
+  });
+
+  return (
+    <ThemeProvider theme={isDarkTheme ? theme.dark : theme.light}>
+      <StatusBar
+        backgroundColor={isDarkTheme ? '#1E2445' : '#fff'}
+        barStyle={isDarkTheme ? 'light-content' : 'dark-content'}
+      />
+      <SafeAreaWrapper isDarkTheme={isDarkTheme}>
+        <SwitchContainer>
+          <ThemeName isDarkTheme={isDarkTheme}>{'Light'}</ThemeName>
+          <ThemeSwitch
+            value={isDarkTheme}
+            onValueChange={(val) => {
+              if (val) {
+                setTheme('dark');
+                setDarkTheme(true);
+              } else {
+                setTheme('light');
+                setDarkTheme(false);
+              }
+            }}
+          />
+          <ThemeName isDarkTheme={isDarkTheme}>{'Dark'}</ThemeName>
+        </SwitchContainer>
+        <StorybookUIRoot />
+      </SafeAreaWrapper>
+    </ThemeProvider>
+  );
+};
 
 // register app
-AppRegistry.registerComponent('blade', () => StorybookUIRoot);
+AppRegistry.registerComponent('blade', () => App);
 
-export default StorybookUIRoot;
+export default App;

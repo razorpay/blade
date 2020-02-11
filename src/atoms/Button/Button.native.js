@@ -8,7 +8,6 @@ const StyledButton = styled(TouchableOpacity)(
   background-color: ${props.theme.colors.primary[900]};
   padding-top: 14px;
   border-radius: 6px;
-  border-width: 1px;
   margin-top: 7px;
 `,
 );
