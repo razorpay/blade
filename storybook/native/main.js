@@ -3,9 +3,8 @@ import { AppRegistry } from 'react-native';
 import { getStorybookUI, configure, addDecorator } from '@storybook/react-native';
 import styled, { ThemeProvider } from 'styled-components';
 
+import theme from '../../src/tokens/theme';
 import './rn-addons';
-
-const theme = {};
 
 // import stories
 configure(() => {
