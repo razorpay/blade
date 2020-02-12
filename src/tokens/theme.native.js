@@ -4,13 +4,16 @@ import { lightTheme as baseLightTheme, darkTheme as baseDarkTheme } from './them
 // For  styled components in React Native: converts unitless numbers to "px" strings
 const getPxValue = (value) => `${value}px`;
 
-const convertToPx = (property) =>
-  Object.keys(property).reduce((acc, val) => ({ ...acc, [val]: getPxValue(property[val]) }), {});
-
 const nativeFonts = {
   ...fonts,
-  lineHeight: convertToPx(fonts.lineHeight),
-  letterSpacing: convertToPx(fonts.letterSpacing),
+  lineHeight: Object.keys(fonts.lineHeight).reduce(
+    (acc, value) => ({ ...acc, [value]: getPxValue(fonts.lineHeight[value]) }),
+    {},
+  ),
+  letterSpacing: Object.keys(fonts.letterSpacing).reduce(
+    (acc, value) => ({ ...acc, [value]: getPxValue(fonts.letterSpacing[value]) }),
+    {},
+  ),
 };
 
 const lightTheme = {
@@ -23,7 +26,7 @@ const darkTheme = {
   fonts: nativeFonts,
 };
 
-const theme = { ...lightTheme, ...colors };
+const theme = { ...lightTheme, colors: { ...colors, ...lightTheme.colors } };
 
 export default theme;
 export { lightTheme, darkTheme };

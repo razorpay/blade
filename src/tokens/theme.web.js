@@ -57,22 +57,6 @@ const lightTheme = {
       600: colors.mustard[600],
       900: colors.mustard[900],
     },
-    exception: {
-      white: {
-        900: colors.white[900],
-      },
-      cloud: {
-        400: colors.cloud[400],
-        500: colors.cloud[500],
-      },
-      slate: {
-        300: colors.slate[300],
-        400: colors.slate[400],
-      },
-      darkBlue: {
-        200: colors.darkBlue[200],
-      },
-    },
   },
 };
 
@@ -131,24 +115,10 @@ const darkTheme = {
       600: colors.honey[600],
       900: colors.honey[900],
     },
-    exception: {
-      cloud: {
-        400: colors.cloud[400],
-        500: colors.cloud[500],
-        900: colors.white[900],
-      },
-      slate: {
-        300: colors.slate[300],
-        400: colors.slate[400],
-      },
-      darkBlue: {
-        200: colors.darkBlue[200],
-      },
-    },
   },
 };
 
-const theme = { ...lightTheme, ...colors };
+const theme = { ...lightTheme, colors: { ...colors, ...lightTheme.colors } };
 
 export default theme;
 export { lightTheme, darkTheme };
