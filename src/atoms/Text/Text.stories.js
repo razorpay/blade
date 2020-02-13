@@ -26,7 +26,7 @@ storiesOf('Text', module)
   .addDecorator(withKnobs)
   .add('default', () => (
     <Text
-      size={select('Size', Object.keys(theme.fonts.size), 'm')}
+      size={select('Size', Object.keys(theme.fonts.size), 'l')}
       weight={select('Weight', weightOptions, 'regular')}
       letterSpacing={select('Letter Spacing', letterSpacingOptions, 's')}
       color={color('Text Color', undefined)}
