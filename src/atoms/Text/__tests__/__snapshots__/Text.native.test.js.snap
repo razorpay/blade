@@ -1,6 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders <Text /> correctly snapshot testing 1`] = `
+exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    align="flex-start"
+    letterSpacing="s"
+    size="m"
+    style={
+      Array [
+        Object {
+          "alignSelf": "flex-start",
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-text"
+    underline={false}
+    weight="bold"
+  >
+    Displaying some text
+  </Text>
+</View>
+`;
+
+exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -28,6 +63,41 @@ exports[`Renders <Text /> correctly snapshot testing 1`] = `
     }
     testID="ds-text"
     underline={false}
+    weight="regular"
+  >
+    Displaying some text
+  </Text>
+</View>
+`;
+
+exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    align="flex-start"
+    letterSpacing="s"
+    size="m"
+    style={
+      Array [
+        Object {
+          "alignSelf": "flex-start",
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Regular",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "textDecorationLine": "underline",
+        },
+      ]
+    }
+    testID="ds-text"
+    underline={true}
     weight="regular"
   >
     Displaying some text
