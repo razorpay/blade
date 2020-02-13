@@ -2,10 +2,15 @@ import React, { useCallback } from 'react';
 import { AppRegistry, StatusBar } from 'react-native';
 import { getStorybookUI, configure, addDecorator } from '@storybook/react-native';
 import styled, { ThemeProvider } from 'styled-components';
-import theme from '../../src/tokens/theme';
+import { darkTheme, lightTheme } from '../../src/tokens/theme';
 import './rn-addons';
 import AsyncStorage from '@react-native-community/async-storage';
 import storybookTheme from './storybookTheme';
+
+const theme = {
+  light: lightTheme,
+  dark: darkTheme,
+};
 
 // import stories
 configure(() => {
@@ -25,7 +30,8 @@ addDecorator((Story) => (
 
 const SafeAreaWrapper = styled.SafeAreaView`
   flex: 1;
-  background-color: ${(props) => (props.isDarkTheme ? '#1E2445' : '#fff')};
+  background-color: ${(props) =>
+    props.isDarkTheme ? theme.dark.colors.background[400] : theme.light.colors.background[400]};
 `;
 
 const ThemeSwitch = styled.Switch`
@@ -38,11 +44,12 @@ const SwitchContainer = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  padding: 20px;
+  padding: 20px 20px 0px 0px;
 `;
 
 const ThemeName = styled.Text`
-  color: ${(props) => (!props.isDarkTheme ? '#1E2445' : '#fff')};
+  color: ${(props) =>
+    !props.isDarkTheme ? theme.dark.colors.background[400] : theme.light.colors.background[400]};
   font-size: 14px;
 `;
 
@@ -52,6 +59,19 @@ const App = () => {
   const setTheme = useCallback((themeName) => {
     AsyncStorage.setItem('theme', themeName);
   }, []);
+
+  const onThemeSwitched = useCallback(
+    (isDarkSelected) => {
+      if (isDarkSelected) {
+        setTheme('dark');
+        setDarkTheme(true);
+      } else {
+        setTheme('light');
+        setDarkTheme(false);
+      }
+    },
+    [setTheme],
+  );
 
   AsyncStorage.getItem('theme').then((storedTheme) => {
     if (storedTheme && storedTheme === 'dark') {
@@ -70,24 +90,15 @@ const App = () => {
   return (
     <ThemeProvider theme={isDarkTheme ? theme.dark : theme.light}>
       <StatusBar
-        backgroundColor={isDarkTheme ? '#1E2445' : '#fff'}
+        backgroundColor={
+          isDarkTheme ? theme.dark.colors.background[400] : theme.light.colors.background[400]
+        }
         barStyle={isDarkTheme ? 'light-content' : 'dark-content'}
       />
       <SafeAreaWrapper isDarkTheme={isDarkTheme}>
         <SwitchContainer>
           <ThemeName isDarkTheme={isDarkTheme}>{'Light'}</ThemeName>
-          <ThemeSwitch
-            value={isDarkTheme}
-            onValueChange={(val) => {
-              if (val) {
-                setTheme('dark');
-                setDarkTheme(true);
-              } else {
-                setTheme('light');
-                setDarkTheme(false);
-              }
-            }}
-          />
+          <ThemeSwitch value={isDarkTheme} onValueChange={onThemeSwitched} />
           <ThemeName isDarkTheme={isDarkTheme}>{'Dark'}</ThemeName>
         </SwitchContainer>
         <StorybookUIRoot />
