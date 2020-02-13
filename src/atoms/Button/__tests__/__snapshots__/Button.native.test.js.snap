@@ -15,25 +15,33 @@ exports[`Renders <Button /> correctly snapshot testing 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "#202c41",
-          "borderRadius": 6,
-          "borderWidth": 1,
-          "marginTop": 7,
+          "backgroundColor": "rgba(11, 112, 231, 1.0)",
           "paddingTop": 14,
         },
       ]
     }
+    testID="ds-button"
   >
     <Text
+      align="flex-start"
+      color="white"
+      letterSpacing="s"
+      size="m"
       style={
         Array [
           Object {
-            "alignSelf": "center",
-            "color": "#fff",
-            "fontSize": 18,
+            "alignSelf": "flex-start",
+            "color": "white",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "textDecorationLine": "none",
           },
         ]
       }
+      testID="ds-text"
+      underline={false}
+      weight="regular"
     >
       Click Me
     </Text>

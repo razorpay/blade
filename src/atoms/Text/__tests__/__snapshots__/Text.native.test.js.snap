@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <Text /> correctly snapshot testing 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    align="flex-start"
+    letterSpacing="s"
+    size="m"
+    style={
+      Array [
+        Object {
+          "alignSelf": "flex-start",
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Regular",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-text"
+    underline={false}
+    weight="regular"
+  >
+    Displaying some text
+  </Text>
+</View>
+`;
