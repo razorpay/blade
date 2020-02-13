@@ -5,17 +5,16 @@ import { TouchableOpacity, Text } from 'react-native';
 
 const StyledButton = styled(TouchableOpacity)(
   (props) => `
-  background-color: ${props.theme.colors.primary[900]};
-  padding-top: 14px;
+  background-color: ${props.theme.colors.shade[800]};
+  padding: 14px;
   border-radius: 6px;
-  border-width: 1px;
   margin-top: 7px;
 `,
 );
 
 const StyledText = styled(Text)(
   (props) => `
-  color: ${'#fff'};
+  color: ${props.theme.colors.tone[900]};
   align-self: center;
   font-size: 18px;
   letter-spacing: ${props.theme.fonts.letterSpacing.l};
@@ -24,7 +23,7 @@ const StyledText = styled(Text)(
 
 const Button = ({ onClick, children, ...rest }) => (
   <StyledButton onPress={onClick} {...rest}>
-    <StyledText>{children}</StyledText>
+    <StyledText {...rest}>{children}</StyledText>
   </StyledButton>
 );
 
