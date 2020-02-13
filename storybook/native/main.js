@@ -40,7 +40,7 @@ const ThemeSwitch = styled.Switch`
 `;
 
 const SwitchContainer = styled.View`
-  width: ${'100%'};
+  width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
