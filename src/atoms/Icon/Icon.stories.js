@@ -7,7 +7,7 @@ storiesOf('Icon', module)
   .addParameters({
     component: Icon,
   })
-  .add('with text', () => {
+  .add('default', () => {
     const theme = useContext(ThemeContext);
     return <Icon name="info" fill={theme.colors.shade[800]} size="l" />;
   });
