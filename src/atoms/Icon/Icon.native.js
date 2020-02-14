@@ -13,9 +13,13 @@ const Icon = ({ size, name, fill }) => {
   return <IconComponent fill={fill} height={iconSize[size]} width={iconSize[size]} />;
 };
 
+Icon.defaultProps = {
+  size: 'l',
+};
+
 Icon.propTypes = {
   size: PropTypes.oneOf(['s', 'm', 'l']),
-  name: PropTypes.oneOf(Object.keys(icons)),
+  name: PropTypes.oneOf(Object.keys(icons)).isRequired,
   fill: PropTypes.string,
 };
 
