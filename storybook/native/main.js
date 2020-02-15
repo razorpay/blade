@@ -10,6 +10,7 @@ const theme = {};
 // import stories
 configure(() => {
   require('../../src/atoms/Button/Button.stories');
+  require('../../src/atoms/Checkbox/Checkbox.stories');
 }, module);
 
 const SpaceAround = styled.View`
