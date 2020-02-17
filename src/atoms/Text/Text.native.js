@@ -23,7 +23,7 @@ const Text = styled(NativeText)(
 Text.propTypes = {
   children: PropTypes.node.isRequired,
   weight: PropTypes.oneOf(Object.keys(theme.fonts.weight)),
-  size: PropTypes.oneOf(Object.keys(theme.fonts.size)),
+  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   color: PropTypes.oneOf(flattenArray(Object.values(theme.colors).map(Object.values))),
   underline: PropTypes.bool,
   align: PropTypes.oneOf(['flex-start', 'center', 'flex-end']),
