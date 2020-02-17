@@ -3,22 +3,23 @@ import PropTypes from 'prop-types';
 import icons from '../../icons';
 
 const iconSize = {
-  s: 10,
-  m: 16,
-  l: 20,
+  xsmall: 12,
+  small: 16,
+  medium: 40,
+  large: 24,
 };
 
-const Icon = ({ size, name, fill }) => {
+const Icon = ({ size, name, fill, ...rest }) => {
   const IconComponent = icons[name];
-  return <IconComponent fill={fill} height={iconSize[size]} width={iconSize[size]} />;
+  return <IconComponent fill={fill} height={iconSize[size]} width={iconSize[size]} {...rest} />;
 };
 
 Icon.defaultProps = {
-  size: 'l',
+  size: 'medium',
 };
 
 Icon.propTypes = {
-  size: PropTypes.oneOf(['s', 'm', 'l']),
+  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
   name: PropTypes.oneOf(Object.keys(icons)).isRequired,
   fill: PropTypes.string,
 };

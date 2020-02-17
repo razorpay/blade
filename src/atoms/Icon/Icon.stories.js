@@ -9,5 +9,5 @@ storiesOf('Icon', module)
   })
   .add('default', () => {
     const theme = useContext(ThemeContext);
-    return <Icon name="info" fill={theme.colors.shade[800]} size="l" />;
+    return <Icon name="info" fill={theme.colors.shade[800]} size="medium" />;
   });
