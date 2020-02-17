@@ -27,7 +27,7 @@ describe('Renders <Text /> correctly', () => {
     const textElement = getByTestId('ds-text');
     expect(textElement).toBeTruthy();
     expect(textElement.props.weight).toBe('regular');
-    expect(textElement.props.size).toBe('m');
+    expect(textElement.props.size).toBe('small');
     expect(textElement.props.underline).toBe(false);
   });
 });

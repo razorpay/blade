@@ -12,16 +12,14 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
 >
   <Text
     align="flex-start"
-    letterSpacing="s"
-    size="m"
+    size="small"
     style={
       Array [
         Object {
           "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Bold",
-          "fontSize": 14,
-          "letterSpacing": 0,
+          "fontSize": 13,
           "textDecorationLine": "none",
         },
       ]
@@ -47,16 +45,14 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
 >
   <Text
     align="flex-start"
-    letterSpacing="s"
-    size="m"
+    size="small"
     style={
       Array [
         Object {
           "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Regular",
-          "fontSize": 14,
-          "letterSpacing": 0,
+          "fontSize": 13,
           "textDecorationLine": "none",
         },
       ]
@@ -82,16 +78,14 @@ exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = 
 >
   <Text
     align="flex-start"
-    letterSpacing="s"
-    size="m"
+    size="small"
     style={
       Array [
         Object {
           "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Regular",
-          "fontSize": 14,
-          "letterSpacing": 0,
+          "fontSize": 13,
           "textDecorationLine": "underline",
         },
       ]

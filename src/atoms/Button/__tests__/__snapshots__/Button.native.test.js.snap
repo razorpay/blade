@@ -28,16 +28,14 @@ exports[`Renders <Button /> correctly snapshot testing 1`] = `
     <Text
       align="center"
       color="rgba(224, 228, 249, 1.0)"
-      letterSpacing="s"
-      size="m"
+      size="small"
       style={
         Array [
           Object {
             "alignSelf": "center",
             "color": "rgba(224, 228, 249, 1.0)",
             "fontFamily": "Lato-Regular",
-            "fontSize": 14,
-            "letterSpacing": 0,
+            "fontSize": 13,
             "textDecorationLine": "none",
           },
         ]
