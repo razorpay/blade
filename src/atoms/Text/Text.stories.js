@@ -14,9 +14,9 @@ const weightOptions = {
 };
 
 const letterSpacingOptions = {
-  s: 's',
-  m: 'm',
-  l: 'l',
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
 };
 
 storiesOf('Text', module)
@@ -26,9 +26,9 @@ storiesOf('Text', module)
   .addDecorator(withKnobs)
   .add('default', () => (
     <Text
-      size={select('Size', Object.keys(theme.fonts.size), 'l')}
+      size={select('Size', Object.keys(theme.fonts.size), 'large')}
       weight={select('Weight', weightOptions, 'regular')}
-      letterSpacing={select('Letter Spacing', letterSpacingOptions, 's')}
+      letterSpacing={select('Letter Spacing', letterSpacingOptions, 'small')}
       color={color('Text Color', undefined)}
     >
       {text('Display Text', 'The quick brown fox jumps over the lazy dog')}

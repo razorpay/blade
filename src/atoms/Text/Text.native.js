@@ -33,8 +33,8 @@ Text.propTypes = {
 
 Text.defaultProps = {
   weight: 'regular',
-  size: 'm',
-  letterSpacing: 's',
+  size: 'small',
+  letterSpacing: 'small',
   underline: false,
   align: 'flex-start',
   testID: 'ds-text',
