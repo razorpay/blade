@@ -23,7 +23,7 @@ storiesOf('Checkbox', module)
         'l',
       )}
       title={text('Title', 'Title')}
-      helpText={text('Help Text', 'help Text')}
+      helpText={text('Help Text', 'some help text')}
       disabled={boolean('Disabled', false)}
       onClick={action('Clicked')}
     />

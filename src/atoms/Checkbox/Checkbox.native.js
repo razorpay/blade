@@ -11,9 +11,7 @@ const CheckboxContainer = styled.View`
   flex-direction: row;
 `;
 
-// const IconContainer = styled.View`
-//   margin: 4px 0px;
-// `;
+// const IconContainer = styled.View``;
 
 const TextContainer = styled.View`
   margin-left: 4px;
@@ -58,13 +56,13 @@ const HelpText = styled(Text)(
 );
 
 const Checkbox = ({ onClick, checked, disabled, size, title, helpText }) => {
-  const [c, setBoxState] = useState(checked);
+  const [status, setBoxState] = useState(checked);
 
   const onClicked = useCallback(() => {
-    const newState = !c;
+    const newState = !status;
     setBoxState(newState);
     if (onClick) onClick(newState);
-  }, [c, onClick]);
+  }, [status, onClick]);
 
   return (
     <TouchableHighlight
@@ -74,19 +72,17 @@ const Checkbox = ({ onClick, checked, disabled, size, title, helpText }) => {
       disabled={disabled}
     >
       <CheckboxContainer>
-        <CheckBoxIcon checked={c} size={size} disabled={disabled} />
-        {title.length > 0 && (
-          <TextContainer>
-            <Title {...mapSizeToTitleTextProps(size)} disabled={disabled}>
-              {title}
-            </Title>
-            {helpText.length && ['l', 'm'].indexOf(size) > -1 && (
-              <HelpText {...mapSizetoHelpTextProps(size)} disabled={disabled}>
-                {helpText}
-              </HelpText>
-            )}
-          </TextContainer>
-        )}
+        <CheckBoxIcon checked={status} size={size} disabled={disabled} />
+        <TextContainer>
+          <Title {...mapSizeToTitleTextProps(size)} disabled={disabled}>
+            {title}
+          </Title>
+          {helpText.length > 0 && ['l', 'm'].indexOf(size) > -1 && (
+            <HelpText {...mapSizetoHelpTextProps(size)} disabled={disabled}>
+              {helpText}
+            </HelpText>
+          )}
+        </TextContainer>
       </CheckboxContainer>
     </TouchableHighlight>
   );
@@ -101,7 +97,7 @@ Checkbox.propTypes = {
   onClick: PropTypes.func,
   checked: PropTypes.bool,
   size: PropTypes.oneOf(['l', 'm', 's']),
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   helpText: PropTypes.string,
   disabled: PropTypes.bool,
   // testID: PropTypes.string,
@@ -111,7 +107,6 @@ Checkbox.defaultProps = {
   onClick: () => {},
   checked: false,
   size: 'm',
-  title: '',
   helpText: '',
   disabled: false,
   // testID: 'checkbox',
