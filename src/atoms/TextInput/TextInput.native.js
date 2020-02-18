@@ -6,11 +6,24 @@ import Line from './Line';
 import HelpText from './HelpText';
 import ErrorText from './ErrorText';
 
-const StyledInput = styled(NativeTextInput)`
+const styles = {
+  inputContainerBackgroundColor({ variant, isFocused, theme }) {
+    if (variant === 'outline') return 'transparent';
+    else if (isFocused) return theme.colors.tone[400];
+    else return theme.colors.tone[300];
+  },
+};
+
+const Container = styled.View`
   background-color: transparent;
   width: 240px;
   height: 40px;
-  padding: 0px 0px 0px 0px;
+`;
+
+const StyledInput = styled(NativeTextInput)`
+  background-color: transparent;
+  height: 40px;
+  padding: 0px 0px 0px 1px;
 `;
 
 const StyledText = styled.Text`
@@ -20,7 +33,13 @@ const StyledText = styled.Text`
   color: ${(props) => props.theme.colors.shade[700]};
 `;
 
-const TextInput = ({ placeholder, onChangeText, helpText, errorText }) => {
+const FillContainer = styled.View`
+  background-color: ${styles.inputContainerBackgroundColor};
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+`;
+
+const TextInput = ({ placeholder, onChangeText, helpText, errorText, variant }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
   const [input, setInput] = useState('');
@@ -47,20 +66,22 @@ const TextInput = ({ placeholder, onChangeText, helpText, errorText }) => {
   );
 
   return (
-    <>
-      <StyledInput
-        placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onChangeText={onChange}
-        selectionColor={theme.colors.shade[700]} // not able to change this on Android
-      >
-        <StyledText>{input}</StyledText>
-      </StyledInput>
-      <Line isFocused={isFocused} hasError={hasError} />
+    <Container>
+      <FillContainer variant={variant} isFocused={isFocused}>
+        <StyledInput
+          placeholder={` ${placeholder}`}
+          placeholderTextColor={placeholderTextColor}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          onChangeText={onChange}
+          selectionColor={theme.colors.shade[700]} // not able to change this on Android
+        >
+          <StyledText>{input}</StyledText>
+        </StyledInput>
+        <Line isFocused={isFocused} hasError={hasError} />
+      </FillContainer>
       {hasError ? <ErrorText>{errorText}</ErrorText> : <HelpText>{helpText}</HelpText>}
-    </>
+    </Container>
   );
 };
 
@@ -69,10 +90,12 @@ TextInput.propTypes = {
   helpText: PropTypes.string,
   errorText: PropTypes.string,
   onChangeText: PropTypes.func,
+  variant: PropTypes.oneOf(['filled', 'outline']),
 };
 
 TextInput.defaultProps = {
   placeholder: 'Enter text here',
+  variant: 'outline',
 };
 
 export default TextInput;

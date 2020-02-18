@@ -19,5 +19,6 @@ storiesOf('TextInput', module)
       helpText="This is a help text"
       errorText=""
       onChangeText={() => {}}
+      variant="outline"
     />
   ));
