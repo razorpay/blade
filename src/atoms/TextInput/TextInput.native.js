@@ -8,8 +8,9 @@ import ErrorText from './ErrorText';
 import AccessoryText from './AccessoryText';
 
 const styles = {
-  inputContainerBackgroundColor({ variant, isFocused, theme }) {
+  inputContainerBackgroundColor({ variant, isFocused, theme, disabled }) {
     if (variant === 'outline') return 'transparent';
+    else if (disabled) return theme.colors.tone[300];
     else if (isFocused) return theme.colors.tone[400];
     else return theme.colors.tone[300];
   },
@@ -44,7 +45,8 @@ const StyledText = styled.Text`
   font-size: 14px;
   line-height: 20px;
   padding-bottom: 4px;
-  color: ${(props) => props.theme.colors.shade[700]};
+  color: ${(props) =>
+    props.disabled ? props.theme.colors.shade[400] : props.theme.colors.shade[700]};
   flex: 1;
 `;
 
@@ -54,12 +56,21 @@ const FillContainer = styled.View`
   border-top-right-radius: 2px;
 `;
 
-const TextInput = ({ placeholder, onChangeText, helpText, errorText, variant, prefix, suffix }) => {
+const TextInput = ({
+  placeholder,
+  onChangeText,
+  helpText,
+  errorText,
+  variant,
+  prefix,
+  suffix,
+  disabled,
+}) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
   const [input, setInput] = useState('');
 
-  const placeholderTextColor = theme.colors.shade[400];
+  const placeholderTextColor = disabled ? theme.colors.shade[300] : theme.colors.shade[400];
   const hasError = !!(errorText && errorText.length > 0);
   const hasPrefix = !!(prefix && prefix.length > 0);
   const hasSuffix = !!(suffix && suffix.length > 0);
@@ -84,9 +95,9 @@ const TextInput = ({ placeholder, onChangeText, helpText, errorText, variant, pr
 
   return (
     <Container>
-      <FillContainer variant={variant} isFocused={isFocused}>
+      <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
         <InputContainer>
-          {hasPrefix ? <AccessoryText>{prefix}</AccessoryText> : null}
+          {hasPrefix ? <AccessoryText disabled={disabled}>{prefix}</AccessoryText> : null}
           <StyledInput
             placeholder={` ${placeholder}`}
             placeholderTextColor={placeholderTextColor}
@@ -95,14 +106,19 @@ const TextInput = ({ placeholder, onChangeText, helpText, errorText, variant, pr
             onChangeText={onChange}
             input={input}
             selectionColor={theme.colors.shade[700]} // not able to change this on Android
+            editable={!disabled}
           >
-            <StyledText>{input}</StyledText>
+            <StyledText disabled={disabled}>{input}</StyledText>
           </StyledInput>
-          {hasSuffix ? <AccessoryText>{suffix}</AccessoryText> : null}
+          {hasSuffix ? <AccessoryText disabled={disabled}>{suffix}</AccessoryText> : null}
         </InputContainer>
-        <Line isFocused={isFocused} hasError={hasError} />
+        <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
       </FillContainer>
-      {hasError ? <ErrorText>{errorText}</ErrorText> : <HelpText>{helpText}</HelpText>}
+      {hasError && !disabled ? (
+        <ErrorText>{errorText}</ErrorText>
+      ) : (
+        <HelpText disabled={disabled}>{helpText}</HelpText>
+      )}
     </Container>
   );
 };
@@ -115,6 +131,7 @@ TextInput.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outline']),
   prefix: PropTypes.string,
   suffix: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
