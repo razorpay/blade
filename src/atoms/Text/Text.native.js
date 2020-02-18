@@ -17,17 +17,17 @@ const StyledText = styled(NativeText)(
   font-family: ${fontFamilies[props.weight]};
   font-size: ${props.theme.fonts.size[props.size]};
   color: ${resolveColorFromString(props.theme, props.color) || props.theme.colors.shade[800]};
-  text-decoration-line: ${props.underline ? 'underline' : 'none'};
+  text-decoration-line: ${props.isUnderlined ? 'underline' : 'none'};
   align-self: ${props.align};
 `,
 );
 
-const Text = ({ weight, size, underline, align, testID, color, children }) => {
+const Text = ({ weight, size, isUnderlined, align, testID, color, children }) => {
   return (
     <StyledText
       weight={weight}
       size={size}
-      underline={underline}
+      isUnderline={isUnderlined}
       align={align}
       color={color}
       {...automation(testID)}
@@ -42,7 +42,7 @@ Text.propTypes = {
   weight: PropTypes.oneOf(Object.keys(theme.fonts.weight)),
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   color: PropTypes.oneOf(getAllColorNames()),
-  underline: PropTypes.bool,
+  isUnderlined: PropTypes.bool,
   align: PropTypes.oneOf(['flex-start', 'center', 'flex-end']),
   testID: PropTypes.string,
 };
@@ -50,7 +50,7 @@ Text.propTypes = {
 Text.defaultProps = {
   weight: 'regular',
   size: 'small',
-  underline: false,
+  isUnderlined: false,
   align: 'flex-start',
   testID: 'ds-text',
 };
