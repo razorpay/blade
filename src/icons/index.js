@@ -1,7 +1,5 @@
-import Info from './Info';
-
 const icons = {
-  info: Info,
+  info: require('./Info').default,
 };
 
 export default icons;
