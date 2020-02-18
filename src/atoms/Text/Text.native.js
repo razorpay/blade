@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled from 'styled-components/native';
 import theme from '../../tokens/theme';
 import { Text as NativeText } from 'react-native';
 import { getAllColorNames, resolveColorFromString } from '../../utils/colors';
@@ -16,21 +16,20 @@ const StyledText = styled(NativeText)(
   (props) => `
   font-family: ${fontFamilies[props.weight]};
   font-size: ${props.theme.fonts.size[props.size]};
-  color: ${props.color || props.theme.colors.shade[800]};
+  color: ${resolveColorFromString(props.theme, props.color) || props.theme.colors.shade[800]};
   text-decoration-line: ${props.underline ? 'underline' : 'none'};
   align-self: ${props.align};
 `,
 );
 
 const Text = ({ weight, size, underline, align, testID, color, children }) => {
-  const currentTheme = useContext(ThemeContext);
   return (
     <StyledText
       weight={weight}
       size={size}
       underline={underline}
       align={align}
-      color={resolveColorFromString(currentTheme, color)}
+      color={color}
       {...automation(testID)}
     >
       {children}

@@ -26,7 +26,7 @@ storiesOf('Text', module)
     <Text
       size={select('Size', sizeOptions, 'large')}
       weight={select('Weight', weightOptions, 'regular')}
-      color={color('Text Color', 'primary.800')}
+      color={color('Text Color', 'shade.800')}
     >
       {text('Display Text', 'The quick brown fox jumps over the lazy dog')}
     </Text>

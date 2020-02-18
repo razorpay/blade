@@ -57,6 +57,7 @@ const lightTheme = {
       600: colors.mustard[600],
       900: colors.mustard[900],
     },
+    ...colors,
   },
 };
 
@@ -115,10 +116,9 @@ const darkTheme = {
       600: colors.honey[600],
       900: colors.honey[900],
     },
+    ...colors,
   },
 };
 
-const theme = { ...lightTheme, colors: { ...colors, ...lightTheme.colors } };
-
-export default theme;
+export default lightTheme;
 export { lightTheme, darkTheme };
