@@ -1,8 +1,10 @@
 import React, { useContext, useState, useCallback } from 'react';
 import { TextInput as NativeTextInput } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
-import Line from './Line';
 import PropTypes from 'prop-types';
+import Line from './Line';
+import HelpText from './HelpText';
+import ErrorText from './ErrorText';
 
 const StyledInput = styled(NativeTextInput)`
   background-color: transparent;
@@ -18,12 +20,13 @@ const StyledText = styled.Text`
   color: ${(props) => props.theme.colors.shade[700]};
 `;
 
-const TextInput = ({ placeholder, onChangeText }) => {
+const TextInput = ({ placeholder, onChangeText, helpText, errorText }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
   const [input, setInput] = useState('');
 
   const placeholderTextColor = theme.colors.shade[400];
+  const hasError = !!(errorText && errorText.length > 0);
 
   const onFocus = useCallback(() => {
     setFocused(true);
@@ -55,13 +58,16 @@ const TextInput = ({ placeholder, onChangeText }) => {
       >
         <StyledText>{input}</StyledText>
       </StyledInput>
-      <Line isFocused={isFocused} />
+      <Line isFocused={isFocused} hasError={hasError} />
+      {hasError ? <ErrorText>{errorText}</ErrorText> : <HelpText>{helpText}</HelpText>}
     </>
   );
 };
 
 TextInput.propTypes = {
   placeholder: PropTypes.string,
+  helpText: PropTypes.string,
+  errorText: PropTypes.string,
   onChangeText: PropTypes.func,
 };
 
