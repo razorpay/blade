@@ -12,6 +12,7 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
 >
   <Text
     align="flex-start"
+    isUnderlined={false}
     size="small"
     style={
       Array [
@@ -25,7 +26,6 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
       ]
     }
     testID="ds-text"
-    underline={false}
     weight="bold"
   >
     Displaying some text
@@ -45,6 +45,7 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
 >
   <Text
     align="flex-start"
+    isUnderlined={false}
     size="small"
     style={
       Array [
@@ -58,7 +59,6 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
       ]
     }
     testID="ds-text"
-    underline={false}
     weight="regular"
   >
     Displaying some text
@@ -78,6 +78,7 @@ exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = 
 >
   <Text
     align="flex-start"
+    isUnderlined={true}
     size="small"
     style={
       Array [
@@ -91,7 +92,6 @@ exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = 
       ]
     }
     testID="ds-text"
-    underline={true}
     weight="regular"
   >
     Displaying some text

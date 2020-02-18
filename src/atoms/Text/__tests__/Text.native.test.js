@@ -17,7 +17,7 @@ describe('Renders <Text /> correctly', () => {
 
   it('snapshot testing with underlined text', () => {
     const displayText = 'Displaying some text';
-    const { container } = renderWithTheme(<Text underline>{displayText}</Text>);
+    const { container } = renderWithTheme(<Text isUnderlined>{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
 
@@ -28,6 +28,6 @@ describe('Renders <Text /> correctly', () => {
     expect(textElement).toBeTruthy();
     expect(textElement.props.weight).toBe('regular');
     expect(textElement.props.size).toBe('small');
-    expect(textElement.props.underline).toBe(false);
+    expect(textElement.props.isUnderlined).toBe(false);
   });
 });

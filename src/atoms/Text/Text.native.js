@@ -1,28 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import theme from '../../tokens/theme';
+import baseTheme from '../../tokens/theme';
 import { Text as NativeText } from 'react-native';
 import { getColorKeys, getColor } from '../../utils/colors';
 import automation from '../../_helpers/automation-attributes';
-import fonts from '../../tokens/fonts';
 
-const StyledText = styled(NativeText)(
-  (props) => `
-  font-family: ${fonts.families[props.weight]};
-  font-size: ${props.theme.fonts.size[props.size]};
-  color: ${getColor(props.theme, props.color) || props.theme.colors.shade[800]};
-  text-decoration-line: ${props.isUnderlined ? 'underline' : 'none'};
-  align-self: ${props.align};
-`,
-);
+const styles = {
+  fontFamily({ theme, weight }) {
+    return theme.fonts.family[weight];
+  },
+  fontSize({ theme, size }) {
+    return theme.fonts.size[size];
+  },
+  color({ theme, color }) {
+    if (color) {
+      return getColor(theme, color);
+    }
+    return theme.colors.shade[800];
+  },
+  textDecorationLine({ isUnderlined }) {
+    if (isUnderlined) return 'underline';
+    else return 'none';
+  },
+  alignSelf({ align }) {
+    return align;
+  },
+};
+
+const StyledText = styled(NativeText)`
+  font-family: ${styles.fontFamily};
+  font-size: ${styles.fontSize};
+  color: ${styles.color};
+  text-decoration-line: ${styles.textDecorationLine};
+  align-self: ${styles.alignSelf};
+`;
 
 const Text = ({ weight, size, isUnderlined, align, testID, color, children }) => {
   return (
     <StyledText
       weight={weight}
       size={size}
-      isUnderline={isUnderlined}
+      isUnderlined={isUnderlined}
       align={align}
       color={color}
       {...automation(testID)}
@@ -34,7 +53,7 @@ const Text = ({ weight, size, isUnderlined, align, testID, color, children }) =>
 
 Text.propTypes = {
   children: PropTypes.string,
-  weight: PropTypes.oneOf(Object.keys(theme.fonts.weight)),
+  weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   color: PropTypes.oneOf(getColorKeys()),
   isUnderlined: PropTypes.bool,
