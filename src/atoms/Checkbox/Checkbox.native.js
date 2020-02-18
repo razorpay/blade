@@ -87,7 +87,7 @@ const HelpText = styled(Text)(
 `,
 );
 
-const Checkbox = ({ onClick, checked, disabled, size, title, helpText }) => {
+const Checkbox = ({ onClick, checked, disabled, size, title, helpText, testID }) => {
   const [status, setBoxState] = useState(checked);
   const [underlayColor, setUnderlayColor] = useState('');
 
@@ -117,6 +117,7 @@ const Checkbox = ({ onClick, checked, disabled, size, title, helpText }) => {
       disabled={disabled}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
+      testID={testID}
     >
       <CheckboxContainer>
         <RippleView underlayColor={underlayColor} {...mapSizeToRippleViewProps(size)}>
