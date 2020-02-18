@@ -19,7 +19,6 @@ module.exports = {
           '.desktop.js',
           '.mobile.js',
           '.native.js',
-          '.native.ts',
           '.ios.js',
           '.android.js',
         ],
