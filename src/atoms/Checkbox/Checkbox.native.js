@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Text, TouchableHighlight } from 'react-native';
 import styled from 'styled-components/native';
@@ -60,10 +60,12 @@ const HelpText = styled(Text)(
 const Checkbox = ({ onClick, checked, disabled, size, title, helpText }) => {
   const [c, setBoxState] = useState(checked);
 
-  const onClicked = () => {
-    setBoxState(!c);
-    if (onClick) onClick(c);
-  };
+  const onClicked = useCallback(() => {
+    const newState = !c;
+    setBoxState(newState);
+    if (onClick) onClick(newState);
+  }, [c, onClick]);
+
   return (
     <TouchableHighlight
       accessibilityRole="checkbox"

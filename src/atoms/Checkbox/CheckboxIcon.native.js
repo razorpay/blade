@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Svg, { Path } from 'react-native-svg';
+import { ThemeContext } from 'styled-components/native';
 
 const Unchecked = ({ size, fill }) => {
   return (
@@ -65,16 +66,24 @@ const mapSizeToSvgProps = (checkboxSize) => {
 
 const IconComponent = (props) => {
   const { checked, size, disabled } = props;
+
+  const theme = useContext(ThemeContext);
   if (checked) {
     return (
       <Checked
         size={size}
         name="checkedSquare"
-        fill={disabled ? 'rgba(22, 47, 86, 0.1)' : '#0B70E7'}
+        fill={disabled ? theme.colors.shade['300'] : theme.colors.primary['800']}
       />
     );
   }
-  return <Unchecked size={size} name="uncheckedSquare" fill={disabled ? 'blue' : '#162F56'} />;
+  return (
+    <Unchecked
+      size={size}
+      name="uncheckedSquare"
+      fill={disabled ? theme.colors.shade['300'] : theme.colors.shade['500']}
+    />
+  );
 };
 
 function CheckboxIcon(props) {
