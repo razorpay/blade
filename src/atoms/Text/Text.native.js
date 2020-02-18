@@ -16,8 +16,7 @@ const styles = {
   color({ theme, color }) {
     if (color) {
       return getColor(theme, color);
-    }
-    return theme.colors.shade[800];
+    } else return theme.colors.shade[800];
   },
   textDecorationLine({ isUnderlined }) {
     if (isUnderlined) return 'underline';
