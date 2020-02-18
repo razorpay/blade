@@ -15,6 +15,7 @@ const theme = {
 // import stories
 configure(() => {
   require('../../src/atoms/Icon/Icon.stories');
+  require('../../src/atoms/Link/Link.stories');
   require('../../src/atoms/Text/Text.stories');
   require('../../src/atoms/Button/Button.stories');
 }, module);
