@@ -1,4 +1,4 @@
-package com.blade;
+package com.razorpay.blade;
 
 import com.facebook.react.ReactActivity;
 
