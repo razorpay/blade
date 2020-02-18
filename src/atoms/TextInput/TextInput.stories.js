@@ -10,11 +10,12 @@ storiesOf('TextInput', module)
     <TextInput
       label="Label"
       disabled={false}
-      value=""
       error=""
       iconLeft=""
       iconRight=""
       prefix=""
       suffix=""
+      placeholder="Type here"
+      onChangeText={() => {}}
     />
   ));
