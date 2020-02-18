@@ -16,11 +16,11 @@ storiesOf('Checkbox', module)
       size={select(
         'Size',
         {
-          l: 'l',
-          m: 'm',
-          s: 's',
+          large: 'large',
+          medium: 'medium',
+          small: 'small',
         },
-        'l',
+        'large',
       )}
       title={text('Title', 'Title')}
       helpText={text('Help Text', 'some help text')}

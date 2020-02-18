@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { Text, TouchableHighlight } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import CheckBoxIcon from './CheckboxIcon';
 
@@ -26,11 +26,11 @@ const Title = styled(Text)(
 
 const mapSizeToTitleTextProps = (checkboxSize) => {
   switch (checkboxSize) {
-    case 'l':
+    case 'large':
       return { size: 'l' };
-    case 'm':
+    case 'medium':
       return { size: 'm' };
-    case 's':
+    case 'small':
       return { size: 'xs' };
     default:
       return { size: 's' };
@@ -39,9 +39,9 @@ const mapSizeToTitleTextProps = (checkboxSize) => {
 
 const mapSizetoHelpTextProps = (checkboxSize) => {
   switch (checkboxSize) {
-    case 'l':
+    case 'large':
       return { size: 'm' };
-    case 'm':
+    case 'medium':
       return { size: 'xs' };
     default:
       return { size: 's' };
@@ -65,7 +65,8 @@ const Checkbox = ({ onClick, checked, disabled, size, title, helpText }) => {
   }, [status, onClick]);
 
   return (
-    <TouchableHighlight
+    <TouchableOpacity
+      activeOpacity={1}
       accessibilityRole="checkbox"
       onPress={onClicked}
       underlayColor="transparent"
@@ -77,14 +78,14 @@ const Checkbox = ({ onClick, checked, disabled, size, title, helpText }) => {
           <Title {...mapSizeToTitleTextProps(size)} disabled={disabled}>
             {title}
           </Title>
-          {helpText.length > 0 && ['l', 'm'].indexOf(size) > -1 && (
+          {helpText.length > 0 && ['large', 'medium'].indexOf(size) > -1 && (
             <HelpText {...mapSizetoHelpTextProps(size)} disabled={disabled}>
               {helpText}
             </HelpText>
           )}
         </TextContainer>
       </CheckboxContainer>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 
@@ -96,7 +97,7 @@ HelpText.propTypes = {
 Checkbox.propTypes = {
   onClick: PropTypes.func,
   checked: PropTypes.bool,
-  size: PropTypes.oneOf(['l', 'm', 's']),
+  size: PropTypes.oneOf(['large', 'medium', 'small']),
   title: PropTypes.string.isRequired,
   helpText: PropTypes.string,
   disabled: PropTypes.bool,
@@ -106,10 +107,10 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   onClick: () => {},
   checked: false,
-  size: 'm',
+  size: 'large',
   helpText: '',
   disabled: false,
-  // testID: 'checkbox',
+  // testID: 'ds-checkbox',
 };
 
 export default Checkbox;

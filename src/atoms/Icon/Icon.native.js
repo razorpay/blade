@@ -5,7 +5,7 @@ import icons from '../../icons';
 const iconSize = {
   xsmall: 12,
   small: 16,
-  medium: 40,
+  medium: 20,
   large: 24,
 };
 
