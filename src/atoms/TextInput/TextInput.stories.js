@@ -16,6 +16,8 @@ storiesOf('TextInput', module)
       prefix=""
       suffix=""
       placeholder="Type here"
+      helpText="This is a help text"
+      errorText=""
       onChangeText={() => {}}
     />
   ));
