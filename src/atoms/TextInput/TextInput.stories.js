@@ -13,7 +13,7 @@ storiesOf('TextInput', module)
       error=""
       iconLeft=""
       iconRight=""
-      prefix=""
+      prefix="kg"
       suffix=""
       placeholder="Type here"
       helpText="This is a help text"
