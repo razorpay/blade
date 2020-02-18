@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/native';
+import styled, { ThemeContext } from 'styled-components/native';
 import theme from '../../tokens/theme';
 import { Text as NativeText } from 'react-native';
-import { flattenArray } from '../../utils/index';
+import { getAllColorNames, resolveColorFromString } from '../../utils/colors';
 import automation from '../../_helpers/automation-attributes';
 
 const fontFamilies = {
@@ -22,24 +22,27 @@ const StyledText = styled(NativeText)(
 `,
 );
 
-const Text = ({ weight, size, underline, align, testID, color, children }) => (
-  <StyledText
-    weight={weight}
-    size={size}
-    underline={underline}
-    align={align}
-    color={color}
-    {...automation(testID)}
-  >
-    {children}
-  </StyledText>
-);
+const Text = ({ weight, size, underline, align, testID, color, children }) => {
+  const currentTheme = useContext(ThemeContext);
+  return (
+    <StyledText
+      weight={weight}
+      size={size}
+      underline={underline}
+      align={align}
+      color={resolveColorFromString(currentTheme, color)}
+      {...automation(testID)}
+    >
+      {children}
+    </StyledText>
+  );
+};
 
 Text.propTypes = {
   children: PropTypes.string,
   weight: PropTypes.oneOf(Object.keys(theme.fonts.weight)),
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
-  color: PropTypes.oneOf(flattenArray(Object.values(theme.colors).map(Object.values))),
+  color: PropTypes.oneOf(getAllColorNames()),
   underline: PropTypes.bool,
   align: PropTypes.oneOf(['flex-start', 'center', 'flex-end']),
   testID: PropTypes.string,
