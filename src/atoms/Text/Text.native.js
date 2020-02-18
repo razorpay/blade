@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import theme from '../../tokens/theme';
 import { Text as NativeText } from 'react-native';
-import { getAllColorNames, resolveColorFromString } from '../../utils/colors';
+import { getColorKeys, getColor } from '../../utils/colors';
 import automation from '../../_helpers/automation-attributes';
 import fonts from '../../tokens/fonts';
 
@@ -11,7 +11,7 @@ const StyledText = styled(NativeText)(
   (props) => `
   font-family: ${fonts.families[props.weight]};
   font-size: ${props.theme.fonts.size[props.size]};
-  color: ${resolveColorFromString(props.theme, props.color) || props.theme.colors.shade[800]};
+  color: ${getColor(props.theme, props.color) || props.theme.colors.shade[800]};
   text-decoration-line: ${props.isUnderlined ? 'underline' : 'none'};
   align-self: ${props.align};
 `,
@@ -36,7 +36,7 @@ Text.propTypes = {
   children: PropTypes.string,
   weight: PropTypes.oneOf(Object.keys(theme.fonts.weight)),
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
-  color: PropTypes.oneOf(getAllColorNames()),
+  color: PropTypes.oneOf(getColorKeys()),
   isUnderlined: PropTypes.bool,
   align: PropTypes.oneOf(['flex-start', 'center', 'flex-end']),
   testID: PropTypes.string,

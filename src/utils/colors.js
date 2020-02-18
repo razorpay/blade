@@ -2,19 +2,20 @@ import theme from '../tokens/theme';
 
 const colorRange = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
-const getAllColorNames = () => {
+const getColorKeys = () => {
   return Object.keys(theme.colors)
     .map((color) => colorRange.map((range) => `${color}.${range}`))
     .reduce((acc, val) => [...acc, ...val]);
 };
 
-const resolveColorFromString = (currentTheme, colorString) => {
-  const colorEntities = colorString.split('.');
+const getColor = (currentTheme, color) => {
+  const [base, shade] = color.split('.');
+
   try {
-    return currentTheme.colors[colorEntities[0]][colorEntities[1]];
+    return currentTheme.colors[base][shade];
   } catch {
-    throw new Error(`Invalid color prop\n\nValid color values:\n ${getAllColorNames()}`);
+    throw new Error(`Invalid color prop\n\nValid color values:\n ${getColorKeys()}`);
   }
 };
 
-export { getAllColorNames, resolveColorFromString };
+export { getColorKeys, getColor };
