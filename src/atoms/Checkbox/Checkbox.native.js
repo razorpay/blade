@@ -1,66 +1,106 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Text, TouchableHighlight } from 'react-native';
 import styled from 'styled-components/native';
 import CheckBoxIcon from './CheckboxIcon';
 
-const Button = styled.TouchableHighlight`
-  margin: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 10px;
-`;
+// const Button = styled.TouchableHighlight``;
 
 const CheckboxContainer = styled.View`
   display: flex;
   flex-direction: row;
 `;
 
-const IconContainer = styled.View`
-  margin: 5px;
+// const IconContainer = styled.View`
+//   margin: 4px 0px;
+// `;
+
+const TextContainer = styled.View`
+  margin-left: 4px;
 `;
 
-const TextContainer = styled.View``;
+const Title = styled(Text)(
+  (props) => `
+  color: ${props.disabled ? props.theme.colors.shade[500] : props.theme.colors.shade[700]};
+  font-size: ${props.theme.fonts.size[props.size]};
+`,
+);
 
-const HelpText = styled.Text`
-  font-size: 10px;
-`;
+const mapSizeToTitleTextProps = (checkboxSize) => {
+  switch (checkboxSize) {
+    case 'l':
+      return { size: 'l' };
+    case 'm':
+      return { size: 'm' };
+    case 's':
+      return { size: 'xs' };
+    default:
+      return { size: 's' };
+  }
+};
 
-const Title = styled.Text``;
+const mapSizetoHelpTextProps = (checkboxSize) => {
+  switch (checkboxSize) {
+    case 'l':
+      return { size: 'm' };
+    case 'm':
+      return { size: 'xs' };
+    default:
+      return { size: 's' };
+  }
+};
 
-const Checkbox = ({ onClick, checked, disabled }) => {
+const HelpText = styled(Text)(
+  (props) => `
+  color: ${props.disabled ? props.theme.colors.shade[300] : props.theme.colors.shade[500]};
+  font-size: ${props.theme.fonts.size[props.size]};
+`,
+);
+
+const Checkbox = ({ onClick, checked, disabled, size, title, helpText }) => {
   const [c, setBoxState] = useState(checked);
 
   const onClicked = () => {
     setBoxState(!c);
     if (onClick) onClick(c);
   };
-
   return (
-    <Button
+    <TouchableHighlight
       accessibilityRole="checkbox"
       onPress={onClicked}
       underlayColor="transparent"
       disabled={disabled}
     >
       <CheckboxContainer>
-        <IconContainer>
-          <CheckBoxIcon checked={c} />
-        </IconContainer>
-        <TextContainer>
-          <Title>Status :${c.toString()}</Title>
-          <HelpText>Shridhar:${c.toString()}</HelpText>
-        </TextContainer>
+        <CheckBoxIcon checked={c} size={size} disabled={disabled} />
+        {title.length > 0 && (
+          <TextContainer>
+            <Title {...mapSizeToTitleTextProps(size)} disabled={disabled}>
+              {title}
+            </Title>
+            {helpText.length && ['l', 'm'].indexOf(size) > -1 && (
+              <HelpText {...mapSizetoHelpTextProps(size)} disabled={disabled}>
+                {helpText}
+              </HelpText>
+            )}
+          </TextContainer>
+        )}
       </CheckboxContainer>
-    </Button>
+    </TouchableHighlight>
   );
+};
+
+HelpText.propTypes = {
+  size: PropTypes.oneOf(['m', 'xs']),
+  disabled: PropTypes.bool,
 };
 
 Checkbox.propTypes = {
   onClick: PropTypes.func,
   checked: PropTypes.bool,
-  // size: PropTypes.oneOf(['l', 'm', 's']),
-  // title: PropTypes.string,
-  // helpText: PropTypes.string,
+  size: PropTypes.oneOf(['l', 'm', 's']),
+  title: PropTypes.string,
+  helpText: PropTypes.string,
   disabled: PropTypes.bool,
   // testID: PropTypes.string,
 };
@@ -68,9 +108,9 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   onClick: () => {},
   checked: false,
-  // size: 'm',
-  // title: 'Title for checkbox goes here',
-  // helpText: '',
+  size: 'm',
+  title: '',
+  helpText: '',
   disabled: false,
   // testID: 'checkbox',
 };
