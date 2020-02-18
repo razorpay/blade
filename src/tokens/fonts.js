@@ -1,6 +1,7 @@
 const fonts = {
   family: {
-    lato: 'Lato',
+    regular: `Lato-Regular`,
+    bold: `Lato-Bold`,
   },
   size: {
     xxsmall: '10px',

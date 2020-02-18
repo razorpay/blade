@@ -5,16 +5,11 @@ import theme from '../../tokens/theme';
 import { Text as NativeText } from 'react-native';
 import { getAllColorNames, resolveColorFromString } from '../../utils/colors';
 import automation from '../../_helpers/automation-attributes';
-
-const fontFamilies = {
-  light: `Lato-Regular`,
-  regular: `Lato-Regular`,
-  bold: `Lato-Bold`,
-};
+import fonts from '../../tokens/fonts';
 
 const StyledText = styled(NativeText)(
   (props) => `
-  font-family: ${fontFamilies[props.weight]};
+  font-family: ${fonts.families[props.weight]};
   font-size: ${props.theme.fonts.size[props.size]};
   color: ${resolveColorFromString(props.theme, props.color) || props.theme.colors.shade[800]};
   text-decoration-line: ${props.isUnderlined ? 'underline' : 'none'};
