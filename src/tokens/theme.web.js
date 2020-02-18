@@ -4,6 +4,7 @@ const lightTheme = {
   fonts,
   spacings,
   colors: {
+    ...colors,
     background: {
       200: colors.white[900],
       400: colors.grey[300],
@@ -57,7 +58,6 @@ const lightTheme = {
       600: colors.mustard[600],
       900: colors.mustard[900],
     },
-    ...colors,
   },
 };
 
@@ -65,6 +65,7 @@ const darkTheme = {
   fonts,
   spacings,
   colors: {
+    ...colors,
     background: {
       100: colors.darkBlue[200],
       200: colors.darkBlue[400],
@@ -116,7 +117,6 @@ const darkTheme = {
       600: colors.honey[600],
       900: colors.honey[900],
     },
-    ...colors,
   },
 };
 
