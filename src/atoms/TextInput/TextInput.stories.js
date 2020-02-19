@@ -20,7 +20,7 @@ storiesOf('TextInput', module)
   .addParameters({
     component: TextInput,
   })
-  .add('with text', () => (
+  .add('default', () => (
     <ScrollContainer contentContainerStyle={{}}>
       <ItemContainer>
         <ItemTitle>Outline:</ItemTitle>
