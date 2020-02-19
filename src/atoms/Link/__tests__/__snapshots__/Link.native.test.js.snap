@@ -1,0 +1,295 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as expected 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={true}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="primary.600"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(11, 112, 231, 0.54)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "textDecorationLine": "underline",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as expected 2`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(11, 112, 231, 0.87)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(11, 112, 231, 0.87)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="primary.800"
+      size="large"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(11, 112, 231, 0.87)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 16,
+            "letterSpacing": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(11, 112, 231, 0.87)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="primary.800"
+      size="small"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(11, 112, 231, 0.87)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 13,
+            "letterSpacing": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(11, 112, 231, 0.87)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
