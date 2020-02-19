@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import baseTheme from '../../tokens/theme';
 import { Text as NativeText } from 'react-native';
+import baseTheme from '../../tokens/theme';
 import { getColorKeys, getColor } from '../../_helpers/colors';
 import automation from '../../_helpers/automation-attributes';
 
@@ -14,11 +14,7 @@ const styles = {
     return theme.fonts.size[size];
   },
   color({ theme, color }) {
-    if (color) {
-      return getColor(theme, color);
-    } else {
-      return theme.colors.shade[800];
-    }
+    return getColor(theme, color);
   },
   textDecorationLine({ _isUnderlined }) {
     if (_isUnderlined) return 'underline';
@@ -81,9 +77,11 @@ Text.propTypes = {
 Text.defaultProps = {
   size: 'large',
   align: 'left',
+  color: 'shade.800',
   testID: 'ds-text',
   _weight: 'regular',
   _isUnderlined: false,
   _letterSpacing: 'small',
 };
+
 export default Text;

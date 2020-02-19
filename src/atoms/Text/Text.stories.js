@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Text from './Text';
 import { withKnobs } from '@storybook/addon-ondevice-knobs';
 import { select, text } from '@storybook/addon-knobs';
+import Text from './Text';
 
 const sizeOptions = {
   xxsmall: 'xxsmall',
