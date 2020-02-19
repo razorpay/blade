@@ -1,8 +1,9 @@
 import React, { useState, useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Text, TouchableOpacity, View } from 'react-native';
-import styled, { ThemeContext } from 'styled-components/native';
+import { TouchableOpacity, View } from 'react-native';
+import styled, { ThemeContext } from 'styled-components';
 import CheckBoxIcon from './CheckboxIcon';
+import Text from '../Text';
 
 const CheckboxContainer = styled.View`
   display: flex;
@@ -21,13 +22,6 @@ const RippleView = styled(View)(
 const TextContainer = styled.View`
   margin-left: 4px;
 `;
-
-const Title = styled(Text)(
-  (props) => `
-  color: ${props.disabled ? props.theme.colors.shade[500] : props.theme.colors.shade[700]};
-  font-size: ${props.theme.fonts.size[props.size]};
-`,
-);
 
 const mapSizeToRippleViewProps = (checkBoxSize) => {
   switch (checkBoxSize) {
@@ -56,63 +50,50 @@ const mapSizeToRippleViewProps = (checkBoxSize) => {
   }
 };
 
-const mapSizeToTitleTextProps = (checkboxSize) => {
+const mapSizeToHelpTextSizeProp = (checkboxSize) => {
   switch (checkboxSize) {
     case 'large':
-      return { size: 'l' };
+      return 'medium';
     case 'medium':
-      return { size: 'm' };
-    case 'small':
-      return { size: 'xs' };
+      return 'xsmall';
     default:
-      return { size: 's' };
+      return 'small';
   }
 };
 
-const mapSizetoHelpTextProps = (checkboxSize) => {
-  switch (checkboxSize) {
-    case 'large':
-      return { size: 'm' };
-    case 'medium':
-      return { size: 'xs' };
-    default:
-      return { size: 's' };
-  }
-};
-
-const HelpText = styled(Text)(
-  (props) => `
-  color: ${props.disabled ? props.theme.colors.shade[300] : props.theme.colors.shade[500]};
-  font-size: ${props.theme.fonts.size[props.size]};
-`,
-);
-
-const Checkbox = ({ onClick, checked, disabled, size, title, helpText, testID }) => {
-  const [status, setBoxState] = useState(checked);
+const Checkbox = ({ onChange, defaultChecked, disabled, size, title, helpText, testID }) => {
+  const [checked, setBoxState] = useState(defaultChecked);
   const [underlayColor, setUnderlayColor] = useState('');
 
   const theme = useContext(ThemeContext);
 
-  const onClicked = useCallback(() => {
-    const newState = !status;
+  const onPress = useCallback(() => {
+    const newState = !checked;
     setBoxState(newState);
-    if (onClick) onClick(newState);
-  }, [status, onClick]);
+    if (onChange) onChange(newState);
+  }, [checked, onChange]);
 
   const onPressIn = () => {
-    const newUnderlayColor = status ? theme.colors.primary['300'] : theme.colors.tone['400'];
+    const newUnderlayColor = checked ? theme.colors.primary['300'] : theme.colors.tone['400'];
     setUnderlayColor(newUnderlayColor);
   };
 
   const onPressOut = () => {
     setUnderlayColor('');
   };
+  let titleTextColor = 'shade.700';
+  let helpTextColor = 'shade.500';
+
+  if (disabled) {
+    titleTextColor = 'shade.500';
+    helpTextColor = 'shade.300';
+  }
 
   return (
     <TouchableOpacity
       activeOpacity={1}
       accessibilityRole="checkbox"
-      onPress={onClicked}
+      onPress={onPress}
       underlayColor="transparent"
       disabled={disabled}
       onPressIn={onPressIn}
@@ -121,17 +102,17 @@ const Checkbox = ({ onClick, checked, disabled, size, title, helpText, testID })
     >
       <CheckboxContainer>
         <RippleView underlayColor={underlayColor} {...mapSizeToRippleViewProps(size)}>
-          <CheckBoxIcon checked={status} size={size} disabled={disabled} />
+          <CheckBoxIcon checked={checked} size={size} disabled={disabled} />
         </RippleView>
 
         <TextContainer>
-          <Title {...mapSizeToTitleTextProps(size)} disabled={disabled}>
+          <Text color={titleTextColor} size={size}>
             {title}
-          </Title>
+          </Text>
           {helpText.length > 0 && ['large', 'medium'].indexOf(size) > -1 && (
-            <HelpText {...mapSizetoHelpTextProps(size)} disabled={disabled}>
+            <Text size={mapSizeToHelpTextSizeProp(size)} color={helpTextColor}>
               {helpText}
-            </HelpText>
+            </Text>
           )}
         </TextContainer>
       </CheckboxContainer>
@@ -139,15 +120,10 @@ const Checkbox = ({ onClick, checked, disabled, size, title, helpText, testID })
   );
 };
 
-HelpText.propTypes = {
-  size: PropTypes.oneOf(['m', 'xs']),
-  disabled: PropTypes.bool,
-};
-
 Checkbox.propTypes = {
-  onClick: PropTypes.func,
-  checked: PropTypes.bool,
-  size: PropTypes.oneOf(['large', 'medium', 'small']),
+  onChange: PropTypes.func,
+  defaultChecked: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
   helpText: PropTypes.string,
   disabled: PropTypes.bool,
@@ -155,9 +131,9 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-  onClick: () => {},
-  checked: false,
-  size: 'large',
+  onChange: () => {},
+  defaultChecked: false,
+  size: 'medium',
   helpText: '',
   disabled: false,
   testID: 'ds-checkbox',
