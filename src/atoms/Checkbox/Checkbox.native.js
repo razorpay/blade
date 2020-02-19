@@ -1,14 +1,11 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, View } from 'react-native';
 import styled, { ThemeContext } from 'styled-components';
 import CheckBoxIcon from './CheckboxIcon';
 import Text from '../Text';
-
-const CheckboxContainer = styled.View`
-  display: flex;
-  flex-direction: row;
-`;
+import Flex from '../Flex';
+import { isEmpty } from '../../_helpers/utils';
 
 const RippleView = styled(View)(
   (props) => `
@@ -67,11 +64,12 @@ const Checkbox = ({ onChange, defaultChecked, disabled, size, title, helpText, t
 
   const theme = useContext(ThemeContext);
 
-  const onPress = useCallback(() => {
-    const newState = !checked;
-    setBoxState(newState);
-    if (onChange) onChange(newState);
-  }, [checked, onChange]);
+  const onPress = () => {
+    setBoxState((prevState) => {
+      if (onChange) onChange(!prevState);
+      return !prevState;
+    });
+  };
 
   const onPressIn = () => {
     const newUnderlayColor = checked ? theme.colors.primary['300'] : theme.colors.tone['400'];
@@ -90,17 +88,17 @@ const Checkbox = ({ onChange, defaultChecked, disabled, size, title, helpText, t
   }
 
   return (
-    <TouchableOpacity
-      activeOpacity={1}
-      accessibilityRole="checkbox"
-      onPress={onPress}
-      underlayColor="transparent"
-      disabled={disabled}
-      onPressIn={onPressIn}
-      onPressOut={onPressOut}
-      testID={testID}
-    >
-      <CheckboxContainer>
+    <Flex flexDirection="row">
+      <TouchableOpacity
+        activeOpacity={1}
+        accessibilityRole="checkbox"
+        onPress={onPress}
+        underlayColor="transparent"
+        disabled={disabled}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+        testID={testID}
+      >
         <RippleView underlayColor={underlayColor} {...mapSizeToRippleViewProps(size)}>
           <CheckBoxIcon checked={checked} size={size} disabled={disabled} />
         </RippleView>
@@ -109,14 +107,14 @@ const Checkbox = ({ onChange, defaultChecked, disabled, size, title, helpText, t
           <Text color={titleTextColor} size={size}>
             {title}
           </Text>
-          {helpText.length > 0 && ['large', 'medium'].indexOf(size) > -1 && (
+          {!isEmpty(helpText) && size !== 'small' && (
             <Text size={mapSizeToHelpTextSizeProp(size)} color={helpTextColor}>
               {helpText}
             </Text>
           )}
         </TextContainer>
-      </CheckboxContainer>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </Flex>
   );
 };
 

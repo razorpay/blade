@@ -1,16 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeContext } from 'styled-components/native';
 import Icon from './../Icon';
-function CheckboxIcon({ checked, size, disabled, testID }) {
-  const theme = useContext(ThemeContext);
+function CheckboxIcon({ checked, size, disabled }) {
   if (checked) {
     return (
       <Icon
         size={size}
         name="checkedSquare"
-        fill={disabled ? theme.colors.shade['300'] : theme.colors.primary['800']}
-        testID={testID}
+        fill={disabled ? 'shade.300' : 'primary.800'}
+        testID="ds-checkbox-icon-checked"
       />
     );
   }
@@ -18,22 +16,20 @@ function CheckboxIcon({ checked, size, disabled, testID }) {
     <Icon
       size={size}
       name="uncheckedSquare"
-      fill={disabled ? theme.colors.shade['300'] : theme.colors.shade['500']}
-      testID={testID}
+      fill={disabled ? 'shade.300' : 'shade.500'}
+      testID="ds-checkbox-icon-unchecked"
     />
   );
 }
 
 CheckboxIcon.propTypes = {
-  size: PropTypes.oneOf(['large', 'medium', 'small']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
-  testID: PropTypes.string,
 };
 
 CheckboxIcon.defaultProps = {
-  size: 'large',
-  testID: 'ds-checkbox-icon',
+  size: 'medium',
 };
 
 export default CheckboxIcon;
