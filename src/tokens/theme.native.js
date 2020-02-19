@@ -1,4 +1,4 @@
-import { fonts, colors } from '../tokens';
+import { fonts } from '../tokens';
 import { lightTheme as baseLightTheme, darkTheme as baseDarkTheme } from './theme.web';
 
 // For  styled components in React Native: converts unitless numbers to "px" strings
@@ -26,7 +26,5 @@ const darkTheme = {
   fonts: nativeFonts,
 };
 
-const theme = { ...lightTheme, colors: { ...colors, ...lightTheme.colors } };
-
-export default theme;
+export default lightTheme;
 export { lightTheme, darkTheme };

@@ -4,6 +4,7 @@ const lightTheme = {
   fonts,
   spacings,
   colors: {
+    ...colors,
     background: {
       200: colors.white[900],
       400: colors.grey[300],
@@ -64,6 +65,7 @@ const darkTheme = {
   fonts,
   spacings,
   colors: {
+    ...colors,
     background: {
       100: colors.darkBlue[200],
       200: colors.darkBlue[400],
@@ -118,7 +120,5 @@ const darkTheme = {
   },
 };
 
-const theme = { ...lightTheme, colors: { ...colors, ...lightTheme.colors } };
-
-export default theme;
+export default lightTheme;
 export { lightTheme, darkTheme };
