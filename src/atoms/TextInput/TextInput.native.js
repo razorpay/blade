@@ -114,9 +114,19 @@ const TextInput = ({
     <Container>
       <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
         <InputContainer>
-          {hasPrefix ? <AccessoryText disabled={disabled}>{prefix}</AccessoryText> : null}
+          {hasPrefix ? (
+            <AccessoryText variant={variant} disabled={disabled}>
+              {prefix}
+            </AccessoryText>
+          ) : null}
           {hasLeftIcon ? (
-            <AccessoryIcon name={iconLeft} disabled={disabled} hasError={hasError} size="xsmall" />
+            <AccessoryIcon
+              variant={variant}
+              name={iconLeft}
+              disabled={disabled}
+              hasError={hasError}
+              size="xsmall"
+            />
           ) : null}
           <StyledInput
             placeholder={` ${placeholder}`}
@@ -130,9 +140,19 @@ const TextInput = ({
           >
             <StyledText disabled={disabled}>{input}</StyledText>
           </StyledInput>
-          {hasSuffix ? <AccessoryText disabled={disabled}>{suffix}</AccessoryText> : null}
+          {hasSuffix ? (
+            <AccessoryText variant={variant} disabled={disabled}>
+              {suffix}
+            </AccessoryText>
+          ) : null}
           {hasRightIcon ? (
-            <AccessoryIcon name={iconRight} disabled={disabled} hasError={hasError} size="xsmall" />
+            <AccessoryIcon
+              variant={variant}
+              name={iconRight}
+              disabled={disabled}
+              hasError={hasError}
+              size="xsmall"
+            />
           ) : null}
         </InputContainer>
         <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
