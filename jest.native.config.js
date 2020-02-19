@@ -20,5 +20,5 @@ module.exports = {
     },
   },
   moduleFileExtensions: ['js', 'jsx', 'json', 'node'],
-  testMatch: ['**/__tests__/**/*.native.test.js'],
+  testMatch: ['**/__tests__/**/*.native.test.js', '<rootDir>/src/_helpers/__tests__/**/*.test.js'],
 };

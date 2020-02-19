@@ -6,6 +6,7 @@ const lightTheme = {
   colors: {
     ...colors,
     background: {
+      100: colors.white[900],
       200: colors.white[900],
       400: colors.grey[300],
       600: colors.grey[400],

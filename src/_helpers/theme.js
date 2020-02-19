@@ -6,6 +6,7 @@ const makePxValue = (value) => {
   return values.map((v) => (typeof v === 'string' ? v : `${v * spacings.unit}px`)).join(' ');
 };
 
+// given a color and shade, returns a colorKey.
 const getColorKey = (color, shade) => `${color}.${shade}`;
 
 const getColorKeys = () => {
