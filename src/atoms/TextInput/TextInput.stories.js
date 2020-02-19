@@ -40,6 +40,40 @@ storiesOf('TextInput', module)
         />
       </ItemContainer>
       <ItemContainer>
+        <ItemTitle>Outline Leading Icon:</ItemTitle>
+        <TextInput
+          label="Label"
+          disabled={false}
+          error=""
+          iconLeft="info"
+          iconRight=""
+          prefix=""
+          suffix=""
+          placeholder="Type here"
+          helpText="This is a help text"
+          errorText=""
+          onChangeText={() => {}}
+          variant="outline"
+        />
+      </ItemContainer>
+      <ItemContainer>
+        <ItemTitle>Outline Trailing Icon:</ItemTitle>
+        <TextInput
+          label="Label"
+          disabled={false}
+          error=""
+          iconLeft=""
+          iconRight="info"
+          prefix=""
+          suffix=""
+          placeholder="Type here"
+          helpText="This is a help text"
+          errorText=""
+          onChangeText={() => {}}
+          variant="outline"
+        />
+      </ItemContainer>
+      <ItemContainer>
         <ItemTitle>Outline prefix:</ItemTitle>
         <TextInput
           label="Label"
@@ -79,7 +113,7 @@ storiesOf('TextInput', module)
           label="Label"
           disabled={false}
           error=""
-          iconLeft=""
+          iconLeft="info"
           iconRight=""
           prefix=""
           suffix=""
@@ -184,7 +218,7 @@ storiesOf('TextInput', module)
           label="Label"
           disabled={false}
           error=""
-          iconLeft=""
+          iconLeft="info"
           iconRight=""
           prefix=""
           suffix=""
