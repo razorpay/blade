@@ -16,11 +16,15 @@ const styles = {
   color({ theme, color }) {
     if (color) {
       return getColor(theme, color);
-    } else return theme.colors.shade[800];
+    } else {
+      return theme.colors.shade[800];
+    }
   },
   textDecorationLine({ _isUnderlined }) {
     if (_isUnderlined) return 'underline';
-    else return 'none';
+    else {
+      return 'none';
+    }
   },
   alignSelf({ align }) {
     return align;
