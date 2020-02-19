@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import baseTheme from '../../tokens/theme';
 import { Text as NativeText } from 'react-native';
-import { getColorKeys, getColor } from '../../utils/colors';
+import { getColorKeys, getColor } from '../../_helpers/colors';
 import automation from '../../_helpers/automation-attributes';
 
 const styles = {
