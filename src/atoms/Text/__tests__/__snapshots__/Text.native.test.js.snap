@@ -13,7 +13,7 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
   <Text
     _isUnderlined={false}
     _weight="bold"
-    align="flex-start"
+    align="left"
     size="small"
     style={
       Array [
@@ -46,7 +46,7 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
   <Text
     _isUnderlined={false}
     _weight="regular"
-    align="flex-start"
+    align="left"
     size="small"
     style={
       Array [
@@ -79,7 +79,7 @@ exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = 
   <Text
     _isUnderlined={true}
     _weight="regular"
-    align="flex-start"
+    align="left"
     size="small"
     style={
       Array [

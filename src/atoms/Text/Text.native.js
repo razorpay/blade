@@ -27,7 +27,15 @@ const styles = {
     }
   },
   alignSelf({ align }) {
-    return align;
+    switch (align) {
+      case 'left':
+      default:
+        return 'flex-start';
+      case 'center':
+        return 'center';
+      case 'right':
+        return 'flex-end';
+    }
   },
 };
 
@@ -58,7 +66,7 @@ Text.propTypes = {
   children: PropTypes.string,
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   color: PropTypes.oneOf(getColorKeys()),
-  align: PropTypes.oneOf(['flex-start', 'center', 'flex-end']),
+  align: PropTypes.oneOf(['left', 'center', 'right']),
   testID: PropTypes.string,
   _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   _isUnderlined: PropTypes.bool,
@@ -66,7 +74,7 @@ Text.propTypes = {
 
 Text.defaultProps = {
   size: 'small',
-  align: 'flex-start',
+  align: 'left',
   testID: 'ds-text',
   _weight: 'regular',
   _isUnderlined: false,
