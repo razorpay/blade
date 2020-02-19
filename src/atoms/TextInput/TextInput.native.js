@@ -6,6 +6,7 @@ import Line from './Line';
 import HelpText from './HelpText';
 import ErrorText from './ErrorText';
 import AccessoryText from './AccessoryText';
+import AccessoryIcon from './AccessoryIcon';
 
 const styles = {
   inputContainerBackgroundColor({ variant, isFocused, theme, disabled }) {
@@ -56,6 +57,15 @@ const FillContainer = styled.View`
   border-top-right-radius: 2px;
 `;
 
+const getAccessoryConfig = ({ errorText, prefix, suffix, iconLeft, iconRight }) => {
+  const hasError = !!(errorText && errorText.length > 0);
+  const hasPrefix = !!(prefix && prefix.length > 0);
+  const hasSuffix = !!(suffix && suffix.length > 0);
+  const hasLeftIcon = !!(!hasPrefix && iconLeft && iconLeft.length > 0);
+  const hasRightIcon = !!(!hasSuffix && iconRight && iconRight.length > 0);
+  return { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon };
+};
+
 const TextInput = ({
   placeholder,
   onChangeText,
@@ -66,15 +76,21 @@ const TextInput = ({
   suffix,
   disabled,
   children,
+  iconLeft,
+  iconRight,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
   const [input, setInput] = useState(children || '');
 
   const placeholderTextColor = disabled ? theme.colors.shade[300] : theme.colors.shade[400];
-  const hasError = !!(errorText && errorText.length > 0);
-  const hasPrefix = !!(prefix && prefix.length > 0);
-  const hasSuffix = !!(suffix && suffix.length > 0);
+  const { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon } = getAccessoryConfig({
+    errorText,
+    prefix,
+    suffix,
+    iconLeft,
+    iconRight,
+  });
 
   const onFocus = useCallback(() => {
     setFocused(true);
@@ -99,6 +115,9 @@ const TextInput = ({
       <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
         <InputContainer>
           {hasPrefix ? <AccessoryText disabled={disabled}>{prefix}</AccessoryText> : null}
+          {hasLeftIcon ? (
+            <AccessoryIcon name={iconLeft} disabled={disabled} hasError={hasError} size="xsmall" />
+          ) : null}
           <StyledInput
             placeholder={` ${placeholder}`}
             placeholderTextColor={placeholderTextColor}
@@ -112,6 +131,9 @@ const TextInput = ({
             <StyledText disabled={disabled}>{input}</StyledText>
           </StyledInput>
           {hasSuffix ? <AccessoryText disabled={disabled}>{suffix}</AccessoryText> : null}
+          {hasRightIcon ? (
+            <AccessoryIcon name={iconRight} disabled={disabled} hasError={hasError} size="xsmall" />
+          ) : null}
         </InputContainer>
         <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
       </FillContainer>
@@ -134,6 +156,8 @@ TextInput.propTypes = {
   suffix: PropTypes.string,
   disabled: PropTypes.bool,
   children: PropTypes.string,
+  iconLeft: PropTypes.string,
+  iconRight: PropTypes.string,
 };
 
 TextInput.defaultProps = {
