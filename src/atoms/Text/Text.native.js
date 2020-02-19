@@ -38,6 +38,9 @@ const styles = {
         return 'flex-end';
     }
   },
+  letterSpacing({ theme, _letterSpacing }) {
+    return `${theme.fonts.letterSpacing[_letterSpacing]}`;
+  },
   lineHeight({ theme, size, _lineHeight }) {
     return `${getLineHeight(theme, size, _lineHeight)}px`;
   },
@@ -49,10 +52,21 @@ const StyledText = styled(NativeText)`
   color: ${styles.color};
   text-decoration-line: ${styles.textDecorationLine};
   align-self: ${styles.alignSelf};
+  letter-spacing: ${styles.letterSpacing};
   line-height: ${styles.lineHeight};
 `;
 
-const Text = ({ size, align, testID, color, children, _weight, _isUnderlined, _lineHeight }) => {
+const Text = ({
+  size,
+  align,
+  testID,
+  color,
+  children,
+  _weight,
+  _isUnderlined,
+  _letterSpacing,
+  _lineHeight,
+}) => {
   return (
     <StyledText
       size={size}
@@ -60,6 +74,7 @@ const Text = ({ size, align, testID, color, children, _weight, _isUnderlined, _l
       color={color}
       _weight={_weight}
       _isUnderlined={_isUnderlined}
+      _letterSpacing={_letterSpacing}
       _lineHeight={_lineHeight}
       {...automation(testID)}
     >
@@ -76,6 +91,7 @@ Text.propTypes = {
   testID: PropTypes.string,
   _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   _isUnderlined: PropTypes.bool,
+  _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
   _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
 };
 
@@ -85,6 +101,7 @@ Text.defaultProps = {
   testID: 'ds-text',
   _weight: 'regular',
   _isUnderlined: false,
+  _letterSpacing: 'small',
   _lineHeight: 'large',
 };
 export default Text;
