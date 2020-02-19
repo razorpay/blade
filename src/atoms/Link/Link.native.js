@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { TouchableOpacity } from 'react-native';
 import Text from '../Text';
 import automation from '../../_helpers/automation-attributes';
-import Flex from '../Flex/Flex.native';
-import { TouchableOpacity } from 'react-native';
+import Flex from '../Flex';
 
 const Link = ({ children, onClick, size, testID }) => {
   const [active, setActive] = useState(false);
