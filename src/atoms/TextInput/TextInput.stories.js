@@ -179,6 +179,40 @@ storiesOf('TextInput', module)
         />
       </ItemContainer>
       <ItemContainer>
+        <ItemTitle>Filled Leading Icon:</ItemTitle>
+        <TextInput
+          label="Label"
+          disabled={false}
+          error=""
+          iconLeft="info"
+          iconRight=""
+          prefix=""
+          suffix=""
+          placeholder="Type here"
+          helpText="This is a help text"
+          errorText=""
+          onChangeText={() => {}}
+          variant="filled"
+        />
+      </ItemContainer>
+      <ItemContainer>
+        <ItemTitle>Filled Trailing Icon:</ItemTitle>
+        <TextInput
+          label="Label"
+          disabled={false}
+          error=""
+          iconLeft=""
+          iconRight="info"
+          prefix=""
+          suffix=""
+          placeholder="Type here"
+          helpText="This is a help text"
+          errorText=""
+          onChangeText={() => {}}
+          variant="filled"
+        />
+      </ItemContainer>
+      <ItemContainer>
         <ItemTitle>Filled prefix:</ItemTitle>
         <TextInput
           label="Label"
