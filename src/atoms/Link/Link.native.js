@@ -33,7 +33,7 @@ const Link = ({ children, onClick, size, testID }) => {
         {...automation(testID)}
       >
         <Text
-          isUnderlined={active}
+          _isUnderlined={active}
           color={active ? activeTextColor : inactiveTextColor}
           size={linkToTextSize[size]}
         >
