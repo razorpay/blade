@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import baseTheme from '../../tokens/theme';
 import { Text as NativeText } from 'react-native';
 import { getColorKeys, getColor } from '../../_helpers/colors';
+import { getLineHeight } from '../../_helpers/fonts';
 import automation from '../../_helpers/automation-attributes';
 
 const styles = {
@@ -37,6 +38,9 @@ const styles = {
         return 'flex-end';
     }
   },
+  lineHeight({ theme, size, _lineHeight }) {
+    return `${getLineHeight(theme, size, _lineHeight)}px`;
+  },
 };
 
 const StyledText = styled(NativeText)`
@@ -45,9 +49,10 @@ const StyledText = styled(NativeText)`
   color: ${styles.color};
   text-decoration-line: ${styles.textDecorationLine};
   align-self: ${styles.alignSelf};
+  line-height: ${styles.lineHeight};
 `;
 
-const Text = ({ size, align, testID, color, children, _weight, _isUnderlined }) => {
+const Text = ({ size, align, testID, color, children, _weight, _isUnderlined, _lineHeight }) => {
   return (
     <StyledText
       size={size}
@@ -55,6 +60,7 @@ const Text = ({ size, align, testID, color, children, _weight, _isUnderlined }) 
       color={color}
       _weight={_weight}
       _isUnderlined={_isUnderlined}
+      _lineHeight={_lineHeight}
       {...automation(testID)}
     >
       {children}
@@ -70,13 +76,15 @@ Text.propTypes = {
   testID: PropTypes.string,
   _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   _isUnderlined: PropTypes.bool,
+  _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
 };
 
 Text.defaultProps = {
-  size: 'small',
+  size: 'large',
   align: 'left',
   testID: 'ds-text',
   _weight: 'regular',
   _isUnderlined: false,
+  _lineHeight: 'large',
 };
 export default Text;

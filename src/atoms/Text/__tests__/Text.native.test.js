@@ -1,6 +1,6 @@
 import React from 'react';
 import Text from '../index';
-import { renderWithTheme } from '../../../utils/testing';
+import { renderWithTheme } from '../../../_helpers/testing';
 
 describe('Renders <Text /> correctly', () => {
   it('snapshot testing with regular text', () => {
@@ -27,7 +27,8 @@ describe('Renders <Text /> correctly', () => {
     const textElement = getByTestId('ds-text');
     expect(textElement).toBeTruthy();
     expect(textElement.props._weight).toBe('regular');
-    expect(textElement.props.size).toBe('small');
+    expect(textElement.props.size).toBe('large');
     expect(textElement.props._isUnderlined).toBe(false);
+    expect(textElement.props._lineHeight).toBe('large');
   });
 });

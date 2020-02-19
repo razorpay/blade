@@ -12,16 +12,18 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
 >
   <Text
     _isUnderlined={false}
+    _lineHeight="large"
     _weight="bold"
     align="left"
-    size="small"
+    size="large"
     style={
       Array [
         Object {
           "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Bold",
-          "fontSize": 13,
+          "fontSize": 16,
+          "lineHeight": 24,
           "textDecorationLine": "none",
         },
       ]
@@ -45,16 +47,18 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
 >
   <Text
     _isUnderlined={false}
+    _lineHeight="large"
     _weight="regular"
     align="left"
-    size="small"
+    size="large"
     style={
       Array [
         Object {
           "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Regular",
-          "fontSize": 13,
+          "fontSize": 16,
+          "lineHeight": 24,
           "textDecorationLine": "none",
         },
       ]
@@ -78,16 +82,18 @@ exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = 
 >
   <Text
     _isUnderlined={true}
+    _lineHeight="large"
     _weight="regular"
     align="left"
-    size="small"
+    size="large"
     style={
       Array [
         Object {
           "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Regular",
-          "fontSize": 13,
+          "fontSize": 16,
+          "lineHeight": 24,
           "textDecorationLine": "underline",
         },
       ]
