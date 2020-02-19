@@ -65,10 +65,11 @@ const TextInput = ({
   prefix,
   suffix,
   disabled,
+  children,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(children || '');
 
   const placeholderTextColor = disabled ? theme.colors.shade[300] : theme.colors.shade[400];
   const hasError = !!(errorText && errorText.length > 0);
@@ -132,6 +133,7 @@ TextInput.propTypes = {
   prefix: PropTypes.string,
   suffix: PropTypes.string,
   disabled: PropTypes.bool,
+  children: PropTypes.string,
 };
 
 TextInput.defaultProps = {
