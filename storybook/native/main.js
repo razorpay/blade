@@ -23,7 +23,7 @@ configure(() => {
 
 // add decorators
 const SpaceAround = styled.View`
-  margin: 20px;
+  padding: 20px;
 `;
 
 addDecorator((Story) => (
