@@ -8,7 +8,7 @@ import automation from '../../_helpers/automation-attributes';
 
 const styles = {
   fontFamily({ theme, _weight }) {
-    return theme.fonts.family[_weight];
+    return theme.fonts.family.lato[_weight];
   },
   fontSize({ theme, size }) {
     return theme.fonts.size[size];

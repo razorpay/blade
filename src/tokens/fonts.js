@@ -1,7 +1,9 @@
 const fonts = {
   family: {
-    regular: `Lato-Regular`,
-    bold: `Lato-Bold`,
+    lato: {
+      regular: `Lato-Regular`,
+      bold: `Lato-Bold`,
+    },
   },
   size: {
     xxsmall: '10px',
