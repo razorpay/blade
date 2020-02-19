@@ -2,12 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Text from './Text';
 import { withKnobs } from '@storybook/addon-ondevice-knobs';
-import { select, text, color } from '@storybook/addon-knobs';
-
-const weightOptions = {
-  regular: 'regular',
-  bold: 'bold',
-};
+import { select, text } from '@storybook/addon-knobs';
 
 const sizeOptions = {
   xxsmall: 'xxsmall',
@@ -23,11 +18,7 @@ storiesOf('Text', module)
   })
   .addDecorator(withKnobs)
   .add('default', () => (
-    <Text
-      size={select('Size', sizeOptions, 'large')}
-      weight={select('Weight', weightOptions, 'regular')}
-      color={color('Text Color', 'shade.800')}
-    >
+    <Text size={select('Size', sizeOptions, 'large')}>
       {text('Display Text', 'The quick brown fox jumps over the lazy dog')}
     </Text>
   ));

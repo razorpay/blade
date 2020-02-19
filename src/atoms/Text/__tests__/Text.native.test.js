@@ -11,13 +11,13 @@ describe('Renders <Text /> correctly', () => {
 
   it('snapshot testing with bold text', () => {
     const displayText = 'Displaying some text';
-    const { container } = renderWithTheme(<Text weight="bold">{displayText}</Text>);
+    const { container } = renderWithTheme(<Text _weight="bold">{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
 
   it('snapshot testing with underlined text', () => {
     const displayText = 'Displaying some text';
-    const { container } = renderWithTheme(<Text isUnderlined>{displayText}</Text>);
+    const { container } = renderWithTheme(<Text _isUnderlined>{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
 
@@ -26,8 +26,8 @@ describe('Renders <Text /> correctly', () => {
     const { getByTestId } = renderWithTheme(<Text>{displayText}</Text>);
     const textElement = getByTestId('ds-text');
     expect(textElement).toBeTruthy();
-    expect(textElement.props.weight).toBe('regular');
+    expect(textElement.props._weight).toBe('regular');
     expect(textElement.props.size).toBe('small');
-    expect(textElement.props.isUnderlined).toBe(false);
+    expect(textElement.props._isUnderlined).toBe(false);
   });
 });

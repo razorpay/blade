@@ -7,8 +7,8 @@ import { getColorKeys, getColor } from '../../utils/colors';
 import automation from '../../_helpers/automation-attributes';
 
 const styles = {
-  fontFamily({ theme, weight }) {
-    return theme.fonts.family[weight];
+  fontFamily({ theme, _weight }) {
+    return theme.fonts.family[_weight];
   },
   fontSize({ theme, size }) {
     return theme.fonts.size[size];
@@ -18,8 +18,8 @@ const styles = {
       return getColor(theme, color);
     } else return theme.colors.shade[800];
   },
-  textDecorationLine({ isUnderlined }) {
-    if (isUnderlined) return 'underline';
+  textDecorationLine({ _isUnderlined }) {
+    if (_isUnderlined) return 'underline';
     else return 'none';
   },
   alignSelf({ align }) {
@@ -35,12 +35,12 @@ const StyledText = styled(NativeText)`
   align-self: ${styles.alignSelf};
 `;
 
-const Text = ({ weight, size, isUnderlined, align, testID, color, children }) => {
+const Text = ({ _weight, size, _isUnderlined, align, testID, color, children }) => {
   return (
     <StyledText
-      weight={weight}
+      _weight={_weight}
+      _isUnderlined={_isUnderlined}
       size={size}
-      isUnderlined={isUnderlined}
       align={align}
       color={color}
       {...automation(testID)}
@@ -51,19 +51,19 @@ const Text = ({ weight, size, isUnderlined, align, testID, color, children }) =>
 };
 
 Text.propTypes = {
+  _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
+  _isUnderlined: PropTypes.bool,
   children: PropTypes.string,
-  weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   color: PropTypes.oneOf(getColorKeys()),
-  isUnderlined: PropTypes.bool,
   align: PropTypes.oneOf(['flex-start', 'center', 'flex-end']),
   testID: PropTypes.string,
 };
 
 Text.defaultProps = {
-  weight: 'regular',
+  _weight: 'regular',
+  _isUnderlined: false,
   size: 'small',
-  isUnderlined: false,
   align: 'flex-start',
   testID: 'ds-text',
 };
