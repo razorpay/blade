@@ -5,6 +5,7 @@ import { text, select } from '@storybook/addon-knobs';
 import { withKnobs } from '@storybook/addon-ondevice-knobs';
 
 const sizeOptions = {
+  xsmall: 'xsmall',
   small: 'small',
   medium: 'medium',
   large: 'large',

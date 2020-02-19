@@ -5,12 +5,6 @@ import automation from '../../_helpers/automation-attributes';
 import Flex from '../Flex/Flex.native';
 import { TouchableOpacity } from 'react-native';
 
-const linkToTextSize = {
-  small: 'xsmall',
-  medium: 'medium',
-  large: 'large',
-};
-
 const Link = ({ children, onClick, size, testID }) => {
   const [active, setActive] = useState(false);
   const inactiveTextColor = 'primary.800';
@@ -35,7 +29,7 @@ const Link = ({ children, onClick, size, testID }) => {
         <Text
           _isUnderlined={active}
           color={active ? activeTextColor : inactiveTextColor}
-          size={linkToTextSize[size]}
+          size={size}
         >
           {children}
         </Text>
@@ -47,7 +41,7 @@ const Link = ({ children, onClick, size, testID }) => {
 Link.propTypes = {
   children: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
   testID: PropTypes.string,
 };
 
