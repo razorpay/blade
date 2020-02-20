@@ -16,11 +16,11 @@ const _IS_ANDROID = Platform.OS === 'android';
 
 const styles = {
   textInput: {
-    padding({ variant }) {
+    padding({ variant, hasLeftIcon, hasPrefix }) {
       const paddingTop = _IS_ANDROID ? '8px' : '0px';
       const paddingRight = '0px';
       const paddingBottom = _IS_ANDROID ? '0px' : '4px';
-      const paddingLeft = variant === 'filled' ? '8px' : '0px';
+      const paddingLeft = variant === 'outline' || hasLeftIcon || hasPrefix ? '0px' : '8px';
       // iOS & Android need different paddings
       return `${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`;
     },
@@ -162,6 +162,8 @@ const TextInput = ({
                 selectionColor={theme.colors.shade[700]} // not able to change this on Android
                 editable={!disabled}
                 variant={variant}
+                hasPrefix={hasPrefix}
+                hasLeftIcon={hasLeftIcon}
               >
                 <Space padding={[0, 0, 0.5, 0]}>
                   <Text color={styles.text.color({ disabled })} size="medium">
