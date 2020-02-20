@@ -19,11 +19,10 @@ const styles = {
     else if (isFocused) return theme.colors.tone[400];
     else return theme.colors.tone[300];
   },
-  textInputPaddingBottom() {
-    // iOS needs padding
-    // Android has proper paddings
-    if (Platform.OS === 'ios') return '6px';
-    else return '0px';
+  textInputPadding() {
+    // iOS & Android need different paddings
+    if (Platform.OS === 'ios') return '0px 0px 6px 0px';
+    else return '12px 0px 0px 0px';
   },
   textInputFontSize({ theme }) {
     return theme.fonts.size.large;
@@ -57,7 +56,7 @@ const InputContainer = styled.View`
 
 const StyledInput = styled(NativeTextInput)`
   height: 40px;
-  padding-bottom: ${styles.textInputPaddingBottom};
+  padding: ${styles.textInputPadding};
   font-size: ${styles.textInputFontSize};
   line-height: ${styles.textInputLineHeight};
   font-family: ${styles.textInputFontFamily};
