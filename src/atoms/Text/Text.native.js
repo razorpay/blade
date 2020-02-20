@@ -105,6 +105,7 @@ Text.defaultProps = {
   _weight: 'regular',
   _isUnderlined: false,
   _letterSpacing: 'small',
+  _lineHeight: 'large',
 };
 
 export default Text;
