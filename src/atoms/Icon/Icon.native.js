@@ -28,6 +28,7 @@ const Icon = ({ size, name, fill, testID, ...rest }) => {
 Icon.defaultProps = {
   size: 'medium',
   testID: 'ds-icon',
+  fill: 'shade.500',
 };
 
 Icon.propTypes = {
