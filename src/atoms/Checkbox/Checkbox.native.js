@@ -1,20 +1,35 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View } from 'react-native';
-import styled, { ThemeContext } from 'styled-components';
+import { TouchableOpacity } from 'react-native';
+import styled, { ThemeContext } from 'styled-components/native';
 import CheckBoxIcon from './CheckboxIcon';
 import Text from '../Text';
 import Flex from '../Flex';
 import { isEmpty } from '../../_helpers/utils';
 
-const Backdrop = styled(View)(
-  (props) => `
-  width: ${props.width}px;
-  height: ${props.height}px;
-  border-radius: ${props.borderRadius}px;
-  background-color: ${props.backgroundColor ? props.backgroundColor : 'transparent'};
-`,
-);
+const styles = {
+  backdrop: {
+    width({ width }) {
+      return width;
+    },
+    height({ height }) {
+      return height;
+    },
+    borderRadius({ borderRadius }) {
+      return borderRadius;
+    },
+    backgroundColor({ backgroundColor }) {
+      return backgroundColor ? backgroundColor : 'transparent';
+    },
+  },
+};
+
+const Backdrop = styled.View`
+  width: ${styles.backdrop.width}px;
+  height: ${styles.backdrop.height}px;
+  border-radius: ${styles.backdrop.borderRadius}px;
+  background-color: ${styles.backdrop.backgroundColor};
+`;
 
 const TextContainer = styled.View`
   margin-left: 4px;
@@ -46,18 +61,9 @@ const mapSizeToHelpTextSizeProp = (checkboxSize) => {
   }
 };
 
-const Checkbox = ({ onChange, defaultChecked, disabled, size, title, helpText, testID }) => {
-  const [checked, setBoxState] = useState(defaultChecked);
+const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }) => {
   const [underlayColor, setUnderlayColor] = useState('');
-
   const theme = useContext(ThemeContext);
-
-  const onPress = () => {
-    setBoxState((prevState) => {
-      if (onChange) onChange(!prevState);
-      return !prevState;
-    });
-  };
 
   const onPressIn = () => {
     const newUnderlayColor = checked ? theme.colors.primary['300'] : theme.colors.tone['400'];
@@ -76,11 +82,11 @@ const Checkbox = ({ onChange, defaultChecked, disabled, size, title, helpText, t
   }
   const backdropSize = mapSizeToBackdropProps(size);
   return (
-    <Flex flexDirection="row">
+    <Flex flexDirection="row" alignSelf="flex-start">
       <TouchableOpacity
         activeOpacity={1}
         accessibilityRole="checkbox"
-        onPress={onPress}
+        onPress={onChange}
         underlayColor="transparent"
         disabled={disabled}
         onPressIn={onPressIn}
@@ -88,10 +94,10 @@ const Checkbox = ({ onChange, defaultChecked, disabled, size, title, helpText, t
         testID={testID}
       >
         <Backdrop
-          backgroundColor={underlayColor}
           width={backdropSize}
           height={backdropSize}
           borderRadius={backdropSize / 2}
+          backgroundColor={underlayColor}
         >
           <CheckBoxIcon checked={checked} size={size} disabled={disabled} />
         </Backdrop>
@@ -113,7 +119,7 @@ const Checkbox = ({ onChange, defaultChecked, disabled, size, title, helpText, t
 
 Checkbox.propTypes = {
   onChange: PropTypes.func,
-  defaultChecked: PropTypes.bool,
+  checked: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
   helpText: PropTypes.string,
@@ -123,7 +129,7 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
   onChange: () => {},
-  defaultChecked: false,
+  checked: false,
   size: 'medium',
   helpText: '',
   disabled: false,

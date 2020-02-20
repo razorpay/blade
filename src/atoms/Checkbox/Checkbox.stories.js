@@ -10,9 +10,27 @@ storiesOf('Checkbox', module)
   .addParameters({
     component: Checkbox,
   })
-  .add('default', () => (
+  .add('unchecked', () => (
     <Checkbox
-      defaultChecked={boolean('Checked', false)}
+      checkedrr={boolean('Checked', false)}
+      size={select(
+        'Size',
+        {
+          large: 'large',
+          medium: 'medium',
+          small: 'small',
+        },
+        'large',
+      )}
+      title={text('Title', 'Title')}
+      helpText={text('Help Text', 'some help text')}
+      disabled={boolean('Disabled', false)}
+      onChange={action('Changed')}
+    />
+  ))
+  .add('checked', () => (
+    <Checkbox
+      checked={boolean('Checked', true)}
       size={select(
         'Size',
         {
