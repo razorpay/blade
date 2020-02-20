@@ -5,6 +5,12 @@ import { text, boolean, select } from '@storybook/addon-knobs';
 import { withKnobs } from '@storybook/addon-ondevice-knobs';
 import Checkbox from './Checkbox';
 
+const sizeOptions = {
+  large: 'large',
+  medium: 'medium',
+  small: 'small',
+};
+
 storiesOf('Checkbox', module)
   .addDecorator(withKnobs)
   .addParameters({
@@ -13,15 +19,7 @@ storiesOf('Checkbox', module)
   .add('unchecked', () => (
     <Checkbox
       checked={boolean('Checked', false)}
-      size={select(
-        'Size',
-        {
-          large: 'large',
-          medium: 'medium',
-          small: 'small',
-        },
-        'large',
-      )}
+      size={select('Size', sizeOptions, 'large')}
       title={text('Title', 'Title')}
       helpText={text('Help Text', 'some help text')}
       disabled={boolean('Disabled', false)}
@@ -31,15 +29,7 @@ storiesOf('Checkbox', module)
   .add('checked', () => (
     <Checkbox
       checked={boolean('Checked', true)}
-      size={select(
-        'Size',
-        {
-          large: 'large',
-          medium: 'medium',
-          small: 'small',
-        },
-        'large',
-      )}
+      size={select('Size', sizeOptions, 'large')}
       title={text('Title', 'Title')}
       helpText={text('Help Text', 'some help text')}
       disabled={boolean('Disabled', false)}
