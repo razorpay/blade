@@ -12,10 +12,11 @@ exports[`Renders <Icon /> correctly snapshot testing 1`] = `
 >
   <RNSVGSvgView
     align="xMidYMid"
-    bbHeight={40}
-    bbWidth={40}
+    bbHeight={20}
+    bbWidth={20}
+    fill="rgba(22, 47, 86, 0.38)"
     focusable={false}
-    height={40}
+    height={20}
     meetOrSlice={0}
     minX={0}
     minY={0}
@@ -31,18 +32,18 @@ exports[`Renders <Icon /> correctly snapshot testing 1`] = `
         },
         Object {
           "flex": 0,
-          "height": 40,
-          "width": 40,
+          "height": 20,
+          "width": 20,
         },
       ]
     }
     testID="ds-icon"
     vbHeight={24}
     vbWidth={24}
-    width={40}
+    width={20}
   >
     <RNSVGGroup
-      fill={4278190080}
+      fill={1628843862}
       fillOpacity={1}
       fillRule={1}
       font={Object {}}
@@ -59,7 +60,11 @@ exports[`Renders <Icon /> correctly snapshot testing 1`] = `
       opacity={1}
       originX={0}
       originY={0}
-      propList={Array []}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
       rotation={0}
       scaleX={1}
       scaleY={1}
