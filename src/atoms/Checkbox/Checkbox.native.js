@@ -7,12 +7,12 @@ import Text from '../Text';
 import Flex from '../Flex';
 import { isEmpty } from '../../_helpers/utils';
 
-const RippleView = styled(View)(
+const Backdrop = styled(View)(
   (props) => `
   width: ${props.width}px;
   height: ${props.height}px;
-  border-radius: ${props.width / 2}px;
-  background-color: ${props.underlayColor ? props.underlayColor : 'transparent'};
+  border-radius: ${props.borderRadius}px;
+  background-color: ${props.backgroundColor ? props.backgroundColor : 'transparent'};
 `,
 );
 
@@ -20,30 +20,18 @@ const TextContainer = styled.View`
   margin-left: 4px;
 `;
 
-const mapSizeToRippleViewProps = (checkBoxSize) => {
+const mapSizeToBackdropProps = (checkBoxSize) => {
   switch (checkBoxSize) {
     case 'large':
-      return {
-        width: 24,
-        height: 24,
-      };
+      return 24;
     case 'medium':
-      return {
-        width: 20,
-        height: 20,
-      };
+      return 20;
     case 'small':
-      return {
-        width: 16,
-        height: 16,
-      };
+      return 16;
     case 'xsmall':
-      return { width: 12, height: 12 };
+      return 12;
     default:
-      return {
-        width: 24,
-        height: 24,
-      };
+      return 20;
   }
 };
 
@@ -86,7 +74,7 @@ const Checkbox = ({ onChange, defaultChecked, disabled, size, title, helpText, t
     titleTextColor = 'shade.500';
     helpTextColor = 'shade.300';
   }
-
+  const backdropSize = mapSizeToBackdropProps(size);
   return (
     <Flex flexDirection="row">
       <TouchableOpacity
@@ -99,9 +87,14 @@ const Checkbox = ({ onChange, defaultChecked, disabled, size, title, helpText, t
         onPressOut={onPressOut}
         testID={testID}
       >
-        <RippleView underlayColor={underlayColor} {...mapSizeToRippleViewProps(size)}>
+        <Backdrop
+          backgroundColor={underlayColor}
+          width={backdropSize}
+          height={backdropSize}
+          borderRadius={backdropSize / 2}
+        >
           <CheckBoxIcon checked={checked} size={size} disabled={disabled} />
-        </RippleView>
+        </Backdrop>
 
         <TextContainer>
           <Text color={titleTextColor} size={size}>
