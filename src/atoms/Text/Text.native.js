@@ -37,7 +37,7 @@ const styles = {
   letterSpacing({ theme, _letterSpacing }) {
     return `${theme.fonts.letterSpacing[_letterSpacing]}`;
   },
-  lineHeight({ theme, _lineHeight, size }) {
+  lineHeight({ theme, size, _lineHeight }) {
     return getLineHeight(theme.fonts.size[size], theme.fonts.lineHeight[_lineHeight]);
   },
 };
