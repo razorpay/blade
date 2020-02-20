@@ -1,5 +1,5 @@
 import React, { useContext, useState, useCallback } from 'react';
-import { TextInput as NativeTextInput, Platform } from 'react-native';
+import { TextInput as NativeTextInput, Platform, View } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
 import Line from './Line';
@@ -11,6 +11,7 @@ import Text from '../Text';
 import Space from '../Space';
 import { getLineHeight } from '../../_helpers/fonts';
 import Flex from '../Flex';
+import CharacterCount from './CharacterCount.native';
 
 const _IS_ANDROID = Platform.OS === 'android';
 
@@ -104,6 +105,8 @@ const TextInput = ({
   children,
   iconLeft,
   iconRight,
+  maxLength,
+  showCharacterCount,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
@@ -168,6 +171,7 @@ const TextInput = ({
                 variant={variant}
                 hasPrefix={hasPrefix}
                 hasLeftIcon={hasLeftIcon}
+                maxLength={maxLength}
               >
                 <Space padding={[0, 0, 0.5, 0]}>
                   <Text color={styles.text.color({ disabled })} size="medium">
@@ -197,7 +201,18 @@ const TextInput = ({
       {hasError && !disabled ? (
         <ErrorText>{errorText}</ErrorText>
       ) : (
-        <HelpText disabled={disabled}>{helpText}</HelpText>
+        <Flex flexDirection="row" justifyContent="space-between">
+          <View>
+            <HelpText disabled={disabled}>{helpText}</HelpText>
+            {showCharacterCount && typeof maxLength === 'number' && (
+              <CharacterCount
+                disabled={disabled}
+                maxLength={maxLength}
+                inputLength={input.length}
+              />
+            )}
+          </View>
+        </Flex>
       )}
     </Container>
   );
@@ -215,6 +230,8 @@ TextInput.propTypes = {
   children: PropTypes.string,
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
+  maxLength: PropTypes.number,
+  showCharacterCount: PropTypes.bool,
 };
 
 TextInput.defaultProps = {

@@ -108,6 +108,25 @@ storiesOf('TextInput', module)
         />
       </ItemContainer>
       <ItemContainer>
+        <ItemTitle>Outline character count:</ItemTitle>
+        <TextInput
+          label="Label"
+          disabled={false}
+          error=""
+          iconLeft=""
+          iconRight=""
+          prefix=""
+          suffix=""
+          placeholder="Type here"
+          helpText="This is a help text"
+          errorText=""
+          onChangeText={() => {}}
+          variant="outline"
+          maxLength={10}
+          showCharacterCount
+        />
+      </ItemContainer>
+      <ItemContainer>
         <ItemTitle>Outline error:</ItemTitle>
         <TextInput
           label="Label"
@@ -244,6 +263,25 @@ storiesOf('TextInput', module)
           errorText=""
           onChangeText={() => {}}
           variant="filled"
+        />
+      </ItemContainer>
+      <ItemContainer>
+        <ItemTitle>Filled character count:</ItemTitle>
+        <TextInput
+          label="Label"
+          disabled={false}
+          error=""
+          iconLeft=""
+          iconRight=""
+          prefix=""
+          suffix=""
+          placeholder="Type here"
+          helpText="This is a help text"
+          errorText=""
+          onChangeText={() => {}}
+          variant="filled"
+          maxLength={10}
+          showCharacterCount
         />
       </ItemContainer>
       <ItemContainer>
