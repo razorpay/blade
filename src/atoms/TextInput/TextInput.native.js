@@ -13,32 +13,38 @@ import { getLineHeight } from '../../_helpers/fonts';
 import Flex from '../Flex';
 
 const styles = {
-  inputContainerBackgroundColor({ variant, isFocused, theme, disabled }) {
-    if (variant === 'outline') return 'transparent';
-    else if (disabled) return theme.colors.tone[300];
-    else if (isFocused) return theme.colors.tone[400];
-    else return theme.colors.tone[300];
+  textInput: {
+    padding() {
+      // iOS & Android need different paddings
+      if (Platform.OS === 'ios') return '0px 0px 6px 0px';
+      else return '12px 0px 0px 0px';
+    },
+    fontSize({ theme }) {
+      return theme.fonts.size.large;
+    },
+    lineHeight({ theme }) {
+      return getLineHeight(theme.fonts.size.large, theme.fonts.lineHeight.large);
+    },
+    fontFamily({ theme }) {
+      return theme.fonts.family.lato.regular;
+    },
   },
-  textInputPadding() {
-    // iOS & Android need different paddings
-    if (Platform.OS === 'ios') return '0px 0px 6px 0px';
-    else return '12px 0px 0px 0px';
+  fillContainer: {
+    backgroundColor({ variant, isFocused, theme, disabled }) {
+      if (variant === 'outline') return 'transparent';
+      else if (disabled) return theme.colors.tone[300];
+      else if (isFocused) return theme.colors.tone[400];
+      else return theme.colors.tone[300];
+    },
   },
-  textInputFontSize({ theme }) {
-    return theme.fonts.size.large;
-  },
-  textInputLineHeight({ theme }) {
-    return getLineHeight(theme.fonts.size.large, theme.fonts.lineHeight.large);
-  },
-  textInputFontFamily({ theme }) {
-    return theme.fonts.family.lato.regular;
-  },
-  textColor({ disabled }) {
-    if (disabled) {
-      return 'shade.400';
-    } else {
-      return 'shade.700';
-    }
+  text: {
+    color({ disabled }) {
+      if (disabled) {
+        return 'shade.400';
+      } else {
+        return 'shade.700';
+      }
+    },
   },
 };
 
@@ -56,14 +62,14 @@ const InputContainer = styled.View`
 
 const StyledInput = styled(NativeTextInput)`
   height: 40px;
-  padding: ${styles.textInputPadding};
-  font-size: ${styles.textInputFontSize};
-  line-height: ${styles.textInputLineHeight};
-  font-family: ${styles.textInputFontFamily};
+  padding: ${styles.textInput.padding};
+  font-size: ${styles.textInput.fontSize};
+  line-height: ${styles.textInput.lineHeight};
+  font-family: ${styles.textInput.fontFamily};
 `;
 
 const FillContainer = styled.View`
-  background-color: ${styles.inputContainerBackgroundColor};
+  background-color: ${styles.fillContainer.backgroundColor};
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
 `;
@@ -151,7 +157,7 @@ const TextInput = ({
               editable={!disabled}
             >
               <Space padding={[0, 0, 0.5, 0]}>
-                <Text color={styles.textColor({ disabled })} size="medium">
+                <Text color={styles.text.color({ disabled })} size="medium">
                   {input}
                 </Text>
               </Space>
