@@ -1,37 +1,35 @@
 import React from 'react';
-import { Text } from 'react-native';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
+import Text from '../Text';
+import Space from '../Space/Space.native';
 
 const styles = {
-  color({ theme, disabled }) {
+  color({ disabled }) {
     if (disabled) {
-      return theme.colors.shade[300];
+      return 'shade.300';
     } else {
-      return theme.colors.shade[500];
+      return 'shade.500';
     }
   },
   padding({ variant }) {
     if (variant === 'filled') {
-      return '0px 8px 0px 8px';
+      return [0, 1, 0, 1];
     } else {
-      return '0px 4px 0px 0px';
+      return [0, 0.5, 0, 0];
     }
   },
 };
 
-const StyledText = styled(Text)`
-  color: ${styles.color};
-  padding: ${styles.padding};
-  font-size: 14px;
-  line-height: 20px;
-`;
-
 const AccessoryText = ({ children, disabled, variant }) => {
   return (
-    <StyledText numberOfLines={1} disabled={disabled} variant={variant}>
-      {children}
-    </StyledText>
+    <Space padding={styles.padding({ variant })}>
+      <View>
+        <Text numberOfLines={1} color={styles.color({ disabled })} size="medium">
+          {children}
+        </Text>
+      </View>
+    </Space>
   );
 };
 
