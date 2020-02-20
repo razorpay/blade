@@ -8,7 +8,7 @@ import ErrorText from './ErrorText';
 import AccessoryText from './AccessoryText';
 import AccessoryIcon from './AccessoryIcon';
 import Text from '../Text';
-import Space from '../Space/Space.native';
+import Space from '../Space';
 import { getLineHeight } from '../../_helpers/fonts';
 import Flex from '../Flex';
 
