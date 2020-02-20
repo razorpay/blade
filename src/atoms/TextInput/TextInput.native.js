@@ -17,18 +17,18 @@ const _IS_ANDROID = Platform.OS === 'android';
 const styles = {
   textInput: {
     padding({ variant }) {
-      const paddingTop = _IS_ANDROID ? '12px' : '0px';
+      const paddingTop = _IS_ANDROID ? '8px' : '0px';
       const paddingRight = '0px';
-      const paddingBottom = _IS_ANDROID ? '0px' : '6px';
+      const paddingBottom = _IS_ANDROID ? '0px' : '4px';
       const paddingLeft = variant === 'filled' ? '8px' : '0px';
       // iOS & Android need different paddings
       return `${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`;
     },
     fontSize({ theme }) {
-      return theme.fonts.size.large;
+      return theme.fonts.size.medium;
     },
     lineHeight({ theme }) {
-      return getLineHeight(theme.fonts.size.large, theme.fonts.lineHeight.large);
+      return getLineHeight(theme.fonts.size.medium, theme.fonts.lineHeight.large);
     },
     fontFamily({ theme }) {
       return theme.fonts.family.lato.regular;
