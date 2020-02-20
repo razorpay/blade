@@ -20,8 +20,8 @@ storiesOf('Checkbox', module)
     <Checkbox
       checked={boolean('Checked', false)}
       size={select('Size', sizeOptions, 'large')}
-      title={text('Title', 'Title')}
-      helpText={text('Help Text', 'some help text')}
+      title={text('Title', 'Enable Beast Mode')}
+      helpText={text('Help Text', 'Play with addons to see changes')}
       disabled={boolean('Disabled', false)}
       onChange={action('Changed')}
     />
@@ -30,8 +30,8 @@ storiesOf('Checkbox', module)
     <Checkbox
       checked={boolean('Checked', true)}
       size={select('Size', sizeOptions, 'large')}
-      title={text('Title', 'Title')}
-      helpText={text('Help Text', 'some help text')}
+      title={text('Title', 'Enable beast Mode')}
+      helpText={text('Help Text', 'Play with addons')}
       disabled={boolean('Disabled', false)}
       onChange={action('Changed')}
     />

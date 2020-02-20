@@ -5,9 +5,10 @@ import styled, { ThemeContext } from 'styled-components/native';
 import CheckBoxIcon from './CheckboxIcon';
 import Text from '../Text';
 import Flex from '../Flex';
-import { isEmpty } from '../../_helpers/utils';
+import isEmpty from 'lodash/isEmpty';
 import automation from '../../_helpers/automation-attributes';
 import Space from '../Space';
+import spacings from '../../tokens/spacings';
 
 const styles = {
   backdrop: {
@@ -83,8 +84,10 @@ const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }
 
   const backdropSize = mapSizeToBackdropProps(size);
 
+  const textLeftMargin = 0.5;
+
   return (
-    <Flex flexDirection="row" alignSelf="flex-start">
+    <Flex alignSelf="flex-start">
       <TouchableOpacity
         activeOpacity={1}
         accessibilityRole="checkbox"
@@ -95,27 +98,37 @@ const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }
         onPressOut={onPressOut}
         {...automation(testID)}
       >
-        <Backdrop
-          width={backdropSize}
-          height={backdropSize}
-          borderRadius={backdropSize / 2}
-          backgroundColor={underlayColor}
-        >
-          <CheckBoxIcon checked={checked} size={size} disabled={disabled} />
-        </Backdrop>
-
-        <Space margin={[0, 0, 0, 0.5]}>
+        <Flex flexDirection="row">
           <View>
-            <Text color={titleTextColor} size={size}>
-              {title}
-            </Text>
-            {!isEmpty(helpText) && size !== 'small' && (
+            <Backdrop
+              width={backdropSize}
+              height={backdropSize}
+              borderRadius={backdropSize / 2}
+              backgroundColor={underlayColor}
+            >
+              <CheckBoxIcon checked={checked} size={size} disabled={disabled} />
+            </Backdrop>
+            <Flex alignSelf="center">
+              <Space margin={[0, 0, 0, textLeftMargin]}>
+                <View>
+                  <Text color={titleTextColor} size={size}>
+                    {title}
+                  </Text>
+                </View>
+              </Space>
+            </Flex>
+          </View>
+        </Flex>
+
+        {!isEmpty(helpText) && size !== 'small' && (
+          <Space margin={[0, 0, 0, backdropSize / spacings.unit + textLeftMargin]}>
+            <View>
               <Text size={mapSizeToHelpTextSizeProp(size)} color={helpTextColor}>
                 {helpText}
               </Text>
-            )}
-          </View>
-        </Space>
+            </View>
+          </Space>
+        )}
       </TouchableOpacity>
     </Flex>
   );
