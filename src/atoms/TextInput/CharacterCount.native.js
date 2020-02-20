@@ -15,10 +15,10 @@ const styles = {
   },
 };
 
-const HelpText = ({ children, disabled }) => {
+const CharacterCount = ({ maxLength, inputLength, disabled }) => {
   return (
-    <Space padding={[0.5, 0, 0, 0]}>
-      <Flex flex={1}>
+    <Space padding={[0.5, 0, 0, 1]}>
+      <Flex flex={0}>
         <View>
           <Text
             numberOfLines={2}
@@ -26,7 +26,7 @@ const HelpText = ({ children, disabled }) => {
             color={styles.color({ disabled })}
             size="xsmall"
           >
-            {children}
+            {`${inputLength}/${maxLength}`}
           </Text>
         </View>
       </Flex>
@@ -34,11 +34,12 @@ const HelpText = ({ children, disabled }) => {
   );
 };
 
-HelpText.propTypes = {
-  children: PropTypes.string,
+CharacterCount.propTypes = {
+  maxLength: PropTypes.number,
+  inputLength: PropTypes.number,
   disabled: PropTypes.bool,
 };
 
-HelpText.defaultProps = {};
+CharacterCount.defaultProps = {};
 
-export default HelpText;
+export default CharacterCount;
