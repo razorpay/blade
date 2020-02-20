@@ -20,7 +20,6 @@ const styles = {
 const StyledLine = styled(View)(
   (props) => `
   height: 1px;
-  width: 240px;
   background-color: ${styles.backgroundColor(props)};
 `,
 );
