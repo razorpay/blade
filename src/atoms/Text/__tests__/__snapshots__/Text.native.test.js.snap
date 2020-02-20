@@ -13,6 +13,7 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
   <Text
     _isUnderlined={false}
     _letterSpacing="small"
+    _lineHeight="large"
     _weight="bold"
     align="left"
     color="shade.980"
@@ -25,6 +26,7 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
           "fontFamily": "Lato-Bold",
           "fontSize": 16,
           "letterSpacing": 0,
+          "lineHeight": 24,
           "textDecorationLine": "none",
         },
       ]
@@ -49,6 +51,7 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
   <Text
     _isUnderlined={false}
     _letterSpacing="small"
+    _lineHeight="large"
     _weight="regular"
     align="left"
     color="shade.980"
@@ -61,6 +64,7 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
           "fontFamily": "Lato-Regular",
           "fontSize": 16,
           "letterSpacing": 0,
+          "lineHeight": 24,
           "textDecorationLine": "none",
         },
       ]
@@ -85,6 +89,7 @@ exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = 
   <Text
     _isUnderlined={true}
     _letterSpacing="small"
+    _lineHeight="large"
     _weight="regular"
     align="left"
     color="shade.980"
@@ -97,6 +102,7 @@ exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = 
           "fontFamily": "Lato-Regular",
           "fontSize": 16,
           "letterSpacing": 0,
+          "lineHeight": 24,
           "textDecorationLine": "underline",
         },
       ]

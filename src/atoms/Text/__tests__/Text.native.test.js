@@ -31,5 +31,6 @@ describe('Renders <Text /> correctly', () => {
     expect(textElement.props._weight).toBe('regular');
     expect(textElement.props._isUnderlined).toBe(false);
     expect(textElement.props._letterSpacing).toBe('small');
+    expect(textElement.props._lineHeight).toBe('large');
   });
 });

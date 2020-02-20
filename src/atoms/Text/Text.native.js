@@ -5,6 +5,7 @@ import { Text as NativeText } from 'react-native';
 import baseTheme from '../../tokens/theme';
 import { getColorKeys, getColor } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
+import { getLineHeight } from '../../_helpers/fonts';
 
 const styles = {
   fontFamily({ theme, _weight }) {
@@ -36,6 +37,9 @@ const styles = {
   letterSpacing({ theme, _letterSpacing }) {
     return `${theme.fonts.letterSpacing[_letterSpacing]}`;
   },
+  lineHeight({ theme, _lineHeight, size }) {
+    return getLineHeight(theme.fonts.size[size], theme.fonts.lineHeight[_lineHeight]);
+  },
 };
 
 const StyledText = styled(NativeText)`
@@ -45,6 +49,7 @@ const StyledText = styled(NativeText)`
   text-decoration-line: ${styles.textDecorationLine};
   align-self: ${styles.alignSelf};
   letter-spacing: ${styles.letterSpacing};
+  line-height: ${styles.lineHeight};
 `;
 
 const Text = ({
@@ -57,6 +62,7 @@ const Text = ({
   _weight,
   _isUnderlined,
   _letterSpacing,
+  _lineHeight,
 }) => {
   return (
     <StyledText
@@ -67,6 +73,7 @@ const Text = ({
       _weight={_weight}
       _isUnderlined={_isUnderlined}
       _letterSpacing={_letterSpacing}
+      _lineHeight={_lineHeight}
       {...automation(testID)}
     >
       {children}
@@ -84,6 +91,7 @@ Text.propTypes = {
   _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   _isUnderlined: PropTypes.bool,
   _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
+  _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
 };
 
 Text.defaultProps = {
@@ -94,6 +102,7 @@ Text.defaultProps = {
   _weight: 'regular',
   _isUnderlined: false,
   _letterSpacing: 'small',
+  _lineHeight: 'large',
 };
 
 export default Text;
