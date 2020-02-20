@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import Text from '../Text';
 import Space from '../Space/Space.native';
 
@@ -13,10 +13,11 @@ const styles = {
     }
   },
   padding({ variant }) {
+    const top = Platform.OS === 'android' ? 1 : 0;
     if (variant === 'filled') {
-      return [0, 1, 0, 1];
+      return [top, 1, 0, 1];
     } else {
-      return [0, 0.5, 0, 0];
+      return [top, 0.5, 0, 0];
     }
   },
 };
