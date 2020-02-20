@@ -24,7 +24,7 @@ const styles = {
   },
 };
 
-const AccessoryText = ({ name, disabled, size, hasError, variant }) => {
+const AccessoryIcon = ({ name, disabled, size, hasError, variant }) => {
   return (
     <Space padding={styles.padding({ variant })}>
       <View>
@@ -34,7 +34,7 @@ const AccessoryText = ({ name, disabled, size, hasError, variant }) => {
   );
 };
 
-AccessoryText.propTypes = {
+AccessoryIcon.propTypes = {
   name: PropTypes.string,
   size: PropTypes.string,
   disabled: PropTypes.bool,
@@ -42,6 +42,6 @@ AccessoryText.propTypes = {
   variant: PropTypes.string.isRequired,
 };
 
-AccessoryText.defaultProps = {};
+AccessoryIcon.defaultProps = {};
 
-export default AccessoryText;
+export default AccessoryIcon;
