@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <Space /> correctly Renders a View with margin 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    className="sc-AykKC eTpsRU"
+  />
+</View>
+`;
+
+exports[`Renders <Space /> correctly Space, by default renders a View 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    className="sc-AykKC gKpXfM"
+    testID="space-default-view"
+  />
+</View>
+`;
