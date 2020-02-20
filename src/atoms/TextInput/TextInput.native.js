@@ -33,6 +33,9 @@ const styles = {
     fontFamily({ theme }) {
       return theme.fonts.family.lato.regular;
     },
+    color({ theme }) {
+      return theme.colors.shade[700];
+    },
   },
   fillContainer: {
     backgroundColor({ variant, isFocused, theme, disabled }) {
@@ -71,6 +74,7 @@ const StyledInput = styled(NativeTextInput)`
   font-size: ${styles.textInput.fontSize};
   line-height: ${styles.textInput.lineHeight};
   font-family: ${styles.textInput.fontFamily};
+  color: ${styles.textInput.color};
 `;
 
 const FillContainer = styled.View`
