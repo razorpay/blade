@@ -1,22 +1,25 @@
 import React from 'react';
-import { Text } from 'react-native';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Text from '../Text';
+import Space from '../Space';
 
-const StyledText = styled(Text)`
-  color: ${(props) =>
-    props.disabled ? props.theme.colors.shade[300] : props.theme.colors.shade[500]};
-  font-size: 12px;
-  line-height: 18px;
-  padding-top: 4px;
-  max-width: 240px;
-`;
+const styles = {
+  color({ disabled }) {
+    if (disabled) {
+      return 'shade.300';
+    } else {
+      return 'shade.500';
+    }
+  },
+};
 
 const HelpText = ({ children, disabled }) => {
   return (
-    <StyledText numberOfLines={2} disabled={disabled}>
-      {children}
-    </StyledText>
+    <Space padding={[0.5, 0, 0, 0]}>
+      <Text numberOfLines={2} disabled={disabled} color={styles.color({ disabled })} size="xsmall">
+        {children}
+      </Text>
+    </Space>
   );
 };
 
