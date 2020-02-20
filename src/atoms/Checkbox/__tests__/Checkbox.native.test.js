@@ -1,42 +1,52 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
-import { ThemeProvider } from 'styled-components/native';
-import theme from '../../../tokens/theme';
 import Checkbox from './../Checkbox';
+import { renderWithTheme } from '../../../_helpers/testing';
 
 describe('Native <Checkbox />', () => {
   describe('Unchecked checkxox', () => {
     test('should render component when not checked with default props', () => {
-      const { container } = render(
-        <ThemeProvider theme={theme}>
-          <Checkbox title="Some Title" />
-        </ThemeProvider>,
-      );
+      const { container } = renderWithTheme(<Checkbox title="Some Title" />);
       expect(container).toMatchSnapshot();
     });
 
     test('should render component when not checked with help text props', () => {
       const helpTextContent = 'some Help text';
-      const { getByText } = render(
-        <ThemeProvider theme={theme}>
-          <Checkbox title="Some Title" helpText={helpTextContent} />
-        </ThemeProvider>,
+      const { getByText } = renderWithTheme(
+        <Checkbox title="Some Title" helpText={helpTextContent} />,
       );
       const helpTextComponent = getByText(helpTextContent);
-      expect(helpTextComponent.props.size).toEqual('m');
-      expect(helpTextComponent.props.disabled).toEqual(false);
+      expect(helpTextComponent.props.size).toEqual('xsmall');
       expect(helpTextComponent.props.children).toEqual(helpTextContent);
     });
 
-    fit('should render medium sized Checkbox', () => {
-      const { container, getByText } = render(
-        <ThemeProvider theme={theme}>
-          <Checkbox title="Some Title" helpText="some Help text" size="medium" />
-        </ThemeProvider>,
+    test('should render medium sized Checkbox', () => {
+      const { container, getByText } = renderWithTheme(
+        <Checkbox title="Some Title" helpText="some Help text" size="medium" />,
       );
       const titleComponent = getByText('Some Title');
       expect(container).toMatchSnapshot();
-      expect(titleComponent.props.size).toEqual('m');
+      expect(titleComponent.props.size).toEqual('medium');
+    });
+
+    test('should render component in disabled state', () => {
+      const { getByTestId } = renderWithTheme(
+        <Checkbox
+          title="Some Title"
+          helpText="some Help text"
+          size="large"
+          disabled={true}
+          testID="disabledCheckBox"
+        />,
+      );
+      const renderedComponent = getByTestId('disabledCheckBox');
+      expect(renderedComponent.props.disabled).toEqual(true);
+    });
+  });
+
+  describe('Checked', () => {
+    test('should render component when not checked with default props', () => {
+      const { container } = renderWithTheme(<Checkbox title="Some Title" checked={true} />);
+      expect(container).toMatchSnapshot();
     });
   });
 });

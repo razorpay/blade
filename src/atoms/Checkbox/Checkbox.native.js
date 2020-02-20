@@ -6,6 +6,7 @@ import CheckBoxIcon from './CheckboxIcon';
 import Text from '../Text';
 import Flex from '../Flex';
 import { isEmpty } from '../../_helpers/utils';
+import automation from '../../_helpers/automation-attributes';
 
 const styles = {
   backdrop: {
@@ -73,14 +74,18 @@ const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }
   const onPressOut = () => {
     setUnderlayColor('');
   };
+
   let titleTextColor = 'shade.700';
+
   let helpTextColor = 'shade.500';
 
   if (disabled) {
     titleTextColor = 'shade.500';
     helpTextColor = 'shade.300';
   }
+
   const backdropSize = mapSizeToBackdropProps(size);
+
   return (
     <Flex flexDirection="row" alignSelf="flex-start">
       <TouchableOpacity
@@ -91,7 +96,7 @@ const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }
         disabled={disabled}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
-        testID={testID}
+        {...automation(testID)}
       >
         <Backdrop
           width={backdropSize}

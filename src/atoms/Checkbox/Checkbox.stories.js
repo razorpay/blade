@@ -12,7 +12,7 @@ storiesOf('Checkbox', module)
   })
   .add('unchecked', () => (
     <Checkbox
-      checkedrr={boolean('Checked', false)}
+      checked={boolean('Checked', false)}
       size={select(
         'Size',
         {
