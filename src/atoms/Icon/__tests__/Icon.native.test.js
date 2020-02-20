@@ -1,11 +1,10 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
-
+import { renderWithTheme } from '../../../_helpers/testing';
 import Icon from '../index';
 
 describe('Renders <Icon /> correctly', () => {
   it('snapshot testing', () => {
-    const { container } = render(<Icon name="info">{'Click Me'}</Icon>);
+    const { container } = renderWithTheme(<Icon name="info" />);
     expect(container).toMatchSnapshot();
   });
 });
