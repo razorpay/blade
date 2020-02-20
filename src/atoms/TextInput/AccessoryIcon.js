@@ -1,35 +1,36 @@
-import React, { useContext } from 'react';
-import { View } from 'react-native';
-import styled from 'styled-components';
+import React from 'react';
+import { View, Platform } from 'react-native';
 import PropTypes from 'prop-types';
-import { ThemeContext } from 'styled-components/native';
 import Icon from '../Icon';
+import Space from '../Space';
 
 const styles = {
-  padding({ variant }) {
-    if (variant === 'filled') {
-      return '0px 8px 0px 8px';
+  color({ disabled, hasError }) {
+    if (hasError) {
+      return 'negative.900';
+    } else if (disabled) {
+      return 'shade.300';
     } else {
-      return '0px 4px 0px 0px';
+      return 'shade.500';
+    }
+  },
+  padding({ variant }) {
+    const top = Platform.OS === 'android' ? 1 : 0;
+    if (variant === 'filled') {
+      return [top, 1, 0, 1];
+    } else {
+      return [top, 0.5, 0, 0];
     }
   },
 };
 
-const Container = styled(View)`
-  padding: ${styles.padding};
-`;
-
 const AccessoryText = ({ name, disabled, size, hasError, variant }) => {
-  const theme = useContext(ThemeContext);
-  const fill = hasError
-    ? theme.colors.negative[900]
-    : disabled
-    ? theme.colors.shade[300]
-    : theme.colors.shade[500];
   return (
-    <Container disabled={disabled} variant={variant}>
-      <Icon name={name} size={size} fill={fill} />
-    </Container>
+    <Space padding={styles.padding({ variant })}>
+      <View>
+        <Icon name={name} size={size} fill={styles.color({ disabled, hasError })} />
+      </View>
+    </Space>
   );
 };
 
