@@ -1,12 +1,13 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import CheckBoxIcon from './CheckboxIcon';
 import Text from '../Text';
 import Flex from '../Flex';
 import { isEmpty } from '../../_helpers/utils';
 import automation from '../../_helpers/automation-attributes';
+import Space from '../Space';
 
 const styles = {
   backdrop: {
@@ -30,10 +31,6 @@ const Backdrop = styled.View`
   height: ${styles.backdrop.height}px;
   border-radius: ${styles.backdrop.borderRadius}px;
   background-color: ${styles.backdrop.backgroundColor};
-`;
-
-const TextContainer = styled.View`
-  margin-left: 4px;
 `;
 
 const mapSizeToBackdropProps = (checkBoxSize) => {
@@ -107,23 +104,25 @@ const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }
           <CheckBoxIcon checked={checked} size={size} disabled={disabled} />
         </Backdrop>
 
-        <TextContainer>
-          <Text color={titleTextColor} size={size}>
-            {title}
-          </Text>
-          {!isEmpty(helpText) && size !== 'small' && (
-            <Text size={mapSizeToHelpTextSizeProp(size)} color={helpTextColor}>
-              {helpText}
+        <Space margin={[0, 0, 0, 0.5]}>
+          <View>
+            <Text color={titleTextColor} size={size}>
+              {title}
             </Text>
-          )}
-        </TextContainer>
+            {!isEmpty(helpText) && size !== 'small' && (
+              <Text size={mapSizeToHelpTextSizeProp(size)} color={helpTextColor}>
+                {helpText}
+              </Text>
+            )}
+          </View>
+        </Space>
       </TouchableOpacity>
     </Flex>
   );
 };
 
 Checkbox.propTypes = {
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
@@ -133,7 +132,6 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-  onChange: () => {},
   checked: false,
   size: 'medium',
   helpText: '',
