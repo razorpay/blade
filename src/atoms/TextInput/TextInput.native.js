@@ -12,12 +12,17 @@ import Space from '../Space';
 import { getLineHeight } from '../../_helpers/fonts';
 import Flex from '../Flex';
 
+const _IS_ANDROID = Platform.OS === 'android';
+
 const styles = {
   textInput: {
-    padding() {
+    padding({ variant }) {
+      const paddingTop = _IS_ANDROID ? '12px' : '0px';
+      const paddingRight = '0px';
+      const paddingBottom = _IS_ANDROID ? '0px' : '6px';
+      const paddingLeft = variant === 'filled' ? '8px' : '0px';
       // iOS & Android need different paddings
-      if (Platform.OS === 'ios') return '0px 0px 6px 0px';
-      else return '12px 0px 0px 0px';
+      return `${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`;
     },
     fontSize({ theme }) {
       return theme.fonts.size.large;
@@ -129,57 +134,60 @@ const TextInput = ({
 
   return (
     <Container>
-      <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
-        <InputContainer>
-          {hasPrefix ? (
-            <AccessoryText variant={variant} disabled={disabled}>
-              {prefix}
-            </AccessoryText>
-          ) : null}
-          {hasLeftIcon ? (
-            <AccessoryIcon
-              variant={variant}
-              name={iconLeft}
-              disabled={disabled}
-              hasError={hasError}
-              size="xsmall"
-            />
-          ) : null}
-          <Flex flex={1}>
-            <StyledInput
-              placeholder={` ${placeholder}`}
-              placeholderTextColor={placeholderTextColor}
-              onFocus={onFocus}
-              onBlur={onBlur}
-              onChangeText={onChange}
-              input={input}
-              selectionColor={theme.colors.shade[700]} // not able to change this on Android
-              editable={!disabled}
-            >
-              <Space padding={[0, 0, 0.5, 0]}>
-                <Text color={styles.text.color({ disabled })} size="medium">
-                  {input}
-                </Text>
-              </Space>
-            </StyledInput>
-          </Flex>
-          {hasSuffix ? (
-            <AccessoryText variant={variant} disabled={disabled}>
-              {suffix}
-            </AccessoryText>
-          ) : null}
-          {hasRightIcon ? (
-            <AccessoryIcon
-              variant={variant}
-              name={iconRight}
-              disabled={disabled}
-              hasError={hasError}
-              size="xsmall"
-            />
-          ) : null}
-        </InputContainer>
-        <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
-      </FillContainer>
+      <Space padding={styles.fillContainer.padding}>
+        <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
+          <InputContainer>
+            {hasPrefix ? (
+              <AccessoryText variant={variant} disabled={disabled}>
+                {prefix}
+              </AccessoryText>
+            ) : null}
+            {hasLeftIcon ? (
+              <AccessoryIcon
+                variant={variant}
+                name={iconLeft}
+                disabled={disabled}
+                hasError={hasError}
+                size="xsmall"
+              />
+            ) : null}
+            <Flex flex={1}>
+              <StyledInput
+                placeholder={` ${placeholder}`}
+                placeholderTextColor={placeholderTextColor}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                onChangeText={onChange}
+                input={input}
+                selectionColor={theme.colors.shade[700]} // not able to change this on Android
+                editable={!disabled}
+                variant={variant}
+              >
+                <Space padding={[0, 0, 0.5, 0]}>
+                  <Text color={styles.text.color({ disabled })} size="medium">
+                    {input}
+                  </Text>
+                </Space>
+              </StyledInput>
+            </Flex>
+            {hasSuffix ? (
+              <AccessoryText variant={variant} disabled={disabled}>
+                {suffix}
+              </AccessoryText>
+            ) : null}
+            {hasRightIcon ? (
+              <AccessoryIcon
+                variant={variant}
+                name={iconRight}
+                disabled={disabled}
+                hasError={hasError}
+                size="xsmall"
+              />
+            ) : null}
+          </InputContainer>
+          <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
+        </FillContainer>
+      </Space>
       {hasError && !disabled ? (
         <ErrorText>{errorText}</ErrorText>
       ) : (
