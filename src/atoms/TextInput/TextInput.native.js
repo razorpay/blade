@@ -19,11 +19,10 @@ const styles = {
     else if (isFocused) return theme.colors.tone[400];
     else return theme.colors.tone[300];
   },
-  textInputPaddingBottom({ input }) {
-    // iOS placeholder has a padding bottom by default and iOS text does not
+  textInputPaddingBottom() {
+    // iOS needs padding
     // Android has proper paddings
-    if (Platform.OS === 'ios' && input && input.length > 0) return '6px';
-    else if (Platform.OS === 'ios') return '2px';
+    if (Platform.OS === 'ios') return '6px';
     else return '0px';
   },
   textInputFontSize({ theme }) {
