@@ -22,7 +22,7 @@ const styles = {
       return borderRadius;
     },
     backgroundColor({ backgroundColor }) {
-      return backgroundColor ? backgroundColor : 'transparent';
+      return backgroundColor;
     },
   },
 };
@@ -61,7 +61,7 @@ const mapSizeToHelpTextSizeProp = (checkboxSize) => {
 };
 
 const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }) => {
-  const [underlayColor, setUnderlayColor] = useState('');
+  const [underlayColor, setUnderlayColor] = useState('transparent');
   const theme = useContext(ThemeContext);
 
   const onPressIn = () => {
@@ -70,7 +70,7 @@ const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }
   };
 
   const onPressOut = () => {
-    setUnderlayColor('');
+    setUnderlayColor('transparent');
   };
 
   let titleTextColor = 'shade.700';
@@ -83,8 +83,6 @@ const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }
   }
 
   const backdropSize = mapSizeToBackdropProps(size);
-
-  const textLeftMargin = 0.5;
 
   return (
     <Flex alignSelf="flex-start">
@@ -109,7 +107,7 @@ const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }
               <CheckBoxIcon checked={checked} size={size} disabled={disabled} />
             </Backdrop>
             <Flex alignSelf="center">
-              <Space margin={[0, 0, 0, textLeftMargin]}>
+              <Space margin={[0, 0, 0, 0.5]}>
                 <View>
                   <Text color={titleTextColor} size={size}>
                     {title}
@@ -121,7 +119,7 @@ const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }
         </Flex>
 
         {!isEmpty(helpText) && size !== 'small' && (
-          <Space margin={[0, 0, 0, backdropSize / spacings.unit + textLeftMargin]}>
+          <Space margin={[0, 0, 0, backdropSize / spacings.unit + 0.5]}>
             <View>
               <Text size={mapSizeToHelpTextSizeProp(size)} color={helpTextColor}>
                 {helpText}
