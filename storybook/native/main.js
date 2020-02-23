@@ -18,6 +18,7 @@ configure(() => {
   require('../../src/atoms/Link/Link.stories');
   require('../../src/atoms/Icon/Icon.stories');
   require('../../src/atoms/Button/Button.stories');
+  require('../../src/atoms/Toggle/Toggle.stories');
 }, module);
 
 // add decorators
