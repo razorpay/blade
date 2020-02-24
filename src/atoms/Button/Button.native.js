@@ -130,6 +130,14 @@ const styles = {
         return 'flex-end';
     }
   },
+  letterSpacing({ size }) {
+    switch (size) {
+      case 'xsmall':
+        return 'medium';
+      default:
+        return 'small';
+    }
+  },
 };
 
 const StyledButton = styled(TouchableHighlight)(
@@ -185,8 +193,9 @@ const Button = (props) => {
           size={styles.fontSize(props)}
           _weight="bold"
           align="center"
+          _letterSpacing={styles.letterSpacing(props)}
         >
-          {children}
+          {size === 'xsmall' ? children && children.toUpperCase() : children}
         </Text>
         {icon && iconPosition === 'right' && children && <Space margin={[0, 0.5]} />}
         {icon && iconPosition === 'right' && (
