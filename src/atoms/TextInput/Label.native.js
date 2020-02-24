@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
-import { Animated, View } from 'react-native';
+import { Animated, View, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import { getColor } from '../../_helpers/colors';
 import PropTypes from 'prop-types';
 
+const IS_ANDROID = Platform.OS === 'android';
+
 const Container = styled(View)`
-  height: 20px;
+  height: ${IS_ANDROID ? '2px' : '10px'};
 `;
 
 const FloatView = styled(Animated.View)`
@@ -76,7 +78,7 @@ const Label = ({ isFocused, children, hasLeftAccessory, hasText }) => {
     ANIMATION_DURATION: 200,
     INITIAL_FONT_SIZE: 14,
     FINAL_FONT_SIZE: 12,
-    INITIAL_TOP_POSITION: 31,
+    INITIAL_TOP_POSITION: IS_ANDROID ? 17 : 21,
     FINAL_TOP_POSITION: 0,
     INITIAL_LEFT_POSITION: hasLeftAccessory ? 20 : 0,
     FINAL_LEFT_POSITION: 0,
