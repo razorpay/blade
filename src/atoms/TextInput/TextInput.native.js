@@ -166,7 +166,7 @@ const TextInput = ({
             ) : null}
             <Flex flex={1}>
               <StyledInput
-                placeholder={hidePlaceHolder ? placeholder : null}
+                placeholder={hidePlaceHolder ? placeholder : ''}
                 placeholderTextColor={placeholderTextColor}
                 onFocus={onFocus}
                 onBlur={onBlur}
