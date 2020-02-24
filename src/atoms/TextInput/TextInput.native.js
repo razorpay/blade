@@ -12,6 +12,7 @@ import Space from '../Space';
 import { getLineHeight } from '../../_helpers/fonts';
 import Flex from '../Flex';
 import CharacterCount from './CharacterCount.native';
+import Label from './Label';
 
 const _IS_ANDROID = Platform.OS === 'android';
 
@@ -58,9 +59,9 @@ const styles = {
 };
 
 const Container = styled.View`
-  background-color: transparent;
   width: 240px;
-  height: 40px;
+  height: 70px;
+  justify-content: flex-end;
 `;
 
 const InputContainer = styled.View`
@@ -139,6 +140,8 @@ const TextInput = ({
     [onChangeText, setInput],
   );
 
+  const hidePlaceHolder = !(variant === 'outline' && !isFocused);
+
   return (
     <Container>
       <Space padding={styles.fillContainer.padding}>
@@ -158,9 +161,12 @@ const TextInput = ({
                 size="xsmall"
               />
             ) : null}
+            {variant === 'outline' ? (
+              <Label isFocused={isFocused} hasLeftIcon={hasLeftIcon} hasPrefix={hasPrefix} />
+            ) : null}
             <Flex flex={1}>
               <StyledInput
-                placeholder={` ${placeholder}`}
+                placeholder={hidePlaceHolder ? placeholder : null}
                 placeholderTextColor={placeholderTextColor}
                 onFocus={onFocus}
                 onBlur={onBlur}
