@@ -76,7 +76,7 @@ const Label = ({ isFocused, children, hasLeftAccessory, hasText }) => {
     ANIMATION_DURATION: 200,
     INITIAL_FONT_SIZE: 14,
     FINAL_FONT_SIZE: 12,
-    INITIAL_TOP_POSITION: 28,
+    INITIAL_TOP_POSITION: 31,
     FINAL_TOP_POSITION: 0,
     INITIAL_LEFT_POSITION: hasLeftAccessory ? 20 : 0,
     FINAL_LEFT_POSITION: 0,
