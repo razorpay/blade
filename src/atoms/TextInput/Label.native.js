@@ -71,7 +71,7 @@ const getLeftInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
   });
 };
 
-const Label = ({ isFocused, children, hasLeftAccessory, hasText }) => {
+const Label = ({ isFocused, children, hasLeftAccessory, hasText, disabled }) => {
   const theme = useContext(ThemeContext);
 
   const AnimationConfig = {
@@ -113,7 +113,9 @@ const Label = ({ isFocused, children, hasLeftAccessory, hasText }) => {
         <StyledText
           style={{
             fontSize: getFontInterpolation(AnimationConfig, labelAnimatedValue, hasText),
-            color: getColorInterpolation(AnimationConfig, labelAnimatedValue),
+            color: disabled
+              ? getColor(theme, 'shade.400')
+              : getColorInterpolation(AnimationConfig, labelAnimatedValue),
           }}
         >
           {children}
@@ -128,6 +130,7 @@ Label.propTypes = {
   isFocused: PropTypes.bool,
   hasLeftAccessory: PropTypes.bool,
   hasText: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 Label.defaultProps = {

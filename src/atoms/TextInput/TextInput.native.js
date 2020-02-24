@@ -148,6 +148,7 @@ const TextInput = ({
           isFocused={isFocused}
           hasLeftAccessory={hasLeftIcon || hasPrefix}
           hasText={!!(input && input.length > 0)}
+          disabled={disabled}
         />
       ) : null}
       <Space padding={styles.fillContainer.padding}>
