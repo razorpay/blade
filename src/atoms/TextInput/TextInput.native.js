@@ -139,18 +139,14 @@ const TextInput = ({
     [onChangeText, setInput],
   );
 
-  const hidePlaceHolder = !(variant === 'outline' && !isFocused);
-
   return (
     <Container>
-      {variant === 'outline' ? (
-        <Label
-          isFocused={isFocused}
-          hasLeftAccessory={hasLeftIcon || hasPrefix}
-          hasText={!!(input && input.length > 0)}
-          disabled={disabled}
-        />
-      ) : null}
+      <Label
+        isFocused={isFocused}
+        hasLeftAccessory={hasLeftIcon || hasPrefix}
+        hasText={!!(input && input.length > 0)}
+        disabled={disabled}
+      />
       <Space padding={styles.fillContainer.padding}>
         <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
           <InputContainer>
@@ -171,7 +167,7 @@ const TextInput = ({
 
             <Flex flex={1}>
               <StyledInput
-                placeholder={hidePlaceHolder ? placeholder : ''}
+                placeholder={isFocused ? placeholder : ''}
                 placeholderTextColor={placeholderTextColor}
                 onFocus={onFocus}
                 onBlur={onBlur}
