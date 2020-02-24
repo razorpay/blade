@@ -1,8 +1,12 @@
 import React, { useState, useContext } from 'react';
-import { Animated } from 'react-native';
+import { Animated, View } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import { getColor } from '../../_helpers/colors';
 import PropTypes from 'prop-types';
+
+const Container = styled(View)`
+  height: 20px;
+`;
 
 const FloatView = styled(Animated.View)`
   position: absolute;
@@ -47,12 +51,12 @@ const getFontInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
   });
 };
 
-const getBottomInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
-  if (hasText) return AnimationConfig.FINAL_BOTTOM_POSITION;
+const getTopInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
+  if (hasText) return AnimationConfig.FINAL_TOP_POSITION;
 
   return labelAnimatedValue.interpolate({
     inputRange: [AnimationConfig.INITIAL_ANIMATION_VALUE, AnimationConfig.FINAL_ANIMATION_VALUE],
-    outputRange: [AnimationConfig.INITIAL_BOTTOM_POSITION, AnimationConfig.FINAL_BOTTOM_POSITION],
+    outputRange: [AnimationConfig.INITIAL_TOP_POSITION, AnimationConfig.FINAL_TOP_POSITION],
   });
 };
 
@@ -72,8 +76,8 @@ const Label = ({ isFocused, children, hasLeftAccessory, hasText }) => {
     ANIMATION_DURATION: 200,
     INITIAL_FONT_SIZE: 14,
     FINAL_FONT_SIZE: 12,
-    INITIAL_BOTTOM_POSITION: 10,
-    FINAL_BOTTOM_POSITION: 30,
+    INITIAL_TOP_POSITION: 28,
+    FINAL_TOP_POSITION: 0,
     INITIAL_LEFT_POSITION: hasLeftAccessory ? 20 : 0,
     FINAL_LEFT_POSITION: 0,
     INITIAL_LABEL_COLOR: getColor(theme, 'shade.600'),
@@ -96,22 +100,24 @@ const Label = ({ isFocused, children, hasLeftAccessory, hasText }) => {
   }, [AnimationConfig, isFocused, labelAnimatedValue]);
 
   return (
-    <FloatView
-      style={{
-        bottom: getBottomInterpolation(AnimationConfig, labelAnimatedValue, hasText),
-        left: getLeftInterpolation(AnimationConfig, labelAnimatedValue, hasText),
-      }}
-      pointerEvents="none"
-    >
-      <StyledText
+    <Container>
+      <FloatView
         style={{
-          fontSize: getFontInterpolation(AnimationConfig, labelAnimatedValue, hasText),
-          color: getColorInterpolation(AnimationConfig, labelAnimatedValue),
+          top: getTopInterpolation(AnimationConfig, labelAnimatedValue, hasText),
+          left: getLeftInterpolation(AnimationConfig, labelAnimatedValue, hasText),
         }}
+        pointerEvents="none"
       >
-        {children}
-      </StyledText>
-    </FloatView>
+        <StyledText
+          style={{
+            fontSize: getFontInterpolation(AnimationConfig, labelAnimatedValue, hasText),
+            color: getColorInterpolation(AnimationConfig, labelAnimatedValue),
+          }}
+        >
+          {children}
+        </StyledText>
+      </FloatView>
+    </Container>
   );
 };
 
