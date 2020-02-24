@@ -3,6 +3,8 @@ import { View, Animated, TouchableOpacity } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
 
+import automationAttributes from '../../_helpers/automation-attributes';
+
 const styles = {
   size({ size, theme }) {
     switch (size) {
@@ -39,7 +41,7 @@ const styles = {
       return theme.colors.primary[800];
     } else {
       if (disabled) {
-        return theme.colors.primary[300];
+        return theme.colors.shade[300];
       }
       if (active) {
         return theme.colors.shade[500];
@@ -71,7 +73,7 @@ const StyledKnob = styled(TouchableOpacity)(
 const AnimatedKnob = Animated.createAnimatedComponent(StyledKnob);
 
 const Toggle = (props) => {
-  const { disabled, value } = props;
+  const { disabled, value, testID } = props;
   const theme = useContext(ThemeContext);
   const { containerSize, knobSize } = styles.size({ ...props, theme });
   const containerPadding = styles.padding({ ...props, theme });
@@ -109,24 +111,29 @@ const Toggle = (props) => {
     Animated.parallel([
       Animated.timing(knobTranslationX.current, {
         toValue: toggleState ? -translationXDistance : translationXDistance,
-        duration: 400,
+        duration: 600,
       }),
       Animated.timing(knobWidth.current, {
         toValue: parseInt(knobSize.width, 10),
-        delay: 250,
-        duration: 100,
+        delay: 200,
+        duration: 400,
       }),
     ]).start(() => {
       knobTranslationX.current = new Animated.Value(0);
-      props.onValueChange(!toggleState);
       setToggleState(!toggleState);
+      props.onValueChange(!toggleState);
     });
   };
 
   const containerFlexDirection = toggleState ? 'row-reverse' : 'row';
   return (
-    <StyledContainer backgroundColor={containerColor} flexDirection={containerFlexDirection}>
+    <StyledContainer
+      backgroundColor={containerColor}
+      flexDirection={containerFlexDirection}
+      {...automationAttributes(testID)}
+    >
       <AnimatedKnob
+        disabled={disabled}
         size={props.size}
         activeOpacity={1}
         onPressIn={onPressIn}
@@ -147,12 +154,14 @@ Toggle.propTypes = {
   disabled: PropTypes.bool,
   value: PropTypes.bool,
   onValueChange: PropTypes.func,
+  testID: PropTypes.string,
 };
 
 Toggle.defaultProps = {
   size: 'medium',
   disabled: false,
   value: false,
+  testID: 'ds-toggle',
   onValueChange: () => {},
 };
 
