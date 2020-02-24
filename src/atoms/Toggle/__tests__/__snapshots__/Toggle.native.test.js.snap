@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <Toggle /> correctly renders a default Toggle 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    backgroundColor="rgba(22, 47, 86, 0.54)"
+    flexDirection="row"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(22, 47, 86, 0.54)",
+          "borderRadius": 8,
+          "flexDirection": "row",
+          "height": 16,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": 32,
+        },
+      ]
+    }
+    testID="ds-toggle"
+  >
+    <TouchableOpacity
+      activeOpacity={1}
+      disabled={false}
+      size="medium"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#fff",
+            "borderRadius": 6,
+            "height": 12,
+          },
+          Object {
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+            ],
+            "width": 12,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Renders <Toggle /> correctly renders a disabled/OFF Toggle 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    backgroundColor="rgba(22, 47, 86, 0.10)"
+    flexDirection="row"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(22, 47, 86, 0.10)",
+          "borderRadius": 8,
+          "flexDirection": "row",
+          "height": 16,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": 32,
+        },
+      ]
+    }
+    testID="ds-toggle"
+  >
+    <TouchableOpacity
+      activeOpacity={1}
+      disabled={true}
+      size="medium"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#fff",
+            "borderRadius": 6,
+            "height": 12,
+          },
+          Object {
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+            ],
+            "width": 12,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Renders <Toggle /> correctly renders a disabled/OFF Toggle 2`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    backgroundColor="rgba(22, 47, 86, 0.10)"
+    flexDirection="row"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(22, 47, 86, 0.10)",
+          "borderRadius": 8,
+          "flexDirection": "row",
+          "height": 16,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": 32,
+        },
+      ]
+    }
+    testID="ds-toggle"
+  >
+    <TouchableOpacity
+      activeOpacity={1}
+      disabled={true}
+      size="medium"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#fff",
+            "borderRadius": 6,
+            "height": 12,
+          },
+          Object {
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+            ],
+            "width": 12,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Renders <Toggle /> correctly renders a disabled/ON Toggle 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    backgroundColor="rgba(11, 112, 231, 0.38)"
+    flexDirection="row-reverse"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(11, 112, 231, 0.38)",
+          "borderRadius": 8,
+          "flexDirection": "row-reverse",
+          "height": 16,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": 32,
+        },
+      ]
+    }
+    testID="ds-toggle"
+  >
+    <TouchableOpacity
+      activeOpacity={1}
+      disabled={true}
+      size="medium"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#fff",
+            "borderRadius": 6,
+            "height": 12,
+          },
+          Object {
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+            ],
+            "width": 12,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;

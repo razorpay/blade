@@ -8,7 +8,11 @@ storiesOf('Toggle', module)
     component: Toggle,
   })
   .add('Toggle', () => (
-    <View style={{ height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ height: '100%', justifyContent: 'space-around', alignItems: 'center' }}>
       <Toggle />
+      {/*eslint-disable-next-line no-alert */}
+      <Toggle onValueChange={(value) => alert(value)} />
+      <Toggle disabled />
+      <Toggle disabled value={true} />
     </View>
   ));
