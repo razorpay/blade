@@ -12,6 +12,7 @@ const StyledText = styled(Text)`
 `;
 
 const ErrorText = ({ children }) => {
+  //TODO: have a fixed  height
   return <StyledText numberOfLines={2}>{children}</StyledText>;
 };
 

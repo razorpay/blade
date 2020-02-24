@@ -60,7 +60,6 @@ const styles = {
 
 const Container = styled.View`
   width: 240px;
-  height: 70px;
   justify-content: flex-end;
 `;
 
@@ -144,6 +143,13 @@ const TextInput = ({
 
   return (
     <Container>
+      {variant === 'outline' ? (
+        <Label
+          isFocused={isFocused}
+          hasLeftAccessory={hasLeftIcon || hasPrefix}
+          hasText={!!(input && input.length > 0)}
+        />
+      ) : null}
       <Space padding={styles.fillContainer.padding}>
         <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
           <InputContainer>
@@ -161,13 +167,7 @@ const TextInput = ({
                 size="xsmall"
               />
             ) : null}
-            {variant === 'outline' ? (
-              <Label
-                isFocused={isFocused}
-                hasLeftAccessory={hasLeftIcon || hasPrefix}
-                hasText={!!(input && input.length > 0)}
-              />
-            ) : null}
+
             <Flex flex={1}>
               <StyledInput
                 placeholder={hidePlaceHolder ? placeholder : ''}

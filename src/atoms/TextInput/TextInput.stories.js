@@ -14,6 +14,7 @@ const ItemContainer = styled.View`
 
 const ItemTitle = styled.Text`
   color: ${(props) => props.theme.colors.shade[700]};
+  margin: 0px 0px 10px 0px;
 `;
 
 storiesOf('TextInput', module)
@@ -33,7 +34,7 @@ storiesOf('TextInput', module)
           prefix=""
           suffix=""
           placeholder="Type here"
-          helpText="This is a help text"
+          helpText=""
           errorText=""
           onChangeText={() => {}}
           variant="outline"
