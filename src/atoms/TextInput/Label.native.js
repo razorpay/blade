@@ -17,52 +17,45 @@ const StyledText = styled(Animated.Text)`
   color: ${(props) => getColor(props.theme, 'shade.800')};
 `;
 
-const onFocus = ({ AnimationConfig, fontSize, bottom, color, left }) => {
-  Animated.parallel([
-    Animated.timing(fontSize, {
-      toValue: AnimationConfig.FINAL_FONT_SIZE,
-      duration: AnimationConfig.ANIMATION_DURATION,
-    }),
-    Animated.timing(bottom, {
-      toValue: AnimationConfig.FINAL_BOTTOM_POSITION,
-      duration: AnimationConfig.ANIMATION_DURATION,
-    }),
-    Animated.timing(left, {
-      toValue: AnimationConfig.FINAL_LEFT_POSITION,
-      duration: AnimationConfig.ANIMATION_DURATION,
-    }),
-    Animated.timing(color, {
-      toValue: AnimationConfig.FINAL_LABEL_COLOR,
-      duration: AnimationConfig.ANIMATION_DURATION,
-    }),
-  ]).start();
+const onFocus = ({ AnimationConfig, labelAnimatedValue }) => {
+  Animated.timing(labelAnimatedValue, {
+    toValue: 1,
+    duration: AnimationConfig.ANIMATION_DURATION,
+  }).start();
 };
 
-const onBlur = ({ AnimationConfig, fontSize, bottom, color, left }) => {
-  Animated.parallel([
-    Animated.timing(fontSize, {
-      toValue: AnimationConfig.INITIAL_FONT_SIZE,
-      duration: AnimationConfig.ANIMATION_DURATION,
-    }),
-    Animated.timing(bottom, {
-      toValue: AnimationConfig.INITIAL_BOTTOM_POSITION,
-      duration: AnimationConfig.ANIMATION_DURATION,
-    }),
-    Animated.timing(left, {
-      toValue: AnimationConfig.INITIAL_LEFT_POSITION,
-      duration: AnimationConfig.ANIMATION_DURATION,
-    }),
-    Animated.timing(color, {
-      toValue: AnimationConfig.INITIAL_LABEL_COLOR,
-      duration: AnimationConfig.ANIMATION_DURATION,
-    }),
-  ]).start();
+const onBlur = ({ AnimationConfig, labelAnimatedValue }) => {
+  Animated.timing(labelAnimatedValue, {
+    toValue: 0,
+    duration: AnimationConfig.ANIMATION_DURATION,
+  }).start();
 };
 
-const getColorInterpolation = (color, theme) => {
-  return color.interpolate({
+const getColorInterpolation = (AnimationConfig, labelAnimatedValue) => {
+  return labelAnimatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [getColor(theme, 'shade.900'), getColor(theme, 'primary.800')],
+    outputRange: [AnimationConfig.INITIAL_LABEL_COLOR, AnimationConfig.FINAL_LABEL_COLOR],
+  });
+};
+
+const getFontInterpolation = (AnimationConfig, labelAnimatedValue) => {
+  return labelAnimatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [14, 12],
+  });
+};
+
+const getBottomInterpolation = (AnimationConfig, labelAnimatedValue) => {
+  return labelAnimatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [AnimationConfig.INITIAL_BOTTOM_POSITION, AnimationConfig.FINAL_BOTTOM_POSITION],
+  });
+};
+
+const getLeftInterpolation = (AnimationConfig, labelAnimatedValue) => {
+  return labelAnimatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [AnimationConfig.INITIAL_LEFT_POSITION, AnimationConfig.FINAL_LEFT_POSITION],
   });
 };
 
@@ -77,29 +70,33 @@ const Label = ({ isFocused, children, hasLeftIcon, hasPrefix }) => {
     FINAL_BOTTOM_POSITION: 30,
     INITIAL_LEFT_POSITION: hasLeftIcon || hasPrefix ? 20 : 0,
     FINAL_LEFT_POSITION: 0,
-    INITIAL_LABEL_COLOR: 0,
-    FINAL_LABEL_COLOR: 1,
+    INITIAL_LABEL_COLOR: getColor(theme, 'shade.800'),
+    FINAL_LABEL_COLOR: getColor(theme, 'primary.900'),
   };
-  const [bottom] = useState(new Animated.Value(AnimationConfig.INITIAL_BOTTOM_POSITION));
-  const [left] = useState(new Animated.Value(AnimationConfig.INITIAL_LEFT_POSITION));
-  const [fontSize] = useState(new Animated.Value(AnimationConfig.INITIAL_FONT_SIZE));
-  const [color] = useState(new Animated.Value(AnimationConfig.INITIAL_LABEL_COLOR));
+
+  const [labelAnimatedValue] = useState(new Animated.Value(0));
 
   React.useEffect(() => {
     if (isFocused) {
-      onFocus({ AnimationConfig, fontSize, bottom, left, color });
+      onFocus({ AnimationConfig, labelAnimatedValue });
     }
     if (!isFocused) {
-      onBlur({ AnimationConfig, fontSize, bottom, left, color });
+      onBlur({ AnimationConfig, labelAnimatedValue });
     }
-  }, [AnimationConfig, bottom, color, fontSize, isFocused, left]);
+  }, [AnimationConfig, isFocused, labelAnimatedValue]);
 
   return (
-    <FloatView style={{ bottom, left }} pointerEvents="none">
+    <FloatView
+      style={{
+        bottom: getBottomInterpolation(AnimationConfig, labelAnimatedValue),
+        left: getLeftInterpolation(AnimationConfig, labelAnimatedValue),
+      }}
+      pointerEvents="none"
+    >
       <StyledText
         style={{
-          fontSize,
-          color: getColorInterpolation(color, theme),
+          fontSize: getFontInterpolation(AnimationConfig, labelAnimatedValue),
+          color: getColorInterpolation(AnimationConfig, labelAnimatedValue),
         }}
       >
         {children}
