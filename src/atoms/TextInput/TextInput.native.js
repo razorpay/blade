@@ -162,7 +162,11 @@ const TextInput = ({
               />
             ) : null}
             {variant === 'outline' ? (
-              <Label isFocused={isFocused} hasLeftIcon={hasLeftIcon} hasPrefix={hasPrefix} />
+              <Label
+                isFocused={isFocused}
+                hasLeftAccessory={hasLeftIcon || hasPrefix}
+                hasText={!!(input && input.length > 0)}
+              />
             ) : null}
             <Flex flex={1}>
               <StyledInput
