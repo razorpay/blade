@@ -19,47 +19,53 @@ const StyledText = styled(Animated.Text)`
 
 const onFocus = ({ AnimationConfig, labelAnimatedValue }) => {
   Animated.timing(labelAnimatedValue, {
-    toValue: 1,
+    toValue: AnimationConfig.FINAL_ANIMATION_VALUE,
     duration: AnimationConfig.ANIMATION_DURATION,
   }).start();
 };
 
 const onBlur = ({ AnimationConfig, labelAnimatedValue }) => {
   Animated.timing(labelAnimatedValue, {
-    toValue: 0,
+    toValue: AnimationConfig.INITIAL_ANIMATION_VALUE,
     duration: AnimationConfig.ANIMATION_DURATION,
   }).start();
 };
 
 const getColorInterpolation = (AnimationConfig, labelAnimatedValue) => {
   return labelAnimatedValue.interpolate({
-    inputRange: [0, 1],
+    inputRange: [AnimationConfig.INITIAL_ANIMATION_VALUE, AnimationConfig.FINAL_ANIMATION_VALUE],
     outputRange: [AnimationConfig.INITIAL_LABEL_COLOR, AnimationConfig.FINAL_LABEL_COLOR],
   });
 };
 
-const getFontInterpolation = (AnimationConfig, labelAnimatedValue) => {
+const getFontInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
+  if (hasText) return AnimationConfig.FINAL_FONT_SIZE;
+
   return labelAnimatedValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: [14, 12],
+    inputRange: [AnimationConfig.INITIAL_ANIMATION_VALUE, AnimationConfig.FINAL_ANIMATION_VALUE],
+    outputRange: [AnimationConfig.INITIAL_FONT_SIZE, AnimationConfig.FINAL_FONT_SIZE],
   });
 };
 
-const getBottomInterpolation = (AnimationConfig, labelAnimatedValue) => {
+const getBottomInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
+  if (hasText) return AnimationConfig.FINAL_BOTTOM_POSITION;
+
   return labelAnimatedValue.interpolate({
-    inputRange: [0, 1],
+    inputRange: [AnimationConfig.INITIAL_ANIMATION_VALUE, AnimationConfig.FINAL_ANIMATION_VALUE],
     outputRange: [AnimationConfig.INITIAL_BOTTOM_POSITION, AnimationConfig.FINAL_BOTTOM_POSITION],
   });
 };
 
-const getLeftInterpolation = (AnimationConfig, labelAnimatedValue) => {
+const getLeftInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
+  if (hasText) return AnimationConfig.FINAL_LEFT_POSITION;
+
   return labelAnimatedValue.interpolate({
-    inputRange: [0, 1],
+    inputRange: [AnimationConfig.INITIAL_ANIMATION_VALUE, AnimationConfig.FINAL_ANIMATION_VALUE],
     outputRange: [AnimationConfig.INITIAL_LEFT_POSITION, AnimationConfig.FINAL_LEFT_POSITION],
   });
 };
 
-const Label = ({ isFocused, children, hasLeftIcon, hasPrefix }) => {
+const Label = ({ isFocused, children, hasLeftAccessory, hasText }) => {
   const theme = useContext(ThemeContext);
 
   const AnimationConfig = {
@@ -68,13 +74,17 @@ const Label = ({ isFocused, children, hasLeftIcon, hasPrefix }) => {
     FINAL_FONT_SIZE: 12,
     INITIAL_BOTTOM_POSITION: 10,
     FINAL_BOTTOM_POSITION: 30,
-    INITIAL_LEFT_POSITION: hasLeftIcon || hasPrefix ? 20 : 0,
+    INITIAL_LEFT_POSITION: hasLeftAccessory ? 20 : 0,
     FINAL_LEFT_POSITION: 0,
-    INITIAL_LABEL_COLOR: getColor(theme, 'shade.800'),
+    INITIAL_LABEL_COLOR: getColor(theme, 'shade.600'),
     FINAL_LABEL_COLOR: getColor(theme, 'primary.900'),
+    INITIAL_ANIMATION_VALUE: 0,
+    FINAL_ANIMATION_VALUE: 1,
   };
 
-  const [labelAnimatedValue] = useState(new Animated.Value(0));
+  const [labelAnimatedValue] = useState(
+    new Animated.Value(AnimationConfig.INITIAL_ANIMATION_VALUE),
+  );
 
   React.useEffect(() => {
     if (isFocused) {
@@ -88,14 +98,14 @@ const Label = ({ isFocused, children, hasLeftIcon, hasPrefix }) => {
   return (
     <FloatView
       style={{
-        bottom: getBottomInterpolation(AnimationConfig, labelAnimatedValue),
-        left: getLeftInterpolation(AnimationConfig, labelAnimatedValue),
+        bottom: getBottomInterpolation(AnimationConfig, labelAnimatedValue, hasText),
+        left: getLeftInterpolation(AnimationConfig, labelAnimatedValue, hasText),
       }}
       pointerEvents="none"
     >
       <StyledText
         style={{
-          fontSize: getFontInterpolation(AnimationConfig, labelAnimatedValue),
+          fontSize: getFontInterpolation(AnimationConfig, labelAnimatedValue, hasText),
           color: getColorInterpolation(AnimationConfig, labelAnimatedValue),
         }}
       >
@@ -108,8 +118,8 @@ const Label = ({ isFocused, children, hasLeftIcon, hasPrefix }) => {
 Label.propTypes = {
   children: PropTypes.string,
   isFocused: PropTypes.bool,
-  hasLeftIcon: PropTypes.bool,
-  hasPrefix: PropTypes.bool,
+  hasLeftAccessory: PropTypes.bool,
+  hasText: PropTypes.bool,
 };
 
 Label.defaultProps = {
