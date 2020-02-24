@@ -5,6 +5,7 @@ module.exports = {
     'import/order': 'off',
     'max-lines-per-function': 'off',
     'no-console': ['warn'],
+    complexity: ['off'],
   },
   env: {
     browser: true,
