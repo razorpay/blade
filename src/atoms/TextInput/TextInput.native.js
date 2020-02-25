@@ -14,14 +14,14 @@ import Flex from '../Flex';
 import CharacterCount from './CharacterCount.native';
 import Label from './Label';
 
-const _IS_ANDROID = Platform.OS === 'android';
+const IS_ANDROID = Platform.OS === 'android';
 
 const styles = {
   textInput: {
     padding({ variant, hasLeftIcon, hasPrefix }) {
-      const paddingTop = _IS_ANDROID ? '8px' : '0px';
+      const paddingTop = IS_ANDROID ? '8px' : '0px';
       const paddingRight = '0px';
-      const paddingBottom = _IS_ANDROID ? '0px' : '4px';
+      const paddingBottom = IS_ANDROID ? '0px' : '4px';
       const paddingLeft = variant === 'outline' || hasLeftIcon || hasPrefix ? '0px' : '8px';
       // iOS & Android need different paddings
       return `${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`;
