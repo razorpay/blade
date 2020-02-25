@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback, useEffect } from 'react';
+import React, { useContext, useState, useCallback } from 'react';
 import { TextInput as NativeTextInput, Platform, View } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
@@ -112,10 +112,13 @@ const TextInput = ({
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
   const [input, setInput] = useState(children || '');
+  // Used for storing layout value of TextInput
   const [layoutDimensions, setLayoutDimensions] = useState(null);
+  // Used to hide placeholder while label is inside the TextInput
   const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
 
   const placeholderTextColor = disabled ? theme.colors.shade[300] : theme.colors.shade[400];
+  // Derive accessory conditions based on props
   const { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon } = getAccessoryConfig({
     errorText,
     prefix,
@@ -124,28 +127,27 @@ const TextInput = ({
     iconRight,
   });
 
-  useEffect(() => {
-    if (isFocused) {
-      setTimeout(() => {
-        setIsPlaceholderVisible(true);
-      }, 90);
-    } else {
-      setIsPlaceholderVisible(false);
-    }
-  }, [isFocused, setIsPlaceholderVisible]);
-
   const onFocus = useCallback(() => {
     setFocused(true);
-  }, [setFocused]);
+
+    /* Wait for 90ms to show the placeholder since it takes 100ms for Label to animate from inside to top of the TextInput.
+       Otherwise they both overlap */
+    setTimeout(() => {
+      setIsPlaceholderVisible(true);
+    }, 90);
+  }, [setFocused, setIsPlaceholderVisible]);
 
   const onBlur = useCallback(() => {
     setFocused(false);
-  }, [setFocused]);
+    setIsPlaceholderVisible(false);
+  }, [setFocused, setIsPlaceholderVisible]);
 
   const onChange = useCallback(
     (text) => {
+      // store entered value in state
       setInput(text);
       if (onChangeText) {
+        // send entered value to the consumer
         onChangeText(text);
       }
     },
@@ -155,6 +157,7 @@ const TextInput = ({
   const onTextInputLayout = useCallback(
     ({ nativeEvent }) => {
       const { layout } = nativeEvent;
+      // Set layout values only once
       if (!layoutDimensions) setLayoutDimensions(layout);
     },
     [layoutDimensions, setLayoutDimensions],
@@ -199,7 +202,7 @@ const TextInput = ({
                 onBlur={onBlur}
                 onChangeText={onChange}
                 input={input}
-                selectionColor={theme.colors.shade[700]} // not able to change this on Android
+                selectionColor={theme.colors.shade[700]} // not able to change this for Android
                 editable={!disabled}
                 variant={variant}
                 hasPrefix={hasPrefix}
