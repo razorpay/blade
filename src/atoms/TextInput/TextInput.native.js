@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from 'react';
+import React, { useContext, useState, useCallback, useEffect } from 'react';
 import { TextInput as NativeTextInput, Platform, View } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
@@ -113,6 +113,7 @@ const TextInput = ({
   const [isFocused, setFocused] = useState(false);
   const [input, setInput] = useState(children || '');
   const [layoutDimensions, setLayoutDimensions] = useState(null);
+  const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
 
   const placeholderTextColor = disabled ? theme.colors.shade[300] : theme.colors.shade[400];
   const { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon } = getAccessoryConfig({
@@ -122,6 +123,16 @@ const TextInput = ({
     iconLeft,
     iconRight,
   });
+
+  useEffect(() => {
+    if (isFocused) {
+      setTimeout(() => {
+        setIsPlaceholderVisible(true);
+      }, 150);
+    } else {
+      setIsPlaceholderVisible(false);
+    }
+  }, [isFocused, setIsPlaceholderVisible]);
 
   const onFocus = useCallback(() => {
     setFocused(true);
@@ -154,7 +165,6 @@ const TextInput = ({
       {layoutDimensions ? (
         <Label
           isFocused={isFocused}
-          hasLeftAccessory={hasLeftIcon || hasPrefix}
           hasText={!!(input && input.length > 0)}
           disabled={disabled}
           layoutDimensions={layoutDimensions}
@@ -183,7 +193,7 @@ const TextInput = ({
 
             <Flex flex={1}>
               <StyledInput
-                placeholder={isFocused ? placeholder : ''}
+                placeholder={isPlaceholderVisible ? placeholder : ''}
                 placeholderTextColor={placeholderTextColor}
                 onFocus={onFocus}
                 onBlur={onBlur}
