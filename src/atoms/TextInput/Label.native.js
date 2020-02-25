@@ -125,7 +125,7 @@ const Label = ({ isFocused, children, hasText, disabled, layoutDimensions, varia
   const theme = useContext(ThemeContext);
 
   const AnimationConfig = {
-    ANIMATION_DURATION: 180,
+    ANIMATION_DURATION: 100,
     INITIAL_FONT_SIZE: parseInt(theme.fonts.size.medium, 10),
     FINAL_FONT_SIZE: parseInt(theme.fonts.size.xsmall, 10),
     INITIAL_TOP_POSITION: getInitialTopPosition(layoutDimensions, variant),
