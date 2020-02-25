@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeContext } from 'styled-components/native';
 import icons from '../../icons';
-import { getColorKeys, getColor } from '../../_helpers/colors';
+import { getColorKeys, getColor } from '../../_helpers/theme';
 
 const iconSize = {
   xsmall: 12,
