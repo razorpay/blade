@@ -3,7 +3,7 @@ import theme from '../tokens/theme';
 
 const colorRange = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
-const getPxScale = (value) => {
+const makePxValues = (value) => {
   const values = [].concat(value);
   return values.map((v) => (typeof v === 'string' ? v : `${v * spacings.unit}px`)).join(' ');
 };
@@ -29,4 +29,4 @@ const getVariantColorKeys = () => Object.keys(theme.colors);
 
 const getLineHeight = (currentTheme, size, lineHeight) =>
   parseFloat(currentTheme.fonts.lineHeight[lineHeight]) * parseFloat(currentTheme.fonts.size[size]);
-export { getPxScale, getColorKey, getColorKeys, getColor, getVariantColorKeys, getLineHeight };
+export { makePxValues, getColorKey, getColorKeys, getColor, getVariantColorKeys, getLineHeight };
