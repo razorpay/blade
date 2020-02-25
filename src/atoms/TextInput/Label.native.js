@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Animated, View, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
-import { getColor } from '../../_helpers/colors';
+import { getColor } from '../../_helpers/theme';
 import PropTypes from 'prop-types';
 
 const IS_ANDROID = Platform.OS === 'android';

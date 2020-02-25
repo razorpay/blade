@@ -43,6 +43,4 @@ const getLineHeight = (currentTheme, textSize) => {
   }
 };
 
-export { getLineHeight };
-
-export { makePxValue, getColorKey, getColorKeys, getColor, getVariantColorKeys };
+export { makePxValue, getColorKey, getColorKeys, getColor, getVariantColorKeys, getLineHeight };
