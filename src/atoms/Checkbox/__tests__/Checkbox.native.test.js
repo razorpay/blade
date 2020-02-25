@@ -10,22 +10,20 @@ describe('Native <Checkbox />', () => {
     });
 
     test('should render component when not checked with help text props', () => {
-      const helpTextContent = 'some Help text';
-      const { getByText } = renderWithTheme(
-        <Checkbox title="Some Title" helpText={helpTextContent} />,
-      );
-      const helpTextComponent = getByText(helpTextContent);
+      const helpText = 'some Help text';
+      const { getByText } = renderWithTheme(<Checkbox title="Some Title" helpText={helpText} />);
+      const helpTextComponent = getByText(helpText);
       expect(helpTextComponent.props.size).toEqual('xsmall');
-      expect(helpTextComponent.props.children).toEqual(helpTextContent);
+      expect(helpTextComponent.props.children).toEqual(helpText);
     });
 
     test('should render medium sized Checkbox', () => {
       const { container, getByText } = renderWithTheme(
         <Checkbox title="Some Title" helpText="some Help text" size="medium" />,
       );
-      const titleComponent = getByText('Some Title');
+      const component = getByText('Some Title');
       expect(container).toMatchSnapshot();
-      expect(titleComponent.props.size).toEqual('medium');
+      expect(component.props.size).toEqual('medium');
     });
 
     test('should render component in disabled state', () => {

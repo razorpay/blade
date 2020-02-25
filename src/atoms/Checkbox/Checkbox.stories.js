@@ -6,9 +6,9 @@ import { withKnobs } from '@storybook/addon-ondevice-knobs';
 import Checkbox from './Checkbox';
 
 const sizeOptions = {
-  large: 'large',
-  medium: 'medium',
   small: 'small',
+  medium: 'medium',
+  large: 'large',
 };
 
 storiesOf('Checkbox', module)
@@ -24,7 +24,6 @@ storiesOf('Checkbox', module)
       helpText={text('Help Text', 'Play with addons to see changes')}
       disabled={boolean('Disabled', false)}
       onChange={action('Changed')}
-      variantColor="azzure"
     />
   ))
   .add('checked', () => (
