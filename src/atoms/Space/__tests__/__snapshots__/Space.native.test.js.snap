@@ -49,3 +49,28 @@ exports[`Renders <Space /> correctly should apply padding to child component 1`]
   />
 </View>
 `;
+
+exports[`Renders <Space /> correctly should throw error when more than one nodes are passed as children 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "marginBottom": 40,
+          "marginLeft": 40,
+          "marginRight": 40,
+          "marginTop": 40,
+        },
+      ]
+    }
+  />
+</View>
+`;
