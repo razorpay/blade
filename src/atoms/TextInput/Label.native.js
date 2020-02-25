@@ -121,7 +121,11 @@ const getInitialLeftPosition = (layoutDimensions) => {
   return layoutDimensions.x;
 };
 
-const Label = ({ isFocused, children, hasText, disabled, layoutDimensions, variant }) => {
+const getFinalLabelColor = (theme, hasError) => {
+  return hasError ? getColor(theme, 'shade.600') : getColor(theme, 'primary.900');
+};
+
+const Label = ({ isFocused, children, hasText, disabled, layoutDimensions, variant, hasError }) => {
   const theme = useContext(ThemeContext);
 
   const AnimationConfig = {
@@ -133,7 +137,7 @@ const Label = ({ isFocused, children, hasText, disabled, layoutDimensions, varia
     INITIAL_LEFT_POSITION: getInitialLeftPosition(layoutDimensions),
     FINAL_LEFT_POSITION: 0,
     INITIAL_LABEL_COLOR: getColor(theme, 'shade.600'),
-    FINAL_LABEL_COLOR: getColor(theme, 'primary.900'),
+    FINAL_LABEL_COLOR: getFinalLabelColor(theme, hasError),
     INITIAL_ANIMATION_VALUE: 0,
     FINAL_ANIMATION_VALUE: 1,
   };
@@ -188,6 +192,7 @@ Label.propTypes = {
     y: PropTypes.number,
   }).isRequired,
   variant: PropTypes.oneOf(['outline', 'filled']),
+  hasError: PropTypes.bool,
 };
 
 Label.defaultProps = {
