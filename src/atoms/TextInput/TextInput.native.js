@@ -13,6 +13,7 @@ import { getLineHeight } from '../../_helpers/theme';
 import Flex from '../Flex';
 import CharacterCount from './CharacterCount.native';
 import Label from './Label';
+import automation from '../../_helpers/automation-attributes';
 
 const IS_ANDROID = Platform.OS === 'android';
 
@@ -108,6 +109,7 @@ const TextInput = ({
   maxLength,
   showCharacterCount,
   label,
+  testID,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
@@ -210,6 +212,7 @@ const TextInput = ({
                 hasLeftIcon={hasLeftIcon}
                 maxLength={maxLength}
                 onLayout={onTextInputLayout}
+                {...automation(testID)}
               >
                 <Space padding={[0, 0, 0.5, 0]}>
                   <Text color={styles.text.color({ disabled })} size="medium">
@@ -271,12 +274,14 @@ TextInput.propTypes = {
   maxLength: PropTypes.number,
   showCharacterCount: PropTypes.bool,
   label: PropTypes.string,
+  testID: PropTypes.string,
 };
 
 TextInput.defaultProps = {
   placeholder: 'Enter text here',
   variant: 'outline',
   label: 'Label',
+  testID: 'ds-text-input',
 };
 
 export default TextInput;
