@@ -15,10 +15,12 @@ exports[`Renders <Button /> correctly snapshot testing 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "#202c41",
+          "backgroundColor": "rgba(22, 47, 86, 0.87)",
           "borderRadius": 6,
-          "borderWidth": 1,
           "marginTop": 7,
+          "paddingBottom": 14,
+          "paddingLeft": 14,
+          "paddingRight": 14,
           "paddingTop": 14,
         },
       ]
@@ -29,8 +31,9 @@ exports[`Renders <Button /> correctly snapshot testing 1`] = `
         Array [
           Object {
             "alignSelf": "center",
-            "color": "#fff",
+            "color": "rgba(224, 228, 249, 1.0)",
             "fontSize": 18,
+            "letterSpacing": undefined,
           },
         ]
       }
