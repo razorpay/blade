@@ -49,6 +49,17 @@ const styles = {
       return theme.colors.shade[600];
     }
   },
+  alignSelf({ align }) {
+    switch (align) {
+      case 'left':
+      default:
+        return 'flex-start';
+      case 'center':
+        return 'center';
+      case 'right':
+        return 'flex-end';
+    }
+  },
 };
 
 const StyledContainer = styled(View)(
@@ -58,6 +69,7 @@ const StyledContainer = styled(View)(
   border-radius: ${`${parseInt(styles.size(props).containerSize.height, 10) / 2}px`};
   padding: ${styles.padding(props)};
   flex-direction: ${props.flexDirection};
+  align-self: ${styles.alignSelf(props)}
   background-color: ${props.backgroundColor};
 `,
 );
@@ -73,7 +85,7 @@ const StyledKnob = styled(TouchableOpacity)(
 const AnimatedKnob = Animated.createAnimatedComponent(StyledKnob);
 
 const Toggle = (props) => {
-  const { disabled, value, testID } = props;
+  const { disabled, value, align, testID, onValueChange, size } = props;
   const theme = useContext(ThemeContext);
   const { containerSize, knobSize } = styles.size({ ...props, theme });
   const containerPadding = styles.padding({ ...props, theme });
@@ -121,23 +133,30 @@ const Toggle = (props) => {
     ]).start(() => {
       knobTranslationX.current = new Animated.Value(0);
       setToggleState(!toggleState);
-      props.onValueChange(!toggleState);
+      onValueChange(!toggleState);
     });
   };
 
   const containerFlexDirection = toggleState ? 'row-reverse' : 'row';
+  const hitSlopWidth =
+    parseInt(containerSize.width, 10) -
+    parseInt(containerPadding, 10) -
+    parseInt(knobSize.width, 10);
+  const hitSlop = toggleState ? { left: hitSlopWidth } : { right: hitSlopWidth };
   return (
     <StyledContainer
       backgroundColor={containerColor}
       flexDirection={containerFlexDirection}
       {...automationAttributes(testID)}
+      align={align}
     >
       <AnimatedKnob
         disabled={disabled}
-        size={props.size}
+        size={size}
         activeOpacity={1}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
+        hitSlop={hitSlop}
         style={[
           {
             width: knobWidth.current,
@@ -155,6 +174,7 @@ Toggle.propTypes = {
   value: PropTypes.bool,
   onValueChange: PropTypes.func,
   testID: PropTypes.string,
+  align: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 Toggle.defaultProps = {
@@ -162,6 +182,7 @@ Toggle.defaultProps = {
   disabled: false,
   value: false,
   testID: 'ds-toggle',
+  align: 'left',
   onValueChange: () => {},
 };
 
