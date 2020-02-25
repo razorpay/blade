@@ -111,6 +111,7 @@ const TextInput = ({
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
   const [input, setInput] = useState(children || '');
+  const [layoutDimensions, setLayoutDimensions] = useState(null);
 
   const placeholderTextColor = disabled ? theme.colors.shade[300] : theme.colors.shade[400];
   const { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon } = getAccessoryConfig({
@@ -139,14 +140,26 @@ const TextInput = ({
     [onChangeText, setInput],
   );
 
+  const onTextInputLayout = useCallback(
+    ({ nativeEvent }) => {
+      const { layout } = nativeEvent;
+      if (!layoutDimensions) setLayoutDimensions(layout);
+    },
+    [layoutDimensions, setLayoutDimensions],
+  );
+
   return (
     <Container>
-      <Label
-        isFocused={isFocused}
-        hasLeftAccessory={hasLeftIcon || hasPrefix}
-        hasText={!!(input && input.length > 0)}
-        disabled={disabled}
-      />
+      {layoutDimensions ? (
+        <Label
+          isFocused={isFocused}
+          hasLeftAccessory={hasLeftIcon || hasPrefix}
+          hasText={!!(input && input.length > 0)}
+          disabled={disabled}
+          layoutDimensions={layoutDimensions}
+          variant={variant}
+        />
+      ) : null}
       <Space padding={styles.fillContainer.padding}>
         <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
           <InputContainer>
@@ -179,6 +192,7 @@ const TextInput = ({
                 hasPrefix={hasPrefix}
                 hasLeftIcon={hasLeftIcon}
                 maxLength={maxLength}
+                onLayout={onTextInputLayout}
               >
                 <Space padding={[0, 0, 0.5, 0]}>
                   <Text color={styles.text.color({ disabled })} size="medium">
