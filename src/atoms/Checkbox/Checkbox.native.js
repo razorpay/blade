@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, View } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
-import CheckBoxIcon from './CheckboxIcon';
 import Text from '../Text';
 import Flex from '../Flex';
 import isEmpty from '../../_helpers/isEmpty';
@@ -10,6 +9,7 @@ import automation from '../../_helpers/automation-attributes';
 import Space from '../Space';
 import spacings from '../../tokens/spacings';
 import { getPxValue } from '../../_helpers/theme';
+import Icon from '../Icon';
 
 const styles = {
   backdrop: {
@@ -24,6 +24,24 @@ const styles = {
     },
     backgroundColor({ backgroundColor }) {
       return backgroundColor;
+    },
+  },
+  icon: {
+    fill({ disabled, checked }) {
+      let color = 'shade.300';
+
+      if (disabled) {
+        color = 'shade.300';
+        return color;
+      }
+
+      if (checked) {
+        color = 'primary.800';
+        return color;
+      }
+      color = 'shade.500';
+
+      return color;
     },
   },
 };
@@ -105,7 +123,11 @@ const Checkbox = ({ onChange, checked, disabled, size, title, helpText, testID }
               borderRadius={backdropSize / 2}
               backgroundColor={underlayColor}
             >
-              <CheckBoxIcon checked={checked} size={size} disabled={disabled} />
+              <Icon
+                size={size}
+                name={checked ? 'checkboxFilled' : 'checkboxOutlined'}
+                fill={styles.icon.fill({ checked, disabled })}
+              />
             </Backdrop>
             <Flex alignSelf="center">
               <Space margin={[0, 0, 0, 0.5]}>

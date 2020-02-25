@@ -24,6 +24,7 @@ storiesOf('Checkbox', module)
       helpText={text('Help Text', 'Play with addons to see changes')}
       disabled={boolean('Disabled', false)}
       onChange={action('Changed')}
+      variantColor="azzure"
     />
   ))
   .add('checked', () => (

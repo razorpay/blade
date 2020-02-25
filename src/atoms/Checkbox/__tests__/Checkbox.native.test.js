@@ -44,7 +44,7 @@ describe('Native <Checkbox />', () => {
   });
 
   describe('Checked', () => {
-    test('should render component when not checked with default props', () => {
+    test('should render component when checked with default props', () => {
       const { container } = renderWithTheme(<Checkbox title="Some Title" checked={true} />);
       expect(container).toMatchSnapshot();
     });
