@@ -1,6 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
 
 const styles = {
@@ -17,12 +16,10 @@ const styles = {
   },
 };
 
-const StyledLine = styled(View)(
-  (props) => `
+const StyledLine = styled.View`
   height: 1px;
-  background-color: ${styles.backgroundColor(props)};
-`,
-);
+  background-color: ${styles.backgroundColor};
+`;
 
 const Line = ({ isFocused, hasError, disabled }) => {
   return <StyledLine isFocused={isFocused} hasError={hasError} disabled={disabled} />;
