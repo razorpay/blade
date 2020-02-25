@@ -6,7 +6,7 @@ function CheckboxIcon({ checked, size, disabled }) {
     return (
       <Icon
         size={size}
-        name="checkedSquare"
+        name="checkboxFilled"
         fill={disabled ? 'shade.300' : 'primary.800'}
         testID="ds-checkbox-icon-checked"
       />
@@ -15,7 +15,7 @@ function CheckboxIcon({ checked, size, disabled }) {
   return (
     <Icon
       size={size}
-      name="uncheckedSquare"
+      name="checkboxOutlined"
       fill={disabled ? 'shade.300' : 'shade.500'}
       testID="ds-checkbox-icon-unchecked"
     />

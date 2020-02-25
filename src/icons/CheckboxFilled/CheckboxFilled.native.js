@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Svg, { Path } from 'react-native-svg';
 
-export default function CheckedSquare({ width, height, fill }) {
+export default function CheckboxFilled({ width, height, fill }) {
   return (
     <Svg
       width={width}
@@ -22,13 +22,13 @@ export default function CheckedSquare({ width, height, fill }) {
   );
 }
 
-CheckedSquare.propTypes = {
+CheckboxFilled.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   fill: PropTypes.string, // TODO: replace this type with range of available DS based colors
 };
 
-CheckedSquare.defaultProps = {
+CheckboxFilled.defaultProps = {
   width: 24,
   height: 24,
 };

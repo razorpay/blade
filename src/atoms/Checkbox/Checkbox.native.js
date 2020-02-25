@@ -5,7 +5,7 @@ import styled, { ThemeContext } from 'styled-components/native';
 import CheckBoxIcon from './CheckboxIcon';
 import Text from '../Text';
 import Flex from '../Flex';
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from '../../_helpers/isEmpty';
 import automation from '../../_helpers/automation-attributes';
 import Space from '../Space';
 import spacings from '../../tokens/spacings';

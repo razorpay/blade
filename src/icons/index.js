@@ -1,7 +1,7 @@
 const icons = {
   info: require('./Info').default,
-  uncheckedSquare: require('./UncheckedSquare').default,
-  checkedSquare: require('./CheckedSquare').default,
+  checkboxOutlined: require('./CheckboxOutlined').default,
+  checkboxFilled: require('./CheckboxFilled').default,
 };
 
 export default icons;
