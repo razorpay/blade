@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 
 const IS_ANDROID = Platform.OS === 'android';
 
+const ANDROID_INITIAL_TOP_DIVISOR = 2.4;
+const IOS_INITIAL_TOP_DIVISOR = 2;
+
 const Container = styled(View)`
   height: ${IS_ANDROID ? '2px' : '10px'};
 `;
@@ -71,14 +74,22 @@ const getLeftInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
   });
 };
 
-const Label = ({ isFocused, children, hasLeftAccessory, hasText, disabled }) => {
+const getInitialTopPosition = (layoutDimensions) => {
+  if (IS_ANDROID) {
+    return layoutDimensions.height / ANDROID_INITIAL_TOP_DIVISOR;
+  } else {
+    return layoutDimensions.height / IOS_INITIAL_TOP_DIVISOR;
+  }
+};
+
+const Label = ({ isFocused, children, hasLeftAccessory, hasText, disabled, layoutDimensions }) => {
   const theme = useContext(ThemeContext);
 
   const AnimationConfig = {
     ANIMATION_DURATION: 200,
     INITIAL_FONT_SIZE: 14,
     FINAL_FONT_SIZE: 12,
-    INITIAL_TOP_POSITION: IS_ANDROID ? 17 : 21,
+    INITIAL_TOP_POSITION: getInitialTopPosition(layoutDimensions),
     FINAL_TOP_POSITION: 0,
     INITIAL_LEFT_POSITION: hasLeftAccessory ? 20 : 0,
     FINAL_LEFT_POSITION: 0,
@@ -131,6 +142,7 @@ Label.propTypes = {
   hasLeftAccessory: PropTypes.bool,
   hasText: PropTypes.bool,
   disabled: PropTypes.bool,
+  layoutDimensions: PropTypes.shape({ height: PropTypes.number }).isRequired,
 };
 
 Label.defaultProps = {
