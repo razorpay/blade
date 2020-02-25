@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Platform } from 'react-native';
 import Text from '../Text';
-import Space from '../Space/Space.native';
+import Space from '../Space';
 
 const styles = {
   color({ disabled }) {
