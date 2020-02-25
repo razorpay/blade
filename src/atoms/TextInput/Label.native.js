@@ -9,7 +9,7 @@ const IS_ANDROID = Platform.OS === 'android';
 const ANDROID_OUTLINE_INITIAL_TOP_DIVISOR = 2.4;
 const IOS_OUTLINE_INITIAL_TOP_DIVISOR = 2;
 
-const ANDROID_FILLED_INITIAL_TOP_DIVISOR = 2.4;
+const ANDROID_FILLED_INITIAL_TOP_DIVISOR = 1.15;
 const IOS_FILLED_INITIAL_TOP_DIVISOR = 1.3;
 
 const styles = {
@@ -18,7 +18,7 @@ const styles = {
       if (variant === 'outline') {
         return IS_ANDROID ? '2px' : '10px';
       } else {
-        return IS_ANDROID ? '2px' : '20px';
+        return IS_ANDROID ? '20px' : '20px';
       }
     },
   },
