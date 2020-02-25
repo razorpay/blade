@@ -117,34 +117,20 @@ const getInitialTopPosition = (layoutDimensions, variant) => {
   }
 };
 
-const getInitialLeftPosition = (hasLeftAccessory, variant) => {
-  if (!hasLeftAccessory) return 0;
-
-  if (variant === 'outline') {
-    return 20;
-  } else {
-    return 24;
-  }
+const getInitialLeftPosition = (layoutDimensions) => {
+  return layoutDimensions.x;
 };
 
-const Label = ({
-  isFocused,
-  children,
-  hasLeftAccessory,
-  hasText,
-  disabled,
-  layoutDimensions,
-  variant,
-}) => {
+const Label = ({ isFocused, children, hasText, disabled, layoutDimensions, variant }) => {
   const theme = useContext(ThemeContext);
 
   const AnimationConfig = {
-    ANIMATION_DURATION: 200,
+    ANIMATION_DURATION: 180,
     INITIAL_FONT_SIZE: parseInt(theme.fonts.size.medium, 10),
     FINAL_FONT_SIZE: parseInt(theme.fonts.size.xsmall, 10),
     INITIAL_TOP_POSITION: getInitialTopPosition(layoutDimensions, variant),
     FINAL_TOP_POSITION: 0,
-    INITIAL_LEFT_POSITION: getInitialLeftPosition(hasLeftAccessory, variant),
+    INITIAL_LEFT_POSITION: getInitialLeftPosition(layoutDimensions),
     FINAL_LEFT_POSITION: 0,
     INITIAL_LABEL_COLOR: getColor(theme, 'shade.600'),
     FINAL_LABEL_COLOR: getColor(theme, 'primary.900'),
@@ -181,6 +167,7 @@ const Label = ({
               ? getColor(theme, 'shade.400')
               : getColorInterpolation(AnimationConfig, labelAnimatedValue),
           }}
+          numberOfLines={1}
         >
           {children}
         </StyledText>
@@ -192,10 +179,14 @@ const Label = ({
 Label.propTypes = {
   children: PropTypes.string,
   isFocused: PropTypes.bool,
-  hasLeftAccessory: PropTypes.bool,
   hasText: PropTypes.bool,
   disabled: PropTypes.bool,
-  layoutDimensions: PropTypes.shape({ height: PropTypes.number }).isRequired,
+  layoutDimensions: PropTypes.shape({
+    height: PropTypes.number,
+    width: PropTypes.number,
+    x: PropTypes.number,
+    y: PropTypes.number,
+  }).isRequired,
   variant: PropTypes.oneOf(['outline', 'filled']),
 };
 
