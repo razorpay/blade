@@ -9,17 +9,18 @@ import isEmpty from '../../_helpers/isEmpty';
 import automation from '../../_helpers/automation-attributes';
 import Space from '../Space';
 import spacings from '../../tokens/spacings';
+import { getPxValue } from '../../_helpers/theme';
 
 const styles = {
   backdrop: {
     width({ width }) {
-      return width;
+      return getPxValue(width);
     },
     height({ height }) {
-      return height;
+      return getPxValue(height);
     },
     borderRadius({ borderRadius }) {
-      return borderRadius;
+      return getPxValue(borderRadius);
     },
     backgroundColor({ backgroundColor }) {
       return backgroundColor;
@@ -28,9 +29,9 @@ const styles = {
 };
 
 const Backdrop = styled.View`
-  width: ${styles.backdrop.width}px;
-  height: ${styles.backdrop.height}px;
-  border-radius: ${styles.backdrop.borderRadius}px;
+  width: ${styles.backdrop.width};
+  height: ${styles.backdrop.height};
+  border-radius: ${styles.backdrop.borderRadius};
   background-color: ${styles.backdrop.backgroundColor};
 `;
 

@@ -5,4 +5,6 @@ const getPxScale = (value) => {
   return values.map((v) => (typeof v === 'string' ? v : `${v * spacings.unit}px`)).join(' ');
 };
 
-export { getPxScale };
+const getPxValue = (value) => `${value}px`;
+
+export { getPxScale, getPxValue };

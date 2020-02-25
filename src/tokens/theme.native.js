@@ -1,8 +1,6 @@
 import { fonts } from '../tokens';
 import { lightTheme as baseLightTheme, darkTheme as baseDarkTheme } from './theme.web';
-
-// For  styled components in React Native: converts unitless numbers to "px" strings
-const getPxValue = (value) => `${value}px`;
+import { getPxValue } from '../_helpers/theme';
 
 const nativeFonts = {
   ...fonts,
