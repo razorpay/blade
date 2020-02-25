@@ -128,7 +128,7 @@ const TextInput = ({
     if (isFocused) {
       setTimeout(() => {
         setIsPlaceholderVisible(true);
-      }, 150);
+      }, 90);
     } else {
       setIsPlaceholderVisible(false);
     }
