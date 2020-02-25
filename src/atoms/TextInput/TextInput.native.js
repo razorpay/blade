@@ -107,6 +107,7 @@ const TextInput = ({
   iconRight,
   maxLength,
   showCharacterCount,
+  label,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
@@ -158,7 +159,9 @@ const TextInput = ({
           disabled={disabled}
           layoutDimensions={layoutDimensions}
           variant={variant}
-        />
+        >
+          {label}
+        </Label>
       ) : null}
       <Space padding={styles.fillContainer.padding}>
         <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
@@ -253,11 +256,13 @@ TextInput.propTypes = {
   iconRight: PropTypes.string,
   maxLength: PropTypes.number,
   showCharacterCount: PropTypes.bool,
+  label: PropTypes.string,
 };
 
 TextInput.defaultProps = {
   placeholder: 'Enter text here',
   variant: 'outline',
+  label: 'Label',
 };
 
 export default TextInput;
