@@ -9,8 +9,30 @@ const IS_ANDROID = Platform.OS === 'android';
 const ANDROID_INITIAL_TOP_DIVISOR = 2.4;
 const IOS_INITIAL_TOP_DIVISOR = 2;
 
+const styles = {
+  container: {
+    height() {
+      return IS_ANDROID ? '2px' : '10px';
+    },
+  },
+  text: {
+    color({ theme }) {
+      return getColor(theme, 'shade.800');
+    },
+    fontSize({ theme }) {
+      return theme.fonts.size.xsmall;
+    },
+    lineHeight() {
+      return '18px'; //TODO: use helper to calculate this from theme
+    },
+    fontFamily({ theme }) {
+      return theme.fonts.family.lato.regular;
+    },
+  },
+};
+
 const Container = styled(View)`
-  height: ${IS_ANDROID ? '2px' : '10px'};
+  height: ${styles.container.height};
 `;
 
 const FloatView = styled(Animated.View)`
@@ -18,12 +40,12 @@ const FloatView = styled(Animated.View)`
 `;
 
 const StyledText = styled(Animated.Text)`
-  font-family: ${'Lato-Regular'};
+  font-family: ${styles.text.fontFamily};
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
-  line-height: 18px;
-  color: ${(props) => getColor(props.theme, 'shade.800')};
+  font-size: ${styles.text.fontSize};
+  line-height: ${styles.text.lineHeight};
+  color: ${styles.text.color};
 `;
 
 const onFocus = ({ AnimationConfig, labelAnimatedValue }) => {
