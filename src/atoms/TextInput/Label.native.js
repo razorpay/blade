@@ -6,13 +6,20 @@ import PropTypes from 'prop-types';
 
 const IS_ANDROID = Platform.OS === 'android';
 
-const ANDROID_INITIAL_TOP_DIVISOR = 2.4;
-const IOS_INITIAL_TOP_DIVISOR = 2;
+const ANDROID_OUTLINE_INITIAL_TOP_DIVISOR = 2.4;
+const IOS_OUTLINE_INITIAL_TOP_DIVISOR = 2;
+
+const ANDROID_FILLED_INITIAL_TOP_DIVISOR = 2.4;
+const IOS_FILLED_INITIAL_TOP_DIVISOR = 1.3;
 
 const styles = {
   container: {
-    height() {
-      return IS_ANDROID ? '2px' : '10px';
+    height({ variant }) {
+      if (variant === 'outline') {
+        return IS_ANDROID ? '2px' : '10px';
+      } else {
+        return IS_ANDROID ? '2px' : '20px';
+      }
     },
   },
   text: {
@@ -96,24 +103,48 @@ const getLeftInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
   });
 };
 
-const getInitialTopPosition = (layoutDimensions) => {
-  if (IS_ANDROID) {
-    return layoutDimensions.height / ANDROID_INITIAL_TOP_DIVISOR;
+const getInitialTopPosition = (layoutDimensions, variant) => {
+  if (variant === 'outline') {
+    if (IS_ANDROID) {
+      return layoutDimensions.height / ANDROID_OUTLINE_INITIAL_TOP_DIVISOR;
+    } else {
+      return layoutDimensions.height / IOS_OUTLINE_INITIAL_TOP_DIVISOR;
+    }
+  } else if (IS_ANDROID) {
+    return layoutDimensions.height / ANDROID_FILLED_INITIAL_TOP_DIVISOR;
   } else {
-    return layoutDimensions.height / IOS_INITIAL_TOP_DIVISOR;
+    return layoutDimensions.height / IOS_FILLED_INITIAL_TOP_DIVISOR;
   }
 };
 
-const Label = ({ isFocused, children, hasLeftAccessory, hasText, disabled, layoutDimensions }) => {
+const getInitialLeftPosition = (hasLeftAccessory, variant) => {
+  if (!hasLeftAccessory) return 0;
+
+  if (variant === 'outline') {
+    return 20;
+  } else {
+    return 24;
+  }
+};
+
+const Label = ({
+  isFocused,
+  children,
+  hasLeftAccessory,
+  hasText,
+  disabled,
+  layoutDimensions,
+  variant,
+}) => {
   const theme = useContext(ThemeContext);
 
   const AnimationConfig = {
     ANIMATION_DURATION: 200,
-    INITIAL_FONT_SIZE: 14,
-    FINAL_FONT_SIZE: 12,
-    INITIAL_TOP_POSITION: getInitialTopPosition(layoutDimensions),
+    INITIAL_FONT_SIZE: parseInt(theme.fonts.size.medium, 10),
+    FINAL_FONT_SIZE: parseInt(theme.fonts.size.xsmall, 10),
+    INITIAL_TOP_POSITION: getInitialTopPosition(layoutDimensions, variant),
     FINAL_TOP_POSITION: 0,
-    INITIAL_LEFT_POSITION: hasLeftAccessory ? 20 : 0,
+    INITIAL_LEFT_POSITION: getInitialLeftPosition(hasLeftAccessory, variant),
     FINAL_LEFT_POSITION: 0,
     INITIAL_LABEL_COLOR: getColor(theme, 'shade.600'),
     FINAL_LABEL_COLOR: getColor(theme, 'primary.900'),
@@ -135,7 +166,7 @@ const Label = ({ isFocused, children, hasLeftAccessory, hasText, disabled, layou
   }, [AnimationConfig, isFocused, labelAnimatedValue]);
 
   return (
-    <Container>
+    <Container variant={variant}>
       <FloatView
         style={{
           top: getTopInterpolation(AnimationConfig, labelAnimatedValue, hasText),
@@ -165,6 +196,7 @@ Label.propTypes = {
   hasText: PropTypes.bool,
   disabled: PropTypes.bool,
   layoutDimensions: PropTypes.shape({ height: PropTypes.number }).isRequired,
+  variant: PropTypes.oneOf(['outline', 'filled']),
 };
 
 Label.defaultProps = {
