@@ -9,7 +9,7 @@ import AccessoryText from './AccessoryText';
 import AccessoryIcon from './AccessoryIcon';
 import Text from '../Text';
 import Space from '../Space';
-import { getLineHeight } from '../../_helpers/fonts';
+import { getLineHeight } from '../../_helpers/theme';
 import Flex from '../Flex';
 import CharacterCount from './CharacterCount.native';
 import Label from './Label';
