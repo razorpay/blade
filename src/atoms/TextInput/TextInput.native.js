@@ -172,6 +172,7 @@ const TextInput = ({
           disabled={disabled}
           layoutDimensions={layoutDimensions}
           variant={variant}
+          hasError={hasError}
         >
           {label}
         </Label>
