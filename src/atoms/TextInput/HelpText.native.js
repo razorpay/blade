@@ -16,7 +16,6 @@ const styles = {
 };
 
 const HelpText = ({ children, disabled }) => {
-  //TODO: have a fixed  height
   return (
     <Space padding={[0.5, 0, 0, 0]}>
       <Flex flex={1}>
