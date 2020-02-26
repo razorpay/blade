@@ -39,13 +39,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -165,13 +166,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -291,13 +293,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -417,13 +420,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -545,13 +549,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -878,13 +883,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -1206,13 +1212,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -1417,13 +1424,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -1587,13 +1595,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -1959,13 +1968,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -2208,13 +2218,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -2457,13 +2468,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -2583,13 +2595,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -2748,13 +2761,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -2913,13 +2927,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
           variant="filled"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -3078,13 +3093,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -3204,13 +3220,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -3330,13 +3347,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -3458,13 +3476,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -3791,13 +3810,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -4119,13 +4139,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -4245,13 +4266,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -4415,13 +4437,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -4626,13 +4649,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -4875,13 +4899,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -5247,13 +5272,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -5496,13 +5522,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -5622,13 +5649,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -5787,13 +5815,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }
@@ -5952,13 +5981,14 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
           variant="outline"
         >
           <View
+            size="medium"
             style={
               Array [
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 160,
+                  "width": 240,
                 },
               ]
             }

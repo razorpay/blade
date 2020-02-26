@@ -2,6 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import TextInput from './TextInput';
 import styled from 'styled-components';
+import { select } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-ondevice-knobs';
 
 const ScrollContainer = styled.ScrollView`
   width: 100%;
@@ -17,15 +19,22 @@ const ItemTitle = styled.Text`
   margin: 0px 0px 10px 0px;
 `;
 
+const sizeOptions = {
+  small: 'small',
+  medium: 'medium',
+};
+
 storiesOf('TextInput', module)
   .addParameters({
     component: TextInput,
   })
+  .addDecorator(withKnobs)
   .add('default', () => (
     <ScrollContainer contentContainerStyle={{}}>
       <ItemContainer>
         <ItemTitle>Outline:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'medium')}
           label="Label"
           disabled={false}
           iconLeft=""
@@ -42,6 +51,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Outline Leading Icon:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft="info"
@@ -58,6 +68,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Outline Trailing Icon:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft=""
@@ -74,6 +85,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Outline prefix:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft=""
@@ -90,6 +102,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Outline suffix:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft=""
@@ -106,6 +119,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Outline character count:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft=""
@@ -124,6 +138,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Outline error:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft="info"
@@ -140,6 +155,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Outline Disabled:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={true}
           iconLeft=""
@@ -156,6 +172,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Outline Disabled With Text:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={true}
           iconLeft=""
@@ -175,6 +192,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Filled:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft=""
@@ -191,6 +209,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Filled Leading Icon:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft="info"
@@ -207,6 +226,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Filled Trailing Icon:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft=""
@@ -223,6 +243,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Filled prefix:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft=""
@@ -239,6 +260,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Filled suffix:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft=""
@@ -255,6 +277,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Filled character count:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft=""
@@ -273,6 +296,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Filled error:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft="info"
@@ -289,6 +313,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Filled Disabled:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={true}
           iconLeft=""
@@ -305,6 +330,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Filled Disabled With Text:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={true}
           iconLeft=""
@@ -323,6 +349,7 @@ storiesOf('TextInput', module)
       <ItemContainer>
         <ItemTitle>Filled with left label:</ItemTitle>
         <TextInput
+          size={select('Size', sizeOptions, 'large')}
           label="Label"
           disabled={false}
           iconLeft=""
