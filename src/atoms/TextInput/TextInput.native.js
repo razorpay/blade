@@ -59,6 +59,17 @@ const styles = {
       }
     },
   },
+  inputContainer: {
+    width({ size }) {
+      switch (size) {
+        case 'small':
+          return '160px';
+        case 'medium':
+        default:
+          return '240px';
+      }
+    },
+  },
 };
 
 const Container = styled(View)`
@@ -69,7 +80,7 @@ const InputContainer = styled(View)`
   background-color: transparent;
   flex-direction: row;
   align-items: center;
-  width: 160px;
+  width: ${styles.inputContainer.width};
 `;
 
 const StyledInput = styled(NativeTextInput)`
@@ -113,6 +124,7 @@ const TextInput = ({
   label,
   testID,
   labelPosition,
+  size,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
@@ -201,7 +213,7 @@ const TextInput = ({
           <Flex flexDirection="column">
             <View>
               <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
-                <InputContainer>
+                <InputContainer size={size}>
                   {hasPrefix ? (
                     <AccessoryText variant={variant} disabled={disabled}>
                       {prefix}
@@ -300,6 +312,7 @@ TextInput.propTypes = {
   label: PropTypes.string,
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
+  size: PropTypes.oneOf(['small', 'medium']),
 };
 
 TextInput.defaultProps = {
@@ -308,6 +321,7 @@ TextInput.defaultProps = {
   label: 'Label',
   testID: 'ds-text-input',
   labelPosition: 'top',
+  size: 'medium',
 };
 
 export default TextInput;
