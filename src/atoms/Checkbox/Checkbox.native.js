@@ -29,13 +29,13 @@ const styles = {
   icon: {
     fill({ disabled, checked, variantColor }) {
       if (disabled) {
-        return getColorKey(variantColor || 'shade', 300);
+        return getColorKey('shade', 300);
       }
       if (checked) {
         return getColorKey(variantColor || 'primary', 800);
       }
 
-      return getColorKey(variantColor || 'shade', 500);
+      return getColorKey('shade', 500);
     },
   },
   helpText: {
@@ -112,7 +112,7 @@ const Checkbox = ({
   const theme = useContext(ThemeContext);
 
   const onPressIn = () => {
-    let colorKey = getColorKey(variantColor || 'tone', 400);
+    let colorKey = getColorKey('tone', 400);
     if (checked) {
       colorKey = getColorKey(variantColor || 'primary', 300);
     }
