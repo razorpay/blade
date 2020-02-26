@@ -7,7 +7,7 @@ import Icon from '../Icon';
 import Space from '../Space';
 import Text from '../Text';
 import View from '../View';
-import { getColorKey, getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
+import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
 
 const styles = {
   fontColor({ variant, variantColor, disabled }) {
@@ -15,19 +15,19 @@ const styles = {
       case 'primary':
       default:
         if (disabled) {
-          return getColorKey(`${variantColor || 'background'}`, 200); //TODO: exception color used in design
+          return 'white.950'; //TODO: mapping not present(EX/white 500) for figma in sheet.
         }
-        return getColorKey(`${variantColor || 'background'}`, 100); //in design, "Exception" white is used.
+        return 'white.900';
       case 'secondary':
         if (disabled) {
-          return getColorKey(`${variantColor || 'shade'}`, 400);
+          return 'shade.940';
         }
-        return getColorKey(`${variantColor || 'primary'}`, 800);
+        return `${variantColor || 'primary'}.800`;
       case 'tertiary':
         if (disabled) {
-          return getColorKey(`${variantColor || 'shade'}`, 400);
+          return 'shade.940';
         }
-        return getColorKey(`${variantColor || 'primary'}`, 800);
+        return `${variantColor || 'primary'}.800`;
     }
   },
   backgroundColor({ variant, variantColor, disabled, theme }) {
@@ -35,14 +35,14 @@ const styles = {
       case 'primary':
       default:
         if (disabled) {
-          return getColor(theme, `${variantColor || 'primary'}.200`); //TODO: exception color used in design
+          return getColor(theme, `${variantColor || 'primary'}.500`);
         }
-        return getColor(theme, `${variantColor || 'primary'}.800`); //in design, "Exception" white is used.
+        return getColor(theme, `${variantColor || 'primary'}.800`);
       case 'secondary':
         if (disabled) {
-          return getColor(theme, `${variantColor || 'shade'}.100`);
+          return getColor(theme, 'shade.910');
         }
-        return getColor(theme, `${variantColor || 'primary'}.200`);
+        return getColor(theme, `${variantColor || 'primary'}.920`);
       case 'tertiary':
         return 'transparent';
     }
@@ -55,20 +55,20 @@ const styles = {
         return null;
       case 'secondary':
         if (disabled) {
-          return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor || 'shade'}.300`)}`;
+          return `${makePxValue(0.125)} solid ${getColor(theme, 'shade.930')}`;
         }
-        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor || 'primary'}.600`)}`;
+        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor || 'primary'}.970`)}`;
     }
   },
   underlayColor({ variant, variantColor, theme }) {
     switch (variant) {
       case 'primary':
       default:
-        return getColor(theme, `${variantColor || 'primary'}.900`); //in design, "Exception" white is used.
+        return getColor(theme, `${variantColor || 'primary'}.600`); //in design, "Exception" white is used.
       case 'secondary':
-        return getColor(theme, `${variantColor || 'primary'}.500`);
+        return getColor(theme, `${variantColor || 'primary'}.950`);
       case 'tertiary':
-        return getColor(theme, `${variantColor || 'primary'}.500`);
+        return getColor(theme, `${variantColor || 'primary'}.950`);
     }
   },
   padding({ size, theme, text }) {
@@ -148,6 +148,17 @@ const styles = {
         return 'small';
     }
   },
+  spaceBetween({ size, iconPosition }) {
+    switch (size) {
+      case 'xsmall':
+      case 'small':
+        return iconPosition === 'left' ? [0, 0.5, 0, 0] : [0, 0, 0, 0.5];
+      case 'medium':
+      case 'large':
+      default:
+        return iconPosition === 'left' ? [0, 1, 0, 0] : [0, 0, 0, 1];
+    }
+  },
 };
 
 const StyledButton = styled(TouchableHighlight)(
@@ -198,7 +209,7 @@ const Button = (props) => {
           />
         )}
         {icon && iconPosition === 'left' && children && (
-          <Space margin={[0, 0.5]}>
+          <Space margin={styles.spaceBetween(props)}>
             <View />
           </Space>
         )}
@@ -212,7 +223,7 @@ const Button = (props) => {
           {size === 'xsmall' ? children && children.toUpperCase() : children}
         </Text>
         {icon && iconPosition === 'right' && children && (
-          <Space margin={[0, 0.5]}>
+          <Space margin={styles.spaceBetween(props)}>
             <View />
           </Space>
         )}

@@ -6,100 +6,114 @@ import { renderWithTheme } from '../../../_helpers/testing';
 
 describe('Renders <Button /> correctly', () => {
   it('Renders a Primary <Button />', () => {
-    const { container } = renderWithTheme(<Button icon="info">Click Me</Button>);
+    const { container, getByText } = renderWithTheme(<Button icon="info">Click Me</Button>);
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a Primary <Button /> with left icon', () => {
-    const { container } = renderWithTheme(<Button>Click Me</Button>);
+    const { container, getByText } = renderWithTheme(<Button>Click Me</Button>);
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a small Primary <Button />', () => {
-    const { container } = renderWithTheme(<Button size="small">Click Me</Button>);
+    const { container, getByText } = renderWithTheme(<Button size="small">Click Me</Button>);
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a large Primary <Button />', () => {
-    const { container } = renderWithTheme(<Button size="large">Click Me</Button>);
+    const { container, getByText } = renderWithTheme(<Button size="large">Click Me</Button>);
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a large Primary <Button /> with right icon', () => {
-    const { container } = renderWithTheme(
+    const { container, getByText } = renderWithTheme(
       <Button size="large" icon="info" iconPosition="right">
         Click Me
       </Button>,
     );
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a disabled Primary <Button />', () => {
-    const { container } = renderWithTheme(<Button disabled>Click Me</Button>);
+    const { container, getByText } = renderWithTheme(<Button disabled>Click Me</Button>);
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a Secondary <Button />', () => {
-    const { container } = renderWithTheme(<Button type="secondary">Click Me</Button>);
+    const { container, getByText } = renderWithTheme(<Button type="secondary">Click Me</Button>);
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a small Secondary <Button />', () => {
-    const { container } = renderWithTheme(
+    const { container, getByText } = renderWithTheme(
       <Button type="secondary" size="small">
         Click Me
       </Button>,
     );
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a large Secondary <Button />', () => {
-    const { container } = renderWithTheme(
+    const { container, getByText } = renderWithTheme(
       <Button type="secondary" size="large">
         Click Me
       </Button>,
     );
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a disabled Secondary <Button />', () => {
-    const { container } = renderWithTheme(
+    const { container, getByText } = renderWithTheme(
       <Button disabled type="secondary">
         Click Me
       </Button>,
     );
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a Tertiary <Button />', () => {
-    const { container } = renderWithTheme(<Button type="tertiary">Click Me</Button>);
+    const { container, getByText } = renderWithTheme(<Button type="tertiary">Click Me</Button>);
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a small Tertiary <Button />', () => {
-    const { container } = renderWithTheme(
+    const { container, getByText } = renderWithTheme(
       <Button type="tertiary" size="small">
         Click Me
       </Button>,
     );
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a large Tertiary <Button /> correctly', () => {
-    const { container } = renderWithTheme(
+    const { container, getByText } = renderWithTheme(
       <Button type="tertiary" size="large">
         Click Me
       </Button>,
     );
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a disabled Tertiary <Button />', () => {
-    const { container } = renderWithTheme(
+    const { container, getByText } = renderWithTheme(
       <Button disabled type="tertiary">
         Click Me
       </Button>,
     );
+    expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 

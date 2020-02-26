@@ -21,7 +21,7 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> 1`] = `
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.87)",
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 8,
@@ -33,7 +33,7 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> 1`] = `
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <RNSVGSvgView
@@ -147,15 +147,23 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> 1`] = `
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
-      className="sc-AykKC jxOWPs"
-      testID="space-default-view"
+      style={
+        Array [
+          Object {
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 8,
+            "marginTop": 0,
+          },
+        ]
+      }
     />
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.100"
+      color="white.900"
       size="medium"
       style={
         Array [
@@ -198,7 +206,7 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> with left ico
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.87)",
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 8,
@@ -210,7 +218,7 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> with left ico
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -218,7 +226,7 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> with left ico
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.100"
+      color="white.900"
       size="medium"
       style={
         Array [
@@ -261,7 +269,7 @@ exports[`Renders <Button /> correctly Renders a Secondary <Button /> 1`] = `
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.87)",
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 8,
@@ -273,7 +281,7 @@ exports[`Renders <Button /> correctly Renders a Secondary <Button /> 1`] = `
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -281,7 +289,7 @@ exports[`Renders <Button /> correctly Renders a Secondary <Button /> 1`] = `
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.100"
+      color="white.900"
       size="medium"
       style={
         Array [
@@ -324,7 +332,7 @@ exports[`Renders <Button /> correctly Renders a Tertiary <Button /> 1`] = `
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.87)",
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 8,
@@ -336,7 +344,7 @@ exports[`Renders <Button /> correctly Renders a Tertiary <Button /> 1`] = `
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -344,7 +352,7 @@ exports[`Renders <Button /> correctly Renders a Tertiary <Button /> 1`] = `
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.100"
+      color="white.900"
       size="medium"
       style={
         Array [
@@ -387,7 +395,7 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.05)",
+          "backgroundColor": "rgba(162, 201, 246, 1.0)",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 8,
@@ -399,7 +407,7 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -407,13 +415,13 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.200"
+      color="white.950"
       size="medium"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(255, 255, 255, 1.0)",
+            "color": "rgba(255, 255, 255, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -450,7 +458,7 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.05)",
+          "backgroundColor": "rgba(162, 201, 246, 1.0)",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 8,
@@ -462,7 +470,7 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -470,13 +478,13 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.200"
+      color="white.950"
       size="medium"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(255, 255, 255, 1.0)",
+            "color": "rgba(255, 255, 255, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -513,7 +521,7 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.05)",
+          "backgroundColor": "rgba(162, 201, 246, 1.0)",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 8,
@@ -525,7 +533,7 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -533,13 +541,13 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.200"
+      color="white.950"
       size="medium"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(255, 255, 255, 1.0)",
+            "color": "rgba(255, 255, 255, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -576,7 +584,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.87)",
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 10,
@@ -588,7 +596,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -596,7 +604,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.100"
+      color="white.900"
       size="medium"
       style={
         Array [
@@ -639,7 +647,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> with ri
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.87)",
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 10,
@@ -651,7 +659,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> with ri
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -659,7 +667,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> with ri
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.100"
+      color="white.900"
       size="medium"
       style={
         Array [
@@ -678,8 +686,16 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> with ri
       Click Me
     </Text>
     <View
-      className="sc-AykKC jxOWPs"
-      testID="space-default-view"
+      style={
+        Array [
+          Object {
+            "marginBottom": 0,
+            "marginLeft": 8,
+            "marginRight": 0,
+            "marginTop": 0,
+          },
+        ]
+      }
     />
     <RNSVGSvgView
       align="xMidYMid"
@@ -816,7 +832,7 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.87)",
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 10,
@@ -828,7 +844,7 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -836,7 +852,7 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.100"
+      color="white.900"
       size="medium"
       style={
         Array [
@@ -879,7 +895,7 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> correc
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.87)",
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 10,
@@ -891,7 +907,7 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> correc
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -899,7 +915,7 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> correc
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.100"
+      color="white.900"
       size="medium"
       style={
         Array [
@@ -942,7 +958,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.87)",
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 5,
@@ -954,7 +970,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -962,7 +978,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.100"
+      color="white.900"
       size="xsmall"
       style={
         Array [
@@ -1005,7 +1021,7 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.87)",
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 5,
@@ -1017,7 +1033,7 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -1025,7 +1041,7 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.100"
+      color="white.900"
       size="xsmall"
       style={
         Array [
@@ -1068,7 +1084,7 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
         Object {
           "alignItems": "center",
           "alignSelf": "flex-start",
-          "backgroundColor": "rgba(11, 112, 231, 0.87)",
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
           "flexDirection": "row",
           "paddingBottom": 5,
@@ -1080,7 +1096,7 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
     }
     testID="ds-button"
     text="Click Me"
-    underlayColor="rgba(11, 112, 231, 1.0)"
+    underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
@@ -1088,7 +1104,7 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
       _letterSpacing="small"
       _weight="bold"
       align="center"
-      color="background.100"
+      color="white.900"
       size="xsmall"
       style={
         Array [
