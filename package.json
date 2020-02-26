@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "engines": {
-    "node": ">=10.18.0"
+    "node": ">=10.13.0"
   },
   "dependencies": {
     "@react-native-community/async-storage": "1.7.1",
