@@ -5,7 +5,7 @@ import { Text as NativeText } from 'react-native';
 import baseTheme from '../../tokens/theme';
 import { getColorKeys, getColor } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
-import { getLineHeight } from '../../_helpers/fonts';
+import { getLineHeightFromTextSize } from '../../_helpers/fonts';
 
 const styles = {
   fontFamily({ theme, _weight }) {
@@ -38,7 +38,11 @@ const styles = {
     return `${theme.fonts.letterSpacing[_letterSpacing]}`;
   },
   lineHeight({ theme, size, _lineHeight }) {
-    return getLineHeight(theme.fonts.size[size], theme.fonts.lineHeight[_lineHeight]);
+    if (_lineHeight) {
+      return theme.fonts.lineHeight[_lineHeight];
+    } else {
+      return getLineHeightFromTextSize(size, theme);
+    }
   },
 };
 
@@ -102,7 +106,6 @@ Text.defaultProps = {
   _weight: 'regular',
   _isUnderlined: false,
   _letterSpacing: 'small',
-  _lineHeight: 'large',
 };
 
 export default Text;
