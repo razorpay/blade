@@ -11,11 +11,13 @@ exports[`Renders <Toggle /> correctly renders a default Toggle 1`] = `
   }
 >
   <View
+    align="left"
     backgroundColor="rgba(22, 47, 86, 0.54)"
     flexDirection="row"
     style={
       Array [
         Object {
+          "alignSelf": "flex-start",
           "backgroundColor": "rgba(22, 47, 86, 0.54)",
           "borderRadius": 8,
           "flexDirection": "row",
@@ -33,6 +35,11 @@ exports[`Renders <Toggle /> correctly renders a default Toggle 1`] = `
     <TouchableOpacity
       activeOpacity={1}
       disabled={false}
+      hitSlop={
+        Object {
+          "right": 18,
+        }
+      }
       size="medium"
       style={
         Array [
@@ -67,11 +74,13 @@ exports[`Renders <Toggle /> correctly renders a disabled/OFF Toggle 1`] = `
   }
 >
   <View
+    align="left"
     backgroundColor="rgba(22, 47, 86, 0.10)"
     flexDirection="row"
     style={
       Array [
         Object {
+          "alignSelf": "flex-start",
           "backgroundColor": "rgba(22, 47, 86, 0.10)",
           "borderRadius": 8,
           "flexDirection": "row",
@@ -89,6 +98,11 @@ exports[`Renders <Toggle /> correctly renders a disabled/OFF Toggle 1`] = `
     <TouchableOpacity
       activeOpacity={1}
       disabled={true}
+      hitSlop={
+        Object {
+          "right": 18,
+        }
+      }
       size="medium"
       style={
         Array [
@@ -123,11 +137,13 @@ exports[`Renders <Toggle /> correctly renders a disabled/OFF Toggle 2`] = `
   }
 >
   <View
+    align="left"
     backgroundColor="rgba(22, 47, 86, 0.10)"
     flexDirection="row"
     style={
       Array [
         Object {
+          "alignSelf": "flex-start",
           "backgroundColor": "rgba(22, 47, 86, 0.10)",
           "borderRadius": 8,
           "flexDirection": "row",
@@ -145,6 +161,11 @@ exports[`Renders <Toggle /> correctly renders a disabled/OFF Toggle 2`] = `
     <TouchableOpacity
       activeOpacity={1}
       disabled={true}
+      hitSlop={
+        Object {
+          "right": 18,
+        }
+      }
       size="medium"
       style={
         Array [
@@ -179,12 +200,14 @@ exports[`Renders <Toggle /> correctly renders a disabled/ON Toggle 1`] = `
   }
 >
   <View
-    backgroundColor="rgba(11, 112, 231, 0.38)"
+    align="left"
+    backgroundColor="rgba(162, 201, 246, 1.0)"
     flexDirection="row-reverse"
     style={
       Array [
         Object {
-          "backgroundColor": "rgba(11, 112, 231, 0.38)",
+          "alignSelf": "flex-start",
+          "backgroundColor": "rgba(162, 201, 246, 1.0)",
           "borderRadius": 8,
           "flexDirection": "row-reverse",
           "height": 16,
@@ -201,6 +224,11 @@ exports[`Renders <Toggle /> correctly renders a disabled/ON Toggle 1`] = `
     <TouchableOpacity
       activeOpacity={1}
       disabled={true}
+      hitSlop={
+        Object {
+          "left": 18,
+        }
+      }
       size="medium"
       style={
         Array [
