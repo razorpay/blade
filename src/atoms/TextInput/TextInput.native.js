@@ -12,8 +12,9 @@ import Space from '../Space';
 import { getLineHeight } from '../../_helpers/theme';
 import Flex from '../Flex';
 import CharacterCount from './CharacterCount.native';
-import Label from './Label';
+import AnimatedLabel from './AnimatedLabel';
 import automation from '../../_helpers/automation-attributes';
+import Label from './Label';
 
 const IS_ANDROID = Platform.OS === 'android';
 
@@ -60,7 +61,6 @@ const styles = {
 };
 
 const Container = styled.View`
-  width: 240px;
   justify-content: flex-end;
 `;
 
@@ -68,6 +68,7 @@ const InputContainer = styled.View`
   background-color: transparent;
   flex-direction: row;
   align-items: center;
+  width: 240px;
 `;
 
 const StyledInput = styled(NativeTextInput)`
@@ -110,6 +111,7 @@ const TextInput = ({
   showCharacterCount,
   label,
   testID,
+  labelPosition,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
@@ -119,7 +121,11 @@ const TextInput = ({
   // Used to hide placeholder while label is inside the TextInput
   const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
 
+  const hasLeftLabel = labelPosition === 'left' && variant === 'filled';
+
   const placeholderTextColor = disabled ? theme.colors.shade[300] : theme.colors.shade[400];
+  const placeholderDelayDuration = hasLeftLabel ? 0 : 90;
+
   // Derive accessory conditions based on props
   const { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon } = getAccessoryConfig({
     errorText,
@@ -135,10 +141,12 @@ const TextInput = ({
 
     /* Wait for 90ms to show the placeholder since it takes 100ms for Label to animate from inside to top of the TextInput.
        Otherwise they both overlap */
+    /* Don't have any delay if label is on left of TextInput*/
+
     setTimeout(() => {
       setIsPlaceholderVisible(true);
-    }, 90);
-  }, [setFocused, setIsPlaceholderVisible]);
+    }, placeholderDelayDuration);
+  }, [placeholderDelayDuration]);
 
   const onBlur = useCallback(() => {
     setFocused(false);
@@ -168,8 +176,9 @@ const TextInput = ({
 
   return (
     <Container>
-      {layoutDimensions ? (
-        <Label
+      {/*Animated Label*/}
+      {layoutDimensions && !hasLeftLabel ? (
+        <AnimatedLabel
           isFocused={isFocused}
           hasText={hasText}
           disabled={disabled}
@@ -178,84 +187,96 @@ const TextInput = ({
           hasError={hasError}
         >
           {label}
-        </Label>
+        </AnimatedLabel>
       ) : null}
-      <Space padding={styles.fillContainer.padding}>
-        <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
-          <InputContainer>
-            {hasPrefix ? (
-              <AccessoryText variant={variant} disabled={disabled}>
-                {prefix}
-              </AccessoryText>
-            ) : null}
-            {hasLeftIcon ? (
-              <AccessoryIcon
-                variant={variant}
-                name={iconLeft}
-                disabled={disabled}
-                hasError={hasError}
-                size="xsmall"
-              />
-            ) : null}
 
-            <Flex flex={1}>
-              <StyledInput
-                placeholder={isPlaceholderVisible ? placeholder : ''}
-                placeholderTextColor={placeholderTextColor}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                hasText={hasText}
-                selectionColor={theme.colors.shade[700]} // not able to change this for Android
-                editable={!disabled}
-                variant={variant}
-                hasPrefix={hasPrefix}
-                hasLeftIcon={hasLeftIcon}
-                maxLength={maxLength}
-                onLayout={onTextInputLayout}
-                {...automation(testID)}
-              >
-                <Space padding={[0, 0, 0.5, 0]}>
-                  <Text color={styles.text.color({ disabled })} size="medium">
-                    {input}
-                  </Text>
-                </Space>
-              </StyledInput>
-            </Flex>
-            {hasSuffix ? (
-              <AccessoryText variant={variant} disabled={disabled}>
-                {suffix}
-              </AccessoryText>
-            ) : null}
-            {hasRightIcon ? (
-              <AccessoryIcon
-                variant={variant}
-                name={iconRight}
-                disabled={disabled}
-                hasError={hasError}
-                size="xsmall"
-              />
-            ) : null}
-          </InputContainer>
-          <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
-        </FillContainer>
-      </Space>
-      {hasError && !disabled ? (
-        <ErrorText>{errorText}</ErrorText>
-      ) : (
-        <Flex flexDirection="row" justifyContent="space-between">
-          <View>
-            <HelpText disabled={disabled}>{helpText}</HelpText>
-            {showCharacterCount && typeof maxLength === 'number' && (
-              <CharacterCount
-                disabled={disabled}
-                maxLength={maxLength}
-                inputLength={input.length}
-              />
-            )}
-          </View>
-        </Flex>
-      )}
+      {/*Text Input*/}
+      <Flex flexDirection="row" alignItems="flex-start">
+        <View>
+          {/*Fixed Left Label*/}
+          {hasLeftLabel && layoutDimensions ? (
+            <Label inputLayoutDimensions={layoutDimensions}>{label}</Label>
+          ) : null}
+          <Flex flexDirection="column">
+            <View>
+              <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
+                <InputContainer>
+                  {hasPrefix ? (
+                    <AccessoryText variant={variant} disabled={disabled}>
+                      {prefix}
+                    </AccessoryText>
+                  ) : null}
+                  {hasLeftIcon ? (
+                    <AccessoryIcon
+                      variant={variant}
+                      name={iconLeft}
+                      disabled={disabled}
+                      hasError={hasError}
+                      size="xsmall"
+                    />
+                  ) : null}
+
+                  <Flex flex={1}>
+                    <StyledInput
+                      placeholder={isPlaceholderVisible ? placeholder : ''}
+                      placeholderTextColor={placeholderTextColor}
+                      onFocus={onFocus}
+                      onBlur={onBlur}
+                      onChangeText={onChange}
+                      hasText={hasText}
+                      selectionColor={theme.colors.shade[700]} // not able to change this for Android
+                      editable={!disabled}
+                      variant={variant}
+                      hasPrefix={hasPrefix}
+                      hasLeftIcon={hasLeftIcon}
+                      maxLength={maxLength}
+                      onLayout={onTextInputLayout}
+                      {...automation(testID)}
+                    >
+                      <Space padding={[0, 0, 0.5, 0]}>
+                        <Text color={styles.text.color({ disabled })} size="medium">
+                          {input}
+                        </Text>
+                      </Space>
+                    </StyledInput>
+                  </Flex>
+                  {hasSuffix ? (
+                    <AccessoryText variant={variant} disabled={disabled}>
+                      {suffix}
+                    </AccessoryText>
+                  ) : null}
+                  {hasRightIcon ? (
+                    <AccessoryIcon
+                      variant={variant}
+                      name={iconRight}
+                      disabled={disabled}
+                      hasError={hasError}
+                      size="xsmall"
+                    />
+                  ) : null}
+                </InputContainer>
+                <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
+              </FillContainer>
+              {hasError && !disabled ? (
+                <ErrorText>{errorText}</ErrorText>
+              ) : helpText ? (
+                <Flex flexDirection="row" justifyContent="space-between">
+                  <View>
+                    <HelpText disabled={disabled}>{helpText}</HelpText>
+                    {showCharacterCount && typeof maxLength === 'number' && (
+                      <CharacterCount
+                        disabled={disabled}
+                        maxLength={maxLength}
+                        inputLength={input.length}
+                      />
+                    )}
+                  </View>
+                </Flex>
+              ) : null}
+            </View>
+          </Flex>
+        </View>
+      </Flex>
     </Container>
   );
 };
@@ -276,6 +297,7 @@ TextInput.propTypes = {
   showCharacterCount: PropTypes.bool,
   label: PropTypes.string,
   testID: PropTypes.string,
+  labelPosition: PropTypes.oneOf(['top', 'left']),
 };
 
 TextInput.defaultProps = {
@@ -283,6 +305,7 @@ TextInput.defaultProps = {
   variant: 'outline',
   label: 'Label',
   testID: 'ds-text-input',
+  labelPosition: 'top',
 };
 
 export default TextInput;
