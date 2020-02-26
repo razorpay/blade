@@ -338,5 +338,23 @@ storiesOf('TextInput', module)
           This is disabled
         </TextInput>
       </ItemContainer>
+      <ItemContainer>
+        <ItemTitle>Filled with left label:</ItemTitle>
+        <TextInput
+          label="Label"
+          disabled={false}
+          error=""
+          iconLeft=""
+          iconRight=""
+          prefix=""
+          suffix=""
+          placeholder="Type here"
+          helpText=""
+          errorText=""
+          onChangeText={() => {}}
+          variant="filled"
+          labelPosition="left"
+        />
+      </ItemContainer>
     </ScrollContainer>
   ));
