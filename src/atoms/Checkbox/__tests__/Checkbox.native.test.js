@@ -1,17 +1,20 @@
 import React from 'react';
 import Checkbox from './../Checkbox';
 import { renderWithTheme } from '../../../_helpers/testing';
+import { fireEvent } from '@testing-library/react-native';
 
 describe('Native <Checkbox />', () => {
   describe('Unchecked checkxox', () => {
     test('should render component when not checked with default props', () => {
-      const { container } = renderWithTheme(<Checkbox title="Some Title" />);
+      const { container } = renderWithTheme(<Checkbox title="Some Title" onChange={() => null} />);
       expect(container).toMatchSnapshot();
     });
 
     test('should render component when not checked with help text props', () => {
       const helpText = 'some Help text';
-      const { getByText } = renderWithTheme(<Checkbox title="Some Title" helpText={helpText} />);
+      const { getByText } = renderWithTheme(
+        <Checkbox title="Some Title" helpText={helpText} onChange={() => null} />,
+      );
       const helpTextComponent = getByText(helpText);
       expect(helpTextComponent.props.size).toEqual('xsmall');
       expect(helpTextComponent.props.children).toEqual(helpText);
@@ -19,7 +22,12 @@ describe('Native <Checkbox />', () => {
 
     test('should render medium sized Checkbox', () => {
       const { container, getByText } = renderWithTheme(
-        <Checkbox title="Some Title" helpText="some Help text" size="medium" />,
+        <Checkbox
+          title="Some Title"
+          helpText="some Help text"
+          size="medium"
+          onChange={() => null}
+        />,
       );
       const component = getByText('Some Title');
       expect(container).toMatchSnapshot();
@@ -34,6 +42,7 @@ describe('Native <Checkbox />', () => {
           size="large"
           disabled={true}
           testID="disabledCheckBox"
+          onChange={() => null}
         />,
       );
       const renderedComponent = getByTestId('disabledCheckBox');
@@ -43,8 +52,20 @@ describe('Native <Checkbox />', () => {
 
   describe('Checked', () => {
     test('should render component when checked with default props', () => {
-      const { container } = renderWithTheme(<Checkbox title="Some Title" checked={true} />);
+      const { container } = renderWithTheme(
+        <Checkbox title="Some Title" checked={true} onChange={() => null} />,
+      );
       expect(container).toMatchSnapshot();
+    });
+
+    test('should call unchange function with false when pressed', () => {
+      const onChangeMock = jest.fn();
+      const { getByTestId } = renderWithTheme(
+        <Checkbox title="Some Title" checked={true} onChange={onChangeMock} testID="cbox" />,
+      );
+      const component = getByTestId('cbox');
+      fireEvent.press(component);
+      expect(onChangeMock).toBeCalled();
     });
   });
 });

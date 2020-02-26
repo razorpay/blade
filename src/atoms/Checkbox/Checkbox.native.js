@@ -136,7 +136,7 @@ const Checkbox = ({
 
   const onPress = () => {
     setCheckboxState((prevCheckboxState) => {
-      if (onChange) onChange(!prevCheckboxState);
+      onChange(!prevCheckboxState);
       return !prevCheckboxState;
     });
   };
