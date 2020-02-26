@@ -1,8 +1,9 @@
 import React, { useState, useContext, useRef } from 'react';
-import { View, Animated, TouchableOpacity } from 'react-native';
+import { Animated, TouchableOpacity } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
 
+import View from '../View';
 import automationAttributes from '../../_helpers/automation-attributes';
 
 const styles = {
@@ -36,17 +37,17 @@ const styles = {
         return theme.colors.primary[500];
       }
       if (active) {
-        return theme.colors.primary[800];
+        return theme.colors.primary[700];
       }
       return theme.colors.primary[800];
     } else {
       if (disabled) {
-        return theme.colors.shade[300];
+        return theme.colors.shade[930];
       }
       if (active) {
-        return theme.colors.shade[500];
+        return theme.colors.shade[950];
       }
-      return theme.colors.shade[600];
+      return theme.colors.shade[960];
     }
   },
   alignSelf({ align }) {
