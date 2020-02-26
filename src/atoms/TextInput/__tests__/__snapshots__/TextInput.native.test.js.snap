@@ -45,7 +45,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -171,7 +171,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -297,7 +297,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -423,7 +423,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -551,7 +551,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -884,7 +884,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -1000,7 +1000,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 align="xMidYMid"
                 bbHeight={12}
                 bbWidth={12}
-                fill="rgba(22, 47, 86, 0.38)"
+                fill="rgba(209, 45, 45, 1.0)"
                 focusable={false}
                 height={12}
                 meetOrSlice={0}
@@ -1029,7 +1029,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 width={12}
               >
                 <RNSVGGroup
-                  fill={1628843862}
+                  fill={4291898669}
                   fillOpacity={1}
                   fillRule={1}
                   font={Object {}}
@@ -1109,12 +1109,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
             </View>
           </View>
           <View
-            hasError={false}
+            hasError={true}
             isFocused={false}
             style={
               Array [
                 Object {
-                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  "backgroundColor": "rgba(209, 45, 45, 1.0)",
                   "height": 1,
                 },
               ]
@@ -1122,48 +1122,44 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
           />
         </View>
         <View
-          className="sc-AykKC ggGVXI"
-        >
-          <View
-            className="sc-AykKC jbrywR"
-            style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+          className="sc-AykKC jbrywR"
+          style={
+            Object {
+              "0": Object {
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 4,
+              },
             }
+          }
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _lineHeight="large"
+            _weight="regular"
+            align="left"
+            color="negative.900"
+            numberOfLines={2}
+            size="xsmall"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "flex-start",
+                  "color": "rgba(209, 45, 45, 1.0)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 12,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
           >
-            <Text
-              _isUnderlined={false}
-              _letterSpacing="small"
-              _lineHeight="large"
-              _weight="regular"
-              align="left"
-              color="shade.500"
-              numberOfLines={2}
-              size="xsmall"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "flex-start",
-                    "color": "rgba(22, 47, 86, 0.38)",
-                    "fontFamily": "Lato-Regular",
-                    "fontSize": 12,
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-              testID="ds-text"
-            >
-              You can enter your email here
-            </Text>
-          </View>
+            Some error has occurred
+          </Text>
         </View>
       </View>
     </View>
@@ -1216,7 +1212,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -1427,7 +1423,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -1597,7 +1593,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -1969,7 +1965,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -2218,7 +2214,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -2467,7 +2463,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -2593,7 +2589,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -2758,7 +2754,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -2923,7 +2919,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -3088,7 +3084,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -3214,7 +3210,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -3340,7 +3336,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -3468,7 +3464,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -3801,7 +3797,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -3917,7 +3913,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
                 align="xMidYMid"
                 bbHeight={12}
                 bbWidth={12}
-                fill="rgba(22, 47, 86, 0.38)"
+                fill="rgba(209, 45, 45, 1.0)"
                 focusable={false}
                 height={12}
                 meetOrSlice={0}
@@ -3946,7 +3942,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
                 width={12}
               >
                 <RNSVGGroup
-                  fill={1628843862}
+                  fill={4291898669}
                   fillOpacity={1}
                   fillRule={1}
                   font={Object {}}
@@ -4026,12 +4022,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
             </View>
           </View>
           <View
-            hasError={false}
+            hasError={true}
             isFocused={false}
             style={
               Array [
                 Object {
-                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  "backgroundColor": "rgba(209, 45, 45, 1.0)",
                   "height": 1,
                 },
               ]
@@ -4039,48 +4035,44 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
           />
         </View>
         <View
-          className="sc-AykKC ggGVXI"
-        >
-          <View
-            className="sc-AykKC jbrywR"
-            style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+          className="sc-AykKC jbrywR"
+          style={
+            Object {
+              "0": Object {
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 4,
+              },
             }
+          }
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _lineHeight="large"
+            _weight="regular"
+            align="left"
+            color="negative.900"
+            numberOfLines={2}
+            size="xsmall"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "flex-start",
+                  "color": "rgba(209, 45, 45, 1.0)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 12,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
           >
-            <Text
-              _isUnderlined={false}
-              _letterSpacing="small"
-              _lineHeight="large"
-              _weight="regular"
-              align="left"
-              color="shade.500"
-              numberOfLines={2}
-              size="xsmall"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "flex-start",
-                    "color": "rgba(22, 47, 86, 0.38)",
-                    "fontFamily": "Lato-Regular",
-                    "fontSize": 12,
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-              testID="ds-text"
-            >
-              You can enter your email here
-            </Text>
-          </View>
+            Some error has occurred
+          </Text>
         </View>
       </View>
     </View>
@@ -4133,7 +4125,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -4259,7 +4251,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -4429,7 +4421,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -4640,7 +4632,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -4889,7 +4881,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -5261,7 +5253,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -5510,7 +5502,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -5636,7 +5628,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -5801,7 +5793,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }
@@ -5966,7 +5958,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "flexDirection": "row",
-                  "width": 240,
+                  "width": 160,
                 },
               ]
             }

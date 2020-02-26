@@ -1,19 +1,28 @@
 import React from 'react';
-import { Text } from 'react-native';
-import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
+import Text from '../Text';
+import Flex from '../Flex';
+import View from '../View';
+import Space from '../Space';
 
-const StyledText = styled(Text)`
-  color: ${(props) => props.theme.colors.negative[900]};
-  font-size: 12px;
-  line-height: 18px;
-  padding-top: 4px;
-  max-width: 240px;
-`;
+const styles = {
+  padding() {
+    return [0.5, 0, 0, 0];
+  },
+};
 
 const ErrorText = ({ children }) => {
-  //TODO: have a fixed  height
-  return <StyledText numberOfLines={2}>{children}</StyledText>;
+  return (
+    <Space padding={styles.padding()}>
+      <Flex flex={1}>
+        <View>
+          <Text numberOfLines={2} color="negative.900" size="xsmall">
+            {children}
+          </Text>
+        </View>
+      </Flex>
+    </Space>
+  );
 };
 
 ErrorText.propTypes = {
