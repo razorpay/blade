@@ -66,6 +66,7 @@ describe('Native <Checkbox />', () => {
       const component = getByTestId('cbox');
       fireEvent.press(component);
       expect(onChangeMock).toBeCalled();
+      expect(onChangeMock).toBeCalledWith(false);
     });
   });
 });
