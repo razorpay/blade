@@ -77,7 +77,7 @@ Text.propTypes = {
 Text.defaultProps = {
   size: 'large',
   align: 'left',
-  color: 'shade.800',
+  color: 'shade.980',
   testID: 'ds-text',
   _weight: 'regular',
   _isUnderlined: false,

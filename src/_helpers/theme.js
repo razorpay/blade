@@ -1,8 +1,6 @@
 import { spacings } from '../tokens';
 import theme from '../tokens/theme';
 
-const colorRange = [100, 200, 300, 400, 500, 600, 700, 800, 900];
-
 const makePxValue = (value) => {
   const values = [].concat(value);
   return values.map((v) => (typeof v === 'string' ? v : `${v * spacings.unit}px`)).join(' ');
@@ -12,7 +10,9 @@ const getColorKey = (color, shade) => `${color}.${shade}`;
 
 const getColorKeys = () => {
   return Object.keys(theme.colors)
-    .map((color) => colorRange.map((range) => getColorKey(color, range)))
+    .map((base) => {
+      return Object.keys(theme.colors[base]).map((shade) => `${base}.${shade}`);
+    })
     .reduce((acc, val) => [...acc, ...val]);
 };
 

@@ -27,7 +27,7 @@ describe('Renders <Text /> correctly', () => {
     const textElement = getByTestId('ds-text');
     expect(textElement).toBeTruthy();
     expect(textElement.props.size).toBe('large');
-    expect(textElement.props.color).toBe('shade.800');
+    expect(textElement.props.color).toBe('shade.980');
     expect(textElement.props._weight).toBe('regular');
     expect(textElement.props._isUnderlined).toBe(false);
     expect(textElement.props._letterSpacing).toBe('small');
