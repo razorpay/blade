@@ -18,7 +18,7 @@ storiesOf('Checkbox', module)
   })
   .add('unchecked', () => (
     <Checkbox
-      checked={boolean('Checked', false)}
+      defaultChecked={boolean('Checked', false)}
       size={select('Size', sizeOptions, 'large')}
       title={text('Title', 'Enable Beast Mode')}
       helpText={text('Help Text', 'Play with addons to see changes')}
@@ -28,7 +28,7 @@ storiesOf('Checkbox', module)
   ))
   .add('checked', () => (
     <Checkbox
-      checked={boolean('Checked', true)}
+      defaultChecked={boolean('Checked', true)}
       size={select('Size', sizeOptions, 'large')}
       title={text('Title', 'Enable beast Mode')}
       helpText={text('Help Text', 'Play with addons')}

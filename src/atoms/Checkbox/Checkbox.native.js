@@ -12,26 +12,12 @@ import Icon from '../Icon';
 import View from '../View';
 
 const styles = {
-  backdrop: {
-    width({ width }) {
-      return getPxValue(width);
-    },
-    height({ height }) {
-      return getPxValue(height);
-    },
-    borderRadius({ borderRadius }) {
-      return getPxValue(borderRadius);
-    },
-    backgroundColor({ backgroundColor }) {
-      return backgroundColor;
-    },
-  },
   icon: {
-    fill({ disabled, checked, variantColor }) {
+    fill({ disabled, isChecked, variantColor }) {
       if (disabled) {
         return getColorKey('shade', 300);
       }
-      if (checked) {
+      if (isChecked) {
         return getColorKey(variantColor || 'primary', 800);
       }
 
@@ -69,33 +55,54 @@ const styles = {
       return [0, 0, 0, 0.5];
     },
   },
+  backdropDimensions(size) {
+    switch (size) {
+      case 'large':
+        return {
+          width: 24,
+          height: 24,
+          borderRadius: 12,
+        };
+      case 'medium':
+        return {
+          width: 20,
+          height: 20,
+          borderRadius: 10,
+        };
+      case 'small':
+        return {
+          width: 16,
+          height: 16,
+          borderRadius: 8,
+        };
+      case 'xsmall':
+        return {
+          width: 12,
+          height: 12,
+          borderRadius: 6,
+        };
+      default:
+        return {
+          width: 20,
+          height: 20,
+          borderRadius: 10,
+        };
+    }
+  },
+  backdropBackground({ backgroundColor }) {
+    return backgroundColor;
+  },
 };
 
-const Backdrop = styled.View`
-  width: ${styles.backdrop.width};
-  height: ${styles.backdrop.height};
-  border-radius: ${styles.backdrop.borderRadius};
-  background-color: ${styles.backdrop.backgroundColor};
-`;
-
-const mapSizeToBackdropProps = (checkBoxSize) => {
-  switch (checkBoxSize) {
-    case 'large':
-      return 24;
-    case 'medium':
-      return 20;
-    case 'small':
-      return 16;
-    case 'xsmall':
-      return 12;
-    default:
-      return 20;
-  }
-};
+const Backdrop = styled(View)(
+  (props) => `width: ${getPxValue(styles.backdropDimensions(props.size).width)};
+height: ${getPxValue(styles.backdropDimensions(props.size).height)};
+border-radius: ${getPxValue(styles.backdropDimensions(props.size).borderRadius)};
+background-color: ${styles.backdropBackground};`,
+);
 
 const Checkbox = ({
   onChange,
-  checked,
   disabled,
   size,
   title,
@@ -103,11 +110,14 @@ const Checkbox = ({
   testID,
   variantColor,
   error,
+  defaultChecked,
+  checked,
 }) => {
   let titleTextColor = 'shade.700';
 
   let helpTextColor = 'shade.500';
 
+  const [isChecked, setCheckboxState] = useState(defaultChecked || checked);
   const [underlayColor, setUnderlayColor] = useState('transparent');
   const theme = useContext(ThemeContext);
 
@@ -124,19 +134,24 @@ const Checkbox = ({
     setUnderlayColor('transparent');
   };
 
+  const onPress = () => {
+    setCheckboxState((prevCheckboxState) => {
+      if (onChange) onChange(!prevCheckboxState);
+      return !prevCheckboxState;
+    });
+  };
+
   if (disabled) {
     titleTextColor = 'shade.500';
     helpTextColor = 'shade.300';
   }
-
-  const backdropSize = mapSizeToBackdropProps(size);
 
   return (
     <Flex alignSelf="flex-start">
       <TouchableOpacity
         activeOpacity={1}
         accessibilityRole="checkbox"
-        onPress={onChange}
+        onPress={onPress}
         underlayColor="transparent"
         disabled={disabled}
         onPressIn={onPressIn}
@@ -145,17 +160,11 @@ const Checkbox = ({
       >
         <Flex flexDirection="row">
           <View>
-            <Backdrop
-              size={size}
-              width={backdropSize}
-              height={backdropSize}
-              borderRadius={backdropSize / 2}
-              backgroundColor={underlayColor}
-            >
+            <Backdrop size={size} backgroundColor={underlayColor}>
               <Icon
                 size={size}
-                name={checked ? 'checkboxFilled' : 'checkboxOutlined'}
-                fill={styles.icon.fill({ checked, disabled, variantColor })}
+                name={isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
+                fill={styles.icon.fill({ isChecked, disabled, variantColor })}
               />
             </Backdrop>
             <Flex alignSelf="center">
@@ -190,6 +199,7 @@ const Checkbox = ({
 Checkbox.propTypes = {
   onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
   helpText: PropTypes.string,
@@ -200,7 +210,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-  checked: false,
+  defaultChecked: false,
   size: 'medium',
   helpText: '',
   disabled: false,
