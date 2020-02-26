@@ -1,5 +1,5 @@
 import React, { useContext, useState, useCallback } from 'react';
-import { TextInput as NativeTextInput, Platform, View } from 'react-native';
+import { TextInput as NativeTextInput, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
 import Line from './Line';
@@ -15,6 +15,7 @@ import CharacterCount from './CharacterCount.native';
 import AnimatedLabel from './AnimatedLabel';
 import automation from '../../_helpers/automation-attributes';
 import Label from './Label';
+import View from '../View';
 
 const IS_ANDROID = Platform.OS === 'android';
 
@@ -60,11 +61,11 @@ const styles = {
   },
 };
 
-const Container = styled.View`
+const Container = styled(View)`
   justify-content: flex-end;
 `;
 
-const InputContainer = styled.View`
+const InputContainer = styled(View)`
   background-color: transparent;
   flex-direction: row;
   align-items: center;
@@ -80,7 +81,7 @@ const StyledInput = styled(NativeTextInput)`
   color: ${styles.textInput.color};
 `;
 
-const FillContainer = styled.View`
+const FillContainer = styled(View)`
   background-color: ${styles.fillContainer.backgroundColor};
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
@@ -140,7 +141,7 @@ const TextInput = ({
 
     /* Wait for 90ms to show the placeholder since it takes 100ms for Label to animate from inside to top of the TextInput.
        Otherwise they both overlap */
-    /* Don't have any delay if label is on left of TextInput*/
+    /* Don't have any delay if label is on left of TextInput */
 
     setTimeout(() => {
       setIsPlaceholderVisible(true);
@@ -154,10 +155,10 @@ const TextInput = ({
 
   const onChange = useCallback(
     (text) => {
-      // store entered value in state
+      // Store entered value in state
       setInput(text);
       if (onChangeText) {
-        // send entered value to the consumer
+        // Send entered value to the consumer
         onChangeText(text);
       }
     },
@@ -175,7 +176,7 @@ const TextInput = ({
 
   return (
     <Container>
-      {/*Animated Label*/}
+      {/* Animated Label */}
       {layoutDimensions && !hasLeftLabel ? (
         <AnimatedLabel
           isFocused={isFocused}
@@ -189,14 +190,14 @@ const TextInput = ({
         </AnimatedLabel>
       ) : null}
 
-      {/*Text Input Container*/}
+      {/* Text Input Container */}
       <Flex flexDirection="row" alignItems="flex-start">
         <View>
-          {/*Fixed Left Label*/}
+          {/*Fixed Left Label */}
           {hasLeftLabel && layoutDimensions ? (
             <Label inputLayoutDimensions={layoutDimensions}>{label}</Label>
           ) : null}
-          {/*Text Input*/}
+          {/* Text Input */}
           <Flex flexDirection="column">
             <View>
               <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
@@ -257,7 +258,7 @@ const TextInput = ({
                 </InputContainer>
                 <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
               </FillContainer>
-              {/*Bottom texts*/}
+              {/* Bottom texts */}
               {hasError && !disabled ? (
                 <ErrorText>{errorText}</ErrorText>
               ) : helpText ? (
