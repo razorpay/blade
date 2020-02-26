@@ -15,7 +15,7 @@ exports[`Renders <Button /> correctly snapshot testing 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "rgba(22, 47, 86, 0.87)",
+          "backgroundColor": "rgba(22, 47, 86, 1.0)",
           "borderRadius": 6,
           "marginTop": 7,
           "paddingBottom": 14,

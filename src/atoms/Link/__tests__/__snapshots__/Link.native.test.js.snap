@@ -26,7 +26,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
         Array [
           Object {
             "alignSelf": "flex-start",
-            "color": "rgba(11, 112, 231, 0.54)",
+            "color": "rgba(123, 178, 242, 1.0)",
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -68,7 +68,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
         Array [
           Object {
             "alignSelf": "flex-start",
-            "color": "rgba(11, 112, 231, 0.87)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -110,7 +110,7 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
         Array [
           Object {
             "alignSelf": "flex-start",
-            "color": "rgba(11, 112, 231, 0.87)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -152,7 +152,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
         Array [
           Object {
             "alignSelf": "flex-start",
-            "color": "rgba(11, 112, 231, 0.87)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 16,
             "letterSpacing": 0,
@@ -194,7 +194,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = 
         Array [
           Object {
             "alignSelf": "flex-start",
-            "color": "rgba(11, 112, 231, 0.87)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -236,7 +236,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
         Array [
           Object {
             "alignSelf": "flex-start",
-            "color": "rgba(11, 112, 231, 0.87)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 13,
             "letterSpacing": 0,
@@ -278,7 +278,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
         Array [
           Object {
             "alignSelf": "flex-start",
-            "color": "rgba(11, 112, 231, 0.87)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
             "letterSpacing": 0,

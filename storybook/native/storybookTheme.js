@@ -3,22 +3,22 @@ import { lightTheme, darkTheme } from '../../src/tokens/theme';
 
 const light = create({
   backgroundColor: lightTheme.colors.background[400],
-  headerTextColor: lightTheme.colors.shade[800],
-  labelColor: lightTheme.colors.shade[800],
-  borderColor: lightTheme.colors.shade[300],
+  headerTextColor: lightTheme.colors.shade[980],
+  labelColor: lightTheme.colors.shade[980],
+  borderColor: lightTheme.colors.shade[930],
   previewBorderColor: lightTheme.colors.background[400],
-  buttonTextColor: lightTheme.colors.shade[600],
-  buttonActiveTextColor: lightTheme.colors.shade[800],
+  buttonTextColor: lightTheme.colors.shade[960],
+  buttonActiveTextColor: lightTheme.colors.shade[980],
 });
 
 const dark = create({
   backgroundColor: darkTheme.colors.background[400],
-  headerTextColor: darkTheme.colors.shade[800],
-  labelColor: darkTheme.colors.shade[800],
-  borderColor: darkTheme.colors.shade[700],
+  headerTextColor: darkTheme.colors.shade[980],
+  labelColor: darkTheme.colors.shade[980],
+  borderColor: darkTheme.colors.shade[970],
   previewBorderColor: darkTheme.colors.background[400],
-  buttonTextColor: darkTheme.colors.shade[600],
-  buttonActiveTextColor: darkTheme.colors.shade[800],
+  buttonTextColor: darkTheme.colors.shade[960],
+  buttonActiveTextColor: darkTheme.colors.shade[980],
 });
 
 export default {

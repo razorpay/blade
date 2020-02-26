@@ -5,7 +5,7 @@ import { TouchableOpacity, Text } from 'react-native';
 
 const StyledButton = styled(TouchableOpacity)(
   (props) => `
-  background-color: ${props.theme.colors.shade[800]};
+  background-color: ${props.theme.colors.shade[900]};
   padding: 14px;
   border-radius: 6px;
   margin-top: 7px;
