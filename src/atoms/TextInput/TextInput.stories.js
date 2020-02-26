@@ -28,7 +28,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft=""
           iconRight=""
           prefix=""
@@ -45,7 +44,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft="info"
           iconRight=""
           prefix=""
@@ -62,7 +60,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft=""
           iconRight="info"
           prefix=""
@@ -79,7 +76,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft=""
           iconRight=""
           prefix="kg"
@@ -96,7 +92,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft=""
           iconRight=""
           prefix=""
@@ -113,7 +108,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft=""
           iconRight=""
           prefix=""
@@ -132,7 +126,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft="info"
           iconRight=""
           prefix=""
@@ -149,7 +142,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={true}
-          error=""
           iconLeft=""
           iconRight=""
           prefix="kg"
@@ -166,7 +158,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={true}
-          error=""
           iconLeft=""
           iconRight=""
           prefix="kg"
@@ -186,7 +177,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft=""
           iconRight=""
           prefix=""
@@ -203,7 +193,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft="info"
           iconRight=""
           prefix=""
@@ -220,7 +209,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft=""
           iconRight="info"
           prefix=""
@@ -237,7 +225,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft=""
           iconRight=""
           prefix="kg"
@@ -254,7 +241,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft=""
           iconRight=""
           prefix=""
@@ -271,7 +257,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft=""
           iconRight=""
           prefix=""
@@ -290,7 +275,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft="info"
           iconRight=""
           prefix=""
@@ -307,7 +291,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={true}
-          error=""
           iconLeft=""
           iconRight=""
           prefix="kg"
@@ -324,7 +307,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={true}
-          error=""
           iconLeft=""
           iconRight=""
           prefix="kg"
@@ -343,7 +325,6 @@ storiesOf('TextInput', module)
         <TextInput
           label="Label"
           disabled={false}
-          error=""
           iconLeft=""
           iconRight=""
           prefix=""

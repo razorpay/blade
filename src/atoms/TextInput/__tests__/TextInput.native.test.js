@@ -68,7 +68,7 @@ describe('Renders <TextInput /> outline variant correctly', () => {
         prefix="info"
         iconRight="info"
         label="Email"
-        helpText="You can enter your email here"
+        errorText="Some error has occurred"
       />,
     );
     expect(container).toMatchSnapshot();
@@ -182,7 +182,7 @@ describe('Renders <TextInput /> filled variant correctly', () => {
         prefix="info"
         iconRight="info"
         label="Email"
-        helpText="You can enter your email here"
+        errorText="Some error has occurred"
       />,
     );
     expect(container).toMatchSnapshot();

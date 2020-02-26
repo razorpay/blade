@@ -68,7 +68,7 @@ const InputContainer = styled.View`
   background-color: transparent;
   flex-direction: row;
   align-items: center;
-  width: 240px;
+  width: 160px;
 `;
 
 const StyledInput = styled(NativeTextInput)`
@@ -124,7 +124,6 @@ const TextInput = ({
   const hasLeftLabel = labelPosition === 'left' && variant === 'filled';
 
   const placeholderTextColor = disabled ? theme.colors.shade[300] : theme.colors.shade[400];
-  const placeholderDelayDuration = hasLeftLabel ? 0 : 90;
 
   // Derive accessory conditions based on props
   const { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon } = getAccessoryConfig({
@@ -145,8 +144,8 @@ const TextInput = ({
 
     setTimeout(() => {
       setIsPlaceholderVisible(true);
-    }, placeholderDelayDuration);
-  }, [placeholderDelayDuration]);
+    }, 90);
+  }, []);
 
   const onBlur = useCallback(() => {
     setFocused(false);
@@ -218,7 +217,7 @@ const TextInput = ({
 
                   <Flex flex={1}>
                     <StyledInput
-                      placeholder={isPlaceholderVisible ? placeholder : ''}
+                      placeholder={isPlaceholderVisible || hasLeftLabel ? placeholder : ''}
                       placeholderTextColor={placeholderTextColor}
                       onFocus={onFocus}
                       onBlur={onBlur}
