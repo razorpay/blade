@@ -110,14 +110,13 @@ const Checkbox = ({
   testID,
   variantColor,
   errorText,
-  defaultChecked,
   checked,
 }) => {
   let titleTextColor = 'shade.700';
 
   let helpTextColor = 'shade.500';
 
-  const [isChecked, setCheckboxState] = useState(defaultChecked || checked);
+  const [isChecked, setCheckboxState] = useState(checked);
   const [underlayColor, setUnderlayColor] = useState('transparent');
   const theme = useContext(ThemeContext);
 
@@ -199,7 +198,6 @@ const Checkbox = ({
 Checkbox.propTypes = {
   onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool,
-  defaultChecked: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
   helpText: PropTypes.string,
@@ -210,7 +208,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-  defaultChecked: false,
+  checked: false,
   size: 'medium',
   helpText: '',
   disabled: false,
