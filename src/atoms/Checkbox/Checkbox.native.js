@@ -109,7 +109,7 @@ const Checkbox = ({
   helpText,
   testID,
   variantColor,
-  error,
+  errorText,
   defaultChecked,
   checked,
 }) => {
@@ -179,14 +179,14 @@ const Checkbox = ({
           </View>
         </Flex>
 
-        {(!isEmpty(helpText) || !isEmpty(error)) && size !== 'small' && (
+        {(!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' && (
           <Space margin={styles.helpText.containerMargin(size)}>
             <View>
               <Text
                 size={styles.helpText.scale(size)}
-                color={error ? 'negative.900' : helpTextColor}
+                color={errorText ? 'negative.900' : helpTextColor}
               >
-                {error || helpText}
+                {errorText || helpText}
               </Text>
             </View>
           </Space>
@@ -205,7 +205,7 @@ Checkbox.propTypes = {
   helpText: PropTypes.string,
   disabled: PropTypes.bool,
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
-  error: PropTypes.string,
+  errorText: PropTypes.string,
   testID: PropTypes.string,
 };
 
