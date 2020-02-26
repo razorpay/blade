@@ -189,13 +189,14 @@ const TextInput = ({
         </AnimatedLabel>
       ) : null}
 
-      {/*Text Input*/}
+      {/*Text Input Container*/}
       <Flex flexDirection="row" alignItems="flex-start">
         <View>
           {/*Fixed Left Label*/}
           {hasLeftLabel && layoutDimensions ? (
             <Label inputLayoutDimensions={layoutDimensions}>{label}</Label>
           ) : null}
+          {/*Text Input*/}
           <Flex flexDirection="column">
             <View>
               <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
@@ -256,6 +257,7 @@ const TextInput = ({
                 </InputContainer>
                 <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
               </FillContainer>
+              {/*Bottom texts*/}
               {hasError && !disabled ? (
                 <ErrorText>{errorText}</ErrorText>
               ) : helpText ? (
