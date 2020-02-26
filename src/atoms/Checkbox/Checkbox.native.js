@@ -7,7 +7,7 @@ import Flex from '../Flex';
 import isEmpty from '../../_helpers/isEmpty';
 import automation from '../../_helpers/automation-attributes';
 import Space from '../Space';
-import { getPxValue, getColorKey, getVariantColorKeys, getColor } from '../../_helpers/theme';
+import { getVariantColorKeys, getColor } from '../../_helpers/theme';
 import Icon from '../Icon';
 import View from '../View';
 
@@ -15,17 +15,17 @@ const styles = {
   icon: {
     fill({ disabled, isChecked, variantColor }) {
       if (disabled) {
-        return getColorKey('shade', 300);
+        return 'shade.300';
       }
       if (isChecked) {
-        return getColorKey(variantColor || 'primary', 800);
+        return `${variantColor || 'primary'}.800`;
       }
 
-      return getColorKey('shade', 500);
+      return 'shade.500';
     },
   },
   helpText: {
-    containerMargin(size) {
+    margin(size) {
       switch (size) {
         case 'large':
           return [0, 0, 0, 3.5];
@@ -39,7 +39,7 @@ const styles = {
           return [0, 0, 0, 3];
       }
     },
-    scale(checkboxSize) {
+    size(checkboxSize) {
       switch (checkboxSize) {
         case 'large':
           return 'medium';
@@ -50,55 +50,57 @@ const styles = {
       }
     },
   },
-  titleContainer: {
+  title: {
     margin() {
       return [0, 0, 0, 0.5];
     },
   },
-  backdropDimensions(size) {
-    switch (size) {
-      case 'large':
-        return {
-          width: 24,
-          height: 24,
-          borderRadius: 12,
-        };
-      case 'medium':
-        return {
-          width: 20,
-          height: 20,
-          borderRadius: 10,
-        };
-      case 'small':
-        return {
-          width: 16,
-          height: 16,
-          borderRadius: 8,
-        };
-      case 'xsmall':
-        return {
-          width: 12,
-          height: 12,
-          borderRadius: 6,
-        };
-      default:
-        return {
-          width: 20,
-          height: 20,
-          borderRadius: 10,
-        };
-    }
-  },
-  backdropBackground({ backgroundColor }) {
-    return backgroundColor;
+  backdrop: {
+    dimensions(size) {
+      switch (size) {
+        case 'large':
+          return {
+            width: '24px',
+            height: '24px',
+            borderRadius: '12px',
+          };
+        case 'medium':
+          return {
+            width: '20px',
+            height: '20px',
+            borderRadius: '10px',
+          };
+        case 'small':
+          return {
+            width: '16px',
+            height: '16px',
+            borderRadius: '8px',
+          };
+        case 'xsmall':
+          return {
+            width: '12px',
+            height: '12px',
+            borderRadius: '6px',
+          };
+        default:
+          return {
+            width: '20px',
+            height: '20px',
+            borderRadius: '10px',
+          };
+      }
+    },
+    background({ backgroundColor }) {
+      return backgroundColor;
+    },
   },
 };
 
 const Backdrop = styled(View)(
-  (props) => `width: ${getPxValue(styles.backdropDimensions(props.size).width)};
-height: ${getPxValue(styles.backdropDimensions(props.size).height)};
-border-radius: ${getPxValue(styles.backdropDimensions(props.size).borderRadius)};
-background-color: ${styles.backdropBackground};`,
+  (props) => `width: ${styles.backdrop.dimensions(props.size).width};
+height: ${styles.backdrop.dimensions(props.size).height};
+border-radius: ${styles.backdrop.dimensions(props.size).borderRadius};
+background-color: ${styles.backdrop.background(props)};`,
 );
 
 const Checkbox = ({
@@ -113,7 +115,6 @@ const Checkbox = ({
   checked,
 }) => {
   let titleTextColor = 'shade.700';
-
   let helpTextColor = 'shade.500';
 
   const [isChecked, setCheckboxState] = useState(checked);
@@ -121,9 +122,9 @@ const Checkbox = ({
   const theme = useContext(ThemeContext);
 
   const onPressIn = () => {
-    let colorKey = getColorKey('tone', 400);
-    if (checked) {
-      colorKey = getColorKey(variantColor || 'primary', 300);
+    let colorKey = 'tone.400';
+    if (isChecked) {
+      colorKey = `${variantColor || 'primary'}.300`;
     }
     const newUnderlayColor = getColor(theme, colorKey);
     setUnderlayColor(newUnderlayColor);
@@ -167,7 +168,7 @@ const Checkbox = ({
               />
             </Backdrop>
             <Flex alignSelf="center">
-              <Space margin={styles.titleContainer.margin()}>
+              <Space margin={styles.title.margin()}>
                 <View>
                   <Text color={titleTextColor} size={size}>
                     {title}
@@ -178,18 +179,18 @@ const Checkbox = ({
           </View>
         </Flex>
 
-        {(!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' && (
-          <Space margin={styles.helpText.containerMargin(size)}>
+        {(!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' ? (
+          <Space margin={styles.helpText.margin(size)}>
             <View>
               <Text
-                size={styles.helpText.scale(size)}
+                size={styles.helpText.size(size)}
                 color={errorText ? 'negative.900' : helpTextColor}
               >
                 {errorText || helpText}
               </Text>
             </View>
           </Space>
-        )}
+        ) : null}
       </TouchableOpacity>
     </Flex>
   );

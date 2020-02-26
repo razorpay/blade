@@ -24,6 +24,7 @@ storiesOf('Checkbox', module)
       helpText={text('Help Text', 'Play with addons to see changes')}
       disabled={boolean('Disabled', false)}
       onChange={action('Changed')}
+      errorText={text('Error Text', 'You dont have permission')}
     />
   ))
   .add('checked', () => (
@@ -34,5 +35,6 @@ storiesOf('Checkbox', module)
       helpText={text('Help Text', 'Play with addons')}
       disabled={boolean('Disabled', false)}
       onChange={action('Changed')}
+      errorText={text('Error Text', '')}
     />
   ));

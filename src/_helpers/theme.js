@@ -8,8 +8,6 @@ const makePxValue = (value) => {
   return values.map((v) => (typeof v === 'string' ? v : `${v * spacings.unit}px`)).join(' ');
 };
 
-const getPxValue = (value) => `${value}px`;
-
 const getColorKey = (color, shade) => `${color}.${shade}`;
 
 const getColorKeys = () => {
@@ -32,12 +30,4 @@ const getVariantColorKeys = () => Object.keys(theme.colors);
 const getLineHeight = (currentTheme, size, lineHeight) =>
   parseFloat(currentTheme.fonts.lineHeight[lineHeight]) * parseFloat(currentTheme.fonts.size[size]);
 
-export {
-  makePxValue,
-  getColorKey,
-  getColorKeys,
-  getColor,
-  getVariantColorKeys,
-  getLineHeight,
-  getPxValue,
-};
+export { makePxValue, getColorKey, getColorKeys, getColor, getVariantColorKeys, getLineHeight };

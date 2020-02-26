@@ -1,15 +1,14 @@
 import { fonts } from '../tokens';
 import { lightTheme as baseLightTheme, darkTheme as baseDarkTheme } from './theme.web';
-import { getPxValue } from '../_helpers/theme';
 
 const nativeFonts = {
   ...fonts,
   lineHeight: Object.keys(fonts.lineHeight).reduce(
-    (acc, value) => ({ ...acc, [value]: getPxValue(fonts.lineHeight[value]) }),
+    (acc, value) => ({ ...acc, [value]: `${fonts.lineHeight[value]}px` }),
     {},
   ),
   letterSpacing: Object.keys(fonts.letterSpacing).reduce(
-    (acc, value) => ({ ...acc, [value]: getPxValue(fonts.letterSpacing[value]) }),
+    (acc, value) => ({ ...acc, [value]: `${fonts.letterSpacing[value]}px` }),
     {},
   ),
 };
