@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
+import View from '../View';
 
 const styles = {
   backgroundColor({ isFocused, hasError, theme, disabled }) {
@@ -16,7 +17,7 @@ const styles = {
   },
 };
 
-const StyledLine = styled.View`
+const StyledLine = styled(View)`
   height: 1px;
   background-color: ${styles.backgroundColor};
 `;

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Platform } from 'react-native';
+import styled from 'styled-components/native';
 import Text from '../Text';
 import View from '../View/View.native';
-import styled from 'styled-components/native';
 import Space from '../Space';
 
 const styles = {

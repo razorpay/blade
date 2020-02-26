@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { Animated, View, Platform } from 'react-native';
+import { Animated, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
-import { getColor } from '../../_helpers/theme';
 import PropTypes from 'prop-types';
+import { getColor } from '../../_helpers/theme';
+import View from '../View';
 
 const IS_ANDROID = Platform.OS === 'android';
 
@@ -30,7 +31,7 @@ const styles = {
       return theme.fonts.size.xsmall;
     },
     lineHeight() {
-      return '18px'; //TODO: use helper to calculate this from theme
+      return '18px'; // TODO: Use constant from theme
     },
     fontFamily({ theme }) {
       return theme.fonts.family.lato.regular;
