@@ -6,7 +6,8 @@ import { TouchableHighlight } from 'react-native';
 import Icon from '../Icon';
 import Space from '../Space';
 import Text from '../Text';
-import { getColorKey, getColor, getPxScale, getVariantColorKeys } from '../../_helpers/theme';
+import View from '../View';
+import { getColorKey, getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
 
 const styles = {
   fontColor({ variant, variantColor, disabled }) {
@@ -54,9 +55,9 @@ const styles = {
         return null;
       case 'secondary':
         if (disabled) {
-          return `${getPxScale(0.125)} solid ${getColor(theme, `${variantColor || 'shade'}.300`)}`;
+          return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor || 'shade'}.300`)}`;
         }
-        return `${getPxScale(0.125)} solid ${getColor(theme, `${variantColor || 'primary'}.600`)}`;
+        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor || 'primary'}.600`)}`;
     }
   },
   underlayColor({ variant, variantColor, theme }) {
@@ -79,9 +80,9 @@ const styles = {
         return `${theme.spacings.xxsmall} ${theme.spacings.small}`;
       case 'small':
         if (!text) {
-          return `${getPxScale(0.75)}`;
+          return `${makePxValue(0.75)}`;
         }
-        return `${getPxScale(0.625)} ${theme.spacings.large}`;
+        return `${makePxValue(0.625)} ${theme.spacings.large}`;
       case 'medium':
       default:
         if (!text) {
@@ -90,20 +91,29 @@ const styles = {
         return `${theme.spacings.small} ${theme.spacings.xxlarge}`;
       case 'large':
         if (!text) {
-          return `${getPxScale(1.25)}`;
+          return `${makePxValue(1.25)}`;
         }
-        return `${getPxScale(1.25)} ${theme.spacings.xxlarge} `;
+        return `${makePxValue(1.25)} ${theme.spacings.xxlarge} `;
     }
   },
-  iconSize({ size }) {
+  iconSize({ size, children }) {
     switch (size) {
       case 'xsmall':
+        if (!children) {
+          return 'small';
+        }
         return 'xsmall';
       case 'small':
+        if (!children) {
+          return 'medium';
+        }
         return 'small';
       case 'medium':
       case 'large':
       default:
+        if (!children) {
+          return 'large';
+        }
         return 'medium';
     }
   },
@@ -187,7 +197,11 @@ const Button = (props) => {
             fill={styles.fontColor({ ...props, theme })}
           />
         )}
-        {icon && iconPosition === 'left' && children && <Space margin={[0, 0.5]} />}
+        {icon && iconPosition === 'left' && children && (
+          <Space margin={[0, 0.5]}>
+            <View />
+          </Space>
+        )}
         <Text
           color={styles.fontColor(props)}
           size={styles.fontSize(props)}
@@ -197,7 +211,11 @@ const Button = (props) => {
         >
           {size === 'xsmall' ? children && children.toUpperCase() : children}
         </Text>
-        {icon && iconPosition === 'right' && children && <Space margin={[0, 0.5]} />}
+        {icon && iconPosition === 'right' && children && (
+          <Space margin={[0, 0.5]}>
+            <View />
+          </Space>
+        )}
         {icon && iconPosition === 'right' && (
           <Icon
             name={icon}
