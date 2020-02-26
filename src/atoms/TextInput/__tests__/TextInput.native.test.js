@@ -2,6 +2,7 @@ import React from 'react';
 import { renderWithTheme } from '../../../_helpers/testing';
 
 import TextInput from '../index';
+import { fireEvent, act } from '@testing-library/react-native';
 
 describe('Renders <TextInput /> outline variant correctly', () => {
   it('snapshot testing with label', () => {
@@ -86,16 +87,19 @@ describe('Renders <TextInput /> outline variant correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  //   it('snapshot after focus', () => {
-  //     const displayText = 'Displaying some text';
-  //     const { getByText, container } = renderWithTheme(
-  //       <TextInput label="Email">{displayText}</TextInput>,
-  //     );
-  //     const textInput = getByText(displayText).parentNode;
-  //     expect(container).toMatchSnapshot();
-  //     fireEvent.press(textInput);
-  //     expect(container).toMatchSnapshot();
-  //   });
+  it('snapshot after focus', () => {
+    const { getByTestId, container } = renderWithTheme(
+      <TextInput label="Email" testID="snap-test-text-input" />,
+    );
+    const textInput = getByTestId('snap-test-text-input');
+    expect(container).toMatchSnapshot();
+    jest.useFakeTimers(); // Uses fake timer to resolve setTimeout
+    act(() => {
+      fireEvent.focus(textInput);
+      jest.runAllTimers(); // Resolve timers after focus events
+    });
+    expect(container).toMatchSnapshot();
+  });
 });
 
 describe('Renders <TextInput /> filled variant correctly', () => {
@@ -104,7 +108,7 @@ describe('Renders <TextInput /> filled variant correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with filled TextInput', () => {
+  it('snapshot testing (filled TextInput)', () => {
     const { container } = renderWithTheme(
       <TextInput variant="filled" label="Email">
         {'user@domain.com'}
@@ -113,53 +117,53 @@ describe('Renders <TextInput /> filled variant correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with prefix', () => {
+  it('snapshot testing with prefix (filled TextInput)', () => {
     const { container } = renderWithTheme(<TextInput variant="filled" prefix="kg" />);
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with suffix', () => {
+  it('snapshot testing with suffix (filled TextInput)', () => {
     const { container } = renderWithTheme(<TextInput variant="filled" suffix="kg" />);
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with prefix & suffix', () => {
+  it('snapshot testing with prefix & suffix (filled TextInput)', () => {
     const { container } = renderWithTheme(<TextInput variant="filled" suffix="kg" />);
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with iconLeft ', () => {
+  it('snapshot testing with iconLeft (filled TextInput)', () => {
     const { container } = renderWithTheme(<TextInput variant="filled" iconLeft="info" />);
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with iconRight ', () => {
+  it('snapshot testing with iconRight (filled TextInput)', () => {
     const { container } = renderWithTheme(<TextInput variant="filled" iconRight="info" />);
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with iconLeft & iconRight ', () => {
+  it('snapshot testing with iconLeft & iconRight (filled TextInput)', () => {
     const { container } = renderWithTheme(
       <TextInput variant="filled" iconLeft="info" iconRight="info" />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with help text ', () => {
+  it('snapshot testing with help text (filled TextInput)', () => {
     const { container } = renderWithTheme(
       <TextInput variant="filled" helpText="You can enter your email here" />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with character count ', () => {
+  it('snapshot testing with character count (filled TextInput)', () => {
     const { container } = renderWithTheme(
       <TextInput variant="filled" showCharacterCount maxLength={10} />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with help text & character count ', () => {
+  it('snapshot testing with help text & character count (filled TextInput)', () => {
     const { container } = renderWithTheme(
       <TextInput
         variant="filled"
@@ -171,7 +175,7 @@ describe('Renders <TextInput /> filled variant correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with error ', () => {
+  it('snapshot testing with error (filled TextInput)', () => {
     const { container } = renderWithTheme(
       <TextInput
         variant="filled"
@@ -184,7 +188,7 @@ describe('Renders <TextInput /> filled variant correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with disabled ', () => {
+  it('snapshot testing with disabled (filled TextInput)', () => {
     const { container } = renderWithTheme(
       <TextInput
         variant="filled"
@@ -195,6 +199,20 @@ describe('Renders <TextInput /> filled variant correctly', () => {
         disabled={true}
       />,
     );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('snapshot after focus (filled TextInput)', () => {
+    const { getByTestId, container } = renderWithTheme(
+      <TextInput label="Email" testID="snap-test-text-input" variant="filled" />,
+    );
+    const textInput = getByTestId('snap-test-text-input');
+    expect(container).toMatchSnapshot();
+    jest.useFakeTimers(); // Uses fake timer to resolve setTimeout
+    act(() => {
+      fireEvent.focus(textInput);
+      jest.runAllTimers(); // Resolve timers after focus events
+    });
     expect(container).toMatchSnapshot();
   });
 });

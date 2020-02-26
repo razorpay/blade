@@ -1,6 +1,489 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with character count  1`] = `
+exports[`Renders <TextInput /> filled variant correctly snapshot after focus (filled TextInput) 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "justifyContent": "flex-end",
+          "width": 240,
+        },
+      ]
+    }
+  >
+    <View
+      isFocused={false}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(224, 228, 249, 0.10)",
+            "borderTopLeftRadius": 2,
+            "borderTopRightRadius": 2,
+          },
+          Object {},
+        ]
+      }
+      variant="filled"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          className="sc-AykKC jbrywR"
+          editable={true}
+          hasLeftIcon={false}
+          hasPrefix={false}
+          input=""
+          placeholder=""
+          placeholderTextColor="rgba(22, 47, 86, 0.24)"
+          rejectResponderTermination={true}
+          selectionColor="rgba(22, 47, 86, 0.74)"
+          style={
+            Array [
+              Object {
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "height": 40,
+                "lineHeight": 20,
+                "paddingBottom": 4,
+                "paddingLeft": 8,
+                "paddingRight": 0,
+                "paddingTop": 0,
+              },
+            ]
+          }
+          testID="snap-test-text-input"
+          underlineColorAndroid="transparent"
+          variant="filled"
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _lineHeight="large"
+            _weight="regular"
+            align="left"
+            color="shade.700"
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "flex-start",
+                  "color": "rgba(22, 47, 86, 0.74)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            
+          </Text>
+        </TextInput>
+      </View>
+      <View
+        hasError={false}
+        isFocused={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(22, 47, 86, 0.24)",
+              "height": 1,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      className="sc-AykKC ggGVXI"
+    >
+      <View
+        className="sc-AykKC jbrywR"
+        style={
+          Object {
+            "0": Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 4,
+            },
+          }
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _lineHeight="large"
+          _weight="regular"
+          align="left"
+          color="shade.500"
+          numberOfLines={2}
+          size="xsmall"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.38)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 12,
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot after focus (filled TextInput) 2`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "justifyContent": "flex-end",
+          "width": 240,
+        },
+      ]
+    }
+  >
+    <View
+      isFocused={true}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(224, 228, 249, 0.24)",
+            "borderTopLeftRadius": 2,
+            "borderTopRightRadius": 2,
+          },
+          Object {},
+        ]
+      }
+      variant="filled"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          className="sc-AykKC jbrywR"
+          editable={true}
+          hasLeftIcon={false}
+          hasPrefix={false}
+          input=""
+          placeholder="Enter text here"
+          placeholderTextColor="rgba(22, 47, 86, 0.24)"
+          rejectResponderTermination={true}
+          selectionColor="rgba(22, 47, 86, 0.74)"
+          style={
+            Array [
+              Object {
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "height": 40,
+                "lineHeight": 20,
+                "paddingBottom": 4,
+                "paddingLeft": 8,
+                "paddingRight": 0,
+                "paddingTop": 0,
+              },
+            ]
+          }
+          testID="snap-test-text-input"
+          underlineColorAndroid="transparent"
+          variant="filled"
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _lineHeight="large"
+            _weight="regular"
+            align="left"
+            color="shade.700"
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "flex-start",
+                  "color": "rgba(22, 47, 86, 0.74)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            
+          </Text>
+        </TextInput>
+      </View>
+      <View
+        hasError={false}
+        isFocused={true}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(11, 112, 231, 0.87)",
+              "height": 1,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      className="sc-AykKC ggGVXI"
+    >
+      <View
+        className="sc-AykKC jbrywR"
+        style={
+          Object {
+            "0": Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 4,
+            },
+          }
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _lineHeight="large"
+          _weight="regular"
+          align="left"
+          color="shade.500"
+          numberOfLines={2}
+          size="xsmall"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.38)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 12,
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled TextInput) 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "justifyContent": "flex-end",
+          "width": 240,
+        },
+      ]
+    }
+  >
+    <View
+      isFocused={false}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(224, 228, 249, 0.10)",
+            "borderTopLeftRadius": 2,
+            "borderTopRightRadius": 2,
+          },
+          Object {},
+        ]
+      }
+      variant="filled"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          className="sc-AykKC jbrywR"
+          editable={true}
+          hasLeftIcon={false}
+          hasPrefix={false}
+          input="user@domain.com"
+          placeholder=""
+          placeholderTextColor="rgba(22, 47, 86, 0.24)"
+          rejectResponderTermination={true}
+          selectionColor="rgba(22, 47, 86, 0.74)"
+          style={
+            Array [
+              Object {
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "height": 40,
+                "lineHeight": 20,
+                "paddingBottom": 4,
+                "paddingLeft": 8,
+                "paddingRight": 0,
+                "paddingTop": 0,
+              },
+            ]
+          }
+          testID="ds-text-input"
+          underlineColorAndroid="transparent"
+          variant="filled"
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _lineHeight="large"
+            _weight="regular"
+            align="left"
+            color="shade.700"
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "flex-start",
+                  "color": "rgba(22, 47, 86, 0.74)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            user@domain.com
+          </Text>
+        </TextInput>
+      </View>
+      <View
+        hasError={false}
+        isFocused={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(22, 47, 86, 0.24)",
+              "height": 1,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      className="sc-AykKC ggGVXI"
+    >
+      <View
+        className="sc-AykKC jbrywR"
+        style={
+          Object {
+            "0": Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 4,
+            },
+          }
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _lineHeight="large"
+          _weight="regular"
+          align="left"
+          color="shade.500"
+          numberOfLines={2}
+          size="xsmall"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.38)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 12,
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with character count (filled TextInput) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -202,7 +685,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
 </View>
 `;
 
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with disabled  1`] = `
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with disabled (filled TextInput) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -529,7 +1012,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
 </View>
 `;
 
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with error  1`] = `
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with error (filled TextInput) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -854,331 +1337,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
 </View>
 `;
 
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with filled TextInput 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-          "width": 240,
-        },
-      ]
-    }
-  >
-    <View
-      isFocused={false}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "rgba(224, 228, 249, 0.10)",
-            "borderTopLeftRadius": 2,
-            "borderTopRightRadius": 2,
-          },
-          Object {},
-        ]
-      }
-      variant="filled"
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <TextInput
-          allowFontScaling={true}
-          className="sc-AykKC jbrywR"
-          editable={true}
-          hasLeftIcon={false}
-          hasPrefix={false}
-          input="user@domain.com"
-          placeholder=""
-          placeholderTextColor="rgba(22, 47, 86, 0.24)"
-          rejectResponderTermination={true}
-          selectionColor="rgba(22, 47, 86, 0.74)"
-          style={
-            Array [
-              Object {
-                "color": "rgba(22, 47, 86, 0.74)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "height": 40,
-                "lineHeight": 20,
-                "paddingBottom": 4,
-                "paddingLeft": 8,
-                "paddingRight": 0,
-                "paddingTop": 0,
-              },
-            ]
-          }
-          testID="ds-text-input"
-          underlineColorAndroid="transparent"
-          variant="filled"
-        >
-          <Text
-            _isUnderlined={false}
-            _letterSpacing="small"
-            _lineHeight="large"
-            _weight="regular"
-            align="left"
-            color="shade.700"
-            size="medium"
-            style={
-              Array [
-                Object {
-                  "alignSelf": "flex-start",
-                  "color": "rgba(22, 47, 86, 0.74)",
-                  "fontFamily": "Lato-Regular",
-                  "fontSize": 14,
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-            testID="ds-text"
-          >
-            user@domain.com
-          </Text>
-        </TextInput>
-      </View>
-      <View
-        hasError={false}
-        isFocused={false}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "rgba(22, 47, 86, 0.24)",
-              "height": 1,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      className="sc-AykKC ggGVXI"
-    >
-      <View
-        className="sc-AykKC jbrywR"
-        style={
-          Object {
-            "0": Object {
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 4,
-            },
-          }
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _lineHeight="large"
-          _weight="regular"
-          align="left"
-          color="shade.500"
-          numberOfLines={2}
-          size="xsmall"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.38)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 12,
-                "letterSpacing": 0,
-                "lineHeight": 18,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        />
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with help text  1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-          "width": 240,
-        },
-      ]
-    }
-  >
-    <View
-      isFocused={false}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "rgba(224, 228, 249, 0.10)",
-            "borderTopLeftRadius": 2,
-            "borderTopRightRadius": 2,
-          },
-          Object {},
-        ]
-      }
-      variant="filled"
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <TextInput
-          allowFontScaling={true}
-          className="sc-AykKC jbrywR"
-          editable={true}
-          hasLeftIcon={false}
-          hasPrefix={false}
-          input=""
-          placeholder=""
-          placeholderTextColor="rgba(22, 47, 86, 0.24)"
-          rejectResponderTermination={true}
-          selectionColor="rgba(22, 47, 86, 0.74)"
-          style={
-            Array [
-              Object {
-                "color": "rgba(22, 47, 86, 0.74)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "height": 40,
-                "lineHeight": 20,
-                "paddingBottom": 4,
-                "paddingLeft": 8,
-                "paddingRight": 0,
-                "paddingTop": 0,
-              },
-            ]
-          }
-          testID="ds-text-input"
-          underlineColorAndroid="transparent"
-          variant="filled"
-        >
-          <Text
-            _isUnderlined={false}
-            _letterSpacing="small"
-            _lineHeight="large"
-            _weight="regular"
-            align="left"
-            color="shade.700"
-            size="medium"
-            style={
-              Array [
-                Object {
-                  "alignSelf": "flex-start",
-                  "color": "rgba(22, 47, 86, 0.74)",
-                  "fontFamily": "Lato-Regular",
-                  "fontSize": 14,
-                  "letterSpacing": 0,
-                  "lineHeight": 20,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-            testID="ds-text"
-          >
-            
-          </Text>
-        </TextInput>
-      </View>
-      <View
-        hasError={false}
-        isFocused={false}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "rgba(22, 47, 86, 0.24)",
-              "height": 1,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      className="sc-AykKC ggGVXI"
-    >
-      <View
-        className="sc-AykKC jbrywR"
-        style={
-          Object {
-            "0": Object {
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 4,
-            },
-          }
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _lineHeight="large"
-          _weight="regular"
-          align="left"
-          color="shade.500"
-          numberOfLines={2}
-          size="xsmall"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.38)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 12,
-                "letterSpacing": 0,
-                "lineHeight": 18,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          You can enter your email here
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with help text & character count  1`] = `
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with help text & character count (filled TextInput) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1382,7 +1541,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
 </View>
 `;
 
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with iconLeft  1`] = `
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with help text (filled TextInput) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1427,134 +1586,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
           ]
         }
       >
-        <View
-          style={
-            Array [
-              Object {
-                "paddingBottom": 0,
-                "paddingLeft": 8,
-                "paddingRight": 8,
-                "paddingTop": 0,
-              },
-            ]
-          }
-        >
-          <RNSVGSvgView
-            align="xMidYMid"
-            bbHeight={12}
-            bbWidth={12}
-            fill="rgba(22, 47, 86, 0.38)"
-            focusable={false}
-            height={12}
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                undefined,
-                Object {
-                  "opacity": 1,
-                },
-                Object {
-                  "flex": 0,
-                  "height": 12,
-                  "width": 12,
-                },
-              ]
-            }
-            testID="ds-icon"
-            vbHeight={24}
-            vbWidth={24}
-            width={12}
-          >
-            <RNSVGGroup
-              fill={1628843862}
-              fillOpacity={1}
-              fillRule={1}
-              font={Object {}}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
-              propList={
-                Array [
-                  "fill",
-                ]
-              }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
-            >
-              <RNSVGPath
-                d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                fill={4278190080}
-                fillOpacity={1}
-                fillRule={1}
-                matrix={
-                  Array [
-                    1,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                  ]
-                }
-                opacity={1}
-                originX={0}
-                originY={0}
-                propList={Array []}
-                rotation={0}
-                scaleX={1}
-                scaleY={1}
-                skewX={0}
-                skewY={0}
-                stroke={null}
-                strokeDasharray={null}
-                strokeDashoffset={null}
-                strokeLinecap={0}
-                strokeLinejoin={0}
-                strokeMiterlimit={4}
-                strokeOpacity={1}
-                strokeWidth={1}
-                vectorEffect={0}
-                x={0}
-                y={0}
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
-        </View>
         <TextInput
           allowFontScaling={true}
           className="sc-AykKC jbrywR"
           editable={true}
-          hasLeftIcon={true}
+          hasLeftIcon={false}
           hasPrefix={false}
           input=""
           placeholder=""
@@ -1570,7 +1606,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 "height": 40,
                 "lineHeight": 20,
                 "paddingBottom": 4,
-                "paddingLeft": 0,
+                "paddingLeft": 8,
                 "paddingRight": 0,
                 "paddingTop": 0,
               },
@@ -1659,14 +1695,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             ]
           }
           testID="ds-text"
-        />
+        >
+          You can enter your email here
+        </Text>
       </View>
     </View>
   </View>
 </View>
 `;
 
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with iconLeft & iconRight  1`] = `
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with iconLeft & iconRight (filled TextInput) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2073,7 +2111,291 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
 </View>
 `;
 
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with iconRight  1`] = `
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with iconLeft (filled TextInput) 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "justifyContent": "flex-end",
+          "width": 240,
+        },
+      ]
+    }
+  >
+    <View
+      isFocused={false}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(224, 228, 249, 0.10)",
+            "borderTopLeftRadius": 2,
+            "borderTopRightRadius": 2,
+          },
+          Object {},
+        ]
+      }
+      variant="filled"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "paddingBottom": 0,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 0,
+              },
+            ]
+          }
+        >
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={12}
+            bbWidth={12}
+            fill="rgba(22, 47, 86, 0.38)"
+            focusable={false}
+            height={12}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                undefined,
+                Object {
+                  "opacity": 1,
+                },
+                Object {
+                  "flex": 0,
+                  "height": 12,
+                  "width": 12,
+                },
+              ]
+            }
+            testID="ds-icon"
+            vbHeight={24}
+            vbWidth={24}
+            width={12}
+          >
+            <RNSVGGroup
+              fill={1628843862}
+              fillOpacity={1}
+              fillRule={1}
+              font={Object {}}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            >
+              <RNSVGPath
+                d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                fill={4278190080}
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={Array []}
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                vectorEffect={0}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <TextInput
+          allowFontScaling={true}
+          className="sc-AykKC jbrywR"
+          editable={true}
+          hasLeftIcon={true}
+          hasPrefix={false}
+          input=""
+          placeholder=""
+          placeholderTextColor="rgba(22, 47, 86, 0.24)"
+          rejectResponderTermination={true}
+          selectionColor="rgba(22, 47, 86, 0.74)"
+          style={
+            Array [
+              Object {
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "height": 40,
+                "lineHeight": 20,
+                "paddingBottom": 4,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+              },
+            ]
+          }
+          testID="ds-text-input"
+          underlineColorAndroid="transparent"
+          variant="filled"
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _lineHeight="large"
+            _weight="regular"
+            align="left"
+            color="shade.700"
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "flex-start",
+                  "color": "rgba(22, 47, 86, 0.74)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            
+          </Text>
+        </TextInput>
+      </View>
+      <View
+        hasError={false}
+        isFocused={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(22, 47, 86, 0.24)",
+              "height": 1,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      className="sc-AykKC ggGVXI"
+    >
+      <View
+        className="sc-AykKC jbrywR"
+        style={
+          Object {
+            "0": Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 4,
+            },
+          }
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _lineHeight="large"
+          _weight="regular"
+          align="left"
+          color="shade.500"
+          numberOfLines={2}
+          size="xsmall"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.38)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 12,
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with iconRight (filled TextInput) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2518,7 +2840,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
 </View>
 `;
 
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with prefix & suffix 1`] = `
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with prefix & suffix (filled TextInput) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2718,7 +3040,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
 </View>
 `;
 
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with prefix 1`] = `
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with prefix (filled TextInput) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2918,7 +3240,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
 </View>
 `;
 
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with suffix 1`] = `
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with suffix (filled TextInput) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -3066,6 +3388,328 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
           Array [
             Object {
               "backgroundColor": "rgba(22, 47, 86, 0.24)",
+              "height": 1,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      className="sc-AykKC ggGVXI"
+    >
+      <View
+        className="sc-AykKC jbrywR"
+        style={
+          Object {
+            "0": Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 4,
+            },
+          }
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _lineHeight="large"
+          _weight="regular"
+          align="left"
+          color="shade.500"
+          numberOfLines={2}
+          size="xsmall"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.38)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 12,
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "justifyContent": "flex-end",
+          "width": 240,
+        },
+      ]
+    }
+  >
+    <View
+      isFocused={false}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderTopLeftRadius": 2,
+            "borderTopRightRadius": 2,
+          },
+          Object {},
+        ]
+      }
+      variant="outline"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          className="sc-AykKC jbrywR"
+          editable={true}
+          hasLeftIcon={false}
+          hasPrefix={false}
+          input=""
+          placeholder=""
+          placeholderTextColor="rgba(22, 47, 86, 0.24)"
+          rejectResponderTermination={true}
+          selectionColor="rgba(22, 47, 86, 0.74)"
+          style={
+            Array [
+              Object {
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "height": 40,
+                "lineHeight": 20,
+                "paddingBottom": 4,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+              },
+            ]
+          }
+          testID="snap-test-text-input"
+          underlineColorAndroid="transparent"
+          variant="outline"
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _lineHeight="large"
+            _weight="regular"
+            align="left"
+            color="shade.700"
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "flex-start",
+                  "color": "rgba(22, 47, 86, 0.74)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            
+          </Text>
+        </TextInput>
+      </View>
+      <View
+        hasError={false}
+        isFocused={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(22, 47, 86, 0.24)",
+              "height": 1,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      className="sc-AykKC ggGVXI"
+    >
+      <View
+        className="sc-AykKC jbrywR"
+        style={
+          Object {
+            "0": Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 4,
+            },
+          }
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _lineHeight="large"
+          _weight="regular"
+          align="left"
+          color="shade.500"
+          numberOfLines={2}
+          size="xsmall"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.38)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 12,
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "justifyContent": "flex-end",
+          "width": 240,
+        },
+      ]
+    }
+  >
+    <View
+      isFocused={true}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderTopLeftRadius": 2,
+            "borderTopRightRadius": 2,
+          },
+          Object {},
+        ]
+      }
+      variant="outline"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          className="sc-AykKC jbrywR"
+          editable={true}
+          hasLeftIcon={false}
+          hasPrefix={false}
+          input=""
+          placeholder="Enter text here"
+          placeholderTextColor="rgba(22, 47, 86, 0.24)"
+          rejectResponderTermination={true}
+          selectionColor="rgba(22, 47, 86, 0.74)"
+          style={
+            Array [
+              Object {
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "height": 40,
+                "lineHeight": 20,
+                "paddingBottom": 4,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+              },
+            ]
+          }
+          testID="snap-test-text-input"
+          underlineColorAndroid="transparent"
+          variant="outline"
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _lineHeight="large"
+            _weight="regular"
+            align="left"
+            color="shade.700"
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "flex-start",
+                  "color": "rgba(22, 47, 86, 0.74)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            
+          </Text>
+        </TextInput>
+      </View>
+      <View
+        hasError={false}
+        isFocused={true}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(11, 112, 231, 0.87)",
               "height": 1,
             },
           ]
