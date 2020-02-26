@@ -47,12 +47,23 @@ const StyledText = styled(NativeText)`
   letter-spacing: ${styles.letterSpacing};
 `;
 
-const Text = ({ size, align, testID, color, children, _weight, _isUnderlined, _letterSpacing }) => {
+const Text = ({
+  size,
+  align,
+  testID,
+  color,
+  children,
+  numberOfLines,
+  _weight,
+  _isUnderlined,
+  _letterSpacing,
+}) => {
   return (
     <StyledText
       size={size}
       align={align}
       color={color}
+      numberOfLines={numberOfLines}
       _weight={_weight}
       _isUnderlined={_isUnderlined}
       _letterSpacing={_letterSpacing}
@@ -69,6 +80,7 @@ Text.propTypes = {
   color: PropTypes.oneOf(getColorKeys()),
   align: PropTypes.oneOf(['left', 'center', 'right']),
   testID: PropTypes.string,
+  numberOfLines: PropTypes.number,
   _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   _isUnderlined: PropTypes.bool,
   _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
