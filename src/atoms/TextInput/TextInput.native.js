@@ -19,10 +19,10 @@ const IS_ANDROID = Platform.OS === 'android';
 
 const styles = {
   textInput: {
-    padding({ variant, hasLeftIcon, hasPrefix }) {
+    padding({ variant, hasLeftIcon, hasPrefix, hasText }) {
       const paddingTop = IS_ANDROID ? '8px' : '0px';
       const paddingRight = '0px';
-      const paddingBottom = IS_ANDROID ? '0px' : '4px';
+      const paddingBottom = IS_ANDROID ? '0px' : hasText ? '4px' : '2px';
       const paddingLeft = variant === 'outline' || hasLeftIcon || hasPrefix ? '0px' : '8px';
       // iOS & Android need different paddings
       return `${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`;
@@ -129,6 +129,7 @@ const TextInput = ({
     iconRight,
   });
 
+  const hasText = !!(input && input.length > 0);
   const onFocus = useCallback(() => {
     setFocused(true);
 
@@ -170,7 +171,7 @@ const TextInput = ({
       {layoutDimensions ? (
         <Label
           isFocused={isFocused}
-          hasText={!!(input && input.length > 0)}
+          hasText={hasText}
           disabled={disabled}
           layoutDimensions={layoutDimensions}
           variant={variant}
@@ -204,7 +205,7 @@ const TextInput = ({
                 onFocus={onFocus}
                 onBlur={onBlur}
                 onChangeText={onChange}
-                input={input}
+                hasText={hasText}
                 selectionColor={theme.colors.shade[700]} // not able to change this for Android
                 editable={!disabled}
                 variant={variant}
