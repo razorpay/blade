@@ -9,10 +9,8 @@ const styles = {
   color({ disabled, hasError }) {
     if (hasError) {
       return 'negative.900';
-    } else if (disabled) {
-      return 'shade.930';
     } else {
-      return 'shade.950';
+      return disabled ? 'shade.930' : 'shade.950';
     }
   },
   padding({ variant }) {
