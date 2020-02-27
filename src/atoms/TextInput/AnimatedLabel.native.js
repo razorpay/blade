@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Animated, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
@@ -151,7 +151,7 @@ const AnimatedLabel = ({
     FINAL_ANIMATION_VALUE: 1,
   };
 
-  const [labelAnimatedValue] = useState(
+  const { current: labelAnimatedValue } = useRef(
     new Animated.Value(AnimationConfig.INITIAL_ANIMATION_VALUE),
   );
 
