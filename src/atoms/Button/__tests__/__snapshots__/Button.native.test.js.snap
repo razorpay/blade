@@ -13,17 +13,17 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={false}
     size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 8,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -32,7 +32,6 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> 1`] = `
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
@@ -161,6 +160,7 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       _weight="bold"
       align="center"
       color="white.900"
@@ -173,6 +173,7 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -198,17 +199,17 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> with left ico
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={false}
     size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 8,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -217,13 +218,13 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> with left ico
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       _weight="bold"
       align="center"
       color="white.900"
@@ -236,6 +237,7 @@ exports[`Renders <Button /> correctly Renders a Primary <Button /> with left ico
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -261,17 +263,17 @@ exports[`Renders <Button /> correctly Renders a Secondary <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={false}
     size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 8,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -280,13 +282,13 @@ exports[`Renders <Button /> correctly Renders a Secondary <Button /> 1`] = `
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       _weight="bold"
       align="center"
       color="white.900"
@@ -299,6 +301,7 @@ exports[`Renders <Button /> correctly Renders a Secondary <Button /> 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -324,17 +327,17 @@ exports[`Renders <Button /> correctly Renders a Tertiary <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={false}
     size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 8,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -343,13 +346,13 @@ exports[`Renders <Button /> correctly Renders a Tertiary <Button /> 1`] = `
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       _weight="bold"
       align="center"
       color="white.900"
@@ -362,6 +365,7 @@ exports[`Renders <Button /> correctly Renders a Tertiary <Button /> 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -387,17 +391,17 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={true}
     size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(162, 201, 246, 1.0)",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 8,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -406,13 +410,13 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       _weight="bold"
       align="center"
       color="white.950"
@@ -425,6 +429,7 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -450,17 +455,17 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={true}
     size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(162, 201, 246, 1.0)",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 8,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -469,13 +474,13 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       _weight="bold"
       align="center"
       color="white.950"
@@ -488,6 +493,7 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -513,17 +519,17 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={true}
     size="medium"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(162, 201, 246, 1.0)",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 8,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -532,13 +538,13 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       _weight="bold"
       align="center"
       color="white.950"
@@ -551,6 +557,7 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -576,17 +583,17 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={false}
     size="large"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 10,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -595,13 +602,13 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       _weight="bold"
       align="center"
       color="white.900"
@@ -614,6 +621,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -639,17 +647,17 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> with ri
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={false}
     size="large"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 10,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -658,13 +666,13 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> with ri
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       _weight="bold"
       align="center"
       color="white.900"
@@ -677,6 +685,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> with ri
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -824,17 +833,17 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={false}
     size="large"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 10,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -843,13 +852,13 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       _weight="bold"
       align="center"
       color="white.900"
@@ -862,6 +871,7 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -887,17 +897,17 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> correc
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={false}
     size="large"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 10,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -906,13 +916,13 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> correc
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       _weight="bold"
       align="center"
       color="white.900"
@@ -925,6 +935,7 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> correc
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -950,17 +961,17 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={false}
     size="small"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 5,
           "paddingLeft": 16,
           "paddingRight": 16,
@@ -969,13 +980,13 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="small"
       _weight="bold"
       align="center"
       color="white.900"
@@ -988,6 +999,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
             "letterSpacing": 0,
+            "lineHeight": 18,
             "textDecorationLine": "none",
           },
         ]
@@ -1013,17 +1025,17 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={false}
     size="small"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 5,
           "paddingLeft": 16,
           "paddingRight": 16,
@@ -1032,13 +1044,13 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="small"
       _weight="bold"
       align="center"
       color="white.900"
@@ -1051,6 +1063,7 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
             "letterSpacing": 0,
+            "lineHeight": 18,
             "textDecorationLine": "none",
           },
         ]
@@ -1076,17 +1089,17 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
   <TouchableHighlight
     activeOpacity={1}
     align="left"
+    className="sc-AykKC etlKkb"
     delayPressOut={100}
     disabled={false}
     size="small"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(43, 131, 234, 1.0 )",
           "borderRadius": 2,
-          "flexDirection": "row",
+        },
+        Object {
           "paddingBottom": 5,
           "paddingLeft": 16,
           "paddingRight": 16,
@@ -1095,13 +1108,13 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
       ]
     }
     testID="ds-button"
-    text="Click Me"
     underlayColor="rgba(123, 178, 242, 1.0)"
     variant="primary"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="small"
       _weight="bold"
       align="center"
       color="white.900"
@@ -1114,6 +1127,7 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
             "letterSpacing": 0,
+            "lineHeight": 18,
             "textDecorationLine": "none",
           },
         ]

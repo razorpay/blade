@@ -7,6 +7,8 @@ import Icon from '../Icon';
 import Space from '../Space';
 import Text from '../Text';
 import View from '../View';
+import Flex from '../Flex';
+import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
 
 const styles = {
@@ -71,29 +73,29 @@ const styles = {
         return getColor(theme, `${variantColor || 'primary'}.950`);
     }
   },
-  padding({ size, theme, text }) {
+  padding({ size, theme, children }) {
     switch (size) {
       case 'xsmall':
-        if (!text) {
-          return `${theme.spacings.xxsmall}`;
+        if (!children) {
+          return [theme.spacings.xxsmall];
         }
-        return `${theme.spacings.xxsmall} ${theme.spacings.small}`;
+        return [theme.spacings.xxsmall, theme.spacings.small];
       case 'small':
-        if (!text) {
-          return `${makePxValue(0.75)}`;
+        if (!children) {
+          return [makePxValue(0.75)];
         }
-        return `${makePxValue(0.625)} ${theme.spacings.large}`;
+        return [makePxValue(0.625), theme.spacings.large];
       case 'medium':
       default:
-        if (!text) {
-          return `${theme.spacings.small}`;
+        if (!children) {
+          return [theme.spacings.small];
         }
-        return `${theme.spacings.small} ${theme.spacings.xxlarge}`;
+        return [theme.spacings.small, theme.spacings.xxlarge];
       case 'large':
-        if (!text) {
-          return `${makePxValue(1.25)}`;
+        if (!children) {
+          return [makePxValue(1.25)];
         }
-        return `${makePxValue(1.25)} ${theme.spacings.xxlarge} `;
+        return [makePxValue(1.25), theme.spacings.xxlarge];
     }
   },
   iconSize({ size, children }) {
@@ -159,15 +161,23 @@ const styles = {
         return iconPosition === 'left' ? [0, 1, 0, 0] : [0, 0, 0, 1];
     }
   },
+  lineHeight({ size }) {
+    switch (size) {
+      case 'xsmall':
+        return 'xsmall';
+      case 'small':
+        return 'small';
+      case 'medium':
+      case 'large':
+      default:
+        return 'medium';
+    }
+  },
 };
 
 const StyledButton = styled(TouchableHighlight)(
   (props) => `
-    flex-direction: row;
-    align-items: center;
-    align-self: ${styles.alignSelf(props)};
     background-color: ${styles.backgroundColor(props)};
-    padding: ${styles.padding(props)};
     border-radius: ${props.theme.spacings.xxsmall};
     ${styles.border(props) && `border: ${styles.border(props)}`};
   `,
@@ -188,54 +198,58 @@ const Button = (props) => {
   } = props;
   const theme = useContext(ThemeContext);
   return (
-    <StyledButton
-      onPress={onClick}
-      variantColor={variantColor}
-      disabled={disabled}
-      size={size}
-      variant={variant}
-      activeOpacity={1}
-      text={children}
-      underlayColor={styles.underlayColor({ variantColor, variant, theme })}
-      align={align}
-      testID={testID}
-    >
-      <>
-        {icon && iconPosition === 'left' && (
-          <Icon
-            name={icon}
-            size={styles.iconSize(props)}
-            fill={styles.fontColor({ ...props, theme })}
-          />
-        )}
-        {icon && iconPosition === 'left' && children && (
-          <Space margin={styles.spaceBetween(props)}>
-            <View />
-          </Space>
-        )}
-        <Text
-          color={styles.fontColor(props)}
-          size={styles.fontSize(props)}
-          _weight="bold"
-          align="center"
-          _letterSpacing={styles.letterSpacing(props)}
+    <Flex flexDirection="row" alignItems="center" alignSelf={styles.alignSelf(props)}>
+      <Space padding={styles.padding({ ...props, theme })}>
+        <StyledButton
+          onPress={onClick}
+          variantColor={variantColor}
+          disabled={disabled}
+          size={size}
+          variant={variant}
+          activeOpacity={1}
+          underlayColor={styles.underlayColor({ ...props, theme })}
+          align={align}
+          {...automation(testID)}
         >
-          {size === 'xsmall' ? children && children.toUpperCase() : children}
-        </Text>
-        {icon && iconPosition === 'right' && children && (
-          <Space margin={styles.spaceBetween(props)}>
-            <View />
-          </Space>
-        )}
-        {icon && iconPosition === 'right' && (
-          <Icon
-            name={icon}
-            size={styles.iconSize(props)}
-            fill={styles.fontColor({ ...props, theme })}
-          />
-        )}
-      </>
-    </StyledButton>
+          <>
+            {icon && iconPosition === 'left' && (
+              <Icon
+                name={icon}
+                size={styles.iconSize(props)}
+                fill={styles.fontColor({ ...props, theme })}
+              />
+            )}
+            {icon && iconPosition === 'left' && children && (
+              <Space margin={styles.spaceBetween(props)}>
+                <View />
+              </Space>
+            )}
+            <Text
+              color={styles.fontColor(props)}
+              size={styles.fontSize(props)}
+              align="center"
+              _weight="bold"
+              _letterSpacing={styles.letterSpacing(props)}
+              _lineHeight={styles.lineHeight(props)}
+            >
+              {size === 'xsmall' ? children && children.toUpperCase() : children}
+            </Text>
+            {icon && iconPosition === 'right' && children && (
+              <Space margin={styles.spaceBetween(props)}>
+                <View />
+              </Space>
+            )}
+            {icon && iconPosition === 'right' && (
+              <Icon
+                name={icon}
+                size={styles.iconSize(props)}
+                fill={styles.fontColor({ ...props, theme })}
+              />
+            )}
+          </>
+        </StyledButton>
+      </Space>
+    </Flex>
   );
 };
 

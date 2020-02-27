@@ -6,9 +6,6 @@ const makePxValue = (value) => {
   return values.map((v) => (typeof v === 'string' ? v : `${v * spacings.unit}px`)).join(' ');
 };
 
-// given a color and shade, returns a colorKey.
-const getColorKey = (color, shade) => `${color}.${shade}`;
-
 const getColorKeys = () => {
   return Object.keys(theme.colors)
     .map((base) => {
@@ -44,6 +41,4 @@ const getLineHeight = (currentTheme, textSize) => {
   }
 };
 
-export { getLineHeight };
-
-export { makePxValue, getColorKey, getColorKeys, getColor, getVariantColorKeys };
+export { makePxValue, getColorKeys, getColor, getVariantColorKeys, getLineHeight };

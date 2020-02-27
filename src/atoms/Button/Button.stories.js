@@ -40,6 +40,7 @@ storiesOf('Button', module)
         size={select('Sizes', sizes, 'medium')}
         variant={select('Variants', variants, 'primary')}
         icon="info"
+        align="center"
       />
       <Button
         size={select('Sizes', sizes, 'medium')}
