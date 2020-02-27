@@ -183,6 +183,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
+                "lineHeight": 20,
                 "textDecorationLine": "none",
               },
             ]
@@ -220,6 +221,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
               "fontFamily": "Lato-Regular",
               "fontSize": 12,
               "letterSpacing": 0,
+              "lineHeight": 18,
               "textDecorationLine": "none",
             },
           ]
@@ -416,6 +418,7 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
+                "lineHeight": 20,
                 "textDecorationLine": "none",
               },
             ]
@@ -613,6 +616,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
+                "lineHeight": 20,
                 "textDecorationLine": "none",
               },
             ]
@@ -810,6 +814,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
+                "lineHeight": 20,
                 "textDecorationLine": "none",
               },
             ]
@@ -1007,6 +1012,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when not
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
+                "lineHeight": 20,
                 "textDecorationLine": "none",
               },
             ]
@@ -1204,6 +1210,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render medium sized Check
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
+                "lineHeight": 20,
                 "textDecorationLine": "none",
               },
             ]
@@ -1241,6 +1248,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render medium sized Check
               "fontFamily": "Lato-Regular",
               "fontSize": 12,
               "letterSpacing": 0,
+              "lineHeight": 18,
               "textDecorationLine": "none",
             },
           ]
@@ -1437,6 +1445,7 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user long 
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
+                "lineHeight": 20,
                 "textDecorationLine": "none",
               },
             ]
@@ -1634,6 +1643,7 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user press
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
+                "lineHeight": 20,
                 "textDecorationLine": "none",
               },
             ]
