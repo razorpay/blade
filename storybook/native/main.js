@@ -31,6 +31,7 @@ configure(() => {
   require('../../src/atoms/Heading/Heading.stories');
   require('../../src/molecules/Amount/Amount.stories');
   require('../../src/molecules/SegmentControl/SegmentControl.stories');
+  require('../../src/atoms/Tab/Tab.stories');
 }, module);
 
 // add decorators
