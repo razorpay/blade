@@ -36,8 +36,12 @@ const styles = {
     fontFamily({ theme }) {
       return theme.fonts.family.lato.regular;
     },
-    color({ theme }) {
-      return theme.colors.shade[970];
+    color({ theme, disabled }) {
+      if (disabled) {
+        return theme.colors.shade[940];
+      } else {
+        return theme.colors.shade[970];
+      }
     },
   },
   fillContainer: {
@@ -46,15 +50,6 @@ const styles = {
       else if (disabled) return theme.colors.tone[930];
       else if (isFocused) return theme.colors.tone[940];
       else return theme.colors.tone[930];
-    },
-  },
-  text: {
-    color({ disabled }) {
-      if (disabled) {
-        return 'shade.940';
-      } else {
-        return 'shade.970';
-      }
     },
   },
   inputContainer: {
@@ -237,6 +232,7 @@ const TextInput = ({
                       hasText={hasText}
                       selectionColor={theme.colors.shade[970]} // not able to change this for Android
                       editable={!disabled}
+                      disabled={disabled}
                       variant={variant}
                       hasPrefix={hasPrefix}
                       hasLeftIcon={hasLeftIcon}
