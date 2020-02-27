@@ -110,7 +110,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
             <RNSVGPath
               clipRule={0}
               d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
-              fill={3725291751}
+              fill={4281041898}
               fillOpacity={0.87}
               fillRule={0}
               matrix={
@@ -171,7 +171,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.700"
+          color="shade.970"
           size="medium"
           style={
             Array [
@@ -341,7 +341,7 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
             <RNSVGPath
               clipRule={0}
               d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
-              fill={3725291751}
+              fill={4281041898}
               fillOpacity={0.87}
               fillRule={0}
               matrix={
@@ -402,7 +402,7 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.700"
+          color="shade.970"
           size="medium"
           style={
             Array [
@@ -448,12 +448,12 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
       className="sc-AykKC ibjCEa"
     >
       <View
-        backgroundColor="rgba(11, 112, 231, 0.10)"
+        backgroundColor="rgba(231, 241, 253, 1.0)"
         size="medium"
         style={
           Array [
             Object {
-              "backgroundColor": "rgba(11, 112, 231, 0.10)",
+              "backgroundColor": "rgba(231, 241, 253, 1.0)",
               "borderRadius": 10,
               "height": 20,
               "width": 20,
@@ -536,7 +536,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
             <RNSVGPath
               clipRule={0}
               d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
-              fill={3725291751}
+              fill={4281041898}
               fillOpacity={0.87}
               fillRule={0}
               matrix={
@@ -597,7 +597,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.700"
+          color="shade.970"
           size="medium"
           style={
             Array [
@@ -731,7 +731,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
             <RNSVGPath
               clipRule={0}
               d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
-              fill={3725291751}
+              fill={4281041898}
               fillOpacity={0.87}
               fillRule={0}
               matrix={
@@ -792,7 +792,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.700"
+          color="shade.970"
           size="medium"
           style={
             Array [
@@ -987,7 +987,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when not
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.700"
+          color="shade.970"
           size="medium"
           style={
             Array [
@@ -1182,7 +1182,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render medium sized Check
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.700"
+          color="shade.970"
           size="medium"
           style={
             Array [
@@ -1219,7 +1219,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render medium sized Check
         _letterSpacing="small"
         _weight="regular"
         align="left"
-        color="shade.500"
+        color="shade.950"
         size="xsmall"
         style={
           Array [
@@ -1413,7 +1413,7 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user long 
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.700"
+          color="shade.970"
           size="medium"
           style={
             Array [
@@ -1608,7 +1608,7 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user press
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.700"
+          color="shade.970"
           size="medium"
           style={
             Array [
