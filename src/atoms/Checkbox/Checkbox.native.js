@@ -15,13 +15,13 @@ const styles = {
   icon: {
     fill({ disabled, isChecked, variantColor }) {
       if (disabled) {
-        return 'shade.300';
+        return 'shade.930';
       }
       if (isChecked) {
         return `${variantColor || 'primary'}.800`;
       }
 
-      return 'shade.500';
+      return 'shade.950';
     },
   },
   helpText: {
@@ -114,15 +114,15 @@ const Checkbox = ({
   errorText,
   checked,
 }) => {
-  let titleTextColor = 'shade.700';
-  let helpTextColor = 'shade.500';
+  let titleTextColor = 'shade.970';
+  let helpTextColor = 'shade.950';
 
   const [isChecked, setCheckboxState] = useState(checked);
   const [underlayColor, setUnderlayColor] = useState('transparent');
   const theme = useContext(ThemeContext);
 
   const onPressIn = () => {
-    let colorKey = 'tone.400';
+    let colorKey = 'tone.940';
     if (isChecked) {
       colorKey = `${variantColor || 'primary'}.300`;
     }
@@ -142,8 +142,8 @@ const Checkbox = ({
   };
 
   if (disabled) {
-    titleTextColor = 'shade.500';
-    helpTextColor = 'shade.300';
+    titleTextColor = 'shade.950';
+    helpTextColor = 'shade.930';
   }
 
   return (
