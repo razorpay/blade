@@ -15,7 +15,7 @@ const ItemContainer = styled.View`
 `;
 
 const ItemTitle = styled.Text`
-  color: ${(props) => props.theme.colors.shade[700]};
+  color: ${(props) => props.theme.colors.shade[970]};
   margin: 0px 0px 10px 0px;
 `;
 

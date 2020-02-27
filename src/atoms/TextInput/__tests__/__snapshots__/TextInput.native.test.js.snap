@@ -87,7 +87,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -214,7 +214,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -241,7 +241,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
             style={
               Array [
                 Object {
-                  "backgroundColor": "rgba(11, 112, 231, 0.87)",
+                  "backgroundColor": "rgba(43, 131, 234, 1.0 )",
                   "height": 1,
                 },
               ]
@@ -341,7 +341,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -469,7 +469,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -579,7 +579,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.300"
+                color="shade.930"
                 numberOfLines={1}
                 size="medium"
                 style={
@@ -636,7 +636,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.400"
+                color="shade.940"
                 size="medium"
                 style={
                   Array [
@@ -816,7 +816,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               _lineHeight="large"
               _weight="regular"
               align="left"
-              color="shade.300"
+              color="shade.930"
               numberOfLines={2}
               size="xsmall"
               style={
@@ -913,7 +913,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.500"
+                color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
@@ -970,7 +970,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -1261,7 +1261,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -1317,7 +1317,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               _lineHeight="large"
               _weight="regular"
               align="left"
-              color="shade.500"
+              color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
@@ -1357,7 +1357,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               _lineHeight="large"
               _weight="regular"
               align="left"
-              color="shade.500"
+              color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
@@ -1472,7 +1472,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -1528,7 +1528,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               _lineHeight="large"
               _weight="regular"
               align="left"
-              color="shade.500"
+              color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
@@ -1766,7 +1766,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -2139,7 +2139,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -2266,7 +2266,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -2516,7 +2516,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -2643,7 +2643,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -2681,7 +2681,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.500"
+                color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
@@ -2791,7 +2791,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.500"
+                color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
@@ -2848,7 +2848,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -2975,7 +2975,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -3013,7 +3013,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.500"
+                color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
@@ -3141,7 +3141,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -3268,7 +3268,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -3295,7 +3295,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
             style={
               Array [
                 Object {
-                  "backgroundColor": "rgba(11, 112, 231, 0.87)",
+                  "backgroundColor": "rgba(43, 131, 234, 1.0 )",
                   "height": 1,
                 },
               ]
@@ -3396,7 +3396,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -3506,7 +3506,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.300"
+                color="shade.930"
                 numberOfLines={1}
                 size="medium"
                 style={
@@ -3563,7 +3563,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.400"
+                color="shade.940"
                 size="medium"
                 style={
                   Array [
@@ -3743,7 +3743,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
               _lineHeight="large"
               _weight="regular"
               align="left"
-              color="shade.300"
+              color="shade.930"
               numberOfLines={2}
               size="xsmall"
               style={
@@ -3840,7 +3840,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.500"
+                color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
@@ -3897,7 +3897,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -4187,7 +4187,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -4314,7 +4314,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -4370,7 +4370,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
               _lineHeight="large"
               _weight="regular"
               align="left"
-              color="shade.500"
+              color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
@@ -4486,7 +4486,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -4542,7 +4542,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
               _lineHeight="large"
               _weight="regular"
               align="left"
-              color="shade.500"
+              color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
@@ -4582,7 +4582,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
               _lineHeight="large"
               _weight="regular"
               align="left"
-              color="shade.500"
+              color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
@@ -4820,7 +4820,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -5070,7 +5070,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -5320,7 +5320,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -5570,7 +5570,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -5697,7 +5697,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -5735,7 +5735,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.500"
+                color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
@@ -5845,7 +5845,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.500"
+                color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
@@ -5902,7 +5902,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -6029,7 +6029,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.700"
+                color="shade.970"
                 size="medium"
                 style={
                   Array [
@@ -6067,7 +6067,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
                 _lineHeight="large"
                 _weight="regular"
                 align="left"
-                color="shade.500"
+                color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={

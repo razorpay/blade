@@ -8,9 +8,9 @@ import View from '../View';
 const styles = {
   color({ disabled }) {
     if (disabled) {
-      return 'shade.300';
+      return 'shade.930';
     } else {
-      return 'shade.500';
+      return 'shade.950';
     }
   },
 };

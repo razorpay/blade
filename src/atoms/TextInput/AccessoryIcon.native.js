@@ -10,9 +10,9 @@ const styles = {
     if (hasError) {
       return 'negative.900';
     } else if (disabled) {
-      return 'shade.300';
+      return 'shade.930';
     } else {
-      return 'shade.500';
+      return 'shade.950';
     }
   },
   padding({ variant }) {
