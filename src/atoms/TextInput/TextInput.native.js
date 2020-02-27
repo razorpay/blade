@@ -69,21 +69,46 @@ const Container = styled(View)`
   justify-content: flex-end;
 `;
 
-const InputContainer = styled(View)`
+const InputContainer = styled(View)(
+  (props) => `
   background-color: transparent;
   flex-direction: row;
   align-items: center;
-  width: ${styles.inputContainer.width};
-`;
+  width: ${styles.inputContainer.width(props)};
+  ${
+    props._isMultiline
+      ? `
+      margin-top: 10px;
+      `
+      : null
+  };
+`,
+);
 
-const StyledInput = styled(NativeTextInput)`
-  height: 40px;
-  padding: ${styles.textInput.padding};
-  font-size: ${styles.textInput.fontSize};
-  line-height: ${styles.textInput.lineHeight};
-  font-family: ${styles.textInput.fontFamily};
-  color: ${styles.textInput.color};
-`;
+const StyledInput = styled(NativeTextInput)(
+  (props) => `
+  padding: ${styles.textInput.padding(props)};
+  font-size: ${styles.textInput.fontSize(props)};
+  line-height: ${styles.textInput.lineHeight(props)};
+  font-family: ${styles.textInput.fontFamily(props)};
+  color: ${styles.textInput.color(props)};
+  ${
+    !props.multiline
+      ? `
+  height: 40px
+  `
+      : null
+  };
+  ${
+    props.multiline
+      ? `
+  min-height: 30px;
+  max-height: 80px
+  `
+      : null
+  };
+`,
+);
 
 const FillContainer = styled(View)`
   background-color: ${styles.fillContainer.backgroundColor};
@@ -118,6 +143,7 @@ const TextInput = ({
   testID,
   labelPosition,
   size,
+  _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setFocused] = useState(false);
@@ -190,6 +216,7 @@ const TextInput = ({
           layoutDimensions={layoutDimensions}
           variant={variant}
           hasError={hasError}
+          _isMultiline={_isMultiline}
         >
           {label}
         </AnimatedLabel>
@@ -206,7 +233,7 @@ const TextInput = ({
           <Flex flexDirection="column">
             <View>
               <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
-                <InputContainer size={size}>
+                <InputContainer size={size} _isMultiline={_isMultiline}>
                   {hasPrefix ? (
                     <AccessoryText variant={variant} disabled={disabled}>
                       {prefix}
@@ -239,6 +266,7 @@ const TextInput = ({
                       maxLength={maxLength}
                       onLayout={onTextInputLayout}
                       value={input}
+                      multiline={_isMultiline}
                       {...automation(testID)}
                     />
                   </Flex>
@@ -302,6 +330,7 @@ TextInput.propTypes = {
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
   size: PropTypes.oneOf(['small', 'medium']),
+  _isMultiline: PropTypes.bool,
 };
 
 TextInput.defaultProps = {

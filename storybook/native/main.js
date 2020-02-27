@@ -19,6 +19,7 @@ configure(() => {
   require('../../src/atoms/Icon/Icon.stories');
   require('../../src/atoms/TextInput/TextInput.stories');
   require('../../src/atoms/Button/Button.stories');
+  require('../../src/atoms/TextArea/TextArea.stories');
 }, module);
 
 // add decorators

@@ -7,12 +7,6 @@ import View from '../View';
 
 const IS_ANDROID = Platform.OS === 'android';
 
-const ANDROID_OUTLINE_INITIAL_TOP_DIVISOR = 2.4;
-const IOS_OUTLINE_INITIAL_TOP_DIVISOR = 2;
-
-const ANDROID_FILLED_INITIAL_TOP_DIVISOR = 1.15;
-const IOS_FILLED_INITIAL_TOP_DIVISOR = 1.3;
-
 const styles = {
   container: {
     height({ variant }) {
@@ -70,6 +64,20 @@ const onBlur = ({ AnimationConfig, labelAnimatedValue }) => {
   }).start();
 };
 
+const getInitialTopDivisor = ({ variant, _isMultiline }) => {
+  if (variant === 'outline') {
+    if (_isMultiline) {
+      return Platform.OS === 'android' ? 2.4 : 2;
+    } else {
+      return Platform.OS === 'android' ? 2.4 : 2;
+    }
+  } else if (_isMultiline) {
+    return Platform.OS === 'android' ? 1.15 : 1.3;
+  } else {
+    return Platform.OS === 'android' ? 1.15 : 1.3;
+  }
+};
+
 const getColorInterpolation = (AnimationConfig, labelAnimatedValue) => {
   return labelAnimatedValue.interpolate({
     inputRange: [AnimationConfig.INITIAL_ANIMATION_VALUE, AnimationConfig.FINAL_ANIMATION_VALUE],
@@ -104,17 +112,19 @@ const getLeftInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
   });
 };
 
-const getInitialTopPosition = (layoutDimensions, variant) => {
+const getInitialTopPosition = (layoutDimensions, variant, _isMultiline) => {
+  const initialTopDivisor = getInitialTopDivisor({ variant, _isMultiline });
+
   if (variant === 'outline') {
     if (IS_ANDROID) {
-      return layoutDimensions.height / ANDROID_OUTLINE_INITIAL_TOP_DIVISOR;
+      return layoutDimensions.height / initialTopDivisor;
     } else {
-      return layoutDimensions.height / IOS_OUTLINE_INITIAL_TOP_DIVISOR;
+      return layoutDimensions.height / initialTopDivisor;
     }
   } else if (IS_ANDROID) {
-    return layoutDimensions.height / ANDROID_FILLED_INITIAL_TOP_DIVISOR;
+    return layoutDimensions.height / initialTopDivisor;
   } else {
-    return layoutDimensions.height / IOS_FILLED_INITIAL_TOP_DIVISOR;
+    return layoutDimensions.height / initialTopDivisor;
   }
 };
 
@@ -134,6 +144,7 @@ const AnimatedLabel = ({
   layoutDimensions,
   variant,
   hasError,
+  _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -141,7 +152,7 @@ const AnimatedLabel = ({
     ANIMATION_DURATION: 100,
     INITIAL_FONT_SIZE: parseInt(theme.fonts.size.medium, 10),
     FINAL_FONT_SIZE: parseInt(theme.fonts.size.xsmall, 10),
-    INITIAL_TOP_POSITION: getInitialTopPosition(layoutDimensions, variant),
+    INITIAL_TOP_POSITION: getInitialTopPosition(layoutDimensions, variant, _isMultiline),
     FINAL_TOP_POSITION: 0,
     INITIAL_LEFT_POSITION: getInitialLeftPosition(layoutDimensions),
     FINAL_LEFT_POSITION: 0,
@@ -202,6 +213,7 @@ AnimatedLabel.propTypes = {
   }).isRequired,
   variant: PropTypes.oneOf(['outline', 'filled']),
   hasError: PropTypes.bool,
+  _isMultiline: PropTypes.bool,
 };
 
 AnimatedLabel.defaultProps = {
