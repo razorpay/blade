@@ -79,34 +79,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               }
               testID="snap-test-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -206,34 +181,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               }
               testID="snap-test-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -333,34 +283,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value="user@domain.com"
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                user@domain.com
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -461,34 +386,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -590,7 +490,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 20,
+                      "lineHeight": 24,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -603,6 +503,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={true}
               editable={false}
               hasLeftIcon={false}
               hasPrefix={true}
@@ -614,7 +515,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.24)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -628,34 +529,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.940"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.24)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -827,7 +703,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 24,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -924,7 +800,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 20,
+                      "lineHeight": 24,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -962,34 +838,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -1157,7 +1008,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                   "fontFamily": "Lato-Regular",
                   "fontSize": 12,
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 24,
                   "textDecorationLine": "none",
                 },
               ]
@@ -1253,34 +1104,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -1328,7 +1154,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 24,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1368,7 +1194,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 24,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1464,34 +1290,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -1539,7 +1340,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 24,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1758,34 +1559,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -2131,34 +1907,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -2258,34 +2009,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -2508,34 +2234,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -2635,34 +2336,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -2692,7 +2368,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 20,
+                      "lineHeight": 24,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -2802,7 +2478,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 20,
+                      "lineHeight": 24,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -2840,34 +2516,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -2967,34 +2618,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="filled"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -3024,7 +2650,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 20,
+                      "lineHeight": 24,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -3133,34 +2759,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
               }
               testID="snap-test-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -3260,34 +2861,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
               }
               testID="snap-test-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -3388,34 +2964,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -3517,7 +3068,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 20,
+                      "lineHeight": 24,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -3530,6 +3081,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={true}
               editable={false}
               hasLeftIcon={false}
               hasPrefix={true}
@@ -3541,7 +3093,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.24)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -3555,34 +3107,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.940"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.24)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -3754,7 +3281,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 24,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3851,7 +3378,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 20,
+                      "lineHeight": 24,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -3889,34 +3416,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -4084,7 +3586,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
                   "fontFamily": "Lato-Regular",
                   "fontSize": 12,
                   "letterSpacing": 0,
-                  "lineHeight": 18,
+                  "lineHeight": 24,
                   "textDecorationLine": "none",
                 },
               ]
@@ -4179,34 +3681,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value="user@domain.com"
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                user@domain.com
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -4306,34 +3783,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -4381,7 +3833,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 24,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4478,34 +3930,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -4553,7 +3980,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 24,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4593,7 +4020,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 18,
+                    "lineHeight": 24,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4812,34 +4239,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -5062,34 +4464,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -5312,34 +4689,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -5562,34 +4914,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -5689,34 +5016,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -5746,7 +5048,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 20,
+                      "lineHeight": 24,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -5856,7 +5158,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 20,
+                      "lineHeight": 24,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -5894,34 +5196,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
           </View>
           <View
             hasError={false}
@@ -6021,34 +5298,9 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
               }
               testID="ds-text-input"
               underlineColorAndroid="transparent"
+              value=""
               variant="outline"
-            >
-              <Text
-                _isUnderlined={false}
-                _letterSpacing="small"
-                _lineHeight="large"
-                _weight="regular"
-                align="left"
-                color="shade.970"
-                size="medium"
-                style={
-                  Array [
-                    Object {
-                      "alignSelf": "flex-start",
-                      "color": "rgba(22, 47, 86, 0.74)",
-                      "fontFamily": "Lato-Regular",
-                      "fontSize": 14,
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-                testID="ds-text"
-              >
-                
-              </Text>
-            </TextInput>
+            />
             <View
               style={
                 Array [
@@ -6078,7 +5330,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 20,
+                      "lineHeight": 24,
                       "textDecorationLine": "none",
                     },
                   ]
