@@ -33,7 +33,7 @@ const styles = {
       return theme.fonts.size.medium;
     },
     lineHeight({ theme }) {
-      return getLineHeight(theme.fonts.size.medium, theme.fonts.lineHeight.large);
+      return getLineHeight(theme, 'medium');
     },
     fontFamily({ theme }) {
       return theme.fonts.family.lato.regular;
