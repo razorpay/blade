@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import { Animated, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
@@ -30,8 +30,8 @@ const styles = {
     fontSize({ theme }) {
       return theme.fonts.size.xsmall;
     },
-    lineHeight() {
-      return '18px'; // TODO: Use constant from theme
+    lineHeight({ theme }) {
+      return theme.fonts.lineHeight.small;
     },
     fontFamily({ theme }) {
       return theme.fonts.family.lato.regular;
@@ -118,13 +118,10 @@ const getInitialTopPosition = (layoutDimensions, variant) => {
   }
 };
 
-const getInitialLeftPosition = (layoutDimensions) => {
-  return layoutDimensions.x;
-};
+const getInitialLeftPosition = (layoutDimensions) => layoutDimensions.x;
 
-const getFinalLabelColor = (theme, hasError) => {
-  return hasError ? getColor(theme, 'shade.960') : getColor(theme, 'primary.900');
-};
+const getFinalLabelColor = (theme, hasError) =>
+  hasError ? getColor(theme, 'shade.960') : getColor(theme, 'primary.900');
 
 const AnimatedLabel = ({
   isFocused,
@@ -155,7 +152,7 @@ const AnimatedLabel = ({
     new Animated.Value(AnimationConfig.INITIAL_ANIMATION_VALUE),
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isFocused) {
       onFocus({ AnimationConfig, labelAnimatedValue });
     }
