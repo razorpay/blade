@@ -7,8 +7,6 @@ import HelpText from './HelpText';
 import ErrorText from './ErrorText';
 import AccessoryText from './AccessoryText';
 import AccessoryIcon from './AccessoryIcon';
-import Text from '../Text';
-import Space from '../Space';
 import { getLineHeight } from '../../_helpers/theme';
 import Flex from '../Flex';
 import CharacterCount from './CharacterCount.native';
@@ -244,14 +242,9 @@ const TextInput = ({
                       hasLeftIcon={hasLeftIcon}
                       maxLength={maxLength}
                       onLayout={onTextInputLayout}
+                      value={input}
                       {...automation(testID)}
-                    >
-                      <Space padding={[0, 0, 0.5, 0]}>
-                        <Text color={styles.text.color({ disabled })} size="medium">
-                          {input}
-                        </Text>
-                      </Space>
-                    </StyledInput>
+                    />
                   </Flex>
                   {hasSuffix ? (
                     <AccessoryText variant={variant} disabled={disabled}>
