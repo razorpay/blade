@@ -15,7 +15,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
     activeOpacity={1}
     className="sc-AykKC cQCQxd"
     disabled={false}
-    testID="cbox"
+    testID="activeCheckbox"
     underlayColor="transparent"
   >
     <View
@@ -23,7 +23,8 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
     >
       <View
         backgroundColor="transparent"
-        size="medium"
+        borderRadius="10px"
+        height="20px"
         style={
           Array [
             Object {
@@ -34,6 +35,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
             },
           ]
         }
+        width="20px"
       >
         <RNSVGSvgView
           align="xMidYMid"
@@ -254,7 +256,8 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
     >
       <View
         backgroundColor="transparent"
-        size="medium"
+        borderRadius="10px"
+        height="20px"
         style={
           Array [
             Object {
@@ -265,6 +268,7 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
             },
           ]
         }
+        width="20px"
       >
         <RNSVGSvgView
           align="xMidYMid"
@@ -441,7 +445,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
     activeOpacity={1}
     className="sc-AykKC cQCQxd"
     disabled={false}
-    testID="cbox"
+    testID="activeCheckbox"
     underlayColor="transparent"
   >
     <View
@@ -449,7 +453,8 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
     >
       <View
         backgroundColor="rgba(231, 241, 253, 1.0)"
-        size="medium"
+        borderRadius="10px"
+        height="20px"
         style={
           Array [
             Object {
@@ -460,6 +465,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
             },
           ]
         }
+        width="20px"
       >
         <RNSVGSvgView
           align="xMidYMid"
@@ -636,7 +642,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
     activeOpacity={1}
     className="sc-AykKC cQCQxd"
     disabled={false}
-    testID="cbox"
+    testID="activeCheckbox"
     underlayColor="transparent"
   >
     <View
@@ -644,7 +650,8 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
     >
       <View
         backgroundColor="transparent"
-        size="medium"
+        borderRadius="10px"
+        height="20px"
         style={
           Array [
             Object {
@@ -655,6 +662,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
             },
           ]
         }
+        width="20px"
       >
         <RNSVGSvgView
           align="xMidYMid"
@@ -839,7 +847,8 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when not
     >
       <View
         backgroundColor="transparent"
-        size="medium"
+        borderRadius="10px"
+        height="20px"
         style={
           Array [
             Object {
@@ -850,6 +859,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when not
             },
           ]
         }
+        width="20px"
       >
         <RNSVGSvgView
           align="xMidYMid"
@@ -1034,7 +1044,8 @@ exports[`Native <Checkbox /> Unchecked checkxox should render medium sized Check
     >
       <View
         backgroundColor="transparent"
-        size="medium"
+        borderRadius="10px"
+        height="20px"
         style={
           Array [
             Object {
@@ -1045,6 +1056,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render medium sized Check
             },
           ]
         }
+        width="20px"
       >
         <RNSVGSvgView
           align="xMidYMid"
@@ -1257,7 +1269,7 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user long 
     activeOpacity={1}
     className="sc-AykKC cQCQxd"
     disabled={false}
-    testID="cbox"
+    testID="unselectedCheckBox"
     underlayColor="transparent"
   >
     <View
@@ -1265,7 +1277,8 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user long 
     >
       <View
         backgroundColor="rgba(224, 228, 249, 0.24)"
-        size="medium"
+        borderRadius="10px"
+        height="20px"
         style={
           Array [
             Object {
@@ -1276,6 +1289,7 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user long 
             },
           ]
         }
+        width="20px"
       >
         <RNSVGSvgView
           align="xMidYMid"
@@ -1452,7 +1466,7 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user press
     activeOpacity={1}
     className="sc-AykKC cQCQxd"
     disabled={false}
-    testID="cbox"
+    testID="unselectedCheckBox"
     underlayColor="transparent"
   >
     <View
@@ -1460,7 +1474,8 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user press
     >
       <View
         backgroundColor="transparent"
-        size="medium"
+        borderRadius="10px"
+        height="20px"
         style={
           Array [
             Object {
@@ -1471,6 +1486,7 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user press
             },
           ]
         }
+        width="20px"
       >
         <RNSVGSvgView
           align="xMidYMid"

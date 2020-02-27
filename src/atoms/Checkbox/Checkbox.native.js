@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
-import styled, { ThemeContext } from 'styled-components/native';
+import { ThemeContext } from 'styled-components/native';
 import Text from '../Text';
 import Flex from '../Flex';
 import isEmpty from '../../_helpers/isEmpty';
@@ -10,6 +10,7 @@ import Space from '../Space';
 import { getVariantColorKeys, getColor } from '../../_helpers/theme';
 import Icon from '../Icon';
 import View from '../View';
+import Backdrop from './Backdrop';
 
 const styles = {
   icon: {
@@ -90,18 +91,8 @@ const styles = {
           };
       }
     },
-    background({ backgroundColor }) {
-      return backgroundColor;
-    },
   },
 };
-
-const Backdrop = styled(View)(
-  (props) => `width: ${styles.backdrop.dimensions(props.size).width};
-height: ${styles.backdrop.dimensions(props.size).height};
-border-radius: ${styles.backdrop.dimensions(props.size).borderRadius};
-background-color: ${styles.backdrop.background(props)};`,
-);
 
 const Checkbox = ({
   onChange,
@@ -160,7 +151,12 @@ const Checkbox = ({
       >
         <Flex flexDirection="row">
           <View>
-            <Backdrop size={size} backgroundColor={underlayColor}>
+            <Backdrop
+              width={styles.backdrop.dimensions(size).width}
+              height={styles.backdrop.dimensions(size).height}
+              borderRadius={styles.backdrop.dimensions(size).borderRadius}
+              backgroundColor={underlayColor}
+            >
               <Icon
                 size={size}
                 name={isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
@@ -213,6 +209,8 @@ Checkbox.defaultProps = {
   size: 'medium',
   helpText: '',
   disabled: false,
+  errorText: '',
+  variantColor: 'primary',
   testID: 'ds-checkbox',
 };
 

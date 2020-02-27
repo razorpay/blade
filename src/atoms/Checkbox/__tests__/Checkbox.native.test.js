@@ -51,9 +51,9 @@ describe('Native <Checkbox />', () => {
 
     test('snapshot testing when user long presses on checkbox', () => {
       const { container, getByTestId } = renderWithTheme(
-        <Checkbox title="Razorpay" onChange={() => null} testID="cbox" />,
+        <Checkbox title="Razorpay" onChange={() => null} testID="unselectedCheckBox" />,
       );
-      const component = getByTestId('cbox');
+      const component = getByTestId('unselectedCheckBox');
 
       act(() => {
         fireEvent.pressIn(component);
@@ -64,9 +64,9 @@ describe('Native <Checkbox />', () => {
 
     test('snapshot testing when user presses out', () => {
       const { container, getByTestId } = renderWithTheme(
-        <Checkbox title="Razorpay" onChange={() => null} testID="cbox" />,
+        <Checkbox title="Razorpay" onChange={() => null} testID="unselectedCheckBox" />,
       );
-      const component = getByTestId('cbox');
+      const component = getByTestId('unselectedCheckBox');
 
       act(() => {
         fireEvent.pressIn(component);
@@ -84,12 +84,17 @@ describe('Native <Checkbox />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    test('should call unchange function with false when pressed', () => {
+    test('should call onchange function with false when pressed', () => {
       const onChangeMock = jest.fn();
       const { getByTestId } = renderWithTheme(
-        <Checkbox title="Some Title" checked={true} onChange={onChangeMock} testID="cbox" />,
+        <Checkbox
+          title="Some Title"
+          checked={true}
+          onChange={onChangeMock}
+          testID="activeCheckbox"
+        />,
       );
-      const component = getByTestId('cbox');
+      const component = getByTestId('activeCheckbox');
       fireEvent.press(component);
       expect(onChangeMock).toBeCalled();
       expect(onChangeMock).toBeCalledWith(false);
@@ -97,9 +102,9 @@ describe('Native <Checkbox />', () => {
 
     test('snapshot testing when user long presses on checkbox', () => {
       const { container, getByTestId } = renderWithTheme(
-        <Checkbox title="Razorpay" checked={true} onChange={() => null} testID="cbox" />,
+        <Checkbox title="Razorpay" checked={true} onChange={() => null} testID="activeCheckbox" />,
       );
-      const component = getByTestId('cbox');
+      const component = getByTestId('activeCheckbox');
 
       act(() => {
         fireEvent.pressIn(component);
@@ -110,9 +115,9 @@ describe('Native <Checkbox />', () => {
 
     test('snapshot testing when user presses out', () => {
       const { container, getByTestId } = renderWithTheme(
-        <Checkbox title="Razorpay" checked={true} onChange={() => null} testID="cbox" />,
+        <Checkbox title="Razorpay" checked={true} onChange={() => null} testID="activeCheckbox" />,
       );
-      const component = getByTestId('cbox');
+      const component = getByTestId('activeCheckbox');
 
       act(() => {
         fireEvent.pressIn(component);
@@ -127,7 +132,7 @@ describe('Native <Checkbox />', () => {
           title="Razorpay"
           checked={true}
           onChange={() => null}
-          testID="cbox"
+          testID="activeCheckbox"
           errorText="You dont have permission"
         />,
       );
