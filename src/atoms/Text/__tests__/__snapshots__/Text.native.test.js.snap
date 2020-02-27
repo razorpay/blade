@@ -25,6 +25,7 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
           "fontFamily": "Lato-Bold",
           "fontSize": 16,
           "letterSpacing": 0,
+          "lineHeight": 24,
           "textDecorationLine": "none",
         },
       ]
@@ -61,6 +62,7 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
           "fontFamily": "Lato-Regular",
           "fontSize": 16,
           "letterSpacing": 0,
+          "lineHeight": 24,
           "textDecorationLine": "none",
         },
       ]
@@ -97,6 +99,7 @@ exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = 
           "fontFamily": "Lato-Regular",
           "fontSize": 16,
           "letterSpacing": 0,
+          "lineHeight": 24,
           "textDecorationLine": "underline",
         },
       ]
