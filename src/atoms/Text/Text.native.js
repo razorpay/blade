@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { Text as NativeText } from 'react-native';
 import baseTheme from '../../tokens/theme';
-import { getColorKeys, getColor } from '../../_helpers/theme';
+import { getColorKeys, getColor, getLineHeight } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
-import { getLineHeightFromTextSize } from '../../_helpers/fonts';
 
 const styles = {
   fontFamily({ theme, _weight }) {
@@ -41,7 +40,7 @@ const styles = {
     if (_lineHeight) {
       return theme.fonts.lineHeight[_lineHeight];
     } else {
-      return getLineHeightFromTextSize(size, theme);
+      return getLineHeight(theme, size);
     }
   },
 };
