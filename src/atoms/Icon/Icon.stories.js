@@ -7,5 +7,5 @@ storiesOf('Icon', module)
     component: Icon,
   })
   .add('default', () => {
-    return <Icon name="info" fill="shade.800" size="medium" />;
+    return <Icon name="info" fill="shade.980" size="medium" />;
   });
