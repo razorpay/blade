@@ -25,7 +25,7 @@ const styles = {
   },
   text: {
     color({ theme }) {
-      return getColor(theme, 'shade.800');
+      return getColor(theme, 'shade.980');
     },
     fontSize({ theme }) {
       return theme.fonts.size.xsmall;
@@ -123,7 +123,7 @@ const getInitialLeftPosition = (layoutDimensions) => {
 };
 
 const getFinalLabelColor = (theme, hasError) => {
-  return hasError ? getColor(theme, 'shade.600') : getColor(theme, 'primary.900');
+  return hasError ? getColor(theme, 'shade.960') : getColor(theme, 'primary.900');
 };
 
 const AnimatedLabel = ({
@@ -145,7 +145,7 @@ const AnimatedLabel = ({
     FINAL_TOP_POSITION: 0,
     INITIAL_LEFT_POSITION: getInitialLeftPosition(layoutDimensions),
     FINAL_LEFT_POSITION: 0,
-    INITIAL_LABEL_COLOR: getColor(theme, 'shade.600'),
+    INITIAL_LABEL_COLOR: getColor(theme, 'shade.960'),
     FINAL_LABEL_COLOR: getFinalLabelColor(theme, hasError),
     INITIAL_ANIMATION_VALUE: 0,
     FINAL_ANIMATION_VALUE: 1,
@@ -177,7 +177,7 @@ const AnimatedLabel = ({
           style={{
             fontSize: getFontInterpolation(AnimationConfig, labelAnimatedValue, hasText),
             color: disabled
-              ? getColor(theme, 'shade.400')
+              ? getColor(theme, 'shade.940')
               : getColorInterpolation(AnimationConfig, labelAnimatedValue),
           }}
           numberOfLines={1}

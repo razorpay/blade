@@ -30,7 +30,7 @@ const Label = ({ children, inputLayoutDimensions }) => {
     <LabelContainer inputLayoutDimensions={inputLayoutDimensions}>
       <Space padding={styles.padding()}>
         <View>
-          <Text size="medium" color="shade.800">
+          <Text size="medium" color="shade.980">
             {children}
           </Text>
         </View>

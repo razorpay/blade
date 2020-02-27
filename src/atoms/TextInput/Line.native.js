@@ -6,13 +6,13 @@ import View from '../View';
 const styles = {
   backgroundColor({ isFocused, hasError, theme, disabled }) {
     if (disabled) {
-      return theme.colors.shade[200];
+      return theme.colors.shade[920];
     } else if (hasError) {
       return theme.colors.negative[900];
     } else if (isFocused) {
       return theme.colors.primary[800];
     } else {
-      return theme.colors.shade[400];
+      return theme.colors.shade[940];
     }
   },
 };

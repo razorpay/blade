@@ -39,23 +39,23 @@ const styles = {
       return theme.fonts.family.lato.regular;
     },
     color({ theme }) {
-      return theme.colors.shade[700];
+      return theme.colors.shade[970];
     },
   },
   fillContainer: {
     backgroundColor({ variant, isFocused, theme, disabled }) {
       if (variant === 'outline') return 'transparent';
-      else if (disabled) return theme.colors.tone[300];
-      else if (isFocused) return theme.colors.tone[400];
-      else return theme.colors.tone[300];
+      else if (disabled) return theme.colors.tone[930];
+      else if (isFocused) return theme.colors.tone[940];
+      else return theme.colors.tone[930];
     },
   },
   text: {
     color({ disabled }) {
       if (disabled) {
-        return 'shade.400';
+        return 'shade.940';
       } else {
-        return 'shade.700';
+        return 'shade.970';
       }
     },
   },
@@ -136,7 +136,7 @@ const TextInput = ({
 
   const hasLeftLabel = labelPosition === 'left' && variant === 'filled';
 
-  const placeholderTextColor = disabled ? theme.colors.shade[300] : theme.colors.shade[400];
+  const placeholderTextColor = disabled ? theme.colors.shade[930] : theme.colors.shade[940];
 
   // Derive accessory conditions based on props
   const { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon } = getAccessoryConfig({
@@ -237,7 +237,7 @@ const TextInput = ({
                       onBlur={onBlur}
                       onChangeText={onChange}
                       hasText={hasText}
-                      selectionColor={theme.colors.shade[700]} // not able to change this for Android
+                      selectionColor={theme.colors.shade[970]} // not able to change this for Android
                       editable={!disabled}
                       variant={variant}
                       hasPrefix={hasPrefix}
