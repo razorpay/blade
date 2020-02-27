@@ -3,10 +3,6 @@ import { lightTheme as baseLightTheme, darkTheme as baseDarkTheme } from './them
 
 const nativeFonts = {
   ...fonts,
-  lineHeight: Object.keys(fonts.lineHeight).reduce(
-    (acc, value) => ({ ...acc, [value]: `${fonts.lineHeight[value]}px` }),
-    {},
-  ),
   letterSpacing: Object.keys(fonts.letterSpacing).reduce(
     (acc, value) => ({ ...acc, [value]: `${fonts.letterSpacing[value]}px` }),
     {},

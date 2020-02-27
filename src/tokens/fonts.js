@@ -22,9 +22,10 @@ const fonts = {
     bold: '700',
   },
   lineHeight: {
-    small: 1.2,
-    medium: 1.25,
-    large: 1.5,
+    xsmall: '14px',
+    small: '18px',
+    medium: '20px',
+    large: '24px',
   },
   letterSpacing: {
     small: 0,
