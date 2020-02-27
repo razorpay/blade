@@ -6,10 +6,6 @@ const getPxValue = (value) => `${value}px`;
 
 const nativeFonts = {
   ...fonts,
-  lineHeight: Object.keys(fonts.lineHeight).reduce(
-    (acc, value) => ({ ...acc, [value]: getPxValue(fonts.lineHeight[value]) }),
-    {},
-  ),
   letterSpacing: Object.keys(fonts.letterSpacing).reduce(
     (acc, value) => ({ ...acc, [value]: getPxValue(fonts.letterSpacing[value]) }),
     {},

@@ -27,6 +27,22 @@ const getColor = (currentTheme, color) => {
 
 const getVariantColorKeys = () => Object.keys(theme.colors);
 
-const getLineHeight = (currentTheme, size, lineHeight) =>
-  parseFloat(currentTheme.fonts.lineHeight[lineHeight]) * parseFloat(currentTheme.fonts.size[size]);
-export { makePxValue, getColorKey, getColorKeys, getColor, getVariantColorKeys, getLineHeight };
+const getLineHeight = (currentTheme, textSize) => {
+  switch (textSize) {
+    case 'xxsmall':
+      return currentTheme.fonts.lineHeight.xsmall;
+    case 'xsmall':
+      return currentTheme.fonts.lineHeight.small;
+    case 'small':
+      return currentTheme.fonts.lineHeight.small;
+    case 'medium':
+      return currentTheme.fonts.lineHeight.medium;
+    case 'large':
+    default:
+      return currentTheme.fonts.lineHeight.large;
+  }
+};
+
+export { getLineHeight };
+
+export { makePxValue, getColorKey, getColorKeys, getColor, getVariantColorKeys };
