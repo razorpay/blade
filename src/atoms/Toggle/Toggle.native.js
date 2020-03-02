@@ -1,9 +1,9 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import { Animated, TouchableOpacity } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
 
-import View from '../View';
+import { makePxValue } from '../../_helpers/theme';
 import automationAttributes from '../../_helpers/automation-attributes';
 
 const styles = {
@@ -22,6 +22,18 @@ const styles = {
             activeWidth: theme.spacings.large,
           },
         };
+      case 'large':
+        return {
+          containerSize: {
+            height: makePxValue(3),
+            width: makePxValue(6),
+          },
+          knobSize: {
+            height: theme.spacings.large,
+            width: theme.spacings.large,
+            activeWidth: theme.spacings.xxlarge,
+          },
+        };
     }
   },
   padding({ size, theme }) {
@@ -29,6 +41,8 @@ const styles = {
       case 'medium':
       default:
         return theme.spacings.xxsmall;
+      case 'large':
+        return theme.spacings.xsmall;
     }
   },
   containerColor({ toggleState, disabled, active, theme }) {
@@ -63,15 +77,14 @@ const styles = {
   },
 };
 
-const StyledContainer = styled(View)(
+const StyledContainer = styled(Animated.View)(
   (props) => `
   height: ${styles.size(props).containerSize.height};
   width: ${styles.size(props).containerSize.width};
   border-radius: ${`${parseInt(styles.size(props).containerSize.height, 10) / 2}px`};
   padding: ${styles.padding(props)};
   flex-direction: ${props.flexDirection};
-  align-self: ${styles.alignSelf(props)}
-  background-color: ${props.backgroundColor};
+  align-self: ${styles.alignSelf(props)};
 `,
 );
 
@@ -86,17 +99,64 @@ const StyledKnob = styled(TouchableOpacity)(
 const AnimatedKnob = Animated.createAnimatedComponent(StyledKnob);
 
 const Toggle = (props) => {
-  const { disabled, value, align, testID, onValueChange, size } = props;
+  const { disabled, on, defaultOn, onChange, size, align, testID } = props;
   const theme = useContext(ThemeContext);
   const { containerSize, knobSize } = styles.size({ ...props, theme });
   const containerPadding = styles.padding({ ...props, theme });
   const knobTranslationX = useRef(new Animated.Value(0));
   const knobWidth = useRef(new Animated.Value(parseInt(knobSize.width, 10)));
-  const [toggleState, setToggleState] = useState(value);
+  const [toggleState, setToggleState] = useState(false);
   const [active, setActive] = useState(false);
+
   const [containerColor, setContainerColor] = useState(
     styles.containerColor({ toggleState, active, disabled, theme }),
   );
+  const translationXDistance =
+    parseInt(containerSize.width, 10) -
+    2 * parseInt(containerPadding, 10) -
+    parseInt(knobSize.width, 10);
+
+  useEffect(() => {
+    if (typeof on !== 'undefined') {
+      if (on && !toggleState) {
+        setContainerColor(
+          styles.containerColor({ toggleState: true, active: false, disabled, theme }),
+        );
+        Animated.timing(knobTranslationX.current, {
+          toValue: translationXDistance,
+          duration: 600,
+        }).start(() => {
+          knobTranslationX.current.setValue(0);
+          setToggleState(true);
+          setActive(true);
+          onChange(!on);
+        });
+      } else if (!on && toggleState) {
+        setContainerColor(
+          styles.containerColor({ toggleState: false, active: false, disabled, theme }),
+        );
+        Animated.timing(knobTranslationX.current, {
+          toValue: -translationXDistance,
+          duration: 600,
+        }).start(() => {
+          knobTranslationX.current.setValue(0);
+          setToggleState(false);
+          setActive(true);
+          onChange(!on);
+        });
+      }
+      return;
+    }
+    if (defaultOn) {
+      knobTranslationX.current.setValue(translationXDistance);
+      knobTranslationX.current.setValue(0);
+      setToggleState(true);
+      setActive(true);
+      setContainerColor(
+        styles.containerColor({ toggleState: true, active: true, disabled, theme }),
+      );
+    }
+  }, [on, defaultOn]);
 
   const onPressIn = () => {
     Animated.timing(knobWidth.current, {
@@ -108,11 +168,16 @@ const Toggle = (props) => {
   };
 
   const onPressOut = () => {
+    if (typeof on !== 'undefined') {
+      Animated.timing(knobWidth.current, {
+        toValue: parseInt(knobSize.width, 10),
+        delay: 200,
+        duration: 200,
+      }).start();
+      onChange(!on);
+      return;
+    }
     setActive(false);
-    const translationXDistance =
-      parseInt(containerSize.width, 10) -
-      2 * parseInt(containerPadding, 10) -
-      parseInt(knobSize.width, 10);
     setContainerColor(
       styles.containerColor({
         toggleState: !toggleState,
@@ -124,21 +189,19 @@ const Toggle = (props) => {
     Animated.parallel([
       Animated.timing(knobTranslationX.current, {
         toValue: toggleState ? -translationXDistance : translationXDistance,
-        duration: 600,
+        duration: 400,
       }),
       Animated.timing(knobWidth.current, {
         toValue: parseInt(knobSize.width, 10),
         delay: 200,
-        duration: 400,
+        duration: 200,
       }),
     ]).start(() => {
-      knobTranslationX.current = new Animated.Value(0);
+      knobTranslationX.current.setValue(0);
       setToggleState(!toggleState);
-      onValueChange(!toggleState);
+      onChange(!toggleState);
     });
   };
-
-  const containerFlexDirection = toggleState ? 'row-reverse' : 'row';
   const hitSlopWidth =
     parseInt(containerSize.width, 10) -
     parseInt(containerPadding, 10) -
@@ -147,9 +210,10 @@ const Toggle = (props) => {
   return (
     <StyledContainer
       backgroundColor={containerColor}
-      flexDirection={containerFlexDirection}
-      {...automationAttributes(testID)}
+      flexDirection={toggleState ? 'row-reverse' : 'row'}
       align={align}
+      size={size}
+      {...automationAttributes(testID)}
     >
       <AnimatedKnob
         disabled={disabled}
@@ -158,22 +222,21 @@ const Toggle = (props) => {
         onPressIn={onPressIn}
         onPressOut={onPressOut}
         hitSlop={hitSlop}
-        style={[
-          {
-            width: knobWidth.current,
-            transform: [{ translateX: knobTranslationX.current }],
-          },
-        ]}
+        style={{
+          width: knobWidth.current,
+          transform: [{ translateX: knobTranslationX.current }],
+        }}
       />
     </StyledContainer>
   );
 };
 
 Toggle.propTypes = {
-  size: PropTypes.oneOf(['medium']),
+  size: PropTypes.oneOf(['medium', 'large']),
   disabled: PropTypes.bool,
-  value: PropTypes.bool,
-  onValueChange: PropTypes.func,
+  on: PropTypes.bool,
+  defaultOn: PropTypes.bool,
+  onChange: PropTypes.func,
   testID: PropTypes.string,
   align: PropTypes.oneOf(['left', 'center', 'right']),
 };
@@ -181,10 +244,10 @@ Toggle.propTypes = {
 Toggle.defaultProps = {
   size: 'medium',
   disabled: false,
-  value: false,
+  defaultOn: false,
   testID: 'ds-toggle',
   align: 'left',
-  onValueChange: () => {},
+  onChange: () => {},
 };
 
 export default Toggle;

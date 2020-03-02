@@ -9,11 +9,11 @@ storiesOf('Toggle', module)
   })
   .add('Toggle', () => (
     <View style={{ height: '100%', justifyContent: 'space-around', alignItems: 'center' }}>
-      <Toggle align="center" />
-      <Toggle />
+      <Toggle align="center" size="large" />
+      {/* <Toggle /> */}
       {/*eslint-disable-next-line no-alert */}
-      <Toggle onValueChange={(value) => alert(value)} />
+      {/* <Toggle onValueChange={(value) => alert(value)} />
       <Toggle disabled />
-      <Toggle disabled value={true} align="right" />
+      <Toggle disabled value={true} align="right" /> */}
     </View>
   ));
