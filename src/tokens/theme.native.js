@@ -1,13 +1,10 @@
 import { fonts } from '../tokens';
 import { lightTheme as baseLightTheme, darkTheme as baseDarkTheme } from './theme.web';
 
-// For  styled components in React Native: converts unitless numbers to "px" strings
-const getPxValue = (value) => `${value}px`;
-
 const nativeFonts = {
   ...fonts,
   letterSpacing: Object.keys(fonts.letterSpacing).reduce(
-    (acc, value) => ({ ...acc, [value]: getPxValue(fonts.letterSpacing[value]) }),
+    (acc, value) => ({ ...acc, [value]: `${fonts.letterSpacing[value]}px` }),
     {},
   ),
 };

@@ -30,6 +30,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "underline",
           },
         ]
@@ -72,6 +73,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -114,6 +116,7 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -156,6 +159,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
             "fontFamily": "Lato-Regular",
             "fontSize": 16,
             "letterSpacing": 0,
+            "lineHeight": 24,
             "textDecorationLine": "none",
           },
         ]
@@ -198,6 +202,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = 
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -240,6 +245,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
             "fontFamily": "Lato-Regular",
             "fontSize": 13,
             "letterSpacing": 0,
+            "lineHeight": 18,
             "textDecorationLine": "none",
           },
         ]
@@ -282,6 +288,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
             "letterSpacing": 0,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]

@@ -19,6 +19,7 @@ configure(() => {
   require('../../src/atoms/Link/Link.stories');
   require('../../src/atoms/Icon/Icon.stories');
   require('../../src/atoms/Button/Button.stories');
+  require('../../src/atoms/Checkbox/Checkbox.stories');
 }, module);
 
 // add decorators
