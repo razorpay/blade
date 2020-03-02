@@ -3,8 +3,11 @@ import { fireEvent, act } from '@testing-library/react-native';
 import Checkbox from './../Checkbox';
 import { renderWithTheme } from '../../../_helpers/testing';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('Native <Checkbox />', () => {
-  describe('Unchecked checkxox', () => {
+  describe('Unchecked checkbox', () => {
     test('should render component when not checked with default props', () => {
       const { container } = renderWithTheme(<Checkbox title="Some Title" onChange={() => null} />);
       expect(container).toMatchSnapshot();
@@ -228,6 +231,22 @@ describe('Native <Checkbox />', () => {
 
       expect(mockOnChange).toBeCalled();
       expect(mockOnChange).toBeCalledWith(false);
+    });
+  });
+
+  describe('defaultChecked and Checked', () => {
+    test('should throw an error when both defaultChecked and checked are passed as prop', () => {
+      const errorMessage = 'One of defaultChecked or checked should be supplied.';
+      expect(() =>
+        renderWithTheme(
+          <Checkbox
+            title="Some Title"
+            defaultChecked={true}
+            checked={false}
+            onChange={() => null}
+          />,
+        ),
+      ).toThrow(errorMessage);
     });
   });
 });

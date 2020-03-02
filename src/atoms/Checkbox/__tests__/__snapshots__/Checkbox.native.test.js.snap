@@ -829,7 +829,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
 </View>
 `;
 
-exports[`Native <Checkbox /> Unchecked checkxox should render component when both defaultChecked and checked prop is passed with false values 1`] = `
+exports[`Native <Checkbox /> Unchecked checkbox should render component when both defaultChecked and checked prop is passed with false values 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1027,7 +1027,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when bot
 </View>
 `;
 
-exports[`Native <Checkbox /> Unchecked checkxox should render component when checked prop is passed with value false 1`] = `
+exports[`Native <Checkbox /> Unchecked checkbox should render component when checked prop is passed with value false 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1225,7 +1225,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when che
 </View>
 `;
 
-exports[`Native <Checkbox /> Unchecked checkxox should render component when defaultChecked prop is passed with value false 1`] = `
+exports[`Native <Checkbox /> Unchecked checkbox should render component when defaultChecked prop is passed with value false 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1423,7 +1423,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when def
 </View>
 `;
 
-exports[`Native <Checkbox /> Unchecked checkxox should render component when not checked with default props 1`] = `
+exports[`Native <Checkbox /> Unchecked checkbox should render component when not checked with default props 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1621,7 +1621,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when not
 </View>
 `;
 
-exports[`Native <Checkbox /> Unchecked checkxox should render medium sized Checkbox 1`] = `
+exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Checkbox 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1856,7 +1856,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render medium sized Check
 </View>
 `;
 
-exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user long presses on checkbox 1`] = `
+exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long presses on checkbox 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2054,7 +2054,7 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user long 
 </View>
 `;
 
-exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user presses out 1`] = `
+exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user presses out 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"

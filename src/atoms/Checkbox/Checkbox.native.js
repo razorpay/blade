@@ -11,6 +11,7 @@ import { getVariantColorKeys, getColor } from '../../_helpers/theme';
 import Icon from '../Icon';
 import View from '../View';
 import Backdrop from './Backdrop';
+import isPropDefined from '../../_helpers/isPropDefined';
 
 const styles = {
   icon: {
@@ -94,10 +95,6 @@ const styles = {
   },
 };
 
-const isPropDefined = (prop) => {
-  return typeof prop !== 'undefined';
-};
-
 const Checkbox = ({
   defaultChecked,
   checked,
@@ -114,6 +111,10 @@ const Checkbox = ({
   let helpTextColor = 'shade.950';
 
   let checkboxInitialState = false;
+
+  if (isPropDefined(defaultChecked) && isPropDefined(checked)) {
+    throw Error('One of defaultChecked or checked should be supplied.');
+  }
 
   if (isPropDefined(defaultChecked)) {
     checkboxInitialState = defaultChecked;
@@ -145,9 +146,9 @@ const Checkbox = ({
       onChange(!isChecked);
       return;
     }
-    setCheckboxState((prevCheckboxState) => {
-      onChange(!prevCheckboxState);
-      return !prevCheckboxState;
+    setCheckboxState((prevState) => {
+      onChange(!prevState);
+      return !prevState;
     });
   }, [checked, isChecked, onChange]);
 
@@ -170,7 +171,7 @@ const Checkbox = ({
       >
         <Flex flexDirection="row" alignItems="center">
           <View>
-            <Backdrop {...styles.backdrop.dimensions(size)} backgroundColor={underlayColor}>
+            <Backdrop backgroundColor={underlayColor} {...styles.backdrop.dimensions(size)}>
               <Icon
                 size={size}
                 name={isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
@@ -207,16 +208,44 @@ const Checkbox = ({
 };
 
 Checkbox.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  defaultChecked: PropTypes.bool,
   checked: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
-  helpText: PropTypes.string,
   disabled: PropTypes.bool,
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
-  errorText: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
   testID: PropTypes.string,
-  defaultChecked: PropTypes.bool,
+  helpText: (props, propName, componentName) => {
+    if (props.size === 'small') {
+      return new Error(
+        `[${propName}]. ${propName} is ignored as it is not supported when size is small in ${componentName}`,
+      );
+    }
+
+    if (typeof props.propName !== 'undefined' && typeof props.propName !== 'string') {
+      return new Error(
+        `Invalid prop \`${propName}\` of type \`${typeof props.propName}\` supplied to \`${componentName}\`, expected \`string\``,
+      );
+    }
+
+    return null;
+  },
+  errorText: (props, propName, componentName) => {
+    if (props.size === 'small') {
+      return new Error(
+        `[${propName}]. ${propName} is ignored as it is not supported when size is small in ${componentName}`,
+      );
+    }
+
+    if (typeof props.propName !== 'undefined' && typeof props.propName !== 'string') {
+      return new Error(
+        `Invalid prop \`${propName}\` of type \`${typeof props.propName}\` supplied to \`${componentName}\`, expected \`string\``,
+      );
+    }
+
+    return null;
+  },
 };
 
 Checkbox.defaultProps = {
