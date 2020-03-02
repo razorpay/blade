@@ -130,7 +130,7 @@ const Checkbox = ({
   const onPressIn = () => {
     let colorKey = 'tone.940';
     if (isChecked) {
-      colorKey = `${variantColor || 'primary'}.300`;
+      colorKey = `${variantColor || 'primary'}.930`;
     }
     const newUnderlayColor = getColor(theme, colorKey);
     setUnderlayColor(newUnderlayColor);
