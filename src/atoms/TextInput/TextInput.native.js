@@ -55,6 +55,8 @@ const styles = {
   inputContainer: {
     width({ size }) {
       switch (size) {
+        case 'block':
+          return '100%';
         case 'small':
           return '160px';
         case 'medium':
@@ -203,7 +205,7 @@ const TextInput = ({
             <Label inputLayoutDimensions={layoutDimensions}>{label}</Label>
           ) : null}
           {/* Text Input */}
-          <Flex flexDirection="column">
+          <Flex flexDirection="column" flex={size === 'block' ? 1 : 0}>
             <View>
               <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
                 <InputContainer size={size}>
@@ -301,7 +303,7 @@ TextInput.propTypes = {
   label: PropTypes.string,
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
-  size: PropTypes.oneOf(['small', 'medium']),
+  size: PropTypes.oneOf(['small', 'medium', 'block']),
 };
 
 TextInput.defaultProps = {

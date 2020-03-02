@@ -22,6 +22,7 @@ const ItemTitle = styled.Text`
 const sizeOptions = {
   small: 'small',
   medium: 'medium',
+  block: 'block',
 };
 
 storiesOf('TextInput', module)
