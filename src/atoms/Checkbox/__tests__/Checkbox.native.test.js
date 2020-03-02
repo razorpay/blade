@@ -114,7 +114,7 @@ describe('Native <Checkbox />', () => {
       });
 
       expect(mockOnChange).toBeCalled();
-      expect(mockOnChange).toBeCalledWith();
+      expect(mockOnChange).toBeCalledWith(true);
     });
 
     test('should call onChange method when `defaultChecked` prop is passed with false value', () => {
@@ -227,7 +227,7 @@ describe('Native <Checkbox />', () => {
       });
 
       expect(mockOnChange).toBeCalled();
-      expect(mockOnChange).toBeCalledWith();
+      expect(mockOnChange).toBeCalledWith(false);
     });
   });
 });

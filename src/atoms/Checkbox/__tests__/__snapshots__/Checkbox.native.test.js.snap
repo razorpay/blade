@@ -455,13 +455,13 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
       className="sc-AykKC kHnGAa"
     >
       <View
-        backgroundColor="rgba(231, 241, 253, 1.0)"
+        backgroundColor="rgba(11, 112, 231, 0.10)"
         borderRadius="10px"
         height="20px"
         style={
           Array [
             Object {
-              "backgroundColor": "rgba(231, 241, 253, 1.0)",
+              "backgroundColor": "rgba(11, 112, 231, 0.10)",
               "borderRadius": 10,
               "height": 20,
               "width": 20,
