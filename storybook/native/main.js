@@ -6,6 +6,7 @@ import { darkTheme, lightTheme } from '../../src/tokens/theme';
 import './rn-addons';
 import AsyncStorage from '@react-native-community/async-storage';
 import storybookTheme from './storybookTheme';
+import { withKnobs } from '@storybook/addon-ondevice-knobs';
 
 const theme = {
   light: lightTheme,
@@ -32,6 +33,8 @@ addDecorator((Story) => (
     <Story />
   </SpaceAround>
 ));
+
+addDecorator(withKnobs);
 
 const SafeAreaWrapper = styled.SafeAreaView`
   flex: 1;

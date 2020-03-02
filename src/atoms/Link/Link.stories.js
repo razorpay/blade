@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Link from './Link';
 import { text, select } from '@storybook/addon-knobs';
-import { withKnobs } from '@storybook/addon-ondevice-knobs';
 
 const sizeOptions = {
   xsmall: 'xsmall',
@@ -12,7 +11,6 @@ const sizeOptions = {
 };
 
 storiesOf('Link', module)
-  .addDecorator(withKnobs)
   .addParameters({
     component: Link,
   })
