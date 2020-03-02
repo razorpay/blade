@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { text, boolean, select } from '@storybook/addon-knobs';
-import { withKnobs } from '@storybook/addon-ondevice-knobs';
 import Checkbox from './Checkbox';
 
 const sizeOptions = {
@@ -12,11 +11,10 @@ const sizeOptions = {
 };
 
 storiesOf('Checkbox', module)
-  .addDecorator(withKnobs)
   .addParameters({
     component: Checkbox,
   })
-  .add('with defaultChecked', () => (
+  .add('defaultChecked', () => (
     <Checkbox
       defaultChecked={boolean('Default Checked', false)}
       size={select('Size', sizeOptions, 'large')}
@@ -27,7 +25,7 @@ storiesOf('Checkbox', module)
       errorText={text('Error Text', 'You dont have permission')}
     />
   ))
-  .add('with checked', () => (
+  .add('checked', () => (
     <Checkbox
       checked={boolean('Checked', true)}
       size={select('Size', sizeOptions, 'large')}

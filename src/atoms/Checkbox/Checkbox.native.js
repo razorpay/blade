@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import { ThemeContext } from 'styled-components/native';
@@ -127,20 +127,20 @@ const Checkbox = ({
   const [underlayColor, setUnderlayColor] = useState('transparent');
   const theme = useContext(ThemeContext);
 
-  const onPressIn = () => {
+  const onPressIn = useCallback(() => {
     let colorKey = 'tone.940';
     if (isChecked) {
       colorKey = `${variantColor || 'primary'}.930`;
     }
     const newUnderlayColor = getColor(theme, colorKey);
     setUnderlayColor(newUnderlayColor);
-  };
+  }, [isChecked, theme, variantColor]);
 
-  const onPressOut = () => {
+  const onPressOut = useCallback(() => {
     setUnderlayColor('transparent');
-  };
+  }, []);
 
-  const onPress = () => {
+  const onPress = useCallback(() => {
     if (isPropDefined(checked)) {
       onChange(!isChecked);
       return;
@@ -149,7 +149,7 @@ const Checkbox = ({
       onChange(!prevCheckboxState);
       return !prevCheckboxState;
     });
-  };
+  }, [checked, isChecked, onChange]);
 
   if (disabled) {
     titleTextColor = 'shade.950';
@@ -170,12 +170,7 @@ const Checkbox = ({
       >
         <Flex flexDirection="row" alignItems="center">
           <View>
-            <Backdrop
-              width={styles.backdrop.dimensions(size).width}
-              height={styles.backdrop.dimensions(size).height}
-              borderRadius={styles.backdrop.dimensions(size).borderRadius}
-              backgroundColor={underlayColor}
-            >
+            <Backdrop {...styles.backdrop.dimensions(size)} backgroundColor={underlayColor}>
               <Icon
                 size={size}
                 name={isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
