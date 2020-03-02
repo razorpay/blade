@@ -1,0 +1,2253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Native <Checkbox /> Checked should match snapshot when errorText is present 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="checkbox"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="activeCheckbox"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="10px"
+        height="20px"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 10,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+        width="20px"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="none"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              undefined,
+              Object {
+                "opacity": 1,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <RNSVGGroup
+            fill={null}
+            fillOpacity={1}
+            fillRule={1}
+            font={Object {}}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            rotation={0}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
+              fill={4281041898}
+              fillOpacity={0.87}
+              fillRule={0}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillOpacity",
+                  "fillRule",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.970"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Razorpay
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "marginBottom": 0,
+            "marginLeft": 24,
+            "marginRight": 0,
+            "marginTop": 0,
+          },
+        ]
+      }
+    >
+      <Text
+        _isUnderlined={false}
+        _letterSpacing="small"
+        _weight="regular"
+        align="left"
+        color="negative.900"
+        size="xsmall"
+        style={
+          Array [
+            Object {
+              "alignSelf": "flex-start",
+              "color": "rgba(209, 45, 45, 1.0)",
+              "fontFamily": "Lato-Regular",
+              "fontSize": 12,
+              "letterSpacing": 0,
+              "lineHeight": 18,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        testID="ds-text"
+      >
+        You dont have permission
+      </Text>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <Checkbox /> Checked should render component when checked with default props 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="checkbox"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-checkbox"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="10px"
+        height="20px"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 10,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+        width="20px"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="none"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              undefined,
+              Object {
+                "opacity": 1,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <RNSVGGroup
+            fill={null}
+            fillOpacity={1}
+            fillRule={1}
+            font={Object {}}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            rotation={0}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
+              fill={4281041898}
+              fillOpacity={0.87}
+              fillRule={0}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillOpacity",
+                  "fillRule",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.970"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Some Title
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <Checkbox /> Checked snapshot testing when user long presses on checkbox 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="checkbox"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="activeCheckbox"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="rgba(11, 112, 231, 0.10)"
+        borderRadius="10px"
+        height="20px"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(11, 112, 231, 0.10)",
+              "borderRadius": 10,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+        width="20px"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="none"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              undefined,
+              Object {
+                "opacity": 1,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <RNSVGGroup
+            fill={null}
+            fillOpacity={1}
+            fillRule={1}
+            font={Object {}}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            rotation={0}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
+              fill={4281041898}
+              fillOpacity={0.87}
+              fillRule={0}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillOpacity",
+                  "fillRule",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.970"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Razorpay
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="checkbox"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="activeCheckbox"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="10px"
+        height="20px"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 10,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+        width="20px"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="none"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              undefined,
+              Object {
+                "opacity": 1,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <RNSVGGroup
+            fill={null}
+            fillOpacity={1}
+            fillRule={1}
+            font={Object {}}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            rotation={0}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
+              fill={4281041898}
+              fillOpacity={0.87}
+              fillRule={0}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillOpacity",
+                  "fillRule",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.970"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Razorpay
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <Checkbox /> Unchecked checkbox should render component when both defaultChecked and checked prop is passed with false values 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="checkbox"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-checkbox"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="10px"
+        height="20px"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 10,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+        width="20px"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="none"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              undefined,
+              Object {
+                "opacity": 1,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <RNSVGGroup
+            fill={null}
+            fillOpacity={1}
+            fillRule={1}
+            font={Object {}}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            rotation={0}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              fill={1628843862}
+              fillOpacity={0.38}
+              fillRule={0}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillOpacity",
+                  "fillRule",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.970"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Some Title
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <Checkbox /> Unchecked checkbox should render component when checked prop is passed with value false 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="checkbox"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-checkbox"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="10px"
+        height="20px"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 10,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+        width="20px"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="none"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              undefined,
+              Object {
+                "opacity": 1,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <RNSVGGroup
+            fill={null}
+            fillOpacity={1}
+            fillRule={1}
+            font={Object {}}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            rotation={0}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              fill={1628843862}
+              fillOpacity={0.38}
+              fillRule={0}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillOpacity",
+                  "fillRule",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.970"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Some Title
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <Checkbox /> Unchecked checkbox should render component when defaultChecked prop is passed with value false 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="checkbox"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-checkbox"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="10px"
+        height="20px"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 10,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+        width="20px"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="none"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              undefined,
+              Object {
+                "opacity": 1,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <RNSVGGroup
+            fill={null}
+            fillOpacity={1}
+            fillRule={1}
+            font={Object {}}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            rotation={0}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              fill={1628843862}
+              fillOpacity={0.38}
+              fillRule={0}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillOpacity",
+                  "fillRule",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.970"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Some Title
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <Checkbox /> Unchecked checkbox should render component when not checked with default props 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="checkbox"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-checkbox"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="10px"
+        height="20px"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 10,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+        width="20px"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="none"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              undefined,
+              Object {
+                "opacity": 1,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <RNSVGGroup
+            fill={null}
+            fillOpacity={1}
+            fillRule={1}
+            font={Object {}}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            rotation={0}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              fill={1628843862}
+              fillOpacity={0.38}
+              fillRule={0}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillOpacity",
+                  "fillRule",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.970"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Some Title
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Checkbox 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="checkbox"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-checkbox"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="10px"
+        height="20px"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 10,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+        width="20px"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="none"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              undefined,
+              Object {
+                "opacity": 1,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <RNSVGGroup
+            fill={null}
+            fillOpacity={1}
+            fillRule={1}
+            font={Object {}}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            rotation={0}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              fill={1628843862}
+              fillOpacity={0.38}
+              fillRule={0}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillOpacity",
+                  "fillRule",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.970"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Some Title
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "marginBottom": 0,
+            "marginLeft": 24,
+            "marginRight": 0,
+            "marginTop": 0,
+          },
+        ]
+      }
+    >
+      <Text
+        _isUnderlined={false}
+        _letterSpacing="small"
+        _weight="regular"
+        align="left"
+        color="shade.950"
+        size="xsmall"
+        style={
+          Array [
+            Object {
+              "alignSelf": "flex-start",
+              "color": "rgba(22, 47, 86, 0.38)",
+              "fontFamily": "Lato-Regular",
+              "fontSize": 12,
+              "letterSpacing": 0,
+              "lineHeight": 18,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        testID="ds-text"
+      >
+        some Help text
+      </Text>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long presses on checkbox 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="checkbox"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="unselectedCheckBox"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="rgba(224, 228, 249, 0.24)"
+        borderRadius="10px"
+        height="20px"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(224, 228, 249, 0.24)",
+              "borderRadius": 10,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+        width="20px"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="none"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              undefined,
+              Object {
+                "opacity": 1,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <RNSVGGroup
+            fill={null}
+            fillOpacity={1}
+            fillRule={1}
+            font={Object {}}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            rotation={0}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              fill={1628843862}
+              fillOpacity={0.38}
+              fillRule={0}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillOpacity",
+                  "fillRule",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.970"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Razorpay
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user presses out 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="checkbox"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="unselectedCheckBox"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="10px"
+        height="20px"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 10,
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+        width="20px"
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="none"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              undefined,
+              Object {
+                "opacity": 1,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <RNSVGGroup
+            fill={null}
+            fillOpacity={1}
+            fillRule={1}
+            font={Object {}}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+            rotation={0}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          >
+            <RNSVGPath
+              clipRule={0}
+              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              fill={1628843862}
+              fillOpacity={0.38}
+              fillRule={0}
+              matrix={
+                Array [
+                  1,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                ]
+              }
+              opacity={1}
+              originX={0}
+              originY={0}
+              propList={
+                Array [
+                  "fill",
+                  "fillOpacity",
+                  "fillRule",
+                ]
+              }
+              rotation={0}
+              scaleX={1}
+              scaleY={1}
+              skewX={0}
+              skewY={0}
+              stroke={null}
+              strokeDasharray={null}
+              strokeDashoffset={null}
+              strokeLinecap={0}
+              strokeLinejoin={0}
+              strokeMiterlimit={4}
+              strokeOpacity={1}
+              strokeWidth={1}
+              vectorEffect={0}
+              x={0}
+              y={0}
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.970"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.74)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Razorpay
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
