@@ -142,7 +142,7 @@ const Checkbox = ({
 
   const onPress = () => {
     if (isPropDefined(checked)) {
-      onChange();
+      onChange(!isChecked);
       return;
     }
     setCheckboxState((prevCheckboxState) => {
