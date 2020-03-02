@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-ondevice-knobs';
 import { select, text } from '@storybook/addon-knobs';
 import Text from './Text';
 
@@ -16,7 +15,6 @@ storiesOf('Text', module)
   .addParameters({
     component: Text,
   })
-  .addDecorator(withKnobs)
   .add('default', () => (
     <Text size={select('Size', sizeOptions, 'large')}>
       {text('Display Text', 'The quick brown fox jumps over the lazy dog')}
