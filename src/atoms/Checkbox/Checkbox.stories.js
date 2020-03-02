@@ -16,9 +16,9 @@ storiesOf('Checkbox', module)
   .addParameters({
     component: Checkbox,
   })
-  .add('unchecked', () => (
+  .add('with defaultChecked', () => (
     <Checkbox
-      checked={boolean('Checked', false)}
+      defaultChecked={boolean('Default Checked', false)}
       size={select('Size', sizeOptions, 'large')}
       title={text('Title', 'Enable Beast Mode')}
       helpText={text('Help Text', 'Play with addons to see changes')}
@@ -27,7 +27,7 @@ storiesOf('Checkbox', module)
       errorText={text('Error Text', 'You dont have permission')}
     />
   ))
-  .add('checked', () => (
+  .add('with checked', () => (
     <Checkbox
       checked={boolean('Checked', true)}
       size={select('Size', sizeOptions, 'large')}

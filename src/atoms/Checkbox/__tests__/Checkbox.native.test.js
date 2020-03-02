@@ -20,6 +20,27 @@ describe('Native <Checkbox />', () => {
       expect(helpTextComponent.props.children).toEqual(helpText);
     });
 
+    test('should render component when defaultChecked prop is passed with value false', () => {
+      const { container } = renderWithTheme(
+        <Checkbox title="Some Title" onChange={() => null} defaultChecked={false} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    test('should render component when checked prop is passed with value false', () => {
+      const { container } = renderWithTheme(
+        <Checkbox title="Some Title" onChange={() => null} checked={false} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    test('should render component when both defaultChecked and checked prop is passed with false values', () => {
+      const { container } = renderWithTheme(
+        <Checkbox title="Some Title" onChange={() => null} checked={false} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
     test('should render medium sized Checkbox', () => {
       const { container, getByText } = renderWithTheme(
         <Checkbox
@@ -74,6 +95,48 @@ describe('Native <Checkbox />', () => {
       });
       expect(container).toMatchSnapshot();
     });
+
+    test('should call onChange method when `checked` prop is passed with false value', () => {
+      const mockOnChange = jest.fn();
+      const { getByTestId } = renderWithTheme(
+        <Checkbox
+          title="Razorpay"
+          onChange={mockOnChange}
+          testID="unselectedCheckBox"
+          checked={false}
+        />,
+      );
+
+      const component = getByTestId('unselectedCheckBox');
+
+      act(() => {
+        fireEvent.press(component);
+      });
+
+      expect(mockOnChange).toBeCalled();
+      expect(mockOnChange).toBeCalledWith();
+    });
+
+    test('should call onChange method when `defaultChecked` prop is passed with false value', () => {
+      const mockOnChange = jest.fn();
+      const { getByTestId } = renderWithTheme(
+        <Checkbox
+          title="Razorpay"
+          onChange={mockOnChange}
+          testID="unselectedCheckBox"
+          defaultChecked={false}
+        />,
+      );
+
+      const component = getByTestId('unselectedCheckBox');
+
+      act(() => {
+        fireEvent.press(component);
+      });
+
+      expect(mockOnChange).toBeCalled();
+      expect(mockOnChange).toBeCalledWith(true);
+    });
   });
 
   describe('Checked', () => {
@@ -82,22 +145,6 @@ describe('Native <Checkbox />', () => {
         <Checkbox title="Some Title" checked={true} onChange={() => null} />,
       );
       expect(container).toMatchSnapshot();
-    });
-
-    test('should call onchange function with false when pressed', () => {
-      const onChangeMock = jest.fn();
-      const { getByTestId } = renderWithTheme(
-        <Checkbox
-          title="Some Title"
-          checked={true}
-          onChange={onChangeMock}
-          testID="activeCheckbox"
-        />,
-      );
-      const component = getByTestId('activeCheckbox');
-      fireEvent.press(component);
-      expect(onChangeMock).toBeCalled();
-      expect(onChangeMock).toBeCalledWith(false);
     });
 
     test('snapshot testing when user long presses on checkbox', () => {
@@ -139,6 +186,48 @@ describe('Native <Checkbox />', () => {
       const errorComponent = getAllByText('You dont have permission');
       expect(container).toMatchSnapshot();
       expect(errorComponent).toBeTruthy();
+    });
+
+    test('should call onChange method when `defaultChecked` prop is passed with true value', () => {
+      const mockOnChange = jest.fn();
+      const { getByTestId } = renderWithTheme(
+        <Checkbox
+          title="Razorpay"
+          onChange={mockOnChange}
+          testID="unselectedCheckBox"
+          defaultChecked={true}
+        />,
+      );
+
+      const component = getByTestId('unselectedCheckBox');
+
+      act(() => {
+        fireEvent.press(component);
+      });
+
+      expect(mockOnChange).toBeCalled();
+      expect(mockOnChange).toBeCalledWith(false);
+    });
+
+    test('should call onChange method when `checked` prop is passed with true value', () => {
+      const mockOnChange = jest.fn();
+      const { getByTestId } = renderWithTheme(
+        <Checkbox
+          title="Razorpay"
+          onChange={mockOnChange}
+          testID="unselectedCheckBox"
+          checked={true}
+        />,
+      );
+
+      const component = getByTestId('unselectedCheckBox');
+
+      act(() => {
+        fireEvent.press(component);
+      });
+
+      expect(mockOnChange).toBeCalled();
+      expect(mockOnChange).toBeCalledWith();
     });
   });
 });

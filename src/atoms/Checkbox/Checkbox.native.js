@@ -94,21 +94,36 @@ const styles = {
   },
 };
 
+const isPropDefined = (prop) => {
+  return typeof prop !== 'undefined';
+};
+
 const Checkbox = ({
+  defaultChecked,
+  checked,
   onChange,
   disabled,
-  size,
   title,
-  helpText,
-  testID,
+  size,
   variantColor,
+  helpText,
   errorText,
-  checked,
+  testID,
 }) => {
   let titleTextColor = 'shade.970';
   let helpTextColor = 'shade.950';
 
-  const [isChecked, setCheckboxState] = useState(checked);
+  let checkboxInitialState = false;
+
+  if (isPropDefined(defaultChecked)) {
+    checkboxInitialState = defaultChecked;
+  }
+
+  if (isPropDefined(checked)) {
+    checkboxInitialState = checked;
+  }
+
+  const [isChecked, setCheckboxState] = useState(checkboxInitialState);
   const [underlayColor, setUnderlayColor] = useState('transparent');
   const theme = useContext(ThemeContext);
 
@@ -126,6 +141,10 @@ const Checkbox = ({
   };
 
   const onPress = () => {
+    if (isPropDefined(checked)) {
+      onChange();
+      return;
+    }
     setCheckboxState((prevCheckboxState) => {
       onChange(!prevCheckboxState);
       return !prevCheckboxState;
@@ -202,10 +221,12 @@ Checkbox.propTypes = {
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
   errorText: PropTypes.string,
   testID: PropTypes.string,
+  defaultChecked: PropTypes.bool,
 };
 
 Checkbox.defaultProps = {
-  checked: false,
+  defaultChecked: undefined,
+  checked: undefined,
   size: 'medium',
   helpText: '',
   disabled: false,
