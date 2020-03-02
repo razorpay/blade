@@ -19,7 +19,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC ibjCEa"
+      className="sc-AykKC kHnGAa"
     >
       <View
         backgroundColor="transparent"
@@ -254,7 +254,7 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC ibjCEa"
+      className="sc-AykKC kHnGAa"
     >
       <View
         backgroundColor="transparent"
@@ -452,7 +452,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC ibjCEa"
+      className="sc-AykKC kHnGAa"
     >
       <View
         backgroundColor="rgba(231, 241, 253, 1.0)"
@@ -650,7 +650,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC ibjCEa"
+      className="sc-AykKC kHnGAa"
     >
       <View
         backgroundColor="transparent"
@@ -848,7 +848,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when bot
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC ibjCEa"
+      className="sc-AykKC kHnGAa"
     >
       <View
         backgroundColor="transparent"
@@ -1046,7 +1046,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when che
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC ibjCEa"
+      className="sc-AykKC kHnGAa"
     >
       <View
         backgroundColor="transparent"
@@ -1244,7 +1244,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when def
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC ibjCEa"
+      className="sc-AykKC kHnGAa"
     >
       <View
         backgroundColor="transparent"
@@ -1442,7 +1442,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render component when not
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC ibjCEa"
+      className="sc-AykKC kHnGAa"
     >
       <View
         backgroundColor="transparent"
@@ -1640,7 +1640,7 @@ exports[`Native <Checkbox /> Unchecked checkxox should render medium sized Check
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC ibjCEa"
+      className="sc-AykKC kHnGAa"
     >
       <View
         backgroundColor="transparent"
@@ -1875,7 +1875,7 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user long 
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC ibjCEa"
+      className="sc-AykKC kHnGAa"
     >
       <View
         backgroundColor="rgba(224, 228, 249, 0.24)"
@@ -2073,7 +2073,7 @@ exports[`Native <Checkbox /> Unchecked checkxox snapshot testing when user press
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC ibjCEa"
+      className="sc-AykKC kHnGAa"
     >
       <View
         backgroundColor="transparent"
