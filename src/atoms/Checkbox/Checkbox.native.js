@@ -168,7 +168,7 @@ const Checkbox = ({
         onPressOut={onPressOut}
         {...automation(testID)}
       >
-        <Flex flexDirection="row">
+        <Flex flexDirection="row" alignItems="center">
           <View>
             <Backdrop
               width={styles.backdrop.dimensions(size).width}
