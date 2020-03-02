@@ -67,14 +67,8 @@ const styles = {
   },
 };
 
-const Container = styled(View)`
-  justify-content: flex-end;
-`;
-
 const InputContainer = styled(View)`
   background-color: transparent;
-  flex-direction: row;
-  align-items: center;
   width: ${styles.inputContainer.width};
 `;
 
@@ -182,107 +176,111 @@ const TextInput = ({
   );
 
   return (
-    <Container>
-      {/* Animated Label */}
-      {layoutDimensions && !hasLeftLabel ? (
-        <AnimatedLabel
-          isFocused={isFocused}
-          hasText={hasText}
-          disabled={disabled}
-          layoutDimensions={layoutDimensions}
-          variant={variant}
-          hasError={hasError}
-        >
-          {label}
-        </AnimatedLabel>
-      ) : null}
+    <Flex justifyContent="flex-end">
+      <View>
+        {/* Animated Label */}
+        {layoutDimensions && !hasLeftLabel ? (
+          <AnimatedLabel
+            isFocused={isFocused}
+            hasText={hasText}
+            disabled={disabled}
+            layoutDimensions={layoutDimensions}
+            variant={variant}
+            hasError={hasError}
+          >
+            {label}
+          </AnimatedLabel>
+        ) : null}
 
-      {/* Text Input Container */}
-      <Flex flexDirection="row" alignItems="flex-start">
-        <View>
-          {/*Fixed Left Label */}
-          {hasLeftLabel && layoutDimensions ? (
-            <Label inputLayoutDimensions={layoutDimensions}>{label}</Label>
-          ) : null}
-          {/* Text Input */}
-          <Flex flexDirection="column" flex={size === 'block' ? 1 : 0}>
-            <View>
-              <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
-                <InputContainer size={size}>
-                  {hasPrefix ? (
-                    <AccessoryText variant={variant} disabled={disabled}>
-                      {prefix}
-                    </AccessoryText>
-                  ) : null}
-                  {hasLeftIcon ? (
-                    <AccessoryIcon
-                      variant={variant}
-                      name={iconLeft}
-                      disabled={disabled}
-                      hasError={hasError}
-                      size="xsmall"
-                    />
-                  ) : null}
+        {/* Text Input Container */}
+        <Flex flexDirection="row" alignItems="flex-start">
+          <View>
+            {/*Fixed Left Label */}
+            {hasLeftLabel && layoutDimensions ? (
+              <Label inputLayoutDimensions={layoutDimensions}>{label}</Label>
+            ) : null}
+            {/* Text Input */}
+            <Flex flexDirection="column" flex={size === 'block' ? 1 : 0}>
+              <View>
+                <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
+                  <Flex flexDirection="row" alignItems="center">
+                    <InputContainer size={size}>
+                      {hasPrefix ? (
+                        <AccessoryText variant={variant} disabled={disabled}>
+                          {prefix}
+                        </AccessoryText>
+                      ) : null}
+                      {hasLeftIcon ? (
+                        <AccessoryIcon
+                          variant={variant}
+                          name={iconLeft}
+                          disabled={disabled}
+                          hasError={hasError}
+                          size="xsmall"
+                        />
+                      ) : null}
 
-                  <Flex flex={1}>
-                    <StyledInput
-                      placeholder={isPlaceholderVisible || hasLeftLabel ? placeholder : ''}
-                      placeholderTextColor={placeholderTextColor}
-                      onFocus={onFocus}
-                      onBlur={onBlur}
-                      onChangeText={onChange}
-                      hasText={hasText}
-                      selectionColor={theme.colors.shade[970]} // not able to change this for Android
-                      editable={!disabled}
-                      disabled={disabled}
-                      variant={variant}
-                      hasPrefix={hasPrefix}
-                      hasLeftIcon={hasLeftIcon}
-                      maxLength={maxLength}
-                      onLayout={onTextInputLayout}
-                      value={input}
-                      {...automation(testID)}
-                    />
+                      <Flex flex={1}>
+                        <StyledInput
+                          placeholder={isPlaceholderVisible || hasLeftLabel ? placeholder : ''}
+                          placeholderTextColor={placeholderTextColor}
+                          onFocus={onFocus}
+                          onBlur={onBlur}
+                          onChangeText={onChange}
+                          hasText={hasText}
+                          selectionColor={theme.colors.shade[970]} // not able to change this for Android
+                          editable={!disabled}
+                          disabled={disabled}
+                          variant={variant}
+                          hasPrefix={hasPrefix}
+                          hasLeftIcon={hasLeftIcon}
+                          maxLength={maxLength}
+                          onLayout={onTextInputLayout}
+                          value={input}
+                          {...automation(testID)}
+                        />
+                      </Flex>
+                      {hasSuffix ? (
+                        <AccessoryText variant={variant} disabled={disabled}>
+                          {suffix}
+                        </AccessoryText>
+                      ) : null}
+                      {hasRightIcon ? (
+                        <AccessoryIcon
+                          variant={variant}
+                          name={iconRight}
+                          disabled={disabled}
+                          hasError={hasError}
+                          size="xsmall"
+                        />
+                      ) : null}
+                    </InputContainer>
                   </Flex>
-                  {hasSuffix ? (
-                    <AccessoryText variant={variant} disabled={disabled}>
-                      {suffix}
-                    </AccessoryText>
-                  ) : null}
-                  {hasRightIcon ? (
-                    <AccessoryIcon
-                      variant={variant}
-                      name={iconRight}
-                      disabled={disabled}
-                      hasError={hasError}
-                      size="xsmall"
-                    />
-                  ) : null}
-                </InputContainer>
-                <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
-              </FillContainer>
-              {/* Bottom texts */}
-              {hasError && !disabled ? (
-                <ErrorText>{errorText}</ErrorText>
-              ) : helpText ? (
-                <Flex flexDirection="row" justifyContent="space-between">
-                  <View>
-                    <HelpText disabled={disabled}>{helpText}</HelpText>
-                    {showCharacterCount && typeof maxLength === 'number' && (
-                      <CharacterCount
-                        disabled={disabled}
-                        maxLength={maxLength}
-                        inputLength={input.length}
-                      />
-                    )}
-                  </View>
-                </Flex>
-              ) : null}
-            </View>
-          </Flex>
-        </View>
-      </Flex>
-    </Container>
+                  <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
+                </FillContainer>
+                {/* Bottom texts */}
+                {hasError && !disabled ? (
+                  <ErrorText>{errorText}</ErrorText>
+                ) : helpText ? (
+                  <Flex flexDirection="row" justifyContent="space-between">
+                    <View>
+                      <HelpText disabled={disabled}>{helpText}</HelpText>
+                      {showCharacterCount && typeof maxLength === 'number' && (
+                        <CharacterCount
+                          disabled={disabled}
+                          maxLength={maxLength}
+                          inputLength={input.length}
+                        />
+                      )}
+                    </View>
+                  </Flex>
+                ) : null}
+              </View>
+            </Flex>
+          </View>
+        </Flex>
+      </View>
+    </Flex>
   );
 };
 
