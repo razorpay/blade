@@ -20,4 +20,10 @@ describe('test "makePxValue" helper function', () => {
     expect(spy).toHaveBeenLastCalledWith([1, 2]);
     expect(value).toEqual('8px 16px');
   });
+
+  it('checks "makePxValue" throws error when it is called with array of length >4', () => {
+    const expectedErrorMessage =
+      'Error in makePxValue: array length should be less than or equal to 4';
+    expect(() => themeHelpers.makePxValue([1, 2, 3, 4, 5])).toThrow(expectedErrorMessage);
+  });
 });

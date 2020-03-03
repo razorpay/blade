@@ -15,62 +15,79 @@ const styles = {
   fontColor({ variant, variantColor, disabled }) {
     switch (variant) {
       case 'primary':
-      default:
         if (disabled) {
-          return 'white.950'; //TODO: mapping not present(EX/white 500) for figma in sheet.
+          return 'light.150';
         }
-        return 'white.900';
+        return 'light.100';
       case 'secondary':
         if (disabled) {
           return 'shade.940';
         }
-        return `${variantColor || 'primary'}.800`;
+        if (variantColor) {
+          return `${variantColor}.800`;
+        }
+        return 'primary.800';
       case 'tertiary':
         if (disabled) {
           return 'shade.940';
         }
-        return `${variantColor || 'primary'}.800`;
-    }
-  },
-  backgroundColor({ variant, variantColor, disabled, theme }) {
-    switch (variant) {
-      case 'primary':
+        if (variantColor) {
+          return `${variantColor}.800`;
+        }
+        return 'primary.800';
       default:
         if (disabled) {
-          return getColor(theme, `${variantColor || 'primary'}.500`);
+          return 'light.150';
         }
-        return getColor(theme, `${variantColor || 'primary'}.800`);
+        return 'light.100';
+    }
+  },
+  backgroundColor({ variant, buttonColor, disabled, theme }) {
+    switch (variant) {
+      case 'primary':
+        if (disabled) {
+          return getColor(theme, `${buttonColor}.500`);
+        }
+        return getColor(theme, `${buttonColor}.800`);
       case 'secondary':
         if (disabled) {
           return getColor(theme, 'shade.910');
         }
-        return getColor(theme, `${variantColor || 'primary'}.920`);
+        return getColor(theme, `${buttonColor}.920`);
       case 'tertiary':
         return 'transparent';
+      default:
+        if (disabled) {
+          return getColor(theme, `${buttonColor}.500`);
+        }
+        return getColor(theme, `${buttonColor}.800`);
     }
   },
-  border({ variant, variantColor, disabled, theme }) {
+  border({ variant, buttonColor, disabled, theme }) {
     switch (variant) {
       case 'primary':
-      case 'tertiary':
-      default:
-        return null;
+        return '0px';
       case 'secondary':
         if (disabled) {
           return `${makePxValue(0.125)} solid ${getColor(theme, 'shade.930')}`;
         }
-        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor || 'primary'}.970`)}`;
+        return `${makePxValue(0.125)} solid ${getColor(theme, `${buttonColor}.970`)}`;
+      case 'tertiary':
+        return '0px';
+      default:
+        return '0px';
     }
   },
-  underlayColor({ variant, variantColor, theme }) {
+  underlayColor({ variant, buttonColor, theme }) {
     switch (variant) {
       case 'primary':
-      default:
-        return getColor(theme, `${variantColor || 'primary'}.600`); //in design, "Exception" white is used.
+        return getColor(theme, `${buttonColor}.600`);
       case 'secondary':
-        return getColor(theme, `${variantColor || 'primary'}.950`);
+        return getColor(theme, `${buttonColor}.950`);
       case 'tertiary':
-        return getColor(theme, `${variantColor || 'primary'}.950`);
+        return getColor(theme, `${buttonColor}.950`);
+      default:
+        return getColor(theme, `${buttonColor}.600`);
     }
   },
   padding({ size, theme, children }) {
@@ -86,7 +103,6 @@ const styles = {
         }
         return [makePxValue(0.625), theme.spacings.large];
       case 'medium':
-      default:
         if (!children) {
           return [theme.spacings.small];
         }
@@ -96,6 +112,11 @@ const styles = {
           return [makePxValue(1.25)];
         }
         return [makePxValue(1.25), theme.spacings.xxlarge];
+      default:
+        if (!children) {
+          return [theme.spacings.small];
+        }
+        return [theme.spacings.small, theme.spacings.xxlarge];
     }
   },
   iconSize({ size, children }) {
@@ -111,7 +132,15 @@ const styles = {
         }
         return 'small';
       case 'medium':
+        if (!children) {
+          return 'large';
+        }
+        return 'medium';
       case 'large':
+        if (!children) {
+          return 'large';
+        }
+        return 'medium';
       default:
         if (!children) {
           return 'large';
@@ -126,20 +155,23 @@ const styles = {
       case 'small':
         return 'xsmall';
       case 'medium':
+        return 'medium';
       case 'large':
+        return 'medium';
       default:
         return 'medium';
     }
   },
-  alignSelf({ align }) {
+  align({ align }) {
     switch (align) {
       case 'left':
-      default:
         return 'flex-start';
       case 'center':
         return 'center';
       case 'right':
         return 'flex-end';
+      default:
+        return 'flex-start';
     }
   },
   letterSpacing({ size }) {
@@ -150,15 +182,33 @@ const styles = {
         return 'small';
     }
   },
-  spaceBetween({ size, iconPosition }) {
+  spaceBetween({ size, iconAlign }) {
     switch (size) {
       case 'xsmall':
+        if (iconAlign === 'left') {
+          return [0, 0.5, 0, 0];
+        }
+        return [0, 0, 0, 0.5];
       case 'small':
-        return iconPosition === 'left' ? [0, 0.5, 0, 0] : [0, 0, 0, 0.5];
+        if (iconAlign === 'left') {
+          return [0, 0.5, 0, 0];
+        }
+        return [0, 0, 0, 0.5];
       case 'medium':
+        if (iconAlign === 'left') {
+          return [0, 1, 0, 0];
+        }
+        return [0, 0, 0, 1];
       case 'large':
+        if (iconAlign === 'left') {
+          return [0, 1, 0, 0];
+        }
+        return [0, 0, 0, 1];
       default:
-        return iconPosition === 'left' ? [0, 1, 0, 0] : [0, 0, 0, 1];
+        if (iconAlign === 'left') {
+          return [0, 1, 0, 0];
+        }
+        return [0, 0, 0, 1];
     }
   },
   lineHeight({ size }) {
@@ -168,85 +218,98 @@ const styles = {
       case 'small':
         return 'small';
       case 'medium':
+        return 'medium';
       case 'large':
+        return 'medium';
       default:
         return 'medium';
     }
   },
+  borderRadius({ theme }) {
+    return theme.spacings.xxsmall;
+  },
 };
 
-const StyledButton = styled(TouchableHighlight)(
-  (props) => `
-    background-color: ${styles.backgroundColor(props)};
-    border-radius: ${props.theme.spacings.xxsmall};
-    ${styles.border(props) && `border: ${styles.border(props)}`};
-  `,
-);
+const StyledButton = styled(TouchableHighlight)`
+  background-color: ${styles.backgroundColor};
+  border-radius: ${styles.borderRadius};
+  border: ${styles.border};
+`;
 
-const Button = (props) => {
-  const {
-    onClick,
-    children,
-    variant,
-    size,
-    disabled,
-    variantColor,
-    icon,
-    iconPosition,
-    align,
-    testID,
-  } = props;
+const Button = ({
+  onClick,
+  children,
+  variant,
+  size,
+  disabled,
+  variantColor,
+  icon,
+  iconAlign,
+  align,
+  testID,
+}) => {
   const theme = useContext(ThemeContext);
+
+  const buttonColor = `${variantColor || 'primary'}`;
+
+  if (typeof children !== 'string' && typeof children !== 'undefined') {
+    throw Error(
+      `Error in Button: expected \`children\` of type \`string\` but found ${typeof children}`,
+    );
+  }
+
   return (
-    <Flex flexDirection="row" alignItems="center" alignSelf={styles.alignSelf(props)}>
-      <Space padding={styles.padding({ ...props, theme })}>
+    <Flex flexDirection="row" alignItems="center" alignSelf={styles.align({ align })}>
+      <Space padding={styles.padding({ size, children, theme })}>
         <StyledButton
+          buttonColor={buttonColor}
           onPress={onClick}
           variantColor={variantColor}
           disabled={disabled}
           size={size}
           variant={variant}
           activeOpacity={1}
-          underlayColor={styles.underlayColor({ ...props, theme })}
-          align={align}
+          underlayColor={styles.underlayColor({ variant, buttonColor, theme })}
           {...automation(testID)}
         >
-          <>
-            {icon && iconPosition === 'left' && (
+          <React.Fragment>
+            {icon && iconAlign === 'left' && (
               <Icon
                 name={icon}
-                size={styles.iconSize(props)}
-                fill={styles.fontColor({ ...props, theme })}
+                size={styles.iconSize({ size, children })}
+                fill={styles.fontColor({ variant, variantColor, disabled })}
               />
             )}
-            {icon && iconPosition === 'left' && children && (
-              <Space margin={styles.spaceBetween(props)}>
+            {icon && iconAlign === 'left' && children && (
+              <Space margin={styles.spaceBetween({ size, iconAlign })}>
                 <View />
               </Space>
             )}
-            <Text
-              color={styles.fontColor(props)}
-              size={styles.fontSize(props)}
-              align="center"
-              _weight="bold"
-              _letterSpacing={styles.letterSpacing(props)}
-              _lineHeight={styles.lineHeight(props)}
-            >
-              {size === 'xsmall' ? children && children.toUpperCase() : children}
-            </Text>
-            {icon && iconPosition === 'right' && children && (
-              <Space margin={styles.spaceBetween(props)}>
+            {children && (
+              <Text
+                color={styles.fontColor({ variant, variantColor, disabled })}
+                size={styles.fontSize({ size })}
+                align="center"
+                _weight="bold"
+                _letterSpacing={styles.letterSpacing({ size })}
+                _lineHeight={styles.lineHeight({ size })}
+              >
+                {size === 'xsmall' ? children.toUpperCase() : children}
+              </Text>
+            )}
+            {icon && iconAlign === 'right' && children && (
+              <Space margin={styles.spaceBetween({ size, iconAlign })}>
                 <View />
               </Space>
             )}
-            {icon && iconPosition === 'right' && (
+            {icon && iconAlign === 'right' && (
               <Icon
                 name={icon}
-                size={styles.iconSize(props)}
-                fill={styles.fontColor({ ...props, theme })}
+                size={styles.iconSize({ size, children })}
+                fill={styles.fontColor({ variant, variantColor, disabled })}
               />
             )}
-          </>
+          </React.Fragment>
         </StyledButton>
       </Space>
     </Flex>
@@ -262,7 +325,7 @@ Button.propTypes = {
   align: PropTypes.oneOf(['left', 'center', 'right']),
   disabled: PropTypes.bool,
   icon: PropTypes.string,
-  iconPosition: PropTypes.oneOf(['left', 'right']),
+  iconAlign: PropTypes.oneOf(['left', 'right']),
   testID: PropTypes.string,
 };
 
@@ -272,7 +335,7 @@ Button.defaultProps = {
   align: 'left',
   size: 'medium',
   disabled: false,
-  iconPosition: 'left',
+  iconAlign: 'left',
   onClick: () => {},
 };
 

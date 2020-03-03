@@ -3,6 +3,9 @@ import theme from '../tokens/theme';
 
 const makePxValue = (value) => {
   const values = [].concat(value);
+  if (values.length > 4) {
+    throw Error('Error in makePxValue: array length should be less than or equal to 4');
+  }
   return values.map((v) => (typeof v === 'string' ? v : `${v * spacings.unit}px`)).join(' ');
 };
 

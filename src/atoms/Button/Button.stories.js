@@ -1,15 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-ondevice-knobs';
 import { select } from '@storybook/addon-knobs';
-import styled from 'styled-components';
 
 import Button from './Button';
-
-const StyledContainer = styled.View`
-  flex: 1;
-  justify-content: space-around;
-`;
+import Flex from '../Flex';
+import View from '../View';
 
 const variants = {
   primary: 'primary',
@@ -24,7 +19,7 @@ const sizes = {
   large: 'large',
 };
 
-const iconPosition = {
+const iconAlign = {
   left: 'left',
   right: 'right',
 };
@@ -33,37 +28,38 @@ storiesOf('Button', module)
   .addParameters({
     component: Button,
   })
-  .addDecorator(withKnobs)
-  .add('Button', () => (
-    <StyledContainer>
-      <Button
-        size={select('Sizes', sizes, 'medium')}
-        variant={select('Variants', variants, 'primary')}
-        icon="info"
-        align="center"
-      />
-      <Button
-        size={select('Sizes', sizes, 'medium')}
-        variant={select('Variants', variants, 'primary')}
-      >
-        Button
-      </Button>
-      <Button
-        size={select('Sizes', sizes, 'medium')}
-        variant={select('Variants', variants, 'primary')}
-        icon="info"
-        iconPosition={select('IconPosition', iconPosition, 'left')}
-      >
-        Button with Icon
-      </Button>
-      <Button
-        size={select('Sizes', sizes, 'medium')}
-        variant={select('Variants', variants, 'primary')}
-        icon="info"
-        disabled
-        iconPosition={select('IconPosition', iconPosition, 'left')}
-      >
-        Button with Icon
-      </Button>
-    </StyledContainer>
+  .add('default', () => (
+    <Flex flex={1} justifyContent="space-around">
+      <View>
+        <Button
+          size={select('Sizes', sizes, 'medium')}
+          variant={select('Variants', variants, 'primary')}
+          icon="info"
+          align="center"
+        />
+        <Button
+          size={select('Sizes', sizes, 'medium')}
+          variant={select('Variants', variants, 'primary')}
+        >
+          Button
+        </Button>
+        <Button
+          size={select('Sizes', sizes, 'medium')}
+          variant={select('Variants', variants, 'primary')}
+          icon="info"
+          iconAlign={select('iconAlign', iconAlign, 'left')}
+        >
+          Button with Icon
+        </Button>
+        <Button
+          size={select('Sizes', sizes, 'medium')}
+          variant={select('Variants', variants, 'primary')}
+          icon="info"
+          disabled
+          iconAlign={select('iconAlign', iconAlign, 'left')}
+        >
+          Button with Icon
+        </Button>
+      </View>
+    </Flex>
   ));
