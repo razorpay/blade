@@ -2607,7 +2607,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2705,7 +2705,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2803,7 +2803,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with character count  1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with character count  1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2902,7 +2902,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with disabled  1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with disabled  1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -3204,7 +3204,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with error  1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with error  1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -3502,7 +3502,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with filled TextInput 1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with filled TextInput 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -3600,7 +3600,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with help text  1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with help text  1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -3741,7 +3741,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with help text & character count  1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with help text & character count  1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -3922,7 +3922,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with iconLeft  1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with iconLeft  1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -4143,7 +4143,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with iconLeft & iconRight  1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with iconLeft & iconRight  1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -4487,7 +4487,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with iconRight  1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with iconRight  1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -4708,7 +4708,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with label 1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with label 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -4806,7 +4806,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with prefix & suffix 1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with prefix & suffix 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -4942,7 +4942,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with prefix 1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with prefix 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -5078,7 +5078,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
 </View>
 `;
 
-exports[`Renders <TextInput /> outline variant correctly snapshot testing with suffix 1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with suffix 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"

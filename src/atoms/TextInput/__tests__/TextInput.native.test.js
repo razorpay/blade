@@ -4,7 +4,7 @@ import { renderWithTheme } from '../../../_helpers/testing';
 import TextInput from '../index';
 import { fireEvent, act } from '@testing-library/react-native';
 
-describe('Renders <TextInput /> outline variant correctly', () => {
+describe('Renders <TextInput /> outlined variant correctly', () => {
   it('snapshot testing with label', () => {
     const { container } = renderWithTheme(<TextInput label="Email" />);
     expect(container).toMatchSnapshot();
