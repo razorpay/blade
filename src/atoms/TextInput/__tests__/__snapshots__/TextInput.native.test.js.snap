@@ -54,11 +54,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -149,11 +149,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -244,11 +244,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -340,11 +340,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -475,7 +475,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.10)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
@@ -775,11 +775,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -1033,11 +1033,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -1210,11 +1210,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -1471,11 +1471,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -1812,11 +1812,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -1907,11 +1907,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -2125,11 +2125,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -2220,11 +2220,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -2391,11 +2391,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -2486,11 +2486,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -2619,11 +2619,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -2714,11 +2714,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -2810,11 +2810,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -2945,7 +2945,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.10)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
@@ -3245,11 +3245,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -3502,11 +3502,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -3597,11 +3597,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -3736,11 +3736,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -4036,11 +4036,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -4254,11 +4254,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -4472,11 +4472,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -4690,11 +4690,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -4785,11 +4785,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -4956,11 +4956,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
@@ -5051,11 +5051,11 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
               placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
-              selectionColor="rgba(22, 47, 86, 0.74)"
+              selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.74)",
+                    "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "height": 40,
