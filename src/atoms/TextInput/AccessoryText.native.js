@@ -5,6 +5,8 @@ import Text from '../Text';
 import Space from '../Space';
 import View from '../View';
 
+const IS_ANDROID = Platform.OS === 'android';
+
 const styles = {
   color({ disabled }) {
     if (disabled) {
@@ -14,7 +16,7 @@ const styles = {
     }
   },
   padding({ variant }) {
-    const top = Platform.OS === 'android' ? 1 : 0;
+    const top = IS_ANDROID ? 1 : 0;
     if (variant === 'filled') {
       return [top, 1, 0, 1];
     } else {
