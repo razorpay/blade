@@ -28,10 +28,13 @@ const Line = ({ isFocused, hasError, disabled }) => {
 
 Line.propTypes = {
   isFocused: PropTypes.bool.isRequired,
-  hasError: PropTypes.bool.isRequired,
+  hasError: PropTypes.bool,
   disabled: PropTypes.bool,
 };
 
-Line.defaultProps = {};
+Line.defaultProps = {
+  hasError: false,
+  disabled: false,
+};
 
 export default Line;

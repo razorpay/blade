@@ -197,12 +197,16 @@ AnimatedLabel.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
-  variant: PropTypes.oneOf(['outlined', 'filled']),
+  variant: PropTypes.oneOf(['outlined', 'filled']).isRequired,
   hasError: PropTypes.bool,
 };
 
 AnimatedLabel.defaultProps = {
   children: 'Label',
+  isFocused: false,
+  hasText: false,
+  disabled: false,
+  hasError: false,
 };
 
 export default AnimatedLabel;

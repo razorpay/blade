@@ -20,6 +20,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -47,6 +48,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -77,6 +79,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -115,6 +118,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={true}
           style={
             Array [
@@ -142,6 +146,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -172,6 +177,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={true}
             style={
@@ -210,6 +216,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -237,6 +244,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -267,6 +275,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -305,6 +314,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -332,6 +342,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -363,6 +374,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -703,6 +715,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -768,6 +781,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={true}
@@ -921,6 +935,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
             </View>
           </View>
           <View
+            disabled={false}
             hasError={true}
             isFocused={false}
             style={
@@ -998,6 +1013,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -1025,6 +1041,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -1056,6 +1073,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -1176,6 +1194,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -1203,6 +1222,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -1233,6 +1253,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -1314,6 +1335,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -1464,6 +1486,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={true}
               hasPrefix={false}
@@ -1617,6 +1640,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             </View>
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -1655,6 +1679,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -1805,6 +1830,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={true}
               hasPrefix={false}
@@ -1835,6 +1861,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -1873,6 +1900,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -1900,6 +1928,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -2053,6 +2082,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             </View>
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -2091,6 +2121,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -2118,6 +2149,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -2148,6 +2180,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -2186,6 +2219,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -2213,6 +2247,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -2281,6 +2316,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
             </View>
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -2319,6 +2355,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -2384,6 +2421,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={true}
@@ -2414,6 +2452,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -2452,6 +2491,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -2479,6 +2519,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -2547,6 +2588,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
             </View>
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -2585,6 +2627,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -2612,6 +2655,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -2642,6 +2686,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -2680,6 +2725,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={true}
           style={
             Array [
@@ -2707,6 +2753,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -2737,6 +2784,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={true}
             style={
@@ -2775,6 +2823,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -2802,6 +2851,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -2833,6 +2883,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -3173,6 +3224,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -3238,6 +3290,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={true}
@@ -3391,6 +3444,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
             </View>
           </View>
           <View
+            disabled={false}
             hasError={true}
             isFocused={false}
             style={
@@ -3468,6 +3522,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -3495,6 +3550,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -3525,6 +3581,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -3563,6 +3620,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -3590,6 +3648,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -3620,6 +3679,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -3701,6 +3761,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -3728,6 +3789,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -3759,6 +3821,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -3879,6 +3942,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -4029,6 +4093,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={true}
               hasPrefix={false}
@@ -4059,6 +4124,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -4097,6 +4163,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -4247,6 +4314,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={true}
               hasPrefix={false}
@@ -4400,6 +4468,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
             </View>
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -4438,6 +4507,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -4465,6 +4535,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -4618,6 +4689,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
             </View>
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -4656,6 +4728,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -4683,6 +4756,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -4713,6 +4787,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -4751,6 +4826,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -4778,6 +4854,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -4846,6 +4923,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
             </View>
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -4884,6 +4962,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -4949,6 +5028,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={true}
@@ -4979,6 +5059,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
             />
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={
@@ -5017,6 +5098,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
         className="sc-AykKC hSXcDQ"
       >
         <View
+          disabled={false}
           isFocused={false}
           style={
             Array [
@@ -5044,6 +5126,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
             <TextInput
               allowFontScaling={true}
               className="sc-AykKC jbrywR"
+              disabled={false}
               editable={true}
               hasLeftIcon={false}
               hasPrefix={false}
@@ -5112,6 +5195,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
             </View>
           </View>
           <View
+            disabled={false}
             hasError={false}
             isFocused={false}
             style={

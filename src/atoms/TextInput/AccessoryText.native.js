@@ -43,6 +43,9 @@ AccessoryText.propTypes = {
   variant: PropTypes.string.isRequired,
 };
 
-AccessoryText.defaultProps = {};
+AccessoryText.defaultProps = {
+  children: '',
+  disabled: false,
+};
 
 export default AccessoryText;

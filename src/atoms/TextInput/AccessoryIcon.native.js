@@ -43,6 +43,11 @@ AccessoryIcon.propTypes = {
   variant: PropTypes.string.isRequired,
 };
 
-AccessoryIcon.defaultProps = {};
+AccessoryIcon.defaultProps = {
+  name: 'info',
+  size: 'medium',
+  disabled: false,
+  hasError: false,
+};
 
 export default AccessoryIcon;

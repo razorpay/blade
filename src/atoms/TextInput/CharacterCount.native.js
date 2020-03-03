@@ -40,6 +40,10 @@ CharacterCount.propTypes = {
   disabled: PropTypes.bool,
 };
 
-CharacterCount.defaultProps = {};
+CharacterCount.defaultProps = {
+  maxLength: 10,
+  inputLength: 0,
+  disabled: false,
+};
 
 export default CharacterCount;

@@ -39,6 +39,9 @@ HelpText.propTypes = {
   disabled: PropTypes.bool,
 };
 
-HelpText.defaultProps = {};
+HelpText.defaultProps = {
+  children: '',
+  disabled: false,
+};
 
 export default HelpText;

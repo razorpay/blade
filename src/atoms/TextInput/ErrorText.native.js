@@ -29,6 +29,8 @@ ErrorText.propTypes = {
   children: PropTypes.string,
 };
 
-ErrorText.defaultProps = {};
+ErrorText.defaultProps = {
+  children: '',
+};
 
 export default ErrorText;
