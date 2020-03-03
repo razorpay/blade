@@ -101,7 +101,7 @@ storiesOf('TextInput', module)
             disabled={false}
             iconLeft=""
             iconRight=""
-            prefix="kg"
+            prefix="₹"
             suffix=""
             placeholder="Type here"
             helpText="This is a help text"
@@ -125,7 +125,7 @@ storiesOf('TextInput', module)
             iconLeft=""
             iconRight=""
             prefix=""
-            suffix="kg"
+            suffix="₹"
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
@@ -195,7 +195,7 @@ storiesOf('TextInput', module)
             disabled={true}
             iconLeft=""
             iconRight=""
-            prefix="kg"
+            prefix="₹"
             suffix=""
             placeholder="Type here"
             helpText="This is a help text"
@@ -218,7 +218,7 @@ storiesOf('TextInput', module)
             disabled={true}
             iconLeft=""
             iconRight=""
-            prefix="kg"
+            prefix="₹"
             suffix=""
             placeholder="Type here"
             helpText="This is a help text"
@@ -310,7 +310,7 @@ storiesOf('TextInput', module)
             disabled={false}
             iconLeft=""
             iconRight=""
-            prefix="kg"
+            prefix="₹"
             suffix=""
             placeholder="Type here"
             helpText="This is a help text"
@@ -333,7 +333,7 @@ storiesOf('TextInput', module)
             iconLeft=""
             iconRight=""
             prefix=""
-            suffix="kg"
+            suffix="₹"
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
@@ -400,7 +400,7 @@ storiesOf('TextInput', module)
             disabled={true}
             iconLeft=""
             iconRight=""
-            prefix="kg"
+            prefix="₹"
             suffix=""
             placeholder="Type here"
             helpText="This is a help text"
@@ -422,7 +422,7 @@ storiesOf('TextInput', module)
             disabled={true}
             iconLeft=""
             iconRight=""
-            prefix="kg"
+            prefix="₹"
             suffix=""
             placeholder="Type here"
             helpText="This is a help text"
