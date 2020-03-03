@@ -87,7 +87,7 @@
     "chromatic": "CHROMATIC_APP_CODE=gx0k8mh119 chromatic",
     "test:native": "BABEL_ENV=development jest -c ./jest.native.config.js",
     "test:native:coverage": "yarn run test:native --coverage",
-    "test:web": "BABEL_ENV=web-development jest -c ./jest.web.config.js",
+    "test:web": "BABEL_ENV=web-test jest -c ./jest.web.config.js",
     "test:web:coverage": "yarn run test:web --coverage"
   },
   "husky": {
