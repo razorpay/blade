@@ -40,7 +40,7 @@ const styles = {
       if (disabled) {
         return theme.colors.shade[940];
       } else {
-        return theme.colors.shade[970];
+        return theme.colors.shade[980];
       }
     },
   },
@@ -228,7 +228,7 @@ const TextInput = ({
                           onBlur={onBlur}
                           onChangeText={onChange}
                           hasText={hasText}
-                          selectionColor={theme.colors.shade[970]} // not able to change this for Android
+                          selectionColor={theme.colors.shade[980]} // not able to change this for Android
                           editable={!disabled}
                           disabled={disabled}
                           variant={variant}
