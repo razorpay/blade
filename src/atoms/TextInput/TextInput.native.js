@@ -217,7 +217,6 @@ const TextInput = ({
                           name={iconLeft}
                           disabled={disabled}
                           hasError={hasError}
-                          size="xsmall"
                         />
                       ) : null}
 

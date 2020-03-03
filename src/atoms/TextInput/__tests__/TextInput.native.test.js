@@ -1,8 +1,7 @@
 import React from 'react';
-import { renderWithTheme } from '../../../_helpers/testing';
-
-import TextInput from '../index';
 import { fireEvent, act } from '@testing-library/react-native';
+import { renderWithTheme } from '../../../_helpers/testing';
+import TextInput from '../index';
 
 describe('Renders <TextInput /> outlined variant correctly', () => {
   it('snapshot testing with label', () => {

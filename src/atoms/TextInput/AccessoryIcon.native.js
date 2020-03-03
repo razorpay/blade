@@ -25,11 +25,11 @@ const styles = {
   },
 };
 
-const AccessoryIcon = ({ name, disabled, size, hasError, variant }) => {
+const AccessoryIcon = ({ name, disabled, hasError, variant }) => {
   return (
     <Space padding={styles.padding({ variant })}>
       <View>
-        <Icon name={name} size={size} fill={styles.color({ disabled, hasError })} />
+        <Icon name={name} size="xsmall" fill={styles.color({ disabled, hasError })} />
       </View>
     </Space>
   );
@@ -37,15 +37,13 @@ const AccessoryIcon = ({ name, disabled, size, hasError, variant }) => {
 
 AccessoryIcon.propTypes = {
   name: PropTypes.string,
-  size: PropTypes.string,
   disabled: PropTypes.bool,
   hasError: PropTypes.bool,
-  variant: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf(['filled', 'outlined']).isRequired,
 };
 
 AccessoryIcon.defaultProps = {
   name: 'info',
-  size: 'medium',
   disabled: false,
   hasError: false,
 };
