@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import Text from '../Text';
-import View from '../View/View.native';
+import View from '../View';
 import Space from '../Space';
 
 const IS_ANDROID = Platform.OS === 'android';

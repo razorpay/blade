@@ -195,7 +195,7 @@ const TextInput = ({
         {/* Text Input Container */}
         <Flex flexDirection="row" alignItems="flex-start">
           <View>
-            {/*Fixed Left Label */}
+            {/* Fixed Left Label */}
             {hasLeftLabel && layoutDimensions ? (
               <Label inputLayoutDimensions={layoutDimensions}>{label}</Label>
             ) : null}
