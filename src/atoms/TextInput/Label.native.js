@@ -6,14 +6,19 @@ import Text from '../Text';
 import View from '../View/View.native';
 import Space from '../Space';
 
+const IS_ANDROID = Platform.OS === 'android';
+
+const PADDING_TOP_MULTIPLIER_ANDROID = 0.36;
+const PADDING_TOP_MULTIPLIER_IOS = 0.29;
+
 const styles = {
   container: {
     paddingTop({ inputLayoutDimensions }) {
       // For aligning left label to the center of Text Field
-      if (Platform.OS === 'android') {
-        return `${inputLayoutDimensions.height * 0.36}px`;
+      if (IS_ANDROID) {
+        return `${inputLayoutDimensions.height * PADDING_TOP_MULTIPLIER_ANDROID}px`;
       }
-      return `${inputLayoutDimensions.height * 0.29}px`;
+      return `${inputLayoutDimensions.height * PADDING_TOP_MULTIPLIER_IOS}px`;
     },
   },
   padding() {
