@@ -4,6 +4,7 @@ import TextInput from './TextInput';
 import View from '../View';
 import Space from '../Space';
 import Text from '../Text';
+import ScrollView from '../ScrollView';
 import { select } from '@storybook/addon-knobs';
 
 const sizeOptions = {
@@ -17,7 +18,7 @@ storiesOf('TextInput', module)
     component: TextInput,
   })
   .add('default', () => (
-    <View>
+    <ScrollView>
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
@@ -457,5 +458,5 @@ storiesOf('TextInput', module)
           />
         </View>
       </Space>
-    </View>
+    </ScrollView>
   ));
