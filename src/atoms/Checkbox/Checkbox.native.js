@@ -107,7 +107,7 @@ const Checkbox = ({
   errorText,
   testID,
 }) => {
-  let titleTextColor = 'shade.970';
+  let titleTextColor = 'shade.980';
   let helpTextColor = 'shade.950';
 
   let checkboxInitialState = false;

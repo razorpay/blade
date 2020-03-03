@@ -173,13 +173,13 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -408,13 +408,13 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -606,13 +606,13 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -804,13 +804,13 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -1002,13 +1002,13 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -1200,13 +1200,13 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -1398,13 +1398,13 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -1596,13 +1596,13 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -1794,13 +1794,13 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -2029,13 +2029,13 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -2227,13 +2227,13 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
           _letterSpacing="small"
           _weight="regular"
           align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
