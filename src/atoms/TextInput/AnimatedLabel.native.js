@@ -7,8 +7,8 @@ import View from '../View';
 
 const IS_ANDROID = Platform.OS === 'android';
 
-const ANDROID_OUTLINE_INITIAL_TOP_DIVISOR = 2.4;
-const IOS_OUTLINE_INITIAL_TOP_DIVISOR = 1.9;
+const ANDROID_OUTLINED_INITIAL_TOP_DIVISOR = 2.4;
+const IOS_OUTLINED_INITIAL_TOP_DIVISOR = 1.9;
 
 const ANDROID_FILLED_INITIAL_TOP_DIVISOR = 1.15;
 const IOS_FILLED_INITIAL_TOP_DIVISOR = 1.3;
@@ -16,7 +16,7 @@ const IOS_FILLED_INITIAL_TOP_DIVISOR = 1.3;
 const styles = {
   container: {
     height({ variant }) {
-      if (variant === 'outline') {
+      if (variant === 'outlined') {
         return IS_ANDROID ? '2px' : '10px';
       } else {
         return IS_ANDROID ? '20px' : '20px';
@@ -105,11 +105,11 @@ const getLeftInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
 };
 
 const getInitialTopPosition = (layoutDimensions, variant) => {
-  if (variant === 'outline') {
+  if (variant === 'outlined') {
     if (IS_ANDROID) {
-      return layoutDimensions.height / ANDROID_OUTLINE_INITIAL_TOP_DIVISOR;
+      return layoutDimensions.height / ANDROID_OUTLINED_INITIAL_TOP_DIVISOR;
     } else {
-      return layoutDimensions.height / IOS_OUTLINE_INITIAL_TOP_DIVISOR;
+      return layoutDimensions.height / IOS_OUTLINED_INITIAL_TOP_DIVISOR;
     }
   } else if (IS_ANDROID) {
     return layoutDimensions.height / ANDROID_FILLED_INITIAL_TOP_DIVISOR;
@@ -197,7 +197,7 @@ AnimatedLabel.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
   }).isRequired,
-  variant: PropTypes.oneOf(['outline', 'filled']),
+  variant: PropTypes.oneOf(['outlined', 'filled']),
   hasError: PropTypes.bool,
 };
 

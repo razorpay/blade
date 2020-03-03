@@ -23,7 +23,7 @@ const styles = {
       const paddingTop = IS_ANDROID ? '8px' : '0px';
       const paddingRight = '0px';
       const paddingBottom = IS_ANDROID ? '0px' : hasText ? '4px' : '2px';
-      const paddingLeft = variant === 'outline' || hasLeftIcon || hasPrefix ? '0px' : '8px';
+      const paddingLeft = variant === 'outlined' || hasLeftIcon || hasPrefix ? '0px' : '8px';
       // iOS & Android need different paddings
       return `${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`;
     },
@@ -46,7 +46,7 @@ const styles = {
   },
   fillContainer: {
     backgroundColor({ variant, isFocused, theme, disabled }) {
-      if (variant === 'outline') return 'transparent';
+      if (variant === 'outlined') return 'transparent';
       else if (disabled) return theme.colors.tone[930];
       else if (isFocused) return theme.colors.tone[940];
       else return theme.colors.tone[930];
@@ -289,7 +289,7 @@ TextInput.propTypes = {
   helpText: PropTypes.string,
   errorText: PropTypes.string,
   onChangeText: PropTypes.func,
-  variant: PropTypes.oneOf(['filled', 'outline']),
+  variant: PropTypes.oneOf(['filled', 'outlined']),
   prefix: PropTypes.string,
   suffix: PropTypes.string,
   disabled: PropTypes.bool,
@@ -306,7 +306,7 @@ TextInput.propTypes = {
 
 TextInput.defaultProps = {
   placeholder: 'Enter text here',
-  variant: 'outline',
+  variant: 'outlined',
   label: 'Label',
   testID: 'ds-text-input',
   labelPosition: 'top',

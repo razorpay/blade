@@ -2595,7 +2595,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -2638,7 +2638,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
               testID="snap-test-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
           </View>
           <View
@@ -2690,7 +2690,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -2733,7 +2733,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
               testID="snap-test-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
           </View>
           <View
@@ -2785,7 +2785,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -2829,7 +2829,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
           </View>
           <View
@@ -2882,7 +2882,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -2964,7 +2964,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
             <View
               style={
@@ -3183,7 +3183,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -3264,7 +3264,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
             <View
               style={
@@ -3478,7 +3478,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -3521,7 +3521,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value="user@domain.com"
-              variant="outline"
+              variant="outlined"
             />
           </View>
           <View
@@ -3573,7 +3573,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -3616,7 +3616,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
           </View>
           <View
@@ -3711,7 +3711,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -3755,7 +3755,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
           </View>
           <View
@@ -3889,7 +3889,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -4055,7 +4055,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
           </View>
           <View
@@ -4107,7 +4107,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -4273,7 +4273,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
             <View
               style={
@@ -4448,7 +4448,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -4491,7 +4491,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
             <View
               style={
@@ -4666,7 +4666,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -4709,7 +4709,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
           </View>
           <View
@@ -4761,7 +4761,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -4804,7 +4804,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
             <View
               style={
@@ -4894,7 +4894,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -4975,7 +4975,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
           </View>
           <View
@@ -5027,7 +5027,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
               },
             ]
           }
-          variant="outline"
+          variant="outlined"
         >
           <View
             className="sc-AykKC kHnGAa"
@@ -5070,7 +5070,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
               testID="ds-text-input"
               underlineColorAndroid="transparent"
               value=""
-              variant="outline"
+              variant="outlined"
             />
             <View
               style={

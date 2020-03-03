@@ -33,7 +33,7 @@ storiesOf('TextInput', module)
   .add('default', () => (
     <ScrollContainer contentContainerStyle={{}}>
       <ItemContainer>
-        <ItemTitle>Outline:</ItemTitle>
+        <ItemTitle>Outlined:</ItemTitle>
         <TextInput
           size={select('Size', sizeOptions, 'medium')}
           label="Label"
@@ -46,11 +46,11 @@ storiesOf('TextInput', module)
           helpText=""
           errorText=""
           onChangeText={() => {}}
-          variant="outline"
+          variant="outlined"
         />
       </ItemContainer>
       <ItemContainer>
-        <ItemTitle>Outline Leading Icon:</ItemTitle>
+        <ItemTitle>Outlined Leading Icon:</ItemTitle>
         <TextInput
           size={select('Size', sizeOptions, 'large')}
           label="Label"
@@ -63,11 +63,11 @@ storiesOf('TextInput', module)
           helpText="This is a help text"
           errorText=""
           onChangeText={() => {}}
-          variant="outline"
+          variant="outlined"
         />
       </ItemContainer>
       <ItemContainer>
-        <ItemTitle>Outline Trailing Icon:</ItemTitle>
+        <ItemTitle>Outlined Trailing Icon:</ItemTitle>
         <TextInput
           size={select('Size', sizeOptions, 'large')}
           label="Label"
@@ -80,11 +80,11 @@ storiesOf('TextInput', module)
           helpText="This is a help text"
           errorText=""
           onChangeText={() => {}}
-          variant="outline"
+          variant="outlined"
         />
       </ItemContainer>
       <ItemContainer>
-        <ItemTitle>Outline prefix:</ItemTitle>
+        <ItemTitle>Outlined prefix:</ItemTitle>
         <TextInput
           size={select('Size', sizeOptions, 'large')}
           label="Label"
@@ -97,11 +97,11 @@ storiesOf('TextInput', module)
           helpText="This is a help text"
           errorText=""
           onChangeText={() => {}}
-          variant="outline"
+          variant="outlined"
         />
       </ItemContainer>
       <ItemContainer>
-        <ItemTitle>Outline suffix:</ItemTitle>
+        <ItemTitle>Outlined suffix:</ItemTitle>
         <TextInput
           size={select('Size', sizeOptions, 'large')}
           label="Label"
@@ -114,11 +114,11 @@ storiesOf('TextInput', module)
           helpText="This is a help text"
           errorText=""
           onChangeText={() => {}}
-          variant="outline"
+          variant="outlined"
         />
       </ItemContainer>
       <ItemContainer>
-        <ItemTitle>Outline character count:</ItemTitle>
+        <ItemTitle>Outlined character count:</ItemTitle>
         <TextInput
           size={select('Size', sizeOptions, 'large')}
           label="Label"
@@ -131,13 +131,13 @@ storiesOf('TextInput', module)
           helpText="This is a help text"
           errorText=""
           onChangeText={() => {}}
-          variant="outline"
+          variant="outlined"
           maxLength={10}
           showCharacterCount
         />
       </ItemContainer>
       <ItemContainer>
-        <ItemTitle>Outline error:</ItemTitle>
+        <ItemTitle>Outlined error:</ItemTitle>
         <TextInput
           size={select('Size', sizeOptions, 'large')}
           label="Label"
@@ -150,11 +150,11 @@ storiesOf('TextInput', module)
           helpText="This is a help text"
           errorText="This is the reason for the error"
           onChangeText={() => {}}
-          variant="outline"
+          variant="outlined"
         />
       </ItemContainer>
       <ItemContainer>
-        <ItemTitle>Outline Disabled:</ItemTitle>
+        <ItemTitle>Outlined Disabled:</ItemTitle>
         <TextInput
           size={select('Size', sizeOptions, 'large')}
           label="Label"
@@ -167,11 +167,11 @@ storiesOf('TextInput', module)
           helpText="This is a help text"
           errorText=""
           onChangeText={() => {}}
-          variant="outline"
+          variant="outlined"
         />
       </ItemContainer>
       <ItemContainer>
-        <ItemTitle>Outline Disabled With Text:</ItemTitle>
+        <ItemTitle>Outlined Disabled With Text:</ItemTitle>
         <TextInput
           size={select('Size', sizeOptions, 'large')}
           label="Label"
@@ -184,7 +184,7 @@ storiesOf('TextInput', module)
           helpText="This is a help text"
           errorText=""
           onChangeText={() => {}}
-          variant="outline"
+          variant="outlined"
         >
           This is disabled
         </TextInput>
