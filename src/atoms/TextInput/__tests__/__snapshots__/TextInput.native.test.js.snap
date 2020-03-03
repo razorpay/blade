@@ -11,13 +11,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -39,13 +33,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -113,13 +106,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -141,13 +128,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -215,13 +201,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -243,13 +223,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -317,13 +296,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -345,13 +318,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -420,13 +392,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -449,13 +415,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -476,7 +441,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _lineHeight="large"
                 _weight="regular"
                 align="left"
                 color="shade.930"
@@ -490,7 +454,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -689,7 +653,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _lineHeight="large"
               _weight="regular"
               align="left"
               color="shade.930"
@@ -703,7 +666,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 24,
+                    "lineHeight": 18,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -731,13 +694,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -759,13 +716,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -786,7 +742,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _lineHeight="large"
                 _weight="regular"
                 align="left"
                 color="shade.950"
@@ -800,7 +755,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -994,7 +949,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _lineHeight="large"
             _weight="regular"
             align="left"
             color="negative.900"
@@ -1008,7 +962,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                   "fontFamily": "Lato-Regular",
                   "fontSize": 12,
                   "letterSpacing": 0,
-                  "lineHeight": 24,
+                  "lineHeight": 18,
                   "textDecorationLine": "none",
                 },
               ]
@@ -1035,13 +989,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -1063,13 +1011,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -1140,7 +1087,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _lineHeight="large"
               _weight="regular"
               align="left"
               color="shade.950"
@@ -1154,7 +1100,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 24,
+                    "lineHeight": 18,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1180,7 +1126,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _lineHeight="large"
               _weight="regular"
               align="left"
               color="shade.950"
@@ -1194,7 +1139,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 24,
+                    "lineHeight": 18,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1222,13 +1167,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -1250,13 +1189,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -1326,7 +1264,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _lineHeight="large"
               _weight="regular"
               align="left"
               color="shade.950"
@@ -1340,7 +1277,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 24,
+                    "lineHeight": 18,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1368,13 +1305,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -1396,13 +1327,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -1716,13 +1646,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -1744,13 +1668,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -1941,13 +1864,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -1969,13 +1886,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -2166,13 +2082,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -2194,13 +2104,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -2268,13 +2177,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -2296,13 +2199,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -2354,7 +2256,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _lineHeight="large"
                 _weight="regular"
                 align="left"
                 color="shade.950"
@@ -2368,7 +2269,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -2409,13 +2310,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -2437,13 +2332,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -2464,7 +2358,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _lineHeight="large"
                 _weight="regular"
                 align="left"
                 color="shade.950"
@@ -2478,7 +2371,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -2550,13 +2443,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -2578,13 +2465,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
           variant="filled"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -2636,7 +2522,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _lineHeight="large"
                 _weight="regular"
                 align="left"
                 color="shade.950"
@@ -2650,7 +2535,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -2691,13 +2576,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -2719,13 +2598,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 1`
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -2793,13 +2671,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -2821,13 +2693,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot after focus 2`
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -2895,13 +2766,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -2923,13 +2788,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with c
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -2998,13 +2862,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -3027,13 +2885,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -3054,7 +2911,6 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _lineHeight="large"
                 _weight="regular"
                 align="left"
                 color="shade.930"
@@ -3068,7 +2924,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -3267,7 +3123,6 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _lineHeight="large"
               _weight="regular"
               align="left"
               color="shade.930"
@@ -3281,7 +3136,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with d
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 24,
+                    "lineHeight": 18,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3309,13 +3164,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -3337,13 +3186,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -3364,7 +3212,6 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _lineHeight="large"
                 _weight="regular"
                 align="left"
                 color="shade.950"
@@ -3378,7 +3225,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -3572,7 +3419,6 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _lineHeight="large"
             _weight="regular"
             align="left"
             color="negative.900"
@@ -3586,7 +3432,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with e
                   "fontFamily": "Lato-Regular",
                   "fontSize": 12,
                   "letterSpacing": 0,
-                  "lineHeight": 24,
+                  "lineHeight": 18,
                   "textDecorationLine": "none",
                 },
               ]
@@ -3613,13 +3459,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -3641,13 +3481,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with f
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -3715,13 +3554,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -3743,13 +3576,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -3819,7 +3651,6 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _lineHeight="large"
               _weight="regular"
               align="left"
               color="shade.950"
@@ -3833,7 +3664,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 24,
+                    "lineHeight": 18,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3861,13 +3692,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -3889,13 +3714,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -3966,7 +3790,6 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _lineHeight="large"
               _weight="regular"
               align="left"
               color="shade.950"
@@ -3980,7 +3803,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 24,
+                    "lineHeight": 18,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4006,7 +3829,6 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _lineHeight="large"
               _weight="regular"
               align="left"
               color="shade.950"
@@ -4020,7 +3842,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with h
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
                     "letterSpacing": 0,
-                    "lineHeight": 24,
+                    "lineHeight": 18,
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4048,13 +3870,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -4076,13 +3892,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -4273,13 +4088,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -4301,13 +4110,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -4621,13 +4429,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -4649,13 +4451,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with i
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -4846,13 +4647,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -4874,13 +4669,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with l
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -4948,13 +4742,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -4976,13 +4764,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -5034,7 +4821,6 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _lineHeight="large"
                 _weight="regular"
                 align="left"
                 color="shade.950"
@@ -5048,7 +4834,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -5089,13 +4875,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -5117,13 +4897,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -5144,7 +4923,6 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _lineHeight="large"
                 _weight="regular"
                 align="left"
                 color="shade.950"
@@ -5158,7 +4936,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with p
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "textDecorationLine": "none",
                     },
                   ]
@@ -5230,13 +5008,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "justifyContent": "flex-end",
-        },
-      ]
-    }
+    className="sc-AykKC jwmary"
   >
     <View
       className="sc-AykKC hjvgcj"
@@ -5258,13 +5030,12 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
           variant="outline"
         >
           <View
+            className="sc-AykKC kHnGAa"
             size="medium"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
                   "backgroundColor": "transparent",
-                  "flexDirection": "row",
                   "width": 240,
                 },
               ]
@@ -5316,7 +5087,6 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _lineHeight="large"
                 _weight="regular"
                 align="left"
                 color="shade.950"
@@ -5330,7 +5100,7 @@ exports[`Renders <TextInput /> outline variant correctly snapshot testing with s
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
                       "letterSpacing": 0,
-                      "lineHeight": 24,
+                      "lineHeight": 20,
                       "textDecorationLine": "none",
                     },
                   ]
