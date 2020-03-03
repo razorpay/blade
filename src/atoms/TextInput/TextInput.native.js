@@ -14,6 +14,7 @@ import AnimatedLabel from './AnimatedLabel';
 import automation from '../../_helpers/automation-attributes';
 import Label from './Label';
 import View from '../View';
+import isEmpty from '../../_helpers/isEmpty';
 
 const IS_ANDROID = Platform.OS === 'android';
 
@@ -88,11 +89,11 @@ const FillContainer = styled(View)`
 `;
 
 const getAccessoryConfig = ({ errorText, prefix, suffix, iconLeft, iconRight }) => {
-  const hasError = !!(errorText && errorText.length > 0);
-  const hasPrefix = !!(prefix && prefix.length > 0);
-  const hasSuffix = !!(suffix && suffix.length > 0);
-  const hasLeftIcon = !!(!hasPrefix && iconLeft && iconLeft.length > 0);
-  const hasRightIcon = !!(!hasSuffix && iconRight && iconRight.length > 0);
+  const hasError = !isEmpty(errorText);
+  const hasPrefix = !isEmpty(prefix);
+  const hasSuffix = !isEmpty(suffix);
+  const hasLeftIcon = !hasPrefix && !isEmpty(iconLeft);
+  const hasRightIcon = !hasSuffix && !isEmpty(iconRight);
   return { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon };
 };
 
