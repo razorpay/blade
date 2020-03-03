@@ -1,23 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import TextInput from './TextInput';
-import styled from 'styled-components';
+import View from '../View';
+import Space from '../Space';
+import Text from '../Text';
 import { select } from '@storybook/addon-knobs';
-import { withKnobs } from '@storybook/addon-ondevice-knobs';
-
-const ScrollContainer = styled.ScrollView`
-  width: 100%;
-  height: 100%;
-`;
-
-const ItemContainer = styled.View`
-  margin: 0px 10px 50px 0px;
-`;
-
-const ItemTitle = styled.Text`
-  color: ${(props) => props.theme.colors.shade[970]};
-  margin: 0px 0px 10px 0px;
-`;
 
 const sizeOptions = {
   small: 'small',
@@ -29,341 +16,446 @@ storiesOf('TextInput', module)
   .addParameters({
     component: TextInput,
   })
-  .addDecorator(withKnobs)
   .add('default', () => (
-    <ScrollContainer contentContainerStyle={{}}>
-      <ItemContainer>
-        <ItemTitle>Outlined:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'medium')}
-          label="Label"
-          disabled={false}
-          iconLeft=""
-          iconRight=""
-          prefix=""
-          suffix=""
-          placeholder="Type here"
-          helpText=""
-          errorText=""
-          onChangeText={() => {}}
-          variant="outlined"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Outlined Leading Icon:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft="info"
-          iconRight=""
-          prefix=""
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="outlined"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Outlined Trailing Icon:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft=""
-          iconRight="info"
-          prefix=""
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="outlined"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Outlined prefix:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft=""
-          iconRight=""
-          prefix="kg"
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="outlined"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Outlined suffix:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft=""
-          iconRight=""
-          prefix=""
-          suffix="kg"
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="outlined"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Outlined character count:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft=""
-          iconRight=""
-          prefix=""
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="outlined"
-          maxLength={10}
-          showCharacterCount
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Outlined error:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft="info"
-          iconRight=""
-          prefix=""
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText="This is the reason for the error"
-          onChangeText={() => {}}
-          variant="outlined"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Outlined Disabled:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={true}
-          iconLeft=""
-          iconRight=""
-          prefix="kg"
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="outlined"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Outlined Disabled With Text:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={true}
-          iconLeft=""
-          iconRight=""
-          prefix="kg"
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="outlined"
-        >
-          This is disabled
-        </TextInput>
-      </ItemContainer>
+    <View>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View>
+              <Text>Outlined:</Text>
+            </View>
+          </Space>
+          <TextInput
+            size={select('Size', sizeOptions, 'medium')}
+            label="Label"
+            disabled={false}
+            iconLeft=""
+            iconRight=""
+            prefix=""
+            suffix=""
+            placeholder="Type here"
+            helpText=""
+            errorText=""
+            onChangeText={() => {}}
+            variant="outlined"
+          />
+        </View>
+      </Space>
 
-      <ItemContainer>
-        <ItemTitle>Filled:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft=""
-          iconRight=""
-          prefix=""
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="filled"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Filled Leading Icon:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft="info"
-          iconRight=""
-          prefix=""
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="filled"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Filled Trailing Icon:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft=""
-          iconRight="info"
-          prefix=""
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="filled"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Filled prefix:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft=""
-          iconRight=""
-          prefix="kg"
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="filled"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Filled suffix:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft=""
-          iconRight=""
-          prefix=""
-          suffix="kg"
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="filled"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Filled character count:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft=""
-          iconRight=""
-          prefix=""
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="filled"
-          maxLength={10}
-          showCharacterCount
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Filled error:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft="info"
-          iconRight=""
-          prefix=""
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText="This is the reason for the error"
-          onChangeText={() => {}}
-          variant="filled"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Filled Disabled:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={true}
-          iconLeft=""
-          iconRight=""
-          prefix="kg"
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="filled"
-        />
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Filled Disabled With Text:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={true}
-          iconLeft=""
-          iconRight=""
-          prefix="kg"
-          suffix=""
-          placeholder="Type here"
-          helpText="This is a help text"
-          errorText=""
-          onChangeText={() => {}}
-          variant="filled"
-        >
-          This is disabled
-        </TextInput>
-      </ItemContainer>
-      <ItemContainer>
-        <ItemTitle>Filled with left label:</ItemTitle>
-        <TextInput
-          size={select('Size', sizeOptions, 'large')}
-          label="Label"
-          disabled={false}
-          iconLeft=""
-          iconRight=""
-          prefix=""
-          suffix=""
-          placeholder="Type here"
-          helpText=""
-          errorText=""
-          onChangeText={() => {}}
-          variant="filled"
-          labelPosition="left"
-        />
-      </ItemContainer>
-    </ScrollContainer>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View>
+              <Text>Outlined Leading Icon:</Text>
+            </View>
+          </Space>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft="info"
+            iconRight=""
+            prefix=""
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="outlined"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View>
+              <Text>Outlined Trailing Icon:</Text>
+            </View>
+          </Space>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft=""
+            iconRight="info"
+            prefix=""
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="outlined"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View>
+              <Text>Outlined prefix:</Text>
+            </View>
+          </Space>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft=""
+            iconRight=""
+            prefix="kg"
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="outlined"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View>
+              <Text>Outlined suffix:</Text>
+            </View>
+          </Space>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft=""
+            iconRight=""
+            prefix=""
+            suffix="kg"
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="outlined"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View>
+              <Text>Outlined character count:</Text>
+            </View>
+          </Space>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft=""
+            iconRight=""
+            prefix=""
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="outlined"
+            maxLength={10}
+            showCharacterCount
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View>
+              <Text>Outlined error:</Text>
+            </View>
+          </Space>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft="info"
+            iconRight=""
+            prefix=""
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText="This is the reason for the error"
+            onChangeText={() => {}}
+            variant="outlined"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View>
+              <Text>Outlined Disabled:</Text>
+            </View>
+          </Space>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={true}
+            iconLeft=""
+            iconRight=""
+            prefix="kg"
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="outlined"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View>
+              <Text>Outlined Disabled With Text:</Text>
+            </View>
+          </Space>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={true}
+            iconLeft=""
+            iconRight=""
+            prefix="kg"
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="outlined"
+          >
+            This is disabled
+          </TextInput>
+        </View>
+      </Space>
+
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View>
+              <Text>Filled:</Text>
+            </View>
+          </Space>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft=""
+            iconRight=""
+            prefix=""
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="filled"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View />
+          </Space>
+          <Text>Filled Leading Icon:</Text>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft="info"
+            iconRight=""
+            prefix=""
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="filled"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View />
+          </Space>
+          <Text>Filled Trailing Icon:</Text>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft=""
+            iconRight="info"
+            prefix=""
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="filled"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View />
+          </Space>
+          <Text>Filled prefix:</Text>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft=""
+            iconRight=""
+            prefix="kg"
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="filled"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View />
+          </Space>
+          <Text>Filled suffix:</Text>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft=""
+            iconRight=""
+            prefix=""
+            suffix="kg"
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="filled"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View />
+          </Space>
+          <Text>Filled character count:</Text>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft=""
+            iconRight=""
+            prefix=""
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="filled"
+            maxLength={10}
+            showCharacterCount
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View />
+          </Space>
+          <Text>Filled error:</Text>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft="info"
+            iconRight=""
+            prefix=""
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText="This is the reason for the error"
+            onChangeText={() => {}}
+            variant="filled"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View />
+          </Space>
+          <Text>Filled Disabled:</Text>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={true}
+            iconLeft=""
+            iconRight=""
+            prefix="kg"
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="filled"
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View />
+          </Space>
+          <Text>Filled Disabled With Text:</Text>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={true}
+            iconLeft=""
+            iconRight=""
+            prefix="kg"
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChangeText={() => {}}
+            variant="filled"
+          >
+            This is disabled
+          </TextInput>
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 1, 0]}>
+            <View />
+          </Space>
+          <Text>Filled with left label:</Text>
+          <TextInput
+            size={select('Size', sizeOptions, 'large')}
+            label="Label"
+            disabled={false}
+            iconLeft=""
+            iconRight=""
+            prefix=""
+            suffix=""
+            placeholder="Type here"
+            helpText=""
+            errorText=""
+            onChangeText={() => {}}
+            variant="filled"
+            labelPosition="left"
+          />
+        </View>
+      </Space>
+    </View>
   ));
