@@ -18,6 +18,7 @@ configure(() => {
   require('../../src/atoms/Text/Text.stories');
   require('../../src/atoms/Link/Link.stories');
   require('../../src/atoms/Icon/Icon.stories');
+  require('../../src/atoms/TextInput/TextInput.stories');
   require('../../src/atoms/Button/Button.stories');
   require('../../src/atoms/Checkbox/Checkbox.stories');
   require('../../src/atoms/ScrollView/ScrollView.stories');
