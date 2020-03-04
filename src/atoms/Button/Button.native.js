@@ -246,6 +246,7 @@ const Button = ({
   icon,
   iconAlign,
   align,
+  block,
   testID,
 }) => {
   const theme = useContext(ThemeContext);
@@ -259,7 +260,13 @@ const Button = ({
   }
 
   return (
-    <Flex flexDirection="row" alignItems="center" alignSelf={styles.align({ align })}>
+    <Flex
+      flex={block ? 1 : 0}
+      flexDirection="row"
+      alignItems="center"
+      alignSelf={styles.align({ align })}
+      justifyContent="center"
+    >
       <Space padding={styles.padding({ size, children, theme })}>
         <StyledButton
           buttonColor={buttonColor}
@@ -267,6 +274,7 @@ const Button = ({
           variantColor={variantColor}
           disabled={disabled}
           size={size}
+          block={block}
           variant={variant}
           activeOpacity={1}
           underlayColor={styles.underlayColor({ variant, buttonColor, theme })}
@@ -321,6 +329,7 @@ Button.propTypes = {
   children: PropTypes.string,
   variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
+  block: PropTypes.bool,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
   align: PropTypes.oneOf(['left', 'center', 'right']),
   disabled: PropTypes.bool,
@@ -332,6 +341,7 @@ Button.propTypes = {
 Button.defaultProps = {
   testID: 'ds-button',
   variant: 'primary',
+  block: false,
   align: 'left',
   size: 'medium',
   disabled: false,

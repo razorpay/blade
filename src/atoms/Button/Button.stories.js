@@ -31,6 +31,41 @@ storiesOf('Button', module)
   .add('default', () => (
     <Flex flex={1} justifyContent="space-around">
       <View>
+        <Flex flexDirection="row">
+          <View>
+            <Button
+              size={select('Sizes', sizes, 'medium')}
+              variant={select('Variants', variants, 'primary')}
+              block
+            >
+              Block Button
+            </Button>
+          </View>
+        </Flex>
+        <Flex flexDirection="row">
+          <View>
+            <Button
+              size={select('Sizes', sizes, 'medium')}
+              variant={select('Variants', variants, 'primary')}
+              icon="info"
+              block
+              // align="center"
+            />
+          </View>
+        </Flex>
+        <Flex flexDirection="row">
+          <View>
+            <Button
+              size={select('Sizes', sizes, 'medium')}
+              variant={select('Variants', variants, 'primary')}
+              icon="info"
+              block
+              iconAlign={select('iconAlign', iconAlign, 'left')}
+            >
+              Block Button
+            </Button>
+          </View>
+        </Flex>
         <Button
           size={select('Sizes', sizes, 'medium')}
           variant={select('Variants', variants, 'primary')}
@@ -62,4 +97,6 @@ storiesOf('Button', module)
         </Button>
       </View>
     </Flex>
+    //   </View>
+    // </Flex>
   ));

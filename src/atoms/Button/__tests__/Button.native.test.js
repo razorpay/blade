@@ -20,6 +20,12 @@ describe('Renders <Button /> correctly', () => {
     ).toThrow(errorMessage);
   });
 
+  it('Renders Primary block <Button />', () => {
+    const { container, getByText } = renderWithTheme(<Button block>Click Me</Button>);
+    expect(getByText(/click me/i)).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
+
   it('Renders xsmall Primary <Button />', () => {
     const { container, getByText } = renderWithTheme(<Button size="xsmall">Click Me</Button>);
     expect(getByText(/click me/i)).toBeTruthy();

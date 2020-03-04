@@ -1,5 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={true}
+    buttonColor="primary"
+    className="sc-AykKC cpDJVU"
+    delayPressOut={100}
+    disabled={false}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 8,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 8,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(123, 178, 242, 1.0)"
+    variant="primary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="light.100"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
 exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] = `
 <View
   collapsable={true}
@@ -12,8 +80,9 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={true}
     size="medium"
@@ -79,8 +148,9 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={true}
     size="medium"
@@ -146,8 +216,9 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={true}
     size="medium"
@@ -213,8 +284,9 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="large"
@@ -280,8 +352,9 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="large"
@@ -347,8 +420,9 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="large"
@@ -414,8 +488,9 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="medium"
@@ -603,8 +678,9 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="medium"
@@ -670,8 +746,9 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="medium"
@@ -737,8 +814,9 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="small"
@@ -804,8 +882,9 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="small"
@@ -871,8 +950,9 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="small"
@@ -938,8 +1018,9 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="small"
@@ -1005,8 +1086,9 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="xsmall"
@@ -1072,8 +1154,9 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="medium"
@@ -1139,8 +1222,9 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="large"
@@ -1328,8 +1412,9 @@ exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`
 >
   <TouchableHighlight
     activeOpacity={1}
+    block={false}
     buttonColor="primary"
-    className="sc-AykKC etlKkb"
+    className="sc-AykKC kbzvPX"
     delayPressOut={100}
     disabled={false}
     size="medium"
