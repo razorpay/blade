@@ -10,7 +10,7 @@ import Space from '../Space';
 import { getVariantColorKeys, getColor } from '../../_helpers/theme';
 import View from '../View';
 import Backdrop from './Backdrop';
-import isPropDefined from '../../_helpers/isPropDefined';
+import isDefined from '../../_helpers/isDefined';
 import Size from '../Size';
 
 const styles = {
@@ -186,15 +186,15 @@ const RadioButton = ({
 
   let radioButtonInitialState = false;
 
-  if (isPropDefined(defaultChecked) && isPropDefined(checked)) {
+  if (isDefined(defaultChecked) && isDefined(checked)) {
     throw Error('One of defaultChecked or checked should be supplied.');
   }
 
-  if (isPropDefined(defaultChecked)) {
+  if (isDefined(defaultChecked)) {
     radioButtonInitialState = defaultChecked;
   }
 
-  if (isPropDefined(checked)) {
+  if (isDefined(checked)) {
     radioButtonInitialState = checked;
   }
 
@@ -218,7 +218,7 @@ const RadioButton = ({
   }, []);
 
   const onPress = useCallback(() => {
-    if (isPropDefined(checked)) {
+    if (isDefined(checked)) {
       onChange(!isChecked);
       return;
     }
