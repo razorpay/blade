@@ -11,6 +11,7 @@ import { getVariantColorKeys, getColor } from '../../_helpers/theme';
 import View from '../View';
 import Backdrop from './Backdrop';
 import isPropDefined from '../../_helpers/isPropDefined';
+import Size from '../Size';
 
 const styles = {
   radio: {
@@ -154,8 +155,6 @@ const styles = {
 const Dot = styled(View)(
   (props) =>
     `
-    width: ${props.width};
-    height: ${props.height};
     border-radius: ${props.borderRadius};
     background-color: ${props.backgroundColor};
   `,
@@ -164,8 +163,6 @@ const Dot = styled(View)(
 const Circle = styled(View)(
   (props) =>
     `
-    width: ${props.width}; 
-    height: ${props.height}; 
     border-radius: ${props.borderRadius}; 
     border-color: ${props.color};
     border-width: ${props.borderWidth}; 
@@ -251,15 +248,21 @@ const RadioButton = ({
         <Flex flexDirection="row" alignItems="center">
           <View>
             <Flex justifyContent="center" alignItems="center">
-              <Backdrop backgroundColor={underlayColor} {...styles.backdrop.dimensions(size)}>
-                <Flex justifyContent="center" alignItems="center">
-                  <Circle color={radioColor} {...styles.circle.dimensions(size)}>
-                    {isChecked ? (
-                      <Dot backgroundColor={radioColor} {...styles.dot.dimensions(size)} />
-                    ) : null}
-                  </Circle>
-                </Flex>
-              </Backdrop>
+              <Size {...styles.backdrop.dimensions(size)}>
+                <Backdrop backgroundColor={underlayColor}>
+                  <Flex justifyContent="center" alignItems="center">
+                    <Size {...styles.circle.dimensions(size)}>
+                      <Circle color={radioColor}>
+                        {isChecked ? (
+                          <Size {...styles.dot.dimensions(size)}>
+                            <Dot backgroundColor={radioColor} />
+                          </Size>
+                        ) : null}
+                      </Circle>
+                    </Size>
+                  </Flex>
+                </Backdrop>
+              </Size>
             </Flex>
             <Flex alignSelf="center">
               <Space margin={styles.title.margin()}>
