@@ -9,9 +9,8 @@ import AccessoryIcon from './AccessoryIcon';
 import { getLineHeight } from '../../_helpers/theme';
 import Flex from '../Flex';
 import CharacterCount from './CharacterCount';
-import AnimatedLabel from './AnimatedLabel';
-import automation from '../../_helpers/automation-attributes';
 import Label from './Label';
+import automation from '../../_helpers/automation-attributes';
 import View from '../View';
 import isEmpty from '../../_helpers/isEmpty';
 import Size from '../Size';
@@ -185,7 +184,7 @@ const TextInput = ({
       <View>
         {/* Animated Label */}
         {layoutDimensions && !hasLeftLabel ? (
-          <AnimatedLabel
+          <Label.Animated
             isFocused={isFocused}
             hasText={hasText}
             disabled={disabled}
@@ -194,7 +193,7 @@ const TextInput = ({
             hasError={hasError}
           >
             {label}
-          </AnimatedLabel>
+          </Label.Animated>
         ) : null}
 
         {/* Text Input Container */}
@@ -202,7 +201,7 @@ const TextInput = ({
           <View>
             {/* Fixed Left Label */}
             {hasLeftLabel && layoutDimensions ? (
-              <Label inputLayoutDimensions={layoutDimensions}>{label}</Label>
+              <Label.Regular inputLayoutDimensions={layoutDimensions}>{label}</Label.Regular>
             ) : null}
             {/* Text Input */}
             <Flex flexDirection="column" flex={size === 'block' ? 1 : 0}>
