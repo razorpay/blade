@@ -26,6 +26,19 @@ module.exports = {
         ],
       ],
     },
+    'web-test': {
+      presets: ['@babel/preset-env', '@babel/preset-react'],
+      plugins: [
+        [
+          'babel-plugin-styled-components',
+          {
+            displayName: true,
+            pure: true,
+            ssr: true,
+          },
+        ],
+      ],
+    },
     'web-development': {
       presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
       plugins: [
