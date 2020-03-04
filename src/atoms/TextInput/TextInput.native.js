@@ -15,6 +15,7 @@ import automation from '../../_helpers/automation-attributes';
 import Label from './Label';
 import View from '../View';
 import isEmpty from '../../_helpers/isEmpty';
+import Size from '../Size';
 
 const IS_ANDROID = Platform.OS === 'android';
 
@@ -70,11 +71,9 @@ const styles = {
 
 const InputContainer = styled(View)`
   background-color: transparent;
-  width: ${styles.inputContainer.width};
 `;
 
 const StyledInput = styled(NativeTextInput)`
-  height: 40px;
   padding: ${styles.textInput.padding};
   font-size: ${styles.textInput.fontSize};
   line-height: ${styles.textInput.lineHeight};
@@ -205,56 +204,60 @@ const TextInput = ({
               <View>
                 <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
                   <Flex flexDirection="row" alignItems="center">
-                    <InputContainer size={size}>
-                      {hasPrefix ? (
-                        <AccessoryText variant={variant} disabled={disabled}>
-                          {prefix}
-                        </AccessoryText>
-                      ) : null}
-                      {hasLeftIcon ? (
-                        <AccessoryIcon
-                          variant={variant}
-                          name={iconLeft}
-                          disabled={disabled}
-                          hasError={hasError}
-                        />
-                      ) : null}
+                    <Size width={styles.inputContainer.width({ size })}>
+                      <InputContainer>
+                        {hasPrefix ? (
+                          <AccessoryText variant={variant} disabled={disabled}>
+                            {prefix}
+                          </AccessoryText>
+                        ) : null}
+                        {hasLeftIcon ? (
+                          <AccessoryIcon
+                            variant={variant}
+                            name={iconLeft}
+                            disabled={disabled}
+                            hasError={hasError}
+                          />
+                        ) : null}
 
-                      <Flex flex={1}>
-                        <StyledInput
-                          placeholder={isPlaceholderVisible || hasLeftLabel ? placeholder : ''}
-                          placeholderTextColor={placeholderTextColor}
-                          onFocus={onFocus}
-                          onBlur={onBlur}
-                          onChangeText={onChange}
-                          hasText={hasText}
-                          selectionColor={theme.colors.shade[980]} // not able to change this for Android
-                          editable={!disabled}
-                          disabled={disabled}
-                          variant={variant}
-                          hasPrefix={hasPrefix}
-                          hasLeftIcon={hasLeftIcon}
-                          maxLength={maxLength}
-                          onLayout={onTextInputLayout}
-                          value={input}
-                          {...automation(testID)}
-                        />
-                      </Flex>
-                      {hasSuffix ? (
-                        <AccessoryText variant={variant} disabled={disabled}>
-                          {suffix}
-                        </AccessoryText>
-                      ) : null}
-                      {hasRightIcon ? (
-                        <AccessoryIcon
-                          variant={variant}
-                          name={iconRight}
-                          disabled={disabled}
-                          hasError={hasError}
-                          size="xsmall"
-                        />
-                      ) : null}
-                    </InputContainer>
+                        <Flex flex={1}>
+                          <Size height="40px">
+                            <StyledInput
+                              placeholder={isPlaceholderVisible || hasLeftLabel ? placeholder : ''}
+                              placeholderTextColor={placeholderTextColor}
+                              onFocus={onFocus}
+                              onBlur={onBlur}
+                              onChangeText={onChange}
+                              hasText={hasText}
+                              selectionColor={theme.colors.shade[980]} // not able to change this for Android
+                              editable={!disabled}
+                              disabled={disabled}
+                              variant={variant}
+                              hasPrefix={hasPrefix}
+                              hasLeftIcon={hasLeftIcon}
+                              maxLength={maxLength}
+                              onLayout={onTextInputLayout}
+                              value={input}
+                              {...automation(testID)}
+                            />
+                          </Size>
+                        </Flex>
+                        {hasSuffix ? (
+                          <AccessoryText variant={variant} disabled={disabled}>
+                            {suffix}
+                          </AccessoryText>
+                        ) : null}
+                        {hasRightIcon ? (
+                          <AccessoryIcon
+                            variant={variant}
+                            name={iconRight}
+                            disabled={disabled}
+                            hasError={hasError}
+                            size="xsmall"
+                          />
+                        ) : null}
+                      </InputContainer>
+                    </Size>
                   </Flex>
                   <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
                 </FillContainer>
