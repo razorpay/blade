@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
 import View from '../View';
+import Size from '../Size';
 
 const styles = {
   backgroundColor({ isFocused, hasError, theme, disabled }) {
@@ -18,12 +19,15 @@ const styles = {
 };
 
 const StyledLine = styled(View)`
-  height: 1px;
   background-color: ${styles.backgroundColor};
 `;
 
 const Line = ({ isFocused, hasError, disabled }) => {
-  return <StyledLine isFocused={isFocused} hasError={hasError} disabled={disabled} />;
+  return (
+    <Size height="1px">
+      <StyledLine isFocused={isFocused} hasError={hasError} disabled={disabled} />
+    </Size>
+  );
 };
 
 Line.propTypes = {
