@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BladeText from '../Text';
+import AtomText from '../Text';
 import Space from '../Space';
 import Flex from '../Flex';
 import View from '../View';
@@ -25,14 +25,14 @@ const Text = ({ helpText, errorText, disabled }) => {
     <Space padding={[0.5, 0, 0, 0]}>
       <Flex flex={1}>
         <View>
-          <BladeText
+          <AtomText
             numberOfLines={2}
             disabled={disabled}
             color={styles.color({ disabled, errorText })}
             size="xsmall"
           >
             {displayText}
-          </BladeText>
+          </AtomText>
         </View>
       </Flex>
     </Space>
