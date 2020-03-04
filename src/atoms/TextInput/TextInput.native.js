@@ -120,7 +120,7 @@ const TextInput = ({
   size,
 }) => {
   const theme = useContext(ThemeContext);
-  const [isFocused, setFocused] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const [input, setInput] = useState(children || '');
   // Used for storing layout value of TextInput
   const [layoutDimensions, setLayoutDimensions] = useState(null);
@@ -142,7 +142,7 @@ const TextInput = ({
 
   const hasText = !!(input && input.length > 0);
   const onFocus = useCallback(() => {
-    setFocused(true);
+    setIsFocused(true);
 
     /* Wait for 90ms to show the placeholder since it takes 100ms for Label to animate from inside to top of the TextInput.
        Otherwise they both overlap */
@@ -154,9 +154,9 @@ const TextInput = ({
   }, []);
 
   const onBlur = useCallback(() => {
-    setFocused(false);
+    setIsFocused(false);
     setIsPlaceholderVisible(false);
-  }, [setFocused, setIsPlaceholderVisible]);
+  }, [setIsFocused, setIsPlaceholderVisible]);
 
   const onChangeText = useCallback(
     (text) => {
