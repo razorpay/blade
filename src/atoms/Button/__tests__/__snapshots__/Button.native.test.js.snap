@@ -13,8 +13,8 @@ exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     block={true}
-    buttonColor="primary"
     className="sc-AykKC cpDJVU"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="medium"
@@ -81,8 +81,8 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={true}
     size="medium"
@@ -149,19 +149,19 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={true}
     size="medium"
     style={
       Array [
         Object {
-          "backgroundColor": "rgba(162, 201, 246, 1.0)",
-          "borderColor": "black",
+          "backgroundColor": "rgba(22, 47, 86, 0.02)",
+          "borderColor": "rgba(22, 47, 86, 0.10)",
           "borderRadius": 2,
           "borderStyle": "solid",
-          "borderWidth": 0,
+          "borderWidth": 1,
         },
         Object {
           "paddingBottom": 8,
@@ -172,8 +172,8 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
       ]
     }
     testID="ds-button"
-    underlayColor="rgba(123, 178, 242, 1.0)"
-    variant="primary"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="secondary"
   >
     <Text
       _isUnderlined={false}
@@ -181,13 +181,13 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
       _lineHeight="medium"
       _weight="bold"
       align="center"
-      color="light.150"
+      color="shade.940"
       size="medium"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(255, 255, 255, 0.38)",
+            "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -217,15 +217,15 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={true}
     size="medium"
     style={
       Array [
         Object {
-          "backgroundColor": "rgba(162, 201, 246, 1.0)",
+          "backgroundColor": "transparent",
           "borderColor": "black",
           "borderRadius": 2,
           "borderStyle": "solid",
@@ -240,8 +240,8 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
       ]
     }
     testID="ds-button"
-    underlayColor="rgba(123, 178, 242, 1.0)"
-    variant="primary"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="tertiary"
   >
     <Text
       _isUnderlined={false}
@@ -249,13 +249,13 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
       _lineHeight="medium"
       _weight="bold"
       align="center"
-      color="light.150"
+      color="shade.940"
       size="medium"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(255, 255, 255, 0.38)",
+            "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -285,8 +285,8 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="large"
@@ -353,19 +353,19 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="large"
     style={
       Array [
         Object {
-          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
-          "borderColor": "black",
+          "backgroundColor": "rgba(11, 112, 231, 0.05)",
+          "borderColor": "rgba(11, 112, 231, 0.74)",
           "borderRadius": 2,
           "borderStyle": "solid",
-          "borderWidth": 0,
+          "borderWidth": 1,
         },
         Object {
           "paddingBottom": 10,
@@ -376,8 +376,8 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
       ]
     }
     testID="ds-button"
-    underlayColor="rgba(123, 178, 242, 1.0)"
-    variant="primary"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="secondary"
   >
     <Text
       _isUnderlined={false}
@@ -385,13 +385,13 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
       _lineHeight="medium"
       _weight="bold"
       align="center"
-      color="light.100"
+      color="primary.800"
       size="medium"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(255, 255, 255, 1.0)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -421,15 +421,15 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="large"
     style={
       Array [
         Object {
-          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "backgroundColor": "transparent",
           "borderColor": "black",
           "borderRadius": 2,
           "borderStyle": "solid",
@@ -444,8 +444,8 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
       ]
     }
     testID="ds-button"
-    underlayColor="rgba(123, 178, 242, 1.0)"
-    variant="primary"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="tertiary"
   >
     <Text
       _isUnderlined={false}
@@ -453,13 +453,13 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
       _lineHeight="medium"
       _weight="bold"
       align="center"
-      color="light.100"
+      color="primary.800"
       size="medium"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(255, 255, 255, 1.0)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -489,8 +489,8 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="medium"
@@ -679,19 +679,19 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="medium"
     style={
       Array [
         Object {
-          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
-          "borderColor": "black",
+          "backgroundColor": "rgba(11, 112, 231, 0.05)",
+          "borderColor": "rgba(11, 112, 231, 0.74)",
           "borderRadius": 2,
           "borderStyle": "solid",
-          "borderWidth": 0,
+          "borderWidth": 1,
         },
         Object {
           "paddingBottom": 8,
@@ -702,8 +702,8 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
       ]
     }
     testID="ds-button"
-    underlayColor="rgba(123, 178, 242, 1.0)"
-    variant="primary"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="secondary"
   >
     <Text
       _isUnderlined={false}
@@ -711,13 +711,13 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
       _lineHeight="medium"
       _weight="bold"
       align="center"
-      color="light.100"
+      color="primary.800"
       size="medium"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(255, 255, 255, 1.0)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -747,15 +747,15 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="medium"
     style={
       Array [
         Object {
-          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "backgroundColor": "transparent",
           "borderColor": "black",
           "borderRadius": 2,
           "borderStyle": "solid",
@@ -770,8 +770,8 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
       ]
     }
     testID="ds-button"
-    underlayColor="rgba(123, 178, 242, 1.0)"
-    variant="primary"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="tertiary"
   >
     <Text
       _isUnderlined={false}
@@ -779,13 +779,13 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
       _lineHeight="medium"
       _weight="bold"
       align="center"
-      color="light.100"
+      color="primary.800"
       size="medium"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(255, 255, 255, 1.0)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
@@ -815,8 +815,8 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="small"
@@ -883,8 +883,8 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="small"
@@ -951,19 +951,19 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="small"
     style={
       Array [
         Object {
-          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
-          "borderColor": "black",
+          "backgroundColor": "rgba(11, 112, 231, 0.05)",
+          "borderColor": "rgba(11, 112, 231, 0.74)",
           "borderRadius": 2,
           "borderStyle": "solid",
-          "borderWidth": 0,
+          "borderWidth": 1,
         },
         Object {
           "paddingBottom": 5,
@@ -974,8 +974,8 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
       ]
     }
     testID="ds-button"
-    underlayColor="rgba(123, 178, 242, 1.0)"
-    variant="primary"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="secondary"
   >
     <Text
       _isUnderlined={false}
@@ -983,13 +983,13 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
       _lineHeight="small"
       _weight="bold"
       align="center"
-      color="light.100"
+      color="primary.800"
       size="xsmall"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(255, 255, 255, 1.0)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
             "letterSpacing": 0,
@@ -1019,15 +1019,15 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="small"
     style={
       Array [
         Object {
-          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "backgroundColor": "transparent",
           "borderColor": "black",
           "borderRadius": 2,
           "borderStyle": "solid",
@@ -1042,8 +1042,8 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
       ]
     }
     testID="ds-button"
-    underlayColor="rgba(123, 178, 242, 1.0)"
-    variant="primary"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="tertiary"
   >
     <Text
       _isUnderlined={false}
@@ -1051,13 +1051,13 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
       _lineHeight="small"
       _weight="bold"
       align="center"
-      color="light.100"
+      color="primary.800"
       size="xsmall"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(255, 255, 255, 1.0)",
+            "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
             "letterSpacing": 0,
@@ -1087,8 +1087,8 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="xsmall"
@@ -1155,8 +1155,8 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="medium"
@@ -1223,8 +1223,8 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="large"
@@ -1413,8 +1413,8 @@ exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    buttonColor="primary"
     className="sc-AykKC kbzvPX"
+    color="primary"
     delayPressOut={100}
     disabled={false}
     size="medium"

@@ -58,7 +58,7 @@ describe('Renders <Button /> correctly', () => {
 
   it('Renders a small Secondary <Button />', () => {
     const { container, getByText } = renderWithTheme(
-      <Button type="secondary" size="small">
+      <Button variant="secondary" size="small">
         Click Me
       </Button>,
     );
@@ -67,14 +67,14 @@ describe('Renders <Button /> correctly', () => {
   });
 
   it('Renders a medium(Default) Secondary <Button />', () => {
-    const { container, getByText } = renderWithTheme(<Button type="secondary">Click Me</Button>);
+    const { container, getByText } = renderWithTheme(<Button variant="secondary">Click Me</Button>);
     expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a large Secondary <Button />', () => {
     const { container, getByText } = renderWithTheme(
-      <Button type="secondary" size="large">
+      <Button variant="secondary" size="large">
         Click Me
       </Button>,
     );
@@ -84,7 +84,7 @@ describe('Renders <Button /> correctly', () => {
 
   it('Renders a small Tertiary <Button />', () => {
     const { container, getByText } = renderWithTheme(
-      <Button type="tertiary" size="small">
+      <Button variant="tertiary" size="small">
         Click Me
       </Button>,
     );
@@ -93,14 +93,14 @@ describe('Renders <Button /> correctly', () => {
   });
 
   it('Renders a medium(Default) Tertiary <Button />', () => {
-    const { container, getByText } = renderWithTheme(<Button type="tertiary">Click Me</Button>);
+    const { container, getByText } = renderWithTheme(<Button variant="tertiary">Click Me</Button>);
     expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
 
   it('Renders a large Tertiary <Button />', () => {
     const { container, getByText } = renderWithTheme(
-      <Button type="tertiary" size="large">
+      <Button variant="tertiary" size="large">
         Click Me
       </Button>,
     );
@@ -116,7 +116,7 @@ describe('Renders <Button /> correctly', () => {
 
   it('Renders a disabled Secondary <Button />', () => {
     const { container, getByText } = renderWithTheme(
-      <Button disabled type="secondary">
+      <Button disabled variant="secondary">
         Click Me
       </Button>,
     );
@@ -126,7 +126,7 @@ describe('Renders <Button /> correctly', () => {
 
   it('Renders a disabled Tertiary <Button />', () => {
     const { container, getByText } = renderWithTheme(
-      <Button disabled type="tertiary">
+      <Button disabled variant="tertiary">
         Click Me
       </Button>,
     );

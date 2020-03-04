@@ -49,7 +49,6 @@ storiesOf('Button', module)
               variant={select('Variants', variants, 'primary')}
               icon="info"
               block
-              // align="center"
             />
           </View>
         </Flex>
@@ -93,10 +92,8 @@ storiesOf('Button', module)
           disabled
           iconAlign={select('iconAlign', iconAlign, 'left')}
         >
-          Button with Icon
+          Disabled Button with Icon
         </Button>
       </View>
     </Flex>
-    //   </View>
-    // </Flex>
   ));
