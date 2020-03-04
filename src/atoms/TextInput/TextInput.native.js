@@ -3,13 +3,12 @@ import { TextInput as NativeTextInput, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
 import Line from './Line';
-import HelpText from './HelpText';
-import ErrorText from './ErrorText';
+import Text from './Text';
 import AccessoryText from './AccessoryText';
 import AccessoryIcon from './AccessoryIcon';
 import { getLineHeight } from '../../_helpers/theme';
 import Flex from '../Flex';
-import CharacterCount from './CharacterCount.native';
+import CharacterCount from './CharacterCount';
 import AnimatedLabel from './AnimatedLabel';
 import automation from '../../_helpers/automation-attributes';
 import Label from './Label';
@@ -267,13 +266,12 @@ const TextInput = ({
                   </Flex>
                   <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
                 </FillContainer>
+
                 {/* Bottom texts */}
-                {hasError && !disabled ? (
-                  <ErrorText>{errorText}</ErrorText>
-                ) : helpText ? (
+                {hasError || helpText ? (
                   <Flex flexDirection="row" justifyContent="space-between">
                     <View>
-                      <HelpText disabled={disabled}>{helpText}</HelpText>
+                      <Text errorText={errorText} helpText={helpText} disabled={disabled} />
                       {showCharacterCount && maxLength !== undefined ? (
                         <CharacterCount
                           disabled={disabled}

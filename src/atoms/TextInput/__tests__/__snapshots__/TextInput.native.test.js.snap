@@ -979,43 +979,47 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
           />
         </View>
         <View
-          className="sc-AykKC jbrywR"
-          style={
-            Object {
-              "0": Object {
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 4,
-              },
-            }
-          }
+          className="sc-AykKC ggGVXI"
         >
-          <Text
-            _isUnderlined={false}
-            _letterSpacing="small"
-            _weight="regular"
-            align="left"
-            color="negative.900"
-            numberOfLines={2}
-            size="xsmall"
+          <View
+            className="sc-AykKC jbrywR"
             style={
-              Array [
-                Object {
-                  "alignSelf": "flex-start",
-                  "color": "rgba(209, 45, 45, 1.0)",
-                  "fontFamily": "Lato-Regular",
-                  "fontSize": 12,
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "textDecorationLine": "none",
+              Object {
+                "0": Object {
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 4,
                 },
-              ]
+              }
             }
-            testID="ds-text"
           >
-            Some error has occurred
-          </Text>
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              _weight="regular"
+              align="left"
+              color="negative.900"
+              numberOfLines={2}
+              size="xsmall"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "flex-start",
+                    "color": "rgba(209, 45, 45, 1.0)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 12,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+            >
+              Some error has occurred
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -3558,43 +3562,47 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           />
         </View>
         <View
-          className="sc-AykKC jbrywR"
-          style={
-            Object {
-              "0": Object {
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 4,
-              },
-            }
-          }
+          className="sc-AykKC ggGVXI"
         >
-          <Text
-            _isUnderlined={false}
-            _letterSpacing="small"
-            _weight="regular"
-            align="left"
-            color="negative.900"
-            numberOfLines={2}
-            size="xsmall"
+          <View
+            className="sc-AykKC jbrywR"
             style={
-              Array [
-                Object {
-                  "alignSelf": "flex-start",
-                  "color": "rgba(209, 45, 45, 1.0)",
-                  "fontFamily": "Lato-Regular",
-                  "fontSize": 12,
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "textDecorationLine": "none",
+              Object {
+                "0": Object {
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 4,
                 },
-              ]
+              }
             }
-            testID="ds-text"
           >
-            Some error has occurred
-          </Text>
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              _weight="regular"
+              align="left"
+              color="negative.900"
+              numberOfLines={2}
+              size="xsmall"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "flex-start",
+                    "color": "rgba(209, 45, 45, 1.0)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 12,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+            >
+              Some error has occurred
+            </Text>
+          </View>
         </View>
       </View>
     </View>
