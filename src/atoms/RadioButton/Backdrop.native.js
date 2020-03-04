@@ -6,7 +6,7 @@ const Backdrop = styled(View)(
 height: ${props.height};
 border-radius: ${props.borderRadius};
 background-color: ${props.backgroundColor};
-padding: ${'7px'};`,
+`,
 );
 
 export default Backdrop;

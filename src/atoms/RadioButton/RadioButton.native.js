@@ -2,7 +2,6 @@ import React, { useState, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
-
 import Text from '../Text';
 import Flex from '../Flex';
 import isEmpty from '../../_helpers/isEmpty';
