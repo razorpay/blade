@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders Text snapshot testing 1`] = `
+<div>
+  <div
+    class="Textweb__Text-sc-6jf9e4-0 dEcYFA"
+    color="shade.980"
+  >
+    simple text
+  </div>
+</div>
+`;
