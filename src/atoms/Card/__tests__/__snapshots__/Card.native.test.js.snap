@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <Card /> correctly should create a card with text 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(255, 255, 255, 1.0)",
+          "elevation": 20,
+          "shadowColor": "\\"rgba(44, 103, 209, 0.05)\\"",
+          "shadowOpacity": 1,
+          "shadowRadius": 20,
+        },
+        Object {
+          "height": "50%",
+          "maxHeight": 200,
+          "maxWidth": 100,
+          "minHeight": 200,
+          "minWidth": 50,
+          "width": 100,
+        },
+        Object {
+          "paddingBottom": 12,
+          "paddingLeft": 12,
+          "paddingRight": 12,
+          "paddingTop": 12,
+        },
+      ]
+    }
+    testID="ds-card"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="shade.980"
+      size="large"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(22, 47, 86, 0.87)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 16,
+            "letterSpacing": 0,
+            "lineHeight": 24,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Hello
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Renders <Card /> correctly should create an empty card with specified props 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(255, 255, 255, 1.0)",
+          "elevation": 20,
+          "shadowColor": "\\"rgba(44, 103, 209, 0.05)\\"",
+          "shadowOpacity": 1,
+          "shadowRadius": 20,
+        },
+        Object {
+          "height": "50%",
+          "maxHeight": 200,
+          "maxWidth": 100,
+          "minHeight": 200,
+          "minWidth": 50,
+          "width": 100,
+        },
+        Object {
+          "paddingBottom": 12,
+          "paddingLeft": 12,
+          "paddingRight": 12,
+          "paddingTop": 12,
+        },
+      ]
+    }
+    testID="ds-card"
+  />
+</View>
+`;
