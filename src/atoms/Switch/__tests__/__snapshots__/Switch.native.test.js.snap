@@ -22,7 +22,6 @@ exports[`Renders <Switch /> correctly renders a controlled ON Switch 1`] = `
           "width": 32,
         },
         Object {
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(22, 47, 86, 0.541)",
           "flexDirection": "row",
         },
@@ -77,7 +76,6 @@ exports[`Renders <Switch /> correctly renders a default Switch 1`] = `
           "width": 32,
         },
         Object {
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(22, 47, 86, 0.541)",
           "flexDirection": "row",
         },
@@ -132,7 +130,6 @@ exports[`Renders <Switch /> correctly renders a disabled/OFF Switch 1`] = `
           "width": 32,
         },
         Object {
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(22, 47, 86, 0.10)",
           "flexDirection": "row",
         },
@@ -187,7 +184,6 @@ exports[`Renders <Switch /> correctly renders a disabled/ON Switch 1`] = `
           "width": 32,
         },
         Object {
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(162, 201, 246, 1.0)",
           "flexDirection": "row",
         },
@@ -242,7 +238,6 @@ exports[`Renders <Switch /> correctly renders a large Switch 1`] = `
           "width": 48,
         },
         Object {
-          "alignSelf": "flex-start",
           "backgroundColor": "rgba(22, 47, 86, 0.541)",
           "flexDirection": "row",
         },

@@ -94,18 +94,6 @@ const styles = {
         return theme.spacings.xxsmall;
     }
   },
-  align({ align }) {
-    switch (align) {
-      case 'left':
-        return 'flex-start';
-      case 'center':
-        return 'center';
-      case 'right':
-        return 'flex-end';
-      default:
-        return 'flex-start';
-    }
-  },
 };
 
 const StyledContainer = styled(TouchableOpacity)`
@@ -125,74 +113,83 @@ const StyledKnob = styled(View)`
 const AnimatedContainer = Animated.createAnimatedComponent(StyledContainer);
 const AnimatedKnob = Animated.createAnimatedComponent(StyledKnob);
 
-const moveKnobLeft = (
-  leftSpaceAnimatedValue,
-  rightSpaceAnimatedValue,
+const moveKnobLeft = ({
+  animatedLeftValue,
+  animatedRightValue,
   animationConfig,
   onAnimationEnd,
-) => {
+}) => {
   Animated.parallel([
-    Animated.timing(leftSpaceAnimatedValue, {
-      toValue: animationConfig.OFF_LEFT_SPACE,
-      duration: animationConfig.KNOB_TRANSLATION_DURATION,
+    Animated.timing(animatedLeftValue, {
+      toValue: animationConfig.off.leftSpace,
+      duration: animationConfig.knob.translationDuration,
     }),
-    Animated.timing(rightSpaceAnimatedValue, {
-      toValue: animationConfig.OFF_RIGHT_SPACE,
-      duration: animationConfig.KNOB_TRANSLATION_DURATION,
+    Animated.timing(animatedRightValue, {
+      toValue: animationConfig.off.rightSpace,
+      duration: animationConfig.knob.translationDuration,
     }),
   ]).start(onAnimationEnd);
 };
 
-const moveKnobRight = (
-  leftSpaceAnimatedValue,
-  rightSpaceAnimatedValue,
+const moveKnobRight = ({
+  animatedLeftValue,
+  animatedRightValue,
   animationConfig,
   onAnimationEnd,
-) => {
+}) => {
   Animated.parallel([
-    Animated.timing(leftSpaceAnimatedValue, {
-      toValue: animationConfig.ON_LEFT_SPACE,
-      duration: animationConfig.KNOB_TRANSLATION_DURATION,
+    Animated.timing(animatedLeftValue, {
+      toValue: animationConfig.on.leftSpace,
+      duration: animationConfig.knob.translationDuration,
     }),
-    Animated.timing(rightSpaceAnimatedValue, {
-      toValue: animationConfig.ON_RIGHT_SPACE,
-      duration: animationConfig.KNOB_TRANSLATION_DURATION,
+    Animated.timing(animatedRightValue, {
+      toValue: animationConfig.on.rightSpace,
+      duration: animationConfig.knob.translationDuration,
     }),
   ]).start(onAnimationEnd);
 };
 
-const scaleKnob = (animatedValue, animateToValue, animationDuration, onAnimationEnd = () => {}) => {
+const scaleKnob = ({
+  animatedValue,
+  animateToValue,
+  animationDuration,
+  onAnimationEnd = () => {},
+}) => {
   Animated.timing(animatedValue, {
     toValue: animateToValue,
     duration: animationDuration,
   }).start(onAnimationEnd);
 };
 
-const Switch = ({ disabled, on, defaultOn, onChange, size, align, testID }) => {
+const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
   const theme = useContext(ThemeContext);
   const containerWidth = parseInt(styles.container.width({ size, theme }), 10);
   const knobWidth = parseInt(styles.knob.width({ size, theme }), 10);
   const knobActiveWidth = parseInt(styles.knob.activeWidth({ size, theme }), 10);
   const containerPadding = parseInt(styles.padding({ size, theme }), 10);
-  const [toggleState, setToggleState] = useState(false);
+  const [toggle, setToggle] = useState(false);
   const [active, setActive] = useState(false);
 
-  const AnimationConfig = {
-    OFF_LEFT_SPACE: containerPadding,
-    OFF_RIGHT_SPACE: containerWidth - containerPadding - knobWidth,
-    OFF_ACTIVE_RIGHT_SPACE: containerWidth - containerPadding - knobActiveWidth,
-    ON_RIGHT_SPACE: containerPadding,
-    ON_LEFT_SPACE: containerWidth - containerPadding - knobWidth,
-    ON_ACTIVE_LEFT_SPACE: containerWidth - containerPadding - knobActiveWidth,
-    KNOB_TRANSLATION_DURATION: 200,
-    KNOB_SCALE_DURATION: 100,
+  const animationConfig = {
+    off: {
+      leftSpace: containerPadding,
+      rightSpace: containerWidth - containerPadding - knobWidth,
+      activeRightSpace: containerWidth - containerPadding - knobActiveWidth,
+    },
+    on: {
+      leftSpace: containerWidth - containerPadding - knobWidth,
+      rightSpace: containerPadding,
+      activeLeftSpace: containerWidth - containerPadding - knobActiveWidth,
+    },
+    knob: {
+      translationDuration: 200,
+      scaleDuration: 100,
+    },
   };
 
-  const { current: leftSpaceAnimatedValue } = useRef(
-    new Animated.Value(AnimationConfig.OFF_LEFT_SPACE),
-  );
-  const { current: rightSpaceAnimatedValue } = useRef(
-    new Animated.Value(AnimationConfig.OFF_RIGHT_SPACE),
+  const { current: animatedLeftValue } = useRef(new Animated.Value(animationConfig.off.leftSpace));
+  const { current: animatedRightValue } = useRef(
+    new Animated.Value(animationConfig.off.rightSpace),
   );
 
   useEffect(() => {
@@ -200,92 +197,112 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, align, testID }) => {
       if (isPropDefined(defaultOn)) {
         throw Error('Expected only one of defaultOn or on props.');
       }
-      if (on && !toggleState) {
-        moveKnobRight(leftSpaceAnimatedValue, rightSpaceAnimatedValue, AnimationConfig, () => {
-          setToggleState(!toggleState);
+      if (on && !toggle) {
+        moveKnobRight({
+          animatedLeftValue,
+          animatedRightValue,
+          animationConfig,
+          onAnimationEnd: () => {
+            setToggle(!toggle);
+          },
         });
-      } else if (!on && toggleState) {
-        moveKnobLeft(leftSpaceAnimatedValue, rightSpaceAnimatedValue, AnimationConfig, () => {
-          setToggleState(!toggleState);
+      } else if (!on && toggle) {
+        moveKnobLeft({
+          animatedLeftValue,
+          animatedRightValue,
+          animationConfig,
+          onAnimationEnd: () => {
+            setToggle(!toggle);
+          },
         });
       }
     }
     if (defaultOn) {
-      leftSpaceAnimatedValue.setValue(AnimationConfig.ON_LEFT_SPACE);
-      rightSpaceAnimatedValue.setValue(AnimationConfig.ON_RIGHT_SPACE);
-      setToggleState(true);
+      animatedLeftValue.setValue(animationConfig.on.leftSpace);
+      animatedRightValue.setValue(animationConfig.on.rightSpace);
+      setToggle(true);
     }
   }, [on, defaultOn]);
 
   const onPressIn = useCallback(() => {
     setActive(true);
-    if (toggleState) {
-      scaleKnob(
-        leftSpaceAnimatedValue,
-        AnimationConfig.ON_ACTIVE_LEFT_SPACE,
-        AnimationConfig.KNOB_SCALE_DURATION,
-      );
+    if (toggle) {
+      scaleKnob({
+        animatedValue: animatedLeftValue,
+        animateToValue: animationConfig.on.activeLeftSpace,
+        animationDuration: animationConfig.knob.scaleDuration,
+      });
     } else {
-      scaleKnob(
-        rightSpaceAnimatedValue,
-        AnimationConfig.OFF_ACTIVE_RIGHT_SPACE,
-        AnimationConfig.KNOB_SCALE_DURATION,
-      );
+      scaleKnob({
+        animatedValue: animatedRightValue,
+        animateToValue: animationConfig.off.activeRightSpace,
+        animationDuration: animationConfig.knob.scaleDuration,
+      });
     }
-  }, [toggleState]);
+  }, [toggle]);
 
   const onPressOut = useCallback(() => {
     setActive(false);
     if (isPropDefined(on)) {
-      if (toggleState) {
-        scaleKnob(
-          leftSpaceAnimatedValue,
-          AnimationConfig.ON_LEFT_SPACE,
-          AnimationConfig.KNOB_SCALE_DURATION,
-          () => onChange(!on),
-        );
+      if (toggle) {
+        scaleKnob({
+          animatedValue: animatedLeftValue,
+          animateToValue: animationConfig.on.leftSpace,
+          animationDuration: animationConfig.knob.scaleDuration,
+          onAnimationEnd: () => onChange(!on),
+        });
       } else {
-        scaleKnob(
-          rightSpaceAnimatedValue,
-          AnimationConfig.OFF_RIGHT_SPACE,
-          AnimationConfig.KNOB_SCALE_DURATION,
-          () => onChange(!on),
-        );
+        scaleKnob({
+          animatedValue: animatedRightValue,
+          animateToValue: animationConfig.off.rightSpace,
+          animationDuration: animationConfig.knob.scaleDuration,
+          onAnimationEnd: () => onChange(!on),
+        });
       }
       return;
     }
-    if (toggleState) {
-      moveKnobLeft(leftSpaceAnimatedValue, rightSpaceAnimatedValue, AnimationConfig, () => {
-        setToggleState(!toggleState);
-        onChange(!toggleState);
+    if (toggle) {
+      moveKnobLeft({
+        animatedLeftValue,
+        animatedRightValue,
+        animationConfig,
+        onAnimationEnd: () => {
+          setToggle(!toggle);
+          onChange(!toggle);
+        },
       });
     } else {
-      moveKnobRight(leftSpaceAnimatedValue, rightSpaceAnimatedValue, AnimationConfig, () => {
-        setToggleState(!toggleState);
-        onChange(!toggleState);
+      moveKnobRight({
+        animatedLeftValue,
+        animatedRightValue,
+        animationConfig,
+        onAnimationEnd: () => {
+          setToggle(!toggle);
+          onChange(!toggle);
+        },
       });
     }
-  }, [toggleState]);
+  }, [toggle]);
 
-  const interpolateContainerColor = leftSpaceAnimatedValue.interpolate({
-    inputRange: [AnimationConfig.OFF_LEFT_SPACE, AnimationConfig.ON_LEFT_SPACE],
+  const interpolateContainerColor = animatedLeftValue.interpolate({
+    inputRange: [animationConfig.off.leftSpace, animationConfig.on.leftSpace],
     outputRange: [theme.colors.shade[960], theme.colors.primary[800]],
   });
 
   const activeContainerColor = active
-    ? toggleState
+    ? toggle
       ? theme.colors.primary[700]
       : theme.colors.shade[950]
     : null;
 
   const disabledContainerColor = disabled
-    ? toggleState
+    ? toggle
       ? theme.colors.primary[500]
       : theme.colors.shade[930]
     : null;
 
   return (
-    <Flex flexDirection="row" alignSelf={styles.align({ align })}>
+    <Flex flexDirection="row">
       <AnimatedContainer
         disabled={disabled}
         activeOpacity={1}
@@ -305,8 +322,8 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, align, testID }) => {
             size={size}
             minWidth={`${knobWidth}px`}
             style={{
-              left: leftSpaceAnimatedValue,
-              right: rightSpaceAnimatedValue,
+              left: animatedLeftValue,
+              right: animatedRightValue,
             }}
           />
         </Flex>
@@ -322,14 +339,12 @@ Switch.propTypes = {
   defaultOn: PropTypes.bool,
   onChange: PropTypes.func,
   testID: PropTypes.string,
-  align: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 Switch.defaultProps = {
   size: 'medium',
   disabled: false,
   testID: 'ds-switch',
-  align: 'left',
   onChange: () => {},
 };
 
