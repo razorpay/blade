@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders <Button /> correctly snapshot testing 1`] = `
+exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -10,36 +10,1460 @@ exports[`Renders <Button /> correctly snapshot testing 1`] = `
     }
   }
 >
-  <TouchableOpacity
-    activeOpacity={0.2}
+  <TouchableHighlight
+    activeOpacity={1}
+    block={true}
+    className="sc-AykKC cpDJVU"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="medium"
     style={
       Array [
         Object {
-          "backgroundColor": "rgba(22, 47, 86, 1.0)",
-          "borderRadius": 6,
-          "marginTop": 7,
-          "paddingBottom": 14,
-          "paddingLeft": 14,
-          "paddingRight": 14,
-          "paddingTop": 14,
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 8,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 8,
         },
       ]
     }
+    testID="ds-button"
+    underlayColor="rgba(123, 178, 242, 1.0)"
+    variant="primary"
   >
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="light.100"
+      size="medium"
       style={
         Array [
           Object {
             "alignSelf": "center",
-            "color": "rgba(224, 228, 249, 1.0)",
-            "fontSize": 18,
-            "letterSpacing": undefined,
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
           },
         ]
       }
+      testID="ds-text"
     >
       Click Me
     </Text>
-  </TouchableOpacity>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={true}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(162, 201, 246, 1.0)",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 8,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 8,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(123, 178, 242, 1.0)"
+    variant="primary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="light.150"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(255, 255, 255, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={true}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(22, 47, 86, 0.02)",
+          "borderColor": "rgba(22, 47, 86, 0.10)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+        },
+        Object {
+          "paddingBottom": 8,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 8,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="secondary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="shade.940"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(22, 47, 86, 0.24)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={true}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 8,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 8,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="tertiary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="shade.940"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(22, 47, 86, 0.24)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="large"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 10,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 10,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(123, 178, 242, 1.0)"
+    variant="primary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="light.100"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="large"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(11, 112, 231, 0.05)",
+          "borderColor": "rgba(11, 112, 231, 0.74)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+        },
+        Object {
+          "paddingBottom": 10,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 10,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="secondary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="large"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 10,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 10,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="tertiary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 8,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 8,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(123, 178, 242, 1.0)"
+    variant="primary"
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={20}
+      bbWidth={20}
+      fill="rgba(255, 255, 255, 1.0)"
+      focusable={false}
+      height={20}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          undefined,
+          Object {
+            "opacity": 1,
+          },
+          Object {
+            "flex": 0,
+            "height": 20,
+            "width": 20,
+          },
+        ]
+      }
+      testID="ds-icon"
+      vbHeight={24}
+      vbWidth={24}
+      width={20}
+    >
+      <RNSVGGroup
+        fill={4294967295}
+        fillOpacity={1}
+        fillRule={1}
+        font={Object {}}
+        matrix={
+          Array [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+          ]
+        }
+        opacity={1}
+        originX={0}
+        originY={0}
+        propList={
+          Array [
+            "fill",
+          ]
+        }
+        rotation={0}
+        scaleX={1}
+        scaleY={1}
+        skewX={0}
+        skewY={0}
+        stroke={null}
+        strokeDasharray={null}
+        strokeDashoffset={null}
+        strokeLinecap={0}
+        strokeLinejoin={0}
+        strokeMiterlimit={4}
+        strokeOpacity={1}
+        strokeWidth={1}
+        vectorEffect={0}
+        x={0}
+        y={0}
+      >
+        <RNSVGPath
+          d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+          fill={4278190080}
+          fillOpacity={1}
+          fillRule={1}
+          matrix={
+            Array [
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+            ]
+          }
+          opacity={1}
+          originX={0}
+          originY={0}
+          propList={Array []}
+          rotation={0}
+          scaleX={1}
+          scaleY={1}
+          skewX={0}
+          skewY={0}
+          stroke={null}
+          strokeDasharray={null}
+          strokeDashoffset={null}
+          strokeLinecap={0}
+          strokeLinejoin={0}
+          strokeMiterlimit={4}
+          strokeOpacity={1}
+          strokeWidth={1}
+          vectorEffect={0}
+          x={0}
+          y={0}
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <View
+      style={
+        Array [
+          Object {
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 8,
+            "marginTop": 0,
+          },
+        ]
+      }
+    />
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="light.100"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(11, 112, 231, 0.05)",
+          "borderColor": "rgba(11, 112, 231, 0.74)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+        },
+        Object {
+          "paddingBottom": 8,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 8,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="secondary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 8,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 8,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="tertiary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="small"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 5,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 5,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(123, 178, 242, 1.0)"
+    variant="primary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="small"
+      _weight="bold"
+      align="center"
+      color="light.100"
+      size="xsmall"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 12,
+            "letterSpacing": 0,
+            "lineHeight": 18,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="small"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 5,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 5,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(123, 178, 242, 1.0)"
+    variant="primary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="small"
+      _weight="bold"
+      align="center"
+      color="light.100"
+      size="xsmall"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 12,
+            "letterSpacing": 0,
+            "lineHeight": 18,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="small"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(11, 112, 231, 0.05)",
+          "borderColor": "rgba(11, 112, 231, 0.74)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+        },
+        Object {
+          "paddingBottom": 5,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 5,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="secondary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="small"
+      _weight="bold"
+      align="center"
+      color="primary.800"
+      size="xsmall"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 12,
+            "letterSpacing": 0,
+            "lineHeight": 18,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="small"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 5,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 5,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(11, 112, 231, 0.38)"
+    variant="tertiary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="small"
+      _weight="bold"
+      align="center"
+      color="primary.800"
+      size="xsmall"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 12,
+            "letterSpacing": 0,
+            "lineHeight": 18,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="xsmall"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 2,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 2,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(123, 178, 242, 1.0)"
+    variant="primary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="medium"
+      _lineHeight="xsmall"
+      _weight="bold"
+      align="center"
+      color="light.100"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0.5,
+            "lineHeight": 14,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      CLICK ME
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with left icon 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 8,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 8,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(123, 178, 242, 1.0)"
+    variant="primary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="light.100"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders an icon <Button /> correctly Renders a large Primary <Button /> with right icon 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="large"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 10,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 10,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(123, 178, 242, 1.0)"
+    variant="primary"
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={20}
+      bbWidth={20}
+      fill="rgba(255, 255, 255, 1.0)"
+      focusable={false}
+      height={20}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          undefined,
+          Object {
+            "opacity": 1,
+          },
+          Object {
+            "flex": 0,
+            "height": 20,
+            "width": 20,
+          },
+        ]
+      }
+      testID="ds-icon"
+      vbHeight={24}
+      vbWidth={24}
+      width={20}
+    >
+      <RNSVGGroup
+        fill={4294967295}
+        fillOpacity={1}
+        fillRule={1}
+        font={Object {}}
+        matrix={
+          Array [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+          ]
+        }
+        opacity={1}
+        originX={0}
+        originY={0}
+        propList={
+          Array [
+            "fill",
+          ]
+        }
+        rotation={0}
+        scaleX={1}
+        scaleY={1}
+        skewX={0}
+        skewY={0}
+        stroke={null}
+        strokeDasharray={null}
+        strokeDashoffset={null}
+        strokeLinecap={0}
+        strokeLinejoin={0}
+        strokeMiterlimit={4}
+        strokeOpacity={1}
+        strokeWidth={1}
+        vectorEffect={0}
+        x={0}
+        y={0}
+      >
+        <RNSVGPath
+          d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+          fill={4278190080}
+          fillOpacity={1}
+          fillRule={1}
+          matrix={
+            Array [
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+            ]
+          }
+          opacity={1}
+          originX={0}
+          originY={0}
+          propList={Array []}
+          rotation={0}
+          scaleX={1}
+          scaleY={1}
+          skewX={0}
+          skewY={0}
+          stroke={null}
+          strokeDasharray={null}
+          strokeDashoffset={null}
+          strokeLinecap={0}
+          strokeLinejoin={0}
+          strokeMiterlimit={4}
+          strokeOpacity={1}
+          strokeWidth={1}
+          vectorEffect={0}
+          x={0}
+          y={0}
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <View
+      style={
+        Array [
+          Object {
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 8,
+            "marginTop": 0,
+          },
+        ]
+      }
+    />
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="light.100"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
+</View>
+`;
+
+exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableHighlight
+    activeOpacity={1}
+    block={false}
+    className="sc-AykKC kbzvPX"
+    color="primary"
+    delayPressOut={100}
+    disabled={false}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+        },
+        Object {
+          "paddingBottom": 8,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 8,
+        },
+      ]
+    }
+    testID="ds-button"
+    underlayColor="rgba(123, 178, 242, 1.0)"
+    variant="primary"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="center"
+      color="light.100"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Click Me
+    </Text>
+  </TouchableHighlight>
 </View>
 `;
