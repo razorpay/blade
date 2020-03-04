@@ -11,7 +11,16 @@ exports[`Renders <Flex /> correctly snapshot testing 1`] = `
   }
 >
   <View
-    className="sc-AykKC hSXcDQ"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
   />
 </View>
 `;

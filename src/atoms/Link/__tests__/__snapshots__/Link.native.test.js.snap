@@ -12,7 +12,17 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-link"
   >
     <Text
@@ -55,7 +65,17 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-link"
   >
     <Text
@@ -98,7 +118,17 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-link"
   >
     <Text
@@ -141,7 +171,17 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-link"
   >
     <Text
@@ -184,7 +224,17 @@ exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = 
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-link"
   >
     <Text
@@ -227,7 +277,17 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-link"
   >
     <Text
@@ -270,7 +330,17 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-link"
   >
     <Text
