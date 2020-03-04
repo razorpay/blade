@@ -33,7 +33,7 @@ const LabelContainer = styled(View)`
 const Label = ({ children, inputLayoutDimensions }) => {
   return (
     <LabelContainer inputLayoutDimensions={inputLayoutDimensions}>
-      <Space padding={styles.padding()}>
+      <Space padding={[0, 3, 0, 0]}>
         <View>
           <Text size="medium" color="shade.980">
             {children}

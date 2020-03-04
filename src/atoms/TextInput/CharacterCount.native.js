@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-const CharacterCount = ({ maxLength, inputLength, disabled }) => {
+const CharacterCount = ({ maxLength, currentLength, disabled }) => {
   return (
     <Space padding={[0.5, 0, 0, 1]}>
       <Flex flex={0}>
@@ -26,7 +26,7 @@ const CharacterCount = ({ maxLength, inputLength, disabled }) => {
             color={styles.color({ disabled })}
             size="xsmall"
           >
-            {`${inputLength}/${maxLength}`}
+            {`${currentLength}/${maxLength}`}
           </Text>
         </View>
       </Flex>
@@ -36,13 +36,13 @@ const CharacterCount = ({ maxLength, inputLength, disabled }) => {
 
 CharacterCount.propTypes = {
   maxLength: PropTypes.number,
-  inputLength: PropTypes.number,
+  currentLength: PropTypes.number,
   disabled: PropTypes.bool,
 };
 
 CharacterCount.defaultProps = {
   maxLength: 10,
-  inputLength: 0,
+  currentLength: 0,
   disabled: false,
 };
 

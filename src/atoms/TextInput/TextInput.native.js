@@ -48,10 +48,15 @@ const styles = {
   },
   fillContainer: {
     backgroundColor({ variant, isFocused, theme, disabled }) {
-      if (variant === 'outlined') return 'transparent';
-      else if (disabled) return theme.colors.tone[930];
-      else if (isFocused) return theme.colors.tone[940];
-      else return theme.colors.tone[930];
+      if (variant === 'outlined') {
+        return 'transparent';
+      } else if (disabled) {
+        return theme.colors.tone[930];
+      } else if (isFocused) {
+        return theme.colors.tone[940];
+      } else {
+        return theme.colors.tone[930];
+      }
     },
   },
   inputContainer: {
@@ -62,6 +67,7 @@ const styles = {
         case 'small':
           return '160px';
         case 'medium':
+          return '240px';
         default:
           return '240px';
       }
@@ -98,7 +104,7 @@ const getAccessoryConfig = ({ errorText, prefix, suffix, iconLeft, iconRight }) 
 
 const TextInput = ({
   placeholder,
-  onChangeText,
+  onChange,
   helpText,
   errorText,
   variant,
@@ -154,16 +160,16 @@ const TextInput = ({
     setIsPlaceholderVisible(false);
   }, [setFocused, setIsPlaceholderVisible]);
 
-  const onChange = useCallback(
+  const onChangeText = useCallback(
     (text) => {
       // Store entered value in state
       setInput(text);
-      if (onChangeText) {
+      if (onChange) {
         // Send entered value to the consumer
-        onChangeText(text);
+        onChange(text);
       }
     },
-    [onChangeText, setInput],
+    [onChange, setInput],
   );
 
   const onTextInputLayout = useCallback(
@@ -227,7 +233,7 @@ const TextInput = ({
                               placeholderTextColor={placeholderTextColor}
                               onFocus={onFocus}
                               onBlur={onBlur}
-                              onChangeText={onChange}
+                              onChangeText={onChangeText}
                               hasText={hasText}
                               selectionColor={theme.colors.shade[980]} // not able to change this for Android
                               editable={!disabled}
@@ -268,13 +274,13 @@ const TextInput = ({
                   <Flex flexDirection="row" justifyContent="space-between">
                     <View>
                       <HelpText disabled={disabled}>{helpText}</HelpText>
-                      {showCharacterCount && typeof maxLength === 'number' && (
+                      {showCharacterCount && maxLength !== undefined ? (
                         <CharacterCount
                           disabled={disabled}
                           maxLength={maxLength}
-                          inputLength={input.length}
+                          currentLength={input.length}
                         />
-                      )}
+                      ) : null}
                     </View>
                   </Flex>
                 ) : null}
@@ -291,7 +297,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   helpText: PropTypes.string,
   errorText: PropTypes.string,
-  onChangeText: PropTypes.func,
+  onChange: PropTypes.func,
   variant: PropTypes.oneOf(['filled', 'outlined']),
   prefix: PropTypes.string,
   suffix: PropTypes.string,
@@ -311,7 +317,7 @@ TextInput.defaultProps = {
   placeholder: 'Enter text here',
   helpText: undefined,
   errorText: undefined,
-  onChangeText: () => {},
+  onChange: () => {},
   prefix: undefined,
   suffix: undefined,
   disabled: false,

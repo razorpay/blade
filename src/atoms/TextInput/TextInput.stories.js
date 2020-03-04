@@ -37,7 +37,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText=""
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="outlined"
           />
         </View>
@@ -61,7 +61,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="outlined"
           />
         </View>
@@ -84,7 +84,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="outlined"
           />
         </View>
@@ -107,7 +107,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="outlined"
           />
         </View>
@@ -130,7 +130,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="outlined"
           />
         </View>
@@ -153,7 +153,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="outlined"
             maxLength={10}
             showCharacterCount
@@ -178,7 +178,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText="This is the reason for the error"
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="outlined"
           />
         </View>
@@ -201,7 +201,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="outlined"
           />
         </View>
@@ -224,7 +224,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="outlined"
           >
             This is disabled
@@ -250,7 +250,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="filled"
           />
         </View>
@@ -272,7 +272,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="filled"
           />
         </View>
@@ -294,7 +294,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="filled"
           />
         </View>
@@ -316,7 +316,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="filled"
           />
         </View>
@@ -338,7 +338,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="filled"
           />
         </View>
@@ -360,7 +360,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="filled"
             maxLength={10}
             showCharacterCount
@@ -384,7 +384,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText="This is the reason for the error"
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="filled"
           />
         </View>
@@ -406,7 +406,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="filled"
           />
         </View>
@@ -428,7 +428,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="filled"
           >
             This is disabled
@@ -452,7 +452,7 @@ storiesOf('TextInput', module)
             placeholder="Type here"
             helpText=""
             errorText=""
-            onChangeText={() => {}}
+            onChange={() => {}}
             variant="filled"
             labelPosition="left"
           />
