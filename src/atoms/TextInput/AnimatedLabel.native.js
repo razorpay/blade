@@ -53,51 +53,51 @@ const StyledText = styled(Animated.Text)`
   color: ${styles.text.color};
 `;
 
-const onFocus = ({ AnimationConfig, labelAnimatedValue }) => {
+const onFocus = ({ animationConfig, labelAnimatedValue }) => {
   Animated.timing(labelAnimatedValue, {
-    toValue: AnimationConfig.FINAL_ANIMATION_VALUE,
-    duration: AnimationConfig.ANIMATION_DURATION,
+    toValue: animationConfig.animationValue.final,
+    duration: animationConfig.duration,
   }).start();
 };
 
-const onBlur = ({ AnimationConfig, labelAnimatedValue }) => {
+const onBlur = ({ animationConfig, labelAnimatedValue }) => {
   Animated.timing(labelAnimatedValue, {
-    toValue: AnimationConfig.INITIAL_ANIMATION_VALUE,
-    duration: AnimationConfig.ANIMATION_DURATION,
+    toValue: animationConfig.animationValue.initial,
+    duration: animationConfig.duration,
   }).start();
 };
 
-const getColorInterpolation = ({ AnimationConfig, labelAnimatedValue }) => {
+const getColorInterpolation = ({ animationConfig, labelAnimatedValue }) => {
   return labelAnimatedValue.interpolate({
-    inputRange: [AnimationConfig.INITIAL_ANIMATION_VALUE, AnimationConfig.FINAL_ANIMATION_VALUE],
-    outputRange: [AnimationConfig.INITIAL_LABEL_COLOR, AnimationConfig.FINAL_LABEL_COLOR],
+    inputRange: [animationConfig.animationValue.initial, animationConfig.animationValue.final],
+    outputRange: [animationConfig.labelColor.initial, animationConfig.labelColor.final],
   });
 };
 
-const getFontInterpolation = ({ AnimationConfig, labelAnimatedValue, hasText }) => {
-  if (hasText) return AnimationConfig.FINAL_FONT_SIZE;
+const getFontInterpolation = ({ animationConfig, labelAnimatedValue, hasText }) => {
+  if (hasText) return animationConfig.fontSize.final;
 
   return labelAnimatedValue.interpolate({
-    inputRange: [AnimationConfig.INITIAL_ANIMATION_VALUE, AnimationConfig.FINAL_ANIMATION_VALUE],
-    outputRange: [AnimationConfig.INITIAL_FONT_SIZE, AnimationConfig.FINAL_FONT_SIZE],
+    inputRange: [animationConfig.animationValue.initial, animationConfig.animationValue.final],
+    outputRange: [animationConfig.fontSize.initial, animationConfig.fontSize.final],
   });
 };
 
-const getTopInterpolation = ({ AnimationConfig, labelAnimatedValue, hasText }) => {
-  if (hasText) return AnimationConfig.FINAL_TOP_POSITION;
+const getTopInterpolation = ({ animationConfig, labelAnimatedValue, hasText }) => {
+  if (hasText) return animationConfig.topPosition.final;
 
   return labelAnimatedValue.interpolate({
-    inputRange: [AnimationConfig.INITIAL_ANIMATION_VALUE, AnimationConfig.FINAL_ANIMATION_VALUE],
-    outputRange: [AnimationConfig.INITIAL_TOP_POSITION, AnimationConfig.FINAL_TOP_POSITION],
+    inputRange: [animationConfig.animationValue.initial, animationConfig.animationValue.final],
+    outputRange: [animationConfig.topPosition.initial, animationConfig.topPosition.final],
   });
 };
 
-const getLeftInterpolation = ({ AnimationConfig, labelAnimatedValue, hasText }) => {
-  if (hasText) return AnimationConfig.FINAL_LEFT_POSITION;
+const getLeftInterpolation = ({ animationConfig, labelAnimatedValue, hasText }) => {
+  if (hasText) return animationConfig.leftPosition.final;
 
   return labelAnimatedValue.interpolate({
-    inputRange: [AnimationConfig.INITIAL_ANIMATION_VALUE, AnimationConfig.FINAL_ANIMATION_VALUE],
-    outputRange: [AnimationConfig.INITIAL_LEFT_POSITION, AnimationConfig.FINAL_LEFT_POSITION],
+    inputRange: [animationConfig.animationValue.initial, animationConfig.animationValue.final],
+    outputRange: [animationConfig.leftPosition.initial, animationConfig.leftPosition.final],
   });
 };
 
@@ -131,49 +131,59 @@ const AnimatedLabel = ({
 }) => {
   const theme = useContext(ThemeContext);
 
-  const AnimationConfig = {
-    ANIMATION_DURATION: 100,
-    INITIAL_FONT_SIZE: parseInt(theme.fonts.size.medium, 10),
-    FINAL_FONT_SIZE: parseInt(theme.fonts.size.xsmall, 10),
-    INITIAL_TOP_POSITION: getInitialTopPosition({ layoutDimensions, variant }),
-    FINAL_TOP_POSITION: 0,
-    INITIAL_LEFT_POSITION: getInitialLeftPosition({ layoutDimensions }),
-    FINAL_LEFT_POSITION: 0,
-    INITIAL_LABEL_COLOR: getColor(theme, 'shade.960'),
-    FINAL_LABEL_COLOR: getFinalLabelColor({ theme, hasError }),
-    INITIAL_ANIMATION_VALUE: 0,
-    FINAL_ANIMATION_VALUE: 1,
+  const animationConfig = {
+    fontSize: {
+      initial: parseInt(theme.fonts.size.medium, 10),
+      final: parseInt(theme.fonts.size.xsmall, 10),
+    },
+    topPosition: {
+      initial: getInitialTopPosition({ layoutDimensions, variant }),
+      final: 0,
+    },
+    leftPosition: {
+      initial: getInitialLeftPosition({ layoutDimensions }),
+      final: 0,
+    },
+    labelColor: {
+      initial: getColor(theme, 'shade.960'),
+      final: getFinalLabelColor({ theme, hasError }),
+    },
+    animationValue: {
+      initial: 0,
+      final: 1,
+    },
+    duration: 100,
   };
 
   const { current: labelAnimatedValue } = useRef(
-    new Animated.Value(AnimationConfig.INITIAL_ANIMATION_VALUE),
+    new Animated.Value(animationConfig.animationValue.initial),
   );
 
   useEffect(() => {
     if (isFocused) {
-      onFocus({ AnimationConfig, labelAnimatedValue });
+      onFocus({ animationConfig, labelAnimatedValue });
     }
     if (!isFocused) {
-      onBlur({ AnimationConfig, labelAnimatedValue });
+      onBlur({ animationConfig, labelAnimatedValue });
     }
-  }, [AnimationConfig, isFocused, labelAnimatedValue]);
+  }, [animationConfig, isFocused, labelAnimatedValue]);
 
   return (
     <Size height={styles.container.height({ variant })}>
       <View>
         <FloatView
           style={{
-            top: getTopInterpolation({ AnimationConfig, labelAnimatedValue, hasText }),
-            left: getLeftInterpolation({ AnimationConfig, labelAnimatedValue, hasText }),
+            top: getTopInterpolation({ animationConfig, labelAnimatedValue, hasText }),
+            left: getLeftInterpolation({ animationConfig, labelAnimatedValue, hasText }),
           }}
           pointerEvents="none"
         >
           <StyledText
             style={{
-              fontSize: getFontInterpolation({ AnimationConfig, labelAnimatedValue, hasText }),
+              fontSize: getFontInterpolation({ animationConfig, labelAnimatedValue, hasText }),
               color: disabled
                 ? getColor(theme, 'shade.940')
-                : getColorInterpolation({ AnimationConfig, labelAnimatedValue }),
+                : getColorInterpolation({ animationConfig, labelAnimatedValue }),
             }}
             numberOfLines={1}
           >
