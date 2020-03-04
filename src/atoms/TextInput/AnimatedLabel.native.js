@@ -4,6 +4,7 @@ import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
 import { getColor } from '../../_helpers/theme';
 import View from '../View';
+import Size from '../Size';
 
 const IS_ANDROID = Platform.OS === 'android';
 
@@ -38,10 +39,6 @@ const styles = {
     },
   },
 };
-
-const Container = styled(View)`
-  height: ${styles.container.height};
-`;
 
 const FloatView = styled(Animated.View)`
   position: absolute;
@@ -162,27 +159,29 @@ const AnimatedLabel = ({
   }, [AnimationConfig, isFocused, labelAnimatedValue]);
 
   return (
-    <Container variant={variant}>
-      <FloatView
-        style={{
-          top: getTopInterpolation(AnimationConfig, labelAnimatedValue, hasText),
-          left: getLeftInterpolation(AnimationConfig, labelAnimatedValue, hasText),
-        }}
-        pointerEvents="none"
-      >
-        <StyledText
+    <Size height={styles.container.height({ variant })}>
+      <View>
+        <FloatView
           style={{
-            fontSize: getFontInterpolation(AnimationConfig, labelAnimatedValue, hasText),
-            color: disabled
-              ? getColor(theme, 'shade.940')
-              : getColorInterpolation(AnimationConfig, labelAnimatedValue),
+            top: getTopInterpolation(AnimationConfig, labelAnimatedValue, hasText),
+            left: getLeftInterpolation(AnimationConfig, labelAnimatedValue, hasText),
           }}
-          numberOfLines={1}
+          pointerEvents="none"
         >
-          {children}
-        </StyledText>
-      </FloatView>
-    </Container>
+          <StyledText
+            style={{
+              fontSize: getFontInterpolation(AnimationConfig, labelAnimatedValue, hasText),
+              color: disabled
+                ? getColor(theme, 'shade.940')
+                : getColorInterpolation(AnimationConfig, labelAnimatedValue),
+            }}
+            numberOfLines={1}
+          >
+            {children}
+          </StyledText>
+        </FloatView>
+      </View>
+    </Size>
   );
 };
 
