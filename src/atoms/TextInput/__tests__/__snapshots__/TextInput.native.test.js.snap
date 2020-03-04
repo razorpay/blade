@@ -11,13 +11,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -34,21 +63,29 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -70,9 +107,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -90,9 +139,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -114,13 +166,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -137,21 +218,29 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -173,9 +262,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -193,9 +294,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 Object {
                   "backgroundColor": "rgba(43, 131, 234, 1.0 )",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -217,13 +321,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -240,21 +373,29 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -276,9 +417,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -296,9 +449,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -320,13 +476,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -343,21 +528,29 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -380,9 +573,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -400,9 +605,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -424,13 +632,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={true}
@@ -447,15 +684,24 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
@@ -499,7 +745,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
             </View>
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={true}
               editable={false}
               hasLeftIcon={false}
@@ -521,9 +766,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -664,27 +921,48 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.05)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
         </View>
         <View
-          className="sc-AykKC ggGVXI"
+          style={
+            Array [
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              ],
+              undefined,
+            ]
+          }
         >
           <View
-            className="sc-AykKC jbrywR"
             style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+              Array [
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexDirection": "column",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 4,
+                  },
+                ],
+                undefined,
+              ]
             }
           >
             <Text
@@ -731,13 +1009,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -754,15 +1061,24 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
@@ -806,7 +1122,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
             </View>
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -828,9 +1143,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -971,27 +1298,48 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 Object {
                   "backgroundColor": "rgba(209, 45, 45, 1.0)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
         </View>
         <View
-          className="sc-AykKC ggGVXI"
+          style={
+            Array [
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              ],
+              undefined,
+            ]
+          }
         >
           <View
-            className="sc-AykKC jbrywR"
             style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+              Array [
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexDirection": "column",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 4,
+                  },
+                ],
+                undefined,
+              ]
             }
           >
             <Text
@@ -1038,13 +1386,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -1061,21 +1438,29 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -1098,9 +1483,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -1118,27 +1515,48 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
         </View>
         <View
-          className="sc-AykKC ggGVXI"
+          style={
+            Array [
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              ],
+              undefined,
+            ]
+          }
         >
           <View
-            className="sc-AykKC jbrywR"
             style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+              Array [
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexDirection": "column",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 4,
+                  },
+                ],
+                undefined,
+              ]
             }
           >
             <Text
@@ -1168,16 +1586,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             </Text>
           </View>
           <View
-            className="sc-AykKC hSXcDQ"
             style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 8,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+              Array [
+                Array [
+                  Object {
+                    "flexDirection": "column",
+                  },
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 8,
+                    "paddingRight": 0,
+                    "paddingTop": 4,
+                  },
+                ],
+                undefined,
+              ]
             }
           >
             <Text
@@ -1224,13 +1647,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -1247,21 +1699,29 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -1283,9 +1743,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -1303,27 +1775,48 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
         </View>
         <View
-          className="sc-AykKC ggGVXI"
+          style={
+            Array [
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              ],
+              undefined,
+            ]
+          }
         >
           <View
-            className="sc-AykKC jbrywR"
             style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+              Array [
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexDirection": "column",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 4,
+                  },
+                ],
+                undefined,
+              ]
             }
           >
             <Text
@@ -1370,13 +1863,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -1393,15 +1915,24 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
@@ -1530,7 +2061,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             </View>
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={true}
@@ -1552,9 +2082,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -1695,9 +2237,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -1719,13 +2264,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -1742,15 +2316,24 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
@@ -1879,7 +2462,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             </View>
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={true}
@@ -1901,9 +2483,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -1921,9 +2515,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -1945,13 +2542,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -1968,21 +2594,29 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -2004,9 +2638,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2147,9 +2793,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -2171,13 +2820,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -2194,21 +2872,29 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -2230,9 +2916,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2250,9 +2948,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -2274,13 +2975,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -2297,21 +3027,29 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -2333,9 +3071,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2391,9 +3141,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -2415,13 +3168,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -2438,15 +3220,24 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
@@ -2490,7 +3281,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
             </View>
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -2512,9 +3302,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2532,9 +3334,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -2556,13 +3361,42 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -2579,21 +3413,29 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
           variant="filled"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -2615,9 +3457,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2673,9 +3527,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -2697,13 +3554,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -2720,21 +3606,29 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -2756,9 +3650,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -2776,9 +3682,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -2800,13 +3709,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -2823,21 +3761,29 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -2859,9 +3805,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -2879,9 +3837,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                 Object {
                   "backgroundColor": "rgba(43, 131, 234, 1.0 )",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -2903,13 +3864,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -2926,21 +3916,29 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -2963,9 +3961,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2983,9 +3993,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -3007,13 +4020,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={true}
@@ -3030,15 +4072,24 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
@@ -3082,7 +4133,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             </View>
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={true}
               editable={false}
               hasLeftIcon={false}
@@ -3104,9 +4154,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3247,27 +4309,48 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.05)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
         </View>
         <View
-          className="sc-AykKC ggGVXI"
+          style={
+            Array [
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              ],
+              undefined,
+            ]
+          }
         >
           <View
-            className="sc-AykKC jbrywR"
             style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+              Array [
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexDirection": "column",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 4,
+                  },
+                ],
+                undefined,
+              ]
             }
           >
             <Text
@@ -3314,13 +4397,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -3337,15 +4449,24 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
@@ -3389,7 +4510,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             </View>
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -3411,9 +4531,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3554,27 +4686,48 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(209, 45, 45, 1.0)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
         </View>
         <View
-          className="sc-AykKC ggGVXI"
+          style={
+            Array [
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              ],
+              undefined,
+            ]
+          }
         >
           <View
-            className="sc-AykKC jbrywR"
             style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+              Array [
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexDirection": "column",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 4,
+                  },
+                ],
+                undefined,
+              ]
             }
           >
             <Text
@@ -3621,13 +4774,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -3644,21 +4826,29 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -3680,9 +4870,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3700,9 +4902,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -3724,13 +4929,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -3747,21 +4981,29 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -3783,9 +5025,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3803,27 +5057,48 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
         </View>
         <View
-          className="sc-AykKC ggGVXI"
+          style={
+            Array [
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              ],
+              undefined,
+            ]
+          }
         >
           <View
-            className="sc-AykKC jbrywR"
             style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+              Array [
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexDirection": "column",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 4,
+                  },
+                ],
+                undefined,
+              ]
             }
           >
             <Text
@@ -3870,13 +5145,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -3893,21 +5197,29 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -3930,9 +5242,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3950,27 +5274,48 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
         </View>
         <View
-          className="sc-AykKC ggGVXI"
+          style={
+            Array [
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              ],
+              undefined,
+            ]
+          }
         >
           <View
-            className="sc-AykKC jbrywR"
             style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+              Array [
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexDirection": "column",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 4,
+                  },
+                ],
+                undefined,
+              ]
             }
           >
             <Text
@@ -4000,16 +5345,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             </Text>
           </View>
           <View
-            className="sc-AykKC hSXcDQ"
             style={
-              Object {
-                "0": Object {
-                  "paddingBottom": 0,
-                  "paddingLeft": 8,
-                  "paddingRight": 0,
-                  "paddingTop": 4,
-                },
-              }
+              Array [
+                Array [
+                  Object {
+                    "flexDirection": "column",
+                  },
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 8,
+                    "paddingRight": 0,
+                    "paddingTop": 4,
+                  },
+                ],
+                undefined,
+              ]
             }
           >
             <Text
@@ -4056,13 +5406,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -4079,15 +5458,24 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
@@ -4216,7 +5604,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             </View>
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={true}
@@ -4238,9 +5625,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -4258,9 +5657,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -4282,13 +5684,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -4305,15 +5736,24 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
@@ -4442,7 +5882,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             </View>
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={true}
@@ -4464,9 +5903,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -4607,9 +6058,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -4631,13 +6085,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -4654,21 +6137,29 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -4690,9 +6181,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -4833,9 +6336,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -4857,13 +6363,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -4880,21 +6415,29 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -4916,9 +6459,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -4936,9 +6491,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -4960,13 +6518,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -4983,21 +6570,29 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -5019,9 +6614,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -5077,9 +6684,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -5101,13 +6711,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -5124,15 +6763,24 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
@@ -5176,7 +6824,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             </View>
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -5198,9 +6845,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -5218,9 +6877,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
@@ -5242,13 +6904,42 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
   }
 >
   <View
-    className="sc-AykKC jwmary"
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
-      className="sc-AykKC hjvgcj"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
-        className="sc-AykKC hSXcDQ"
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
+          ]
+        }
       >
         <View
           disabled={false}
@@ -5265,21 +6956,29 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
           variant="outlined"
         >
           <View
-            className="sc-AykKC kHnGAa"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
                 },
-                Object {
-                  "width": 240,
-                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  undefined,
+                ],
+                undefined,
               ]
             }
           >
             <TextInput
               allowFontScaling={true}
-              className="sc-AykKC jbrywR"
               disabled={false}
               editable={true}
               hasLeftIcon={false}
@@ -5301,9 +7000,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "paddingRight": 0,
                     "paddingTop": 0,
                   },
-                  Object {
-                    "height": 40,
-                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                    },
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    undefined,
+                  ],
+                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -5359,9 +7070,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
-                Object {
-                  "height": 1,
-                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+                undefined,
               ]
             }
           />
