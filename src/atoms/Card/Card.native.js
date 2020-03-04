@@ -45,7 +45,7 @@ const Card = ({ testID, children, height, width, minHeight, maxHeight, minWidth,
 };
 
 Card.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   width: PropTypes.string,
   height: PropTypes.string,
   minWidth: PropTypes.string,
@@ -57,6 +57,13 @@ Card.propTypes = {
 
 Card.defaultProps = {
   testID: 'ds-card',
+  children: undefined,
+  width: undefined,
+  height: undefined,
+  minWidth: undefined,
+  maxWidth: undefined,
+  minHeight: undefined,
+  maxHeight: undefined,
 };
 
 export default Card;
