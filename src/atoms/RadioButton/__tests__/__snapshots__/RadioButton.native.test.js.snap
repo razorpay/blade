@@ -25,53 +25,55 @@ exports[`Native <RadioButton /> Checked should match snapshot when errorText is 
         backgroundColor="transparent"
         borderRadius="12px"
         className="sc-AykKC bQZpU"
-        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
               "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
               "height": 24,
               "width": 24,
             },
           ]
         }
-        width="24px"
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
           color="rgba(43, 131, 234, 1.0 )"
-          height="12px"
           style={
             Array [
               Object {
                 "borderColor": "rgba(43, 131, 234, 1.0 )",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
+              },
+              Object {
                 "height": 12,
                 "width": 12,
               },
             ]
           }
-          width="12px"
         >
           <View
             backgroundColor="rgba(43, 131, 234, 1.0 )"
             borderRadius="3px"
-            height="6px"
             style={
               Array [
                 Object {
                   "backgroundColor": "rgba(43, 131, 234, 1.0 )",
                   "borderRadius": 3,
+                },
+                Object {
                   "height": 6,
                   "width": 6,
                 },
               ]
             }
-            width="6px"
           />
         </View>
       </View>
@@ -180,53 +182,55 @@ exports[`Native <RadioButton /> Checked should render component when checked wit
         backgroundColor="transparent"
         borderRadius="12px"
         className="sc-AykKC bQZpU"
-        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
               "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
               "height": 24,
               "width": 24,
             },
           ]
         }
-        width="24px"
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
           color="rgba(43, 131, 234, 1.0 )"
-          height="12px"
           style={
             Array [
               Object {
                 "borderColor": "rgba(43, 131, 234, 1.0 )",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
+              },
+              Object {
                 "height": 12,
                 "width": 12,
               },
             ]
           }
-          width="12px"
         >
           <View
             backgroundColor="rgba(43, 131, 234, 1.0 )"
             borderRadius="3px"
-            height="6px"
             style={
               Array [
                 Object {
                   "backgroundColor": "rgba(43, 131, 234, 1.0 )",
                   "borderRadius": 3,
+                },
+                Object {
                   "height": 6,
                   "width": 6,
                 },
               ]
             }
-            width="6px"
           />
         </View>
       </View>
@@ -298,53 +302,55 @@ exports[`Native <RadioButton /> Checked snapshot testing when user long presses 
         backgroundColor="rgba(11, 112, 231, 0.10)"
         borderRadius="12px"
         className="sc-AykKC bQZpU"
-        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "rgba(11, 112, 231, 0.10)",
               "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
               "height": 24,
               "width": 24,
             },
           ]
         }
-        width="24px"
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
           color="rgba(43, 131, 234, 1.0 )"
-          height="12px"
           style={
             Array [
               Object {
                 "borderColor": "rgba(43, 131, 234, 1.0 )",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
+              },
+              Object {
                 "height": 12,
                 "width": 12,
               },
             ]
           }
-          width="12px"
         >
           <View
             backgroundColor="rgba(43, 131, 234, 1.0 )"
             borderRadius="3px"
-            height="6px"
             style={
               Array [
                 Object {
                   "backgroundColor": "rgba(43, 131, 234, 1.0 )",
                   "borderRadius": 3,
+                },
+                Object {
                   "height": 6,
                   "width": 6,
                 },
               ]
             }
-            width="6px"
           />
         </View>
       </View>
@@ -416,53 +422,55 @@ exports[`Native <RadioButton /> Checked snapshot testing when user presses out 1
         backgroundColor="transparent"
         borderRadius="12px"
         className="sc-AykKC bQZpU"
-        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
               "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
               "height": 24,
               "width": 24,
             },
           ]
         }
-        width="24px"
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
           color="rgba(43, 131, 234, 1.0 )"
-          height="12px"
           style={
             Array [
               Object {
                 "borderColor": "rgba(43, 131, 234, 1.0 )",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
+              },
+              Object {
                 "height": 12,
                 "width": 12,
               },
             ]
           }
-          width="12px"
         >
           <View
             backgroundColor="rgba(43, 131, 234, 1.0 )"
             borderRadius="3px"
-            height="6px"
             style={
               Array [
                 Object {
                   "backgroundColor": "rgba(43, 131, 234, 1.0 )",
                   "borderRadius": 3,
+                },
+                Object {
                   "height": 6,
                   "width": 6,
                 },
               ]
             }
-            width="6px"
           />
         </View>
       </View>
@@ -534,37 +542,39 @@ exports[`Native <RadioButton /> Unchecked RadioButton should render component wh
         backgroundColor="transparent"
         borderRadius="12px"
         className="sc-AykKC bQZpU"
-        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
               "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
               "height": 24,
               "width": 24,
             },
           ]
         }
-        width="24px"
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
-          height="12px"
           style={
             Array [
               Object {
                 "borderColor": "rgba(22, 47, 86, 0.38)",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
+              },
+              Object {
                 "height": 12,
                 "width": 12,
               },
             ]
           }
-          width="12px"
         />
       </View>
       <View
@@ -635,37 +645,39 @@ exports[`Native <RadioButton /> Unchecked RadioButton should render component wh
         backgroundColor="transparent"
         borderRadius="12px"
         className="sc-AykKC bQZpU"
-        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
               "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
               "height": 24,
               "width": 24,
             },
           ]
         }
-        width="24px"
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
-          height="12px"
           style={
             Array [
               Object {
                 "borderColor": "rgba(22, 47, 86, 0.38)",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
+              },
+              Object {
                 "height": 12,
                 "width": 12,
               },
             ]
           }
-          width="12px"
         />
       </View>
       <View
@@ -736,37 +748,39 @@ exports[`Native <RadioButton /> Unchecked RadioButton should render component wh
         backgroundColor="transparent"
         borderRadius="12px"
         className="sc-AykKC bQZpU"
-        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
               "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
               "height": 24,
               "width": 24,
             },
           ]
         }
-        width="24px"
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
-          height="12px"
           style={
             Array [
               Object {
                 "borderColor": "rgba(22, 47, 86, 0.38)",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
+              },
+              Object {
                 "height": 12,
                 "width": 12,
               },
             ]
           }
-          width="12px"
         />
       </View>
       <View
@@ -837,37 +851,39 @@ exports[`Native <RadioButton /> Unchecked RadioButton should render component wh
         backgroundColor="transparent"
         borderRadius="12px"
         className="sc-AykKC bQZpU"
-        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
               "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
               "height": 24,
               "width": 24,
             },
           ]
         }
-        width="24px"
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
-          height="12px"
           style={
             Array [
               Object {
                 "borderColor": "rgba(22, 47, 86, 0.38)",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
+              },
+              Object {
                 "height": 12,
                 "width": 12,
               },
             ]
           }
-          width="12px"
         />
       </View>
       <View
@@ -938,37 +954,39 @@ exports[`Native <RadioButton /> Unchecked RadioButton should render medium sized
         backgroundColor="transparent"
         borderRadius="12px"
         className="sc-AykKC bQZpU"
-        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
               "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
               "height": 24,
               "width": 24,
             },
           ]
         }
-        width="24px"
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
-          height="12px"
           style={
             Array [
               Object {
                 "borderColor": "rgba(22, 47, 86, 0.38)",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
+              },
+              Object {
                 "height": 12,
                 "width": 12,
               },
             ]
           }
-          width="12px"
         />
       </View>
       <View
@@ -1076,37 +1094,39 @@ exports[`Native <RadioButton /> Unchecked RadioButton snapshot testing when user
         backgroundColor="rgba(224, 228, 249, 0.24)"
         borderRadius="12px"
         className="sc-AykKC bQZpU"
-        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "rgba(224, 228, 249, 0.24)",
               "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
               "height": 24,
               "width": 24,
             },
           ]
         }
-        width="24px"
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
-          height="12px"
           style={
             Array [
               Object {
                 "borderColor": "rgba(22, 47, 86, 0.38)",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
+              },
+              Object {
                 "height": 12,
                 "width": 12,
               },
             ]
           }
-          width="12px"
         />
       </View>
       <View
@@ -1177,37 +1197,39 @@ exports[`Native <RadioButton /> Unchecked RadioButton snapshot testing when user
         backgroundColor="transparent"
         borderRadius="12px"
         className="sc-AykKC bQZpU"
-        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
               "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
               "height": 24,
               "width": 24,
             },
           ]
         }
-        width="24px"
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
-          height="12px"
           style={
             Array [
               Object {
                 "borderColor": "rgba(22, 47, 86, 0.38)",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
+              },
+              Object {
                 "height": 12,
                 "width": 12,
               },
             ]
           }
-          width="12px"
         />
       </View>
       <View
