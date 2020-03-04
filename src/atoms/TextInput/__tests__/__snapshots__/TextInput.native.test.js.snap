@@ -35,11 +35,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -63,12 +64,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 8,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -86,6 +89,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -133,11 +138,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -161,12 +167,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 8,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -184,6 +192,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               Array [
                 Object {
                   "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -231,11 +241,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -259,12 +270,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 4,
                     "paddingLeft": 8,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -282,6 +295,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -329,11 +344,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -358,12 +374,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 8,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -381,6 +399,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -428,11 +448,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -494,12 +515,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     "color": "rgba(22, 47, 86, 0.24)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -640,6 +663,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -730,11 +755,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -796,12 +822,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -942,6 +970,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               Array [
                 Object {
                   "backgroundColor": "rgba(209, 45, 45, 1.0)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -1028,11 +1058,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -1057,12 +1088,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 8,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -1080,6 +1113,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -1209,11 +1244,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -1237,12 +1273,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 8,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -1260,6 +1298,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -1350,11 +1390,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -1501,12 +1542,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -1647,6 +1690,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -1694,11 +1739,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -1845,12 +1891,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -1868,6 +1916,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -1915,11 +1965,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -1943,12 +1994,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 8,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -2089,6 +2142,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -2136,11 +2191,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -2164,12 +2220,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 8,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -2187,6 +2245,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -2234,11 +2294,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -2262,12 +2323,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 8,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -2323,6 +2386,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -2370,11 +2435,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -2436,12 +2502,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -2459,6 +2527,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -2506,11 +2576,12 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -2534,12 +2605,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 8,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -2595,6 +2668,8 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -2642,11 +2717,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -2670,12 +2746,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -2693,6 +2771,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -2740,11 +2820,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -2768,12 +2849,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -2791,6 +2874,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
               Array [
                 Object {
                   "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -2838,11 +2923,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -2867,12 +2953,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -2890,6 +2978,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -2937,11 +3027,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -3003,12 +3094,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.24)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -3149,6 +3242,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -3239,11 +3334,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -3305,12 +3401,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -3451,6 +3549,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(209, 45, 45, 1.0)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -3537,11 +3637,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -3565,12 +3666,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 4,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -3588,6 +3691,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -3635,11 +3740,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -3663,12 +3769,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -3686,6 +3794,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -3776,11 +3886,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -3805,12 +3916,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -3828,6 +3941,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -3957,11 +4072,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -4108,12 +4224,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -4131,6 +4249,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -4178,11 +4298,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -4329,12 +4450,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -4475,6 +4598,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -4522,11 +4647,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -4550,12 +4676,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -4696,6 +4824,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -4743,11 +4873,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -4771,12 +4902,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -4794,6 +4927,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -4841,11 +4976,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -4869,12 +5005,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -4930,6 +5068,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -4977,11 +5117,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -5043,12 +5184,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -5066,6 +5209,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
@@ -5113,11 +5258,12 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         >
           <View
             className="sc-AykKC kHnGAa"
-            size="medium"
             style={
               Array [
                 Object {
                   "backgroundColor": "transparent",
+                },
+                Object {
                   "width": 240,
                 },
               ]
@@ -5141,12 +5287,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "color": "rgba(22, 47, 86, 0.87)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
-                    "height": 40,
                     "lineHeight": 20,
                     "paddingBottom": 2,
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                  },
+                  Object {
+                    "height": 40,
                   },
                 ]
               }
@@ -5202,6 +5350,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               Array [
                 Object {
                   "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Object {
                   "height": 1,
                 },
               ]
