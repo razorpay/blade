@@ -67,14 +67,14 @@ const onBlur = ({ AnimationConfig, labelAnimatedValue }) => {
   }).start();
 };
 
-const getColorInterpolation = (AnimationConfig, labelAnimatedValue) => {
+const getColorInterpolation = ({ AnimationConfig, labelAnimatedValue }) => {
   return labelAnimatedValue.interpolate({
     inputRange: [AnimationConfig.INITIAL_ANIMATION_VALUE, AnimationConfig.FINAL_ANIMATION_VALUE],
     outputRange: [AnimationConfig.INITIAL_LABEL_COLOR, AnimationConfig.FINAL_LABEL_COLOR],
   });
 };
 
-const getFontInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
+const getFontInterpolation = ({ AnimationConfig, labelAnimatedValue, hasText }) => {
   if (hasText) return AnimationConfig.FINAL_FONT_SIZE;
 
   return labelAnimatedValue.interpolate({
@@ -83,7 +83,7 @@ const getFontInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
   });
 };
 
-const getTopInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
+const getTopInterpolation = ({ AnimationConfig, labelAnimatedValue, hasText }) => {
   if (hasText) return AnimationConfig.FINAL_TOP_POSITION;
 
   return labelAnimatedValue.interpolate({
@@ -92,7 +92,7 @@ const getTopInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
   });
 };
 
-const getLeftInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
+const getLeftInterpolation = ({ AnimationConfig, labelAnimatedValue, hasText }) => {
   if (hasText) return AnimationConfig.FINAL_LEFT_POSITION;
 
   return labelAnimatedValue.interpolate({
@@ -101,7 +101,7 @@ const getLeftInterpolation = (AnimationConfig, labelAnimatedValue, hasText) => {
   });
 };
 
-const getInitialTopPosition = (layoutDimensions, variant) => {
+const getInitialTopPosition = ({ layoutDimensions, variant }) => {
   if (variant === 'outlined') {
     if (IS_ANDROID) {
       return layoutDimensions.height / ANDROID_OUTLINED_INITIAL_TOP_DIVISOR;
@@ -115,9 +115,9 @@ const getInitialTopPosition = (layoutDimensions, variant) => {
   }
 };
 
-const getInitialLeftPosition = (layoutDimensions) => layoutDimensions.x;
+const getInitialLeftPosition = ({ layoutDimensions }) => layoutDimensions.x;
 
-const getFinalLabelColor = (theme, hasError) =>
+const getFinalLabelColor = ({ theme, hasError }) =>
   hasError ? getColor(theme, 'shade.960') : getColor(theme, 'primary.900');
 
 const AnimatedLabel = ({
@@ -135,12 +135,12 @@ const AnimatedLabel = ({
     ANIMATION_DURATION: 100,
     INITIAL_FONT_SIZE: parseInt(theme.fonts.size.medium, 10),
     FINAL_FONT_SIZE: parseInt(theme.fonts.size.xsmall, 10),
-    INITIAL_TOP_POSITION: getInitialTopPosition(layoutDimensions, variant),
+    INITIAL_TOP_POSITION: getInitialTopPosition({ layoutDimensions, variant }),
     FINAL_TOP_POSITION: 0,
-    INITIAL_LEFT_POSITION: getInitialLeftPosition(layoutDimensions),
+    INITIAL_LEFT_POSITION: getInitialLeftPosition({ layoutDimensions }),
     FINAL_LEFT_POSITION: 0,
     INITIAL_LABEL_COLOR: getColor(theme, 'shade.960'),
-    FINAL_LABEL_COLOR: getFinalLabelColor(theme, hasError),
+    FINAL_LABEL_COLOR: getFinalLabelColor({ theme, hasError }),
     INITIAL_ANIMATION_VALUE: 0,
     FINAL_ANIMATION_VALUE: 1,
   };
@@ -163,17 +163,17 @@ const AnimatedLabel = ({
       <View>
         <FloatView
           style={{
-            top: getTopInterpolation(AnimationConfig, labelAnimatedValue, hasText),
-            left: getLeftInterpolation(AnimationConfig, labelAnimatedValue, hasText),
+            top: getTopInterpolation({ AnimationConfig, labelAnimatedValue, hasText }),
+            left: getLeftInterpolation({ AnimationConfig, labelAnimatedValue, hasText }),
           }}
           pointerEvents="none"
         >
           <StyledText
             style={{
-              fontSize: getFontInterpolation(AnimationConfig, labelAnimatedValue, hasText),
+              fontSize: getFontInterpolation({ AnimationConfig, labelAnimatedValue, hasText }),
               color: disabled
                 ? getColor(theme, 'shade.940')
-                : getColorInterpolation(AnimationConfig, labelAnimatedValue),
+                : getColorInterpolation({ AnimationConfig, labelAnimatedValue }),
             }}
             numberOfLines={1}
           >
