@@ -8,6 +8,7 @@ import automation from '../../_helpers/automation-attributes';
 import isPropDefined from '../../_helpers/isPropDefined';
 import View from '../View/';
 import Flex from '../Flex';
+import Size from '../Size';
 
 const styles = {
   container: {
@@ -97,16 +98,12 @@ const styles = {
 };
 
 const StyledContainer = styled(TouchableOpacity)`
-  height: ${styles.container.height};
-  width: ${styles.container.width};
   border-radius: ${styles.container.radius};
 `;
 
 const StyledKnob = styled(View)`
   position: absolute;
-  height: ${styles.knob.height};
   border-radius: ${styles.knob.radius};
-  min-width: ${(props) => props.minWidth};
   background-color: ${(props) => props.theme.colors.light[100]};
 `;
 
@@ -303,31 +300,37 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
 
   return (
     <Flex flexDirection="row">
-      <AnimatedContainer
-        disabled={disabled}
-        activeOpacity={1}
-        size={size}
-        onPressIn={onPressIn}
-        onPressOut={onPressOut}
-        style={[
-          {
-            backgroundColor:
-              activeContainerColor || disabledContainerColor || interpolateContainerColor,
-          },
-        ]}
-        {...automation(testID)}
+      <Size
+        height={styles.container.height({ size, theme })}
+        width={styles.container.width({ size, theme })}
       >
-        <Flex alignSelf="center">
-          <AnimatedKnob
-            size={size}
-            minWidth={`${knobWidth}px`}
-            style={{
-              left: animatedLeftValue,
-              right: animatedRightValue,
-            }}
-          />
-        </Flex>
-      </AnimatedContainer>
+        <AnimatedContainer
+          disabled={disabled}
+          activeOpacity={1}
+          size={size}
+          onPressIn={onPressIn}
+          onPressOut={onPressOut}
+          style={[
+            {
+              backgroundColor:
+                activeContainerColor || disabledContainerColor || interpolateContainerColor,
+            },
+          ]}
+          {...automation(testID)}
+        >
+          <Size height={styles.knob.height({ size, theme })} minWidth={`${knobWidth}px`}>
+            <Flex alignSelf="center">
+              <AnimatedKnob
+                size={size}
+                style={{
+                  left: animatedLeftValue,
+                  right: animatedRightValue,
+                }}
+              />
+            </Flex>
+          </Size>
+        </AnimatedContainer>
+      </Size>
     </Flex>
   );
 };
