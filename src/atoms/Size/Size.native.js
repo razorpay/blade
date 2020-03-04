@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 
 const Size = styled(
-  ({ minWidth, width, maxWidth, minHeight, height, maxHeight, children, ...props }) =>
-    React.cloneElement(children, props),
+  ({ minWidth, width, maxWidth, minHeight, height, maxHeight, children, ...props }) => {
+    if (React.Children.toArray(children).length !== 1) {
+      throw new Error('Expected a single child for Size component');
+    }
+
+    return React.cloneElement(children, props);
+  },
 )`
   ${(props) => (props.width ? `width: ${props.width}` : '')};
   ${(props) => (props.height ? `height: ${props.height}` : '')};
