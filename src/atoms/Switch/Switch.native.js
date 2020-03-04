@@ -285,30 +285,30 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, align, testID }) => {
     : null;
 
   return (
-    <Flex
-      flexDirection="row"
-      alignSelf={styles.align({ align })}
-      style={{
-        backgroundColor:
-          activeContainerColor || disabledContainerColor || interpolateContainerColor,
-      }}
-    >
+    <Flex flexDirection="row" alignSelf={styles.align({ align })}>
       <AnimatedContainer
         disabled={disabled}
         activeOpacity={1}
         size={size}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
+        style={[
+          {
+            backgroundColor:
+              activeContainerColor || disabledContainerColor || interpolateContainerColor,
+          },
+        ]}
         {...automation(testID)}
       >
-        <Flex
-          alignSelf="center"
-          style={{
-            left: leftSpaceAnimatedValue,
-            right: rightSpaceAnimatedValue,
-          }}
-        >
-          <AnimatedKnob size={size} minWidth={`${knobWidth}px`} />
+        <Flex alignSelf="center">
+          <AnimatedKnob
+            size={size}
+            minWidth={`${knobWidth}px`}
+            style={{
+              left: leftSpaceAnimatedValue,
+              right: rightSpaceAnimatedValue,
+            }}
+          />
         </Flex>
       </AnimatedContainer>
     </Flex>
