@@ -152,17 +152,19 @@ const styles = {
 };
 
 const Dot = styled(View)(
-  (props) => `
-width: ${props.width};
-height: ${props.height};
-border-radius: ${props.borderRadius};
-background-color: ${props.backgroundColor};
-`,
+  (props) =>
+    `
+    width: ${props.width};
+    height: ${props.height};
+    border-radius: ${props.borderRadius};
+    background-color: ${props.backgroundColor};
+  `,
 );
 
 const Circle = styled(View)(
   (props) =>
-    `width: ${props.width}; 
+    `
+    width: ${props.width}; 
     height: ${props.height}; 
     border-radius: ${props.borderRadius}; 
     border-color: ${props.color};
