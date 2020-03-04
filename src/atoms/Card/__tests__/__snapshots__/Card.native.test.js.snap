@@ -25,14 +25,6 @@ exports[`Renders <Card /> correctly should create a card with text 1`] = `
           "shadowRadius": 20,
         },
         Object {
-          "height": "50%",
-          "maxHeight": 200,
-          "maxWidth": 100,
-          "minHeight": 200,
-          "minWidth": 50,
-          "width": 100,
-        },
-        Object {
           "paddingBottom": 12,
           "paddingLeft": 12,
           "paddingRight": 12,
@@ -93,14 +85,6 @@ exports[`Renders <Card /> correctly should create an empty card with specified p
           },
           "shadowOpacity": 1,
           "shadowRadius": 20,
-        },
-        Object {
-          "height": "50%",
-          "maxHeight": 200,
-          "maxWidth": 100,
-          "minHeight": 200,
-          "minWidth": 50,
-          "width": 100,
         },
         Object {
           "paddingBottom": 12,

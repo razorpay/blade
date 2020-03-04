@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import automation from '../../_helpers/automation-attributes';
 import View from '../View';
-import Size from '../Size';
 import Space from '../Space/Space.native';
 
 const styles = {
@@ -27,43 +26,22 @@ const StyledCard = styled(View)`
   background-color: ${styles.backgroundColor};
 `;
 
-const Card = ({ testID, children, height, width, minHeight, maxHeight, minWidth, maxWidth }) => {
+const Card = ({ children, testID }) => {
   return (
     <Space padding={styles.padding()}>
-      <Size
-        height={height}
-        width={width}
-        minHeight={minHeight}
-        maxHeight={maxHeight}
-        minWidth={minWidth}
-        maxWidth={maxWidth}
-      >
-        <StyledCard {...automation(testID)}>{children}</StyledCard>
-      </Size>
+      <StyledCard {...automation(testID)}>{children}</StyledCard>
     </Space>
   );
 };
 
 Card.propTypes = {
   children: PropTypes.node,
-  width: PropTypes.string,
-  height: PropTypes.string,
-  minWidth: PropTypes.string,
-  maxWidth: PropTypes.string,
-  minHeight: PropTypes.string,
-  maxHeight: PropTypes.string,
   testID: PropTypes.string,
 };
 
 Card.defaultProps = {
-  testID: 'ds-card',
   children: undefined,
-  width: undefined,
-  height: undefined,
-  minWidth: undefined,
-  maxWidth: undefined,
-  minHeight: undefined,
-  maxHeight: undefined,
+  testID: 'ds-card',
 };
 
 export default Card;
