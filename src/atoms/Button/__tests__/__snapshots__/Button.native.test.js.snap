@@ -13,7 +13,6 @@ exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     block={true}
-    className="sc-AykKC cpDJVU"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -33,6 +32,18 @@ exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
           "paddingRight": 24,
           "paddingTop": 8,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -81,7 +92,6 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={true}
@@ -101,6 +111,15 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
           "paddingRight": 24,
           "paddingTop": 8,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -149,7 +168,6 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={true}
@@ -169,6 +187,15 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
           "paddingRight": 24,
           "paddingTop": 8,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -217,7 +244,6 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={true}
@@ -237,6 +263,15 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
           "paddingRight": 24,
           "paddingTop": 8,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -285,7 +320,6 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -305,6 +339,15 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
           "paddingRight": 24,
           "paddingTop": 10,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -353,7 +396,6 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -373,6 +415,15 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
           "paddingRight": 24,
           "paddingTop": 10,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -421,7 +472,6 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -441,6 +491,15 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
           "paddingRight": 24,
           "paddingTop": 10,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -489,7 +548,6 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -509,6 +567,15 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
           "paddingRight": 24,
           "paddingTop": 8,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -679,7 +746,6 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -699,6 +765,15 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
           "paddingRight": 24,
           "paddingTop": 8,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -747,7 +822,6 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -767,6 +841,15 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
           "paddingRight": 24,
           "paddingTop": 8,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -815,7 +898,6 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -835,6 +917,15 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
           "paddingRight": 16,
           "paddingTop": 5,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -883,7 +974,6 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -903,6 +993,15 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
           "paddingRight": 16,
           "paddingTop": 5,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -951,7 +1050,6 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -971,6 +1069,15 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
           "paddingRight": 16,
           "paddingTop": 5,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -1019,7 +1126,6 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -1039,6 +1145,15 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
           "paddingRight": 16,
           "paddingTop": 5,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -1087,7 +1202,6 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -1107,6 +1221,15 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
           "paddingRight": 8,
           "paddingTop": 2,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -1155,7 +1278,6 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -1175,6 +1297,15 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
           "paddingRight": 24,
           "paddingTop": 8,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -1223,7 +1354,6 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -1243,6 +1373,15 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
           "paddingRight": 24,
           "paddingTop": 10,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"
@@ -1413,7 +1552,6 @@ exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`
   <TouchableHighlight
     activeOpacity={1}
     block={false}
-    className="sc-AykKC kbzvPX"
     color="primary"
     delayPressOut={100}
     disabled={false}
@@ -1433,6 +1571,15 @@ exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`
           "paddingRight": 24,
           "paddingTop": 8,
         },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ],
+        undefined,
       ]
     }
     testID="ds-button"

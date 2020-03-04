@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <Switch /> correctly renders a controlled ON Switch 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    disabled={false}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "borderRadius": 8,
+        },
+        Object {
+          "backgroundColor": "rgba(22, 47, 86, 0.541)",
+          "flexDirection": "row",
+          "height": 16,
+          "width": 32,
+        },
+      ]
+    }
+    testID="ds-switch"
+  >
+    <View
+      size="medium"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(255, 255, 255, 1.0)",
+            "borderRadius": 6,
+            "position": "absolute",
+          },
+          Object {
+            "alignSelf": "center",
+            "flexDirection": "column",
+            "height": 12,
+            "left": 2,
+            "minWidth": 12,
+            "right": 18,
+          },
+        ]
+      }
+    />
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Switch /> correctly renders a default Switch 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    disabled={false}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "borderRadius": 8,
+        },
+        Object {
+          "backgroundColor": "rgba(22, 47, 86, 0.541)",
+          "flexDirection": "row",
+          "height": 16,
+          "width": 32,
+        },
+      ]
+    }
+    testID="ds-switch"
+  >
+    <View
+      size="medium"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(255, 255, 255, 1.0)",
+            "borderRadius": 6,
+            "position": "absolute",
+          },
+          Object {
+            "alignSelf": "center",
+            "flexDirection": "column",
+            "height": 12,
+            "left": 2,
+            "minWidth": 12,
+            "right": 18,
+          },
+        ]
+      }
+    />
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Switch /> correctly renders a disabled/OFF Switch 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    disabled={true}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "borderRadius": 8,
+        },
+        Object {
+          "backgroundColor": "rgba(22, 47, 86, 0.10)",
+          "flexDirection": "row",
+          "height": 16,
+          "width": 32,
+        },
+      ]
+    }
+    testID="ds-switch"
+  >
+    <View
+      size="medium"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(255, 255, 255, 1.0)",
+            "borderRadius": 6,
+            "position": "absolute",
+          },
+          Object {
+            "alignSelf": "center",
+            "flexDirection": "column",
+            "height": 12,
+            "left": 2,
+            "minWidth": 12,
+            "right": 18,
+          },
+        ]
+      }
+    />
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Switch /> correctly renders a disabled/ON Switch 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    disabled={true}
+    size="medium"
+    style={
+      Array [
+        Object {
+          "borderRadius": 8,
+        },
+        Object {
+          "backgroundColor": "rgba(162, 201, 246, 1.0)",
+          "flexDirection": "row",
+          "height": 16,
+          "width": 32,
+        },
+      ]
+    }
+    testID="ds-switch"
+  >
+    <View
+      size="medium"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(255, 255, 255, 1.0)",
+            "borderRadius": 6,
+            "position": "absolute",
+          },
+          Object {
+            "alignSelf": "center",
+            "flexDirection": "column",
+            "height": 12,
+            "left": 18,
+            "minWidth": 12,
+            "right": 2,
+          },
+        ]
+      }
+    />
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Switch /> correctly renders a large Switch 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    disabled={false}
+    size="large"
+    style={
+      Array [
+        Object {
+          "borderRadius": 12,
+        },
+        Object {
+          "backgroundColor": "rgba(22, 47, 86, 0.541)",
+          "flexDirection": "row",
+          "height": 24,
+          "width": 48,
+        },
+      ]
+    }
+    testID="ds-switch"
+  >
+    <View
+      size="large"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(255, 255, 255, 1.0)",
+            "borderRadius": 8,
+            "position": "absolute",
+          },
+          Object {
+            "alignSelf": "center",
+            "flexDirection": "column",
+            "height": 16,
+            "left": 4,
+            "minWidth": 16,
+            "right": 28,
+          },
+        ]
+      }
+    />
+  </TouchableOpacity>
+</View>
+`;

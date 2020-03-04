@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 const Flex = styled(
   ({
@@ -17,8 +17,9 @@ const Flex = styled(
     justifyContent,
     order,
     children,
+    style,
     ...props
-  }) => React.cloneElement(children, props),
+  }) => React.cloneElement(children, { ...props, style: [style, children.props.style] }),
 )`
   ${(props) => (props.alignContent ? `align-content: ${props.alignContent};` : '')};
   ${(props) => (props.alignItems ? `align-items: ${props.alignItems};` : '')};
