@@ -21,6 +21,13 @@ const REGULAR_PADDING_TOP_MULTIPLIER_IOS = 0.29;
 
 const styles = {
   regularLabelContainer: {
+    padding({ labelPosition }) {
+      if (labelPosition === 'left') {
+        return [0, 3, 0, 0];
+      } else {
+        return [0, 0, 0.5, 0];
+      }
+    },
     paddingTop({ inputLayoutDimensions, labelPosition }) {
       // For aligning left label to the center of Text Field
       if (labelPosition === 'top') {
@@ -242,7 +249,7 @@ const LabelContainer = styled(View)`
 const RegularLabel = ({ children, inputLayoutDimensions, labelPosition, disabled }) => {
   return (
     <LabelContainer inputLayoutDimensions={inputLayoutDimensions} labelPosition={labelPosition}>
-      <Space padding={[0, 3, 0, 0]}>
+      <Space padding={styles.regularLabelContainer.padding({ labelPosition })}>
         <View>
           <Text size="medium" color={disabled ? 'shade.940' : 'shade.980'}>
             {children}
