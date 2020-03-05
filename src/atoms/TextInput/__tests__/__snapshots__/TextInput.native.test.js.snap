@@ -23,6 +23,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
     }
   >
     <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Email
+        </Text>
+      </View>
+    </View>
+    <View
       style={
         Array [
           Array [
@@ -86,7 +134,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -97,14 +145,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -169,6 +219,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
       ]
     }
   >
+    <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Email
+        </Text>
+      </View>
+    </View>
     <View
       style={
         Array [
@@ -244,14 +342,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -317,6 +417,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
     }
   >
     <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Email
+        </Text>
+      </View>
+    </View>
+    <View
       style={
         Array [
           Array [
@@ -380,7 +528,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={true}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -391,14 +539,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 4,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 4,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -464,6 +614,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
     }
   >
     <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+    <View
       style={
         Array [
           Array [
@@ -528,7 +726,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
               hasPrefix={false}
               hasText={false}
               maxLength={10}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -539,14 +737,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -611,6 +811,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
       ]
     }
   >
+    <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.940"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.24)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Email
+        </Text>
+      </View>
+    </View>
     <View
       style={
         Array [
@@ -715,7 +963,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               hasLeftIcon={false}
               hasPrefix={true}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.10)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -726,14 +974,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -985,6 +1235,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
     }
   >
     <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Email
+        </Text>
+      </View>
+    </View>
+    <View
       style={
         Array [
           Array [
@@ -1088,7 +1386,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               hasLeftIcon={false}
               hasPrefix={true}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -1099,14 +1397,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -1358,6 +1658,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
     }
   >
     <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+    <View
       style={
         Array [
           Array [
@@ -1422,7 +1770,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               hasPrefix={false}
               hasText={false}
               maxLength={10}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -1433,14 +1781,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -1612,6 +1962,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
     }
   >
     <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+    <View
       style={
         Array [
           Array [
@@ -1675,7 +2073,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -1686,14 +2084,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -1819,6 +2219,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
       ]
     }
   >
+    <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Label
+        </Text>
+      </View>
+    </View>
     <View
       style={
         Array [
@@ -2008,7 +2456,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               hasLeftIcon={true}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -2019,14 +2467,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -2217,6 +2667,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
     }
   >
     <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+    <View
       style={
         Array [
           Array [
@@ -2405,7 +2903,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               hasLeftIcon={true}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -2416,14 +2914,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -2489,6 +2989,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
     }
   >
     <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+    <View
       style={
         Array [
           Array [
@@ -2552,7 +3100,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -2563,14 +3111,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -2761,6 +3311,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
     }
   >
     <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Email
+        </Text>
+      </View>
+    </View>
+    <View
       style={
         Array [
           Array [
@@ -2824,7 +3422,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -2835,14 +3433,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -2908,6 +3508,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
     }
   >
     <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+    <View
       style={
         Array [
           Array [
@@ -2971,7 +3619,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -2982,14 +3630,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -3095,6 +3745,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
     }
   >
     <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+    <View
       style={
         Array [
           Array [
@@ -3198,7 +3896,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               hasLeftIcon={false}
               hasPrefix={true}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -3209,14 +3907,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -3281,6 +3981,54 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
       ]
     }
   >
+    <View
+      labelPosition="top"
+      style={
+        Array [
+          Object {
+            "paddingTop": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 24,
+              "paddingTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Label
+        </Text>
+      </View>
+    </View>
     <View
       style={
         Array [
@@ -3356,14 +4104,16 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -3532,7 +4282,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -3543,14 +4293,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -3690,14 +4442,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -3838,14 +4592,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -4025,14 +4781,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -4398,14 +5156,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -4731,14 +5491,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 4,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 4,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -4878,14 +5640,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -5087,14 +5851,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -5465,14 +6231,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -5737,14 +6505,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -6009,14 +6779,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -6281,14 +7053,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -6428,14 +7202,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -6655,14 +7431,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
@@ -6802,14 +7580,16 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                    },
+                    Object {
+                      "paddingBottom": 2,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
                     },
                     Array [
                       Object {
