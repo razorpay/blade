@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { makePxValue } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
-import isPropDefined from '../../_helpers/isPropDefined';
+import isDefined from '../../_helpers/isDefined';
 import View from '../View/';
 import Flex from '../Flex';
 import Size from '../Size';
@@ -190,8 +190,8 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
   );
 
   useEffect(() => {
-    if (isPropDefined(on)) {
-      if (isPropDefined(defaultOn)) {
+    if (isDefined(on)) {
+      if (isDefined(defaultOn)) {
         throw Error('Expected only one of defaultOn or on props.');
       }
       if (on && !toggle) {
@@ -219,7 +219,7 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
       animatedRightValue.setValue(animationConfig.on.rightSpace);
       setToggle(true);
     }
-  }, [on, defaultOn]);
+  }, [on, defaultOn, toggle, animatedLeftValue, animatedRightValue, animationConfig]);
 
   const onPressIn = useCallback(() => {
     setActive(true);
@@ -236,11 +236,18 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
         animationDuration: animationConfig.knob.scaleDuration,
       });
     }
-  }, [toggle]);
+  }, [
+    animatedLeftValue,
+    animatedRightValue,
+    animationConfig.knob.scaleDuration,
+    animationConfig.off.activeRightSpace,
+    animationConfig.on.activeLeftSpace,
+    toggle,
+  ]);
 
   const onPressOut = useCallback(() => {
     setActive(false);
-    if (isPropDefined(on)) {
+    if (isDefined(on)) {
       if (toggle) {
         scaleKnob({
           animatedValue: animatedLeftValue,
@@ -279,7 +286,7 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
         },
       });
     }
-  }, [toggle]);
+  }, [animatedLeftValue, animatedRightValue, animationConfig, on, onChange, toggle]);
 
   const interpolateContainerColor = animatedLeftValue.interpolate({
     inputRange: [animationConfig.off.leftSpace, animationConfig.on.leftSpace],
