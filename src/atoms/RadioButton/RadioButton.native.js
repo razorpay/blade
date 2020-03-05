@@ -2,24 +2,25 @@ import React, { useState, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
-import Text from '../Text';
-import Flex from '../Flex';
-import isEmpty from '../../_helpers/isEmpty';
-import automation from '../../_helpers/automation-attributes';
-import Space from '../Space';
-import { getVariantColorKeys, getColor } from '../../_helpers/theme';
+import RadioButtonGroup, { RadioButtonContext } from './RadioButtonGroup';
 import View from '../View';
-import Backdrop from './Backdrop';
+import Text from '../Text';
 import isDefined from '../../_helpers/isDefined';
+import { getVariantColorKeys, getColor } from '../../_helpers/theme';
+import Flex from '../Flex';
+import automation from '../../_helpers/automation-attributes';
 import Size from '../Size';
+import Backdrop from './Backdrop';
+import Space from '../Space';
+import isEmpty from '../../_helpers/isEmpty';
 
 const styles = {
   radio: {
-    color({ theme, disabled, isChecked, variantColor }) {
+    color({ theme, disabled, checked, variantColor }) {
       if (disabled) {
         return getColor(theme, 'shade.930');
       }
-      if (isChecked) {
+      if (checked) {
         return getColor(theme, `${variantColor || 'primary'}.800`);
       }
 
@@ -169,64 +170,55 @@ const Circle = styled(View)(
   `,
 );
 
+const isChecked = (defaultChecked, contextValue, currentValue) => {
+  if (contextValue === currentValue) return true;
+  if (isDefined(defaultChecked)) return defaultChecked;
+
+  return false;
+};
+
 const RadioButton = ({
-  defaultChecked,
-  checked,
-  onChange,
-  disabled,
-  title,
   size,
-  variantColor,
+  value,
+  defaultChecked,
+  disabled,
+  onClick,
+  title,
   helpText,
   errorText,
+  variantColor,
   testID,
 }) => {
   let titleTextColor = 'shade.980';
   let helpTextColor = 'shade.950';
-
-  let radioButtonInitialState = false;
-
-  if (isDefined(defaultChecked) && isDefined(checked)) {
-    throw Error('One of defaultChecked or checked should be supplied.');
-  }
-
-  if (isDefined(defaultChecked)) {
-    radioButtonInitialState = defaultChecked;
-  }
-
-  if (isDefined(checked)) {
-    radioButtonInitialState = checked;
-  }
-
-  const [isChecked, setRadioButtonState] = useState(radioButtonInitialState);
-  const [underlayColor, setUnderlayColor] = useState('transparent');
+  const context = useContext(RadioButtonContext);
+  const checked = isChecked(defaultChecked, context.value, value);
   const theme = useContext(ThemeContext);
 
-  const radioColor = styles.radio.color({ theme, disabled, isChecked, variantColor });
+  const [underlayColor, setUnderlayColor] = useState('transparent');
+
+  const radioColor = styles.radio.color({ theme, disabled, checked, variantColor });
 
   const onPressIn = useCallback(() => {
     let colorKey = 'tone.940';
-    if (isChecked) {
+    if (checked) {
       colorKey = `${variantColor || 'primary'}.930`;
     }
     const newUnderlayColor = getColor(theme, colorKey);
     setUnderlayColor(newUnderlayColor);
-  }, [isChecked, theme, variantColor]);
+  }, [checked, theme, variantColor]);
 
   const onPressOut = useCallback(() => {
     setUnderlayColor('transparent');
   }, []);
 
   const onPress = useCallback(() => {
-    if (isDefined(checked)) {
-      onChange(!isChecked);
-      return;
+    if (context.onValueChange) {
+      context.onValueChange(value);
+    } else if (onClick) {
+      onClick(value);
     }
-    setRadioButtonState((prevState) => {
-      onChange(!prevState);
-      return !prevState;
-    });
-  }, [checked, isChecked, onChange]);
+  }, [context, onClick, value]);
 
   if (disabled) {
     titleTextColor = 'shade.950';
@@ -253,7 +245,7 @@ const RadioButton = ({
                   <Flex justifyContent="center" alignItems="center">
                     <Size {...styles.circle.dimensions(size)}>
                       <Circle color={radioColor}>
-                        {isChecked ? (
+                        {checked ? (
                           <Size {...styles.dot.dimensions(size)}>
                             <Dot backgroundColor={radioColor} />
                           </Size>
@@ -295,12 +287,12 @@ const RadioButton = ({
 
 RadioButton.propTypes = {
   defaultChecked: PropTypes.bool,
-  checked: PropTypes.bool,
+  value: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
-  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   testID: PropTypes.string,
   helpText: (props, propName, componentName) => {
     if (props.size === 'small') {
@@ -336,7 +328,6 @@ RadioButton.propTypes = {
 
 RadioButton.defaultProps = {
   defaultChecked: undefined,
-  checked: undefined,
   size: 'medium',
   helpText: '',
   disabled: false,
@@ -344,5 +335,7 @@ RadioButton.defaultProps = {
   variantColor: 'primary',
   testID: 'ds-radio-button',
 };
+
+RadioButton.Group = RadioButtonGroup;
 
 export default RadioButton;
