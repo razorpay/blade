@@ -219,7 +219,7 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
       animatedRightValue.setValue(animationConfig.on.rightSpace);
       setToggle(true);
     }
-  }, [on, defaultOn, toggle, animatedLeftValue, animatedRightValue, animationConfig]);
+  }, [on, defaultOn]);
 
   const onPressIn = useCallback(() => {
     setActive(true);
@@ -236,14 +236,7 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
         animationDuration: animationConfig.knob.scaleDuration,
       });
     }
-  }, [
-    animatedLeftValue,
-    animatedRightValue,
-    animationConfig.knob.scaleDuration,
-    animationConfig.off.activeRightSpace,
-    animationConfig.on.activeLeftSpace,
-    toggle,
-  ]);
+  }, [toggle]);
 
   const onPressOut = useCallback(() => {
     setActive(false);
@@ -286,7 +279,7 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
         },
       });
     }
-  }, [animatedLeftValue, animatedRightValue, animationConfig, on, onChange, toggle]);
+  }, [toggle]);
 
   const interpolateContainerColor = animatedLeftValue.interpolate({
     inputRange: [animationConfig.off.leftSpace, animationConfig.on.leftSpace],

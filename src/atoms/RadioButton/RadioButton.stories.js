@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, boolean, select, action } from '@storybook/addon-knobs';
+import { text, boolean, select } from '@storybook/addon-knobs';
 import Radio from './RadioButton';
 import Flex from '../Flex';
 import View from '../View';
@@ -38,7 +38,7 @@ storiesOf('RadioButton', module)
   .add('controlled', () => (
     <Flex flexDirection="row" flexWrap="wrap">
       <View>
-        <Radio value="1" onValueChange={action('on value change')}>
+        <Radio value="1" onValueChange={() => {}}>
           <Radio.Option value="1" size="large" title="Unchecked" helpText="I'm unchecked" />
           <Radio.Option value="2" size="large" title="Checked" helpText="I'm active" />
           <Radio.Option value="3" size="large" disabled title="Disabled" helpText="I'm disabled" />

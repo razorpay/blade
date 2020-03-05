@@ -53,7 +53,7 @@ describe('Native <RadioButton />', () => {
       expect(firstChildComponent).toMatchSnapshot();
     });
 
-    test('snapshot testing when user long presses on RadioButton', () => {
+    test('snapshot testing when user presses in  on RadioButton', () => {
       const { container, getByTestId } = renderWithTheme(
         <Radio>
           <Radio.Option value="1" title="React" testID="reactSelectId" />
@@ -70,7 +70,7 @@ describe('Native <RadioButton />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    test('snapshot testing when user long presses on RadioButton of size large', () => {
+    test('snapshot testing when user presses in  on RadioButton of size large', () => {
       const { container, getByTestId } = renderWithTheme(
         <Radio>
           <Radio.Option value="1" title="React" size="large" testID="reactSelectId" />
@@ -176,7 +176,7 @@ describe('Native <RadioButton />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    test('should match snapshot testing when user long presses on RadioButton of medium large', () => {
+    test('should match snapshot testing when user presses in  on RadioButton of medium large', () => {
       const { container, getByTestId } = renderWithTheme(
         <Radio value="2" onValueChange={jest.fn()}>
           <Radio.Option value="1" title="React" size="large" testID="reactSelectId" />

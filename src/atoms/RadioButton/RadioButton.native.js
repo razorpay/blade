@@ -178,12 +178,15 @@ const RadioButtonContext = React.createContext(null);
 const Radio = ({ value, onValueChange, defaultValue, children }) => {
   const [selected, setSelected] = useState(value || defaultValue);
 
-  const onChange = (val) => {
-    if (!value) {
-      setSelected(val);
-    }
-    if (isDefined(onValueChange)) onValueChange(val);
-  };
+  const onChange = useCallback(
+    (newValue) => {
+      if (!value) {
+        setSelected(newValue);
+      }
+      if (isDefined(onValueChange)) onValueChange(newValue);
+    },
+    [onValueChange, value],
+  );
 
   return (
     <RadioButtonContext.Provider value={{ value: selected, onValueChange: onChange }}>
@@ -346,10 +349,18 @@ Radio.propTypes = {
   children: PropTypes.node,
 };
 
+Radio.defaultProps = {
+  value: undefined,
+  defaultValue: undefined,
+  onValueChange: () => {},
+  children: null,
+};
+
 RadioButton.defaultProps = {
   size: 'medium',
   helpText: '',
   disabled: false,
+  onClick: () => {},
   errorText: '',
   variantColor: 'primary',
   testID: 'ds-radio-button',

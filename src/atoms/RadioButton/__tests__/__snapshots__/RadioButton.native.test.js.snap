@@ -4,18 +4,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
 <TouchableOpacity
   accessibilityRole="radio"
   activeOpacity={1}
-  className="sc-AykKC cQCQxd"
   disabled={false}
+  style={
+    Array [
+      Array [
+        Object {
+          "alignSelf": "flex-start",
+          "flexDirection": "column",
+        },
+      ],
+      undefined,
+    ]
+  }
   testID="reactSelectId"
   underlayColor="transparent"
 >
   <View
-    className="sc-AykKC kHnGAa"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
       backgroundColor="transparent"
       borderRadius="12px"
-      className="sc-AykKC bQZpU"
       style={
         Array [
           Object {
@@ -24,17 +43,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
             "height": undefined,
             "width": undefined,
           },
-          Object {
-            "height": 24,
-            "width": 24,
-          },
+          Array [
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "column",
+                "justifyContent": "center",
+              },
+            ],
+            undefined,
+          ],
+          undefined,
         ]
       }
     >
       <View
         borderRadius="6px"
         borderWidth="1.2px"
-        className="sc-AykKC bQZpU"
         color="rgba(22, 47, 86, 0.38)"
         style={
           Array [
@@ -43,16 +72,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
               "borderRadius": 6,
               "borderWidth": 1.2,
             },
-            Object {
-              "height": 12,
-              "width": 12,
-            },
+            Array [
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       />
     </View>
     <View
-      className="sc-AykKC bJrJEE"
       style={
         Array [
           Object {
@@ -61,6 +100,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
             "marginRight": 0,
             "marginTop": 0,
           },
+          Array [
+            Object {
+              "alignSelf": "center",
+              "flexDirection": "column",
+            },
+          ],
+          undefined,
         ]
       }
     >
@@ -97,18 +143,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
 <TouchableOpacity
   accessibilityRole="radio"
   activeOpacity={1}
-  className="sc-AykKC cQCQxd"
   disabled={false}
+  style={
+    Array [
+      Array [
+        Object {
+          "alignSelf": "flex-start",
+          "flexDirection": "column",
+        },
+      ],
+      undefined,
+    ]
+  }
   testID="reactSelectId"
   underlayColor="transparent"
 >
   <View
-    className="sc-AykKC kHnGAa"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ],
+        undefined,
+      ]
+    }
   >
     <View
       backgroundColor="transparent"
       borderRadius="12px"
-      className="sc-AykKC bQZpU"
       style={
         Array [
           Object {
@@ -117,17 +182,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
             "height": undefined,
             "width": undefined,
           },
-          Object {
-            "height": 24,
-            "width": 24,
-          },
+          Array [
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "column",
+                "justifyContent": "center",
+              },
+            ],
+            undefined,
+          ],
+          undefined,
         ]
       }
     >
       <View
         borderRadius="6px"
         borderWidth="1.2px"
-        className="sc-AykKC bQZpU"
         color="rgba(43, 131, 234, 1.0 )"
         style={
           Array [
@@ -136,10 +211,21 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
               "borderRadius": 6,
               "borderWidth": 1.2,
             },
-            Object {
-              "height": 12,
-              "width": 12,
-            },
+            Array [
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
@@ -152,17 +238,19 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
                 "backgroundColor": "rgba(43, 131, 234, 1.0 )",
                 "borderRadius": 3,
               },
-              Object {
-                "height": 6,
-                "width": 6,
-              },
+              Array [
+                Object {
+                  "height": 6,
+                  "width": 6,
+                },
+              ],
+              undefined,
             ]
           }
         />
       </View>
     </View>
     <View
-      className="sc-AykKC bJrJEE"
       style={
         Array [
           Object {
@@ -171,6 +259,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
             "marginRight": 0,
             "marginTop": 0,
           },
+          Array [
+            Object {
+              "alignSelf": "center",
+              "flexDirection": "column",
+            },
+          ],
+          undefined,
         ]
       }
     >
@@ -216,18 +311,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="14px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -236,17 +350,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 28,
-              "width": 28,
-            },
+            Array [
+              Object {
+                "height": 28,
+                "width": 28,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="7px"
           borderWidth="1.4px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -255,16 +379,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                 "borderRadius": 7,
                 "borderWidth": 1.4,
               },
-              Object {
-                "height": 14,
-                "width": 14,
-              },
+              Array [
+                Object {
+                  "height": 14,
+                  "width": 14,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -273,6 +407,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -306,18 +447,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -326,17 +486,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -345,16 +515,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -363,6 +543,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -396,18 +583,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="14px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -416,17 +622,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 28,
-              "width": 28,
-            },
+            Array [
+              Object {
+                "height": 28,
+                "width": 28,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="7px"
           borderWidth="1.4px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -435,16 +651,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                 "borderRadius": 7,
                 "borderWidth": 1.4,
               },
-              Object {
-                "height": 14,
-                "width": 14,
-              },
+              Array [
+                Object {
+                  "height": 14,
+                  "width": 14,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -453,6 +679,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -499,18 +732,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={true}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="14px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -519,17 +771,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 28,
-              "width": 28,
-            },
+            Array [
+              Object {
+                "height": 28,
+                "width": 28,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="7px"
           borderWidth="1.4px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.10)"
           style={
             Array [
@@ -538,16 +800,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                 "borderRadius": 7,
                 "borderWidth": 1.4,
               },
-              Object {
-                "height": 14,
-                "width": 14,
-              },
+              Array [
+                Object {
+                  "height": 14,
+                  "width": 14,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -556,6 +828,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -626,18 +905,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={true}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -646,17 +944,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.10)"
           style={
             Array [
@@ -665,16 +973,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -683,6 +1001,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -753,18 +1078,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={true}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="10px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -773,17 +1117,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 20,
-              "width": 20,
-            },
+            Array [
+              Object {
+                "height": 20,
+                "width": 20,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="5px"
           borderWidth="1px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.10)"
           style={
             Array [
@@ -792,16 +1146,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                 "borderRadius": 5,
                 "borderWidth": 1,
               },
-              Object {
-                "height": 10,
-                "width": 10,
-              },
+              Array [
+                Object {
+                  "height": 10,
+                  "width": 10,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -810,6 +1174,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -856,18 +1227,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="14px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -876,17 +1266,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 28,
-              "width": 28,
-            },
+            Array [
+              Object {
+                "height": 28,
+                "width": 28,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="7px"
           borderWidth="1.4px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -895,16 +1295,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                 "borderRadius": 7,
                 "borderWidth": 1.4,
               },
-              Object {
-                "height": 14,
-                "width": 14,
-              },
+              Array [
+                Object {
+                  "height": 14,
+                  "width": 14,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -913,6 +1323,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -983,18 +1400,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -1003,17 +1439,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -1022,16 +1468,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -1040,6 +1496,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -1110,18 +1573,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="10px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -1130,17 +1612,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 20,
-              "width": 20,
-            },
+            Array [
+              Object {
+                "height": 20,
+                "width": 20,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="5px"
           borderWidth="1px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -1149,16 +1641,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                 "borderRadius": 5,
                 "borderWidth": 1,
               },
-              Object {
-                "height": 10,
-                "width": 10,
-              },
+              Array [
+                Object {
+                  "height": 10,
+                  "width": 10,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -1167,6 +1669,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -1213,18 +1722,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -1233,17 +1761,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -1252,16 +1790,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -1270,6 +1818,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -1303,18 +1858,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -1323,17 +1897,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -1342,16 +1926,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -1360,6 +1954,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -1393,18 +1994,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -1413,17 +2033,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -1432,16 +2062,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -1450,6 +2090,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -1483,7 +2130,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
 </View>
 `;
 
-exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user long presses on RadioButton 1`] = `
+exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user presses in  on RadioButton 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1496,18 +2143,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="reactSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="rgba(224, 228, 249, 0.24)"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -1516,17 +2182,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -1535,16 +2211,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -1553,6 +2239,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -1586,18 +2279,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="angularSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -1606,17 +2318,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -1625,16 +2347,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -1643,6 +2375,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -1676,18 +2415,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="vueSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -1696,17 +2454,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -1715,16 +2483,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -1733,6 +2511,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -1766,7 +2551,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
 </View>
 `;
 
-exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user long presses on RadioButton of size large 1`] = `
+exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user presses in  on RadioButton of size large 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1779,18 +2564,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="reactSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="rgba(224, 228, 249, 0.24)"
         borderRadius="14px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -1799,17 +2603,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 28,
-              "width": 28,
-            },
+            Array [
+              Object {
+                "height": 28,
+                "width": 28,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="7px"
           borderWidth="1.4px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -1818,16 +2632,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                 "borderRadius": 7,
                 "borderWidth": 1.4,
               },
-              Object {
-                "height": 14,
-                "width": 14,
-              },
+              Array [
+                Object {
+                  "height": 14,
+                  "width": 14,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -1836,6 +2660,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -1869,18 +2700,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="angularSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="14px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -1889,17 +2739,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 28,
-              "width": 28,
-            },
+            Array [
+              Object {
+                "height": 28,
+                "width": 28,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="7px"
           borderWidth="1.4px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -1908,16 +2768,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                 "borderRadius": 7,
                 "borderWidth": 1.4,
               },
-              Object {
-                "height": 14,
-                "width": 14,
-              },
+              Array [
+                Object {
+                  "height": 14,
+                  "width": 14,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -1926,6 +2796,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -1959,18 +2836,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="vueSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="14px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -1979,17 +2875,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 28,
-              "width": 28,
-            },
+            Array [
+              Object {
+                "height": 28,
+                "width": 28,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="7px"
           borderWidth="1.4px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -1998,16 +2904,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                 "borderRadius": 7,
                 "borderWidth": 1.4,
               },
-              Object {
-                "height": 14,
-                "width": 14,
-              },
+              Array [
+                Object {
+                  "height": 14,
+                  "width": 14,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -2016,6 +2932,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -2062,18 +2985,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="reactSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -2082,17 +3024,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -2101,16 +3053,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -2119,6 +3081,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -2152,18 +3121,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="angularSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -2172,17 +3160,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -2191,16 +3189,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -2209,6 +3217,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -2242,18 +3257,37 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="vueSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -2262,17 +3296,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -2281,16 +3325,26 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -2299,6 +3353,13 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -2332,7 +3393,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
 </View>
 `;
 
-exports[`Native <RadioButton /> controlled component should match snapshot testing when user long presses on RadioButton of medium large 1`] = `
+exports[`Native <RadioButton /> controlled component should match snapshot testing when user presses in  on RadioButton of medium large 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2345,18 +3406,37 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="reactSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="rgba(224, 228, 249, 0.24)"
         borderRadius="14px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -2365,17 +3445,27 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 28,
-              "width": 28,
-            },
+            Array [
+              Object {
+                "height": 28,
+                "width": 28,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="7px"
           borderWidth="1.4px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -2384,16 +3474,26 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
                 "borderRadius": 7,
                 "borderWidth": 1.4,
               },
-              Object {
-                "height": 14,
-                "width": 14,
-              },
+              Array [
+                Object {
+                  "height": 14,
+                  "width": 14,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -2402,6 +3502,13 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -2435,18 +3542,37 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="angularSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -2455,17 +3581,27 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(43, 131, 234, 1.0 )"
           style={
             Array [
@@ -2474,10 +3610,21 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         >
@@ -2490,17 +3637,19 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
                   "backgroundColor": "rgba(43, 131, 234, 1.0 )",
                   "borderRadius": 3,
                 },
-                Object {
-                  "height": 6,
-                  "width": 6,
-                },
+                Array [
+                  Object {
+                    "height": 6,
+                    "width": 6,
+                  },
+                ],
+                undefined,
               ]
             }
           />
         </View>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -2509,6 +3658,13 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -2542,18 +3698,37 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="vueSelectId"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="14px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -2562,17 +3737,27 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 28,
-              "width": 28,
-            },
+            Array [
+              Object {
+                "height": 28,
+                "width": 28,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="7px"
           borderWidth="1.4px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -2581,16 +3766,26 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
                 "borderRadius": 7,
                 "borderWidth": 1.4,
               },
-              Object {
-                "height": 14,
-                "width": 14,
-              },
+              Array [
+                Object {
+                  "height": 14,
+                  "width": 14,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -2599,6 +3794,13 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -2645,18 +3847,37 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -2665,17 +3886,27 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(43, 131, 234, 1.0 )"
           style={
             Array [
@@ -2684,10 +3915,21 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         >
@@ -2700,17 +3942,19 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
                   "backgroundColor": "rgba(43, 131, 234, 1.0 )",
                   "borderRadius": 3,
                 },
-                Object {
-                  "height": 6,
-                  "width": 6,
-                },
+                Array [
+                  Object {
+                    "height": 6,
+                    "width": 6,
+                  },
+                ],
+                undefined,
               ]
             }
           />
         </View>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -2719,6 +3963,13 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -2752,18 +4003,37 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -2772,17 +4042,27 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -2791,16 +4071,26 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -2809,6 +4099,13 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
@@ -2842,18 +4139,37 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+        undefined,
+      ]
+    }
     testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+          undefined,
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
         borderRadius="12px"
-        className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
@@ -2862,17 +4178,27 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
               "height": undefined,
               "width": undefined,
             },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
+            Array [
+              Object {
+                "height": 24,
+                "width": 24,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ],
+              undefined,
+            ],
+            undefined,
           ]
         }
       >
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
           color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
@@ -2881,16 +4207,26 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
+              Array [
+                Object {
+                  "height": 12,
+                  "width": 12,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                ],
+                undefined,
+              ],
+              undefined,
             ]
           }
         />
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
             Object {
@@ -2899,6 +4235,13 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
               "marginRight": 0,
               "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
+            undefined,
           ]
         }
       >
