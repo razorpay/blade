@@ -20,7 +20,6 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-link"
@@ -73,7 +72,6 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-link"
@@ -126,7 +124,6 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-link"
@@ -179,7 +176,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-link"
@@ -232,7 +228,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-link"
@@ -285,7 +280,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-link"
@@ -338,7 +332,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-link"

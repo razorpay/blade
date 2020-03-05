@@ -19,7 +19,11 @@ const Flex = styled(
     children,
     style,
     ...props
-  }) => React.cloneElement(children, { ...props, style: [style, children.props.style] }),
+  }) =>
+    React.cloneElement(children, {
+      ...props,
+      style: [style, children.props.style].filter(Boolean),
+    }),
 )`
   ${(props) => (props.alignContent ? `align-content: ${props.alignContent};` : '')};
   ${(props) => (props.alignItems ? `align-items: ${props.alignItems};` : '')};
