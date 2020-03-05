@@ -127,7 +127,7 @@ const TextInput = ({
   // Used to hide placeholder while label is inside the TextInput
   const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
 
-  const hasLeftLabel = labelPosition === 'left' && variant === 'filled';
+  const hasAnimatedLabel = variant === 'outlined';
 
   const placeholderTextColor = disabled ? theme.colors.shade[930] : theme.colors.shade[940];
 
@@ -182,8 +182,11 @@ const TextInput = ({
   return (
     <Flex justifyContent="flex-end">
       <View>
+        {!hasAnimatedLabel && labelPosition === 'top' ? (
+          <Label.Regular labelPosition={labelPosition}>{label}</Label.Regular>
+        ) : null}
         {/* Animated Label */}
-        {layoutDimensions && !hasLeftLabel ? (
+        {layoutDimensions && hasAnimatedLabel ? (
           <Label.Animated
             isFocused={isFocused}
             hasText={hasText}
@@ -200,8 +203,10 @@ const TextInput = ({
         <Flex flexDirection="row" alignItems="flex-start">
           <View>
             {/* Fixed Left Label */}
-            {hasLeftLabel && layoutDimensions ? (
-              <Label.Regular inputLayoutDimensions={layoutDimensions}>{label}</Label.Regular>
+            {!hasAnimatedLabel && layoutDimensions && labelPosition === 'left' ? (
+              <Label.Regular inputLayoutDimensions={layoutDimensions} labelPosition={labelPosition}>
+                {label}
+              </Label.Regular>
             ) : null}
             {/* Text Input */}
             <Flex flexDirection="column" flex={size === 'block' ? 1 : 0}>
@@ -227,7 +232,9 @@ const TextInput = ({
                         <Flex flex={1}>
                           <Size height="40px">
                             <StyledInput
-                              placeholder={isPlaceholderVisible || hasLeftLabel ? placeholder : ''}
+                              placeholder={
+                                isPlaceholderVisible || !hasAnimatedLabel ? placeholder : ''
+                              }
                               placeholderTextColor={placeholderTextColor}
                               onFocus={onFocus}
                               onBlur={onBlur}

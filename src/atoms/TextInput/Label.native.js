@@ -21,12 +21,15 @@ const REGULAR_PADDING_TOP_MULTIPLIER_IOS = 0.29;
 
 const styles = {
   regularLabelContainer: {
-    paddingTop({ inputLayoutDimensions }) {
+    paddingTop({ inputLayoutDimensions, labelPosition }) {
       // For aligning left label to the center of Text Field
-      if (IS_ANDROID) {
+      if (labelPosition === 'top') {
+        return '0px';
+      } else if (IS_ANDROID) {
         return `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_ANDROID}px`;
+      } else {
+        return `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_IOS}px`;
       }
-      return `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_IOS}px`;
     },
   },
   container: {
@@ -236,9 +239,9 @@ const LabelContainer = styled(View)`
   padding-top: ${styles.regularLabelContainer.paddingTop};
 `;
 
-const RegularLabel = ({ children, inputLayoutDimensions }) => {
+const RegularLabel = ({ children, inputLayoutDimensions, labelPosition }) => {
   return (
-    <LabelContainer inputLayoutDimensions={inputLayoutDimensions}>
+    <LabelContainer inputLayoutDimensions={inputLayoutDimensions} labelPosition={labelPosition}>
       <Space padding={[0, 3, 0, 0]}>
         <View>
           <Text size="medium" color="shade.980">
@@ -257,11 +260,13 @@ RegularLabel.propTypes = {
     width: PropTypes.number,
     x: PropTypes.number,
     y: PropTypes.number,
-  }).isRequired,
+  }),
+  labelPosition: PropTypes.oneOf(['left', 'top']).isRequired,
 };
 
 RegularLabel.defaultProps = {
   children: 'Label',
+  inputLayoutDimensions: undefined,
 };
 
 export default { Animated: AnimatedLabel, Regular: RegularLabel };
