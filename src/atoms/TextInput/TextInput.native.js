@@ -21,10 +21,20 @@ const IS_ANDROID = Platform.OS === 'android';
 const styles = {
   textInput: {
     padding({ variant, hasLeftIcon, hasPrefix, hasText }) {
-      const paddingTop = IS_ANDROID ? (variant === 'filled' ? 0 : 1) : 0;
-      const paddingRight = 0;
-      const paddingBottom = IS_ANDROID ? 0 : hasText ? 0.5 : 0.25;
-      const paddingLeft = variant === 'outlined' || hasLeftIcon || hasPrefix ? 0 : 1;
+      let [paddingTop, paddingRight, paddingBottom, paddingLeft] = [0, 0, 0, 0];
+
+      if (IS_ANDROID) {
+        if (variant === 'outlined') {
+          paddingTop = 1;
+        }
+      } else if (hasText) {
+        paddingBottom = 0.5;
+      } else {
+        paddingBottom = 0.25;
+      }
+
+      paddingRight = 0;
+      paddingLeft = variant === 'outlined' || hasLeftIcon || hasPrefix ? 0 : 1;
       // iOS & Android need different paddings
       return [paddingTop, paddingRight, paddingBottom, paddingLeft];
     },
