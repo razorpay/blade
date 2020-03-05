@@ -239,12 +239,12 @@ const LabelContainer = styled(View)`
   padding-top: ${styles.regularLabelContainer.paddingTop};
 `;
 
-const RegularLabel = ({ children, inputLayoutDimensions, labelPosition }) => {
+const RegularLabel = ({ children, inputLayoutDimensions, labelPosition, disabled }) => {
   return (
     <LabelContainer inputLayoutDimensions={inputLayoutDimensions} labelPosition={labelPosition}>
       <Space padding={[0, 3, 0, 0]}>
         <View>
-          <Text size="medium" color="shade.980">
+          <Text size="medium" color={disabled ? 'shade.940' : 'shade.980'}>
             {children}
           </Text>
         </View>
@@ -262,11 +262,13 @@ RegularLabel.propTypes = {
     y: PropTypes.number,
   }),
   labelPosition: PropTypes.oneOf(['left', 'top']).isRequired,
+  disabled: PropTypes.bool,
 };
 
 RegularLabel.defaultProps = {
   children: 'Label',
   inputLayoutDimensions: undefined,
+  disabled: false,
 };
 
 export default { Animated: AnimatedLabel, Regular: RegularLabel };
