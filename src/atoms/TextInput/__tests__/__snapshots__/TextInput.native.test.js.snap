@@ -36,9 +36,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -233,9 +233,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -430,9 +430,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -627,9 +627,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -825,9 +825,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -1248,9 +1248,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -1671,9 +1671,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -1975,9 +1975,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -2233,9 +2233,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -2680,9 +2680,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -3002,9 +3002,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -3324,9 +3324,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -3521,9 +3521,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -3758,9 +3758,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
@@ -3995,9 +3995,9 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
         style={
           Array [
             Object {
-              "paddingBottom": 0,
+              "paddingBottom": 4,
               "paddingLeft": 0,
-              "paddingRight": 24,
+              "paddingRight": 0,
               "paddingTop": 0,
             },
           ]
