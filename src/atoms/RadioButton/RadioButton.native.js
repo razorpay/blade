@@ -2,17 +2,16 @@ import React, { useState, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
-import RadioButtonGroup, { RadioButtonContext } from './RadioButtonGroup';
 import View from '../View';
 import Text from '../Text';
 import isDefined from '../../_helpers/isDefined';
 import { getVariantColorKeys, getColor } from '../../_helpers/theme';
 import Flex from '../Flex';
-import automation from '../../_helpers/automation-attributes';
 import Size from '../Size';
 import Backdrop from './Backdrop';
 import Space from '../Space';
 import isEmpty from '../../_helpers/isEmpty';
+import automation from '../../_helpers/automation-attributes';
 
 const styles = {
   radio: {
@@ -170,17 +169,32 @@ const Circle = styled(View)(
   `,
 );
 
-const isChecked = (defaultChecked, contextValue, currentValue) => {
-  if (contextValue === currentValue) return true;
-  if (isDefined(defaultChecked)) return defaultChecked;
+const isChecked = (context, currentValue) => {
+  return context && isDefined(context.value) && context.value === currentValue;
+};
 
-  return false;
+const RadioButtonContext = React.createContext(null);
+
+const Radio = ({ value, onValueChange, defaultValue, children }) => {
+  const [selected, setSelected] = useState(value || defaultValue);
+
+  const onChange = (val) => {
+    if (!value) {
+      setSelected(val);
+    }
+    if (isDefined(onValueChange)) onValueChange(val);
+  };
+
+  return (
+    <RadioButtonContext.Provider value={{ value: selected, onValueChange: onChange }}>
+      {children}
+    </RadioButtonContext.Provider>
+  );
 };
 
 const RadioButton = ({
   size,
   value,
-  defaultChecked,
   disabled,
   onClick,
   title,
@@ -191,11 +205,10 @@ const RadioButton = ({
 }) => {
   let titleTextColor = 'shade.980';
   let helpTextColor = 'shade.950';
-  const context = useContext(RadioButtonContext);
-  const checked = isChecked(defaultChecked, context.value, value);
-  const theme = useContext(ThemeContext);
-
   const [underlayColor, setUnderlayColor] = useState('transparent');
+  const context = useContext(RadioButtonContext);
+  const theme = useContext(ThemeContext);
+  const checked = isChecked(context, value);
 
   const radioColor = styles.radio.color({ theme, disabled, checked, variantColor });
 
@@ -213,9 +226,10 @@ const RadioButton = ({
   }, []);
 
   const onPress = useCallback(() => {
-    if (context.onValueChange) {
+    if (isDefined(context.onValueChange)) {
       context.onValueChange(value);
-    } else if (onClick) {
+    }
+    if (isDefined(onClick)) {
       onClick(value);
     }
   }, [context, onClick, value]);
@@ -286,7 +300,6 @@ const RadioButton = ({
 };
 
 RadioButton.propTypes = {
-  defaultChecked: PropTypes.bool,
   value: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
@@ -326,8 +339,14 @@ RadioButton.propTypes = {
   },
 };
 
+Radio.propTypes = {
+  value: PropTypes.string,
+  defaultValue: PropTypes.string,
+  onValueChange: PropTypes.func,
+  children: PropTypes.node,
+};
+
 RadioButton.defaultProps = {
-  defaultChecked: undefined,
   size: 'medium',
   helpText: '',
   disabled: false,
@@ -336,6 +355,6 @@ RadioButton.defaultProps = {
   testID: 'ds-radio-button',
 };
 
-RadioButton.Group = RadioButtonGroup;
+Radio.Option = RadioButton;
 
-export default RadioButton;
+export default Radio;

@@ -1,85 +1,84 @@
 import React from 'react';
 import { fireEvent, act } from '@testing-library/react-native';
-import RadioButton from './../RadioButton';
+import Radio from './../RadioButton';
 import { renderWithTheme } from '../../../_helpers/testing';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('Native <RadioButton />', () => {
-  describe('Unchecked RadioButton', () => {
-    test('should render component when not checked with default props', () => {
+  describe('Uncontrolled <Radio>', () => {
+    test('should render uncontrolled Radio component', () => {
       const { container } = renderWithTheme(
-        <RadioButton title="Some Title" onChange={() => null} />,
+        <Radio>
+          <Radio.Option value="1" title="React" />
+          <Radio.Option value="2" title="Angular" />
+          <Radio.Option value="3" title="Vue" />
+        </Radio>,
       );
       expect(container).toMatchSnapshot();
     });
 
-    test('should render component when not checked with help text props', () => {
-      const helpText = 'some Help text';
-      const { getByText } = renderWithTheme(
-        <RadioButton title="Some Title" helpText={helpText} onChange={() => null} />,
-      );
-      const helpTextComponent = getByText(helpText);
-      expect(helpTextComponent.props.size).toEqual('xsmall');
-      expect(helpTextComponent.props.children).toEqual(helpText);
-    });
-
-    test('should render component when defaultChecked prop is passed with value false', () => {
-      const { container } = renderWithTheme(
-        <RadioButton title="Some Title" onChange={() => null} defaultChecked={false} />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
-    test('should render component when checked prop is passed with value false', () => {
-      const { container } = renderWithTheme(
-        <RadioButton title="Some Title" onChange={() => null} checked={false} />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
-    test('should render component when both defaultChecked and checked prop is passed with false values', () => {
-      const { container } = renderWithTheme(
-        <RadioButton title="Some Title" onChange={() => null} checked={false} />,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
-    test('should render medium sized RadioButton', () => {
-      const { container, getByText } = renderWithTheme(
-        <RadioButton
-          title="Some Title"
-          helpText="some Help text"
-          size="medium"
-          onChange={() => null}
-        />,
-      );
-      const component = getByText('Some Title');
-      expect(container).toMatchSnapshot();
-      expect(component.props.size).toEqual('medium');
-    });
-
-    test('should render component in disabled state', () => {
+    test('should render all the options passed as children to Radio context', () => {
       const { getByTestId } = renderWithTheme(
-        <RadioButton
-          title="Some Title"
-          helpText="some Help text"
-          size="large"
-          disabled={true}
-          testID="disabledRadioButton"
-          onChange={() => null}
-        />,
+        <Radio>
+          <Radio.Option value="1" title="React" testID="reactSelectId" />
+          <Radio.Option value="2" title="Angular" testID="angularSelectId" />
+          <Radio.Option value="3" title="Vue" testID="vueSelectId" />
+        </Radio>,
       );
-      const renderedComponent = getByTestId('disabledRadioButton');
-      expect(renderedComponent.props.disabled).toEqual(true);
+      const firstChildComponent = getByTestId('reactSelectId');
+      const secondChildComponent = getByTestId('angularSelectId');
+      const thirdChildComponent = getByTestId('vueSelectId');
+
+      expect(firstChildComponent).toBeDefined();
+      expect(secondChildComponent).toBeDefined();
+      expect(thirdChildComponent).toBeDefined();
+    });
+
+    test('should match snapshot when clicked on first child', () => {
+      const { getByTestId } = renderWithTheme(
+        <Radio>
+          <Radio.Option value="1" title="React" testID="reactSelectId" />
+          <Radio.Option value="2" title="Angular" testID="angularSelectId" />
+          <Radio.Option value="3" title="Vue" testID="vueSelectId" />
+        </Radio>,
+      );
+      const firstChildComponent = getByTestId('reactSelectId');
+      expect(firstChildComponent).toMatchSnapshot();
+
+      act(() => {
+        fireEvent.press(firstChildComponent);
+      });
+      expect(firstChildComponent).toMatchSnapshot();
     });
 
     test('snapshot testing when user long presses on RadioButton', () => {
       const { container, getByTestId } = renderWithTheme(
-        <RadioButton title="Razorpay" onChange={() => null} testID="unselectedRadioButton" />,
+        <Radio>
+          <Radio.Option value="1" title="React" testID="reactSelectId" />
+          <Radio.Option value="2" title="Angular" testID="angularSelectId" />
+          <Radio.Option value="3" title="Vue" testID="vueSelectId" />
+        </Radio>,
       );
-      const component = getByTestId('unselectedRadioButton');
+      const component = getByTestId('reactSelectId');
+
+      act(() => {
+        fireEvent.pressIn(component);
+      });
+
+      expect(container).toMatchSnapshot();
+    });
+
+    test('snapshot testing when user long presses on RadioButton of size large', () => {
+      const { container, getByTestId } = renderWithTheme(
+        <Radio>
+          <Radio.Option value="1" title="React" size="large" testID="reactSelectId" />
+          <Radio.Option value="2" title="Angular" size="large" testID="angularSelectId" />
+          <Radio.Option value="3" title="Vue" size="large" testID="vueSelectId" />
+        </Radio>,
+      );
+      const component = getByTestId('reactSelectId');
 
       act(() => {
         fireEvent.pressIn(component);
@@ -90,9 +89,13 @@ describe('Native <RadioButton />', () => {
 
     test('snapshot testing when user presses out', () => {
       const { container, getByTestId } = renderWithTheme(
-        <RadioButton title="Razorpay" onChange={() => null} testID="unselectedRadioButton" />,
+        <Radio>
+          <Radio.Option value="1" title="React" testID="reactSelectId" />
+          <Radio.Option value="2" title="Angular" testID="angularSelectId" />
+          <Radio.Option value="3" title="Vue" testID="vueSelectId" />
+        </Radio>,
       );
-      const component = getByTestId('unselectedRadioButton');
+      const component = getByTestId('angularSelectId');
 
       act(() => {
         fireEvent.pressIn(component);
@@ -101,164 +104,93 @@ describe('Native <RadioButton />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    test('should call onChange method when `checked` prop is passed with false value', () => {
-      const mockOnChange = jest.fn();
-      const { getByTestId } = renderWithTheme(
-        <RadioButton
-          title="Razorpay"
-          onChange={mockOnChange}
-          testID="unselectedRadioButton"
-          checked={false}
-        />,
-      );
-
-      const component = getByTestId('unselectedRadioButton');
-
-      act(() => {
-        fireEvent.press(component);
-      });
-
-      expect(mockOnChange).toBeCalled();
-      expect(mockOnChange).toBeCalledWith(true);
-    });
-
-    test('should call onChange method when `defaultChecked` prop is passed with false value', () => {
-      const mockOnChange = jest.fn();
-      const { getByTestId } = renderWithTheme(
-        <RadioButton
-          title="Razorpay"
-          onChange={mockOnChange}
-          testID="unselectedRadioButton"
-          defaultChecked={false}
-        />,
-      );
-
-      const component = getByTestId('unselectedRadioButton');
-
-      act(() => {
-        fireEvent.press(component);
-      });
-
-      expect(mockOnChange).toBeCalled();
-      expect(mockOnChange).toBeCalledWith(true);
-    });
-  });
-
-  describe('Checked', () => {
-    test('should render component when checked with default props', () => {
+    test('should render radio buttons of different sizes', () => {
       const { container } = renderWithTheme(
-        <RadioButton title="Some Title" checked={true} onChange={() => null} />,
+        <Radio>
+          <Radio.Option value="1" title="React" size="large" />
+          <Radio.Option value="2" title="Angular" size="medium" />
+          <Radio.Option value="3" title="Vue" size="large" />
+        </Radio>,
       );
       expect(container).toMatchSnapshot();
     });
 
-    test('snapshot testing when user long presses on RadioButton', () => {
-      const { container, getByTestId } = renderWithTheme(
-        <RadioButton
-          title="Razorpay"
-          checked={true}
-          onChange={() => null}
-          testID="activeRadioButton"
-        />,
+    test('should render radio buttons with helpTexts', () => {
+      const { container } = renderWithTheme(
+        <Radio>
+          <Radio.Option value="1" title="React" size="large" helpText="Click me!" />
+          <Radio.Option value="2" title="Angular" size="medium" helpText="Click me!" />
+          <Radio.Option value="3" title="Vue" size="small" />
+        </Radio>,
       );
-      const component = getByTestId('activeRadioButton');
-
-      act(() => {
-        fireEvent.pressIn(component);
-      });
-
       expect(container).toMatchSnapshot();
     });
 
-    test('snapshot testing when user presses out', () => {
-      const { container, getByTestId } = renderWithTheme(
-        <RadioButton
-          title="Razorpay"
-          checked={true}
-          onChange={() => null}
-          testID="activeRadioButton"
-        />,
+    test('should render radio buttons with disabled state', () => {
+      const { container } = renderWithTheme(
+        <Radio>
+          <Radio.Option value="1" title="React" size="large" disabled helpText="Click me!" />
+          <Radio.Option value="2" title="Angular" size="medium" disabled helpText="Click me!" />
+          <Radio.Option value="3" title="Vue" size="small" disabled />
+        </Radio>,
       );
-      const component = getByTestId('activeRadioButton');
-
-      act(() => {
-        fireEvent.pressIn(component);
-        fireEvent.pressOut(component);
-      });
       expect(container).toMatchSnapshot();
     });
 
-    test('should match snapshot when errorText is present', () => {
-      const { container, getAllByText } = renderWithTheme(
-        <RadioButton
-          title="Razorpay"
-          checked={true}
-          onChange={() => null}
-          testID="activeRadioButton"
-          errorText="You dont have permission"
-        />,
+    test('should not render helpText when the size is small', () => {
+      const { queryByText } = renderWithTheme(
+        <Radio>
+          <Radio.Option value="1" title="React" size="small" disabled helpText="Fill details" />
+        </Radio>,
       );
-      const errorComponent = getAllByText('You dont have permission');
-      expect(container).toMatchSnapshot();
-      expect(errorComponent).toBeTruthy();
+      const helpTextComponent = queryByText('Fill details');
+      expect(helpTextComponent).toEqual(null);
     });
 
-    test('should call onChange method when `defaultChecked` prop is passed with true value', () => {
-      const mockOnChange = jest.fn();
-      const { getByTestId } = renderWithTheme(
-        <RadioButton
-          title="Razorpay"
-          onChange={mockOnChange}
-          testID="unselectedRadioButton"
-          defaultChecked={true}
-        />,
+    test('should not render error when the size is small', () => {
+      const { queryByText } = renderWithTheme(
+        <Radio>
+          <Radio.Option
+            value="1"
+            title="React"
+            size="small"
+            disabled
+            errorText="Something is wrong!"
+          />
+        </Radio>,
       );
-
-      const component = getByTestId('unselectedRadioButton');
-
-      act(() => {
-        fireEvent.press(component);
-      });
-
-      expect(mockOnChange).toBeCalled();
-      expect(mockOnChange).toBeCalledWith(false);
-    });
-
-    test('should call onChange method when `checked` prop is passed with true value', () => {
-      const mockOnChange = jest.fn();
-      const { getByTestId } = renderWithTheme(
-        <RadioButton
-          title="Razorpay"
-          onChange={mockOnChange}
-          testID="unselectedRadioButton"
-          checked={true}
-        />,
-      );
-
-      const component = getByTestId('unselectedRadioButton');
-
-      act(() => {
-        fireEvent.press(component);
-      });
-
-      expect(mockOnChange).toBeCalled();
-      expect(mockOnChange).toBeCalledWith(false);
+      const errorTextComponent = queryByText('Something is wrong!');
+      expect(errorTextComponent).toEqual(null);
     });
   });
 
-  describe('defaultChecked and Checked', () => {
-    test('should throw an error when both defaultChecked and checked are passed as prop', () => {
-      const errorMessage = 'One of defaultChecked or checked should be supplied.';
-      expect(() =>
-        renderWithTheme(
-          <RadioButton
-            title="Some Title"
-            defaultChecked={true}
-            checked={false}
-            onChange={() => null}
-          />,
-        ),
-      ).toThrow(errorMessage);
+  describe('controlled component', () => {
+    test('should render uncontrolled Radio component', () => {
+      const { container } = renderWithTheme(
+        <Radio value="1" onValueChange={jest.fn()}>
+          <Radio.Option value="1" title="React" />
+          <Radio.Option value="2" title="Angular" />
+          <Radio.Option value="3" title="Vue" />
+        </Radio>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    test('should match snapshot testing when user long presses on RadioButton of medium large', () => {
+      const { container, getByTestId } = renderWithTheme(
+        <Radio value="2" onValueChange={jest.fn()}>
+          <Radio.Option value="1" title="React" size="large" testID="reactSelectId" />
+          <Radio.Option value="2" title="Angular" size="medium" testID="angularSelectId" />
+          <Radio.Option value="3" title="Vue" size="large" testID="vueSelectId" />
+        </Radio>,
+      );
+      const component = getByTestId('reactSelectId');
+
+      act(() => {
+        fireEvent.pressIn(component);
+      });
+
+      expect(container).toMatchSnapshot();
     });
   });
 });

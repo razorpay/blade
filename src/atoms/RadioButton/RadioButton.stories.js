@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, boolean, select } from '@storybook/addon-knobs';
-import RadioButton from './RadioButton';
+import { text, boolean, select, action } from '@storybook/addon-knobs';
+import Radio from './RadioButton';
 import Flex from '../Flex';
 import View from '../View';
 
@@ -13,38 +13,37 @@ const sizeOptions = {
 
 storiesOf('RadioButton', module)
   .addParameters({
-    component: RadioButton,
+    component: Radio,
   })
   .add('default', () => (
-    <RadioButton.Group value="1" onValueChange={() => {}}>
-      <RadioButton
+    <Radio value="1" onValueChange={() => {}}>
+      <Radio.Option
         value="1"
-        defaultChecked={boolean('Default Checked', false)}
         size={select('Size', sizeOptions, 'large')}
         title={text('Title', 'Enable Beast Mode')}
         helpText={text('Help Text', 'Play with addons to see changes')}
         disabled={boolean('Disabled', false)}
         errorText={text('Error Text', '')}
       />
-    </RadioButton.Group>
+    </Radio>
   ))
-  .add('multiple radio buttons', () => (
-    <RadioButton.Group value="2" onValueChange={() => {}}>
-      <RadioButton value="1" size="large" title="Unchecked" helpText="I'm unchecked" />
-      <RadioButton value="2" size="large" title="Checked" helpText="I'm active" />
-      <RadioButton value="3" size="large" disabled title="Disabled" helpText="I'm disabled" />
-      <RadioButton value="4" size="large" title="Error" errorText="Something's not right!" />
-    </RadioButton.Group>
+  .add('uncontrolled', () => (
+    <Radio>
+      <Radio.Option value="1" size="large" title="Unchecked" helpText="I'm unchecked" />
+      <Radio.Option value="2" size="large" title="Checked" helpText="I'm active" />
+      <Radio.Option value="3" size="large" disabled title="Disabled" helpText="I'm disabled" />
+      <Radio.Option value="4" size="large" title="Error" errorText="Something's not right!" />
+    </Radio>
   ))
-  .add('with parent container', () => (
+  .add('controlled', () => (
     <Flex flexDirection="row" flexWrap="wrap">
       <View>
-        <RadioButton.Group value="2" onValueChange={() => {}}>
-          <RadioButton value="1" size="large" title="Unchecked" helpText="I'm unchecked" />
-          <RadioButton value="2" size="large" title="Checked" helpText="I'm active" />
-          <RadioButton value="3" size="large" disabled title="Disabled" helpText="I'm disabled" />
-          <RadioButton value="4" size="large" title="Error" errorText="Something's not right!" />
-        </RadioButton.Group>
+        <Radio value="1" onValueChange={action('on value change')}>
+          <Radio.Option value="1" size="large" title="Unchecked" helpText="I'm unchecked" />
+          <Radio.Option value="2" size="large" title="Checked" helpText="I'm active" />
+          <Radio.Option value="3" size="large" disabled title="Disabled" helpText="I'm disabled" />
+          <Radio.Option value="4" size="large" title="Error" errorText="Something's not right!" />
+        </Radio>
       </View>
     </Flex>
   ));

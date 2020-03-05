@@ -1,6 +1,209 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Native <RadioButton /> Checked should match snapshot when errorText is present 1`] = `
+exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when clicked on first child 1`] = `
+<TouchableOpacity
+  accessibilityRole="radio"
+  activeOpacity={1}
+  className="sc-AykKC cQCQxd"
+  disabled={false}
+  testID="reactSelectId"
+  underlayColor="transparent"
+>
+  <View
+    className="sc-AykKC kHnGAa"
+  >
+    <View
+      backgroundColor="transparent"
+      borderRadius="12px"
+      className="sc-AykKC bQZpU"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderRadius": 12,
+            "height": undefined,
+            "width": undefined,
+          },
+          Object {
+            "height": 24,
+            "width": 24,
+          },
+        ]
+      }
+    >
+      <View
+        borderRadius="6px"
+        borderWidth="1.2px"
+        className="sc-AykKC bQZpU"
+        color="rgba(22, 47, 86, 0.38)"
+        style={
+          Array [
+            Object {
+              "borderColor": "rgba(22, 47, 86, 0.38)",
+              "borderRadius": 6,
+              "borderWidth": 1.2,
+            },
+            Object {
+              "height": 12,
+              "width": 12,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      className="sc-AykKC bJrJEE"
+      style={
+        Array [
+          Object {
+            "marginBottom": 0,
+            "marginLeft": 4,
+            "marginRight": 0,
+            "marginTop": 0,
+          },
+        ]
+      }
+    >
+      <Text
+        _isUnderlined={false}
+        _letterSpacing="small"
+        _weight="regular"
+        align="left"
+        color="shade.980"
+        size="medium"
+        style={
+          Array [
+            Object {
+              "alignSelf": "flex-start",
+              "color": "rgba(22, 47, 86, 0.87)",
+              "fontFamily": "Lato-Regular",
+              "fontSize": 14,
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        testID="ds-text"
+      >
+        React
+      </Text>
+    </View>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when clicked on first child 2`] = `
+<TouchableOpacity
+  accessibilityRole="radio"
+  activeOpacity={1}
+  className="sc-AykKC cQCQxd"
+  disabled={false}
+  testID="reactSelectId"
+  underlayColor="transparent"
+>
+  <View
+    className="sc-AykKC kHnGAa"
+  >
+    <View
+      backgroundColor="transparent"
+      borderRadius="12px"
+      className="sc-AykKC bQZpU"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderRadius": 12,
+            "height": undefined,
+            "width": undefined,
+          },
+          Object {
+            "height": 24,
+            "width": 24,
+          },
+        ]
+      }
+    >
+      <View
+        borderRadius="6px"
+        borderWidth="1.2px"
+        className="sc-AykKC bQZpU"
+        color="rgba(43, 131, 234, 1.0 )"
+        style={
+          Array [
+            Object {
+              "borderColor": "rgba(43, 131, 234, 1.0 )",
+              "borderRadius": 6,
+              "borderWidth": 1.2,
+            },
+            Object {
+              "height": 12,
+              "width": 12,
+            },
+          ]
+        }
+      >
+        <View
+          backgroundColor="rgba(43, 131, 234, 1.0 )"
+          borderRadius="3px"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+                "borderRadius": 3,
+              },
+              Object {
+                "height": 6,
+                "width": 6,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      className="sc-AykKC bJrJEE"
+      style={
+        Array [
+          Object {
+            "marginBottom": 0,
+            "marginLeft": 4,
+            "marginRight": 0,
+            "marginTop": 0,
+          },
+        ]
+      }
+    >
+      <Text
+        _isUnderlined={false}
+        _letterSpacing="small"
+        _weight="regular"
+        align="left"
+        color="shade.980"
+        size="medium"
+        style={
+          Array [
+            Object {
+              "alignSelf": "flex-start",
+              "color": "rgba(22, 47, 86, 0.87)",
+              "fontFamily": "Lato-Regular",
+              "fontSize": 14,
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        testID="ds-text"
+      >
+        React
+      </Text>
+    </View>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons of different sizes 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -15,7 +218,97 @@ exports[`Native <RadioButton /> Checked should match snapshot when errorText is 
     activeOpacity={1}
     className="sc-AykKC cQCQxd"
     disabled={false}
-    testID="activeRadioButton"
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="14px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 14,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 28,
+              "width": 28,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="7px"
+          borderWidth="1.4px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 7,
+                "borderWidth": 1.4,
+              },
+              Object {
+                "height": 14,
+                "width": 14,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="large"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 16,
+                "letterSpacing": 0,
+                "lineHeight": 24,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          React
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-radio-button"
     underlayColor="transparent"
   >
     <View
@@ -44,11 +337,11 @@ exports[`Native <RadioButton /> Checked should match snapshot when errorText is 
           borderRadius="6px"
           borderWidth="1.2px"
           className="sc-AykKC bQZpU"
-          color="rgba(43, 131, 234, 1.0 )"
+          color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
               Object {
-                "borderColor": "rgba(43, 131, 234, 1.0 )",
+                "borderColor": "rgba(22, 47, 86, 0.38)",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
@@ -58,24 +351,7 @@ exports[`Native <RadioButton /> Checked should match snapshot when errorText is 
               },
             ]
           }
-        >
-          <View
-            backgroundColor="rgba(43, 131, 234, 1.0 )"
-            borderRadius="3px"
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "rgba(43, 131, 234, 1.0 )",
-                  "borderRadius": 3,
-                },
-                Object {
-                  "height": 6,
-                  "width": 6,
-                },
-              ]
-            }
-          />
-        </View>
+        />
       </View>
       <View
         className="sc-AykKC bJrJEE"
@@ -112,7 +388,327 @@ exports[`Native <RadioButton /> Checked should match snapshot when errorText is 
           }
           testID="ds-text"
         >
-          Razorpay
+          Angular
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="14px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 14,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 28,
+              "width": 28,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="7px"
+          borderWidth="1.4px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 7,
+                "borderWidth": 1.4,
+              },
+              Object {
+                "height": 14,
+                "width": 14,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="large"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 16,
+                "letterSpacing": 0,
+                "lineHeight": 24,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Vue
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons with disabled state 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={true}
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="14px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 14,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 28,
+              "width": 28,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="7px"
+          borderWidth="1.4px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.10)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.10)",
+                "borderRadius": 7,
+                "borderWidth": 1.4,
+              },
+              Object {
+                "height": 14,
+                "width": 14,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.950"
+          size="large"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.38)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 16,
+                "letterSpacing": 0,
+                "lineHeight": 24,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          React
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "marginBottom": 0,
+            "marginLeft": 32,
+            "marginRight": 0,
+            "marginTop": 0,
+          },
+        ]
+      }
+    >
+      <Text
+        _isUnderlined={false}
+        _letterSpacing="small"
+        _weight="regular"
+        align="left"
+        color="shade.930"
+        size="medium"
+        style={
+          Array [
+            Object {
+              "alignSelf": "flex-start",
+              "color": "rgba(22, 47, 86, 0.10)",
+              "fontFamily": "Lato-Regular",
+              "fontSize": 14,
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        testID="ds-text"
+      >
+        Click me!
+      </Text>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={true}
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.10)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.10)",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.950"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.38)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Angular
         </Text>
       </View>
     </View>
@@ -133,13 +729,13 @@ exports[`Native <RadioButton /> Checked should match snapshot when errorText is 
         _letterSpacing="small"
         _weight="regular"
         align="left"
-        color="negative.900"
+        color="shade.930"
         size="xsmall"
         style={
           Array [
             Object {
               "alignSelf": "flex-start",
-              "color": "rgba(209, 45, 45, 1.0)",
+              "color": "rgba(22, 47, 86, 0.10)",
               "fontFamily": "Lato-Regular",
               "fontSize": 12,
               "letterSpacing": 0,
@@ -150,14 +746,104 @@ exports[`Native <RadioButton /> Checked should match snapshot when errorText is 
         }
         testID="ds-text"
       >
-        You dont have permission
+        Click me!
       </Text>
     </View>
   </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={true}
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="10px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 10,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="5px"
+          borderWidth="1px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.10)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.10)",
+                "borderRadius": 5,
+                "borderWidth": 1,
+              },
+              Object {
+                "height": 10,
+                "width": 10,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.950"
+          size="small"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.38)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 13,
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Vue
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
 </View>
 `;
 
-exports[`Native <RadioButton /> Checked should render component when checked with default props 1`] = `
+exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons with helpTexts 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -180,59 +866,42 @@ exports[`Native <RadioButton /> Checked should render component when checked wit
     >
       <View
         backgroundColor="transparent"
-        borderRadius="12px"
+        borderRadius="14px"
         className="sc-AykKC bQZpU"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
-              "borderRadius": 12,
+              "borderRadius": 14,
               "height": undefined,
               "width": undefined,
             },
             Object {
-              "height": 24,
-              "width": 24,
+              "height": 28,
+              "width": 28,
             },
           ]
         }
       >
         <View
-          borderRadius="6px"
-          borderWidth="1.2px"
+          borderRadius="7px"
+          borderWidth="1.4px"
           className="sc-AykKC bQZpU"
-          color="rgba(43, 131, 234, 1.0 )"
+          color="rgba(22, 47, 86, 0.38)"
           style={
             Array [
               Object {
-                "borderColor": "rgba(43, 131, 234, 1.0 )",
-                "borderRadius": 6,
-                "borderWidth": 1.2,
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 7,
+                "borderWidth": 1.4,
               },
               Object {
-                "height": 12,
-                "width": 12,
+                "height": 14,
+                "width": 14,
               },
             ]
           }
-        >
-          <View
-            backgroundColor="rgba(43, 131, 234, 1.0 )"
-            borderRadius="3px"
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "rgba(43, 131, 234, 1.0 )",
-                  "borderRadius": 3,
-                },
-                Object {
-                  "height": 6,
-                  "width": 6,
-                },
-              ]
-            }
-          />
-        </View>
+        />
       </View>
       <View
         className="sc-AykKC bJrJEE"
@@ -253,280 +922,64 @@ exports[`Native <RadioButton /> Checked should render component when checked wit
           _weight="regular"
           align="left"
           color="shade.980"
-          size="medium"
+          size="large"
           style={
             Array [
               Object {
                 "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
-                "fontSize": 14,
+                "fontSize": 16,
                 "letterSpacing": 0,
-                "lineHeight": 20,
+                "lineHeight": 24,
                 "textDecorationLine": "none",
               },
             ]
           }
           testID="ds-text"
         >
-          Some Title
+          React
         </Text>
       </View>
     </View>
-  </TouchableOpacity>
-</View>
-`;
-
-exports[`Native <RadioButton /> Checked snapshot testing when user long presses on RadioButton 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <TouchableOpacity
-    accessibilityRole="radio"
-    activeOpacity={1}
-    className="sc-AykKC cQCQxd"
-    disabled={false}
-    testID="activeRadioButton"
-    underlayColor="transparent"
-  >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Object {
+            "marginBottom": 0,
+            "marginLeft": 32,
+            "marginRight": 0,
+            "marginTop": 0,
+          },
+        ]
+      }
     >
-      <View
-        backgroundColor="rgba(11, 112, 231, 0.10)"
-        borderRadius="12px"
-        className="sc-AykKC bQZpU"
+      <Text
+        _isUnderlined={false}
+        _letterSpacing="small"
+        _weight="regular"
+        align="left"
+        color="shade.950"
+        size="medium"
         style={
           Array [
             Object {
-              "backgroundColor": "rgba(11, 112, 231, 0.10)",
-              "borderRadius": 12,
-              "height": undefined,
-              "width": undefined,
-            },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
-          ]
-        }
-      >
-        <View
-          borderRadius="6px"
-          borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
-          color="rgba(43, 131, 234, 1.0 )"
-          style={
-            Array [
-              Object {
-                "borderColor": "rgba(43, 131, 234, 1.0 )",
-                "borderRadius": 6,
-                "borderWidth": 1.2,
-              },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="rgba(43, 131, 234, 1.0 )"
-            borderRadius="3px"
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "rgba(43, 131, 234, 1.0 )",
-                  "borderRadius": 3,
-                },
-                Object {
-                  "height": 6,
-                  "width": 6,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-      <View
-        className="sc-AykKC bJrJEE"
-        style={
-          Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
+              "alignSelf": "flex-start",
+              "color": "rgba(22, 47, 86, 0.38)",
+              "fontFamily": "Lato-Regular",
+              "fontSize": 14,
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "textDecorationLine": "none",
             },
           ]
         }
+        testID="ds-text"
       >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Razorpay
-        </Text>
-      </View>
+        Click me!
+      </Text>
     </View>
   </TouchableOpacity>
-</View>
-`;
-
-exports[`Native <RadioButton /> Checked snapshot testing when user presses out 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <TouchableOpacity
-    accessibilityRole="radio"
-    activeOpacity={1}
-    className="sc-AykKC cQCQxd"
-    disabled={false}
-    testID="activeRadioButton"
-    underlayColor="transparent"
-  >
-    <View
-      className="sc-AykKC kHnGAa"
-    >
-      <View
-        backgroundColor="transparent"
-        borderRadius="12px"
-        className="sc-AykKC bQZpU"
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "borderRadius": 12,
-              "height": undefined,
-              "width": undefined,
-            },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
-          ]
-        }
-      >
-        <View
-          borderRadius="6px"
-          borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
-          color="rgba(43, 131, 234, 1.0 )"
-          style={
-            Array [
-              Object {
-                "borderColor": "rgba(43, 131, 234, 1.0 )",
-                "borderRadius": 6,
-                "borderWidth": 1.2,
-              },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="rgba(43, 131, 234, 1.0 )"
-            borderRadius="3px"
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "rgba(43, 131, 234, 1.0 )",
-                  "borderRadius": 3,
-                },
-                Object {
-                  "height": 6,
-                  "width": 6,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-      <View
-        className="sc-AykKC bJrJEE"
-        style={
-          Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Razorpay
-        </Text>
-      </View>
-    </View>
-  </TouchableOpacity>
-</View>
-`;
-
-exports[`Native <RadioButton /> Unchecked RadioButton should render component when both defaultChecked and checked prop is passed with false values 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
@@ -612,419 +1065,7 @@ exports[`Native <RadioButton /> Unchecked RadioButton should render component wh
           }
           testID="ds-text"
         >
-          Some Title
-        </Text>
-      </View>
-    </View>
-  </TouchableOpacity>
-</View>
-`;
-
-exports[`Native <RadioButton /> Unchecked RadioButton should render component when checked prop is passed with value false 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <TouchableOpacity
-    accessibilityRole="radio"
-    activeOpacity={1}
-    className="sc-AykKC cQCQxd"
-    disabled={false}
-    testID="ds-radio-button"
-    underlayColor="transparent"
-  >
-    <View
-      className="sc-AykKC kHnGAa"
-    >
-      <View
-        backgroundColor="transparent"
-        borderRadius="12px"
-        className="sc-AykKC bQZpU"
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "borderRadius": 12,
-              "height": undefined,
-              "width": undefined,
-            },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
-          ]
-        }
-      >
-        <View
-          borderRadius="6px"
-          borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
-          color="rgba(22, 47, 86, 0.38)"
-          style={
-            Array [
-              Object {
-                "borderColor": "rgba(22, 47, 86, 0.38)",
-                "borderRadius": 6,
-                "borderWidth": 1.2,
-              },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        className="sc-AykKC bJrJEE"
-        style={
-          Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Some Title
-        </Text>
-      </View>
-    </View>
-  </TouchableOpacity>
-</View>
-`;
-
-exports[`Native <RadioButton /> Unchecked RadioButton should render component when defaultChecked prop is passed with value false 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <TouchableOpacity
-    accessibilityRole="radio"
-    activeOpacity={1}
-    className="sc-AykKC cQCQxd"
-    disabled={false}
-    testID="ds-radio-button"
-    underlayColor="transparent"
-  >
-    <View
-      className="sc-AykKC kHnGAa"
-    >
-      <View
-        backgroundColor="transparent"
-        borderRadius="12px"
-        className="sc-AykKC bQZpU"
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "borderRadius": 12,
-              "height": undefined,
-              "width": undefined,
-            },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
-          ]
-        }
-      >
-        <View
-          borderRadius="6px"
-          borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
-          color="rgba(22, 47, 86, 0.38)"
-          style={
-            Array [
-              Object {
-                "borderColor": "rgba(22, 47, 86, 0.38)",
-                "borderRadius": 6,
-                "borderWidth": 1.2,
-              },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        className="sc-AykKC bJrJEE"
-        style={
-          Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Some Title
-        </Text>
-      </View>
-    </View>
-  </TouchableOpacity>
-</View>
-`;
-
-exports[`Native <RadioButton /> Unchecked RadioButton should render component when not checked with default props 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <TouchableOpacity
-    accessibilityRole="radio"
-    activeOpacity={1}
-    className="sc-AykKC cQCQxd"
-    disabled={false}
-    testID="ds-radio-button"
-    underlayColor="transparent"
-  >
-    <View
-      className="sc-AykKC kHnGAa"
-    >
-      <View
-        backgroundColor="transparent"
-        borderRadius="12px"
-        className="sc-AykKC bQZpU"
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "borderRadius": 12,
-              "height": undefined,
-              "width": undefined,
-            },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
-          ]
-        }
-      >
-        <View
-          borderRadius="6px"
-          borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
-          color="rgba(22, 47, 86, 0.38)"
-          style={
-            Array [
-              Object {
-                "borderColor": "rgba(22, 47, 86, 0.38)",
-                "borderRadius": 6,
-                "borderWidth": 1.2,
-              },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        className="sc-AykKC bJrJEE"
-        style={
-          Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Some Title
-        </Text>
-      </View>
-    </View>
-  </TouchableOpacity>
-</View>
-`;
-
-exports[`Native <RadioButton /> Unchecked RadioButton should render medium sized RadioButton 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <TouchableOpacity
-    accessibilityRole="radio"
-    activeOpacity={1}
-    className="sc-AykKC cQCQxd"
-    disabled={false}
-    testID="ds-radio-button"
-    underlayColor="transparent"
-  >
-    <View
-      className="sc-AykKC kHnGAa"
-    >
-      <View
-        backgroundColor="transparent"
-        borderRadius="12px"
-        className="sc-AykKC bQZpU"
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "borderRadius": 12,
-              "height": undefined,
-              "width": undefined,
-            },
-            Object {
-              "height": 24,
-              "width": 24,
-            },
-          ]
-        }
-      >
-        <View
-          borderRadius="6px"
-          borderWidth="1.2px"
-          className="sc-AykKC bQZpU"
-          color="rgba(22, 47, 86, 0.38)"
-          style={
-            Array [
-              Object {
-                "borderColor": "rgba(22, 47, 86, 0.38)",
-                "borderRadius": 6,
-                "borderWidth": 1.2,
-              },
-              Object {
-                "height": 12,
-                "width": 12,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        className="sc-AykKC bJrJEE"
-        style={
-          Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Some Title
+          Angular
         </Text>
       </View>
     </View>
@@ -1062,14 +1103,104 @@ exports[`Native <RadioButton /> Unchecked RadioButton should render medium sized
         }
         testID="ds-text"
       >
-        some Help text
+        Click me!
       </Text>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="10px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 10,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 20,
+              "width": 20,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="5px"
+          borderWidth="1px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 5,
+                "borderWidth": 1,
+              },
+              Object {
+                "height": 10,
+                "width": 10,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="small"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 13,
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Vue
+        </Text>
+      </View>
     </View>
   </TouchableOpacity>
 </View>
 `;
 
-exports[`Native <RadioButton /> Unchecked RadioButton snapshot testing when user long presses on RadioButton 1`] = `
+exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled Radio component 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1084,7 +1215,290 @@ exports[`Native <RadioButton /> Unchecked RadioButton snapshot testing when user
     activeOpacity={1}
     className="sc-AykKC cQCQxd"
     disabled={false}
-    testID="unselectedRadioButton"
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          React
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Angular
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Vue
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user long presses on RadioButton 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="reactSelectId"
     underlayColor="transparent"
   >
     <View
@@ -1164,30 +1578,17 @@ exports[`Native <RadioButton /> Unchecked RadioButton snapshot testing when user
           }
           testID="ds-text"
         >
-          Razorpay
+          React
         </Text>
       </View>
     </View>
   </TouchableOpacity>
-</View>
-`;
-
-exports[`Native <RadioButton /> Unchecked RadioButton snapshot testing when user presses out 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
     className="sc-AykKC cQCQxd"
     disabled={false}
-    testID="unselectedRadioButton"
+    testID="angularSelectId"
     underlayColor="transparent"
   >
     <View
@@ -1267,7 +1668,1263 @@ exports[`Native <RadioButton /> Unchecked RadioButton snapshot testing when user
           }
           testID="ds-text"
         >
-          Razorpay
+          Angular
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="vueSelectId"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Vue
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user long presses on RadioButton of size large 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="reactSelectId"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="rgba(224, 228, 249, 0.24)"
+        borderRadius="14px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(224, 228, 249, 0.24)",
+              "borderRadius": 14,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 28,
+              "width": 28,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="7px"
+          borderWidth="1.4px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 7,
+                "borderWidth": 1.4,
+              },
+              Object {
+                "height": 14,
+                "width": 14,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="large"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 16,
+                "letterSpacing": 0,
+                "lineHeight": 24,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          React
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="angularSelectId"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="14px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 14,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 28,
+              "width": 28,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="7px"
+          borderWidth="1.4px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 7,
+                "borderWidth": 1.4,
+              },
+              Object {
+                "height": 14,
+                "width": 14,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="large"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 16,
+                "letterSpacing": 0,
+                "lineHeight": 24,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Angular
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="vueSelectId"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="14px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 14,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 28,
+              "width": 28,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="7px"
+          borderWidth="1.4px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 7,
+                "borderWidth": 1.4,
+              },
+              Object {
+                "height": 14,
+                "width": 14,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="large"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 16,
+                "letterSpacing": 0,
+                "lineHeight": 24,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Vue
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user presses out 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="reactSelectId"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          React
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="angularSelectId"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Angular
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="vueSelectId"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Vue
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <RadioButton /> controlled component should match snapshot testing when user long presses on RadioButton of medium large 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="reactSelectId"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="rgba(224, 228, 249, 0.24)"
+        borderRadius="14px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(224, 228, 249, 0.24)",
+              "borderRadius": 14,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 28,
+              "width": 28,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="7px"
+          borderWidth="1.4px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 7,
+                "borderWidth": 1.4,
+              },
+              Object {
+                "height": 14,
+                "width": 14,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="large"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 16,
+                "letterSpacing": 0,
+                "lineHeight": 24,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          React
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="angularSelectId"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(43, 131, 234, 1.0 )"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(43, 131, 234, 1.0 )",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="rgba(43, 131, 234, 1.0 )"
+            borderRadius="3px"
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+                  "borderRadius": 3,
+                },
+                Object {
+                  "height": 6,
+                  "width": 6,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Angular
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="vueSelectId"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="14px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 14,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 28,
+              "width": 28,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="7px"
+          borderWidth="1.4px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 7,
+                "borderWidth": 1.4,
+              },
+              Object {
+                "height": 14,
+                "width": 14,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="large"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 16,
+                "letterSpacing": 0,
+                "lineHeight": 24,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Vue
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Native <RadioButton /> controlled component should render uncontrolled Radio component 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(43, 131, 234, 1.0 )"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(43, 131, 234, 1.0 )",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="rgba(43, 131, 234, 1.0 )"
+            borderRadius="3px"
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+                  "borderRadius": 3,
+                },
+                Object {
+                  "height": 6,
+                  "width": 6,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          React
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Angular
+        </Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityRole="radio"
+    activeOpacity={1}
+    className="sc-AykKC cQCQxd"
+    disabled={false}
+    testID="ds-radio-button"
+    underlayColor="transparent"
+  >
+    <View
+      className="sc-AykKC kHnGAa"
+    >
+      <View
+        backgroundColor="transparent"
+        borderRadius="12px"
+        className="sc-AykKC bQZpU"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 12,
+              "height": undefined,
+              "width": undefined,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      >
+        <View
+          borderRadius="6px"
+          borderWidth="1.2px"
+          className="sc-AykKC bQZpU"
+          color="rgba(22, 47, 86, 0.38)"
+          style={
+            Array [
+              Object {
+                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderRadius": 6,
+                "borderWidth": 1.2,
+              },
+              Object {
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        className="sc-AykKC bJrJEE"
+        style={
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Vue
         </Text>
       </View>
     </View>
