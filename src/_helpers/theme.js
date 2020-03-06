@@ -3,10 +3,11 @@ import theme from '../tokens/theme';
 
 const makePxValue = (value) => {
   const values = [].concat(value);
+  if (values.length > 4) {
+    throw new Error('Error in makePxValue: array length should be less than or equal to 4');
+  }
   return values.map((v) => (typeof v === 'string' ? v : `${v * spacings.unit}px`)).join(' ');
 };
-
-const getColorKey = (color, shade) => `${color}.${shade}`;
 
 const getColorKeys = () => {
   return Object.keys(theme.colors)
@@ -43,6 +44,4 @@ const getLineHeight = (currentTheme, textSize) => {
   }
 };
 
-export { getLineHeight };
-
-export { makePxValue, getColorKey, getColorKeys, getColor, getVariantColorKeys };
+export { makePxValue, getColorKeys, getColor, getVariantColorKeys, getLineHeight };

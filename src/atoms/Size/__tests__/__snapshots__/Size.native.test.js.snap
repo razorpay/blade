@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders <Flex /> correctly snapshot testing 1`] = `
+exports[`Renders <Size /> correctly should apply all specified props to child component 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -15,7 +15,12 @@ exports[`Renders <Flex /> correctly snapshot testing 1`] = `
       Array [
         Array [
           Object {
-            "flexDirection": "column",
+            "height": "100%",
+            "maxHeight": 20,
+            "maxWidth": 20,
+            "minHeight": 5,
+            "minWidth": 5,
+            "width": 10,
           },
         ],
         undefined,
