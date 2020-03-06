@@ -16,7 +16,7 @@ storiesOf('RadioButton', module)
     component: Radio,
   })
   .add('default', () => (
-    <Radio value="1" onValueChange={() => {}}>
+    <Radio value="1" onChange={() => {}}>
       <Radio.Option
         value="1"
         size={select('Size', sizeOptions, 'large')}
@@ -38,7 +38,7 @@ storiesOf('RadioButton', module)
   .add('controlled', () => (
     <Flex flexDirection="row" flexWrap="wrap">
       <View>
-        <Radio value="1" onValueChange={() => {}}>
+        <Radio value="1" onChange={() => {}}>
           <Radio.Option value="1" size="large" title="Unchecked" helpText="I'm unchecked" />
           <Radio.Option value="2" size="large" title="Checked" helpText="I'm active" />
           <Radio.Option value="3" size="large" disabled title="Disabled" helpText="I'm disabled" />

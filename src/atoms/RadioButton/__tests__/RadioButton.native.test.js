@@ -167,7 +167,7 @@ describe('Native <RadioButton />', () => {
   describe('controlled component', () => {
     test('should render uncontrolled Radio component', () => {
       const { container } = renderWithTheme(
-        <Radio value="1" onValueChange={jest.fn()}>
+        <Radio value="1" onChange={jest.fn()}>
           <Radio.Option value="1" title="React" />
           <Radio.Option value="2" title="Angular" />
           <Radio.Option value="3" title="Vue" />
@@ -178,7 +178,7 @@ describe('Native <RadioButton />', () => {
 
     test('should match snapshot testing when user presses in  on RadioButton of medium large', () => {
       const { container, getByTestId } = renderWithTheme(
-        <Radio value="2" onValueChange={jest.fn()}>
+        <Radio value="2" onChange={jest.fn()}>
           <Radio.Option value="1" title="React" size="large" testID="reactSelectId" />
           <Radio.Option value="2" title="Angular" size="medium" testID="angularSelectId" />
           <Radio.Option value="3" title="Vue" size="large" testID="vueSelectId" />

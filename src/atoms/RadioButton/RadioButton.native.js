@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback } from 'react';
+import React, { useState, useContext, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
@@ -175,24 +175,25 @@ const isChecked = (context, currentValue) => {
 
 const RadioButtonContext = React.createContext(null);
 
-const Radio = ({ value, onValueChange, defaultValue, children }) => {
+const Radio = ({ value, onChange, defaultValue, children }) => {
   const [selected, setSelected] = useState(value || defaultValue);
 
-  const onChange = useCallback(
+  const onValueChange = useCallback(
     (newValue) => {
       if (!value) {
         setSelected(newValue);
       }
-      if (isDefined(onValueChange)) onValueChange(newValue);
+      if (isDefined(onChange)) onChange(newValue);
     },
-    [onValueChange, value],
+    [onChange, value],
   );
 
-  return (
-    <RadioButtonContext.Provider value={{ value: selected, onValueChange: onChange }}>
-      {children}
-    </RadioButtonContext.Provider>
-  );
+  const contextValue = useMemo(() => ({ value: selected, onChange: onValueChange }), [
+    onValueChange,
+    selected,
+  ]);
+
+  return <RadioButtonContext.Provider value={contextValue}>{children}</RadioButtonContext.Provider>;
 };
 
 const RadioButton = ({
@@ -229,8 +230,8 @@ const RadioButton = ({
   }, []);
 
   const onPress = useCallback(() => {
-    if (isDefined(context.onValueChange)) {
-      context.onValueChange(value);
+    if (isDefined(context.onChange)) {
+      context.onChange(value);
     }
     if (isDefined(onClick)) {
       onClick(value);
@@ -345,14 +346,14 @@ RadioButton.propTypes = {
 Radio.propTypes = {
   value: PropTypes.string,
   defaultValue: PropTypes.string,
-  onValueChange: PropTypes.func,
+  onChange: PropTypes.func,
   children: PropTypes.node,
 };
 
 Radio.defaultProps = {
   value: undefined,
   defaultValue: undefined,
-  onValueChange: () => {},
+  onChange: () => {},
   children: null,
 };
 
