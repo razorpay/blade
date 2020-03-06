@@ -207,8 +207,8 @@ const RadioButton = ({
   variantColor,
   testID,
 }) => {
-  let titleTextColor = 'shade.980';
-  let helpTextColor = 'shade.950';
+  const titleTextColor = disabled ? 'shade.950' : 'shade.980';
+  const helpTextColor = disabled ? 'shade.930' : 'shade.950';
   const [underlayColor, setUnderlayColor] = useState('transparent');
   const context = useContext(RadioButtonContext);
   const theme = useContext(ThemeContext);
@@ -237,11 +237,6 @@ const RadioButton = ({
       onClick(value);
     }
   }, [context, onClick, value]);
-
-  if (disabled) {
-    titleTextColor = 'shade.950';
-    helpTextColor = 'shade.930';
-  }
 
   return (
     <Flex alignSelf="flex-start">
