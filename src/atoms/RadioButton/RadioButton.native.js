@@ -226,16 +226,13 @@ const RadioButton = ({
   }, [checked, theme, variantColor]);
 
   const onPressOut = useCallback(() => {
-    setUnderlayColor('transparent');
-  }, []);
-
-  const onPress = useCallback(() => {
     if (isDefined(context.onChange)) {
       context.onChange(value);
     }
     if (isDefined(onClick)) {
       onClick(value);
     }
+    setUnderlayColor('transparent');
   }, [context, onClick, value]);
 
   return (
@@ -243,7 +240,6 @@ const RadioButton = ({
       <TouchableOpacity
         activeOpacity={1}
         accessibilityRole="radio"
-        onPress={onPress}
         underlayColor="transparent"
         disabled={disabled}
         onPressIn={onPressIn}
