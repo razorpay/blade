@@ -15,12 +15,13 @@ const styles = {
     return getColor(theme, color);
   },
   textDecorationLine({ _isUnderlined }) {
-    if (_isUnderlined) return 'underline';
-    else {
+    if (_isUnderlined) {
+      return 'underline';
+    } else {
       return 'none';
     }
   },
-  alignSelf({ align }) {
+  align({ align }) {
     switch (align) {
       case 'left':
       default:
@@ -41,6 +42,27 @@ const styles = {
       return getLineHeight(theme, size);
     }
   },
+  overflow({ truncate }) {
+    if (truncate) {
+      return 'hidden';
+    } else {
+      return '';
+    }
+  },
+  whiteSpace({ truncate }) {
+    if (truncate) {
+      return 'nowrap';
+    } else {
+      return '';
+    }
+  },
+  textOverflow({ truncate }) {
+    if (truncate) {
+      return 'ellipsis';
+    } else {
+      return '';
+    }
+  },
 };
 
 const Text = styled(
@@ -50,7 +72,7 @@ const Text = styled(
     fontSize,
     children,
     textDecorationLine,
-    alignSelf,
+    align,
     letterSpacing,
     lineHeight,
     ...props
@@ -60,9 +82,12 @@ const Text = styled(
   font-size: ${styles.fontSize};
   color: ${styles.color};
   text-decoration-line: ${styles.textDecorationLine};
-  align-self: ${styles.alignSelf};
+  align-self: ${styles.align};
   letter-spacing: ${styles.letterSpacing};
   line-height: ${styles.lineHeight};
+  overflow: ${styles.overflow};
+  white-space: ${styles.whiteSpace};
+  text-overflow: ${styles.textOverflow};
 `;
 
 Text.propTypes = {
@@ -70,12 +95,12 @@ Text.propTypes = {
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   color: PropTypes.oneOf(getColorKeys()),
   align: PropTypes.oneOf(['left', 'center', 'right']),
-  testID: PropTypes.string,
-  numberOfLines: PropTypes.number,
+  'data-testid': PropTypes.string,
   _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   _isUnderlined: PropTypes.bool,
   _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
   _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
+  truncate: PropTypes.bool,
 };
 
 Text.defaultProps = {
@@ -83,7 +108,7 @@ Text.defaultProps = {
   size: 'large',
   align: 'left',
   color: 'shade.980',
-  testID: 'ds-text',
+  'data-testid': 'ds-text',
   _weight: 'regular',
   _isUnderlined: false,
   _letterSpacing: 'small',

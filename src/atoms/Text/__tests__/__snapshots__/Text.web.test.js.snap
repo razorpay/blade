@@ -1,12 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders Text snapshot testing 1`] = `
+exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 dEcYFA"
+    class="Textweb__Text-sc-6jf9e4-0 gdiHBM"
     color="shade.980"
+    data-testid="ds-text"
   >
-    simple text
+    Displaying some text
+  </div>
+</div>
+`;
+
+exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
+<div>
+  <div
+    class="Textweb__Text-sc-6jf9e4-0 fdKmdh"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some text
+  </div>
+</div>
+`;
+
+exports[`Renders <Text /> correctly snapshot testing with truncate text 1`] = `
+<div>
+  <div
+    class="Textweb__Text-sc-6jf9e4-0 dOEkQJ"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some text
+  </div>
+</div>
+`;
+
+exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = `
+<div>
+  <div
+    class="Textweb__Text-sc-6jf9e4-0 iNUAAr"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some text
   </div>
 </div>
 `;
