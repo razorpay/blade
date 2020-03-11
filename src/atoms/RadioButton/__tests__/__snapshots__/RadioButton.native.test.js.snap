@@ -203,11 +203,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
       <View
         borderRadius="6px"
         borderWidth="1.2px"
-        color="rgba(43, 131, 234, 1.0 )"
+        color="rgba(22, 47, 86, 0.38)"
         style={
           Array [
             Object {
-              "borderColor": "rgba(43, 131, 234, 1.0 )",
+              "borderColor": "rgba(22, 47, 86, 0.38)",
               "borderRadius": 6,
               "borderWidth": 1.2,
             },
@@ -228,27 +228,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
             undefined,
           ]
         }
-      >
-        <View
-          backgroundColor="rgba(43, 131, 234, 1.0 )"
-          borderRadius="3px"
-          style={
-            Array [
-              Object {
-                "backgroundColor": "rgba(43, 131, 234, 1.0 )",
-                "borderRadius": 3,
-              },
-              Array [
-                Object {
-                  "height": 6,
-                  "width": 6,
-                },
-              ],
-              undefined,
-            ]
-          }
-        />
-      </View>
+      />
     </View>
     <View
       style={
@@ -3181,11 +3161,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
         <View
           borderRadius="6px"
           borderWidth="1.2px"
-          color="rgba(22, 47, 86, 0.38)"
+          color="rgba(43, 131, 234, 1.0 )"
           style={
             Array [
               Object {
-                "borderColor": "rgba(22, 47, 86, 0.38)",
+                "borderColor": "rgba(43, 131, 234, 1.0 )",
                 "borderRadius": 6,
                 "borderWidth": 1.2,
               },
@@ -3206,7 +3186,27 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               undefined,
             ]
           }
-        />
+        >
+          <View
+            backgroundColor="rgba(43, 131, 234, 1.0 )"
+            borderRadius="3px"
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+                  "borderRadius": 3,
+                },
+                Array [
+                  Object {
+                    "height": 6,
+                    "width": 6,
+                  },
+                ],
+                undefined,
+              ]
+            }
+          />
+        </View>
       </View>
       <View
         style={
