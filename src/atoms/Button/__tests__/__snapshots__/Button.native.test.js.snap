@@ -1231,6 +1231,12 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
           "borderStyle": "solid",
           "borderWidth": 0,
         },
+        Object {
+          "paddingBottom": 3,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 3,
+        },
         Array [
           Object {
             "paddingBottom": 2,

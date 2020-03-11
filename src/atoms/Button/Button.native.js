@@ -94,24 +94,24 @@ const styles = {
     switch (size) {
       case 'xsmall':
         if (children) {
-          return [theme.spacings.xxsmall, theme.spacings.small];
+          return [makePxValue(0.375), theme.spacings.small];
         }
         return [theme.spacings.xxsmall];
       case 'small':
         if (children) {
           return [makePxValue(0.625), theme.spacings.large];
         }
-        return [makePxValue(0.75)];
+        return [makePxValue(0.5)];
       case 'medium':
         if (children) {
           return [theme.spacings.small, theme.spacings.xxlarge];
         }
-        return [theme.spacings.small];
+        return [makePxValue(0.75)];
       case 'large':
         if (children) {
           return [makePxValue(1.25), theme.spacings.xxlarge];
         }
-        return [makePxValue(1.25)];
+        return [theme.spacings.small];
       default:
         if (children) {
           return [theme.spacings.small, theme.spacings.xxlarge];
