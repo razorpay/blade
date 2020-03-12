@@ -116,6 +116,7 @@ Text.defaultProps = {
   _weight: 'regular',
   _isUnderlined: false,
   _letterSpacing: 'small',
+  truncate: false,
 };
 
 export default Text;
