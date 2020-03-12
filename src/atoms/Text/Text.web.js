@@ -75,8 +75,12 @@ const Text = styled(
     align,
     letterSpacing,
     lineHeight,
+    style,
     ...props
-  }) => React.createElement(as, props, children),
+  }) =>
+    React.createElement(as, props, children, {
+      style: [style, children.props.style].filter(Boolean),
+    }),
 )`
   font-family: ${styles.fontFamily};
   font-size: ${styles.fontSize};
