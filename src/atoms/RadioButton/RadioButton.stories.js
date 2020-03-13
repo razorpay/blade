@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, boolean, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import Radio from './RadioButton';
 import Flex from '../Flex';
 import View from '../View';
@@ -16,7 +17,12 @@ storiesOf('RadioButton', module)
     component: Radio,
   })
   .add('default', () => (
-    <Radio value="1" onChange={() => {}}>
+    <Radio
+      value="1"
+      onChange={(value) => {
+        action('Value', value);
+      }}
+    >
       <Radio.Option
         value="1"
         size={select('Size', sizeOptions, 'large')}
@@ -27,8 +33,12 @@ storiesOf('RadioButton', module)
       />
     </Radio>
   ))
-  .add('uncontrolled', () => (
-    <Radio>
+  .add('onChange', () => (
+    <Radio
+      onChange={(value) => {
+        action('Value', value);
+      }}
+    >
       <Radio.Option value="1" size="large" title="Unchecked" helpText="I'm unchecked" />
       <Radio.Option value="2" size="large" title="Checked" helpText="I'm active" />
       <Radio.Option value="3" size="large" disabled title="Disabled" helpText="I'm disabled" />
@@ -38,7 +48,12 @@ storiesOf('RadioButton', module)
   .add('controlled', () => (
     <Flex flexDirection="row" flexWrap="wrap">
       <View>
-        <Radio value="1" onChange={() => {}}>
+        <Radio
+          value="1"
+          onChange={(value) => {
+            action('Value', value);
+          }}
+        >
           <Radio.Option value="1" size="large" title="Unchecked" helpText="I'm unchecked" />
           <Radio.Option value="2" size="large" title="Checked" helpText="I'm active" />
           <Radio.Option value="3" size="large" disabled title="Disabled" helpText="I'm disabled" />

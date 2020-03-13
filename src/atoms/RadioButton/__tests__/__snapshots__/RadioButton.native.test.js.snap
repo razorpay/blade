@@ -13,7 +13,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
           "flexDirection": "column",
         },
       ],
-      undefined,
     ]
   }
   testID="reactSelectId"
@@ -28,7 +27,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
             "flexDirection": "row",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -55,9 +53,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
                 "justifyContent": "center",
               },
             ],
-            undefined,
           ],
-          undefined,
         ]
       }
     >
@@ -84,9 +80,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       />
@@ -94,19 +88,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 4,
-            "marginRight": 0,
-            "marginTop": 0,
-          },
           Array [
             Object {
-              "alignSelf": "center",
-              "flexDirection": "column",
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
           ],
-          undefined,
         ]
       }
     >
@@ -152,7 +147,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
           "flexDirection": "column",
         },
       ],
-      undefined,
     ]
   }
   testID="reactSelectId"
@@ -167,7 +161,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
             "flexDirection": "row",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -194,20 +187,18 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
                 "justifyContent": "center",
               },
             ],
-            undefined,
           ],
-          undefined,
         ]
       }
     >
       <View
         borderRadius="6px"
         borderWidth="1.2px"
-        color="rgba(22, 47, 86, 0.38)"
+        color="rgba(43, 131, 234, 1.0 )"
         style={
           Array [
             Object {
-              "borderColor": "rgba(22, 47, 86, 0.38)",
+              "borderColor": "rgba(43, 131, 234, 1.0 )",
               "borderRadius": 6,
               "borderWidth": 1.2,
             },
@@ -223,29 +214,47 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
-      />
+      >
+        <View
+          backgroundColor="rgba(43, 131, 234, 1.0 )"
+          borderRadius="3px"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+                "borderRadius": 3,
+              },
+              Array [
+                Object {
+                  "height": 6,
+                  "width": 6,
+                },
+              ],
+            ]
+          }
+        />
+      </View>
     </View>
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 4,
-            "marginRight": 0,
-            "marginTop": 0,
-          },
           Array [
             Object {
-              "alignSelf": "center",
-              "flexDirection": "column",
+              "marginBottom": 0,
+              "marginLeft": 4,
+              "marginRight": 0,
+              "marginTop": 0,
             },
+            Array [
+              Object {
+                "alignSelf": "center",
+                "flexDirection": "column",
+              },
+            ],
           ],
-          undefined,
         ]
       }
     >
@@ -300,7 +309,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -315,7 +323,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -342,9 +349,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -371,9 +376,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -381,19 +384,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -436,7 +440,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -451,7 +454,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -478,9 +480,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -507,9 +507,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -517,19 +515,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -572,7 +571,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -587,7 +585,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -614,9 +611,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -643,9 +638,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -653,19 +646,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -721,7 +715,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -736,7 +729,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -763,9 +755,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -792,9 +782,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -802,19 +790,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -847,12 +836,14 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 32,
-            "marginRight": 0,
-            "marginTop": 0,
-          },
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 32,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ],
         ]
       }
     >
@@ -894,7 +885,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -909,7 +899,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -936,9 +925,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -965,9 +952,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -975,19 +960,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -1020,12 +1006,14 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 28,
-            "marginRight": 0,
-            "marginTop": 0,
-          },
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 28,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ],
         ]
       }
     >
@@ -1067,7 +1055,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -1082,7 +1069,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1109,9 +1095,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -1138,9 +1122,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -1148,19 +1130,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -1216,7 +1199,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -1231,7 +1213,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1258,9 +1239,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -1287,9 +1266,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -1297,19 +1274,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -1342,12 +1320,14 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 32,
-            "marginRight": 0,
-            "marginTop": 0,
-          },
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 32,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ],
         ]
       }
     >
@@ -1389,7 +1369,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -1404,7 +1383,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1431,9 +1409,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -1460,9 +1436,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -1470,19 +1444,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -1515,12 +1490,14 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 28,
-            "marginRight": 0,
-            "marginTop": 0,
-          },
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 28,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ],
         ]
       }
     >
@@ -1562,7 +1539,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -1577,7 +1553,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1604,9 +1579,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -1633,9 +1606,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -1643,19 +1614,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -1711,7 +1683,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -1726,7 +1697,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1753,9 +1723,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -1782,9 +1750,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -1792,19 +1758,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -1847,7 +1814,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -1862,7 +1828,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1889,9 +1854,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -1918,9 +1881,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -1928,19 +1889,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -1983,7 +1945,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -1998,7 +1959,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2025,9 +1985,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -2054,9 +2012,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -2064,19 +2020,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -2132,7 +2089,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="reactSelectId"
@@ -2147,7 +2103,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2174,9 +2129,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -2203,9 +2156,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -2213,19 +2164,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -2268,7 +2220,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="angularSelectId"
@@ -2283,7 +2234,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2310,9 +2260,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -2339,9 +2287,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -2349,19 +2295,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -2404,7 +2351,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="vueSelectId"
@@ -2419,7 +2365,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2446,9 +2391,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -2475,9 +2418,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -2485,19 +2426,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -2553,7 +2495,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="reactSelectId"
@@ -2568,7 +2509,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2595,9 +2535,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -2624,9 +2562,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -2634,19 +2570,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -2689,7 +2626,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="angularSelectId"
@@ -2704,7 +2640,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2731,9 +2666,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -2760,9 +2693,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -2770,19 +2701,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -2825,7 +2757,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="vueSelectId"
@@ -2840,7 +2771,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2867,9 +2797,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -2896,9 +2824,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -2906,19 +2832,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -2974,7 +2901,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="reactSelectId"
@@ -2989,7 +2915,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3016,9 +2941,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -3045,9 +2968,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -3055,19 +2976,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -3110,7 +3032,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="angularSelectId"
@@ -3125,7 +3046,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3152,9 +3072,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -3181,9 +3099,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         >
@@ -3202,7 +3118,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                     "width": 6,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -3211,19 +3126,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -3266,7 +3182,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="vueSelectId"
@@ -3281,7 +3196,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3308,9 +3222,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -3337,9 +3249,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -3347,19 +3257,20 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -3415,7 +3326,6 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="reactSelectId"
@@ -3430,7 +3340,6 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3457,9 +3366,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -3486,9 +3393,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -3496,19 +3401,20 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -3551,7 +3457,6 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="angularSelectId"
@@ -3566,7 +3471,6 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3593,9 +3497,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -3622,9 +3524,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         >
@@ -3643,7 +3543,6 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
                     "width": 6,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -3652,19 +3551,20 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -3707,7 +3607,6 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="vueSelectId"
@@ -3722,7 +3621,6 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3749,9 +3647,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -3778,9 +3674,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -3788,19 +3682,20 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -3834,7 +3729,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
 </View>
 `;
 
-exports[`Native <RadioButton /> controlled component should render uncontrolled Radio component 1`] = `
+exports[`Native <RadioButton /> controlled component should render controlled Radio component 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -3856,7 +3751,6 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -3871,7 +3765,6 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3898,9 +3791,7 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -3927,9 +3818,7 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         >
@@ -3948,7 +3837,6 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
                     "width": 6,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -3957,19 +3845,20 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -4012,7 +3901,6 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -4027,7 +3915,6 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -4054,9 +3941,7 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -4083,9 +3968,7 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -4093,19 +3976,20 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -4148,7 +4032,6 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-radio-button"
@@ -4163,7 +4046,6 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -4190,9 +4072,7 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
                   "justifyContent": "center",
                 },
               ],
-              undefined,
             ],
-            undefined,
           ]
         }
       >
@@ -4219,9 +4099,7 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
                     "justifyContent": "center",
                   },
                 ],
-                undefined,
               ],
-              undefined,
             ]
           }
         />
@@ -4229,19 +4107,20 @@ exports[`Native <RadioButton /> controlled component should render uncontrolled 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >

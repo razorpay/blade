@@ -37,8 +37,10 @@ describe('Native <RadioButton />', () => {
     });
 
     test('should match snapshot when clicked on first child', () => {
+      const mockFn = jest.fn();
+      const clickedOptionValue = '1';
       const { getByTestId } = renderWithTheme(
-        <Radio>
+        <Radio onChange={mockFn}>
           <Radio.Option value="1" title="React" testID="reactSelectId" />
           <Radio.Option value="2" title="Angular" testID="angularSelectId" />
           <Radio.Option value="3" title="Vue" testID="vueSelectId" />
@@ -48,9 +50,12 @@ describe('Native <RadioButton />', () => {
       expect(firstChildComponent).toMatchSnapshot();
 
       act(() => {
-        fireEvent.press(firstChildComponent);
+        fireEvent.pressIn(firstChildComponent);
+        fireEvent.pressOut(firstChildComponent);
       });
       expect(firstChildComponent).toMatchSnapshot();
+      expect(mockFn).toBeCalled();
+      expect(mockFn).toBeCalledWith(clickedOptionValue);
     });
 
     test('snapshot testing when user presses in  on RadioButton', () => {
