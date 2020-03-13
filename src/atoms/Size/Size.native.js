@@ -7,8 +7,10 @@ const Size = styled(
     if (React.Children.toArray(children).length !== 1) {
       throw new Error('Expected a single child for Size component');
     }
-
-    return React.cloneElement(children, { ...props, style: [style, children.props.style] });
+    return React.cloneElement(children, {
+      ...props,
+      style: [style, children.props.style].filter(Boolean),
+    });
   },
 )`
   ${(props) => (props.width ? `width: ${props.width}` : '')};

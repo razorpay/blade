@@ -23,6 +23,17 @@ describe('Renders <Size /> correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render child component with no sizings applied', () => {
+    const { container, getByTestId } = render(
+      <Size>
+        <View testID={'size-view'} />
+      </Size>,
+    );
+    const childView = getByTestId('size-view');
+    expect(childView.props.style).toMatchObject([{}]);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should throw error when more than one nodes are passed as children', () => {
     const expectedErrorMessage = 'Expected a single child for Size component';
     expect(() =>
