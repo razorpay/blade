@@ -4,11 +4,11 @@ import styled from 'styled-components/native';
 import automation from '../../_helpers/automation-attributes';
 import View from '../View';
 import Space from '../Space/Space.native';
-import { getColor } from '../../_helpers/theme';
+import { getColor, getColorKeys } from '../../_helpers/theme';
 
 const styles = {
-  backgroundColor({ theme }) {
-    return theme.colors.background[200];
+  backgroundColor({ theme, backgroundColor }) {
+    return getColor(theme, backgroundColor);
   },
   shadowColor({ theme }) {
     return theme.colors.primary[920];
@@ -41,11 +41,11 @@ const styles = {
       return 0;
     }
   },
-  border({ variant, theme }) {
+  border({ variant, theme, borderColor }) {
     if (variant === 'shadow') {
       return 'none';
     } else {
-      return `1px solid ${getColor(theme, 'primary.930')}`;
+      return `1px solid ${getColor(theme, borderColor)}`;
     }
   },
 };
@@ -60,10 +60,15 @@ const StyledCard = styled(View)`
   border: ${styles.border};
 `;
 
-const Card = ({ children, variant, testID }) => {
+const Card = ({ children, variant, backgroundColor, borderColor, testID }) => {
   return (
     <Space padding={[1.5, 1.5, 1.5, 1.5]}>
-      <StyledCard {...automation(testID)} variant={variant}>
+      <StyledCard
+        variant={variant}
+        backgroundColor={backgroundColor}
+        borderColor={borderColor}
+        {...automation(testID)}
+      >
         {children}
       </StyledCard>
     </Space>
@@ -74,12 +79,16 @@ Card.propTypes = {
   children: PropTypes.node,
   variant: PropTypes.oneOf(['shadow', 'outline']),
   testID: PropTypes.string,
+  backgroundColor: PropTypes.oneOf(getColorKeys()),
+  borderColor: PropTypes.oneOf(getColorKeys()),
 };
 
 Card.defaultProps = {
   children: undefined,
   variant: 'shadow',
   testID: 'ds-card',
+  backgroundColor: 'background.200',
+  borderColor: 'primary.930',
 };
 
 export default Card;

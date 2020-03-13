@@ -10,6 +10,13 @@ describe('<Card />', () => {
       expect(container).toMatchSnapshot();
     });
 
+    it('renders a Card with shadow and custom background color', () => {
+      const { container } = renderWithTheme(
+        <Card variant="shadow" backgroundColor="primary.920" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
     it('renders a Card with a shadow and text content', () => {
       const displayText = 'Hello';
       const { container, getByText } = renderWithTheme(
@@ -26,6 +33,18 @@ describe('<Card />', () => {
   describe('outline', () => {
     it('renders a Card with an outline', () => {
       const { container } = renderWithTheme(<Card variant="outline" />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders a Card with an outline and custom background color', () => {
+      const { container } = renderWithTheme(
+        <Card variant="shadow" backgroundColor="primary.920" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders a Card with an outline and custom border color', () => {
+      const { container } = renderWithTheme(<Card variant="shadow" borderColor="primary.920" />);
       expect(container).toMatchSnapshot();
     });
 
