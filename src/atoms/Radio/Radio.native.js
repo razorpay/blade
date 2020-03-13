@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import RadioButtonContext from './RadioButtonContext';
+import RadioButtonContext from './RadioContext';
 import RadioOption from './RadioOption';
 
 const Radio = ({ value, onChange, defaultValue, children }) => {

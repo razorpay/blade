@@ -12,7 +12,7 @@ import Backdrop from './Backdrop';
 import Space from '../Space';
 import isEmpty from '../../_helpers/isEmpty';
 import automation from '../../_helpers/automation-attributes';
-import { useRadioButtonContext } from './RadioButtonContext';
+import { useRadioButtonContext } from './RadioContext';
 
 const styles = {
   radio: {
@@ -127,27 +127,27 @@ const styles = {
       switch (size) {
         case 'large':
           return {
-            width: '7px',
-            height: '7px',
-            borderRadius: '3.5px',
+            width: makePxValue(0.875),
+            height: makePxValue(0.875),
+            borderRadius: makePxValue(0.4375),
           };
         case 'medium':
           return {
-            width: '6px',
-            height: '6px',
-            borderRadius: '3px',
+            width: makePxValue(0.75),
+            height: makePxValue(0.75),
+            borderRadius: makePxValue(0.375),
           };
         case 'small':
           return {
-            width: '5px',
-            height: '5px',
-            borderRadius: '2.5px',
+            width: makePxValue(0.625),
+            height: makePxValue(0.625),
+            borderRadius: makePxValue(0.3125),
           };
         default:
           return {
-            width: '6px',
-            height: '6px',
-            borderRadius: '3px',
+            width: makePxValue(0.75),
+            height: makePxValue(0.75),
+            borderRadius: makePxValue(0.375),
           };
       }
     },
