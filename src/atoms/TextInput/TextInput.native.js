@@ -196,7 +196,7 @@ const TextInput = ({
     ({ nativeEvent }) => {
       const { layout } = nativeEvent;
       // Set layout values only once
-      if (!layoutDimensions) setLayoutDimensions(layout);
+      if (isEmpty(layoutDimensions)) setLayoutDimensions(layout);
     },
     [layoutDimensions, setLayoutDimensions],
   );
@@ -204,7 +204,7 @@ const TextInput = ({
   return (
     <Flex justifyContent="flex-end">
       <View>
-        {!hasAnimatedLabel && layoutDimensions && labelPosition === 'top' ? (
+        {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'top' ? (
           <Label.Regular
             labelPosition={labelPosition}
             disabled={disabled}
@@ -214,7 +214,7 @@ const TextInput = ({
           </Label.Regular>
         ) : null}
         {/* Animated Label */}
-        {layoutDimensions && hasAnimatedLabel ? (
+        {!isEmpty(layoutDimensions) && hasAnimatedLabel ? (
           <Label.Animated
             isFocused={isFocused}
             hasText={hasText}
@@ -231,7 +231,7 @@ const TextInput = ({
         <Flex flexDirection="row" alignItems="flex-start">
           <View>
             {/* Fixed Left Label */}
-            {!hasAnimatedLabel && layoutDimensions && labelPosition === 'left' ? (
+            {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'left' ? (
               <Label.Regular
                 inputLayoutDimensions={layoutDimensions}
                 labelPosition={labelPosition}
