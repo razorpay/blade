@@ -26,6 +26,7 @@ configure(() => {
   require('../../src/atoms/Card/Card.stories');
   require('../../src/atoms/Indicator/Indicator.stories');
   require('../../src/atoms/Badge/Badge.stories');
+  require('../../src/atoms/TextArea/TextArea.stories');
 }, module);
 
 // add decorators
