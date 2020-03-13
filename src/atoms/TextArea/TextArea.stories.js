@@ -27,7 +27,7 @@ storiesOf('TextArea', module)
             </View>
           </Space>
           <TextArea
-            size={select('Size', sizeOptions, 'medium')}
+            width={select('Width', sizeOptions, 'medium')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -51,7 +51,7 @@ storiesOf('TextArea', module)
             </View>
           </Space>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -74,7 +74,7 @@ storiesOf('TextArea', module)
             </View>
           </Space>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -97,7 +97,7 @@ storiesOf('TextArea', module)
             </View>
           </Space>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -120,7 +120,7 @@ storiesOf('TextArea', module)
             </View>
           </Space>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -143,7 +143,7 @@ storiesOf('TextArea', module)
             </View>
           </Space>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -167,7 +167,7 @@ storiesOf('TextArea', module)
             </View>
           </Space>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -190,7 +190,7 @@ storiesOf('TextArea', module)
             </View>
           </Space>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -213,7 +213,7 @@ storiesOf('TextArea', module)
             </View>
           </Space>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -239,7 +239,7 @@ storiesOf('TextArea', module)
             </View>
           </Space>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -261,7 +261,7 @@ storiesOf('TextArea', module)
           </Space>
           <Text>Filled Leading Icon:</Text>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -283,7 +283,7 @@ storiesOf('TextArea', module)
           </Space>
           <Text>Filled Trailing Icon:</Text>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -305,7 +305,7 @@ storiesOf('TextArea', module)
           </Space>
           <Text>Filled prefix:</Text>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -327,7 +327,7 @@ storiesOf('TextArea', module)
           </Space>
           <Text>Filled suffix:</Text>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -349,7 +349,7 @@ storiesOf('TextArea', module)
           </Space>
           <Text>Filled character count:</Text>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -372,7 +372,7 @@ storiesOf('TextArea', module)
           </Space>
           <Text>Filled error:</Text>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -394,7 +394,7 @@ storiesOf('TextArea', module)
           </Space>
           <Text>Filled Disabled:</Text>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -416,7 +416,7 @@ storiesOf('TextArea', module)
           </Space>
           <Text>Filled Disabled With Text:</Text>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -440,7 +440,7 @@ storiesOf('TextArea', module)
           </Space>
           <Text>Filled with left label:</Text>
           <TextArea
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""

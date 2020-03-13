@@ -20,7 +20,7 @@ const TextArea = ({
   label,
   testID,
   labelPosition,
-  size,
+  width,
 }) => {
   if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
     throw Error('Cannot have prefix and left icon together');
@@ -50,7 +50,7 @@ const TextArea = ({
       maxLength={maxLength}
       label={label}
       labelPosition={labelPosition}
-      size={size}
+      width={width}
       _isMultiline={true}
       {...automation(testID)}
     >
@@ -75,7 +75,7 @@ TextArea.propTypes = {
   label: PropTypes.string,
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
-  size: PropTypes.oneOf(['small', 'medium', 'block']),
+  width: PropTypes.oneOf(['small', 'medium', 'block']),
 };
 
 TextArea.defaultProps = {
@@ -94,7 +94,7 @@ TextArea.defaultProps = {
   label: 'Label',
   testID: 'ds-text-area',
   labelPosition: 'top',
-  size: 'medium',
+  width: 'medium',
 };
 
 export default TextArea;

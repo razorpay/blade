@@ -27,7 +27,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'medium')}
+            width={select('Width', sizeOptions, 'medium')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -51,7 +51,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -74,7 +74,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -97,7 +97,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -120,7 +120,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -143,7 +143,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -167,7 +167,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -190,7 +190,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -213,7 +213,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -239,7 +239,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -262,7 +262,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -285,7 +285,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -308,7 +308,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -331,7 +331,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -354,7 +354,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -378,7 +378,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -401,7 +401,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -424,7 +424,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -449,7 +449,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""

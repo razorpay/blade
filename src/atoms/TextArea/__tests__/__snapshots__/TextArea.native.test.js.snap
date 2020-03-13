@@ -468,6 +468,165 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing (filled 
 </View>
 `;
 
+exports[`Renders <TextArea /> filled variant correctly snapshot testing with block width (filled TextArea) 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          _isMultiline={true}
+          disabled={false}
+          isFocused={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(224, 228, 249, 0.10)",
+                "borderTopLeftRadius": 2,
+                "borderTopRightRadius": 2,
+                "marginTop": "auto",
+              },
+            ]
+          }
+          variant="filled"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Array [
+                  Object {
+                    "width": "100%",
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              disabled={false}
+              editable={true}
+              hasLeftIcon={false}
+              hasPrefix={false}
+              hasText={false}
+              multiline={true}
+              placeholder="Enter text here"
+              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              rejectResponderTermination={true}
+              selectionColor="rgba(22, 47, 86, 0.87)"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 20,
+                  },
+                  Array [
+                    Object {
+                      "height": "auto",
+                      "maxHeight": 80,
+                      "minHeight": 30,
+                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 3.08,
+                      },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
+                    ],
+                  ],
+                ]
+              }
+              testID="ds-text-area"
+              underlineColorAndroid="transparent"
+              value=""
+              variant="filled"
+            />
+          </View>
+          <View
+            disabled={false}
+            hasError={false}
+            isFocused={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`Renders <TextArea /> filled variant correctly snapshot testing with character count (filled TextArea) 1`] = `
 <View
   collapsable={true}
@@ -3385,6 +3544,162 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with pre
 </View>
 `;
 
+exports[`Renders <TextArea /> filled variant correctly snapshot testing with small width (filled TextArea) 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          _isMultiline={true}
+          disabled={false}
+          isFocused={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(224, 228, 249, 0.10)",
+                "borderTopLeftRadius": 2,
+                "borderTopRightRadius": 2,
+                "marginTop": "auto",
+              },
+            ]
+          }
+          variant="filled"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Array [
+                  Object {
+                    "width": 160,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              disabled={false}
+              editable={true}
+              hasLeftIcon={false}
+              hasPrefix={false}
+              hasText={false}
+              multiline={true}
+              placeholder="Enter text here"
+              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              rejectResponderTermination={true}
+              selectionColor="rgba(22, 47, 86, 0.87)"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 20,
+                  },
+                  Array [
+                    Object {
+                      "height": "auto",
+                      "maxHeight": 80,
+                      "minHeight": 30,
+                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 3.08,
+                      },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
+                    ],
+                  ],
+                ]
+              }
+              testID="ds-text-area"
+              underlineColorAndroid="transparent"
+              value=""
+              variant="filled"
+            />
+          </View>
+          <View
+            disabled={false}
+            hasError={false}
+            isFocused={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`Renders <TextArea /> filled variant correctly snapshot testing with suffix (filled TextArea) 1`] = `
 <View
   collapsable={true}
@@ -3877,6 +4192,165 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot after focus 2`
               Array [
                 Object {
                   "backgroundColor": "rgba(43, 131, 234, 1.0 )",
+                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextArea /> outlined variant correctly snapshot testing with block width 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          _isMultiline={true}
+          disabled={false}
+          isFocused={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderTopLeftRadius": 2,
+                "borderTopRightRadius": 2,
+                "marginTop": 10,
+              },
+            ]
+          }
+          variant="outlined"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Array [
+                  Object {
+                    "width": "100%",
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              disabled={false}
+              editable={true}
+              hasLeftIcon={false}
+              hasPrefix={false}
+              hasText={false}
+              multiline={true}
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
+              rejectResponderTermination={true}
+              selectionColor="rgba(22, 47, 86, 0.87)"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 20,
+                  },
+                  Array [
+                    Object {
+                      "height": "auto",
+                      "maxHeight": 80,
+                      "minHeight": 30,
+                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 3.08,
+                      },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
+                    ],
+                  ],
+                ]
+              }
+              testID="ds-text-area"
+              underlineColorAndroid="transparent"
+              value=""
+              variant="outlined"
+            />
+          </View>
+          <View
+            disabled={false}
+            hasError={false}
+            isFocused={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
                 },
                 Array [
                   Object {
@@ -6897,6 +7371,162 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with p
               editable={true}
               hasLeftIcon={false}
               hasPrefix={true}
+              hasText={false}
+              multiline={true}
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
+              rejectResponderTermination={true}
+              selectionColor="rgba(22, 47, 86, 0.87)"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 20,
+                  },
+                  Array [
+                    Object {
+                      "height": "auto",
+                      "maxHeight": 80,
+                      "minHeight": 30,
+                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 3.08,
+                      },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
+                    ],
+                  ],
+                ]
+              }
+              testID="ds-text-area"
+              underlineColorAndroid="transparent"
+              value=""
+              variant="outlined"
+            />
+          </View>
+          <View
+            disabled={false}
+            hasError={false}
+            isFocused={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextArea /> outlined variant correctly snapshot testing with small width 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          _isMultiline={true}
+          disabled={false}
+          isFocused={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderTopLeftRadius": 2,
+                "borderTopRightRadius": 2,
+                "marginTop": 10,
+              },
+            ]
+          }
+          variant="outlined"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Array [
+                  Object {
+                    "width": 160,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              disabled={false}
+              editable={true}
+              hasLeftIcon={false}
+              hasPrefix={false}
               hasText={false}
               multiline={true}
               placeholder="Enter text here"

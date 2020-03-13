@@ -106,8 +106,8 @@ const styles = {
     },
   },
   inputContainer: {
-    width({ size }) {
-      switch (size) {
+    width({ width }) {
+      switch (width) {
         case 'block':
           return '100%';
         case 'small':
@@ -176,7 +176,7 @@ const TextInput = ({
   label,
   testID,
   labelPosition,
-  size,
+  width,
   _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
@@ -298,7 +298,7 @@ const TextInput = ({
               </Label.Regular>
             ) : null}
             {/* Text Input */}
-            <Flex flexDirection="column" flex={size === 'block' ? 1 : 0}>
+            <Flex flexDirection="column" flex={width === 'block' ? 1 : 0}>
               <View>
                 <FillContainer
                   _isMultiline={_isMultiline}
@@ -307,7 +307,7 @@ const TextInput = ({
                   disabled={disabled}
                 >
                   <Flex flexDirection="row" alignItems="center">
-                    <Size width={styles.inputContainer.width({ size })}>
+                    <Size width={styles.inputContainer.width({ width })}>
                       <InputContainer>
                         {hasPrefix ? (
                           <AccessoryText variant={variant} disabled={disabled}>
@@ -420,7 +420,7 @@ TextInput.propTypes = {
   label: PropTypes.string,
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
-  size: PropTypes.oneOf(['small', 'medium', 'block']),
+  width: PropTypes.oneOf(['small', 'medium', 'block']),
   _isMultiline: PropTypes.bool,
 };
 
@@ -440,7 +440,7 @@ TextInput.defaultProps = {
   label: 'Label',
   testID: 'ds-text-input',
   labelPosition: 'top',
-  size: 'medium',
+  width: 'medium',
 };
 
 export default TextInput;

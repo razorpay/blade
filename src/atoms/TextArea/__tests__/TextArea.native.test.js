@@ -94,6 +94,16 @@ describe('Renders <TextArea /> outlined variant correctly', () => {
     });
     expect(container).toMatchSnapshot();
   });
+
+  it('snapshot testing with small width', () => {
+    const { container } = renderWithTheme(<TextArea width="small" />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('snapshot testing with block width', () => {
+    const { container } = renderWithTheme(<TextArea width="block" />);
+    expect(container).toMatchSnapshot();
+  });
 });
 
 describe('Renders <TextArea /> filled variant correctly', () => {
@@ -207,6 +217,16 @@ describe('Renders <TextArea /> filled variant correctly', () => {
       fireEvent.focus(textArea);
       jest.runAllTimers(); // Resolve timers after focus events
     });
+    expect(container).toMatchSnapshot();
+  });
+
+  it('snapshot testing with small width (filled TextArea)', () => {
+    const { container } = renderWithTheme(<TextArea variant="filled" width="small" />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('snapshot testing with block width (filled TextArea)', () => {
+    const { container } = renderWithTheme(<TextArea variant="filled" width="block" />);
     expect(container).toMatchSnapshot();
   });
 });
