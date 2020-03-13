@@ -18,7 +18,7 @@ const styles = {
   padding({ variant }) {
     const top = IS_ANDROID ? 1 : 0;
     if (variant === 'filled') {
-      return [top, 1, 0, 1];
+      return [0, 1, 0, 1];
     } else {
       return [top, 0.5, 0, 0];
     }

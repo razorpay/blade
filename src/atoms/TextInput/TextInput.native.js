@@ -14,18 +14,29 @@ import automation from '../../_helpers/automation-attributes';
 import View from '../View';
 import isEmpty from '../../_helpers/isEmpty';
 import Size from '../Size';
+import Space from '../Space';
 
 const IS_ANDROID = Platform.OS === 'android';
 
 const styles = {
   textInput: {
     padding({ variant, hasLeftIcon, hasPrefix, hasText }) {
-      const paddingTop = IS_ANDROID ? '8px' : '0px';
-      const paddingRight = '0px';
-      const paddingBottom = IS_ANDROID ? '0px' : hasText ? '4px' : '2px';
-      const paddingLeft = variant === 'outlined' || hasLeftIcon || hasPrefix ? '0px' : '8px';
+      let [paddingTop, paddingRight, paddingBottom, paddingLeft] = [0, 0, 0, 0];
+
+      if (IS_ANDROID) {
+        if (variant === 'outlined') {
+          paddingTop = 1;
+        }
+      } else if (hasText) {
+        paddingBottom = 0.5;
+      } else {
+        paddingBottom = 0.25;
+      }
+
+      paddingRight = 0;
+      paddingLeft = variant === 'outlined' || hasLeftIcon || hasPrefix ? 0 : 1;
       // iOS & Android need different paddings
-      return `${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`;
+      return [paddingTop, paddingRight, paddingBottom, paddingLeft];
     },
     fontSize({ theme }) {
       return theme.fonts.size.medium;
@@ -41,6 +52,13 @@ const styles = {
         return theme.colors.shade[940];
       } else {
         return theme.colors.shade[980];
+      }
+    },
+    height({ variant }) {
+      if (variant === 'filled') {
+        return '36px';
+      } else {
+        return '40px';
       }
     },
   },
@@ -78,7 +96,6 @@ const InputContainer = styled(View)`
 `;
 
 const StyledInput = styled(NativeTextInput)`
-  padding: ${styles.textInput.padding};
   font-size: ${styles.textInput.fontSize};
   line-height: ${styles.textInput.lineHeight};
   font-family: ${styles.textInput.fontFamily};
@@ -127,7 +144,7 @@ const TextInput = ({
   // Used to hide placeholder while label is inside the TextInput
   const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
 
-  const hasLeftLabel = labelPosition === 'left' && variant === 'filled';
+  const hasAnimatedLabel = variant === 'outlined';
 
   const placeholderTextColor = disabled ? theme.colors.shade[930] : theme.colors.shade[940];
 
@@ -139,6 +156,11 @@ const TextInput = ({
     iconLeft,
     iconRight,
   });
+
+  if (labelPosition === 'left' && variant === 'outlined') {
+    // Outlined Text Input has only a top label
+    throw Error('Cannot have a left label on an outlined Text Input');
+  }
 
   const hasText = !!(input && input.length > 0);
   const onFocus = useCallback(() => {
@@ -174,7 +196,7 @@ const TextInput = ({
     ({ nativeEvent }) => {
       const { layout } = nativeEvent;
       // Set layout values only once
-      if (!layoutDimensions) setLayoutDimensions(layout);
+      if (isEmpty(layoutDimensions)) setLayoutDimensions(layout);
     },
     [layoutDimensions, setLayoutDimensions],
   );
@@ -182,8 +204,17 @@ const TextInput = ({
   return (
     <Flex justifyContent="flex-end">
       <View>
+        {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'top' ? (
+          <Label.Regular
+            position={labelPosition}
+            disabled={disabled}
+            inputLayoutDimensions={layoutDimensions}
+          >
+            {label}
+          </Label.Regular>
+        ) : null}
         {/* Animated Label */}
-        {layoutDimensions && !hasLeftLabel ? (
+        {!isEmpty(layoutDimensions) && hasAnimatedLabel ? (
           <Label.Animated
             isFocused={isFocused}
             hasText={hasText}
@@ -200,8 +231,14 @@ const TextInput = ({
         <Flex flexDirection="row" alignItems="flex-start">
           <View>
             {/* Fixed Left Label */}
-            {hasLeftLabel && layoutDimensions ? (
-              <Label.Regular inputLayoutDimensions={layoutDimensions}>{label}</Label.Regular>
+            {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'left' ? (
+              <Label.Regular
+                inputLayoutDimensions={layoutDimensions}
+                position={labelPosition}
+                disabled={disabled}
+              >
+                {label}
+              </Label.Regular>
             ) : null}
             {/* Text Input */}
             <Flex flexDirection="column" flex={size === 'block' ? 1 : 0}>
@@ -225,26 +262,37 @@ const TextInput = ({
                         ) : null}
 
                         <Flex flex={1}>
-                          <Size height="40px">
-                            <StyledInput
-                              placeholder={isPlaceholderVisible || hasLeftLabel ? placeholder : ''}
-                              placeholderTextColor={placeholderTextColor}
-                              onFocus={onFocus}
-                              onBlur={onBlur}
-                              onChangeText={onChangeText}
-                              hasText={hasText}
-                              selectionColor={theme.colors.shade[980]} // not able to change this for Android
-                              editable={!disabled}
-                              disabled={disabled}
-                              variant={variant}
-                              hasPrefix={hasPrefix}
-                              hasLeftIcon={hasLeftIcon}
-                              maxLength={maxLength}
-                              onLayout={onTextInputLayout}
-                              value={input}
-                              {...automation(testID)}
-                            />
-                          </Size>
+                          <Space
+                            padding={styles.textInput.padding({
+                              variant,
+                              hasLeftIcon,
+                              hasPrefix,
+                              hasText,
+                            })}
+                          >
+                            <Size height={styles.textInput.height({ variant })}>
+                              <StyledInput
+                                placeholder={
+                                  isPlaceholderVisible || !hasAnimatedLabel ? placeholder : ''
+                                }
+                                placeholderTextColor={placeholderTextColor}
+                                onFocus={onFocus}
+                                onBlur={onBlur}
+                                onChangeText={onChangeText}
+                                hasText={hasText}
+                                selectionColor={theme.colors.shade[980]} // not able to change this for Android
+                                editable={!disabled}
+                                disabled={disabled}
+                                variant={variant}
+                                hasPrefix={hasPrefix}
+                                hasLeftIcon={hasLeftIcon}
+                                maxLength={maxLength}
+                                onLayout={onTextInputLayout}
+                                value={input}
+                                {...automation(testID)}
+                              />
+                            </Size>
+                          </Space>
                         </Flex>
                         {hasSuffix ? (
                           <AccessoryText variant={variant} disabled={disabled}>

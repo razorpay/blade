@@ -21,12 +21,24 @@ const REGULAR_PADDING_TOP_MULTIPLIER_IOS = 0.29;
 
 const styles = {
   regularLabelContainer: {
-    paddingTop({ inputLayoutDimensions }) {
-      // For aligning left label to the center of Text Field
-      if (IS_ANDROID) {
-        return `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_ANDROID}px`;
+    padding({ position, inputLayoutDimensions }) {
+      let [top, right, bottom] = [0, 0, 0.5];
+      const left = 0;
+
+      if (position === 'top') {
+        top = 0;
+      } else {
+        if (IS_ANDROID) {
+          top = `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_ANDROID}px`;
+        } else {
+          top = `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_IOS}px`;
+        }
+
+        right = 3;
+        bottom = 0;
       }
-      return `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_IOS}px`;
+
+      return [top, right, bottom, left];
     },
   },
   container: {
@@ -232,21 +244,15 @@ AnimatedLabel.defaultProps = {
   hasError: false,
 };
 
-const LabelContainer = styled(View)`
-  padding-top: ${styles.regularLabelContainer.paddingTop};
-`;
-
-const RegularLabel = ({ children, inputLayoutDimensions }) => {
+const RegularLabel = ({ children, inputLayoutDimensions, position, disabled }) => {
   return (
-    <LabelContainer inputLayoutDimensions={inputLayoutDimensions}>
-      <Space padding={[0, 3, 0, 0]}>
-        <View>
-          <Text size="medium" color="shade.980">
-            {children}
-          </Text>
-        </View>
-      </Space>
-    </LabelContainer>
+    <Space padding={styles.regularLabelContainer.padding({ position, inputLayoutDimensions })}>
+      <View>
+        <Text size="medium" color={disabled ? 'shade.940' : 'shade.980'}>
+          {children}
+        </Text>
+      </View>
+    </Space>
   );
 };
 
@@ -257,11 +263,20 @@ RegularLabel.propTypes = {
     width: PropTypes.number,
     x: PropTypes.number,
     y: PropTypes.number,
-  }).isRequired,
+  }),
+  position: PropTypes.oneOf(['top', 'left']).isRequired,
+  disabled: PropTypes.bool,
 };
 
 RegularLabel.defaultProps = {
   children: 'Label',
+  inputLayoutDimensions: undefined,
+  disabled: false,
 };
 
-export default { Animated: AnimatedLabel, Regular: RegularLabel };
+const Label = {
+  Animated: AnimatedLabel,
+  Regular: RegularLabel,
+};
+
+export default Label;
