@@ -5,18 +5,8 @@ import Card from '../index';
 
 describe('<Card />', () => {
   describe('shadow', () => {
-    it('renders a Card with a shadow and specified props', () => {
-      const { container } = renderWithTheme(
-        <Card
-          height="50%"
-          width="100px"
-          maxHeight="200px"
-          maxWidth="100px"
-          minHeight="200px"
-          minWidth="50px"
-          variant="shadow"
-        />,
-      );
+    it('renders a Card with a shadow', () => {
+      const { container } = renderWithTheme(<Card variant="shadow" />);
       expect(container).toMatchSnapshot();
     });
 
@@ -27,37 +17,27 @@ describe('<Card />', () => {
           <Text>{displayText}</Text>
         </Card>,
       );
-      const helpTextComponent = getByText(displayText);
-      expect(helpTextComponent.props.children).toEqual(displayText);
+      const textComponent = getByText(displayText);
+      expect(textComponent.props.children).toEqual(displayText);
       expect(container).toMatchSnapshot();
     });
   });
 
   describe('outline', () => {
-    it('renders a Card with an outline and specified props', () => {
-      const { container } = renderWithTheme(
-        <Card
-          height="50%"
-          width="100px"
-          maxHeight="200px"
-          maxWidth="100px"
-          minHeight="200px"
-          minWidth="50px"
-          variant="outline"
-        />,
-      );
+    it('renders a Card with an outline', () => {
+      const { container } = renderWithTheme(<Card variant="outline" />);
       expect(container).toMatchSnapshot();
     });
 
     it('renders a Card with an outline and text content', () => {
       const displayText = 'Hello';
       const { container, getByText } = renderWithTheme(
-        <Card variant="shadow">
+        <Card variant="outline">
           <Text>{displayText}</Text>
         </Card>,
       );
-      const helpTextComponent = getByText(displayText);
-      expect(helpTextComponent.props.children).toEqual(displayText);
+      const textComponent = getByText(displayText);
+      expect(textComponent.props.children).toEqual(displayText);
       expect(container).toMatchSnapshot();
     });
   });

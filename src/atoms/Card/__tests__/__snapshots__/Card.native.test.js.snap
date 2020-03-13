@@ -1,47 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Card /> outline renders Card with an outline and specified props 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "rgba(255, 255, 255, 1.0)",
-          "borderColor": "rgba(11, 112, 231, 0.10)",
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "elevation": 0,
-          "shadowColor": "rgba(11, 112, 231, 0.05)",
-          "shadowOffset": Object {
-            "height": 0,
-            "width": 0,
-          },
-          "shadowOpacity": 0,
-          "shadowRadius": 0,
-        },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
-      ]
-    }
-    testID="ds-card"
-    variant="outline"
-  />
-</View>
-`;
-
-exports[`<Card /> outline renders a Card with an outline and specified props 1`] = `
+exports[`<Card /> outline renders a Card with an outline 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -97,17 +56,17 @@ exports[`<Card /> outline renders a Card with an outline and text content 1`] = 
       Array [
         Object {
           "backgroundColor": "rgba(255, 255, 255, 1.0)",
-          "borderColor": "black",
+          "borderColor": "rgba(11, 112, 231, 0.10)",
           "borderStyle": "solid",
-          "borderWidth": 0,
-          "elevation": 2,
+          "borderWidth": 1,
+          "elevation": 0,
           "shadowColor": "rgba(11, 112, 231, 0.05)",
           "shadowOffset": Object {
-            "height": 4,
+            "height": 0,
             "width": 0,
           },
-          "shadowOpacity": 1,
-          "shadowRadius": 20,
+          "shadowOpacity": 0,
+          "shadowRadius": 0,
         },
         Object {
           "paddingBottom": 12,
@@ -118,7 +77,7 @@ exports[`<Card /> outline renders a Card with an outline and text content 1`] = 
       ]
     }
     testID="ds-card"
-    variant="shadow"
+    variant="outline"
   >
     <Text
       _isUnderlined={false}
@@ -148,246 +107,7 @@ exports[`<Card /> outline renders a Card with an outline and text content 1`] = 
 </View>
 `;
 
-exports[`<Card /> renders a Card with an outline and text content 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "rgba(255, 255, 255, 1.0)",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "elevation": 2,
-          "shadowColor": "rgba(11, 112, 231, 0.05)",
-          "shadowOffset": Object {
-            "height": 4,
-            "width": 0,
-          },
-          "shadowOpacity": 1,
-          "shadowRadius": 20,
-        },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
-      ]
-    }
-    testID="ds-card"
-    variant="shadow"
-  >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="regular"
-      align="left"
-      color="shade.980"
-      size="large"
-      style={
-        Array [
-          Object {
-            "alignSelf": "flex-start",
-            "color": "rgba(22, 47, 86, 0.87)",
-            "fontFamily": "Lato-Regular",
-            "fontSize": 16,
-            "letterSpacing": 0,
-            "lineHeight": 24,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      Hello
-    </Text>
-  </View>
-</View>
-`;
-
-exports[`<Card /> renders a Card with outline and text content 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "rgba(255, 255, 255, 1.0)",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "elevation": 2,
-          "shadowColor": "rgba(11, 112, 231, 0.05)",
-          "shadowOffset": Object {
-            "height": 4,
-            "width": 0,
-          },
-          "shadowOpacity": 1,
-          "shadowRadius": 20,
-        },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
-      ]
-    }
-    testID="ds-card"
-    variant="shadow"
-  >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="regular"
-      align="left"
-      color="shade.980"
-      size="large"
-      style={
-        Array [
-          Object {
-            "alignSelf": "flex-start",
-            "color": "rgba(22, 47, 86, 0.87)",
-            "fontFamily": "Lato-Regular",
-            "fontSize": 16,
-            "letterSpacing": 0,
-            "lineHeight": 24,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      Hello
-    </Text>
-  </View>
-</View>
-`;
-
-exports[`<Card /> renders a card with outline and text content 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "rgba(255, 255, 255, 1.0)",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "elevation": 2,
-          "shadowColor": "rgba(11, 112, 231, 0.05)",
-          "shadowOffset": Object {
-            "height": 4,
-            "width": 0,
-          },
-          "shadowOpacity": 1,
-          "shadowRadius": 20,
-        },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
-      ]
-    }
-    testID="ds-card"
-    variant="shadow"
-  >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="regular"
-      align="left"
-      color="shade.980"
-      size="large"
-      style={
-        Array [
-          Object {
-            "alignSelf": "flex-start",
-            "color": "rgba(22, 47, 86, 0.87)",
-            "fontFamily": "Lato-Regular",
-            "fontSize": 16,
-            "letterSpacing": 0,
-            "lineHeight": 24,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      Hello
-    </Text>
-  </View>
-</View>
-`;
-
-exports[`<Card /> shadow renders Card with a shadow and specified props 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "rgba(255, 255, 255, 1.0)",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "elevation": 2,
-          "shadowColor": "rgba(11, 112, 231, 0.05)",
-          "shadowOffset": Object {
-            "height": 4,
-            "width": 0,
-          },
-          "shadowOpacity": 1,
-          "shadowRadius": 20,
-        },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
-      ]
-    }
-    testID="ds-card"
-    variant="shadow"
-  />
-</View>
-`;
-
-exports[`<Card /> shadow renders a Card with a shadow and specified props 1`] = `
+exports[`<Card /> shadow renders a Card with a shadow 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -429,138 +149,6 @@ exports[`<Card /> shadow renders a Card with a shadow and specified props 1`] = 
 `;
 
 exports[`<Card /> shadow renders a Card with a shadow and text content 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "rgba(255, 255, 255, 1.0)",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "elevation": 2,
-          "shadowColor": "rgba(11, 112, 231, 0.05)",
-          "shadowOffset": Object {
-            "height": 4,
-            "width": 0,
-          },
-          "shadowOpacity": 1,
-          "shadowRadius": 20,
-        },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
-      ]
-    }
-    testID="ds-card"
-    variant="shadow"
-  >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="regular"
-      align="left"
-      color="shade.980"
-      size="large"
-      style={
-        Array [
-          Object {
-            "alignSelf": "flex-start",
-            "color": "rgba(22, 47, 86, 0.87)",
-            "fontFamily": "Lato-Regular",
-            "fontSize": 16,
-            "letterSpacing": 0,
-            "lineHeight": 24,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      Hello
-    </Text>
-  </View>
-</View>
-`;
-
-exports[`<Card /> shadow renders a Card with shadow and text content 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "rgba(255, 255, 255, 1.0)",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "elevation": 2,
-          "shadowColor": "rgba(11, 112, 231, 0.05)",
-          "shadowOffset": Object {
-            "height": 4,
-            "width": 0,
-          },
-          "shadowOpacity": 1,
-          "shadowRadius": 20,
-        },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
-      ]
-    }
-    testID="ds-card"
-    variant="shadow"
-  >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="regular"
-      align="left"
-      color="shade.980"
-      size="large"
-      style={
-        Array [
-          Object {
-            "alignSelf": "flex-start",
-            "color": "rgba(22, 47, 86, 0.87)",
-            "fontFamily": "Lato-Regular",
-            "fontSize": 16,
-            "letterSpacing": 0,
-            "lineHeight": 24,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      Hello
-    </Text>
-  </View>
-</View>
-`;
-
-exports[`<Card /> shadow renders a card with shadow and text content 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
