@@ -148,6 +148,7 @@ describe('Native <RadioButton />', () => {
     });
 
     test('should not render error when the size is small', () => {
+      const errorText = 'Something is wrong!';
       const { queryByText } = renderWithTheme(
         <Radio>
           <Radio.Option
@@ -159,13 +160,13 @@ describe('Native <RadioButton />', () => {
           />
         </Radio>,
       );
-      const errorTextComponent = queryByText('Something is wrong!');
+      const errorTextComponent = queryByText(errorText);
       expect(errorTextComponent).toEqual(null);
     });
   });
 
   describe('controlled component', () => {
-    test('should render uncontrolled Radio component', () => {
+    test('should render controlled Radio component', () => {
       const { container } = renderWithTheme(
         <Radio value="1" onChange={jest.fn()}>
           <Radio.Option value="1" title="React" />
