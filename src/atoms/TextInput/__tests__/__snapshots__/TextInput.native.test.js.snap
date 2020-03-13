@@ -462,7 +462,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
 </View>
 `;
 
-exports[`Renders <TextInput /> filled variant correctly snapshot testing with block width (filled TextInput) 1`] = `
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with auto width (filled TextInput) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -4170,7 +4170,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
 </View>
 `;
 
-exports[`Renders <TextInput /> outlined variant correctly snapshot testing with block width 1`] = `
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with auto width 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"

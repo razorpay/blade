@@ -10,7 +10,7 @@ import { select } from '@storybook/addon-knobs';
 const sizeOptions = {
   small: 'small',
   medium: 'medium',
-  block: 'block',
+  auto: 'auto',
 };
 
 storiesOf('TextInput', module)

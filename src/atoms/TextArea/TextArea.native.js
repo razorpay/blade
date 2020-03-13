@@ -75,7 +75,7 @@ TextArea.propTypes = {
   label: PropTypes.string,
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
-  width: PropTypes.oneOf(['small', 'medium', 'block']),
+  width: PropTypes.oneOf(['small', 'medium', 'auto']),
 };
 
 TextArea.defaultProps = {

@@ -108,7 +108,7 @@ const styles = {
   inputContainer: {
     width({ width }) {
       switch (width) {
-        case 'block':
+        case 'auto':
           return '100%';
         case 'small':
           return '160px';
@@ -298,7 +298,7 @@ const TextInput = ({
               </Label.Regular>
             ) : null}
             {/* Text Input */}
-            <Flex flexDirection="column" flex={width === 'block' ? 1 : 0}>
+            <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
               <View>
                 <FillContainer
                   _isMultiline={_isMultiline}
@@ -420,7 +420,7 @@ TextInput.propTypes = {
   label: PropTypes.string,
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
-  width: PropTypes.oneOf(['small', 'medium', 'block']),
+  width: PropTypes.oneOf(['small', 'medium', 'auto']),
   _isMultiline: PropTypes.bool,
 };
 

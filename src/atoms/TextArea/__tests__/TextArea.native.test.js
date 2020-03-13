@@ -100,8 +100,8 @@ describe('Renders <TextArea /> outlined variant correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with block width', () => {
-    const { container } = renderWithTheme(<TextArea width="block" />);
+  it('snapshot testing with auto width', () => {
+    const { container } = renderWithTheme(<TextArea width="auto" />);
     expect(container).toMatchSnapshot();
   });
 });
@@ -225,8 +225,8 @@ describe('Renders <TextArea /> filled variant correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with block width (filled TextArea)', () => {
-    const { container } = renderWithTheme(<TextArea variant="filled" width="block" />);
+  it('snapshot testing with auto width (filled TextArea)', () => {
+    const { container } = renderWithTheme(<TextArea variant="filled" width="auto" />);
     expect(container).toMatchSnapshot();
   });
 });

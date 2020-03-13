@@ -105,8 +105,8 @@ describe('Renders <TextInput /> outlined variant correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with block width', () => {
-    const { container } = renderWithTheme(<TextInput width="block" />);
+  it('snapshot testing with auto width', () => {
+    const { container } = renderWithTheme(<TextInput width="auto" />);
     expect(container).toMatchSnapshot();
   });
 });
@@ -223,8 +223,8 @@ describe('Renders <TextInput /> filled variant correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with block width (filled TextInput)', () => {
-    const { container } = renderWithTheme(<TextInput variant="filled" width="block" />);
+  it('snapshot testing with auto width (filled TextInput)', () => {
+    const { container } = renderWithTheme(<TextInput variant="filled" width="auto" />);
     expect(container).toMatchSnapshot();
   });
 });

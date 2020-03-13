@@ -468,7 +468,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing (filled 
 </View>
 `;
 
-exports[`Renders <TextArea /> filled variant correctly snapshot testing with block width (filled TextArea) 1`] = `
+exports[`Renders <TextArea /> filled variant correctly snapshot testing with auto width (filled TextArea) 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -4208,7 +4208,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot after focus 2`
 </View>
 `;
 
-exports[`Renders <TextArea /> outlined variant correctly snapshot testing with block width 1`] = `
+exports[`Renders <TextArea /> outlined variant correctly snapshot testing with auto width 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
