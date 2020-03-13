@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Card /> outline renders a Card with an outline 1`] = `
+exports[`<Card /> outlined renders an outlined Card 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -38,12 +38,12 @@ exports[`<Card /> outline renders a Card with an outline 1`] = `
       ]
     }
     testID="ds-card"
-    variant="outline"
+    variant="outlined"
   />
 </View>
 `;
 
-exports[`<Card /> outline renders a Card with an outline and custom background color 1`] = `
+exports[`<Card /> outlined renders an outlined Card with custom background color 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -60,17 +60,17 @@ exports[`<Card /> outline renders a Card with an outline and custom background c
       Array [
         Object {
           "backgroundColor": "rgba(11, 112, 231, 0.05)",
-          "borderColor": "black",
+          "borderColor": "rgba(11, 112, 231, 0.10)",
           "borderStyle": "solid",
-          "borderWidth": 0,
-          "elevation": 2,
+          "borderWidth": 1,
+          "elevation": 0,
           "shadowColor": "rgba(11, 112, 231, 0.05)",
           "shadowOffset": Object {
-            "height": 4,
+            "height": 0,
             "width": 0,
           },
-          "shadowOpacity": 1,
-          "shadowRadius": 20,
+          "shadowOpacity": 0,
+          "shadowRadius": 0,
         },
         Object {
           "paddingBottom": 12,
@@ -81,12 +81,12 @@ exports[`<Card /> outline renders a Card with an outline and custom background c
       ]
     }
     testID="ds-card"
-    variant="shadow"
+    variant="outlined"
   />
 </View>
 `;
 
-exports[`<Card /> outline renders a Card with an outline and custom border color 1`] = `
+exports[`<Card /> outlined renders an outlined Card with custom border color 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -103,17 +103,17 @@ exports[`<Card /> outline renders a Card with an outline and custom border color
       Array [
         Object {
           "backgroundColor": "rgba(255, 255, 255, 1.0)",
-          "borderColor": "black",
+          "borderColor": "rgba(11, 112, 231, 0.05)",
           "borderStyle": "solid",
-          "borderWidth": 0,
-          "elevation": 2,
+          "borderWidth": 1,
+          "elevation": 0,
           "shadowColor": "rgba(11, 112, 231, 0.05)",
           "shadowOffset": Object {
-            "height": 4,
+            "height": 0,
             "width": 0,
           },
-          "shadowOpacity": 1,
-          "shadowRadius": 20,
+          "shadowOpacity": 0,
+          "shadowRadius": 0,
         },
         Object {
           "paddingBottom": 12,
@@ -124,12 +124,12 @@ exports[`<Card /> outline renders a Card with an outline and custom border color
       ]
     }
     testID="ds-card"
-    variant="shadow"
+    variant="outlined"
   />
 </View>
 `;
 
-exports[`<Card /> outline renders a Card with an outline and text content 1`] = `
+exports[`<Card /> outlined renders an outlined Card with text content 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -167,7 +167,7 @@ exports[`<Card /> outline renders a Card with an outline and text content 1`] = 
       ]
     }
     testID="ds-card"
-    variant="outline"
+    variant="outlined"
   >
     <Text
       _isUnderlined={false}
@@ -197,7 +197,7 @@ exports[`<Card /> outline renders a Card with an outline and text content 1`] = 
 </View>
 `;
 
-exports[`<Card /> shadow renders a Card with a shadow 1`] = `
+exports[`<Card /> shadowed renders a shadowed Card 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -235,80 +235,12 @@ exports[`<Card /> shadow renders a Card with a shadow 1`] = `
       ]
     }
     testID="ds-card"
-    variant="shadow"
+    variant="shadowed"
   />
 </View>
 `;
 
-exports[`<Card /> shadow renders a Card with a shadow and text content 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <View
-    backgroundColor="background.200"
-    borderColor="primary.930"
-    style={
-      Array [
-        Object {
-          "backgroundColor": "rgba(255, 255, 255, 1.0)",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "elevation": 2,
-          "shadowColor": "rgba(11, 112, 231, 0.05)",
-          "shadowOffset": Object {
-            "height": 4,
-            "width": 0,
-          },
-          "shadowOpacity": 1,
-          "shadowRadius": 20,
-        },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
-      ]
-    }
-    testID="ds-card"
-    variant="shadow"
-  >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="regular"
-      align="left"
-      color="shade.980"
-      size="large"
-      style={
-        Array [
-          Object {
-            "alignSelf": "flex-start",
-            "color": "rgba(22, 47, 86, 0.87)",
-            "fontFamily": "Lato-Regular",
-            "fontSize": 16,
-            "letterSpacing": 0,
-            "lineHeight": 24,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      Hello
-    </Text>
-  </View>
-</View>
-`;
-
-exports[`<Card /> shadow renders a Card with shadow and custom background color 1`] = `
+exports[`<Card /> shadowed renders a shadowed Card with custom background color 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -346,7 +278,75 @@ exports[`<Card /> shadow renders a Card with shadow and custom background color 
       ]
     }
     testID="ds-card"
-    variant="shadow"
+    variant="shadowed"
   />
+</View>
+`;
+
+exports[`<Card /> shadowed renders a shadowed Card with text content 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    backgroundColor="background.200"
+    borderColor="primary.930"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(255, 255, 255, 1.0)",
+          "borderColor": "black",
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "elevation": 2,
+          "shadowColor": "rgba(11, 112, 231, 0.05)",
+          "shadowOffset": Object {
+            "height": 4,
+            "width": 0,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 20,
+        },
+        Object {
+          "paddingBottom": 12,
+          "paddingLeft": 12,
+          "paddingRight": 12,
+          "paddingTop": 12,
+        },
+      ]
+    }
+    testID="ds-card"
+    variant="shadowed"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="shade.980"
+      size="large"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(22, 47, 86, 0.87)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 16,
+            "letterSpacing": 0,
+            "lineHeight": 24,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      Hello
+    </Text>
+  </View>
 </View>
 `;

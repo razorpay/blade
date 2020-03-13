@@ -14,35 +14,35 @@ const styles = {
     return theme.colors.primary[920];
   },
   shadowOffset({ variant }) {
-    if (variant === 'shadow') {
+    if (variant === 'shadowed') {
       return '0px 4px';
     } else {
       return '0px 0px';
     }
   },
   shadowOpacity({ variant }) {
-    if (variant === 'shadow') {
+    if (variant === 'shadowed') {
       return 1;
     } else {
       return 0;
     }
   },
   shadowRadius({ variant }) {
-    if (variant === 'shadow') {
+    if (variant === 'shadowed') {
       return '20px';
     } else {
       return 0;
     }
   },
   elevation({ variant }) {
-    if (variant === 'shadow') {
+    if (variant === 'shadowed') {
       return 2;
     } else {
       return 0;
     }
   },
   border({ variant, theme, borderColor }) {
-    if (variant === 'shadow') {
+    if (variant === 'shadowed') {
       return 'none';
     } else {
       return `1px solid ${getColor(theme, borderColor)}`;
@@ -77,7 +77,7 @@ const Card = ({ children, variant, backgroundColor, borderColor, testID }) => {
 
 Card.propTypes = {
   children: PropTypes.node,
-  variant: PropTypes.oneOf(['shadow', 'outline']),
+  variant: PropTypes.oneOf(['shadowed', 'outlined']),
   testID: PropTypes.string,
   backgroundColor: PropTypes.oneOf(getColorKeys()),
   borderColor: PropTypes.oneOf(getColorKeys()),
@@ -85,7 +85,7 @@ Card.propTypes = {
 
 Card.defaultProps = {
   children: undefined,
-  variant: 'shadow',
+  variant: 'shadowed',
   testID: 'ds-card',
   backgroundColor: 'background.200',
   borderColor: 'primary.930',

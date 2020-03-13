@@ -8,8 +8,8 @@ import { text, select } from '@storybook/addon-knobs';
 import { getColorKeys } from '../../_helpers/theme';
 
 const variantOptions = {
-  shadow: 'shadow',
-  outline: 'outline',
+  shadowed: 'shadowed',
+  outlined: 'outlined',
 };
 
 storiesOf('Card', module)
@@ -20,7 +20,7 @@ storiesOf('Card', module)
     <Flex justifyContent="space-evenly" flex={1}>
       <View>
         <Card
-          variant={select('Variant', variantOptions, 'shadow')}
+          variant={select('Variant', variantOptions, 'shadowed')}
           backgroundColor={select('Background color', getColorKeys(), undefined)}
           borderColor={select('Border color', getColorKeys(), undefined)}
         >
@@ -29,7 +29,7 @@ storiesOf('Card', module)
           </Text>
         </Card>
         <Card
-          variant={select('Variant', variantOptions, 'shadow')}
+          variant={select('Variant', variantOptions, 'shadowed')}
           backgroundColor={select('Background color', getColorKeys(), undefined)}
           borderColor={select('Border color', getColorKeys(), undefined)}
         >
@@ -42,7 +42,7 @@ storiesOf('Card', module)
         <Flex alignSelf="flex-start">
           <View>
             <Card
-              variant={select('Variant', variantOptions, 'shadow')}
+              variant={select('Variant', variantOptions, 'shadowed')}
               backgroundColor={select('Background color', getColorKeys(), undefined)}
               borderColor={select('Border color', getColorKeys(), undefined)}
             >
