@@ -7,9 +7,6 @@ import Space from '../Space/Space.native';
 import { getColor } from '../../_helpers/theme';
 
 const styles = {
-  padding() {
-    return [1.5, 1.5, 1.5, 1.5];
-  },
   backgroundColor({ theme }) {
     return theme.colors.background[200];
   },
@@ -65,7 +62,7 @@ const StyledCard = styled(View)`
 
 const Card = ({ children, variant, testID }) => {
   return (
-    <Space padding={styles.padding()}>
+    <Space padding={[1.5, 1.5, 1.5, 1.5]}>
       <StyledCard {...automation(testID)} variant={variant}>
         {children}
       </StyledCard>
