@@ -23,54 +23,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
     }
   >
     <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Email
-        </Text>
-      </View>
-    </View>
-    <View
       style={
         Array [
           Array [
@@ -150,19 +102,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 8,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -219,54 +173,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
       ]
     }
   >
-    <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Email
-        </Text>
-      </View>
-    </View>
     <View
       style={
         Array [
@@ -347,19 +253,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 8,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -416,54 +324,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
       ]
     }
   >
-    <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Email
-        </Text>
-      </View>
-    </View>
     <View
       style={
         Array [
@@ -544,19 +404,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 4,
-                      "paddingLeft": 8,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 4,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -613,54 +475,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
       ]
     }
   >
-    <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Label
-        </Text>
-      </View>
-    </View>
     <View
       style={
         Array [
@@ -742,19 +556,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 8,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -811,54 +627,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
       ]
     }
   >
-    <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.940"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.24)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Email
-        </Text>
-      </View>
-    </View>
     <View
       style={
         Array [
@@ -979,19 +747,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -1235,54 +1005,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
     }
   >
     <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Email
-        </Text>
-      </View>
-    </View>
-    <View
       style={
         Array [
           Array [
@@ -1402,19 +1124,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -1658,54 +1382,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
     }
   >
     <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Label
-        </Text>
-      </View>
-    </View>
-    <View
       style={
         Array [
           Array [
@@ -1786,19 +1462,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 8,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -1962,54 +1640,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
     }
   >
     <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Label
-        </Text>
-      </View>
-    </View>
-    <View
       style={
         Array [
           Array [
@@ -2089,19 +1719,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 8,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -2219,54 +1851,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
       ]
     }
   >
-    <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Label
-        </Text>
-      </View>
-    </View>
     <View
       style={
         Array [
@@ -2472,19 +2056,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -2667,54 +2253,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
     }
   >
     <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Label
-        </Text>
-      </View>
-    </View>
-    <View
       style={
         Array [
           Array [
@@ -2919,19 +2457,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -2988,54 +2528,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
       ]
     }
   >
-    <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Label
-        </Text>
-      </View>
-    </View>
     <View
       style={
         Array [
@@ -3116,19 +2608,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 8,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -3311,54 +2805,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
     }
   >
     <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Email
-        </Text>
-      </View>
-    </View>
-    <View
       style={
         Array [
           Array [
@@ -3438,19 +2884,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 8,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -3508,54 +2956,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
     }
   >
     <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Label
-        </Text>
-      </View>
-    </View>
-    <View
       style={
         Array [
           Array [
@@ -3635,19 +3035,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 8,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -3744,54 +3146,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
       ]
     }
   >
-    <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Label
-        </Text>
-      </View>
-    </View>
     <View
       style={
         Array [
@@ -3912,19 +3266,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -3981,54 +3337,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
       ]
     }
   >
-    <View
-      labelPosition="top"
-      style={
-        Array [
-          Object {
-            "paddingTop": 0,
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 4,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-            },
-          ]
-        }
-      >
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          _weight="regular"
-          align="left"
-          color="shade.980"
-          size="medium"
-          style={
-            Array [
-              Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 14,
-                "letterSpacing": 0,
-                "lineHeight": 20,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-        >
-          Label
-        </Text>
-      </View>
-    </View>
     <View
       style={
         Array [
@@ -4093,7 +3401,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -4109,19 +3417,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                     Object {
                       "height": 36,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 8,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -4282,7 +3592,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -4298,19 +3608,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -4447,19 +3759,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -4597,19 +3911,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -4786,19 +4102,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -5161,19 +4479,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -5496,19 +4816,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 4,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 4,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -5645,19 +4967,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -5856,19 +5180,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -6236,19 +5562,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -6510,19 +5838,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -6784,19 +6114,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -7058,19 +6390,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -7207,19 +6541,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -7436,19 +6772,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]
@@ -7585,19 +6923,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     Object {
                       "height": 40,
                     },
-                    Object {
-                      "paddingBottom": 2,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
                   ],
                 ]

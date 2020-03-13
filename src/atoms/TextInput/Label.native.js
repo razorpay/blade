@@ -21,22 +21,24 @@ const REGULAR_PADDING_TOP_MULTIPLIER_IOS = 0.29;
 
 const styles = {
   regularLabelContainer: {
-    padding({ labelPosition }) {
-      if (labelPosition === 'left') {
-        return [0, 3, 0, 0];
-      } else {
-        return [0, 0, 0.5, 0];
-      }
-    },
-    paddingTop({ inputLayoutDimensions, labelPosition }) {
-      // For aligning left label to the center of Text Field
+    padding({ labelPosition, inputLayoutDimensions }) {
+      let [top, right, bottom] = [0, 0, 0.5];
+      const left = 0;
+
       if (labelPosition === 'top') {
-        return '0px';
-      } else if (IS_ANDROID) {
-        return `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_ANDROID}px`;
+        top = 0;
       } else {
-        return `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_IOS}px`;
+        if (IS_ANDROID) {
+          top = `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_ANDROID}px`;
+        } else {
+          top = `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_IOS}px`;
+        }
+
+        right = 3;
+        bottom = 0;
       }
+
+      return [top, right, bottom, left];
     },
   },
   container: {
@@ -242,21 +244,15 @@ AnimatedLabel.defaultProps = {
   hasError: false,
 };
 
-const LabelContainer = styled(View)`
-  padding-top: ${styles.regularLabelContainer.paddingTop};
-`;
-
 const RegularLabel = ({ children, inputLayoutDimensions, labelPosition, disabled }) => {
   return (
-    <LabelContainer inputLayoutDimensions={inputLayoutDimensions} labelPosition={labelPosition}>
-      <Space padding={styles.regularLabelContainer.padding({ labelPosition })}>
-        <View>
-          <Text size="medium" color={disabled ? 'shade.940' : 'shade.980'}>
-            {children}
-          </Text>
-        </View>
-      </Space>
-    </LabelContainer>
+    <Space padding={styles.regularLabelContainer.padding({ labelPosition, inputLayoutDimensions })}>
+      <View>
+        <Text size="medium" color={disabled ? 'shade.940' : 'shade.980'}>
+          {children}
+        </Text>
+      </View>
+    </Space>
   );
 };
 
@@ -268,7 +264,7 @@ RegularLabel.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
   }),
-  labelPosition: PropTypes.oneOf(['left', 'top']).isRequired,
+  labelPosition: PropTypes.oneOf(['top', 'left']).isRequired,
   disabled: PropTypes.bool,
 };
 

@@ -204,8 +204,12 @@ const TextInput = ({
   return (
     <Flex justifyContent="flex-end">
       <View>
-        {!hasAnimatedLabel && labelPosition === 'top' ? (
-          <Label.Regular labelPosition={labelPosition} disabled={disabled}>
+        {!hasAnimatedLabel && layoutDimensions && labelPosition === 'top' ? (
+          <Label.Regular
+            labelPosition={labelPosition}
+            disabled={disabled}
+            inputLayoutDimensions={layoutDimensions}
+          >
             {label}
           </Label.Regular>
         ) : null}
