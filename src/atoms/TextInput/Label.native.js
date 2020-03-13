@@ -274,4 +274,9 @@ RegularLabel.defaultProps = {
   disabled: false,
 };
 
-export default { Animated: AnimatedLabel, Regular: RegularLabel };
+const Label = {
+  Animated: AnimatedLabel,
+  Regular: RegularLabel,
+};
+
+export default Label;
