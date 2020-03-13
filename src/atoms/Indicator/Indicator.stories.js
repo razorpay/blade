@@ -20,6 +20,7 @@ storiesOf('Indicator', module)
       <View>
         <Indicator variant="positive" fill={select('fill', fillOptions, 'solid')} />
         <Indicator variant="negative" fill={select('fill', fillOptions, 'solid')} />
+        <Indicator variant="information" fill={select('fill', fillOptions, 'solid')} />
         <Indicator variant="warning" fill={select('fill', fillOptions, 'solid')} />
         <Indicator variant="neutral" fill={select('fill', fillOptions, 'solid')} />
       </View>

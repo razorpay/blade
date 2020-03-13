@@ -17,14 +17,14 @@ exports[`<Indicator /> fill renders a solid Indicator 1`] = `
         Object {
           "backgroundColor": "rgba(11, 112, 231, 1.0)",
           "borderColor": "black",
-          "borderRadius": 3,
+          "borderRadius": 4,
           "borderStyle": "solid",
           "borderWidth": 0,
         },
         Array [
           Object {
-            "height": 6,
-            "width": 6,
+            "height": 8,
+            "width": 8,
           },
         ],
       ]
@@ -51,14 +51,14 @@ exports[`<Indicator /> fill renders an empty Indicator 1`] = `
         Object {
           "backgroundColor": "transparent",
           "borderColor": "rgba(11, 112, 231, 1.0)",
-          "borderRadius": 3,
+          "borderRadius": 4,
           "borderStyle": "solid",
           "borderWidth": 1,
         },
         Array [
           Object {
-            "height": 6,
-            "width": 6,
+            "height": 8,
+            "width": 8,
           },
         ],
       ]
@@ -85,14 +85,14 @@ exports[`<Indicator /> variant renders a negative Indicator 1`] = `
         Object {
           "backgroundColor": "rgba(209, 45, 45, 1.0)",
           "borderColor": "black",
-          "borderRadius": 3,
+          "borderRadius": 4,
           "borderStyle": "solid",
           "borderWidth": 0,
         },
         Array [
           Object {
-            "height": 6,
-            "width": 6,
+            "height": 8,
+            "width": 8,
           },
         ],
       ]
@@ -119,14 +119,14 @@ exports[`<Indicator /> variant renders a neutral Indicator 1`] = `
         Object {
           "backgroundColor": "rgba(11, 112, 231, 1.0)",
           "borderColor": "black",
-          "borderRadius": 3,
+          "borderRadius": 4,
           "borderStyle": "solid",
           "borderWidth": 0,
         },
         Array [
           Object {
-            "height": 6,
-            "width": 6,
+            "height": 8,
+            "width": 8,
           },
         ],
       ]
@@ -153,14 +153,14 @@ exports[`<Indicator /> variant renders a positive Indicator 1`] = `
         Object {
           "backgroundColor": "rgba(31, 137, 14, 1.0)",
           "borderColor": "black",
-          "borderRadius": 3,
+          "borderRadius": 4,
           "borderStyle": "solid",
           "borderWidth": 0,
         },
         Array [
           Object {
-            "height": 6,
-            "width": 6,
+            "height": 8,
+            "width": 8,
           },
         ],
       ]
@@ -187,14 +187,14 @@ exports[`<Indicator /> variant renders a positive empty Indicator 1`] = `
         Object {
           "backgroundColor": "transparent",
           "borderColor": "rgba(31, 137, 14, 1.0)",
-          "borderRadius": 3,
+          "borderRadius": 4,
           "borderStyle": "solid",
           "borderWidth": 1,
         },
         Array [
           Object {
-            "height": 6,
-            "width": 6,
+            "height": 8,
+            "width": 8,
           },
         ],
       ]
@@ -221,14 +221,14 @@ exports[`<Indicator /> variant renders a warning Indicator 1`] = `
         Object {
           "backgroundColor": "rgba(205, 130, 20, 1.0)",
           "borderColor": "black",
-          "borderRadius": 3,
+          "borderRadius": 4,
           "borderStyle": "solid",
           "borderWidth": 0,
         },
         Array [
           Object {
-            "height": 6,
-            "width": 6,
+            "height": 8,
+            "width": 8,
           },
         ],
       ]

@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/native';
-
+import styled, { ThemeContext } from 'styled-components/native';
 import View from '../View';
 import Size from '../Size';
-import { getColor, makePxValue } from '../../_helpers/theme';
+import { getColor } from '../../_helpers/theme';
 
 const styles = {
   backgroundColor({ variant, fill, theme }) {
@@ -16,6 +15,8 @@ const styles = {
         return getColor(theme, 'positive.900');
       case 'negative':
         return getColor(theme, 'negative.900');
+      case 'information':
+        return getColor(theme, 'shade.900');
       case 'warning':
         return getColor(theme, 'neutral.900');
       case 'neutral':
@@ -34,6 +35,8 @@ const styles = {
         return `1px solid ${getColor(theme, 'positive.900')}`;
       case 'negative':
         return `1px solid ${getColor(theme, 'negative.900')}`;
+      case 'information':
+        return `1px solid ${getColor(theme, 'shade.900')}`;
       case 'warning':
         return `1px solid ${getColor(theme, 'neutral.900')}`;
       case 'neutral':
@@ -47,17 +50,20 @@ const styles = {
 const StyledIndicator = styled(View)`
   background-color: ${styles.backgroundColor};
   border: ${styles.border};
-  border-radius: ${makePxValue(0.375)};
+  border-radius: ${(props) => props.theme.spacings.xsmall};
 `;
 
-const Indicator = ({ variant, fill }) => (
-  <Size height={makePxValue(0.75)} width={makePxValue(0.75)}>
-    <StyledIndicator variant={variant} fill={fill} />
-  </Size>
-);
+const Indicator = ({ variant, fill }) => {
+  const theme = useContext(ThemeContext);
+  return (
+    <Size height={theme.spacings.small} width={theme.spacings.small}>
+      <StyledIndicator variant={variant} fill={fill} />
+    </Size>
+  );
+};
 
 Indicator.propTypes = {
-  variant: PropTypes.oneOf(['positive', 'negative', 'warning', 'neutral']),
+  variant: PropTypes.oneOf(['positive', 'negative', 'information', 'warning', 'neutral']),
   fill: PropTypes.oneOf(['solid', 'empty']),
 };
 

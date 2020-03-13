@@ -5,7 +5,7 @@ import { renderWithTheme } from '../../../_helpers/testing';
 describe('<Indicator />', () => {
   describe('fill', () => {
     it('renders a solid Indicator', () => {
-      const { container } = renderWithTheme(<Indicator />);
+      const { container } = renderWithTheme(<Indicator fill="solid" />);
       expect(container).toMatchSnapshot();
     });
 
