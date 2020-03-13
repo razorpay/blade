@@ -29,12 +29,14 @@ exports[`<Card /> outlined renders an outlined Card 1`] = `
           "shadowOpacity": 0,
           "shadowRadius": 0,
         },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
+        Array [
+          Object {
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
+          },
+        ],
       ]
     }
     testID="ds-card"
@@ -72,12 +74,14 @@ exports[`<Card /> outlined renders an outlined Card with custom background color
           "shadowOpacity": 0,
           "shadowRadius": 0,
         },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
+        Array [
+          Object {
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
+          },
+        ],
       ]
     }
     testID="ds-card"
@@ -115,12 +119,14 @@ exports[`<Card /> outlined renders an outlined Card with custom border color 1`]
           "shadowOpacity": 0,
           "shadowRadius": 0,
         },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
+        Array [
+          Object {
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
+          },
+        ],
       ]
     }
     testID="ds-card"
@@ -158,12 +164,14 @@ exports[`<Card /> outlined renders an outlined Card with text content 1`] = `
           "shadowOpacity": 0,
           "shadowRadius": 0,
         },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
+        Array [
+          Object {
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
+          },
+        ],
       ]
     }
     testID="ds-card"
@@ -226,12 +234,14 @@ exports[`<Card /> shadowed renders a shadowed Card 1`] = `
           "shadowOpacity": 1,
           "shadowRadius": 20,
         },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
+        Array [
+          Object {
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
+          },
+        ],
       ]
     }
     testID="ds-card"
@@ -269,12 +279,14 @@ exports[`<Card /> shadowed renders a shadowed Card with custom background color 
           "shadowOpacity": 1,
           "shadowRadius": 20,
         },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
+        Array [
+          Object {
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
+          },
+        ],
       ]
     }
     testID="ds-card"
@@ -312,12 +324,14 @@ exports[`<Card /> shadowed renders a shadowed Card with text content 1`] = `
           "shadowOpacity": 1,
           "shadowRadius": 20,
         },
-        Object {
-          "paddingBottom": 12,
-          "paddingLeft": 12,
-          "paddingRight": 12,
-          "paddingTop": 12,
-        },
+        Array [
+          Object {
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
+          },
+        ],
       ]
     }
     testID="ds-card"
