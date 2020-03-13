@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import styled, { ThemeContext } from 'styled-components/native';
 import { TouchableHighlight } from 'react-native';
 
-import Icon from '../Icon';
+import Flex from '../Flex';
+import Size from '../Size';
 import Space from '../Space';
+import Icon from '../Icon';
 import Text from '../Text';
 import View from '../View';
-import Flex from '../Flex';
 import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
 
@@ -90,33 +91,47 @@ const styles = {
         return getColor(theme, `${color}.600`);
     }
   },
+  height({ size, theme }) {
+    switch (size) {
+      case 'xsmall':
+        return theme.spacings.xlarge;
+      case 'small':
+        return makePxValue(3.5); //TODO: not on scale of 8
+      case 'medium':
+        return makePxValue(4.5); //TODO: not on scale of 8
+      case 'large':
+        return makePxValue(5);
+      default:
+        return makePxValue(4.5); //TODO: not on scale of 8
+    }
+  },
   padding({ size, theme, children }) {
     switch (size) {
       case 'xsmall':
         if (children) {
-          return [makePxValue(0.375), theme.spacings.small];
+          return [0, theme.spacings.small];
         }
-        return [theme.spacings.xxsmall];
+        return [0, theme.spacings.xxsmall];
       case 'small':
         if (children) {
-          return [makePxValue(0.625), theme.spacings.large];
+          return [0, theme.spacings.large];
         }
-        return [makePxValue(0.5)];
+        return [0, theme.spacings.xsmall];
       case 'medium':
         if (children) {
-          return [theme.spacings.small, theme.spacings.xxlarge];
+          return [0, theme.spacings.xxlarge];
         }
-        return [makePxValue(0.75)];
+        return [0, 0.75]; //TODO: horizontal padding not on scale of 8
       case 'large':
         if (children) {
-          return [makePxValue(1.25), theme.spacings.xxlarge];
+          return [0, theme.spacings.xxlarge];
         }
-        return [theme.spacings.small];
+        return [0, theme.spacings.small];
       default:
         if (children) {
-          return [theme.spacings.small, theme.spacings.xxlarge];
+          return [0, theme.spacings.xxlarge];
         }
-        return [theme.spacings.small];
+        return [0, 0.75]; //TODO: horizontal padding not on scale of 8
     }
   },
   iconSize({ size, children }) {
@@ -264,59 +279,61 @@ const Button = ({
       alignSelf={styles.align({ align })}
       justifyContent="center"
     >
-      <Space padding={styles.padding({ size, children, theme })}>
-        <StyledButton
-          color={color}
-          onPress={onClick}
-          variantColor={variantColor}
-          disabled={disabled}
-          size={size}
-          block={block}
-          variant={variant}
-          activeOpacity={1}
-          underlayColor={styles.underlayColor({ variant, color, theme })}
-          {...automation(testID)}
-        >
-          <React.Fragment>
-            {icon && iconAlign === 'left' && (
-              <Icon
-                name={icon}
-                size={styles.iconSize({ size, children })}
-                fill={styles.fontColor({ variant, variantColor, disabled })}
-              />
-            )}
-            {icon && iconAlign === 'left' && children && (
-              <Space margin={styles.spaceBetween({ size, iconAlign })}>
-                <View />
-              </Space>
-            )}
-            {children ? (
-              <Text
-                color={styles.fontColor({ variant, variantColor, disabled })}
-                size={styles.fontSize({ size })}
-                align="center"
-                _weight="bold"
-                _letterSpacing={styles.letterSpacing({ size })}
-                _lineHeight={styles.lineHeight({ size })}
-              >
-                {size === 'xsmall' ? children.toUpperCase() : children}
-              </Text>
-            ) : null}
-            {icon && iconAlign === 'right' && children && (
-              <Space margin={styles.spaceBetween({ size, iconAlign })}>
-                <View />
-              </Space>
-            )}
-            {icon && iconAlign === 'right' && (
-              <Icon
-                name={icon}
-                size={styles.iconSize({ size, children })}
-                fill={styles.fontColor({ variant, variantColor, disabled })}
-              />
-            )}
-          </React.Fragment>
-        </StyledButton>
-      </Space>
+      <Size height={styles.height({ size, theme })}>
+        <Space padding={styles.padding({ size, children, theme })}>
+          <StyledButton
+            color={color}
+            onPress={onClick}
+            variantColor={variantColor}
+            disabled={disabled}
+            size={size}
+            block={block}
+            variant={variant}
+            activeOpacity={1}
+            underlayColor={styles.underlayColor({ variant, color, theme })}
+            {...automation(testID)}
+          >
+            <React.Fragment>
+              {icon && iconAlign === 'left' && (
+                <Icon
+                  name={icon}
+                  size={styles.iconSize({ size, children })}
+                  fill={styles.fontColor({ variant, variantColor, disabled })}
+                />
+              )}
+              {icon && iconAlign === 'left' && children && (
+                <Space margin={styles.spaceBetween({ size, iconAlign })}>
+                  <View />
+                </Space>
+              )}
+              {children ? (
+                <Text
+                  color={styles.fontColor({ variant, variantColor, disabled })}
+                  size={styles.fontSize({ size })}
+                  align="center"
+                  _weight="bold"
+                  _letterSpacing={styles.letterSpacing({ size })}
+                  _lineHeight={styles.lineHeight({ size })}
+                >
+                  {size === 'xsmall' ? children.toUpperCase() : children}
+                </Text>
+              ) : null}
+              {icon && iconAlign === 'right' && children && (
+                <Space margin={styles.spaceBetween({ size, iconAlign })}>
+                  <View />
+                </Space>
+              )}
+              {icon && iconAlign === 'right' && (
+                <Icon
+                  name={icon}
+                  size={styles.iconSize({ size, children })}
+                  fill={styles.fontColor({ variant, variantColor, disabled })}
+                />
+              )}
+            </React.Fragment>
+          </StyledButton>
+        </Space>
+      </Size>
     </Flex>
   );
 };
