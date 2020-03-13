@@ -22,7 +22,9 @@ const getColor = (currentTheme, color) => {
   try {
     return currentTheme.colors[base][shade];
   } catch {
-    throw new Error(`Invalid color prop\n\nValid color values:\n ${getColorKeys()}`);
+    throw new Error(
+      `Invalid color prop\n\nReceived color: ${color}\n\nValid color values:\n ${getColorKeys()}`,
+    );
   }
 };
 
