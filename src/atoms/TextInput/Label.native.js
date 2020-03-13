@@ -21,11 +21,11 @@ const REGULAR_PADDING_TOP_MULTIPLIER_IOS = 0.29;
 
 const styles = {
   regularLabelContainer: {
-    padding({ labelPosition, inputLayoutDimensions }) {
+    padding({ position, inputLayoutDimensions }) {
       let [top, right, bottom] = [0, 0, 0.5];
       const left = 0;
 
-      if (labelPosition === 'top') {
+      if (position === 'top') {
         top = 0;
       } else {
         if (IS_ANDROID) {
@@ -244,9 +244,9 @@ AnimatedLabel.defaultProps = {
   hasError: false,
 };
 
-const RegularLabel = ({ children, inputLayoutDimensions, labelPosition, disabled }) => {
+const RegularLabel = ({ children, inputLayoutDimensions, position, disabled }) => {
   return (
-    <Space padding={styles.regularLabelContainer.padding({ labelPosition, inputLayoutDimensions })}>
+    <Space padding={styles.regularLabelContainer.padding({ position, inputLayoutDimensions })}>
       <View>
         <Text size="medium" color={disabled ? 'shade.940' : 'shade.980'}>
           {children}
@@ -264,7 +264,7 @@ RegularLabel.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
   }),
-  labelPosition: PropTypes.oneOf(['top', 'left']).isRequired,
+  position: PropTypes.oneOf(['top', 'left']).isRequired,
   disabled: PropTypes.bool,
 };
 

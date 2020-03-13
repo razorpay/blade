@@ -206,7 +206,7 @@ const TextInput = ({
       <View>
         {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'top' ? (
           <Label.Regular
-            labelPosition={labelPosition}
+            position={labelPosition}
             disabled={disabled}
             inputLayoutDimensions={layoutDimensions}
           >
@@ -234,7 +234,7 @@ const TextInput = ({
             {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'left' ? (
               <Label.Regular
                 inputLayoutDimensions={layoutDimensions}
-                labelPosition={labelPosition}
+                position={labelPosition}
                 disabled={disabled}
               >
                 {label}
