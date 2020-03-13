@@ -16,17 +16,6 @@ describe('Renders <Space /> correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render child component with no spacings applied', () => {
-    const { container, getByTestId } = render(
-      <Space>
-        <View testID={'space-view'} />
-      </Space>,
-    );
-    const childView = getByTestId('space-view');
-    expect(childView.props.style).toMatchObject([{}]);
-    expect(container).toMatchSnapshot();
-  });
-
   it('should apply margin to child component', () => {
     const { container } = render(
       <Space margin={[5, 5]}>

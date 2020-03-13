@@ -26,24 +26,25 @@ exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 8,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 8,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
+            "paddingBottom": 8,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 8,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -105,21 +106,22 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 8,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 8,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 8,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 8,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -181,21 +183,22 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
           "borderStyle": "solid",
           "borderWidth": 1,
         },
-        Object {
-          "paddingBottom": 8,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 8,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 8,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 8,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -257,21 +260,22 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 8,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 8,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 8,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 8,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -333,21 +337,22 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 10,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 10,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 10,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 10,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -409,21 +414,22 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
           "borderStyle": "solid",
           "borderWidth": 1,
         },
-        Object {
-          "paddingBottom": 10,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 10,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 10,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 10,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -485,21 +491,22 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 10,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 10,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 10,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 10,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -561,21 +568,22 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 8,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 8,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 8,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 8,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -695,12 +703,14 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 8,
-            "marginTop": 0,
-          },
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 8,
+              "marginTop": 0,
+            },
+          ],
         ]
       }
     />
@@ -759,21 +769,22 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
           "borderStyle": "solid",
           "borderWidth": 1,
         },
-        Object {
-          "paddingBottom": 8,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 8,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 8,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 8,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -835,21 +846,22 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 8,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 8,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 8,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 8,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -911,21 +923,22 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 5,
-          "paddingLeft": 16,
-          "paddingRight": 16,
-          "paddingTop": 5,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 5,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 5,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -987,21 +1000,22 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 5,
-          "paddingLeft": 16,
-          "paddingRight": 16,
-          "paddingTop": 5,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 5,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 5,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -1063,21 +1077,22 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
           "borderStyle": "solid",
           "borderWidth": 1,
         },
-        Object {
-          "paddingBottom": 5,
-          "paddingLeft": 16,
-          "paddingRight": 16,
-          "paddingTop": 5,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 5,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 5,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -1139,21 +1154,22 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 5,
-          "paddingLeft": 16,
-          "paddingRight": 16,
-          "paddingTop": 5,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 5,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 5,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -1215,21 +1231,22 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 2,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 2,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -1291,21 +1308,22 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 8,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 8,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 8,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 8,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -1367,21 +1385,22 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 10,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 10,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 10,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 10,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"
@@ -1501,12 +1520,14 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 8,
-            "marginTop": 0,
-          },
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 8,
+              "marginTop": 0,
+            },
+          ],
         ]
       }
     />
@@ -1565,21 +1586,22 @@ exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`
           "borderStyle": "solid",
           "borderWidth": 0,
         },
-        Object {
-          "paddingBottom": 8,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 8,
-        },
         Array [
           Object {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "paddingBottom": 8,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 8,
           },
+          Array [
+            Object {
+              "alignItems": "center",
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ],
         ],
-        undefined,
       ]
     }
     testID="ds-button"

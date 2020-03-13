@@ -23,9 +23,31 @@ exports[`Renders <Size /> correctly should apply all specified props to child co
             "width": 10,
           },
         ],
-        undefined,
       ]
     }
+  />
+</View>
+`;
+
+exports[`Renders <Size /> correctly should render child component with no sizings applied 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Array [
+          Object {},
+        ],
+      ]
+    }
+    testID="size-view"
   />
 </View>
 `;
