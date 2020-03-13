@@ -157,6 +157,11 @@ const TextInput = ({
     iconRight,
   });
 
+  if (labelPosition === 'left' && variant === 'outlined') {
+    // Outlined TextInput has only a top label
+    throw Error('Cannot have a left label on an outlined TextInput');
+  }
+
   const hasText = !!(input && input.length > 0);
   const onFocus = useCallback(() => {
     setIsFocused(true);
