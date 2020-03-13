@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import TextInput from './TextInput';
+import TextArea from './TextArea';
 import View from '../View';
 import Space from '../Space';
 import Text from '../Text';
@@ -13,9 +13,9 @@ const sizeOptions = {
   auto: 'auto',
 };
 
-storiesOf('TextInput', module)
+storiesOf('TextArea', module)
   .addParameters({
-    component: TextInput,
+    component: TextArea,
   })
   .add('default', () => (
     <ScrollView>
@@ -26,7 +26,7 @@ storiesOf('TextInput', module)
               <Text>Outlined:</Text>
             </View>
           </Space>
-          <TextInput
+          <TextArea
             width={select('Width', sizeOptions, 'medium')}
             label="Label"
             disabled={false}
@@ -50,7 +50,7 @@ storiesOf('TextInput', module)
               <Text>Outlined Leading Icon:</Text>
             </View>
           </Space>
-          <TextInput
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -73,7 +73,7 @@ storiesOf('TextInput', module)
               <Text>Outlined Trailing Icon:</Text>
             </View>
           </Space>
-          <TextInput
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -96,7 +96,7 @@ storiesOf('TextInput', module)
               <Text>Outlined prefix:</Text>
             </View>
           </Space>
-          <TextInput
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -119,7 +119,7 @@ storiesOf('TextInput', module)
               <Text>Outlined suffix:</Text>
             </View>
           </Space>
-          <TextInput
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -142,7 +142,7 @@ storiesOf('TextInput', module)
               <Text>Outlined character count:</Text>
             </View>
           </Space>
-          <TextInput
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -166,7 +166,7 @@ storiesOf('TextInput', module)
               <Text>Outlined error:</Text>
             </View>
           </Space>
-          <TextInput
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -189,7 +189,7 @@ storiesOf('TextInput', module)
               <Text>Outlined Disabled:</Text>
             </View>
           </Space>
-          <TextInput
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
@@ -212,7 +212,7 @@ storiesOf('TextInput', module)
               <Text>Outlined Disabled With Text:</Text>
             </View>
           </Space>
-          <TextInput
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
@@ -227,7 +227,7 @@ storiesOf('TextInput', module)
             variant="outlined"
           >
             This is disabled
-          </TextInput>
+          </TextArea>
         </View>
       </Space>
 
@@ -238,7 +238,7 @@ storiesOf('TextInput', module)
               <Text>Filled:</Text>
             </View>
           </Space>
-          <TextInput
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -257,11 +257,10 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Filled Leading Icon:</Text>
-            </View>
+            <View />
           </Space>
-          <TextInput
+          <Text>Filled Leading Icon:</Text>
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -280,11 +279,10 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Filled Trailing Icon:</Text>
-            </View>
+            <View />
           </Space>
-          <TextInput
+          <Text>Filled Trailing Icon:</Text>
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -303,11 +301,10 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Filled prefix:</Text>
-            </View>
+            <View />
           </Space>
-          <TextInput
+          <Text>Filled prefix:</Text>
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -326,11 +323,10 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Filled suffix:</Text>
-            </View>
+            <View />
           </Space>
-          <TextInput
+          <Text>Filled suffix:</Text>
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -349,11 +345,10 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Filled character count:</Text>
-            </View>
+            <View />
           </Space>
-          <TextInput
+          <Text>Filled character count:</Text>
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -373,11 +368,10 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Filled error:</Text>
-            </View>
+            <View />
           </Space>
-          <TextInput
+          <Text>Filled error:</Text>
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
@@ -396,11 +390,10 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Filled Disabled:</Text>
-            </View>
+            <View />
           </Space>
-          <TextInput
+          <Text>Filled Disabled:</Text>
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
@@ -419,11 +412,10 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Filled Disabled With Text:</Text>
-            </View>
+            <View />
           </Space>
-          <TextInput
+          <Text>Filled Disabled With Text:</Text>
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
@@ -438,17 +430,16 @@ storiesOf('TextInput', module)
             variant="filled"
           >
             This is disabled
-          </TextInput>
+          </TextArea>
         </View>
       </Space>
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Filled with left label:</Text>
-            </View>
+            <View />
           </Space>
-          <TextInput
+          <Text>Filled with left label:</Text>
+          <TextArea
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
