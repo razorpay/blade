@@ -158,8 +158,8 @@ const TextInput = ({
   });
 
   if (labelPosition === 'left' && variant === 'outlined') {
-    // Outlined TextInput has only a top label
-    throw Error('Cannot have a left label on an outlined TextInput');
+    // Outlined Text Input has only a top label
+    throw Error('Cannot have a left label on an outlined Text Input');
   }
 
   const hasText = !!(input && input.length > 0);
