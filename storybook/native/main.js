@@ -23,6 +23,7 @@ configure(() => {
   require('../../src/atoms/Checkbox/Checkbox.stories');
   require('../../src/atoms/ScrollView/ScrollView.stories');
   require('../../src/atoms/Switch/Switch.stories');
+  require('../../src/atoms/Indicator/Indicator.stories');
 }, module);
 
 // add decorators
