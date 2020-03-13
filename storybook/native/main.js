@@ -21,6 +21,7 @@ configure(() => {
   require('../../src/atoms/TextInput/TextInput.stories');
   require('../../src/atoms/Button/Button.stories');
   require('../../src/atoms/Checkbox/Checkbox.stories');
+  require('../../src/atoms/Radio/Radio.stories');
   require('../../src/atoms/ScrollView/ScrollView.stories');
   require('../../src/atoms/Switch/Switch.stories');
   require('../../src/atoms/Card/Card.stories');
