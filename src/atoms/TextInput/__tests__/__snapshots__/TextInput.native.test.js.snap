@@ -19,7 +19,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -32,7 +31,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -44,7 +42,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -78,9 +75,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -119,9 +114,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -144,7 +137,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -174,7 +166,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -187,7 +178,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -199,7 +189,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -233,9 +222,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -274,9 +261,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -299,7 +284,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -329,7 +313,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -342,7 +325,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -354,7 +336,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -388,9 +369,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -429,9 +408,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -454,7 +431,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -484,7 +460,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -497,7 +472,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -509,7 +483,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -543,9 +516,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -585,9 +556,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -610,7 +579,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -640,7 +608,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -653,7 +620,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -665,7 +631,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -699,21 +664,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -778,9 +743,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -791,12 +754,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -926,7 +891,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -940,7 +904,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -954,14 +917,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -1017,7 +981,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -1030,7 +993,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1042,7 +1004,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -1076,21 +1037,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -1155,9 +1116,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -1168,12 +1127,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -1303,7 +1264,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -1317,7 +1277,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -1331,14 +1290,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -1394,7 +1354,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -1407,7 +1366,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1419,7 +1377,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -1453,9 +1410,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -1495,9 +1450,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -1520,7 +1473,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -1534,7 +1486,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -1548,14 +1499,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -1592,14 +1544,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                   Object {
                     "flexDirection": "column",
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -1655,7 +1608,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -1668,7 +1620,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1680,7 +1631,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -1714,9 +1664,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -1755,9 +1703,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -1780,7 +1726,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -1794,7 +1739,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -1808,14 +1752,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -1871,7 +1816,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -1884,7 +1828,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1896,7 +1839,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -1930,21 +1872,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -2094,9 +2036,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2107,12 +2047,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -2242,7 +2184,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -2272,7 +2213,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -2285,7 +2225,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2297,7 +2236,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -2331,21 +2269,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -2495,9 +2433,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2520,7 +2456,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -2550,7 +2485,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -2563,7 +2497,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2575,7 +2508,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -2609,9 +2541,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -2650,9 +2580,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2663,12 +2591,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -2798,7 +2728,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -2828,7 +2757,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -2841,7 +2769,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2853,7 +2780,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -2887,9 +2813,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -2928,9 +2852,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2953,7 +2875,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -2983,7 +2904,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -2996,7 +2916,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3008,7 +2927,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3042,9 +2960,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -3083,9 +2999,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3096,12 +3010,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -3146,7 +3062,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -3176,7 +3091,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -3189,7 +3103,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3201,7 +3114,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3235,21 +3147,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -3314,9 +3226,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3339,7 +3249,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -3369,7 +3278,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -3382,7 +3290,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3394,7 +3301,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3428,9 +3334,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -3469,9 +3373,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3482,12 +3384,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -3532,7 +3436,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -3562,7 +3465,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -3575,7 +3477,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3587,7 +3488,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3621,9 +3521,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -3662,9 +3560,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -3687,7 +3583,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -3717,7 +3612,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -3730,7 +3624,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3742,7 +3635,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3776,9 +3668,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -3817,9 +3707,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -3842,7 +3730,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -3872,7 +3759,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -3885,7 +3771,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3897,7 +3782,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3931,9 +3815,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -3973,9 +3855,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3998,7 +3878,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -4028,7 +3907,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -4041,7 +3919,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -4053,7 +3930,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -4087,21 +3963,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -4166,9 +4042,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -4179,12 +4053,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -4314,7 +4190,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -4328,7 +4203,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -4342,14 +4216,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -4405,7 +4280,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -4418,7 +4292,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -4430,7 +4303,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -4464,21 +4336,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -4543,9 +4415,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -4556,12 +4426,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -4691,7 +4563,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -4705,7 +4576,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -4719,14 +4589,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -4782,7 +4653,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -4795,7 +4665,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -4807,7 +4676,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -4841,9 +4709,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -4882,9 +4748,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -4907,7 +4771,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -4937,7 +4800,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -4950,7 +4812,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -4962,7 +4823,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -4996,9 +4856,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -5037,9 +4895,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -5062,7 +4918,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -5076,7 +4931,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -5090,14 +4944,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -5153,7 +5008,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -5166,7 +5020,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -5178,7 +5031,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -5212,9 +5064,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -5254,9 +5104,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -5279,7 +5127,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -5293,7 +5140,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -5307,14 +5153,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -5351,14 +5198,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   Object {
                     "flexDirection": "column",
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -5414,7 +5262,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -5427,7 +5274,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -5439,7 +5285,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -5473,21 +5318,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -5637,9 +5482,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -5662,7 +5505,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -5692,7 +5534,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -5705,7 +5546,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -5717,7 +5557,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -5751,21 +5590,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -5915,9 +5754,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -5928,12 +5765,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -6063,7 +5902,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -6093,7 +5931,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -6106,7 +5943,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -6118,7 +5954,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -6152,9 +5987,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -6193,9 +6026,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -6206,12 +6037,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -6341,7 +6174,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -6371,7 +6203,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -6384,7 +6215,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -6396,7 +6226,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -6430,9 +6259,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -6471,9 +6298,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -6496,7 +6321,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -6526,7 +6350,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -6539,7 +6362,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -6551,7 +6373,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -6585,9 +6406,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -6626,9 +6445,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -6639,12 +6456,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -6689,7 +6508,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -6719,7 +6537,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -6732,7 +6549,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -6744,7 +6560,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -6778,21 +6593,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -6857,9 +6672,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -6882,7 +6695,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -6912,7 +6724,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -6925,7 +6736,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -6937,7 +6747,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -6971,9 +6780,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -7012,9 +6819,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                         "flexShrink": 1,
                       },
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -7025,12 +6830,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -7075,7 +6882,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
