@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { AppRegistry, StatusBar } from 'react-native';
+import { AppRegistry, StatusBar, KeyboardAvoidingView } from 'react-native';
 import { getStorybookUI, configure, addDecorator } from '@storybook/react-native';
 import styled, { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme } from '../../src/tokens/theme';
@@ -39,7 +39,9 @@ const SpaceAround = styled.View`
 
 addDecorator((Story) => (
   <SpaceAround>
-    <Story />
+    <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={100}>
+      <Story />
+    </KeyboardAvoidingView>
   </SpaceAround>
 ));
 
@@ -102,6 +104,7 @@ const App = () => {
   const StorybookUIRoot = getStorybookUI({
     theme: isDarkTheme ? storybookTheme.dark : storybookTheme.light,
     asyncStorage: AsyncStorage,
+    shouldDisableKeyboardAvoidingView: true,
   });
 
   return (
