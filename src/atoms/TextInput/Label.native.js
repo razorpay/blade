@@ -12,17 +12,20 @@ const IS_ANDROID = Platform.OS === 'android';
 
 const REGULAR_PADDING_TOP_MULTIPLIER_ANDROID = 0.36;
 const REGULAR_PADDING_TOP_MULTIPLIER_IOS = 0.29;
+const REGULAR_PADDING_TOP_MULTIPLIER_MULTILINE = 0.2;
 
 const styles = {
   regularLabelContainer: {
-    padding({ position, inputLayoutDimensions }) {
+    padding({ position, inputLayoutDimensions, _isMultiline }) {
       let [top, right, bottom] = [0, 0, 0.5];
       const left = 0;
 
       if (position === 'top') {
         top = 0;
       } else {
-        if (IS_ANDROID) {
+        if (_isMultiline) {
+          top = `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_MULTILINE}px`;
+        } else if (IS_ANDROID) {
           top = `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_ANDROID}px`;
         } else {
           top = `${inputLayoutDimensions.height * REGULAR_PADDING_TOP_MULTIPLIER_IOS}px`;
@@ -90,7 +93,7 @@ const onBlur = ({ animationConfig, labelAnimatedValue }) => {
 const getInitialTopDivisor = ({ variant, _isMultiline }) => {
   if (variant === 'outlined') {
     if (_isMultiline) {
-      return IS_ANDROID ? 1.5 : 1.16;
+      return IS_ANDROID ? 1.75 : 1.16;
     } else {
       return IS_ANDROID ? 2.4 : 2;
     }
@@ -256,9 +259,15 @@ AnimatedLabel.defaultProps = {
   hasError: false,
 };
 
-const RegularLabel = ({ children, inputLayoutDimensions, position, disabled }) => {
+const RegularLabel = ({ children, inputLayoutDimensions, position, disabled, _isMultiline }) => {
   return (
-    <Space padding={styles.regularLabelContainer.padding({ position, inputLayoutDimensions })}>
+    <Space
+      padding={styles.regularLabelContainer.padding({
+        position,
+        inputLayoutDimensions,
+        _isMultiline,
+      })}
+    >
       <View>
         <Text size="medium" color={disabled ? 'shade.940' : 'shade.980'}>
           {children}
@@ -278,12 +287,14 @@ RegularLabel.propTypes = {
   }),
   position: PropTypes.oneOf(['top', 'left']).isRequired,
   disabled: PropTypes.bool,
+  _isMultiline: PropTypes.bool,
 };
 
 RegularLabel.defaultProps = {
   children: 'Label',
   inputLayoutDimensions: undefined,
   disabled: false,
+  _isMultiline: false,
 };
 
 const Label = {
