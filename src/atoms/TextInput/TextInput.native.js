@@ -14,18 +14,33 @@ import automation from '../../_helpers/automation-attributes';
 import View from '../View';
 import isEmpty from '../../_helpers/isEmpty';
 import Size from '../Size';
+import Space from '../Space';
 
 const IS_ANDROID = Platform.OS === 'android';
 
 const styles = {
   textInput: {
-    padding({ variant, hasLeftIcon, hasPrefix, hasText }) {
-      const paddingTop = IS_ANDROID ? '8px' : '0px';
-      const paddingRight = '0px';
-      const paddingBottom = IS_ANDROID ? '0px' : hasText ? '4px' : '2px';
-      const paddingLeft = variant === 'outlined' || hasLeftIcon || hasPrefix ? '0px' : '8px';
+    padding({ variant, hasLeftIcon, hasPrefix, hasText, _isMultiline }) {
+      let [paddingTop, paddingRight, paddingBottom, paddingLeft] = [0, 0, 0, 0];
+
+      if (IS_ANDROID) {
+        if (variant === 'outlined') {
+          paddingTop = 1;
+        }
+      } else if (hasText) {
+        paddingBottom = 0.5;
+      } else {
+        paddingBottom = 0.25;
+      }
+
+      if (_isMultiline) {
+        paddingTop = IS_ANDROID ? 1 : 0.385;
+      }
+
+      paddingRight = 0;
+      paddingLeft = variant === 'outlined' || hasLeftIcon || hasPrefix ? 0 : 1;
       // iOS & Android need different paddings
-      return `${paddingTop} ${paddingRight} ${paddingBottom} ${paddingLeft}`;
+      return [paddingTop, paddingRight, paddingBottom, paddingLeft];
     },
     fontSize({ theme }) {
       return theme.fonts.size.medium;
@@ -43,6 +58,32 @@ const styles = {
         return theme.colors.shade[980];
       }
     },
+
+    height({ _isMultiline, variant }) {
+      if (!_isMultiline) {
+        if (variant === 'filled') {
+          return '36px';
+        } else {
+          return '40px';
+        }
+      } else {
+        return 'auto';
+      }
+    },
+    minHeight({ _isMultiline }) {
+      if (_isMultiline) {
+        return '30px';
+      } else {
+        return 'auto';
+      }
+    },
+    maxHeight({ _isMultiline }) {
+      if (_isMultiline) {
+        return '80px';
+      } else {
+        return 'auto';
+      }
+    },
   },
   fillContainer: {
     backgroundColor({ variant, isFocused, theme, disabled }) {
@@ -56,11 +97,18 @@ const styles = {
         return theme.colors.tone[930];
       }
     },
+    marginTop({ _isMultiline, variant }) {
+      if (_isMultiline && variant === 'outlined') {
+        return '10px';
+      } else {
+        return 'auto';
+      }
+    },
   },
   inputContainer: {
-    width({ size }) {
-      switch (size) {
-        case 'block':
+    width({ width }) {
+      switch (width) {
+        case 'auto':
           return '100%';
         case 'small':
           return '160px';
@@ -78,7 +126,6 @@ const InputContainer = styled(View)`
 `;
 
 const StyledInput = styled(NativeTextInput)`
-  padding: ${styles.textInput.padding};
   font-size: ${styles.textInput.fontSize};
   line-height: ${styles.textInput.lineHeight};
   font-family: ${styles.textInput.fontFamily};
@@ -89,6 +136,7 @@ const FillContainer = styled(View)`
   background-color: ${styles.fillContainer.backgroundColor};
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
+  margin-top: ${styles.fillContainer.marginTop};
 `;
 
 const getAccessoryConfig = ({ errorText, prefix, suffix, iconLeft, iconRight }) => {
@@ -98,6 +146,18 @@ const getAccessoryConfig = ({ errorText, prefix, suffix, iconLeft, iconRight }) 
   const hasLeftIcon = !hasPrefix && !isEmpty(iconLeft);
   const hasRightIcon = !hasSuffix && !isEmpty(iconRight);
   return { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon };
+};
+
+const getPlaceholderTextColor = ({ theme, disabled, isPlaceholderVisible, hasAnimatedLabel }) => {
+  if (isPlaceholderVisible || !hasAnimatedLabel) {
+    if (disabled) {
+      return theme.colors.shade[930];
+    } else {
+      return theme.colors.shade[940];
+    }
+  } else {
+    return 'transparent';
+  }
 };
 
 const TextInput = ({
@@ -113,11 +173,11 @@ const TextInput = ({
   iconLeft,
   iconRight,
   maxLength,
-  showCharacterCount,
   label,
   testID,
   labelPosition,
-  size,
+  width,
+  _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setIsFocused] = useState(false);
@@ -127,9 +187,14 @@ const TextInput = ({
   // Used to hide placeholder while label is inside the TextInput
   const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
 
-  const hasLeftLabel = labelPosition === 'left' && variant === 'filled';
+  const hasAnimatedLabel = variant === 'outlined';
 
-  const placeholderTextColor = disabled ? theme.colors.shade[930] : theme.colors.shade[940];
+  const placeholderTextColor = getPlaceholderTextColor({
+    theme,
+    disabled,
+    isPlaceholderVisible,
+    hasAnimatedLabel,
+  });
 
   // Derive accessory conditions based on props
   const { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon } = getAccessoryConfig({
@@ -139,6 +204,11 @@ const TextInput = ({
     iconLeft,
     iconRight,
   });
+
+  if (labelPosition === 'left' && variant === 'outlined') {
+    // Outlined Text Input has only a top label
+    throw Error('Cannot have a left label on an outlined Text Input');
+  }
 
   const hasText = !!(input && input.length > 0);
   const onFocus = useCallback(() => {
@@ -174,16 +244,33 @@ const TextInput = ({
     ({ nativeEvent }) => {
       const { layout } = nativeEvent;
       // Set layout values only once
-      if (!layoutDimensions) setLayoutDimensions(layout);
+      if (isEmpty(layoutDimensions)) setLayoutDimensions(layout);
     },
     [layoutDimensions, setLayoutDimensions],
   );
 
+  if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
+    throw Error('Cannot have prefix and left icon together');
+  }
+
+  if (!isEmpty(suffix) && !isEmpty(iconRight)) {
+    throw Error('Cannot have suffix and right icon together');
+  }
+
   return (
     <Flex justifyContent="flex-end">
       <View>
+        {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'top' ? (
+          <Label.Regular
+            position={labelPosition}
+            disabled={disabled}
+            inputLayoutDimensions={layoutDimensions}
+          >
+            {label}
+          </Label.Regular>
+        ) : null}
         {/* Animated Label */}
-        {layoutDimensions && !hasLeftLabel ? (
+        {!isEmpty(layoutDimensions) && hasAnimatedLabel ? (
           <Label.Animated
             isFocused={isFocused}
             hasText={hasText}
@@ -191,6 +278,7 @@ const TextInput = ({
             layoutDimensions={layoutDimensions}
             variant={variant}
             hasError={hasError}
+            _isMultiline={_isMultiline}
           >
             {label}
           </Label.Animated>
@@ -200,15 +288,26 @@ const TextInput = ({
         <Flex flexDirection="row" alignItems="flex-start">
           <View>
             {/* Fixed Left Label */}
-            {hasLeftLabel && layoutDimensions ? (
-              <Label.Regular inputLayoutDimensions={layoutDimensions}>{label}</Label.Regular>
+            {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'left' ? (
+              <Label.Regular
+                inputLayoutDimensions={layoutDimensions}
+                position={labelPosition}
+                disabled={disabled}
+              >
+                {label}
+              </Label.Regular>
             ) : null}
             {/* Text Input */}
-            <Flex flexDirection="column" flex={size === 'block' ? 1 : 0}>
+            <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
               <View>
-                <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
+                <FillContainer
+                  _isMultiline={_isMultiline}
+                  variant={variant}
+                  isFocused={isFocused}
+                  disabled={disabled}
+                >
                   <Flex flexDirection="row" alignItems="center">
-                    <Size width={styles.inputContainer.width({ size })}>
+                    <Size width={styles.inputContainer.width({ width })}>
                       <InputContainer>
                         {hasPrefix ? (
                           <AccessoryText variant={variant} disabled={disabled}>
@@ -225,26 +324,41 @@ const TextInput = ({
                         ) : null}
 
                         <Flex flex={1}>
-                          <Size height="40px">
-                            <StyledInput
-                              placeholder={isPlaceholderVisible || hasLeftLabel ? placeholder : ''}
-                              placeholderTextColor={placeholderTextColor}
-                              onFocus={onFocus}
-                              onBlur={onBlur}
-                              onChangeText={onChangeText}
-                              hasText={hasText}
-                              selectionColor={theme.colors.shade[980]} // not able to change this for Android
-                              editable={!disabled}
-                              disabled={disabled}
-                              variant={variant}
-                              hasPrefix={hasPrefix}
-                              hasLeftIcon={hasLeftIcon}
-                              maxLength={maxLength}
-                              onLayout={onTextInputLayout}
-                              value={input}
-                              {...automation(testID)}
-                            />
-                          </Size>
+                          <Space
+                            padding={styles.textInput.padding({
+                              variant,
+                              hasLeftIcon,
+                              hasPrefix,
+                              hasText,
+                              _isMultiline,
+                            })}
+                          >
+                            <Size
+                              height={styles.textInput.height({ _isMultiline, variant })}
+                              maxHeight={styles.textInput.maxHeight({ _isMultiline })}
+                              minHeight={styles.textInput.minHeight({ _isMultiline })}
+                            >
+                              <StyledInput
+                                placeholder={placeholder}
+                                placeholderTextColor={placeholderTextColor}
+                                onFocus={onFocus}
+                                onBlur={onBlur}
+                                onChangeText={onChangeText}
+                                hasText={hasText}
+                                selectionColor={theme.colors.shade[980]} // not able to change this for Android
+                                editable={!disabled}
+                                disabled={disabled}
+                                variant={variant}
+                                hasPrefix={hasPrefix}
+                                hasLeftIcon={hasLeftIcon}
+                                maxLength={maxLength}
+                                onLayout={onTextInputLayout}
+                                value={input}
+                                multiline={_isMultiline}
+                                {...automation(testID)}
+                              />
+                            </Size>
+                          </Space>
                         </Flex>
                         {hasSuffix ? (
                           <AccessoryText variant={variant} disabled={disabled}>
@@ -271,7 +385,7 @@ const TextInput = ({
                   <Flex flexDirection="row" justifyContent="space-between">
                     <View>
                       <Text errorText={errorText} helpText={helpText} disabled={disabled} />
-                      {showCharacterCount && maxLength !== undefined ? (
+                      {maxLength !== undefined ? (
                         <CharacterCount
                           disabled={disabled}
                           maxLength={maxLength}
@@ -303,11 +417,11 @@ TextInput.propTypes = {
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
   maxLength: PropTypes.number,
-  showCharacterCount: PropTypes.bool,
   label: PropTypes.string,
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
-  size: PropTypes.oneOf(['small', 'medium', 'block']),
+  width: PropTypes.oneOf(['small', 'medium', 'auto']),
+  _isMultiline: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
@@ -322,12 +436,11 @@ TextInput.defaultProps = {
   iconLeft: undefined,
   iconRight: undefined,
   maxLength: undefined,
-  showCharacterCount: false,
   variant: 'outlined',
   label: 'Label',
   testID: 'ds-text-input',
   labelPosition: 'top',
-  size: 'medium',
+  width: 'medium',
 };
 
 export default TextInput;

@@ -22,7 +22,6 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="activeCheckbox"
@@ -37,7 +36,6 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -178,19 +176,20 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -223,12 +222,14 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 24,
-            "marginRight": 0,
-            "marginTop": 0,
-          },
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 24,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ],
         ]
       }
     >
@@ -283,7 +284,6 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-checkbox"
@@ -298,7 +298,6 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -439,19 +438,20 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -507,7 +507,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="activeCheckbox"
@@ -522,7 +521,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -663,19 +661,20 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -731,7 +730,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="activeCheckbox"
@@ -746,7 +744,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -887,19 +884,20 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -955,7 +953,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-checkbox"
@@ -970,7 +967,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1111,19 +1107,20 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -1179,7 +1176,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-checkbox"
@@ -1194,7 +1190,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1335,19 +1330,20 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -1403,7 +1399,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-checkbox"
@@ -1418,7 +1413,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1559,19 +1553,20 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -1627,7 +1622,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-checkbox"
@@ -1642,7 +1636,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1783,19 +1776,20 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -1851,7 +1845,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="ds-checkbox"
@@ -1866,7 +1859,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2007,19 +1999,20 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -2052,12 +2045,14 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 24,
-            "marginRight": 0,
-            "marginTop": 0,
-          },
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 24,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ],
         ]
       }
     >
@@ -2112,7 +2107,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="unselectedCheckBox"
@@ -2127,7 +2121,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2268,19 +2261,20 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >
@@ -2336,7 +2330,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
             "flexDirection": "column",
           },
         ],
-        undefined,
       ]
     }
     testID="unselectedCheckBox"
@@ -2351,7 +2344,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2492,19 +2484,20 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
       <View
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
             Array [
               Object {
-                "alignSelf": "center",
-                "flexDirection": "column",
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
               },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
             ],
-            undefined,
           ]
         }
       >

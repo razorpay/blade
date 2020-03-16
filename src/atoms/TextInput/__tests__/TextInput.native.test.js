@@ -50,13 +50,13 @@ describe('Renders <TextInput /> outlined variant correctly', () => {
   });
 
   it('snapshot testing with character count ', () => {
-    const { container } = renderWithTheme(<TextInput showCharacterCount maxLength={10} />);
+    const { container } = renderWithTheme(<TextInput maxLength={10} />);
     expect(container).toMatchSnapshot();
   });
 
   it('snapshot testing with help text & character count ', () => {
     const { container } = renderWithTheme(
-      <TextInput helpText="You can enter your email here" showCharacterCount maxLength={10} />,
+      <TextInput helpText="You can enter your email here" maxLength={10} />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -97,6 +97,16 @@ describe('Renders <TextInput /> outlined variant correctly', () => {
       fireEvent.focus(textInput);
       jest.runAllTimers(); // Resolve timers after focus events
     });
+    expect(container).toMatchSnapshot();
+  });
+
+  it('snapshot testing with small width', () => {
+    const { container } = renderWithTheme(<TextInput width="small" />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('snapshot testing with auto width', () => {
+    const { container } = renderWithTheme(<TextInput width="auto" />);
     expect(container).toMatchSnapshot();
   });
 });
@@ -156,20 +166,13 @@ describe('Renders <TextInput /> filled variant correctly', () => {
   });
 
   it('snapshot testing with character count (filled TextInput)', () => {
-    const { container } = renderWithTheme(
-      <TextInput variant="filled" showCharacterCount maxLength={10} />,
-    );
+    const { container } = renderWithTheme(<TextInput variant="filled" maxLength={10} />);
     expect(container).toMatchSnapshot();
   });
 
   it('snapshot testing with help text & character count (filled TextInput)', () => {
     const { container } = renderWithTheme(
-      <TextInput
-        variant="filled"
-        helpText="You can enter your email here"
-        showCharacterCount
-        maxLength={10}
-      />,
+      <TextInput variant="filled" helpText="You can enter your email here" maxLength={10} />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -212,6 +215,16 @@ describe('Renders <TextInput /> filled variant correctly', () => {
       fireEvent.focus(textInput);
       jest.runAllTimers(); // Resolve timers after focus events
     });
+    expect(container).toMatchSnapshot();
+  });
+
+  it('snapshot testing with small width (filled TextInput)', () => {
+    const { container } = renderWithTheme(<TextInput variant="filled" width="small" />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('snapshot testing with auto width (filled TextInput)', () => {
+    const { container } = renderWithTheme(<TextInput variant="filled" width="auto" />);
     expect(container).toMatchSnapshot();
   });
 });

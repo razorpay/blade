@@ -10,7 +10,7 @@ import { select } from '@storybook/addon-knobs';
 const sizeOptions = {
   small: 'small',
   medium: 'medium',
-  block: 'block',
+  auto: 'auto',
 };
 
 storiesOf('TextInput', module)
@@ -27,7 +27,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'medium')}
+            width={select('Width', sizeOptions, 'medium')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -51,7 +51,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -74,7 +74,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -97,7 +97,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -120,7 +120,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -143,7 +143,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -156,7 +156,6 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="outlined"
             maxLength={10}
-            showCharacterCount
           />
         </View>
       </Space>
@@ -168,7 +167,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -191,7 +190,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -214,7 +213,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -240,7 +239,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -258,11 +257,12 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View />
+            <View>
+              <Text>Filled Leading Icon:</Text>
+            </View>
           </Space>
-          <Text>Filled Leading Icon:</Text>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -280,11 +280,12 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View />
+            <View>
+              <Text>Filled Trailing Icon:</Text>
+            </View>
           </Space>
-          <Text>Filled Trailing Icon:</Text>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -302,11 +303,12 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View />
+            <View>
+              <Text>Filled prefix:</Text>
+            </View>
           </Space>
-          <Text>Filled prefix:</Text>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -324,11 +326,12 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View />
+            <View>
+              <Text>Filled suffix:</Text>
+            </View>
           </Space>
-          <Text>Filled suffix:</Text>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -346,11 +349,12 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View />
+            <View>
+              <Text>Filled character count:</Text>
+            </View>
           </Space>
-          <Text>Filled character count:</Text>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -363,18 +367,18 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="filled"
             maxLength={10}
-            showCharacterCount
           />
         </View>
       </Space>
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View />
+            <View>
+              <Text>Filled error:</Text>
+            </View>
           </Space>
-          <Text>Filled error:</Text>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -392,11 +396,12 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View />
+            <View>
+              <Text>Filled Disabled:</Text>
+            </View>
           </Space>
-          <Text>Filled Disabled:</Text>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -414,11 +419,12 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View />
+            <View>
+              <Text>Filled Disabled With Text:</Text>
+            </View>
           </Space>
-          <Text>Filled Disabled With Text:</Text>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -438,11 +444,12 @@ storiesOf('TextInput', module)
       <Space margin={[0, 1, 4, 0]}>
         <View>
           <Space margin={[0, 0, 1, 0]}>
-            <View />
+            <View>
+              <Text>Filled with left label:</Text>
+            </View>
           </Space>
-          <Text>Filled with left label:</Text>
           <TextInput
-            size={select('Size', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
             iconLeft=""

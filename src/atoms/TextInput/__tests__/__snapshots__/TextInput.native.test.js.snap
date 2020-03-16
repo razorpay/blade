@@ -19,7 +19,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -32,7 +31,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -44,7 +42,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -57,6 +54,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -78,9 +76,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -91,7 +87,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -102,26 +98,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -144,7 +144,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -174,7 +173,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -187,7 +185,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -199,7 +196,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -212,6 +208,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 "backgroundColor": "rgba(224, 228, 249, 0.24)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -233,9 +230,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -257,26 +252,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -299,7 +298,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -329,7 +327,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -342,7 +339,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -354,7 +350,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -367,6 +362,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -388,9 +384,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -401,7 +395,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={true}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -412,26 +406,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 4,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 4,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -454,7 +452,163 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                     "height": 1,
                   },
                 ],
-                undefined,
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with auto width (filled TextInput) 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          disabled={false}
+          isFocused={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(224, 228, 249, 0.10)",
+                "borderTopLeftRadius": 2,
+                "borderTopRightRadius": 2,
+                "marginTop": "auto",
+              },
+            ]
+          }
+          variant="filled"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Array [
+                  Object {
+                    "width": "100%",
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              disabled={false}
+              editable={true}
+              hasLeftIcon={false}
+              hasPrefix={false}
+              hasText={false}
+              placeholder="Enter text here"
+              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              rejectResponderTermination={true}
+              selectionColor="rgba(22, 47, 86, 0.87)"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 20,
+                  },
+                  Array [
+                    Object {
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
+                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
+                    ],
+                  ],
+                ]
+              }
+              testID="ds-text-input"
+              underlineColorAndroid="transparent"
+              value=""
+              variant="filled"
+            />
+          </View>
+          <View
+            disabled={false}
+            hasError={false}
+            isFocused={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
               ]
             }
           />
@@ -484,7 +638,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -497,7 +650,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -509,7 +661,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -522,6 +673,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -543,9 +695,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -557,7 +707,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
               hasPrefix={false}
               hasText={false}
               maxLength={10}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -568,26 +718,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -610,7 +764,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -640,7 +793,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -653,7 +805,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -665,7 +816,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -678,6 +828,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -699,21 +850,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -750,7 +901,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               hasLeftIcon={false}
               hasPrefix={true}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.10)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -761,26 +912,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -791,12 +946,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -926,7 +1083,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -940,7 +1096,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -954,14 +1109,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -1017,7 +1173,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -1030,7 +1185,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1042,7 +1196,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -1055,6 +1208,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -1076,21 +1230,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -1127,7 +1281,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               hasLeftIcon={false}
               hasPrefix={true}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -1138,26 +1292,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -1168,12 +1326,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -1303,7 +1463,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -1317,7 +1476,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -1331,14 +1489,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -1394,7 +1553,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -1407,7 +1565,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1419,7 +1576,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -1432,6 +1588,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -1453,9 +1610,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -1467,7 +1622,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               hasPrefix={false}
               hasText={false}
               maxLength={10}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -1478,26 +1633,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -1520,7 +1679,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -1534,7 +1692,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -1548,14 +1705,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -1592,14 +1750,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                   Object {
                     "flexDirection": "column",
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -1655,7 +1814,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -1668,7 +1826,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1680,7 +1837,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -1693,6 +1849,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -1714,9 +1871,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -1727,7 +1882,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -1738,26 +1893,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -1780,7 +1939,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -1794,7 +1952,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -1808,14 +1965,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -1871,7 +2029,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -1884,7 +2041,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -1896,7 +2052,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -1909,6 +2064,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -1930,21 +2086,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -2066,7 +2222,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               hasLeftIcon={true}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -2077,26 +2233,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2107,12 +2267,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -2242,7 +2404,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -2272,7 +2433,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -2285,7 +2445,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2297,7 +2456,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -2310,6 +2468,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -2331,21 +2490,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -2467,7 +2626,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               hasLeftIcon={true}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -2478,26 +2637,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2520,7 +2683,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -2550,7 +2712,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -2563,7 +2724,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2575,7 +2735,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -2588,6 +2747,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -2609,9 +2769,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -2622,7 +2780,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -2633,26 +2791,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2663,12 +2825,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -2798,7 +2962,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -2828,7 +2991,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -2841,7 +3003,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -2853,7 +3014,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -2866,6 +3026,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -2887,9 +3048,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -2900,7 +3059,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -2911,26 +3070,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -2953,7 +3116,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -2983,7 +3145,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -2996,7 +3157,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3008,7 +3168,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3021,6 +3180,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -3042,9 +3202,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -3055,7 +3213,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -3066,26 +3224,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3096,12 +3258,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -3146,7 +3310,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -3176,7 +3339,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -3189,7 +3351,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3201,7 +3362,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3214,6 +3374,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -3235,21 +3396,21 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -3286,7 +3447,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               hasLeftIcon={false}
               hasPrefix={true}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -3297,26 +3458,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3339,7 +3504,160 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                     "height": 1,
                   },
                 ],
-                undefined,
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with small width (filled TextInput) 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          disabled={false}
+          isFocused={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(224, 228, 249, 0.10)",
+                "borderTopLeftRadius": 2,
+                "borderTopRightRadius": 2,
+                "marginTop": "auto",
+              },
+            ]
+          }
+          variant="filled"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Array [
+                  Object {
+                    "width": 160,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              disabled={false}
+              editable={true}
+              hasLeftIcon={false}
+              hasPrefix={false}
+              hasText={false}
+              placeholder="Enter text here"
+              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              rejectResponderTermination={true}
+              selectionColor="rgba(22, 47, 86, 0.87)"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 20,
+                  },
+                  Array [
+                    Object {
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
+                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
+                    ],
+                  ],
+                ]
+              }
+              testID="ds-text-input"
+              underlineColorAndroid="transparent"
+              value=""
+              variant="filled"
+            />
+          </View>
+          <View
+            disabled={false}
+            hasError={false}
+            isFocused={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
               ]
             }
           />
@@ -3369,7 +3687,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -3382,7 +3699,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3394,7 +3710,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3407,6 +3722,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                 "backgroundColor": "rgba(224, 228, 249, 0.10)",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -3428,9 +3744,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -3441,7 +3755,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
+              placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
@@ -3452,26 +3766,30 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
-                      "height": 40,
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3482,12 +3800,14 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -3532,7 +3852,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -3562,7 +3881,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -3575,7 +3893,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3587,7 +3904,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3600,6 +3916,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -3621,9 +3938,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -3634,8 +3949,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -3645,26 +3960,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -3687,7 +4006,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -3717,7 +4035,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -3730,7 +4047,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3742,7 +4058,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3755,6 +4070,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -3776,9 +4092,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -3800,26 +4114,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="snap-test-text-input"
@@ -3842,7 +4160,163 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                     "height": 1,
                   },
                 ],
-                undefined,
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with auto width 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          disabled={false}
+          isFocused={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderTopLeftRadius": 2,
+                "borderTopRightRadius": 2,
+                "marginTop": "auto",
+              },
+            ]
+          }
+          variant="outlined"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Array [
+                  Object {
+                    "width": "100%",
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              disabled={false}
+              editable={true}
+              hasLeftIcon={false}
+              hasPrefix={false}
+              hasText={false}
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
+              rejectResponderTermination={true}
+              selectionColor="rgba(22, 47, 86, 0.87)"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 20,
+                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
+                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
+                    ],
+                  ],
+                ]
+              }
+              testID="ds-text-input"
+              underlineColorAndroid="transparent"
+              value=""
+              variant="outlined"
+            />
+          </View>
+          <View
+            disabled={false}
+            hasError={false}
+            isFocused={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
               ]
             }
           />
@@ -3872,7 +4346,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -3885,7 +4358,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -3897,7 +4369,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -3910,6 +4381,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -3931,9 +4403,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -3945,8 +4415,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasPrefix={false}
               hasText={false}
               maxLength={10}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -3956,26 +4426,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -3998,7 +4472,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -4028,7 +4501,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -4041,7 +4513,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -4053,7 +4524,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -4066,6 +4536,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -4087,21 +4558,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -4138,8 +4609,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasLeftIcon={false}
               hasPrefix={true}
               hasText={false}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.10)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -4149,26 +4620,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -4179,12 +4654,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -4314,7 +4791,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -4328,7 +4804,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -4342,14 +4817,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -4405,7 +4881,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -4418,7 +4893,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -4430,7 +4904,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -4443,6 +4916,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -4464,21 +4938,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -4515,8 +4989,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasLeftIcon={false}
               hasPrefix={true}
               hasText={false}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -4526,26 +5000,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -4556,12 +5034,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -4691,7 +5171,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -4705,7 +5184,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -4719,14 +5197,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -4782,7 +5261,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -4795,7 +5273,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -4807,7 +5284,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -4820,6 +5296,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -4841,9 +5318,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -4854,8 +5329,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={true}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -4865,26 +5340,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 4,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 4,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -4907,7 +5386,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -4937,7 +5415,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -4950,7 +5427,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -4962,7 +5438,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -4975,6 +5450,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -4996,9 +5472,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -5009,8 +5483,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -5020,26 +5494,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -5062,7 +5540,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -5076,7 +5553,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -5090,14 +5566,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -5153,7 +5630,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -5166,7 +5642,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -5178,7 +5653,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -5191,6 +5665,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -5212,9 +5687,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -5226,8 +5699,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasPrefix={false}
               hasText={false}
               maxLength={10}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -5237,26 +5710,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -5279,7 +5756,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -5293,7 +5769,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   "justifyContent": "space-between",
                 },
               ],
-              undefined,
             ]
           }
         >
@@ -5307,14 +5782,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -5351,14 +5827,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   Object {
                     "flexDirection": "column",
                   },
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 8,
-                    "paddingRight": 0,
-                    "paddingTop": 4,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 8,
+                      "paddingRight": 0,
+                      "paddingTop": 4,
+                    },
+                  ],
                 ],
-                undefined,
               ]
             }
           >
@@ -5414,7 +5891,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -5427,7 +5903,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -5439,7 +5914,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -5452,6 +5926,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -5473,21 +5948,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -5609,8 +6084,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasLeftIcon={true}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -5620,26 +6095,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -5662,7 +6141,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -5692,7 +6170,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -5705,7 +6182,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -5717,7 +6193,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -5730,6 +6205,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -5751,21 +6227,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -5887,8 +6363,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasLeftIcon={true}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -5898,26 +6374,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -5928,12 +6408,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -6063,7 +6545,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -6093,7 +6574,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -6106,7 +6586,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -6118,7 +6597,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -6131,6 +6609,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -6152,9 +6631,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -6165,8 +6642,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -6176,26 +6653,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -6206,12 +6687,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -6341,7 +6824,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -6371,7 +6853,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -6384,7 +6865,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -6396,7 +6876,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -6409,6 +6888,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -6430,9 +6910,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -6443,8 +6921,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -6454,26 +6932,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -6496,7 +6978,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -6526,7 +7007,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -6539,7 +7019,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -6551,7 +7030,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -6564,6 +7042,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -6585,9 +7064,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -6598,8 +7075,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -6609,26 +7086,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -6639,12 +7120,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -6689,7 +7172,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />
@@ -6719,7 +7201,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -6732,7 +7213,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -6744,7 +7224,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -6757,6 +7236,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -6778,21 +7258,21 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -6829,8 +7309,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasLeftIcon={false}
               hasPrefix={true}
               hasText={false}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -6840,26 +7320,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -6882,7 +7366,160 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with small width 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          disabled={false}
+          isFocused={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderTopLeftRadius": 2,
+                "borderTopRightRadius": 2,
+                "marginTop": "auto",
+              },
+            ]
+          }
+          variant="outlined"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Array [
+                  Object {
+                    "width": 160,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              disabled={false}
+              editable={true}
+              hasLeftIcon={false}
+              hasPrefix={false}
+              hasText={false}
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
+              rejectResponderTermination={true}
+              selectionColor="rgba(22, 47, 86, 0.87)"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 20,
+                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
+                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
+                    ],
+                  ],
+                ]
+              }
+              testID="ds-text-input"
+              underlineColorAndroid="transparent"
+              value=""
+              variant="outlined"
+            />
+          </View>
+          <View
+            disabled={false}
+            hasError={false}
+            isFocused={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
               ]
             }
           />
@@ -6912,7 +7549,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             "justifyContent": "flex-end",
           },
         ],
-        undefined,
       ]
     }
   >
@@ -6925,7 +7561,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               "flexDirection": "row",
             },
           ],
-          undefined,
         ]
       }
     >
@@ -6937,7 +7572,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "flexDirection": "column",
               },
             ],
-            undefined,
           ]
         }
       >
@@ -6950,6 +7584,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 "backgroundColor": "transparent",
                 "borderTopLeftRadius": 2,
                 "borderTopRightRadius": 2,
+                "marginTop": "auto",
               },
             ]
           }
@@ -6971,9 +7606,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "flexDirection": "row",
                     },
                   ],
-                  undefined,
                 ],
-                undefined,
               ]
             }
           >
@@ -6984,8 +7617,8 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               hasLeftIcon={false}
               hasPrefix={false}
               hasText={false}
-              placeholder=""
-              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
               rejectResponderTermination={true}
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
@@ -6995,26 +7628,30 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "lineHeight": 20,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
                   },
                   Array [
                     Object {
                       "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
                     },
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "paddingBottom": 2,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
                       },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
                     ],
-                    undefined,
                   ],
-                  undefined,
                 ]
               }
               testID="ds-text-input"
@@ -7025,12 +7662,14 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <View
               style={
                 Array [
-                  Object {
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                  },
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 4,
+                      "paddingTop": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -7075,7 +7714,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "height": 1,
                   },
                 ],
-                undefined,
               ]
             }
           />

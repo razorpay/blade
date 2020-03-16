@@ -11,7 +11,7 @@ import { getVariantColorKeys, getColor } from '../../_helpers/theme';
 import Icon from '../Icon';
 import View from '../View';
 import Backdrop from './Backdrop';
-import isPropDefined from '../../_helpers/isPropDefined';
+import isDefined from '../../_helpers/isDefined';
 
 const styles = {
   icon: {
@@ -112,15 +112,15 @@ const Checkbox = ({
 
   let checkboxInitialState = false;
 
-  if (isPropDefined(defaultChecked) && isPropDefined(checked)) {
+  if (isDefined(defaultChecked) && isDefined(checked)) {
     throw Error('One of defaultChecked or checked should be supplied.');
   }
 
-  if (isPropDefined(defaultChecked)) {
+  if (isDefined(defaultChecked)) {
     checkboxInitialState = defaultChecked;
   }
 
-  if (isPropDefined(checked)) {
+  if (isDefined(checked)) {
     checkboxInitialState = checked;
   }
 
@@ -142,7 +142,7 @@ const Checkbox = ({
   }, []);
 
   const onPress = useCallback(() => {
-    if (isPropDefined(checked)) {
+    if (isDefined(checked)) {
       onChange(!isChecked);
       return;
     }

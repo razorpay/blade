@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { makePxValue } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
-import isPropDefined from '../../_helpers/isPropDefined';
+import isDefined from '../../_helpers/isDefined';
 import View from '../View/';
 import Flex from '../Flex';
 import Size from '../Size';
@@ -190,8 +190,8 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
   );
 
   useEffect(() => {
-    if (isPropDefined(on)) {
-      if (isPropDefined(defaultOn)) {
+    if (isDefined(on)) {
+      if (isDefined(defaultOn)) {
         throw Error('Expected only one of defaultOn or on props.');
       }
       if (on && !toggle) {
@@ -240,7 +240,7 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
 
   const onPressOut = useCallback(() => {
     setActive(false);
-    if (isPropDefined(on)) {
+    if (isDefined(on)) {
       if (toggle) {
         scaleKnob({
           animatedValue: animatedLeftValue,
