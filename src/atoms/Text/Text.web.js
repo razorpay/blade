@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import baseTheme from '../../tokens/theme';
@@ -65,23 +64,7 @@ const styles = {
   },
 };
 
-const Text = styled(
-  ({
-    as,
-    fontFamily,
-    fontSize,
-    children,
-    textDecorationLine,
-    align,
-    letterSpacing,
-    lineHeight,
-    style,
-    ...props
-  }) =>
-    React.createElement(as, props, children, {
-      style: [style, children.props.style].filter(Boolean),
-    }),
-)`
+const Text = styled.div`
   font-family: ${styles.fontFamily};
   font-size: ${styles.fontSize};
   color: ${styles.color};
@@ -95,7 +78,6 @@ const Text = styled(
 `;
 
 Text.propTypes = {
-  as: PropTypes.string,
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   color: PropTypes.oneOf(getColorKeys()),
   align: PropTypes.oneOf(['left', 'center', 'right']),
@@ -108,7 +90,6 @@ Text.propTypes = {
 };
 
 Text.defaultProps = {
-  as: 'div',
   size: 'large',
   align: 'left',
   color: 'shade.980',

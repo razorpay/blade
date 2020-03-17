@@ -19,4 +19,9 @@ storiesOf('Text', module)
     <Text size={select('Size', sizeOptions, 'large')}>
       {text('Display Text', 'The quick brown fox jumps over the lazy dog')}
     </Text>
+  ))
+  .add('as span', () => (
+    <Text size={select('Size', sizeOptions, 'large')} as="span">
+      {text('Display Text', 'The quick brown fox jumps over the lazy dog')}
+    </Text>
   ));
