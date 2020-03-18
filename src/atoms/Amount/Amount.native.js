@@ -123,6 +123,7 @@ const Amount = ({ size, align, testID, children }) => {
           {`${currency} `}
         </Text>
         <Heading color="shade.980" size={size}>
+          {/* TODO: This doesn't work on android */}
           {parseInt(wholePart, 10).toLocaleString('en-IN')}
         </Heading>
         <Text
