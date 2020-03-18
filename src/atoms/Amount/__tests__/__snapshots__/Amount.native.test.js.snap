@@ -11,8 +11,12 @@ exports[`<Amount /> align renders amount with center align 1`] = `
   }
 >
   <Text
+    align="center"
     style={
       Array [
+        Object {
+          "alignSelf": "center",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -25,20 +29,20 @@ exports[`<Amount /> align renders amount with center align 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
-      align="center"
+      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -71,20 +75,19 @@ exports[`<Amount /> align renders amount with center align 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
-      align="center"
+      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "center",
+            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -108,8 +111,12 @@ exports[`<Amount /> align renders amount with left align 1`] = `
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -122,7 +129,7 @@ exports[`<Amount /> align renders amount with left align 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -135,7 +142,7 @@ exports[`<Amount /> align renders amount with left align 1`] = `
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -168,7 +175,6 @@ exports[`<Amount /> align renders amount with left align 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -181,7 +187,7 @@ exports[`<Amount /> align renders amount with left align 1`] = `
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -205,8 +211,12 @@ exports[`<Amount /> align renders amount with right align 1`] = `
   }
 >
   <Text
+    align="right"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-end",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -219,20 +229,20 @@ exports[`<Amount /> align renders amount with right align 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
-      align="right"
+      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-end",
+            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -265,20 +275,19 @@ exports[`<Amount /> align renders amount with right align 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
-      align="right"
+      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-end",
+            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -302,8 +311,12 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -316,7 +329,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -329,7 +342,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -362,7 +375,6 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -375,7 +387,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -399,8 +411,12 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -413,7 +429,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -426,7 +442,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -459,7 +475,6 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -472,7 +487,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -496,8 +511,12 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -510,7 +529,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -523,7 +542,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -556,7 +575,6 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -569,7 +587,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -593,8 +611,12 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -607,7 +629,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -620,7 +642,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -653,7 +675,6 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -666,7 +687,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -690,8 +711,12 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -704,7 +729,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -717,7 +742,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -750,7 +775,6 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -763,7 +787,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -787,8 +811,12 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -801,7 +829,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -814,7 +842,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -847,7 +875,6 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -860,7 +887,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -884,8 +911,12 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -898,7 +929,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -911,7 +942,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -944,7 +975,6 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -957,7 +987,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -981,8 +1011,12 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -995,7 +1029,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -1008,7 +1042,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -1041,7 +1075,6 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -1054,7 +1087,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -1078,8 +1111,12 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -1092,7 +1129,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -1105,7 +1142,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -1138,7 +1175,6 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -1151,7 +1187,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -1175,8 +1211,12 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -1189,7 +1229,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -1202,7 +1242,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -1235,7 +1275,6 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -1248,7 +1287,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -1272,8 +1311,12 @@ exports[`<Amount /> size renders amount with size large 1`] = `
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -1286,7 +1329,7 @@ exports[`<Amount /> size renders amount with size large 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="bold"
       align="left"
       color="shade.940"
@@ -1299,7 +1342,7 @@ exports[`<Amount /> size renders amount with size large 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -1332,7 +1375,6 @@ exports[`<Amount /> size renders amount with size large 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="bold"
       align="left"
       color="shade.940"
@@ -1345,7 +1387,7 @@ exports[`<Amount /> size renders amount with size large 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 18,
             "textDecorationLine": "none",
           },
         ]
@@ -1369,8 +1411,12 @@ exports[`<Amount /> size renders amount with size medium 1`] = `
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -1383,7 +1429,7 @@ exports[`<Amount /> size renders amount with size medium 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="medium"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -1396,7 +1442,7 @@ exports[`<Amount /> size renders amount with size medium 1`] = `
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -1429,7 +1475,6 @@ exports[`<Amount /> size renders amount with size medium 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="regular"
       align="left"
       color="shade.940"
@@ -1442,7 +1487,7 @@ exports[`<Amount /> size renders amount with size medium 1`] = `
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 14,
             "textDecorationLine": "none",
           },
         ]
@@ -1466,8 +1511,12 @@ exports[`<Amount /> size renders amount with size xlarge 1`] = `
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -1480,7 +1529,7 @@ exports[`<Amount /> size renders amount with size xlarge 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
+      _lineHeight="xlarge"
       _weight="bold"
       align="left"
       color="shade.940"
@@ -1493,7 +1542,7 @@ exports[`<Amount /> size renders amount with size xlarge 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 30,
             "textDecorationLine": "none",
           },
         ]
@@ -1526,7 +1575,6 @@ exports[`<Amount /> size renders amount with size xlarge 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="bold"
       align="left"
       color="shade.940"
@@ -1539,7 +1587,7 @@ exports[`<Amount /> size renders amount with size xlarge 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -1563,8 +1611,12 @@ exports[`<Amount /> size renders amount with size xxlarge 1`] = `
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -1623,7 +1675,6 @@ exports[`<Amount /> size renders amount with size xxlarge 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="bold"
       align="left"
       color="shade.940"
@@ -1636,7 +1687,7 @@ exports[`<Amount /> size renders amount with size xxlarge 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 20,
             "textDecorationLine": "none",
           },
         ]
@@ -1660,8 +1711,12 @@ exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
   }
 >
   <Text
+    align="left"
     style={
       Array [
+        Object {
+          "alignSelf": "flex-start",
+        },
         Array [
           Object {
             "flexDirection": "column",
@@ -1720,7 +1775,6 @@ exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _lineHeight="xxlarge"
       _weight="bold"
       align="left"
       color="shade.950"
@@ -1733,7 +1787,7 @@ exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 16,
             "letterSpacing": 0,
-            "lineHeight": 36,
+            "lineHeight": 24,
             "textDecorationLine": "none",
           },
         ]

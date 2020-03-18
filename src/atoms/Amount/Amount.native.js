@@ -51,29 +51,40 @@ const styles = {
           return 'bold';
       }
     },
-  },
-  baseText: {
-    lineHeight({ theme, size }) {
+    lineHeight({ size }) {
       switch (size) {
         case 'medium':
-          return theme.fonts.lineHeight.medium;
+          return 'medium';
         case 'large':
-          return theme.fonts.lineHeight.medium;
+          return 'medium';
         case 'xlarge':
-          return theme.fonts.lineHeight.xlarge;
+          return 'xlarge';
         case 'xxlarge':
-          return theme.fonts.lineHeight.xxlarge;
+          return 'xxlarge';
         case 'xxxlarge':
-          return theme.fonts.lineHeight.xxlarge;
+          return 'xxlarge';
         default:
-          return theme.fonts.lineHeight.xxlarge;
+          return 'xxlarge';
+      }
+    },
+  },
+  baseText: {
+    alignSelf({ align }) {
+      switch (align) {
+        case 'left':
+        default:
+          return 'flex-start';
+        case 'center':
+          return 'center';
+        case 'right':
+          return 'flex-end';
       }
     },
   },
 };
 
 const BaseText = styled(NativeText)`
-  line-height: ${styles.baseText.lineHeight};
+  align-self: ${styles.baseText.alignSelf};
 `;
 
 const getFractionalDisplay = (fractionalPart = '') => {
@@ -102,12 +113,12 @@ const Amount = ({ size, align, testID, children }) => {
 
   return (
     <Flex>
-      <BaseText {...automation(testID)}>
+      <BaseText align={align} {...automation(testID)}>
         <Text
           color={styles.text.color({ size })}
           size={styles.text.size({ size })}
-          align={align}
           _weight={styles.text.weight({ size })}
+          _lineHeight={styles.text.lineHeight({ size })} // First text component within nested texts dictate the line height
         >
           {`${currency} `}
         </Text>
@@ -117,7 +128,6 @@ const Amount = ({ size, align, testID, children }) => {
         <Text
           color={styles.text.color({ size })}
           size={styles.text.size({ size })}
-          align={align}
           _weight={styles.text.weight({ size })}
         >{`.${fractionDisplay}`}</Text>
       </BaseText>
