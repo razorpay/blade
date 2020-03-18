@@ -88,7 +88,7 @@ Heading.propTypes = {
   align: PropTypes.oneOf(['left', 'center', 'right']),
   testID: PropTypes.string,
   numberOfLines: PropTypes.number,
-  weight: PropTypes.oneOf(['regular', 'bold']),
+  weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
 };
 
 Heading.defaultProps = {
