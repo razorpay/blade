@@ -30,6 +30,7 @@ configure(() => {
   require('../../src/atoms/TextArea/TextArea.stories');
   require('../../src/atoms/Heading/Heading.stories');
   require('../../src/molecules/Amount/Amount.stories');
+  require('../../src/atoms/SegmentControl/SegmentControl.stories');
 }, module);
 
 // add decorators
