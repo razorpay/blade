@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text as NativeText } from 'react-native';
+import { Text as NativeText, Platform } from 'react-native';
 import styled from 'styled-components/native';
 import automation from '../../_helpers/automation-attributes';
 import Flex from '../Flex';
@@ -100,6 +100,17 @@ const getFractionalDisplay = (fractionalPart = '') => {
   }
 };
 
+const getLocaleString = (numberString) => {
+  if (Platform.OS === 'android') {
+    // only android needs this polyfill
+    require('intl');
+    require('intl/locale-data/jsonp/en-IN');
+    return new Intl.NumberFormat('en-IN').format(numberString);
+  } else {
+    return parseInt(numberString, 10).toLocaleString('en-IN');
+  }
+};
+
 const Amount = ({ size, align, testID, children }) => {
   if (isNaN(children)) {
     throw new Error(`Expected children to be number \n(Eg. "1234", "12.34")`);
@@ -107,7 +118,7 @@ const Amount = ({ size, align, testID, children }) => {
 
   const currency = '₹';
 
-  const [wholePart, fractionPart] = children.split('.');
+  const [integerPart, fractionPart] = children.split('.');
 
   const fractionDisplay = getFractionalDisplay(fractionPart);
 
@@ -124,7 +135,7 @@ const Amount = ({ size, align, testID, children }) => {
         </Text>
         <Heading color="shade.980" size={size}>
           {/* TODO: This doesn't work on android */}
-          {parseInt(wholePart, 10).toLocaleString('en-IN')}
+          {getLocaleString(integerPart)}
         </Heading>
         <Text
           color={styles.text.color({ size })}
