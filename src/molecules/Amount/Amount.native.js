@@ -12,8 +12,11 @@ const styles = {
     color({ size }) {
       switch (size) {
         case 'medium':
+          return 'shade.940';
         case 'large':
+          return 'shade.940';
         case 'xlarge':
+          return 'shade.940';
         case 'xxlarge':
           return 'shade.940';
         case 'xxxlarge':
@@ -43,8 +46,11 @@ const styles = {
         case 'medium':
           return 'regular';
         case 'large':
+          return 'bold';
         case 'xlarge':
+          return 'bold';
         case 'xxlarge':
+          return 'bold';
         case 'xxxlarge':
           return 'bold';
         default:
@@ -72,12 +78,13 @@ const styles = {
     alignSelf({ align }) {
       switch (align) {
         case 'left':
-        default:
           return 'flex-start';
         case 'center':
           return 'center';
         case 'right':
           return 'flex-end';
+        default:
+          return 'flex-start';
       }
     },
   },
