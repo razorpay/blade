@@ -183,16 +183,16 @@ exports[`<Heading /> size renders heading with size medium 1`] = `
   <Text
     align="left"
     color="shade.980"
-    size="H1"
+    size="medium"
     style={
       Array [
         Object {
           "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Bold",
-          "fontSize": 32,
+          "fontSize": 14,
           "letterSpacing": 0,
-          "lineHeight": 36,
+          "lineHeight": 20,
         },
       ]
     }

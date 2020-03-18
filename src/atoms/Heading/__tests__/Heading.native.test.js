@@ -6,7 +6,7 @@ describe('<Heading />', () => {
   describe('size', () => {
     it('renders heading with size medium', () => {
       const displayText = 'Heading';
-      const { container } = renderWithTheme(<Heading size="H1">{displayText}</Heading>);
+      const { container } = renderWithTheme(<Heading size="medium">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
     });
     it('renders heading with size large', () => {
