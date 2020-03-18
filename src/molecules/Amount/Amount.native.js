@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Text as NativeText, Platform } from 'react-native';
 import styled from 'styled-components/native';
 import automation from '../../_helpers/automation-attributes';
-import Flex from '../Flex';
-import Text from '../Text';
-import Heading from '../Heading';
+import Flex from '../../atoms/Flex';
+import Text from '../../atoms/Text';
+import Heading from '../../atoms/Heading';
 
 const styles = {
   text: {

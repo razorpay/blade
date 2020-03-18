@@ -2,10 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 import Amount from './Amount';
-import Space from '../Space';
-import ScrollView from '../ScrollView';
-import View from '../View';
-import Size from '../Size';
+import Space from '../../atoms/Space';
+import ScrollView from '../../atoms/ScrollView';
+import View from '../../atoms/View';
+import Size from '../../atoms/Size';
 
 storiesOf('Amount', module)
   .addParameters({
