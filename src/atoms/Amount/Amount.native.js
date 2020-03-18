@@ -134,7 +134,6 @@ const Amount = ({ size, align, testID, children }) => {
           {`${currency} `}
         </Text>
         <Heading color="shade.980" size={size}>
-          {/* TODO: This doesn't work on android */}
           {getLocaleString(integerPart)}
         </Heading>
         <Text
