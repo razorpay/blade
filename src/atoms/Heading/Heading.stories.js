@@ -4,6 +4,12 @@ import Heading from './Heading';
 import ScrollView from '../ScrollView';
 import Space from '../Space';
 import View from '../View';
+import { select } from '@storybook/addon-knobs';
+
+const weightOptions = {
+  regular: 'regular',
+  bold: 'bold',
+};
 
 storiesOf('Heading', module)
   .addParameters({
@@ -13,37 +19,37 @@ storiesOf('Heading', module)
     <ScrollView>
       <Space margin={[4, 0, 0, 0]}>
         <View>
-          <Heading size="H7">{'Heading (H7)'}</Heading>
+          <Heading size="medium" weight={select('Weight', weightOptions, 'bold')}>
+            {'Heading (medium)'}
+          </Heading>
         </View>
       </Space>
       <Space margin={[4, 0, 0, 0]}>
         <View>
-          <Heading size="H6">{'Heading (H6)'}</Heading>
+          <Heading size="large" weight={select('Weight', weightOptions, 'bold')}>
+            {'Heading (large)'}
+          </Heading>
         </View>
       </Space>
       <Space margin={[4, 0, 0, 0]}>
         <View>
-          <Heading size="H5">{'Heading (H5)'}</Heading>
+          <Heading size="xlarge" weight={select('Weight', weightOptions, 'bold')}>
+            {'Heading (xlarge)'}
+          </Heading>
         </View>
       </Space>
       <Space margin={[4, 0, 0, 0]}>
         <View>
-          <Heading size="H4">{'Heading (H4)'}</Heading>
+          <Heading size="xxlarge" weight={select('Weight', weightOptions, 'bold')}>
+            {'Heading (xxlarge)'}
+          </Heading>
         </View>
       </Space>
       <Space margin={[4, 0, 0, 0]}>
         <View>
-          <Heading size="H3">{'Heading (H3)'}</Heading>
-        </View>
-      </Space>
-      <Space margin={[4, 0, 0, 0]}>
-        <View>
-          <Heading size="H2">{'Heading (H2)'}</Heading>
-        </View>
-      </Space>
-      <Space margin={[4, 0, 0, 0]}>
-        <View>
-          <Heading size="H1">{'Heading (H1)'}</Heading>
+          <Heading size="xxxlarge" weight={select('Weight', weightOptions, 'bold')}>
+            {'Heading (xxxlarge)'}
+          </Heading>
         </View>
       </Space>
     </ScrollView>

@@ -4,39 +4,29 @@ import { renderWithTheme } from '../../../_helpers/testing';
 
 describe('<Heading />', () => {
   describe('size', () => {
-    it('renders heading with size H1', () => {
+    it('renders heading with size medium', () => {
       const displayText = 'Heading';
       const { container } = renderWithTheme(<Heading size="H1">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
     });
-    it('renders heading with size H2', () => {
+    it('renders heading with size large', () => {
       const displayText = 'Heading';
-      const { container } = renderWithTheme(<Heading size="H2">{displayText}</Heading>);
+      const { container } = renderWithTheme(<Heading size="large">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
     });
-    it('renders heading with size H3', () => {
+    it('renders heading with size xlarge', () => {
       const displayText = 'Heading';
-      const { container } = renderWithTheme(<Heading size="H3">{displayText}</Heading>);
+      const { container } = renderWithTheme(<Heading size="xlarge">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
     });
-    it('renders heading with size H4', () => {
+    it('renders heading with size xxlarge', () => {
       const displayText = 'Heading';
-      const { container } = renderWithTheme(<Heading size="H4">{displayText}</Heading>);
+      const { container } = renderWithTheme(<Heading size="xxlarge">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
     });
-    it('renders heading with size H5', () => {
+    it('renders heading with size xxxlarge', () => {
       const displayText = 'Heading';
-      const { container } = renderWithTheme(<Heading size="H5">{displayText}</Heading>);
-      expect(container).toMatchSnapshot();
-    });
-    it('renders heading with size H6', () => {
-      const displayText = 'Heading';
-      const { container } = renderWithTheme(<Heading size="H6">{displayText}</Heading>);
-      expect(container).toMatchSnapshot();
-    });
-    it('renders heading with size H7', () => {
-      const displayText = 'Heading';
-      const { container } = renderWithTheme(<Heading size="H7">{displayText}</Heading>);
+      const { container } = renderWithTheme(<Heading size="xxxlarge">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
     });
   });
@@ -63,6 +53,19 @@ describe('<Heading />', () => {
     it('renders heading with right align', () => {
       const displayText = 'Heading';
       const { container } = renderWithTheme(<Heading align="right">{displayText}</Heading>);
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('weight', () => {
+    it('renders heading with regular weight', () => {
+      const displayText = 'Heading';
+      const { container } = renderWithTheme(<Heading weight="regular">{displayText}</Heading>);
+      expect(container).toMatchSnapshot();
+    });
+    it('renders heading with bold weight', () => {
+      const displayText = 'Heading';
+      const { container } = renderWithTheme(<Heading weight="bold">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
     });
   });
