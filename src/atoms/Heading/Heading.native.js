@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { Text as NativeText } from 'react-native';
 import { getColorKeys, getColor } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
+import baseTheme from '../../tokens/theme';
 
 const styles = {
   fontFamily({ theme, weight }) {
