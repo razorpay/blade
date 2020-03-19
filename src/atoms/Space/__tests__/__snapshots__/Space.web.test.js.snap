@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <Space /> correctly should apply margin to child component 1`] = `<div />`;
+
+exports[`Renders <Space /> correctly should apply padding to child component 1`] = `<div />`;
