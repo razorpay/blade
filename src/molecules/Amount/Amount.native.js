@@ -9,20 +9,11 @@ import Heading from '../../atoms/Heading';
 const styles = {
   text: {
     color({ size }) {
-      switch (size) {
-        case 'medium':
-          return 'shade.940';
-        case 'large':
-          return 'shade.940';
-        case 'xlarge':
-          return 'shade.940';
-        case 'xxlarge':
-          return 'shade.940';
-        case 'xxxlarge':
-          return 'shade.950';
-        default:
-          return 'shade.940';
+      if (size === 'xxxlarge') {
+        return 'shade.950';
       }
+
+      return 'shade.940';
     },
     size({ size }) {
       switch (size) {
