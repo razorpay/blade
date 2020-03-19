@@ -36,7 +36,7 @@ const styles = {
   },
   maxHeight({ theme, truncate, _lineHeight, maxLines }) {
     if (truncate) {
-      const lineHeight = `${theme.fonts.lineHeight[_lineHeight]}`.replace('px', '');
+      const lineHeight = `${parseFloat(theme.fonts.lineHeight[_lineHeight])}`.replace('px', '');
       const height = `${lineHeight * maxLines}px`;
       return height;
     } else {
