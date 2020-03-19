@@ -34,13 +34,22 @@ const styles = {
       return getLineHeight(theme, size);
     }
   },
-  maxHeight({ theme, truncate, _lineHeight, numberOfLines }) {
+  maxHeight({ theme, truncate, _lineHeight, maxLines }) {
     if (truncate) {
       const lineHeight = `${theme.fonts.lineHeight[_lineHeight]}`.replace('px', '');
-      const height = `${lineHeight * numberOfLines}px`;
+      const height = `${lineHeight * maxLines}px`;
       return height;
     } else {
       return 'initial';
+    }
+  },
+  whiteSpace({ truncate, maxLines }) {
+    if (truncate && maxLines > 1) {
+      return 'wrap';
+    } else if (truncate) {
+      return 'nowrap';
+    } else {
+      return '';
     }
   },
 };
@@ -54,7 +63,7 @@ const Text = styled.div`
   letter-spacing: ${styles.letterSpacing};
   line-height: ${styles.lineHeight};
   overflow: ${(props) => (props.truncate ? 'hidden' : '')};
-  white-space: ${(props) => (props.truncate ? 'nowrap' : '')};
+  white-space: ${styles.whiteSpace};
   text-overflow: ${(props) => (props.truncate ? 'ellipsis' : '')};
   max-height: ${styles.maxHeight};
 `;
@@ -69,7 +78,7 @@ Text.propTypes = {
   _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
   _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
   truncate: PropTypes.bool,
-  numberOfLines: PropTypes.number,
+  maxLines: PropTypes.number,
 };
 
 Text.defaultProps = {
@@ -81,7 +90,7 @@ Text.defaultProps = {
   _isUnderlined: false,
   _letterSpacing: 'small',
   truncate: false,
-  numberOfLines: 1,
+  maxLines: 1,
   _lineHeight: 'small',
 };
 
