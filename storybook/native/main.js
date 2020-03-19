@@ -40,11 +40,11 @@ const SpaceAround = styled.View`
 `;
 
 addDecorator((Story) => (
-  <SpaceAround>
-    <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={100}>
+  <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={100}>
+    <SpaceAround>
       <Story />
-    </KeyboardAvoidingView>
-  </SpaceAround>
+    </SpaceAround>
+  </KeyboardAvoidingView>
 ));
 
 addDecorator(withKnobs);
