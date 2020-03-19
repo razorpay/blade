@@ -24,4 +24,14 @@ storiesOf('Text', module)
     <Text size={select('Size', sizeOptions, 'large')} as="span">
       {text('Display Text', 'The quick brown fox jumps over the lazy dog')}
     </Text>
+  ))
+  .add('show truncate with number of lines', () => (
+    <Text
+      size={select('Size', sizeOptions, 'large')}
+      truncate
+      numberOfLines={1}
+      _lineHeight="medium"
+    >
+      {text('Display Text', 'The quick brown fox jumps over the lazy dog')}
+    </Text>
   ));

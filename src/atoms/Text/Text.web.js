@@ -13,13 +13,6 @@ const styles = {
   color({ theme, color }) {
     return getColor(theme, color);
   },
-  textDecorationLine({ _isUnderlined }) {
-    if (_isUnderlined) {
-      return 'underline';
-    } else {
-      return 'none';
-    }
-  },
   align({ align }) {
     switch (align) {
       case 'left':
@@ -41,25 +34,13 @@ const styles = {
       return getLineHeight(theme, size);
     }
   },
-  overflow({ truncate }) {
+  maxHeight({ theme, truncate, _lineHeight, numberOfLines }) {
     if (truncate) {
-      return 'hidden';
+      const lineHeight = `${theme.fonts.lineHeight[_lineHeight]}`.replace('px', '');
+      const height = `${lineHeight * numberOfLines}px`;
+      return height;
     } else {
-      return '';
-    }
-  },
-  whiteSpace({ truncate }) {
-    if (truncate) {
-      return 'nowrap';
-    } else {
-      return '';
-    }
-  },
-  textOverflow({ truncate }) {
-    if (truncate) {
-      return 'ellipsis';
-    } else {
-      return '';
+      return 'initial';
     }
   },
 };
@@ -68,13 +49,14 @@ const Text = styled.div`
   font-family: ${styles.fontFamily};
   font-size: ${styles.fontSize};
   color: ${styles.color};
-  text-decoration-line: ${styles.textDecorationLine};
+  text-decoration-line: ${(props) => (props._isUnderlined ? 'underline' : 'none')};
   align-self: ${styles.align};
   letter-spacing: ${styles.letterSpacing};
   line-height: ${styles.lineHeight};
-  overflow: ${styles.overflow};
-  white-space: ${styles.whiteSpace};
-  text-overflow: ${styles.textOverflow};
+  overflow: ${(props) => (props.truncate ? 'hidden' : '')};
+  white-space: ${(props) => (props.truncate ? 'nowrap' : '')};
+  text-overflow: ${(props) => (props.truncate ? 'ellipsis' : '')};
+  max-height: ${styles.maxHeight};
 `;
 
 Text.propTypes = {
@@ -87,6 +69,7 @@ Text.propTypes = {
   _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
   _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
   truncate: PropTypes.bool,
+  numberOfLines: PropTypes.number,
 };
 
 Text.defaultProps = {
@@ -98,6 +81,8 @@ Text.defaultProps = {
   _isUnderlined: false,
   _letterSpacing: 'small',
   truncate: false,
+  numberOfLines: 1,
+  _lineHeight: 'small',
 };
 
 export default Text;
