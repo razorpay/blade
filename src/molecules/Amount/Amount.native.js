@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text as NativeText, Platform } from 'react-native';
-import styled from 'styled-components/native';
 import automation from '../../_helpers/automation-attributes';
 import Flex from '../../atoms/Flex';
 import Text from '../../atoms/Text';
@@ -74,25 +73,7 @@ const styles = {
       }
     },
   },
-  baseText: {
-    alignSelf({ align }) {
-      switch (align) {
-        case 'left':
-          return 'flex-start';
-        case 'center':
-          return 'center';
-        case 'right':
-          return 'flex-end';
-        default:
-          return 'flex-start';
-      }
-    },
-  },
 };
-
-const BaseText = styled(NativeText)`
-  align-self: ${styles.baseText.alignSelf};
-`;
 
 const getFractionalDisplay = (fractionalPart = '') => {
   switch (fractionalPart.length) {
@@ -118,7 +99,7 @@ const getLocaleString = (numberString) => {
   }
 };
 
-const Amount = ({ size, align, testID, children }) => {
+const Amount = ({ size, testID, children }) => {
   if (isNaN(children)) {
     throw new Error(`Expected children to be number \n(Eg. "1234", "12.34")`);
   }
@@ -131,7 +112,7 @@ const Amount = ({ size, align, testID, children }) => {
 
   return (
     <Flex>
-      <BaseText align={align} {...automation(testID)}>
+      <NativeText {...automation(testID)}>
         <Text
           color={styles.text.color({ size })}
           size={styles.text.size({ size })}
@@ -148,7 +129,7 @@ const Amount = ({ size, align, testID, children }) => {
           size={styles.text.size({ size })}
           _weight={styles.text.weight({ size })}
         >{`.${fractionDisplay}`}</Text>
-      </BaseText>
+      </NativeText>
     </Flex>
   );
 };
@@ -156,13 +137,11 @@ const Amount = ({ size, align, testID, children }) => {
 Amount.propTypes = {
   children: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
-  align: PropTypes.oneOf(['left', 'center', 'right']),
   testID: PropTypes.string,
 };
 
 Amount.defaultProps = {
   size: 'medium',
-  align: 'left',
   testID: 'ds-amount',
 };
 

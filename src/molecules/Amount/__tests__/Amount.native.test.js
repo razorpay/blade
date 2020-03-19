@@ -34,24 +34,6 @@ describe('<Amount />', () => {
     });
   });
 
-  describe('align', () => {
-    it('renders amount with left align', () => {
-      const displayText = '1234.00';
-      const { container } = renderWithTheme(<Amount align="left">{displayText}</Amount>);
-      expect(container).toMatchSnapshot();
-    });
-    it('renders amount with center align', () => {
-      const displayText = '1234.00';
-      const { container } = renderWithTheme(<Amount align="center">{displayText}</Amount>);
-      expect(container).toMatchSnapshot();
-    });
-    it('renders amount with right align', () => {
-      const displayText = '1234.00';
-      const { container } = renderWithTheme(<Amount align="right">{displayText}</Amount>);
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('decimal formatting', () => {
     it('renders 3 digit amount with indian currency format', () => {
       const displayText = '123';
