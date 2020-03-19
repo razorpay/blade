@@ -6,6 +6,8 @@ import Flex from '../../atoms/Flex';
 import Text from '../../atoms/Text';
 import Heading from '../../atoms/Heading';
 
+const IS_ANDROID = Platform.OS === 'android';
+
 const styles = {
   text: {
     color({ size }) {
@@ -66,40 +68,32 @@ const styles = {
   },
 };
 
-const getFractionalDisplay = (fractionalPart = '') => {
-  switch (fractionalPart.length) {
-    case 0:
-      return '00';
-    case 1:
-      return `${fractionalPart}0`;
-    case 2:
-      return fractionalPart;
-    default:
-      return fractionalPart.slice(0, 2);
-  }
-};
-
-const getLocaleString = (numberString) => {
-  if (Platform.OS === 'android') {
-    // only android needs this polyfill
+const formatAmount = ({ amount, currency }) => {
+  if (IS_ANDROID) {
+    // Polyfill for Android
     require('intl');
     require('intl/locale-data/jsonp/en-IN');
-    return new Intl.NumberFormat('en-IN').format(numberString);
-  } else {
-    return parseInt(numberString, 10).toLocaleString('en-IN');
   }
+
+  const formattedAmount = (+amount).toLocaleString('en-IN', {
+    style: 'currency',
+    currencyDisplay: 'symbol',
+    currency,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  return formattedAmount;
 };
 
-const Amount = ({ size, testID, children }) => {
+const Amount = ({ size, testID, children, currency }) => {
   if (isNaN(children)) {
     throw new Error(`Expected children to be number \n(Eg. "1234", "12.34")`);
   }
 
-  const currency = '₹';
-
-  const [integerPart, fractionPart] = children.split('.');
-
-  const fractionDisplay = getFractionalDisplay(fractionPart);
+  const formattedAmount = formatAmount({ amount: children, currency });
+  const [currencySymbol, amount] = formattedAmount.split(/\s/);
+  const [integerPart, fractionPart] = amount.split('.');
 
   return (
     <Flex>
@@ -110,16 +104,16 @@ const Amount = ({ size, testID, children }) => {
           _weight={styles.text.weight({ size })}
           _lineHeight={styles.text.lineHeight({ size })} // First text component within nested texts dictate the line height
         >
-          {`${currency} `}
+          {`${currencySymbol} `}
         </Text>
         <Heading color="shade.980" size={size}>
-          {getLocaleString(integerPart)}
+          {integerPart}
         </Heading>
         <Text
           color={styles.text.color({ size })}
           size={styles.text.size({ size })}
           _weight={styles.text.weight({ size })}
-        >{`.${fractionDisplay}`}</Text>
+        >{`.${fractionPart}`}</Text>
       </NativeText>
     </Flex>
   );
@@ -129,11 +123,13 @@ Amount.propTypes = {
   children: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
   testID: PropTypes.string,
+  currency: PropTypes.string,
 };
 
 Amount.defaultProps = {
   size: 'medium',
   testID: 'ds-amount',
+  currency: 'INR',
 };
 
 export default Amount;

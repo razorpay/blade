@@ -1,5 +1,197 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Amount /> currency renders amount in EUR 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="regular"
+      align="left"
+      color="shade.940"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(22, 47, 86, 0.24)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      € 
+    </Text>
+    <Text
+      align="left"
+      color="shade.980"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(22, 47, 86, 0.87)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+          },
+        ]
+      }
+      testID="ds-heading"
+      weight="bold"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="shade.940"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(22, 47, 86, 0.24)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> currency renders amount in INR 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="regular"
+      align="left"
+      color="shade.940"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(22, 47, 86, 0.24)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      align="left"
+      color="shade.980"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(22, 47, 86, 0.87)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+          },
+        ]
+      }
+      testID="ds-heading"
+      weight="bold"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="shade.940"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "color": "rgba(22, 47, 86, 0.24)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
 exports[`<Amount /> decimal formatting renders 3 digit amount with indian currency format 1`] = `
 <View
   collapsable={true}
@@ -954,7 +1146,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
       }
       testID="ds-text"
     >
-      .45
+      .46
     </Text>
   </Text>
 </View>

@@ -97,4 +97,17 @@ describe('<Amount />', () => {
       expect(() => renderWithTheme(<Amount>{displayText}</Amount>)).toThrow(errorMessage);
     });
   });
+
+  describe('currency', () => {
+    it('renders amount in INR', () => {
+      const displayText = '1234';
+      const { container } = renderWithTheme(<Amount currency="INR">{displayText}</Amount>);
+      expect(container).toMatchSnapshot();
+    });
+    it('renders amount in EUR', () => {
+      const displayText = '1234';
+      const { container } = renderWithTheme(<Amount currency="EUR">{displayText}</Amount>);
+      expect(container).toMatchSnapshot();
+    });
+  });
 });
