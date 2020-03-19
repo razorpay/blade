@@ -5,7 +5,7 @@ import automation from '../../_helpers/automation-attributes';
 import Flex from '../../atoms/Flex';
 import Text from '../../atoms/Text';
 import Heading from '../../atoms/Heading';
-import { geISOCurrencyList } from '../../_helpers/currency';
+import geISOCurrencyList from './geISOCurrencyList';
 
 const IS_ANDROID = Platform.OS === 'android';
 

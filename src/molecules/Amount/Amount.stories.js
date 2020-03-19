@@ -6,7 +6,7 @@ import Space from '../../atoms/Space';
 import ScrollView from '../../atoms/ScrollView';
 import View from '../../atoms/View';
 import Size from '../../atoms/Size';
-import { geISOCurrencyList } from '../../_helpers/currency';
+import geISOCurrencyList from './geISOCurrencyList';
 
 const currencyOptions = geISOCurrencyList().reduce(
   (options, option) => ({ ...options, [option]: option }),

@@ -182,4 +182,4 @@ const geISOCurrencyList = () => {
   ];
 };
 
-export { geISOCurrencyList };
+export default geISOCurrencyList;
