@@ -5,6 +5,7 @@ import automation from '../../_helpers/automation-attributes';
 import Flex from '../../atoms/Flex';
 import Text from '../../atoms/Text';
 import Heading from '../../atoms/Heading';
+import { geISOCurrencyList } from '../../_helpers/currency';
 
 const IS_ANDROID = Platform.OS === 'android';
 
@@ -123,7 +124,7 @@ Amount.propTypes = {
   children: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
   testID: PropTypes.string,
-  currency: PropTypes.string,
+  currency: PropTypes.oneOf(geISOCurrencyList()),
 };
 
 Amount.defaultProps = {
