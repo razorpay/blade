@@ -3,7 +3,7 @@
 exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 lapDBB"
+    class="Textweb__Text-sc-6jf9e4-0 kEMAuI"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -15,7 +15,7 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
 exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 bIRjRS"
+    class="Textweb__Text-sc-6jf9e4-0 lcAiRN"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -27,7 +27,7 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
 exports[`Renders <Text /> correctly snapshot testing with truncate text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 gScJEF"
+    class="Textweb__Text-sc-6jf9e4-0 jAsASc"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -39,7 +39,7 @@ exports[`Renders <Text /> correctly snapshot testing with truncate text 1`] = `
 exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 kuGEpI"
+    class="Textweb__Text-sc-6jf9e4-0 dQhpDL"
     color="shade.980"
     data-testid="ds-text"
   >

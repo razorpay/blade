@@ -66,6 +66,18 @@ const Text = styled.div`
   white-space: ${styles.whiteSpace};
   text-overflow: ${(props) => (props.truncate ? 'ellipsis' : '')};
   max-height: ${styles.maxHeight};
+  position: relative;
+  ${({ truncate, maxLines }) =>
+    truncate &&
+    maxLines > 1 &&
+    `
+  &:after {
+    content: '...';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  `}
 `;
 
 Text.propTypes = {
