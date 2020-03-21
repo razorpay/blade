@@ -3,6 +3,19 @@ import styled from 'styled-components';
 import baseTheme from '../../tokens/theme';
 import { getColorKeys, getColor, getLineHeight } from '../../_helpers/theme';
 
+/*
+ * Sets height for the div
+ * @param {Object} theme
+ * @param {String} _lineHeight
+ * @param {number} maxLines
+ */
+const calculateHeight = ({ theme, _lineHeight, maxLines }) => {
+  const lineHeight = `${parseFloat(theme.fonts.lineHeight[_lineHeight])}`;
+  const containerHeight = `${lineHeight * maxLines}px`;
+
+  return containerHeight;
+};
+
 const styles = {
   fontFamily({ theme, _weight }) {
     return theme.fonts.family.lato[_weight];
@@ -34,20 +47,45 @@ const styles = {
       return getLineHeight(theme, size);
     }
   },
-  maxHeight({ theme, truncate, _lineHeight, maxLines }) {
-    if (truncate) {
-      const lineHeight = `${parseFloat(theme.fonts.lineHeight[_lineHeight])}`.replace('px', '');
-      const height = `${lineHeight * maxLines}px`;
-      return height;
+  maxHeight({ theme, _lineHeight, maxLines }) {
+    if (maxLines) {
+      const maxHeight = calculateHeight({ theme, _lineHeight, maxLines });
+      return maxHeight;
     } else {
       return 'initial';
     }
   },
-  whiteSpace({ truncate, maxLines }) {
-    if (truncate && maxLines > 1) {
-      return 'wrap';
-    } else if (truncate) {
+  whiteSpace({ maxLines }) {
+    if (maxLines) {
+      return 'initial';
+    } else {
       return 'nowrap';
+    }
+  },
+  overflow({ maxLines }) {
+    if (maxLines) {
+      return 'hidden';
+    } else {
+      return 'initial';
+    }
+  },
+  textOverflow({ maxLines }) {
+    if (maxLines) {
+      return 'ellipsis';
+    } else {
+      return 'initial';
+    }
+  },
+  textDecoration({ _isUnderlined }) {
+    if (_isUnderlined) {
+      return 'undefined';
+    } else {
+      return 'none';
+    }
+  },
+  ellipses({ maxLines }) {
+    if (maxLines) {
+      return "'...'";
     } else {
       return '';
     }
@@ -58,26 +96,21 @@ const Text = styled.div`
   font-family: ${styles.fontFamily};
   font-size: ${styles.fontSize};
   color: ${styles.color};
-  text-decoration-line: ${(props) => (props._isUnderlined ? 'underline' : 'none')};
+  text-decoration-line: ${styles.textDecoration};
   align-self: ${styles.align};
   letter-spacing: ${styles.letterSpacing};
   line-height: ${styles.lineHeight};
-  overflow: ${(props) => (props.truncate ? 'hidden' : '')};
+  overflow: ${styles.overflow};
   white-space: ${styles.whiteSpace};
-  text-overflow: ${(props) => (props.truncate ? 'ellipsis' : '')};
+  text-overflow: ${styles.textOverflow};
   max-height: ${styles.maxHeight};
   position: relative;
-  ${({ truncate, maxLines }) =>
-    truncate &&
-    maxLines > 1 &&
-    `
-  &:after {
-    content: '...';
+  &&:after {
+    content: ${styles.ellipses};
     position: absolute;
     bottom: 0;
     right: 0;
   }
-  `}
 `;
 
 Text.propTypes = {
@@ -89,7 +122,6 @@ Text.propTypes = {
   _isUnderlined: PropTypes.bool,
   _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
   _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
-  truncate: PropTypes.bool,
   maxLines: PropTypes.number,
 };
 
@@ -101,8 +133,7 @@ Text.defaultProps = {
   _weight: 'regular',
   _isUnderlined: false,
   _letterSpacing: 'small',
-  truncate: false,
-  maxLines: 1,
+  maxLines: undefined,
   _lineHeight: 'small',
 };
 

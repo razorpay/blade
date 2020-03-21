@@ -25,16 +25,13 @@ storiesOf('Text', module)
       {text('Display Text', 'The quick brown fox jumps over the lazy dog')}
     </Text>
   ))
-  .add('show content in only 1 line and hide the rest ', () => (
-    <Text size={select('Size', sizeOptions, 'large')} truncate maxLines={1} _lineHeight="medium">
-      {text(
-        'Display Text',
-        'The quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog ',
-      )}
-    </Text>
-  ))
   .add('show content in only 3 line and hide the rest ', () => (
-    <Text size={select('Size', sizeOptions, 'large')} truncate maxLines={3} _lineHeight="medium">
+    <Text
+      size={select('Size', sizeOptions, 'large')}
+      truncate
+      maxLines={select('maxLines', 'number of lines', 3)}
+      _lineHeight="medium"
+    >
       {text(
         'Display Text',
         'The quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog ',

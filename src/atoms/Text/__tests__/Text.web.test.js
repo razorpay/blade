@@ -22,9 +22,13 @@ describe('Renders <Text /> correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('snapshot testing with truncate text', () => {
+  it('snapshot testing with maxLines in text', () => {
     const displayText = 'Displaying some text';
-    const { container } = renderWithTheme(<Text truncate>{displayText}</Text>);
+    const { container } = renderWithTheme(
+      <Text truncate maxLines={2}>
+        {displayText}
+      </Text>,
+    );
     expect(container).toMatchSnapshot();
   });
 });
