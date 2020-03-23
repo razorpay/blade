@@ -28,6 +28,8 @@ configure(() => {
   require('../../src/atoms/Indicator/Indicator.stories');
   require('../../src/atoms/Badge/Badge.stories');
   require('../../src/atoms/TextArea/TextArea.stories');
+  require('../../src/atoms/Heading/Heading.stories');
+  require('../../src/molecules/Amount/Amount.stories');
 }, module);
 
 // add decorators
@@ -38,11 +40,11 @@ const SpaceAround = styled.View`
 `;
 
 addDecorator((Story) => (
-  <SpaceAround>
-    <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={100}>
+  <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={100}>
+    <SpaceAround>
       <Story />
-    </KeyboardAvoidingView>
-  </SpaceAround>
+    </SpaceAround>
+  </KeyboardAvoidingView>
 ));
 
 addDecorator(withKnobs);
