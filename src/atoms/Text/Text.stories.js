@@ -30,7 +30,6 @@ storiesOf('Text', module)
       size={select('Size', sizeOptions, 'large')}
       truncate
       maxLines={select('maxLines', 'number of lines', 3)}
-      _lineHeight="medium"
     >
       {text(
         'Display Text',

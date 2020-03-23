@@ -6,11 +6,12 @@ import { getColorKeys, getColor, getLineHeight } from '../../_helpers/theme';
 /*
  * Sets height for the div
  * @param {Object} theme
- * @param {String} _lineHeight
+ * @param {String} size
  * @param {number} maxLines
  */
-const calculateHeight = ({ theme, _lineHeight, maxLines }) => {
-  const lineHeight = `${parseFloat(theme.fonts.lineHeight[_lineHeight])}`;
+const calculateHeight = ({ theme, size, maxLines }) => {
+  // const lineHeight = `${parseFloat(theme.fonts.lineHeight[_lineHeight])}`;
+  const lineHeight = getLineHeight(theme, size);
   const containerHeight = `${lineHeight * maxLines}px`;
 
   return containerHeight;
@@ -129,12 +130,11 @@ Text.defaultProps = {
   size: 'large',
   align: 'left',
   color: 'shade.980',
+  maxLines: undefined,
   'data-testid': 'ds-text',
   _weight: 'regular',
   _isUnderlined: false,
   _letterSpacing: 'small',
-  maxLines: undefined,
-  _lineHeight: 'small',
 };
 
 export default Text;
