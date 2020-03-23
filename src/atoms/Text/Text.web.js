@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import baseTheme from '../../tokens/theme';
+import isDefined from '../../_helpers/isDefined';
 import { getColorKeys, getColor, getLineHeight } from '../../_helpers/theme';
 
 /*
@@ -47,7 +48,7 @@ const styles = {
     }
   },
   maxHeight({ theme, _lineHeight, maxLines }) {
-    if (maxLines) {
+    if (isDefined(maxLines)) {
       const maxHeight = calculateHeight({ theme, _lineHeight, maxLines });
       return maxHeight;
     } else {
@@ -55,21 +56,21 @@ const styles = {
     }
   },
   whiteSpace({ maxLines }) {
-    if (maxLines) {
+    if (isDefined(maxLines)) {
       return 'initial';
     } else {
       return 'nowrap';
     }
   },
   overflow({ maxLines }) {
-    if (maxLines) {
+    if (isDefined(maxLines)) {
       return 'hidden';
     } else {
       return 'initial';
     }
   },
   textOverflow({ maxLines }) {
-    if (maxLines) {
+    if (isDefined(maxLines)) {
       return 'ellipsis';
     } else {
       return 'initial';
@@ -83,7 +84,7 @@ const styles = {
     }
   },
   ellipses({ maxLines }) {
-    if (maxLines) {
+    if (isDefined(maxLines)) {
       return "'...'";
     } else {
       return '';
