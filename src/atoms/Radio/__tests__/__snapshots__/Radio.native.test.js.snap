@@ -109,13 +109,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
-        align="left"
         color="shade.980"
         size="medium"
         style={
           Array [
             Object {
-              "alignSelf": "flex-start",
               "color": "rgba(22, 47, 86, 0.87)",
               "fontFamily": "Lato-Regular",
               "fontSize": 14,
@@ -262,13 +260,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
-        align="left"
         color="shade.980"
         size="medium"
         style={
           Array [
             Object {
-              "alignSelf": "flex-start",
               "color": "rgba(22, 47, 86, 0.87)",
               "fontFamily": "Lato-Regular",
               "fontSize": 14,
@@ -405,13 +401,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="large"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 16,
@@ -536,13 +530,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -667,13 +659,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="large"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 16,
@@ -811,13 +801,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.950"
           size="large"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.38)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 16,
@@ -851,13 +839,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
-        align="left"
         color="shade.930"
         size="medium"
         style={
           Array [
             Object {
-              "alignSelf": "flex-start",
               "color": "rgba(22, 47, 86, 0.10)",
               "fontFamily": "Lato-Regular",
               "fontSize": 14,
@@ -981,13 +967,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.950"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.38)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -1021,13 +1005,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
-        align="left"
         color="shade.930"
         size="xsmall"
         style={
           Array [
             Object {
-              "alignSelf": "flex-start",
               "color": "rgba(22, 47, 86, 0.10)",
               "fontFamily": "Lato-Regular",
               "fontSize": 12,
@@ -1151,13 +1133,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.950"
           size="small"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.38)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 13,
@@ -1295,13 +1275,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="large"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 16,
@@ -1335,13 +1313,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
-        align="left"
         color="shade.950"
         size="medium"
         style={
           Array [
             Object {
-              "alignSelf": "flex-start",
               "color": "rgba(22, 47, 86, 0.38)",
               "fontFamily": "Lato-Regular",
               "fontSize": 14,
@@ -1465,13 +1441,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -1505,13 +1479,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
-        align="left"
         color="shade.950"
         size="xsmall"
         style={
           Array [
             Object {
-              "alignSelf": "flex-start",
               "color": "rgba(22, 47, 86, 0.38)",
               "fontFamily": "Lato-Regular",
               "fontSize": 12,
@@ -1635,13 +1607,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="small"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 13,
@@ -1779,13 +1749,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -1910,13 +1878,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -2041,13 +2007,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -2185,13 +2149,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -2316,13 +2278,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -2447,13 +2407,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -2591,13 +2549,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="large"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 16,
@@ -2722,13 +2678,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="large"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 16,
@@ -2853,13 +2807,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="large"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 16,
@@ -2997,13 +2949,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -3147,13 +3097,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -3278,13 +3226,11 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -3422,13 +3368,11 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="large"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 16,
@@ -3572,13 +3516,11 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -3703,13 +3645,11 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="large"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 16,
@@ -3866,13 +3806,11 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -3997,13 +3935,11 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -4128,13 +4064,11 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,

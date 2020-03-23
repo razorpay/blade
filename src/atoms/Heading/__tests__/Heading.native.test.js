@@ -39,24 +39,6 @@ describe('<Heading />', () => {
     });
   });
 
-  describe('align', () => {
-    it('renders heading with left align', () => {
-      const displayText = 'Heading';
-      const { container } = renderWithTheme(<Heading align="left">{displayText}</Heading>);
-      expect(container).toMatchSnapshot();
-    });
-    it('renders heading with center align', () => {
-      const displayText = 'Heading';
-      const { container } = renderWithTheme(<Heading align="center">{displayText}</Heading>);
-      expect(container).toMatchSnapshot();
-    });
-    it('renders heading with right align', () => {
-      const displayText = 'Heading';
-      const { container } = renderWithTheme(<Heading align="right">{displayText}</Heading>);
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('weight', () => {
     it('renders heading with regular weight', () => {
       const displayText = 'Heading';

@@ -197,13 +197,11 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -237,13 +235,11 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
-        align="left"
         color="negative.900"
         size="xsmall"
         style={
           Array [
             Object {
-              "alignSelf": "flex-start",
               "color": "rgba(209, 45, 45, 1.0)",
               "fontFamily": "Lato-Regular",
               "fontSize": 12,
@@ -459,13 +455,11 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -682,13 +676,11 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -905,13 +897,11 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -1128,13 +1118,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -1351,13 +1339,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -1574,13 +1560,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -1797,13 +1781,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -2020,13 +2002,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -2060,13 +2040,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
-        align="left"
         color="shade.950"
         size="xsmall"
         style={
           Array [
             Object {
-              "alignSelf": "flex-start",
               "color": "rgba(22, 47, 86, 0.38)",
               "fontFamily": "Lato-Regular",
               "fontSize": 12,
@@ -2282,13 +2260,11 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
@@ -2505,13 +2481,11 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
           color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
                 "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,

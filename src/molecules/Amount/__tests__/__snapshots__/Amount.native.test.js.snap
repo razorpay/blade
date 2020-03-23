@@ -27,13 +27,11 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -48,13 +46,11 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
       € 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -72,13 +68,11 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -123,13 +117,11 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -144,13 +136,11 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -168,13 +158,11 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -219,13 +207,11 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -240,13 +226,11 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -264,13 +248,11 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -315,13 +297,11 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -336,13 +316,11 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -360,13 +338,11 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -411,13 +387,11 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -432,13 +406,11 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -456,13 +428,11 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -507,13 +477,11 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -528,13 +496,11 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -552,13 +518,11 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -603,13 +567,11 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -624,13 +586,11 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -648,13 +608,11 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -699,13 +657,11 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -720,13 +676,11 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -744,13 +698,11 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -795,13 +747,11 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -816,13 +766,11 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -840,13 +788,11 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -891,13 +837,11 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -912,13 +856,11 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -936,13 +878,11 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -987,13 +927,11 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -1008,13 +946,11 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -1032,13 +968,11 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -1083,13 +1017,11 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -1104,13 +1036,11 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -1128,13 +1058,11 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -1179,13 +1107,11 @@ exports[`<Amount /> size renders amount with size large 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
-      align="left"
       color="shade.940"
       size="xsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
@@ -1200,13 +1126,11 @@ exports[`<Amount /> size renders amount with size large 1`] = `
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="large"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 16,
@@ -1224,13 +1148,11 @@ exports[`<Amount /> size renders amount with size large 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
-      align="left"
       color="shade.940"
       size="xsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
@@ -1275,13 +1197,11 @@ exports[`<Amount /> size renders amount with size medium 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -1296,13 +1216,11 @@ exports[`<Amount /> size renders amount with size medium 1`] = `
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -1320,13 +1238,11 @@ exports[`<Amount /> size renders amount with size medium 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.940"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
@@ -1371,13 +1287,11 @@ exports[`<Amount /> size renders amount with size xlarge 1`] = `
       _letterSpacing="small"
       _lineHeight="xlarge"
       _weight="bold"
-      align="left"
       color="shade.940"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -1392,13 +1306,11 @@ exports[`<Amount /> size renders amount with size xlarge 1`] = `
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="xlarge"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 20,
@@ -1416,13 +1328,11 @@ exports[`<Amount /> size renders amount with size xlarge 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
-      align="left"
       color="shade.940"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -1467,13 +1377,11 @@ exports[`<Amount /> size renders amount with size xxlarge 1`] = `
       _letterSpacing="small"
       _lineHeight="xxlarge"
       _weight="bold"
-      align="left"
       color="shade.940"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -1488,13 +1396,11 @@ exports[`<Amount /> size renders amount with size xxlarge 1`] = `
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="xxlarge"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 24,
@@ -1512,13 +1418,11 @@ exports[`<Amount /> size renders amount with size xxlarge 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
-      align="left"
       color="shade.940"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.24)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
@@ -1563,13 +1467,11 @@ exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
       _letterSpacing="small"
       _lineHeight="xxlarge"
       _weight="bold"
-      align="left"
       color="shade.950"
       size="large"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 16,
@@ -1584,13 +1486,11 @@ exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
       ₹ 
     </Text>
     <Text
-      align="left"
       color="shade.980"
       size="xxxlarge"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 32,
@@ -1608,13 +1508,11 @@ exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
-      align="left"
       color="shade.950"
       size="large"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 16,
