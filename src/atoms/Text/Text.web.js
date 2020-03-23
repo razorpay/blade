@@ -10,10 +10,8 @@ import { getColorKeys, getColor, getLineHeight } from '../../_helpers/theme';
  * @param {number} maxLines
  */
 const calculateHeight = ({ theme, size, maxLines }) => {
-  // const lineHeight = `${parseFloat(theme.fonts.lineHeight[_lineHeight])}`;
   const lineHeight = getLineHeight(theme, size);
-  const containerHeight = `${lineHeight * maxLines}px`;
-
+  const containerHeight = `${parseFloat(lineHeight) * maxLines}px`;
   return containerHeight;
 };
 

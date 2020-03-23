@@ -15,7 +15,7 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
 exports[`Renders <Text /> correctly snapshot testing with maxLines in text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 eIZNIc"
+    class="Textweb__Text-sc-6jf9e4-0 cboLEb"
     color="shade.980"
     data-testid="ds-text"
   >
