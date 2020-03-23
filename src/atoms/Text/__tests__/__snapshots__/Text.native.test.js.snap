@@ -14,13 +14,11 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="bold"
-    align="left"
     color="shade.980"
     size="large"
     style={
       Array [
         Object {
-          "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Bold",
           "fontSize": 16,
@@ -51,13 +49,11 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="regular"
-    align="left"
     color="shade.980"
     size="large"
     style={
       Array [
         Object {
-          "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Regular",
           "fontSize": 16,
@@ -88,13 +84,11 @@ exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = 
     _isUnderlined={true}
     _letterSpacing="small"
     _weight="regular"
-    align="left"
     color="shade.980"
     size="large"
     style={
       Array [
         Object {
-          "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Regular",
           "fontSize": 16,
