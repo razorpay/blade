@@ -48,13 +48,11 @@ exports[`Renders <Badge /> (Rectangle) renders solid information(rectangle) <Bad
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="light.100"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(255, 255, 255, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -120,13 +118,11 @@ exports[`Renders <Badge /> (Rectangle) renders solid negative(rectangle) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="light.100"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(255, 255, 255, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -192,13 +188,11 @@ exports[`Renders <Badge /> (Rectangle) renders solid neutral(rectangle) <Badge /
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="primary.900"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(11, 112, 231, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -264,13 +258,11 @@ exports[`Renders <Badge /> (Rectangle) renders solid positive(rectangle) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="light.100"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(255, 255, 255, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -336,13 +328,11 @@ exports[`Renders <Badge /> (Rectangle) renders solid warning(rectangle) <Badge /
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="light.100"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(255, 255, 255, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -408,13 +398,11 @@ exports[`Renders <Badge /> (Rectangle) renders subtle information(rectangle) <Ba
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="shade.980"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -480,13 +468,11 @@ exports[`Renders <Badge /> (Rectangle) renders subtle negative(rectangle) <Badge
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="negative.900"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(209, 45, 45, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -552,13 +538,11 @@ exports[`Renders <Badge /> (Rectangle) renders subtle neutral(rectangle) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="primary.900"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(11, 112, 231, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -624,13 +608,11 @@ exports[`Renders <Badge /> (Rectangle) renders subtle positive(rectangle) <Badge
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="positive.900"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(31, 137, 14, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -696,13 +678,11 @@ exports[`Renders <Badge /> (Rectangle) renders subtle warning(rectangle) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="neutral.900"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(205, 130, 20, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -768,13 +748,11 @@ exports[`Renders <Badge /> (Stadium) renders solid information(Stadium) <Badge /
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="light.100"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(255, 255, 255, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -840,13 +818,11 @@ exports[`Renders <Badge /> (Stadium) renders solid negative(Stadium) <Badge /> 1
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="light.100"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(255, 255, 255, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -912,13 +888,11 @@ exports[`Renders <Badge /> (Stadium) renders solid neutral(Stadium) <Badge /> 1`
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="primary.900"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(11, 112, 231, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -984,13 +958,11 @@ exports[`Renders <Badge /> (Stadium) renders solid positive(Stadium) <Badge /> 1
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="light.100"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(255, 255, 255, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -1056,13 +1028,11 @@ exports[`Renders <Badge /> (Stadium) renders solid warning(Stadium) <Badge /> 1`
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="light.100"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(255, 255, 255, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -1128,13 +1098,11 @@ exports[`Renders <Badge /> (Stadium) renders subtle information(Stadium) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="shade.980"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -1200,13 +1168,11 @@ exports[`Renders <Badge /> (Stadium) renders subtle negative(Stadium) <Badge /> 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="negative.900"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(209, 45, 45, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -1272,13 +1238,11 @@ exports[`Renders <Badge /> (Stadium) renders subtle neutral(Stadium) <Badge /> 1
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="primary.900"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(11, 112, 231, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -1344,13 +1308,11 @@ exports[`Renders <Badge /> (Stadium) renders subtle positive(Stadium) <Badge /> 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="positive.900"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(31, 137, 14, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
@@ -1416,13 +1378,11 @@ exports[`Renders <Badge /> (Stadium) renders subtle warning(Stadium) <Badge /> 1
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
-      align="left"
       color="neutral.900"
       size="xxsmall"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(205, 130, 20, 1.0)",
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
