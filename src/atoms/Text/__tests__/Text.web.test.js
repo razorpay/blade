@@ -24,11 +24,7 @@ describe('Renders <Text /> correctly', () => {
 
   it('snapshot testing with maxLines in text', () => {
     const displayText = 'Displaying some text';
-    const { container } = renderWithTheme(
-      <Text truncate maxLines={2}>
-        {displayText}
-      </Text>,
-    );
+    const { container } = renderWithTheme(<Text maxLines={2}>{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
 });

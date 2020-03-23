@@ -28,7 +28,6 @@ storiesOf('Text', module)
   .add('show content in only 3 line and hide the rest ', () => (
     <Text
       size={select('Size', sizeOptions, 'large')}
-      truncate
       maxLines={select('maxLines', 'number of lines', 3)}
     >
       {text(
