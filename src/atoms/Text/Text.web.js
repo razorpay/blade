@@ -119,11 +119,11 @@ Text.propTypes = {
   color: PropTypes.oneOf(getColorKeys()),
   align: PropTypes.oneOf(['left', 'center', 'right']),
   'data-testid': PropTypes.string,
+  maxLines: PropTypes.number,
   _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   _isUnderlined: PropTypes.bool,
   _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
   _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
-  maxLines: PropTypes.number,
 };
 
 Text.defaultProps = {
