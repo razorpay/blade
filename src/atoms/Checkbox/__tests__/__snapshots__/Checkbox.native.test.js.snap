@@ -13,13 +13,31 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
   <TouchableOpacity
     accessibilityRole="checkbox"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="activeCheckbox"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
@@ -156,15 +174,22 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
         </RNSVGSvgView>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
+              },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
+            ],
           ]
         }
       >
@@ -172,14 +197,12 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -197,12 +220,14 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 24,
-            "marginRight": 0,
-            "marginTop": 0,
-          },
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 24,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ],
         ]
       }
     >
@@ -210,13 +235,11 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
-        align="left"
         color="negative.900"
         size="xsmall"
         style={
           Array [
             Object {
-              "alignSelf": "flex-start",
               "color": "rgba(209, 45, 45, 1.0)",
               "fontFamily": "Lato-Regular",
               "fontSize": 12,
@@ -248,13 +271,31 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
   <TouchableOpacity
     accessibilityRole="checkbox"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-checkbox"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
@@ -391,15 +432,22 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
         </RNSVGSvgView>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
+              },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
+            ],
           ]
         }
       >
@@ -407,14 +455,12 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -446,13 +492,31 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
   <TouchableOpacity
     accessibilityRole="checkbox"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="activeCheckbox"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
     >
       <View
         backgroundColor="rgba(11, 112, 231, 0.10)"
@@ -589,15 +653,22 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
         </RNSVGSvgView>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
+              },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
+            ],
           ]
         }
       >
@@ -605,14 +676,12 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -644,13 +713,31 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
   <TouchableOpacity
     accessibilityRole="checkbox"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="activeCheckbox"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
@@ -787,15 +874,22 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
         </RNSVGSvgView>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
+              },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
+            ],
           ]
         }
       >
@@ -803,14 +897,12 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -842,13 +934,31 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
   <TouchableOpacity
     accessibilityRole="checkbox"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-checkbox"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
@@ -985,15 +1095,22 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
         </RNSVGSvgView>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
+              },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
+            ],
           ]
         }
       >
@@ -1001,14 +1118,12 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -1040,13 +1155,31 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
   <TouchableOpacity
     accessibilityRole="checkbox"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-checkbox"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
@@ -1183,15 +1316,22 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
         </RNSVGSvgView>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
+              },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
+            ],
           ]
         }
       >
@@ -1199,14 +1339,12 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -1238,13 +1376,31 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
   <TouchableOpacity
     accessibilityRole="checkbox"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-checkbox"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
@@ -1381,15 +1537,22 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
         </RNSVGSvgView>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
+              },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
+            ],
           ]
         }
       >
@@ -1397,14 +1560,12 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -1436,13 +1597,31 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
   <TouchableOpacity
     accessibilityRole="checkbox"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-checkbox"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
@@ -1579,15 +1758,22 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
         </RNSVGSvgView>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
+              },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
+            ],
           ]
         }
       >
@@ -1595,14 +1781,12 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -1634,13 +1818,31 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
   <TouchableOpacity
     accessibilityRole="checkbox"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-checkbox"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
@@ -1777,15 +1979,22 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
         </RNSVGSvgView>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
+              },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
+            ],
           ]
         }
       >
@@ -1793,14 +2002,12 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -1818,12 +2025,14 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
     <View
       style={
         Array [
-          Object {
-            "marginBottom": 0,
-            "marginLeft": 24,
-            "marginRight": 0,
-            "marginTop": 0,
-          },
+          Array [
+            Object {
+              "marginBottom": 0,
+              "marginLeft": 24,
+              "marginRight": 0,
+              "marginTop": 0,
+            },
+          ],
         ]
       }
     >
@@ -1831,13 +2040,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
-        align="left"
         color="shade.950"
         size="xsmall"
         style={
           Array [
             Object {
-              "alignSelf": "flex-start",
               "color": "rgba(22, 47, 86, 0.38)",
               "fontFamily": "Lato-Regular",
               "fontSize": 12,
@@ -1869,13 +2076,31 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
   <TouchableOpacity
     accessibilityRole="checkbox"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="unselectedCheckBox"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
     >
       <View
         backgroundColor="rgba(224, 228, 249, 0.24)"
@@ -2012,15 +2237,22 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
         </RNSVGSvgView>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
+              },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
+            ],
           ]
         }
       >
@@ -2028,14 +2260,12 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,
@@ -2067,13 +2297,31 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
   <TouchableOpacity
     accessibilityRole="checkbox"
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
     disabled={false}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="unselectedCheckBox"
     underlayColor="transparent"
   >
     <View
-      className="sc-AykKC kHnGAa"
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
     >
       <View
         backgroundColor="transparent"
@@ -2210,15 +2458,22 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
         </RNSVGSvgView>
       </View>
       <View
-        className="sc-AykKC bJrJEE"
         style={
           Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 4,
-              "marginRight": 0,
-              "marginTop": 0,
-            },
+            Array [
+              Object {
+                "marginBottom": 0,
+                "marginLeft": 4,
+                "marginRight": 0,
+                "marginTop": 0,
+              },
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "flexDirection": "column",
+                },
+              ],
+            ],
           ]
         }
       >
@@ -2226,14 +2481,12 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
-          align="left"
-          color="shade.970"
+          color="shade.980"
           size="medium"
           style={
             Array [
               Object {
-                "alignSelf": "flex-start",
-                "color": "rgba(22, 47, 86, 0.74)",
+                "color": "rgba(22, 47, 86, 0.87)",
                 "fontFamily": "Lato-Regular",
                 "fontSize": 14,
                 "letterSpacing": 0,

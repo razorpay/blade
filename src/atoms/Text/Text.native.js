@@ -22,17 +22,6 @@ const styles = {
       return 'none';
     }
   },
-  alignSelf({ align }) {
-    switch (align) {
-      case 'left':
-      default:
-        return 'flex-start';
-      case 'center':
-        return 'center';
-      case 'right':
-        return 'flex-end';
-    }
-  },
   letterSpacing({ theme, _letterSpacing }) {
     return `${theme.fonts.letterSpacing[_letterSpacing]}`;
   },
@@ -50,14 +39,12 @@ const StyledText = styled(NativeText)`
   font-size: ${styles.fontSize};
   color: ${styles.color};
   text-decoration-line: ${styles.textDecorationLine};
-  align-self: ${styles.alignSelf};
   letter-spacing: ${styles.letterSpacing};
   line-height: ${styles.lineHeight};
 `;
 
 const Text = ({
   size,
-  align,
   testID,
   color,
   children,
@@ -70,7 +57,6 @@ const Text = ({
   return (
     <StyledText
       size={size}
-      align={align}
       color={color}
       numberOfLines={numberOfLines}
       _weight={_weight}
@@ -88,7 +74,6 @@ Text.propTypes = {
   children: PropTypes.string,
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   color: PropTypes.oneOf(getColorKeys()),
-  align: PropTypes.oneOf(['left', 'center', 'right']),
   testID: PropTypes.string,
   numberOfLines: PropTypes.number,
   _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
@@ -99,7 +84,6 @@ Text.propTypes = {
 
 Text.defaultProps = {
   size: 'large',
-  align: 'left',
   color: 'shade.980',
   testID: 'ds-text',
   _weight: 'regular',

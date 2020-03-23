@@ -12,20 +12,27 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-link"
   >
     <Text
       _isUnderlined={true}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="primary.600"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(123, 178, 242, 1.0)",
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
@@ -55,20 +62,27 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-link"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="primary.800"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
@@ -98,20 +112,27 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-link"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="primary.800"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
@@ -141,20 +162,27 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-link"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="primary.800"
       size="large"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 16,
@@ -184,20 +212,27 @@ exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = 
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-link"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="primary.800"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 14,
@@ -227,20 +262,27 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-link"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="primary.800"
       size="small"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 13,
@@ -270,20 +312,27 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
 >
   <TouchableOpacity
     activeOpacity={1}
-    className="sc-AykKC cQCQxd"
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
     testID="ds-link"
   >
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="primary.800"
       size="medium"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(43, 131, 234, 1.0 )",
             "fontFamily": "Lato-Regular",
             "fontSize": 14,

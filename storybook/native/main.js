@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { AppRegistry, StatusBar } from 'react-native';
+import { AppRegistry, StatusBar, KeyboardAvoidingView } from 'react-native';
 import { getStorybookUI, configure, addDecorator } from '@storybook/react-native';
 import styled, { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme } from '../../src/tokens/theme';
@@ -18,9 +18,18 @@ configure(() => {
   require('../../src/atoms/Text/Text.stories');
   require('../../src/atoms/Link/Link.stories');
   require('../../src/atoms/Icon/Icon.stories');
+  require('../../src/atoms/TextInput/TextInput.stories');
   require('../../src/atoms/Button/Button.stories');
   require('../../src/atoms/Checkbox/Checkbox.stories');
+  require('../../src/atoms/Radio/Radio.stories');
   require('../../src/atoms/ScrollView/ScrollView.stories');
+  require('../../src/atoms/Switch/Switch.stories');
+  require('../../src/atoms/Card/Card.stories');
+  require('../../src/atoms/Indicator/Indicator.stories');
+  require('../../src/atoms/Badge/Badge.stories');
+  require('../../src/atoms/TextArea/TextArea.stories');
+  require('../../src/atoms/Heading/Heading.stories');
+  require('../../src/molecules/Amount/Amount.stories');
 }, module);
 
 // add decorators
@@ -31,9 +40,11 @@ const SpaceAround = styled.View`
 `;
 
 addDecorator((Story) => (
-  <SpaceAround>
-    <Story />
-  </SpaceAround>
+  <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={100}>
+    <SpaceAround>
+      <Story />
+    </SpaceAround>
+  </KeyboardAvoidingView>
 ));
 
 addDecorator(withKnobs);
@@ -95,6 +106,7 @@ const App = () => {
   const StorybookUIRoot = getStorybookUI({
     theme: isDarkTheme ? storybookTheme.dark : storybookTheme.light,
     asyncStorage: AsyncStorage,
+    shouldDisableKeyboardAvoidingView: true,
   });
 
   return (

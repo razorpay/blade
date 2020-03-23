@@ -1,0 +1,257 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> color renders heading with custom color 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="primary.900"
+    size="xxxlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(11, 112, 231, 1.0)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 32,
+          "letterSpacing": 0,
+          "lineHeight": 36,
+        },
+      ]
+    }
+    testID="ds-heading"
+    weight="bold"
+  >
+    Heading
+  </Text>
+</View>
+`;
+
+exports[`<Heading /> size renders heading with size large 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.980"
+    size="large"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 16,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+        },
+      ]
+    }
+    testID="ds-heading"
+    weight="bold"
+  >
+    Heading
+  </Text>
+</View>
+`;
+
+exports[`<Heading /> size renders heading with size medium 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.980"
+    size="medium"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+        },
+      ]
+    }
+    testID="ds-heading"
+    weight="bold"
+  >
+    Heading
+  </Text>
+</View>
+`;
+
+exports[`<Heading /> size renders heading with size xlarge 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.980"
+    size="xlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 20,
+          "letterSpacing": 0,
+          "lineHeight": 30,
+        },
+      ]
+    }
+    testID="ds-heading"
+    weight="bold"
+  >
+    Heading
+  </Text>
+</View>
+`;
+
+exports[`<Heading /> size renders heading with size xxlarge 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.980"
+    size="xxlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 24,
+          "letterSpacing": 0,
+          "lineHeight": 36,
+        },
+      ]
+    }
+    testID="ds-heading"
+    weight="bold"
+  >
+    Heading
+  </Text>
+</View>
+`;
+
+exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.980"
+    size="xxxlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 32,
+          "letterSpacing": 0,
+          "lineHeight": 36,
+        },
+      ]
+    }
+    testID="ds-heading"
+    weight="bold"
+  >
+    Heading
+  </Text>
+</View>
+`;
+
+exports[`<Heading /> weight renders heading with bold weight 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.980"
+    size="xxxlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 32,
+          "letterSpacing": 0,
+          "lineHeight": 36,
+        },
+      ]
+    }
+    testID="ds-heading"
+    weight="bold"
+  >
+    Heading
+  </Text>
+</View>
+`;
+
+exports[`<Heading /> weight renders heading with regular weight 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.980"
+    size="xxxlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Regular",
+          "fontSize": 32,
+          "letterSpacing": 0,
+          "lineHeight": 36,
+        },
+      ]
+    }
+    testID="ds-heading"
+    weight="regular"
+  >
+    Heading
+  </Text>
+</View>
+`;
