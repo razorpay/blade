@@ -11,6 +11,7 @@ const styles = {
   align({ align }) {
     switch (align) {
       case 'left':
+        return 'flex-start';
       default:
         return 'flex-start';
       case 'center':
