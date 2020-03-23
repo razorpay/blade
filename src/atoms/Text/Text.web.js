@@ -5,12 +5,6 @@ import isDefined from '../../_helpers/isDefined';
 import { getColorKeys, getColor, getLineHeight } from '../../_helpers/theme';
 
 const styles = {
-  fontFamily({ theme, _weight }) {
-    return theme.fonts.family.lato[_weight];
-  },
-  fontSize({ theme, size }) {
-    return theme.fonts.size[size];
-  },
   color({ theme, color }) {
     return getColor(theme, color);
   },
@@ -24,9 +18,6 @@ const styles = {
       case 'right':
         return 'flex-end';
     }
-  },
-  letterSpacing({ theme, _letterSpacing }) {
-    return `${theme.fonts.letterSpacing[_letterSpacing]}`;
   },
   lineHeight({ theme, size, _lineHeight }) {
     if (_lineHeight) {
@@ -70,12 +61,12 @@ const styles = {
 };
 
 const Text = styled.div`
-  font-family: ${styles.fontFamily};
-  font-size: ${styles.fontSize};
+  font-family: ${(props) => props.theme.fonts.family.lato[props._weight]};
+  font-size: ${(props) => props.theme.fonts.size[props.size]};
   color: ${styles.color};
   text-decoration: ${styles.textDecoration};
   align-self: ${styles.align};
-  letter-spacing: ${styles.letterSpacing};
+  letter-spacing: ${(props) => props.theme.fonts.letterSpacing[props._letterSpacing]};
   line-height: ${styles.lineHeight};
   overflow: ${styles.overflow};
   text-overflow: ${styles.textOverflow};
