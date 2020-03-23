@@ -11,24 +11,28 @@ const sizeOptions = {
   large: 'large',
 };
 
+const htmlTagOptions = ['p', 'div', 'span'];
+
+const maxLinesOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
 storiesOf('Text', module)
   .addParameters({
     component: Text,
   })
   .add('default', () => (
-    <Text size={select('Size', sizeOptions, 'large')}>
-      {text('Display Text', 'The quick brown fox jumps over the lazy dog')}
+    <Text size={select('Size', sizeOptions, 'large')} as="span">
+      {text('Display Text', 'The quick brown fox jumps over the lazy dog ')}
     </Text>
   ))
-  .add('as span', () => (
+  .add('text with as, maxLines', () => (
     <Text
       size={select('Size', sizeOptions, 'large')}
-      as="span"
-      maxLines={select('maxLines', 'number of lines', 3)}
+      maxLines={select('maxLines', maxLinesOptions, 3)}
+      as={select('as', htmlTagOptions, 'div')}
     >
       {text(
         'Display Text',
-        'The quick brown fox jumps over the lazy dog brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog ',
+        'The quick brown fox jumps over the lazy dog brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog dog he quick brown fox jumps over the lazy dog he quick brown fox jumps over the lazy dog',
       )}
     </Text>
   ));

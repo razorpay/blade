@@ -27,4 +27,9 @@ describe('Renders <Text /> correctly', () => {
     const { container } = renderWithTheme(<Text maxLines={2}>{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
+  it('snapshot testing with as in text', () => {
+    const displayText = 'Displaying some text';
+    const { container } = renderWithTheme(<Text as="span">{displayText}</Text>);
+    expect(container).toMatchSnapshot();
+  });
 });

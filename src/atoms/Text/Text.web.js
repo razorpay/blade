@@ -4,18 +4,6 @@ import baseTheme from '../../tokens/theme';
 import isDefined from '../../_helpers/isDefined';
 import { getColorKeys, getColor, getLineHeight } from '../../_helpers/theme';
 
-/*
- * Sets height for the div
- * @param {Object} theme
- * @param {String} size
- * @param {number} maxLines
- */
-const calculateHeight = ({ theme, size, maxLines }) => {
-  const lineHeight = getLineHeight(theme, size);
-  const containerHeight = `${parseFloat(lineHeight) * maxLines}px`;
-  return containerHeight;
-};
-
 const styles = {
   fontFamily({ theme, _weight }) {
     return theme.fonts.family.lato[_weight];
@@ -47,48 +35,37 @@ const styles = {
       return getLineHeight(theme, size);
     }
   },
-  maxHeight({ theme, _lineHeight, maxLines }) {
+  maxHeight({ theme, size, maxLines }) {
     if (isDefined(maxLines)) {
-      const maxHeight = calculateHeight({ theme, _lineHeight, maxLines });
+      const lineHeight = getLineHeight(theme, size);
+      const maxHeight = `${parseFloat(lineHeight) * maxLines}px`;
       return maxHeight;
-    } else {
-      return 'initial';
     }
-  },
-  whiteSpace({ maxLines }) {
-    if (isDefined(maxLines)) {
-      return 'initial';
-    } else {
-      return 'nowrap';
-    }
+    return 'initial';
   },
   overflow({ maxLines }) {
     if (isDefined(maxLines)) {
       return 'hidden';
-    } else {
-      return 'initial';
     }
+    return 'initial';
   },
   textOverflow({ maxLines }) {
     if (isDefined(maxLines)) {
       return 'ellipsis';
-    } else {
-      return 'initial';
     }
+    return 'initial';
   },
   textDecoration({ _isUnderlined }) {
     if (_isUnderlined) {
-      return 'undefined';
-    } else {
-      return 'none';
+      return 'underline';
     }
+    return 'none';
   },
-  ellipses({ maxLines }) {
+  ellipsis({ maxLines }) {
     if (isDefined(maxLines)) {
       return "'...'";
-    } else {
-      return '';
     }
+    return '';
   },
 };
 
@@ -96,20 +73,20 @@ const Text = styled.div`
   font-family: ${styles.fontFamily};
   font-size: ${styles.fontSize};
   color: ${styles.color};
-  text-decoration-line: ${styles.textDecoration};
+  text-decoration: ${styles.textDecoration};
   align-self: ${styles.align};
   letter-spacing: ${styles.letterSpacing};
   line-height: ${styles.lineHeight};
   overflow: ${styles.overflow};
-  white-space: ${styles.whiteSpace};
   text-overflow: ${styles.textOverflow};
   max-height: ${styles.maxHeight};
   position: relative;
   &&:after {
-    content: ${styles.ellipses};
+    content: ${styles.ellipsis};
     position: absolute;
     bottom: 0;
     right: 0;
+    background: white;
   }
 `;
 
