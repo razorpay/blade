@@ -883,14 +883,12 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with dis
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
-                align="left"
                 color="shade.930"
                 numberOfLines={1}
                 size="medium"
                 style={
                   Array [
                     Object {
-                      "alignSelf": "flex-start",
                       "color": "rgba(22, 47, 86, 0.10)",
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
@@ -1137,14 +1135,12 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with dis
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
-              align="left"
               color="shade.930"
               numberOfLines={2}
               size="xsmall"
               style={
                 Array [
                   Object {
-                    "alignSelf": "flex-start",
                     "color": "rgba(22, 47, 86, 0.10)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
@@ -1265,14 +1261,12 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with err
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
-                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
                   Array [
                     Object {
-                      "alignSelf": "flex-start",
                       "color": "rgba(22, 47, 86, 0.38)",
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
@@ -1519,14 +1513,12 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with err
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
-              align="left"
               color="negative.900"
               numberOfLines={2}
               size="xsmall"
               style={
                 Array [
                   Object {
-                    "alignSelf": "flex-start",
                     "color": "rgba(209, 45, 45, 1.0)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
@@ -1737,14 +1729,12 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
-              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
                 Array [
                   Object {
-                    "alignSelf": "flex-start",
                     "color": "rgba(22, 47, 86, 0.38)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
@@ -1782,14 +1772,12 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
-              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
                 Array [
                   Object {
-                    "alignSelf": "flex-start",
                     "color": "rgba(22, 47, 86, 0.38)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
@@ -1999,14 +1987,12 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
-              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
                 Array [
                   Object {
-                    "alignSelf": "flex-start",
                     "color": "rgba(22, 47, 86, 0.38)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
@@ -3301,14 +3287,12 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with pre
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
-                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
                   Array [
                     Object {
-                      "alignSelf": "flex-start",
                       "color": "rgba(22, 47, 86, 0.38)",
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
@@ -3447,14 +3431,12 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with pre
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
-                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
                   Array [
                     Object {
-                      "alignSelf": "flex-start",
                       "color": "rgba(22, 47, 86, 0.38)",
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
@@ -3849,14 +3831,12 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with suf
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
-                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
                   Array [
                     Object {
-                      "alignSelf": "flex-start",
                       "color": "rgba(22, 47, 86, 0.38)",
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
@@ -4623,14 +4603,12 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with d
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
-                align="left"
                 color="shade.930"
                 numberOfLines={1}
                 size="medium"
                 style={
                   Array [
                     Object {
-                      "alignSelf": "flex-start",
                       "color": "rgba(22, 47, 86, 0.10)",
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
@@ -4877,14 +4855,12 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with d
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
-              align="left"
               color="shade.930"
               numberOfLines={2}
               size="xsmall"
               style={
                 Array [
                   Object {
-                    "alignSelf": "flex-start",
                     "color": "rgba(22, 47, 86, 0.10)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
@@ -5005,14 +4981,12 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with e
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
-                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
                   Array [
                     Object {
-                      "alignSelf": "flex-start",
                       "color": "rgba(22, 47, 86, 0.38)",
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
@@ -5259,14 +5233,12 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with e
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
-              align="left"
               color="negative.900"
               numberOfLines={2}
               size="xsmall"
               style={
                 Array [
                   Object {
-                    "alignSelf": "flex-start",
                     "color": "rgba(209, 45, 45, 1.0)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
@@ -5632,14 +5604,12 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
-              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
                 Array [
                   Object {
-                    "alignSelf": "flex-start",
                     "color": "rgba(22, 47, 86, 0.38)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
@@ -5850,14 +5820,12 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
-              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
                 Array [
                   Object {
-                    "alignSelf": "flex-start",
                     "color": "rgba(22, 47, 86, 0.38)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
@@ -5895,14 +5863,12 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
-              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
               style={
                 Array [
                   Object {
-                    "alignSelf": "flex-start",
                     "color": "rgba(22, 47, 86, 0.38)",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 12,
@@ -7197,14 +7163,12 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with p
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
-                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
                   Array [
                     Object {
-                      "alignSelf": "flex-start",
                       "color": "rgba(22, 47, 86, 0.38)",
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
@@ -7343,14 +7307,12 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with p
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
-                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
                   Array [
                     Object {
-                      "alignSelf": "flex-start",
                       "color": "rgba(22, 47, 86, 0.38)",
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,
@@ -7745,14 +7707,12 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with s
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
-                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
                 style={
                   Array [
                     Object {
-                      "alignSelf": "flex-start",
                       "color": "rgba(22, 47, 86, 0.38)",
                       "fontFamily": "Lato-Regular",
                       "fontSize": 14,

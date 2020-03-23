@@ -29,17 +29,6 @@ const styles = {
   color({ theme, color }) {
     return getColor(theme, color);
   },
-  alignSelf({ align }) {
-    switch (align) {
-      case 'left':
-      default:
-        return 'flex-start';
-      case 'center':
-        return 'center';
-      case 'right':
-        return 'flex-end';
-    }
-  },
   lineHeight({ theme, size }) {
     switch (size) {
       case 'medium':
@@ -62,16 +51,14 @@ const StyledHeading = styled(NativeText)`
   font-family: ${styles.fontFamily};
   font-size: ${styles.fontSize};
   color: ${styles.color};
-  align-self: ${styles.alignSelf};
   letter-spacing: 0;
   line-height: ${styles.lineHeight};
 `;
 
-const Heading = ({ size, align, testID, color, children, numberOfLines, weight }) => {
+const Heading = ({ size, testID, color, children, numberOfLines, weight }) => {
   return (
     <StyledHeading
       size={size}
-      align={align}
       color={color}
       numberOfLines={numberOfLines}
       weight={weight}
@@ -86,7 +73,6 @@ Heading.propTypes = {
   children: PropTypes.string,
   size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
   color: PropTypes.oneOf(getColorKeys()),
-  align: PropTypes.oneOf(['left', 'center', 'right']),
   testID: PropTypes.string,
   numberOfLines: PropTypes.number,
   weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
@@ -94,7 +80,6 @@ Heading.propTypes = {
 
 Heading.defaultProps = {
   size: 'xxxlarge',
-  align: 'left',
   color: 'shade.980',
   testID: 'ds-heading',
   weight: 'bold',

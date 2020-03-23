@@ -181,13 +181,11 @@ exports[`<Card /> outlined renders an outlined Card with text content 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.980"
       size="large"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Regular",
             "fontSize": 16,
@@ -341,13 +339,11 @@ exports[`<Card /> shadowed renders a shadowed Card with text content 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
-      align="left"
       color="shade.980"
       size="large"
       style={
         Array [
           Object {
-            "alignSelf": "flex-start",
             "color": "rgba(22, 47, 86, 0.87)",
             "fontFamily": "Lato-Regular",
             "fontSize": 16,

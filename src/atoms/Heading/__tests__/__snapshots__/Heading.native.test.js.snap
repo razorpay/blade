@@ -1,107 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Heading /> align renders heading with center align 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <Text
-    align="center"
-    color="shade.980"
-    size="xxxlarge"
-    style={
-      Array [
-        Object {
-          "alignSelf": "center",
-          "color": "rgba(22, 47, 86, 0.87)",
-          "fontFamily": "Lato-Bold",
-          "fontSize": 32,
-          "letterSpacing": 0,
-          "lineHeight": 36,
-        },
-      ]
-    }
-    testID="ds-heading"
-    weight="bold"
-  >
-    Heading
-  </Text>
-</View>
-`;
-
-exports[`<Heading /> align renders heading with left align 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <Text
-    align="left"
-    color="shade.980"
-    size="xxxlarge"
-    style={
-      Array [
-        Object {
-          "alignSelf": "flex-start",
-          "color": "rgba(22, 47, 86, 0.87)",
-          "fontFamily": "Lato-Bold",
-          "fontSize": 32,
-          "letterSpacing": 0,
-          "lineHeight": 36,
-        },
-      ]
-    }
-    testID="ds-heading"
-    weight="bold"
-  >
-    Heading
-  </Text>
-</View>
-`;
-
-exports[`<Heading /> align renders heading with right align 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <Text
-    align="right"
-    color="shade.980"
-    size="xxxlarge"
-    style={
-      Array [
-        Object {
-          "alignSelf": "flex-end",
-          "color": "rgba(22, 47, 86, 0.87)",
-          "fontFamily": "Lato-Bold",
-          "fontSize": 32,
-          "letterSpacing": 0,
-          "lineHeight": 36,
-        },
-      ]
-    }
-    testID="ds-heading"
-    weight="bold"
-  >
-    Heading
-  </Text>
-</View>
-`;
-
 exports[`<Heading /> color renders heading with custom color 1`] = `
 <View
   collapsable={true}
@@ -113,13 +11,11 @@ exports[`<Heading /> color renders heading with custom color 1`] = `
   }
 >
   <Text
-    align="left"
     color="primary.900"
     size="xxxlarge"
     style={
       Array [
         Object {
-          "alignSelf": "flex-start",
           "color": "rgba(11, 112, 231, 1.0)",
           "fontFamily": "Lato-Bold",
           "fontSize": 32,
@@ -147,13 +43,11 @@ exports[`<Heading /> size renders heading with size large 1`] = `
   }
 >
   <Text
-    align="left"
     color="shade.980"
     size="large"
     style={
       Array [
         Object {
-          "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Bold",
           "fontSize": 16,
@@ -181,13 +75,11 @@ exports[`<Heading /> size renders heading with size medium 1`] = `
   }
 >
   <Text
-    align="left"
     color="shade.980"
     size="medium"
     style={
       Array [
         Object {
-          "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Bold",
           "fontSize": 14,
@@ -215,13 +107,11 @@ exports[`<Heading /> size renders heading with size xlarge 1`] = `
   }
 >
   <Text
-    align="left"
     color="shade.980"
     size="xlarge"
     style={
       Array [
         Object {
-          "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Bold",
           "fontSize": 20,
@@ -249,13 +139,11 @@ exports[`<Heading /> size renders heading with size xxlarge 1`] = `
   }
 >
   <Text
-    align="left"
     color="shade.980"
     size="xxlarge"
     style={
       Array [
         Object {
-          "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Bold",
           "fontSize": 24,
@@ -283,13 +171,11 @@ exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
   }
 >
   <Text
-    align="left"
     color="shade.980"
     size="xxxlarge"
     style={
       Array [
         Object {
-          "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Bold",
           "fontSize": 32,
@@ -317,13 +203,11 @@ exports[`<Heading /> weight renders heading with bold weight 1`] = `
   }
 >
   <Text
-    align="left"
     color="shade.980"
     size="xxxlarge"
     style={
       Array [
         Object {
-          "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Bold",
           "fontSize": 32,
@@ -351,13 +235,11 @@ exports[`<Heading /> weight renders heading with regular weight 1`] = `
   }
 >
   <Text
-    align="left"
     color="shade.980"
     size="xxxlarge"
     style={
       Array [
         Object {
-          "alignSelf": "flex-start",
           "color": "rgba(22, 47, 86, 0.87)",
           "fontFamily": "Lato-Regular",
           "fontSize": 32,
