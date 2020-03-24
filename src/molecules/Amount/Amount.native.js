@@ -5,21 +5,32 @@ import automation from '../../_helpers/automation-attributes';
 import Flex from '../../atoms/Flex';
 import Text from '../../atoms/Text';
 import Heading from '../../atoms/Heading';
+import baseTheme from '../../tokens/theme';
 import geISOCurrencyList from './geISOCurrencyList';
+import { getVariantColorKeys } from '../../_helpers/theme';
 
 const IS_ANDROID = Platform.OS === 'android';
 
 const styles = {
   text: {
-    color({ size }) {
-      if (size === 'xxxlarge') {
-        return 'shade.950';
+    color({ variantColor, variant }) {
+      switch (variant) {
+        case 'camel':
+          return `${variantColor}.950`;
+        case 'camel-subtle':
+          return `${variantColor}.950`;
+        case 'normal':
+          return `${variantColor}.980`;
+        case 'normal-subtle':
+          return `${variantColor}.960`;
+        default:
+          return `${variantColor}.950`;
       }
-
-      return 'shade.940';
     },
     size({ size }) {
       switch (size) {
+        case 'xsmall':
+          return 'xxsmall';
         case 'medium':
           return 'xxsmall';
         case 'large':
@@ -32,22 +43,6 @@ const styles = {
           return 'large';
         default:
           return 'xxsmall';
-      }
-    },
-    weight({ size }) {
-      switch (size) {
-        case 'medium':
-          return 'regular';
-        case 'large':
-          return 'bold';
-        case 'xlarge':
-          return 'bold';
-        case 'xxlarge':
-          return 'bold';
-        case 'xxxlarge':
-          return 'bold';
-        default:
-          return 'bold';
       }
     },
     lineHeight({ size }) {
@@ -64,6 +59,22 @@ const styles = {
           return 'xxlarge';
         default:
           return 'xxlarge';
+      }
+    },
+  },
+  heading: {
+    color({ variantColor, variant }) {
+      switch (variant) {
+        case 'camel':
+          return `${variantColor}.980`;
+        case 'camel-subtle':
+          return `${variantColor}.950`;
+        case 'normal':
+          return `${variantColor}.980`;
+        case 'normal-subtle':
+          return `${variantColor}.960`;
+        default:
+          return `${variantColor}.980`;
       }
     },
   },
@@ -87,7 +98,7 @@ const formatAmount = ({ amount, currency }) => {
   return formattedAmount;
 };
 
-const Amount = ({ size, testID, children, currency }) => {
+const Amount = ({ size, testID, children, currency, weight, variantColor, variant }) => {
   if (isNaN(children)) {
     throw new Error(`Expected children to be number \n(Eg. "1234", "12.34")`);
   }
@@ -96,24 +107,46 @@ const Amount = ({ size, testID, children, currency }) => {
   const [currencySymbol, amount] = formattedAmount.split(/\s/);
   const [integerPart, fractionPart] = amount.split('.');
 
+  const IntegerComponent =
+    size === 'xlarge' || size === 'xxlarge' || size === 'xxxlarge' ? Heading : Text;
+
+  if (variant === 'normal' || variant === 'normal-subtle') {
+    return (
+      <IntegerComponent
+        color={styles.text.color({ variantColor, variant })}
+        size={size}
+        _weight={weight}
+        weight={weight}
+        {...automation(testID)}
+      >
+        {formattedAmount}
+      </IntegerComponent>
+    );
+  }
+
   return (
     <Flex>
       <NativeText {...automation(testID)}>
         <Text
-          color={styles.text.color({ size })}
+          color={styles.text.color({ variantColor, variant })}
           size={styles.text.size({ size })}
-          _weight={styles.text.weight({ size })}
+          _weight={weight}
           _lineHeight={styles.text.lineHeight({ size })} // First text component within nested texts dictate the line height
         >
           {`${currencySymbol} `}
         </Text>
-        <Heading color="shade.980" size={size}>
+        <IntegerComponent
+          color={styles.heading.color({ variantColor, variant })}
+          size={size}
+          weight={weight}
+          _weight={weight}
+        >
           {integerPart}
-        </Heading>
+        </IntegerComponent>
         <Text
-          color={styles.text.color({ size })}
+          color={styles.text.color({ variantColor, variant })}
           size={styles.text.size({ size })}
-          _weight={styles.text.weight({ size })}
+          _weight={weight}
         >{`.${fractionPart}`}</Text>
       </NativeText>
     </Flex>
@@ -122,15 +155,21 @@ const Amount = ({ size, testID, children, currency }) => {
 
 Amount.propTypes = {
   children: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
+  size: PropTypes.oneOf(['xsmall', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
   testID: PropTypes.string,
   currency: PropTypes.oneOf(geISOCurrencyList()),
+  variant: PropTypes.oneOf(['camel', 'normal', 'camel-subtle', 'normal-subtle']),
+  weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
+  variantColor: PropTypes.oneOf(getVariantColorKeys()),
 };
 
 Amount.defaultProps = {
   size: 'medium',
   testID: 'ds-amount',
   currency: 'INR',
+  variant: 'camel',
+  weight: 'bold',
+  variantColor: 'shade',
 };
 
 export default Amount;

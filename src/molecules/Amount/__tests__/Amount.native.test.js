@@ -6,31 +6,217 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<Amount />', () => {
+  describe('variant', () => {
+    it('renders camel variant amount', () => {
+      const displayText = '1234.00';
+      const { container } = renderWithTheme(<Amount variant="camel">{displayText}</Amount>);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders camel-subtle variant amount', () => {
+      const displayText = '1234.00';
+      const { container } = renderWithTheme(<Amount variant="camel-subtle">{displayText}</Amount>);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders normal variant amount', () => {
+      const displayText = '1234.00';
+      const { container } = renderWithTheme(<Amount variant="normal">{displayText}</Amount>);
+      expect(container).toMatchSnapshot();
+    });
+  });
+
   describe('size', () => {
-    it('renders amount with size medium', () => {
-      const displayText = '1234.00';
-      const { container } = renderWithTheme(<Amount size="medium">{displayText}</Amount>);
-      expect(container).toMatchSnapshot();
+    describe(' with camel variant', () => {
+      it('renders amount with medium size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="medium" variant="camel">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with large size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="large" variant="camel">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xlarge" variant="camel">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xxlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xxlarge" variant="camel">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xxxlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xxxlarge" variant="camel">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
     });
-    it('renders amount with size large', () => {
-      const displayText = '1234.00';
-      const { container } = renderWithTheme(<Amount size="large">{displayText}</Amount>);
-      expect(container).toMatchSnapshot();
+
+    describe(' with camel-subtle variant', () => {
+      it('renders amount with medium size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="medium" variant="camel-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with large size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="large" variant="camel-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xlarge" variant="camel-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xxlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xxlarge" variant="camel-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xxxlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xxxlarge" variant="camel-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
     });
-    it('renders amount with size xlarge', () => {
-      const displayText = '1234.00';
-      const { container } = renderWithTheme(<Amount size="xlarge">{displayText}</Amount>);
-      expect(container).toMatchSnapshot();
+
+    describe(' with normal variant', () => {
+      it('renders amount with medium size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="medium" variant="normal">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with large size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="large" variant="normal">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xlarge" variant="normal">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xxlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xxlarge" variant="normal">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xxxlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xxxlarge" variant="normal">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
     });
-    it('renders amount with size xxlarge', () => {
-      const displayText = '1234.00';
-      const { container } = renderWithTheme(<Amount size="xxlarge">{displayText}</Amount>);
-      expect(container).toMatchSnapshot();
-    });
-    it('renders amount with size xxxlarge', () => {
-      const displayText = '1234.00';
-      const { container } = renderWithTheme(<Amount size="xxxlarge">{displayText}</Amount>);
-      expect(container).toMatchSnapshot();
+
+    describe(' with normal-subtle variant', () => {
+      it('renders amount with medium size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="medium" variant="normal-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with large size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="large" variant="normal-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xlarge" variant="normal-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xxlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xxlarge" variant="normal-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders amount with xxxlarge size', () => {
+        const displayText = '1234.00';
+        const { container } = renderWithTheme(
+          <Amount size="xxxlarge" variant="normal-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
     });
   });
 
@@ -108,6 +294,92 @@ describe('<Amount />', () => {
       const displayText = '1234';
       const { container } = renderWithTheme(<Amount currency="EUR">{displayText}</Amount>);
       expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('weight', () => {
+    describe('with camel variant', () => {
+      it('renders bold amount', () => {
+        const displayText = '1234';
+        const { container } = renderWithTheme(
+          <Amount weight="bold" variant="camel">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders regular amount', () => {
+        const displayText = '1234';
+        const { container } = renderWithTheme(
+          <Amount weight="regular" variant="camel">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+    });
+
+    describe('with camel-subtle variant', () => {
+      it('renders bold amount', () => {
+        const displayText = '1234';
+        const { container } = renderWithTheme(
+          <Amount weight="bold" variant="camel-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders regular amount', () => {
+        const displayText = '1234';
+        const { container } = renderWithTheme(
+          <Amount weight="regular" variant="camel-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+    });
+
+    describe('with normal variant', () => {
+      it('renders bold amount', () => {
+        const displayText = '1234';
+        const { container } = renderWithTheme(
+          <Amount weight="bold" variant="normal">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders regular amount', () => {
+        const displayText = '1234';
+        const { container } = renderWithTheme(
+          <Amount weight="regular" variant="normal">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+    });
+
+    describe('with normal-subtle variant', () => {
+      it('renders bold amount', () => {
+        const displayText = '1234';
+        const { container } = renderWithTheme(
+          <Amount weight="bold" variant="normal-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+      it('renders regular amount', () => {
+        const displayText = '1234';
+        const { container } = renderWithTheme(
+          <Amount weight="regular" variant="normal-subtle">
+            {displayText}
+          </Amount>,
+        );
+        expect(container).toMatchSnapshot();
+      });
     });
   });
 });
