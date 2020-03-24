@@ -3,7 +3,7 @@ import { renderWithTheme } from '../../../_helpers/testing-web';
 
 import View from '../index';
 
-describe('Renders <View /> correctly', () => {
+describe('Renders with text ', () => {
   it('snapshot testing', () => {
     const { container } = renderWithTheme(<View>{'simple div'}</View>);
     expect(container).toMatchSnapshot();

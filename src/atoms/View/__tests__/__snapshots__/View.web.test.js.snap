@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders <View /> correctly snapshot testing 1`] = `
+exports[`Renders with text  snapshot testing 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 efwkJo"
