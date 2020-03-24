@@ -1,18 +1,16 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const View = styled(({ as, children, ...props }) => React.createElement(as, props, children))`
-  ${''}
-`;
+const View = styled.div``;
 
 View.propTypes = {
-  as: PropTypes.string.isRequired,
+  as: PropTypes.oneOf(['div', 'p', 'span']),
   children: PropTypes.node,
 };
 
 View.defaultProps = {
   as: 'div',
+  children: undefined,
 };
 
 export default View;
