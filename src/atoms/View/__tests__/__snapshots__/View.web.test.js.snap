@@ -1,5 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<View /> as renders View as div 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 ljAogI"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 glONNR"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      simple div
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<View /> as renders View as p 1`] = `
+<div>
+  <p
+    class="Viewweb__View-sc-1cphyjf-0 ljAogI"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 glONNR"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      simple p
+    </div>
+  </p>
+</div>
+`;
+
+exports[`<View /> as renders View as span 1`] = `
+<div>
+  <span
+    class="Viewweb__View-sc-1cphyjf-0 ljAogI"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 glONNR"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      simple span
+    </div>
+  </span>
+</div>
+`;
+
 exports[`Renders with text  snapshot testing 1`] = `
 <div>
   <div
