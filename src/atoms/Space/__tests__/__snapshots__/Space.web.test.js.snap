@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders <Space /> correctly should apply margin to child component 1`] = `<div />`;
+exports[`Renders <Space /> correctly should apply margin to child component 1`] = `
+<div>
+  <div
+    class="Textweb__Text-sc-6jf9e4-0 lnyJGM Spaceweb__Space-njatzl-0 isdCed"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Hello
+  </div>
+</div>
+`;
 
-exports[`Renders <Space /> correctly should apply padding to child component 1`] = `<div />`;
+exports[`Renders <Space /> correctly should apply padding to child component 1`] = `
+<div>
+  <div
+    class="Textweb__Text-sc-6jf9e4-0 glONNR Spaceweb__Space-njatzl-0 fVlJXp"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Hello
+  </div>
+</div>
+`;
