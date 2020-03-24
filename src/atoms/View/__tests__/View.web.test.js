@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderWithTheme } from '../../../_helpers/testing-web';
+import { renderWithTheme } from '../../../_helpers/testing';
 
 import View from '../index';
 
