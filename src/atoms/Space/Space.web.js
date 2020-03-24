@@ -10,7 +10,7 @@ const Space = styled(({ margin, padding, children, style, ...props }) => {
   }
   return React.cloneElement(children, {
     ...props,
-    style: [style, children.props.style].filter(Boolean),
+    style: { ...style, ...children.props.style },
   });
 })`
   &&& {
