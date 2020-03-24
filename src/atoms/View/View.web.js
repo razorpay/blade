@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const View = styled.div``;
 
 View.propTypes = {
-  as: PropTypes.oneOf(['div', 'p', 'span']),
+  as: PropTypes.string,
   children: PropTypes.node,
 };
 
