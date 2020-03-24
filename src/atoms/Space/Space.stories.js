@@ -18,7 +18,7 @@ storiesOf('Space', module)
   })
   .add('default', () => (
     <Space margin={[1, 1]} padding={[2, 2]}>
-      <Text size={select('Size', sizeOptions, 'large')} as="span">
+      <Text _weight="bold" _isUnderlined size={select('Size', sizeOptions, 'medium')} as="span">
         {text('Display Text', 'The quick brown fox jumps over the lazy dog ')}
       </Text>
     </Space>

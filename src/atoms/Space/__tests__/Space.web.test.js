@@ -10,8 +10,8 @@ describe('Renders <Space /> correctly', () => {
   it('should apply padding to child component', () => {
     const displayText = 'Hello';
     const { container } = renderWithTheme(
-      <Space padding={[1, 2]} margin={[5, 5]} h="1">
-        <Text>{displayText}</Text>
+      <Space padding={[1, 2]}>
+        <Text _isUnderlined>{displayText}</Text>
       </Space>,
     );
     expect(container).toMatchSnapshot();
