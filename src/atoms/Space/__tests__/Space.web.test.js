@@ -11,7 +11,7 @@ describe('Renders <Space /> correctly', () => {
     const displayText = 'Hello';
     const { container } = renderWithTheme(
       <Space padding={[1, 2]}>
-        <Text _isUnderlined>{displayText}</Text>
+        <Text>{displayText}</Text>
       </Space>,
     );
     expect(container).toMatchSnapshot();
@@ -21,7 +21,7 @@ describe('Renders <Space /> correctly', () => {
     const displayText = 'Hello';
     const { container } = renderWithTheme(
       <Space margin={[5, 5]}>
-        <Text _weight="bold">{displayText}</Text>
+        <Text>{displayText}</Text>
       </Space>,
     );
     expect(container).toMatchSnapshot();
