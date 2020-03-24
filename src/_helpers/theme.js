@@ -47,15 +47,15 @@ const getLineHeight = (currentTheme, textSize) => {
 };
 
 const getThemeColors = () => {
-  const flatten = (obj) => {
-    return Object.keys(obj).reduce((acc, key) => {
+  const getColors = (obj) => {
+    return Object.keys(obj).reduce((themeColors, key) => {
       if (typeof obj[key] === 'object') {
-        return acc.concat(flatten(obj[key]));
-      } else acc.push(obj[key]);
-      return acc;
+        return themeColors.concat(getColors(obj[key]));
+      } else themeColors.push(obj[key]);
+      return themeColors;
     }, []);
   };
-  return flatten(colors);
+  return getColors(colors);
 };
 
 export { makePxValue, getColorKeys, getColor, getVariantColorKeys, getLineHeight, getThemeColors };

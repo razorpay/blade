@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Svg, { Path } from 'react-native-svg';
 import { getThemeColors } from '../../_helpers/theme';
+import colors from '../../tokens/colors';
 
 export default function ChevronLeft({ width, height, fill }) {
   return (
@@ -31,5 +32,5 @@ ChevronLeft.propTypes = {
 ChevronLeft.defaultProps = {
   width: 24,
   height: 24,
-  fill: 'rgba(43, 131, 234, 1.0 )',
+  fill: colors.sapphire[800],
 };
