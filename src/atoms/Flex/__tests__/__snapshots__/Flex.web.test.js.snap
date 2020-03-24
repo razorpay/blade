@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <Flex /> correctly renders child of <Flex />(no styles) correctly 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 ljAogI Flexweb__Flex-ni2cjg-0 caTmKl"
+  />
+</div>
+`;
