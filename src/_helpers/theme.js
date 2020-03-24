@@ -1,4 +1,4 @@
-import { spacings } from '../tokens';
+import { spacings, colors } from '../tokens';
 import theme from '../tokens/theme';
 
 const makePxValue = (value) => {
@@ -46,4 +46,16 @@ const getLineHeight = (currentTheme, textSize) => {
   }
 };
 
-export { makePxValue, getColorKeys, getColor, getVariantColorKeys, getLineHeight };
+const getThemeColors = () => {
+  const flatten = (obj) => {
+    return Object.keys(obj).reduce((acc, key) => {
+      if (typeof obj[key] === 'object') {
+        return acc.concat(flatten(obj[key]));
+      } else acc.push(obj[key]);
+      return acc;
+    }, []);
+  };
+  return flatten(colors);
+};
+
+export { makePxValue, getColorKeys, getColor, getVariantColorKeys, getLineHeight, getThemeColors };
