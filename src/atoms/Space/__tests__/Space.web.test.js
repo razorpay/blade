@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from '../../Text';
+import View from '../../View';
 import Space from '../index';
 import { renderWithTheme } from '../../../_helpers/testing';
 
@@ -11,7 +11,7 @@ describe('Renders <Space /> correctly', () => {
     const displayText = 'Hello';
     const { container } = renderWithTheme(
       <Space padding={[1, 2]}>
-        <Text>{displayText}</Text>
+        <View>{displayText}</View>
       </Space>,
     );
     expect(container).toMatchSnapshot();
@@ -21,7 +21,7 @@ describe('Renders <Space /> correctly', () => {
     const displayText = 'Hello';
     const { container } = renderWithTheme(
       <Space margin={[5, 5]}>
-        <Text>{displayText}</Text>
+        <View>{displayText}</View>
       </Space>,
     );
     expect(container).toMatchSnapshot();
@@ -29,12 +29,11 @@ describe('Renders <Space /> correctly', () => {
 
   it('should throw error when more than one nodes are passed as children', () => {
     const expectedErrorMessage = 'Expected a single child for Space component';
-    const displayText = 'Hello';
     expect(() =>
       renderWithTheme(
         <Space margin={[5, 5]}>
-          <Text as="span">{displayText}</Text>
-          <Text as="span">{displayText}</Text>
+          <View />
+          <View />
         </Space>,
       ),
     ).toThrow(expectedErrorMessage);
