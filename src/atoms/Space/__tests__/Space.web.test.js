@@ -1,25 +1,27 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import View from '../../View';
+import Text from '../../Text';
 import Space from '../index';
+import { renderWithTheme } from '../../../_helpers/testing';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('Renders <Space /> correctly', () => {
   it('should apply padding to child component', () => {
-    const { container } = render(
+    const displayText = 'Hello';
+    const { container } = renderWithTheme(
       <Space padding={[1, 2]}>
-        <View />
+        <Text>{displayText}</Text>
       </Space>,
     );
     expect(container).toMatchSnapshot();
   });
 
   it('should apply margin to child component', () => {
-    const { container } = render(
+    const displayText = 'Hello';
+    const { container } = renderWithTheme(
       <Space margin={[5, 5]}>
-        <View />
+        <Text>{displayText}</Text>
       </Space>,
     );
     expect(container).toMatchSnapshot();
@@ -27,11 +29,12 @@ describe('Renders <Space /> correctly', () => {
 
   it('should throw error when more than one nodes are passed as children', () => {
     const expectedErrorMessage = 'Expected a single child for Space component';
+    const displayText = 'Hello';
     expect(() =>
-      render(
+      renderWithTheme(
         <Space margin={[5, 5]}>
-          <View />
-          <View />
+          <Text as="span">{displayText}</Text>
+          <Text as="span">{displayText}</Text>
         </Space>,
       ),
     ).toThrow(expectedErrorMessage);
