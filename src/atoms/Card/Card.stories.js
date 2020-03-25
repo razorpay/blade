@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Card from './Card';
+import { text, select } from '@storybook/addon-knobs';
 import Text from '../Text';
 import View from '../View';
 import Flex from '../Flex';
-import { text, select } from '@storybook/addon-knobs';
 import { getColorKeys } from '../../_helpers/theme';
+import Card from './Card';
 
 const variantOptions = {
   shadowed: 'shadowed',
