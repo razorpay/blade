@@ -26,7 +26,7 @@ describe('Renders <Size /> correctly', () => {
   it('should render child component with no sizings applied', () => {
     const { container, getByTestId } = render(
       <Size>
-        <View testID={'size-view'} />
+        <View testID="size-view" />
       </Size>,
     );
     const childView = getByTestId('size-view');

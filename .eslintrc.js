@@ -6,6 +6,12 @@ module.exports = {
     'max-lines-per-function': 'off',
     'no-console': ['warn'],
     complexity: ['off'],
+    'import/order': [
+      'error',
+      {
+        alphabetize: { order: 'ignore' },
+      },
+    ],
   },
   env: {
     browser: true,

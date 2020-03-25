@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, act } from '@testing-library/react-native';
-import Radio from './../Radio';
 import { renderWithTheme } from '../../../_helpers/testing';
+import Radio from './../Radio';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

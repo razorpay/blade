@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Link from './Link';
 import { text, select } from '@storybook/addon-knobs';
+import Link from './Link';
 
 const sizeOptions = {
   xsmall: 'xsmall',
