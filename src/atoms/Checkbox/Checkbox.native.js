@@ -10,8 +10,8 @@ import Space from '../Space';
 import { getVariantColorKeys, getColor } from '../../_helpers/theme';
 import Icon from '../Icon';
 import View from '../View';
-import Backdrop from './Backdrop';
 import isPropDefined from '../../_helpers/isPropDefined';
+import Backdrop from './Backdrop';
 
 const styles = {
   icon: {
