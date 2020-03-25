@@ -4,14 +4,11 @@ import styled from 'styled-components';
 
 import { makePxValue } from '../../_helpers/theme';
 
-const Space = styled(({ margin, padding, children, style, ...props }) => {
+const Space = styled(({ margin, padding, children, ...props }) => {
   if (React.Children.toArray(children).length !== 1) {
     throw new Error('Expected a single child for Space component');
   }
-  return React.cloneElement(children, {
-    ...props,
-    style: { ...style, ...children.props.style },
-  });
+  return React.cloneElement(children, props);
 })`
   &&& {
     ${(props) => (props.margin ? `margin: ${makePxValue(props.margin)}` : '')};

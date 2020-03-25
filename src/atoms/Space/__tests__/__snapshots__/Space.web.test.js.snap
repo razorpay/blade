@@ -3,7 +3,7 @@
 exports[`Renders <Space /> correctly should apply margin to child component 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 ljAogI Spaceweb__Space-njatzl-0 bOALqu"
+    class="Viewweb__View-sc-1cphyjf-0 ljAogI Spaceweb__Space-njatzl-0 XfsTT"
   >
     Hello
   </div>
@@ -13,7 +13,7 @@ exports[`Renders <Space /> correctly should apply margin to child component 1`] 
 exports[`Renders <Space /> correctly should apply padding to child component 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 ljAogI Spaceweb__Space-njatzl-0 fydvPW"
+    class="Viewweb__View-sc-1cphyjf-0 ljAogI Spaceweb__Space-njatzl-0 jqwxLT"
   >
     Hello
   </div>
