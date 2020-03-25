@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import ScrollView from './ScrollView';
 import Text from '../Text';
+import ScrollView from './ScrollView';
 
 storiesOf('ScrollView', module)
   .addParameters({

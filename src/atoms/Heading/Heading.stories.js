@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Heading from './Heading';
+import { select } from '@storybook/addon-knobs';
 import ScrollView from '../ScrollView';
 import Space from '../Space';
 import View from '../View';
-import { select } from '@storybook/addon-knobs';
+import Heading from './Heading';
 
 const weightOptions = {
   regular: 'regular',

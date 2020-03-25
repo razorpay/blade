@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, select } from '@storybook/addon-knobs';
-import Amount from './Amount';
 import Space from '../../atoms/Space';
 import ScrollView from '../../atoms/ScrollView';
 import View from '../../atoms/View';
 import Size from '../../atoms/Size';
+import Amount from './Amount';
 import geISOCurrencyList from './geISOCurrencyList';
 
 const currencyOptions = geISOCurrencyList().reduce(

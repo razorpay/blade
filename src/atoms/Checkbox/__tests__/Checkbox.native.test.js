@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, act } from '@testing-library/react-native';
-import Checkbox from './../Checkbox';
 import { renderWithTheme } from '../../../_helpers/testing';
+import Checkbox from './../Checkbox';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

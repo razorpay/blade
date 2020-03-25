@@ -1,7 +1,7 @@
 import React from 'react';
+import { fireEvent } from '@testing-library/react-native';
 import Link from '../index';
 import { renderWithTheme } from '../../../_helpers/testing';
-import { fireEvent } from '@testing-library/react-native';
 
 describe('Renders <Link /> correctly', () => {
   it('snapshot testing', () => {
