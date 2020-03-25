@@ -6,6 +6,19 @@
   "engines": {
     "node": ">=10.13.0"
   },
+  "scripts": {
+    "web": "npm run web:storybook",
+    "web:storybook": "BABEL_ENV=web-development start-storybook -c ./storybook/web -p 9009 -s docs",
+    "web:storybook:build": "BABEL_ENV=web-production build-storybook -c ./storybook/web -o docs",
+    "build": "tsc && node ./src/scripts/build.js",
+    "native:ios": "react-native run-ios",
+    "native:android": "react-native run-android",
+    "chromatic": "CHROMATIC_APP_CODE=gx0k8mh119 chromatic",
+    "test:native": "BABEL_ENV=development jest -c ./jest.native.config.js",
+    "test:native:coverage": "yarn run test:native --coverage",
+    "test:web": "BABEL_ENV=web-test jest -c ./jest.web.config.js",
+    "test:web:coverage": "yarn run test:web --coverage"
+  },
   "dependencies": {
     "@react-native-community/async-storage": "1.7.1",
     "intl": "1.2.5",
@@ -78,19 +91,6 @@
     "react-dom": "^16.9.0",
     "react-native": "0.61.5",
     "styled-components": "^4.3.2"
-  },
-  "scripts": {
-    "web": "npm run web:storybook",
-    "web:storybook": "BABEL_ENV=web-development start-storybook -c ./storybook/web -p 9009 -s docs",
-    "web:storybook:build": "BABEL_ENV=web-production build-storybook -c ./storybook/web -o docs",
-    "build": "tsc && node ./src/scripts/build.js",
-    "native:ios": "react-native run-ios",
-    "native:android": "react-native run-android",
-    "chromatic": "CHROMATIC_APP_CODE=gx0k8mh119 chromatic",
-    "test:native": "BABEL_ENV=development jest -c ./jest.native.config.js",
-    "test:native:coverage": "yarn run test:native --coverage",
-    "test:web": "BABEL_ENV=web-test jest -c ./jest.web.config.js",
-    "test:web:coverage": "yarn run test:web --coverage"
   },
   "husky": {
     "hooks": {
