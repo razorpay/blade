@@ -30,7 +30,7 @@ storiesOf('SegmentControl', module)
     component: SegmentControl,
   })
   .add('default', () => (
-    <Flex flexDirection="column" flex={1}>
+    <Flex flexDirection="column">
       <View>
         <Space margin={[1, 0, 1, 0]}>
           <View>
@@ -93,7 +93,7 @@ storiesOf('SegmentControl', module)
     </Flex>
   ))
   .add('controlled', () => (
-    <Flex flexDirection="column" flex={1}>
+    <Flex flexDirection="column">
       <View>
         <Space margin={[1, 0, 1, 0]}>
           <View>
