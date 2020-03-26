@@ -3,6 +3,9 @@ import { fireEvent, act } from '@testing-library/react-native';
 import { renderWithTheme } from '../../../_helpers/testing';
 import SegmentControl from './../SegmentControl';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<SegmentControl />', () => {
   describe('variant', () => {
     it('renders outlined segment control ', () => {
@@ -226,6 +229,104 @@ describe('<SegmentControl />', () => {
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('subText', () => {
+    it('renders subText for outlined & medium segment control ', () => {
+      const { container } = renderWithTheme(
+        <SegmentControl defaultValue="Option 1" variant="outlined" size="medium">
+          <SegmentControl.Option
+            value="Option 1"
+            testID="segment-option-1"
+            subText="Some sub text"
+          />
+          <SegmentControl.Option
+            value="Option 2"
+            testID="segment-option-2"
+            subText="Some sub text"
+          />
+          <SegmentControl.Option
+            value="Option 3"
+            testID="segment-option-3"
+            subText="Some sub text"
+          />
+        </SegmentControl>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders subText for filled & medium segment control ', () => {
+      const { container } = renderWithTheme(
+        <SegmentControl defaultValue="Option 1" variant="filled" size="medium">
+          <SegmentControl.Option
+            value="Option 1"
+            testID="segment-option-1"
+            subText="Some sub text"
+          />
+          <SegmentControl.Option
+            value="Option 2"
+            testID="segment-option-2"
+            subText="Some sub text"
+          />
+          <SegmentControl.Option
+            value="Option 3"
+            testID="segment-option-3"
+            subText="Some sub text"
+          />
+        </SegmentControl>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('throws error for subText with small size filled variant', () => {
+      const errorMessage = `SegmentControl\n \`subText\` cannot be used with \`size='small'\``;
+      expect(() =>
+        renderWithTheme(
+          <SegmentControl defaultValue="Option 1" variant="filled" size="small">
+            <SegmentControl.Option
+              value="Option 1"
+              testID="segment-option-1"
+              subText="Some sub text"
+            />
+            <SegmentControl.Option
+              value="Option 2"
+              testID="segment-option-2"
+              subText="Some sub text"
+            />
+            <SegmentControl.Option
+              value="Option 3"
+              testID="segment-option-3"
+              subText="Some sub text"
+            />
+          </SegmentControl>,
+        ),
+      ).toThrow(errorMessage);
+    });
+
+    it('throws error for subText with small size outlined variant', () => {
+      const errorMessage = `SegmentControl\n \`subText\` cannot be used with \`size='small'\``;
+      expect(() =>
+        renderWithTheme(
+          <SegmentControl defaultValue="Option 1" variant="outlined" size="small">
+            <SegmentControl.Option
+              value="Option 1"
+              testID="segment-option-1"
+              subText="Some sub text"
+            />
+            <SegmentControl.Option
+              value="Option 2"
+              testID="segment-option-2"
+              subText="Some sub text"
+            />
+            <SegmentControl.Option
+              value="Option 3"
+              testID="segment-option-3"
+              subText="Some sub text"
+            />
+          </SegmentControl>,
+        ),
+      ).toThrow(errorMessage);
     });
   });
 });

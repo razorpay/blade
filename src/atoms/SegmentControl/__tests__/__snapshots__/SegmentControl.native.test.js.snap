@@ -4900,6 +4900,946 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
 </View>
 `;
 
+exports[`<SegmentControl /> subText renders subText for filled & medium segment control  1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    size="medium"
+    style={
+      Array [
+        Object {
+          "borderColor": "black",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "minHeight": 40,
+          "overflow": "hidden",
+        },
+        Array [
+          Object {
+            "flexDirection": "row",
+          },
+        ],
+      ]
+    }
+    variant="filled"
+  >
+    <TouchableHighlight
+      activeOpacity={0.85}
+      delayPressOut={100}
+      disabled={false}
+      selected={true}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(11, 112, 231, 0.05)",
+            "borderBottomWidth": 1,
+            "borderColor": "rgba(43, 131, 234, 1.0 )",
+          },
+          Array [
+            Object {
+              "minWidth": 48,
+            },
+            Array [
+              Object {
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                },
+              ],
+            ],
+          ],
+        ]
+      }
+      testID="segment-option-1"
+      underlayColor="rgba(11, 112, 231, 0.38)"
+      variant="filled"
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _weight="regular"
+            color="primary.800"
+            numberOfLines={1}
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "color": "rgba(43, 131, 234, 1.0 )",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            Option 1
+          </Text>
+        </View>
+        <View>
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                ],
+              ]
+            }
+          >
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              _weight="regular"
+              color="primary.700"
+              numberOfLines={1}
+              size="xsmall"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(75, 149, 237, 1.0)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 12,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+            >
+              Some sub text
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        hide={true}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "bottom": 8,
+              "position": "absolute",
+              "right": 0,
+              "top": 8,
+              "width": 1,
+            },
+          ]
+        }
+      />
+    </TouchableHighlight>
+    <TouchableHighlight
+      activeOpacity={0.85}
+      delayPressOut={100}
+      disabled={false}
+      selected={false}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(224, 228, 249, 0.10)",
+            "borderBottomWidth": 1,
+            "borderColor": "rgba(22, 47, 86, 0.10)",
+          },
+          Array [
+            Object {
+              "minWidth": 48,
+            },
+            Array [
+              Object {
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                },
+              ],
+            ],
+          ],
+        ]
+      }
+      testID="segment-option-2"
+      underlayColor="rgba(224, 228, 249, 0.38)"
+      variant="filled"
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _weight="regular"
+            color="shade.960"
+            numberOfLines={1}
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "color": "rgba(22, 47, 86, 0.54)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            Option 2
+          </Text>
+        </View>
+        <View>
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                ],
+              ]
+            }
+          >
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              _weight="regular"
+              color="shade.950"
+              numberOfLines={1}
+              size="xsmall"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.38)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 12,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+            >
+              Some sub text
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        hide={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(22, 47, 86, 0.10)",
+              "bottom": 8,
+              "position": "absolute",
+              "right": 0,
+              "top": 8,
+              "width": 1,
+            },
+          ]
+        }
+      />
+    </TouchableHighlight>
+    <TouchableHighlight
+      activeOpacity={0.85}
+      delayPressOut={100}
+      disabled={false}
+      selected={false}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(224, 228, 249, 0.10)",
+            "borderBottomWidth": 1,
+            "borderColor": "rgba(22, 47, 86, 0.10)",
+          },
+          Array [
+            Object {
+              "minWidth": 48,
+            },
+            Array [
+              Object {
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                },
+              ],
+            ],
+          ],
+        ]
+      }
+      testID="segment-option-3"
+      underlayColor="rgba(224, 228, 249, 0.38)"
+      variant="filled"
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _weight="regular"
+            color="shade.960"
+            numberOfLines={1}
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "color": "rgba(22, 47, 86, 0.54)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            Option 3
+          </Text>
+        </View>
+        <View>
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                ],
+              ]
+            }
+          >
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              _weight="regular"
+              color="shade.950"
+              numberOfLines={1}
+              size="xsmall"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.38)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 12,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+            >
+              Some sub text
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        hide={true}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "bottom": 8,
+              "position": "absolute",
+              "right": 0,
+              "top": 8,
+              "width": 1,
+            },
+          ]
+        }
+      />
+    </TouchableHighlight>
+  </View>
+</View>
+`;
+
+exports[`<SegmentControl /> subText renders subText for outlined & medium segment control  1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    size="medium"
+    style={
+      Array [
+        Object {
+          "borderColor": "rgba(22, 47, 86, 0.05)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "minHeight": 40,
+          "overflow": "hidden",
+        },
+        Array [
+          Object {
+            "flexDirection": "row",
+          },
+        ],
+      ]
+    }
+    variant="outlined"
+  >
+    <TouchableHighlight
+      activeOpacity={0.85}
+      delayPressOut={100}
+      disabled={false}
+      selected={true}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(11, 112, 231, 0.10)",
+            "borderBottomWidth": 0,
+            "borderColor": "transparent",
+          },
+          Array [
+            Object {
+              "minWidth": 48,
+            },
+            Array [
+              Object {
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                },
+              ],
+            ],
+          ],
+        ]
+      }
+      testID="segment-option-1"
+      underlayColor="rgba(11, 112, 231, 0.38)"
+      variant="outlined"
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _weight="bold"
+            color="primary.800"
+            numberOfLines={1}
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "color": "rgba(43, 131, 234, 1.0 )",
+                  "fontFamily": "Lato-Bold",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            Option 1
+          </Text>
+        </View>
+        <View>
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                ],
+              ]
+            }
+          >
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              _weight="regular"
+              color="primary.700"
+              numberOfLines={1}
+              size="xsmall"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(75, 149, 237, 1.0)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 12,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+            >
+              Some sub text
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        hide={true}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "bottom": 8,
+              "position": "absolute",
+              "right": 0,
+              "top": 8,
+              "width": 1,
+            },
+          ]
+        }
+      />
+    </TouchableHighlight>
+    <TouchableHighlight
+      activeOpacity={0.85}
+      delayPressOut={100}
+      disabled={false}
+      selected={false}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderBottomWidth": 0,
+            "borderColor": "transparent",
+          },
+          Array [
+            Object {
+              "minWidth": 48,
+            },
+            Array [
+              Object {
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                },
+              ],
+            ],
+          ],
+        ]
+      }
+      testID="segment-option-2"
+      underlayColor="rgba(224, 228, 249, 0.38)"
+      variant="outlined"
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _weight="bold"
+            color="shade.960"
+            numberOfLines={1}
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "color": "rgba(22, 47, 86, 0.54)",
+                  "fontFamily": "Lato-Bold",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            Option 2
+          </Text>
+        </View>
+        <View>
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                ],
+              ]
+            }
+          >
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              _weight="regular"
+              color="shade.950"
+              numberOfLines={1}
+              size="xsmall"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.38)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 12,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+            >
+              Some sub text
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        hide={true}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "bottom": 8,
+              "position": "absolute",
+              "right": 0,
+              "top": 8,
+              "width": 1,
+            },
+          ]
+        }
+      />
+    </TouchableHighlight>
+    <TouchableHighlight
+      activeOpacity={0.85}
+      delayPressOut={100}
+      disabled={false}
+      selected={false}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderBottomWidth": 0,
+            "borderColor": "transparent",
+          },
+          Array [
+            Object {
+              "minWidth": 48,
+            },
+            Array [
+              Object {
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "justifyContent": "center",
+                },
+              ],
+            ],
+          ],
+        ]
+      }
+      testID="segment-option-3"
+      underlayColor="rgba(224, 228, 249, 0.38)"
+      variant="outlined"
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            _weight="bold"
+            color="shade.960"
+            numberOfLines={1}
+            size="medium"
+            style={
+              Array [
+                Object {
+                  "color": "rgba(22, 47, 86, 0.54)",
+                  "fontFamily": "Lato-Bold",
+                  "fontSize": 14,
+                  "letterSpacing": 0,
+                  "lineHeight": 20,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+          >
+            Option 3
+          </Text>
+        </View>
+        <View>
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                  },
+                ],
+              ]
+            }
+          >
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              _weight="regular"
+              color="shade.950"
+              numberOfLines={1}
+              size="xsmall"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.38)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 12,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+            >
+              Some sub text
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        hide={true}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "bottom": 8,
+              "position": "absolute",
+              "right": 0,
+              "top": 8,
+              "width": 1,
+            },
+          ]
+        }
+      />
+    </TouchableHighlight>
+  </View>
+</View>
+`;
+
 exports[`<SegmentControl /> variant renders filled segment control  1`] = `
 <View
   collapsable={true}
