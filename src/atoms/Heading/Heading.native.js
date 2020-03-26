@@ -55,12 +55,12 @@ const StyledHeading = styled(NativeText)`
   line-height: ${styles.lineHeight};
 `;
 
-const Heading = ({ size, testID, color, children, numberOfLines, weight }) => {
+const Heading = ({ size, testID, color, children, maxLines, weight }) => {
   return (
     <StyledHeading
       size={size}
       color={color}
-      numberOfLines={numberOfLines}
+      numberOfLines={maxLines}
       weight={weight}
       {...automation(testID)}
     >
@@ -74,7 +74,7 @@ Heading.propTypes = {
   size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
   color: PropTypes.oneOf(getColorKeys()),
   testID: PropTypes.string,
-  numberOfLines: PropTypes.number,
+  maxLines: PropTypes.number,
   weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
 };
 
@@ -83,6 +83,7 @@ Heading.defaultProps = {
   color: 'shade.980',
   testID: 'ds-heading',
   weight: 'bold',
+  maxLines: undefined,
 };
 
 export default Heading;

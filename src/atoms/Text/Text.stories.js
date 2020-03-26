@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { select, text } from '@storybook/addon-knobs';
+import { select, text, number } from '@storybook/addon-knobs';
 import Text from './Text';
 
 const sizeOptions = {
@@ -13,22 +13,20 @@ const sizeOptions = {
 
 const htmlTagOptions = ['p', 'div', 'span'];
 
-const maxLinesOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-
 storiesOf('Text', module)
   .addParameters({
     component: Text,
   })
   .add('default', () => (
-    <Text size={select('Size', sizeOptions, 'large')} as="span">
+    <Text size={select('Size', sizeOptions, 'large')} as={select('as', htmlTagOptions, 'div')}>
       {text('Display Text', 'The quick brown fox jumps over the lazy dog ')}
     </Text>
   ))
-  .add('text with as, maxLines', () => (
+  .add('maxLines', () => (
     <Text
       size={select('Size', sizeOptions, 'large')}
-      maxLines={select('maxLines', maxLinesOptions, 3)}
       as={select('as', htmlTagOptions, 'div')}
+      maxLines={number('maxLines', 3)}
     >
       {text(
         'Display Text',

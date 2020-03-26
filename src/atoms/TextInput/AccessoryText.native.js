@@ -29,7 +29,7 @@ const AccessoryText = ({ children, disabled, variant }) => {
   return (
     <Space padding={styles.padding({ variant })}>
       <View>
-        <Text numberOfLines={1} color={styles.color({ disabled })} size="medium">
+        <Text maxLines={1} color={styles.color({ disabled })} size="medium">
           {children}
         </Text>
       </View>
