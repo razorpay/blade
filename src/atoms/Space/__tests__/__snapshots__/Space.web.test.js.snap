@@ -3,7 +3,7 @@
 exports[`<Space /> margin should apply Margin to child component 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 ljAogI Spaceweb__Space-njatzl-0 XfsTT"
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 gCvvOI"
   >
     Flex Item
   </div>
@@ -13,7 +13,7 @@ exports[`<Space /> margin should apply Margin to child component 1`] = `
 exports[`<Space /> padding should apply Padding to child component 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 ljAogI Spaceweb__Space-njatzl-0 jqwxLT"
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 csgBMA"
   >
     Flex Item
   </div>
