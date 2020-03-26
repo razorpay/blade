@@ -17,13 +17,13 @@ const Flex = styled(
     justifyContent,
     order,
     children,
-    style,
     ...props
-  }) =>
-    React.cloneElement(children, {
-      ...props,
-      style: { ...style, ...children.props.style },
-    }),
+  }) => {
+    if (React.Children.toArray(children).length !== 1) {
+      throw new Error('Expected a single child for Space component');
+    }
+    return React.cloneElement(children, props);
+  },
 )`
   &&& {
     ${(props) => (props.alignContent ? `align-content: ${props.alignContent};` : '')};
@@ -70,7 +70,7 @@ Flex.propTypes = {
 
 Flex.defaultProps = {
   display: 'flex',
-  flexDirection: 'row',
+  flexDirection: 'column',
 };
 
 export default Flex;

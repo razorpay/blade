@@ -11,10 +11,18 @@ storiesOf('Flex', module)
   .add('default', () => (
     <Flex>
       <View>
-        <Text>Hello1</Text>
-        <View>
-          <Text>Hello2</Text>
-        </View>
+        <Text>Flex Child 1</Text>
+        <Text>Flex Child 2</Text>
+      </View>
+    </Flex>
+  ))
+  .add('Flex properties', () => (
+    <Flex flex={1} flexDirection="row">
+      <View>
+        <View>Flex Child 1</View>
+        <View>Flex Child 2</View>
+        <View>Flex Child 3</View>
+        <View>Flex Child 4</View>
       </View>
     </Flex>
   ));

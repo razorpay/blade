@@ -1,9 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Renders <Flex /> correctly renders an inline styled child of <Flex />(with styles) correctly 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 ljAogI Flexweb__Flex-ni2cjg-0 dcYCRu"
+    style="background-color: red; height: 100px;"
+  />
+</div>
+`;
+
 exports[`Renders <Flex /> correctly renders child of <Flex />(no styles) correctly 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 ljAogI Flexweb__Flex-ni2cjg-0 caTmKl"
+    class="Viewweb__View-sc-1cphyjf-0 ljAogI Flexweb__Flex-ni2cjg-0 gfvSmb"
   />
 </div>
 `;
