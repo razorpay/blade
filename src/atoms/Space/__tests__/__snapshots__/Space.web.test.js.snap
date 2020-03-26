@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Space /> margin should apply Margin to child component 1`] = `
+exports[`<Space /> margin renders child component with Margin. 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 gCvvOI"
@@ -10,7 +10,7 @@ exports[`<Space /> margin should apply Margin to child component 1`] = `
 </div>
 `;
 
-exports[`<Space /> padding should apply Padding to child component 1`] = `
+exports[`<Space /> padding renders child component with Padding. 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 csgBMA"
