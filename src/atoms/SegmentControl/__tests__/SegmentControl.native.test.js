@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, act } from '@testing-library/react-native';
-import SegmentControl from './../SegmentControl';
 import { renderWithTheme } from '../../../_helpers/testing';
+import SegmentControl from './../SegmentControl';
 
 describe('<SegmentControl />', () => {
   describe('variant', () => {
