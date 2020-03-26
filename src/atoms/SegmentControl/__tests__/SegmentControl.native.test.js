@@ -44,7 +44,7 @@ describe('<SegmentControl />', () => {
       );
       const option = getByTestId('segment-option-2');
       fireEvent.press(option);
-      expect(mockPress).toBeCalledTimes(1);
+      expect(mockPress).toBeCalledWith('Option 2');
       expect(container).toMatchSnapshot();
     });
 
@@ -60,7 +60,7 @@ describe('<SegmentControl />', () => {
       );
       const option = getByTestId('segment-option-2');
       fireEvent.press(option);
-      expect(mockPress).toBeCalledTimes(1);
+      expect(mockPress).toBeCalledWith('Option 2');
       expect(container).toMatchSnapshot();
     });
   });
