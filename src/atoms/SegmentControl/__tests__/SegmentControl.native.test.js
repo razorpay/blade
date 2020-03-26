@@ -329,4 +329,54 @@ describe('<SegmentControl />', () => {
       ).toThrow(errorMessage);
     });
   });
+
+  describe('icon', () => {
+    it('renders icon for outlined & medium segment control ', () => {
+      const { container } = renderWithTheme(
+        <SegmentControl defaultValue="Option 1" variant="outlined" size="medium">
+          <SegmentControl.Option value="Option 1" testID="segment-option-1" icon="info" />
+          <SegmentControl.Option value="Option 2" testID="segment-option-2" icon="info" />
+          <SegmentControl.Option value="Option 3" testID="segment-option-3" icon="info" />
+        </SegmentControl>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders icon for filled & medium segment control ', () => {
+      const { container } = renderWithTheme(
+        <SegmentControl defaultValue="Option 1" variant="filled" size="medium">
+          <SegmentControl.Option value="Option 1" testID="segment-option-1" icon="info" />
+          <SegmentControl.Option value="Option 2" testID="segment-option-2" icon="info" />
+          <SegmentControl.Option value="Option 3" testID="segment-option-3" icon="info" />
+        </SegmentControl>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('throws error for icon with small size filled variant', () => {
+      const errorMessage = `SegmentControl\n \`icon\` cannot be used with \`size='small'\``;
+      expect(() =>
+        renderWithTheme(
+          <SegmentControl defaultValue="Option 1" variant="filled" size="small">
+            <SegmentControl.Option value="Option 1" testID="segment-option-1" icon="info" />
+            <SegmentControl.Option value="Option 2" testID="segment-option-2" icon="info" />
+            <SegmentControl.Option value="Option 3" testID="segment-option-3" icon="info" />
+          </SegmentControl>,
+        ),
+      ).toThrow(errorMessage);
+    });
+
+    it('throws error for icon with small size outlined variant', () => {
+      const errorMessage = `SegmentControl\n \`icon\` cannot be used with \`size='small'\``;
+      expect(() =>
+        renderWithTheme(
+          <SegmentControl defaultValue="Option 1" variant="outlined" size="small">
+            <SegmentControl.Option value="Option 1" testID="segment-option-1" icon="info" />
+            <SegmentControl.Option value="Option 2" testID="segment-option-2" icon="info" />
+            <SegmentControl.Option value="Option 3" testID="segment-option-3" icon="info" />
+          </SegmentControl>,
+        ),
+      ).toThrow(errorMessage);
+    });
+  });
 });
