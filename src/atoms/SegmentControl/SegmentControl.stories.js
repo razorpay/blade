@@ -2,12 +2,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import SegmentControl from './SegmentControl';
 import Flex from '../Flex';
 import View from '../View';
 import { getIconNames } from '../../_helpers/icon';
 import Text from '../Text';
 import Space from '../Space';
+import SegmentControl from './SegmentControl';
 
 const iconOptions = getIconNames().reduce(
   (options, option) => ({ ...options, [option]: option }),
@@ -93,7 +93,7 @@ storiesOf('SegmentControl', module)
     </Flex>
   ))
   .add('controlled', () => (
-    <View flexDirection="column" flex={1}>
+    <Flex flexDirection="column" flex={1}>
       <View>
         <Space margin={[1, 0, 1, 0]}>
           <View>
@@ -153,5 +153,5 @@ storiesOf('SegmentControl', module)
           </View>
         </Flex>
       </View>
-    </View>
+    </Flex>
   ));

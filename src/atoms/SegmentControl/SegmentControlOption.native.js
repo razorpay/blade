@@ -3,7 +3,6 @@ import { TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
 import styled, { ThemeContext } from 'styled-components/native';
 import Text from '../Text';
-import { useSegmentControlContext } from './SegmentControlContext';
 import isDefined from '../../_helpers/isDefined';
 import Flex from '../Flex';
 import Icon from '../Icon';
@@ -13,6 +12,7 @@ import { getColor } from '../../_helpers/theme';
 import { getIconNames } from '../../_helpers/icon';
 import Size from '../Size';
 import automation from '../../_helpers/automation-attributes';
+import { useSegmentControlContext } from './SegmentControlContext';
 
 const styles = {
   option: {
@@ -202,7 +202,7 @@ const SegmentControlOption = ({ value, subText, hideDivider, icon, disabled, tes
                             color={styles.subText.color({ selected, disabled })}
                             numberOfLines={1}
                           >
-                            O{subText}
+                            {subText}
                           </Text>
                         </View>
                       </Space>

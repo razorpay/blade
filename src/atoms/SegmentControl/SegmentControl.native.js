@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import SegmentControlContext from './SegmentControlContext';
-import SegmentControlOption from './SegmentControlOption';
 import styled from 'styled-components/native';
 import View from '../View';
 import Flex from '../Flex';
 import { getColor } from '../../_helpers/theme';
+import SegmentControlContext from './SegmentControlContext';
+import SegmentControlOption from './SegmentControlOption';
 
 const styles = {
   container: {
