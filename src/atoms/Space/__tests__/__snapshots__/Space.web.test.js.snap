@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders <Space /> correctly with view component. should apply margin to child component 1`] = `
+exports[`<Space /> margin should apply margin to child component 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 gCvvOI"
+    class="Viewweb__View-sc-1cphyjf-0 ljAogI Spaceweb__Space-njatzl-0 XfsTT"
   >
     Flex Item
   </div>
 </div>
 `;
 
-exports[`Renders <Space /> correctly with view component. should apply padding to child component 1`] = `
+exports[`<Space /> padding should apply padding to child component 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 csgBMA"
+    class="Viewweb__View-sc-1cphyjf-0 ljAogI Spaceweb__Space-njatzl-0 jqwxLT"
   >
     Flex Item
   </div>
