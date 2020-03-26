@@ -42,13 +42,27 @@ storiesOf('Flex', module)
       </View>
     </Flex>
   ))
+  .add('Flex with spacing and children', () => (
+    <Space margin={[1, 1]} padding={[1, 1]}>
+      <Flex flexDirection="row">
+        <View>
+          <Space margin={[1, 1]} padding={[1, 1]}>
+            <View>Flex Child #1</View>
+          </Space>
+          <Space margin={[1, 1]} padding={[1, 1]}>
+            <View>Flex Child #2</View>
+          </Space>
+        </View>
+      </Flex>
+    </Space>
+  ))
   .add('Flex flex', () => (
     <Flex flex={1}>
       <View as="div">
-        <View>Flex Child 1</View>
-        <View>Flex Child 2</View>
-        <View>Flex Child 3</View>
-        <View>Flex Child 4</View>
+        <View>Flex Child #1</View>
+        <View>Flex Child #2</View>
+        <View>Flex Child #3</View>
+        <View>Flex Child #4</View>
       </View>
     </Flex>
   ));
