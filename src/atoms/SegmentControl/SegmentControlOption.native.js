@@ -8,7 +8,7 @@ import Flex from '../Flex';
 import Icon from '../Icon';
 import View from '../View';
 import Space from '../Space';
-import { getColor } from '../../_helpers/theme';
+import { getColor, makePxValue } from '../../_helpers/theme';
 import { getIconNames } from '../../_helpers/icon';
 import Size from '../Size';
 import automation from '../../_helpers/automation-attributes';
@@ -40,7 +40,7 @@ const styles = {
     },
     borderBottomWidth({ variant }) {
       if (variant === 'filled') {
-        return '1px';
+        return makePxValue(0.125);
       }
       return '0px';
     },
@@ -124,9 +124,9 @@ const StyledOption = styled(TouchableHighlight)`
 const Divider = styled(View)`
   position: absolute;
   right: 0px;
-  top: 8px;
-  bottom: 8px;
-  width: 1px;
+  top: ${makePxValue(1)};
+  bottom: ${makePxValue(1)};
+  width: ${makePxValue(0.125)};
   background-color: ${styles.divider.backgroundColor};
 `;
 
@@ -158,7 +158,7 @@ const SegmentControlOption = ({ value, subText, hideDivider, icon, disabled, tes
   return (
     <Flex flex={1} alignItems="center" justifyContent="center">
       <Space padding={[1, 1, 1, 1]}>
-        <Size minWidth="48px">
+        <Size minWidth={makePxValue(6)}>
           <StyledOption
             onPress={onPress}
             underlayColor={styles.option.underlayColor({ theme, selected })}
