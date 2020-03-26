@@ -8,7 +8,7 @@ afterAll(() => jest.restoreAllMocks());
 
 describe('Renders <Space /> correctly', () => {
   describe('with view component.', () => {
-    it('Should apply padding to child component', () => {
+    it('should apply padding to child component', () => {
       const displayText = 'Flex Item';
       const { container } = renderWithTheme(
         <Space padding={[1, 2]}>
@@ -17,7 +17,7 @@ describe('Renders <Space /> correctly', () => {
       );
       expect(container).toMatchSnapshot();
     });
-    it('Should apply margin to child component', () => {
+    it('should apply margin to child component', () => {
       const displayText = 'Flex Item';
       const { container } = renderWithTheme(
         <Space margin={[5, 5]}>
@@ -26,7 +26,7 @@ describe('Renders <Space /> correctly', () => {
       );
       expect(container).toMatchSnapshot();
     });
-    it('Should throw error when more than one nodes are passed as children', () => {
+    it('should throw error when more than one nodes are passed as children', () => {
       const expectedErrorMessage = 'Expected a single child for Space component';
       expect(() =>
         renderWithTheme(
