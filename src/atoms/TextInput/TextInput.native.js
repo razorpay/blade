@@ -2,19 +2,19 @@ import React, { useContext, useState, useCallback } from 'react';
 import { TextInput as NativeTextInput, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
-import Line from './Line';
-import Text from './Text';
-import AccessoryText from './AccessoryText';
-import AccessoryIcon from './AccessoryIcon';
 import { getLineHeight } from '../../_helpers/theme';
 import Flex from '../Flex';
-import CharacterCount from './CharacterCount';
-import Label from './Label';
 import automation from '../../_helpers/automation-attributes';
 import View from '../View';
 import isEmpty from '../../_helpers/isEmpty';
 import Size from '../Size';
 import Space from '../Space';
+import Label from './Label';
+import CharacterCount from './CharacterCount';
+import AccessoryIcon from './AccessoryIcon';
+import AccessoryText from './AccessoryText';
+import Text from './Text';
+import Line from './Line';
 
 const IS_ANDROID = Platform.OS === 'android';
 

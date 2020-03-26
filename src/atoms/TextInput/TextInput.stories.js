@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import TextInput from './TextInput';
+import { select } from '@storybook/addon-knobs';
 import View from '../View';
 import Space from '../Space';
 import Text from '../Text';
 import ScrollView from '../ScrollView';
-import { select } from '@storybook/addon-knobs';
+import TextInput from './TextInput';
 
 const sizeOptions = {
   small: 'small',

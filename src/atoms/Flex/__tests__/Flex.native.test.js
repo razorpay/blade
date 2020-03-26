@@ -14,7 +14,7 @@ describe('Renders <Flex /> correctly', () => {
   it('renders child of <Flex />(no styles) correctly', () => {
     const { container, getByTestId } = render(
       <Flex>
-        <View testID={'flex-view'} />
+        <View testID="flex-view" />
       </Flex>,
     );
     const childView = getByTestId('flex-view');
@@ -28,7 +28,7 @@ describe('<Flex /> and <Space /> together plays properly', () => {
     const { container, getByTestId } = render(
       <Flex>
         <Space>
-          <View testID={'flex-space-view'} />
+          <View testID="flex-space-view" />
         </Space>
       </Flex>,
     );
@@ -41,7 +41,7 @@ describe('<Flex /> and <Space /> together plays properly', () => {
     const { container, getByTestId } = render(
       <Space>
         <Flex>
-          <View testID={'space-flex-view'} />
+          <View testID="space-flex-view" />
         </Flex>
       </Space>,
     );
@@ -56,7 +56,7 @@ describe('<Flex /> and <Size /> together plays properly', () => {
     const { container, getByTestId } = render(
       <Flex>
         <Size>
-          <View testID={'flex-size-view'} />
+          <View testID="flex-size-view" />
         </Size>
       </Flex>,
     );
@@ -69,7 +69,7 @@ describe('<Flex /> and <Size /> together plays properly', () => {
     const { container, getByTestId } = render(
       <Size>
         <Flex>
-          <View testID={'size-flex-view'} />
+          <View testID="size-flex-view" />
         </Flex>
       </Size>,
     );
@@ -85,7 +85,7 @@ describe('<Flex />, <Size />, <Space /> together plays properly', () => {
       <Flex>
         <Space>
           <Size>
-            <View testID={'flex-space-size-view'} />
+            <View testID="flex-space-size-view" />
           </Size>
         </Space>
       </Flex>,
@@ -103,7 +103,7 @@ describe('<Flex />, <Size />, <Space /> together plays properly', () => {
       <Flex>
         <Space>
           <Size>
-            <View style={viewStyles} testID={'flex-space-size-inlineStyledView'} />
+            <View style={viewStyles} testID="flex-space-size-inlineStyledView" />
           </Size>
         </Space>
       </Flex>,
@@ -123,8 +123,8 @@ describe('<Flex />, <Size />, <Space /> together plays properly', () => {
     const { container, getByTestId } = render(
       <Flex flex={1} flexDirection="row">
         <Space margin={['1px']}>
-          <Size height={'50px'} width={'50px'}>
-            <View style={viewStyles} testID={'styled-flex-space-size-view'} />
+          <Size height="50px" width="50px">
+            <View style={viewStyles} testID="styled-flex-space-size-view" />
           </Size>
         </Space>
       </Flex>,

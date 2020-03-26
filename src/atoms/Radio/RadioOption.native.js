@@ -8,10 +8,10 @@ import isDefined from '../../_helpers/isDefined';
 import { getVariantColorKeys, getColor, makePxValue } from '../../_helpers/theme';
 import Flex from '../Flex';
 import Size from '../Size';
-import Backdrop from './Backdrop';
 import Space from '../Space';
 import isEmpty from '../../_helpers/isEmpty';
 import automation from '../../_helpers/automation-attributes';
+import Backdrop from './Backdrop';
 import { useRadioButtonContext } from './RadioContext';
 
 const styles = {

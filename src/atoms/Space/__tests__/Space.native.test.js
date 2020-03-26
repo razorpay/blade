@@ -19,7 +19,7 @@ describe('Renders <Space /> correctly', () => {
   it('should render child component with no spacings applied', () => {
     const { container, getByTestId } = render(
       <Space>
-        <View testID={'space-view'} />
+        <View testID="space-view" />
       </Space>,
     );
     const childView = getByTestId('space-view');
