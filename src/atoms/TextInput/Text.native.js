@@ -26,7 +26,7 @@ const Text = ({ helpText, errorText, disabled }) => {
       <Flex flex={1}>
         <View>
           <AtomText
-            numberOfLines={2}
+            maxLines={2}
             disabled={disabled}
             color={styles.color({ disabled, errorText })}
             size="xsmall"

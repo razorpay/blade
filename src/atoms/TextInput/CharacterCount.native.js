@@ -20,12 +20,7 @@ const CharacterCount = ({ maxLength, currentLength, disabled }) => {
     <Space padding={[0.5, 0, 0, 1]}>
       <Flex flex={0}>
         <View>
-          <Text
-            numberOfLines={2}
-            disabled={disabled}
-            color={styles.color({ disabled })}
-            size="xsmall"
-          >
+          <Text maxLines={2} disabled={disabled} color={styles.color({ disabled })} size="xsmall">
             {`${currentLength}/${maxLength}`}
           </Text>
         </View>
