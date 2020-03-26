@@ -8,7 +8,7 @@ afterAll(() => jest.restoreAllMocks());
 
 describe('<Space />', () => {
   describe('padding', () => {
-    it('should apply padding to child component', () => {
+    it('should apply Padding to child component', () => {
       const displayText = 'Flex Item';
       const { container } = renderWithTheme(
         <Space padding={[1, 2]}>
@@ -19,7 +19,7 @@ describe('<Space />', () => {
     });
   });
   describe('margin', () => {
-    it('should apply margin to child component', () => {
+    it('should apply Margin to child component', () => {
       const displayText = 'Flex Item';
       const { container } = renderWithTheme(
         <Space margin={[5, 5]}>
