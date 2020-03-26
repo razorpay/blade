@@ -12,12 +12,32 @@ const fillOptions = {
   column: 'column',
 };
 
+const justifyContentOptions = {
+  'space-evenly': 'space-evenly',
+  center: 'center',
+  'flex-end': 'flex-end',
+  'flex-start': 'flex-start',
+  'space-around': 'space-around',
+  'space-between': 'space-between',
+};
+
 storiesOf('Flex', module)
   .addParameters({
     component: Flex,
   })
   .add('default', () => (
     <Flex>
+      <View>
+        <Text>{text('Display Text', 'Flex child #1')}</Text>
+        <Text>{text('Display Text', 'Flex child #2')}</Text>
+      </View>
+    </Flex>
+  ))
+  .add('flex justify-content', () => (
+    <Flex
+      justifyContent={select('justify-content', justifyContentOptions, 'center')}
+      flexDirection="row"
+    >
       <View>
         <Text>{text('Display Text', 'Flex child #1')}</Text>
         <Text>{text('Display Text', 'Flex child #2')}</Text>
