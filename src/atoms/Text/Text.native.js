@@ -48,7 +48,7 @@ const Text = ({
   testID,
   color,
   children,
-  numberOfLines,
+  maxLines,
   _weight,
   _isUnderlined,
   _letterSpacing,
@@ -58,7 +58,7 @@ const Text = ({
     <StyledText
       size={size}
       color={color}
-      numberOfLines={numberOfLines}
+      numberOfLines={maxLines}
       _weight={_weight}
       _isUnderlined={_isUnderlined}
       _letterSpacing={_letterSpacing}
@@ -75,7 +75,7 @@ Text.propTypes = {
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   color: PropTypes.oneOf(getColorKeys()),
   testID: PropTypes.string,
-  numberOfLines: PropTypes.number,
+  maxLines: PropTypes.number,
   _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   _isUnderlined: PropTypes.bool,
   _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
@@ -86,6 +86,7 @@ Text.defaultProps = {
   size: 'large',
   color: 'shade.980',
   testID: 'ds-text',
+  maxLines: undefined,
   _weight: 'regular',
   _isUnderlined: false,
   _letterSpacing: 'small',
