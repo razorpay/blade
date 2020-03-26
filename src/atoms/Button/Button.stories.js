@@ -2,9 +2,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { select } from '@storybook/addon-knobs';
 
-import Button from './Button';
 import Flex from '../Flex';
 import View from '../View';
+import Button from './Button';
 
 const variants = {
   primary: 'primary',
