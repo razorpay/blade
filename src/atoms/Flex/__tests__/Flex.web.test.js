@@ -8,18 +8,20 @@ import Space from '../../Space';
 import Flex from '../index';
 
 describe('<Flex />', () => {
-  it('renders child by applying flex and space to it', () => {
-    const { container } = render(
-      <Space>
-        <Flex>
-          <View>
-            <View as="span">Flex Item #1</View>
-            <View as="span">Flex Item #2</View>
-          </View>
-        </Flex>
-      </Space>,
-    );
-    expect(container).toMatchSnapshot();
+  describe('components composition', () => {
+    it('renders child by applying flex and space properties', () => {
+      const { container } = render(
+        <Space>
+          <Flex>
+            <View>
+              <View as="span">Flex Item #1</View>
+              <View as="span">Flex Item #2</View>
+            </View>
+          </Flex>
+        </Space>,
+      );
+      expect(container).toMatchSnapshot();
+    });
   });
   describe('flexDirection', () => {
     it('renders a child with flexDirection row', () => {

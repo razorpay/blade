@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Flex /> components composition renders child by applying flex and space properties 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 jBqZrs"
+  >
+    <span
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
+    >
+      Flex Item #1
+    </span>
+    <span
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
+    >
+      Flex Item #2
+    </span>
+  </div>
+</div>
+`;
+
 exports[`<Flex /> flex renders an inline styled child with flex property 1`] = `
 <div>
   <div
@@ -43,25 +62,6 @@ exports[`<Flex /> flexDirection renders a child with flexDirection row 1`] = `
     >
       Flex Item #2
     </div>
-  </div>
-</div>
-`;
-
-exports[`<Flex /> renders child by applying flex and space to it 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 jBqZrs"
-  >
-    <span
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-    >
-      Flex Item #1
-    </span>
-    <span
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-    >
-      Flex Item #2
-    </span>
   </div>
 </div>
 `;
