@@ -20,9 +20,9 @@ const variantOptions = {
 };
 
 const valueOptions = {
-  'Option 1': 'Option 1',
-  'Option 2': 'Option 2',
-  'Option 3': 'Option 3',
+  'Option 1': '1',
+  'Option 2': '2',
+  'Option 3': '3',
 };
 
 storiesOf('SegmentControl', module)
@@ -40,16 +40,22 @@ storiesOf('SegmentControl', module)
         <Flex>
           <View>
             <SegmentControl
-              defaultValue="Option 1"
+              defaultValue="1"
               onChange={(value) => {
                 action('Value', value);
               }}
               variant={select('Variant', variantOptions, 'outlined')}
               size="small"
             >
-              <SegmentControl.Option value="Option 1" disabled={boolean('Disabled', false)} />
-              <SegmentControl.Option value="Option 2" disabled={boolean('Disabled', false)} />
-              <SegmentControl.Option value="Option 3" disabled={boolean('Disabled', false)} />
+              <SegmentControl.Option value="1" disabled={boolean('Disabled', false)}>
+                Option 1
+              </SegmentControl.Option>
+              <SegmentControl.Option value="2" disabled={boolean('Disabled', false)}>
+                Option 2
+              </SegmentControl.Option>
+              <SegmentControl.Option value="3" disabled={boolean('Disabled', false)}>
+                Option 3
+              </SegmentControl.Option>
             </SegmentControl>
           </View>
         </Flex>
@@ -61,7 +67,7 @@ storiesOf('SegmentControl', module)
               </View>
             </Space>
             <SegmentControl
-              defaultValue="Option 1"
+              defaultValue="1"
               onChange={(value) => {
                 action('Value', value);
               }}
@@ -69,23 +75,29 @@ storiesOf('SegmentControl', module)
               size="medium"
             >
               <SegmentControl.Option
-                value="Option 1"
+                value="1"
                 icon={select('Icon', iconOptions, undefined)}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
-              />
+              >
+                Option 1
+              </SegmentControl.Option>
               <SegmentControl.Option
-                value="Option 2"
+                value="2"
                 icon={select('Icon', iconOptions, undefined)}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
-              />
+              >
+                Option 2
+              </SegmentControl.Option>
               <SegmentControl.Option
-                value="Option 3"
+                value="3"
                 icon={select('Icon', iconOptions, undefined)}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
-              />
+              >
+                Option 3
+              </SegmentControl.Option>
             </SegmentControl>
           </View>
         </Flex>
@@ -103,16 +115,22 @@ storiesOf('SegmentControl', module)
         <Flex>
           <View>
             <SegmentControl
-              value={select('Value', valueOptions, 'Option 1')}
+              value={select('Value', valueOptions, '1')}
               onChange={(value) => {
                 action('Value', value);
               }}
               variant={select('Variant', variantOptions, 'outlined')}
               size="small"
             >
-              <SegmentControl.Option value="Option 1" disabled={boolean('Disabled', false)} />
-              <SegmentControl.Option value="Option 2" disabled={boolean('Disabled', false)} />
-              <SegmentControl.Option value="Option 3" disabled={boolean('Disabled', false)} />
+              <SegmentControl.Option value="1" disabled={boolean('Disabled', false)}>
+                Option 1
+              </SegmentControl.Option>
+              <SegmentControl.Option value="2" disabled={boolean('Disabled', false)}>
+                Option 2
+              </SegmentControl.Option>
+              <SegmentControl.Option value="3" disabled={boolean('Disabled', false)}>
+                Option 3
+              </SegmentControl.Option>
             </SegmentControl>
           </View>
         </Flex>
@@ -124,7 +142,7 @@ storiesOf('SegmentControl', module)
               </View>
             </Space>
             <SegmentControl
-              value={select('Value', valueOptions, 'Option 1')}
+              value={select('Value', valueOptions, '1')}
               onChange={(value) => {
                 action('Value', value);
               }}
@@ -132,23 +150,29 @@ storiesOf('SegmentControl', module)
               size="medium"
             >
               <SegmentControl.Option
-                value="Option 1"
+                value="1"
                 icon={select('Icon', iconOptions, undefined)}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
-              />
+              >
+                Option 1
+              </SegmentControl.Option>
               <SegmentControl.Option
-                value="Option 2"
+                value="2"
                 icon={select('Icon', iconOptions, undefined)}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
-              />
+              >
+                Option 2
+              </SegmentControl.Option>
               <SegmentControl.Option
-                value="Option 3"
+                value="3"
                 icon={select('Icon', iconOptions, undefined)}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
-              />
+              >
+                Option 3
+              </SegmentControl.Option>
             </SegmentControl>
           </View>
         </Flex>

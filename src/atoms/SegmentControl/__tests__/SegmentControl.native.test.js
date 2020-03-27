@@ -10,10 +10,16 @@ describe('<SegmentControl />', () => {
   describe('variant', () => {
     it('renders outlined segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="outlined">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="outlined">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
@@ -21,10 +27,16 @@ describe('<SegmentControl />', () => {
 
     it('renders filled segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="filled">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="filled">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
@@ -36,15 +48,21 @@ describe('<SegmentControl />', () => {
       const mockPress = jest.fn();
 
       const { container, getByTestId } = renderWithTheme(
-        <SegmentControl value="Option 1" variant="outlined" onChange={mockPress}>
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl value="1" variant="outlined" onChange={mockPress}>
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       const option = getByTestId('segment-option-2');
       fireEvent.press(option);
-      expect(mockPress).toBeCalledWith('Option 2');
+      expect(mockPress).toBeCalledWith('2');
       expect(container).toMatchSnapshot();
     });
 
@@ -52,15 +70,21 @@ describe('<SegmentControl />', () => {
       const mockPress = jest.fn();
 
       const { container, getByTestId } = renderWithTheme(
-        <SegmentControl value="Option 1" variant="filled" onChange={mockPress}>
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl value="1" variant="filled" onChange={mockPress}>
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       const option = getByTestId('segment-option-2');
       fireEvent.press(option);
-      expect(mockPress).toBeCalledWith('Option 2');
+      expect(mockPress).toBeCalledWith('2');
       expect(container).toMatchSnapshot();
     });
   });
@@ -68,20 +92,32 @@ describe('<SegmentControl />', () => {
   describe('size', () => {
     it('renders small outlined segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="outlined" size="small">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="outlined" size="small">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
     });
     it('renders medium outlined segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="outlined" size="medium">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="outlined" size="medium">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
@@ -89,10 +125,16 @@ describe('<SegmentControl />', () => {
 
     it('renders small filled segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="filled" size="small">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="filled" size="small">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
@@ -100,10 +142,16 @@ describe('<SegmentControl />', () => {
 
     it('renders medium filled segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="filled" size="medium">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="filled" size="medium">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
@@ -113,10 +161,16 @@ describe('<SegmentControl />', () => {
   describe('pressIn', () => {
     it('outlined segment control unselected', () => {
       const { container, getByTestId } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="outlined" size="small">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="outlined" size="small">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       const option = getByTestId('segment-option-2');
@@ -129,10 +183,16 @@ describe('<SegmentControl />', () => {
 
     it('outlined segment control selected', () => {
       const { container, getByTestId } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="outlined" size="small">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="outlined" size="small">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       const option = getByTestId('segment-option-1');
@@ -145,10 +205,16 @@ describe('<SegmentControl />', () => {
 
     it('filled segment control unselected', () => {
       const { container, getByTestId } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="filled" size="small">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="filled" size="small">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       const option = getByTestId('segment-option-2');
@@ -160,10 +226,16 @@ describe('<SegmentControl />', () => {
     });
     it('filled segment control selected', () => {
       const { container, getByTestId } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="filled" size="small">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="filled" size="small">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       const option = getByTestId('segment-option-1');
@@ -178,10 +250,16 @@ describe('<SegmentControl />', () => {
   describe('onPress', () => {
     it('outlined segment control ', () => {
       const { container, getByTestId } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="outlined" size="small">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="outlined" size="small">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       const option = getByTestId('segment-option-2');
@@ -193,10 +271,16 @@ describe('<SegmentControl />', () => {
     });
     it('filled segment control ', () => {
       const { container, getByTestId } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="filled" size="small">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="filled" size="small">
+          <SegmentControl.Option value="1" testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       const option = getByTestId('segment-option-2');
@@ -211,10 +295,16 @@ describe('<SegmentControl />', () => {
   describe('disabled', () => {
     it('renders disabled outlined segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="outlined">
-          <SegmentControl.Option value="Option 1" disabled testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" disabled testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" disabled testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="outlined">
+          <SegmentControl.Option value="1" disabled testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" disabled testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" disabled testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
@@ -222,10 +312,16 @@ describe('<SegmentControl />', () => {
 
     it('renders disabled filled segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="filled">
-          <SegmentControl.Option value="Option 1" disabled testID="segment-option-1" />
-          <SegmentControl.Option value="Option 2" disabled testID="segment-option-2" />
-          <SegmentControl.Option value="Option 3" disabled testID="segment-option-3" />
+        <SegmentControl defaultValue="1" variant="filled">
+          <SegmentControl.Option value="1" disabled testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" disabled testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" disabled testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
@@ -235,22 +331,16 @@ describe('<SegmentControl />', () => {
   describe('subText', () => {
     it('renders subText for outlined & medium segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="outlined" size="medium">
-          <SegmentControl.Option
-            value="Option 1"
-            testID="segment-option-1"
-            subText="Some sub text"
-          />
-          <SegmentControl.Option
-            value="Option 2"
-            testID="segment-option-2"
-            subText="Some sub text"
-          />
-          <SegmentControl.Option
-            value="Option 3"
-            testID="segment-option-3"
-            subText="Some sub text"
-          />
+        <SegmentControl defaultValue="1" variant="outlined" size="medium">
+          <SegmentControl.Option value="1" testID="segment-option-1" subText="Some sub text">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2" subText="Some sub text">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3" subText="Some sub text">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
@@ -258,22 +348,16 @@ describe('<SegmentControl />', () => {
 
     it('renders subText for filled & medium segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="filled" size="medium">
-          <SegmentControl.Option
-            value="Option 1"
-            testID="segment-option-1"
-            subText="Some sub text"
-          />
-          <SegmentControl.Option
-            value="Option 2"
-            testID="segment-option-2"
-            subText="Some sub text"
-          />
-          <SegmentControl.Option
-            value="Option 3"
-            testID="segment-option-3"
-            subText="Some sub text"
-          />
+        <SegmentControl defaultValue="1" variant="filled" size="medium">
+          <SegmentControl.Option value="1" testID="segment-option-1" subText="Some sub text">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2" subText="Some sub text">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3" subText="Some sub text">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
@@ -283,22 +367,16 @@ describe('<SegmentControl />', () => {
       const errorMessage = `SegmentControl\n \`subText\` cannot be used with \`size='small'\``;
       expect(() =>
         renderWithTheme(
-          <SegmentControl defaultValue="Option 1" variant="filled" size="small">
-            <SegmentControl.Option
-              value="Option 1"
-              testID="segment-option-1"
-              subText="Some sub text"
-            />
-            <SegmentControl.Option
-              value="Option 2"
-              testID="segment-option-2"
-              subText="Some sub text"
-            />
-            <SegmentControl.Option
-              value="Option 3"
-              testID="segment-option-3"
-              subText="Some sub text"
-            />
+          <SegmentControl defaultValue="1" variant="filled" size="small">
+            <SegmentControl.Option value="1" testID="segment-option-1" subText="Some sub text">
+              Option 1
+            </SegmentControl.Option>
+            <SegmentControl.Option value="2" testID="segment-option-2" subText="Some sub text">
+              Option 2
+            </SegmentControl.Option>
+            <SegmentControl.Option value="3" testID="segment-option-3" subText="Some sub text">
+              Option 3
+            </SegmentControl.Option>
           </SegmentControl>,
         ),
       ).toThrow(errorMessage);
@@ -308,22 +386,16 @@ describe('<SegmentControl />', () => {
       const errorMessage = `SegmentControl\n \`subText\` cannot be used with \`size='small'\``;
       expect(() =>
         renderWithTheme(
-          <SegmentControl defaultValue="Option 1" variant="outlined" size="small">
-            <SegmentControl.Option
-              value="Option 1"
-              testID="segment-option-1"
-              subText="Some sub text"
-            />
-            <SegmentControl.Option
-              value="Option 2"
-              testID="segment-option-2"
-              subText="Some sub text"
-            />
-            <SegmentControl.Option
-              value="Option 3"
-              testID="segment-option-3"
-              subText="Some sub text"
-            />
+          <SegmentControl defaultValue="1" variant="outlined" size="small">
+            <SegmentControl.Option value="1" testID="segment-option-1" subText="Some sub text">
+              Option 1
+            </SegmentControl.Option>
+            <SegmentControl.Option value="2" testID="segment-option-2" subText="Some sub text">
+              Option 2
+            </SegmentControl.Option>
+            <SegmentControl.Option value="3" testID="segment-option-3" subText="Some sub text">
+              Option 3
+            </SegmentControl.Option>
           </SegmentControl>,
         ),
       ).toThrow(errorMessage);
@@ -333,10 +405,16 @@ describe('<SegmentControl />', () => {
   describe('icon', () => {
     it('renders icon for outlined & medium segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="outlined" size="medium">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" icon="info" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" icon="info" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" icon="info" />
+        <SegmentControl defaultValue="1" variant="outlined" size="medium">
+          <SegmentControl.Option value="1" testID="segment-option-1" icon="info">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2" icon="info">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3" icon="info">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
@@ -344,10 +422,16 @@ describe('<SegmentControl />', () => {
 
     it('renders icon for filled & medium segment control ', () => {
       const { container } = renderWithTheme(
-        <SegmentControl defaultValue="Option 1" variant="filled" size="medium">
-          <SegmentControl.Option value="Option 1" testID="segment-option-1" icon="info" />
-          <SegmentControl.Option value="Option 2" testID="segment-option-2" icon="info" />
-          <SegmentControl.Option value="Option 3" testID="segment-option-3" icon="info" />
+        <SegmentControl defaultValue="1" variant="filled" size="medium">
+          <SegmentControl.Option value="1" testID="segment-option-1" icon="info">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2" icon="info">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3" icon="info">
+            Option 3
+          </SegmentControl.Option>
         </SegmentControl>,
       );
       expect(container).toMatchSnapshot();
@@ -357,10 +441,16 @@ describe('<SegmentControl />', () => {
       const errorMessage = `SegmentControl\n \`icon\` cannot be used with \`size='small'\``;
       expect(() =>
         renderWithTheme(
-          <SegmentControl defaultValue="Option 1" variant="filled" size="small">
-            <SegmentControl.Option value="Option 1" testID="segment-option-1" icon="info" />
-            <SegmentControl.Option value="Option 2" testID="segment-option-2" icon="info" />
-            <SegmentControl.Option value="Option 3" testID="segment-option-3" icon="info" />
+          <SegmentControl defaultValue="1" variant="filled" size="small">
+            <SegmentControl.Option value="1" testID="segment-option-1" icon="info">
+              Option 1
+            </SegmentControl.Option>
+            <SegmentControl.Option value="2" testID="segment-option-2" icon="info">
+              Option 2
+            </SegmentControl.Option>
+            <SegmentControl.Option value="3" testID="segment-option-3" icon="info">
+              Option 3
+            </SegmentControl.Option>
           </SegmentControl>,
         ),
       ).toThrow(errorMessage);
@@ -370,10 +460,16 @@ describe('<SegmentControl />', () => {
       const errorMessage = `SegmentControl\n \`icon\` cannot be used with \`size='small'\``;
       expect(() =>
         renderWithTheme(
-          <SegmentControl defaultValue="Option 1" variant="outlined" size="small">
-            <SegmentControl.Option value="Option 1" testID="segment-option-1" icon="info" />
-            <SegmentControl.Option value="Option 2" testID="segment-option-2" icon="info" />
-            <SegmentControl.Option value="Option 3" testID="segment-option-3" icon="info" />
+          <SegmentControl defaultValue="1" variant="outlined" size="small">
+            <SegmentControl.Option value="1" testID="segment-option-1" icon="info">
+              Option 1
+            </SegmentControl.Option>
+            <SegmentControl.Option value="2" testID="segment-option-2" icon="info">
+              Option 2
+            </SegmentControl.Option>
+            <SegmentControl.Option value="3" testID="segment-option-3" icon="info">
+              Option 3
+            </SegmentControl.Option>
           </SegmentControl>,
         ),
       ).toThrow(errorMessage);

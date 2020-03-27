@@ -134,7 +134,15 @@ const isSelected = ({ context, value }) => {
   return context && isDefined(context.value) && context.value === value;
 };
 
-const SegmentControlOption = ({ value, subText, hideDivider, icon, disabled, testID }) => {
+const SegmentControlOption = ({
+  value,
+  subText,
+  hideDivider,
+  icon,
+  disabled,
+  testID,
+  children,
+}) => {
   const context = useSegmentControlContext();
   const theme = useContext(ThemeContext);
   const size = context.size;
@@ -189,7 +197,7 @@ const SegmentControlOption = ({ value, subText, hideDivider, icon, disabled, tes
                         maxLines={1}
                         _weight={styles.text.weight({ variant: context.variant })}
                       >
-                        {value}
+                        {children}
                       </Text>
                     </View>
                   </Flex>
@@ -226,6 +234,7 @@ SegmentControlOption.propTypes = {
   icon: PropTypes.oneOf(getIconNames()),
   disabled: PropTypes.bool,
   testID: PropTypes.string,
+  children: PropTypes.string.isRequired,
 };
 
 SegmentControlOption.defaultProps = {
