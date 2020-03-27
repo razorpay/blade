@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { select, text } from '@storybook/addon-knobs';
-
 import Text from '../Text';
 import View from '../View';
 import Space from '../Space';
