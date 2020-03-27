@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Text as NativeText, Platform } from 'react-native';
 import automation from '../../_helpers/automation-attributes';
 import Flex from '../../atoms/Flex';
-import Text from '../../atoms/Text';
+import AtomText from '../../atoms/Text';
 import Heading from '../../atoms/Heading';
 import baseTheme from '../../tokens/theme';
 import { getVariantColorKeys } from '../../_helpers/theme';
@@ -108,12 +108,11 @@ const Amount = ({ size, testID, children, currency, weight, variant, variantColo
   const [currencySymbol, amount] = formattedAmount.split(/\s/);
   const [integerPart, fractionPart] = amount.split('.');
 
-  const IntegerComponent =
-    size === 'xlarge' || size === 'xxlarge' || size === 'xxxlarge' ? Heading : Text;
+  const Text = size === 'xlarge' || size === 'xxlarge' || size === 'xxxlarge' ? Heading : AtomText;
 
   if (variant === 'normal') {
     return (
-      <IntegerComponent
+      <Text
         color={styles.text.color({ variant, variantColor, subtle })}
         size={size}
         _weight={weight}
@@ -121,34 +120,34 @@ const Amount = ({ size, testID, children, currency, weight, variant, variantColo
         {...automation(testID)}
       >
         {formattedAmount}
-      </IntegerComponent>
+      </Text>
     );
   }
 
   return (
     <Flex>
       <NativeText {...automation(testID)}>
-        <Text
+        <AtomText
           color={styles.text.color({ variant, variantColor, subtle })}
           size={styles.text.size({ size })}
           _weight={weight}
           _lineHeight={styles.text.lineHeight({ size })} // First text component within nested texts dictate the line height
         >
           {`${currencySymbol} `}
-        </Text>
-        <IntegerComponent
+        </AtomText>
+        <Text
           color={styles.heading.color({ variant, variantColor, subtle })}
           size={size}
           weight={weight}
           _weight={weight}
         >
           {integerPart}
-        </IntegerComponent>
-        <Text
+        </Text>
+        <AtomText
           color={styles.text.color({ variant, variantColor, subtle })}
           size={styles.text.size({ size })}
           _weight={weight}
-        >{`.${fractionPart}`}</Text>
+        >{`.${fractionPart}`}</AtomText>
       </NativeText>
     </Flex>
   );
