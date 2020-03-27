@@ -186,7 +186,7 @@ const SegmentControlOption = ({ value, subText, hideDivider, icon, disabled, tes
                       <Text
                         size={styles.text.size({ size })}
                         color={styles.text.color({ selected, disabled })}
-                        numberOfLines={1}
+                        maxLines={1}
                         _weight={styles.text.weight({ variant: context.variant })}
                       >
                         {value}
@@ -200,7 +200,7 @@ const SegmentControlOption = ({ value, subText, hideDivider, icon, disabled, tes
                           <Text
                             size="xsmall"
                             color={styles.subText.color({ selected, disabled })}
-                            numberOfLines={1}
+                            maxLines={1}
                           >
                             {subText}
                           </Text>
