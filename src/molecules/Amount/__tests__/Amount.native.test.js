@@ -21,7 +21,7 @@ describe('<Amount />', () => {
   });
 
   describe('size', () => {
-    describe(' with camel variant', () => {
+    describe('with camel variant', () => {
       it('renders amount with medium size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
@@ -69,7 +69,7 @@ describe('<Amount />', () => {
       });
     });
 
-    describe(' with camel variant and subtle', () => {
+    describe('with camel variant and subtle', () => {
       it('renders amount with medium size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
@@ -117,7 +117,7 @@ describe('<Amount />', () => {
       });
     });
 
-    describe(' with normal variant', () => {
+    describe('with normal variant', () => {
       it('renders amount with medium size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
@@ -165,7 +165,7 @@ describe('<Amount />', () => {
       });
     });
 
-    describe(' with normal variant and subtle', () => {
+    describe('with normal variant and subtle', () => {
       it('renders amount with medium size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
