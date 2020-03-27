@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, select } from '@storybook/addon-knobs';
+import { text, select, boolean } from '@storybook/addon-knobs';
 import Space from '../../atoms/Space';
 import ScrollView from '../../atoms/ScrollView';
 import View from '../../atoms/View';
@@ -16,9 +16,7 @@ const currencyOptions = geISOCurrencyList().reduce(
 
 const variantOptions = {
   camel: 'camel',
-  'camel-subtle': 'camel-subtle',
   normal: 'normal',
-  'normal-subtle': 'normal-subtle',
 };
 
 const weightOptions = {
@@ -39,6 +37,7 @@ storiesOf('Amount', module)
               <Text>xsmall:</Text>
             </Space>
             <Amount
+              subtle={boolean('Subtle', false)}
               size="xsmall"
               currency={select('Currency', currencyOptions, 'INR')}
               variant={select('Variant', variantOptions, 'camel')}
@@ -54,6 +53,7 @@ storiesOf('Amount', module)
               <Text>medium:</Text>
             </Space>
             <Amount
+              subtle={boolean('Subtle', false)}
               size="medium"
               currency={select('Currency', currencyOptions, 'INR')}
               variant={select('Variant', variantOptions, 'camel')}
@@ -69,6 +69,7 @@ storiesOf('Amount', module)
               <Text>large:</Text>
             </Space>
             <Amount
+              subtle={boolean('Subtle', false)}
               size="large"
               currency={select('Currency', currencyOptions, 'INR')}
               variant={select('Variant', variantOptions, 'camel')}
@@ -84,6 +85,7 @@ storiesOf('Amount', module)
               <Text>xlarge:</Text>
             </Space>
             <Amount
+              subtle={boolean('Subtle', false)}
               size="xlarge"
               currency={select('Currency', currencyOptions, 'INR')}
               variant={select('Variant', variantOptions, 'camel')}
@@ -99,6 +101,7 @@ storiesOf('Amount', module)
               <Text>xxlarge:</Text>
             </Space>
             <Amount
+              subtle={boolean('Subtle', false)}
               size="xxlarge"
               currency={select('Currency', currencyOptions, 'INR')}
               variant={select('Variant', variantOptions, 'camel')}
@@ -114,6 +117,7 @@ storiesOf('Amount', module)
               <Text>xxxlarge:</Text>
             </Space>
             <Amount
+              subtle={boolean('Subtle', false)}
               size="xxxlarge"
               currency={select('Currency', currencyOptions, 'INR')}
               variant={select('Variant', variantOptions, 'camel')}

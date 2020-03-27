@@ -13,12 +13,6 @@ describe('<Amount />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('renders camel-subtle variant amount', () => {
-      const displayText = '1234.00';
-      const { container } = renderWithTheme(<Amount variant="camel-subtle">{displayText}</Amount>);
-      expect(container).toMatchSnapshot();
-    });
-
     it('renders normal variant amount', () => {
       const displayText = '1234.00';
       const { container } = renderWithTheme(<Amount variant="normal">{displayText}</Amount>);
@@ -75,11 +69,11 @@ describe('<Amount />', () => {
       });
     });
 
-    describe(' with camel-subtle variant', () => {
+    describe(' with camel variant and subtle', () => {
       it('renders amount with medium size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
-          <Amount size="medium" variant="camel-subtle">
+          <Amount size="medium" variant="camel" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -88,7 +82,7 @@ describe('<Amount />', () => {
       it('renders amount with large size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
-          <Amount size="large" variant="camel-subtle">
+          <Amount size="large" variant="camel" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -97,7 +91,7 @@ describe('<Amount />', () => {
       it('renders amount with xlarge size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
-          <Amount size="xlarge" variant="camel-subtle">
+          <Amount size="xlarge" variant="camel" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -106,7 +100,7 @@ describe('<Amount />', () => {
       it('renders amount with xxlarge size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
-          <Amount size="xxlarge" variant="camel-subtle">
+          <Amount size="xxlarge" variant="camel" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -115,7 +109,7 @@ describe('<Amount />', () => {
       it('renders amount with xxxlarge size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
-          <Amount size="xxxlarge" variant="camel-subtle">
+          <Amount size="xxxlarge" variant="camel" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -171,11 +165,11 @@ describe('<Amount />', () => {
       });
     });
 
-    describe(' with normal-subtle variant', () => {
+    describe(' with normal variant and subtle', () => {
       it('renders amount with medium size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
-          <Amount size="medium" variant="normal-subtle">
+          <Amount size="medium" variant="normal" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -184,7 +178,7 @@ describe('<Amount />', () => {
       it('renders amount with large size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
-          <Amount size="large" variant="normal-subtle">
+          <Amount size="large" variant="normal" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -193,7 +187,7 @@ describe('<Amount />', () => {
       it('renders amount with xlarge size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
-          <Amount size="xlarge" variant="normal-subtle">
+          <Amount size="xlarge" variant="normal" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -202,7 +196,7 @@ describe('<Amount />', () => {
       it('renders amount with xxlarge size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
-          <Amount size="xxlarge" variant="normal-subtle">
+          <Amount size="xxlarge" variant="normal" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -211,7 +205,7 @@ describe('<Amount />', () => {
       it('renders amount with xxxlarge size', () => {
         const displayText = '1234.00';
         const { container } = renderWithTheme(
-          <Amount size="xxxlarge" variant="normal-subtle">
+          <Amount size="xxxlarge" variant="normal" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -319,11 +313,11 @@ describe('<Amount />', () => {
       });
     });
 
-    describe('with camel-subtle variant', () => {
+    describe('with camel variant and subtle', () => {
       it('renders bold amount', () => {
         const displayText = '1234';
         const { container } = renderWithTheme(
-          <Amount weight="bold" variant="camel-subtle">
+          <Amount weight="bold" variant="camel" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -332,7 +326,7 @@ describe('<Amount />', () => {
       it('renders regular amount', () => {
         const displayText = '1234';
         const { container } = renderWithTheme(
-          <Amount weight="regular" variant="camel-subtle">
+          <Amount weight="regular" variant="camel" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -361,11 +355,11 @@ describe('<Amount />', () => {
       });
     });
 
-    describe('with normal-subtle variant', () => {
+    describe('with normal variant and subtle', () => {
       it('renders bold amount', () => {
         const displayText = '1234';
         const { container } = renderWithTheme(
-          <Amount weight="bold" variant="normal-subtle">
+          <Amount weight="bold" variant="normal" subtle={true}>
             {displayText}
           </Amount>,
         );
@@ -374,7 +368,7 @@ describe('<Amount />', () => {
       it('renders regular amount', () => {
         const displayText = '1234';
         const { container } = renderWithTheme(
-          <Amount weight="regular" variant="normal-subtle">
+          <Amount weight="regular" variant="normal" subtle={true}>
             {displayText}
           </Amount>,
         );

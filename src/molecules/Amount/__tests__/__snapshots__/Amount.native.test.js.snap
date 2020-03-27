@@ -1116,6 +1116,462 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
 </View>
 `;
 
+exports[`<Amount /> size  with camel variant and subtle renders amount with large size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      color="shade.950"
+      size="xsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 12,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      color="shade.950"
+      size="large"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 16,
+            "letterSpacing": 0,
+            "lineHeight": 24,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      color="shade.950"
+      size="xsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 12,
+            "letterSpacing": 0,
+            "lineHeight": 18,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size  with camel variant and subtle renders amount with medium size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size  with camel variant and subtle renders amount with xlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xlarge"
+      _weight="bold"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 30,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      color="shade.950"
+      size="xlarge"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 20,
+            "letterSpacing": 0,
+            "lineHeight": 30,
+          },
+        ]
+      }
+      testID="ds-heading"
+      weight="bold"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size  with camel variant and subtle renders amount with xxlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xxlarge"
+      _weight="bold"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 36,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      color="shade.950"
+      size="xxlarge"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 24,
+            "letterSpacing": 0,
+            "lineHeight": 36,
+          },
+        ]
+      }
+      testID="ds-heading"
+      weight="bold"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size  with camel variant and subtle renders amount with xxxlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xxlarge"
+      _weight="bold"
+      color="shade.950"
+      size="large"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 16,
+            "letterSpacing": 0,
+            "lineHeight": 36,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      color="shade.950"
+      size="xxxlarge"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 32,
+            "letterSpacing": 0,
+            "lineHeight": 36,
+          },
+        ]
+      }
+      testID="ds-heading"
+      weight="bold"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      color="shade.950"
+      size="large"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 16,
+            "letterSpacing": 0,
+            "lineHeight": 24,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
 exports[`<Amount /> size  with camel variant renders amount with large size 1`] = `
 <View
   collapsable={true}
@@ -1572,7 +2028,7 @@ exports[`<Amount /> size  with camel variant renders amount with xxxlarge size 1
 </View>
 `;
 
-exports[`<Amount /> size  with camel-subtle variant renders amount with large size 1`] = `
+exports[`<Amount /> size  with normal variant and subtle renders amount with large size 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1583,89 +2039,31 @@ exports[`<Amount /> size  with camel-subtle variant renders amount with large si
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="bold"
+    color="shade.960"
+    size="large"
     style={
       Array [
-        Array [
-          Object {
-            "flexDirection": "column",
-          },
-        ],
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 16,
+          "letterSpacing": 0,
+          "lineHeight": 24,
+          "textDecorationLine": "none",
+        },
       ]
     }
     testID="ds-amount"
   >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _lineHeight="medium"
-      _weight="bold"
-      color="shade.950"
-      size="xsmall"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 12,
-            "letterSpacing": 0,
-            "lineHeight": 20,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      ₹ 
-    </Text>
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="bold"
-      color="shade.950"
-      size="large"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 16,
-            "letterSpacing": 0,
-            "lineHeight": 24,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      1,234
-    </Text>
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="bold"
-      color="shade.950"
-      size="xsmall"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 12,
-            "letterSpacing": 0,
-            "lineHeight": 18,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      .00
-    </Text>
+    ₹ 1,234.00
   </Text>
 </View>
 `;
 
-exports[`<Amount /> size  with camel-subtle variant renders amount with medium size 1`] = `
+exports[`<Amount /> size  with normal variant and subtle renders amount with medium size 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1676,89 +2074,31 @@ exports[`<Amount /> size  with camel-subtle variant renders amount with medium s
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="bold"
+    color="shade.960"
+    size="medium"
     style={
       Array [
-        Array [
-          Object {
-            "flexDirection": "column",
-          },
-        ],
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textDecorationLine": "none",
+        },
       ]
     }
     testID="ds-amount"
   >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _lineHeight="medium"
-      _weight="bold"
-      color="shade.950"
-      size="xxsmall"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 10,
-            "letterSpacing": 0,
-            "lineHeight": 20,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      ₹ 
-    </Text>
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="bold"
-      color="shade.950"
-      size="medium"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 14,
-            "letterSpacing": 0,
-            "lineHeight": 20,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      1,234
-    </Text>
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="bold"
-      color="shade.950"
-      size="xxsmall"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 10,
-            "letterSpacing": 0,
-            "lineHeight": 14,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      .00
-    </Text>
+    ₹ 1,234.00
   </Text>
 </View>
 `;
 
-exports[`<Amount /> size  with camel-subtle variant renders amount with xlarge size 1`] = `
+exports[`<Amount /> size  with normal variant and subtle renders amount with xlarge size 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1769,86 +2109,28 @@ exports[`<Amount /> size  with camel-subtle variant renders amount with xlarge s
   }
 >
   <Text
+    color="shade.960"
+    size="xlarge"
     style={
       Array [
-        Array [
-          Object {
-            "flexDirection": "column",
-          },
-        ],
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 20,
+          "letterSpacing": 0,
+          "lineHeight": 30,
+        },
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _lineHeight="xlarge"
-      _weight="bold"
-      color="shade.950"
-      size="medium"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 14,
-            "letterSpacing": 0,
-            "lineHeight": 30,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      ₹ 
-    </Text>
-    <Text
-      color="shade.950"
-      size="xlarge"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 20,
-            "letterSpacing": 0,
-            "lineHeight": 30,
-          },
-        ]
-      }
-      testID="ds-heading"
-      weight="bold"
-    >
-      1,234
-    </Text>
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="bold"
-      color="shade.950"
-      size="medium"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 14,
-            "letterSpacing": 0,
-            "lineHeight": 20,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      .00
-    </Text>
+    ₹ 1,234.00
   </Text>
 </View>
 `;
 
-exports[`<Amount /> size  with camel-subtle variant renders amount with xxlarge size 1`] = `
+exports[`<Amount /> size  with normal variant and subtle renders amount with xxlarge size 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1859,86 +2141,28 @@ exports[`<Amount /> size  with camel-subtle variant renders amount with xxlarge 
   }
 >
   <Text
+    color="shade.960"
+    size="xxlarge"
     style={
       Array [
-        Array [
-          Object {
-            "flexDirection": "column",
-          },
-        ],
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 24,
+          "letterSpacing": 0,
+          "lineHeight": 36,
+        },
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _lineHeight="xxlarge"
-      _weight="bold"
-      color="shade.950"
-      size="medium"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 14,
-            "letterSpacing": 0,
-            "lineHeight": 36,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      ₹ 
-    </Text>
-    <Text
-      color="shade.950"
-      size="xxlarge"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 24,
-            "letterSpacing": 0,
-            "lineHeight": 36,
-          },
-        ]
-      }
-      testID="ds-heading"
-      weight="bold"
-    >
-      1,234
-    </Text>
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="bold"
-      color="shade.950"
-      size="medium"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 14,
-            "letterSpacing": 0,
-            "lineHeight": 20,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      .00
-    </Text>
+    ₹ 1,234.00
   </Text>
 </View>
 `;
 
-exports[`<Amount /> size  with camel-subtle variant renders amount with xxxlarge size 1`] = `
+exports[`<Amount /> size  with normal variant and subtle renders amount with xxxlarge size 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1949,81 +2173,23 @@ exports[`<Amount /> size  with camel-subtle variant renders amount with xxxlarge
   }
 >
   <Text
+    color="shade.960"
+    size="xxxlarge"
     style={
       Array [
-        Array [
-          Object {
-            "flexDirection": "column",
-          },
-        ],
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 32,
+          "letterSpacing": 0,
+          "lineHeight": 36,
+        },
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _lineHeight="xxlarge"
-      _weight="bold"
-      color="shade.950"
-      size="large"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 16,
-            "letterSpacing": 0,
-            "lineHeight": 36,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      ₹ 
-    </Text>
-    <Text
-      color="shade.950"
-      size="xxxlarge"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 32,
-            "letterSpacing": 0,
-            "lineHeight": 36,
-          },
-        ]
-      }
-      testID="ds-heading"
-      weight="bold"
-    >
-      1,234
-    </Text>
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="bold"
-      color="shade.950"
-      size="large"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 16,
-            "letterSpacing": 0,
-            "lineHeight": 24,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      .00
-    </Text>
+    ₹ 1,234.00
   </Text>
 </View>
 `;
@@ -2194,172 +2360,6 @@ exports[`<Amount /> size  with normal variant renders amount with xxxlarge size 
 </View>
 `;
 
-exports[`<Amount /> size  with normal-subtle variant renders amount with large size 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <Text
-    _isUnderlined={false}
-    _letterSpacing="small"
-    _weight="bold"
-    color="shade.960"
-    size="large"
-    style={
-      Array [
-        Object {
-          "color": "rgba(22, 47, 86, 0.54)",
-          "fontFamily": "Lato-Bold",
-          "fontSize": 16,
-          "letterSpacing": 0,
-          "lineHeight": 24,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-    testID="ds-amount"
-  >
-    ₹ 1,234.00
-  </Text>
-</View>
-`;
-
-exports[`<Amount /> size  with normal-subtle variant renders amount with medium size 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <Text
-    _isUnderlined={false}
-    _letterSpacing="small"
-    _weight="bold"
-    color="shade.960"
-    size="medium"
-    style={
-      Array [
-        Object {
-          "color": "rgba(22, 47, 86, 0.54)",
-          "fontFamily": "Lato-Bold",
-          "fontSize": 14,
-          "letterSpacing": 0,
-          "lineHeight": 20,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-    testID="ds-amount"
-  >
-    ₹ 1,234.00
-  </Text>
-</View>
-`;
-
-exports[`<Amount /> size  with normal-subtle variant renders amount with xlarge size 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <Text
-    color="shade.960"
-    size="xlarge"
-    style={
-      Array [
-        Object {
-          "color": "rgba(22, 47, 86, 0.54)",
-          "fontFamily": "Lato-Bold",
-          "fontSize": 20,
-          "letterSpacing": 0,
-          "lineHeight": 30,
-        },
-      ]
-    }
-    testID="ds-amount"
-    weight="bold"
-  >
-    ₹ 1,234.00
-  </Text>
-</View>
-`;
-
-exports[`<Amount /> size  with normal-subtle variant renders amount with xxlarge size 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <Text
-    color="shade.960"
-    size="xxlarge"
-    style={
-      Array [
-        Object {
-          "color": "rgba(22, 47, 86, 0.54)",
-          "fontFamily": "Lato-Bold",
-          "fontSize": 24,
-          "letterSpacing": 0,
-          "lineHeight": 36,
-        },
-      ]
-    }
-    testID="ds-amount"
-    weight="bold"
-  >
-    ₹ 1,234.00
-  </Text>
-</View>
-`;
-
-exports[`<Amount /> size  with normal-subtle variant renders amount with xxxlarge size 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <Text
-    color="shade.960"
-    size="xxxlarge"
-    style={
-      Array [
-        Object {
-          "color": "rgba(22, 47, 86, 0.54)",
-          "fontFamily": "Lato-Bold",
-          "fontSize": 32,
-          "letterSpacing": 0,
-          "lineHeight": 36,
-        },
-      ]
-    }
-    testID="ds-amount"
-    weight="bold"
-  >
-    ₹ 1,234.00
-  </Text>
-</View>
-`;
-
 exports[`<Amount /> variant renders camel variant amount 1`] = `
 <View
   collapsable={true}
@@ -2453,7 +2453,42 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
 </View>
 `;
 
-exports[`<Amount /> variant renders camel-subtle variant amount 1`] = `
+exports[`<Amount /> variant renders normal variant amount 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="bold"
+    color="shade.980"
+    size="medium"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-amount"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2546,7 +2581,7 @@ exports[`<Amount /> variant renders camel-subtle variant amount 1`] = `
 </View>
 `;
 
-exports[`<Amount /> variant renders normal variant amount 1`] = `
+exports[`<Amount /> weight with camel variant and subtle renders regular amount 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2557,26 +2592,84 @@ exports[`<Amount /> variant renders normal variant amount 1`] = `
   }
 >
   <Text
-    _isUnderlined={false}
-    _letterSpacing="small"
-    _weight="bold"
-    color="shade.980"
-    size="medium"
     style={
       Array [
-        Object {
-          "color": "rgba(22, 47, 86, 0.87)",
-          "fontFamily": "Lato-Bold",
-          "fontSize": 14,
-          "letterSpacing": 0,
-          "lineHeight": 20,
-          "textDecorationLine": "none",
-        },
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
       ]
     }
     testID="ds-amount"
   >
-    ₹ 1,234.00
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="regular"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
   </Text>
 </View>
 `;
@@ -2767,7 +2860,7 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
 </View>
 `;
 
-exports[`<Amount /> weight with camel-subtle variant renders bold amount 1`] = `
+exports[`<Amount /> weight with normal variant and subtle renders bold amount 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2778,89 +2871,31 @@ exports[`<Amount /> weight with camel-subtle variant renders bold amount 1`] = `
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="bold"
+    color="shade.960"
+    size="medium"
     style={
       Array [
-        Array [
-          Object {
-            "flexDirection": "column",
-          },
-        ],
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textDecorationLine": "none",
+        },
       ]
     }
     testID="ds-amount"
   >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _lineHeight="medium"
-      _weight="bold"
-      color="shade.950"
-      size="xxsmall"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 10,
-            "letterSpacing": 0,
-            "lineHeight": 20,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      ₹ 
-    </Text>
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="bold"
-      color="shade.950"
-      size="medium"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 14,
-            "letterSpacing": 0,
-            "lineHeight": 20,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      1,234
-    </Text>
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="bold"
-      color="shade.950"
-      size="xxsmall"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Bold",
-            "fontSize": 10,
-            "letterSpacing": 0,
-            "lineHeight": 14,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      .00
-    </Text>
+    ₹ 1,234.00
   </Text>
 </View>
 `;
 
-exports[`<Amount /> weight with camel-subtle variant renders regular amount 1`] = `
+exports[`<Amount /> weight with normal variant and subtle renders regular amount 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -2871,84 +2906,26 @@ exports[`<Amount /> weight with camel-subtle variant renders regular amount 1`] 
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="regular"
+    color="shade.960"
+    size="medium"
     style={
       Array [
-        Array [
-          Object {
-            "flexDirection": "column",
-          },
-        ],
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Regular",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textDecorationLine": "none",
+        },
       ]
     }
     testID="ds-amount"
   >
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _lineHeight="medium"
-      _weight="regular"
-      color="shade.950"
-      size="xxsmall"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Regular",
-            "fontSize": 10,
-            "letterSpacing": 0,
-            "lineHeight": 20,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      ₹ 
-    </Text>
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="regular"
-      color="shade.950"
-      size="medium"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Regular",
-            "fontSize": 14,
-            "letterSpacing": 0,
-            "lineHeight": 20,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      1,234
-    </Text>
-    <Text
-      _isUnderlined={false}
-      _letterSpacing="small"
-      _weight="regular"
-      color="shade.950"
-      size="xxsmall"
-      style={
-        Array [
-          Object {
-            "color": "rgba(22, 47, 86, 0.38)",
-            "fontFamily": "Lato-Regular",
-            "fontSize": 10,
-            "letterSpacing": 0,
-            "lineHeight": 14,
-            "textDecorationLine": "none",
-          },
-        ]
-      }
-      testID="ds-text"
-    >
-      .00
-    </Text>
+    ₹ 1,234.00
   </Text>
 </View>
 `;
@@ -3008,76 +2985,6 @@ exports[`<Amount /> weight with normal variant renders regular amount 1`] = `
       Array [
         Object {
           "color": "rgba(22, 47, 86, 0.87)",
-          "fontFamily": "Lato-Regular",
-          "fontSize": 14,
-          "letterSpacing": 0,
-          "lineHeight": 20,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-    testID="ds-amount"
-  >
-    ₹ 1,234.00
-  </Text>
-</View>
-`;
-
-exports[`<Amount /> weight with normal-subtle variant renders bold amount 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <Text
-    _isUnderlined={false}
-    _letterSpacing="small"
-    _weight="bold"
-    color="shade.960"
-    size="medium"
-    style={
-      Array [
-        Object {
-          "color": "rgba(22, 47, 86, 0.54)",
-          "fontFamily": "Lato-Bold",
-          "fontSize": 14,
-          "letterSpacing": 0,
-          "lineHeight": 20,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-    testID="ds-amount"
-  >
-    ₹ 1,234.00
-  </Text>
-</View>
-`;
-
-exports[`<Amount /> weight with normal-subtle variant renders regular amount 1`] = `
-<View
-  collapsable={true}
-  pointerEvents="box-none"
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <Text
-    _isUnderlined={false}
-    _letterSpacing="small"
-    _weight="regular"
-    color="shade.960"
-    size="medium"
-    style={
-      Array [
-        Object {
-          "color": "rgba(22, 47, 86, 0.54)",
           "fontFamily": "Lato-Regular",
           "fontSize": 14,
           "letterSpacing": 0,

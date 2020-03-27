@@ -6,23 +6,22 @@ import Flex from '../../atoms/Flex';
 import Text from '../../atoms/Text';
 import Heading from '../../atoms/Heading';
 import baseTheme from '../../tokens/theme';
-import geISOCurrencyList from './geISOCurrencyList';
 import { getVariantColorKeys } from '../../_helpers/theme';
+import geISOCurrencyList from './geISOCurrencyList';
 
 const IS_ANDROID = Platform.OS === 'android';
 
 const styles = {
   text: {
-    color({ variantColor, variant }) {
+    color({ variantColor, variant, subtle }) {
       switch (variant) {
         case 'camel':
           return `${variantColor}.950`;
-        case 'camel-subtle':
-          return `${variantColor}.950`;
         case 'normal':
+          if (subtle) {
+            return `${variantColor}.960`;
+          }
           return `${variantColor}.980`;
-        case 'normal-subtle':
-          return `${variantColor}.960`;
         default:
           return `${variantColor}.950`;
       }
@@ -63,16 +62,18 @@ const styles = {
     },
   },
   heading: {
-    color({ variantColor, variant }) {
+    color({ variantColor, variant, subtle }) {
       switch (variant) {
         case 'camel':
+          if (subtle) {
+            return `${variantColor}.950`;
+          }
           return `${variantColor}.980`;
-        case 'camel-subtle':
-          return `${variantColor}.950`;
         case 'normal':
+          if (subtle) {
+            return `${variantColor}.960`;
+          }
           return `${variantColor}.980`;
-        case 'normal-subtle':
-          return `${variantColor}.960`;
         default:
           return `${variantColor}.980`;
       }
@@ -98,7 +99,7 @@ const formatAmount = ({ amount, currency }) => {
   return formattedAmount;
 };
 
-const Amount = ({ size, testID, children, currency, weight, variantColor, variant }) => {
+const Amount = ({ size, testID, children, currency, weight, variantColor, variant, subtle }) => {
   if (isNaN(children)) {
     throw new Error(`Expected children to be number \n(Eg. "1234", "12.34")`);
   }
@@ -110,10 +111,10 @@ const Amount = ({ size, testID, children, currency, weight, variantColor, varian
   const IntegerComponent =
     size === 'xlarge' || size === 'xxlarge' || size === 'xxxlarge' ? Heading : Text;
 
-  if (variant === 'normal' || variant === 'normal-subtle') {
+  if (variant === 'normal') {
     return (
       <IntegerComponent
-        color={styles.text.color({ variantColor, variant })}
+        color={styles.text.color({ variantColor, variant, subtle })}
         size={size}
         _weight={weight}
         weight={weight}
@@ -128,7 +129,7 @@ const Amount = ({ size, testID, children, currency, weight, variantColor, varian
     <Flex>
       <NativeText {...automation(testID)}>
         <Text
-          color={styles.text.color({ variantColor, variant })}
+          color={styles.text.color({ variantColor, variant, subtle })}
           size={styles.text.size({ size })}
           _weight={weight}
           _lineHeight={styles.text.lineHeight({ size })} // First text component within nested texts dictate the line height
@@ -136,7 +137,7 @@ const Amount = ({ size, testID, children, currency, weight, variantColor, varian
           {`${currencySymbol} `}
         </Text>
         <IntegerComponent
-          color={styles.heading.color({ variantColor, variant })}
+          color={styles.heading.color({ variantColor, variant, subtle })}
           size={size}
           weight={weight}
           _weight={weight}
@@ -144,7 +145,7 @@ const Amount = ({ size, testID, children, currency, weight, variantColor, varian
           {integerPart}
         </IntegerComponent>
         <Text
-          color={styles.text.color({ variantColor, variant })}
+          color={styles.text.color({ variantColor, variant, subtle })}
           size={styles.text.size({ size })}
           _weight={weight}
         >{`.${fractionPart}`}</Text>
@@ -158,9 +159,10 @@ Amount.propTypes = {
   size: PropTypes.oneOf(['xsmall', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
   testID: PropTypes.string,
   currency: PropTypes.oneOf(geISOCurrencyList()),
-  variant: PropTypes.oneOf(['camel', 'normal', 'camel-subtle', 'normal-subtle']),
+  variant: PropTypes.oneOf(['camel', 'normal']),
   weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
+  subtle: PropTypes.bool,
 };
 
 Amount.defaultProps = {
@@ -170,6 +172,7 @@ Amount.defaultProps = {
   variant: 'camel',
   weight: 'bold',
   variantColor: 'shade',
+  subtle: false,
 };
 
 export default Amount;
