@@ -147,7 +147,9 @@ const Amount = ({ size, testID, children, currency, weight, variant, variantColo
           color={styles.text.color({ variant, variantColor, subtle })}
           size={styles.text.size({ size })}
           _weight={weight}
-        >{`.${fractionPart}`}</AtomText>
+        >
+          {`.${fractionPart}`}
+        </AtomText>
       </NativeText>
     </Flex>
   );
