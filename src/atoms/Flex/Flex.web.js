@@ -70,7 +70,7 @@ Flex.propTypes = {
 
 Flex.defaultProps = {
   display: 'flex',
-  flexDirection: 'column',
+  flexDirection: 'row',
 };
 
 export default Flex;

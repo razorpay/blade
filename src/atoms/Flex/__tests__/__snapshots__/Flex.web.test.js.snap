@@ -1,9 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Flex /> <Sapce /> <Flex /> together plays properly renders child of <Space />(no styles) and <Flex />(no styles) correctly 1`] = `
+exports[`<Flex /> flex renders an inline styled child with flex property 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde Spaceweb__Space-njatzl-0 jBqZrs"
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jBqZrs Flexweb__Flex-ni2cjg-0 libPPx"
+    style="background-color: red; height: 100px;"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 dRFMzk"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Flex Item #1
+    </div>
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 dRFMzk"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Flex Item #2
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Flex /> flexDirection renders a child with flexDirection row 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 dRFMzk Spaceweb__Space-njatzl-0 jBqZrs"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Flex Item #1
+    </div>
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 dRFMzk Spaceweb__Space-njatzl-0 jBqZrs"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Flex Item #2
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Flex /> renders child by applying flex and space to it 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 jBqZrs"
   >
     <span
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
@@ -16,22 +63,5 @@ exports[`<Flex /> <Sapce /> <Flex /> together plays properly renders child of <S
       Flex Item #2
     </span>
   </div>
-</div>
-`;
-
-exports[`<Flex /> flex renders an inline styled child with flex attribute and flex properties correctly 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 fsjcxB"
-    style="background-color: red; height: 100px;"
-  />
-</div>
-`;
-
-exports[`<Flex /> flexDirection renders a child with flexDirection attribute and flex properties correctly 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge"
-  />
 </div>
 `;
