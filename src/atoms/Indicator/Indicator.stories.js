@@ -16,7 +16,7 @@ storiesOf('Indicator', module)
     component: Indicator,
   })
   .add('default', () => (
-    <Flex flex={1} justifyContent="space-evenly" alignItems="center">
+    <Flex flex={1} justifyContent="space-evenly" alignItems="center" flexDirection="column">
       <View>
         <Indicator variant="positive" fill={select('fill', fillOptions, 'solid')} />
         <Indicator variant="negative" fill={select('fill', fillOptions, 'solid')} />

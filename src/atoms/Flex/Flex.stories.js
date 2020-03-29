@@ -27,8 +27,8 @@ storiesOf('Flex', module)
   .add('default', () => (
     <Flex>
       <View>
-        <Text>{text('Display Text', 'Flex child #1')}</Text>
-        <Text>{text('Display Text', 'Flex child #2')}</Text>
+        <Text>{text('Display Text 1', 'Flex child #1')}</Text>
+        <Text>{text('Display Text 2', 'Flex child #2')}</Text>
       </View>
     </Flex>
   ))
@@ -38,8 +38,8 @@ storiesOf('Flex', module)
       flexDirection="row"
     >
       <View>
-        <Text>{text('Display Text', 'Flex child #1')}</Text>
-        <Text>{text('Display Text', 'Flex child #2')}</Text>
+        <Text>{text('Display Text 1', 'Flex child #1')}</Text>
+        <Text>{text('Display Text 2', 'Flex child #2')}</Text>
       </View>
     </Flex>
   ))
