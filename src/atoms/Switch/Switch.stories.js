@@ -22,7 +22,7 @@ storiesOf('Switch', module)
     component: Switch,
   })
   .add('default', () => (
-    <Flex flex={1} justifyContent="space-around">
+    <Flex flex={1} justifyContent="space-around" flexDirection="column">
       <View>
         <Switch
           align={select('align', alignOptions, 'center')}

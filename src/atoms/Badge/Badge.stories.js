@@ -21,7 +21,7 @@ storiesOf('Badge', module)
     component: Badge,
   })
   .add('default', () => (
-    <Flex flex={1} justifyContent="space-evenly">
+    <Flex flexDirection="column" flex={1} justifyContent="space-evenly">
       <View>
         <Badge
           variant="positive"
