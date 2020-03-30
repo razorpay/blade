@@ -13,6 +13,7 @@ import { getIconNames } from '../../_helpers/icon';
 import Size from '../Size';
 import automation from '../../_helpers/automation-attributes';
 import { useSegmentControlContext } from './SegmentControlContext';
+import Divider from './Divider';
 
 const styles = {
   option: {
@@ -99,11 +100,6 @@ const styles = {
       }
     },
   },
-  divider: {
-    backgroundColor({ theme, hide }) {
-      return hide ? 'transparent' : theme.colors.shade[930];
-    },
-  },
   icon: {
     size({ size }) {
       if (size === 'small') {
@@ -119,15 +115,6 @@ const StyledOption = styled(TouchableHighlight)`
   background-color: ${styles.option.backgroundColor};
   border-bottom-width: ${styles.option.borderBottomWidth};
   border-color: ${styles.option.borderColor};
-`;
-
-const Divider = styled(View)`
-  position: absolute;
-  right: 0px;
-  top: ${makePxValue(1)};
-  bottom: ${makePxValue(1)};
-  width: 1px;
-  background-color: ${styles.divider.backgroundColor};
 `;
 
 const isSelected = ({ context, value }) => {
@@ -218,7 +205,7 @@ const SegmentControlOption = ({
                   ) : null}
                 </View>
               </Flex>
-              <Divider hide={hideDivider} />
+              {!hideDivider ? <Divider /> : null}
             </React.Fragment>
           </StyledOption>
         </Size>
