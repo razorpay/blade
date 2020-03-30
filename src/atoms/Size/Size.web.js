@@ -10,7 +10,6 @@ const Size = styled(
     return React.cloneElement(children, {
       ...props,
       style: [style, children.props.style].filter(Boolean),
-      'data-testid': 'size-view',
     });
   },
 )`

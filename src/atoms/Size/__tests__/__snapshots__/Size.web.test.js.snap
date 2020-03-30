@@ -4,7 +4,6 @@ exports[`<Size /> components composition should apply all specified props to chi
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 lmgfZC"
-    data-testid="size-view"
   />
 </div>
 `;
@@ -13,7 +12,6 @@ exports[`<Size /> components composition should render child component with no s
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 dyblWC"
-    data-testid="size-view"
   />
 </div>
 `;
