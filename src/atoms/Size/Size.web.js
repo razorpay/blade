@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Size = styled(
-  ({ minWidth, width, maxWidth, minHeight, height, maxHeight, children, style, ...props }) => {
+  ({ minWidth, width, maxWidth, minHeight, height, maxHeight, children, ...props }) => {
     if (React.Children.toArray(children).length !== 1) {
       throw new Error('Expected a single child for Size component');
     }
-    return React.cloneElement(children, {
-      ...props,
-      style: [style, children.props.style].filter(Boolean),
-    });
+
+    return React.cloneElement(children, props);
   },
 )`
   ${(props) => (props.width ? `width: ${props.width}` : '')};

@@ -7,30 +7,28 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<Size />', () => {
-  describe('components composition', () => {
-    it('should apply all specified props to child component', () => {
-      const { container } = renderWithTheme(
-        <Size
-          height="100%"
-          width="10px"
-          maxHeight="20px"
-          maxWidth="20px"
-          minHeight="5px"
-          minWidth="5px"
-        >
-          <View />
-        </Size>,
-      );
-      expect(container).toMatchSnapshot();
-    });
-    it('should render child component with no sizings applied', () => {
-      const { container } = renderWithTheme(
-        <Size>
-          <View testID="size-view" />
-        </Size>,
-      );
-      expect(container).toMatchSnapshot();
-    });
+  it('renders a child by applying height, width, maxHeight, maxWidth, minWidth, minHeight', () => {
+    const { container } = renderWithTheme(
+      <Size
+        height="100%"
+        width="10px"
+        maxHeight="20px"
+        maxWidth="20px"
+        minHeight="5px"
+        minWidth="5px"
+      >
+        <View />
+      </Size>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+  it('renders a child component without any sizing properties being applied', () => {
+    const { container } = renderWithTheme(
+      <Size>
+        <View testID="size-view" />
+      </Size>,
+    );
+    expect(container).toMatchSnapshot();
   });
 
   describe('error', () => {
