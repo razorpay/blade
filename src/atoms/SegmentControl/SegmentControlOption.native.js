@@ -40,7 +40,7 @@ const styles = {
     },
     borderBottomWidth({ variant }) {
       if (variant === 'filled') {
-        return makePxValue(0.125);
+        return '1px';
       }
       return '0px';
     },
@@ -126,7 +126,7 @@ const Divider = styled(View)`
   right: 0px;
   top: ${makePxValue(1)};
   bottom: ${makePxValue(1)};
-  width: ${makePxValue(0.125)};
+  width: 1px;
   background-color: ${styles.divider.backgroundColor};
 `;
 
