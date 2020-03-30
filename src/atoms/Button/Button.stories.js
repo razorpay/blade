@@ -29,7 +29,7 @@ storiesOf('Button', module)
     component: Button,
   })
   .add('default', () => (
-    <Flex flex={1} justifyContent="space-around">
+    <Flex flex={1} justifyContent="space-around" flexDirection="column">
       <View>
         <Flex flexDirection="row">
           <View>
