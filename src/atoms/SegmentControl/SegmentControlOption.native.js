@@ -117,10 +117,6 @@ const StyledOption = styled(TouchableHighlight)`
   border-color: ${styles.option.borderColor};
 `;
 
-const isSelected = ({ context, value }) => {
-  return context && isDefined(context.value) && context.value === value;
-};
-
 const SegmentControlOption = ({
   value,
   subText,
@@ -134,7 +130,7 @@ const SegmentControlOption = ({
   const theme = useContext(ThemeContext);
   const size = context.size;
 
-  const selected = isSelected({ context, value });
+  const selected = context && isDefined(context.value) && context.value === value;
 
   const onPress = useCallback(() => {
     if (isDefined(context.onChange)) {
