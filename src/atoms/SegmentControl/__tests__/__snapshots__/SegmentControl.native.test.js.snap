@@ -120,21 +120,6 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -226,7 +211,6 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
         </View>
       </View>
       <View
-        hide={false}
         style={
           Array [
             Object {
@@ -330,21 +314,6 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -470,21 +439,6 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -575,21 +529,6 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -680,21 +619,6 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -820,21 +744,6 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -926,7 +835,6 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
         </View>
       </View>
       <View
-        hide={false}
         style={
           Array [
             Object {
@@ -1030,21 +938,6 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -1170,21 +1063,6 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -1275,21 +1153,6 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -1380,21 +1243,6 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -1645,21 +1493,6 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -1876,7 +1709,6 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
         </View>
       </View>
       <View
-        hide={false}
         style={
           Array [
             Object {
@@ -2105,21 +1937,6 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -2370,21 +2187,6 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -2600,21 +2402,6 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -2830,21 +2617,6 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -2970,21 +2742,6 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -3075,21 +2832,6 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -3180,21 +2922,6 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -3320,21 +3047,6 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -3425,21 +3137,6 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -3530,21 +3227,6 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -3670,21 +3352,6 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -3776,7 +3443,6 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
         </View>
       </View>
       <View
-        hide={false}
         style={
           Array [
             Object {
@@ -3880,21 +3546,6 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -4020,21 +3671,6 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -4126,7 +3762,6 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
         </View>
       </View>
       <View
-        hide={false}
         style={
           Array [
             Object {
@@ -4230,21 +3865,6 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -4370,21 +3990,6 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -4475,21 +4080,6 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -4580,21 +4170,6 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -4720,21 +4295,6 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -4825,21 +4385,6 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -4930,21 +4475,6 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -5070,21 +4600,6 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -5176,7 +4691,6 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
         </View>
       </View>
       <View
-        hide={false}
         style={
           Array [
             Object {
@@ -5280,21 +4794,6 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -5420,21 +4919,6 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -5525,21 +5009,6 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -5630,21 +5099,6 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -5770,21 +5224,6 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -5876,7 +5315,6 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
         </View>
       </View>
       <View
-        hide={false}
         style={
           Array [
             Object {
@@ -5980,21 +5418,6 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -6120,21 +5543,6 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -6225,21 +5633,6 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -6330,21 +5723,6 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -6510,21 +5888,6 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
           </View>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -6656,7 +6019,6 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
         </View>
       </View>
       <View
-        hide={false}
         style={
           Array [
             Object {
@@ -6800,21 +6162,6 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
           </View>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -6980,21 +6327,6 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
           </View>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -7125,21 +6457,6 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
           </View>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -7270,21 +6587,6 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
           </View>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -7410,21 +6712,6 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -7516,7 +6803,6 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
         </View>
       </View>
       <View
-        hide={false}
         style={
           Array [
             Object {
@@ -7620,21 +6906,6 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
@@ -7760,21 +7031,6 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -7865,21 +7121,6 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
     <TouchableHighlight
       activeOpacity={0.85}
@@ -7970,21 +7211,6 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
           </Text>
         </View>
       </View>
-      <View
-        hide={true}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 8,
-              "position": "absolute",
-              "right": 0,
-              "top": 8,
-              "width": 1,
-            },
-          ]
-        }
-      />
     </TouchableHighlight>
   </View>
 </View>
