@@ -12,6 +12,7 @@ import { getColor, makePxValue } from '../../_helpers/theme';
 import { getIconNames } from '../../_helpers/icon';
 import Size from '../Size';
 import automation from '../../_helpers/automation-attributes';
+import isEmpty from '../../_helpers/isEmpty';
 import { useSegmentControlContext } from './SegmentControlContext';
 import Divider from './Divider';
 
@@ -130,7 +131,7 @@ const SegmentControlOption = ({
   const theme = useContext(ThemeContext);
   const size = context.size;
 
-  const selected = context && isDefined(context.value) && context.value === value;
+  const selected = context && !isEmpty(context.value) && context.value === value;
 
   const onPress = useCallback(() => {
     if (isDefined(context.onChange)) {
