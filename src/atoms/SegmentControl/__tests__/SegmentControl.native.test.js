@@ -224,6 +224,7 @@ describe('<SegmentControl />', () => {
       });
       expect(container).toMatchSnapshot();
     });
+
     it('filled segment control selected', () => {
       const { container, getByTestId } = renderWithTheme(
         <SegmentControl defaultValue="1" variant="filled" size="small">
@@ -310,6 +311,23 @@ describe('<SegmentControl />', () => {
       expect(container).toMatchSnapshot();
     });
 
+    it('renders only 1 disabled outlined segment control ', () => {
+      const { container } = renderWithTheme(
+        <SegmentControl defaultValue="1" variant="outlined">
+          <SegmentControl.Option value="1" disabled testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
+        </SegmentControl>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
     it('renders disabled filled segment control ', () => {
       const { container } = renderWithTheme(
         <SegmentControl defaultValue="1" variant="filled">
@@ -320,6 +338,23 @@ describe('<SegmentControl />', () => {
             Option 2
           </SegmentControl.Option>
           <SegmentControl.Option value="3" disabled testID="segment-option-3">
+            Option 3
+          </SegmentControl.Option>
+        </SegmentControl>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders only 1 disabled filled segment control ', () => {
+      const { container } = renderWithTheme(
+        <SegmentControl defaultValue="1" variant="filled">
+          <SegmentControl.Option value="1" disabled testID="segment-option-1">
+            Option 1
+          </SegmentControl.Option>
+          <SegmentControl.Option value="2" testID="segment-option-2">
+            Option 2
+          </SegmentControl.Option>
+          <SegmentControl.Option value="3" testID="segment-option-3">
             Option 3
           </SegmentControl.Option>
         </SegmentControl>,
