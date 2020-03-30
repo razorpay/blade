@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import View from '../View';
 import Flex from '../Flex';
 import { getColor } from '../../_helpers/theme';
+import isEmpty from '../../_helpers/isEmpty';
 import SegmentControlContext from './SegmentControlContext';
 import SegmentControlOption from './SegmentControlOption';
 
@@ -60,7 +61,7 @@ const SegmentControl = ({ value, onChange, defaultValue, variant, children, size
             ? children.map((child, index) => {
                 const hideDivider =
                   index === children.length - 1 ||
-                  (children[index + 1] && selected === children[index + 1].props.value) ||
+                  (!isEmpty(children[index + 1]) && selected === children[index + 1].props.value) ||
                   selected === child.props.value;
 
                 return React.cloneElement(child, { ...child.props, key: `${index}`, hideDivider });
