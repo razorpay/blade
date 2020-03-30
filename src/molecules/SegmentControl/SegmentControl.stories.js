@@ -2,11 +2,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import Flex from '../Flex';
-import View from '../View';
+import Flex from '../../atoms/Flex';
+import View from '../../atoms/View';
 import { getIconNames } from '../../_helpers/icon';
-import Text from '../Text';
-import Space from '../Space';
+import Text from '../../atoms/Text';
+import Space from '../../atoms/Space';
 import SegmentControl from './SegmentControl';
 
 const iconOptions = getIconNames().reduce(

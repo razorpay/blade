@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import View from '../View';
+import View from '../../atoms/View';
 import { makePxValue } from '../../_helpers/theme';
 
 const Divider = styled(View)`

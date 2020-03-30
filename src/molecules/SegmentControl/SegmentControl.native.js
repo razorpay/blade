@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import View from '../View';
-import Flex from '../Flex';
+import View from '../../atoms/View';
+import Flex from '../../atoms/Flex';
 import { getColor } from '../../_helpers/theme';
 import isEmpty from '../../_helpers/isEmpty';
 import SegmentControlContext from './SegmentControlContext';
