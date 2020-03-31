@@ -35,7 +35,7 @@ const AccessoryIcon = ({ name, disabled, hasError, variant, _isMultiline }) => {
   return (
     <Space padding={styles.padding({ variant, _isMultiline })}>
       <View>
-        <Icon name={name} size="xsmall" fill={styles.color({ disabled, hasError })} />
+        <Icon name={name} size="small" fill={styles.color({ disabled, hasError })} />
       </View>
     </Space>
   );

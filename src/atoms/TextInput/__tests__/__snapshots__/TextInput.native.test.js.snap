@@ -957,11 +957,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.10)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -977,15 +977,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={437661526}
@@ -1333,11 +1333,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(209, 45, 45, 1.0)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -1353,15 +1353,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={4291898669}
@@ -2092,11 +2092,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -2112,15 +2112,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -2266,11 +2266,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -2286,15 +2286,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -2496,11 +2496,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -2516,15 +2516,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -2824,11 +2824,11 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -2844,15 +2844,15 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -4645,11 +4645,11 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.10)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -4665,15 +4665,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={437661526}
@@ -5021,11 +5021,11 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(209, 45, 45, 1.0)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -5041,15 +5041,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={4291898669}
@@ -5934,11 +5934,11 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -5954,15 +5954,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -6213,11 +6213,11 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -6233,15 +6233,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -6387,11 +6387,11 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -6407,15 +6407,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -6666,11 +6666,11 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -6686,15 +6686,15 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
