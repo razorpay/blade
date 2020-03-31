@@ -7,6 +7,9 @@ import Text from '../../Text';
 import Space from '../../Space';
 import Flex from '../index';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<Flex />', () => {
   describe('components composition', () => {
     it('renders child by applying flex and space properties', () => {
