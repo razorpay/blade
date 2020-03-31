@@ -17,8 +17,12 @@ const styles = {
       return 'shade.950';
     }
   },
-  padding({ variant }) {
-    const top = IS_ANDROID ? 1 : 0;
+  padding({ variant, _isMultiline }) {
+    let top = 1;
+    if (_isMultiline || !IS_ANDROID) {
+      top = 0;
+    }
+
     if (variant === 'filled') {
       return [0, 1, 0, 1];
     } else {
@@ -27,9 +31,9 @@ const styles = {
   },
 };
 
-const AccessoryIcon = ({ name, disabled, hasError, variant }) => {
+const AccessoryIcon = ({ name, disabled, hasError, variant, _isMultiline }) => {
   return (
-    <Space padding={styles.padding({ variant })}>
+    <Space padding={styles.padding({ variant, _isMultiline })}>
       <View>
         <Icon name={name} size="xsmall" fill={styles.color({ disabled, hasError })} />
       </View>
@@ -42,12 +46,14 @@ AccessoryIcon.propTypes = {
   disabled: PropTypes.bool,
   hasError: PropTypes.bool,
   variant: PropTypes.oneOf(['filled', 'outlined']).isRequired,
+  _isMultiline: PropTypes.bool,
 };
 
 AccessoryIcon.defaultProps = {
   name: 'info',
   disabled: false,
   hasError: false,
+  _isMultiline: false,
 };
 
 export default AccessoryIcon;
