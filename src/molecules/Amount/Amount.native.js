@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text as NativeText, Platform } from 'react-native';
+import { Text as NativeText } from 'react-native';
+import Intl from 'intl';
 import automation from '../../_helpers/automation-attributes';
 import Flex from '../../atoms/Flex';
 import AtomText from '../../atoms/Text';
@@ -8,8 +9,7 @@ import Heading from '../../atoms/Heading';
 import baseTheme from '../../tokens/theme';
 import { getVariantColorKeys } from '../../_helpers/theme';
 import geISOCurrencyList from './geISOCurrencyList';
-
-const IS_ANDROID = Platform.OS === 'android';
+import 'intl/locale-data/jsonp/en-IN';
 
 const styles = {
   text: {
@@ -82,19 +82,13 @@ const styles = {
 };
 
 const formatAmount = ({ amount, currency }) => {
-  if (IS_ANDROID) {
-    // Polyfill for Android
-    require('intl');
-    require('intl/locale-data/jsonp/en-IN');
-  }
-
-  const formattedAmount = (+amount).toLocaleString('en-IN', {
+  const formattedAmount = new Intl.NumberFormat('en-IN', {
     style: 'currency',
     currencyDisplay: 'symbol',
     currency,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  });
+  }).format(amount);
 
   return formattedAmount;
 };
