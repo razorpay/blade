@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { makePxValue } from '../../_helpers/theme';
+
 const Size = styled(
   ({ minWidth, width, maxWidth, minHeight, height, maxHeight, children, ...props }) => {
     if (React.Children.toArray(children).length !== 1) {
@@ -11,12 +13,12 @@ const Size = styled(
     return React.cloneElement(children, props);
   },
 )`
-  ${(props) => (props.width ? `width: ${props.width}` : '')};
-  ${(props) => (props.height ? `height: ${props.height}` : '')};
-  ${(props) => (props.minWidth ? `min-width: ${props.minWidth}` : '')};
-  ${(props) => (props.maxWidth ? `max-width: ${props.maxWidth}` : '')};
-  ${(props) => (props.minHeight ? `min-height: ${props.minHeight}` : '')};
-  ${(props) => (props.maxHeight ? `max-height: ${props.maxHeight}` : '')};
+  ${(props) => (props.width ? `width: ${makePxValue(props.width)}` : '')};
+  ${(props) => (props.height ? `height: ${makePxValue(props.height)}` : '')};
+  ${(props) => (props.minWidth ? `min-width: ${makePxValue(props.minWidth)}` : '')};
+  ${(props) => (props.maxWidth ? `max-width: ${makePxValue(props.maxWidth)}` : '')};
+  ${(props) => (props.minHeight ? `min-height: ${makePxValue(props.minHeight)}` : '')};
+  ${(props) => (props.maxHeight ? `max-height: ${makePxValue(props.maxHeight)}` : '')};
 `;
 
 Size.propTypes = {
