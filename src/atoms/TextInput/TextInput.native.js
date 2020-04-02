@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from 'react';
+import React, { useContext, useState, useCallback, useEffect } from 'react';
 import { TextInput as NativeTextInput, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
@@ -248,6 +248,10 @@ const TextInput = ({
     },
     [layoutDimensions, setLayoutDimensions],
   );
+
+  useEffect(() => {
+    if (!isEmpty(children)) setInput(children);
+  }, [children]);
 
   if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
     throw Error('Cannot have prefix and left icon together');
