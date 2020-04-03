@@ -180,6 +180,7 @@ const TextInput = ({
   width,
   secureTextEntry,
   keyboardType,
+  returnKeyType,
   _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
@@ -373,6 +374,7 @@ const TextInput = ({
                                 multiline={_isMultiline}
                                 secureTextEntry={secureTextEntry}
                                 keyboardType={keyboardType}
+                                returnKeyType={returnKeyType}
                                 {...automation(testID)}
                               />
                             </Size>
@@ -447,6 +449,7 @@ TextInput.propTypes = {
     'email-address',
     'phone-pad',
   ]),
+  returnKeyType: PropTypes.oneOf(['done', 'go', 'next', 'search', 'send']),
   _isMultiline: PropTypes.bool,
 };
 
@@ -467,8 +470,9 @@ TextInput.defaultProps = {
   testID: 'ds-text-input',
   labelPosition: 'top',
   width: 'medium',
-  secureTextEntry: 'false',
+  secureTextEntry: false,
   keyboardType: undefined,
+  returnKeyType: undefined,
 };
 
 export default TextInput;

@@ -271,4 +271,27 @@ describe('Renders <TextInput /> filled variant correctly', () => {
       expect(container).toMatchSnapshot();
     });
   });
+
+  describe('returnKeyType', () => {
+    it('done', () => {
+      const { container } = renderWithTheme(<TextInput variant="filled" returnKeyType="done" />);
+      expect(container).toMatchSnapshot();
+    });
+    it('go', () => {
+      const { container } = renderWithTheme(<TextInput variant="filled" returnKeyType="go" />);
+      expect(container).toMatchSnapshot();
+    });
+    it('next', () => {
+      const { container } = renderWithTheme(<TextInput variant="filled" returnKeyType="next" />);
+      expect(container).toMatchSnapshot();
+    });
+    it('search', () => {
+      const { container } = renderWithTheme(<TextInput variant="filled" returnKeyType="search" />);
+      expect(container).toMatchSnapshot();
+    });
+    it('send', () => {
+      const { container } = renderWithTheme(<TextInput variant="filled" returnKeyType="send" />);
+      expect(container).toMatchSnapshot();
+    });
+  });
 });
