@@ -9,6 +9,7 @@ import View from '../View';
 import isEmpty from '../../_helpers/isEmpty';
 import Size from '../Size';
 import Space from '../Space';
+import isDefined from '../../_helpers/isDefined';
 import Label from './Label';
 import CharacterCount from './CharacterCount';
 import AccessoryIcon from './AccessoryIcon';
@@ -169,7 +170,7 @@ const TextInput = ({
   prefix,
   suffix,
   disabled,
-  children,
+  value,
   iconLeft,
   iconRight,
   maxLength,
@@ -181,7 +182,7 @@ const TextInput = ({
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setIsFocused] = useState(false);
-  const [input, setInput] = useState(children || '');
+  const [input, setInput] = useState(value || '');
   // Used for storing layout value of TextInput
   const [layoutDimensions, setLayoutDimensions] = useState(null);
   // Used to hide placeholder while label is inside the TextInput
@@ -250,8 +251,10 @@ const TextInput = ({
   );
 
   useEffect(() => {
-    if (!isEmpty(children)) setInput(children);
-  }, [children]);
+    if (isDefined(value)) {
+      setInput(value);
+    }
+  }, [value]);
 
   if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
     throw Error('Cannot have prefix and left icon together');
@@ -424,7 +427,7 @@ TextInput.propTypes = {
   prefix: PropTypes.string,
   suffix: PropTypes.string,
   disabled: PropTypes.bool,
-  children: PropTypes.string,
+  value: PropTypes.string,
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
   maxLength: PropTypes.number,
@@ -443,7 +446,7 @@ TextInput.defaultProps = {
   prefix: undefined,
   suffix: undefined,
   disabled: false,
-  children: undefined,
+  value: undefined,
   iconLeft: undefined,
   iconRight: undefined,
   maxLength: undefined,

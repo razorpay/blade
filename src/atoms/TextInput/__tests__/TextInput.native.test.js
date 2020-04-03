@@ -10,7 +10,7 @@ describe('Renders <TextInput /> outlined variant correctly', () => {
   });
 
   it('snapshot testing with filled TextInput', () => {
-    const { container } = renderWithTheme(<TextInput label="Email">{'user@domain.com'}</TextInput>);
+    const { container } = renderWithTheme(<TextInput label="Email" value="user@domain.com" />);
     expect(container).toMatchSnapshot();
   });
 
@@ -119,9 +119,7 @@ describe('Renders <TextInput /> filled variant correctly', () => {
 
   it('snapshot testing (filled TextInput)', () => {
     const { container } = renderWithTheme(
-      <TextInput variant="filled" label="Email">
-        {'user@domain.com'}
-      </TextInput>,
+      <TextInput variant="filled" label="Email" value="user@domain.com" />,
     );
     expect(container).toMatchSnapshot();
   });
