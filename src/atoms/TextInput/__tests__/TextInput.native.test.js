@@ -240,4 +240,35 @@ describe('Renders <TextInput /> filled variant correctly', () => {
       expect(container).toMatchSnapshot();
     });
   });
+
+  describe('keyboardType', () => {
+    it('number-pad', () => {
+      const { container } = renderWithTheme(
+        <TextInput variant="filled" keyboardType="number-pad" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+    it('decimal-pad', () => {
+      const { container } = renderWithTheme(
+        <TextInput variant="filled" keyboardType="decimal-pad" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+    it('numeric', () => {
+      const { container } = renderWithTheme(<TextInput variant="filled" keyboardType="numeric" />);
+      expect(container).toMatchSnapshot();
+    });
+    it('email-address', () => {
+      const { container } = renderWithTheme(
+        <TextInput variant="filled" keyboardType="email-address" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+    it('phone-pad', () => {
+      const { container } = renderWithTheme(
+        <TextInput variant="filled" keyboardType="phone-pad" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
 });

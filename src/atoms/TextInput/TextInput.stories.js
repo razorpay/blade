@@ -12,6 +12,13 @@ const sizeOptions = {
   medium: 'medium',
   auto: 'auto',
 };
+const keyboardTypeOptions = {
+  'number-pad': 'number-pad',
+  'decimal-pad': 'decimal-pad',
+  numeric: 'numeric',
+  'email-address': 'email-address',
+  'phone-pad': 'phone-pad',
+};
 
 storiesOf('TextInput', module)
   .addParameters({
@@ -40,6 +47,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="outlined"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -65,6 +73,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="outlined"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -89,6 +98,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="outlined"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -113,6 +123,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="outlined"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -137,6 +148,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="outlined"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -161,6 +173,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="outlined"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
             maxLength={10}
           />
         </View>
@@ -186,6 +199,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="outlined"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -210,6 +224,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="outlined"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -234,6 +249,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="outlined"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           >
             This is disabled
           </TextInput>
@@ -261,6 +277,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="filled"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -285,6 +302,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="filled"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -309,6 +327,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="filled"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -333,6 +352,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="filled"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -357,6 +377,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="filled"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -381,6 +402,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="filled"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
             maxLength={10}
           />
         </View>
@@ -406,6 +428,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="filled"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -430,6 +453,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="filled"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -454,6 +478,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="filled"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
           >
             This is disabled
           </TextInput>
@@ -480,6 +505,7 @@ storiesOf('TextInput', module)
             onChange={() => {}}
             variant="filled"
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
+            keyboardType={select('Keyboard type', keyboardTypeOptions, undefined, 'Native')}
             labelPosition="left"
           />
         </View>

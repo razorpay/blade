@@ -179,6 +179,7 @@ const TextInput = ({
   labelPosition,
   width,
   secureTextEntry,
+  keyboardType,
   _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
@@ -371,6 +372,7 @@ const TextInput = ({
                                 value={input}
                                 multiline={_isMultiline}
                                 secureTextEntry={secureTextEntry}
+                                keyboardType={keyboardType}
                                 {...automation(testID)}
                               />
                             </Size>
@@ -438,6 +440,13 @@ TextInput.propTypes = {
   labelPosition: PropTypes.oneOf(['top', 'left']),
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
   secureTextEntry: PropTypes.bool,
+  keyboardType: PropTypes.oneOf([
+    'number-pad',
+    'decimal-pad',
+    'numeric',
+    'email-address',
+    'phone-pad',
+  ]),
   _isMultiline: PropTypes.bool,
 };
 
@@ -459,6 +468,7 @@ TextInput.defaultProps = {
   labelPosition: 'top',
   width: 'medium',
   secureTextEntry: 'false',
+  keyboardType: undefined,
 };
 
 export default TextInput;
