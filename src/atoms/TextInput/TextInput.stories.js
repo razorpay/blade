@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { select } from '@storybook/addon-knobs';
+import { select, boolean } from '@storybook/addon-knobs';
 import View from '../View';
 import Space from '../Space';
 import Text from '../Text';
@@ -39,6 +39,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -63,6 +64,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -86,6 +88,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -109,6 +112,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -132,6 +136,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -155,6 +160,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            secureTextEntry={boolean('Secure Text Entry', false)}
             maxLength={10}
           />
         </View>
@@ -179,6 +185,7 @@ storiesOf('TextInput', module)
             errorText="This is the reason for the error"
             onChange={() => {}}
             variant="outlined"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -202,6 +209,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -225,6 +233,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           >
             This is disabled
           </TextInput>
@@ -251,6 +260,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -274,6 +284,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -297,6 +308,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -320,6 +332,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -343,6 +356,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -366,6 +380,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            secureTextEntry={boolean('Secure Text Entry', false)}
             maxLength={10}
           />
         </View>
@@ -390,6 +405,7 @@ storiesOf('TextInput', module)
             errorText="This is the reason for the error"
             onChange={() => {}}
             variant="filled"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -413,6 +429,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           />
         </View>
       </Space>
@@ -436,6 +453,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            secureTextEntry={boolean('Secure Text Entry', false)}
           >
             This is disabled
           </TextInput>
@@ -461,6 +479,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            secureTextEntry={boolean('Secure Text Entry', false)}
             labelPosition="left"
           />
         </View>

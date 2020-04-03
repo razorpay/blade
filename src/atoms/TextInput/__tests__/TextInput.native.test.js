@@ -225,4 +225,19 @@ describe('Renders <TextInput /> filled variant correctly', () => {
     const { container } = renderWithTheme(<TextInput variant="filled" width="auto" />);
     expect(container).toMatchSnapshot();
   });
+
+  describe('secureTextEntry', () => {
+    it(' with filled text input ', () => {
+      const { container } = renderWithTheme(
+        <TextInput variant="filled" secureTextEntry value="Hello world" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+    it(' with outlined text input ', () => {
+      const { container } = renderWithTheme(
+        <TextInput variant="outlined" secureTextEntry value="Hello world" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
 });

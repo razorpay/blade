@@ -178,6 +178,7 @@ const TextInput = ({
   testID,
   labelPosition,
   width,
+  secureTextEntry,
   _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
@@ -369,6 +370,7 @@ const TextInput = ({
                                 onLayout={onTextInputLayout}
                                 value={input}
                                 multiline={_isMultiline}
+                                secureTextEntry={secureTextEntry}
                                 {...automation(testID)}
                               />
                             </Size>
@@ -435,6 +437,7 @@ TextInput.propTypes = {
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
+  secureTextEntry: PropTypes.bool,
   _isMultiline: PropTypes.bool,
 };
 
@@ -455,6 +458,7 @@ TextInput.defaultProps = {
   testID: 'ds-text-input',
   labelPosition: 'top',
   width: 'medium',
+  secureTextEntry: 'false',
 };
 
 export default TextInput;

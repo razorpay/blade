@@ -1,5 +1,315 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Renders <TextInput /> filled variant correctly secureTextEntry  with filled text input  1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          disabled={false}
+          isFocused={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(224, 228, 249, 0.10)",
+                "borderTopLeftRadius": 2,
+                "borderTopRightRadius": 2,
+                "marginTop": "auto",
+              },
+            ]
+          }
+          variant="filled"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              disabled={false}
+              editable={true}
+              hasLeftIcon={false}
+              hasPrefix={false}
+              hasText={true}
+              placeholder="Enter text here"
+              placeholderTextColor="rgba(22, 47, 86, 0.24)"
+              rejectResponderTermination={true}
+              secureTextEntry={true}
+              selectionColor="rgba(22, 47, 86, 0.87)"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 20,
+                  },
+                  Array [
+                    Object {
+                      "height": 36,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
+                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 4,
+                        "paddingLeft": 8,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
+                    ],
+                  ],
+                ]
+              }
+              testID="ds-text-input"
+              underlineColorAndroid="transparent"
+              value="Hello world"
+              variant="filled"
+            />
+          </View>
+          <View
+            disabled={false}
+            hasError={false}
+            isFocused={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly secureTextEntry  with outlined text input  1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+          },
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexDirection": "column",
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          disabled={false}
+          isFocused={false}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderTopLeftRadius": 2,
+                "borderTopRightRadius": 2,
+                "marginTop": "auto",
+              },
+            ]
+          }
+          variant="outlined"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Array [
+                  Object {
+                    "width": 240,
+                  },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                ],
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              disabled={false}
+              editable={true}
+              hasLeftIcon={false}
+              hasPrefix={false}
+              hasText={true}
+              placeholder="Enter text here"
+              placeholderTextColor="transparent"
+              rejectResponderTermination={true}
+              secureTextEntry={true}
+              selectionColor="rgba(22, 47, 86, 0.87)"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 20,
+                  },
+                  Array [
+                    Object {
+                      "height": 40,
+                      "maxHeight": "auto",
+                      "minHeight": "auto",
+                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 4,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ],
+                    ],
+                  ],
+                ]
+              }
+              testID="ds-text-input"
+              underlineColorAndroid="transparent"
+              value="Hello world"
+              variant="outlined"
+            />
+          </View>
+          <View
+            disabled={false}
+            hasError={false}
+            isFocused={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                },
+                Array [
+                  Object {
+                    "height": 1,
+                  },
+                ],
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`Renders <TextInput /> filled variant correctly snapshot after focus (filled TextInput) 1`] = `
 <View
   collapsable={true}
@@ -90,6 +400,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -244,6 +555,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -398,6 +710,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -555,6 +868,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with au
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -710,6 +1024,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -904,6 +1219,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.10)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -1284,6 +1600,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -1625,6 +1942,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -1885,6 +2203,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -2225,6 +2544,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -2629,6 +2949,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -2783,6 +3104,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -3062,6 +3384,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -3216,6 +3539,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -3450,6 +3774,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -3604,6 +3929,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with sm
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -3758,6 +4084,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -3952,6 +4279,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -4106,6 +4434,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
               placeholder="Enter text here"
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -4263,6 +4592,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -4418,6 +4748,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -4612,6 +4943,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -4992,6 +5324,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -5332,6 +5665,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -5486,6 +5820,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -5702,6 +6037,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -6087,6 +6423,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -6366,6 +6703,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -6645,6 +6983,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -6924,6 +7263,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -7078,6 +7418,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -7312,6 +7653,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -7466,6 +7808,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
@@ -7620,6 +7963,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               placeholder="Enter text here"
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
+              secureTextEntry="false"
               selectionColor="rgba(22, 47, 86, 0.87)"
               style={
                 Array [
