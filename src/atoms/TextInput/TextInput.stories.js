@@ -27,7 +27,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'medium')}
+            width={select('Width', sizeOptions, 'medium', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -39,7 +39,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -52,7 +52,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -64,7 +64,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -76,7 +76,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -88,7 +88,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -100,7 +100,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -112,7 +112,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -124,7 +124,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -136,7 +136,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -148,7 +148,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -160,7 +160,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             maxLength={10}
           />
         </View>
@@ -173,7 +173,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -185,7 +185,7 @@ storiesOf('TextInput', module)
             errorText="This is the reason for the error"
             onChange={() => {}}
             variant="outlined"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -197,7 +197,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -209,7 +209,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -221,7 +221,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -233,7 +233,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           >
             This is disabled
           </TextInput>
@@ -248,7 +248,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -260,7 +260,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -272,7 +272,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -284,7 +284,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -296,7 +296,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -308,7 +308,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -320,7 +320,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -332,7 +332,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -344,7 +344,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -356,7 +356,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -368,7 +368,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -380,7 +380,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             maxLength={10}
           />
         </View>
@@ -393,7 +393,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -405,7 +405,7 @@ storiesOf('TextInput', module)
             errorText="This is the reason for the error"
             onChange={() => {}}
             variant="filled"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -417,7 +417,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -429,7 +429,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           />
         </View>
       </Space>
@@ -441,7 +441,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -453,7 +453,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
           >
             This is disabled
           </TextInput>
@@ -467,7 +467,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -479,7 +479,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            secureTextEntry={boolean('Secure Text Entry', false)}
+            secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             labelPosition="left"
           />
         </View>
