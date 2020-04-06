@@ -21,7 +21,7 @@ describe('<Size />', () => {
   });
   it('renders a child by applying height, width, maxHeight, maxWidth, minWidth, minHeight in numeric values', () => {
     const { container } = renderWithTheme(
-      <Size height="100" width="10" maxHeight="20" maxWidth="20" minHeight="5" minWidth="5">
+      <Size height={100} width={10} maxHeight={20} maxWidth={20} minHeight={5} minWidth={5}>
         <View />
       </Size>,
     );

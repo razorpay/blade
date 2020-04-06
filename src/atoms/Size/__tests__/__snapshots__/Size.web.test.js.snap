@@ -11,7 +11,7 @@ exports[`<Size /> renders a child by applying height, width, maxHeight, maxWidth
 exports[`<Size /> renders a child by applying height, width, maxHeight, maxWidth, minWidth, minHeight in numeric values 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 eUZSqL"
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 fHeyBj"
   />
 </div>
 `;
