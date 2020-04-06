@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> color renders heading with custom color 1`] = `
+<div>
+  <h2
+    class="Headingweb__StyledHeading2-ea7c9d-1 kYuHen"
+    color="primary.900"
+  >
+    Heading
+  </h2>
+</div>
+`;
+
+exports[`<Heading /> size renders heading with size large 1`] = `
+<div>
+  <h5
+    class="Headingweb__StyledHeading5-ea7c9d-4 kMURAN"
+    color="shade.980"
+  >
+    Heading
+  </h5>
+</div>
+`;
+
+exports[`<Heading /> size renders heading with size medium 1`] = `
+<div>
+  <h6
+    class="Headingweb__StyledHeading6-ea7c9d-5 bFfARJ"
+    color="shade.980"
+  >
+    Heading
+  </h6>
+</div>
+`;
+
+exports[`<Heading /> size renders heading with size xlarge 1`] = `
+<div>
+  <h4
+    class="Headingweb__StyledHeading4-ea7c9d-3 bOLWCT"
+    color="shade.980"
+  >
+    Heading
+  </h4>
+</div>
+`;
+
+exports[`<Heading /> size renders heading with size xxlarge 1`] = `
+<div>
+  <h3
+    class="Headingweb__StyledHeading3-ea7c9d-2 kZRlWj"
+    color="shade.980"
+  >
+    Heading
+  </h3>
+</div>
+`;
+
+exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
+<div>
+  <h2
+    class="Headingweb__StyledHeading2-ea7c9d-1 uBKTy"
+    color="shade.980"
+  >
+    Heading
+  </h2>
+</div>
+`;
+
+exports[`<Heading /> weight renders heading with bold weight 1`] = `
+<div>
+  <h2
+    class="Headingweb__StyledHeading2-ea7c9d-1 uBKTy"
+    color="shade.980"
+  >
+    Heading
+  </h2>
+</div>
+`;
+
+exports[`<Heading /> weight renders heading with regular weight 1`] = `
+<div>
+  <h2
+    class="Headingweb__StyledHeading2-ea7c9d-1 iKEBXF"
+    color="shade.980"
+  >
+    Heading
+  </h2>
+</div>
+`;
