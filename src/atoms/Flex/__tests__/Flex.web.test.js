@@ -57,6 +57,8 @@ describe('<Flex />', () => {
     });
   });
   describe('error', () => {
+    beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+    afterAll(() => jest.restoreAllMocks());
     it('should throw error when more than one nodes are passed as children', () => {
       const expectedErrorMessage = 'Expected a single child for Space component';
       expect(() =>
