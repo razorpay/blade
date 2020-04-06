@@ -22,12 +22,12 @@ const Size = styled(
 `;
 
 Size.propTypes = {
-  width: PropTypes.string,
-  height: PropTypes.string,
-  minWidth: PropTypes.string,
-  maxWidth: PropTypes.string,
-  minHeight: PropTypes.string,
-  maxHeight: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  minWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  maxWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  minHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  maxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default Size;
