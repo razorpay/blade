@@ -7,9 +7,6 @@ import Text from '../../Text';
 import Space from '../../Space';
 import Flex from '../index';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<Flex />', () => {
   describe('components composition', () => {
     it('renders child by applying flex and space properties', () => {
@@ -60,6 +57,8 @@ describe('<Flex />', () => {
     });
   });
   describe('error', () => {
+    beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+    afterAll(() => jest.restoreAllMocks());
     it('should throw error when more than one nodes are passed as children', () => {
       const expectedErrorMessage = 'Expected a single child for Space component';
       expect(() =>
