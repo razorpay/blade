@@ -27,6 +27,7 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -37,6 +38,7 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -49,6 +51,7 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -59,6 +62,7 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -71,6 +75,7 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -81,6 +86,7 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -120,6 +126,7 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -130,6 +137,7 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -142,6 +150,7 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -152,6 +161,7 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -164,6 +174,7 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -174,6 +185,7 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -213,6 +225,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -223,6 +236,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -235,6 +249,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -245,6 +260,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -257,6 +273,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -267,6 +284,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -306,6 +324,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -316,6 +335,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -328,6 +348,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -338,6 +359,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -350,6 +372,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -360,6 +383,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -399,6 +423,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -409,6 +434,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -421,6 +447,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -431,6 +458,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -443,6 +471,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -453,6 +482,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -492,6 +522,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -502,6 +533,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -514,6 +546,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -524,6 +557,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -536,6 +570,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -546,6 +581,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -585,6 +621,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -595,6 +632,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -607,6 +645,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -617,6 +656,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -629,6 +669,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -639,6 +680,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -678,6 +720,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -688,6 +731,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -700,6 +744,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -710,6 +755,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -722,6 +768,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -732,6 +779,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -771,6 +819,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -781,6 +830,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -793,6 +843,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -803,6 +854,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -815,6 +867,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -825,6 +878,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -864,6 +918,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -874,6 +929,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -886,6 +942,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -896,6 +953,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -908,6 +966,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -918,6 +977,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -957,6 +1017,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -967,6 +1028,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -979,6 +1041,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -989,6 +1052,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1001,6 +1065,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -1011,6 +1076,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1050,6 +1116,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -1060,6 +1127,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1072,6 +1140,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -1082,6 +1151,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1094,6 +1164,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -1104,6 +1175,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1143,6 +1215,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xsmall"
       style={
@@ -1153,6 +1226,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
             "fontSize": 12,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1165,6 +1239,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="large"
       style={
@@ -1175,6 +1250,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 24,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1187,6 +1263,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xsmall"
       style={
@@ -1197,6 +1274,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
             "fontSize": 12,
             "letterSpacing": 0,
             "lineHeight": 18,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1236,6 +1314,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -1246,6 +1325,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1258,6 +1338,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="medium"
       style={
@@ -1268,6 +1349,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1280,6 +1362,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -1290,6 +1373,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1329,6 +1413,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
       _letterSpacing="small"
       _lineHeight="xlarge"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="medium"
       style={
@@ -1339,6 +1424,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 30,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1370,6 +1456,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="medium"
       style={
@@ -1380,6 +1467,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1419,6 +1507,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
       _letterSpacing="small"
       _lineHeight="xxlarge"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="medium"
       style={
@@ -1429,6 +1518,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 36,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1460,6 +1550,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="medium"
       style={
@@ -1470,6 +1561,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1509,6 +1601,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
       _letterSpacing="small"
       _lineHeight="xxlarge"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="large"
       style={
@@ -1519,6 +1612,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 36,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1550,6 +1644,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="large"
       style={
@@ -1560,6 +1655,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 24,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1599,6 +1695,7 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xsmall"
       style={
@@ -1609,6 +1706,7 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
             "fontSize": 12,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1621,6 +1719,7 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="large"
       style={
@@ -1631,6 +1730,7 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 24,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1643,6 +1743,7 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xsmall"
       style={
@@ -1653,6 +1754,7 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
             "fontSize": 12,
             "letterSpacing": 0,
             "lineHeight": 18,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1692,6 +1794,7 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -1702,6 +1805,7 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1714,6 +1818,7 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -1724,6 +1829,7 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1736,6 +1842,7 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -1746,6 +1853,7 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1785,6 +1893,7 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
       _letterSpacing="small"
       _lineHeight="xlarge"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="medium"
       style={
@@ -1795,6 +1904,7 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 30,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1826,6 +1936,7 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="medium"
       style={
@@ -1836,6 +1947,7 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1875,6 +1987,7 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
       _letterSpacing="small"
       _lineHeight="xxlarge"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="medium"
       style={
@@ -1885,6 +1998,7 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 36,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1916,6 +2030,7 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="medium"
       style={
@@ -1926,6 +2041,7 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1965,6 +2081,7 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
       _letterSpacing="small"
       _lineHeight="xxlarge"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="large"
       style={
@@ -1975,6 +2092,7 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 36,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2006,6 +2124,7 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="large"
       style={
@@ -2016,6 +2135,7 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 24,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2042,6 +2162,7 @@ exports[`<Amount /> size with normal variant and subtle renders amount with larg
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="bold"
+    align="left"
     color="shade.960"
     size="large"
     style={
@@ -2052,6 +2173,7 @@ exports[`<Amount /> size with normal variant and subtle renders amount with larg
           "fontSize": 16,
           "letterSpacing": 0,
           "lineHeight": 24,
+          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -2077,6 +2199,7 @@ exports[`<Amount /> size with normal variant and subtle renders amount with medi
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="bold"
+    align="left"
     color="shade.960"
     size="medium"
     style={
@@ -2087,6 +2210,7 @@ exports[`<Amount /> size with normal variant and subtle renders amount with medi
           "fontSize": 14,
           "letterSpacing": 0,
           "lineHeight": 20,
+          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -2208,6 +2332,7 @@ exports[`<Amount /> size with normal variant renders amount with large size 1`] 
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="bold"
+    align="left"
     color="shade.980"
     size="large"
     style={
@@ -2218,6 +2343,7 @@ exports[`<Amount /> size with normal variant renders amount with large size 1`] 
           "fontSize": 16,
           "letterSpacing": 0,
           "lineHeight": 24,
+          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -2243,6 +2369,7 @@ exports[`<Amount /> size with normal variant renders amount with medium size 1`]
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="bold"
+    align="left"
     color="shade.980"
     size="medium"
     style={
@@ -2253,6 +2380,7 @@ exports[`<Amount /> size with normal variant renders amount with medium size 1`]
           "fontSize": 14,
           "letterSpacing": 0,
           "lineHeight": 20,
+          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -2387,6 +2515,7 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -2397,6 +2526,7 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2409,6 +2539,7 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -2419,6 +2550,7 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2431,6 +2563,7 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -2441,6 +2574,7 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2467,6 +2601,7 @@ exports[`<Amount /> variant renders normal variant amount 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="bold"
+    align="left"
     color="shade.980"
     size="medium"
     style={
@@ -2477,6 +2612,7 @@ exports[`<Amount /> variant renders normal variant amount 1`] = `
           "fontSize": 14,
           "letterSpacing": 0,
           "lineHeight": 20,
+          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -2515,6 +2651,7 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -2525,6 +2662,7 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2537,6 +2675,7 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="medium"
       style={
@@ -2547,6 +2686,7 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2559,6 +2699,7 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -2569,6 +2710,7 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2608,6 +2750,7 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -2618,6 +2761,7 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2630,6 +2774,7 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="shade.950"
       size="medium"
       style={
@@ -2640,6 +2785,7 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2652,6 +2798,7 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -2662,6 +2809,7 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2701,6 +2849,7 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -2711,6 +2860,7 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2723,6 +2873,7 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -2733,6 +2884,7 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2745,6 +2897,7 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -2755,6 +2908,7 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2794,6 +2948,7 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="regular"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -2804,6 +2959,7 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2816,6 +2972,7 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -2826,6 +2983,7 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2838,6 +2996,7 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="shade.950"
       size="xxsmall"
       style={
@@ -2848,6 +3007,7 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -2874,6 +3034,7 @@ exports[`<Amount /> weight with normal variant and subtle renders bold amount 1`
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="bold"
+    align="left"
     color="shade.960"
     size="medium"
     style={
@@ -2884,6 +3045,7 @@ exports[`<Amount /> weight with normal variant and subtle renders bold amount 1`
           "fontSize": 14,
           "letterSpacing": 0,
           "lineHeight": 20,
+          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -2909,6 +3071,7 @@ exports[`<Amount /> weight with normal variant and subtle renders regular amount
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="regular"
+    align="left"
     color="shade.960"
     size="medium"
     style={
@@ -2919,6 +3082,7 @@ exports[`<Amount /> weight with normal variant and subtle renders regular amount
           "fontSize": 14,
           "letterSpacing": 0,
           "lineHeight": 20,
+          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -2944,6 +3108,7 @@ exports[`<Amount /> weight with normal variant renders bold amount 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="bold"
+    align="left"
     color="shade.980"
     size="medium"
     style={
@@ -2954,6 +3119,7 @@ exports[`<Amount /> weight with normal variant renders bold amount 1`] = `
           "fontSize": 14,
           "letterSpacing": 0,
           "lineHeight": 20,
+          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -2979,6 +3145,7 @@ exports[`<Amount /> weight with normal variant renders regular amount 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="regular"
+    align="left"
     color="shade.980"
     size="medium"
     style={
@@ -2989,6 +3156,7 @@ exports[`<Amount /> weight with normal variant renders regular amount 1`] = `
           "fontSize": 14,
           "letterSpacing": 0,
           "lineHeight": 20,
+          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]

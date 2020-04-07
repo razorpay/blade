@@ -99,6 +99,7 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="medium"
@@ -110,6 +111,7 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -189,6 +191,7 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -200,6 +203,7 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -293,6 +297,7 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -304,6 +309,7 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -418,6 +424,7 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="medium"
@@ -429,6 +436,7 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -508,6 +516,7 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -519,6 +528,7 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -598,6 +608,7 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -609,6 +620,7 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -723,6 +735,7 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="primary.500"
             numberOfLines={1}
             size="medium"
@@ -734,6 +747,7 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -813,6 +827,7 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.940"
             numberOfLines={1}
             size="medium"
@@ -824,6 +839,7 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -917,6 +933,7 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.940"
             numberOfLines={1}
             size="medium"
@@ -928,6 +945,7 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1042,6 +1060,7 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="primary.500"
             numberOfLines={1}
             size="medium"
@@ -1053,6 +1072,7 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1132,6 +1152,7 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.940"
             numberOfLines={1}
             size="medium"
@@ -1143,6 +1164,7 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1222,6 +1244,7 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.940"
             numberOfLines={1}
             size="medium"
@@ -1233,6 +1256,7 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1347,6 +1371,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="primary.500"
             numberOfLines={1}
             size="medium"
@@ -1358,6 +1383,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1437,6 +1463,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -1448,6 +1475,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1541,6 +1569,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -1552,6 +1581,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1666,6 +1696,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="primary.500"
             numberOfLines={1}
             size="medium"
@@ -1677,6 +1708,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1756,6 +1788,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -1767,6 +1800,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1846,6 +1880,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -1857,6 +1892,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -2096,6 +2132,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="medium"
@@ -2107,6 +2144,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -2311,6 +2349,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -2322,6 +2361,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -2540,6 +2580,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -2551,6 +2592,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -2790,6 +2832,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="medium"
@@ -2801,6 +2844,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -3005,6 +3049,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -3016,6 +3061,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -3220,6 +3266,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -3231,6 +3278,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -3345,6 +3393,7 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -3356,6 +3405,7 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -3435,6 +3485,7 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="small"
@@ -3446,6 +3497,7 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -3525,6 +3577,7 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -3536,6 +3589,7 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -3650,6 +3704,7 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -3661,6 +3716,7 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -3740,6 +3796,7 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="small"
@@ -3751,6 +3808,7 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -3830,6 +3888,7 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -3841,6 +3900,7 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -3955,6 +4015,7 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="small"
@@ -3966,6 +4027,7 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -4045,6 +4107,7 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -4056,6 +4119,7 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -4149,6 +4213,7 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -4160,6 +4225,7 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -4274,6 +4340,7 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="small"
@@ -4285,6 +4352,7 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -4364,6 +4432,7 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -4375,6 +4444,7 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -4468,6 +4538,7 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -4479,6 +4550,7 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -4593,6 +4665,7 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="small"
@@ -4604,6 +4677,7 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -4683,6 +4757,7 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -4694,6 +4769,7 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -4773,6 +4849,7 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -4784,6 +4861,7 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -4898,6 +4976,7 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="small"
@@ -4909,6 +4988,7 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -4988,6 +5068,7 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -4999,6 +5080,7 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -5078,6 +5160,7 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -5089,6 +5172,7 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -5203,6 +5287,7 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="medium"
@@ -5214,6 +5299,7 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -5293,6 +5379,7 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -5304,6 +5391,7 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -5397,6 +5485,7 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -5408,6 +5497,7 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -5522,6 +5612,7 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="medium"
@@ -5533,6 +5624,7 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -5612,6 +5704,7 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -5623,6 +5716,7 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -5702,6 +5796,7 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -5713,6 +5808,7 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -5827,6 +5923,7 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="small"
@@ -5838,6 +5935,7 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -5917,6 +6015,7 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -5928,6 +6027,7 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -6021,6 +6121,7 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -6032,6 +6133,7 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -6146,6 +6248,7 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="small"
@@ -6157,6 +6260,7 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -6236,6 +6340,7 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -6247,6 +6352,7 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -6326,6 +6432,7 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="small"
@@ -6337,6 +6444,7 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
                   "fontSize": 13,
                   "letterSpacing": 0,
                   "lineHeight": 18,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -6451,6 +6559,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="medium"
@@ -6462,6 +6571,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -6490,6 +6600,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="primary.700"
               numberOfLines={1}
               size="xsmall"
@@ -6501,6 +6612,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -6581,6 +6693,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -6592,6 +6705,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -6620,6 +6734,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={1}
               size="xsmall"
@@ -6631,6 +6746,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -6725,6 +6841,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -6736,6 +6853,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -6764,6 +6882,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={1}
               size="xsmall"
@@ -6775,6 +6894,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -6890,6 +7010,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="medium"
@@ -6901,6 +7022,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -6929,6 +7051,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="primary.700"
               numberOfLines={1}
               size="xsmall"
@@ -6940,6 +7063,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -7020,6 +7144,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -7031,6 +7156,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -7059,6 +7185,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={1}
               size="xsmall"
@@ -7070,6 +7197,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -7150,6 +7278,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -7161,6 +7290,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -7189,6 +7319,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={1}
               size="xsmall"
@@ -7200,6 +7331,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -7315,6 +7447,7 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="medium"
@@ -7326,6 +7459,7 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -7405,6 +7539,7 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -7416,6 +7551,7 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -7509,6 +7645,7 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="regular"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -7520,6 +7657,7 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -7634,6 +7772,7 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="primary.800"
             numberOfLines={1}
             size="medium"
@@ -7645,6 +7784,7 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -7724,6 +7864,7 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -7735,6 +7876,7 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]
@@ -7814,6 +7956,7 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
             _isUnderlined={false}
             _letterSpacing="small"
             _weight="bold"
+            align="left"
             color="shade.960"
             numberOfLines={1}
             size="medium"
@@ -7825,6 +7968,7 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
                   "fontSize": 14,
                   "letterSpacing": 0,
                   "lineHeight": 20,
+                  "textAlign": "left",
                   "textDecorationLine": "none",
                 },
               ]

@@ -197,6 +197,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
+          align="left"
           color="shade.980"
           size="medium"
           style={
@@ -207,6 +208,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
                 "fontSize": 14,
                 "letterSpacing": 0,
                 "lineHeight": 20,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -235,6 +237,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
+        align="left"
         color="negative.900"
         size="xsmall"
         style={
@@ -245,6 +248,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
               "fontSize": 12,
               "letterSpacing": 0,
               "lineHeight": 18,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
           ]
@@ -455,6 +459,7 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
+          align="left"
           color="shade.980"
           size="medium"
           style={
@@ -465,6 +470,7 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
                 "fontSize": 14,
                 "letterSpacing": 0,
                 "lineHeight": 20,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -676,6 +682,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
+          align="left"
           color="shade.980"
           size="medium"
           style={
@@ -686,6 +693,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
                 "fontSize": 14,
                 "letterSpacing": 0,
                 "lineHeight": 20,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -897,6 +905,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
+          align="left"
           color="shade.980"
           size="medium"
           style={
@@ -907,6 +916,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
                 "fontSize": 14,
                 "letterSpacing": 0,
                 "lineHeight": 20,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -1118,6 +1128,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
+          align="left"
           color="shade.980"
           size="medium"
           style={
@@ -1128,6 +1139,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
                 "fontSize": 14,
                 "letterSpacing": 0,
                 "lineHeight": 20,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -1339,6 +1351,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
+          align="left"
           color="shade.980"
           size="medium"
           style={
@@ -1349,6 +1362,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
                 "fontSize": 14,
                 "letterSpacing": 0,
                 "lineHeight": 20,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -1560,6 +1574,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
+          align="left"
           color="shade.980"
           size="medium"
           style={
@@ -1570,6 +1585,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
                 "fontSize": 14,
                 "letterSpacing": 0,
                 "lineHeight": 20,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -1781,6 +1797,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
+          align="left"
           color="shade.980"
           size="medium"
           style={
@@ -1791,6 +1808,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
                 "fontSize": 14,
                 "letterSpacing": 0,
                 "lineHeight": 20,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -2002,6 +2020,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
+          align="left"
           color="shade.980"
           size="medium"
           style={
@@ -2012,6 +2031,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
                 "fontSize": 14,
                 "letterSpacing": 0,
                 "lineHeight": 20,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -2040,6 +2060,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
         _isUnderlined={false}
         _letterSpacing="small"
         _weight="regular"
+        align="left"
         color="shade.950"
         size="xsmall"
         style={
@@ -2050,6 +2071,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
               "fontSize": 12,
               "letterSpacing": 0,
               "lineHeight": 18,
+              "textAlign": "left",
               "textDecorationLine": "none",
             },
           ]
@@ -2260,6 +2282,7 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
+          align="left"
           color="shade.980"
           size="medium"
           style={
@@ -2270,6 +2293,7 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
                 "fontSize": 14,
                 "letterSpacing": 0,
                 "lineHeight": 20,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
@@ -2481,6 +2505,7 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
           _isUnderlined={false}
           _letterSpacing="small"
           _weight="regular"
+          align="left"
           color="shade.980"
           size="medium"
           style={
@@ -2491,6 +2516,7 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
                 "fontSize": 14,
                 "letterSpacing": 0,
                 "lineHeight": 20,
+                "textAlign": "left",
                 "textDecorationLine": "none",
               },
             ]
