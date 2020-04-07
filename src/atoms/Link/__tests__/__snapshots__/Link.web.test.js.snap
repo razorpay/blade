@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <Link /> correctly snapshot testing 1`] = `
+<div>
+  <a
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__Anchor-sc-1u7mgfj-0 hmOAWa"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some link
+     
+  </a>
+</div>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
+<div>
+  <a
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__Anchor-sc-1u7mgfj-0 UbMNA"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some link
+     
+  </a>
+</div>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = `
+<div>
+  <a
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__Anchor-sc-1u7mgfj-0 hmOAWa"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some link
+     
+  </a>
+</div>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
+<div>
+  <a
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__Anchor-sc-1u7mgfj-0 iMtufi"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some link
+     
+  </a>
+</div>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] = `
+<div>
+  <a
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__Anchor-sc-1u7mgfj-0 hmOAWa"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some link
+     
+  </a>
+</div>
+`;
