@@ -872,6 +872,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.930"
                 numberOfLines={1}
                 size="medium"
@@ -883,6 +884,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -1123,6 +1125,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.930"
               numberOfLines={2}
               size="xsmall"
@@ -1134,6 +1137,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1248,6 +1252,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -1259,6 +1264,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -1499,6 +1505,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="negative.900"
               numberOfLines={2}
               size="xsmall"
@@ -1510,6 +1517,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1713,6 +1721,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -1724,6 +1733,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1756,6 +1766,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -1767,6 +1778,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1969,6 +1981,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -1980,6 +1993,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3259,6 +3273,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -3270,6 +3285,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -3402,6 +3418,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -3413,6 +3430,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -3797,6 +3815,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -3808,6 +3827,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -4560,6 +4580,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.930"
                 numberOfLines={1}
                 size="medium"
@@ -4571,6 +4592,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -4811,6 +4833,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.930"
               numberOfLines={2}
               size="xsmall"
@@ -4822,6 +4845,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4936,6 +4960,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -4947,6 +4972,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -5187,6 +5213,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="negative.900"
               numberOfLines={2}
               size="xsmall"
@@ -5198,6 +5225,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5554,6 +5582,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -5565,6 +5594,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5768,6 +5798,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -5779,6 +5810,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5811,6 +5843,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -5822,6 +5855,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -7101,6 +7135,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -7112,6 +7147,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -7244,6 +7280,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -7255,6 +7292,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -7639,6 +7677,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -7650,6 +7689,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]

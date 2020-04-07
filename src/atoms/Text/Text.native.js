@@ -33,7 +33,7 @@ const styles = {
     }
   },
   textAlign({ align }) {
-    if (align == 'inherit' || align == 'initial') {
+    if (align === 'inherit' || align === 'initial') {
       return 'auto';
     }
     return align;

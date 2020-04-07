@@ -48,6 +48,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid information(rectangle) <Bad
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="light.100"
       size="xxsmall"
       style={
@@ -58,6 +59,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid information(rectangle) <Bad
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -118,6 +120,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid negative(rectangle) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="light.100"
       size="xxsmall"
       style={
@@ -128,6 +131,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid negative(rectangle) <Badge 
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -188,6 +192,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid neutral(rectangle) <Badge /
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="primary.900"
       size="xxsmall"
       style={
@@ -198,6 +203,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid neutral(rectangle) <Badge /
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -258,6 +264,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid positive(rectangle) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="light.100"
       size="xxsmall"
       style={
@@ -268,6 +275,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid positive(rectangle) <Badge 
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -328,6 +336,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid warning(rectangle) <Badge /
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="light.100"
       size="xxsmall"
       style={
@@ -338,6 +347,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid warning(rectangle) <Badge /
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -398,6 +408,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle information(rectangle) <Ba
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="xxsmall"
       style={
@@ -408,6 +419,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle information(rectangle) <Ba
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -468,6 +480,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle negative(rectangle) <Badge
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="negative.900"
       size="xxsmall"
       style={
@@ -478,6 +491,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle negative(rectangle) <Badge
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -538,6 +552,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle neutral(rectangle) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="primary.900"
       size="xxsmall"
       style={
@@ -548,6 +563,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle neutral(rectangle) <Badge 
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -608,6 +624,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle positive(rectangle) <Badge
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="positive.900"
       size="xxsmall"
       style={
@@ -618,6 +635,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle positive(rectangle) <Badge
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -678,6 +696,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle warning(rectangle) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="neutral.900"
       size="xxsmall"
       style={
@@ -688,6 +707,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle warning(rectangle) <Badge 
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -748,6 +768,7 @@ exports[`Renders <Badge /> (Stadium) renders solid information(Stadium) <Badge /
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="light.100"
       size="xxsmall"
       style={
@@ -758,6 +779,7 @@ exports[`Renders <Badge /> (Stadium) renders solid information(Stadium) <Badge /
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -818,6 +840,7 @@ exports[`Renders <Badge /> (Stadium) renders solid negative(Stadium) <Badge /> 1
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="light.100"
       size="xxsmall"
       style={
@@ -828,6 +851,7 @@ exports[`Renders <Badge /> (Stadium) renders solid negative(Stadium) <Badge /> 1
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -888,6 +912,7 @@ exports[`Renders <Badge /> (Stadium) renders solid neutral(Stadium) <Badge /> 1`
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="primary.900"
       size="xxsmall"
       style={
@@ -898,6 +923,7 @@ exports[`Renders <Badge /> (Stadium) renders solid neutral(Stadium) <Badge /> 1`
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -958,6 +984,7 @@ exports[`Renders <Badge /> (Stadium) renders solid positive(Stadium) <Badge /> 1
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="light.100"
       size="xxsmall"
       style={
@@ -968,6 +995,7 @@ exports[`Renders <Badge /> (Stadium) renders solid positive(Stadium) <Badge /> 1
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1028,6 +1056,7 @@ exports[`Renders <Badge /> (Stadium) renders solid warning(Stadium) <Badge /> 1`
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="light.100"
       size="xxsmall"
       style={
@@ -1038,6 +1067,7 @@ exports[`Renders <Badge /> (Stadium) renders solid warning(Stadium) <Badge /> 1`
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1098,6 +1128,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle information(Stadium) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="shade.980"
       size="xxsmall"
       style={
@@ -1108,6 +1139,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle information(Stadium) <Badge 
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1168,6 +1200,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle negative(Stadium) <Badge /> 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="negative.900"
       size="xxsmall"
       style={
@@ -1178,6 +1211,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle negative(Stadium) <Badge /> 
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1238,6 +1272,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle neutral(Stadium) <Badge /> 1
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="primary.900"
       size="xxsmall"
       style={
@@ -1248,6 +1283,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle neutral(Stadium) <Badge /> 1
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1308,6 +1344,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle positive(Stadium) <Badge /> 
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="positive.900"
       size="xxsmall"
       style={
@@ -1318,6 +1355,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle positive(Stadium) <Badge /> 
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1378,6 +1416,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle warning(Stadium) <Badge /> 1
       _isUnderlined={false}
       _letterSpacing="medium"
       _weight="bold"
+      align="left"
       color="neutral.900"
       size="xxsmall"
       style={
@@ -1388,6 +1427,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle warning(Stadium) <Badge /> 1
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
