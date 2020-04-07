@@ -3,7 +3,7 @@
 exports[`Renders <Text /> correctly snapshot testing with as in text 1`] = `
 <div>
   <span
-    class="Textweb__Text-sc-6jf9e4-0 dRFMzk"
+    class="Textweb__Text-sc-6jf9e4-0 jsGnSE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -15,7 +15,7 @@ exports[`Renders <Text /> correctly snapshot testing with as in text 1`] = `
 exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 kkyLRv"
+    class="Textweb__Text-sc-6jf9e4-0 jFCQqH"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -27,7 +27,7 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
 exports[`Renders <Text /> correctly snapshot testing with maxLines in text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 dysrfH"
+    class="Textweb__Text-sc-6jf9e4-0 fNjDdP"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -39,7 +39,7 @@ exports[`Renders <Text /> correctly snapshot testing with maxLines in text 1`] =
 exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 dRFMzk"
+    class="Textweb__Text-sc-6jf9e4-0 jsGnSE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -51,7 +51,7 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
 exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 eDAOVM"
+    class="Textweb__Text-sc-6jf9e4-0 ieYLro"
     color="shade.980"
     data-testid="ds-text"
   >
