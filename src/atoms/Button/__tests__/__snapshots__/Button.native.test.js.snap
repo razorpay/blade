@@ -61,6 +61,7 @@ exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="light.100"
       size="medium"
       style={
@@ -71,6 +72,7 @@ exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -141,6 +143,7 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="light.150"
       size="medium"
       style={
@@ -151,6 +154,7 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -221,6 +225,7 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="shade.940"
       size="medium"
       style={
@@ -231,6 +236,7 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -301,6 +307,7 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="shade.940"
       size="medium"
       style={
@@ -311,6 +318,7 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -381,6 +389,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="light.100"
       size="medium"
       style={
@@ -391,6 +400,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -461,6 +471,7 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="primary.800"
       size="medium"
       style={
@@ -471,6 +482,7 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -541,6 +553,7 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="primary.800"
       size="medium"
       style={
@@ -551,6 +564,7 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -745,6 +759,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="light.100"
       size="medium"
       style={
@@ -755,6 +770,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -825,6 +841,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="primary.800"
       size="medium"
       style={
@@ -835,6 +852,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -905,6 +923,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="primary.800"
       size="medium"
       style={
@@ -915,6 +934,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -985,6 +1005,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
       _letterSpacing="small"
       _lineHeight="small"
       _weight="bold"
+      align="center"
       color="light.100"
       size="xsmall"
       style={
@@ -995,6 +1016,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
             "fontSize": 12,
             "letterSpacing": 0,
             "lineHeight": 18,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -1065,6 +1087,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
       _letterSpacing="small"
       _lineHeight="small"
       _weight="bold"
+      align="center"
       color="light.100"
       size="xsmall"
       style={
@@ -1075,6 +1098,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
             "fontSize": 12,
             "letterSpacing": 0,
             "lineHeight": 18,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -1145,6 +1169,7 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
       _letterSpacing="small"
       _lineHeight="small"
       _weight="bold"
+      align="center"
       color="primary.800"
       size="xsmall"
       style={
@@ -1155,6 +1180,7 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
             "fontSize": 12,
             "letterSpacing": 0,
             "lineHeight": 18,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -1225,6 +1251,7 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
       _letterSpacing="small"
       _lineHeight="small"
       _weight="bold"
+      align="center"
       color="primary.800"
       size="xsmall"
       style={
@@ -1235,6 +1262,7 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
             "fontSize": 12,
             "letterSpacing": 0,
             "lineHeight": 18,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -1305,6 +1333,7 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
       _letterSpacing="medium"
       _lineHeight="xsmall"
       _weight="bold"
+      align="center"
       color="light.100"
       size="xxsmall"
       style={
@@ -1315,6 +1344,7 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
             "fontSize": 10,
             "letterSpacing": 0.5,
             "lineHeight": 14,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -1385,6 +1415,7 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="light.100"
       size="medium"
       style={
@@ -1395,6 +1426,7 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -1589,6 +1621,7 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="light.100"
       size="medium"
       style={
@@ -1599,6 +1632,7 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
@@ -1669,6 +1703,7 @@ exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
+      align="center"
       color="light.100"
       size="medium"
       style={
@@ -1679,6 +1714,7 @@ exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "center",
             "textDecorationLine": "none",
           },
         ]
