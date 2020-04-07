@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getColorKeys, getColor } from '../../_helpers/theme';
-import automation from '../../_helpers/automation-attributes';
 import baseTheme from '../../tokens/theme';
 
 const styles = {
@@ -124,7 +123,7 @@ const Heading = ({ size, testID, color, children, maxLines, weight }) => {
       color={color}
       numberOfLines={maxLines}
       weight={weight}
-      {...automation(testID)}
+      data-testid={testID}
     >
       {children}
     </StyledHeading>
