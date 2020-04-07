@@ -19,7 +19,7 @@ const Icon = ({ size, name, fill, testID, ...rest }) => {
       fill={getColor(theme, fill)}
       height={iconSize[size]}
       width={iconSize[size]}
-      testID={testID}
+      test-id={testID}
       {...rest}
     />
   );

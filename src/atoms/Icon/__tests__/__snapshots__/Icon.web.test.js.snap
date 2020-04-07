@@ -5,7 +5,7 @@ exports[`<Icon /> size name 1`] = `
   <svg
     fill="rgba(22, 47, 86, 0.38)"
     height="20"
-    testID="ds-icon"
+    test-id="ds-icon"
     viewBox="0 0 16 16"
     width="20"
   >
