@@ -26,14 +26,14 @@ exports[`<Flex /> flex renders an inline styled child with flex property 1`] = `
     style="background-color: red; height: 100px;"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 dRFMzk"
+      class="Textweb__Text-sc-6jf9e4-0 jsGnSE"
       color="shade.980"
       data-testid="ds-text"
     >
       Flex Item #1
     </div>
     <div
-      class="Textweb__Text-sc-6jf9e4-0 dRFMzk"
+      class="Textweb__Text-sc-6jf9e4-0 jsGnSE"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -49,14 +49,14 @@ exports[`<Flex /> flexDirection renders a child with flexDirection row 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 dRFMzk Spaceweb__Space-njatzl-0 jBqZrs"
+      class="Textweb__Text-sc-6jf9e4-0 jsGnSE Spaceweb__Space-njatzl-0 jBqZrs"
       color="shade.980"
       data-testid="ds-text"
     >
       Flex Item #1
     </div>
     <div
-      class="Textweb__Text-sc-6jf9e4-0 dRFMzk Spaceweb__Space-njatzl-0 jBqZrs"
+      class="Textweb__Text-sc-6jf9e4-0 jsGnSE Spaceweb__Space-njatzl-0 jBqZrs"
       color="shade.980"
       data-testid="ds-text"
     >
