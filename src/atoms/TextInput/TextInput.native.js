@@ -181,6 +181,7 @@ const TextInput = ({
   secureTextEntry,
   keyboardType,
   returnKeyType,
+  autoCapitalize,
   _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
@@ -375,6 +376,7 @@ const TextInput = ({
                                 secureTextEntry={secureTextEntry}
                                 keyboardType={keyboardType}
                                 returnKeyType={returnKeyType}
+                                autoCapitalize={autoCapitalize}
                                 {...automation(testID)}
                               />
                             </Size>
@@ -450,6 +452,7 @@ TextInput.propTypes = {
     'phone-pad',
   ]),
   returnKeyType: PropTypes.oneOf(['done', 'go', 'next', 'search', 'send']),
+  autoCapitalize: PropTypes.oneOf(['none', 'sentences', 'words', 'characters']),
   _isMultiline: PropTypes.bool,
 };
 
@@ -473,6 +476,7 @@ TextInput.defaultProps = {
   secureTextEntry: false,
   keyboardType: undefined,
   returnKeyType: undefined,
+  autoCapitalize: undefined,
 };
 
 export default TextInput;

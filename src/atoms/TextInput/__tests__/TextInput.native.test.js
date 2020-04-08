@@ -243,54 +243,65 @@ describe('Renders <TextInput /> filled variant correctly', () => {
 
   describe('keyboardType', () => {
     it('number-pad', () => {
-      const { container } = renderWithTheme(
-        <TextInput variant="filled" keyboardType="number-pad" />,
-      );
+      const { container } = renderWithTheme(<TextInput keyboardType="number-pad" />);
       expect(container).toMatchSnapshot();
     });
     it('decimal-pad', () => {
-      const { container } = renderWithTheme(
-        <TextInput variant="filled" keyboardType="decimal-pad" />,
-      );
+      const { container } = renderWithTheme(<TextInput keyboardType="decimal-pad" />);
       expect(container).toMatchSnapshot();
     });
     it('numeric', () => {
-      const { container } = renderWithTheme(<TextInput variant="filled" keyboardType="numeric" />);
+      const { container } = renderWithTheme(<TextInput keyboardType="numeric" />);
       expect(container).toMatchSnapshot();
     });
     it('email-address', () => {
-      const { container } = renderWithTheme(
-        <TextInput variant="filled" keyboardType="email-address" />,
-      );
+      const { container } = renderWithTheme(<TextInput keyboardType="email-address" />);
       expect(container).toMatchSnapshot();
     });
     it('phone-pad', () => {
-      const { container } = renderWithTheme(
-        <TextInput variant="filled" keyboardType="phone-pad" />,
-      );
+      const { container } = renderWithTheme(<TextInput keyboardType="phone-pad" />);
       expect(container).toMatchSnapshot();
     });
   });
 
   describe('returnKeyType', () => {
     it('done', () => {
-      const { container } = renderWithTheme(<TextInput variant="filled" returnKeyType="done" />);
+      const { container } = renderWithTheme(<TextInput returnKeyType="done" />);
       expect(container).toMatchSnapshot();
     });
     it('go', () => {
-      const { container } = renderWithTheme(<TextInput variant="filled" returnKeyType="go" />);
+      const { container } = renderWithTheme(<TextInput returnKeyType="go" />);
       expect(container).toMatchSnapshot();
     });
     it('next', () => {
-      const { container } = renderWithTheme(<TextInput variant="filled" returnKeyType="next" />);
+      const { container } = renderWithTheme(<TextInput returnKeyType="next" />);
       expect(container).toMatchSnapshot();
     });
     it('search', () => {
-      const { container } = renderWithTheme(<TextInput variant="filled" returnKeyType="search" />);
+      const { container } = renderWithTheme(<TextInput returnKeyType="search" />);
       expect(container).toMatchSnapshot();
     });
     it('send', () => {
-      const { container } = renderWithTheme(<TextInput variant="filled" returnKeyType="send" />);
+      const { container } = renderWithTheme(<TextInput returnKeyType="send" />);
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('autoCapitalize', () => {
+    it('none', () => {
+      const { container } = renderWithTheme(<TextInput autoCapitalize="none" />);
+      expect(container).toMatchSnapshot();
+    });
+    it('sentences', () => {
+      const { container } = renderWithTheme(<TextInput autoCapitalize="sentences" />);
+      expect(container).toMatchSnapshot();
+    });
+    it('words', () => {
+      const { container } = renderWithTheme(<TextInput autoCapitalize="words" />);
+      expect(container).toMatchSnapshot();
+    });
+    it('characters', () => {
+      const { container } = renderWithTheme(<TextInput autoCapitalize="characters" />);
       expect(container).toMatchSnapshot();
     });
   });

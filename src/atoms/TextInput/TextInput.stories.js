@@ -29,6 +29,13 @@ const returnKeyTypeOptions = {
   send: 'send',
 };
 
+const autoCapitalizeOptions = {
+  none: 'none',
+  sentences: 'sentences',
+  words: 'words',
+  characters: 'characters',
+};
+
 storiesOf('TextInput', module)
   .addParameters({
     component: TextInput,
@@ -58,6 +65,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -85,6 +93,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -111,6 +120,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -137,6 +147,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -163,6 +174,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -189,6 +201,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
             maxLength={10}
           />
         </View>
@@ -216,6 +229,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -242,6 +256,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -268,6 +283,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           >
             This is disabled
           </TextInput>
@@ -297,6 +313,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -323,6 +340,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -349,6 +367,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -375,6 +394,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -401,6 +421,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -427,6 +448,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
             maxLength={10}
           />
         </View>
@@ -454,6 +476,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -480,6 +503,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -506,6 +530,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           >
             This is disabled
           </TextInput>
@@ -534,6 +559,7 @@ storiesOf('TextInput', module)
             secureTextEntry={boolean('Secure Text Entry', false, 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
             labelPosition="left"
           />
         </View>
