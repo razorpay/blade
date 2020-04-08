@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeContext } from 'styled-components';
 import icons from '../../icons';
+import automation from '../../_helpers/automation-attributes';
 import { getColorKeys, getColor } from '../../_helpers/theme';
 
 const iconSize = {
@@ -19,7 +20,7 @@ const Icon = ({ size, name, fill, testID, ...rest }) => {
       fill={getColor(theme, fill)}
       height={iconSize[size]}
       width={iconSize[size]}
-      test-id={testID}
+      {...automation(testID)}
       {...rest}
     />
   );
