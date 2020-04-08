@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getColorKeys, getColor } from '../../_helpers/theme';
 import baseTheme from '../../tokens/theme';
+import automation from '../../_helpers/automation-attributes.web';
+
+import Text from '../Text';
 
 const styles = {
-  fontFamily({ theme, weight }) {
-    return theme.fonts.family.lato[weight];
-  },
   fontSize({ theme, size }) {
     switch (size) {
       case 'medium':
@@ -23,9 +23,6 @@ const styles = {
       default:
         return theme.fonts.size.xxxxlarge;
     }
-  },
-  color({ theme, color }) {
-    return getColor(theme, color);
   },
   lineHeight({ theme, size }) {
     switch (size) {
@@ -45,85 +42,49 @@ const styles = {
   },
 };
 
-const StyledHeading1 = styled.h1`
-  font-family: ${styles.fontFamily};
-  font-size: ${styles.fontSize};
-  color: ${styles.color};
-  letter-spacing: 0;
-  line-height: ${styles.lineHeight};
-`;
-
-const StyledHeading2 = styled.h2`
-  font-family: ${styles.fontFamily};
-  font-size: ${styles.fontSize};
-  color: ${styles.color};
-  letter-spacing: 0;
-  line-height: ${styles.lineHeight};
-`;
-
-const StyledHeading3 = styled.h3`
-  font-family: ${styles.fontFamily};
-  font-size: ${styles.fontSize};
-  color: ${styles.color};
-  letter-spacing: 0;
-  line-height: ${styles.lineHeight};
-`;
-
-const StyledHeading4 = styled.h4`
-  font-family: ${styles.fontFamily};
-  font-size: ${styles.fontSize};
-  color: ${styles.color};
-  letter-spacing: 0;
-  line-height: ${styles.lineHeight};
-`;
-
-const StyledHeading5 = styled.h5`
-  font-family: ${styles.fontFamily};
-  font-size: ${styles.fontSize};
-  color: ${styles.color};
-  letter-spacing: 0;
-  line-height: ${styles.lineHeight};
-`;
-
-const StyledHeading6 = styled.h6`
-  font-family: ${styles.fontFamily};
-  font-size: ${styles.fontSize};
-  color: ${styles.color};
-  letter-spacing: 0;
-  line-height: ${styles.lineHeight};
+const StyledHeading = styled(Text)`
+  &&& {
+    font-family: ${({ theme, weight }) => theme.fonts.family.lato[weight]};
+    font-size: ${styles.fontSize};
+    font-weight: ${(props) => baseTheme.fonts.weight[props.weight]};
+    color: ${({ theme, color }) => getColor(theme, color)};
+    letter-spacing: ${({ as }) => (as === 'h6' ? '1px' : '0')};
+    line-height: ${styles.lineHeight};
+  }
 `;
 
 const Heading = ({ size, testID, color, children, maxLines, weight }) => {
-  let StyledHeading;
+  let headingLevel;
   switch (size) {
     case 'medium':
-      StyledHeading = StyledHeading6;
+      headingLevel = 'h6';
       break;
     case 'large':
-      StyledHeading = StyledHeading5;
+      headingLevel = 'h5';
       break;
     case 'xlarge':
-      StyledHeading = StyledHeading4;
+      headingLevel = 'h4';
       break;
     case 'xxlarge':
-      StyledHeading = StyledHeading3;
+      headingLevel = 'h3';
       break;
     case 'xxxlarge':
-      StyledHeading = StyledHeading2;
+      headingLevel = 'h2';
       break;
     case 'xxxxlarge':
-      StyledHeading = StyledHeading1;
+      headingLevel = 'h1';
       break;
     default:
-      StyledHeading = StyledHeading2;
+      headingLevel = 'h2';
   }
   return (
     <StyledHeading
+      as={headingLevel}
       size={size}
       color={color}
-      numberOfLines={maxLines}
+      maxLines={maxLines}
       weight={weight}
-      data-testid={testID}
+      {...automation(testID)}
     >
       {children}
     </StyledHeading>

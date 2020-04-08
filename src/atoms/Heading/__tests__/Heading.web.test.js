@@ -3,6 +3,11 @@ import Heading from '../index';
 import { renderWithTheme } from '../../../_helpers/testing';
 
 describe('<Heading />', () => {
+  it('renders heading with no props', () => {
+    const displayText = 'Heading';
+    const { container } = renderWithTheme(<Heading>{displayText}</Heading>);
+    expect(container).toMatchSnapshot();
+  });
   describe('size', () => {
     it('renders heading with size medium', () => {
       const displayText = 'Heading';
