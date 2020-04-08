@@ -1,11 +1,316 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders <Button /> correctly snapshot testing 1`] = `
+exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
 <div>
-  <button
-    type="button"
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 gubovJ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 hBDZyG"
+    color="primary"
   >
-    Click Me
-  </button>
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 fFoePd"
+      color="light.100"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 mcMfS Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+    disabled=""
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 nqmD"
+      color="light.150"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 fJlCsf Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+    disabled=""
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 kezTOp"
+      color="shade.940"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 kSqDrW Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+    disabled=""
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 kezTOp"
+      color="shade.940"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 gubovJ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 fFoePd"
+      color="light.100"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 kZUcEW Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 eUlkWK"
+      color="primary.800"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 kSqDrW Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 eUlkWK"
+      color="primary.800"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 gubovJ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 fIWTfg"
+    />
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 fFoePd"
+      color="light.100"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 kZUcEW Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 eUlkWK"
+      color="primary.800"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 kSqDrW Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 eUlkWK"
+      color="primary.800"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 gubovJ Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 fqVQFU"
+      color="light.100"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 gubovJ Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 fqVQFU"
+      color="light.100"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 kZUcEW Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 cJyaUX"
+      color="primary.800"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 kSqDrW Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 cJyaUX"
+      color="primary.800"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 gubovJ Spaceweb__Space-njatzl-0 hqmUpj Sizeweb__Size-sc-10bl685-0 yoKtN Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 cfBrpt"
+      color="light.100"
+      data-testid="ds-text"
+    >
+      CLICK ME
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with left icon 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 gubovJ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 fFoePd"
+      color="light.100"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders an icon <Button /> correctly Renders a large Primary <Button /> with right icon 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 gubovJ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 fIWTfg"
+    />
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 fFoePd"
+      color="light.100"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`] = `
+<div>
+  <div
+    class="Buttonweb__StyledButton-gxhxmy-0 gubovJ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    color="primary"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 fFoePd"
+      color="light.100"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </div>
 </div>
 `;
