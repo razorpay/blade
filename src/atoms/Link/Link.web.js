@@ -5,9 +5,27 @@ import Text from '../Text';
 import { getColor } from '../../_helpers/theme';
 
 const Anchor = styled(Text)`
-  color: ${(props) => getColor(props.theme, 'primary.600')};
+  color: ${(props) => getColor(props.theme, 'primary.800')};
   text-decoration: none;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    color: ${(props) => getColor(props.theme, 'primary.800')};
+  }
+  &:focus {
+    outline: none;
+    text-decoration: underline;
+    color: ${(props) => getColor(props.theme, 'primary.900')};
+  }
+  &:active {
+    outline: none;
+    text-decoration: underline;
+    color: ${(props) => getColor(props.theme, 'primary.700')};
+  }
+  &:visited {
+    outline: none;
+    color: ${(props) => getColor(props.theme, 'primary.700')};
+  }
 `;
 
 const Link = ({ size, children, onClick }) => {
