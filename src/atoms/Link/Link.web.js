@@ -4,56 +4,16 @@ import PropTypes from 'prop-types';
 import Text from '../Text';
 import { getColor } from '../../_helpers/theme';
 
-const styles = {
-  color({ disabled, theme }) {
-    if (disabled) {
-      return getColor(theme, 'primary.800');
-    }
-    return getColor(theme, 'primary.600');
-  },
-  pointerEvents({ disabled }) {
-    if (disabled) {
-      return 'none';
-    }
-    return '';
-  },
-  hover: {
-    color({ disabled, theme }) {
-      if (disabled) {
-        return getColor(theme, 'primary.800');
-      }
-      return getColor(theme, 'primary.600');
-    },
-  },
-  focus: {
-    color({ disabled, theme }) {
-      if (disabled) {
-        return getColor(theme, 'primary.800');
-      }
-      return getColor(theme, 'primary.600');
-    },
-  },
-};
-
 const Anchor = styled(Text)`
-  color: ${styles.color};
+  color: ${(props) => getColor(props.theme, 'primary.600')};
   text-decoration: none;
   cursor: pointer;
-  pointer-events: ${styles.pointerEvents};
-  &:hover {
-    color: ${styles.hover.color};
-  }
-  &:focus {
-    outline: none;
-    text-decoration: underline;
-    color: ${styles.focus.color};
-  }
 `;
 
-const Link = ({ size, children, color, onClick, ...props }) => {
+const Link = ({ size, children, onClick }) => {
   return (
-    <Anchor as="a" size={size} {...props} onClick={onClick}>
-      {children}{' '}
+    <Anchor as="a" size={size} onClick={onClick}>
+      {children}
     </Anchor>
   );
 };
@@ -61,13 +21,11 @@ const Link = ({ size, children, color, onClick, ...props }) => {
 Link.propTypes = {
   children: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  color: PropTypes.string,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
 };
 
 Link.defaultProps = {
   onClick: () => {},
-  color: 'primary.800',
   size: 'medium',
 };
 
