@@ -19,21 +19,9 @@ storiesOf('Heading', module)
     <ScrollView>
       <Space margin={[4, 0, 0, 0]}>
         <View>
-          <Heading
-            size="medium"
-            maxLines={number('maxLines', 1)}
-            weight={select('Weight', weightOptions, 'bold')}
-          >
-            {text(
-              'Display Text',
-              'The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.',
-            )}
+          <Heading size="medium" weight={select('Weight', weightOptions, 'bold')}>
+            {'Heading (medium)'}
           </Heading>
-        </View>
-      </Space>
-      <Space margin={[4, 0, 0, 0]}>
-        <View>
-          <Heading>{'Heading (default)'}</Heading>
         </View>
       </Space>
       <Space margin={[4, 0, 0, 0]}>
@@ -61,6 +49,20 @@ storiesOf('Heading', module)
         <View>
           <Heading size="xxxlarge" weight={select('Weight', weightOptions, 'bold')}>
             {'Heading (xxxlarge)'}
+          </Heading>
+        </View>
+      </Space>
+      <Space margin={[4, 0, 0, 0]}>
+        <View>
+          <Heading
+            size="medium"
+            maxLines={number('maxLines', 1)}
+            weight={select('Weight', weightOptions, 'bold')}
+          >
+            {text(
+              'Display Text',
+              'Heading: The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.',
+            )}
           </Heading>
         </View>
       </Space>
