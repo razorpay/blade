@@ -34,7 +34,7 @@ const styles = {
       }
 
       if (_isMultiline) {
-        paddingTop = IS_ANDROID ? 1 : 0.385;
+        paddingTop = IS_ANDROID ? 0 : 0.385;
       }
 
       paddingRight = 0;
@@ -265,6 +265,7 @@ const TextInput = ({
             position={labelPosition}
             disabled={disabled}
             inputLayoutDimensions={layoutDimensions}
+            _isMultiline={_isMultiline}
           >
             {label}
           </Label.Regular>
@@ -293,6 +294,7 @@ const TextInput = ({
                 inputLayoutDimensions={layoutDimensions}
                 position={labelPosition}
                 disabled={disabled}
+                _isMultiline={_isMultiline}
               >
                 {label}
               </Label.Regular>
@@ -310,7 +312,11 @@ const TextInput = ({
                     <Size width={styles.inputContainer.width({ width })}>
                       <InputContainer>
                         {hasPrefix ? (
-                          <AccessoryText variant={variant} disabled={disabled}>
+                          <AccessoryText
+                            variant={variant}
+                            disabled={disabled}
+                            _isMultiline={_isMultiline}
+                          >
                             {prefix}
                           </AccessoryText>
                         ) : null}
@@ -320,6 +326,7 @@ const TextInput = ({
                             name={iconLeft}
                             disabled={disabled}
                             hasError={hasError}
+                            _isMultiline={_isMultiline}
                           />
                         ) : null}
 

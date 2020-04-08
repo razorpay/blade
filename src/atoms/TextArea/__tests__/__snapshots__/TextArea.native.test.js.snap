@@ -883,6 +883,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with dis
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.930"
                 numberOfLines={1}
                 size="medium"
@@ -894,6 +895,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with dis
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -969,11 +971,11 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with dis
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.10)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -989,15 +991,15 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with dis
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={437661526}
@@ -1135,6 +1137,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with dis
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.930"
               numberOfLines={2}
               size="xsmall"
@@ -1146,6 +1149,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with dis
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1261,6 +1265,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with err
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -1272,6 +1277,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with err
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -1347,11 +1353,11 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with err
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(209, 45, 45, 1.0)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -1367,15 +1373,15 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with err
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={4291898669}
@@ -1513,6 +1519,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with err
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="negative.900"
               numberOfLines={2}
               size="xsmall"
@@ -1524,6 +1531,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with err
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1729,6 +1737,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -1740,6 +1749,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1772,6 +1782,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -1783,6 +1794,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1987,6 +1999,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -1998,6 +2011,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -2111,11 +2125,11 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -2131,15 +2145,15 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -2286,11 +2300,11 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -2306,15 +2320,15 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -2517,11 +2531,11 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -2537,15 +2551,15 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -2848,11 +2862,11 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -2868,15 +2882,15 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -3287,6 +3301,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with pre
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -3298,6 +3313,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with pre
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -3431,6 +3447,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with pre
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -3442,6 +3459,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with pre
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -3831,6 +3849,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with suf
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -3842,6 +3861,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with suf
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -4603,6 +4623,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with d
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.930"
                 numberOfLines={1}
                 size="medium"
@@ -4614,6 +4635,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with d
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -4689,11 +4711,11 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with d
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.10)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -4709,15 +4731,15 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with d
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={437661526}
@@ -4855,6 +4877,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with d
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.930"
               numberOfLines={2}
               size="xsmall"
@@ -4866,6 +4889,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with d
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4981,6 +5005,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with e
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -4992,6 +5017,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with e
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -5067,11 +5093,11 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with e
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(209, 45, 45, 1.0)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -5087,15 +5113,15 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with e
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={4291898669}
@@ -5233,6 +5259,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with e
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="negative.900"
               numberOfLines={2}
               size="xsmall"
@@ -5244,6 +5271,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with e
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5604,6 +5632,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -5615,6 +5644,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5820,6 +5850,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -5831,6 +5862,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5863,6 +5895,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
               _isUnderlined={false}
               _letterSpacing="small"
               _weight="regular"
+              align="left"
               color="shade.950"
               numberOfLines={2}
               size="xsmall"
@@ -5874,6 +5907,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
                     "fontSize": 12,
                     "letterSpacing": 0,
                     "lineHeight": 18,
+                    "textAlign": "left",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5987,11 +6021,11 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -6007,15 +6041,15 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -6268,11 +6302,11 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -6288,15 +6322,15 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -6443,11 +6477,11 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -6463,15 +6497,15 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -6724,11 +6758,11 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
             >
               <RNSVGSvgView
                 align="xMidYMid"
-                bbHeight={12}
-                bbWidth={12}
+                bbHeight={16}
+                bbWidth={16}
                 fill="rgba(22, 47, 86, 0.38)"
                 focusable={false}
-                height={12}
+                height={16}
                 meetOrSlice={0}
                 minX={0}
                 minY={0}
@@ -6744,15 +6778,15 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
                     },
                     Object {
                       "flex": 0,
-                      "height": 12,
-                      "width": 12,
+                      "height": 16,
+                      "width": 16,
                     },
                   ]
                 }
                 testID="ds-icon"
                 vbHeight={24}
                 vbWidth={24}
-                width={12}
+                width={16}
               >
                 <RNSVGGroup
                   fill={1628843862}
@@ -7163,6 +7197,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with p
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -7174,6 +7209,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with p
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -7307,6 +7343,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with p
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -7318,6 +7355,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with p
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -7707,6 +7745,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with s
                 _isUnderlined={false}
                 _letterSpacing="small"
                 _weight="regular"
+                align="left"
                 color="shade.950"
                 numberOfLines={1}
                 size="medium"
@@ -7718,6 +7757,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with s
                       "fontSize": 14,
                       "letterSpacing": 0,
                       "lineHeight": 20,
+                      "textAlign": "left",
                       "textDecorationLine": "none",
                     },
                   ]

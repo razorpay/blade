@@ -26,17 +26,19 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -46,6 +48,10 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
       € 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -56,28 +62,31 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -116,17 +125,19 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -136,6 +147,10 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -146,28 +161,31 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -206,17 +224,19 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -226,6 +246,10 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -236,28 +260,31 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       123
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -296,17 +323,19 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -316,6 +345,10 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -326,28 +359,31 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -386,17 +422,19 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -406,6 +444,10 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -416,28 +458,31 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       12,345
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -476,17 +521,19 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -496,6 +543,10 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -506,28 +557,31 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       1,23,456
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -566,17 +620,19 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -586,6 +642,10 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -596,28 +656,31 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       12,34,567
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -656,17 +719,19 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -676,6 +741,10 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -686,28 +755,31 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       1,23,45,678
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -746,17 +818,19 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -766,6 +840,10 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -776,28 +854,31 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       123
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -836,17 +917,19 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -856,6 +939,10 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -866,28 +953,31 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       123
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -926,17 +1016,19 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -946,6 +1038,10 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -956,28 +1052,31 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       123
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1016,17 +1115,19 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1036,6 +1137,10 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
       color="shade.980"
       size="medium"
       style={
@@ -1046,28 +1151,31 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       123
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1080,7 +1188,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
 </View>
 `;
 
-exports[`<Amount /> size renders amount with size large 1`] = `
+exports[`<Amount /> size with camel variant and subtle renders amount with large size 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1107,16 +1215,18 @@ exports[`<Amount /> size renders amount with size large 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       _weight="bold"
-      color="shade.940"
+      align="left"
+      color="shade.950"
       size="xsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
+            "color": "rgba(22, 47, 86, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1126,21 +1236,26 @@ exports[`<Amount /> size renders amount with size large 1`] = `
       ₹ 
     </Text>
     <Text
-      color="shade.980"
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="large"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.87)",
+            "color": "rgba(22, 47, 86, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 16,
             "letterSpacing": 0,
-            "lineHeight": 20,
+            "lineHeight": 24,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       1,234
     </Text>
@@ -1148,16 +1263,18 @@ exports[`<Amount /> size renders amount with size large 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
-      color="shade.940"
+      align="left"
+      color="shade.950"
       size="xsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
+            "color": "rgba(22, 47, 86, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
             "letterSpacing": 0,
             "lineHeight": 18,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1170,7 +1287,7 @@ exports[`<Amount /> size renders amount with size large 1`] = `
 </View>
 `;
 
-exports[`<Amount /> size renders amount with size medium 1`] = `
+exports[`<Amount /> size with camel variant and subtle renders amount with medium size 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1196,17 +1313,19 @@ exports[`<Amount /> size renders amount with size medium 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1216,38 +1335,45 @@ exports[`<Amount /> size renders amount with size medium 1`] = `
       ₹ 
     </Text>
     <Text
-      color="shade.980"
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="medium"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.87)",
+            "color": "rgba(22, 47, 86, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
-      testID="ds-heading"
-      weight="bold"
+      testID="ds-text"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
-      color="shade.940"
+      _weight="bold"
+      align="left"
+      color="shade.950"
       size="xxsmall"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
-            "fontFamily": "Lato-Regular",
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
             "lineHeight": 14,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1260,7 +1386,7 @@ exports[`<Amount /> size renders amount with size medium 1`] = `
 </View>
 `;
 
-exports[`<Amount /> size renders amount with size xlarge 1`] = `
+exports[`<Amount /> size with camel variant and subtle renders amount with xlarge size 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1287,16 +1413,498 @@ exports[`<Amount /> size renders amount with size xlarge 1`] = `
       _letterSpacing="small"
       _lineHeight="xlarge"
       _weight="bold"
-      color="shade.940"
+      align="left"
+      color="shade.950"
       size="medium"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
+            "color": "rgba(22, 47, 86, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 30,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      color="shade.950"
+      size="xlarge"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 20,
+            "letterSpacing": 0,
+            "lineHeight": 30,
+          },
+        ]
+      }
+      testID="ds-heading"
+      weight="bold"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with camel variant and subtle renders amount with xxlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xxlarge"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 36,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      color="shade.950"
+      size="xxlarge"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 24,
+            "letterSpacing": 0,
+            "lineHeight": 36,
+          },
+        ]
+      }
+      testID="ds-heading"
+      weight="bold"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with camel variant and subtle renders amount with xxxlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xxlarge"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="large"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 16,
+            "letterSpacing": 0,
+            "lineHeight": 36,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      color="shade.950"
+      size="xxxlarge"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 32,
+            "letterSpacing": 0,
+            "lineHeight": 36,
+          },
+        ]
+      }
+      testID="ds-heading"
+      weight="bold"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="large"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 16,
+            "letterSpacing": 0,
+            "lineHeight": 24,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with camel variant renders amount with large size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="xsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 12,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.980"
+      size="large"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.87)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 16,
+            "letterSpacing": 0,
+            "lineHeight": 24,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="xsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 12,
+            "letterSpacing": 0,
+            "lineHeight": 18,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with camel variant renders amount with medium size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.980"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.87)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xlarge"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 30,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1328,16 +1936,18 @@ exports[`<Amount /> size renders amount with size xlarge 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
-      color="shade.940"
+      align="left"
+      color="shade.950"
       size="medium"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
+            "color": "rgba(22, 47, 86, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1350,7 +1960,7 @@ exports[`<Amount /> size renders amount with size xlarge 1`] = `
 </View>
 `;
 
-exports[`<Amount /> size renders amount with size xxlarge 1`] = `
+exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1377,16 +1987,18 @@ exports[`<Amount /> size renders amount with size xxlarge 1`] = `
       _letterSpacing="small"
       _lineHeight="xxlarge"
       _weight="bold"
-      color="shade.940"
+      align="left"
+      color="shade.950"
       size="medium"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
+            "color": "rgba(22, 47, 86, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 36,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1418,16 +2030,18 @@ exports[`<Amount /> size renders amount with size xxlarge 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
-      color="shade.940"
+      align="left"
+      color="shade.950"
       size="medium"
       style={
         Array [
           Object {
-            "color": "rgba(22, 47, 86, 0.24)",
+            "color": "rgba(22, 47, 86, 0.38)",
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1440,7 +2054,7 @@ exports[`<Amount /> size renders amount with size xxlarge 1`] = `
 </View>
 `;
 
-exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
+exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -1467,6 +2081,7 @@ exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
       _letterSpacing="small"
       _lineHeight="xxlarge"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="large"
       style={
@@ -1477,6 +2092,7 @@ exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 36,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1508,6 +2124,7 @@ exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="bold"
+      align="left"
       color="shade.950"
       size="large"
       style={
@@ -1518,6 +2135,7 @@ exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 24,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -1526,6 +2144,1026 @@ exports[`<Amount /> size renders amount with size xxxlarge 1`] = `
     >
       .00
     </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with normal variant and subtle renders amount with large size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="bold"
+    align="left"
+    color="shade.960"
+    size="large"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 16,
+          "letterSpacing": 0,
+          "lineHeight": 24,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-amount"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with normal variant and subtle renders amount with medium size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="bold"
+    align="left"
+    color="shade.960"
+    size="medium"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-amount"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with normal variant and subtle renders amount with xlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.960"
+    size="xlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 20,
+          "letterSpacing": 0,
+          "lineHeight": 30,
+        },
+      ]
+    }
+    testID="ds-amount"
+    weight="bold"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with normal variant and subtle renders amount with xxlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.960"
+    size="xxlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 24,
+          "letterSpacing": 0,
+          "lineHeight": 36,
+        },
+      ]
+    }
+    testID="ds-amount"
+    weight="bold"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with normal variant and subtle renders amount with xxxlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.960"
+    size="xxxlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 32,
+          "letterSpacing": 0,
+          "lineHeight": 36,
+        },
+      ]
+    }
+    testID="ds-amount"
+    weight="bold"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with normal variant renders amount with large size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="bold"
+    align="left"
+    color="shade.980"
+    size="large"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 16,
+          "letterSpacing": 0,
+          "lineHeight": 24,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-amount"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with normal variant renders amount with medium size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="bold"
+    align="left"
+    color="shade.980"
+    size="medium"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-amount"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with normal variant renders amount with xlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.980"
+    size="xlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 20,
+          "letterSpacing": 0,
+          "lineHeight": 30,
+        },
+      ]
+    }
+    testID="ds-amount"
+    weight="bold"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with normal variant renders amount with xxlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.980"
+    size="xxlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 24,
+          "letterSpacing": 0,
+          "lineHeight": 36,
+        },
+      ]
+    }
+    testID="ds-amount"
+    weight="bold"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> size with normal variant renders amount with xxxlarge size 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    color="shade.980"
+    size="xxxlarge"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 32,
+          "letterSpacing": 0,
+          "lineHeight": 36,
+        },
+      ]
+    }
+    testID="ds-amount"
+    weight="bold"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> variant renders camel variant amount 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.980"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.87)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> variant renders normal variant amount 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="bold"
+    align="left"
+    color="shade.980"
+    size="medium"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-amount"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> weight with camel variant and subtle renders regular amount 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="regular"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="shade.950"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.980"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.87)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="bold"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Array [
+          Object {
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-amount"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="medium"
+      _weight="regular"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      ₹ 
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="shade.980"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.87)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      1,234
+    </Text>
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _weight="regular"
+      align="left"
+      color="shade.950"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(22, 47, 86, 0.38)",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 10,
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+    >
+      .00
+    </Text>
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> weight with normal variant and subtle renders bold amount 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="bold"
+    align="left"
+    color="shade.960"
+    size="medium"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-amount"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> weight with normal variant and subtle renders regular amount 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="regular"
+    align="left"
+    color="shade.960"
+    size="medium"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.54)",
+          "fontFamily": "Lato-Regular",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-amount"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> weight with normal variant renders bold amount 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="bold"
+    align="left"
+    color="shade.980"
+    size="medium"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Bold",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-amount"
+  >
+    ₹ 1,234.00
+  </Text>
+</View>
+`;
+
+exports[`<Amount /> weight with normal variant renders regular amount 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="regular"
+    align="left"
+    color="shade.980"
+    size="medium"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Regular",
+          "fontSize": 14,
+          "letterSpacing": 0,
+          "lineHeight": 20,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-amount"
+  >
+    ₹ 1,234.00
   </Text>
 </View>
 `;

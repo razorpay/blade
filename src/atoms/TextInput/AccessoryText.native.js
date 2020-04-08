@@ -15,8 +15,12 @@ const styles = {
       return 'shade.950';
     }
   },
-  padding({ variant }) {
-    const top = IS_ANDROID ? 1 : 0;
+  padding({ variant, _isMultiline }) {
+    let top = 1;
+    if (_isMultiline || !IS_ANDROID) {
+      top = 0;
+    }
+
     if (variant === 'filled') {
       return [0, 1, 0, 1];
     } else {
@@ -25,9 +29,9 @@ const styles = {
   },
 };
 
-const AccessoryText = ({ children, disabled, variant }) => {
+const AccessoryText = ({ children, disabled, variant, _isMultiline }) => {
   return (
-    <Space padding={styles.padding({ variant })}>
+    <Space padding={styles.padding({ variant, _isMultiline })}>
       <View>
         <Text maxLines={1} color={styles.color({ disabled })} size="medium">
           {children}
@@ -41,11 +45,13 @@ AccessoryText.propTypes = {
   children: PropTypes.string,
   disabled: PropTypes.bool,
   variant: PropTypes.string.isRequired,
+  _isMultiline: PropTypes.bool,
 };
 
 AccessoryText.defaultProps = {
   children: '',
   disabled: false,
+  _isMultiline: false,
 };
 
 export default AccessoryText;

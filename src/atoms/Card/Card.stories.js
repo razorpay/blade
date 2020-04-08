@@ -17,7 +17,7 @@ storiesOf('Card', module)
     component: Card,
   })
   .add('default', () => (
-    <Flex justifyContent="space-evenly" flex={1}>
+    <Flex justifyContent="space-evenly" flex={1} flexDirection="column">
       <View>
         <Card
           variant={select('Variant', variantOptions, 'shadowed')}
@@ -39,7 +39,7 @@ storiesOf('Card', module)
             }
           </Text>
         </Card>
-        <Flex alignSelf="flex-start">
+        <Flex alignSelf="flex-start" flexDirection="column">
           <View>
             <Card
               variant={select('Variant', variantOptions, 'shadowed')}
