@@ -1,9 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders <Text /> correctly snapshot testing with as in text 1`] = `
+exports[`<Text /> _isUnderlined snapshot testing with underlined text 1`] = `
+<div>
+  <div
+    class="Textweb__Text-sc-6jf9e4-0 ieYLro"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some text
+  </div>
+</div>
+`;
+
+exports[`<Text /> _weight renders bold weight text 1`] = `
+<div>
+  <div
+    class="Textweb__Text-sc-6jf9e4-0 jFCQqH"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some text
+  </div>
+</div>
+`;
+
+exports[`<Text /> _weight renders light weight text 1`] = `
+<div>
+  <div
+    class="Textweb__Text-sc-6jf9e4-0 jFCQqH"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some text
+  </div>
+</div>
+`;
+
+exports[`<Text /> align renders text with display content center aligned 1`] = `
+<div>
+  <div
+    class="Textweb__Text-sc-6jf9e4-0 dPAKE"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some text
+  </div>
+</div>
+`;
+
+exports[`<Text /> align renders text with display content right aligned 1`] = `
+<div>
+  <div
+    class="Textweb__Text-sc-6jf9e4-0 lpboEn"
+    color="shade.980"
+    data-testid="ds-text"
+  >
+    Displaying some text
+  </div>
+</div>
+`;
+
+exports[`<Text /> as renders as span 1`] = `
 <div>
   <span
-    class="Textweb__Text-sc-6jf9e4-0 dRFMzk"
+    class="Textweb__Text-sc-6jf9e4-0 jsGnSE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -12,10 +72,10 @@ exports[`Renders <Text /> correctly snapshot testing with as in text 1`] = `
 </div>
 `;
 
-exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
+exports[`<Text /> default renders default text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 kkyLRv"
+    class="Textweb__Text-sc-6jf9e4-0 jsGnSE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -24,38 +84,14 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
 </div>
 `;
 
-exports[`Renders <Text /> correctly snapshot testing with maxLines in text 1`] = `
+exports[`<Text /> maxLines snapshot testing with maxLines in text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 dysrfH"
+    class="Textweb__Text-sc-6jf9e4-0 fNjDdP"
     color="shade.980"
     data-testid="ds-text"
   >
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-  </div>
-</div>
-`;
-
-exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
-<div>
-  <div
-    class="Textweb__Text-sc-6jf9e4-0 dRFMzk"
-    color="shade.980"
-    data-testid="ds-text"
-  >
-    Displaying some text
-  </div>
-</div>
-`;
-
-exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = `
-<div>
-  <div
-    class="Textweb__Text-sc-6jf9e4-0 eDAOVM"
-    color="shade.980"
-    data-testid="ds-text"
-  >
-    Displaying some text
   </div>
 </div>
 `;
