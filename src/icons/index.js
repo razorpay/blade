@@ -6,6 +6,11 @@ const icons = {
   chevronLeft: require('./ChevronLeft').default,
   chevronRight: require('./ChevronRight').default,
   chevronUp: require('./ChevronUp').default,
+  arrowUp: require('./ArrowUp').default,
+  arrowDown: require('./ArrowDown').default,
+  arrowRight: require('./ArrowRight').default,
+  arrowLeft: require('./ArrowLeft').default,
+  close: require('./Close').default,
 };
 
 export default icons;
