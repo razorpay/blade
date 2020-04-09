@@ -32,6 +32,12 @@ const styles = {
       return getLineHeight(theme, size);
     }
   },
+  textAlign({ align }) {
+    if (align === 'inherit' || align === 'initial') {
+      return 'auto';
+    }
+    return align;
+  },
 };
 
 const StyledText = styled(NativeText)`
@@ -41,12 +47,14 @@ const StyledText = styled(NativeText)`
   text-decoration-line: ${styles.textDecorationLine};
   letter-spacing: ${styles.letterSpacing};
   line-height: ${styles.lineHeight};
+  text-align: ${styles.textAlign};
 `;
 
 const Text = ({
   size,
   testID,
   color,
+  align,
   children,
   maxLines,
   _weight,
@@ -58,6 +66,7 @@ const Text = ({
     <StyledText
       size={size}
       color={color}
+      align={align}
       numberOfLines={maxLines}
       _weight={_weight}
       _isUnderlined={_isUnderlined}
@@ -74,6 +83,7 @@ Text.propTypes = {
   children: PropTypes.string,
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   color: PropTypes.oneOf(getColorKeys()),
+  align: PropTypes.oneOf(['left', 'right', 'center', 'justify', 'inherit', 'initial']),
   testID: PropTypes.string,
   maxLines: PropTypes.number,
   _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
@@ -85,6 +95,7 @@ Text.propTypes = {
 Text.defaultProps = {
   size: 'large',
   color: 'shade.980',
+  align: 'left',
   testID: 'ds-text',
   maxLines: undefined,
   _weight: 'regular',

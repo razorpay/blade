@@ -181,6 +181,7 @@ exports[`<Card /> outlined renders an outlined Card with text content 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="shade.980"
       size="large"
       style={
@@ -191,6 +192,7 @@ exports[`<Card /> outlined renders an outlined Card with text content 1`] = `
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 24,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -339,6 +341,7 @@ exports[`<Card /> shadowed renders a shadowed Card with text content 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="shade.980"
       size="large"
       style={
@@ -349,6 +352,7 @@ exports[`<Card /> shadowed renders a shadowed Card with text content 1`] = `
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 24,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]

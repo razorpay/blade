@@ -8,18 +8,6 @@ const styles = {
   color({ theme, color }) {
     return getColor(theme, color);
   },
-  align({ align }) {
-    switch (align) {
-      case 'left':
-        return 'flex-start';
-      case 'center':
-        return 'center';
-      case 'right':
-        return 'flex-end';
-      default:
-        return 'flex-start';
-    }
-  },
   lineHeight({ theme, size, _lineHeight }) {
     if (_lineHeight) {
       return theme.fonts.lineHeight[_lineHeight];
@@ -66,7 +54,7 @@ const Text = styled.div`
   font-size: ${(props) => props.theme.fonts.size[props.size]};
   color: ${styles.color};
   text-decoration: ${styles.textDecoration};
-  align-self: ${styles.align};
+  text-align: ${(props) => props.align};
   letter-spacing: ${(props) => props.theme.fonts.letterSpacing[props._letterSpacing]};
   line-height: ${styles.lineHeight};
   overflow: ${styles.overflow};
@@ -85,7 +73,7 @@ const Text = styled.div`
 Text.propTypes = {
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   color: PropTypes.oneOf(getColorKeys()),
-  align: PropTypes.oneOf(['left', 'center', 'right']),
+  align: PropTypes.oneOf(['left', 'right', 'center', 'justify', 'inherit', 'initial']),
   'data-testid': PropTypes.string,
   maxLines: PropTypes.number,
   _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
