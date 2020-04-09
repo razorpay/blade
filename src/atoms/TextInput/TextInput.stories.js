@@ -13,6 +13,34 @@ const sizeOptions = {
   auto: 'auto',
 };
 
+const keyboardTypeOptions = {
+  'number-pad': 'number-pad',
+  'decimal-pad': 'decimal-pad',
+  numeric: 'numeric',
+  'email-address': 'email-address',
+  'phone-pad': 'phone-pad',
+};
+
+const returnKeyTypeOptions = {
+  done: 'done',
+  go: 'go',
+  next: 'next',
+  search: 'search',
+  send: 'send',
+};
+
+const autoCapitalizeOptions = {
+  none: 'none',
+  sentences: 'sentences',
+  words: 'words',
+  characters: 'characters',
+};
+
+const typeOptions = {
+  text: 'text',
+  password: 'password',
+};
+
 storiesOf('TextInput', module)
   .addParameters({
     component: TextInput,
@@ -27,7 +55,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'medium')}
+            width={select('Width', sizeOptions, 'medium', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -39,6 +67,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -51,7 +83,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -63,6 +95,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -74,7 +110,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -86,6 +122,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -97,7 +137,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -109,6 +149,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -120,7 +164,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -132,6 +176,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -143,7 +191,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -155,6 +203,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
             maxLength={10}
           />
         </View>
@@ -167,7 +219,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -179,6 +231,10 @@ storiesOf('TextInput', module)
             errorText="This is the reason for the error"
             onChange={() => {}}
             variant="outlined"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -190,7 +246,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -202,6 +258,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -213,7 +273,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -225,6 +285,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           >
             This is disabled
           </TextInput>
@@ -239,7 +303,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -251,6 +315,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -262,7 +330,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -274,6 +342,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -285,7 +357,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -297,6 +369,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -308,7 +384,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -320,6 +396,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -331,7 +411,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -343,6 +423,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -354,7 +438,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -366,6 +450,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
             maxLength={10}
           />
         </View>
@@ -378,7 +466,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft="info"
@@ -390,6 +478,10 @@ storiesOf('TextInput', module)
             errorText="This is the reason for the error"
             onChange={() => {}}
             variant="filled"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -401,7 +493,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -413,6 +505,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           />
         </View>
       </Space>
@@ -424,7 +520,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
             iconLeft=""
@@ -436,6 +532,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
           >
             This is disabled
           </TextInput>
@@ -449,7 +549,7 @@ storiesOf('TextInput', module)
             </View>
           </Space>
           <TextInput
-            width={select('Width', sizeOptions, 'large')}
+            width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
             iconLeft=""
@@ -461,6 +561,10 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
             labelPosition="left"
           />
         </View>

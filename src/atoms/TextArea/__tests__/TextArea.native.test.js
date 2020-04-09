@@ -10,7 +10,7 @@ describe('Renders <TextArea /> outlined variant correctly', () => {
   });
 
   it('snapshot testing with filled TextArea', () => {
-    const { container } = renderWithTheme(<TextArea label="Email">{'user@domain.com'}</TextArea>);
+    const { container } = renderWithTheme(<TextArea label="Email" value="user@domain.com" />);
     expect(container).toMatchSnapshot();
   });
 
@@ -114,9 +114,7 @@ describe('Renders <TextArea /> filled variant correctly', () => {
 
   it('snapshot testing (filled TextArea)', () => {
     const { container } = renderWithTheme(
-      <TextArea variant="filled" label="Email">
-        {'user@domain.com'}
-      </TextArea>,
+      <TextArea variant="filled" label="Email" value="user@domain.com" />,
     );
     expect(container).toMatchSnapshot();
   });
