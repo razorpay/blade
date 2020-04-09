@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ScrollView /> renders Text 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 jsGnSE"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Hello World
+    </div>
+  </div>
+</div>
+`;

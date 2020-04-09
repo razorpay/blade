@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
+exports[`<Text /> renders bold text 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -14,6 +14,7 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="bold"
+    align="left"
     color="shade.980"
     size="large"
     style={
@@ -24,6 +25,7 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
           "fontSize": 16,
           "letterSpacing": 0,
           "lineHeight": 24,
+          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -35,7 +37,7 @@ exports[`Renders <Text /> correctly snapshot testing with bold text 1`] = `
 </View>
 `;
 
-exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
+exports[`<Text /> renders regular text 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -49,6 +51,7 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _weight="regular"
+    align="left"
     color="shade.980"
     size="large"
     style={
@@ -59,6 +62,7 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
           "fontSize": 16,
           "letterSpacing": 0,
           "lineHeight": 24,
+          "textAlign": "left",
           "textDecorationLine": "none",
         },
       ]
@@ -70,7 +74,155 @@ exports[`Renders <Text /> correctly snapshot testing with regular text 1`] = `
 </View>
 `;
 
-exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = `
+exports[`<Text /> renders text with display content auto aligned when align prop is of value "inherit" 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="regular"
+    align="inherit"
+    color="shade.980"
+    size="large"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Regular",
+          "fontSize": 16,
+          "letterSpacing": 0,
+          "lineHeight": 24,
+          "textAlign": "auto",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-text"
+  >
+    Displaying some text
+  </Text>
+</View>
+`;
+
+exports[`<Text /> renders text with display content auto aligned when align prop is of value "initial" 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="regular"
+    align="initial"
+    color="shade.980"
+    size="large"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Regular",
+          "fontSize": 16,
+          "letterSpacing": 0,
+          "lineHeight": 24,
+          "textAlign": "auto",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-text"
+  >
+    Displaying some text
+  </Text>
+</View>
+`;
+
+exports[`<Text /> renders text with display content center aligned 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="regular"
+    align="center"
+    color="shade.980"
+    size="large"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Regular",
+          "fontSize": 16,
+          "letterSpacing": 0,
+          "lineHeight": 24,
+          "textAlign": "center",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-text"
+  >
+    Displaying some text
+  </Text>
+</View>
+`;
+
+exports[`<Text /> renders text with display content right aligned 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _weight="regular"
+    align="right"
+    color="shade.980"
+    size="large"
+    style={
+      Array [
+        Object {
+          "color": "rgba(22, 47, 86, 0.87)",
+          "fontFamily": "Lato-Regular",
+          "fontSize": 16,
+          "letterSpacing": 0,
+          "lineHeight": 24,
+          "textAlign": "right",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    testID="ds-text"
+  >
+    Displaying some text
+  </Text>
+</View>
+`;
+
+exports[`<Text /> renders underlined text 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -84,6 +236,7 @@ exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = 
     _isUnderlined={true}
     _letterSpacing="small"
     _weight="regular"
+    align="left"
     color="shade.980"
     size="large"
     style={
@@ -94,6 +247,7 @@ exports[`Renders <Text /> correctly snapshot testing with underlined text 1`] = 
           "fontSize": 16,
           "letterSpacing": 0,
           "lineHeight": 24,
+          "textAlign": "left",
           "textDecorationLine": "underline",
         },
       ]

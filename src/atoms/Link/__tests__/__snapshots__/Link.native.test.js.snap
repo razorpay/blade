@@ -28,6 +28,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
       _isUnderlined={true}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="primary.600"
       size="medium"
       style={
@@ -38,6 +39,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "underline",
           },
         ]
@@ -78,6 +80,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="primary.800"
       size="medium"
       style={
@@ -88,6 +91,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -128,6 +132,7 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="primary.800"
       size="medium"
       style={
@@ -138,6 +143,7 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -178,6 +184,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="primary.800"
       size="large"
       style={
@@ -188,6 +195,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 24,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -228,6 +236,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="primary.800"
       size="medium"
       style={
@@ -238,6 +247,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = 
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -278,6 +288,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="primary.800"
       size="small"
       style={
@@ -288,6 +299,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
             "fontSize": 13,
             "letterSpacing": 0,
             "lineHeight": 18,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
@@ -328,6 +340,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
       _isUnderlined={false}
       _letterSpacing="small"
       _weight="regular"
+      align="left"
       color="primary.800"
       size="medium"
       style={
@@ -338,6 +351,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
+            "textAlign": "left",
             "textDecorationLine": "none",
           },
         ]
