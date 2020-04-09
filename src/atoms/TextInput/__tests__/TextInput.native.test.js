@@ -226,17 +226,13 @@ describe('Renders <TextInput /> filled variant correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  describe('secureTextEntry', () => {
-    it(' with filled text input ', () => {
-      const { container } = renderWithTheme(
-        <TextInput variant="filled" secureTextEntry value="Hello world" />,
-      );
+  describe('type', () => {
+    it('text', () => {
+      const { container } = renderWithTheme(<TextInput type="text" value="Hello world" />);
       expect(container).toMatchSnapshot();
     });
-    it(' with outlined text input ', () => {
-      const { container } = renderWithTheme(
-        <TextInput variant="outlined" secureTextEntry value="Hello world" />,
-      );
+    it('password', () => {
+      const { container } = renderWithTheme(<TextInput type="password" value="Hello world" />);
       expect(container).toMatchSnapshot();
     });
   });

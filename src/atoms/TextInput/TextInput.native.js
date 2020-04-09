@@ -178,7 +178,7 @@ const TextInput = ({
   testID,
   labelPosition,
   width,
-  secureTextEntry,
+  type,
   keyboardType,
   returnKeyType,
   autoCapitalize,
@@ -373,7 +373,7 @@ const TextInput = ({
                                 onLayout={onTextInputLayout}
                                 value={input}
                                 multiline={_isMultiline}
-                                secureTextEntry={secureTextEntry}
+                                secureTextEntry={type === 'password'}
                                 keyboardType={keyboardType}
                                 returnKeyType={returnKeyType}
                                 autoCapitalize={autoCapitalize}
@@ -443,7 +443,7 @@ TextInput.propTypes = {
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
-  secureTextEntry: PropTypes.bool,
+  type: PropTypes.oneOf(['text', 'password']),
   keyboardType: PropTypes.oneOf([
     'number-pad',
     'decimal-pad',
@@ -473,7 +473,7 @@ TextInput.defaultProps = {
   testID: 'ds-text-input',
   labelPosition: 'top',
   width: 'medium',
-  secureTextEntry: false,
+  type: 'text',
   keyboardType: undefined,
   returnKeyType: undefined,
   autoCapitalize: undefined,
