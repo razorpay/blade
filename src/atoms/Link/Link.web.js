@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Text from '../Text';
 import { getColor } from '../../_helpers/theme';
 
-const Anchor = styled(Text)`
+const StyledText = styled(Text)`
   color: ${(props) => getColor(props.theme, 'primary.800')};
   text-decoration: none;
   cursor: pointer;
@@ -28,23 +28,23 @@ const Anchor = styled(Text)`
   }
 `;
 
-const Link = ({ size, children, onClick }) => {
+const Link = ({ size, children, href }) => {
   return (
-    <Anchor as="a" size={size} onClick={onClick}>
+    <StyledText as="a" size={size} href={href}>
       {children}
-    </Anchor>
+    </StyledText>
   );
 };
 
 Link.propTypes = {
   children: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
+  href: PropTypes.string,
 };
 
 Link.defaultProps = {
-  onClick: () => {},
   size: 'medium',
+  href: '#',
 };
 
 export default Link;

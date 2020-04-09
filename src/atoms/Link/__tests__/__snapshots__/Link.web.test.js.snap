@@ -5,9 +5,10 @@ exports[`<Link /> Selectors onHover 1`] = `[MockFunction]`;
 exports[`<Link /> Size large 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__Anchor-sc-1u7mgfj-0 bJGwjx"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dgFRQe"
     color="shade.980"
     data-testid="ds-text"
+    href="#"
   >
     Displaying some link
   </a>
@@ -17,9 +18,10 @@ exports[`<Link /> Size large 1`] = `
 exports[`<Link /> Size medium 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__Anchor-sc-1u7mgfj-0 deziHz"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 eDaeyA"
     color="shade.980"
     data-testid="ds-text"
+    href="#"
   >
     Displaying some link
   </a>
@@ -29,9 +31,23 @@ exports[`<Link /> Size medium 1`] = `
 exports[`<Link /> Size small 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__Anchor-sc-1u7mgfj-0 fAQngz"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dzuwNk"
     color="shade.980"
     data-testid="ds-text"
+    href="#"
+  >
+    Displaying some link
+  </a>
+</div>
+`;
+
+exports[`<Link /> href 1`] = `
+<div>
+  <a
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dgFRQe"
+    color="shade.980"
+    data-testid="ds-text"
+    href="https://www.razorpay.com"
   >
     Displaying some link
   </a>
@@ -41,9 +57,10 @@ exports[`<Link /> Size small 1`] = `
 exports[`<Link /> renders a link 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__Anchor-sc-1u7mgfj-0 deziHz"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 eDaeyA"
     color="shade.980"
     data-testid="ds-text"
+    href="#"
   >
     Displaying some link
   </a>
