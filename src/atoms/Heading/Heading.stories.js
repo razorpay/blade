@@ -60,7 +60,7 @@ storiesOf('Heading', module)
             weight={select('Weight', weightOptions, 'bold')}
           >
             {text(
-              'Display Text',
+              'MultiLine Heading',
               'Heading: The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.',
             )}
           </Heading>
