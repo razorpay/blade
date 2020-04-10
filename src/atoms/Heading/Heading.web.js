@@ -53,34 +53,23 @@ const StyledHeading = styled(Text)`
   }
 `;
 
+const headingLevel = {
+  xxxlarge: 'h1',
+  xxlarge: 'h2',
+  xlarge: 'h3',
+  large: 'h4',
+  medium: 'h5',
+};
+
 const Heading = ({ size, testID, color, children, maxLines, weight }) => {
-  let headingLevel;
-  switch (size) {
-    case 'medium':
-      headingLevel = 'h5';
-      break;
-    case 'large':
-      headingLevel = 'h4';
-      break;
-    case 'xlarge':
-      headingLevel = 'h3';
-      break;
-    case 'xxlarge':
-      headingLevel = 'h2';
-      break;
-    case 'xxxlarge':
-      headingLevel = 'h1';
-      break;
-    default:
-      headingLevel = 'h2';
-  }
   return (
     <StyledHeading
-      as={headingLevel}
+      as={headingLevel[size]}
       size={size}
       color={color}
       maxLines={maxLines}
       _weight={weight}
+      _lineHeight={styles.lineHeight}
       {...automation(testID)}
     >
       {children}

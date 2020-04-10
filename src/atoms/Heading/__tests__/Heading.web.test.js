@@ -3,7 +3,7 @@ import Heading from '../index';
 import { renderWithTheme } from '../../../_helpers/testing';
 
 describe('<Heading />', () => {
-  it('renders heading with no props', () => {
+  it('renders heading with default props', () => {
     const displayText = 'Heading';
     const { container } = renderWithTheme(<Heading>{displayText}</Heading>);
     expect(container).toMatchSnapshot();
