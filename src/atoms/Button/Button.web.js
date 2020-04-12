@@ -8,6 +8,7 @@ import Space from '../Space';
 import Icon from '../Icon';
 import Text from '../Text';
 import View from '../View';
+import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
 
 const styles = {
@@ -229,9 +230,12 @@ const styles = {
 };
 
 const StyledButton = styled.button`
-  background-color: ${styles.backgroundColor};
-  border-radius: ${(props) => props.theme.spacings.xxsmall};
-  border: ${styles.border};
+  &&& {
+    background-color: ${styles.backgroundColor};
+    border-radius: ${(props) => props.theme.spacings.xxsmall};
+    border: ${styles.border};
+    width: ${(props) => (props.block ? '100%' : '')};
+  }
 `;
 
 const Button = ({
@@ -245,7 +249,6 @@ const Button = ({
   iconAlign,
   align,
   block,
-  testID,
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -273,9 +276,9 @@ const Button = ({
             variantColor={variantColor}
             disabled={disabled}
             size={size}
-            width={block ? '100%' : ''}
+            block={block}
             variant={variant}
-            data-testid={testID}
+            {...automation('ds-button')}
           >
             <React.Fragment>
               {icon && iconAlign === 'left' && (
@@ -333,11 +336,9 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   icon: PropTypes.string,
   iconAlign: PropTypes.oneOf(['left', 'right']),
-  testID: PropTypes.string,
 };
 
 Button.defaultProps = {
-  testID: 'ds-button',
   variant: 'primary',
   block: false,
   align: 'left',

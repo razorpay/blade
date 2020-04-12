@@ -1,23 +1,11 @@
 import React from 'react';
+import { fireEvent } from '@testing-library/react';
 
 import Button from '../index';
+import View from '../../View';
 import { renderWithTheme } from '../../../_helpers/testing';
 
-// beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-// afterAll(() => jest.restoreAllMocks());
-
 describe('Renders <Button /> correctly', () => {
-  // it('Throws error when <Button /> is not passed a string as children', () => {
-  //   const errorMessage = 'Error in Button: expected `children` of type `string` but found object';
-  //   expect(() =>
-  //     renderWithTheme(
-  //       <Button size="small">
-  //         <View />
-  //       </Button>,
-  //     ),
-  //   ).toThrow(errorMessage);
-  // });
-
   it('Renders Primary block <Button />', () => {
     const { container, getByText } = renderWithTheme(<Button block>Click Me</Button>);
     expect(getByText(/click me/i)).toBeTruthy();
@@ -131,6 +119,20 @@ describe('Renders <Button /> correctly', () => {
     expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
+  describe('error', () => {
+    beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+    afterAll(() => jest.restoreAllMocks());
+    it('Throws error when <Button /> is not passed a string as children', () => {
+      const errorMessage = 'Error in Button: expected `children` of type `string` but found object';
+      expect(() =>
+        renderWithTheme(
+          <Button size="small">
+            <View />
+          </Button>,
+        ),
+      ).toThrow(errorMessage);
+    });
+  });
 });
 
 describe('Renders an icon <Button /> correctly', () => {
@@ -157,25 +159,24 @@ describe('Renders an icon <Button /> correctly', () => {
   });
 });
 
-// describe('Checks onClick functionality of <Button />', () => {
-//   it('Checks onClick is called for <Button />', () => {
-//     const mockPress = jest.fn();
-//     const { getByText } = renderWithTheme(<Button onClick={mockPress}>Click Me</Button>);
-//     const button = getByText(/click me/i).parentNode;
-//     console.error('button-----------------', getByText(/click me/i), button);
-//     button.click();
-//     expect(mockPress).toBeCalledTimes(1);
-//   });
+describe('Checks onClick functionality of <Button />', () => {
+  it('Checks onClick is called for <Button />', () => {
+    const mockPress = jest.fn();
+    const { getByText } = renderWithTheme(<Button onClick={mockPress}>Click Me</Button>);
+    const button = getByText(/click me/i).parentNode;
+    fireEvent.click(button);
+    expect(mockPress).toBeCalledTimes(1);
+  });
 
-//   it('Checks onClick is not called for disabled <Button />', () => {
-//     const mockPress = jest.fn();
-//     const { getByText } = renderWithTheme(
-//       <Button disabled onClick={mockPress}>
-//         Click Me
-//       </Button>,
-//     );
-//     const button = getByText(/click me/i).parentNode;
-//     button.click();
-//     expect(mockPress).not.toBeCalled();
-//   });
-// });
+  it('Checks onClick is not called for disabled <Button />', () => {
+    const mockPress = jest.fn();
+    const { getByText } = renderWithTheme(
+      <Button disabled onClick={mockPress}>
+        Click Me
+      </Button>,
+    );
+    const button = getByText(/click me/i).parentNode;
+    fireEvent.click(button);
+    expect(mockPress).not.toBeCalled();
+  });
+});
