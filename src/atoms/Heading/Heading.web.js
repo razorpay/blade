@@ -61,7 +61,7 @@ const headingLevel = {
   medium: 'h5',
 };
 
-const Heading = ({ size, testID, color, children, maxLines, weight }) => {
+const Heading = ({ size, color, children, maxLines, weight }) => {
   return (
     <StyledHeading
       as={headingLevel[size]}
@@ -70,7 +70,7 @@ const Heading = ({ size, testID, color, children, maxLines, weight }) => {
       maxLines={maxLines}
       _weight={weight}
       _lineHeight={styles.lineHeight}
-      {...automation(testID)}
+      {...automation('ds-heading')}
     >
       {children}
     </StyledHeading>
@@ -81,7 +81,6 @@ Heading.propTypes = {
   children: PropTypes.string,
   size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
   color: PropTypes.oneOf(getColorKeys()),
-  testID: PropTypes.string,
   maxLines: PropTypes.number,
   weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
 };
@@ -89,9 +88,8 @@ Heading.propTypes = {
 Heading.defaultProps = {
   size: 'xxxlarge',
   color: 'shade.980',
-  testID: 'ds-heading',
   weight: 'bold',
-  maxLines: undefined,
+  maxLines: 1,
 };
 
 export default Heading;
