@@ -457,7 +457,7 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
-  placeholder: 'Enter text here',
+  placeholder: '',
   helpText: undefined,
   errorText: undefined,
   onChange: () => {},

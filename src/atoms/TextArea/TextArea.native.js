@@ -78,7 +78,7 @@ TextArea.propTypes = {
 };
 
 TextArea.defaultProps = {
-  placeholder: 'Enter text here',
+  placeholder: '',
   helpText: undefined,
   errorText: undefined,
   onChange: () => {},
