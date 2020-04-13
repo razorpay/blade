@@ -57,5 +57,14 @@ describe('<Link />', () => {
       );
       expect(container).toMatchSnapshot();
     });
+    it('rel', () => {
+      const displayText = 'Displaying some link';
+      const { container } = renderWithTheme(
+        <Link size="large" href="https://www.razorpay.com" target="_blank" rel="nofollow">
+          {displayText}
+        </Link>,
+      );
+      expect(container).toMatchSnapshot();
+    });
   });
 });
