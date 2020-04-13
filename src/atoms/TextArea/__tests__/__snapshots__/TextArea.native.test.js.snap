@@ -89,7 +89,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot after focus (fil
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -246,7 +246,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot after focus (fil
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -403,7 +403,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing (filled 
               hasPrefix={false}
               hasText={true}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -563,7 +563,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with aut
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -721,7 +721,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with cha
               hasText={false}
               maxLength={10}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -918,7 +918,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with dis
               hasPrefix={true}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.10)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -1301,7 +1301,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with err
               hasPrefix={true}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -1645,7 +1645,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
               hasText={false}
               maxLength={10}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -1908,7 +1908,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -2251,7 +2251,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -2658,7 +2658,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -2815,7 +2815,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -3097,7 +3097,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with lab
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -3254,7 +3254,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with pre
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -3491,7 +3491,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with pre
               hasPrefix={true}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -3648,7 +3648,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with sma
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -3805,7 +3805,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with suf
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -4002,7 +4002,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot after focus 1`
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -4159,7 +4159,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot after focus 2`
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="rgba(22, 47, 86, 0.24)"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -4319,7 +4319,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with a
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -4477,7 +4477,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with c
               hasText={false}
               maxLength={10}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -4674,7 +4674,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with d
               hasPrefix={true}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -5057,7 +5057,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with e
               hasPrefix={true}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -5400,7 +5400,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with f
               hasPrefix={false}
               hasText={true}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -5557,7 +5557,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -5776,7 +5776,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
               hasText={false}
               maxLength={10}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -6164,7 +6164,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -6446,7 +6446,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -6728,7 +6728,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -7010,7 +7010,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with l
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -7167,7 +7167,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with p
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -7404,7 +7404,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with p
               hasPrefix={true}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -7561,7 +7561,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with s
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
@@ -7718,7 +7718,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with s
               hasPrefix={false}
               hasText={false}
               multiline={true}
-              placeholder="Enter text here"
+              placeholder=""
               placeholderTextColor="transparent"
               rejectResponderTermination={true}
               secureTextEntry={false}
