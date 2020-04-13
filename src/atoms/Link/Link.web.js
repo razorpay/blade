@@ -29,9 +29,9 @@ const StyledText = styled(Text)`
   }
 `;
 
-const Link = ({ size, children, href, target, testId }) => {
+const Link = ({ size, children, href, target, testID }) => {
   return (
-    <StyledText as="a" size={size} href={href} target={target} {...automation(testId)}>
+    <StyledText as="a" size={size} href={href} target={target} {...automation(testID)}>
       {children}
     </StyledText>
   );
@@ -42,14 +42,14 @@ Link.propTypes = {
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
   href: PropTypes.string,
   target: PropTypes.oneOf(['_blank', '_self']),
-  testId: PropTypes.string,
+  testID: PropTypes.string,
 };
 
 Link.defaultProps = {
   size: 'medium',
   href: '#',
   target: '_self',
-  testId: 'ds-text',
+  testID: 'ds-text',
 };
 
 export default Link;
