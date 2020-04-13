@@ -38,13 +38,24 @@ describe('<Link />', () => {
       expect(mockOnPress).toMatchSnapshot();
     });
   });
-  it('href', () => {
-    const displayText = 'Displaying some link';
-    const { container } = renderWithTheme(
-      <Link size="large" href="https://www.razorpay.com">
-        {displayText}
-      </Link>,
-    );
-    expect(container).toMatchSnapshot();
+  describe('href', () => {
+    it('href', () => {
+      const displayText = 'Displaying some link';
+      const { container } = renderWithTheme(
+        <Link size="large" href="https://www.razorpay.com">
+          {displayText}
+        </Link>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+    it('target', () => {
+      const displayText = 'Displaying some link';
+      const { container } = renderWithTheme(
+        <Link size="large" href="https://www.razorpay.com" target="_blank">
+          {displayText}
+        </Link>,
+      );
+      expect(container).toMatchSnapshot();
+    });
   });
 });

@@ -18,4 +18,14 @@ storiesOf('Link', module)
     <Link size={select('Size', sizeOptions, 'large')}>
       {text('Display Text', 'https://www.razorpay.com')}
     </Link>
+  ))
+  .add('default with href', () => (
+    <Link size={select('Size', sizeOptions, 'large')} href="https://razorpay.com">
+      {text('Display Text', 'https://www.razorpay.com')}
+    </Link>
+  ))
+  .add('default with href and target', () => (
+    <Link size={select('Size', sizeOptions, 'large')} hreg="https://razorpay.com" target="_blank">
+      {text('Display Text', 'https://www.razorpay.com')}
+    </Link>
   ));
