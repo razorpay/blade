@@ -31,7 +31,14 @@ const StyledText = styled(Text)`
 
 const Link = ({ size, children, href, target, testID, rel }) => {
   return (
-    <StyledText as="a" rel={rel} size={size} href={href} target={target} {...automation(testID)}>
+    <StyledText
+      as="a"
+      rel={target ? 'noreferrer noopener' : rel}
+      size={size}
+      href={href}
+      target={target}
+      {...automation(testID)}
+    >
       {children}
     </StyledText>
   );
@@ -43,27 +50,12 @@ Link.propTypes = {
   href: PropTypes.string,
   target: PropTypes.oneOf(['_blank', '_self', '_parent', '_top']),
   testID: PropTypes.string,
-  rel: PropTypes.oneOf([
-    'alternate',
-    'author',
-    'bookmark',
-    'external',
-    'help',
-    'license',
-    'next',
-    'nofollow',
-    'noreferrer',
-    'noopener',
-    'prev',
-    'search',
-    'tag',
-  ]),
+  rel: PropTypes.string,
 };
 
 Link.defaultProps = {
   size: 'medium',
   href: '#',
-  target: '_self',
   testID: 'ds-text',
 };
 

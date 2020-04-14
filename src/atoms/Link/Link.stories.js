@@ -17,22 +17,6 @@ const targetOptions = {
   top: '_top',
 };
 
-const relOptions = {
-  alternate: 'alternate',
-  author: 'author',
-  bookmark: 'bookmark',
-  external: 'external',
-  help: 'help',
-  license: 'license',
-  next: 'next',
-  nofollow: 'nofollow',
-  noreferrer: 'noreferrer',
-  noopener: 'noopener',
-  prev: 'prev',
-  search: 'search',
-  tag: 'tag',
-};
-
 storiesOf('Link', module)
   .addParameters({
     component: Link,
@@ -42,7 +26,16 @@ storiesOf('Link', module)
       size={select('Size', sizeOptions, 'large')}
       href={text('Href', 'https://razorpay.com', 'Web')}
       target={select('Target', targetOptions, 'link', 'Web')}
-      rel={select('Rel', relOptions, 'link', 'Web')}
+      rel={text('Rel', 'tag', 'Web')}
+    >
+      {text('Display Text', 'https://www.razorpay.com')}
+    </Link>
+  ))
+  .add('default with rel', () => (
+    <Link
+      size={select('Size', sizeOptions, 'large')}
+      href={text('Href', 'https://razorpay.com', 'Web')}
+      rel={text('Rel', 'author', 'Web')}
     >
       {text('Display Text', 'https://www.razorpay.com')}
     </Link>
