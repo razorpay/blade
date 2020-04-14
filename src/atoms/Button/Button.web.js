@@ -63,6 +63,96 @@ const styles = {
         return getColor(theme, `${color}.800`);
     }
   },
+  focusBorder({ theme, variant, disabled, color }) {
+    if (disabled) {
+      return '';
+    }
+    switch (variant) {
+      case 'primary':
+        return `${makePxValue(0.125)} solid ${getColor(theme, 'shade.960')}`;
+      case 'secondary':
+        return `${makePxValue(0.125)} solid ${getColor(theme, `${color}.900`)}`;
+      case 'tertiary':
+        return '0px';
+      default:
+        return `${makePxValue(0.125)} solid ${getColor(theme, 'shade.960')}`;
+    }
+  },
+  focusBackgroundColor({ theme, variant, color, disabled }) {
+    if (disabled) {
+      return '';
+    }
+    switch (variant) {
+      case 'primary':
+        return getColor(theme, `${color}.800`);
+      case 'secondary':
+        return getColor(theme, `${color}.930`);
+      case 'tertiary':
+        return getColor(theme, `${color}.930`);
+      default:
+        return getColor(theme, `${color}.800`);
+    }
+  },
+  activeBorder({ theme, variant, disabled, color }) {
+    if (disabled) {
+      return '';
+    }
+    switch (variant) {
+      case 'primary':
+        return '0px';
+      case 'secondary':
+        return `${makePxValue(0.125)} solid ${getColor(theme, `${color}.970`)}`;
+      case 'tertiary':
+        return '0px';
+      default:
+        return '0px';
+    }
+  },
+  activeBackgroundColor({ theme, variant, color, disabled }) {
+    if (disabled) {
+      return '';
+    }
+    switch (variant) {
+      case 'primary':
+        return getColor(theme, `${color}.600`);
+      case 'secondary':
+        return getColor(theme, `${color}.950`);
+      case 'tertiary':
+        return getColor(theme, `${color}.950`);
+      default:
+        return getColor(theme, `${color}.600`);
+    }
+  },
+  hoverBorder({ theme, variant, disabled, color }) {
+    if (disabled) {
+      return '';
+    }
+    switch (variant) {
+      case 'primary':
+        return '0px';
+      case 'secondary':
+        return `${makePxValue(0.125)} solid ${getColor(theme, `${color}.970`)}`;
+      case 'tertiary':
+        return '0px';
+      default:
+        return '0px';
+    }
+  },
+  hoverBackgroundColor({ theme, variant, color, disabled }) {
+    if (disabled) {
+      return '';
+    }
+    switch (variant) {
+      case 'primary':
+        return getColor(theme, `${color}.700`);
+      case 'secondary':
+        return getColor(theme, `${color}.930`);
+      case 'tertiary':
+        return getColor(theme, `${color}.920`);
+      default:
+        return getColor(theme, `${color}.700`);
+    }
+  },
   border({ variant, color, disabled, theme }) {
     switch (variant) {
       case 'primary':
@@ -235,6 +325,19 @@ const StyledButton = styled.button`
     border-radius: ${(props) => props.theme.spacings.xxsmall};
     border: ${styles.border};
     width: ${(props) => (props.block ? '100%' : '')};
+    outline: none;
+    &:hover {
+      border: ${styles.hoverBorder};
+      background-color: ${styles.hoverBackgroundColor};
+    }
+    &:focus {
+      border: ${styles.focusBorder};
+      background-color: ${styles.focusBackgroundColor};
+    }
+    &:active {
+      border: ${styles.activeBorder};
+      background-color: ${styles.activeBackgroundColor};
+    }
   }
 `;
 
