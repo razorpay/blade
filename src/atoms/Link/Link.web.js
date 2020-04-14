@@ -31,14 +31,7 @@ const StyledText = styled(Text)`
 
 const Link = ({ size, children, href, target, testID, rel }) => {
   return (
-    <StyledText
-      as="a"
-      rel={target ? 'noreferrer noopener' : rel}
-      size={size}
-      href={href}
-      target={target}
-      {...automation(testID)}
-    >
+    <StyledText as="a" rel={rel} size={size} href={href} target={target} {...automation(testID)}>
       {children}
     </StyledText>
   );
@@ -57,6 +50,7 @@ Link.defaultProps = {
   size: 'medium',
   href: '#',
   testID: 'ds-text',
+  target: '_self',
 };
 
 export default Link;

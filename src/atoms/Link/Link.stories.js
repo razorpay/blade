@@ -26,15 +26,6 @@ storiesOf('Link', module)
       size={select('Size', sizeOptions, 'large')}
       href={text('Href', 'https://razorpay.com', 'Web')}
       target={select('Target', targetOptions, 'link', 'Web')}
-      rel={text('Rel', 'tag', 'Web')}
-    >
-      {text('Display Text', 'https://www.razorpay.com')}
-    </Link>
-  ))
-  .add('default with rel', () => (
-    <Link
-      size={select('Size', sizeOptions, 'large')}
-      href={text('Href', 'https://razorpay.com', 'Web')}
       rel={text('Rel', 'author', 'Web')}
     >
       {text('Display Text', 'https://www.razorpay.com')}

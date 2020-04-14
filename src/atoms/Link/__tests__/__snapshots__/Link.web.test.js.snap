@@ -9,6 +9,7 @@ exports[`<Link /> Size large 1`] = `
     color="shade.980"
     data-testid="ds-text"
     href="#"
+    target="_self"
   >
     Displaying some link
   </a>
@@ -22,6 +23,7 @@ exports[`<Link /> Size medium 1`] = `
     color="shade.980"
     data-testid="ds-text"
     href="#"
+    target="_self"
   >
     Displaying some link
   </a>
@@ -35,6 +37,7 @@ exports[`<Link /> Size small 1`] = `
     color="shade.980"
     data-testid="ds-text"
     href="#"
+    target="_self"
   >
     Displaying some link
   </a>
@@ -48,6 +51,7 @@ exports[`<Link /> href href 1`] = `
     color="shade.980"
     data-testid="ds-text"
     href="https://www.razorpay.com"
+    target="_self"
   >
     Displaying some link
   </a>
@@ -76,7 +80,6 @@ exports[`<Link /> href target 1`] = `
     color="shade.980"
     data-testid="ds-text"
     href="https://www.razorpay.com"
-    rel="noreferrer noopener"
     target="_blank"
   >
     Displaying some link
@@ -91,6 +94,7 @@ exports[`<Link /> renders a link 1`] = `
     color="shade.980"
     data-testid="ds-text"
     href="#"
+    target="_self"
   >
     Displaying some link
   </a>
