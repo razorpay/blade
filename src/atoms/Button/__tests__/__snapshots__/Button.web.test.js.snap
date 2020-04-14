@@ -3,7 +3,7 @@
 exports[`<Button /> block renders block primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 gQgDyl Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 hBDZyG"
+    class="Buttonweb__StyledButton-gxhxmy-0 kIxbzQ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 hBDZyG"
     color="primary"
     data-testid="ds-button"
   >
@@ -21,7 +21,7 @@ exports[`<Button /> block renders block primary <Button /> 1`] = `
 exports[`<Button /> disabled Renders a disabled Primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 kdwhVC Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 WsAll Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
     disabled=""
@@ -40,7 +40,7 @@ exports[`<Button /> disabled Renders a disabled Primary <Button /> 1`] = `
 exports[`<Button /> disabled Renders a disabled Tertiary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 bMjOWC Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 finnOZ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
     disabled=""
@@ -59,7 +59,7 @@ exports[`<Button /> disabled Renders a disabled Tertiary <Button /> 1`] = `
 exports[`<Button /> disabled renders a disabled Secondary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 ORQnb Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 fpdJOQ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
     disabled=""
@@ -78,7 +78,7 @@ exports[`<Button /> disabled renders a disabled Secondary <Button /> 1`] = `
 exports[`<Button /> icon renders <Button /> with Info icon  1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 cXFeAh Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -86,50 +86,12 @@ exports[`<Button /> icon renders <Button /> with Info icon  1`] = `
       data-testid="ds-icon"
       fill="rgba(255, 255, 255, 1.0)"
       height="20"
-      viewBox="0 0 16 16"
+      viewBox="0 0 24 24"
       width="20"
     >
-      <mask
-        height="14"
-        id="prefix__a"
-        maskUnits="userSpaceOnUse"
-        width="14"
-        x="1"
-        y="1"
-      >
-        <g
-          clip-path="url(#prefix__clip0)"
-          fill="#fff"
-        >
-          <path
-            d="M7.995 7.44c.307 0 .555.248.555.555v2.222a.555.555 0 11-1.11 0V7.995c0-.307.248-.555.555-.555zM7.995 5.218a.555.555 0 100 1.11h.006a.555.555 0 100-1.11h-.006z"
-          />
-          <path
-            clip-rule="evenodd"
-            d="M1.885 7.995a6.11 6.11 0 1112.22 0 6.11 6.11 0 01-12.22 0zm6.11-4.999a4.999 4.999 0 100 9.998 4.999 4.999 0 000-9.998z"
-            fill-rule="evenodd"
-          />
-        </g>
-      </mask>
-      <g
-        mask="url(#prefix__a)"
-      >
-        <path
-          d="M0 0h16v16H0z"
-          fill="#162F56"
-          fill-opacity="0.38"
-        />
-      </g>
-      <defs>
-        <clippath
-          id="prefix__clip0"
-        >
-          <path
-            d="M1.33 1.33h13.33v13.33H1.33V1.33z"
-            fill="#fff"
-          />
-        </clippath>
-      </defs>
+      <path
+        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      />
     </svg>
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 fIWTfg"
@@ -148,7 +110,7 @@ exports[`<Button /> icon renders <Button /> with Info icon  1`] = `
 exports[`<Button /> icon renders a large Primary <Button /> with left icon 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 cXFeAh Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -156,50 +118,12 @@ exports[`<Button /> icon renders a large Primary <Button /> with left icon 1`] =
       data-testid="ds-icon"
       fill="rgba(255, 255, 255, 1.0)"
       height="20"
-      viewBox="0 0 16 16"
+      viewBox="0 0 24 24"
       width="20"
     >
-      <mask
-        height="14"
-        id="prefix__a"
-        maskUnits="userSpaceOnUse"
-        width="14"
-        x="1"
-        y="1"
-      >
-        <g
-          clip-path="url(#prefix__clip0)"
-          fill="#fff"
-        >
-          <path
-            d="M7.995 7.44c.307 0 .555.248.555.555v2.222a.555.555 0 11-1.11 0V7.995c0-.307.248-.555.555-.555zM7.995 5.218a.555.555 0 100 1.11h.006a.555.555 0 100-1.11h-.006z"
-          />
-          <path
-            clip-rule="evenodd"
-            d="M1.885 7.995a6.11 6.11 0 1112.22 0 6.11 6.11 0 01-12.22 0zm6.11-4.999a4.999 4.999 0 100 9.998 4.999 4.999 0 000-9.998z"
-            fill-rule="evenodd"
-          />
-        </g>
-      </mask>
-      <g
-        mask="url(#prefix__a)"
-      >
-        <path
-          d="M0 0h16v16H0z"
-          fill="#162F56"
-          fill-opacity="0.38"
-        />
-      </g>
-      <defs>
-        <clippath
-          id="prefix__clip0"
-        >
-          <path
-            d="M1.33 1.33h13.33v13.33H1.33V1.33z"
-            fill="#fff"
-          />
-        </clippath>
-      </defs>
+      <path
+        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      />
     </svg>
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 fIWTfg"
@@ -218,7 +142,7 @@ exports[`<Button /> icon renders a large Primary <Button /> with left icon 1`] =
 exports[`<Button /> icon renders a large Primary <Button /> with right icon 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 cXFeAh Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -236,50 +160,12 @@ exports[`<Button /> icon renders a large Primary <Button /> with right icon 1`] 
       data-testid="ds-icon"
       fill="rgba(255, 255, 255, 1.0)"
       height="20"
-      viewBox="0 0 16 16"
+      viewBox="0 0 24 24"
       width="20"
     >
-      <mask
-        height="14"
-        id="prefix__a"
-        maskUnits="userSpaceOnUse"
-        width="14"
-        x="1"
-        y="1"
-      >
-        <g
-          clip-path="url(#prefix__clip0)"
-          fill="#fff"
-        >
-          <path
-            d="M7.995 7.44c.307 0 .555.248.555.555v2.222a.555.555 0 11-1.11 0V7.995c0-.307.248-.555.555-.555zM7.995 5.218a.555.555 0 100 1.11h.006a.555.555 0 100-1.11h-.006z"
-          />
-          <path
-            clip-rule="evenodd"
-            d="M1.885 7.995a6.11 6.11 0 1112.22 0 6.11 6.11 0 01-12.22 0zm6.11-4.999a4.999 4.999 0 100 9.998 4.999 4.999 0 000-9.998z"
-            fill-rule="evenodd"
-          />
-        </g>
-      </mask>
-      <g
-        mask="url(#prefix__a)"
-      >
-        <path
-          d="M0 0h16v16H0z"
-          fill="#162F56"
-          fill-opacity="0.38"
-        />
-      </g>
-      <defs>
-        <clippath
-          id="prefix__clip0"
-        >
-          <path
-            d="M1.33 1.33h13.33v13.33H1.33V1.33z"
-            fill="#fff"
-          />
-        </clippath>
-      </defs>
+      <path
+        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      />
     </svg>
   </button>
 </div>
@@ -288,7 +174,7 @@ exports[`<Button /> icon renders a large Primary <Button /> with right icon 1`] 
 exports[`<Button /> size renders a large Primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 cXFeAh Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -306,7 +192,7 @@ exports[`<Button /> size renders a large Primary <Button /> 1`] = `
 exports[`<Button /> size renders a small Primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 cXFeAh Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -324,7 +210,7 @@ exports[`<Button /> size renders a small Primary <Button /> 1`] = `
 exports[`<Button /> size renders a small Primary <Button /> 2`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 cXFeAh Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -342,7 +228,7 @@ exports[`<Button /> size renders a small Primary <Button /> 2`] = `
 exports[`<Button /> size renders xsmall primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 cXFeAh Spaceweb__Space-njatzl-0 hqmUpj Sizeweb__Size-sc-10bl685-0 yoKtN Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 hqmUpj Sizeweb__Size-sc-10bl685-0 yoKtN Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -360,7 +246,7 @@ exports[`<Button /> size renders xsmall primary <Button /> 1`] = `
 exports[`<Button /> variant Renders a large Tertiary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 bMjOWC Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 grLVKt Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -378,7 +264,7 @@ exports[`<Button /> variant Renders a large Tertiary <Button /> 1`] = `
 exports[`<Button /> variant renders a large Secondary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 gyzoWG Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 edMbVf Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -396,7 +282,7 @@ exports[`<Button /> variant renders a large Secondary <Button /> 1`] = `
 exports[`<Button /> variant renders a medium(Default) Secondary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 gyzoWG Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 edMbVf Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -414,7 +300,7 @@ exports[`<Button /> variant renders a medium(Default) Secondary <Button /> 1`] =
 exports[`<Button /> variant renders a medium(Default) Tertiary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 bMjOWC Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 grLVKt Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -432,7 +318,7 @@ exports[`<Button /> variant renders a medium(Default) Tertiary <Button /> 1`] = 
 exports[`<Button /> variant renders a small Primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 cXFeAh Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -450,7 +336,7 @@ exports[`<Button /> variant renders a small Primary <Button /> 1`] = `
 exports[`<Button /> variant renders a small Tertiary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 bMjOWC Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 grLVKt Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
