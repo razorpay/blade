@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Link /> Selectors onHover 1`] = `[MockFunction]`;
+exports[`<Link /> Selectors active 1`] = `[MockFunction]`;
+
+exports[`<Link /> Selectors focus 1`] = `[MockFunction]`;
+
+exports[`<Link /> Selectors hover 1`] = `[MockFunction]`;
 
 exports[`<Link /> Size large 1`] = `
 <div>
@@ -8,7 +12,6 @@ exports[`<Link /> Size large 1`] = `
     class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dgFRQe"
     color="shade.980"
     data-testid="ds-text"
-    href="#"
     target="_self"
   >
     Displaying some link
@@ -22,7 +25,6 @@ exports[`<Link /> Size medium 1`] = `
     class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 eDaeyA"
     color="shade.980"
     data-testid="ds-text"
-    href="#"
     target="_self"
   >
     Displaying some link
@@ -36,7 +38,6 @@ exports[`<Link /> Size small 1`] = `
     class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dzuwNk"
     color="shade.980"
     data-testid="ds-text"
-    href="#"
     target="_self"
   >
     Displaying some link
@@ -44,7 +45,20 @@ exports[`<Link /> Size small 1`] = `
 </div>
 `;
 
-exports[`<Link /> href href 1`] = `
+exports[`<Link /> renders a link with default props 1`] = `
+<div>
+  <a
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 eDaeyA"
+    color="shade.980"
+    data-testid="ds-text"
+    target="_self"
+  >
+    Displaying some link
+  </a>
+</div>
+`;
+
+exports[`<Link /> various link props href 1`] = `
 <div>
   <a
     class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dgFRQe"
@@ -58,7 +72,7 @@ exports[`<Link /> href href 1`] = `
 </div>
 `;
 
-exports[`<Link /> href rel 1`] = `
+exports[`<Link /> various link props rel 1`] = `
 <div>
   <a
     class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dgFRQe"
@@ -73,7 +87,7 @@ exports[`<Link /> href rel 1`] = `
 </div>
 `;
 
-exports[`<Link /> href target 1`] = `
+exports[`<Link /> various link props target 1`] = `
 <div>
   <a
     class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dgFRQe"
@@ -81,20 +95,6 @@ exports[`<Link /> href target 1`] = `
     data-testid="ds-text"
     href="https://www.razorpay.com"
     target="_blank"
-  >
-    Displaying some link
-  </a>
-</div>
-`;
-
-exports[`<Link /> renders a link 1`] = `
-<div>
-  <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 eDaeyA"
-    color="shade.980"
-    data-testid="ds-text"
-    href="#"
-    target="_self"
   >
     Displaying some link
   </a>

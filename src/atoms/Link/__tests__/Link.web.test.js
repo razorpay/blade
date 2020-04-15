@@ -4,7 +4,7 @@ import Link from '../index';
 import { renderWithTheme } from '../../../_helpers/testing';
 
 describe('<Link />', () => {
-  it('renders a link', () => {
+  it('renders a link with default props', () => {
     const displayText = 'Displaying some link';
     const { container } = renderWithTheme(<Link>{displayText}</Link>);
     expect(container).toMatchSnapshot();
@@ -29,7 +29,7 @@ describe('<Link />', () => {
     });
   });
   describe('Selectors', () => {
-    it('onHover', () => {
+    it('hover', () => {
       const displayText = 'Displaying some link';
       const mockOnPress = jest.fn();
       const { getByText } = renderWithTheme(<Link>{displayText}</Link>);
@@ -37,8 +37,24 @@ describe('<Link />', () => {
       fireEvent.mouseOver(link);
       expect(mockOnPress).toMatchSnapshot();
     });
+    it('focus', () => {
+      const displayText = 'Displaying some link';
+      const mockOnPress = jest.fn();
+      const { getByText } = renderWithTheme(<Link>{displayText}</Link>);
+      const link = getByText(displayText).parentNode;
+      fireEvent.focus(link);
+      expect(mockOnPress).toMatchSnapshot();
+    });
+    it('active', () => {
+      const displayText = 'Displaying some link';
+      const mockOnPress = jest.fn();
+      const { getByText } = renderWithTheme(<Link>{displayText}</Link>);
+      const link = getByText(displayText).parentNode;
+      fireEvent.click(link);
+      expect(mockOnPress).toMatchSnapshot();
+    });
   });
-  describe('href', () => {
+  describe('various link props', () => {
     it('href', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(

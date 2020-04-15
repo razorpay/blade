@@ -48,7 +48,6 @@ Link.propTypes = {
 
 Link.defaultProps = {
   size: 'medium',
-  href: '#',
   testID: 'ds-text',
   target: '_self',
 };
