@@ -23,7 +23,6 @@
     "@react-native-community/async-storage": "1.7.1",
     "intl": "1.2.5",
     "lodash": "4.17.15",
-    "react-native-svg": "11.0.1",
     "typescript": "3.7.5"
   },
   "devDependencies": {
@@ -73,6 +72,7 @@
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-native": "0.61.5",
+    "react-native-svg": "12.1.0",
     "react-test-renderer": "16.13.1",
     "rollup": "1.31.0",
     "rollup-plugin-babel": "4.4.0",
@@ -90,6 +90,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-native": "0.61.5",
+    "react-native-svg": "^12.1.0",
     "styled-components": "^4.3.2"
   },
   "husky": {
