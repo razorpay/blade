@@ -71,10 +71,6 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              undefined,
-              Object {
-                "opacity": 1,
-              },
               Object {
                 "flex": 0,
                 "height": 20,
@@ -89,43 +85,11 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
         >
           <RNSVGGroup
             fill={null}
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
             propList={
               Array [
                 "fill",
               ]
             }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            vectorEffect={0}
-            x={0}
-            y={0}
           >
             <RNSVGPath
               clipRule={0}
@@ -133,19 +97,6 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
               fill={4281041898}
               fillOpacity={0.87}
               fillRule={0}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
               propList={
                 Array [
                   "fill",
@@ -153,22 +104,6 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
                   "fillRule",
                 ]
               }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
             />
           </RNSVGGroup>
         </RNSVGSvgView>
@@ -333,10 +268,6 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              undefined,
-              Object {
-                "opacity": 1,
-              },
               Object {
                 "flex": 0,
                 "height": 20,
@@ -351,43 +282,11 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
         >
           <RNSVGGroup
             fill={null}
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
             propList={
               Array [
                 "fill",
               ]
             }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            vectorEffect={0}
-            x={0}
-            y={0}
           >
             <RNSVGPath
               clipRule={0}
@@ -395,19 +294,6 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
               fill={4281041898}
               fillOpacity={0.87}
               fillRule={0}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
               propList={
                 Array [
                   "fill",
@@ -415,22 +301,6 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
                   "fillRule",
                 ]
               }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
             />
           </RNSVGGroup>
         </RNSVGSvgView>
@@ -556,10 +426,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              undefined,
-              Object {
-                "opacity": 1,
-              },
               Object {
                 "flex": 0,
                 "height": 20,
@@ -574,43 +440,11 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
         >
           <RNSVGGroup
             fill={null}
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
             propList={
               Array [
                 "fill",
               ]
             }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            vectorEffect={0}
-            x={0}
-            y={0}
           >
             <RNSVGPath
               clipRule={0}
@@ -618,19 +452,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
               fill={4281041898}
               fillOpacity={0.87}
               fillRule={0}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
               propList={
                 Array [
                   "fill",
@@ -638,22 +459,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
                   "fillRule",
                 ]
               }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
             />
           </RNSVGGroup>
         </RNSVGSvgView>
@@ -779,10 +584,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              undefined,
-              Object {
-                "opacity": 1,
-              },
               Object {
                 "flex": 0,
                 "height": 20,
@@ -797,43 +598,11 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
         >
           <RNSVGGroup
             fill={null}
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
             propList={
               Array [
                 "fill",
               ]
             }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            vectorEffect={0}
-            x={0}
-            y={0}
           >
             <RNSVGPath
               clipRule={0}
@@ -841,19 +610,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
               fill={4281041898}
               fillOpacity={0.87}
               fillRule={0}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
               propList={
                 Array [
                   "fill",
@@ -861,22 +617,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
                   "fillRule",
                 ]
               }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
             />
           </RNSVGGroup>
         </RNSVGSvgView>
@@ -1002,10 +742,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              undefined,
-              Object {
-                "opacity": 1,
-              },
               Object {
                 "flex": 0,
                 "height": 20,
@@ -1020,43 +756,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
         >
           <RNSVGGroup
             fill={null}
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
             propList={
               Array [
                 "fill",
               ]
             }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            vectorEffect={0}
-            x={0}
-            y={0}
           >
             <RNSVGPath
               clipRule={0}
@@ -1064,19 +768,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
               propList={
                 Array [
                   "fill",
@@ -1084,22 +775,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
                   "fillRule",
                 ]
               }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
             />
           </RNSVGGroup>
         </RNSVGSvgView>
@@ -1225,10 +900,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              undefined,
-              Object {
-                "opacity": 1,
-              },
               Object {
                 "flex": 0,
                 "height": 20,
@@ -1243,43 +914,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
         >
           <RNSVGGroup
             fill={null}
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
             propList={
               Array [
                 "fill",
               ]
             }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            vectorEffect={0}
-            x={0}
-            y={0}
           >
             <RNSVGPath
               clipRule={0}
@@ -1287,19 +926,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
               propList={
                 Array [
                   "fill",
@@ -1307,22 +933,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
                   "fillRule",
                 ]
               }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
             />
           </RNSVGGroup>
         </RNSVGSvgView>
@@ -1448,10 +1058,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              undefined,
-              Object {
-                "opacity": 1,
-              },
               Object {
                 "flex": 0,
                 "height": 20,
@@ -1466,43 +1072,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
         >
           <RNSVGGroup
             fill={null}
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
             propList={
               Array [
                 "fill",
               ]
             }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            vectorEffect={0}
-            x={0}
-            y={0}
           >
             <RNSVGPath
               clipRule={0}
@@ -1510,19 +1084,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
               propList={
                 Array [
                   "fill",
@@ -1530,22 +1091,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
                   "fillRule",
                 ]
               }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
             />
           </RNSVGGroup>
         </RNSVGSvgView>
@@ -1671,10 +1216,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              undefined,
-              Object {
-                "opacity": 1,
-              },
               Object {
                 "flex": 0,
                 "height": 20,
@@ -1689,43 +1230,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
         >
           <RNSVGGroup
             fill={null}
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
             propList={
               Array [
                 "fill",
               ]
             }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            vectorEffect={0}
-            x={0}
-            y={0}
           >
             <RNSVGPath
               clipRule={0}
@@ -1733,19 +1242,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
               propList={
                 Array [
                   "fill",
@@ -1753,22 +1249,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
                   "fillRule",
                 ]
               }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
             />
           </RNSVGGroup>
         </RNSVGSvgView>
@@ -1894,10 +1374,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              undefined,
-              Object {
-                "opacity": 1,
-              },
               Object {
                 "flex": 0,
                 "height": 20,
@@ -1912,43 +1388,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
         >
           <RNSVGGroup
             fill={null}
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
             propList={
               Array [
                 "fill",
               ]
             }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            vectorEffect={0}
-            x={0}
-            y={0}
           >
             <RNSVGPath
               clipRule={0}
@@ -1956,19 +1400,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
               propList={
                 Array [
                   "fill",
@@ -1976,22 +1407,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
                   "fillRule",
                 ]
               }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
             />
           </RNSVGGroup>
         </RNSVGSvgView>
@@ -2156,10 +1571,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              undefined,
-              Object {
-                "opacity": 1,
-              },
               Object {
                 "flex": 0,
                 "height": 20,
@@ -2174,43 +1585,11 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
         >
           <RNSVGGroup
             fill={null}
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
             propList={
               Array [
                 "fill",
               ]
             }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            vectorEffect={0}
-            x={0}
-            y={0}
           >
             <RNSVGPath
               clipRule={0}
@@ -2218,19 +1597,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
               propList={
                 Array [
                   "fill",
@@ -2238,22 +1604,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
                   "fillRule",
                 ]
               }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
             />
           </RNSVGGroup>
         </RNSVGSvgView>
@@ -2379,10 +1729,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              undefined,
-              Object {
-                "opacity": 1,
-              },
               Object {
                 "flex": 0,
                 "height": 20,
@@ -2397,43 +1743,11 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
         >
           <RNSVGGroup
             fill={null}
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
             propList={
               Array [
                 "fill",
               ]
             }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            vectorEffect={0}
-            x={0}
-            y={0}
           >
             <RNSVGPath
               clipRule={0}
@@ -2441,19 +1755,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
               propList={
                 Array [
                   "fill",
@@ -2461,22 +1762,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
                   "fillRule",
                 ]
               }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              vectorEffect={0}
-              x={0}
-              y={0}
             />
           </RNSVGGroup>
         </RNSVGSvgView>
