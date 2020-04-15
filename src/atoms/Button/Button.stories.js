@@ -13,6 +13,11 @@ const variants = {
   tertiary: 'tertiary',
 };
 
+const variantColors = {
+  primary: 'primary',
+  azzure: 'azzure',
+};
+
 const sizes = {
   xsmall: 'xsmall',
   small: 'small',
@@ -37,11 +42,12 @@ storiesOf('Button', module)
           variant={select('Variants', variants, 'primary')}
           icon="info"
           align="center"
-          variantColor={select('VariantColor', ['primary', 'azzure'], 'primary')}
+          variantColor={select('VariantColor', variantColors, 'primary')}
         />
         <Button
           size={select('Sizes', sizes, 'medium')}
           variant={select('Variants', variants, 'primary')}
+          variantColor={select('VariantColor', variantColors, 'primary')}
         >
           Button
         </Button>
@@ -50,6 +56,7 @@ storiesOf('Button', module)
           variant={select('Variants', variants, 'primary')}
           icon="info"
           iconAlign={select('iconAlign', iconAlign, 'left')}
+          variantColor={select('VariantColor', variantColors, 'primary')}
         >
           Button with Icon
         </Button>
@@ -59,6 +66,7 @@ storiesOf('Button', module)
           icon="info"
           disabled
           iconAlign={select('iconAlign', iconAlign, 'left')}
+          variantColor={select('VariantColor', variantColors, 'primary')}
         >
           Disabled Button with Icon
         </Button>
@@ -68,6 +76,7 @@ storiesOf('Button', module)
               <Button
                 size={select('Sizes', sizes, 'medium')}
                 variant={select('Variants', variants, 'primary')}
+                variantColor={select('VariantColor', variantColors, 'primary')}
                 block
               >
                 Block Button
@@ -81,6 +90,7 @@ storiesOf('Button', module)
               <Button
                 size={select('Sizes', sizes, 'medium')}
                 variant={select('Variants', variants, 'primary')}
+                variantColor={select('VariantColor', variantColors, 'primary')}
                 icon="info"
                 block
                 iconAlign={select('iconAlign', iconAlign, 'left')}
