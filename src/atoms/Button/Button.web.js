@@ -12,7 +12,7 @@ import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
 
 const styles = {
-  fontColor({ variant, variantColor, disabled }) {
+  fontColor({ variant, color, disabled }) {
     switch (variant) {
       case 'primary':
         if (disabled) {
@@ -23,18 +23,12 @@ const styles = {
         if (disabled) {
           return 'shade.940';
         }
-        if (variantColor) {
-          return `${variantColor}.800`;
-        }
-        return 'primary.800';
+        return `${color}.800`;
       case 'tertiary':
         if (disabled) {
           return 'shade.940';
         }
-        if (variantColor) {
-          return `${variantColor}.800`;
-        }
-        return 'primary.800';
+        return `${color}.800`;
       default:
         if (disabled) {
           return 'light.150';
@@ -317,6 +311,12 @@ const styles = {
         return 'medium';
     }
   },
+  pointerEvents({ disabled }) {
+    if (disabled) {
+      return 'none';
+    }
+    return '';
+  },
 };
 
 const StyledButton = styled.button`
@@ -325,6 +325,8 @@ const StyledButton = styled.button`
     border-radius: ${(props) => props.theme.spacings.xxsmall};
     border: ${styles.border};
     width: ${(props) => (props.block ? '100%' : '')};
+    cursor: pointer;
+    pointer-events: ${styles.pointerEvents};
     outline: none;
     &:hover {
       border: ${styles.hoverBorder};
@@ -376,7 +378,6 @@ const Button = ({
           <StyledButton
             color={color}
             onClick={onClick}
-            variantColor={variantColor}
             disabled={disabled}
             size={size}
             block={block}
@@ -384,21 +385,21 @@ const Button = ({
             {...automation('ds-button')}
           >
             <React.Fragment>
-              {icon && iconAlign === 'left' && (
+              {icon && iconAlign === 'left' ? (
                 <Icon
                   name={icon}
                   size={styles.iconSize({ size, children })}
-                  fill={styles.fontColor({ variant, variantColor, disabled })}
+                  fill={styles.fontColor({ variant, color, disabled })}
                 />
-              )}
-              {icon && iconAlign === 'left' && children && (
+              ) : null}
+              {icon && iconAlign === 'left' && children ? (
                 <Space margin={styles.spaceBetween({ size, iconAlign })}>
                   <View />
                 </Space>
-              )}
+              ) : null}
               {children ? (
                 <Text
-                  color={styles.fontColor({ variant, variantColor, disabled })}
+                  color={styles.fontColor({ variant, color, disabled })}
                   size={styles.fontSize({ size })}
                   align="center"
                   _weight="bold"
@@ -408,18 +409,18 @@ const Button = ({
                   {size === 'xsmall' ? children.toUpperCase() : children}
                 </Text>
               ) : null}
-              {icon && iconAlign === 'right' && children && (
+              {icon && iconAlign === 'right' && children ? (
                 <Space margin={styles.spaceBetween({ size, iconAlign })}>
                   <View />
                 </Space>
-              )}
-              {icon && iconAlign === 'right' && (
+              ) : null}
+              {icon && iconAlign === 'right' ? (
                 <Icon
                   name={icon}
                   size={styles.iconSize({ size, children })}
-                  fill={styles.fontColor({ variant, variantColor, disabled })}
+                  fill={styles.fontColor({ variant, color, disabled })}
                 />
-              )}
+              ) : null}
             </React.Fragment>
           </StyledButton>
         </Space>
