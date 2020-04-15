@@ -167,13 +167,13 @@ const styles = {
       case 'xsmall':
         return theme.spacings.xlarge;
       case 'small':
-        return makePxValue(3.5); //TODO: not on scale of 8
+        return makePxValue(3.5);
       case 'medium':
-        return makePxValue(4.5); //TODO: not on scale of 8
+        return makePxValue(4.5);
       case 'large':
         return makePxValue(5);
       default:
-        return makePxValue(4.5); //TODO: not on scale of 8
+        return makePxValue(4.5);
     }
   },
   padding({ size, theme, children }) {
@@ -192,7 +192,7 @@ const styles = {
         if (children) {
           return [0, theme.spacings.xxlarge];
         }
-        return [0, 0.75]; //TODO: horizontal padding not on scale of 8
+        return [0, 0.75];
       case 'large':
         if (children) {
           return [0, theme.spacings.xxlarge];
@@ -202,7 +202,7 @@ const styles = {
         if (children) {
           return [0, theme.spacings.xxlarge];
         }
-        return [0, 0.75]; //TODO: horizontal padding not on scale of 8
+        return [0, 0.75];
     }
   },
   iconSize({ size, children }) {

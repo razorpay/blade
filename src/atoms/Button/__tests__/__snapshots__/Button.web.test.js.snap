@@ -3,7 +3,7 @@
 exports[`<Button /> block renders block primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 kIxbzQ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 hBDZyG"
+    class="Buttonweb__StyledButton-gxhxmy-0 gghOAn Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 hBDZyG"
     color="primary"
     data-testid="ds-button"
   >
@@ -21,7 +21,7 @@ exports[`<Button /> block renders block primary <Button /> 1`] = `
 exports[`<Button /> disabled Renders a disabled Primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 WsAll Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 fSrNsE Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
     disabled=""
@@ -40,7 +40,7 @@ exports[`<Button /> disabled Renders a disabled Primary <Button /> 1`] = `
 exports[`<Button /> disabled Renders a disabled Tertiary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 finnOZ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 fMsdCs Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
     disabled=""
@@ -59,7 +59,7 @@ exports[`<Button /> disabled Renders a disabled Tertiary <Button /> 1`] = `
 exports[`<Button /> disabled renders a disabled Secondary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 fpdJOQ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 kZndFp Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
     disabled=""
@@ -78,7 +78,7 @@ exports[`<Button /> disabled renders a disabled Secondary <Button /> 1`] = `
 exports[`<Button /> icon renders <Button /> with Info icon  1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 faEXXD Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -110,7 +110,7 @@ exports[`<Button /> icon renders <Button /> with Info icon  1`] = `
 exports[`<Button /> icon renders a large Primary <Button /> with left icon 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 faEXXD Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -142,7 +142,7 @@ exports[`<Button /> icon renders a large Primary <Button /> with left icon 1`] =
 exports[`<Button /> icon renders a large Primary <Button /> with right icon 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 faEXXD Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -174,7 +174,7 @@ exports[`<Button /> icon renders a large Primary <Button /> with right icon 1`] 
 exports[`<Button /> size renders a large Primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 faEXXD Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -192,7 +192,7 @@ exports[`<Button /> size renders a large Primary <Button /> 1`] = `
 exports[`<Button /> size renders a small Primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 faEXXD Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -210,7 +210,7 @@ exports[`<Button /> size renders a small Primary <Button /> 1`] = `
 exports[`<Button /> size renders a small Primary <Button /> 2`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 faEXXD Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -228,7 +228,7 @@ exports[`<Button /> size renders a small Primary <Button /> 2`] = `
 exports[`<Button /> size renders xsmall primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 hqmUpj Sizeweb__Size-sc-10bl685-0 yoKtN Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 faEXXD Spaceweb__Space-njatzl-0 hqmUpj Sizeweb__Size-sc-10bl685-0 yoKtN Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -246,7 +246,7 @@ exports[`<Button /> size renders xsmall primary <Button /> 1`] = `
 exports[`<Button /> variant Renders a large Tertiary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 grLVKt Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 gHLFzK Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -264,7 +264,7 @@ exports[`<Button /> variant Renders a large Tertiary <Button /> 1`] = `
 exports[`<Button /> variant renders a large Secondary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 edMbVf Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 hpXFLM Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -282,7 +282,7 @@ exports[`<Button /> variant renders a large Secondary <Button /> 1`] = `
 exports[`<Button /> variant renders a medium(Default) Secondary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 edMbVf Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 hpXFLM Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -300,7 +300,7 @@ exports[`<Button /> variant renders a medium(Default) Secondary <Button /> 1`] =
 exports[`<Button /> variant renders a medium(Default) Tertiary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 grLVKt Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 gHLFzK Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -318,7 +318,7 @@ exports[`<Button /> variant renders a medium(Default) Tertiary <Button /> 1`] = 
 exports[`<Button /> variant renders a small Primary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iQGtgs Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 faEXXD Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
@@ -336,7 +336,7 @@ exports[`<Button /> variant renders a small Primary <Button /> 1`] = `
 exports[`<Button /> variant renders a small Tertiary <Button /> 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 grLVKt Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 gHLFzK Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
     color="primary"
     data-testid="ds-button"
   >
