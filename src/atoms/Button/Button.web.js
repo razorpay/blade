@@ -13,7 +13,11 @@ import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme
 
 const BORDER_WIDTH = makePxValue(0.125);
 
-const relativePadding = (padding, border = BORDER_WIDTH) => {
+const relativePadding = (variant, padding, border = BORDER_WIDTH) => {
+  console.log('variant-------------------', variant);
+  if (variant === 'tertiary') {
+    return makePxValue(padding);
+  }
   return makePxValue(`${parseFloat(padding) - parseFloat(border)}px`);
 };
 
@@ -73,7 +77,7 @@ const styles = {
       case 'secondary':
         return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.900`)}`;
       case 'tertiary':
-        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.930`)}`;
+        return '0px';
       default:
         return `${BORDER_WIDTH} solid ${getColor(theme, 'shade.960')}`;
     }
@@ -103,7 +107,7 @@ const styles = {
       case 'secondary':
         return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.970`)}`;
       case 'tertiary':
-        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.950`)}`;
+        return '0px';
       default:
         return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.600`)}`;
     }
@@ -133,7 +137,7 @@ const styles = {
       case 'secondary':
         return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.970`)}`;
       case 'tertiary':
-        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.920`)}`;
+        return '0px';
       default:
         return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.700`)}`;
     }
@@ -166,7 +170,7 @@ const styles = {
         }
         return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.970`)}`;
       case 'tertiary':
-        return '1px solid transparent';
+        return '0px';
       default:
         if (disabled) {
           return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.500`)}`;
@@ -188,33 +192,33 @@ const styles = {
         return makePxValue(4.5);
     }
   },
-  padding({ size, theme, children }) {
+  padding({ size, theme, children, variant }) {
     switch (size) {
       case 'xsmall':
         if (children) {
-          return [0, relativePadding(theme.spacings.small)];
+          return [0, relativePadding(variant, theme.spacings.small)];
         }
-        return [0, relativePadding(theme.spacings.xxsmall)];
+        return [0, relativePadding(variant, theme.spacings.xxsmall)];
       case 'small':
         if (children) {
-          return [0, relativePadding(theme.spacings.large)];
+          return [0, relativePadding(variant, theme.spacings.large)];
         }
-        return [0, relativePadding(theme.spacings.xsmall)];
+        return [0, relativePadding(variant, theme.spacings.xsmall)];
       case 'medium':
         if (children) {
-          return [0, relativePadding(theme.spacings.xxlarge)];
+          return [0, relativePadding(variant, theme.spacings.xxlarge)];
         }
-        return [0, relativePadding(makePxValue(0.75))];
+        return [0, relativePadding(variant, makePxValue(0.75))];
       case 'large':
         if (children) {
-          return [0, relativePadding(theme.spacings.xxlarge)];
+          return [0, relativePadding(variant, theme.spacings.xxlarge)];
         }
-        return [0, relativePadding(theme.spacings.small)];
+        return [0, relativePadding(variant, theme.spacings.small)];
       default:
         if (children) {
-          return [0, relativePadding(theme.spacings.xxlarge)];
+          return [0, relativePadding(variant, theme.spacings.xxlarge)];
         }
-        return [0, relativePadding(makePxValue(0.75))];
+        return [0, relativePadding(variant, makePxValue(0.75))];
     }
   },
   iconSize({ size, children }) {
@@ -334,7 +338,6 @@ const styles = {
 const StyledButton = styled.button`
   &&& {
     background-color: ${styles.backgroundColor};
-    background-clip: padding-box;
     border-radius: ${(props) => props.theme.spacings.xxsmall};
     border: ${styles.border};
     width: ${(props) => (props.block ? '100%' : '')};
@@ -385,7 +388,7 @@ const Button = ({
       justifyContent="center"
     >
       <Size height={styles.height({ size, theme })}>
-        <Space padding={styles.padding({ size, children, theme })}>
+        <Space padding={styles.padding({ size, children, theme, variant })}>
           <StyledButton
             variantColor={variantColor}
             onClick={onClick}
