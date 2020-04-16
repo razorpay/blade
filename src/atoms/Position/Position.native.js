@@ -12,12 +12,12 @@ const Position = styled(({ children, style, ...props }) => {
     style: [style, children.props.style].filter(Boolean),
   });
 })`
-  ${(props): string => (props.position ? `position: ${props.position};` : '')};
-  ${(props): string => (props.top ? `top: ${makePxValue(props.top)};` : '')};
-  ${(props): string => (props.right ? `right: ${makePxValue(props.right)};` : '')};
-  ${(props): string => (props.bottom ? `bottom: ${makePxValue(props.bottom)};` : '')};
-  ${(props): string => (props.left ? `left: ${makePxValue(props.left)};` : '')};
-  ${(props): string => (props.zIndex ? `z-index: ${props.zIndex};` : '')};
+  ${(props) => (props.position ? `position: ${props.position};` : '')};
+  ${(props) => (props.top ? `top: ${makePxValue(props.top)};` : '')};
+  ${(props) => (props.right ? `right: ${makePxValue(props.right)};` : '')};
+  ${(props) => (props.bottom ? `bottom: ${makePxValue(props.bottom)};` : '')};
+  ${(props) => (props.left ? `left: ${makePxValue(props.left)};` : '')};
+  ${(props) => (props.zIndex ? `z-index: ${props.zIndex};` : '')};
 `;
 
 Position.propTypes = {
