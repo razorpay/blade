@@ -47,9 +47,7 @@ const styles = {
 
 const StyledHeadingText = styled(Text)`
   &&& {
-    font-family: ${({ theme, _weight }) => theme.fonts.family.lato[_weight]};
     font-size: ${styles.fontSize};
-    font-weight: ${({ theme, _weight }) => theme.fonts.weight[_weight]};
     color: ${({ theme, color }) => getColor(theme, color)};
     letter-spacing: 0;
     line-height: ${styles.lineHeight};
