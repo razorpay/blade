@@ -24,11 +24,14 @@ const styles = {
         return theme.fonts.size.xxxxlarge;
     }
   },
-  lineHeight({ theme, size }) {
+  lineHeight({ theme, size, _weight }) {
     switch (size) {
       case 'medium':
         return theme.fonts.lineHeight.medium;
       case 'large':
+        if (theme.fonts.weight[_weight] === theme.fonts.weight.bold) {
+          return theme.fonts.lineHeight.large;
+        }
         return theme.fonts.lineHeight.medium;
       case 'xlarge':
         return theme.fonts.lineHeight.xlarge;
@@ -89,7 +92,7 @@ Heading.defaultProps = {
   size: 'xxxlarge',
   color: 'shade.980',
   weight: 'bold',
-  maxLines: 1,
+  maxLines: undefined,
 };
 
 export default Heading;
