@@ -60,8 +60,22 @@ storiesOf('Heading', module)
             weight={select('Weight', weightOptions, 'bold')}
           >
             {text(
-              'MultiLine Heading',
-              'Heading: The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.',
+              'MultiLine Heading (medium)',
+              'MultiLine Heading (medium): The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.',
+            )}
+          </Heading>
+        </View>
+      </Space>
+      <Space margin={[4, 0, 0, 0]}>
+        <View>
+          <Heading
+            size="xxxlarge"
+            maxLines={number('maxLines', 1)}
+            weight={select('Weight', weightOptions, 'bold')}
+          >
+            {text(
+              'MultiLine Heading (xxxlarge)',
+              'MultiLine Heading (xxxlarge): The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.',
             )}
           </Heading>
         </View>
