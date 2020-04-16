@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Position /> renders should apply specified props to child component 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    bottom={2}
+    left={2}
+    position="absolute"
+    right={2}
+    style={
+      Array [
+        Array [
+          Object {
+            "bottom": 16,
+            "left": 16,
+            "position": "absolute",
+            "right": 16,
+            "top": 16,
+            "zIndex": 2,
+          },
+        ],
+      ]
+    }
+    top={2}
+    zIndex={2}
+  />
+</View>
+`;
+
+exports[`<Position /> renders should render component with default props 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    position="relative"
+    style={
+      Array [
+        Array [
+          Object {
+            "position": "relative",
+          },
+        ],
+      ]
+    }
+  />
+</View>
+`;
