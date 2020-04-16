@@ -45,7 +45,7 @@ const styles = {
   },
 };
 
-const StyledHeading = styled(Text)`
+const StyledHeadingText = styled(Text)`
   &&& {
     font-family: ${({ theme, _weight }) => theme.fonts.family.lato[_weight]};
     font-size: ${styles.fontSize};
@@ -66,7 +66,7 @@ const headingLevel = {
 
 const Heading = ({ size, color, children, maxLines, weight }) => {
   return (
-    <StyledHeading
+    <StyledHeadingText
       as={headingLevel[size]}
       size={size}
       color={color}
@@ -76,7 +76,7 @@ const Heading = ({ size, color, children, maxLines, weight }) => {
       {...automation('ds-heading')}
     >
       {children}
-    </StyledHeading>
+    </StyledHeadingText>
   );
 };
 
