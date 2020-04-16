@@ -11,6 +11,12 @@ import View from '../View';
 import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
 
+const BORDER_WIDTH = makePxValue(0.125);
+
+const relativePadding = (padding, border = BORDER_WIDTH) => {
+  return makePxValue(`${parseFloat(padding) - parseFloat(border)}px`);
+};
+
 const styles = {
   fontColor({ variant, variantColor, disabled }) {
     switch (variant) {
@@ -63,13 +69,13 @@ const styles = {
     }
     switch (variant) {
       case 'primary':
-        return `${makePxValue(0.125)} solid ${getColor(theme, 'shade.960')}`;
+        return `${BORDER_WIDTH} solid ${getColor(theme, 'shade.960')}`;
       case 'secondary':
-        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor}.900`)}`;
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.900`)}`;
       case 'tertiary':
-        return '0px';
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.930`)}`;
       default:
-        return `${makePxValue(0.125)} solid ${getColor(theme, 'shade.960')}`;
+        return `${BORDER_WIDTH} solid ${getColor(theme, 'shade.960')}`;
     }
   },
   focusBackgroundColor({ theme, variant, variantColor, disabled }) {
@@ -93,13 +99,13 @@ const styles = {
     }
     switch (variant) {
       case 'primary':
-        return '0px';
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.600`)}`;
       case 'secondary':
-        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor}.970`)}`;
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.970`)}`;
       case 'tertiary':
-        return '0px';
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.950`)}`;
       default:
-        return '0px';
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.600`)}`;
     }
   },
   activeBackgroundColor({ theme, variant, variantColor, disabled }) {
@@ -123,13 +129,13 @@ const styles = {
     }
     switch (variant) {
       case 'primary':
-        return '0px';
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.700`)}`;
       case 'secondary':
-        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor}.970`)}`;
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.970`)}`;
       case 'tertiary':
-        return '0px';
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.920`)}`;
       default:
-        return '0px';
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.700`)}`;
     }
   },
   hoverBackgroundColor({ theme, variant, variantColor, disabled }) {
@@ -150,16 +156,22 @@ const styles = {
   border({ variant, variantColor, disabled, theme }) {
     switch (variant) {
       case 'primary':
-        return '0px';
+        if (disabled) {
+          return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.500`)}`;
+        }
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.800`)}`;
       case 'secondary':
         if (disabled) {
-          return `${makePxValue(0.125)} solid ${getColor(theme, 'shade.930')}`;
+          return `${BORDER_WIDTH} solid ${getColor(theme, 'shade.930')}`;
         }
-        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor}.970`)}`;
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.970`)}`;
       case 'tertiary':
-        return '0px';
+        return '1px solid transparent';
       default:
-        return '0px';
+        if (disabled) {
+          return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.500`)}`;
+        }
+        return `${BORDER_WIDTH} solid ${getColor(theme, `${variantColor}.800`)}`;
     }
   },
   height({ size, theme }) {
@@ -180,29 +192,29 @@ const styles = {
     switch (size) {
       case 'xsmall':
         if (children) {
-          return [0, theme.spacings.small];
+          return [0, relativePadding(theme.spacings.small)];
         }
-        return [0, theme.spacings.xxsmall];
+        return [0, relativePadding(theme.spacings.xxsmall)];
       case 'small':
         if (children) {
-          return [0, theme.spacings.large];
+          return [0, relativePadding(theme.spacings.large)];
         }
-        return [0, theme.spacings.xsmall];
+        return [0, relativePadding(theme.spacings.xsmall)];
       case 'medium':
         if (children) {
-          return [0, theme.spacings.xxlarge];
+          return [0, relativePadding(theme.spacings.xxlarge)];
         }
-        return [0, 0.75];
+        return [0, relativePadding(makePxValue(0.75))];
       case 'large':
         if (children) {
-          return [0, theme.spacings.xxlarge];
+          return [0, relativePadding(theme.spacings.xxlarge)];
         }
-        return [0, theme.spacings.small];
+        return [0, relativePadding(theme.spacings.small)];
       default:
         if (children) {
-          return [0, theme.spacings.xxlarge];
+          return [0, relativePadding(theme.spacings.xxlarge)];
         }
-        return [0, 0.75];
+        return [0, relativePadding(makePxValue(0.75))];
     }
   },
   iconSize({ size, children }) {
@@ -322,6 +334,7 @@ const styles = {
 const StyledButton = styled.button`
   &&& {
     background-color: ${styles.backgroundColor};
+    background-clip: padding-box;
     border-radius: ${(props) => props.theme.spacings.xxsmall};
     border: ${styles.border};
     width: ${(props) => (props.block ? '100%' : '')};
