@@ -14,7 +14,6 @@ import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme
 const BORDER_WIDTH = makePxValue(0.125);
 
 const relativePadding = (variant, padding, border = BORDER_WIDTH) => {
-  console.log('variant-------------------', variant);
   if (variant === 'tertiary') {
     return makePxValue(padding);
   }
