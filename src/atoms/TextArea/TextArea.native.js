@@ -13,7 +13,7 @@ const TextArea = ({
   prefix,
   suffix,
   disabled,
-  children,
+  value,
   iconLeft,
   iconRight,
   maxLength,
@@ -51,11 +51,10 @@ const TextArea = ({
       label={label}
       labelPosition={labelPosition}
       width={width}
+      value={value}
       _isMultiline={true}
       {...automation(testID)}
-    >
-      {children}
-    </TextInput>
+    />
   );
 };
 
@@ -68,7 +67,7 @@ TextArea.propTypes = {
   prefix: PropTypes.string,
   suffix: PropTypes.string,
   disabled: PropTypes.bool,
-  children: PropTypes.string,
+  value: PropTypes.string,
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
   maxLength: PropTypes.number,
@@ -79,14 +78,14 @@ TextArea.propTypes = {
 };
 
 TextArea.defaultProps = {
-  placeholder: 'Enter text here',
+  placeholder: '',
   helpText: undefined,
   errorText: undefined,
   onChange: () => {},
   prefix: undefined,
   suffix: undefined,
   disabled: false,
-  children: undefined,
+  value: undefined,
   iconLeft: undefined,
   iconRight: undefined,
   maxLength: undefined,

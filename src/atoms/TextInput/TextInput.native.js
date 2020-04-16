@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from 'react';
+import React, { useContext, useState, useCallback, useEffect } from 'react';
 import { TextInput as NativeTextInput, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
@@ -9,6 +9,7 @@ import View from '../View';
 import isEmpty from '../../_helpers/isEmpty';
 import Size from '../Size';
 import Space from '../Space';
+import isDefined from '../../_helpers/isDefined';
 import Label from './Label';
 import CharacterCount from './CharacterCount';
 import AccessoryIcon from './AccessoryIcon';
@@ -169,7 +170,7 @@ const TextInput = ({
   prefix,
   suffix,
   disabled,
-  children,
+  value,
   iconLeft,
   iconRight,
   maxLength,
@@ -177,11 +178,15 @@ const TextInput = ({
   testID,
   labelPosition,
   width,
+  type,
+  keyboardType,
+  returnKeyType,
+  autoCapitalize,
   _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setIsFocused] = useState(false);
-  const [input, setInput] = useState(children || '');
+  const [input, setInput] = useState(value || '');
   // Used for storing layout value of TextInput
   const [layoutDimensions, setLayoutDimensions] = useState(null);
   // Used to hide placeholder while label is inside the TextInput
@@ -248,6 +253,12 @@ const TextInput = ({
     },
     [layoutDimensions, setLayoutDimensions],
   );
+
+  useEffect(() => {
+    if (isDefined(value)) {
+      setInput(value);
+    }
+  }, [value]);
 
   if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
     throw Error('Cannot have prefix and left icon together');
@@ -362,6 +373,10 @@ const TextInput = ({
                                 onLayout={onTextInputLayout}
                                 value={input}
                                 multiline={_isMultiline}
+                                secureTextEntry={type === 'password'}
+                                keyboardType={keyboardType}
+                                returnKeyType={returnKeyType}
+                                autoCapitalize={autoCapitalize}
                                 {...automation(testID)}
                               />
                             </Size>
@@ -420,7 +435,7 @@ TextInput.propTypes = {
   prefix: PropTypes.string,
   suffix: PropTypes.string,
   disabled: PropTypes.bool,
-  children: PropTypes.string,
+  value: PropTypes.string,
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
   maxLength: PropTypes.number,
@@ -428,18 +443,28 @@ TextInput.propTypes = {
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
+  type: PropTypes.oneOf(['text', 'password']),
+  keyboardType: PropTypes.oneOf([
+    'number-pad',
+    'decimal-pad',
+    'numeric',
+    'email-address',
+    'phone-pad',
+  ]),
+  returnKeyType: PropTypes.oneOf(['done', 'go', 'next', 'search', 'send']),
+  autoCapitalize: PropTypes.oneOf(['none', 'sentences', 'words', 'characters']),
   _isMultiline: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
-  placeholder: 'Enter text here',
+  placeholder: '',
   helpText: undefined,
   errorText: undefined,
   onChange: () => {},
   prefix: undefined,
   suffix: undefined,
   disabled: false,
-  children: undefined,
+  value: undefined,
   iconLeft: undefined,
   iconRight: undefined,
   maxLength: undefined,
@@ -448,6 +473,10 @@ TextInput.defaultProps = {
   testID: 'ds-text-input',
   labelPosition: 'top',
   width: 'medium',
+  type: 'text',
+  keyboardType: undefined,
+  returnKeyType: undefined,
+  autoCapitalize: undefined,
 };
 
 export default TextInput;
