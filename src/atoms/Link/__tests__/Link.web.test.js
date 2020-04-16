@@ -9,6 +9,11 @@ describe('<Link />', () => {
     const { container } = renderWithTheme(<Link>{displayText}</Link>);
     expect(container).toMatchSnapshot();
   });
+  it('renders a link with disabled prop', () => {
+    const displayText = 'Displaying some link';
+    const { container } = renderWithTheme(<Link disabled>{displayText}</Link>);
+    expect(container).toMatchSnapshot();
+  });
   describe('Size', () => {
     it('small', () => {
       const displayText = 'Displaying some link';

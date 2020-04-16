@@ -5,33 +5,63 @@ import Text from '../Text';
 import { getColor } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
 
+const styles = {
+  color({ disabled, theme }) {
+    if (disabled) {
+      return getColor(theme, 'shade.960');
+    } else {
+      return getColor(theme, 'primary.800');
+    }
+  },
+  cursor({ disabled }) {
+    if (disabled) {
+      return 'not-allowed';
+    }
+    return 'pointer';
+  },
+  textDecoration({ disabled }) {
+    if (disabled) {
+      return 'none';
+    }
+    return 'underline';
+  },
+};
+
 const StyledText = styled(Text)`
-  color: ${(props) => getColor(props.theme, 'primary.800')};
+  color: ${styles.color};
   text-decoration: none;
-  cursor: pointer;
+  cursor: ${styles.cursor};
   &:hover {
-    text-decoration: underline;
-    color: ${(props) => getColor(props.theme, 'primary.800')};
+    text-decoration: ${styles.textDecoration};
+    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.800')};
   }
   &:focus {
     outline: none;
-    text-decoration: underline;
-    color: ${(props) => getColor(props.theme, 'primary.900')};
+    text-decoration: ${styles.textDecoration};
+    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.900')};
   }
   &:active {
     outline: none;
-    text-decoration: underline;
-    color: ${(props) => getColor(props.theme, 'primary.700')};
+    text-decoration: ${styles.textDecoration};
+    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.700')};
   }
   &:visited {
     outline: none;
-    color: ${(props) => getColor(props.theme, 'primary.700')};
+    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.700')};
   }
 `;
 
-const Link = ({ size, children, href, target, testID, rel }) => {
+const Link = ({ size, children, href, target, testID, rel, disabled }) => {
   return (
-    <StyledText as="a" rel={rel} size={size} href={href} target={target} {...automation(testID)}>
+    <StyledText
+      as="a"
+      rel={rel}
+      size={size}
+      href={disabled ? '' : href}
+      target={target}
+      disabled={disabled}
+      {...automation(testID)}
+    >
       {children}
     </StyledText>
   );
@@ -44,12 +74,14 @@ Link.propTypes = {
   target: PropTypes.oneOf(['_blank', '_self', '_parent', '_top']),
   testID: PropTypes.string,
   rel: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 Link.defaultProps = {
   size: 'medium',
   testID: 'ds-text',
   target: '_self',
+  disabled: false,
 };
 
 export default Link;

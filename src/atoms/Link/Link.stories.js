@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, select } from '@storybook/addon-knobs';
+import { text, select, boolean } from '@storybook/addon-knobs';
 import Link from './Link';
 
 const sizeOptions = {
@@ -27,6 +27,7 @@ storiesOf('Link', module)
       href={text('Href', 'https://razorpay.com', 'Web')}
       target={select('Target', targetOptions, 'link', 'Web')}
       rel={text('Rel', 'author', 'Web')}
+      disabled={boolean('disabled', false)}
     >
       {text('Display Text', 'https://www.razorpay.com')}
     </Link>
