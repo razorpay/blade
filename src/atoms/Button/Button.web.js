@@ -12,7 +12,7 @@ import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
 
 const styles = {
-  fontColor({ variant, color, disabled }) {
+  fontColor({ variant, variantColor, disabled }) {
     switch (variant) {
       case 'primary':
         if (disabled) {
@@ -23,12 +23,12 @@ const styles = {
         if (disabled) {
           return 'shade.940';
         }
-        return `${color}.800`;
+        return `${variantColor}.800`;
       case 'tertiary':
         if (disabled) {
           return 'shade.940';
         }
-        return `${color}.800`;
+        return `${variantColor}.800`;
       default:
         if (disabled) {
           return 'light.150';
@@ -36,28 +36,28 @@ const styles = {
         return 'light.100';
     }
   },
-  backgroundColor({ variant, color, disabled, theme }) {
+  backgroundColor({ variant, variantColor, disabled, theme }) {
     switch (variant) {
       case 'primary':
         if (disabled) {
-          return getColor(theme, `${color}.500`);
+          return getColor(theme, `${variantColor}.500`);
         }
-        return getColor(theme, `${color}.800`);
+        return getColor(theme, `${variantColor}.800`);
       case 'secondary':
         if (disabled) {
           return getColor(theme, 'shade.910');
         }
-        return getColor(theme, `${color}.920`);
+        return getColor(theme, `${variantColor}.920`);
       case 'tertiary':
         return 'transparent';
       default:
         if (disabled) {
-          return getColor(theme, `${color}.500`);
+          return getColor(theme, `${variantColor}.500`);
         }
-        return getColor(theme, `${color}.800`);
+        return getColor(theme, `${variantColor}.800`);
     }
   },
-  focusBorder({ theme, variant, disabled, color }) {
+  focusBorder({ theme, variant, disabled, variantColor }) {
     if (disabled) {
       return '';
     }
@@ -65,59 +65,29 @@ const styles = {
       case 'primary':
         return `${makePxValue(0.125)} solid ${getColor(theme, 'shade.960')}`;
       case 'secondary':
-        return `${makePxValue(0.125)} solid ${getColor(theme, `${color}.900`)}`;
+        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor}.900`)}`;
       case 'tertiary':
         return '0px';
       default:
         return `${makePxValue(0.125)} solid ${getColor(theme, 'shade.960')}`;
     }
   },
-  focusBackgroundColor({ theme, variant, color, disabled }) {
+  focusBackgroundColor({ theme, variant, variantColor, disabled }) {
     if (disabled) {
       return '';
     }
     switch (variant) {
       case 'primary':
-        return getColor(theme, `${color}.800`);
+        return getColor(theme, `${variantColor}.800`);
       case 'secondary':
-        return getColor(theme, `${color}.930`);
+        return getColor(theme, `${variantColor}.930`);
       case 'tertiary':
-        return getColor(theme, `${color}.930`);
+        return getColor(theme, `${variantColor}.930`);
       default:
-        return getColor(theme, `${color}.800`);
+        return getColor(theme, `${variantColor}.800`);
     }
   },
-  activeBorder({ theme, variant, disabled, color }) {
-    if (disabled) {
-      return '';
-    }
-    switch (variant) {
-      case 'primary':
-        return '0px';
-      case 'secondary':
-        return `${makePxValue(0.125)} solid ${getColor(theme, `${color}.970`)}`;
-      case 'tertiary':
-        return '0px';
-      default:
-        return '0px';
-    }
-  },
-  activeBackgroundColor({ theme, variant, color, disabled }) {
-    if (disabled) {
-      return '';
-    }
-    switch (variant) {
-      case 'primary':
-        return getColor(theme, `${color}.600`);
-      case 'secondary':
-        return getColor(theme, `${color}.950`);
-      case 'tertiary':
-        return getColor(theme, `${color}.950`);
-      default:
-        return getColor(theme, `${color}.600`);
-    }
-  },
-  hoverBorder({ theme, variant, disabled, color }) {
+  activeBorder({ theme, variant, disabled, variantColor }) {
     if (disabled) {
       return '';
     }
@@ -125,29 +95,59 @@ const styles = {
       case 'primary':
         return '0px';
       case 'secondary':
-        return `${makePxValue(0.125)} solid ${getColor(theme, `${color}.970`)}`;
+        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor}.970`)}`;
       case 'tertiary':
         return '0px';
       default:
         return '0px';
     }
   },
-  hoverBackgroundColor({ theme, variant, color, disabled }) {
+  activeBackgroundColor({ theme, variant, variantColor, disabled }) {
     if (disabled) {
       return '';
     }
     switch (variant) {
       case 'primary':
-        return getColor(theme, `${color}.700`);
+        return getColor(theme, `${variantColor}.600`);
       case 'secondary':
-        return getColor(theme, `${color}.930`);
+        return getColor(theme, `${variantColor}.950`);
       case 'tertiary':
-        return getColor(theme, `${color}.920`);
+        return getColor(theme, `${variantColor}.950`);
       default:
-        return getColor(theme, `${color}.700`);
+        return getColor(theme, `${variantColor}.600`);
     }
   },
-  border({ variant, color, disabled, theme }) {
+  hoverBorder({ theme, variant, disabled, variantColor }) {
+    if (disabled) {
+      return '';
+    }
+    switch (variant) {
+      case 'primary':
+        return '0px';
+      case 'secondary':
+        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor}.970`)}`;
+      case 'tertiary':
+        return '0px';
+      default:
+        return '0px';
+    }
+  },
+  hoverBackgroundColor({ theme, variant, variantColor, disabled }) {
+    if (disabled) {
+      return '';
+    }
+    switch (variant) {
+      case 'primary':
+        return getColor(theme, `${variantColor}.700`);
+      case 'secondary':
+        return getColor(theme, `${variantColor}.930`);
+      case 'tertiary':
+        return getColor(theme, `${variantColor}.920`);
+      default:
+        return getColor(theme, `${variantColor}.700`);
+    }
+  },
+  border({ variant, variantColor, disabled, theme }) {
     switch (variant) {
       case 'primary':
         return '0px';
@@ -155,7 +155,7 @@ const styles = {
         if (disabled) {
           return `${makePxValue(0.125)} solid ${getColor(theme, 'shade.930')}`;
         }
-        return `${makePxValue(0.125)} solid ${getColor(theme, `${color}.970`)}`;
+        return `${makePxValue(0.125)} solid ${getColor(theme, `${variantColor}.970`)}`;
       case 'tertiary':
         return '0px';
       default:
@@ -357,8 +357,6 @@ const Button = ({
 }) => {
   const theme = useContext(ThemeContext);
 
-  const color = `${variantColor || 'primary'}`;
-
   if (typeof children !== 'string' && typeof children !== 'undefined') {
     throw new Error(
       `Error in Button: expected \`children\` of type \`string\` but found ${typeof children}`,
@@ -376,7 +374,7 @@ const Button = ({
       <Size height={styles.height({ size, theme })}>
         <Space padding={styles.padding({ size, children, theme })}>
           <StyledButton
-            color={color}
+            variantColor={variantColor}
             onClick={onClick}
             disabled={disabled}
             size={size}
@@ -389,7 +387,7 @@ const Button = ({
                 <Icon
                   name={icon}
                   size={styles.iconSize({ size, children })}
-                  fill={styles.fontColor({ variant, color, disabled })}
+                  fill={styles.fontColor({ variant, variantColor, disabled })}
                 />
               ) : null}
               {icon && iconAlign === 'left' && children ? (
@@ -399,7 +397,7 @@ const Button = ({
               ) : null}
               {children ? (
                 <Text
-                  color={styles.fontColor({ variant, color, disabled })}
+                  color={styles.fontColor({ variant, variantColor, disabled })}
                   size={styles.fontSize({ size })}
                   align="center"
                   _weight="bold"
@@ -418,7 +416,7 @@ const Button = ({
                 <Icon
                   name={icon}
                   size={styles.iconSize({ size, children })}
-                  fill={styles.fontColor({ variant, color, disabled })}
+                  fill={styles.fontColor({ variant, variantColor, disabled })}
                 />
               ) : null}
             </React.Fragment>
@@ -444,6 +442,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   variant: 'primary',
+  variantColor: 'primary',
   block: false,
   align: 'left',
   size: 'medium',
