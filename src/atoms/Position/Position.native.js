@@ -31,11 +31,6 @@ Position.propTypes = {
 
 Position.defaultProps = {
   position: 'relative',
-  top: undefined,
-  right: undefined,
-  bottom: undefined,
-  left: undefined,
-  zIndex: undefined,
 };
 
 export default Position;
