@@ -3,7 +3,7 @@
 exports[`<Heading /> color renders heading with custom color 1`] = `
 <div>
   <h1
-    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 kztqhT"
+    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 vJOnx"
     color="primary.900"
     data-testid="ds-heading"
   >
@@ -15,7 +15,7 @@ exports[`<Heading /> color renders heading with custom color 1`] = `
 exports[`<Heading /> renders heading with default props 1`] = `
 <div>
   <h1
-    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 gEFOQX"
+    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 cWJYDx"
     color="shade.980"
     data-testid="ds-heading"
   >
@@ -27,7 +27,7 @@ exports[`<Heading /> renders heading with default props 1`] = `
 exports[`<Heading /> size renders heading with size large 1`] = `
 <div>
   <h4
-    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 iOAnJX"
+    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 fRKJsK"
     color="shade.980"
     data-testid="ds-heading"
   >
@@ -39,7 +39,7 @@ exports[`<Heading /> size renders heading with size large 1`] = `
 exports[`<Heading /> size renders heading with size medium 1`] = `
 <div>
   <h5
-    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 gcuFBT"
+    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 cuMhyS"
     color="shade.980"
     data-testid="ds-heading"
   >
@@ -51,7 +51,7 @@ exports[`<Heading /> size renders heading with size medium 1`] = `
 exports[`<Heading /> size renders heading with size xlarge 1`] = `
 <div>
   <h3
-    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 dgfwR"
+    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 chVIPJ"
     color="shade.980"
     data-testid="ds-heading"
   >
@@ -63,7 +63,7 @@ exports[`<Heading /> size renders heading with size xlarge 1`] = `
 exports[`<Heading /> size renders heading with size xxlarge 1`] = `
 <div>
   <h2
-    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 eDgaoc"
+    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 chea-dC"
     color="shade.980"
     data-testid="ds-heading"
   >
@@ -75,7 +75,7 @@ exports[`<Heading /> size renders heading with size xxlarge 1`] = `
 exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
 <div>
   <h1
-    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 gEFOQX"
+    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 cWJYDx"
     color="shade.980"
     data-testid="ds-heading"
   >
@@ -87,7 +87,7 @@ exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
 exports[`<Heading /> weight renders heading with bold weight 1`] = `
 <div>
   <h1
-    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 gEFOQX"
+    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 cWJYDx"
     color="shade.980"
     data-testid="ds-heading"
   >
@@ -99,7 +99,7 @@ exports[`<Heading /> weight renders heading with bold weight 1`] = `
 exports[`<Heading /> weight renders heading with regular weight 1`] = `
 <div>
   <h1
-    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 gZFTLY"
+    class="Textweb__Text-sc-6jf9e4-0 Headingweb__StyledHeadingText-ea7c9d-0 iGgFFO"
     color="shade.980"
     data-testid="ds-heading"
   >
