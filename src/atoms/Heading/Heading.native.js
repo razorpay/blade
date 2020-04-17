@@ -83,7 +83,7 @@ Heading.defaultProps = {
   color: 'shade.980',
   testID: 'ds-heading',
   weight: 'bold',
-  maxLines: 1,
+  maxLines: undefined,
 };
 
 export default Heading;

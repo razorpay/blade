@@ -90,7 +90,7 @@ Heading.defaultProps = {
   size: 'xxxlarge',
   color: 'shade.980',
   weight: 'bold',
-  maxLines: undefined,
+  maxLines: 1,
 };
 
 export default Heading;
