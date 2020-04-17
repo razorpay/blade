@@ -10,7 +10,6 @@ View.propTypes = {
 
 View.defaultProps = {
   as: 'div',
-  children: undefined,
 };
 
 export default View;
