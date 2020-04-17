@@ -32,10 +32,7 @@ Radio.propTypes = {
 };
 
 Radio.defaultProps = {
-  value: undefined,
-  defaultValue: undefined,
   onChange: () => {},
-  children: null,
 };
 
 Radio.Option = RadioOption;

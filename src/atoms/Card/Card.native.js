@@ -84,7 +84,6 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  children: undefined,
   variant: 'shadowed',
   testID: 'ds-card',
   backgroundColor: 'background.200',
