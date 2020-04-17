@@ -86,7 +86,6 @@ Text.defaultProps = {
   size: 'large',
   align: 'left',
   color: 'shade.980',
-  maxLines: undefined,
   'data-testid': 'ds-text',
   _weight: 'regular',
   _isUnderlined: false,

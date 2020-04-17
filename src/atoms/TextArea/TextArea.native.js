@@ -79,16 +79,8 @@ TextArea.propTypes = {
 
 TextArea.defaultProps = {
   placeholder: '',
-  helpText: undefined,
-  errorText: undefined,
   onChange: () => {},
-  prefix: undefined,
-  suffix: undefined,
   disabled: false,
-  value: undefined,
-  iconLeft: undefined,
-  iconRight: undefined,
-  maxLength: undefined,
   variant: 'outlined',
   label: 'Label',
   testID: 'ds-text-area',
