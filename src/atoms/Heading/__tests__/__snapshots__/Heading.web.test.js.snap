@@ -2,25 +2,25 @@
 
 exports[`<Heading /> color renders heading with custom color 1`] = `
 <div>
-  <div
-    class="Textweb__Text-sc-6jf9e4-0 kgcVnH"
+  <h5
+    class="Textweb__Text-sc-6jf9e4-0 jBnorI"
     color="primary.900"
     data-testid="ds-heading"
   >
     Heading
-  </div>
+  </h5>
 </div>
 `;
 
 exports[`<Heading /> renders heading with default props 1`] = `
 <div>
-  <div
-    class="Textweb__Text-sc-6jf9e4-0 eImybq"
+  <h5
+    class="Textweb__Text-sc-6jf9e4-0 ciKjJB"
     color="shade.980"
     data-testid="ds-heading"
   >
     Heading
-  </div>
+  </h5>
 </div>
 `;
 
@@ -86,24 +86,24 @@ exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
 
 exports[`<Heading /> weight renders heading with bold weight 1`] = `
 <div>
-  <div
-    class="Textweb__Text-sc-6jf9e4-0 eImybq"
+  <h5
+    class="Textweb__Text-sc-6jf9e4-0 ciKjJB"
     color="shade.980"
     data-testid="ds-heading"
   >
     Heading
-  </div>
+  </h5>
 </div>
 `;
 
 exports[`<Heading /> weight renders heading with regular weight 1`] = `
 <div>
-  <div
-    class="Textweb__Text-sc-6jf9e4-0 hIevsJ"
+  <h5
+    class="Textweb__Text-sc-6jf9e4-0 kkSFsa"
     color="shade.980"
     data-testid="ds-heading"
   >
     Heading
-  </div>
+  </h5>
 </div>
 `;
