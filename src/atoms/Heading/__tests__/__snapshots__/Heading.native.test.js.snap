@@ -11,8 +11,13 @@ exports[`<Heading /> color renders heading with custom color 1`] = `
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xxlarge"
+    _weight="bold"
+    align="left"
     color="primary.900"
-    size="xxxlarge"
+    size="xxxxlarge"
     style={
       Array [
         Object {
@@ -21,11 +26,12 @@ exports[`<Heading /> color renders heading with custom color 1`] = `
           "fontSize": 32,
           "letterSpacing": 0,
           "lineHeight": 36,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-heading"
-    weight="bold"
   >
     Heading
   </Text>
@@ -43,6 +49,11 @@ exports[`<Heading /> size renders heading with size large 1`] = `
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="large"
+    _weight="bold"
+    align="left"
     color="shade.980"
     size="large"
     style={
@@ -52,12 +63,13 @@ exports[`<Heading /> size renders heading with size large 1`] = `
           "fontFamily": "Lato-Bold",
           "fontSize": 16,
           "letterSpacing": 0,
-          "lineHeight": 20,
+          "lineHeight": 24,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-heading"
-    weight="bold"
   >
     Heading
   </Text>
@@ -75,6 +87,11 @@ exports[`<Heading /> size renders heading with size medium 1`] = `
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="medium"
+    _weight="bold"
+    align="left"
     color="shade.980"
     size="medium"
     style={
@@ -85,11 +102,12 @@ exports[`<Heading /> size renders heading with size medium 1`] = `
           "fontSize": 14,
           "letterSpacing": 0,
           "lineHeight": 20,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-heading"
-    weight="bold"
   >
     Heading
   </Text>
@@ -107,8 +125,13 @@ exports[`<Heading /> size renders heading with size xlarge 1`] = `
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xlarge"
+    _weight="bold"
+    align="left"
     color="shade.980"
-    size="xlarge"
+    size="xxlarge"
     style={
       Array [
         Object {
@@ -117,11 +140,12 @@ exports[`<Heading /> size renders heading with size xlarge 1`] = `
           "fontSize": 20,
           "letterSpacing": 0,
           "lineHeight": 30,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-heading"
-    weight="bold"
   >
     Heading
   </Text>
@@ -139,8 +163,13 @@ exports[`<Heading /> size renders heading with size xxlarge 1`] = `
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xxlarge"
+    _weight="bold"
+    align="left"
     color="shade.980"
-    size="xxlarge"
+    size="xxxlarge"
     style={
       Array [
         Object {
@@ -149,11 +178,12 @@ exports[`<Heading /> size renders heading with size xxlarge 1`] = `
           "fontSize": 24,
           "letterSpacing": 0,
           "lineHeight": 36,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-heading"
-    weight="bold"
   >
     Heading
   </Text>
@@ -171,8 +201,13 @@ exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xxlarge"
+    _weight="bold"
+    align="left"
     color="shade.980"
-    size="xxxlarge"
+    size="xxxxlarge"
     style={
       Array [
         Object {
@@ -181,11 +216,12 @@ exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
           "fontSize": 32,
           "letterSpacing": 0,
           "lineHeight": 36,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-heading"
-    weight="bold"
   >
     Heading
   </Text>
@@ -203,8 +239,13 @@ exports[`<Heading /> weight renders heading with bold weight 1`] = `
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xxlarge"
+    _weight="bold"
+    align="left"
     color="shade.980"
-    size="xxxlarge"
+    size="xxxxlarge"
     style={
       Array [
         Object {
@@ -213,11 +254,12 @@ exports[`<Heading /> weight renders heading with bold weight 1`] = `
           "fontSize": 32,
           "letterSpacing": 0,
           "lineHeight": 36,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-heading"
-    weight="bold"
   >
     Heading
   </Text>
@@ -235,8 +277,13 @@ exports[`<Heading /> weight renders heading with regular weight 1`] = `
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xxlarge"
+    _weight="regular"
+    align="left"
     color="shade.980"
-    size="xxxlarge"
+    size="xxxxlarge"
     style={
       Array [
         Object {
@@ -245,11 +292,12 @@ exports[`<Heading /> weight renders heading with regular weight 1`] = `
           "fontSize": 32,
           "letterSpacing": 0,
           "lineHeight": 36,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-heading"
-    weight="regular"
   >
     Heading
   </Text>

@@ -19,64 +19,48 @@ storiesOf('Heading', module)
     <ScrollView>
       <Space margin={[4, 0, 0, 0]}>
         <View>
+          <Heading size="medium">{'Heading (medium)'}</Heading>
+        </View>
+      </Space>
+      <Space margin={[4, 0, 0, 0]}>
+        <View>
+          <Heading size="large">{'Heading (large)'}</Heading>
+        </View>
+      </Space>
+      <Space margin={[4, 0, 0, 0]}>
+        <View>
+          <Heading size="xlarge">{'Heading (xlarge)'}</Heading>
+        </View>
+      </Space>
+      <Space margin={[4, 0, 0, 0]}>
+        <View>
+          <Heading size="xxlarge">{'Heading (xxlarge)'}</Heading>
+        </View>
+      </Space>
+      <Space margin={[4, 0, 0, 0]}>
+        <View>
+          <Heading size="xxxlarge">{'Heading (xxxlarge)'}</Heading>
+        </View>
+      </Space>
+    </ScrollView>
+  ))
+  .add('with weight', () => (
+    <ScrollView>
+      <Space margin={[4, 0, 0, 0]}>
+        <View>
           <Heading size="medium" weight={select('Weight', weightOptions, 'bold')}>
-            {'Heading (medium)'}
+            {'The quick brown fox jumps over the lazy dog'}
           </Heading>
         </View>
       </Space>
+    </ScrollView>
+  ))
+  .add('with maxLines', () => (
+    <ScrollView>
       <Space margin={[4, 0, 0, 0]}>
         <View>
-          <Heading size="large" weight={select('Weight', weightOptions, 'bold')}>
-            {'Heading (large)'}
-          </Heading>
-        </View>
-      </Space>
-      <Space margin={[4, 0, 0, 0]}>
-        <View>
-          <Heading size="xlarge" weight={select('Weight', weightOptions, 'bold')}>
-            {'Heading (xlarge)'}
-          </Heading>
-        </View>
-      </Space>
-      <Space margin={[4, 0, 0, 0]}>
-        <View>
-          <Heading size="xxlarge" weight={select('Weight', weightOptions, 'bold')}>
-            {'Heading (xxlarge)'}
-          </Heading>
-        </View>
-      </Space>
-      <Space margin={[4, 0, 0, 0]}>
-        <View>
-          <Heading size="xxxlarge" weight={select('Weight', weightOptions, 'bold')}>
-            {'Heading (xxxlarge)'}
-          </Heading>
-        </View>
-      </Space>
-      <Space margin={[4, 0, 0, 0]}>
-        <View>
-          <Heading
-            size="medium"
-            maxLines={number('maxLines', 1)}
-            weight={select('Weight', weightOptions, 'bold')}
-          >
-            {text(
-              'MultiLine Heading (medium)',
-              'MultiLine Heading (medium): The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.',
-            )}
-          </Heading>
-        </View>
-      </Space>
-      <Space margin={[4, 0, 0, 0]}>
-        <View>
-          <Heading
-            size="xxxlarge"
-            maxLines={number('maxLines', 1)}
-            weight={select('Weight', weightOptions, 'bold')}
-          >
-            {text(
-              'MultiLine Heading (xxxlarge)',
-              'MultiLine Heading (xxxlarge): The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.',
-            )}
+          <Heading size="medium" maxLines={number('maxLines', 1)}>
+            {text('Text', 'The quick brown fox jumps over the lazy dog')}
           </Heading>
         </View>
       </Space>

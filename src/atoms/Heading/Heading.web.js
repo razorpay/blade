@@ -1,58 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { getColorKeys, getColor } from '../../_helpers/theme';
+import { useTheme } from 'styled-components';
+import Text from '../Text';
+import { getColorKeys } from '../../_helpers/theme';
 import baseTheme from '../../tokens/theme';
 import automation from '../../_helpers/automation-attributes';
 
-import Text from '../Text';
-
 const styles = {
-  fontSize({ theme, size }) {
+  fontSize({ size }) {
     switch (size) {
       case 'medium':
-        return theme.fonts.size.medium;
+        return 'medium';
       case 'large':
-        return theme.fonts.size.large;
+        return 'large';
       case 'xlarge':
-        return theme.fonts.size.xxlarge;
+        return 'xxlarge';
       case 'xxlarge':
-        return theme.fonts.size.xxxlarge;
+        return 'xxxlarge';
       case 'xxxlarge':
-        return theme.fonts.size.xxxxlarge;
+        return 'xxxxlarge';
       default:
-        return theme.fonts.size.xxxxlarge;
+        return 'xxxxlarge';
     }
   },
-  lineHeight({ theme, size, _weight }) {
+  lineHeight({ size, weight }) {
     switch (size) {
       case 'medium':
-        return theme.fonts.lineHeight.medium;
+        return 'medium';
       case 'large':
-        if (theme.fonts.weight[_weight] === theme.fonts.weight.bold) {
-          return theme.fonts.lineHeight.large;
+        if (weight === 'bold') {
+          return 'large';
         }
-        return theme.fonts.lineHeight.medium;
+        return 'medium';
       case 'xlarge':
-        return theme.fonts.lineHeight.xlarge;
+        return 'xlarge';
       case 'xxlarge':
-        return theme.fonts.lineHeight.xxlarge;
+        return 'xxlarge';
       case 'xxxlarge':
-        return theme.fonts.lineHeight.xxlarge;
+        return 'xxlarge';
       default:
-        return theme.fonts.lineHeight.xxlarge;
+        return 'xxlarge';
     }
   },
 };
-
-const StyledHeadingText = styled(Text)`
-  &&& {
-    font-size: ${styles.fontSize};
-    color: ${({ theme, color }) => getColor(theme, color)};
-    letter-spacing: 0;
-    line-height: ${styles.lineHeight};
-  }
-`;
 
 const headingLevel = {
   xxxlarge: 'h1',
@@ -63,34 +53,35 @@ const headingLevel = {
 };
 
 const Heading = ({ size, color, children, maxLines, weight }) => {
+  const theme = useTheme();
+
   return (
-    <StyledHeadingText
+    <Text
       as={headingLevel[size]}
-      size={size}
+      size={styles.fontSize({ theme, size })}
       color={color}
       maxLines={maxLines}
       _weight={weight}
-      _lineHeight={styles.lineHeight}
+      _lineHeight={styles.lineHeight({ theme, size, weight })}
+      _letterSpacing="small"
       {...automation('ds-heading')}
     >
       {children}
-    </StyledHeadingText>
+    </Text>
   );
 };
 
 Heading.propTypes = {
   children: PropTypes.string,
-  size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
+  size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']).isRequired,
   color: PropTypes.oneOf(getColorKeys()),
   maxLines: PropTypes.number,
   weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
 };
 
 Heading.defaultProps = {
-  size: 'xxxlarge',
   color: 'shade.980',
   weight: 'bold',
-  maxLines: 1,
 };
 
 export default Heading;

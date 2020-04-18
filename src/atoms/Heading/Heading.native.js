@@ -1,77 +1,70 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components/native';
-import { Text as NativeText } from 'react-native';
-import { getColorKeys, getColor } from '../../_helpers/theme';
+import { useTheme } from 'styled-components';
+import Text from '../Text';
+import { getColorKeys } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
 import baseTheme from '../../tokens/theme';
 
 const styles = {
-  fontFamily({ theme, weight }) {
-    return theme.fonts.family.lato[weight];
-  },
-  fontSize({ theme, size }) {
+  fontSize({ size }) {
     switch (size) {
       case 'medium':
-        return theme.fonts.size.medium;
+        return 'medium';
       case 'large':
-        return theme.fonts.size.large;
+        return 'large';
       case 'xlarge':
-        return theme.fonts.size.xxlarge;
+        return 'xxlarge';
       case 'xxlarge':
-        return theme.fonts.size.xxxlarge;
+        return 'xxxlarge';
       case 'xxxlarge':
-        return theme.fonts.size.xxxxlarge;
+        return 'xxxxlarge';
       default:
-        return theme.fonts.size.xxxxlarge;
+        return 'xxxxlarge';
     }
   },
-  color({ theme, color }) {
-    return getColor(theme, color);
-  },
-  lineHeight({ theme, size }) {
+  lineHeight({ size, weight }) {
     switch (size) {
       case 'medium':
-        return theme.fonts.lineHeight.medium;
+        return 'medium';
       case 'large':
-        return theme.fonts.lineHeight.medium;
+        if (weight === 'bold') {
+          return 'large';
+        }
+        return 'medium';
       case 'xlarge':
-        return theme.fonts.lineHeight.xlarge;
+        return 'xlarge';
       case 'xxlarge':
-        return theme.fonts.lineHeight.xxlarge;
+        return 'xxlarge';
       case 'xxxlarge':
-        return theme.fonts.lineHeight.xxlarge;
+        return 'xxlarge';
       default:
-        return theme.fonts.lineHeight.xxlarge;
+        return 'xxlarge';
     }
   },
 };
 
-const StyledHeading = styled(NativeText)`
-  font-family: ${styles.fontFamily};
-  font-size: ${styles.fontSize};
-  color: ${styles.color};
-  letter-spacing: 0;
-  line-height: ${styles.lineHeight};
-`;
-
 const Heading = ({ size, testID, color, children, maxLines, weight }) => {
+  const theme = useTheme();
+
   return (
-    <StyledHeading
-      size={size}
+    <Text
+      size={styles.fontSize({ theme, size })}
       color={color}
-      numberOfLines={maxLines}
-      weight={weight}
+      maxLines={maxLines}
+      _weight={weight}
+      _lineHeight={styles.lineHeight({ theme, size, weight })}
+      _letterSpacing="small"
       {...automation(testID)}
     >
       {children}
-    </StyledHeading>
+    </Text>
   );
 };
 
 Heading.propTypes = {
   children: PropTypes.string,
-  size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
+  size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']).isRequired,
   color: PropTypes.oneOf(getColorKeys()),
   testID: PropTypes.string,
   maxLines: PropTypes.number,
@@ -79,7 +72,6 @@ Heading.propTypes = {
 };
 
 Heading.defaultProps = {
-  size: 'xxxlarge',
   color: 'shade.980',
   testID: 'ds-heading',
   weight: 'bold',

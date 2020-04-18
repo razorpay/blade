@@ -81,7 +81,7 @@ const Text = ({
 
 Text.propTypes = {
   children: PropTypes.string,
-  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
+  size: PropTypes.oneOf(Object.keys(baseTheme.fonts.size)),
   color: PropTypes.oneOf(getColorKeys()),
   align: PropTypes.oneOf(['left', 'right', 'center', 'justify', 'inherit', 'initial']),
   testID: PropTypes.string,
