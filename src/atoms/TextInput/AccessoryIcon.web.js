@@ -14,23 +14,18 @@ const styles = {
       return 'shade.950';
     }
   },
-  padding({ variant, _isMultiline }) {
-    let top = 1;
-    if (_isMultiline) {
-      top = 0;
-    }
-
+  padding({ variant }) {
     if (variant === 'filled') {
       return [0, 1, 0, 1];
     } else {
-      return [top, 0.5, 0, 0];
+      return [1, 0.5, 0, 0];
     }
   },
 };
 
-const AccessoryIcon = ({ name, disabled, hasError, variant, _isMultiline }) => {
+const AccessoryIcon = ({ name, disabled, hasError, variant }) => {
   return (
-    <Space padding={styles.padding({ variant, _isMultiline })}>
+    <Space padding={styles.padding({ variant })}>
       <View>
         <Icon name={name} size="small" fill={styles.color({ disabled, hasError })} />
       </View>
@@ -43,14 +38,12 @@ AccessoryIcon.propTypes = {
   disabled: PropTypes.bool,
   hasError: PropTypes.bool,
   variant: PropTypes.oneOf(['filled', 'outlined']).isRequired,
-  _isMultiline: PropTypes.bool,
 };
 
 AccessoryIcon.defaultProps = {
   name: 'info',
   disabled: false,
   hasError: false,
-  _isMultiline: false,
 };
 
 export default AccessoryIcon;

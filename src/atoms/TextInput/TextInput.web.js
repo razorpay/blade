@@ -18,31 +18,15 @@ import Line from './Line';
 
 const styles = {
   textInput: {
-    padding({ variant, hasLeftIcon, hasPrefix, hasText, _isMultiline }) {
-      let [paddingTop, paddingRight, paddingBottom, paddingLeft] = [0, 0, 0, 0];
-
-      if (hasText) {
-        paddingBottom = 0.5;
+    padding({ variant }) {
+      if (variant === 'filled') {
+        return '0 8px';
       } else {
-        paddingBottom = 0.25;
+        return '0';
       }
-
-      if (_isMultiline) {
-        paddingTop = 0.385;
-      }
-
-      paddingRight = 0;
-      paddingLeft = variant === 'outlined' || hasLeftIcon || hasPrefix ? 0 : 1;
-      return [paddingTop, paddingRight, paddingBottom, paddingLeft];
-    },
-    fontSize({ theme }) {
-      return theme.fonts.size.medium;
     },
     lineHeight({ theme }) {
       return getLineHeight(theme, 'medium');
-    },
-    fontFamily({ theme }) {
-      return theme.fonts.family.lato.regular;
     },
     color({ theme, disabled }) {
       if (disabled) {
@@ -52,29 +36,11 @@ const styles = {
       }
     },
 
-    height({ _isMultiline, variant }) {
-      if (!_isMultiline) {
-        if (variant === 'filled') {
-          return '36px';
-        } else {
-          return '40px';
-        }
+    height({ variant }) {
+      if (variant === 'filled') {
+        return '36px';
       } else {
-        return 'auto';
-      }
-    },
-    minHeight({ _isMultiline }) {
-      if (_isMultiline) {
-        return '30px';
-      } else {
-        return 'auto';
-      }
-    },
-    maxHeight({ _isMultiline }) {
-      if (_isMultiline) {
-        return '80px';
-      } else {
-        return 'auto';
+        return '40px';
       }
     },
     textTransform({ autoCapitalize }) {
@@ -83,6 +49,21 @@ const styles = {
       } else if (autoCapitalize === 'characters') {
         return 'uppercase';
       } else return 'none';
+    },
+    backgroundColor({ variant, theme, isFocused }) {
+      if (variant === 'filled') {
+        if (isFocused) {
+          return theme.colors.tone[950];
+        }
+        return theme.colors.tone[930];
+      }
+      return 'initial';
+    },
+    hoverBackgroundColor({ variant, theme, disabled }) {
+      if (variant === 'filled' && !disabled) {
+        return theme.colors.tone[940];
+      }
+      return 'initial';
     },
   },
   fillContainer: {
@@ -95,13 +76,6 @@ const styles = {
         return theme.colors.tone[940];
       } else {
         return theme.colors.tone[930];
-      }
-    },
-    marginTop({ _isMultiline, variant }) {
-      if (_isMultiline && variant === 'outlined') {
-        return '10px';
-      } else {
-        return 'auto';
       }
     },
   },
@@ -126,12 +100,17 @@ const InputContainer = styled(View)`
 `;
 
 const StyledInput = styled.input`
-  font-size: ${styles.textInput.fontSize};
+  font-size: ${(props) => props.theme.fonts.size.medium};
   line-height: ${styles.textInput.lineHeight};
-  font-family: ${styles.textInput.fontFamily};
+  font-family: ${(props) => props.theme.fonts.family.lato.regular};
   color: ${styles.textInput.color};
   border: none;
   text-transform: ${styles.textInput.textTransform};
+  padding: ${styles.textInput.padding};
+  background-color: ${styles.textInput.backgroundColor};
+  &:hover {
+    background-color: ${styles.textInput.hoverBackgroundColor};
+  }
   &:focus {
     outline: none;
   }
@@ -150,7 +129,13 @@ const FillContainer = styled(View)`
   background-color: ${styles.fillContainer.backgroundColor};
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  margin-top: ${styles.fillContainer.marginTop};
+  margin-top: auto;
+`;
+
+const RelativeContainer = styled(View)`
+  position: relative;
+  display: ${(props) => (props.direction ? 'flex' : 'initial')};
+  flex-direction: ${(props) => (props.direction ? 'column' : 'row')};
 `;
 
 const getAccessoryConfig = ({ errorText, prefix, suffix, iconLeft, iconRight }) => {
@@ -193,7 +178,6 @@ const TextInput = ({
   width,
   type,
   autoCapitalize,
-  _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setIsFocused] = useState(false);
@@ -277,60 +261,55 @@ const TextInput = ({
   }
 
   return (
-    <Flex justifyContent="flex-end">
-      <View>
-        {!hasAnimatedLabel && labelPosition === 'top' ? (
-          <Label.Regular position={labelPosition} disabled={disabled} _isMultiline={_isMultiline}>
-            {label}
-          </Label.Regular>
-        ) : null}
-        {/* Animated Label */}
-        {hasAnimatedLabel ? (
-          <Label.Animated
+    <Flex
+      justifyContent="flex-end"
+      flexDirection={variant === 'filled' && labelPosition !== 'left' ? 'column' : 'row'}
+    >
+      <RelativeContainer direction={variant === 'filled'}>
+        {!hasAnimatedLabel ? (
+          <Label
+            Animated={hasAnimatedLabel}
+            position={labelPosition}
+            disabled={disabled}
             isFocused={isFocused}
             hasText={hasText}
-            disabled={disabled}
             variant={variant}
             hasError={hasError}
-            _isMultiline={_isMultiline}
             iconLeft={iconLeft}
             prefix={prefix}
           >
             {label}
-          </Label.Animated>
+          </Label>
         ) : null}
 
         {/* Text Input Container */}
         <Flex flexDirection="row" alignItems="flex-start">
           <View>
             {/* Fixed Left Label */}
-            {!hasAnimatedLabel && labelPosition === 'left' ? (
-              <Label.Regular
+            {hasAnimatedLabel ? (
+              <Label
+                animated={hasAnimatedLabel}
                 position={labelPosition}
                 disabled={disabled}
-                _isMultiline={_isMultiline}
+                isFocused={isFocused}
+                hasText={hasText}
+                variant={variant}
+                hasError={hasError}
+                iconLeft={iconLeft}
+                prefix={prefix}
               >
                 {label}
-              </Label.Regular>
+              </Label>
             ) : null}
             {/* Text Input */}
             <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
               <View>
-                <FillContainer
-                  _isMultiline={_isMultiline}
-                  variant={variant}
-                  isFocused={isFocused}
-                  disabled={disabled}
-                >
+                <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
                   <Flex flexDirection="row" alignItems="center">
                     <Size width={styles.inputContainer.width({ width })}>
                       <InputContainer>
                         {hasPrefix ? (
-                          <AccessoryText
-                            variant={variant}
-                            disabled={disabled}
-                            _isMultiline={_isMultiline}
-                          >
+                          <AccessoryText variant={variant} disabled={disabled}>
                             {prefix}
                           </AccessoryText>
                         ) : null}
@@ -340,7 +319,6 @@ const TextInput = ({
                             name={iconLeft}
                             disabled={disabled}
                             hasError={hasError}
-                            _isMultiline={_isMultiline}
                           />
                         ) : null}
 
@@ -351,15 +329,11 @@ const TextInput = ({
                               hasLeftIcon,
                               hasPrefix,
                               hasText,
-                              _isMultiline,
                             })}
                           >
-                            <Size
-                              height={styles.textInput.height({ _isMultiline, variant })}
-                              maxHeight={styles.textInput.maxHeight({ _isMultiline })}
-                              minHeight={styles.textInput.minHeight({ _isMultiline })}
-                            >
+                            <Size height={styles.textInput.height({ variant })} minHeight="auto">
                               <StyledInput
+                                id={label}
                                 type={type}
                                 placeholder={placeholder}
                                 placeholderTextColor={placeholderTextColor}
@@ -375,7 +349,6 @@ const TextInput = ({
                                 hasLeftIcon={hasLeftIcon}
                                 maxLength={maxLength}
                                 value={input}
-                                multiline={_isMultiline}
                                 autoCapitalize={autoCapitalize}
                                 {...automation(testID)}
                               />
@@ -421,7 +394,7 @@ const TextInput = ({
             </Flex>
           </View>
         </Flex>
-      </View>
+      </RelativeContainer>
     </Flex>
   );
 };
@@ -445,7 +418,6 @@ TextInput.propTypes = {
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
   type: PropTypes.oneOf(['text', 'password']),
   autoCapitalize: PropTypes.oneOf(['none', 'sentences', 'words', 'characters']),
-  _isMultiline: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
