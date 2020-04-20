@@ -20,9 +20,9 @@ const styles = {
   textInput: {
     padding({ variant }) {
       if (variant === 'filled') {
-        return '0 8px';
+        return ['0', '8px', '0', '8px'];
       } else {
-        return '0';
+        return ['0', '0', '0', '0'];
       }
     },
     lineHeight({ theme }) {
@@ -412,11 +412,12 @@ TextInput.propTypes = {
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
   maxLength: PropTypes.number,
+  direction: PropTypes.bool,
   label: PropTypes.string,
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
-  type: PropTypes.oneOf(['text', 'password']),
+  type: PropTypes.oneOf(['text', 'password', 'number', 'email']),
   autoCapitalize: PropTypes.oneOf(['none', 'sentences', 'words', 'characters']),
 };
 

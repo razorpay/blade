@@ -1,0 +1,2151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders <TextInput /> filled variant correctly autoCapitalize characters 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              autocapitalize="characters"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 ciCEzR Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly autoCapitalize none 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              autocapitalize="none"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly autoCapitalize words 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              autocapitalize="words"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 fVqRQf Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Email
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Email"
+              placeholder="Enter text here"
+              type="text"
+              value="user@domain.com"
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with auto width (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 fsjcxB"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 HOkBi Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with character count (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              maxlength="10"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with disabled (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 IiTkx Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+      disabled=""
+    >
+      Email
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+          disabled=""
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 dWKXUv"
+            >
+              <div
+                class="Textweb__Text-sc-6jf9e4-0 cxatWg"
+                color="shade.930"
+                data-testid="ds-text"
+              >
+                info
+              </div>
+            </div>
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iISLlG Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              disabled=""
+              id="Email"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 dWKXUv"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(22, 47, 86, 0.10)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 nuHEy Sizeweb__Size-sc-10bl685-0 bxRLoi"
+            disabled=""
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 iODqGz"
+              color="shade.930"
+              data-testid="ds-text"
+              disabled=""
+            >
+              You can enter your email here
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with error (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Email
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 dWKXUv"
+            >
+              <div
+                class="Textweb__Text-sc-6jf9e4-0 dxNwta"
+                color="shade.950"
+                data-testid="ds-text"
+              >
+                info
+              </div>
+            </div>
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Email"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 dWKXUv"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(209, 45, 45, 1.0)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 iplLfo Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 enSnFd"
+              color="negative.900"
+              data-testid="ds-text"
+            >
+              Some error has occurred
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with help text & character count (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              maxlength="10"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 giuqlx"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              You can enter your email here
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 iiiHlL"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 giuqlx"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              0/10
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with help text (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 giuqlx"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              You can enter your email here
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with iconLeft & iconRight (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 dWKXUv"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(22, 47, 86, 0.38)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 dWKXUv"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(22, 47, 86, 0.38)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with iconLeft (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 dWKXUv"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(22, 47, 86, 0.38)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with iconRight (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 dWKXUv"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(22, 47, 86, 0.38)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with label 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Email
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Email"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with prefix & suffix (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 dWKXUv"
+            >
+              <div
+                class="Textweb__Text-sc-6jf9e4-0 dxNwta"
+                color="shade.950"
+                data-testid="ds-text"
+              >
+                kg
+              </div>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with prefix (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 dWKXUv"
+            >
+              <div
+                class="Textweb__Text-sc-6jf9e4-0 dxNwta"
+                color="shade.950"
+                data-testid="ds-text"
+              >
+                kg
+              </div>
+            </div>
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with small width (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 iGFYJZ Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly snapshot testing with suffix (filled TextInput) 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bpYslQ Spaceweb__Space-njatzl-0 kRZKSn"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cjjVty"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 iCxLSS Sizeweb__Size-sc-10bl685-0 jBHUZT Spaceweb__Space-njatzl-0 fCZLqT Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 dWKXUv"
+            >
+              <div
+                class="Textweb__Text-sc-6jf9e4-0 dxNwta"
+                color="shade.950"
+                data-testid="ds-text"
+              >
+                kg
+              </div>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly type email 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="password"
+              value="Hello world"
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly type number 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="password"
+              value="Hello world"
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly type password 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="password"
+              value="Hello world"
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> filled variant correctly type text 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value="Hello world"
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with auto width 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 fsjcxB"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 HOkBi Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with character count  1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              maxlength="10"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with disabled  1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 gJtdzE"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bvzuWM"
+          color="shade.980"
+          data-testid="ds-text"
+          disabled=""
+          for="Email"
+        >
+          Email
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+          disabled=""
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jLXNRf"
+            >
+              <div
+                class="Textweb__Text-sc-6jf9e4-0 cxatWg"
+                color="shade.930"
+                data-testid="ds-text"
+              >
+                info
+              </div>
+            </div>
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 kRmOQc Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              disabled=""
+              id="Email"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jLXNRf"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(22, 47, 86, 0.10)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 nuHEy Sizeweb__Size-sc-10bl685-0 bxRLoi"
+            disabled=""
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 iODqGz"
+              color="shade.930"
+              data-testid="ds-text"
+              disabled=""
+            >
+              You can enter your email here
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with error  1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 gJtdzE"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Email"
+        >
+          Email
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jLXNRf"
+            >
+              <div
+                class="Textweb__Text-sc-6jf9e4-0 dxNwta"
+                color="shade.950"
+                data-testid="ds-text"
+              >
+                info
+              </div>
+            </div>
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Email"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jLXNRf"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(209, 45, 45, 1.0)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 iplLfo Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 enSnFd"
+              color="negative.900"
+              data-testid="ds-text"
+            >
+              Some error has occurred
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with filled TextInput 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Email"
+        >
+          Email
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Email"
+              placeholder="Enter text here"
+              type="text"
+              value="user@domain.com"
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with help text  1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 giuqlx"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              You can enter your email here
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with help text & character count  1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              maxlength="10"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 giuqlx"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              You can enter your email here
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 iiiHlL"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 giuqlx"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              0/10
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with iconLeft  1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 gJtdzE"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jLXNRf"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(22, 47, 86, 0.38)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with iconLeft & iconRight  1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 gJtdzE"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jLXNRf"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(22, 47, 86, 0.38)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jLXNRf"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(22, 47, 86, 0.38)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with iconRight  1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jLXNRf"
+            >
+              <svg
+                data-testid="ds-icon"
+                fill="rgba(22, 47, 86, 0.38)"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+              >
+                <path
+                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with label 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Email"
+        >
+          Email
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Email"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with prefix & suffix 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jLXNRf"
+            >
+              <div
+                class="Textweb__Text-sc-6jf9e4-0 dxNwta"
+                color="shade.950"
+                data-testid="ds-text"
+              >
+                kg
+              </div>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with prefix 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 gJtdzE"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jLXNRf"
+            >
+              <div
+                class="Textweb__Text-sc-6jf9e4-0 dxNwta"
+                color="shade.950"
+                data-testid="ds-text"
+              >
+                kg
+              </div>
+            </div>
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with small width 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 iGFYJZ Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders <TextInput /> outlined variant correctly snapshot testing with suffix 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 ebfgF Flexweb__Flex-ni2cjg-0 cPESGI"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
+      >
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iayufR"
+          color="shade.980"
+          data-testid="ds-text"
+          for="Label"
+        >
+          Label
+        </label>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bicrFz"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <input
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dkGLEB Sizeweb__Size-sc-10bl685-0 bGJrqy Spaceweb__Space-njatzl-0 kRZKSn Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-input"
+              id="Label"
+              placeholder="Enter text here"
+              type="text"
+              value=""
+            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jLXNRf"
+            >
+              <div
+                class="Textweb__Text-sc-6jf9e4-0 dxNwta"
+                color="shade.950"
+                data-testid="ds-text"
+              >
+                kg
+              </div>
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 bxRLoi"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

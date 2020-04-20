@@ -41,11 +41,11 @@ const styles = {
   label: {
     padding({ iconLeft, prefix, position, variant, isFocused }) {
       if (variant !== 'filled' && (iconLeft || prefix) && !isFocused) {
-        return '0 0 0 25px';
+        return ['0', '0', '0', '25px'];
       } else if (position === 'left') {
-        return '14px';
+        return ['14px', '14px', '14px', '14px'];
       }
-      return '0';
+      return ['0', '0', '0', '0'];
     },
     top({ isFocused, variant }) {
       if (isFocused || variant === 'filled') {
@@ -96,7 +96,7 @@ const Label = ({
         <FloatView>
           <StyledText
             as="label"
-            for={children}
+            htmlFor={children}
             size="medium"
             isFocused={isFocused}
             hasError={hasError}
@@ -128,8 +128,8 @@ Label.propTypes = {
   animated: PropTypes.bool,
   isFocused: PropTypes.bool,
   variant: PropTypes.oneOf(['outlined', 'filled']).isRequired,
-  iconLeft: PropTypes.bool,
-  prefix: PropTypes.bool,
+  iconLeft: PropTypes.string,
+  prefix: PropTypes.string,
   hasError: PropTypes.bool,
 };
 

@@ -39,6 +39,8 @@ const autoCapitalizeOptions = {
 const typeOptions = {
   text: 'text',
   password: 'password',
+  email: 'email',
+  number: 'number',
 };
 
 storiesOf('TextInput', module)
@@ -67,7 +69,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -95,7 +97,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -122,7 +124,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -149,7 +151,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -176,7 +178,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -203,7 +205,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -231,7 +233,7 @@ storiesOf('TextInput', module)
             errorText="This is the reason for the error"
             onChange={() => {}}
             variant="outlined"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -258,7 +260,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -285,7 +287,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -315,7 +317,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -342,7 +344,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -369,7 +371,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -396,7 +398,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -423,7 +425,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -450,7 +452,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -478,7 +480,7 @@ storiesOf('TextInput', module)
             errorText="This is the reason for the error"
             onChange={() => {}}
             variant="filled"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -505,7 +507,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -532,7 +534,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
@@ -561,7 +563,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="filled"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type={select('Type', typeOptions, 'text')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
