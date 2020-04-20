@@ -7,7 +7,7 @@ exports[`<Button /> block renders block primary <Button /> 1`] = `
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 cJrlLI"
+      class="Textweb__Text-sc-6jf9e4-0 ixsFgX"
       color="light.100"
       data-testid="ds-text"
     >
@@ -25,7 +25,7 @@ exports[`<Button /> disabled Renders a disabled Primary <Button /> 1`] = `
     disabled=""
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 cZfose"
+      class="Textweb__Text-sc-6jf9e4-0 ksuUKZ"
       color="light.150"
       data-testid="ds-text"
     >
@@ -43,7 +43,7 @@ exports[`<Button /> disabled Renders a disabled Tertiary <Button /> 1`] = `
     disabled=""
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 eGSpCE"
+      class="Textweb__Text-sc-6jf9e4-0 bvcCjD"
       color="shade.940"
       data-testid="ds-text"
     >
@@ -61,7 +61,7 @@ exports[`<Button /> disabled renders a disabled Secondary <Button /> 1`] = `
     disabled=""
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 eGSpCE"
+      class="Textweb__Text-sc-6jf9e4-0 bvcCjD"
       color="shade.940"
       data-testid="ds-text"
     >
@@ -92,7 +92,7 @@ exports[`<Button /> icon renders <Button /> with Info icon  1`] = `
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 fIWTfg"
     />
     <div
-      class="Textweb__Text-sc-6jf9e4-0 cJrlLI"
+      class="Textweb__Text-sc-6jf9e4-0 ixsFgX"
       color="light.100"
       data-testid="ds-text"
     >
@@ -123,7 +123,7 @@ exports[`<Button /> icon renders a large Primary <Button /> with left icon 1`] =
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 fIWTfg"
     />
     <div
-      class="Textweb__Text-sc-6jf9e4-0 cJrlLI"
+      class="Textweb__Text-sc-6jf9e4-0 ixsFgX"
       color="light.100"
       data-testid="ds-text"
     >
@@ -140,7 +140,7 @@ exports[`<Button /> icon renders a large Primary <Button /> with right icon 1`] 
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 cJrlLI"
+      class="Textweb__Text-sc-6jf9e4-0 ixsFgX"
       color="light.100"
       data-testid="ds-text"
     >
@@ -171,7 +171,7 @@ exports[`<Button /> size renders a large Primary <Button /> 1`] = `
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 cJrlLI"
+      class="Textweb__Text-sc-6jf9e4-0 ixsFgX"
       color="light.100"
       data-testid="ds-text"
     >
@@ -188,7 +188,7 @@ exports[`<Button /> size renders a small Primary <Button /> 1`] = `
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 iWtrZV"
+      class="Textweb__Text-sc-6jf9e4-0 ea-diWu"
       color="light.100"
       data-testid="ds-text"
     >
@@ -205,7 +205,7 @@ exports[`<Button /> size renders a small Primary <Button /> 2`] = `
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 iWtrZV"
+      class="Textweb__Text-sc-6jf9e4-0 ea-diWu"
       color="light.100"
       data-testid="ds-text"
     >
@@ -222,7 +222,7 @@ exports[`<Button /> size renders xsmall primary <Button /> 1`] = `
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 dptpNs"
+      class="Textweb__Text-sc-6jf9e4-0 bMISMP"
       color="light.100"
       data-testid="ds-text"
     >
@@ -239,7 +239,7 @@ exports[`<Button /> variant Renders a large Tertiary <Button /> 1`] = `
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 WxbKL"
+      class="Textweb__Text-sc-6jf9e4-0 jBFCxE"
       color="primary.800"
       data-testid="ds-text"
     >
@@ -256,7 +256,7 @@ exports[`<Button /> variant renders a large Secondary <Button /> 1`] = `
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 WxbKL"
+      class="Textweb__Text-sc-6jf9e4-0 jBFCxE"
       color="primary.800"
       data-testid="ds-text"
     >
@@ -273,7 +273,7 @@ exports[`<Button /> variant renders a medium(Default) Secondary <Button /> 1`] =
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 WxbKL"
+      class="Textweb__Text-sc-6jf9e4-0 jBFCxE"
       color="primary.800"
       data-testid="ds-text"
     >
@@ -290,7 +290,7 @@ exports[`<Button /> variant renders a medium(Default) Tertiary <Button /> 1`] = 
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 WxbKL"
+      class="Textweb__Text-sc-6jf9e4-0 jBFCxE"
       color="primary.800"
       data-testid="ds-text"
     >
@@ -307,7 +307,7 @@ exports[`<Button /> variant renders a small Primary <Button /> 1`] = `
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 iWtrZV"
+      class="Textweb__Text-sc-6jf9e4-0 ea-diWu"
       color="light.100"
       data-testid="ds-text"
     >
@@ -324,7 +324,7 @@ exports[`<Button /> variant renders a small Tertiary <Button /> 1`] = `
     data-testid="ds-button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 fZRaOO"
+      class="Textweb__Text-sc-6jf9e4-0 fHjckF"
       color="primary.800"
       data-testid="ds-text"
     >
