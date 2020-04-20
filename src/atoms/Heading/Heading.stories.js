@@ -49,7 +49,7 @@ storiesOf('Heading', module)
       <Space margin={[4, 0, 0, 0]}>
         <View>
           <Heading size="medium" weight={select('Weight', weightOptions, 'bold')}>
-            {'The quick brown fox jumps over the lazy dog'}
+            {'The quick brown fox jumps over the lazy dog.'}
           </Heading>
         </View>
       </Space>
@@ -60,7 +60,7 @@ storiesOf('Heading', module)
       <Space margin={[4, 0, 0, 0]}>
         <View>
           <Heading size="medium" maxLines={number('maxLines', 1)}>
-            {text('Text', 'The quick brown fox jumps over the lazy dog')}
+            {text('Text', 'The quick brown fox jumps over the lazy dog.')}
           </Heading>
         </View>
       </Space>
