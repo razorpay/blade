@@ -83,8 +83,6 @@ SegmentControl.propTypes = {
 };
 
 SegmentControl.defaultProps = {
-  value: undefined,
-  defaultValue: undefined,
   onChange: () => {},
   variant: 'outlined',
   size: 'medium',

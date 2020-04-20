@@ -51,6 +51,7 @@ const styles = {
 
 const Text = styled.div`
   font-family: ${(props) => props.theme.fonts.family.lato[props._weight]};
+  font-weight: ${(props) => props.theme.fonts.weight[props._weight]};
   font-size: ${(props) => props.theme.fonts.size[props.size]};
   color: ${styles.color};
   text-decoration: ${styles.textDecoration};
@@ -86,7 +87,6 @@ Text.defaultProps = {
   size: 'large',
   align: 'left',
   color: 'shade.980',
-  maxLines: undefined,
   'data-testid': 'ds-text',
   _weight: 'regular',
   _isUnderlined: false,
