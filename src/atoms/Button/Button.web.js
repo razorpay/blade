@@ -374,7 +374,7 @@ const Button = ({
 
   if (typeof children !== 'string' && typeof children !== 'undefined') {
     throw new Error(
-      `Error in Button: expected \`children\` of type \`string\` but found ${typeof children}`,
+      `Error in Button: expected \`children\` of type \`string\` but found ${typeof children}.`,
     );
   }
 
