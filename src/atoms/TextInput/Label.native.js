@@ -292,7 +292,6 @@ RegularLabel.propTypes = {
 
 RegularLabel.defaultProps = {
   children: 'Label',
-  inputLayoutDimensions: undefined,
   disabled: false,
   _isMultiline: false,
 };

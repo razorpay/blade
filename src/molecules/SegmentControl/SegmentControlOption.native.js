@@ -222,9 +222,7 @@ SegmentControlOption.propTypes = {
 };
 
 SegmentControlOption.defaultProps = {
-  subText: undefined,
   hideDivider: true,
-  icon: undefined,
   disabled: false,
   testID: 'ds-segment-control-option',
 };

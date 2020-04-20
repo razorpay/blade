@@ -249,8 +249,6 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-  defaultChecked: undefined,
-  checked: undefined,
   size: 'medium',
   helpText: '',
   disabled: false,

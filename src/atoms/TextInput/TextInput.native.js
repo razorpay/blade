@@ -457,26 +457,15 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
-  placeholder: '',
-  helpText: undefined,
-  errorText: undefined,
   onChange: () => {},
-  prefix: undefined,
-  suffix: undefined,
+  placeholder: '',
   disabled: false,
-  value: undefined,
-  iconLeft: undefined,
-  iconRight: undefined,
-  maxLength: undefined,
   variant: 'outlined',
   label: 'Label',
   testID: 'ds-text-input',
   labelPosition: 'top',
   width: 'medium',
   type: 'text',
-  keyboardType: undefined,
-  returnKeyType: undefined,
-  autoCapitalize: undefined,
 };
 
 export default TextInput;

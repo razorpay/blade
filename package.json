@@ -23,7 +23,7 @@
     "@react-native-community/async-storage": "1.7.1",
     "intl": "1.2.5",
     "lodash": "4.17.15",
-    "react-native-svg": "11.0.1",
+    "react-native-svg": "12.1.0",
     "typescript": "3.7.5"
   },
   "devDependencies": {
@@ -58,6 +58,7 @@
     "babel-plugin-styled-components": "1.10.7",
     "chalk": "3.0.0",
     "commitizen": "4.0.3",
+    "copy-webpack-plugin": "5.1.1",
     "cz-conventional-changelog": "3.1.0",
     "eslint": "6.8.0",
     "eslint-config-kentcdodds": "14.8.0",
@@ -90,6 +91,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-native": "0.61.5",
+    "react-native-svg": "^12.1.0",
     "styled-components": "^4.3.2"
   },
   "husky": {
