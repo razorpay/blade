@@ -1,10 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
 
 import View from '../View';
 import Text from '../Text';
 import Size from './Size';
+
+const StyledView = styled(View)`
+  background-color: ${(props) => props.theme.colors.shade[940]};
+`;
 
 storiesOf('Size', module)
   .addParameters({
@@ -19,8 +24,8 @@ storiesOf('Size', module)
       minHeight={text('minHeight', '5px')}
       minWidth={text('minWidth', '5px')}
     >
-      <View>
-        <Text>simple div</Text>
-      </View>
+      <StyledView>
+        <Text>Content</Text>
+      </StyledView>
     </Size>
   ));
