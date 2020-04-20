@@ -43,7 +43,7 @@ const styles = {
       if (variant !== 'filled' && (iconLeft || prefix) && !isFocused) {
         return ['0', '0', '0', '25px'];
       } else if (position === 'left') {
-        return ['14px', '14px', '14px', '14px'];
+        return ['18px', '14px', '18px', '14px'];
       }
       return ['0', '0', '0', '0'];
     },
