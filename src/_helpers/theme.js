@@ -40,6 +40,12 @@ const getLineHeight = (currentTheme, textSize) => {
       return currentTheme.fonts.lineHeight.small;
     case 'medium':
       return currentTheme.fonts.lineHeight.medium;
+    case 'xxxlarge':
+      return currentTheme.fonts.lineHeight.xxlarge;
+    case 'xxlarge':
+      return currentTheme.fonts.lineHeight.xxlarge;
+    case 'xlarge':
+      return currentTheme.fonts.lineHeight.xlarge;
     case 'large':
     default:
       return currentTheme.fonts.lineHeight.large;

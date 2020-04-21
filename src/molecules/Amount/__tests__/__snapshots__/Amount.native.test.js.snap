@@ -1434,8 +1434,13 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xlarge"
+      _weight="bold"
+      align="left"
       color="shade.950"
-      size="xlarge"
+      size="xxlarge"
       style={
         Array [
           Object {
@@ -1444,11 +1449,12 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
             "fontSize": 20,
             "letterSpacing": 0,
             "lineHeight": 30,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
       testID="ds-heading"
-      weight="bold"
     >
       1,234
     </Text>
@@ -1528,8 +1534,13 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xxlarge"
+      _weight="bold"
+      align="left"
       color="shade.950"
-      size="xxlarge"
+      size="xxxlarge"
       style={
         Array [
           Object {
@@ -1538,11 +1549,12 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
             "fontSize": 24,
             "letterSpacing": 0,
             "lineHeight": 36,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
       testID="ds-heading"
-      weight="bold"
     >
       1,234
     </Text>
@@ -1622,8 +1634,13 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xxlarge"
+      _weight="bold"
+      align="left"
       color="shade.950"
-      size="xxxlarge"
+      size="xxxxlarge"
       style={
         Array [
           Object {
@@ -1632,11 +1649,12 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
             "fontSize": 32,
             "letterSpacing": 0,
             "lineHeight": 36,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
       testID="ds-heading"
-      weight="bold"
     >
       1,234
     </Text>
@@ -1914,8 +1932,13 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xlarge"
+      _weight="bold"
+      align="left"
       color="shade.980"
-      size="xlarge"
+      size="xxlarge"
       style={
         Array [
           Object {
@@ -1924,11 +1947,12 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
             "fontSize": 20,
             "letterSpacing": 0,
             "lineHeight": 30,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
       testID="ds-heading"
-      weight="bold"
     >
       1,234
     </Text>
@@ -2008,8 +2032,13 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xxlarge"
+      _weight="bold"
+      align="left"
       color="shade.980"
-      size="xxlarge"
+      size="xxxlarge"
       style={
         Array [
           Object {
@@ -2018,11 +2047,12 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
             "fontSize": 24,
             "letterSpacing": 0,
             "lineHeight": 36,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
       testID="ds-heading"
-      weight="bold"
     >
       1,234
     </Text>
@@ -2102,8 +2132,13 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
       ₹ 
     </Text>
     <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      _lineHeight="xxlarge"
+      _weight="bold"
+      align="left"
       color="shade.980"
-      size="xxxlarge"
+      size="xxxxlarge"
       style={
         Array [
           Object {
@@ -2112,11 +2147,12 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
             "fontSize": 32,
             "letterSpacing": 0,
             "lineHeight": 36,
+            "textAlign": "left",
+            "textDecorationLine": "none",
           },
         ]
       }
       testID="ds-heading"
-      weight="bold"
     >
       1,234
     </Text>
@@ -2233,8 +2269,13 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xlar
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xlarge"
+    _weight="bold"
+    align="left"
     color="shade.960"
-    size="xlarge"
+    size="xxlarge"
     style={
       Array [
         Object {
@@ -2243,11 +2284,12 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xlar
           "fontSize": 20,
           "letterSpacing": 0,
           "lineHeight": 30,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-amount"
-    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2265,8 +2307,13 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xxla
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xxlarge"
+    _weight="bold"
+    align="left"
     color="shade.960"
-    size="xxlarge"
+    size="xxxlarge"
     style={
       Array [
         Object {
@@ -2275,11 +2322,12 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xxla
           "fontSize": 24,
           "letterSpacing": 0,
           "lineHeight": 36,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-amount"
-    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2297,8 +2345,13 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xxxl
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xxlarge"
+    _weight="bold"
+    align="left"
     color="shade.960"
-    size="xxxlarge"
+    size="xxxxlarge"
     style={
       Array [
         Object {
@@ -2307,11 +2360,12 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xxxl
           "fontSize": 32,
           "letterSpacing": 0,
           "lineHeight": 36,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-amount"
-    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2403,8 +2457,13 @@ exports[`<Amount /> size with normal variant renders amount with xlarge size 1`]
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xlarge"
+    _weight="bold"
+    align="left"
     color="shade.980"
-    size="xlarge"
+    size="xxlarge"
     style={
       Array [
         Object {
@@ -2413,11 +2472,12 @@ exports[`<Amount /> size with normal variant renders amount with xlarge size 1`]
           "fontSize": 20,
           "letterSpacing": 0,
           "lineHeight": 30,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-amount"
-    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2435,8 +2495,13 @@ exports[`<Amount /> size with normal variant renders amount with xxlarge size 1`
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xxlarge"
+    _weight="bold"
+    align="left"
     color="shade.980"
-    size="xxlarge"
+    size="xxxlarge"
     style={
       Array [
         Object {
@@ -2445,11 +2510,12 @@ exports[`<Amount /> size with normal variant renders amount with xxlarge size 1`
           "fontSize": 24,
           "letterSpacing": 0,
           "lineHeight": 36,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-amount"
-    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2467,8 +2533,13 @@ exports[`<Amount /> size with normal variant renders amount with xxxlarge size 1
   }
 >
   <Text
+    _isUnderlined={false}
+    _letterSpacing="small"
+    _lineHeight="xxlarge"
+    _weight="bold"
+    align="left"
     color="shade.980"
-    size="xxxlarge"
+    size="xxxxlarge"
     style={
       Array [
         Object {
@@ -2477,11 +2548,12 @@ exports[`<Amount /> size with normal variant renders amount with xxxlarge size 1
           "fontSize": 32,
           "letterSpacing": 0,
           "lineHeight": 36,
+          "textAlign": "left",
+          "textDecorationLine": "none",
         },
       ]
     }
     testID="ds-amount"
-    weight="bold"
   >
     ₹ 1,234.00
   </Text>
