@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 import Text from '../Text';
 import { getColorKeys } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
