@@ -72,7 +72,7 @@ const Text = styled.div`
 `;
 
 Text.propTypes = {
-  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
+  size: PropTypes.oneOf(Object.keys(baseTheme.fonts.size)),
   color: PropTypes.oneOf(getColorKeys()),
   align: PropTypes.oneOf(['left', 'right', 'center', 'justify', 'inherit', 'initial']),
   'data-testid': PropTypes.string,
