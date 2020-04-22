@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> color renders heading with custom color 1`] = `
+<div>
+  <h5
+    class="Textweb__Text-sc-6jf9e4-0 hUSGXL"
+    color="primary.900"
+    data-testid="ds-heading"
+  >
+    Heading
+  </h5>
+</div>
+`;
+
+exports[`<Heading /> renders heading with default props 1`] = `
+<div>
+  <h5
+    class="Textweb__Text-sc-6jf9e4-0 cXaLeO"
+    color="shade.980"
+    data-testid="ds-heading"
+  >
+    Heading
+  </h5>
+</div>
+`;
+
+exports[`<Heading /> size renders heading with size large 1`] = `
+<div>
+  <h4
+    class="Textweb__Text-sc-6jf9e4-0 dhCBjk"
+    color="shade.980"
+    data-testid="ds-heading"
+  >
+    Heading
+  </h4>
+</div>
+`;
+
+exports[`<Heading /> size renders heading with size medium 1`] = `
+<div>
+  <h5
+    class="Textweb__Text-sc-6jf9e4-0 cXaLeO"
+    color="shade.980"
+    data-testid="ds-heading"
+  >
+    Heading
+  </h5>
+</div>
+`;
+
+exports[`<Heading /> size renders heading with size xlarge 1`] = `
+<div>
+  <h3
+    class="Textweb__Text-sc-6jf9e4-0 cjBRhY"
+    color="shade.980"
+    data-testid="ds-heading"
+  >
+    Heading
+  </h3>
+</div>
+`;
+
+exports[`<Heading /> size renders heading with size xxlarge 1`] = `
+<div>
+  <h2
+    class="Textweb__Text-sc-6jf9e4-0 hxZoYe"
+    color="shade.980"
+    data-testid="ds-heading"
+  >
+    Heading
+  </h2>
+</div>
+`;
+
+exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
+<div>
+  <h1
+    class="Textweb__Text-sc-6jf9e4-0 jigdLx"
+    color="shade.980"
+    data-testid="ds-heading"
+  >
+    Heading
+  </h1>
+</div>
+`;
+
+exports[`<Heading /> weight renders heading with bold weight 1`] = `
+<div>
+  <h5
+    class="Textweb__Text-sc-6jf9e4-0 cXaLeO"
+    color="shade.980"
+    data-testid="ds-heading"
+  >
+    Heading
+  </h5>
+</div>
+`;
+
+exports[`<Heading /> weight renders heading with regular weight 1`] = `
+<div>
+  <h5
+    class="Textweb__Text-sc-6jf9e4-0 xqQS"
+    color="shade.980"
+    data-testid="ds-heading"
+  >
+    Heading
+  </h5>
+</div>
+`;
