@@ -4,16 +4,6 @@ import Link from '../index';
 import { renderWithTheme } from '../../../_helpers/testing';
 
 describe('<Link />', () => {
-  it('renders a link with default props', () => {
-    const displayText = 'Displaying some link';
-    const { container } = renderWithTheme(<Link>{displayText}</Link>);
-    expect(container).toMatchSnapshot();
-  });
-  it('renders a link with disabled prop', () => {
-    const displayText = 'Displaying some link';
-    const { container } = renderWithTheme(<Link disabled>{displayText}</Link>);
-    expect(container).toMatchSnapshot();
-  });
   describe('Size', () => {
     it('small', () => {
       const displayText = 'Displaying some link';
@@ -60,6 +50,16 @@ describe('<Link />', () => {
     });
   });
   describe('various link props', () => {
+    it('renders a link with default props', () => {
+      const displayText = 'Displaying some link';
+      const { container } = renderWithTheme(<Link>{displayText}</Link>);
+      expect(container).toMatchSnapshot();
+    });
+    it('renders a link with disabled prop', () => {
+      const displayText = 'Displaying some link';
+      const { container } = renderWithTheme(<Link disabled>{displayText}</Link>);
+      expect(container).toMatchSnapshot();
+    });
     it('href', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(

@@ -9,9 +9,8 @@ const styles = {
   color({ disabled, theme }) {
     if (disabled) {
       return getColor(theme, 'shade.960');
-    } else {
-      return getColor(theme, 'primary.800');
     }
+    return getColor(theme, 'primary.800');
   },
   cursor({ disabled }) {
     if (disabled) {
