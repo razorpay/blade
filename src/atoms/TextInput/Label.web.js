@@ -20,8 +20,10 @@ const styles = {
   text: {
     color({ theme, isFocused, hasError, disabled, variant, value }) {
       if (variant === 'outlined') {
-        if ((isFocused && !hasError) || isDefined(value)) {
+        if (isFocused && !hasError) {
           return getColor(theme, 'primary.800');
+        } else if (isDefined(value)) {
+          return getColor(theme, 'shade.950');
         }
       }
       if (disabled) {
@@ -42,15 +44,15 @@ const styles = {
   label: {
     padding({ iconLeft, prefix, position, variant, isFocused, value }) {
       if (variant !== 'filled' && (iconLeft || prefix) && !isFocused && !isDefined(value)) {
-        return ['0', '0', '0', '25px'];
+        return [0, 0, 0, 3];
       } else if (position === 'left') {
-        return ['18px', '14px', '18px', '14px'];
+        return [1, 0.75, 1, 0.75];
       }
-      return ['0', '0', '0', '0'];
+      return [0, 0, 0, 0];
     },
     top({ isFocused, variant, value }) {
       if (isDefined(value) || isFocused || variant === 'filled') {
-        return '-5px';
+        return '-8px';
       }
       return '14px';
     },

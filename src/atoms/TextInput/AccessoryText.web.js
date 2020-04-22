@@ -16,7 +16,7 @@ const styles = {
     if (variant === 'filled') {
       return [0, 1, 0, 1];
     } else {
-      return [1, 0.5, 0, 0];
+      return [1, 1, 0, 0];
     }
   },
 };

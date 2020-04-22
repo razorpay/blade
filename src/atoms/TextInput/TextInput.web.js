@@ -20,9 +20,9 @@ const styles = {
   textInput: {
     padding({ variant }) {
       if (variant === 'filled') {
-        return ['0', '8px', '0', '8px'];
+        return [0, 1, 0, 1];
       } else {
-        return ['0', '0', '0', '0'];
+        return [0, 0, 0, 0];
       }
     },
     lineHeight({ theme }) {
