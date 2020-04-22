@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { getColor } from '../../_helpers/theme';
+import isDefined from '../../_helpers/isDefined';
 import View from '../View';
 import Space from '../Space';
 import Text from '../Text';
@@ -17,9 +18,9 @@ const styles = {
     },
   },
   text: {
-    color({ theme, isFocused, hasError, disabled, variant }) {
+    color({ theme, isFocused, hasError, disabled, variant, value }) {
       if (variant === 'outlined') {
-        if (isFocused && !hasError) {
+        if ((isFocused && !hasError) || isDefined(value)) {
           return getColor(theme, 'primary.800');
         }
       }
@@ -39,17 +40,17 @@ const styles = {
     },
   },
   label: {
-    padding({ iconLeft, prefix, position, variant, isFocused }) {
-      if (variant !== 'filled' && (iconLeft || prefix) && !isFocused) {
+    padding({ iconLeft, prefix, position, variant, isFocused, value }) {
+      if (variant !== 'filled' && (iconLeft || prefix) && !isFocused && !isDefined(value)) {
         return ['0', '0', '0', '25px'];
       } else if (position === 'left') {
         return ['18px', '14px', '18px', '14px'];
       }
       return ['0', '0', '0', '0'];
     },
-    top({ isFocused, variant }) {
-      if (isFocused || variant === 'filled') {
-        return '-10px';
+    top({ isFocused, variant, value }) {
+      if (isDefined(value) || isFocused || variant === 'filled') {
+        return '-5px';
       }
       return '14px';
     },
@@ -81,6 +82,7 @@ const Label = ({
   isFocused,
   hasError,
   variant,
+  value,
 }) => {
   return (
     <Space
@@ -90,6 +92,7 @@ const Label = ({
         iconLeft,
         prefix,
         variant,
+        value,
       })}
     >
       {animated ? (
@@ -102,6 +105,7 @@ const Label = ({
             hasError={hasError}
             disabled={disabled}
             variant={variant}
+            value={value}
           >
             {children}
           </StyledText>
@@ -113,6 +117,7 @@ const Label = ({
           hasError={hasError}
           disabled={disabled}
           variant={variant}
+          value={value}
         >
           {children}
         </StyledText>
@@ -131,12 +136,14 @@ Label.propTypes = {
   iconLeft: PropTypes.string,
   prefix: PropTypes.string,
   hasError: PropTypes.bool,
+  value: PropTypes.string,
 };
 
 Label.defaultProps = {
   children: 'Label',
   disabled: false,
   animated: false,
+  value: undefined,
 };
 
 export default Label;

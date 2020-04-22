@@ -181,7 +181,7 @@ const TextInput = ({
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setIsFocused] = useState(false);
-  const [input, setInput] = useState(value || '');
+  const [input, setInput] = useState(value || undefined);
   // Used for storing layout value of TextInput
   // Used to hide placeholder while label is inside the TextInput
   const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
@@ -211,7 +211,7 @@ const TextInput = ({
     throw Error('Cannot have a left label on an outlined Text Input');
   }
 
-  const hasText = !!(input && input.length > 0);
+  const hasText = !!(isDefined(input) && input.length > 0);
   const onFocus = useCallback(() => {
     setIsFocused(true);
 
@@ -277,6 +277,7 @@ const TextInput = ({
             hasError={hasError}
             iconLeft={iconLeft}
             prefix={prefix}
+            value={input}
           >
             {label}
           </Label>
@@ -297,6 +298,7 @@ const TextInput = ({
                 hasError={hasError}
                 iconLeft={iconLeft}
                 prefix={prefix}
+                value={input}
               >
                 {label}
               </Label>
@@ -384,7 +386,7 @@ const TextInput = ({
                         <CharacterCount
                           disabled={disabled}
                           maxLength={maxLength}
-                          currentLength={input.length}
+                          currentLength={isDefined(input) && input.length}
                         />
                       ) : null}
                     </View>

@@ -153,9 +153,10 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
+      value="user@domain.com"
     >
       Email
     </label>
@@ -196,7 +197,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with au
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -239,7 +240,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -283,7 +284,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUPqiL Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gdVmkj Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
       disabled=""
@@ -372,7 +373,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -456,7 +457,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -510,7 +511,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               color="shade.950"
               data-testid="ds-text"
             >
-              0/10
+              false/10
             </div>
           </div>
         </div>
@@ -526,7 +527,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -584,7 +585,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -657,7 +658,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -715,7 +716,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -773,7 +774,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -816,7 +817,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -870,7 +871,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -924,7 +925,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with sm
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -967,7 +968,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
     class="Viewweb__View-sc-1cphyjf-0 TextInputweb__RelativeContainer-sc-199z6oj-3 kAnyqs Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cRrEhG Spaceweb__Space-njatzl-0 kRZKSn"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 eUfQga Spaceweb__Space-njatzl-0 kRZKSn"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -1027,10 +1028,11 @@ exports[`Renders <TextInput /> filled variant correctly type email 1`] = `
         class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
       >
         <label
-          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 brefXb"
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cqDXcs"
           color="shade.980"
           data-testid="ds-text"
           for="Label"
+          value="Hello world"
         >
           Label
         </label>
@@ -1075,10 +1077,11 @@ exports[`Renders <TextInput /> filled variant correctly type number 1`] = `
         class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
       >
         <label
-          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 brefXb"
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cqDXcs"
           color="shade.980"
           data-testid="ds-text"
           for="Label"
+          value="Hello world"
         >
           Label
         </label>
@@ -1123,10 +1126,11 @@ exports[`Renders <TextInput /> filled variant correctly type password 1`] = `
         class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
       >
         <label
-          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 brefXb"
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cqDXcs"
           color="shade.980"
           data-testid="ds-text"
           for="Label"
+          value="Hello world"
         >
           Label
         </label>
@@ -1171,10 +1175,11 @@ exports[`Renders <TextInput /> filled variant correctly type text 1`] = `
         class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
       >
         <label
-          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 brefXb"
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cqDXcs"
           color="shade.980"
           data-testid="ds-text"
           for="Label"
+          value="Hello world"
         >
           Label
         </label>
@@ -1499,10 +1504,11 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
         class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 dZVfVC Spaceweb__Space-njatzl-0 kRZKSn"
       >
         <label
-          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 brefXb"
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cqDXcs"
           color="shade.980"
           data-testid="ds-text"
           for="Email"
+          value="user@domain.com"
         >
           Email
         </label>
@@ -1663,7 +1669,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               color="shade.950"
               data-testid="ds-text"
             >
-              0/10
+              false/10
             </div>
           </div>
         </div>
