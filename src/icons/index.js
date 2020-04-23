@@ -1,17 +1,17 @@
 const icons = {
-  info: require('./Info').default,
-  checkboxOutlined: require('./CheckboxOutlined').default,
+  arrowDown: require('./ArrowDown').default,
+  arrowLeft: require('./ArrowLeft').default,
+  arrowRight: require('./ArrowRight').default,
+  arrowUp: require('./ArrowUp').default,
+  check: require('./Check').default,
   checkboxFilled: require('./CheckboxFilled').default,
+  checkboxOutlined: require('./CheckboxOutlined').default,
   chevronDown: require('./ChevronDown').default,
   chevronLeft: require('./ChevronLeft').default,
   chevronRight: require('./ChevronRight').default,
   chevronUp: require('./ChevronUp').default,
-  arrowUp: require('./ArrowUp').default,
-  arrowDown: require('./ArrowDown').default,
-  arrowRight: require('./ArrowRight').default,
-  arrowLeft: require('./ArrowLeft').default,
   close: require('./Close').default,
-  check: require('./Check').default,
+  info: require('./Info').default,
 };
 
 export default icons;
