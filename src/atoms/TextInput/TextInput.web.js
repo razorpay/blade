@@ -134,8 +134,8 @@ const FillContainer = styled(View)`
 
 const RelativeContainer = styled(View)`
   position: relative;
-  display: ${(props) => (props.direction ? 'flex' : 'initial')};
-  flex-direction: ${(props) => (props.direction ? 'column' : 'row')};
+  display: ${(props) => (props.position ? 'flex' : 'initial')};
+  flex-direction: ${(props) => (props.position ? 'column' : 'row')};
 `;
 
 const getAccessoryConfig = ({ errorText, prefix, suffix, iconLeft, iconRight }) => {
@@ -265,7 +265,7 @@ const TextInput = ({
       justifyContent="flex-end"
       flexDirection={variant === 'filled' && labelPosition !== 'left' ? 'column' : 'row'}
     >
-      <RelativeContainer direction={variant === 'filled'}>
+      <RelativeContainer position={variant === 'filled'}>
         {!hasAnimatedLabel ? (
           <Label
             Animated={hasAnimatedLabel}
@@ -386,7 +386,7 @@ const TextInput = ({
                         <CharacterCount
                           disabled={disabled}
                           maxLength={maxLength}
-                          currentLength={isDefined(input) && input.length}
+                          currentLength={isDefined(input) ? input.length : 0}
                         />
                       ) : null}
                     </View>
@@ -414,7 +414,7 @@ TextInput.propTypes = {
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
   maxLength: PropTypes.number,
-  direction: PropTypes.bool,
+  position: PropTypes.bool,
   label: PropTypes.string,
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),

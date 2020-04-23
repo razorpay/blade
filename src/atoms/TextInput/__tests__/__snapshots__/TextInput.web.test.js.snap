@@ -511,7 +511,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
               color="shade.950"
               data-testid="ds-text"
             >
-              false/10
+              0/10
             </div>
           </div>
         </div>
@@ -1669,7 +1669,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               color="shade.950"
               data-testid="ds-text"
             >
-              false/10
+              0/10
             </div>
           </div>
         </div>
