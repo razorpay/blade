@@ -11,6 +11,7 @@ const icons = {
   arrowRight: require('./ArrowRight').default,
   arrowLeft: require('./ArrowLeft').default,
   close: require('./Close').default,
+  check: require('./Check').default,
 };
 
 export default icons;
