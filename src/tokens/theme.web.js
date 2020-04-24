@@ -30,6 +30,7 @@ const lightTheme = {
       940: colors.cloud[940],
       950: colors.cloud[950],
       960: colors.cloud[960],
+      980: colors.cloud[980],
     },
     primary: {
       100: colors.sapphire[100],
@@ -110,6 +111,7 @@ const darkTheme = {
       940: colors.slate[940],
       950: colors.slate[950],
       960: colors.slate[960],
+      980: colors.slate[980],
     },
     primary: {
       100: colors.azzure[100],
