@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import Text from '../Text';
+import Space from '../Space';
 import { getColorKeys } from '../../_helpers/theme';
 import baseTheme from '../../tokens/theme';
 import automation from '../../_helpers/automation-attributes';
@@ -52,28 +53,24 @@ const headingLevel = {
   medium: 'h5',
 };
 
-const StyledText = styled(Text)`
-  &&& {
-    margin: 0;
-  }
-`;
-
 const Heading = ({ size, color, children, maxLines, weight }) => {
   const theme = useTheme();
 
   return (
-    <StyledText
-      as={headingLevel[size]}
-      size={styles.fontSize({ theme, size })}
-      color={color}
-      maxLines={maxLines}
-      _weight={weight}
-      _lineHeight={styles.lineHeight({ theme, size, weight })}
-      _letterSpacing="small"
-      {...automation('ds-heading')}
-    >
-      {children}
-    </StyledText>
+    <Space margin={[0]}>
+      <Text
+        as={headingLevel[size]}
+        size={styles.fontSize({ theme, size })}
+        color={color}
+        maxLines={maxLines}
+        _weight={weight}
+        _lineHeight={styles.lineHeight({ theme, size, weight })}
+        _letterSpacing="small"
+        {...automation('ds-heading')}
+      >
+        {children}
+      </Text>
+    </Space>
   );
 };
 
