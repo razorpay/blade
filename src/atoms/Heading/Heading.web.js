@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import Text from '../Text';
 import { getColorKeys } from '../../_helpers/theme';
 import baseTheme from '../../tokens/theme';
@@ -52,11 +52,17 @@ const headingLevel = {
   medium: 'h5',
 };
 
+const StyledText = styled(Text)`
+  &&& {
+    margin: 0;
+  }
+`;
+
 const Heading = ({ size, color, children, maxLines, weight }) => {
   const theme = useTheme();
 
   return (
-    <Text
+    <StyledText
       as={headingLevel[size]}
       size={styles.fontSize({ theme, size })}
       color={color}
@@ -67,7 +73,7 @@ const Heading = ({ size, color, children, maxLines, weight }) => {
       {...automation('ds-heading')}
     >
       {children}
-    </Text>
+    </StyledText>
   );
 };
 
