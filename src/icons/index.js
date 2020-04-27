@@ -16,6 +16,7 @@ const icons = {
   paymentGateway: require('./PaymentGateway').default,
   subscription: require('./Subscription').default,
   paymentPage: require('./PaymentPage').default,
+  smartCollect: require('./SmartCollect').default,
 };
 
 export default icons;
