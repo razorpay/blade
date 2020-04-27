@@ -14,6 +14,7 @@ const icons = {
   info: require('./Info').default,
   paymentLink: require('./PaymentLink').default,
   paymentGateway: require('./PaymentGateway').default,
+  subscription: require('./Subscription').default,
 };
 
 export default icons;
