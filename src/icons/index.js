@@ -18,6 +18,7 @@ const icons = {
   paymentPage: require('./PaymentPage').default,
   smartCollect: require('./SmartCollect').default,
   invoice: require('./Invoice').default,
+  paymentCapture: require('./PaymentCapture').default,
 };
 
 export default icons;
