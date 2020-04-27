@@ -8,6 +8,7 @@ const iconOptions = getIconNames().reduce(
   (options, option) => ({ ...options, [option]: option }),
   {},
 );
+
 storiesOf('Icon', module)
   .addParameters({
     component: Icon,
