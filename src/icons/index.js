@@ -17,6 +17,7 @@ const icons = {
   subscription: require('./Subscription').default,
   paymentPage: require('./PaymentPage').default,
   smartCollect: require('./SmartCollect').default,
+  invoice: require('./Invoice').default,
 };
 
 export default icons;
