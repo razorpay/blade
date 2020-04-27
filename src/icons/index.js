@@ -13,6 +13,7 @@ const icons = {
   close: require('./Close').default,
   info: require('./Info').default,
   paymentLink: require('./PaymentLink').default,
+  paymentGateway: require('./PaymentGateway').default,
 };
 
 export default icons;
