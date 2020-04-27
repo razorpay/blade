@@ -12,6 +12,7 @@ const icons = {
   chevronUp: require('./ChevronUp').default,
   close: require('./Close').default,
   info: require('./Info').default,
+  paymentLink: require('./PaymentLink').default,
 };
 
 export default icons;
