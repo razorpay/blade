@@ -1,6 +1,6 @@
 import React from 'react';
-import { renderWithTheme } from '../../../_helpers/testing';
 import { fireEvent, act } from '@testing-library/react-native';
+import { renderWithTheme } from '../../../_helpers/testing';
 import Tab from '../Tab';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
