@@ -190,6 +190,20 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
   );
 
   useEffect(() => {
+    if (defaultOn) {
+      animatedLeftValue.setValue(animationConfig.on.leftSpace);
+      animatedRightValue.setValue(animationConfig.on.rightSpace);
+      setToggle(true);
+    }
+  }, [
+    animatedLeftValue,
+    animatedRightValue,
+    animationConfig.on.leftSpace,
+    animationConfig.on.rightSpace,
+    defaultOn,
+  ]);
+
+  useEffect(() => {
     if (isDefined(on)) {
       if (isDefined(defaultOn)) {
         throw Error('Expected only one of defaultOn or on props.');
@@ -213,11 +227,6 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
           },
         });
       }
-    }
-    if (defaultOn) {
-      animatedLeftValue.setValue(animationConfig.on.leftSpace);
-      animatedRightValue.setValue(animationConfig.on.rightSpace);
-      setToggle(true);
     }
   }, [on, defaultOn, toggle, animatedLeftValue, animatedRightValue, animationConfig]);
 
