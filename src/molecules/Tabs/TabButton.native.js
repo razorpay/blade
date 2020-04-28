@@ -74,7 +74,7 @@ const Label = styled(View)`
   border-bottom-color: ${styles.label.borderBottomColor};
 `;
 
-const Tab = ({ label, active, icon, onPress, disabled, testID }) => {
+const TabButton = ({ label, active, icon, onPress, disabled, testID }) => {
   const [pressed, setPressed] = useState(false);
 
   const onPressIn = useCallback(() => {
@@ -118,7 +118,7 @@ const Tab = ({ label, active, icon, onPress, disabled, testID }) => {
   );
 };
 
-Tab.propTypes = {
+TabButton.propTypes = {
   active: PropTypes.bool,
   onPress: PropTypes.func,
   disabled: PropTypes.bool,
@@ -127,12 +127,12 @@ Tab.propTypes = {
   testID: PropTypes.string,
 };
 
-Tab.defaultProps = {
+TabButton.defaultProps = {
   active: false,
   onPress: () => {},
   disabled: false,
   icon: undefined,
-  testID: 'ds-tab',
+  testID: 'ds-tab-button',
 };
 
-export default Tab;
+export default TabButton;

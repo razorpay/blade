@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Flex from '../../atoms/Flex';
 import View from '../../atoms/View';
-import Tab from './Tab';
+import Tab from './TabButton.native';
 
 storiesOf('Tabs', module)
   .addParameters({
