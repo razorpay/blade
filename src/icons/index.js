@@ -10,7 +10,7 @@ const icons = {
   chevronLeft: require('./ChevronLeft').default,
   chevronRight: require('./ChevronRight').default,
   chevronUp: require('./ChevronUp').default,
-  contract: require('./Contract').default,
+  collapse: require('./Collapse').default,
   close: require('./Close').default,
   expand: require('./Expand').default,
   info: require('./Info').default,
