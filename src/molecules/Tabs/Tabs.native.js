@@ -69,11 +69,8 @@ const getRouteValueFromIndex = ({ index, routes }) => {
 const Tabs = ({ children, defaultValue, value, onChange, disableSwipe }) => {
   const tabs = getTabs({ children });
   const routes = getRoutes({ tabs });
-  const initialIndex = isDefined(value)
-    ? getRouteIndexFromValue({ routes, value })
-    : isDefined(defaultValue)
-    ? getRouteIndexFromValue({ routes, value: defaultValue })
-    : 0;
+  const initialIndex = getRouteIndexFromValue({ routes, value: value ?? defaultValue ?? 0 });
+
   const [index, setIndex] = useState(initialIndex);
 
   useEffect(() => {
