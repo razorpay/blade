@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import { TabView } from 'react-native-tab-view';
@@ -74,7 +74,7 @@ const Tabs = ({ children, defaultValue, value, onChange, disableSwipe }) => {
     : isDefined(defaultValue)
     ? getRouteIndexFromValue({ routes, value: defaultValue })
     : 0;
-  const [index, setIndex] = React.useState(initialIndex);
+  const [index, setIndex] = useState(initialIndex);
 
   useEffect(() => {
     if (isDefined(value)) setIndex(getRouteIndexFromValue({ routes, value }));
@@ -104,7 +104,7 @@ const Tabs = ({ children, defaultValue, value, onChange, disableSwipe }) => {
       renderTabBar={TabBar}
       onIndexChange={onIndexChange}
       initialLayout={initialLayout}
-      swipeEnabled={!!!disableSwipe}
+      swipeEnabled={!disableSwipe}
       tabBarPosition="top"
       lazy={true} // Renders screen only when we navigate to it
     />
