@@ -33,17 +33,7 @@ const getTabs = ({ children }) => {
   );
 };
 
-const shouldDisableSwipe = ({ tabs }) => {
-  let disableSwipe = false;
-  // Disable swipe if any of the tab is disabled
-  tabs.forEach((tab) => {
-    if (tab.props.disabled) {
-      disableSwipe = true;
-    }
-  });
-
-  return disableSwipe;
-};
+const shouldDisableSwipe = ({ tabs }) => !!tabs.find((tab) => tab.props.disabled === true);
 
 const getRoutes = ({ tabs }) => {
   return tabs.map((TabComponent, index) => ({
@@ -58,25 +48,11 @@ const getRoutes = ({ tabs }) => {
   }));
 };
 
-const getRouteIndexFromValue = ({ value, routes }) => {
-  let index = -1;
-  routes.forEach((route) => {
-    if (route.value === value) {
-      index = route.index;
-    }
-  });
-  return index;
-};
+const getRouteIndexFromValue = ({ value, routes }) =>
+  routes.findIndex((route) => route.value === value);
 
-const getRouteValueFromIndex = ({ index, routes }) => {
-  let value = null;
-  routes.forEach((route) => {
-    if (route.index === index) {
-      value = route.value;
-    }
-  });
-  return value;
-};
+const getRouteValueFromIndex = ({ index, routes }) =>
+  routes.find((route) => route.index === index)?.value;
 
 const Tabs = ({ children, defaultValue, value, onChange }) => {
   const tabs = getTabs({ children });
