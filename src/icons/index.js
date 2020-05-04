@@ -10,9 +10,7 @@ const icons = {
   chevronLeft: require('./ChevronLeft').default,
   chevronRight: require('./ChevronRight').default,
   chevronUp: require('./ChevronUp').default,
-  collapse: require('./Collapse').default,
   close: require('./Close').default,
-  expand: require('./Expand').default,
   info: require('./Info').default,
   paymentLink: require('./PaymentLink').default,
   paymentGateway: require('./PaymentGateway').default,
@@ -20,6 +18,8 @@ const icons = {
   paymentPage: require('./PaymentPage').default,
   smartCollect: require('./SmartCollect').default,
   invoice: require('./Invoice').default,
+  maximize: require('./Maximize').default,
+  minimize: require('./Minimize').default,
   paymentCapture: require('./PaymentCapture').default,
 };
 
