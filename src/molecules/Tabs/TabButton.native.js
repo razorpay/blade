@@ -24,12 +24,6 @@ const styles = {
       }
       return 'transparent';
     },
-    margin() {
-      return [0, 0, 0, 0.5];
-    },
-    padding() {
-      return [1, 0, 1, 0];
-    },
     color({ active, disabled, pressed }) {
       if (pressed) {
         if (active) {
@@ -94,10 +88,10 @@ const TabButton = ({ label, active, icon, onPress, disabled, testID }) => {
         {...automation(testID)}
       >
         <Flex alignItems="center" alignSelf="center" flexDirection="row" flexWrap="wrap">
-          <Space padding={styles.label.padding()}>
+          <Space padding={[1, 0, 1, 0]}>
             <Label active={active} disabled={disabled}>
-              {!isEmpty(icon) && <Icon name={icon} fill={labelColor} size="small" />}
-              <Space margin={styles.label.margin()}>
+              {!isEmpty(icon) ? <Icon name={icon} fill={labelColor} size="small" /> : null}
+              <Space margin={[0, 0, 0, 0.5]}>
                 <View>
                   <Text color={labelColor} disabled={disabled} numberOfLines={1} size="medium">
                     {label}

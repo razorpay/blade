@@ -25,7 +25,7 @@ const Content = ({ children, color }) => {
   return (
     <Flex flex={1} alignItems="center">
       <Space padding={[16, 0, 0, 0]}>
-        <View style={{}}>
+        <View>
           <Text color={color}>{children}</Text>
         </View>
       </Space>
