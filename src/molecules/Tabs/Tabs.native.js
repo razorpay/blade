@@ -33,6 +33,18 @@ const getTabs = ({ children }) => {
   );
 };
 
+const shouldDisableSwipe = ({ tabs }) => {
+  let disableSwipe = false;
+  // Disable swipe if any of the tab is disabled
+  tabs.forEach((tab) => {
+    if (tab.props.disabled) {
+      disableSwipe = true;
+    }
+  });
+
+  return disableSwipe;
+};
+
 const getRoutes = ({ tabs }) => {
   return tabs.map((TabComponent, index) => ({
     index,
@@ -66,9 +78,10 @@ const getRouteValueFromIndex = ({ index, routes }) => {
   return value;
 };
 
-const Tabs = ({ children, defaultValue, value, onChange, disableSwipe }) => {
+const Tabs = ({ children, defaultValue, value, onChange }) => {
   const tabs = getTabs({ children });
   const routes = getRoutes({ tabs });
+  const disableSwipe = shouldDisableSwipe({ tabs });
   const initialIndex = getRouteIndexFromValue({ routes, value: value ?? defaultValue ?? 0 });
 
   const [index, setIndex] = useState(initialIndex);
@@ -113,7 +126,6 @@ Tabs.propTypes = {
   defaultValue: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
-  disableSwipe: PropTypes.bool,
 };
 
 Tabs.defaultProps = {};

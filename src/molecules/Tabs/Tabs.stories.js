@@ -43,7 +43,7 @@ storiesOf('Tabs', module)
     component: Tabs,
   })
   .add('default', () => (
-    <Tabs defaultValue="payments" disableSwipe={boolean('Disable Swipe', false)}>
+    <Tabs defaultValue="payments">
       <Tabs.Tab
         value="payments"
         label="Payments"
@@ -71,10 +71,7 @@ storiesOf('Tabs', module)
     </Tabs>
   ))
   .add('controlled', () => (
-    <Tabs
-      value={select('Value', valueOptions, 'payments')}
-      disableSwipe={boolean('Disable Swipe', false)}
-    >
+    <Tabs value={select('Value', valueOptions, 'payments')}>
       <Tabs.Tab
         value="payments"
         label="Payments"
