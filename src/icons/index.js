@@ -21,7 +21,7 @@ const icons = {
   smartCollect: require('./SmartCollect').default,
   invoice: require('./Invoice').default,
   paymentCapture: require('./PaymentCapture').default,
-  Search: require('./Search').default,
+  search: require('./Search').default,
 };
 
 export default icons;
