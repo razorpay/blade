@@ -125,7 +125,6 @@ TabButton.defaultProps = {
   active: false,
   onPress: () => {},
   disabled: false,
-  icon: undefined,
   testID: 'ds-tab-button',
 };
 
