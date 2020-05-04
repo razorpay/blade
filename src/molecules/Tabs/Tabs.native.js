@@ -33,7 +33,7 @@ const getTabs = ({ children }) => {
   );
 };
 
-const shouldDisableSwipe = ({ tabs }) => !!tabs.find((tab) => tab.props.disabled === true);
+const shouldDisableSwipe = ({ tabs }) => Boolean(tabs.find((tab) => tab.props.disabled === true));
 
 const getRoutes = ({ tabs }) => {
   return tabs.map((TabComponent, index) => ({
