@@ -1560,7 +1560,425 @@ exports[`<Tabs /> renders only Tabs.Tab discards other children 1`] = `
 </View>
 `;
 
-exports[`<Tabs /> renders three tabs 1`] = `
+exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 1,
+          "overflow": "hidden",
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+          ],
+        ]
+      }
+    >
+      <TouchableOpacity
+        active={false}
+        activeOpacity={1}
+        disabled={false}
+        pressed={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderTopLeftRadius": 2,
+              "borderTopRightRadius": 2,
+              "minWidth": 48,
+            },
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "center",
+              },
+            ],
+          ]
+        }
+        testID="ds-tab-one"
+      >
+        <View
+          active={false}
+          disabled={false}
+          style={
+            Array [
+              Object {
+                "borderBottomColor": "transparent",
+                "borderBottomWidth": 1,
+              },
+              Array [
+                Object {
+                  "paddingBottom": 8,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 8,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                  },
+                ],
+              ],
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "marginBottom": 0,
+                    "marginLeft": 4,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                  },
+                ],
+              ]
+            }
+          >
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              _weight="regular"
+              align="left"
+              color="shade.960"
+              size="medium"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.54)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+            >
+              One
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        active={false}
+        activeOpacity={1}
+        disabled={false}
+        pressed={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderTopLeftRadius": 2,
+              "borderTopRightRadius": 2,
+              "minWidth": 48,
+            },
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "center",
+              },
+            ],
+          ]
+        }
+        testID="ds-tab-two"
+      >
+        <View
+          active={false}
+          disabled={false}
+          style={
+            Array [
+              Object {
+                "borderBottomColor": "transparent",
+                "borderBottomWidth": 1,
+              },
+              Array [
+                Object {
+                  "paddingBottom": 8,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 8,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                  },
+                ],
+              ],
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "marginBottom": 0,
+                    "marginLeft": 4,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                  },
+                ],
+              ]
+            }
+          >
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              _weight="regular"
+              align="left"
+              color="shade.960"
+              size="medium"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.54)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+            >
+              Two
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        active={false}
+        activeOpacity={1}
+        disabled={false}
+        pressed={false}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "borderTopLeftRadius": 2,
+              "borderTopRightRadius": 2,
+              "minWidth": 48,
+            },
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "center",
+              },
+            ],
+          ]
+        }
+        testID="ds-tab-three"
+      >
+        <View
+          active={false}
+          disabled={false}
+          style={
+            Array [
+              Object {
+                "borderBottomColor": "transparent",
+                "borderBottomWidth": 1,
+              },
+              Array [
+                Object {
+                  "paddingBottom": 8,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 8,
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                  },
+                ],
+              ],
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "marginBottom": 0,
+                    "marginLeft": 4,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                  },
+                ],
+              ]
+            }
+          >
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              _weight="regular"
+              align="left"
+              color="shade.960"
+              size="medium"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.54)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 14,
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+            >
+              Three
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    </View>
+    <View
+      collapsable={false}
+      removeClippedSubviews={false}
+      style={
+        Array [
+          Object {
+            "flex": 1,
+            "flexDirection": "row",
+          },
+          Object {
+            "transform": Array [
+              Object {
+                "translateX": AnimatedValue {
+                  " __value": NaN,
+                },
+              },
+            ],
+            "width": 2250,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "overflow": "hidden",
+            },
+            Object {
+              "width": 750,
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          _weight="regular"
+          align="left"
+          color="shade.980"
+          size="large"
+          style={
+            Array [
+              Object {
+                "color": "rgba(22, 47, 86, 0.87)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 16,
+                "letterSpacing": 0,
+                "lineHeight": 24,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+        >
+          Screen One
+        </Text>
+      </View>
+      <View
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "overflow": "hidden",
+            },
+            Object {
+              "width": 750,
+            },
+            undefined,
+          ]
+        }
+      />
+      <View
+        accessibilityElementsHidden={true}
+        importantForAccessibility="no-hide-descendants"
+        style={
+          Array [
+            Object {
+              "flex": 1,
+              "overflow": "hidden",
+            },
+            Object {
+              "width": 750,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Tabs /> renders three tabs without defaultValue 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
