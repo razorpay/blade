@@ -15,6 +15,7 @@ const icons = {
   invoice: require('./Invoice').default,
   maximize: require('./Maximize').default,
   minimize: require('./Minimize').default,
+  moreVertical: require('./MoreVertical').default,
   paymentLink: require('./PaymentLink').default,
   paymentCapture: require('./PaymentCapture').default,
   paymentGateway: require('./PaymentGateway').default,
