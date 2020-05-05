@@ -4,7 +4,7 @@ import Svg, { Path } from 'react-native-svg';
 import { getThemeColors } from '../../_helpers/theme';
 import colors from '../../tokens/colors';
 
-function Expand({ width, height, fill }) {
+function Maximize({ width, height, fill }) {
   return (
     <Svg
       width={width}
@@ -25,16 +25,16 @@ function Expand({ width, height, fill }) {
   );
 }
 
-Expand.propTypes = {
+Maximize.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   fill: PropTypes.oneOf(getThemeColors()),
 };
 
-Expand.defaultProps = {
+Maximize.defaultProps = {
   width: 24,
   height: 24,
   fill: colors.sapphire[800],
 };
 
-export default Expand;
+export default Maximize;
