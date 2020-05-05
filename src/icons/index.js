@@ -11,6 +11,7 @@ const icons = {
   chevronRight: require('./ChevronRight').default,
   chevronUp: require('./ChevronUp').default,
   close: require('./Close').default,
+  ellipsisVertical: require('./EllipsisVertical').default,
   info: require('./Info').default,
   invoice: require('./Invoice').default,
   maximize: require('./Maximize').default,
