@@ -4,7 +4,11 @@ const ignores = ['/node_modules/'];
 module.exports = {
   preset: '@testing-library/react-native',
   transform: { '^.+\\.js$': './jest-preprocess.js' },
-  setupFiles: [...jestPreset.setupFiles],
+  setupFiles: [
+    ...jestPreset.setupFiles,
+    './jest-setup.native.js',
+    './node_modules/react-native-gesture-handler/jestSetup.js',
+  ],
   transformIgnorePatterns: [
     'node_modules/(?!(react-native.*|@?react-navigation.*|@?react-navigation-stack)/)',
   ],

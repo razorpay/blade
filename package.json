@@ -23,7 +23,10 @@
     "@react-native-community/async-storage": "1.7.1",
     "intl": "1.2.5",
     "lodash": "4.17.15",
+    "react-native-gesture-handler": "1.6.1",
+    "react-native-reanimated": "1.8.0",
     "react-native-svg": "12.1.0",
+    "react-native-tab-view": "2.14.0",
     "typescript": "3.7.5"
   },
   "devDependencies": {
