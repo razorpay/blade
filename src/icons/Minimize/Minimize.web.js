@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getThemeColors } from '../../_helpers/theme';
 import colors from '../../tokens/colors';
 
-function Collapse({ width, height, fill }) {
+function Minimize({ width, height, fill }) {
   return (
     <svg
       width={width}
@@ -24,16 +24,16 @@ function Collapse({ width, height, fill }) {
   );
 }
 
-Collapse.propTypes = {
+Minimize.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   fill: PropTypes.oneOf(getThemeColors()),
 };
 
-Collapse.defaultProps = {
+Minimize.defaultProps = {
   width: 24,
   height: 24,
   fill: colors.sapphire[800],
 };
 
-export default Collapse;
+export default Minimize;
