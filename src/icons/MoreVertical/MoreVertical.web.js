@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getThemeColors } from '../../_helpers/theme';
 import colors from '../../tokens/colors';
 
-function EllipsisVertical({ width, height, fill }) {
+function MoreVertical({ width, height, fill }) {
   return (
     <svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <path
@@ -16,16 +16,16 @@ function EllipsisVertical({ width, height, fill }) {
   );
 }
 
-EllipsisVertical.propTypes = {
+MoreVertical.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   fill: PropTypes.oneOf(getThemeColors()),
 };
 
-EllipsisVertical.defaultProps = {
+MoreVertical.defaultProps = {
   width: 24,
   height: 24,
   fill: colors.sapphire[800],
 };
 
-export default EllipsisVertical;
+export default MoreVertical;
