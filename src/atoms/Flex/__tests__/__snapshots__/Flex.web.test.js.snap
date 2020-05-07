@@ -26,18 +26,28 @@ exports[`<Flex /> flex renders an inline styled child with flex property 1`] = `
     style="background-color: red; height: 100px;"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 kgmkNM"
-      color="shade.980"
-      data-testid="ds-text"
+      class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+      height="0"
     >
-      Flex Item #1
+      <div
+        class="Textweb__TextBlock-sc-6jf9e4-0 dIfGnd"
+        color="shade.980"
+        data-testid="ds-text"
+      >
+        Flex Item #1
+      </div>
     </div>
     <div
-      class="Textweb__Text-sc-6jf9e4-0 kgmkNM"
-      color="shade.980"
-      data-testid="ds-text"
+      class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+      height="0"
     >
-      Flex Item #2
+      <div
+        class="Textweb__TextBlock-sc-6jf9e4-0 dIfGnd"
+        color="shade.980"
+        data-testid="ds-text"
+      >
+        Flex Item #2
+      </div>
     </div>
   </div>
 </div>
@@ -49,18 +59,28 @@ exports[`<Flex /> flexDirection renders a child with flexDirection row 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 kgmkNM Spaceweb__Space-njatzl-0 jBqZrs"
-      color="shade.980"
-      data-testid="ds-text"
+      class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+      height="0"
     >
-      Flex Item #1
+      <div
+        class="Textweb__TextBlock-sc-6jf9e4-0 dIfGnd Spaceweb__Space-njatzl-0 jBqZrs"
+        color="shade.980"
+        data-testid="ds-text"
+      >
+        Flex Item #1
+      </div>
     </div>
     <div
-      class="Textweb__Text-sc-6jf9e4-0 kgmkNM Spaceweb__Space-njatzl-0 jBqZrs"
-      color="shade.980"
-      data-testid="ds-text"
+      class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+      height="0"
     >
-      Flex Item #2
+      <div
+        class="Textweb__TextBlock-sc-6jf9e4-0 dIfGnd Spaceweb__Space-njatzl-0 jBqZrs"
+        color="shade.980"
+        data-testid="ds-text"
+      >
+        Flex Item #2
+      </div>
     </div>
   </div>
 </div>

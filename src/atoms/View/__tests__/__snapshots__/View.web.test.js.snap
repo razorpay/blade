@@ -6,11 +6,16 @@ exports[`<View /> as renders View as div 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 kgmkNM"
-      color="shade.980"
-      data-testid="ds-text"
+      class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+      height="0"
     >
-      simple div
+      <div
+        class="Textweb__TextBlock-sc-6jf9e4-0 dIfGnd"
+        color="shade.980"
+        data-testid="ds-text"
+      >
+        simple div
+      </div>
     </div>
   </div>
 </div>
@@ -22,11 +27,16 @@ exports[`<View /> as renders View as p 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 kgmkNM"
-      color="shade.980"
-      data-testid="ds-text"
+      class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+      height="0"
     >
-      simple p
+      <div
+        class="Textweb__TextBlock-sc-6jf9e4-0 dIfGnd"
+        color="shade.980"
+        data-testid="ds-text"
+      >
+        simple p
+      </div>
     </div>
   </p>
 </div>
@@ -38,11 +48,16 @@ exports[`<View /> as renders View as span 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 kgmkNM"
-      color="shade.980"
-      data-testid="ds-text"
+      class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+      height="0"
     >
-      simple span
+      <div
+        class="Textweb__TextBlock-sc-6jf9e4-0 dIfGnd"
+        color="shade.980"
+        data-testid="ds-text"
+      >
+        simple span
+      </div>
     </div>
   </span>
 </div>

@@ -2,108 +2,153 @@
 
 exports[`<Heading /> color renders heading with custom color 1`] = `
 <div>
-  <h5
-    class="Textweb__Text-sc-6jf9e4-0 hUSGXL Spaceweb__Space-njatzl-0 ebahRE"
-    color="primary.900"
-    data-testid="ds-heading"
+  <div
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Heading
-  </h5>
+    <h5
+      class="Textweb__TextBlock-sc-6jf9e4-0 fQfbhW Spaceweb__Space-njatzl-0 ebahRE"
+      color="primary.900"
+      data-testid="ds-heading"
+    >
+      Heading
+    </h5>
+  </div>
 </div>
 `;
 
 exports[`<Heading /> renders heading with default props 1`] = `
 <div>
-  <h5
-    class="Textweb__Text-sc-6jf9e4-0 cXaLeO Spaceweb__Space-njatzl-0 ebahRE"
-    color="shade.980"
-    data-testid="ds-heading"
+  <div
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Heading
-  </h5>
+    <h5
+      class="Textweb__TextBlock-sc-6jf9e4-0 dnWJgv Spaceweb__Space-njatzl-0 ebahRE"
+      color="shade.980"
+      data-testid="ds-heading"
+    >
+      Heading
+    </h5>
+  </div>
 </div>
 `;
 
 exports[`<Heading /> size renders heading with size large 1`] = `
 <div>
-  <h4
-    class="Textweb__Text-sc-6jf9e4-0 dhCBjk Spaceweb__Space-njatzl-0 ebahRE"
-    color="shade.980"
-    data-testid="ds-heading"
+  <div
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Heading
-  </h4>
+    <h4
+      class="Textweb__TextBlock-sc-6jf9e4-0 hzCkxV Spaceweb__Space-njatzl-0 ebahRE"
+      color="shade.980"
+      data-testid="ds-heading"
+    >
+      Heading
+    </h4>
+  </div>
 </div>
 `;
 
 exports[`<Heading /> size renders heading with size medium 1`] = `
 <div>
-  <h5
-    class="Textweb__Text-sc-6jf9e4-0 cXaLeO Spaceweb__Space-njatzl-0 ebahRE"
-    color="shade.980"
-    data-testid="ds-heading"
+  <div
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Heading
-  </h5>
+    <h5
+      class="Textweb__TextBlock-sc-6jf9e4-0 dnWJgv Spaceweb__Space-njatzl-0 ebahRE"
+      color="shade.980"
+      data-testid="ds-heading"
+    >
+      Heading
+    </h5>
+  </div>
 </div>
 `;
 
 exports[`<Heading /> size renders heading with size xlarge 1`] = `
 <div>
-  <h3
-    class="Textweb__Text-sc-6jf9e4-0 cjBRhY Spaceweb__Space-njatzl-0 ebahRE"
-    color="shade.980"
-    data-testid="ds-heading"
+  <div
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Heading
-  </h3>
+    <h3
+      class="Textweb__TextBlock-sc-6jf9e4-0 bsRAkt Spaceweb__Space-njatzl-0 ebahRE"
+      color="shade.980"
+      data-testid="ds-heading"
+    >
+      Heading
+    </h3>
+  </div>
 </div>
 `;
 
 exports[`<Heading /> size renders heading with size xxlarge 1`] = `
 <div>
-  <h2
-    class="Textweb__Text-sc-6jf9e4-0 hxZoYe Spaceweb__Space-njatzl-0 ebahRE"
-    color="shade.980"
-    data-testid="ds-heading"
+  <div
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Heading
-  </h2>
+    <h2
+      class="Textweb__TextBlock-sc-6jf9e4-0 hZFjaP Spaceweb__Space-njatzl-0 ebahRE"
+      color="shade.980"
+      data-testid="ds-heading"
+    >
+      Heading
+    </h2>
+  </div>
 </div>
 `;
 
 exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
 <div>
-  <h1
-    class="Textweb__Text-sc-6jf9e4-0 jigdLx Spaceweb__Space-njatzl-0 ebahRE"
-    color="shade.980"
-    data-testid="ds-heading"
+  <div
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Heading
-  </h1>
+    <h1
+      class="Textweb__TextBlock-sc-6jf9e4-0 fzBmQw Spaceweb__Space-njatzl-0 ebahRE"
+      color="shade.980"
+      data-testid="ds-heading"
+    >
+      Heading
+    </h1>
+  </div>
 </div>
 `;
 
 exports[`<Heading /> weight renders heading with bold weight 1`] = `
 <div>
-  <h5
-    class="Textweb__Text-sc-6jf9e4-0 cXaLeO Spaceweb__Space-njatzl-0 ebahRE"
-    color="shade.980"
-    data-testid="ds-heading"
+  <div
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Heading
-  </h5>
+    <h5
+      class="Textweb__TextBlock-sc-6jf9e4-0 dnWJgv Spaceweb__Space-njatzl-0 ebahRE"
+      color="shade.980"
+      data-testid="ds-heading"
+    >
+      Heading
+    </h5>
+  </div>
 </div>
 `;
 
 exports[`<Heading /> weight renders heading with regular weight 1`] = `
 <div>
-  <h5
-    class="Textweb__Text-sc-6jf9e4-0 xqQS Spaceweb__Space-njatzl-0 ebahRE"
-    color="shade.980"
-    data-testid="ds-heading"
+  <div
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Heading
-  </h5>
+    <h5
+      class="Textweb__TextBlock-sc-6jf9e4-0 kNlgEP Spaceweb__Space-njatzl-0 ebahRE"
+      color="shade.980"
+      data-testid="ds-heading"
+    >
+      Heading
+    </h5>
+  </div>
 </div>
 `;

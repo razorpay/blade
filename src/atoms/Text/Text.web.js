@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import baseTheme from '../../tokens/theme';
@@ -41,15 +42,16 @@ const styles = {
     }
     return 'none';
   },
-  ellipsis({ maxLines }) {
-    if (isDefined(maxLines)) {
+  ellipsis({ theme, maxLines, height, size }) {
+    const calculatedMaxHeight = parseInt(styles.maxHeight({ theme, size, maxLines }), 10);
+    if (isDefined(maxLines) && height >= calculatedMaxHeight) {
       return "'...'";
     }
     return '';
   },
 };
 
-const Text = styled.div`
+const TextBlock = styled.div`
   font-family: ${(props) => props.theme.fonts.family.lato[props._weight]};
   font-weight: ${(props) => props.theme.fonts.weight[props._weight]};
   font-size: ${(props) => props.theme.fonts.size[props.size]};
@@ -58,9 +60,12 @@ const Text = styled.div`
   text-align: ${(props) => props.align};
   letter-spacing: ${(props) => props.theme.fonts.letterSpacing[props._letterSpacing]};
   line-height: ${styles.lineHeight};
-  overflow: ${styles.overflow};
-  text-overflow: ${styles.textOverflow};
+`;
+
+const Wrapper = styled.div`
   max-height: ${styles.maxHeight};
+  text-overflow: ${styles.textOverflow};
+  overflow: ${styles.overflow};
   position: relative;
   &&:after {
     content: ${styles.ellipsis};
@@ -71,7 +76,26 @@ const Text = styled.div`
   }
 `;
 
+const Text = ({ children, ...otherProps }) => {
+  const [height, setHeight] = useState(0);
+  const ref = useRef(null);
+  const { size, maxLines } = otherProps;
+
+  useEffect(() => {
+    setHeight(ref.current.clientHeight);
+  });
+
+  return (
+    <Wrapper height={height} size={size} maxLines={maxLines}>
+      <TextBlock ref={ref} {...otherProps}>
+        {children}
+      </TextBlock>
+    </Wrapper>
+  );
+};
+
 Text.propTypes = {
+  children: PropTypes.string,
   size: PropTypes.oneOf(Object.keys(baseTheme.fonts.size)),
   color: PropTypes.oneOf(getColorKeys()),
   align: PropTypes.oneOf(['left', 'right', 'center', 'justify', 'inherit', 'initial']),

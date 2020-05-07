@@ -3,11 +3,16 @@
 exports[`<Text /> _isUnderlined snapshot testing with underlined text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 khUUmU"
-    color="shade.980"
-    data-testid="ds-text"
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Displaying some text
+    <div
+      class="Textweb__TextBlock-sc-6jf9e4-0 hmfhrN"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Displaying some text
+    </div>
   </div>
 </div>
 `;
@@ -15,11 +20,16 @@ exports[`<Text /> _isUnderlined snapshot testing with underlined text 1`] = `
 exports[`<Text /> _weight renders bold weight text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 dhCBjk"
-    color="shade.980"
-    data-testid="ds-text"
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Displaying some text
+    <div
+      class="Textweb__TextBlock-sc-6jf9e4-0 hzCkxV"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Displaying some text
+    </div>
   </div>
 </div>
 `;
@@ -27,11 +37,16 @@ exports[`<Text /> _weight renders bold weight text 1`] = `
 exports[`<Text /> _weight renders light weight text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 dhCBjk"
-    color="shade.980"
-    data-testid="ds-text"
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Displaying some text
+    <div
+      class="Textweb__TextBlock-sc-6jf9e4-0 hzCkxV"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Displaying some text
+    </div>
   </div>
 </div>
 `;
@@ -39,11 +54,16 @@ exports[`<Text /> _weight renders light weight text 1`] = `
 exports[`<Text /> align renders text with display content center aligned 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 icdclg"
-    color="shade.980"
-    data-testid="ds-text"
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Displaying some text
+    <div
+      class="Textweb__TextBlock-sc-6jf9e4-0 iGYjlR"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Displaying some text
+    </div>
   </div>
 </div>
 `;
@@ -51,35 +71,50 @@ exports[`<Text /> align renders text with display content center aligned 1`] = `
 exports[`<Text /> align renders text with display content right aligned 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 dQFiFD"
-    color="shade.980"
-    data-testid="ds-text"
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Displaying some text
+    <div
+      class="Textweb__TextBlock-sc-6jf9e4-0 cdautG"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Displaying some text
+    </div>
   </div>
 </div>
 `;
 
 exports[`<Text /> as renders as span 1`] = `
 <div>
-  <span
-    class="Textweb__Text-sc-6jf9e4-0 kgmkNM"
-    color="shade.980"
-    data-testid="ds-text"
+  <div
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Displaying some text
-  </span>
+    <span
+      class="Textweb__TextBlock-sc-6jf9e4-0 dIfGnd"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Displaying some text
+    </span>
+  </div>
 </div>
 `;
 
 exports[`<Text /> default renders default text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 kgmkNM"
-    color="shade.980"
-    data-testid="ds-text"
+    class="Textweb__Wrapper-sc-6jf9e4-1 bZTjWW"
+    height="0"
   >
-    Displaying some text
+    <div
+      class="Textweb__TextBlock-sc-6jf9e4-0 dIfGnd"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Displaying some text
+    </div>
   </div>
 </div>
 `;
@@ -87,11 +122,16 @@ exports[`<Text /> default renders default text 1`] = `
 exports[`<Text /> maxLines snapshot testing with maxLines in text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 iEamPL"
-    color="shade.980"
-    data-testid="ds-text"
+    class="Textweb__Wrapper-sc-6jf9e4-1 eqnAhz"
+    height="0"
   >
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+    <div
+      class="Textweb__TextBlock-sc-6jf9e4-0 dIfGnd"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+    </div>
   </div>
 </div>
 `;
