@@ -59,7 +59,7 @@ const Tabs = ({ children, defaultValue, value, onChange }) => {
   const routes = getRoutes({ tabs });
   const disableSwipe = shouldDisableSwipe({ tabs });
   const initialIndex =
-    value || defaultValue ? getRouteIndexFromValue({ routes, value: value || defaultValue }) : 0;
+    value ?? defaultValue ? getRouteIndexFromValue({ routes, value: value ?? defaultValue }) : 0;
 
   const [index, setIndex] = useState(initialIndex);
 
