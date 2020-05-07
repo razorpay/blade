@@ -211,7 +211,7 @@ Checkbox.propTypes = {
   defaultChecked: PropTypes.bool,
   checked: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   disabled: PropTypes.bool,
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
   onChange: PropTypes.func.isRequired,
