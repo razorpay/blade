@@ -3,6 +3,7 @@ const fonts = {
     lato: {
       regular: 'Lato-Regular',
       bold: 'Lato-Bold',
+      light: 'Lato-Light',
     },
   },
   size: {

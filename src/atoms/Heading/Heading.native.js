@@ -52,7 +52,7 @@ const Heading = ({ size, testID, color, children, maxLines, weight }) => {
       size={styles.fontSize({ theme, size })}
       color={color}
       maxLines={maxLines}
-      _weight={weight}
+      weight={weight}
       _lineHeight={styles.lineHeight({ theme, size, weight })}
       _letterSpacing="small"
       {...automation(testID)}

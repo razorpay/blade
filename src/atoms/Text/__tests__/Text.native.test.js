@@ -11,7 +11,7 @@ describe('<Text />', () => {
 
   it('renders bold text', () => {
     const displayText = 'Displaying some text';
-    const { container } = renderWithTheme(<Text _weight="bold">{displayText}</Text>);
+    const { container } = renderWithTheme(<Text weight="bold">{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
 
@@ -53,7 +53,7 @@ describe('<Text />', () => {
     expect(textElement.props.size).toBe('large');
     expect(textElement.props.color).toBe('shade.980');
     expect(textElement.props.align).toBe('left');
-    expect(textElement.props._weight).toBe('regular');
+    expect(textElement.props.weight).toBe('regular');
     expect(textElement.props._isUnderlined).toBe(false);
     expect(textElement.props._letterSpacing).toBe('small');
     expect(textElement.props._lineHeight).toBe(undefined);

@@ -180,7 +180,6 @@ exports[`<Card /> outlined renders an outlined Card with text content 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="shade.980"
       size="large"
@@ -198,6 +197,7 @@ exports[`<Card /> outlined renders an outlined Card with text content 1`] = `
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       Hello
     </Text>
@@ -340,7 +340,6 @@ exports[`<Card /> shadowed renders a shadowed Card with text content 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="shade.980"
       size="large"
@@ -358,6 +357,7 @@ exports[`<Card /> shadowed renders a shadowed Card with text content 1`] = `
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       Hello
     </Text>

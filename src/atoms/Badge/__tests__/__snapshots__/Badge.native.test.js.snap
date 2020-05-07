@@ -47,7 +47,6 @@ exports[`Renders <Badge /> (Rectangle) renders solid information(rectangle) <Bad
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="light.100"
       size="xxsmall"
@@ -65,6 +64,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid information(rectangle) <Bad
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       INFORMATION
     </Text>
@@ -119,7 +119,6 @@ exports[`Renders <Badge /> (Rectangle) renders solid negative(rectangle) <Badge 
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="light.100"
       size="xxsmall"
@@ -137,6 +136,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid negative(rectangle) <Badge 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       NEGATIVE
     </Text>
@@ -191,7 +191,6 @@ exports[`Renders <Badge /> (Rectangle) renders solid neutral(rectangle) <Badge /
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="primary.900"
       size="xxsmall"
@@ -209,6 +208,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid neutral(rectangle) <Badge /
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       NEUTRAL
     </Text>
@@ -263,7 +263,6 @@ exports[`Renders <Badge /> (Rectangle) renders solid positive(rectangle) <Badge 
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="light.100"
       size="xxsmall"
@@ -281,6 +280,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid positive(rectangle) <Badge 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       POSITIVE
     </Text>
@@ -335,7 +335,6 @@ exports[`Renders <Badge /> (Rectangle) renders solid warning(rectangle) <Badge /
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="light.100"
       size="xxsmall"
@@ -353,6 +352,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid warning(rectangle) <Badge /
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       WARNING
     </Text>
@@ -407,7 +407,6 @@ exports[`Renders <Badge /> (Rectangle) renders subtle information(rectangle) <Ba
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="xxsmall"
@@ -425,6 +424,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle information(rectangle) <Ba
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       INFORMATION
     </Text>
@@ -479,7 +479,6 @@ exports[`Renders <Badge /> (Rectangle) renders subtle negative(rectangle) <Badge
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="negative.900"
       size="xxsmall"
@@ -497,6 +496,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle negative(rectangle) <Badge
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       NEGATIVE
     </Text>
@@ -551,7 +551,6 @@ exports[`Renders <Badge /> (Rectangle) renders subtle neutral(rectangle) <Badge 
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="primary.900"
       size="xxsmall"
@@ -569,6 +568,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle neutral(rectangle) <Badge 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       NEUTRAL
     </Text>
@@ -623,7 +623,6 @@ exports[`Renders <Badge /> (Rectangle) renders subtle positive(rectangle) <Badge
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="positive.900"
       size="xxsmall"
@@ -641,6 +640,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle positive(rectangle) <Badge
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       POSITIVE
     </Text>
@@ -695,7 +695,6 @@ exports[`Renders <Badge /> (Rectangle) renders subtle warning(rectangle) <Badge 
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="neutral.900"
       size="xxsmall"
@@ -713,6 +712,7 @@ exports[`Renders <Badge /> (Rectangle) renders subtle warning(rectangle) <Badge 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       WARNING
     </Text>
@@ -767,7 +767,6 @@ exports[`Renders <Badge /> (Stadium) renders solid information(Stadium) <Badge /
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="light.100"
       size="xxsmall"
@@ -785,6 +784,7 @@ exports[`Renders <Badge /> (Stadium) renders solid information(Stadium) <Badge /
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       INFORMATION
     </Text>
@@ -839,7 +839,6 @@ exports[`Renders <Badge /> (Stadium) renders solid negative(Stadium) <Badge /> 1
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="light.100"
       size="xxsmall"
@@ -857,6 +856,7 @@ exports[`Renders <Badge /> (Stadium) renders solid negative(Stadium) <Badge /> 1
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       NEGATIVE
     </Text>
@@ -911,7 +911,6 @@ exports[`Renders <Badge /> (Stadium) renders solid neutral(Stadium) <Badge /> 1`
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="primary.900"
       size="xxsmall"
@@ -929,6 +928,7 @@ exports[`Renders <Badge /> (Stadium) renders solid neutral(Stadium) <Badge /> 1`
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       NEUTRAL
     </Text>
@@ -983,7 +983,6 @@ exports[`Renders <Badge /> (Stadium) renders solid positive(Stadium) <Badge /> 1
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="light.100"
       size="xxsmall"
@@ -1001,6 +1000,7 @@ exports[`Renders <Badge /> (Stadium) renders solid positive(Stadium) <Badge /> 1
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       POSITIVE
     </Text>
@@ -1055,7 +1055,6 @@ exports[`Renders <Badge /> (Stadium) renders solid warning(Stadium) <Badge /> 1`
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="light.100"
       size="xxsmall"
@@ -1073,6 +1072,7 @@ exports[`Renders <Badge /> (Stadium) renders solid warning(Stadium) <Badge /> 1`
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       WARNING
     </Text>
@@ -1127,7 +1127,6 @@ exports[`Renders <Badge /> (Stadium) renders subtle information(Stadium) <Badge 
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="xxsmall"
@@ -1145,6 +1144,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle information(Stadium) <Badge 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       INFORMATION
     </Text>
@@ -1199,7 +1199,6 @@ exports[`Renders <Badge /> (Stadium) renders subtle negative(Stadium) <Badge /> 
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="negative.900"
       size="xxsmall"
@@ -1217,6 +1216,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle negative(Stadium) <Badge /> 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       NEGATIVE
     </Text>
@@ -1271,7 +1271,6 @@ exports[`Renders <Badge /> (Stadium) renders subtle neutral(Stadium) <Badge /> 1
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="primary.900"
       size="xxsmall"
@@ -1289,6 +1288,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle neutral(Stadium) <Badge /> 1
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       NEUTRAL
     </Text>
@@ -1343,7 +1343,6 @@ exports[`Renders <Badge /> (Stadium) renders subtle positive(Stadium) <Badge /> 
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="positive.900"
       size="xxsmall"
@@ -1361,6 +1360,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle positive(Stadium) <Badge /> 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       POSITIVE
     </Text>
@@ -1415,7 +1415,6 @@ exports[`Renders <Badge /> (Stadium) renders subtle warning(Stadium) <Badge /> 1
     <Text
       _isUnderlined={false}
       _letterSpacing="medium"
-      _weight="bold"
       align="left"
       color="neutral.900"
       size="xxsmall"
@@ -1433,6 +1432,7 @@ exports[`Renders <Badge /> (Stadium) renders subtle warning(Stadium) <Badge /> 1
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       WARNING
     </Text>

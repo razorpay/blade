@@ -11,6 +11,12 @@ const sizeOptions = {
   large: 'large',
 };
 
+const weightOptions = {
+  light: 'light',
+  bold: 'bold',
+  regular: 'regular',
+};
+
 const htmlTagOptions = ['p', 'div', 'span'];
 
 storiesOf('Text', module)
@@ -18,13 +24,18 @@ storiesOf('Text', module)
     component: Text,
   })
   .add('default', () => (
-    <Text size={select('Size', sizeOptions, 'large')} as={select('as', htmlTagOptions, 'div')}>
+    <Text
+      size={select('Size', sizeOptions, 'large')}
+      weight={select('Weight', weightOptions, 'regular')}
+      as={select('as', htmlTagOptions, 'div')}
+    >
       {text('Display Text', 'The quick brown fox jumps over the lazy dog ')}
     </Text>
   ))
   .add('maxLines', () => (
     <Text
       size={select('Size', sizeOptions, 'large')}
+      weight={select('Weight', weightOptions, 'regular')}
       as={select('as', htmlTagOptions, 'div')}
       maxLines={number('maxLines', 3)}
     >

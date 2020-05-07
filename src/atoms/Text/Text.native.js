@@ -7,8 +7,8 @@ import { getColorKeys, getColor, getLineHeight } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
 
 const styles = {
-  fontFamily({ theme, _weight }) {
-    return theme.fonts.family.lato[_weight];
+  fontFamily({ theme, weight }) {
+    return theme.fonts.family.lato[weight];
   },
   fontSize({ theme, size }) {
     return theme.fonts.size[size];
@@ -57,7 +57,7 @@ const Text = ({
   align,
   children,
   maxLines,
-  _weight,
+  weight,
   _isUnderlined,
   _letterSpacing,
   _lineHeight,
@@ -68,7 +68,7 @@ const Text = ({
       color={color}
       align={align}
       numberOfLines={maxLines}
-      _weight={_weight}
+      weight={weight}
       _isUnderlined={_isUnderlined}
       _letterSpacing={_letterSpacing}
       _lineHeight={_lineHeight}
@@ -86,7 +86,7 @@ Text.propTypes = {
   align: PropTypes.oneOf(['left', 'right', 'center', 'justify', 'inherit', 'initial']),
   testID: PropTypes.string,
   maxLines: PropTypes.number,
-  _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
+  weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   _isUnderlined: PropTypes.bool,
   _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
   _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
@@ -97,7 +97,7 @@ Text.defaultProps = {
   color: 'shade.980',
   align: 'left',
   testID: 'ds-text',
-  _weight: 'regular',
+  weight: 'regular',
   _isUnderlined: false,
   _letterSpacing: 'small',
 };

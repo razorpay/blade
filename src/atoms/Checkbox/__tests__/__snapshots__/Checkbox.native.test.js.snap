@@ -131,7 +131,6 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -149,6 +148,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Razorpay
         </Text>
@@ -171,7 +171,6 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
       <Text
         _isUnderlined={false}
         _letterSpacing="small"
-        _weight="regular"
         align="left"
         color="negative.900"
         size="xsmall"
@@ -189,6 +188,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
           ]
         }
         testID="ds-text"
+        weight="regular"
       >
         You dont have permission
       </Text>
@@ -328,7 +328,6 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -346,6 +345,7 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Some Title
         </Text>
@@ -486,7 +486,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -504,6 +503,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Razorpay
         </Text>
@@ -644,7 +644,6 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -662,6 +661,7 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Razorpay
         </Text>
@@ -802,7 +802,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -820,6 +819,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Some Title
         </Text>
@@ -960,7 +960,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -978,6 +977,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Some Title
         </Text>
@@ -1118,7 +1118,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -1136,6 +1135,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Some Title
         </Text>
@@ -1276,7 +1276,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -1294,6 +1293,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Some Title
         </Text>
@@ -1434,7 +1434,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -1452,6 +1451,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Some Title
         </Text>
@@ -1474,7 +1474,6 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
       <Text
         _isUnderlined={false}
         _letterSpacing="small"
-        _weight="regular"
         align="left"
         color="shade.950"
         size="xsmall"
@@ -1492,6 +1491,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
           ]
         }
         testID="ds-text"
+        weight="regular"
       >
         some Help text
       </Text>
@@ -1631,7 +1631,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -1649,6 +1648,7 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Razorpay
         </Text>
@@ -1789,7 +1789,6 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -1807,6 +1806,7 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Razorpay
         </Text>
