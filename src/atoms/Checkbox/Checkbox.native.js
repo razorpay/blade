@@ -25,20 +25,32 @@ const styles = {
 
       return 'shade.950';
     },
+    size({ size }) {
+      switch (size) {
+        case 'large':
+          return 'xlarge';
+        case 'medium':
+          return 'large';
+        case 'small':
+          return 'medium';
+        default:
+          return 'medium';
+      }
+    },
   },
   helpText: {
     margin(size) {
       switch (size) {
         case 'large':
-          return [0, 0, 0, 3.5];
+          return [0, 0, 0, 4];
         case 'medium':
-          return [0, 0, 0, 3];
+          return [0, 0, 0, 3.5];
         case 'small':
-          return [0, 0, 0, 2.5];
-        case 'xsmall':
-          return [0, 0, 0, 2];
-        default:
           return [0, 0, 0, 3];
+        case 'xsmall':
+          return [0, 0, 0, 2.5];
+        default:
+          return [0, 0, 0, 3.5];
       }
     },
     size(checkboxSize) {
@@ -62,33 +74,33 @@ const styles = {
       switch (size) {
         case 'large':
           return {
+            width: '28px',
+            height: '28px',
+            borderRadius: '14px',
+          };
+        case 'medium':
+          return {
             width: '24px',
             height: '24px',
             borderRadius: '12px',
           };
-        case 'medium':
+        case 'small':
           return {
             width: '20px',
             height: '20px',
             borderRadius: '10px',
           };
-        case 'small':
+        case 'xsmall':
           return {
             width: '16px',
             height: '16px',
             borderRadius: '8px',
           };
-        case 'xsmall':
-          return {
-            width: '12px',
-            height: '12px',
-            borderRadius: '6px',
-          };
         default:
           return {
-            width: '20px',
-            height: '20px',
-            borderRadius: '10px',
+            width: '24px',
+            height: '24px',
+            borderRadius: '12px',
           };
       }
     },
@@ -173,24 +185,26 @@ const Checkbox = ({
           <View>
             <Backdrop backgroundColor={underlayColor} {...styles.backdrop.dimensions(size)}>
               <Icon
-                size={size}
+                size={styles.icon.size({ size })}
                 name={isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
                 fill={styles.icon.fill({ isChecked, disabled, variantColor })}
               />
             </Backdrop>
-            <Flex alignSelf="center">
-              <Space margin={styles.title.margin()}>
-                <View>
-                  <Text color={titleTextColor} size={size}>
-                    {title}
-                  </Text>
-                </View>
-              </Space>
-            </Flex>
+            {title ? (
+              <Flex alignSelf="center">
+                <Space margin={styles.title.margin()}>
+                  <View>
+                    <Text color={titleTextColor} size={size}>
+                      {title}
+                    </Text>
+                  </View>
+                </Space>
+              </Flex>
+            ) : null}
           </View>
         </Flex>
 
-        {(!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' ? (
+        {title && (!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' ? (
           <Space margin={styles.helpText.margin(size)}>
             <View>
               <Text
@@ -211,7 +225,7 @@ Checkbox.propTypes = {
   defaultChecked: PropTypes.bool,
   checked: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   disabled: PropTypes.bool,
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
   onChange: PropTypes.func.isRequired,
