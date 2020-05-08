@@ -1663,7 +1663,6 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -1681,6 +1680,7 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               One
             </Text>
@@ -1758,7 +1758,6 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -1776,6 +1775,7 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Two
             </Text>
@@ -1853,7 +1853,6 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -1871,6 +1870,7 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Three
             </Text>
@@ -1919,7 +1919,6 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -1937,6 +1936,7 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Screen One
         </Text>
