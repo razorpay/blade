@@ -14,7 +14,6 @@ exports[`<Heading /> color renders heading with custom color 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="medium"
-    _weight="bold"
     align="left"
     color="primary.900"
     size="medium"
@@ -32,6 +31,7 @@ exports[`<Heading /> color renders heading with custom color 1`] = `
       ]
     }
     testID="ds-heading"
+    weight="bold"
   >
     Heading
   </Text>
@@ -52,7 +52,6 @@ exports[`<Heading /> size renders heading with size large 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="large"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="large"
@@ -70,6 +69,7 @@ exports[`<Heading /> size renders heading with size large 1`] = `
       ]
     }
     testID="ds-heading"
+    weight="bold"
   >
     Heading
   </Text>
@@ -90,7 +90,6 @@ exports[`<Heading /> size renders heading with size medium 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="medium"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="medium"
@@ -108,6 +107,7 @@ exports[`<Heading /> size renders heading with size medium 1`] = `
       ]
     }
     testID="ds-heading"
+    weight="bold"
   >
     Heading
   </Text>
@@ -128,7 +128,6 @@ exports[`<Heading /> size renders heading with size xlarge 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="xlarge"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="xxlarge"
@@ -146,6 +145,7 @@ exports[`<Heading /> size renders heading with size xlarge 1`] = `
       ]
     }
     testID="ds-heading"
+    weight="bold"
   >
     Heading
   </Text>
@@ -166,7 +166,6 @@ exports[`<Heading /> size renders heading with size xxlarge 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="xxlarge"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="xxxlarge"
@@ -184,6 +183,7 @@ exports[`<Heading /> size renders heading with size xxlarge 1`] = `
       ]
     }
     testID="ds-heading"
+    weight="bold"
   >
     Heading
   </Text>
@@ -204,7 +204,6 @@ exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="xxlarge"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="xxxxlarge"
@@ -222,6 +221,7 @@ exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
       ]
     }
     testID="ds-heading"
+    weight="bold"
   >
     Heading
   </Text>
@@ -242,7 +242,6 @@ exports[`<Heading /> weight renders heading with bold weight 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="medium"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="medium"
@@ -260,6 +259,7 @@ exports[`<Heading /> weight renders heading with bold weight 1`] = `
       ]
     }
     testID="ds-heading"
+    weight="bold"
   >
     Heading
   </Text>
@@ -280,7 +280,6 @@ exports[`<Heading /> weight renders heading with regular weight 1`] = `
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="medium"
-    _weight="regular"
     align="left"
     color="shade.980"
     size="medium"
@@ -298,6 +297,7 @@ exports[`<Heading /> weight renders heading with regular weight 1`] = `
       ]
     }
     testID="ds-heading"
+    weight="regular"
   >
     Heading
   </Text>

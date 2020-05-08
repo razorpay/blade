@@ -98,7 +98,6 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -117,6 +116,7 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 1
           </Text>
@@ -190,7 +190,6 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -209,6 +208,7 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 2
           </Text>
@@ -296,7 +296,6 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -315,6 +314,7 @@ exports[`<SegmentControl /> controlled filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 3
           </Text>
@@ -423,7 +423,6 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -442,6 +441,7 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 1
           </Text>
@@ -515,7 +515,6 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -534,6 +533,7 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 2
           </Text>
@@ -607,7 +607,6 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -626,6 +625,7 @@ exports[`<SegmentControl /> controlled outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 3
           </Text>
@@ -734,7 +734,6 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="primary.500"
             numberOfLines={1}
@@ -753,6 +752,7 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 1
           </Text>
@@ -826,7 +826,6 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.940"
             numberOfLines={1}
@@ -845,6 +844,7 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 2
           </Text>
@@ -932,7 +932,6 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.940"
             numberOfLines={1}
@@ -951,6 +950,7 @@ exports[`<SegmentControl /> disabled renders disabled filled segment control  1`
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 3
           </Text>
@@ -1059,7 +1059,6 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="primary.500"
             numberOfLines={1}
@@ -1078,6 +1077,7 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 1
           </Text>
@@ -1151,7 +1151,6 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.940"
             numberOfLines={1}
@@ -1170,6 +1169,7 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 2
           </Text>
@@ -1243,7 +1243,6 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.940"
             numberOfLines={1}
@@ -1262,6 +1261,7 @@ exports[`<SegmentControl /> disabled renders disabled outlined segment control  
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 3
           </Text>
@@ -1370,7 +1370,6 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="primary.500"
             numberOfLines={1}
@@ -1389,6 +1388,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 1
           </Text>
@@ -1462,7 +1462,6 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -1481,6 +1480,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 2
           </Text>
@@ -1568,7 +1568,6 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -1587,6 +1586,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled filled segment cont
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 3
           </Text>
@@ -1695,7 +1695,6 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="primary.500"
             numberOfLines={1}
@@ -1714,6 +1713,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 1
           </Text>
@@ -1787,7 +1787,6 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -1806,6 +1805,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 2
           </Text>
@@ -1879,7 +1879,6 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -1898,6 +1897,7 @@ exports[`<SegmentControl /> disabled renders only 1 disabled outlined segment co
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 3
           </Text>
@@ -2062,7 +2062,6 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -2081,6 +2080,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 1
           </Text>
@@ -2210,7 +2210,6 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -2229,6 +2228,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 2
           </Text>
@@ -2372,7 +2372,6 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -2391,6 +2390,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 3
           </Text>
@@ -2555,7 +2555,6 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -2574,6 +2573,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 1
           </Text>
@@ -2703,7 +2703,6 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -2722,6 +2721,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 2
           </Text>
@@ -2851,7 +2851,6 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -2870,6 +2869,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 3
           </Text>
@@ -2978,7 +2978,6 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -2997,6 +2996,7 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 1
           </Text>
@@ -3070,7 +3070,6 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -3089,6 +3088,7 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 2
           </Text>
@@ -3162,7 +3162,6 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -3181,6 +3180,7 @@ exports[`<SegmentControl /> onPress filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 3
           </Text>
@@ -3289,7 +3289,6 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -3308,6 +3307,7 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 1
           </Text>
@@ -3381,7 +3381,6 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -3400,6 +3399,7 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 2
           </Text>
@@ -3473,7 +3473,6 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -3492,6 +3491,7 @@ exports[`<SegmentControl /> onPress outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 3
           </Text>
@@ -3600,7 +3600,6 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -3619,6 +3618,7 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 1
           </Text>
@@ -3692,7 +3692,6 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -3711,6 +3710,7 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 2
           </Text>
@@ -3798,7 +3798,6 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -3817,6 +3816,7 @@ exports[`<SegmentControl /> pressIn filled segment control selected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 3
           </Text>
@@ -3925,7 +3925,6 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -3944,6 +3943,7 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 1
           </Text>
@@ -4017,7 +4017,6 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -4036,6 +4035,7 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 2
           </Text>
@@ -4123,7 +4123,6 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -4142,6 +4141,7 @@ exports[`<SegmentControl /> pressIn filled segment control unselected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 3
           </Text>
@@ -4250,7 +4250,6 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -4269,6 +4268,7 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 1
           </Text>
@@ -4342,7 +4342,6 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -4361,6 +4360,7 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 2
           </Text>
@@ -4434,7 +4434,6 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -4453,6 +4452,7 @@ exports[`<SegmentControl /> pressIn outlined segment control selected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 3
           </Text>
@@ -4561,7 +4561,6 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -4580,6 +4579,7 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 1
           </Text>
@@ -4653,7 +4653,6 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -4672,6 +4671,7 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 2
           </Text>
@@ -4745,7 +4745,6 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -4764,6 +4763,7 @@ exports[`<SegmentControl /> pressIn outlined segment control unselected 1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 3
           </Text>
@@ -4872,7 +4872,6 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -4891,6 +4890,7 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 1
           </Text>
@@ -4964,7 +4964,6 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -4983,6 +4982,7 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 2
           </Text>
@@ -5070,7 +5070,6 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -5089,6 +5088,7 @@ exports[`<SegmentControl /> size renders medium filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 3
           </Text>
@@ -5197,7 +5197,6 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -5216,6 +5215,7 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 1
           </Text>
@@ -5289,7 +5289,6 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -5308,6 +5307,7 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 2
           </Text>
@@ -5381,7 +5381,6 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -5400,6 +5399,7 @@ exports[`<SegmentControl /> size renders medium outlined segment control  1`] = 
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 3
           </Text>
@@ -5508,7 +5508,6 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -5527,6 +5526,7 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 1
           </Text>
@@ -5600,7 +5600,6 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -5619,6 +5618,7 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 2
           </Text>
@@ -5706,7 +5706,6 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -5725,6 +5724,7 @@ exports[`<SegmentControl /> size renders small filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 3
           </Text>
@@ -5833,7 +5833,6 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -5852,6 +5851,7 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 1
           </Text>
@@ -5925,7 +5925,6 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -5944,6 +5943,7 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 2
           </Text>
@@ -6017,7 +6017,6 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -6036,6 +6035,7 @@ exports[`<SegmentControl /> size renders small outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 3
           </Text>
@@ -6144,7 +6144,6 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -6163,6 +6162,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 1
           </Text>
@@ -6185,7 +6185,6 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="primary.700"
               numberOfLines={1}
@@ -6204,6 +6203,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Some sub text
             </Text>
@@ -6278,7 +6278,6 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -6297,6 +6296,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 2
           </Text>
@@ -6319,7 +6319,6 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.950"
               numberOfLines={1}
@@ -6338,6 +6337,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Some sub text
             </Text>
@@ -6426,7 +6426,6 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -6445,6 +6444,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 3
           </Text>
@@ -6467,7 +6467,6 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.950"
               numberOfLines={1}
@@ -6486,6 +6485,7 @@ exports[`<SegmentControl /> subText renders subText for filled & medium segment 
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Some sub text
             </Text>
@@ -6595,7 +6595,6 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -6614,6 +6613,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 1
           </Text>
@@ -6636,7 +6636,6 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="primary.700"
               numberOfLines={1}
@@ -6655,6 +6654,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Some sub text
             </Text>
@@ -6729,7 +6729,6 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -6748,6 +6747,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 2
           </Text>
@@ -6770,7 +6770,6 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.950"
               numberOfLines={1}
@@ -6789,6 +6788,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Some sub text
             </Text>
@@ -6863,7 +6863,6 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -6882,6 +6881,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 3
           </Text>
@@ -6904,7 +6904,6 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.950"
               numberOfLines={1}
@@ -6923,6 +6922,7 @@ exports[`<SegmentControl /> subText renders subText for outlined & medium segmen
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Some sub text
             </Text>
@@ -7032,7 +7032,6 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -7051,6 +7050,7 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 1
           </Text>
@@ -7124,7 +7124,6 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -7143,6 +7142,7 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 2
           </Text>
@@ -7230,7 +7230,6 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="regular"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -7249,6 +7248,7 @@ exports[`<SegmentControl /> variant renders filled segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="regular"
           >
             Option 3
           </Text>
@@ -7357,7 +7357,6 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="primary.800"
             numberOfLines={1}
@@ -7376,6 +7375,7 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 1
           </Text>
@@ -7449,7 +7449,6 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -7468,6 +7467,7 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 2
           </Text>
@@ -7541,7 +7541,6 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
-            _weight="bold"
             align="left"
             color="shade.960"
             numberOfLines={1}
@@ -7560,6 +7559,7 @@ exports[`<SegmentControl /> variant renders outlined segment control  1`] = `
               ]
             }
             testID="ds-text"
+            weight="bold"
           >
             Option 3
           </Text>

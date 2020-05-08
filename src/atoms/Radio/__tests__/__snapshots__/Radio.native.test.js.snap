@@ -108,7 +108,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
       <Text
         _isUnderlined={false}
         _letterSpacing="small"
-        _weight="regular"
         align="left"
         color="shade.980"
         size="medium"
@@ -126,6 +125,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
           ]
         }
         testID="ds-text"
+        weight="regular"
       >
         React
       </Text>
@@ -261,7 +261,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
       <Text
         _isUnderlined={false}
         _letterSpacing="small"
-        _weight="regular"
         align="left"
         color="shade.980"
         size="medium"
@@ -279,6 +278,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
           ]
         }
         testID="ds-text"
+        weight="regular"
       >
         React
       </Text>
@@ -404,7 +404,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -422,6 +421,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           React
         </Text>
@@ -535,7 +535,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -553,6 +552,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Angular
         </Text>
@@ -666,7 +666,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -684,6 +683,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Vue
         </Text>
@@ -810,7 +810,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.950"
           size="large"
@@ -828,6 +827,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           React
         </Text>
@@ -850,7 +850,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <Text
         _isUnderlined={false}
         _letterSpacing="small"
-        _weight="regular"
         align="left"
         color="shade.930"
         size="medium"
@@ -868,6 +867,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           ]
         }
         testID="ds-text"
+        weight="regular"
       >
         Click me!
       </Text>
@@ -980,7 +980,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.950"
           size="medium"
@@ -998,6 +997,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Angular
         </Text>
@@ -1020,7 +1020,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <Text
         _isUnderlined={false}
         _letterSpacing="small"
-        _weight="regular"
         align="left"
         color="shade.930"
         size="xsmall"
@@ -1038,6 +1037,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           ]
         }
         testID="ds-text"
+        weight="regular"
       >
         Click me!
       </Text>
@@ -1150,7 +1150,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.950"
           size="small"
@@ -1168,6 +1167,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Vue
         </Text>
@@ -1294,7 +1294,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -1312,6 +1311,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           React
         </Text>
@@ -1334,7 +1334,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <Text
         _isUnderlined={false}
         _letterSpacing="small"
-        _weight="regular"
         align="left"
         color="shade.950"
         size="medium"
@@ -1352,6 +1351,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           ]
         }
         testID="ds-text"
+        weight="regular"
       >
         Click me!
       </Text>
@@ -1464,7 +1464,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -1482,6 +1481,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Angular
         </Text>
@@ -1504,7 +1504,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
       <Text
         _isUnderlined={false}
         _letterSpacing="small"
-        _weight="regular"
         align="left"
         color="shade.950"
         size="xsmall"
@@ -1522,6 +1521,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
           ]
         }
         testID="ds-text"
+        weight="regular"
       >
         Click me!
       </Text>
@@ -1634,7 +1634,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="small"
@@ -1652,6 +1651,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Vue
         </Text>
@@ -1778,7 +1778,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -1796,6 +1795,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           React
         </Text>
@@ -1909,7 +1909,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -1927,6 +1926,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Angular
         </Text>
@@ -2040,7 +2040,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -2058,6 +2057,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Vue
         </Text>
@@ -2184,7 +2184,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -2202,6 +2201,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           React
         </Text>
@@ -2315,7 +2315,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -2333,6 +2332,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Angular
         </Text>
@@ -2446,7 +2446,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -2464,6 +2463,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Vue
         </Text>
@@ -2590,7 +2590,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -2608,6 +2607,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           React
         </Text>
@@ -2721,7 +2721,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -2739,6 +2738,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Angular
         </Text>
@@ -2852,7 +2852,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -2870,6 +2869,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Vue
         </Text>
@@ -2996,7 +2996,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -3014,6 +3013,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           React
         </Text>
@@ -3146,7 +3146,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -3164,6 +3163,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Angular
         </Text>
@@ -3277,7 +3277,6 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -3295,6 +3294,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Vue
         </Text>
@@ -3421,7 +3421,6 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -3439,6 +3438,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           React
         </Text>
@@ -3571,7 +3571,6 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -3589,6 +3588,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Angular
         </Text>
@@ -3702,7 +3702,6 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -3720,6 +3719,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Vue
         </Text>
@@ -3865,7 +3865,6 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -3883,6 +3882,7 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           React
         </Text>
@@ -3996,7 +3996,6 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -4014,6 +4013,7 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Angular
         </Text>
@@ -4127,7 +4127,6 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="medium"
@@ -4145,6 +4144,7 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Vue
         </Text>

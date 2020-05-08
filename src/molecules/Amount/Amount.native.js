@@ -109,7 +109,6 @@ const Amount = ({ size, testID, children, currency, weight, variant, variantColo
       <Text
         color={styles.text.color({ variant, variantColor, subtle })}
         size={size}
-        _weight={weight}
         weight={weight}
         {...automation(testID)}
       >
@@ -124,7 +123,7 @@ const Amount = ({ size, testID, children, currency, weight, variant, variantColo
         <AtomText
           color={styles.text.color({ variant, variantColor, subtle })}
           size={styles.text.size({ size })}
-          _weight={weight}
+          weight={weight}
           _lineHeight={styles.text.lineHeight({ size })} // First text component within nested texts dictate the line height
         >
           {`${currencySymbol} `}
@@ -133,14 +132,13 @@ const Amount = ({ size, testID, children, currency, weight, variant, variantColo
           color={styles.heading.color({ variant, variantColor, subtle })}
           size={size}
           weight={weight}
-          _weight={weight}
         >
           {integerPart}
         </Text>
         <AtomText
           color={styles.text.color({ variant, variantColor, subtle })}
           size={styles.text.size({ size })}
-          _weight={weight}
+          weight={weight}
         >
           {`.${fractionPart}`}
         </AtomText>

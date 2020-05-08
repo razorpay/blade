@@ -26,7 +26,6 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -44,13 +43,13 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       € 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -68,13 +67,13 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -92,6 +91,7 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -125,7 +125,6 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -143,13 +142,13 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -167,13 +166,13 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -191,6 +190,7 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -224,7 +224,6 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -242,13 +241,13 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -266,13 +265,13 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       123
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -290,6 +289,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -323,7 +323,6 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -341,13 +340,13 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -365,13 +364,13 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -389,6 +388,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -422,7 +422,6 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -440,13 +439,13 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -464,13 +463,13 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       12,345
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -488,6 +487,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -521,7 +521,6 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -539,13 +538,13 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -563,13 +562,13 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,23,456
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -587,6 +586,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -620,7 +620,6 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -638,13 +637,13 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -662,13 +661,13 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       12,34,567
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -686,6 +685,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -719,7 +719,6 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -737,13 +736,13 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -761,13 +760,13 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,23,45,678
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -785,6 +784,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -818,7 +818,6 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -836,13 +835,13 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -860,13 +859,13 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       123
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -884,6 +883,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -917,7 +917,6 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -935,13 +934,13 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -959,13 +958,13 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       123
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -983,6 +982,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .40
     </Text>
@@ -1016,7 +1016,6 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1034,13 +1033,13 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -1058,13 +1057,13 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       123
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1082,6 +1081,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .45
     </Text>
@@ -1115,7 +1115,6 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1133,13 +1132,13 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -1157,13 +1156,13 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       123
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1181,6 +1180,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .46
     </Text>
@@ -1214,7 +1214,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xsmall"
@@ -1232,13 +1231,13 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="large"
@@ -1256,13 +1255,13 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xsmall"
@@ -1280,6 +1279,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -1313,7 +1313,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1331,13 +1330,13 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="medium"
@@ -1355,13 +1354,13 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1379,6 +1378,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -1412,7 +1412,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xlarge"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="medium"
@@ -1430,6 +1429,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
@@ -1437,7 +1437,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xlarge"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxlarge"
@@ -1455,13 +1454,13 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
         ]
       }
       testID="ds-heading"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="medium"
@@ -1479,6 +1478,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -1512,7 +1512,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xxlarge"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="medium"
@@ -1530,6 +1529,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
@@ -1537,7 +1537,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xxlarge"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxxlarge"
@@ -1555,13 +1554,13 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
         ]
       }
       testID="ds-heading"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="medium"
@@ -1579,6 +1578,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -1612,7 +1612,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xxlarge"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="large"
@@ -1630,6 +1629,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
@@ -1637,7 +1637,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xxlarge"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxxxlarge"
@@ -1655,13 +1654,13 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
         ]
       }
       testID="ds-heading"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="large"
@@ -1679,6 +1678,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -1712,7 +1712,6 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xsmall"
@@ -1730,13 +1729,13 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="large"
@@ -1754,13 +1753,13 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xsmall"
@@ -1778,6 +1777,7 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -1811,7 +1811,6 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1829,13 +1828,13 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -1853,13 +1852,13 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1877,6 +1876,7 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -1910,7 +1910,6 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xlarge"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="medium"
@@ -1928,6 +1927,7 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
@@ -1935,7 +1935,6 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xlarge"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="xxlarge"
@@ -1953,13 +1952,13 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
         ]
       }
       testID="ds-heading"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="medium"
@@ -1977,6 +1976,7 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -2010,7 +2010,6 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xxlarge"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="medium"
@@ -2028,6 +2027,7 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
@@ -2035,7 +2035,6 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xxlarge"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="xxxlarge"
@@ -2053,13 +2052,13 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
         ]
       }
       testID="ds-heading"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="medium"
@@ -2077,6 +2076,7 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -2110,7 +2110,6 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xxlarge"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="large"
@@ -2128,6 +2127,7 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
@@ -2135,7 +2135,6 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="xxlarge"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="xxxxlarge"
@@ -2153,13 +2152,13 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
         ]
       }
       testID="ds-heading"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="large"
@@ -2177,6 +2176,7 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -2197,7 +2197,6 @@ exports[`<Amount /> size with normal variant and subtle renders amount with larg
   <Text
     _isUnderlined={false}
     _letterSpacing="small"
-    _weight="bold"
     align="left"
     color="shade.960"
     size="large"
@@ -2215,6 +2214,7 @@ exports[`<Amount /> size with normal variant and subtle renders amount with larg
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2234,7 +2234,6 @@ exports[`<Amount /> size with normal variant and subtle renders amount with medi
   <Text
     _isUnderlined={false}
     _letterSpacing="small"
-    _weight="bold"
     align="left"
     color="shade.960"
     size="medium"
@@ -2252,6 +2251,7 @@ exports[`<Amount /> size with normal variant and subtle renders amount with medi
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2272,7 +2272,6 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xlar
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="xlarge"
-    _weight="bold"
     align="left"
     color="shade.960"
     size="xxlarge"
@@ -2290,6 +2289,7 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xlar
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2310,7 +2310,6 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xxla
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="xxlarge"
-    _weight="bold"
     align="left"
     color="shade.960"
     size="xxxlarge"
@@ -2328,6 +2327,7 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xxla
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2348,7 +2348,6 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xxxl
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="xxlarge"
-    _weight="bold"
     align="left"
     color="shade.960"
     size="xxxxlarge"
@@ -2366,6 +2365,7 @@ exports[`<Amount /> size with normal variant and subtle renders amount with xxxl
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2385,7 +2385,6 @@ exports[`<Amount /> size with normal variant renders amount with large size 1`] 
   <Text
     _isUnderlined={false}
     _letterSpacing="small"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="large"
@@ -2403,6 +2402,7 @@ exports[`<Amount /> size with normal variant renders amount with large size 1`] 
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2422,7 +2422,6 @@ exports[`<Amount /> size with normal variant renders amount with medium size 1`]
   <Text
     _isUnderlined={false}
     _letterSpacing="small"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="medium"
@@ -2440,6 +2439,7 @@ exports[`<Amount /> size with normal variant renders amount with medium size 1`]
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2460,7 +2460,6 @@ exports[`<Amount /> size with normal variant renders amount with xlarge size 1`]
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="xlarge"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="xxlarge"
@@ -2478,6 +2477,7 @@ exports[`<Amount /> size with normal variant renders amount with xlarge size 1`]
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2498,7 +2498,6 @@ exports[`<Amount /> size with normal variant renders amount with xxlarge size 1`
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="xxlarge"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="xxxlarge"
@@ -2516,6 +2515,7 @@ exports[`<Amount /> size with normal variant renders amount with xxlarge size 1`
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2536,7 +2536,6 @@ exports[`<Amount /> size with normal variant renders amount with xxxlarge size 1
     _isUnderlined={false}
     _letterSpacing="small"
     _lineHeight="xxlarge"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="xxxxlarge"
@@ -2554,6 +2553,7 @@ exports[`<Amount /> size with normal variant renders amount with xxxlarge size 1
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2586,7 +2586,6 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2604,13 +2603,13 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -2628,13 +2627,13 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2652,6 +2651,7 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -2672,7 +2672,6 @@ exports[`<Amount /> variant renders normal variant amount 1`] = `
   <Text
     _isUnderlined={false}
     _letterSpacing="small"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="medium"
@@ -2690,6 +2689,7 @@ exports[`<Amount /> variant renders normal variant amount 1`] = `
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -2722,7 +2722,6 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2740,13 +2739,13 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="medium"
@@ -2764,13 +2763,13 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2788,6 +2787,7 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -2821,7 +2821,6 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2839,13 +2838,13 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="shade.950"
       size="medium"
@@ -2863,13 +2862,13 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2887,6 +2886,7 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       .00
     </Text>
@@ -2920,7 +2920,6 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2938,13 +2937,13 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.980"
       size="medium"
@@ -2962,13 +2961,13 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="bold"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2986,6 +2985,7 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       .00
     </Text>
@@ -3019,7 +3019,6 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="regular"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -3037,13 +3036,13 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       ₹ 
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="shade.980"
       size="medium"
@@ -3061,13 +3060,13 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       1,234
     </Text>
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -3085,6 +3084,7 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       .00
     </Text>
@@ -3105,7 +3105,6 @@ exports[`<Amount /> weight with normal variant and subtle renders bold amount 1`
   <Text
     _isUnderlined={false}
     _letterSpacing="small"
-    _weight="bold"
     align="left"
     color="shade.960"
     size="medium"
@@ -3123,6 +3122,7 @@ exports[`<Amount /> weight with normal variant and subtle renders bold amount 1`
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -3142,7 +3142,6 @@ exports[`<Amount /> weight with normal variant and subtle renders regular amount
   <Text
     _isUnderlined={false}
     _letterSpacing="small"
-    _weight="regular"
     align="left"
     color="shade.960"
     size="medium"
@@ -3160,6 +3159,7 @@ exports[`<Amount /> weight with normal variant and subtle renders regular amount
       ]
     }
     testID="ds-amount"
+    weight="regular"
   >
     ₹ 1,234.00
   </Text>
@@ -3179,7 +3179,6 @@ exports[`<Amount /> weight with normal variant renders bold amount 1`] = `
   <Text
     _isUnderlined={false}
     _letterSpacing="small"
-    _weight="bold"
     align="left"
     color="shade.980"
     size="medium"
@@ -3197,6 +3196,7 @@ exports[`<Amount /> weight with normal variant renders bold amount 1`] = `
       ]
     }
     testID="ds-amount"
+    weight="bold"
   >
     ₹ 1,234.00
   </Text>
@@ -3216,7 +3216,6 @@ exports[`<Amount /> weight with normal variant renders regular amount 1`] = `
   <Text
     _isUnderlined={false}
     _letterSpacing="small"
-    _weight="regular"
     align="left"
     color="shade.980"
     size="medium"
@@ -3234,6 +3233,7 @@ exports[`<Amount /> weight with normal variant renders regular amount 1`] = `
       ]
     }
     testID="ds-amount"
+    weight="regular"
   >
     ₹ 1,234.00
   </Text>

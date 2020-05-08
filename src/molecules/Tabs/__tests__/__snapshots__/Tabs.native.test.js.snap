@@ -103,7 +103,6 @@ exports[`<Tabs /> controlled does not change tab 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="primary.800"
               size="medium"
@@ -121,6 +120,7 @@ exports[`<Tabs /> controlled does not change tab 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               One
             </Text>
@@ -198,7 +198,6 @@ exports[`<Tabs /> controlled does not change tab 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -216,6 +215,7 @@ exports[`<Tabs /> controlled does not change tab 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Two
             </Text>
@@ -264,7 +264,6 @@ exports[`<Tabs /> controlled does not change tab 1`] = `
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -282,6 +281,7 @@ exports[`<Tabs /> controlled does not change tab 1`] = `
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Screen One
         </Text>
@@ -410,7 +410,6 @@ exports[`<Tabs /> controlled does not change tab 2`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="primary.800"
               size="medium"
@@ -428,6 +427,7 @@ exports[`<Tabs /> controlled does not change tab 2`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               One
             </Text>
@@ -505,7 +505,6 @@ exports[`<Tabs /> controlled does not change tab 2`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -523,6 +522,7 @@ exports[`<Tabs /> controlled does not change tab 2`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Two
             </Text>
@@ -571,7 +571,6 @@ exports[`<Tabs /> controlled does not change tab 2`] = `
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -589,6 +588,7 @@ exports[`<Tabs /> controlled does not change tab 2`] = `
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Screen One
         </Text>
@@ -717,7 +717,6 @@ exports[`<Tabs /> onChange changes tab 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -735,6 +734,7 @@ exports[`<Tabs /> onChange changes tab 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               One
             </Text>
@@ -812,7 +812,6 @@ exports[`<Tabs /> onChange changes tab 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -830,6 +829,7 @@ exports[`<Tabs /> onChange changes tab 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Two
             </Text>
@@ -878,7 +878,6 @@ exports[`<Tabs /> onChange changes tab 1`] = `
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -896,6 +895,7 @@ exports[`<Tabs /> onChange changes tab 1`] = `
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Screen One
         </Text>
@@ -1024,7 +1024,6 @@ exports[`<Tabs /> onChange changes tab 2`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -1042,6 +1041,7 @@ exports[`<Tabs /> onChange changes tab 2`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               One
             </Text>
@@ -1119,7 +1119,6 @@ exports[`<Tabs /> onChange changes tab 2`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="primary.800"
               size="medium"
@@ -1137,6 +1136,7 @@ exports[`<Tabs /> onChange changes tab 2`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Two
             </Text>
@@ -1185,7 +1185,6 @@ exports[`<Tabs /> onChange changes tab 2`] = `
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -1203,6 +1202,7 @@ exports[`<Tabs /> onChange changes tab 2`] = `
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Screen One
         </Text>
@@ -1226,7 +1226,6 @@ exports[`<Tabs /> onChange changes tab 2`] = `
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -1244,6 +1243,7 @@ exports[`<Tabs /> onChange changes tab 2`] = `
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Screen Two
         </Text>
@@ -1356,7 +1356,6 @@ exports[`<Tabs /> renders only Tabs.Tab discards other children 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="primary.800"
               size="medium"
@@ -1374,6 +1373,7 @@ exports[`<Tabs /> renders only Tabs.Tab discards other children 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               One
             </Text>
@@ -1451,7 +1451,6 @@ exports[`<Tabs /> renders only Tabs.Tab discards other children 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -1469,6 +1468,7 @@ exports[`<Tabs /> renders only Tabs.Tab discards other children 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Two
             </Text>
@@ -1517,7 +1517,6 @@ exports[`<Tabs /> renders only Tabs.Tab discards other children 1`] = `
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -1535,6 +1534,7 @@ exports[`<Tabs /> renders only Tabs.Tab discards other children 1`] = `
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Screen One
         </Text>
@@ -1663,7 +1663,6 @@ exports[`<Tabs /> renders three tabs 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -1681,6 +1680,7 @@ exports[`<Tabs /> renders three tabs 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               One
             </Text>
@@ -1758,7 +1758,6 @@ exports[`<Tabs /> renders three tabs 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -1776,6 +1775,7 @@ exports[`<Tabs /> renders three tabs 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Two
             </Text>
@@ -1853,7 +1853,6 @@ exports[`<Tabs /> renders three tabs 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -1871,6 +1870,7 @@ exports[`<Tabs /> renders three tabs 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Three
             </Text>
@@ -1919,7 +1919,6 @@ exports[`<Tabs /> renders three tabs 1`] = `
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -1937,6 +1936,7 @@ exports[`<Tabs /> renders three tabs 1`] = `
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Screen One
         </Text>
@@ -2122,7 +2122,6 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -2140,6 +2139,7 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               One
             </Text>
@@ -2258,7 +2258,6 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -2276,6 +2275,7 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Two
             </Text>
@@ -2324,7 +2324,6 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -2342,6 +2341,7 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Screen One
         </Text>
@@ -2511,7 +2511,6 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.960"
               size="medium"
@@ -2529,6 +2528,7 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               One
             </Text>
@@ -2647,7 +2647,6 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.940"
               size="medium"
@@ -2665,6 +2664,7 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Two
             </Text>
@@ -2713,7 +2713,6 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
         <Text
           _isUnderlined={false}
           _letterSpacing="small"
-          _weight="regular"
           align="left"
           color="shade.980"
           size="large"
@@ -2731,6 +2730,7 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
             ]
           }
           testID="ds-text"
+          weight="regular"
         >
           Screen One
         </Text>

@@ -3060,7 +3060,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _weight="regular"
                 align="left"
                 color="shade.930"
                 numberOfLines={1}
@@ -3079,6 +3078,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                   ]
                 }
                 testID="ds-text"
+                weight="regular"
               >
                 info
               </Text>
@@ -3245,7 +3245,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.930"
               numberOfLines={2}
@@ -3264,6 +3263,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               You can enter your email here
             </Text>
@@ -3372,7 +3372,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _weight="regular"
                 align="left"
                 color="shade.950"
                 numberOfLines={1}
@@ -3391,6 +3390,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                   ]
                 }
                 testID="ds-text"
+                weight="regular"
               >
                 info
               </Text>
@@ -3557,7 +3557,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="negative.900"
               numberOfLines={2}
@@ -3576,6 +3575,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Some error has occurred
             </Text>
@@ -3774,7 +3774,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.950"
               numberOfLines={2}
@@ -3793,6 +3792,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               You can enter your email here
             </Text>
@@ -3819,7 +3819,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.950"
               numberOfLines={2}
@@ -3838,6 +3837,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               0/10
             </Text>
@@ -4035,7 +4035,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.950"
               numberOfLines={2}
@@ -4054,6 +4053,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               You can enter your email here
             </Text>
@@ -5056,7 +5056,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _weight="regular"
                 align="left"
                 color="shade.950"
                 numberOfLines={1}
@@ -5075,6 +5074,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                   ]
                 }
                 testID="ds-text"
+                weight="regular"
               >
                 kg
               </Text>
@@ -5201,7 +5201,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _weight="regular"
                 align="left"
                 color="shade.950"
                 numberOfLines={1}
@@ -5220,6 +5219,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                   ]
                 }
                 testID="ds-text"
+                weight="regular"
               >
                 kg
               </Text>
@@ -5601,7 +5601,6 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _weight="regular"
                 align="left"
                 color="shade.950"
                 numberOfLines={1}
@@ -5620,6 +5619,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                   ]
                 }
                 testID="ds-text"
+                weight="regular"
               >
                 kg
               </Text>
@@ -6680,7 +6680,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _weight="regular"
                 align="left"
                 color="shade.930"
                 numberOfLines={1}
@@ -6699,6 +6698,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   ]
                 }
                 testID="ds-text"
+                weight="regular"
               >
                 info
               </Text>
@@ -6865,7 +6865,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.930"
               numberOfLines={2}
@@ -6884,6 +6883,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               You can enter your email here
             </Text>
@@ -6992,7 +6992,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _weight="regular"
                 align="left"
                 color="shade.950"
                 numberOfLines={1}
@@ -7011,6 +7010,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   ]
                 }
                 testID="ds-text"
+                weight="regular"
               >
                 info
               </Text>
@@ -7177,7 +7177,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="negative.900"
               numberOfLines={2}
@@ -7196,6 +7195,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               Some error has occurred
             </Text>
@@ -7548,7 +7548,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.950"
               numberOfLines={2}
@@ -7567,6 +7566,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               You can enter your email here
             </Text>
@@ -7765,7 +7765,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.950"
               numberOfLines={2}
@@ -7784,6 +7783,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               You can enter your email here
             </Text>
@@ -7810,7 +7810,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
-              _weight="regular"
               align="left"
               color="shade.950"
               numberOfLines={2}
@@ -7829,6 +7828,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text"
+              weight="regular"
             >
               0/10
             </Text>
@@ -8831,7 +8831,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _weight="regular"
                 align="left"
                 color="shade.950"
                 numberOfLines={1}
@@ -8850,6 +8849,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   ]
                 }
                 testID="ds-text"
+                weight="regular"
               >
                 kg
               </Text>
@@ -8976,7 +8976,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _weight="regular"
                 align="left"
                 color="shade.950"
                 numberOfLines={1}
@@ -8995,6 +8994,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   ]
                 }
                 testID="ds-text"
+                weight="regular"
               >
                 kg
               </Text>
@@ -9376,7 +9376,6 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               <Text
                 _isUnderlined={false}
                 _letterSpacing="small"
-                _weight="regular"
                 align="left"
                 color="shade.950"
                 numberOfLines={1}
@@ -9395,6 +9394,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                   ]
                 }
                 testID="ds-text"
+                weight="regular"
               >
                 kg
               </Text>
