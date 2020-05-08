@@ -249,4 +249,38 @@ describe('Native <Checkbox />', () => {
       ).toThrow(errorMessage);
     });
   });
+
+  describe('Icon only', () => {
+    test('renders checked icon when to title prop is passed', () => {
+      const { container } = renderWithTheme(<Checkbox checked={true} />);
+      expect(container).toMatchSnapshot();
+    });
+
+    test('renders unchecked icon when to title prop is passed', () => {
+      const { container } = renderWithTheme(<Checkbox checked={false} />);
+      expect(container).toMatchSnapshot();
+    });
+
+    test('renders checked icon when other props are passed other than title', () => {
+      const { container } = renderWithTheme(
+        <Checkbox
+          checked={true}
+          errorText="You dont have permission"
+          helpText="This is help text"
+        />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    test('renders unchecked icon when other props are passed other than title', () => {
+      const { container } = renderWithTheme(
+        <Checkbox
+          checked={false}
+          errorText="You dont have permission"
+          helpText="This is help text"
+        />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
 });
