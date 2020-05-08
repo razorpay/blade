@@ -179,7 +179,7 @@ const SegmentControlOption = ({
                         size={styles.text.size({ size })}
                         color={styles.text.color({ selected, disabled })}
                         maxLines={1}
-                        _weight={styles.text.weight({ variant: context.variant })}
+                        weight={styles.text.weight({ variant: context.variant })}
                       >
                         {children}
                       </Text>

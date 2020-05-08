@@ -27,7 +27,6 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
     <Text
       _isUnderlined={true}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="primary.600"
       size="medium"
@@ -45,6 +44,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       Displaying some link
     </Text>
@@ -79,7 +79,6 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="primary.800"
       size="medium"
@@ -97,6 +96,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       Displaying some link
     </Text>
@@ -131,7 +131,6 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="primary.800"
       size="medium"
@@ -149,6 +148,7 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       Displaying some link
     </Text>
@@ -183,7 +183,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="primary.800"
       size="large"
@@ -201,6 +200,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       Displaying some link
     </Text>
@@ -235,7 +235,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="primary.800"
       size="medium"
@@ -253,6 +252,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = 
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       Displaying some link
     </Text>
@@ -287,7 +287,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="primary.800"
       size="small"
@@ -305,6 +304,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       Displaying some link
     </Text>
@@ -339,7 +339,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
-      _weight="regular"
       align="left"
       color="primary.800"
       size="medium"
@@ -357,6 +356,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
         ]
       }
       testID="ds-text"
+      weight="regular"
     >
       Displaying some link
     </Text>

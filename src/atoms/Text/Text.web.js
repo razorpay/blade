@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import baseTheme from '../../tokens/theme';
 import isDefined from '../../_helpers/isDefined';
 import { getColorKeys, getColor, getLineHeight } from '../../_helpers/theme';
+import automationAttributes from '../../_helpers/automation-attributes';
 
 const styles = {
   color({ theme, color }) {
@@ -49,9 +50,11 @@ const styles = {
   },
 };
 
-const Text = styled.div`
-  font-family: ${(props) => props.theme.fonts.family.lato[props._weight]};
-  font-weight: ${(props) => props.theme.fonts.weight[props._weight]};
+const Text = styled.div.attrs((props) => ({
+  ...automationAttributes(props.testID),
+}))`
+  font-family: ${(props) => props.theme.fonts.family.lato[props.weight]};
+  font-weight: ${(props) => props.theme.fonts.weight[props.weight]};
   font-size: ${(props) => props.theme.fonts.size[props.size]};
   color: ${styles.color};
   text-decoration: ${styles.textDecoration};
@@ -75,9 +78,9 @@ Text.propTypes = {
   size: PropTypes.oneOf(Object.keys(baseTheme.fonts.size)),
   color: PropTypes.oneOf(getColorKeys()),
   align: PropTypes.oneOf(['left', 'right', 'center', 'justify', 'inherit', 'initial']),
-  'data-testid': PropTypes.string,
+  testID: PropTypes.string,
   maxLines: PropTypes.number,
-  _weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
+  weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
   _isUnderlined: PropTypes.bool,
   _letterSpacing: PropTypes.oneOf(Object.keys(baseTheme.fonts.letterSpacing)),
   _lineHeight: PropTypes.oneOf(Object.keys(baseTheme.fonts.lineHeight)),
@@ -87,8 +90,8 @@ Text.defaultProps = {
   size: 'large',
   align: 'left',
   color: 'shade.980',
-  'data-testid': 'ds-text',
-  _weight: 'regular',
+  testID: 'ds-text',
+  weight: 'regular',
   _isUnderlined: false,
   _letterSpacing: 'small',
 };

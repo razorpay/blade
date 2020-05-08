@@ -60,7 +60,6 @@ exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="light.100"
       size="medium"
@@ -78,6 +77,7 @@ exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -142,7 +142,6 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="light.150"
       size="medium"
@@ -160,6 +159,7 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -224,7 +224,6 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="shade.940"
       size="medium"
@@ -242,6 +241,7 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -306,7 +306,6 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="shade.940"
       size="medium"
@@ -324,6 +323,7 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -388,7 +388,6 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="light.100"
       size="medium"
@@ -406,6 +405,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -470,7 +470,6 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="primary.800"
       size="medium"
@@ -488,6 +487,7 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -552,7 +552,6 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="primary.800"
       size="medium"
@@ -570,6 +569,7 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -689,7 +689,6 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="light.100"
       size="medium"
@@ -707,6 +706,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -771,7 +771,6 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="primary.800"
       size="medium"
@@ -789,6 +788,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -853,7 +853,6 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="primary.800"
       size="medium"
@@ -871,6 +870,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -935,7 +935,6 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="small"
-      _weight="bold"
       align="center"
       color="light.100"
       size="xsmall"
@@ -953,6 +952,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -1017,7 +1017,6 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="small"
-      _weight="bold"
       align="center"
       color="light.100"
       size="xsmall"
@@ -1035,6 +1034,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -1099,7 +1099,6 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="small"
-      _weight="bold"
       align="center"
       color="primary.800"
       size="xsmall"
@@ -1117,6 +1116,7 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -1181,7 +1181,6 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="small"
-      _weight="bold"
       align="center"
       color="primary.800"
       size="xsmall"
@@ -1199,6 +1198,7 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -1263,7 +1263,6 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
       _isUnderlined={false}
       _letterSpacing="medium"
       _lineHeight="xsmall"
-      _weight="bold"
       align="center"
       color="light.100"
       size="xxsmall"
@@ -1281,6 +1280,7 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       CLICK ME
     </Text>
@@ -1345,7 +1345,6 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="light.100"
       size="medium"
@@ -1363,6 +1362,7 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -1482,7 +1482,6 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="light.100"
       size="medium"
@@ -1500,6 +1499,7 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>
@@ -1564,7 +1564,6 @@ exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`
       _isUnderlined={false}
       _letterSpacing="small"
       _lineHeight="medium"
-      _weight="bold"
       align="center"
       color="light.100"
       size="medium"
@@ -1582,6 +1581,7 @@ exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`
         ]
       }
       testID="ds-text"
+      weight="bold"
     >
       Click Me
     </Text>

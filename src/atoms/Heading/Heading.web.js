@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from 'styled-components';
-import Text from '../Text';
 import Space from '../Space';
+import Text from '../Text';
 import { getColorKeys } from '../../_helpers/theme';
 import baseTheme from '../../tokens/theme';
 import automation from '../../_helpers/automation-attributes';
@@ -63,7 +63,7 @@ const Heading = ({ size, color, children, maxLines, weight }) => {
         size={styles.fontSize({ theme, size })}
         color={color}
         maxLines={maxLines}
-        _weight={weight}
+        weight={weight}
         _lineHeight={styles.lineHeight({ theme, size, weight })}
         _letterSpacing="small"
         {...automation('ds-heading')}

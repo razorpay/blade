@@ -104,7 +104,7 @@ const Badge = ({ children, variant, fill, shape }) => {
               <Text
                 size="xxsmall"
                 color={styles.fontColor({ variant, fill })}
-                _weight="bold"
+                weight="bold"
                 _letterSpacing="medium"
               >
                 {children.toUpperCase()}

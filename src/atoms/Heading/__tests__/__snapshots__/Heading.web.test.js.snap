@@ -5,7 +5,7 @@ exports[`<Heading /> color renders heading with custom color 1`] = `
   <h5
     class="Textweb__Text-sc-6jf9e4-0 hUSGXL Spaceweb__Space-njatzl-0 ebahRE"
     color="primary.900"
-    data-testid="ds-heading"
+    data-testid="ds-text"
   >
     Heading
   </h5>
@@ -17,7 +17,7 @@ exports[`<Heading /> renders heading with default props 1`] = `
   <h5
     class="Textweb__Text-sc-6jf9e4-0 cXaLeO Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
-    data-testid="ds-heading"
+    data-testid="ds-text"
   >
     Heading
   </h5>
@@ -29,7 +29,7 @@ exports[`<Heading /> size renders heading with size large 1`] = `
   <h4
     class="Textweb__Text-sc-6jf9e4-0 dhCBjk Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
-    data-testid="ds-heading"
+    data-testid="ds-text"
   >
     Heading
   </h4>
@@ -41,7 +41,7 @@ exports[`<Heading /> size renders heading with size medium 1`] = `
   <h5
     class="Textweb__Text-sc-6jf9e4-0 cXaLeO Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
-    data-testid="ds-heading"
+    data-testid="ds-text"
   >
     Heading
   </h5>
@@ -53,7 +53,7 @@ exports[`<Heading /> size renders heading with size xlarge 1`] = `
   <h3
     class="Textweb__Text-sc-6jf9e4-0 cjBRhY Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
-    data-testid="ds-heading"
+    data-testid="ds-text"
   >
     Heading
   </h3>
@@ -65,7 +65,7 @@ exports[`<Heading /> size renders heading with size xxlarge 1`] = `
   <h2
     class="Textweb__Text-sc-6jf9e4-0 hxZoYe Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
-    data-testid="ds-heading"
+    data-testid="ds-text"
   >
     Heading
   </h2>
@@ -77,7 +77,7 @@ exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
   <h1
     class="Textweb__Text-sc-6jf9e4-0 jigdLx Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
-    data-testid="ds-heading"
+    data-testid="ds-text"
   >
     Heading
   </h1>
@@ -89,7 +89,7 @@ exports[`<Heading /> weight renders heading with bold weight 1`] = `
   <h5
     class="Textweb__Text-sc-6jf9e4-0 cXaLeO Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
-    data-testid="ds-heading"
+    data-testid="ds-text"
   >
     Heading
   </h5>
@@ -101,7 +101,7 @@ exports[`<Heading /> weight renders heading with regular weight 1`] = `
   <h5
     class="Textweb__Text-sc-6jf9e4-0 xqQS Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
-    data-testid="ds-heading"
+    data-testid="ds-text"
   >
     Heading
   </h5>

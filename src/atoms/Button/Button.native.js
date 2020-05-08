@@ -311,7 +311,7 @@ const Button = ({
                   color={styles.fontColor({ variant, variantColor, disabled })}
                   size={styles.fontSize({ size })}
                   align="center"
-                  _weight="bold"
+                  weight="bold"
                   _letterSpacing={styles.letterSpacing({ size })}
                   _lineHeight={styles.lineHeight({ size })}
                 >
