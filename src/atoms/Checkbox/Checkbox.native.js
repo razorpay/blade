@@ -190,19 +190,21 @@ const Checkbox = ({
                 fill={styles.icon.fill({ isChecked, disabled, variantColor })}
               />
             </Backdrop>
-            <Flex alignSelf="center">
-              <Space margin={styles.title.margin()}>
-                <View>
-                  <Text color={titleTextColor} size={size}>
-                    {title}
-                  </Text>
-                </View>
-              </Space>
-            </Flex>
+            {title ? (
+              <Flex alignSelf="center">
+                <Space margin={styles.title.margin()}>
+                  <View>
+                    <Text color={titleTextColor} size={size}>
+                      {title}
+                    </Text>
+                  </View>
+                </Space>
+              </Flex>
+            ) : null}
           </View>
         </Flex>
 
-        {(!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' ? (
+        {title && (!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' ? (
           <Space margin={styles.helpText.margin(size)}>
             <View>
               <Text
