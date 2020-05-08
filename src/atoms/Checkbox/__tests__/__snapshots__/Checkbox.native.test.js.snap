@@ -41,27 +41,27 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
     >
       <View
         backgroundColor="transparent"
-        borderRadius="10px"
-        height="20px"
+        borderRadius="12px"
+        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
-              "borderRadius": 10,
-              "height": 20,
-              "width": 20,
+              "borderRadius": 12,
+              "height": 24,
+              "width": 24,
             },
           ]
         }
-        width="20px"
+        width="24px"
       >
         <RNSVGSvgView
           align="xMidYMid"
-          bbHeight={20}
-          bbWidth={20}
+          bbHeight={24}
+          bbWidth={24}
           fill="none"
           focusable={false}
-          height={20}
+          height={24}
           meetOrSlice={0}
           minX={0}
           minY={0}
@@ -73,15 +73,14 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width={20}
-          xmlns="http://www.w3.org/2000/svg"
+          width={24}
         >
           <RNSVGGroup
             fill={null}
@@ -93,14 +92,12 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
           >
             <RNSVGPath
               clipRule={0}
-              d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
+              d="M6 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8zm8.642 2.904a.562.562 0 10-.784-.808l-2.702 2.62-1.014-.983a.563.563 0 00-.784.807l1.407 1.364a.562.562 0 00.783 0l3.094-3z"
               fill={4281041898}
-              fillOpacity={0.87}
               fillRule={0}
               propList={
                 Array [
                   "fill",
-                  "fillOpacity",
                   "fillRule",
                 ]
               }
@@ -160,7 +157,7 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
           Array [
             Object {
               "marginBottom": 0,
-              "marginLeft": 24,
+              "marginLeft": 28,
               "marginRight": 0,
               "marginTop": 0,
             },
@@ -238,27 +235,27 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
     >
       <View
         backgroundColor="transparent"
-        borderRadius="10px"
-        height="20px"
+        borderRadius="12px"
+        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
-              "borderRadius": 10,
-              "height": 20,
-              "width": 20,
+              "borderRadius": 12,
+              "height": 24,
+              "width": 24,
             },
           ]
         }
-        width="20px"
+        width="24px"
       >
         <RNSVGSvgView
           align="xMidYMid"
-          bbHeight={20}
-          bbWidth={20}
+          bbHeight={24}
+          bbWidth={24}
           fill="none"
           focusable={false}
-          height={20}
+          height={24}
           meetOrSlice={0}
           minX={0}
           minY={0}
@@ -270,15 +267,14 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width={20}
-          xmlns="http://www.w3.org/2000/svg"
+          width={24}
         >
           <RNSVGGroup
             fill={null}
@@ -290,14 +286,12 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
           >
             <RNSVGPath
               clipRule={0}
-              d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
+              d="M6 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8zm8.642 2.904a.562.562 0 10-.784-.808l-2.702 2.62-1.014-.983a.563.563 0 00-.784.807l1.407 1.364a.562.562 0 00.783 0l3.094-3z"
               fill={4281041898}
-              fillOpacity={0.87}
               fillRule={0}
               propList={
                 Array [
                   "fill",
-                  "fillOpacity",
                   "fillRule",
                 ]
               }
@@ -396,27 +390,27 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
     >
       <View
         backgroundColor="rgba(11, 112, 231, 0.10)"
-        borderRadius="10px"
-        height="20px"
+        borderRadius="12px"
+        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "rgba(11, 112, 231, 0.10)",
-              "borderRadius": 10,
-              "height": 20,
-              "width": 20,
+              "borderRadius": 12,
+              "height": 24,
+              "width": 24,
             },
           ]
         }
-        width="20px"
+        width="24px"
       >
         <RNSVGSvgView
           align="xMidYMid"
-          bbHeight={20}
-          bbWidth={20}
+          bbHeight={24}
+          bbWidth={24}
           fill="none"
           focusable={false}
-          height={20}
+          height={24}
           meetOrSlice={0}
           minX={0}
           minY={0}
@@ -428,15 +422,14 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width={20}
-          xmlns="http://www.w3.org/2000/svg"
+          width={24}
         >
           <RNSVGGroup
             fill={null}
@@ -448,14 +441,12 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
           >
             <RNSVGPath
               clipRule={0}
-              d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
+              d="M6 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8zm8.642 2.904a.562.562 0 10-.784-.808l-2.702 2.62-1.014-.983a.563.563 0 00-.784.807l1.407 1.364a.562.562 0 00.783 0l3.094-3z"
               fill={4281041898}
-              fillOpacity={0.87}
               fillRule={0}
               propList={
                 Array [
                   "fill",
-                  "fillOpacity",
                   "fillRule",
                 ]
               }
@@ -554,27 +545,27 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
     >
       <View
         backgroundColor="transparent"
-        borderRadius="10px"
-        height="20px"
+        borderRadius="12px"
+        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
-              "borderRadius": 10,
-              "height": 20,
-              "width": 20,
+              "borderRadius": 12,
+              "height": 24,
+              "width": 24,
             },
           ]
         }
-        width="20px"
+        width="24px"
       >
         <RNSVGSvgView
           align="xMidYMid"
-          bbHeight={20}
-          bbWidth={20}
+          bbHeight={24}
+          bbWidth={24}
           fill="none"
           focusable={false}
-          height={20}
+          height={24}
           meetOrSlice={0}
           minX={0}
           minY={0}
@@ -586,15 +577,14 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width={20}
-          xmlns="http://www.w3.org/2000/svg"
+          width={24}
         >
           <RNSVGGroup
             fill={null}
@@ -606,14 +596,12 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
           >
             <RNSVGPath
               clipRule={0}
-              d="M4.80005 7.20005C4.80005 5.87457 5.87457 4.80005 7.20005 4.80005H16.8C18.1255 4.80005 19.2 5.87457 19.2 7.20005V16.8C19.2 18.1255 18.1255 19.2 16.8 19.2H7.20005C5.87457 19.2 4.80005 18.1255 4.80005 16.8V7.20005ZM15.1699 10.6846C15.4376 10.4251 15.4442 9.99778 15.1846 9.73015C14.9251 9.46252 14.4978 9.45595 14.2302 9.71547L10.9875 12.8598L9.76995 11.6791C9.50232 11.4196 9.07498 11.4262 8.81547 11.6938C8.55595 11.9614 8.56252 12.3888 8.83015 12.6483L10.5177 14.2846C10.7795 14.5385 11.1956 14.5385 11.4574 14.2846L15.1699 10.6846Z"
+              d="M6 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8zm8.642 2.904a.562.562 0 10-.784-.808l-2.702 2.62-1.014-.983a.563.563 0 00-.784.807l1.407 1.364a.562.562 0 00.783 0l3.094-3z"
               fill={4281041898}
-              fillOpacity={0.87}
               fillRule={0}
               propList={
                 Array [
                   "fill",
-                  "fillOpacity",
                   "fillRule",
                 ]
               }
@@ -712,27 +700,27 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
     >
       <View
         backgroundColor="transparent"
-        borderRadius="10px"
-        height="20px"
+        borderRadius="12px"
+        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
-              "borderRadius": 10,
-              "height": 20,
-              "width": 20,
+              "borderRadius": 12,
+              "height": 24,
+              "width": 24,
             },
           ]
         }
-        width="20px"
+        width="24px"
       >
         <RNSVGSvgView
           align="xMidYMid"
-          bbHeight={20}
-          bbWidth={20}
+          bbHeight={24}
+          bbWidth={24}
           fill="none"
           focusable={false}
-          height={20}
+          height={24}
           meetOrSlice={0}
           minX={0}
           minY={0}
@@ -744,15 +732,14 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width={20}
-          xmlns="http://www.w3.org/2000/svg"
+          width={24}
         >
           <RNSVGGroup
             fill={null}
@@ -764,7 +751,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
           >
             <RNSVGPath
               clipRule={0}
-              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
@@ -870,27 +857,27 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
     >
       <View
         backgroundColor="transparent"
-        borderRadius="10px"
-        height="20px"
+        borderRadius="12px"
+        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
-              "borderRadius": 10,
-              "height": 20,
-              "width": 20,
+              "borderRadius": 12,
+              "height": 24,
+              "width": 24,
             },
           ]
         }
-        width="20px"
+        width="24px"
       >
         <RNSVGSvgView
           align="xMidYMid"
-          bbHeight={20}
-          bbWidth={20}
+          bbHeight={24}
+          bbWidth={24}
           fill="none"
           focusable={false}
-          height={20}
+          height={24}
           meetOrSlice={0}
           minX={0}
           minY={0}
@@ -902,15 +889,14 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width={20}
-          xmlns="http://www.w3.org/2000/svg"
+          width={24}
         >
           <RNSVGGroup
             fill={null}
@@ -922,7 +908,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
           >
             <RNSVGPath
               clipRule={0}
-              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
@@ -1028,27 +1014,27 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
     >
       <View
         backgroundColor="transparent"
-        borderRadius="10px"
-        height="20px"
+        borderRadius="12px"
+        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
-              "borderRadius": 10,
-              "height": 20,
-              "width": 20,
+              "borderRadius": 12,
+              "height": 24,
+              "width": 24,
             },
           ]
         }
-        width="20px"
+        width="24px"
       >
         <RNSVGSvgView
           align="xMidYMid"
-          bbHeight={20}
-          bbWidth={20}
+          bbHeight={24}
+          bbWidth={24}
           fill="none"
           focusable={false}
-          height={20}
+          height={24}
           meetOrSlice={0}
           minX={0}
           minY={0}
@@ -1060,15 +1046,14 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width={20}
-          xmlns="http://www.w3.org/2000/svg"
+          width={24}
         >
           <RNSVGGroup
             fill={null}
@@ -1080,7 +1065,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
           >
             <RNSVGPath
               clipRule={0}
-              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
@@ -1186,27 +1171,27 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
     >
       <View
         backgroundColor="transparent"
-        borderRadius="10px"
-        height="20px"
+        borderRadius="12px"
+        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
-              "borderRadius": 10,
-              "height": 20,
-              "width": 20,
+              "borderRadius": 12,
+              "height": 24,
+              "width": 24,
             },
           ]
         }
-        width="20px"
+        width="24px"
       >
         <RNSVGSvgView
           align="xMidYMid"
-          bbHeight={20}
-          bbWidth={20}
+          bbHeight={24}
+          bbWidth={24}
           fill="none"
           focusable={false}
-          height={20}
+          height={24}
           meetOrSlice={0}
           minX={0}
           minY={0}
@@ -1218,15 +1203,14 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width={20}
-          xmlns="http://www.w3.org/2000/svg"
+          width={24}
         >
           <RNSVGGroup
             fill={null}
@@ -1238,7 +1222,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
           >
             <RNSVGPath
               clipRule={0}
-              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
@@ -1344,27 +1328,27 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
     >
       <View
         backgroundColor="transparent"
-        borderRadius="10px"
-        height="20px"
+        borderRadius="12px"
+        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
-              "borderRadius": 10,
-              "height": 20,
-              "width": 20,
+              "borderRadius": 12,
+              "height": 24,
+              "width": 24,
             },
           ]
         }
-        width="20px"
+        width="24px"
       >
         <RNSVGSvgView
           align="xMidYMid"
-          bbHeight={20}
-          bbWidth={20}
+          bbHeight={24}
+          bbWidth={24}
           fill="none"
           focusable={false}
-          height={20}
+          height={24}
           meetOrSlice={0}
           minX={0}
           minY={0}
@@ -1376,15 +1360,14 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width={20}
-          xmlns="http://www.w3.org/2000/svg"
+          width={24}
         >
           <RNSVGGroup
             fill={null}
@@ -1396,7 +1379,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
           >
             <RNSVGPath
               clipRule={0}
-              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
@@ -1463,7 +1446,7 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
           Array [
             Object {
               "marginBottom": 0,
-              "marginLeft": 24,
+              "marginLeft": 28,
               "marginRight": 0,
               "marginTop": 0,
             },
@@ -1541,27 +1524,27 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
     >
       <View
         backgroundColor="rgba(224, 228, 249, 0.24)"
-        borderRadius="10px"
-        height="20px"
+        borderRadius="12px"
+        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "rgba(224, 228, 249, 0.24)",
-              "borderRadius": 10,
-              "height": 20,
-              "width": 20,
+              "borderRadius": 12,
+              "height": 24,
+              "width": 24,
             },
           ]
         }
-        width="20px"
+        width="24px"
       >
         <RNSVGSvgView
           align="xMidYMid"
-          bbHeight={20}
-          bbWidth={20}
+          bbHeight={24}
+          bbWidth={24}
           fill="none"
           focusable={false}
-          height={20}
+          height={24}
           meetOrSlice={0}
           minX={0}
           minY={0}
@@ -1573,15 +1556,14 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width={20}
-          xmlns="http://www.w3.org/2000/svg"
+          width={24}
         >
           <RNSVGGroup
             fill={null}
@@ -1593,7 +1575,7 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
           >
             <RNSVGPath
               clipRule={0}
-              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
@@ -1699,27 +1681,27 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
     >
       <View
         backgroundColor="transparent"
-        borderRadius="10px"
-        height="20px"
+        borderRadius="12px"
+        height="24px"
         style={
           Array [
             Object {
               "backgroundColor": "transparent",
-              "borderRadius": 10,
-              "height": 20,
-              "width": 20,
+              "borderRadius": 12,
+              "height": 24,
+              "width": 24,
             },
           ]
         }
-        width="20px"
+        width="24px"
       >
         <RNSVGSvgView
           align="xMidYMid"
-          bbHeight={20}
-          bbWidth={20}
+          bbHeight={24}
+          bbWidth={24}
           fill="none"
           focusable={false}
-          height={20}
+          height={24}
           meetOrSlice={0}
           minX={0}
           minY={0}
@@ -1731,15 +1713,14 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
               },
               Object {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 24,
+                "width": 24,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width={20}
-          xmlns="http://www.w3.org/2000/svg"
+          width={24}
         >
           <RNSVGGroup
             fill={null}
@@ -1751,7 +1732,7 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
           >
             <RNSVGPath
               clipRule={0}
-              d="M16.8 6.00005H7.20005C6.53731 6.00005 6.00005 6.53731 6.00005 7.20005V16.8C6.00005 17.4628 6.53731 18 7.20005 18H16.8C17.4628 18 18 17.4628 18 16.8V7.20005C18 6.53731 17.4628 6.00005 16.8 6.00005ZM7.20005 4.80005C5.87457 4.80005 4.80005 5.87457 4.80005 7.20005V16.8C4.80005 18.1255 5.87457 19.2 7.20005 19.2H16.8C18.1255 19.2 19.2 18.1255 19.2 16.8V7.20005C19.2 5.87457 18.1255 4.80005 16.8 4.80005H7.20005Z"
+              d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
               fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}

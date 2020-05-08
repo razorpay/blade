@@ -9,6 +9,7 @@ const iconSize = {
   small: 16,
   medium: 20,
   large: 24,
+  xlarge: 28,
 };
 
 const Icon = ({ size, name, fill, testID, ...rest }) => {

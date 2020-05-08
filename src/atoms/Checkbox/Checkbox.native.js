@@ -25,20 +25,32 @@ const styles = {
 
       return 'shade.950';
     },
+    size({ size }) {
+      switch (size) {
+        case 'large':
+          return 'xlarge';
+        case 'medium':
+          return 'large';
+        case 'small':
+          return 'medium';
+        default:
+          return 'medium';
+      }
+    },
   },
   helpText: {
     margin(size) {
       switch (size) {
         case 'large':
-          return [0, 0, 0, 3.5];
+          return [0, 0, 0, 4];
         case 'medium':
-          return [0, 0, 0, 3];
+          return [0, 0, 0, 3.5];
         case 'small':
-          return [0, 0, 0, 2.5];
-        case 'xsmall':
-          return [0, 0, 0, 2];
-        default:
           return [0, 0, 0, 3];
+        case 'xsmall':
+          return [0, 0, 0, 2.5];
+        default:
+          return [0, 0, 0, 3.5];
       }
     },
     size(checkboxSize) {
@@ -62,33 +74,33 @@ const styles = {
       switch (size) {
         case 'large':
           return {
+            width: '28px',
+            height: '28px',
+            borderRadius: '14px',
+          };
+        case 'medium':
+          return {
             width: '24px',
             height: '24px',
             borderRadius: '12px',
           };
-        case 'medium':
+        case 'small':
           return {
             width: '20px',
             height: '20px',
             borderRadius: '10px',
           };
-        case 'small':
+        case 'xsmall':
           return {
             width: '16px',
             height: '16px',
             borderRadius: '8px',
           };
-        case 'xsmall':
-          return {
-            width: '12px',
-            height: '12px',
-            borderRadius: '6px',
-          };
         default:
           return {
-            width: '20px',
-            height: '20px',
-            borderRadius: '10px',
+            width: '24px',
+            height: '24px',
+            borderRadius: '12px',
           };
       }
     },
@@ -173,7 +185,7 @@ const Checkbox = ({
           <View>
             <Backdrop backgroundColor={underlayColor} {...styles.backdrop.dimensions(size)}>
               <Icon
-                size={size}
+                size={styles.icon.size({ size })}
                 name={isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
                 fill={styles.icon.fill({ isChecked, disabled, variantColor })}
               />
