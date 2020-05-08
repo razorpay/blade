@@ -10,7 +10,24 @@ afterAll(() => jest.restoreAllMocks());
 
 describe('<Tabs />', () => {
   describe('renders', () => {
-    it('three tabs', () => {
+    it('three tabs without defaultValue', () => {
+      const { container } = renderWithTheme(
+        <Tabs>
+          <Tabs.Tab value="one" label="One" testID="ds-tab-one">
+            <Text>Screen One</Text>
+          </Tabs.Tab>
+          <Tabs.Tab value="two" label="Two" testID="ds-tab-two">
+            <Text>Screen Two</Text>
+          </Tabs.Tab>
+          <Tabs.Tab value="three" label="Three" testID="ds-tab-three">
+            <Text>Screen Three</Text>
+          </Tabs.Tab>
+        </Tabs>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('three tabs with defaultValue', () => {
       const { container } = renderWithTheme(
         <Tabs defaultValue="one">
           <Tabs.Tab value="one" label="One" testID="ds-tab-one">
