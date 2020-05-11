@@ -23,6 +23,7 @@ const icons = {
   search: require('./Search').default,
   smartCollect: require('./SmartCollect').default,
   subscription: require('./Subscription').default,
+  successSnackbar: require('./SuccessSnackbar').default,
 };
 
 export default icons;
