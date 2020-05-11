@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getThemeColors } from '../../_helpers/theme';
 import colors from '../../tokens/colors';
 
-function Test({ width, height, fill }) {
+function SuccessSnackbar({ width, height, fill }) {
   return (
     <svg
       width={width}
@@ -24,16 +24,16 @@ function Test({ width, height, fill }) {
   );
 }
 
-Test.propTypes = {
+SuccessSnackbar.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   fill: PropTypes.oneOf(getThemeColors()),
 };
 
-Test.defaultProps = {
+SuccessSnackbar.defaultProps = {
   width: 24,
   height: 24,
   fill: colors.sapphire[800],
 };
 
-export default Test;
+export default SuccessSnackbar;
