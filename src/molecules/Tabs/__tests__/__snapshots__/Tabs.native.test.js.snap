@@ -647,7 +647,7 @@ exports[`<Tabs /> onChange changes tab 1`] = `
       }
     >
       <TouchableOpacity
-        active={false}
+        active={true}
         activeOpacity={1}
         disabled={false}
         pressed={false}
@@ -673,12 +673,12 @@ exports[`<Tabs /> onChange changes tab 1`] = `
         testID="ds-tab-one"
       >
         <View
-          active={false}
+          active={true}
           disabled={false}
           style={
             Array [
               Object {
-                "borderBottomColor": "transparent",
+                "borderBottomColor": "rgba(43, 131, 234, 1.0 )",
                 "borderBottomWidth": 1,
               },
               Array [
@@ -718,12 +718,12 @@ exports[`<Tabs /> onChange changes tab 1`] = `
               _isUnderlined={false}
               _letterSpacing="small"
               align="left"
-              color="shade.960"
+              color="primary.800"
               size="medium"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.54)",
+                    "color": "rgba(43, 131, 234, 1.0 )",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "letterSpacing": 0,
@@ -860,8 +860,8 @@ exports[`<Tabs /> onChange changes tab 1`] = `
       }
     >
       <View
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
+        accessibilityElementsHidden={false}
+        importantForAccessibility="auto"
         style={
           Array [
             Object {
@@ -1593,7 +1593,7 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
       }
     >
       <TouchableOpacity
-        active={false}
+        active={true}
         activeOpacity={1}
         disabled={false}
         pressed={false}
@@ -1619,12 +1619,12 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
         testID="ds-tab-one"
       >
         <View
-          active={false}
+          active={true}
           disabled={false}
           style={
             Array [
               Object {
-                "borderBottomColor": "transparent",
+                "borderBottomColor": "rgba(43, 131, 234, 1.0 )",
                 "borderBottomWidth": 1,
               },
               Array [
@@ -1664,12 +1664,12 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
               _isUnderlined={false}
               _letterSpacing="small"
               align="left"
-              color="shade.960"
+              color="primary.800"
               size="medium"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.54)",
+                    "color": "rgba(43, 131, 234, 1.0 )",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "letterSpacing": 0,
@@ -1901,8 +1901,8 @@ exports[`<Tabs /> renders three tabs with defaultValue 1`] = `
       }
     >
       <View
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
+        accessibilityElementsHidden={false}
+        importantForAccessibility="auto"
         style={
           Array [
             Object {
@@ -2011,7 +2011,7 @@ exports[`<Tabs /> renders three tabs without defaultValue 1`] = `
       }
     >
       <TouchableOpacity
-        active={false}
+        active={true}
         activeOpacity={1}
         disabled={false}
         pressed={false}
@@ -2037,12 +2037,12 @@ exports[`<Tabs /> renders three tabs without defaultValue 1`] = `
         testID="ds-tab-one"
       >
         <View
-          active={false}
+          active={true}
           disabled={false}
           style={
             Array [
               Object {
-                "borderBottomColor": "transparent",
+                "borderBottomColor": "rgba(43, 131, 234, 1.0 )",
                 "borderBottomWidth": 1,
               },
               Array [
@@ -2082,12 +2082,12 @@ exports[`<Tabs /> renders three tabs without defaultValue 1`] = `
               _isUnderlined={false}
               _letterSpacing="small"
               align="left"
-              color="shade.960"
+              color="primary.800"
               size="medium"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.54)",
+                    "color": "rgba(43, 131, 234, 1.0 )",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "letterSpacing": 0,
@@ -2319,8 +2319,8 @@ exports[`<Tabs /> renders three tabs without defaultValue 1`] = `
       }
     >
       <View
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
+        accessibilityElementsHidden={false}
+        importantForAccessibility="auto"
         style={
           Array [
             Object {
@@ -2429,7 +2429,7 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
       }
     >
       <TouchableOpacity
-        active={false}
+        active={true}
         activeOpacity={1}
         disabled={false}
         pressed={false}
@@ -2455,12 +2455,12 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
         testID="ds-tab-button"
       >
         <View
-          active={false}
+          active={true}
           disabled={false}
           style={
             Array [
               Object {
-                "borderBottomColor": "transparent",
+                "borderBottomColor": "rgba(43, 131, 234, 1.0 )",
                 "borderBottomWidth": 1,
               },
               Array [
@@ -2486,7 +2486,7 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
             align="xMidYMid"
             bbHeight={16}
             bbWidth={16}
-            fill="rgba(22, 47, 86, 0.54)"
+            fill="rgba(43, 131, 234, 1.0 )"
             focusable={false}
             height={16}
             meetOrSlice={0}
@@ -2511,7 +2511,7 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
             width={16}
           >
             <RNSVGGroup
-              fill={2316709718}
+              fill={4281041898}
               propList={
                 Array [
                   "fill",
@@ -2541,12 +2541,12 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
               _isUnderlined={false}
               _letterSpacing="small"
               align="left"
-              color="shade.960"
+              color="primary.800"
               size="medium"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.54)",
+                    "color": "rgba(43, 131, 234, 1.0 )",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "letterSpacing": 0,
@@ -2724,8 +2724,8 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
       }
     >
       <View
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
+        accessibilityElementsHidden={false}
+        importantForAccessibility="auto"
         style={
           Array [
             Object {
@@ -2818,7 +2818,7 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
       }
     >
       <TouchableOpacity
-        active={false}
+        active={true}
         activeOpacity={1}
         disabled={false}
         pressed={false}
@@ -2844,12 +2844,12 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
         testID="ds-tab-button"
       >
         <View
-          active={false}
+          active={true}
           disabled={false}
           style={
             Array [
               Object {
-                "borderBottomColor": "transparent",
+                "borderBottomColor": "rgba(43, 131, 234, 1.0 )",
                 "borderBottomWidth": 1,
               },
               Array [
@@ -2875,7 +2875,7 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
             align="xMidYMid"
             bbHeight={16}
             bbWidth={16}
-            fill="rgba(22, 47, 86, 0.54)"
+            fill="rgba(43, 131, 234, 1.0 )"
             focusable={false}
             height={16}
             meetOrSlice={0}
@@ -2900,7 +2900,7 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
             width={16}
           >
             <RNSVGGroup
-              fill={2316709718}
+              fill={4281041898}
               propList={
                 Array [
                   "fill",
@@ -2930,12 +2930,12 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
               _isUnderlined={false}
               _letterSpacing="small"
               align="left"
-              color="shade.960"
+              color="primary.800"
               size="medium"
               style={
                 Array [
                   Object {
-                    "color": "rgba(22, 47, 86, 0.54)",
+                    "color": "rgba(43, 131, 234, 1.0 )",
                     "fontFamily": "Lato-Regular",
                     "fontSize": 14,
                     "letterSpacing": 0,
@@ -3113,8 +3113,8 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
       }
     >
       <View
-        accessibilityElementsHidden={true}
-        importantForAccessibility="no-hide-descendants"
+        accessibilityElementsHidden={false}
+        importantForAccessibility="auto"
         style={
           Array [
             Object {
