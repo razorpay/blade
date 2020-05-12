@@ -186,7 +186,7 @@ const Checkbox = ({
             <Backdrop backgroundColor={underlayColor} {...styles.backdrop.dimensions(size)}>
               <Icon
                 size={styles.icon.size({ size })}
-                name={isChecked || externalChecked ? 'checkboxFilled' : 'checkboxOutlined'}
+                name={externalChecked ?? isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
                 fill={styles.icon.fill({ isChecked, disabled, variantColor, externalChecked })}
               />
             </Backdrop>
