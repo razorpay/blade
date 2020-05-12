@@ -50,7 +50,7 @@ const StyledText = styled(Text)`
   }
 `;
 
-const Link = ({ size, children, href, target, testID, rel, disabled }) => {
+const Link = ({ size, children, href, target, testID, rel, disabled, ...props }) => {
   return (
     <StyledText
       as="a"
@@ -59,6 +59,7 @@ const Link = ({ size, children, href, target, testID, rel, disabled }) => {
       href={disabled ? '' : href}
       target={target}
       disabled={disabled}
+      {...props}
       {...automation(testID)}
     >
       {children}
