@@ -58,6 +58,7 @@ const StyledCard = styled(View)`
   elevation: ${styles.elevation};
   background-color: ${styles.backgroundColor};
   border: ${styles.border};
+  border-radius: 2px;
 `;
 
 const Card = ({ children, variant, backgroundColor, borderColor, testID }) => {

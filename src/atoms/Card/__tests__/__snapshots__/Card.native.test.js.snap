@@ -18,6 +18,7 @@ exports[`<Card /> outlined renders an outlined Card 1`] = `
         Object {
           "backgroundColor": "rgba(255, 255, 255, 1.0)",
           "borderColor": "rgba(11, 112, 231, 0.10)",
+          "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "elevation": 0,
@@ -63,6 +64,7 @@ exports[`<Card /> outlined renders an outlined Card with custom background color
         Object {
           "backgroundColor": "rgba(11, 112, 231, 0.05)",
           "borderColor": "rgba(11, 112, 231, 0.10)",
+          "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "elevation": 0,
@@ -108,6 +110,7 @@ exports[`<Card /> outlined renders an outlined Card with custom border color 1`]
         Object {
           "backgroundColor": "rgba(255, 255, 255, 1.0)",
           "borderColor": "rgba(11, 112, 231, 0.05)",
+          "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "elevation": 0,
@@ -153,6 +156,7 @@ exports[`<Card /> outlined renders an outlined Card with text content 1`] = `
         Object {
           "backgroundColor": "rgba(255, 255, 255, 1.0)",
           "borderColor": "rgba(11, 112, 231, 0.10)",
+          "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
           "elevation": 0,
@@ -223,6 +227,7 @@ exports[`<Card /> shadowed renders a shadowed Card 1`] = `
         Object {
           "backgroundColor": "rgba(255, 255, 255, 1.0)",
           "borderColor": "black",
+          "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 0,
           "elevation": 2,
@@ -268,6 +273,7 @@ exports[`<Card /> shadowed renders a shadowed Card with custom background color 
         Object {
           "backgroundColor": "rgba(11, 112, 231, 0.05)",
           "borderColor": "black",
+          "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 0,
           "elevation": 2,
@@ -313,6 +319,7 @@ exports[`<Card /> shadowed renders a shadowed Card with text content 1`] = `
         Object {
           "backgroundColor": "rgba(255, 255, 255, 1.0)",
           "borderColor": "black",
+          "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 0,
           "elevation": 2,
