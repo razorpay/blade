@@ -122,17 +122,11 @@ const Checkbox = ({
   let titleTextColor = 'shade.980';
   let helpTextColor = 'shade.950';
 
-  let checkboxInitialState = false;
-
   if (isDefined(defaultChecked) && isDefined(externalChecked)) {
     throw Error('One of defaultChecked or checked should be supplied.');
   }
 
-  if (isDefined(defaultChecked)) {
-    checkboxInitialState = defaultChecked;
-  }
-
-  const [isChecked, setIsChecked] = useState(checkboxInitialState);
+  const [isChecked, setIsChecked] = useState(defaultChecked || false);
   const [underlayColor, setUnderlayColor] = useState('transparent');
   const theme = useContext(ThemeContext);
 
