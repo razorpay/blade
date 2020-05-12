@@ -11,6 +11,7 @@ const icons = {
   chevronRight: require('./ChevronRight').default,
   chevronUp: require('./ChevronUp').default,
   close: require('./Close').default,
+  failure: require('./Failure').default,
   info: require('./Info').default,
   invoice: require('./Invoice').default,
   maximize: require('./Maximize').default,
@@ -23,6 +24,7 @@ const icons = {
   search: require('./Search').default,
   smartCollect: require('./SmartCollect').default,
   subscription: require('./Subscription').default,
+  success: require('./Success').default,
 };
 
 export default icons;
