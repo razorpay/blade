@@ -132,10 +132,6 @@ const Checkbox = ({
     checkboxInitialState = defaultChecked;
   }
 
-  if (isDefined(externalChecked)) {
-    checkboxInitialState = externalChecked;
-  }
-
   const [isChecked, setIsChecked] = useState(checkboxInitialState);
   const [underlayColor, setUnderlayColor] = useState('transparent');
   const theme = useContext(ThemeContext);
@@ -155,14 +151,14 @@ const Checkbox = ({
 
   const onPress = useCallback(() => {
     if (isDefined(externalChecked)) {
-      onChange(!isChecked);
+      onChange(!externalChecked);
       return;
     }
     setIsChecked((prevState) => {
       onChange(!prevState);
       return !prevState;
     });
-  }, [externalChecked, isChecked, onChange]);
+  }, [externalChecked, onChange]);
 
   if (disabled) {
     titleTextColor = 'shade.950';
