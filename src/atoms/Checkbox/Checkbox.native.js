@@ -15,11 +15,11 @@ import Backdrop from './Backdrop';
 
 const styles = {
   icon: {
-    fill({ disabled, isChecked, variantColor }) {
+    fill({ disabled, isChecked, variantColor, externalChecked }) {
       if (disabled) {
         return 'shade.930';
       }
-      if (isChecked) {
+      if (isChecked || externalChecked) {
         return `${variantColor || 'primary'}.800`;
       }
 
@@ -109,7 +109,7 @@ const styles = {
 
 const Checkbox = ({
   defaultChecked,
-  checked,
+  checked: externalChecked,
   onChange,
   disabled,
   title,
@@ -122,47 +122,37 @@ const Checkbox = ({
   let titleTextColor = 'shade.980';
   let helpTextColor = 'shade.950';
 
-  let checkboxInitialState = false;
-
-  if (isDefined(defaultChecked) && isDefined(checked)) {
+  if (isDefined(defaultChecked) && isDefined(externalChecked)) {
     throw Error('One of defaultChecked or checked should be supplied.');
   }
 
-  if (isDefined(defaultChecked)) {
-    checkboxInitialState = defaultChecked;
-  }
-
-  if (isDefined(checked)) {
-    checkboxInitialState = checked;
-  }
-
-  const [isChecked, setCheckboxState] = useState(checkboxInitialState);
+  const [isChecked, setIsChecked] = useState(defaultChecked || false);
   const [underlayColor, setUnderlayColor] = useState('transparent');
   const theme = useContext(ThemeContext);
 
   const onPressIn = useCallback(() => {
     let colorKey = 'tone.940';
-    if (isChecked) {
+    if (isChecked || externalChecked) {
       colorKey = `${variantColor || 'primary'}.930`;
     }
     const newUnderlayColor = getColor(theme, colorKey);
     setUnderlayColor(newUnderlayColor);
-  }, [isChecked, theme, variantColor]);
+  }, [isChecked, theme, variantColor, externalChecked]);
 
   const onPressOut = useCallback(() => {
     setUnderlayColor('transparent');
   }, []);
 
   const onPress = useCallback(() => {
-    if (isDefined(checked)) {
-      onChange(!isChecked);
+    if (isDefined(externalChecked)) {
+      onChange(!externalChecked);
       return;
     }
-    setCheckboxState((prevState) => {
+    setIsChecked((prevState) => {
       onChange(!prevState);
       return !prevState;
     });
-  }, [checked, isChecked, onChange]);
+  }, [externalChecked, onChange]);
 
   if (disabled) {
     titleTextColor = 'shade.950';
@@ -186,8 +176,8 @@ const Checkbox = ({
             <Backdrop backgroundColor={underlayColor} {...styles.backdrop.dimensions(size)}>
               <Icon
                 size={styles.icon.size({ size })}
-                name={isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
-                fill={styles.icon.fill({ isChecked, disabled, variantColor })}
+                name={externalChecked ?? isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
+                fill={styles.icon.fill({ isChecked, disabled, variantColor, externalChecked })}
               />
             </Backdrop>
             {title ? (
