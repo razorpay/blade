@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback } from 'react';
+import React, { useState, useContext, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import { ThemeContext } from 'styled-components/native';
@@ -140,6 +140,12 @@ const Checkbox = ({
   const [underlayColor, setUnderlayColor] = useState('transparent');
   const theme = useContext(ThemeContext);
 
+  useEffect(() => {
+    if (isDefined(checked)) {
+      setCheckboxState(checked);
+    }
+  }, [checked]);
+
   const onPressIn = useCallback(() => {
     let colorKey = 'tone.940';
     if (isChecked) {
@@ -159,8 +165,9 @@ const Checkbox = ({
       return;
     }
     setCheckboxState((prevState) => {
-      onChange(!prevState);
-      return !prevState;
+      const newState = !prevState;
+      onChange(newState);
+      return newState;
     });
   }, [checked, isChecked, onChange]);
 
