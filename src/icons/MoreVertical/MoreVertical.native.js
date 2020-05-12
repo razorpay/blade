@@ -10,7 +10,7 @@ function MoreVertical({ width, height, fill }) {
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M9 12a3 3 0 116 0 3 3 0 01-6 0zm3-1a1 1 0 100 2 1 1 0 000-2zM9 4a3 3 0 116 0 3 3 0 01-6 0zm3-1a1 1 0 100 2 1 1 0 000-2zM9 20a3 3 0 116 0 3 3 0 01-6 0zm3-1a1 1 0 100 2 1 1 0 000-2z"
+        d="M9 12a3 3 0 116 0 3 3 0 01-6 0zM9 4a3 3 0 116 0 3 3 0 01-6 0zM9 20a3 3 0 116 0 3 3 0 01-6 0z"
         fill={fill}
       />
     </Svg>
