@@ -76,10 +76,12 @@ const Tabs = ({ children, defaultValue, value, onChange }) => {
 
   const onIndexChange = useCallback(
     (newIndex) => {
-      if (!isDefined(value)) {
-        setIndex(newIndex);
+      if (typeof newIndex === 'number') {
+        if (!isDefined(value)) {
+          setIndex(newIndex);
+        }
+        if (onChange) onChange(getRouteValueFromIndex({ routes, index: newIndex }));
       }
-      if (onChange) onChange(getRouteValueFromIndex({ routes, index: newIndex }));
     },
     [onChange, value, routes],
   );
