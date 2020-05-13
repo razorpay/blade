@@ -13,7 +13,7 @@ const Tab = () => {
 };
 
 Tab.propTypes = {
-  label: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   onPress: PropTypes.func,
   disabled: PropTypes.bool,
   icon: PropTypes.oneOf(getIconNames()),
@@ -38,7 +38,7 @@ const shouldDisableSwipe = ({ tabs }) => Boolean(tabs.find((tab) => tab.props.di
 const getRoutes = ({ tabs }) => {
   return tabs.map((TabComponent, index) => ({
     index,
-    label: TabComponent.props.label,
+    title: TabComponent.props.title,
     key: TabComponent.props.value,
     value: TabComponent.props.value,
     onPress: TabComponent.props.onPress,

@@ -12,7 +12,7 @@ import isEmpty from '../../_helpers/isEmpty';
 import { getIconNames } from '../../_helpers/icon';
 
 const styles = {
-  label: {
+  title: {
     borderBottomColor({ active, theme, disabled }) {
       if (disabled) {
         if (active) {
@@ -57,12 +57,12 @@ const StyledTabButton = styled(TouchableOpacity)`
   border-top-right-radius: ${(props) => props.theme.spacings.xxsmall};
 `;
 
-const Label = styled(View)`
+const Title = styled(View)`
   border-bottom-width: 1px;
-  border-bottom-color: ${styles.label.borderBottomColor};
+  border-bottom-color: ${styles.title.borderBottomColor};
 `;
 
-const TabButton = ({ label, active, icon, onPress, disabled, testID }) => {
+const TabButton = ({ title, active, icon, onPress, disabled, testID }) => {
   const [pressed, setPressed] = useState(false);
 
   const onPressIn = useCallback(() => {
@@ -73,7 +73,7 @@ const TabButton = ({ label, active, icon, onPress, disabled, testID }) => {
     setPressed(false);
   }, []);
 
-  const labelColor = styles.label.color({ active, disabled, pressed });
+  const titleColor = styles.title.color({ active, disabled, pressed });
 
   return (
     <Flex flex={1} justifyContent="center">
@@ -89,16 +89,16 @@ const TabButton = ({ label, active, icon, onPress, disabled, testID }) => {
       >
         <Flex alignItems="center" alignSelf="center" flexDirection="row" flexWrap="wrap">
           <Space padding={[1, 0, 1, 0]}>
-            <Label active={active} disabled={disabled}>
-              {!isEmpty(icon) ? <Icon name={icon} fill={labelColor} size="small" /> : null}
+            <Title active={active} disabled={disabled}>
+              {!isEmpty(icon) ? <Icon name={icon} fill={titleColor} size="small" /> : null}
               <Space margin={[0, 0, 0, 0.5]}>
                 <View>
-                  <Text color={labelColor} disabled={disabled} numberOfLines={1} size="medium">
-                    {label}
+                  <Text color={titleColor} disabled={disabled} numberOfLines={1} size="medium">
+                    {title}
                   </Text>
                 </View>
               </Space>
-            </Label>
+            </Title>
           </Space>
         </Flex>
       </StyledTabButton>
@@ -110,7 +110,7 @@ TabButton.propTypes = {
   active: PropTypes.bool,
   onPress: PropTypes.func,
   disabled: PropTypes.bool,
-  label: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   icon: PropTypes.oneOf(getIconNames()),
   testID: PropTypes.string,
 };
