@@ -28,9 +28,7 @@ Tab.defaultProps = {
 
 const getTabs = ({ children }) => {
   // Return only Tab Elements
-  return React.Children.toArray(children).filter(
-    (child) => child.type.name && child.type.name === 'Tab',
-  );
+  return React.Children.toArray(children);
 };
 
 const shouldDisableSwipe = ({ tabs }) => Boolean(tabs.find((tab) => tab.props.disabled === true));
