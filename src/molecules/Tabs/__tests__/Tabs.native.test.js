@@ -13,13 +13,13 @@ describe('<Tabs />', () => {
     it('three tabs without defaultValue', () => {
       const { container } = renderWithTheme(
         <Tabs>
-          <Tabs.Tab value="one" label="One" testID="ds-tab-one">
+          <Tabs.Tab value="one" title="One" testID="ds-tab-one">
             <Text>Screen One</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="two" label="Two" testID="ds-tab-two">
+          <Tabs.Tab value="two" title="Two" testID="ds-tab-two">
             <Text>Screen Two</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="three" label="Three" testID="ds-tab-three">
+          <Tabs.Tab value="three" title="Three" testID="ds-tab-three">
             <Text>Screen Three</Text>
           </Tabs.Tab>
         </Tabs>,
@@ -30,13 +30,13 @@ describe('<Tabs />', () => {
     it('three tabs with defaultValue', () => {
       const { container } = renderWithTheme(
         <Tabs defaultValue="one">
-          <Tabs.Tab value="one" label="One" testID="ds-tab-one">
+          <Tabs.Tab value="one" title="One" testID="ds-tab-one">
             <Text>Screen One</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="two" label="Two" testID="ds-tab-two">
+          <Tabs.Tab value="two" title="Two" testID="ds-tab-two">
             <Text>Screen Two</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="three" label="Three" testID="ds-tab-three">
+          <Tabs.Tab value="three" title="Three" testID="ds-tab-three">
             <Text>Screen Three</Text>
           </Tabs.Tab>
         </Tabs>,
@@ -47,10 +47,10 @@ describe('<Tabs />', () => {
     it('two tabs with icons', () => {
       const { container } = renderWithTheme(
         <Tabs defaultValue="one">
-          <Tabs.Tab value="one" label="One" icon="info">
+          <Tabs.Tab value="one" title="One" icon="info">
             <Text>Screen One</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="two" label="Two" icon="info">
+          <Tabs.Tab value="two" title="Two" icon="info">
             <Text>Screen Two</Text>
           </Tabs.Tab>
         </Tabs>,
@@ -61,10 +61,10 @@ describe('<Tabs />', () => {
     it('two tabs with one disabled', () => {
       const { container } = renderWithTheme(
         <Tabs defaultValue="one">
-          <Tabs.Tab value="one" label="One" icon="info">
+          <Tabs.Tab value="one" title="One" icon="info">
             <Text>Screen One</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="two" label="Two" icon="info" disabled>
+          <Tabs.Tab value="two" title="Two" icon="info" disabled>
             <Text>Screen Two</Text>
           </Tabs.Tab>
         </Tabs>,
@@ -79,10 +79,10 @@ describe('<Tabs />', () => {
 
       const { container, getByTestId } = renderWithTheme(
         <Tabs defaultValue="one" onChange={onChangeMockFunction}>
-          <Tabs.Tab value="one" label="One" testID="ds-tab-one">
+          <Tabs.Tab value="one" title="One" testID="ds-tab-one">
             <Text>Screen One</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="two" label="Two" testID="ds-tab-two">
+          <Tabs.Tab value="two" title="Two" testID="ds-tab-two">
             <Text>Screen Two</Text>
           </Tabs.Tab>
         </Tabs>,
@@ -101,10 +101,10 @@ describe('<Tabs />', () => {
     it('does not change tab', () => {
       const { container, getByTestId } = renderWithTheme(
         <Tabs value="one">
-          <Tabs.Tab value="one" label="One" testID="ds-tab-one">
+          <Tabs.Tab value="one" title="One" testID="ds-tab-one">
             <Text>Screen One</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="two" label="Two" testID="ds-tab-two">
+          <Tabs.Tab value="two" title="Two" testID="ds-tab-two">
             <Text>Screen Two</Text>
           </Tabs.Tab>
         </Tabs>,
@@ -125,10 +125,10 @@ describe('<Tabs />', () => {
           <View>
             <Text>Hello World</Text>
           </View>
-          <Tabs.Tab value="one" label="One" testID="ds-tab-one">
+          <Tabs.Tab value="one" title="One" testID="ds-tab-one">
             <Text>Screen One</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="two" label="Two" testID="ds-tab-two">
+          <Tabs.Tab value="two" title="Two" testID="ds-tab-two">
             <Text>Screen Two</Text>
           </Tabs.Tab>
         </Tabs>,

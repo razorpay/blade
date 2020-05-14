@@ -46,7 +46,7 @@ storiesOf('Tabs', module)
     <Tabs defaultValue="payments">
       <Tabs.Tab
         value="payments"
-        label="Payments"
+        title="Payments"
         disabled={boolean('Disable Tab 1', false)}
         icon={select('Icon Tab 1', iconOptions, undefined)}
       >
@@ -54,7 +54,7 @@ storiesOf('Tabs', module)
       </Tabs.Tab>
       <Tabs.Tab
         value="payment-links"
-        label="Payment Links"
+        title="Payment Links"
         disabled={boolean('Disable Tab 2', false)}
         icon={select('Icon Tab 2', iconOptions, undefined)}
       >
@@ -62,7 +62,7 @@ storiesOf('Tabs', module)
       </Tabs.Tab>
       <Tabs.Tab
         value="settlements"
-        label="Settlements"
+        title="Settlements"
         disabled={boolean('Disable Tab 3', false)}
         icon={select('Icon Tab 3', iconOptions, undefined)}
       >
@@ -74,7 +74,7 @@ storiesOf('Tabs', module)
     <Tabs value={select('Value', valueOptions, 'payments')}>
       <Tabs.Tab
         value="payments"
-        label="Payments"
+        title="Payments"
         disabled={boolean('Disable Tab 1', false)}
         icon={select('Icon Tab 1', iconOptions, undefined)}
       >
@@ -82,7 +82,7 @@ storiesOf('Tabs', module)
       </Tabs.Tab>
       <Tabs.Tab
         value="payment-links"
-        label="Payment Links"
+        title="Payment Links"
         disabled={boolean('Disable Tab 2', false)}
         icon={select('Icon Tab 2', iconOptions, undefined)}
       >
@@ -90,7 +90,7 @@ storiesOf('Tabs', module)
       </Tabs.Tab>
       <Tabs.Tab
         value="settlements"
-        label="Settlements"
+        title="Settlements"
         disabled={boolean('Disable Tab 3', false)}
         icon={select('Icon Tab 3', iconOptions, undefined)}
       >

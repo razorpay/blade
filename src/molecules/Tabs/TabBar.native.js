@@ -10,11 +10,11 @@ const TabBar = ({ navigationState, jumpTo }) => {
     <Flex flexDirection="row">
       <View>
         {navigationState.routes.map(
-          ({ key, label, index, value, testID, onPress, icon, disabled }) => (
+          ({ key, title, index, value, testID, onPress, icon, disabled }) => (
             <TabButton
               key={key}
               active={navigationState.index === index}
-              label={label}
+              title={title}
               onPress={() => {
                 if (onPress) {
                   onPress();
@@ -38,7 +38,7 @@ TabBar.propTypes = {
     routes: PropTypes.arrayOf(
       PropTypes.shape({
         key: PropTypes.string,
-        label: PropTypes.string,
+        title: PropTypes.string,
         index: PropTypes.number,
         value: PropTypes.string,
         testID: PropTypes.string,
