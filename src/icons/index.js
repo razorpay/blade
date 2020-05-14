@@ -11,6 +11,7 @@ const icons = {
   chevronRight: require('./ChevronRight').default,
   chevronUp: require('./ChevronUp').default,
   close: require('./Close').default,
+  copy: require('./Copy').default,
   failure: require('./Failure').default,
   info: require('./Info').default,
   invoice: require('./Invoice').default,
