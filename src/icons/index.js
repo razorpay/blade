@@ -23,6 +23,7 @@ const icons = {
   paymentGateway: require('./PaymentGateway').default,
   paymentPage: require('./PaymentPage').default,
   search: require('./Search').default,
+  settings: require('./Settings').default,
   smartCollect: require('./SmartCollect').default,
   subscription: require('./Subscription').default,
   success: require('./Success').default,
