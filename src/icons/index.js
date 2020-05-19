@@ -10,6 +10,7 @@ const icons = {
   chevronLeft: require('./ChevronLeft').default,
   chevronRight: require('./ChevronRight').default,
   chevronUp: require('./ChevronUp').default,
+  clipboard: require('./Clipboard').default,
   close: require('./Close').default,
   copy: require('./Copy').default,
   failure: require('./Failure').default,
