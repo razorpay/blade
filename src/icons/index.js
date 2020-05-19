@@ -17,6 +17,7 @@ const icons = {
   feather: require('./Feather').default,
   info: require('./Info').default,
   invoice: require('./Invoice').default,
+  lifeBuoy: require('./LifeBuoy').default,
   maximize: require('./Maximize').default,
   minimize: require('./Minimize').default,
   moreVertical: require('./MoreVertical').default,
