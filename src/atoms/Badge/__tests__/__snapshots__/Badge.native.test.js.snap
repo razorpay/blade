@@ -48,7 +48,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid information(rectangle) <Bad
       _isUnderlined={false}
       _letterSpacing="medium"
       align="left"
-      color="light.100"
+      color="light.900"
       size="xxsmall"
       style={
         Array [
@@ -120,7 +120,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid negative(rectangle) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       align="left"
-      color="light.100"
+      color="light.900"
       size="xxsmall"
       style={
         Array [
@@ -264,7 +264,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid positive(rectangle) <Badge 
       _isUnderlined={false}
       _letterSpacing="medium"
       align="left"
-      color="light.100"
+      color="light.900"
       size="xxsmall"
       style={
         Array [
@@ -336,7 +336,7 @@ exports[`Renders <Badge /> (Rectangle) renders solid warning(rectangle) <Badge /
       _isUnderlined={false}
       _letterSpacing="medium"
       align="left"
-      color="light.100"
+      color="light.900"
       size="xxsmall"
       style={
         Array [
@@ -768,7 +768,7 @@ exports[`Renders <Badge /> (Stadium) renders solid information(Stadium) <Badge /
       _isUnderlined={false}
       _letterSpacing="medium"
       align="left"
-      color="light.100"
+      color="light.900"
       size="xxsmall"
       style={
         Array [
@@ -840,7 +840,7 @@ exports[`Renders <Badge /> (Stadium) renders solid negative(Stadium) <Badge /> 1
       _isUnderlined={false}
       _letterSpacing="medium"
       align="left"
-      color="light.100"
+      color="light.900"
       size="xxsmall"
       style={
         Array [
@@ -984,7 +984,7 @@ exports[`Renders <Badge /> (Stadium) renders solid positive(Stadium) <Badge /> 1
       _isUnderlined={false}
       _letterSpacing="medium"
       align="left"
-      color="light.100"
+      color="light.900"
       size="xxsmall"
       style={
         Array [
@@ -1056,7 +1056,7 @@ exports[`Renders <Badge /> (Stadium) renders solid warning(Stadium) <Badge /> 1`
       _isUnderlined={false}
       _letterSpacing="medium"
       align="left"
-      color="light.100"
+      color="light.900"
       size="xxsmall"
       style={
         Array [

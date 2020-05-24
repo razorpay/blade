@@ -17,9 +17,9 @@ const styles = {
     switch (variant) {
       case 'primary':
         if (disabled) {
-          return 'light.150';
+          return 'light.950';
         }
-        return 'light.100';
+        return 'light.900';
       case 'secondary':
         if (disabled) {
           return 'shade.940';
@@ -38,9 +38,9 @@ const styles = {
         return 'primary.800';
       default:
         if (disabled) {
-          return 'light.150';
+          return 'light.950';
         }
-        return 'light.100';
+        return 'light.900';
     }
   },
   backgroundColor({ variant, color, disabled, theme }) {

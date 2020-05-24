@@ -61,7 +61,7 @@ exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       align="center"
-      color="light.100"
+      color="light.900"
       size="medium"
       style={
         Array [
@@ -143,7 +143,7 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
       _letterSpacing="small"
       _lineHeight="medium"
       align="center"
-      color="light.150"
+      color="light.950"
       size="medium"
       style={
         Array [
@@ -389,7 +389,7 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
       _letterSpacing="small"
       _lineHeight="medium"
       align="center"
-      color="light.100"
+      color="light.900"
       size="medium"
       style={
         Array [
@@ -690,7 +690,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
       _letterSpacing="small"
       _lineHeight="medium"
       align="center"
-      color="light.100"
+      color="light.900"
       size="medium"
       style={
         Array [
@@ -936,7 +936,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
       _letterSpacing="small"
       _lineHeight="small"
       align="center"
-      color="light.100"
+      color="light.900"
       size="xsmall"
       style={
         Array [
@@ -1018,7 +1018,7 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
       _letterSpacing="small"
       _lineHeight="small"
       align="center"
-      color="light.100"
+      color="light.900"
       size="xsmall"
       style={
         Array [
@@ -1264,7 +1264,7 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
       _letterSpacing="medium"
       _lineHeight="xsmall"
       align="center"
-      color="light.100"
+      color="light.900"
       size="xxsmall"
       style={
         Array [
@@ -1346,7 +1346,7 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
       _letterSpacing="small"
       _lineHeight="medium"
       align="center"
-      color="light.100"
+      color="light.900"
       size="medium"
       style={
         Array [
@@ -1483,7 +1483,7 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
       _letterSpacing="small"
       _lineHeight="medium"
       align="center"
-      color="light.100"
+      color="light.900"
       size="medium"
       style={
         Array [
@@ -1565,7 +1565,7 @@ exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`
       _letterSpacing="small"
       _lineHeight="medium"
       align="center"
-      color="light.100"
+      color="light.900"
       size="medium"
       style={
         Array [
