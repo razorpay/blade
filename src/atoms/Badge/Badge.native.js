@@ -65,7 +65,7 @@ const styles = {
         default:
       }
     }
-    return 'light.100';
+    return 'light.900';
   },
   padding({ shape, theme }) {
     if (shape === 'stadium') {
