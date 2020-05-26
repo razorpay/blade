@@ -65,6 +65,7 @@ const lightTheme = {
       960: colors.mustard[960],
     },
     light: {
+      800: colors.white[800],
       900: colors.white[900],
       920: colors.white[920],
       930: colors.white[930],
@@ -148,6 +149,7 @@ const darkTheme = {
       960: colors.honey[960],
     },
     light: {
+      800: colors.white[800],
       900: colors.white[900],
       920: colors.white[920],
       930: colors.white[930],
