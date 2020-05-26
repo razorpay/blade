@@ -103,12 +103,14 @@ const Snackbar = ({
           opacity: visibility.interpolate({
             inputRange: [0.5, 1],
             outputRange: [0, 1],
+            extrapolate: 'clamp',
           }),
           transform: [
             {
               translateY: visibility.interpolate({
                 inputRange: [0, 1],
                 outputRange: [SCREEN_HEIGHT - bottomY, 0],
+                extrapolate: 'clamp',
               }),
             },
           ],
