@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
@@ -43,25 +43,30 @@ const Snackbar = ({
   showDismissButton,
   onDismiss,
   maxLines,
+  visible,
+  dismiss,
 }) => {
-  const handleDismiss = useCallback(() => {
-    onDismiss();
-  }, [onDismiss]);
+  const handleDismiss = () => {
+    dismiss();
+    if (onDismiss) {
+      onDismiss();
+    }
+  };
 
-  return (
+  return visible ? (
     <Size width={`${SNACKBAR_WIDTH}px`}>
       <Space padding={[1.5]}>
         <Flex flexDirection="row" alignItems="center">
           <SnackbarContainer variant={variant}>
             <Space padding={[0, 1, 0, 0]}>
               <View>
-                <Icon name="info" size="medium" fill="light.100" />
+                <Icon name="info" size="medium" fill="light.900" />
               </View>
             </Space>
             <Space padding={[0, 2, 0, 0]}>
               <Flex flex={1}>
                 <View>
-                  <Text size="medium" color="light.100" maxLines={maxLines}>
+                  <Text size="medium" color="light.900" maxLines={maxLines}>
                     {text}
                   </Text>
                 </View>
@@ -73,7 +78,7 @@ const Snackbar = ({
                   <Button
                     variant="secondary"
                     size="xsmall"
-                    variantColor="shade"
+                    variantColor="light"
                     onClick={onAction}
                     testID="ds-snackbar-action-button"
                   >
@@ -89,7 +94,7 @@ const Snackbar = ({
                     variant="tertiary"
                     size="xsmall"
                     icon="close"
-                    variantColor="shade"
+                    variantColor="light"
                     onClick={handleDismiss}
                     testID="ds-snackbar-dismiss-button"
                   />
@@ -100,17 +105,19 @@ const Snackbar = ({
         </Flex>
       </Space>
     </Size>
-  );
+  ) : null;
 };
 
 Snackbar.propTypes = {
   variant: PropTypes.oneOf(['positive', 'negative', 'warning', 'neutral']),
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   actionText: PropTypes.string,
   onAction: PropTypes.func,
   showDismissButton: PropTypes.bool,
   onDismiss: PropTypes.func,
   maxLines: PropTypes.number,
+  visible: PropTypes.bool,
+  dismiss: PropTypes.func.isRequired,
 };
 
 Snackbar.defaultProps = {
