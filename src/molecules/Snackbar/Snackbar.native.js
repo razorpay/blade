@@ -10,6 +10,7 @@ import Space from '../../atoms/Space';
 import Icon from '../../atoms/Icon';
 import Button from '../../atoms/Button';
 import { getColor } from '../../_helpers/theme';
+import icons from '../../icons';
 
 const SNACKBAR_WIDTH = Dimensions.get('window').width - 32;
 
@@ -45,6 +46,7 @@ const Snackbar = ({
   maxLines,
   visible,
   dismiss,
+  iconName,
 }) => {
   const handleDismiss = () => {
     dismiss();
@@ -58,11 +60,13 @@ const Snackbar = ({
       <Space padding={[1.5]}>
         <Flex flexDirection="row" alignItems="center">
           <SnackbarContainer variant={variant}>
-            <Space padding={[0, 1, 0, 0]}>
-              <View>
-                <Icon name="info" size="medium" fill="light.900" />
-              </View>
-            </Space>
+            {iconName ? (
+              <Space padding={[0, 1, 0, 0]}>
+                <View>
+                  <Icon name={iconName} size="medium" fill="light.900" />
+                </View>
+              </Space>
+            ) : null}
             <Space padding={[0, 2, 0, 0]}>
               <Flex flex={1}>
                 <View>
@@ -118,6 +122,7 @@ Snackbar.propTypes = {
   maxLines: PropTypes.number,
   visible: PropTypes.bool,
   dismiss: PropTypes.func.isRequired,
+  iconName: PropTypes.oneOf(Object.keys(icons)),
 };
 
 Snackbar.defaultProps = {

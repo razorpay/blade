@@ -4,6 +4,7 @@ import { select, text, number, boolean } from '@storybook/addon-knobs';
 import Flex from '../../atoms/Flex';
 import View from '../../atoms/View';
 import Button from '../../atoms/Button';
+import { getIconNames } from '../../_helpers/icon';
 import Snackbar from './Snackbar';
 import useSnackbar from './useSnackbar';
 import SnackbarProvider from './SnackbarProvider';
@@ -14,6 +15,11 @@ const variantOptions = {
   warning: 'warning',
   neutral: 'neutral',
 };
+
+const iconOptions = getIconNames().reduce(
+  (options, option) => ({ ...options, [option]: option }),
+  {},
+);
 
 const SnackDemo = (props) => {
   const snackbar = useSnackbar();
@@ -61,6 +67,7 @@ storiesOf('Snackbar', module)
       onDismiss={() => {}}
       showDismissButton={boolean('showDismissButton', true)}
       autoDismiss={boolean('autoDismiss', false)}
+      iconName={select('iconName', iconOptions, 'info')}
     />
   ));
 //   .add('default', () => (

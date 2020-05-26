@@ -30,6 +30,7 @@ const SnackbarProvider = ({ children }) => {
       onDismiss,
       maxLines,
       autoDismiss = true,
+      iconName,
     }) => {
       setSnackbarProps({
         variant,
@@ -39,6 +40,7 @@ const SnackbarProvider = ({ children }) => {
         showDismissButton,
         onDismiss,
         maxLines,
+        iconName,
       });
       setIsVisible(true);
       if (autoDismiss) {
