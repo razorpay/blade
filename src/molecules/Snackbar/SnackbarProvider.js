@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Snackbar from './Snackbar';
 import SnackbarContext from './SnackbarContext';
@@ -14,11 +14,15 @@ const SnackbarProvider = ({ children }) => {
     showDismissButton: undefined,
     onDismiss: undefined,
     maxLines: undefined,
+    position: { top: undefined, bottom: 0, left: 0, right: 0 },
   });
   const [isVisible, setIsVisible] = useState(false);
-
+  let { current: timerRef } = useRef(null);
   const dismissAfterDuration = (duration = DEFAULT_DISMISS_DURATION) => {
-    setTimeout(() => setIsVisible(false), duration);
+    if (timerRef) {
+      clearTimeout(timerRef); // clear existing timer
+    }
+    timerRef = setTimeout(() => setIsVisible(false), duration);
   };
   const show = useCallback(
     ({
@@ -31,6 +35,7 @@ const SnackbarProvider = ({ children }) => {
       maxLines,
       autoDismiss = true,
       iconName,
+      position = { bottom: 0 },
     }) => {
       setSnackbarProps({
         variant,
@@ -41,6 +46,7 @@ const SnackbarProvider = ({ children }) => {
         onDismiss,
         maxLines,
         iconName,
+        position,
       });
       setIsVisible(true);
       if (autoDismiss) {
@@ -50,12 +56,15 @@ const SnackbarProvider = ({ children }) => {
     [],
   );
 
-  const dismiss = () => {
-    setSnackbarProps({});
-    setIsVisible(false);
-  };
+  const dismiss = useCallback(() => {
+    clearTimeout(timerRef);
 
-  const snackbarActions = React.useMemo(() => ({ show, dismiss }), [show]);
+    if (isVisible) {
+      setIsVisible(false);
+    }
+  }, [isVisible]);
+
+  const snackbarActions = React.useMemo(() => ({ show, dismiss }), [show, dismiss]);
 
   return (
     <SnackbarContext.Provider value={snackbarActions}>

@@ -25,7 +25,7 @@ const SnackDemo = (props) => {
   const snackbar = useSnackbar();
 
   return (
-    <Flex alignSelf="center">
+    <Flex justifyContent="space-between" flexDirection="row" flex={1}>
       <View>
         <Button
           onClick={() =>
@@ -36,6 +36,7 @@ const SnackDemo = (props) => {
         >
           Show Snackbar
         </Button>
+        <Button onClick={() => snackbar.dismiss()}>Dismiss Snackbar</Button>
       </View>
     </Flex>
   );
@@ -58,26 +59,20 @@ storiesOf('Snackbar', module)
     component: Snackbar,
   })
   .add('default', () => (
-    <SnackWrapper
-      variant={select('Variant', variantOptions, undefined)}
-      text={text('Text', 'Snackbar text here')}
-      maxLines={number('maxLines', undefined)}
-      actionText={text('Action Text', 'Retry')}
-      onAction={() => {}}
-      onDismiss={() => {}}
-      showDismissButton={boolean('showDismissButton', true)}
-      autoDismiss={boolean('autoDismiss', false)}
-      iconName={select('iconName', iconOptions, 'info')}
-    />
+    <Flex flex={1}>
+      <View>
+        <SnackWrapper
+          variant={select('Variant', variantOptions, undefined)}
+          text={text('Text', 'Snackbar text here')}
+          maxLines={number('maxLines', undefined)}
+          actionText={text('Action Text', 'Retry')}
+          onAction={() => {}}
+          onDismiss={() => {}}
+          showDismissButton={boolean('showDismissButton', true)}
+          autoDismiss={boolean('autoDismiss', true)}
+          iconName={select('iconName', iconOptions, 'info')}
+          position={{ bottom: 1 }}
+        />
+      </View>
+    </Flex>
   ));
-//   .add('default', () => (
-//     <Snackbar
-//       variant={select('Variant', variantOptions, undefined)}
-//       text={text('Text', 'Snackbar text here')}
-//       maxLines={number('maxLines', undefined)}
-//       actionText={text('Action Text', 'Retry')}
-//       onAction={() => {}}
-//       onDismiss={() => {}}
-//       showDismissButton={true}
-//     />
-//   ));
