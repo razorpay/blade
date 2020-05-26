@@ -25,7 +25,7 @@ const SnackDemo = (props) => {
   const snackbar = useSnackbar();
 
   return (
-    <Flex justifyContent="space-between" flexDirection="row" flex={1}>
+    <Flex justifyContent="space-around" flexDirection="column" flex={0.5} flexWrap="wrap">
       <View>
         <Button
           onClick={() =>
@@ -36,7 +36,22 @@ const SnackDemo = (props) => {
         >
           Show Snackbar
         </Button>
-        <Button onClick={() => snackbar.dismiss()}>Dismiss Snackbar</Button>
+        <Button
+          variant="primary"
+          variantColor="shade"
+          onClick={() =>
+            snackbar.show({
+              ...props,
+              variant: 'negative',
+              text: 'This is another snackbar',
+            })
+          }
+        >
+          Show another Snackbar
+        </Button>
+        <Button variant="secondary" variantColor="shade" onClick={() => snackbar.dismiss()}>
+          Dismiss Snackbar
+        </Button>
       </View>
     </Flex>
   );

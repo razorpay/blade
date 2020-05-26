@@ -17,13 +17,34 @@ const SnackbarProvider = ({ children }) => {
     position: { top: undefined, bottom: 0, left: 0, right: 0 },
   });
   const [isVisible, setIsVisible] = useState(false);
-  let { current: timerRef } = useRef(null);
-  const dismissAfterDuration = (duration = DEFAULT_DISMISS_DURATION) => {
-    if (timerRef) {
-      clearTimeout(timerRef); // clear existing timer
+  const timerRef = useRef(null);
+  const dismissAfterDuration = useCallback((duration = DEFAULT_DISMISS_DURATION) => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current); // clear existing timer
     }
-    timerRef = setTimeout(() => setIsVisible(false), duration);
-  };
+    timerRef.current = setTimeout(() => setIsVisible(false), duration);
+  }, []);
+
+  const dismiss = useCallback(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current); // clear existing timer
+    }
+    if (isVisible) {
+      setIsVisible(false);
+    }
+  }, [isVisible]);
+
+  const invokeNewSnackBar = useCallback(
+    (config) => {
+      setSnackbarProps(config);
+      setIsVisible(true);
+      if (config.autoDismiss) {
+        dismissAfterDuration();
+      }
+    },
+    [dismissAfterDuration],
+  );
+
   const show = useCallback(
     ({
       variant,
@@ -37,32 +58,39 @@ const SnackbarProvider = ({ children }) => {
       iconName,
       position = { bottom: 0 },
     }) => {
-      setSnackbarProps({
-        variant,
-        text,
-        actionText,
-        onAction,
-        showDismissButton,
-        onDismiss,
-        maxLines,
-        iconName,
-        position,
-      });
-      setIsVisible(true);
-      if (autoDismiss) {
-        dismissAfterDuration();
+      if (isVisible) {
+        dismiss();
+        setTimeout(() => {
+          invokeNewSnackBar({
+            variant,
+            text,
+            actionText,
+            onAction,
+            showDismissButton,
+            onDismiss,
+            maxLines,
+            autoDismiss,
+            iconName,
+            position,
+          });
+        }, 200);
+      } else {
+        invokeNewSnackBar({
+          variant,
+          text,
+          actionText,
+          onAction,
+          showDismissButton,
+          onDismiss,
+          maxLines,
+          autoDismiss,
+          iconName,
+          position,
+        });
       }
     },
-    [],
+    [invokeNewSnackBar, dismiss, isVisible],
   );
-
-  const dismiss = useCallback(() => {
-    clearTimeout(timerRef);
-
-    if (isVisible) {
-      setIsVisible(false);
-    }
-  }, [isVisible]);
 
   const snackbarActions = React.useMemo(() => ({ show, dismiss }), [show, dismiss]);
 
