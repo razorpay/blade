@@ -90,14 +90,16 @@ const TabButton = ({ title, active, icon, onPress, disabled, testID }) => {
         <Flex alignItems="center" alignSelf="center" flexDirection="row" flexWrap="wrap">
           <Space padding={[1, 0, 1, 0]}>
             <Title active={active} disabled={disabled}>
-              {!isEmpty(icon) ? <Icon name={icon} fill={titleColor} size="small" /> : null}
-              <Space margin={[0, 0, 0, 0.5]}>
-                <View>
-                  <Text color={titleColor} disabled={disabled} numberOfLines={1} size="medium">
-                    {title}
-                  </Text>
-                </View>
-              </Space>
+              {!isEmpty(icon) ? (
+                <Space margin={[0, 0.5, 0, 0]}>
+                  <View>
+                    <Icon name={icon} fill={titleColor} size="small" />
+                  </View>
+                </Space>
+              ) : null}
+              <Text color={titleColor} disabled={disabled} numberOfLines={1} size="medium">
+                {title}
+              </Text>
             </Title>
           </Space>
         </Flex>
