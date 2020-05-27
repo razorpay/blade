@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@react-native-community/async-storage": "1.7.1",
+    "@testing-library/react-hooks": "3.2.1",
     "intl": "1.2.5",
     "lodash": "4.17.15",
     "react-native-gesture-handler": "1.6.1",
