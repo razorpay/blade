@@ -12,6 +12,7 @@ import Button from '../../atoms/Button';
 import Position from '../../atoms/Position';
 import { getColor } from '../../_helpers/theme';
 import icons from '../../icons';
+import useSnackbar from './useSnackbar';
 
 const SNACKBAR_WIDTH = Dimensions.get('window').width - 32;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -46,11 +47,10 @@ const Snackbar = ({
   showDismissButton,
   onDismiss,
   maxLines,
-  visible,
-  dismiss,
   iconName,
   position,
 }) => {
+  const { isVisible, dismiss } = useSnackbar();
   const [bottomY, setBottomY] = useState(0);
   const animationConfig = {
     animationValue: {
@@ -75,20 +75,20 @@ const Snackbar = ({
   }, []);
 
   useEffect(() => {
-    if (visible) {
+    if (isVisible) {
       Animated.timing(visibility, {
         toValue: animationConfig.animationValue.final,
         useNativeDriver: true,
         duration: animationConfig.duration,
       }).start();
-    } else if (!visible) {
+    } else if (!isVisible) {
       Animated.timing(visibility, {
         toValue: animationConfig.animationValue.initial,
         useNativeDriver: true,
         duration: animationConfig.duration,
       }).start();
     }
-  }, [visible]);
+  }, [isVisible]);
 
   return (
     <Position
@@ -183,8 +183,6 @@ Snackbar.propTypes = {
   showDismissButton: PropTypes.bool,
   onDismiss: PropTypes.func,
   maxLines: PropTypes.number,
-  visible: PropTypes.bool,
-  dismiss: PropTypes.func.isRequired,
   iconName: PropTypes.oneOf(Object.keys(icons)),
   position: PropTypes.shape({
     top: PropTypes.number,
@@ -196,6 +194,12 @@ Snackbar.propTypes = {
 
 Snackbar.defaultProps = {
   variant: 'positive',
+  position: {
+    top: undefined,
+    right: undefined,
+    bottom: undefined,
+    left: undefined,
+  },
 };
 
 export default Snackbar;

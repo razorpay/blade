@@ -92,12 +92,16 @@ const SnackbarProvider = ({ children }) => {
     [invokeNewSnackBar, dismiss, isVisible],
   );
 
-  const snackbarActions = React.useMemo(() => ({ show, dismiss }), [show, dismiss]);
+  const snackbarActions = React.useMemo(() => ({ show, dismiss, isVisible }), [
+    show,
+    dismiss,
+    isVisible,
+  ]);
 
   return (
     <SnackbarContext.Provider value={snackbarActions}>
       {children}
-      <Snackbar {...snackbarProps} visible={isVisible} dismiss={dismiss} />
+      <Snackbar {...snackbarProps} />
     </SnackbarContext.Provider>
   );
 };
