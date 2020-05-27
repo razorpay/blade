@@ -101,4 +101,30 @@ describe('<Snackbar />', () => {
       expect(container).toMatchSnapshot();
     });
   });
+  describe('position', () => {
+    it('change top position', () => {
+      const { container } = renderWithTheme(
+        <Snackbar text="Snackbar text here" position={{ top: 4 }} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+    it('change bottom position', () => {
+      const { container } = renderWithTheme(
+        <Snackbar text="Snackbar text here" position={{ bottom: 4 }} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+    it('change left position', () => {
+      const { container } = renderWithTheme(
+        <Snackbar text="Snackbar text here" position={{ left: 2 }} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+    it('change right position', () => {
+      const { container } = renderWithTheme(
+        <Snackbar text="Snackbar text here" position={{ right: 2 }} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
 });

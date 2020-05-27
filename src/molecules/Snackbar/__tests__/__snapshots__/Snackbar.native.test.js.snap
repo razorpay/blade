@@ -993,6 +993,438 @@ exports[`<Snackbar /> maxLines renders multiple lines 1`] = `
 </View>
 `;
 
+exports[`<Snackbar /> position change bottom position 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    bottom={4}
+    position="absolute"
+    style={
+      Object {
+        "bottom": 32,
+        "opacity": 0,
+        "position": "absolute",
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(31, 137, 14, 1.0)",
+            "borderRadius": 2,
+          },
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+            Array [
+              Object {
+                "paddingBottom": 12,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+              },
+              Array [
+                Object {
+                  "width": 718,
+                },
+              ],
+            ],
+          ],
+        ]
+      }
+      variant="positive"
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+              Array [
+                Object {
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 16,
+                  "paddingTop": 0,
+                },
+              ],
+            ],
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          align="left"
+          color="light.900"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "rgba(255, 255, 255, 1.0)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+          weight="regular"
+        >
+          Snackbar text here
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Snackbar /> position change left position 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    left={2}
+    position="absolute"
+    style={
+      Object {
+        "left": 16,
+        "opacity": 0,
+        "position": "absolute",
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(31, 137, 14, 1.0)",
+            "borderRadius": 2,
+          },
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+            Array [
+              Object {
+                "paddingBottom": 12,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+              },
+              Array [
+                Object {
+                  "width": 718,
+                },
+              ],
+            ],
+          ],
+        ]
+      }
+      variant="positive"
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+              Array [
+                Object {
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 16,
+                  "paddingTop": 0,
+                },
+              ],
+            ],
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          align="left"
+          color="light.900"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "rgba(255, 255, 255, 1.0)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+          weight="regular"
+        >
+          Snackbar text here
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Snackbar /> position change right position 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    position="absolute"
+    right={2}
+    style={
+      Object {
+        "opacity": 0,
+        "position": "absolute",
+        "right": 16,
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(31, 137, 14, 1.0)",
+            "borderRadius": 2,
+          },
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+            Array [
+              Object {
+                "paddingBottom": 12,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+              },
+              Array [
+                Object {
+                  "width": 718,
+                },
+              ],
+            ],
+          ],
+        ]
+      }
+      variant="positive"
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+              Array [
+                Object {
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 16,
+                  "paddingTop": 0,
+                },
+              ],
+            ],
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          align="left"
+          color="light.900"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "rgba(255, 255, 255, 1.0)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+          weight="regular"
+        >
+          Snackbar text here
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Snackbar /> position change top position 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    position="absolute"
+    style={
+      Object {
+        "opacity": 0,
+        "position": "absolute",
+        "top": 32,
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+    top={4}
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(31, 137, 14, 1.0)",
+            "borderRadius": 2,
+          },
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+            Array [
+              Object {
+                "paddingBottom": 12,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+              },
+              Array [
+                Object {
+                  "width": 718,
+                },
+              ],
+            ],
+          ],
+        ]
+      }
+      variant="positive"
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+              Array [
+                Object {
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 16,
+                  "paddingTop": 0,
+                },
+              ],
+            ],
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          align="left"
+          color="light.900"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "rgba(255, 255, 255, 1.0)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+          weight="regular"
+        >
+          Snackbar text here
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<Snackbar /> variant default 1`] = `
 <View
   collapsable={true}
