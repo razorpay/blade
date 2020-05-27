@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Snackbar from './Snackbar';
 import SnackbarContext from './SnackbarContext';
 
-const DEFAULT_DISMISS_DURATION = 2500;
+const DEFAULT_DISMISS_DURATION = 3000;
 
 const SnackbarProvider = ({ children }) => {
   const [snackbarProps, setSnackbarProps] = useState({
