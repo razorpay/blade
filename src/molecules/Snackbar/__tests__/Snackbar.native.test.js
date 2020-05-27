@@ -2,8 +2,15 @@ import React from 'react';
 import { fireEvent, act } from '@testing-library/react-native';
 import Snackbar from '../index';
 import { renderWithTheme } from '../../../_helpers/testing';
+import useSnackbar from '../useSnackbar';
+
+jest.mock('../useSnackbar');
 
 describe('<Snackbar />', () => {
+  useSnackbar.mockReturnValue({
+    dismiss: jest.fn(),
+    isVisible: true,
+  });
   describe('variant', () => {
     it('default', () => {
       const { container } = renderWithTheme(<Snackbar text="Hello world" />);
