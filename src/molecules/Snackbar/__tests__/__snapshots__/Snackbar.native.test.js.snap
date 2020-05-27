@@ -404,6 +404,168 @@ exports[`<Snackbar /> dismiss button showDismissButton 1`] = `
 </View>
 `;
 
+exports[`<Snackbar /> iconName renders with an icon 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    position="absolute"
+    style={
+      Object {
+        "opacity": 0,
+        "position": "absolute",
+        "transform": Array [
+          Object {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(31, 137, 14, 1.0)",
+            "borderRadius": 2,
+          },
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+            Array [
+              Object {
+                "paddingBottom": 12,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+              },
+              Array [
+                Object {
+                  "width": 718,
+                },
+              ],
+            ],
+          ],
+        ]
+      }
+      variant="positive"
+    >
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 8,
+                "paddingTop": 0,
+              },
+            ],
+          ]
+        }
+      >
+        <RNSVGSvgView
+          align="xMidYMid"
+          bbHeight={20}
+          bbWidth={20}
+          fill="rgba(255, 255, 255, 1.0)"
+          focusable={false}
+          height={20}
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": 20,
+                "width": 20,
+              },
+            ]
+          }
+          testID="ds-icon"
+          vbHeight={24}
+          vbWidth={24}
+          width={20}
+        >
+          <RNSVGGroup
+            fill={4294967295}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+          >
+            <RNSVGPath
+              d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+      <View
+        style={
+          Array [
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+              Array [
+                Object {
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 16,
+                  "paddingTop": 0,
+                },
+              ],
+            ],
+          ]
+        }
+      >
+        <Text
+          _isUnderlined={false}
+          _letterSpacing="small"
+          align="left"
+          color="light.900"
+          size="medium"
+          style={
+            Array [
+              Object {
+                "color": "rgba(255, 255, 255, 1.0)",
+                "fontFamily": "Lato-Regular",
+                "fontSize": 14,
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          testID="ds-text"
+          weight="regular"
+        >
+          Snackbar text here
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<Snackbar /> maxLines renders 1 line 1`] = `
 <View
   collapsable={true}

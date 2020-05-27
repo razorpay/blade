@@ -95,4 +95,10 @@ describe('<Snackbar />', () => {
       expect(container).toMatchSnapshot();
     });
   });
+  describe('iconName', () => {
+    it('renders with an icon', () => {
+      const { container } = renderWithTheme(<Snackbar text="Snackbar text here" iconName="info" />);
+      expect(container).toMatchSnapshot();
+    });
+  });
 });
