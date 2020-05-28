@@ -6,7 +6,7 @@ import View from '../../atoms/View';
 import Button from '../../atoms/Button';
 import { getIconNames } from '../../_helpers/icon';
 import Snackbar from './Snackbar';
-import useSnackbar from './useSnackbar';
+import { useSnackbar } from './SnackbarContext';
 import SnackbarProvider from './SnackbarProvider';
 
 const variantOptions = {

@@ -12,7 +12,7 @@ import Button from '../../atoms/Button';
 import Position from '../../atoms/Position';
 import { getColor } from '../../_helpers/theme';
 import icons from '../../icons';
-import useSnackbar from './useSnackbar';
+import { useSnackbar } from './SnackbarContext';
 
 const SNACKBAR_WIDTH = Dimensions.get('window').width - 32;
 const SCREEN_HEIGHT = Dimensions.get('window').height;

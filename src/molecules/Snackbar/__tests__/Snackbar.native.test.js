@@ -2,9 +2,9 @@ import React from 'react';
 import { fireEvent, act } from '@testing-library/react-native';
 import Snackbar from '../index';
 import { renderWithTheme } from '../../../_helpers/testing';
-import useSnackbar from '../useSnackbar';
+import { useSnackbar } from '../SnackbarContext';
 
-jest.mock('../useSnackbar');
+jest.mock('../SnackbarContext');
 
 describe('<Snackbar />', () => {
   useSnackbar.mockReturnValue({

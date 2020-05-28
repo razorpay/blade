@@ -2,9 +2,9 @@ import React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components/native';
-import useSnackbar from '../useSnackbar';
 import SnackbarProvider from '../SnackbarProvider';
 import theme from '../../../tokens/theme';
+import { useSnackbar } from '../SnackbarContext';
 
 const Wrapper = ({ children }) => (
   <ThemeProvider theme={theme}>
