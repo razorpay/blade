@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
 import Space from '../../atoms/Space';
-import Size from '../../atoms/Size';
 import Flex from '../../atoms/Flex';
 import View from '../../atoms/View';
 import Button from '../../atoms/Button';
+import Divider from '../../atoms/Divider';
 
 const FullScreenModalHeader = styled(View)`
   background-color: ${(props) => props.theme.colors.background[200]};
@@ -16,51 +16,52 @@ const FullScreenModalHeader = styled(View)`
   elevation: 2;
 `;
 
-const Divider = styled(View)`
-  background-color: ${(props) => props.theme.colors.shade[920]};
-`;
-
-const ModalHeader = ({ children, type, onClose }) => {
-  return type === 'centered' ? (
-    <Space padding={[1.5, 2, 0.5, 2]}>
-      <View>{children}</View>
-    </Space>
-  ) : type === 'fullscreen' ? (
-    <Flex flexDirection="row" justifyContent="space-between">
-      <Space padding={[1, 2]}>
-        <FullScreenModalHeader>
-          {children}
-          <Button
-            testID="close-button"
-            variant="tertiary"
-            variantColor="shade"
-            icon="close"
-            size="medium"
-            onClick={onClose}
-          />
-        </FullScreenModalHeader>
-      </Space>
-    </Flex>
-  ) : type === 'bottomsheet' ? (
-    <React.Fragment>
-      <Space>
+const ModalHeader = ({ children, variant, onClose }) => {
+  if (variant === 'centered') {
+    return (
+      <Space padding={[1.5, 2, 0.5, 2]}>
         <View>{children}</View>
       </Space>
-      <Size height="1px" width="100%">
-        <Divider />
-      </Size>
-    </React.Fragment>
-  ) : null;
+    );
+  }
+  if (variant === 'fullscreen') {
+    return (
+      <Flex flexDirection="row" justifyContent="space-between">
+        <Space padding={[1, 2]}>
+          <FullScreenModalHeader>
+            {children}
+            <Button
+              testID="close-button"
+              variant="tertiary"
+              variantColor="shade"
+              icon="close"
+              size="medium"
+              onClick={onClose}
+            />
+          </FullScreenModalHeader>
+        </Space>
+      </Flex>
+    );
+  }
+  if (variant === 'bottomsheet') {
+    return (
+      <React.Fragment>
+        <View>{children}</View>
+        <Divider color="shade.920" />
+      </React.Fragment>
+    );
+  }
+  return null;
 };
 
 ModalHeader.propTypes = {
   children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['bottomsheet', 'centered', 'fullscreen']),
+  variant: PropTypes.oneOf(['bottomsheet', 'centered', 'fullscreen']),
   onClose: PropTypes.func,
 };
 
 ModalHeader.defaultProps = {
-  type: 'centered',
+  variant: 'centered',
   onClose: () => {},
 };
 

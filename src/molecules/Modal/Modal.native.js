@@ -12,19 +12,19 @@ import ModalHeader from './ModalHeader.native';
 import ModalContent from './ModalContent.native';
 import ModalFooter from './ModalFooter.native';
 
-const styles = ({ type, theme }) => {
-  if (type === 'centered') {
+const styles = ({ variant, theme }) => {
+  if (variant === 'centered') {
     return {
       'background-color': theme.colors.background[200],
       'border-radius': theme.spacings.xsmall,
     };
   }
-  if (type === 'fullscreen') {
+  if (variant === 'fullscreen') {
     return {
       'background-color': theme.colors.background[400],
     };
   }
-  if (type === 'bottomsheet') {
+  if (variant === 'bottomsheet') {
     return {
       'background-color': theme.colors.background[200],
       'border-top-left-radius': '8px',
@@ -39,113 +39,98 @@ const styles = ({ type, theme }) => {
   return null;
 };
 
-const ModalContentContainer = styled(View)(({ type, theme }) => styles({ type, theme }));
+const ModalContainer = styled(View)(({ variant, theme }) => styles({ variant, theme }));
 
 const BottomSheetDragBar = styled(View)`
   background-color: ${(props) => props.theme.colors.shade[920]};
   border-radius: 4px;
 `;
 
-const Modal = ({
-  children,
-  type,
-  visible,
-  onClose,
-  onBackdropClick,
-  showDragBar,
-  onSwipeComplete,
-  onBackButtonPress,
-}) => {
+const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
   const theme = useTheme();
 
-  const renderModal = () => {
-    if (type === 'centered') {
-      return (
-        <Space margin={[3]}>
+  if (variant === 'centered') {
+    return (
+      <Space margin={[3]}>
+        <RNModal
+          isVisible={visible}
+          onBackdropPress={onBackdropClick}
+          onBackButtonPress={onClose}
+          backdropColor={theme.colors.shade[970]}
+        >
+          <ModalContainer variant="centered">
+            {onClose ? (
+              <Flex alignSelf="flex-end">
+                <Space padding={[0.5, 1, 0, 0]}>
+                  <View>
+                    <Button
+                      testID="close-button"
+                      variant="tertiary"
+                      variantColor="shade"
+                      icon="close"
+                      size="medium"
+                      onClick={onClose}
+                    />
+                  </View>
+                </Space>
+              </Flex>
+            ) : null}
+            {React.Children.map(children, (child) => {
+              return React.cloneElement(child, { ...child.props, variant });
+            })}
+          </ModalContainer>
+        </RNModal>
+      </Space>
+    );
+  }
+  if (variant === 'fullscreen') {
+    return (
+      <Space margin={[`${getStatusBarHeight(true)}px`, 0, 0, 0]}>
+        <RNModal isVisible={visible} hasBackdrop={false} onBackButtonPress={onClose}>
+          <Flex flex={1}>
+            <ModalContainer variant="fullscreen">
+              {React.Children.map(children, (child) => {
+                return React.cloneElement(child, { ...child.props, variant, onClose });
+              })}
+            </ModalContainer>
+          </Flex>
+        </RNModal>
+      </Space>
+    );
+  }
+  if (variant === 'bottomsheet') {
+    return (
+      <Space margin={[0]}>
+        <Flex justifyContent="flex-end">
           <RNModal
             isVisible={visible}
+            swipeDirection={['down']}
             onBackdropPress={onBackdropClick}
-            onBackButtonPress={onBackButtonPress}
-            backdropColor={theme.colors.shade[970]}
+            onSwipeComplete={onClose}
+            onBackButtonPress={onClose}
+            avoidKeyboard={true}
+            backdropColor={theme.colors.background[200]}
           >
-            <ModalContentContainer type="centered">
-              {onClose ? (
-                <Flex alignSelf="flex-end">
-                  <Space padding={[0.5, 1, 0, 0]}>
-                    <View>
-                      <Button
-                        testID="close-button"
-                        variant="tertiary"
-                        variantColor="tone"
-                        icon="close"
-                        size="medium"
-                        onClick={onClose}
-                      />
-                    </View>
-                  </Space>
-                </Flex>
-              ) : null}
+            <ModalContainer variant="bottomsheet">
+              <Flex alignItems="center">
+                <Space padding={[1, 0, 1.5, 0]}>
+                  <View>
+                    <Size height={0.5} width={8}>
+                      <BottomSheetDragBar />
+                    </Size>
+                  </View>
+                </Space>
+              </Flex>
               {React.Children.map(children, (child) => {
-                return React.cloneElement(child, { ...child.props, type });
+                return React.cloneElement(child, { ...child.props, variant });
               })}
-            </ModalContentContainer>
+            </ModalContainer>
           </RNModal>
-        </Space>
-      );
-    }
-    if (type === 'fullscreen') {
-      return (
-        <Space margin={[`${getStatusBarHeight(true)}px`, 0, 0, 0]}>
-          <RNModal isVisible={visible} hasBackdrop={false} onBackButtonPress={onBackButtonPress}>
-            <Flex flex={1}>
-              <ModalContentContainer type="fullscreen">
-                {React.Children.map(children, (child) => {
-                  return React.cloneElement(child, { ...child.props, type, onClose });
-                })}
-              </ModalContentContainer>
-            </Flex>
-          </RNModal>
-        </Space>
-      );
-    }
-    if (type === 'bottomsheet') {
-      return (
-        <Space margin={[0]}>
-          <Flex justifyContent="flex-end">
-            <RNModal
-              isVisible={visible}
-              swipeDirection={['down']}
-              onBackdropPress={onBackdropClick}
-              onSwipeComplete={onSwipeComplete}
-              onBackButtonPress={onBackButtonPress}
-              avoidKeyboard={true}
-              backdropColor={theme.colors.background[200]}
-            >
-              <ModalContentContainer type="bottomsheet">
-                {showDragBar ? (
-                  <Flex alignItems="center">
-                    <Space padding={[1, 0, 1.5, 0]}>
-                      <View>
-                        <Size height={0.5} width={8}>
-                          <BottomSheetDragBar />
-                        </Size>
-                      </View>
-                    </Space>
-                  </Flex>
-                ) : null}
-                {React.Children.map(children, (child) => {
-                  return React.cloneElement(child, { ...child.props, type });
-                })}
-              </ModalContentContainer>
-            </RNModal>
-          </Flex>
-        </Space>
-      );
-    }
-    return null;
-  };
-
-  return renderModal();
+        </Flex>
+      </Space>
+    );
+  }
+  return null;
 };
 
 Modal.Header = ModalHeader;
@@ -154,19 +139,15 @@ Modal.Footer = ModalFooter;
 
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['bottomsheet', 'centered', 'fullscreen']),
+  variant: PropTypes.oneOf(['bottomsheet', 'centered', 'fullscreen']),
   visible: PropTypes.bool,
   onClose: PropTypes.func,
   onBackdropClick: PropTypes.func,
-  onSwipeComplete: PropTypes.func,
-  onBackButtonPress: PropTypes.func,
-  showDragBar: PropTypes.bool,
 };
 
 Modal.defaultProps = {
-  type: 'centered',
+  variant: 'centered',
   visible: false,
-  showDragBar: false,
 };
 
 export default Modal;

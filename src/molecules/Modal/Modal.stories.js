@@ -10,7 +10,7 @@ import View from '../../atoms/View';
 import Button from '../../atoms/Button';
 import Modal from './Modal';
 
-const HeaderIllustration = styled(View)`
+const HeaderPlaceholder = styled(View)`
   background-color: ${(props) => props.theme.colors.tone[940]};
 `;
 
@@ -59,7 +59,7 @@ const ModalDemo = () => {
               <Flex alignItems="center">
                 <View>
                   <Size height="140px" width="100%">
-                    <HeaderIllustration />
+                    <HeaderPlaceholder />
                   </Size>
                 </View>
               </Flex>
@@ -106,7 +106,7 @@ const ModalDemo = () => {
         {!(centeredModalVisibility || bottomsheetModalVisibility) ? (
           <Modal
             visible={fullscreenModalVisibility}
-            type="fullscreen"
+            variant="fullscreen"
             onClose={() => setFullscreenModalVisibility(false)}
           >
             <Modal.Header>
@@ -137,10 +137,8 @@ const ModalDemo = () => {
         {!(centeredModalVisibility || fullscreenModalVisibility) ? (
           <Modal
             visible={bottomsheetModalVisibility}
-            type="bottomsheet"
-            showDragBar={true}
-            onBackdropClick={() => setBottomsheetModalVisibility(false)}
-            onSwipeComplete={() => setBottomsheetModalVisibility(false)}
+            variant="bottomsheet"
+            onClose={() => setBottomsheetModalVisibility(false)}
           >
             <Modal.Header>
               <Flex alignItems="center">

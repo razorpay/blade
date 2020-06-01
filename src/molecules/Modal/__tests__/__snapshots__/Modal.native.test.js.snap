@@ -85,7 +85,7 @@ exports[`<Modal /> centered Modal onClose callback is not passed 1`] = `
             },
           ]
         }
-        type="centered"
+        variant="centered"
       >
         <View
           style={
@@ -295,7 +295,7 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
             },
           ]
         }
-        type="centered"
+        variant="centered"
       >
         <View
           style={
@@ -320,7 +320,7 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
           <TouchableHighlight
             activeOpacity={1}
             block={false}
-            color="tone"
+            color="shade"
             delayPressOut={100}
             disabled={false}
             size="medium"
@@ -356,9 +356,9 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
               ]
             }
             testID="close-button"
-            underlayColor="rgba(224, 228, 249, 0.38)"
+            underlayColor="rgba(22, 47, 86, 0.38)"
             variant="tertiary"
-            variantColor="tone"
+            variantColor="shade"
           >
             <RNSVGSvgView
               align="xMidYMid"
@@ -398,7 +398,7 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
               >
                 <RNSVGPath
                   d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                  fill={4293191930}
+                  fill={4281617004}
                   propList={
                     Array [
                       "fill",
@@ -556,11 +556,6 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
         "landscape",
       ]
     }
-    swipeDirection={
-      Array [
-        "down",
-      ]
-    }
     swipeThreshold={100}
     transparent={true}
     visible={true}
@@ -569,7 +564,7 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "rgba(255, 255, 255, 1.0)",
+            "backgroundColor": "rgba(22, 47, 86, 0.74)",
             "bottom": 0,
             "height": 1334,
             "left": 0,
@@ -583,156 +578,100 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
       />
     </TouchableWithoutFeedback>
     <View
+      hideModalContentWhileAnimating={false}
       pointerEvents="box-none"
+      scrollHorizontal={false}
+      scrollOffset={0}
+      scrollOffsetMax={0}
+      scrollTo={null}
       style={
-        Array [
-          Array [
+        Object {
+          "flex": 1,
+          "justifyContent": "center",
+          "margin": 37.5,
+          "marginBottom": 24,
+          "marginLeft": 24,
+          "marginRight": 24,
+          "marginTop": 24,
+          "transform": Array [
             Object {
-              "margin": 37.5,
-              "transform": Array [
-                Object {
-                  "translateY": 0,
-                },
-              ],
-            },
-            Object {
-              "flex": 1,
-              "justifyContent": "center",
-            },
-            Array [
-              Array [
-                Object {
-                  "flexDirection": "column",
-                  "justifyContent": "flex-end",
-                },
-                Array [
-                  Object {
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                  },
-                ],
-              ],
-            ],
-            Object {
-              "margin": 0,
+              "translateY": 1334,
             },
           ],
-          Object {
-            "paddingBottom": 0,
-          },
+        }
+      }
+      supportedOrientations={
+        Array [
+          "portrait",
+          "landscape",
         ]
       }
+      swipeThreshold={100}
     >
       <View
-        hideModalContentWhileAnimating={false}
-        pointerEvents="box-none"
-        scrollHorizontal={false}
-        scrollOffset={0}
-        scrollOffsetMax={0}
-        scrollTo={null}
         style={
-          Object {
-            "flex": 1,
-            "flexDirection": "column",
-            "justifyContent": "flex-end",
-            "left": 0,
-            "margin": 37.5,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "top": 0,
-            "transform": Array [
-              Object {
-                "translateY": 1334,
-              },
-            ],
-          }
-        }
-        supportedOrientations={
           Array [
-            "portrait",
-            "landscape",
+            Object {
+              "backgroundColor": "rgba(255, 255, 255, 1.0)",
+              "borderRadius": 4,
+            },
           ]
         }
-        swipeDirection={
-          Array [
-            "down",
-          ]
-        }
-        swipeThreshold={100}
+        variant="centered"
       >
         <View
           style={
             Array [
-              Object {
-                "backgroundColor": "rgba(255, 255, 255, 1.0)",
-                "borderTopLeftRadius": 8,
-                "borderTopRightRadius": 8,
-                "elevation": 2,
-                "shadowColor": "rgba(11, 112, 231, 0.10)",
-                "shadowOffset": Object {
-                  "height": -4,
-                  "width": 0,
+              Array [
+                Object {
+                  "paddingBottom": 4,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 12,
                 },
-                "shadowOpacity": 1,
-                "shadowRadius": 15,
-              },
+              ],
             ]
           }
-          type="bottomsheet"
         >
-          <View
-            style={
-              Array [
-                Array [
-                  Object {},
-                ],
-              ]
-            }
-          >
-            <Text
-              _isUnderlined={false}
-              _letterSpacing="small"
-              align="left"
-              color="shade.980"
-              size="large"
-              style={
-                Array [
-                  Object {
-                    "color": "rgba(22, 47, 86, 0.87)",
-                    "fontFamily": "Lato-Regular",
-                    "fontSize": 16,
-                    "letterSpacing": 0,
-                    "lineHeight": 24,
-                    "textAlign": "left",
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-              testID="ds-text"
-              weight="regular"
-            >
-              Title
-            </Text>
-          </View>
-          <View
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            align="left"
+            color="shade.980"
+            size="large"
             style={
               Array [
                 Object {
-                  "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                  "color": "rgba(22, 47, 86, 0.87)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 24,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
                 },
-                Array [
-                  Object {
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ],
               ]
             }
-          />
+            testID="ds-text"
+            weight="regular"
+          >
+            Title
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Array [
+                Object {
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
+                },
+              ],
+            ]
+          }
+        >
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
@@ -757,60 +696,45 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
           >
             Content
           </Text>
-          <View
+        </View>
+        <View
+          style={
+            Array [
+              Array [
+                Object {
+                  "paddingBottom": 16,
+                  "paddingLeft": 24,
+                  "paddingRight": 24,
+                  "paddingTop": 16,
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            align="left"
+            color="shade.980"
+            size="large"
             style={
               Array [
                 Object {
-                  "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                  "color": "rgba(22, 47, 86, 0.87)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 24,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
                 },
-                Array [
-                  Object {
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ],
               ]
             }
-          />
-          <View
-            style={
-              Array [
-                Array [
-                  Object {
-                    "paddingBottom": 24,
-                    "paddingLeft": 24,
-                    "paddingRight": 24,
-                    "paddingTop": 16,
-                  },
-                ],
-              ]
-            }
+            testID="ds-text"
+            weight="regular"
           >
-            <Text
-              _isUnderlined={false}
-              _letterSpacing="small"
-              align="left"
-              color="shade.980"
-              size="large"
-              style={
-                Array [
-                  Object {
-                    "color": "rgba(22, 47, 86, 0.87)",
-                    "fontFamily": "Lato-Regular",
-                    "fontSize": 16,
-                    "letterSpacing": 0,
-                    "lineHeight": 24,
-                    "textAlign": "left",
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-              testID="ds-text"
-              weight="regular"
-            >
-              Footer
-            </Text>
-          </View>
+            Footer
+          </Text>
         </View>
       </View>
     </View>
@@ -846,6 +770,23 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
     transparent={true}
     visible={true}
   >
+    <TouchableWithoutFeedback>
+      <View
+        style={
+          Object {
+            "backgroundColor": "rgba(22, 47, 86, 0.74)",
+            "bottom": 0,
+            "height": 1334,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "width": 750,
+          }
+        }
+      />
+    </TouchableWithoutFeedback>
     <View
       hideModalContentWhileAnimating={false}
       pointerEvents="box-none"
@@ -858,10 +799,10 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
           "flex": 1,
           "justifyContent": "center",
           "margin": 37.5,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 20,
+          "marginBottom": 24,
+          "marginLeft": 24,
+          "marginRight": 24,
+          "marginTop": 24,
           "transform": Array [
             Object {
               "translateY": 1334,
@@ -881,75 +822,33 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
         style={
           Array [
             Object {
-              "backgroundColor": "rgba(249, 251, 254, 1.0)",
+              "backgroundColor": "rgba(255, 255, 255, 1.0)",
+              "borderRadius": 4,
             },
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexDirection": "column",
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ],
           ]
         }
-        type="fullscreen"
+        variant="centered"
       >
         <View
           style={
             Array [
-              Object {
-                "backgroundColor": "rgba(255, 255, 255, 1.0)",
-                "elevation": 2,
-                "shadowColor": "rgba(11, 112, 231, 0.10)",
-                "shadowOffset": Object {
-                  "height": 4,
-                  "width": 0,
-                },
-                "shadowOpacity": 1,
-                "shadowRadius": 15,
-              },
               Array [
                 Object {
-                  "paddingBottom": 8,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 8,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 8,
+                  "paddingTop": 4,
                 },
                 Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
                   },
                 ],
               ],
             ]
           }
         >
-          <Text
-            _isUnderlined={false}
-            _letterSpacing="small"
-            align="left"
-            color="shade.980"
-            size="large"
-            style={
-              Array [
-                Object {
-                  "color": "rgba(22, 47, 86, 0.87)",
-                  "fontFamily": "Lato-Regular",
-                  "fontSize": 16,
-                  "letterSpacing": 0,
-                  "lineHeight": 24,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-            testID="ds-text"
-            weight="regular"
-          >
-            Title
-          </Text>
           <TouchableHighlight
             activeOpacity={1}
             block={false}
@@ -1042,30 +941,84 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
             </RNSVGSvgView>
           </TouchableHighlight>
         </View>
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          align="left"
-          color="shade.980"
-          size="large"
+        <View
           style={
             Array [
-              Object {
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 16,
-                "letterSpacing": 0,
-                "lineHeight": 24,
-                "textAlign": "left",
-                "textDecorationLine": "none",
-              },
+              Array [
+                Object {
+                  "paddingBottom": 4,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 12,
+                },
+              ],
             ]
           }
-          testID="ds-text"
-          weight="regular"
         >
-          Content
-        </Text>
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            align="left"
+            color="shade.980"
+            size="large"
+            style={
+              Array [
+                Object {
+                  "color": "rgba(22, 47, 86, 0.87)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 24,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+            weight="regular"
+          >
+            Title
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Array [
+                Object {
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            _isUnderlined={false}
+            _letterSpacing="small"
+            align="left"
+            color="shade.980"
+            size="large"
+            style={
+              Array [
+                Object {
+                  "color": "rgba(22, 47, 86, 0.87)",
+                  "fontFamily": "Lato-Regular",
+                  "fontSize": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 24,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            testID="ds-text"
+            weight="regular"
+          >
+            Content
+          </Text>
+        </View>
       </View>
     </View>
   </Modal>

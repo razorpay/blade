@@ -1,38 +1,40 @@
 import React from 'react';
-import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
 import Space from '../../atoms/Space';
-import Size from '../../atoms/Size';
 import View from '../../atoms/View';
+import Divider from '../../atoms/Divider';
 
-const Divider = styled(View)`
-  background-color: ${(props) => props.theme.colors.shade[920]};
-`;
-
-const ModalFooter = ({ children, type }) => {
-  return type === 'centered' ? (
-    <Space padding={[2, 3]}>
-      <View>{children}</View>
-    </Space>
-  ) : type === 'fullscreen' ? null : type === 'bottomsheet' ? (
-    <React.Fragment>
-      <Size height="1px" width="100%">
-        <Divider />
-      </Size>
-      <Space padding={[2, 3, 3, 3]}>
+const ModalFooter = ({ children, variant }) => {
+  if (variant === 'centered') {
+    return (
+      <Space padding={[2, 3]}>
         <View>{children}</View>
       </Space>
-    </React.Fragment>
-  ) : null;
+    );
+  }
+  if (variant === 'fullscreen') {
+    return children;
+  }
+  if (variant === 'bottomsheet') {
+    return (
+      <React.Fragment>
+        <Divider color="shade.920" />
+        <Space padding={[2, 3, 3, 3]}>
+          <View>{children}</View>
+        </Space>
+      </React.Fragment>
+    );
+  }
+  return null;
 };
 
 ModalFooter.propTypes = {
   children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['bottomsheet', 'centered', 'fullscreen']),
+  variant: PropTypes.oneOf(['bottomsheet', 'centered', 'fullscreen']),
 };
 
 ModalFooter.defaultProps = {
-  type: 'centered',
+  variant: 'centered',
 };
 
 export default ModalFooter;

@@ -15,25 +15,26 @@ const theme = {
 
 // import stories
 configure(() => {
-  require('../../src/atoms/Text/Text.stories');
-  require('../../src/atoms/Link/Link.stories');
-  require('../../src/atoms/Icon/Icon.stories');
-  require('../../src/atoms/TextInput/TextInput.stories');
+  require('../../src/atoms/Badge/Badge.stories');
   require('../../src/atoms/Button/Button.stories');
+  require('../../src/atoms/Card/Card.stories');
   require('../../src/atoms/Checkbox/Checkbox.stories');
+  require('../../src/atoms/Divider/Divider.stories');
+  require('../../src/atoms/Heading/Heading.stories');
+  require('../../src/atoms/Icon/Icon.stories');
+  require('../../src/atoms/Indicator/Indicator.stories');
+  require('../../src/atoms/Link/Link.stories');
   require('../../src/atoms/Radio/Radio.stories');
   require('../../src/atoms/ScrollView/ScrollView.stories');
   require('../../src/atoms/Switch/Switch.stories');
-  require('../../src/atoms/Card/Card.stories');
-  require('../../src/atoms/Indicator/Indicator.stories');
-  require('../../src/atoms/Badge/Badge.stories');
+  require('../../src/atoms/Text/Text.stories');
   require('../../src/atoms/TextArea/TextArea.stories');
-  require('../../src/atoms/Heading/Heading.stories');
+  require('../../src/atoms/TextInput/TextInput.stories');
   require('../../src/molecules/Amount/Amount.stories');
-  require('../../src/molecules/SegmentControl/SegmentControl.stories');
-  require('../../src/molecules/Tabs/Tabs.stories');
-  require('../../src/molecules/Snackbar/Snackbar.stories');
   require('../../src/molecules/Modal/Modal.stories');
+  require('../../src/molecules/SegmentControl/SegmentControl.stories');
+  require('../../src/molecules/Snackbar/Snackbar.stories');
+  require('../../src/molecules/Tabs/Tabs.stories');
 }, module);
 
 // add decorators
