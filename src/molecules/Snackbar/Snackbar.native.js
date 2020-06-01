@@ -84,7 +84,7 @@ const Snackbar = ({
         useNativeDriver: true,
         duration: animationConfig.duration,
       }).start();
-    } else if (!isVisible) {
+    } else {
       Animated.timing(visibility, {
         toValue: animationConfig.animationValue.initial,
         useNativeDriver: true,
