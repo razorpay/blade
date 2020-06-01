@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Snackbar from './Snackbar';
 import SnackbarContext from './SnackbarContext';
 
-const DEFAULT_CLOSE_DURATION = 3000;
+const DEFAULT_HIDE_DURATION = 3000;
 
 const SnackbarProvider = ({ children }) => {
   const [snackbarProps, setSnackbarProps] = useState({
@@ -17,7 +17,7 @@ const SnackbarProvider = ({ children }) => {
   });
   const [isVisible, setIsVisible] = useState(false);
   const timerRef = useRef(null);
-  const hideAfterMs = useCallback((duration = DEFAULT_CLOSE_DURATION) => {
+  const hideAfterMs = useCallback((duration = DEFAULT_HIDE_DURATION) => {
     if (timerRef.current) {
       clearTimeout(timerRef.current); // clear existing timer
     }

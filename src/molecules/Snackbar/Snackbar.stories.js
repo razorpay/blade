@@ -21,7 +21,7 @@ const iconOptions = getIconNames().reduce(
   {},
 );
 
-const SnackDemo = (props) => {
+const SnackbarDemo = (props) => {
   const snackbar = useSnackbar();
 
   return (
@@ -69,7 +69,7 @@ storiesOf('Snackbar', module)
     <Flex flex={1}>
       <View>
         <SnackbarProvider>
-          <SnackDemo
+          <SnackbarDemo
             variant={select('Variant', variantOptions, undefined)}
             title={text('Title', 'Snackbar text here')}
             maxLines={number('maxLines', undefined)}
