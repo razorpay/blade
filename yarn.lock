@@ -13650,7 +13650,7 @@ react-native-modal-selector@^1.0.2:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-modal@^11.0.2, react-native-modal@^11.5.6:
+react-native-modal@11.5.6, react-native-modal@^11.0.2:
   version "11.5.6"
   resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-11.5.6.tgz#bb25a78c35a5e24f45de060e5f64284397d38a87"
   integrity sha512-APGNfbvgC4hXbJqcSADu79GLoMKIHUmgR3fDQ7rCGZNBypkStSP8imZ4PKK/OzIZZfjGU9aP49jhMgGbhY9KHA==
@@ -13672,6 +13672,11 @@ react-native-simple-markdown@^1.1.0:
   dependencies:
     lodash "^4.15.0"
     simple-markdown "git://github.com/CharlesMangwa/simple-markdown.git"
+
+react-native-status-bar-height@2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-status-bar-height/-/react-native-status-bar-height-2.5.0.tgz#bc0fb85230603850aab9667ee8111a62954de90c"
+  integrity sha512-sYBCPYA/NapBSHkdm/IVL4ID3LLlIuLqINi2FBDyMkc2BU9pfSGOtkz9yfxoK39mYJuTrlTOQ7mManARUsYDSA==
 
 react-native-svg@12.1.0:
   version "12.1.0"

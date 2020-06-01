@@ -20,7 +20,7 @@ describe('<Modal />', () => {
           </Modal.Footer>
         </Modal>,
       );
-      const crossButton = queryByTestId('centered-cross');
+      const crossButton = queryByTestId('close-button');
       expect(crossButton).toBeFalsy();
       expect(container).toMatchSnapshot();
     });
@@ -40,7 +40,7 @@ describe('<Modal />', () => {
           </Modal.Footer>
         </Modal>,
       );
-      const crossButton = getByTestId('centered-cross');
+      const crossButton = getByTestId('close-button');
       fireEvent.press(crossButton);
       expect(mockedOnClose).toHaveBeenCalledTimes(1);
       expect(crossButton).toBeTruthy();
@@ -60,7 +60,7 @@ describe('<Modal />', () => {
         </Modal.Content>
       </Modal>,
     );
-    const crossButton = getByTestId('fullscreen-cross');
+    const crossButton = getByTestId('close-button');
     fireEvent.press(crossButton);
     expect(mockedOnClose).toHaveBeenCalledTimes(1);
     expect(container).toMatchSnapshot();

@@ -32,7 +32,7 @@ exports[`<Modal /> centered Modal onClose callback is not passed 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "black",
+            "backgroundColor": "rgba(22, 47, 86, 0.74)",
             "bottom": 0,
             "height": 1334,
             "left": 0,
@@ -85,6 +85,7 @@ exports[`<Modal /> centered Modal onClose callback is not passed 1`] = `
             },
           ]
         }
+        type="centered"
       >
         <View
           style={
@@ -241,7 +242,7 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "black",
+            "backgroundColor": "rgba(22, 47, 86, 0.74)",
             "bottom": 0,
             "height": 1334,
             "left": 0,
@@ -294,6 +295,7 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
             },
           ]
         }
+        type="centered"
       >
         <View
           style={
@@ -353,7 +355,7 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
                 ],
               ]
             }
-            testID="centered-cross"
+            testID="close-button"
             underlayColor="rgba(224, 228, 249, 0.38)"
             variant="tertiary"
             variantColor="tone"
@@ -567,7 +569,7 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "black",
+            "backgroundColor": "rgba(255, 255, 255, 1.0)",
             "bottom": 0,
             "height": 1334,
             "left": 0,
@@ -581,77 +583,156 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
       />
     </TouchableWithoutFeedback>
     <View
-      hideModalContentWhileAnimating={false}
       pointerEvents="box-none"
-      scrollHorizontal={false}
-      scrollOffset={0}
-      scrollOffsetMax={0}
-      scrollTo={null}
       style={
-        Object {
-          "flex": 1,
-          "flexDirection": "column",
-          "justifyContent": "flex-end",
-          "left": 0,
-          "margin": 37.5,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
-          "top": 0,
-          "transform": Array [
-            Object {
-              "translateY": 1334,
-            },
-          ],
-        }
-      }
-      supportedOrientations={
         Array [
-          "portrait",
-          "landscape",
-        ]
-      }
-      swipeDirection={
-        Array [
-          "down",
-        ]
-      }
-      swipeThreshold={100}
-    >
-      <View
-        style={
           Array [
             Object {
-              "backgroundColor": "rgba(255, 255, 255, 1.0)",
-              "borderTopLeftRadius": 8,
-              "borderTopRightRadius": 8,
-              "elevation": 2,
-              "shadowColor": "rgba(11, 112, 231, 0.1)",
-              "shadowOffset": Object {
-                "height": -4,
-                "width": 0,
-              },
-              "shadowOpacity": 1,
-              "shadowRadius": 15,
+              "margin": 37.5,
+              "transform": Array [
+                Object {
+                  "translateY": 0,
+                },
+              ],
             },
+            Object {
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            Array [
+              Array [
+                Object {
+                  "flexDirection": "column",
+                  "justifyContent": "flex-end",
+                },
+                Array [
+                  Object {
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                  },
+                ],
+              ],
+            ],
+            Object {
+              "margin": 0,
+            },
+          ],
+          Object {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
+      <View
+        hideModalContentWhileAnimating={false}
+        pointerEvents="box-none"
+        scrollHorizontal={false}
+        scrollOffset={0}
+        scrollOffsetMax={0}
+        scrollTo={null}
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "column",
+            "justifyContent": "flex-end",
+            "left": 0,
+            "margin": 37.5,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "top": 0,
+            "transform": Array [
+              Object {
+                "translateY": 1334,
+              },
+            ],
+          }
+        }
+        supportedOrientations={
+          Array [
+            "portrait",
+            "landscape",
           ]
         }
+        swipeDirection={
+          Array [
+            "down",
+          ]
+        }
+        swipeThreshold={100}
       >
         <View
           style={
             Array [
-              Array [
-                Object {
-                  "paddingBottom": 8,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
+              Object {
+                "backgroundColor": "rgba(255, 255, 255, 1.0)",
+                "borderTopLeftRadius": 8,
+                "borderTopRightRadius": 8,
+                "elevation": 2,
+                "shadowColor": "rgba(11, 112, 231, 0.10)",
+                "shadowOffset": Object {
+                  "height": -4,
+                  "width": 0,
                 },
-              ],
+                "shadowOpacity": 1,
+                "shadowRadius": 15,
+              },
             ]
           }
+          type="bottomsheet"
         >
+          <View
+            style={
+              Array [
+                Array [
+                  Object {},
+                ],
+              ]
+            }
+          >
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              align="left"
+              color="shade.980"
+              size="large"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 24,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+              weight="regular"
+            >
+              Title
+            </Text>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                },
+                Array [
+                  Object {
+                    "height": 1,
+                    "width": "100%",
+                  },
+                ],
+              ]
+            }
+          />
           <Text
             _isUnderlined={false}
             _letterSpacing="small"
@@ -674,93 +755,62 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
             testID="ds-text"
             weight="regular"
           >
-            Title
+            Content
           </Text>
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "backgroundColor": "rgba(22, 47, 86, 0.05)",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
-          }
-        />
-        <Text
-          _isUnderlined={false}
-          _letterSpacing="small"
-          align="left"
-          color="shade.980"
-          size="large"
-          style={
-            Array [
-              Object {
-                "color": "rgba(22, 47, 86, 0.87)",
-                "fontFamily": "Lato-Regular",
-                "fontSize": 16,
-                "letterSpacing": 0,
-                "lineHeight": 24,
-                "textAlign": "left",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          testID="ds-text"
-          weight="regular"
-        >
-          Content
-        </Text>
-        <View
-          style={
-            Array [
-              Object {
-                "backgroundColor": "rgba(22, 47, 86, 0.05)",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Array [
-                Object {
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
-                },
-              ],
-            ]
-          }
-        >
-          <Text
-            _isUnderlined={false}
-            _letterSpacing="small"
-            align="left"
-            color="shade.980"
-            size="large"
+          <View
             style={
               Array [
                 Object {
-                  "color": "rgba(22, 47, 86, 0.87)",
-                  "fontFamily": "Lato-Regular",
-                  "fontSize": 16,
-                  "letterSpacing": 0,
-                  "lineHeight": 24,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "backgroundColor": "rgba(22, 47, 86, 0.05)",
                 },
+                Array [
+                  Object {
+                    "height": 1,
+                    "width": "100%",
+                  },
+                ],
               ]
             }
-            testID="ds-text"
-            weight="regular"
+          />
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "paddingBottom": 24,
+                    "paddingLeft": 24,
+                    "paddingRight": 24,
+                    "paddingTop": 16,
+                  },
+                ],
+              ]
+            }
           >
-            Footer
-          </Text>
+            <Text
+              _isUnderlined={false}
+              _letterSpacing="small"
+              align="left"
+              color="shade.980"
+              size="large"
+              style={
+                Array [
+                  Object {
+                    "color": "rgba(22, 47, 86, 0.87)",
+                    "fontFamily": "Lato-Regular",
+                    "fontSize": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 24,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+              testID="ds-text"
+              weight="regular"
+            >
+              Footer
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -811,7 +861,7 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
-          "marginTop": 24,
+          "marginTop": 20,
           "transform": Array [
             Object {
               "translateY": 1334,
@@ -843,6 +893,7 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
             ],
           ]
         }
+        type="fullscreen"
       >
         <View
           style={
@@ -850,7 +901,7 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
               Object {
                 "backgroundColor": "rgba(255, 255, 255, 1.0)",
                 "elevation": 2,
-                "shadowColor": "rgba(11, 112, 231, 0.1)",
+                "shadowColor": "rgba(11, 112, 231, 0.10)",
                 "shadowOffset": Object {
                   "height": 4,
                   "width": 0,
@@ -937,7 +988,7 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
                 ],
               ]
             }
-            testID="fullscreen-cross"
+            testID="close-button"
             underlayColor="rgba(22, 47, 86, 0.38)"
             variant="tertiary"
             variantColor="shade"
