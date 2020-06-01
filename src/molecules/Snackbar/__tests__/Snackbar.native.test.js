@@ -34,14 +34,16 @@ describe('<Snackbar />', () => {
     });
   });
   describe('action', () => {
-    it('actionText', () => {
-      const { container } = renderWithTheme(<Snackbar title="Hello world" actionText="Retry" />);
+    it('label', () => {
+      const { container } = renderWithTheme(
+        <Snackbar title="Hello world" action={{ label: 'Retry' }} />,
+      );
       expect(container).toMatchSnapshot();
     });
-    it('onAction', () => {
+    it('onClick', () => {
       const onAction = jest.fn();
       const { getByTestId } = renderWithTheme(
-        <Snackbar title="Hello world" actionText="Retry" onAction={onAction} />,
+        <Snackbar title="Hello world" action={{ label: 'Retry', onClick: onAction }} />,
       );
       const actionButton = getByTestId('ds-snackbar-action-button');
 

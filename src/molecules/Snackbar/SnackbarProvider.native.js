@@ -9,12 +9,11 @@ const SnackbarProvider = ({ children }) => {
   const [snackbarProps, setSnackbarProps] = useState({
     variant: undefined,
     title: '',
-    actionText: undefined,
-    onAction: undefined,
+    action: { label: undefined, onClick: undefined },
     showCloseButton: undefined,
     onClose: undefined,
     maxLines: undefined,
-    position: { top: undefined, bottom: 0, left: 0, right: 0 },
+    position: { top: undefined, bottom: undefined, left: undefined, right: undefined },
   });
   const [isVisible, setIsVisible] = useState(false);
   const timerRef = useRef(null);
@@ -49,8 +48,7 @@ const SnackbarProvider = ({ children }) => {
     ({
       variant,
       title,
-      actionText,
-      onAction,
+      action,
       showCloseButton,
       onClose,
       maxLines,
@@ -64,8 +62,7 @@ const SnackbarProvider = ({ children }) => {
           invokeNewSnackBar({
             variant,
             title,
-            actionText,
-            onAction,
+            action,
             showCloseButton,
             onClose,
             maxLines,
@@ -78,8 +75,7 @@ const SnackbarProvider = ({ children }) => {
         invokeNewSnackBar({
           variant,
           title,
-          actionText,
-          onAction,
+          action,
           showCloseButton,
           onClose,
           maxLines,

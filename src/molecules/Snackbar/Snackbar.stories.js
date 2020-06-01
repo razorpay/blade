@@ -73,8 +73,7 @@ storiesOf('Snackbar', module)
             variant={select('Variant', variantOptions, undefined)}
             title={text('Title', 'Snackbar text here')}
             maxLines={number('maxLines', undefined)}
-            actionText={text('Action Text', 'Retry')}
-            onAction={() => {}}
+            action={{ label: text('Action Label', 'Retry'), onClick: () => {} }}
             onClose={() => {}}
             showCloseButton={boolean('showCloseButton', true)}
             autoHide={boolean('autoHide', true)}

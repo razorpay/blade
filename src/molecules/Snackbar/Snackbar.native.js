@@ -42,8 +42,7 @@ const SnackbarContainer = styled(View)`
 const Snackbar = ({
   variant,
   title,
-  actionText,
-  onAction,
+  action,
   showCloseButton,
   onClose,
   maxLines,
@@ -70,6 +69,10 @@ const Snackbar = ({
     }
   };
 
+  const handleAction = () => {
+    action.onClick();
+  };
+
   const handleLayout = useCallback(({ nativeEvent }) => {
     setBottomY(nativeEvent.layout.y);
   }, []);
@@ -93,10 +96,10 @@ const Snackbar = ({
   return (
     <Position
       position="absolute"
-      top={position.top}
-      bottom={position.bottom}
-      left={position.left}
-      right={position.right}
+      top={position?.top}
+      bottom={position?.bottom}
+      left={position?.left}
+      right={position?.right}
     >
       <Animated.View
         style={{
@@ -137,17 +140,17 @@ const Snackbar = ({
                     </View>
                   </Flex>
                 </Space>
-                {actionText ? (
+                {action?.label ? (
                   <Space padding={[0, 0.75, 0, 0]}>
                     <View>
                       <Button
                         variant="secondary"
                         size="xsmall"
                         variantColor="light"
-                        onClick={onAction}
+                        onClick={handleAction}
                         testID="ds-snackbar-action-button"
                       >
-                        {actionText}
+                        {action.label}
                       </Button>
                     </View>
                   </Space>
@@ -178,8 +181,7 @@ const Snackbar = ({
 Snackbar.propTypes = {
   variant: PropTypes.oneOf(['positive', 'negative', 'warning', 'neutral']),
   title: PropTypes.string,
-  actionText: PropTypes.string,
-  onAction: PropTypes.func,
+  action: PropTypes.shape({ label: PropTypes.string, onClick: PropTypes.func }),
   showCloseButton: PropTypes.bool,
   onClose: PropTypes.func,
   maxLines: PropTypes.number,
@@ -194,12 +196,6 @@ Snackbar.propTypes = {
 
 Snackbar.defaultProps = {
   variant: 'positive',
-  position: {
-    top: undefined,
-    right: undefined,
-    bottom: undefined,
-    left: undefined,
-  },
 };
 
 export default Snackbar;

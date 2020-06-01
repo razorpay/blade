@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Snackbar /> action actionText 1`] = `
+exports[`<Snackbar /> action label 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
