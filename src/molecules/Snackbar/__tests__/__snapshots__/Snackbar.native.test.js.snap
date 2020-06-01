@@ -191,7 +191,7 @@ exports[`<Snackbar /> action actionText 1`] = `
 </View>
 `;
 
-exports[`<Snackbar /> dismiss button showDismissButton 1`] = `
+exports[`<Snackbar /> close button showCloseButton 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -345,7 +345,7 @@ exports[`<Snackbar /> dismiss button showDismissButton 1`] = `
               ],
             ]
           }
-          testID="ds-snackbar-dismiss-button"
+          testID="ds-snackbar-close-button"
           underlayColor="rgba(255, 255, 255, 0.38)"
           variant="tertiary"
           variantColor="light"
@@ -404,7 +404,7 @@ exports[`<Snackbar /> dismiss button showDismissButton 1`] = `
 </View>
 `;
 
-exports[`<Snackbar /> iconName renders with an icon 1`] = `
+exports[`<Snackbar /> icon renders with an icon 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -721,7 +721,7 @@ exports[`<Snackbar /> maxLines renders 1 line 1`] = `
               ],
             ]
           }
-          testID="ds-snackbar-dismiss-button"
+          testID="ds-snackbar-close-button"
           underlayColor="rgba(255, 255, 255, 0.38)"
           variant="tertiary"
           variantColor="light"
@@ -934,7 +934,7 @@ exports[`<Snackbar /> maxLines renders multiple lines 1`] = `
               ],
             ]
           }
-          testID="ds-snackbar-dismiss-button"
+          testID="ds-snackbar-close-button"
           underlayColor="rgba(255, 255, 255, 0.38)"
           variant="tertiary"
           variantColor="light"

@@ -8,40 +8,40 @@ jest.mock('../SnackbarContext');
 
 describe('<Snackbar />', () => {
   useSnackbar.mockReturnValue({
-    dismiss: jest.fn(),
+    close: jest.fn(),
     isVisible: true,
   });
   describe('variant', () => {
     it('default', () => {
-      const { container } = renderWithTheme(<Snackbar text="Hello world" />);
+      const { container } = renderWithTheme(<Snackbar title="Hello world" />);
       expect(container).toMatchSnapshot();
     });
     it('positive', () => {
-      const { container } = renderWithTheme(<Snackbar text="Hello world" variant="positive" />);
+      const { container } = renderWithTheme(<Snackbar title="Hello world" variant="positive" />);
       expect(container).toMatchSnapshot();
     });
     it('negative', () => {
-      const { container } = renderWithTheme(<Snackbar text="Hello world" variant="negative" />);
+      const { container } = renderWithTheme(<Snackbar title="Hello world" variant="negative" />);
       expect(container).toMatchSnapshot();
     });
     it('warning', () => {
-      const { container } = renderWithTheme(<Snackbar text="Hello world" variant="warning" />);
+      const { container } = renderWithTheme(<Snackbar title="Hello world" variant="warning" />);
       expect(container).toMatchSnapshot();
     });
     it('neutral', () => {
-      const { container } = renderWithTheme(<Snackbar text="Hello world" variant="neutral" />);
+      const { container } = renderWithTheme(<Snackbar title="Hello world" variant="neutral" />);
       expect(container).toMatchSnapshot();
     });
   });
   describe('action', () => {
     it('actionText', () => {
-      const { container } = renderWithTheme(<Snackbar text="Hello world" actionText="Retry" />);
+      const { container } = renderWithTheme(<Snackbar title="Hello world" actionText="Retry" />);
       expect(container).toMatchSnapshot();
     });
     it('onAction', () => {
       const onAction = jest.fn();
       const { getByTestId } = renderWithTheme(
-        <Snackbar text="Hello world" actionText="Retry" onAction={onAction} />,
+        <Snackbar title="Hello world" actionText="Retry" onAction={onAction} />,
       );
       const actionButton = getByTestId('ds-snackbar-action-button');
 
@@ -53,33 +53,33 @@ describe('<Snackbar />', () => {
     });
   });
 
-  describe('dismiss button', () => {
-    it('showDismissButton', () => {
+  describe('close button', () => {
+    it('showCloseButton', () => {
       const { container } = renderWithTheme(
-        <Snackbar text="Hello world" showDismissButton={true} />,
+        <Snackbar title="Hello world" showCloseButton={true} />,
       );
       expect(container).toMatchSnapshot();
     });
-    it('onDismiss', () => {
-      const onDismiss = jest.fn();
+    it('onClose', () => {
+      const onClose = jest.fn();
       const { getByTestId } = renderWithTheme(
-        <Snackbar text="Hello world" showDismissButton={true} onDismiss={onDismiss} />,
+        <Snackbar title="Hello world" showCloseButton={true} onClose={onClose} />,
       );
-      const dismissButton = getByTestId('ds-snackbar-dismiss-button');
+      const closeButton = getByTestId('ds-snackbar-close-button');
 
       act(() => {
-        fireEvent.press(dismissButton);
+        fireEvent.press(closeButton);
       });
 
-      expect(onDismiss).toBeCalled();
+      expect(onClose).toBeCalled();
     });
   });
   describe('maxLines', () => {
     it('renders multiple lines', () => {
       const { container } = renderWithTheme(
         <Snackbar
-          text="The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog  The quick brown fox jumps over the lazy dog"
-          showDismissButton={true}
+          title="The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog  The quick brown fox jumps over the lazy dog"
+          showCloseButton={true}
         />,
       );
       expect(container).toMatchSnapshot();
@@ -87,42 +87,42 @@ describe('<Snackbar />', () => {
     it('renders 1 line', () => {
       const { container } = renderWithTheme(
         <Snackbar
-          text="The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog  The quick brown fox jumps over the lazy dog"
-          showDismissButton={true}
+          title="The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog  The quick brown fox jumps over the lazy dog"
+          showCloseButton={true}
           maxLines={1}
         />,
       );
       expect(container).toMatchSnapshot();
     });
   });
-  describe('iconName', () => {
+  describe('icon', () => {
     it('renders with an icon', () => {
-      const { container } = renderWithTheme(<Snackbar text="Snackbar text here" iconName="info" />);
+      const { container } = renderWithTheme(<Snackbar title="Snackbar text here" icon="info" />);
       expect(container).toMatchSnapshot();
     });
   });
   describe('position', () => {
     it('change top position', () => {
       const { container } = renderWithTheme(
-        <Snackbar text="Snackbar text here" position={{ top: 4 }} />,
+        <Snackbar title="Snackbar text here" position={{ top: 4 }} />,
       );
       expect(container).toMatchSnapshot();
     });
     it('change bottom position', () => {
       const { container } = renderWithTheme(
-        <Snackbar text="Snackbar text here" position={{ bottom: 4 }} />,
+        <Snackbar title="Snackbar text here" position={{ bottom: 4 }} />,
       );
       expect(container).toMatchSnapshot();
     });
     it('change left position', () => {
       const { container } = renderWithTheme(
-        <Snackbar text="Snackbar text here" position={{ left: 2 }} />,
+        <Snackbar title="Snackbar text here" position={{ left: 2 }} />,
       );
       expect(container).toMatchSnapshot();
     });
     it('change right position', () => {
       const { container } = renderWithTheme(
-        <Snackbar text="Snackbar text here" position={{ right: 2 }} />,
+        <Snackbar title="Snackbar text here" position={{ right: 2 }} />,
       );
       expect(container).toMatchSnapshot();
     });

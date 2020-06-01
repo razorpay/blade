@@ -21,34 +21,34 @@ describe('useSnackbar hook', () => {
     const { result } = renderHook(() => useSnackbar(), { wrapper: Wrapper });
     expect(result.current.isVisible).toBe(false);
     act(() => {
-      result.current.show({ text: 'Snackbar text here', autoDismiss: false });
+      result.current.show({ title: 'Snackbar text here', autoHide: false });
     });
     expect(result.current.isVisible).toBe(true);
   });
 
-  it('dismiss the snackbar', () => {
+  it('close the snackbar', () => {
     const { result } = renderHook(() => useSnackbar(), { wrapper: Wrapper });
     expect(result.current.isVisible).toBe(false);
     act(() => {
-      result.current.show({ text: 'Snackbar text here', autoDismiss: false });
+      result.current.show({ title: 'Snackbar text here', autoHide: false });
     });
     expect(result.current.isVisible).toBe(true);
     act(() => {
-      result.current.dismiss();
+      result.current.close();
     });
     expect(result.current.isVisible).toBe(false);
   });
 
-  it('auto-dismiss the snackbar', () => {
+  it('auto-hide the snackbar', () => {
     jest.useFakeTimers(); // Uses fake timer to resolve setTimeout
     const { result } = renderHook(() => useSnackbar(), { wrapper: Wrapper });
     expect(result.current.isVisible).toBe(false);
     act(() => {
-      result.current.show({ text: 'Snackbar text here', autoDismiss: true });
+      result.current.show({ title: 'Snackbar text here', autoHide: true });
     });
     expect(result.current.isVisible).toBe(true);
     act(() => {
-      jest.runAllTimers(); // Resolve auto dismiss timer
+      jest.runAllTimers(); // Resolve auto hide timer
     });
     expect(result.current.isVisible).toBe(false);
   });

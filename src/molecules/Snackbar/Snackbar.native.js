@@ -41,16 +41,16 @@ const SnackbarContainer = styled(View)`
 
 const Snackbar = ({
   variant,
-  text,
+  title,
   actionText,
   onAction,
-  showDismissButton,
-  onDismiss,
+  showCloseButton,
+  onClose,
   maxLines,
-  iconName,
+  icon,
   position,
 }) => {
-  const { isVisible, dismiss } = useSnackbar();
+  const { isVisible, close } = useSnackbar();
   const [bottomY, setBottomY] = useState(0);
   const animationConfig = {
     animationValue: {
@@ -63,10 +63,10 @@ const Snackbar = ({
     new Animated.Value(animationConfig.animationValue.initial),
   );
 
-  const handleDismiss = () => {
-    dismiss();
-    if (onDismiss) {
-      onDismiss();
+  const handleClose = () => {
+    close();
+    if (onClose) {
+      onClose();
     }
   };
 
@@ -121,10 +121,10 @@ const Snackbar = ({
           <Space padding={[1.5]}>
             <Flex flexDirection="row" alignItems="center">
               <SnackbarContainer variant={variant}>
-                {iconName ? (
+                {icon ? (
                   <Space padding={[0, 1, 0, 0]}>
                     <View>
-                      <Icon name={iconName} size="medium" fill="light.900" />
+                      <Icon name={icon} size="medium" fill="light.900" />
                     </View>
                   </Space>
                 ) : null}
@@ -132,7 +132,7 @@ const Snackbar = ({
                   <Flex flex={1}>
                     <View>
                       <Text size="medium" color="light.900" maxLines={maxLines}>
-                        {text}
+                        {title}
                       </Text>
                     </View>
                   </Flex>
@@ -152,7 +152,7 @@ const Snackbar = ({
                     </View>
                   </Space>
                 ) : null}
-                {showDismissButton ? (
+                {showCloseButton ? (
                   <Space padding={[0, 0.75, 0, 0]}>
                     <View>
                       <Button
@@ -160,8 +160,8 @@ const Snackbar = ({
                         size="xsmall"
                         icon="close"
                         variantColor="light"
-                        onClick={handleDismiss}
-                        testID="ds-snackbar-dismiss-button"
+                        onClick={handleClose}
+                        testID="ds-snackbar-close-button"
                       />
                     </View>
                   </Space>
@@ -177,13 +177,13 @@ const Snackbar = ({
 
 Snackbar.propTypes = {
   variant: PropTypes.oneOf(['positive', 'negative', 'warning', 'neutral']),
-  text: PropTypes.string,
+  title: PropTypes.string,
   actionText: PropTypes.string,
   onAction: PropTypes.func,
-  showDismissButton: PropTypes.bool,
-  onDismiss: PropTypes.func,
+  showCloseButton: PropTypes.bool,
+  onClose: PropTypes.func,
   maxLines: PropTypes.number,
-  iconName: PropTypes.oneOf(Object.keys(icons)),
+  icon: PropTypes.oneOf(Object.keys(icons)),
   position: PropTypes.shape({
     top: PropTypes.number,
     right: PropTypes.number,

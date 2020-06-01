@@ -25,47 +25,39 @@ const SnackDemo = (props) => {
   const snackbar = useSnackbar();
 
   return (
-    <Flex justifyContent="space-around" flexDirection="column" flex={0.5} flexWrap="wrap">
+    <Flex flex={1}>
       <View>
-        <Button
-          onClick={() =>
-            snackbar.show({
-              ...props,
-            })
-          }
-        >
-          Show Snackbar
-        </Button>
-        <Button
-          variant="primary"
-          variantColor="shade"
-          onClick={() =>
-            snackbar.show({
-              ...props,
-              variant: 'negative',
-              text: 'This is another snackbar',
-            })
-          }
-        >
-          Show another Snackbar
-        </Button>
-        <Button variant="secondary" variantColor="shade" onClick={() => snackbar.dismiss()}>
-          Dismiss Snackbar
-        </Button>
+        <Flex justifyContent="space-around" flexDirection="column" flex={0.5} flexWrap="wrap">
+          <View>
+            <Button
+              onClick={() =>
+                snackbar.show({
+                  ...props,
+                })
+              }
+            >
+              Show Snackbar
+            </Button>
+            <Button
+              variant="primary"
+              variantColor="shade"
+              onClick={() =>
+                snackbar.show({
+                  ...props,
+                  variant: 'negative',
+                  title: 'This is another snackbar',
+                })
+              }
+            >
+              Show another Snackbar
+            </Button>
+            <Button variant="secondary" variantColor="shade" onClick={() => snackbar.close()}>
+              Close Snackbar
+            </Button>
+          </View>
+        </Flex>
       </View>
     </Flex>
-  );
-};
-
-const SnackWrapper = (props) => {
-  return (
-    <SnackbarProvider>
-      <Flex flex={1}>
-        <View>
-          <SnackDemo {...props} />
-        </View>
-      </Flex>
-    </SnackbarProvider>
   );
 };
 
@@ -76,18 +68,20 @@ storiesOf('Snackbar', module)
   .add('default', () => (
     <Flex flex={1}>
       <View>
-        <SnackWrapper
-          variant={select('Variant', variantOptions, undefined)}
-          text={text('Text', 'Snackbar text here')}
-          maxLines={number('maxLines', undefined)}
-          actionText={text('Action Text', 'Retry')}
-          onAction={() => {}}
-          onDismiss={() => {}}
-          showDismissButton={boolean('showDismissButton', true)}
-          autoDismiss={boolean('autoDismiss', true)}
-          iconName={select('iconName', iconOptions, 'info')}
-          position={{ bottom: 1 }}
-        />
+        <SnackbarProvider>
+          <SnackDemo
+            variant={select('Variant', variantOptions, undefined)}
+            title={text('Title', 'Snackbar text here')}
+            maxLines={number('maxLines', undefined)}
+            actionText={text('Action Text', 'Retry')}
+            onAction={() => {}}
+            onClose={() => {}}
+            showCloseButton={boolean('showCloseButton', true)}
+            autoHide={boolean('autoHide', true)}
+            icon={select('icon', iconOptions, 'info')}
+            position={{ bottom: 1 }}
+          />
+        </SnackbarProvider>
       </View>
     </Flex>
   ));
