@@ -56,17 +56,9 @@ describe('<Snackbar />', () => {
   });
 
   describe('close button', () => {
-    it('showCloseButton', () => {
-      const { container } = renderWithTheme(
-        <Snackbar title="Hello world" showCloseButton={true} />,
-      );
-      expect(container).toMatchSnapshot();
-    });
     it('onClose', () => {
       const onClose = jest.fn();
-      const { getByTestId } = renderWithTheme(
-        <Snackbar title="Hello world" showCloseButton={true} onClose={onClose} />,
-      );
+      const { getByTestId } = renderWithTheme(<Snackbar title="Hello world" onClose={onClose} />);
       const closeButton = getByTestId('ds-snackbar-close-button');
 
       act(() => {
@@ -76,13 +68,11 @@ describe('<Snackbar />', () => {
       expect(onClose).toBeCalled();
     });
   });
+
   describe('maxLines', () => {
     it('renders multiple lines', () => {
       const { container } = renderWithTheme(
-        <Snackbar
-          title="The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog  The quick brown fox jumps over the lazy dog"
-          showCloseButton={true}
-        />,
+        <Snackbar title="The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog  The quick brown fox jumps over the lazy dog" />,
       );
       expect(container).toMatchSnapshot();
     });
@@ -90,7 +80,6 @@ describe('<Snackbar />', () => {
       const { container } = renderWithTheme(
         <Snackbar
           title="The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog  The quick brown fox jumps over the lazy dog"
-          showCloseButton={true}
           maxLines={1}
         />,
       );

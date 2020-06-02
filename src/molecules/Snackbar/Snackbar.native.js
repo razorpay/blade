@@ -39,16 +39,7 @@ const SnackbarContainer = styled(View)`
   background-color: ${styles.backgroundColor};
 `;
 
-const Snackbar = ({
-  variant,
-  title,
-  action,
-  showCloseButton,
-  onClose,
-  maxLines,
-  icon,
-  position,
-}) => {
+const Snackbar = ({ variant, title, action, onClose, maxLines, icon, position }) => {
   const { isVisible, close } = useSnackbar();
   const [bottomY, setBottomY] = useState(0);
   const animationConfig = {
@@ -155,7 +146,7 @@ const Snackbar = ({
                     </View>
                   </Space>
                 ) : null}
-                {showCloseButton ? (
+                {onClose ? (
                   <Space padding={[0, 0.75, 0, 0]}>
                     <View>
                       <Button
@@ -182,7 +173,6 @@ Snackbar.propTypes = {
   variant: PropTypes.oneOf(['positive', 'negative', 'warning', 'neutral']),
   title: PropTypes.string,
   action: PropTypes.shape({ label: PropTypes.string, onClick: PropTypes.func }),
-  showCloseButton: PropTypes.bool,
   onClose: PropTypes.func,
   maxLines: PropTypes.number,
   icon: PropTypes.oneOf(Object.keys(icons)),

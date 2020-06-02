@@ -75,7 +75,6 @@ storiesOf('Snackbar', module)
             maxLines={number('maxLines', undefined)}
             action={{ label: text('Action Label', 'Retry'), onClick: () => {} }}
             onClose={() => {}}
-            showCloseButton={boolean('showCloseButton', true)}
             autoHide={boolean('autoHide', true)}
             icon={select('icon', iconOptions, 'info')}
             position={{ bottom: 1 }}
