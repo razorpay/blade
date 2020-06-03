@@ -177,18 +177,6 @@ const styles = {
         return 'medium';
     }
   },
-  align({ align }) {
-    switch (align) {
-      case 'left':
-        return 'flex-start';
-      case 'center':
-        return 'center';
-      case 'right':
-        return 'flex-end';
-      default:
-        return 'flex-start';
-    }
-  },
   letterSpacing({ size }) {
     switch (size) {
       case 'xsmall':
@@ -257,7 +245,6 @@ const Button = ({
   variantColor,
   icon,
   iconAlign,
-  align,
   block,
   testID,
 }) => {
@@ -272,13 +259,7 @@ const Button = ({
   }
 
   return (
-    <Flex
-      flex={block ? 1 : 0}
-      flexDirection="row"
-      alignItems="center"
-      alignSelf={styles.align({ align })}
-      justifyContent="center"
-    >
+    <Flex flex={block ? 1 : 0} flexDirection="row" alignItems="center" justifyContent="center">
       <Size height={styles.height({ size, theme })}>
         <Space padding={styles.padding({ size, children, theme })}>
           <StyledButton
@@ -345,7 +326,6 @@ Button.propTypes = {
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
   block: PropTypes.bool,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
-  align: PropTypes.oneOf(['left', 'center', 'right']),
   disabled: PropTypes.bool,
   icon: PropTypes.string,
   iconAlign: PropTypes.oneOf(['left', 'right']),
@@ -356,7 +336,6 @@ Button.defaultProps = {
   testID: 'ds-button',
   variant: 'primary',
   block: false,
-  align: 'left',
   size: 'medium',
   disabled: false,
   iconAlign: 'left',

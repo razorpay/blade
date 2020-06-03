@@ -145,7 +145,6 @@ exports[`<Snackbar /> action label 1`] = `
                   Array [
                     Object {
                       "alignItems": "center",
-                      "alignSelf": "flex-start",
                       "flexDirection": "row",
                       "justifyContent": "center",
                     },
