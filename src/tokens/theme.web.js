@@ -25,6 +25,7 @@ const lightTheme = {
       980: colors.slate[980],
     },
     tone: {
+      800: colors.cloud[800],
       900: colors.cloud[900],
       920: colors.cloud[920],
       930: colors.cloud[930],
@@ -109,6 +110,7 @@ const darkTheme = {
       980: colors.cloud[980],
     },
     tone: {
+      800: colors.slate[800],
       900: colors.slate[900],
       920: colors.slate[920],
       930: colors.slate[930],

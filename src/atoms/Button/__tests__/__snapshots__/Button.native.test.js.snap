@@ -40,7 +40,6 @@ exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexBasis": 0,
                 "flexDirection": "row",
                 "flexGrow": 1,
@@ -125,7 +124,6 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -207,7 +205,6 @@ exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -289,7 +286,6 @@ exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`]
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -371,7 +367,6 @@ exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -453,7 +448,6 @@ exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] =
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -535,7 +529,6 @@ exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = 
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -617,7 +610,6 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -754,7 +746,6 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Butto
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -836,7 +827,6 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -918,7 +908,6 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -1000,7 +989,6 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -1082,7 +1070,6 @@ exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] =
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -1164,7 +1151,6 @@ exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = 
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -1246,7 +1232,6 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -1328,7 +1313,6 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -1410,7 +1394,6 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
@@ -1547,7 +1530,6 @@ exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`
             Array [
               Object {
                 "alignItems": "center",
-                "alignSelf": "flex-start",
                 "flexDirection": "row",
                 "justifyContent": "center",
               },
