@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import Flex from '../../atoms/Flex';
 import Text from '../../atoms/Text';
 import Heading from '../../atoms/Heading';
