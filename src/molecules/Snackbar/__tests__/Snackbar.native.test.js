@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, act } from '@testing-library/react-native';
-import Snackbar from '../index';
+import Snackbar from '../Snackbar';
 import { renderWithTheme } from '../../../_helpers/testing';
 import { useSnackbar } from '../SnackbarContext';
 
