@@ -5,9 +5,7 @@ import Flex from '../../atoms/Flex';
 import View from '../../atoms/View';
 import Button from '../../atoms/Button';
 import { getIconNames } from '../../_helpers/icon';
-import Snackbar from './Snackbar';
-import { useSnackbar } from './SnackbarContext';
-import SnackbarProvider from './SnackbarProvider';
+import { useSnackbar, SnackbarProvider } from '../Snackbar';
 
 const variantOptions = {
   positive: 'positive',
@@ -27,7 +25,7 @@ const SnackbarDemo = (props) => {
   return (
     <Flex flex={1}>
       <View>
-        <Flex justifyContent="space-around" flexDirection="column" flex={0.5} flexWrap="wrap">
+        <Flex justifyContent="space-around" flexDirection="column" flex={0.5}>
           <View>
             <Button
               onClick={() =>
@@ -63,7 +61,7 @@ const SnackbarDemo = (props) => {
 
 storiesOf('Snackbar', module)
   .addParameters({
-    component: Snackbar,
+    component: SnackbarProvider,
   })
   .add('default', () => (
     <Flex flex={1}>
