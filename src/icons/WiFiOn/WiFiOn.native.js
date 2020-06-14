@@ -4,7 +4,7 @@ import Svg, { Path, G, Defs, ClipPath } from 'react-native-svg';
 import { getThemeColors } from '../../_helpers/theme';
 import colors from '../../tokens/colors';
 
-const Wifi = ({ width, height, fill }) => {
+const WiFiOn = ({ width, height, fill }) => {
   return (
     <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <G clipPath="url(#prefix__clip0)" fill={fill}>
@@ -21,16 +21,16 @@ const Wifi = ({ width, height, fill }) => {
   );
 };
 
-Wifi.propTypes = {
+WiFiOn.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   fill: PropTypes.oneOf(getThemeColors()),
 };
 
-Wifi.defaultProps = {
+WiFiOn.defaultProps = {
   width: 24,
   height: 24,
   fill: colors.sapphire[800],
 };
 
-export default Wifi;
+export default WiFiOn;

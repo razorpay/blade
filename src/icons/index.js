@@ -33,8 +33,8 @@ const icons = {
   smartCollect: require('./SmartCollect').default,
   subscription: require('./Subscription').default,
   success: require('./Success').default,
-  wifi: require('./Wifi').default,
-  wifiOff: require('./WifiOff').default,
+  wiFiOn: require('./WiFiOn').default,
+  wiFiOff: require('./WiFiOff').default,
 };
 
 export default icons;

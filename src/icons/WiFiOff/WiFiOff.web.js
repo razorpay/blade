@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getThemeColors } from '../../_helpers/theme';
 import colors from '../../tokens/colors';
 
-const WifiOff = ({ width, height, fill }) => {
+const WiFiOff = ({ width, height, fill }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <path
@@ -18,16 +18,16 @@ const WifiOff = ({ width, height, fill }) => {
   );
 };
 
-WifiOff.propTypes = {
+WiFiOff.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   fill: PropTypes.oneOf(getThemeColors()),
 };
 
-WifiOff.defaultProps = {
+WiFiOff.defaultProps = {
   width: 24,
   height: 24,
   fill: colors.sapphire[800],
 };
 
-export default WifiOff;
+export default WiFiOff;
