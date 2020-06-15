@@ -161,270 +161,278 @@ const getPlaceholderTextColor = ({ theme, disabled, isPlaceholderVisible, hasAni
   }
 };
 
-const TextInput = ({
-  placeholder,
-  onChange,
-  helpText,
-  errorText,
-  variant,
-  prefix,
-  suffix,
-  disabled,
-  value,
-  iconLeft,
-  iconRight,
-  maxLength,
-  label,
-  testID,
-  labelPosition,
-  width,
-  type,
-  keyboardType,
-  returnKeyType,
-  autoCapitalize,
-  _isMultiline,
-}) => {
-  const theme = useContext(ThemeContext);
-  const [isFocused, setIsFocused] = useState(false);
-  const [input, setInput] = useState(value || '');
-  // Used for storing layout value of TextInput
-  const [layoutDimensions, setLayoutDimensions] = useState(null);
-  // Used to hide placeholder while label is inside the TextInput
-  const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
-
-  const hasAnimatedLabel = variant === 'outlined';
-
-  const placeholderTextColor = getPlaceholderTextColor({
-    theme,
-    disabled,
-    isPlaceholderVisible,
-    hasAnimatedLabel,
-  });
-
-  // Derive accessory conditions based on props
-  const { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon } = getAccessoryConfig({
-    errorText,
-    prefix,
-    suffix,
-    iconLeft,
-    iconRight,
-  });
-
-  if (labelPosition === 'left' && variant === 'outlined') {
-    // Outlined Text Input has only a top label
-    throw Error('Cannot have a left label on an outlined Text Input');
-  }
-
-  const hasText = !!(input && input.length > 0);
-  const onFocus = useCallback(() => {
-    setIsFocused(true);
-
-    /* Wait for 90ms to show the placeholder since it takes 100ms for Label to animate from inside to top of the TextInput.
-       Otherwise they both overlap */
-    /* Don't have any delay if label is on left of TextInput */
-
-    setTimeout(() => {
-      setIsPlaceholderVisible(true);
-    }, 90);
-  }, []);
-
-  const onBlur = useCallback(() => {
-    setIsFocused(false);
-    setIsPlaceholderVisible(false);
-  }, [setIsFocused, setIsPlaceholderVisible]);
-
-  const onChangeText = useCallback(
-    (text) => {
-      // Store entered value in state
-      setInput(text);
-      if (onChange) {
-        // Send entered value to the consumer
-        onChange(text);
-      }
+const TextInput = React.forwardRef(
+  (
+    {
+      placeholder,
+      onChange,
+      helpText,
+      errorText,
+      variant,
+      prefix,
+      suffix,
+      disabled,
+      value,
+      iconLeft,
+      iconRight,
+      maxLength,
+      label,
+      testID,
+      labelPosition,
+      width,
+      type,
+      keyboardType,
+      returnKeyType,
+      autoCapitalize,
+      onSubmitEditing,
+      _isMultiline,
     },
-    [onChange, setInput],
-  );
+    ref,
+  ) => {
+    const theme = useContext(ThemeContext);
+    const [isFocused, setIsFocused] = useState(false);
+    const [input, setInput] = useState(value || '');
+    // Used for storing layout value of TextInput
+    const [layoutDimensions, setLayoutDimensions] = useState(null);
+    // Used to hide placeholder while label is inside the TextInput
+    const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
 
-  const onTextInputLayout = useCallback(
-    ({ nativeEvent }) => {
-      const { layout } = nativeEvent;
-      // Set layout values only once
-      if (isEmpty(layoutDimensions)) setLayoutDimensions(layout);
-    },
-    [layoutDimensions, setLayoutDimensions],
-  );
+    const hasAnimatedLabel = variant === 'outlined';
 
-  useEffect(() => {
-    if (isDefined(value)) {
-      setInput(value);
+    const placeholderTextColor = getPlaceholderTextColor({
+      theme,
+      disabled,
+      isPlaceholderVisible,
+      hasAnimatedLabel,
+    });
+
+    // Derive accessory conditions based on props
+    const { hasError, hasPrefix, hasSuffix, hasLeftIcon, hasRightIcon } = getAccessoryConfig({
+      errorText,
+      prefix,
+      suffix,
+      iconLeft,
+      iconRight,
+    });
+
+    if (labelPosition === 'left' && variant === 'outlined') {
+      // Outlined Text Input has only a top label
+      throw Error('Cannot have a left label on an outlined Text Input');
     }
-  }, [value]);
 
-  if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
-    throw Error('Cannot have prefix and left icon together');
-  }
+    const hasText = !!(input && input.length > 0);
+    const onFocus = useCallback(() => {
+      setIsFocused(true);
 
-  if (!isEmpty(suffix) && !isEmpty(iconRight)) {
-    throw Error('Cannot have suffix and right icon together');
-  }
+      /* Wait for 90ms to show the placeholder since it takes 100ms for Label to animate from inside to top of the TextInput.
+       Otherwise they both overlap */
+      /* Don't have any delay if label is on left of TextInput */
 
-  return (
-    <Flex justifyContent="flex-end">
-      <View>
-        {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'top' ? (
-          <Label.Regular
-            position={labelPosition}
-            disabled={disabled}
-            inputLayoutDimensions={layoutDimensions}
-            _isMultiline={_isMultiline}
-          >
-            {label}
-          </Label.Regular>
-        ) : null}
-        {/* Animated Label */}
-        {!isEmpty(layoutDimensions) && hasAnimatedLabel ? (
-          <Label.Animated
-            isFocused={isFocused}
-            hasText={hasText}
-            disabled={disabled}
-            layoutDimensions={layoutDimensions}
-            variant={variant}
-            hasError={hasError}
-            _isMultiline={_isMultiline}
-          >
-            {label}
-          </Label.Animated>
-        ) : null}
+      setTimeout(() => {
+        setIsPlaceholderVisible(true);
+      }, 90);
+    }, []);
 
-        {/* Text Input Container */}
-        <Flex flexDirection="row" alignItems="flex-start">
-          <View>
-            {/* Fixed Left Label */}
-            {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'left' ? (
-              <Label.Regular
-                inputLayoutDimensions={layoutDimensions}
-                position={labelPosition}
-                disabled={disabled}
-                _isMultiline={_isMultiline}
-              >
-                {label}
-              </Label.Regular>
-            ) : null}
-            {/* Text Input */}
-            <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
-              <View>
-                <FillContainer
-                  _isMultiline={_isMultiline}
-                  variant={variant}
-                  isFocused={isFocused}
+    const onBlur = useCallback(() => {
+      setIsFocused(false);
+      setIsPlaceholderVisible(false);
+    }, [setIsFocused, setIsPlaceholderVisible]);
+
+    const onChangeText = useCallback(
+      (text) => {
+        // Store entered value in state
+        setInput(text);
+        if (onChange) {
+          // Send entered value to the consumer
+          onChange(text);
+        }
+      },
+      [onChange, setInput],
+    );
+
+    const onTextInputLayout = useCallback(
+      ({ nativeEvent }) => {
+        const { layout } = nativeEvent;
+        // Set layout values only once
+        if (isEmpty(layoutDimensions)) setLayoutDimensions(layout);
+      },
+      [layoutDimensions, setLayoutDimensions],
+    );
+
+    useEffect(() => {
+      if (isDefined(value)) {
+        setInput(value);
+      }
+    }, [value]);
+
+    if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
+      throw Error('Cannot have prefix and left icon together');
+    }
+
+    if (!isEmpty(suffix) && !isEmpty(iconRight)) {
+      throw Error('Cannot have suffix and right icon together');
+    }
+
+    return (
+      <Flex justifyContent="flex-end">
+        <View>
+          {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'top' ? (
+            <Label.Regular
+              position={labelPosition}
+              disabled={disabled}
+              inputLayoutDimensions={layoutDimensions}
+              _isMultiline={_isMultiline}
+            >
+              {label}
+            </Label.Regular>
+          ) : null}
+          {/* Animated Label */}
+          {!isEmpty(layoutDimensions) && hasAnimatedLabel ? (
+            <Label.Animated
+              isFocused={isFocused}
+              hasText={hasText}
+              disabled={disabled}
+              layoutDimensions={layoutDimensions}
+              variant={variant}
+              hasError={hasError}
+              _isMultiline={_isMultiline}
+            >
+              {label}
+            </Label.Animated>
+          ) : null}
+
+          {/* Text Input Container */}
+          <Flex flexDirection="row" alignItems="flex-start">
+            <View>
+              {/* Fixed Left Label */}
+              {!hasAnimatedLabel && !isEmpty(layoutDimensions) && labelPosition === 'left' ? (
+                <Label.Regular
+                  inputLayoutDimensions={layoutDimensions}
+                  position={labelPosition}
                   disabled={disabled}
+                  _isMultiline={_isMultiline}
                 >
-                  <Flex flexDirection="row" alignItems="center">
-                    <Size width={styles.inputContainer.width({ width })}>
-                      <InputContainer>
-                        {hasPrefix ? (
-                          <AccessoryText
-                            variant={variant}
-                            disabled={disabled}
-                            _isMultiline={_isMultiline}
-                          >
-                            {prefix}
-                          </AccessoryText>
-                        ) : null}
-                        {hasLeftIcon ? (
-                          <AccessoryIcon
-                            variant={variant}
-                            name={iconLeft}
-                            disabled={disabled}
-                            hasError={hasError}
-                            _isMultiline={_isMultiline}
-                          />
-                        ) : null}
-
-                        <Flex flex={1}>
-                          <Space
-                            padding={styles.textInput.padding({
-                              variant,
-                              hasLeftIcon,
-                              hasPrefix,
-                              hasText,
-                              _isMultiline,
-                            })}
-                          >
-                            <Size
-                              height={styles.textInput.height({ _isMultiline, variant })}
-                              maxHeight={styles.textInput.maxHeight({ _isMultiline })}
-                              minHeight={styles.textInput.minHeight({ _isMultiline })}
+                  {label}
+                </Label.Regular>
+              ) : null}
+              {/* Text Input */}
+              <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
+                <View>
+                  <FillContainer
+                    _isMultiline={_isMultiline}
+                    variant={variant}
+                    isFocused={isFocused}
+                    disabled={disabled}
+                  >
+                    <Flex flexDirection="row" alignItems="center">
+                      <Size width={styles.inputContainer.width({ width })}>
+                        <InputContainer>
+                          {hasPrefix ? (
+                            <AccessoryText
+                              variant={variant}
+                              disabled={disabled}
+                              _isMultiline={_isMultiline}
                             >
-                              <StyledInput
-                                placeholder={placeholder}
-                                placeholderTextColor={placeholderTextColor}
-                                onFocus={onFocus}
-                                onBlur={onBlur}
-                                onChangeText={onChangeText}
-                                hasText={hasText}
-                                selectionColor={theme.colors.shade[980]} // not able to change this for Android
-                                editable={!disabled}
-                                disabled={disabled}
-                                variant={variant}
-                                hasPrefix={hasPrefix}
-                                hasLeftIcon={hasLeftIcon}
-                                maxLength={maxLength}
-                                onLayout={onTextInputLayout}
-                                value={input}
-                                multiline={_isMultiline}
-                                secureTextEntry={type === 'password'}
-                                keyboardType={keyboardType}
-                                returnKeyType={returnKeyType}
-                                autoCapitalize={autoCapitalize}
-                                {...automation(testID)}
-                              />
-                            </Size>
-                          </Space>
-                        </Flex>
-                        {hasSuffix ? (
-                          <AccessoryText variant={variant} disabled={disabled}>
-                            {suffix}
-                          </AccessoryText>
-                        ) : null}
-                        {hasRightIcon ? (
-                          <AccessoryIcon
-                            variant={variant}
-                            name={iconRight}
+                              {prefix}
+                            </AccessoryText>
+                          ) : null}
+                          {hasLeftIcon ? (
+                            <AccessoryIcon
+                              variant={variant}
+                              name={iconLeft}
+                              disabled={disabled}
+                              hasError={hasError}
+                              _isMultiline={_isMultiline}
+                            />
+                          ) : null}
+
+                          <Flex flex={1}>
+                            <Space
+                              padding={styles.textInput.padding({
+                                variant,
+                                hasLeftIcon,
+                                hasPrefix,
+                                hasText,
+                                _isMultiline,
+                              })}
+                            >
+                              <Size
+                                height={styles.textInput.height({ _isMultiline, variant })}
+                                maxHeight={styles.textInput.maxHeight({ _isMultiline })}
+                                minHeight={styles.textInput.minHeight({ _isMultiline })}
+                              >
+                                <StyledInput
+                                  ref={ref}
+                                  placeholder={placeholder}
+                                  placeholderTextColor={placeholderTextColor}
+                                  onFocus={onFocus}
+                                  onBlur={onBlur}
+                                  onChangeText={onChangeText}
+                                  hasText={hasText}
+                                  selectionColor={theme.colors.shade[980]} // not able to change this for Android
+                                  editable={!disabled}
+                                  disabled={disabled}
+                                  variant={variant}
+                                  hasPrefix={hasPrefix}
+                                  hasLeftIcon={hasLeftIcon}
+                                  maxLength={maxLength}
+                                  onLayout={onTextInputLayout}
+                                  value={input}
+                                  multiline={_isMultiline}
+                                  secureTextEntry={type === 'password'}
+                                  keyboardType={keyboardType}
+                                  returnKeyType={returnKeyType}
+                                  autoCapitalize={autoCapitalize}
+                                  onSubmitEditing={onSubmitEditing}
+                                  {...automation(testID)}
+                                />
+                              </Size>
+                            </Space>
+                          </Flex>
+                          {hasSuffix ? (
+                            <AccessoryText variant={variant} disabled={disabled}>
+                              {suffix}
+                            </AccessoryText>
+                          ) : null}
+                          {hasRightIcon ? (
+                            <AccessoryIcon
+                              variant={variant}
+                              name={iconRight}
+                              disabled={disabled}
+                              hasError={hasError}
+                              size="xsmall"
+                            />
+                          ) : null}
+                        </InputContainer>
+                      </Size>
+                    </Flex>
+                    <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
+                  </FillContainer>
+
+                  {/* Bottom texts */}
+                  {hasError || helpText ? (
+                    <Flex flexDirection="row" justifyContent="space-between">
+                      <View>
+                        <Text errorText={errorText} helpText={helpText} disabled={disabled} />
+                        {maxLength !== undefined ? (
+                          <CharacterCount
                             disabled={disabled}
-                            hasError={hasError}
-                            size="xsmall"
+                            maxLength={maxLength}
+                            currentLength={input.length}
                           />
                         ) : null}
-                      </InputContainer>
-                    </Size>
-                  </Flex>
-                  <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
-                </FillContainer>
-
-                {/* Bottom texts */}
-                {hasError || helpText ? (
-                  <Flex flexDirection="row" justifyContent="space-between">
-                    <View>
-                      <Text errorText={errorText} helpText={helpText} disabled={disabled} />
-                      {maxLength !== undefined ? (
-                        <CharacterCount
-                          disabled={disabled}
-                          maxLength={maxLength}
-                          currentLength={input.length}
-                        />
-                      ) : null}
-                    </View>
-                  </Flex>
-                ) : null}
-              </View>
-            </Flex>
-          </View>
-        </Flex>
-      </View>
-    </Flex>
-  );
-};
+                      </View>
+                    </Flex>
+                  ) : null}
+                </View>
+              </Flex>
+            </View>
+          </Flex>
+        </View>
+      </Flex>
+    );
+  },
+);
 
 TextInput.propTypes = {
   placeholder: PropTypes.string,
@@ -453,6 +461,7 @@ TextInput.propTypes = {
   ]),
   returnKeyType: PropTypes.oneOf(['done', 'go', 'next', 'search', 'send']),
   autoCapitalize: PropTypes.oneOf(['none', 'sentences', 'words', 'characters']),
+  onSubmitEditing: PropTypes.func,
   _isMultiline: PropTypes.bool,
 };
 
