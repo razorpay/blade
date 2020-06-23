@@ -48,6 +48,9 @@ const styles = {
     }
     return '';
   },
+  letterSpacing({ theme, _letterSpacing }) {
+    return `${theme.fonts.letterSpacing[_letterSpacing]}px`;
+  },
 };
 
 const Text = styled.div.attrs((props) => ({
@@ -59,7 +62,7 @@ const Text = styled.div.attrs((props) => ({
   color: ${styles.color};
   text-decoration: ${styles.textDecoration};
   text-align: ${(props) => props.align};
-  letter-spacing: ${(props) => props.theme.fonts.letterSpacing[props._letterSpacing]};
+  letter-spacing: ${styles.letterSpacing};
   line-height: ${styles.lineHeight};
   overflow: ${styles.overflow};
   text-overflow: ${styles.textOverflow};
