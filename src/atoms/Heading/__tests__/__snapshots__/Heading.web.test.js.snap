@@ -3,7 +3,7 @@
 exports[`<Heading /> color renders heading with custom color 1`] = `
 <div>
   <h5
-    class="Textweb__Text-sc-6jf9e4-0 hUSGXL Spaceweb__Space-njatzl-0 ebahRE"
+    class="Textweb__Text-sc-6jf9e4-0 eLbJaH Spaceweb__Space-njatzl-0 ebahRE"
     color="primary.900"
     data-testid="ds-text"
   >
@@ -15,7 +15,7 @@ exports[`<Heading /> color renders heading with custom color 1`] = `
 exports[`<Heading /> renders heading with default props 1`] = `
 <div>
   <h5
-    class="Textweb__Text-sc-6jf9e4-0 cXaLeO Spaceweb__Space-njatzl-0 ebahRE"
+    class="Textweb__Text-sc-6jf9e4-0 jAapKa Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -27,7 +27,7 @@ exports[`<Heading /> renders heading with default props 1`] = `
 exports[`<Heading /> size renders heading with size large 1`] = `
 <div>
   <h4
-    class="Textweb__Text-sc-6jf9e4-0 dhCBjk Spaceweb__Space-njatzl-0 ebahRE"
+    class="Textweb__Text-sc-6jf9e4-0 bzRITc Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -39,7 +39,7 @@ exports[`<Heading /> size renders heading with size large 1`] = `
 exports[`<Heading /> size renders heading with size medium 1`] = `
 <div>
   <h5
-    class="Textweb__Text-sc-6jf9e4-0 cXaLeO Spaceweb__Space-njatzl-0 ebahRE"
+    class="Textweb__Text-sc-6jf9e4-0 jAapKa Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -51,7 +51,7 @@ exports[`<Heading /> size renders heading with size medium 1`] = `
 exports[`<Heading /> size renders heading with size xlarge 1`] = `
 <div>
   <h3
-    class="Textweb__Text-sc-6jf9e4-0 cjBRhY Spaceweb__Space-njatzl-0 ebahRE"
+    class="Textweb__Text-sc-6jf9e4-0 eCqkoo Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -63,7 +63,7 @@ exports[`<Heading /> size renders heading with size xlarge 1`] = `
 exports[`<Heading /> size renders heading with size xxlarge 1`] = `
 <div>
   <h2
-    class="Textweb__Text-sc-6jf9e4-0 hxZoYe Spaceweb__Space-njatzl-0 ebahRE"
+    class="Textweb__Text-sc-6jf9e4-0 hasYTa Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -75,7 +75,7 @@ exports[`<Heading /> size renders heading with size xxlarge 1`] = `
 exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
 <div>
   <h1
-    class="Textweb__Text-sc-6jf9e4-0 jigdLx Spaceweb__Space-njatzl-0 ebahRE"
+    class="Textweb__Text-sc-6jf9e4-0 fQrhmJ Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -87,7 +87,7 @@ exports[`<Heading /> size renders heading with size xxxlarge 1`] = `
 exports[`<Heading /> weight renders heading with bold weight 1`] = `
 <div>
   <h5
-    class="Textweb__Text-sc-6jf9e4-0 cXaLeO Spaceweb__Space-njatzl-0 ebahRE"
+    class="Textweb__Text-sc-6jf9e4-0 jAapKa Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -99,7 +99,7 @@ exports[`<Heading /> weight renders heading with bold weight 1`] = `
 exports[`<Heading /> weight renders heading with regular weight 1`] = `
 <div>
   <h5
-    class="Textweb__Text-sc-6jf9e4-0 xqQS Spaceweb__Space-njatzl-0 ebahRE"
+    class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 ebahRE"
     color="shade.980"
     data-testid="ds-text"
   >
