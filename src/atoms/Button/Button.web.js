@@ -368,7 +368,6 @@ const Button = ({
   align,
   block,
   type,
-  ...props
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -385,7 +384,6 @@ const Button = ({
       alignItems="center"
       alignSelf={styles.align({ align })}
       justifyContent="center"
-      {...props}
     >
       <Size height={styles.height({ size, theme })}>
         <Space padding={styles.padding({ size, children, theme, variant })}>
