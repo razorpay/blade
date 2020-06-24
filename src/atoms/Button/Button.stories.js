@@ -1,9 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { select } from '@storybook/addon-knobs';
+import { select, boolean } from '@storybook/addon-knobs';
 
 import Flex from '../Flex';
 import View from '../View';
+import Space from '../../atoms/Space';
 import Button from './Button';
 
 const variants = {
@@ -31,69 +32,78 @@ storiesOf('Button', module)
   .add('default', () => (
     <Flex flex={1} justifyContent="space-around" flexDirection="column">
       <View>
-        <Flex flexDirection="row">
+        <Space margin={[4, 0, 0, 0]}>
           <View>
             <Button
               size={select('Sizes', sizes, 'medium')}
               variant={select('Variants', variants, 'primary')}
               block
+              disabled={boolean('Disabled', false)}
             >
               Block Button
             </Button>
           </View>
-        </Flex>
-        <Flex flexDirection="row">
+        </Space>
+        <Space margin={[4, 0, 0, 0]}>
+          <View>
+            <Button
+              size={select('Sizes', sizes, 'medium')}
+              variant={select('Variants', variants, 'primary')}
+              disabled={boolean('Disabled', false)}
+            >
+              Button
+            </Button>
+          </View>
+        </Space>
+      </View>
+    </Flex>
+  ))
+  .add('With Icon', () => (
+    <Flex flex={1} justifyContent="space-around" flexDirection="column">
+      <View>
+        <Space margin={[4, 0, 0, 0]}>
           <View>
             <Button
               size={select('Sizes', sizes, 'medium')}
               variant={select('Variants', variants, 'primary')}
               icon="info"
+              iconAlign={select('Icon Align', iconAlign, 'left')}
+              disabled={boolean('Disabled', false)}
               block
+            >
+              Block Button
+            </Button>
+          </View>
+        </Space>
+        <Space margin={[4, 0, 0, 0]}>
+          <View>
+            <Button
+              size={select('Sizes', sizes, 'medium')}
+              variant={select('Variants', variants, 'primary')}
+              icon="info"
+              iconAlign={select('Icon Align', iconAlign, 'left')}
+              disabled={boolean('Disabled', false)}
+            >
+              Button
+            </Button>
+          </View>
+        </Space>
+      </View>
+    </Flex>
+  ))
+  .add('Icon Only', () => (
+    <Flex flex={1} justifyContent="space-around" flexDirection="column">
+      <View>
+        <Space margin={[4, 0, 0, 0]}>
+          <View>
+            <Button
+              size={select('Sizes', sizes, 'medium')}
+              variant={select('Variants', variants, 'primary')}
+              icon="info"
+              disabled={boolean('Disabled', false)}
             />
           </View>
-        </Flex>
-        <Flex flexDirection="row">
-          <View>
-            <Button
-              size={select('Sizes', sizes, 'medium')}
-              variant={select('Variants', variants, 'primary')}
-              icon="info"
-              block
-              iconAlign={select('iconAlign', iconAlign, 'left')}
-            >
-              Block Button
-            </Button>
-          </View>
-        </Flex>
-        <Button
-          size={select('Sizes', sizes, 'medium')}
-          variant={select('Variants', variants, 'primary')}
-          icon="info"
-          align="center"
-        />
-        <Button
-          size={select('Sizes', sizes, 'medium')}
-          variant={select('Variants', variants, 'primary')}
-        >
-          Button
-        </Button>
-        <Button
-          size={select('Sizes', sizes, 'medium')}
-          variant={select('Variants', variants, 'primary')}
-          icon="info"
-          iconAlign={select('iconAlign', iconAlign, 'left')}
-        >
-          Button with Icon
-        </Button>
-        <Button
-          size={select('Sizes', sizes, 'medium')}
-          variant={select('Variants', variants, 'primary')}
-          icon="info"
-          disabled
-          iconAlign={select('iconAlign', iconAlign, 'left')}
-        >
-          Disabled Button with Icon
-        </Button>
+        </Space>
       </View>
     </Flex>
   ));
