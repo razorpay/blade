@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeContext } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 import Flex from '../Flex';
 import Size from '../Size';
@@ -369,7 +369,7 @@ const Button = ({
   block,
   type,
 }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
 
   if (typeof children !== 'string' && typeof children !== 'undefined') {
     throw new Error(
