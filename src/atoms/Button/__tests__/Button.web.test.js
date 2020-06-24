@@ -38,12 +38,6 @@ describe('Renders <Button /> correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('Renders a small Primary <Button />', () => {
-    const { container, getByText } = renderWithTheme(<Button size="small">Click Me</Button>);
-    expect(getByText(/click me/i)).toBeTruthy();
-    expect(container).toMatchSnapshot();
-  });
-
   it('Renders a medium(Default) Primary <Button />', () => {
     const { container, getByText } = renderWithTheme(<Button>Click Me</Button>);
     expect(getByText(/click me/i)).toBeTruthy();
