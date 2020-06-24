@@ -201,24 +201,6 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
 </div>
 `;
 
-exports[`Renders <Button /> correctly Renders a small Primary <Button /> 2`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 cubrzf Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    type="button"
-  >
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 kbODdW"
-      color="light.900"
-      data-testid="ds-text"
-    >
-      Click Me
-    </div>
-  </button>
-</div>
-`;
-
 exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] = `
 <div>
   <button
