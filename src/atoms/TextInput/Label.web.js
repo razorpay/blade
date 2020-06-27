@@ -65,12 +65,9 @@ const FloatView = styled(View)`
 
 const StyledText = styled(Text)`
   font-family: ${styles.text.fontFamily};
-  font-style: normal;
-  font-weight: normal;
   font-size: ${styles.text.fontSize};
   line-height: ${styles.text.lineHeight};
   color: ${styles.text.color};
-  top: ${styles.label.top};
   transition: top 100ms linear;
 `;
 

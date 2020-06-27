@@ -192,7 +192,6 @@ const TextInput = ({
   width,
   type,
   autoCapitalize,
-  rightAlignComponent,
 }) => {
   const theme = useContext(ThemeContext);
   const [isFocused, setIsFocused] = useState(false);
@@ -291,14 +290,11 @@ const TextInput = ({
   }
 
   return (
-    <Flex
-      justifyContent="flex-end"
-      flexDirection={variant === 'filled' && labelPosition !== 'left' ? 'column' : 'row'}
-    >
+    <Flex justifyContent="flex-end" flexDirection="column">
       <RelativeContainer position={variant === 'filled'}>
-        {!hasAnimatedLabel ? (
+        {!hasAnimatedLabel && labelPosition === 'top' ? (
           <Label
-            Animated={hasAnimatedLabel}
+            animated={hasAnimatedLabel}
             position={labelPosition}
             disabled={disabled}
             isFocused={isFocused}
@@ -317,7 +313,7 @@ const TextInput = ({
         <Flex flexDirection="row" alignItems="flex-start">
           <View>
             {/* Fixed Left Label */}
-            {hasAnimatedLabel ? (
+            {!hasAnimatedLabel && labelPosition === 'left' ? (
               <Label
                 animated={hasAnimatedLabel}
                 position={labelPosition}
@@ -341,7 +337,11 @@ const TextInput = ({
                     <Size width={styles.inputContainer.width({ width })}>
                       <InputContainer>
                         {hasPrefix ? (
-                          <AccessoryText variant={variant} disabled={disabled}>
+                          <AccessoryText
+                            hasPrefix={hasPrefix}
+                            variant={variant}
+                            disabled={disabled}
+                          >
                             {prefix}
                           </AccessoryText>
                         ) : null}
@@ -351,6 +351,7 @@ const TextInput = ({
                             name={iconLeft}
                             disabled={disabled}
                             hasError={hasError}
+                            hasLeftIcon={hasLeftIcon}
                           />
                         ) : null}
 
@@ -389,7 +390,11 @@ const TextInput = ({
                           </Space>
                         </Flex>
                         {hasSuffix ? (
-                          <AccessoryText variant={variant} disabled={disabled}>
+                          <AccessoryText
+                            hasSuffix={hasSuffix}
+                            variant={variant}
+                            disabled={disabled}
+                          >
                             {suffix}
                           </AccessoryText>
                         ) : null}
@@ -400,19 +405,13 @@ const TextInput = ({
                             disabled={disabled}
                             hasError={hasError}
                             size="xsmall"
+                            hasRightIcon={hasRightIcon}
                           />
                         ) : null}
-                        {/* TODO: Revisit if this should be part of DS */}
-                        {rightAlignComponent ? rightAlignComponent : null}
                       </InputContainer>
                     </Size>
                   </Flex>
-                  <Line
-                    isFocused={isFocused}
-                    hasError={hasError}
-                    disabled={disabled}
-                    rightAlignComponent={rightAlignComponent}
-                  />
+                  <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
                 </FillContainer>
 
                 {/* Bottom texts */}
@@ -424,7 +423,6 @@ const TextInput = ({
                         helpText={helpText}
                         successText={successText}
                         disabled={disabled}
-                        rightAlignComponent={rightAlignComponent}
                       />
                       {maxLength !== undefined ? (
                         <CharacterCount
@@ -463,7 +461,6 @@ TextInput.propTypes = {
   position: PropTypes.bool,
   label: PropTypes.string,
   testID: PropTypes.string,
-  rightAlignComponent: PropTypes.node,
   labelPosition: PropTypes.oneOf(['top', 'left']),
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
   type: PropTypes.oneOf(['text', 'password', 'number', 'email']),
