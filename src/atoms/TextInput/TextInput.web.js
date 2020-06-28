@@ -309,6 +309,23 @@ const TextInput = ({
           </Label>
         ) : null}
 
+        {hasAnimatedLabel ? (
+          <Label
+            animated={hasAnimatedLabel}
+            position={labelPosition}
+            disabled={disabled}
+            isFocused={isFocused}
+            hasText={hasText}
+            variant={variant}
+            hasError={hasError}
+            iconLeft={iconLeft}
+            prefix={prefix}
+            value={input}
+          >
+            {label}
+          </Label>
+        ) : null}
+
         {/* Text Input Container */}
         <Flex flexDirection="row" alignItems="flex-start">
           <View>

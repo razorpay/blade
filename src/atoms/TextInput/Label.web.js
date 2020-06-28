@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import Text from '../Text';
 import Space from '../Space';
@@ -60,7 +60,15 @@ const styles = {
 };
 
 const FloatView = styled(View)`
-  position: absolute;
+  will-change: transform;
+  transition: transform 0.1s ease-in;
+  transform: translateY(35px);
+  pointer-events: none;
+  ${(props) =>
+    props.isFocused &&
+    css`
+      transform: translateY(10px);
+    `}
 `;
 
 const StyledText = styled(Text)`
@@ -68,7 +76,6 @@ const StyledText = styled(Text)`
   font-size: ${styles.text.fontSize};
   line-height: ${styles.text.lineHeight};
   color: ${styles.text.color};
-  transition: top 100ms linear;
 `;
 
 const Label = ({
@@ -95,7 +102,7 @@ const Label = ({
       })}
     >
       {animated ? (
-        <FloatView>
+        <FloatView isFocused={isFocused}>
           <StyledText
             as="label"
             htmlFor={children}
