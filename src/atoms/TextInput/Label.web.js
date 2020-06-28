@@ -50,24 +50,19 @@ const styles = {
       }
       return [0, 0, 0, 0];
     },
-    top({ isFocused, variant, value }) {
-      if (isDefined(value) || isFocused || variant === 'filled') {
-        return '-4px';
-      }
-      return '14px';
-    },
   },
 };
 
 const FloatView = styled(View)`
   will-change: transform;
   transition: transform 0.1s ease-in;
-  transform: translateY(35px);
+  position: absolute;
+  transform: translateY(0px);
   pointer-events: none;
   ${(props) =>
-    props.isFocused &&
+    props.shouldAnimateLabel &&
     css`
-      transform: translateY(10px);
+      transform: translateY(-30px);
     `}
 `;
 
@@ -89,6 +84,7 @@ const Label = ({
   hasError,
   variant,
   value,
+  shouldAnimateLabel,
 }) => {
   return (
     <Space
@@ -102,7 +98,7 @@ const Label = ({
       })}
     >
       {animated ? (
-        <FloatView isFocused={isFocused}>
+        <FloatView shouldAnimateLabel={shouldAnimateLabel}>
           <StyledText
             as="label"
             htmlFor={children}
@@ -143,6 +139,7 @@ Label.propTypes = {
   prefix: PropTypes.string,
   hasError: PropTypes.bool,
   value: PropTypes.string,
+  shouldAnimateLabel: PropTypes.bool,
 };
 
 Label.defaultProps = {
@@ -150,6 +147,7 @@ Label.defaultProps = {
   disabled: false,
   animated: false,
   value: undefined,
+  shouldAnimateLabel: false,
 };
 
 export default Label;

@@ -202,6 +202,7 @@ const TextInput = ({
   // // Used to change selected color of the text input
   // const [isSelected, setIsSelected] = useState(false);
 
+  const hasText = !!(isDefined(input) && input.length > 0);
   const hasAnimatedLabel = variant === 'outlined';
 
   const placeholderTextColor = getPlaceholderTextColor({
@@ -225,9 +226,11 @@ const TextInput = ({
     throw Error('Cannot have a left label on an outlined Text Input');
   }
 
-  const hasText = !!(isDefined(input) && input.length > 0);
+  const [shouldAnimateLabel, setShouldAnimateLabel] = useState(false);
+
   const onFocus = useCallback(() => {
     setIsFocused(true);
+    setShouldAnimateLabel(true);
 
     /* Wait for 90ms to show the placeholder since it takes 100ms for Label to animate from inside to top of the TextInput.
        Otherwise they both overlap */
@@ -246,6 +249,11 @@ const TextInput = ({
       setInput(text);
       if (onBlur) {
         onBlur(text);
+      }
+      if (!!isDefined(text) && text.length > 0) {
+        setShouldAnimateLabel(true);
+      } else {
+        setShouldAnimateLabel(false);
       }
     },
     [setIsFocused, setIsPlaceholderVisible, setInput, onBlur],
@@ -311,6 +319,7 @@ const TextInput = ({
 
         {hasAnimatedLabel ? (
           <Label
+            shouldAnimateLabel={shouldAnimateLabel}
             animated={hasAnimatedLabel}
             position={labelPosition}
             disabled={disabled}
