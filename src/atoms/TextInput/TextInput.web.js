@@ -293,7 +293,7 @@ const TextInput = ({
     <Flex justifyContent="flex-end" flexDirection="column">
       <RelativeContainer position={variant === 'filled'}>
         {!hasAnimatedLabel && labelPosition === 'top' ? (
-          <Label
+          <Label.Regular
             animated={hasAnimatedLabel}
             position={labelPosition}
             disabled={disabled}
@@ -306,12 +306,11 @@ const TextInput = ({
             value={input}
           >
             {label}
-          </Label>
+          </Label.Regular>
         ) : null}
 
         {hasAnimatedLabel ? (
-          <Label
-            animated={hasAnimatedLabel}
+          <Label.Animated
             position={labelPosition}
             disabled={disabled}
             isFocused={isFocused}
@@ -323,7 +322,7 @@ const TextInput = ({
             value={input}
           >
             {label}
-          </Label>
+          </Label.Animated>
         ) : null}
 
         {/* Text Input Container */}
@@ -331,8 +330,7 @@ const TextInput = ({
           <View>
             {/* Fixed Left Label */}
             {!hasAnimatedLabel && labelPosition === 'left' ? (
-              <Label
-                animated={hasAnimatedLabel}
+              <Label.Regular
                 position={labelPosition}
                 disabled={disabled}
                 isFocused={isFocused}
@@ -344,7 +342,7 @@ const TextInput = ({
                 value={input}
               >
                 {label}
-              </Label>
+              </Label.Regular>
             ) : null}
             {/* Text Input */}
             <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
