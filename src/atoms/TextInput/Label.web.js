@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Text from '../Text';
 import Space from '../Space';
@@ -59,11 +59,6 @@ const FloatView = styled(View)`
   position: absolute;
   transform: translateY(0px);
   pointer-events: none;
-  ${(props) =>
-    props.shouldAnimateLabel &&
-    css`
-      transform: translateY(-30px);
-    `}
 `;
 
 const StyledText = styled(Text)`
@@ -72,6 +67,10 @@ const StyledText = styled(Text)`
   line-height: ${styles.text.lineHeight};
   color: ${styles.text.color};
 `;
+
+const getLabelAnimationStyle = ({ isFocused, hasText }) => {
+  return isFocused || hasText ? { transform: 'translateY(-30px)' } : {};
+};
 
 const Label = ({
   children,
@@ -84,8 +83,10 @@ const Label = ({
   hasError,
   variant,
   value,
-  shouldAnimateLabel,
+  hasText,
 }) => {
+  const labelAnimationStyle = getLabelAnimationStyle({ isFocused, hasText });
+
   return (
     <Space
       padding={styles.label.padding({
@@ -98,7 +99,7 @@ const Label = ({
       })}
     >
       {animated ? (
-        <FloatView shouldAnimateLabel={shouldAnimateLabel}>
+        <FloatView style={labelAnimationStyle}>
           <StyledText
             as="label"
             htmlFor={children}
@@ -139,7 +140,7 @@ Label.propTypes = {
   prefix: PropTypes.string,
   hasError: PropTypes.bool,
   value: PropTypes.string,
-  shouldAnimateLabel: PropTypes.bool,
+  hasText: PropTypes.bool,
 };
 
 Label.defaultProps = {
@@ -147,7 +148,6 @@ Label.defaultProps = {
   disabled: false,
   animated: false,
   value: undefined,
-  shouldAnimateLabel: false,
 };
 
 export default Label;
