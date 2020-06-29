@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import isDefined from '../../_helpers/isDefined';
 import { getColor } from '../../_helpers/theme';
 import Space from '../Space';
@@ -31,10 +31,22 @@ const styles = {
       }
       return getColor(theme, 'shade.960');
     },
-    fontSize({ theme }) {
+    fontSize({ theme, variant, isFocused, hasText }) {
+      if (variant === 'outlined') {
+        if (isFocused || hasText) {
+          return theme.fonts.size.xsmall;
+        }
+        return theme.fonts.size.medium;
+      }
       return theme.fonts.size.xsmall;
     },
-    lineHeight({ theme }) {
+    lineHeight({ variant, theme, isFocused, hasText }) {
+      if (variant === 'outlined') {
+        if (isFocused || hasText) {
+          return theme.fonts.lineHeight.small;
+        }
+        return theme.fonts.lineHeight.medium;
+      }
       return theme.fonts.lineHeight.small;
     },
     fontFamily({ theme }) {
@@ -55,8 +67,8 @@ const styles = {
 
 const FloatView = styled(View)`
   will-change: transform;
-  transition: transform 0.1s ease-in;
   position: absolute;
+  transition: transform 0.1s ease-in;
   transform: translateY(0px);
   pointer-events: none;
 `;
@@ -66,6 +78,7 @@ const StyledText = styled(Text)`
   font-size: ${styles.text.fontSize};
   line-height: ${styles.text.lineHeight};
   color: ${styles.text.color};
+  transition: font-size 0.1s ease-in, line-height 0.1s ease-in, color 0.1s ease-in;
 `;
 
 const RegularLabel = ({
@@ -75,10 +88,13 @@ const RegularLabel = ({
   iconLeft,
   prefix,
   hasError,
+  hasText,
   disabled,
   variant,
   value,
 }) => {
+  const theme = useContext(ThemeContext);
+
   return (
     <Space
       padding={styles.label.padding({
@@ -97,6 +113,8 @@ const RegularLabel = ({
         disabled={disabled}
         variant={variant}
         value={value}
+        hasText={hasText}
+        theme={theme}
       >
         {children}
       </StyledText>
@@ -113,6 +131,7 @@ RegularLabel.propTypes = {
   iconLeft: PropTypes.string,
   prefix: PropTypes.string,
   hasError: PropTypes.bool,
+  hasText: PropTypes.bool,
   value: PropTypes.string,
 };
 
@@ -122,7 +141,7 @@ RegularLabel.defaultProps = {
   value: undefined,
 };
 
-const getLabelAnimationStyle = ({ isFocused, hasText }) => {
+const getFloatViewAnimationStyle = ({ isFocused, hasText }) => {
   return isFocused || hasText ? { transform: 'translateY(-30px)' } : {};
 };
 
@@ -138,7 +157,8 @@ const AnimatedLabel = ({
   value,
   hasText,
 }) => {
-  const labelAnimationStyle = getLabelAnimationStyle({ isFocused, hasText });
+  const theme = useContext(ThemeContext);
+  const floatViewAnimationStyle = getFloatViewAnimationStyle({ isFocused, hasText });
 
   return (
     <Space
@@ -151,16 +171,18 @@ const AnimatedLabel = ({
         value,
       })}
     >
-      <FloatView style={labelAnimationStyle}>
+      <FloatView style={floatViewAnimationStyle}>
         <StyledText
           as="label"
           htmlFor={children}
           size="medium"
           isFocused={isFocused}
           hasError={hasError}
+          hasText={hasText}
           disabled={disabled}
           variant={variant}
           value={value}
+          theme={theme}
         >
           {children}
         </StyledText>
