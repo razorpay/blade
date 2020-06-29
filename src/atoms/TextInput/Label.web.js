@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import Text from '../Text';
-import Space from '../Space';
-import View from '../View';
-import { getColor } from '../../_helpers/theme';
 import isDefined from '../../_helpers/isDefined';
+import { getColor } from '../../_helpers/theme';
+import Space from '../Space';
+import Text from '../Text';
+import View from '../View';
 
 const styles = {
   container: {
@@ -68,17 +68,70 @@ const StyledText = styled(Text)`
   color: ${styles.text.color};
 `;
 
+const RegularLabel = ({
+  children,
+  position,
+  isFocused,
+  iconLeft,
+  prefix,
+  hasError,
+  disabled,
+  variant,
+  value,
+}) => {
+  return (
+    <Space
+      padding={styles.label.padding({
+        position,
+        isFocused,
+        iconLeft,
+        prefix,
+        variant,
+        value,
+      })}
+    >
+      <StyledText
+        as="label"
+        size="medium"
+        hasError={hasError}
+        disabled={disabled}
+        variant={variant}
+        value={value}
+      >
+        {children}
+      </StyledText>
+    </Space>
+  );
+};
+
+RegularLabel.propTypes = {
+  children: PropTypes.string,
+  position: PropTypes.oneOf(['top', 'left']).isRequired,
+  disabled: PropTypes.bool,
+  isFocused: PropTypes.bool,
+  variant: PropTypes.oneOf(['outlined', 'filled']).isRequired,
+  iconLeft: PropTypes.string,
+  prefix: PropTypes.string,
+  hasError: PropTypes.bool,
+  value: PropTypes.string,
+};
+
+RegularLabel.defaultProps = {
+  children: 'Label',
+  disabled: false,
+  value: undefined,
+};
+
 const getLabelAnimationStyle = ({ isFocused, hasText }) => {
   return isFocused || hasText ? { transform: 'translateY(-30px)' } : {};
 };
 
-const Label = ({
+const AnimatedLabel = ({
   children,
   position,
   disabled,
   iconLeft,
   prefix,
-  animated,
   isFocused,
   hasError,
   variant,
@@ -98,25 +151,12 @@ const Label = ({
         value,
       })}
     >
-      {animated ? (
-        <FloatView style={labelAnimationStyle}>
-          <StyledText
-            as="label"
-            htmlFor={children}
-            size="medium"
-            isFocused={isFocused}
-            hasError={hasError}
-            disabled={disabled}
-            variant={variant}
-            value={value}
-          >
-            {children}
-          </StyledText>
-        </FloatView>
-      ) : (
+      <FloatView style={labelAnimationStyle}>
         <StyledText
           as="label"
+          htmlFor={children}
           size="medium"
+          isFocused={isFocused}
           hasError={hasError}
           disabled={disabled}
           variant={variant}
@@ -124,16 +164,15 @@ const Label = ({
         >
           {children}
         </StyledText>
-      )}
+      </FloatView>
     </Space>
   );
 };
 
-Label.propTypes = {
+AnimatedLabel.propTypes = {
   children: PropTypes.string,
   position: PropTypes.oneOf(['top', 'left']).isRequired,
   disabled: PropTypes.bool,
-  animated: PropTypes.bool,
   isFocused: PropTypes.bool,
   variant: PropTypes.oneOf(['outlined', 'filled']).isRequired,
   iconLeft: PropTypes.string,
@@ -143,11 +182,15 @@ Label.propTypes = {
   hasText: PropTypes.bool,
 };
 
-Label.defaultProps = {
+AnimatedLabel.defaultProps = {
   children: 'Label',
   disabled: false,
-  animated: false,
   value: undefined,
+};
+
+const Label = {
+  Regular: RegularLabel,
+  Animated: AnimatedLabel,
 };
 
 export default Label;
