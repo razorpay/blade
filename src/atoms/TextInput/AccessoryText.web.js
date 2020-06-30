@@ -22,7 +22,7 @@ const styles = {
       }
       return [0, 0, 0, 0];
     } else {
-      return [1, 1, 0, 0];
+      return [0.5, 1, 0, 0];
     }
   },
 };

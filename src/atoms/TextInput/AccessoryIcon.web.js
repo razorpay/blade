@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from '../Icon';
 import Space from '../Space';
 import View from '../View';
+import Flex from '../Flex';
 
 const styles = {
   color({ disabled, hasError }) {
@@ -17,24 +18,25 @@ const styles = {
   padding({ variant, hasLeftIcon, hasRightIcon }) {
     if (variant === 'filled') {
       if (hasLeftIcon) {
-        return [1, 0, 0, 1];
+        return [0, 0, 0, 1];
       }
       if (hasRightIcon) {
-        return [1, 1, 0, 0];
+        return [0, 1, 0, 0];
       }
       return [0, 0, 0, 0];
-    } else {
-      return [1, 1, 0, 0];
     }
+    return [0.5, 1, 0, 0];
   },
 };
 
 const AccessoryIcon = ({ name, disabled, hasError, variant, hasLeftIcon, hasRightIcon }) => {
   return (
     <Space padding={styles.padding({ variant, hasLeftIcon, hasRightIcon })}>
-      <View>
-        <Icon name={name} size="small" fill={styles.color({ disabled, hasError })} />
-      </View>
+      <Flex>
+        <View>
+          <Icon name={name} size="small" fill={styles.color({ disabled, hasError })} />
+        </View>
+      </Flex>
     </Space>
   );
 };
