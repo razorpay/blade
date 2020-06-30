@@ -20,11 +20,13 @@ const styles = {
 
 const StyledLine = styled(View)`
   background-color: ${styles.backgroundColor};
+  position: absolute;
+  bottom: 0;
 `;
 
 const Line = ({ isFocused, hasError, disabled, rightAlignComponent }) => {
   return (
-    <Size height="1px">
+    <Size height="1px" width="100%">
       <StyledLine
         isFocused={isFocused}
         hasError={hasError}
