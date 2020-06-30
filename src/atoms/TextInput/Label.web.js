@@ -69,7 +69,8 @@ const FloatView = styled(View)`
   will-change: transform;
   position: absolute;
   transition: transform 0.1s ease-in;
-  transform: translateY(0px);
+  bottom: 0;
+  left: ${(props) => props.layoutDimensions.initialLeftPosition}px;
   pointer-events: none;
 `;
 
@@ -141,8 +142,12 @@ RegularLabel.defaultProps = {
   value: undefined,
 };
 
-const getFloatViewAnimationStyle = ({ isFocused, hasText }) => {
-  return isFocused || hasText ? { transform: 'translateY(-30px)' } : {};
+const getFloatViewAnimationStyle = ({ isFocused, hasText, layoutDimensions }) => {
+  const finalTopPosition = layoutDimensions.finalTopPosition;
+  const finalLeftPosition = layoutDimensions.initialLeftPosition;
+  return isFocused || hasText
+    ? { transform: `translate(-${finalLeftPosition}px,-${finalTopPosition}px)` }
+    : {};
 };
 
 const AnimatedLabel = ({
@@ -156,9 +161,14 @@ const AnimatedLabel = ({
   variant,
   value,
   hasText,
+  layoutDimensions,
 }) => {
   const theme = useContext(ThemeContext);
-  const floatViewAnimationStyle = getFloatViewAnimationStyle({ isFocused, hasText });
+  const floatViewAnimationStyle = getFloatViewAnimationStyle({
+    isFocused,
+    hasText,
+    layoutDimensions,
+  });
 
   return (
     <Space
@@ -170,8 +180,9 @@ const AnimatedLabel = ({
         variant,
         value,
       })}
+      margin={[0, 0, 0.5, 0]}
     >
-      <FloatView style={floatViewAnimationStyle}>
+      <FloatView layoutDimensions={layoutDimensions} style={floatViewAnimationStyle}>
         <StyledText
           as="label"
           htmlFor={children}
@@ -202,6 +213,10 @@ AnimatedLabel.propTypes = {
   hasError: PropTypes.bool,
   value: PropTypes.string,
   hasText: PropTypes.bool,
+  layoutDimensions: PropTypes.shape({
+    initialLeftPosition: PropTypes.number,
+    finalTopPosition: PropTypes.number,
+  }),
 };
 
 AnimatedLabel.defaultProps = {
