@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import isDefined from '../../_helpers/isDefined';
+import isEmpty from '../../_helpers/isEmpty';
 import { getColor } from '../../_helpers/theme';
 import Space from '../Space';
 import Text from '../Text';
@@ -22,7 +23,7 @@ const styles = {
       if (variant === 'outlined') {
         if (isFocused && !hasError) {
           return getColor(theme, 'primary.800');
-        } else if (isDefined(value)) {
+        } else if (!isEmpty(value)) {
           return getColor(theme, 'shade.950');
         }
       }
@@ -109,7 +110,6 @@ const RegularLabel = ({
     >
       <StyledText
         as="label"
-        size="medium"
         hasError={hasError}
         disabled={disabled}
         variant={variant}
@@ -186,7 +186,6 @@ const AnimatedLabel = ({
         <StyledText
           as="label"
           htmlFor={children}
-          size="medium"
           isFocused={isFocused}
           hasError={hasError}
           hasText={hasText}
