@@ -58,10 +58,11 @@ const styles = {
       }
     },
     hoverBackgroundColor({ variant, theme, disabled }) {
-      if (variant === 'filled' && !disabled) {
+      if (variant === 'filled') {
+        if (disabled) {
+          return theme.colors.tone[930];
+        }
         return theme.colors.tone[940];
-      } else if (disabled) {
-        return theme.colors.tone[930];
       } else {
         return 'initial';
       }
@@ -94,7 +95,6 @@ const StyledInput = styled.input`
   color: ${styles.textInput.color};
   border: none;
   text-transform: ${styles.textInput.textTransform};
-  padding: ${styles.textInput.padding};
   background-color: transparent;
   pointer-events: ${(props) => (props.disabled ? 'none' : '')};
   &::selection {
@@ -193,8 +193,6 @@ const TextInput = ({
   });
   // Used to hide placeholder while label is inside the TextInput
   const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
-  // // Used to change selected color of the text input
-  // const [isSelected, setIsSelected] = useState(false);
 
   const hasText = !!(isDefined(input) && input.length > 0);
   const hasAnimatedLabel = variant === 'outlined';
