@@ -16,16 +16,24 @@ const styles = {
     }
   },
   padding({ variant, hasLeftIcon, hasRightIcon }) {
+    let padding = [0];
     if (variant === 'filled') {
       if (hasLeftIcon) {
-        return [0, 0, 0, 1];
+        padding = [0, 0, 0, 1];
       }
       if (hasRightIcon) {
-        return [0, 1, 0, 0];
+        padding = [0, 1, 0, 0];
       }
-      return [0, 0, 0, 0];
     }
-    return [0.5, 1, 0, 0];
+    if (variant === 'outlined') {
+      if (hasLeftIcon) {
+        padding = [0.5, 1, 0, 0];
+      }
+      if (hasRightIcon) {
+        padding = [0.5, 1, 0, 1];
+      }
+    }
+    return padding;
   },
 };
 

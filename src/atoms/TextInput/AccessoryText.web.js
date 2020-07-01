@@ -13,17 +13,24 @@ const styles = {
     }
   },
   padding({ variant, hasPrefix, hasSuffix }) {
+    let padding = [0];
     if (variant === 'filled') {
       if (hasPrefix) {
-        return [0, 0, 0, 1];
+        padding = [0, 0, 0, 1];
       }
       if (hasSuffix) {
-        return [0, 1, 0, 0];
+        padding = [0, 1, 0, 0];
       }
-      return [0, 0, 0, 0];
-    } else {
-      return [0.5, 1, 0, 0];
     }
+    if (variant === 'outlined') {
+      if (hasPrefix) {
+        padding = [0.5, 1, 0, 0];
+      }
+      if (hasSuffix) {
+        padding = [0.5, 1, 0, 1];
+      }
+    }
+    return padding;
   },
 };
 
