@@ -97,6 +97,7 @@ const StyledInput = styled.input`
   text-transform: ${styles.textInput.textTransform};
   background-color: transparent;
   pointer-events: ${(props) => (props.disabled ? 'none' : '')};
+  min-width: 0; /* without min-width:0 Input will ignore flex */
   &::selection {
     background-color: ${(props) => props.onSelect};
   }
