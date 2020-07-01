@@ -31,20 +31,20 @@ const styles = {
       }
       return getColor(theme, 'shade.960');
     },
-    fontSize({ theme, variant, isFocused, hasText }) {
-      if (variant === 'outlined') {
-        if (isFocused || hasText) {
-          return theme.fonts.size.xsmall;
-        }
+    fontSize({ theme, variant, isFocused, hasText, position, width }) {
+      if (variant === 'outlined' && !(isFocused || hasText)) {
+        return theme.fonts.size.medium;
+      }
+      if (position === 'left' && width !== 'small') {
         return theme.fonts.size.medium;
       }
       return theme.fonts.size.xsmall;
     },
-    lineHeight({ variant, theme, isFocused, hasText }) {
-      if (variant === 'outlined') {
-        if (isFocused || hasText) {
-          return theme.fonts.lineHeight.small;
-        }
+    lineHeight({ variant, theme, isFocused, hasText, position, width }) {
+      if (variant === 'outlined' && !(isFocused || hasText)) {
+        return theme.fonts.lineHeight.medium;
+      }
+      if (position === 'left' && width != 'small') {
         return theme.fonts.lineHeight.medium;
       }
       return theme.fonts.lineHeight.small;
@@ -89,6 +89,7 @@ const RegularLabel = ({
   variant,
   value,
   isFocused,
+  width,
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -103,6 +104,8 @@ const RegularLabel = ({
         hasText={hasText}
         theme={theme}
         isFocused={isFocused}
+        position={position}
+        width={width}
       >
         {children}
       </StyledText>
@@ -119,6 +122,7 @@ RegularLabel.propTypes = {
   hasError: PropTypes.bool,
   hasText: PropTypes.bool,
   value: PropTypes.string,
+  width: PropTypes.string,
 };
 
 RegularLabel.defaultProps = {
@@ -145,6 +149,7 @@ const AnimatedLabel = ({
   value,
   hasText,
   layoutDimensions,
+  width,
 }) => {
   const theme = useContext(ThemeContext);
   const floatViewAnimationStyle = getFloatViewAnimationStyle({
@@ -166,6 +171,8 @@ const AnimatedLabel = ({
           variant={variant}
           value={value}
           theme={theme}
+          position={position}
+          width={width}
         >
           {children}
         </StyledText>
@@ -187,6 +194,7 @@ AnimatedLabel.propTypes = {
     initialLeftPosition: PropTypes.number,
     finalTopPosition: PropTypes.number,
   }),
+  width: PropTypes.string,
 };
 
 AnimatedLabel.defaultProps = {

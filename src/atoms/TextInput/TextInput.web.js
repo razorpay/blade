@@ -300,6 +300,7 @@ const TextInput = ({
             prefix={prefix}
             value={input}
             layoutDimensions={layoutDimensions}
+            width={width}
           >
             {label}
           </Label.Regular>
@@ -320,6 +321,7 @@ const TextInput = ({
                 iconLeft={iconLeft}
                 prefix={prefix}
                 value={input}
+                width={width}
               >
                 {label}
               </Label.Regular>
@@ -342,6 +344,7 @@ const TextInput = ({
                           prefix={prefix}
                           value={input}
                           layoutDimensions={layoutDimensions}
+                          width={width}
                         >
                           {label}
                         </Label.Animated>
