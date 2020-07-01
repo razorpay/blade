@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import isDefined from '../../_helpers/isDefined';
 import isEmpty from '../../_helpers/isEmpty';
 import { getColor } from '../../_helpers/theme';
 import Space from '../Space';
@@ -55,13 +54,11 @@ const styles = {
     },
   },
   label: {
-    padding({ iconLeft, prefix, position, variant, isFocused, value }) {
-      if (variant !== 'filled' && (iconLeft || prefix) && !isFocused && !isDefined(value)) {
-        return [0, 0, 0, 3];
-      } else if (position === 'left') {
-        return [1, 0.75, 1, 0.75];
+    margin({ position }) {
+      if (position === 'left') {
+        return [1, 3, 1, 0];
       }
-      return [0, 0, 0, 0];
+      return [0, 0, 0.5, 0];
     },
   },
 };
@@ -86,28 +83,17 @@ const StyledText = styled(Text)`
 const RegularLabel = ({
   children,
   position,
-  isFocused,
-  iconLeft,
-  prefix,
   hasError,
   hasText,
   disabled,
   variant,
   value,
+  isFocused,
 }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <Space
-      padding={styles.label.padding({
-        position,
-        isFocused,
-        iconLeft,
-        prefix,
-        variant,
-        value,
-      })}
-    >
+    <Space margin={styles.label.margin({ position })}>
       <StyledText
         as="label"
         hasError={hasError}
@@ -116,6 +102,7 @@ const RegularLabel = ({
         value={value}
         hasText={hasText}
         theme={theme}
+        isFocused={isFocused}
       >
         {children}
       </StyledText>
@@ -129,8 +116,6 @@ RegularLabel.propTypes = {
   disabled: PropTypes.bool,
   isFocused: PropTypes.bool,
   variant: PropTypes.oneOf(['outlined', 'filled']).isRequired,
-  iconLeft: PropTypes.string,
-  prefix: PropTypes.string,
   hasError: PropTypes.bool,
   hasText: PropTypes.bool,
   value: PropTypes.string,
@@ -154,8 +139,6 @@ const AnimatedLabel = ({
   children,
   position,
   disabled,
-  iconLeft,
-  prefix,
   isFocused,
   hasError,
   variant,
@@ -171,17 +154,7 @@ const AnimatedLabel = ({
   });
 
   return (
-    <Space
-      padding={styles.label.padding({
-        position,
-        isFocused,
-        iconLeft,
-        prefix,
-        variant,
-        value,
-      })}
-      margin={[0, 0, 0.5, 0]}
-    >
+    <Space margin={styles.label.margin({ position })}>
       <FloatView layoutDimensions={layoutDimensions} style={floatViewAnimationStyle}>
         <StyledText
           as="label"
@@ -207,8 +180,6 @@ AnimatedLabel.propTypes = {
   disabled: PropTypes.bool,
   isFocused: PropTypes.bool,
   variant: PropTypes.oneOf(['outlined', 'filled']).isRequired,
-  iconLeft: PropTypes.string,
-  prefix: PropTypes.string,
   hasError: PropTypes.bool,
   value: PropTypes.string,
   hasText: PropTypes.bool,
