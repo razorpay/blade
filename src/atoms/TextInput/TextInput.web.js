@@ -218,6 +218,14 @@ const TextInput = ({
     throw Error('Cannot have a left label on an outlined Text Input');
   }
 
+  if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
+    throw Error('Cannot have prefix and left icon together');
+  }
+
+  if (!isEmpty(suffix) && !isEmpty(iconRight)) {
+    throw Error('Cannot have suffix and right icon together');
+  }
+
   const onFocus = useCallback(() => {
     setIsFocused(true);
 
@@ -286,14 +294,6 @@ const TextInput = ({
       });
     }
   }, [inputRef, containerRef]);
-
-  if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
-    throw Error('Cannot have prefix and left icon together');
-  }
-
-  if (!isEmpty(suffix) && !isEmpty(iconRight)) {
-    throw Error('Cannot have suffix and right icon together');
-  }
 
   return (
     <Flex justifyContent="flex-end" flexDirection="column">
