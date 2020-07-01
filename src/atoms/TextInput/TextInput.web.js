@@ -16,16 +16,13 @@ import AccessoryText from './AccessoryText';
 import Text from './Text';
 import Line from './Line';
 
-const restrictedNumericals = ['e', '.', '+', '-'];
-
 const styles = {
   textInput: {
     padding({ variant }) {
       if (variant === 'filled') {
         return [0, 1, 0, 1];
-      } else {
-        return [0, 0, 0, 0];
       }
+      return [0, 0, 0, 0];
     },
     lineHeight({ theme }) {
       return getLineHeight(theme, 'medium');
@@ -33,9 +30,8 @@ const styles = {
     color({ theme, disabled }) {
       if (disabled) {
         return theme.colors.shade[940];
-      } else {
-        return theme.colors.shade[980];
       }
+      return theme.colors.shade[980];
     },
     textTransform({ autoCapitalize }) {
       if (autoCapitalize === 'words') {
@@ -53,9 +49,8 @@ const styles = {
         return theme.colors.tone[930];
       } else if (isFocused) {
         return theme.colors.tone[950];
-      } else {
-        return theme.colors.tone[930];
       }
+      return theme.colors.tone[930];
     },
     hoverBackgroundColor({ variant, theme, disabled }) {
       if (variant === 'filled') {
@@ -63,9 +58,8 @@ const styles = {
           return theme.colors.tone[930];
         }
         return theme.colors.tone[940];
-      } else {
-        return 'initial';
       }
+      return '';
     },
   },
   inputContainer: {
@@ -270,12 +264,6 @@ const TextInput = ({
     return theme.colors.primary[980];
   };
 
-  const onKeyDownText = (e) => {
-    if (type === 'number' && restrictedNumericals.includes(e.key)) {
-      e.preventDefault();
-    }
-  };
-
   useEffect(() => {
     if (isDefined(value)) {
       setInput(value);
@@ -398,7 +386,6 @@ const TextInput = ({
                                     onFocus={onFocus}
                                     onBlur={onBlurText}
                                     onChange={onChangeText}
-                                    onKeyDown={onKeyDownText}
                                     hasText={hasText}
                                     onSelect={onSelectText}
                                     readonly={disabled}
