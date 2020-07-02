@@ -177,10 +177,7 @@ const TextInput = ({
   const [isFocused, setIsFocused] = useState(false);
   const [input, setInput] = useState(value || '');
   // Used for storing layout value of TextInput
-  const [layoutDimensions, setLayoutDimensions] = useState({
-    initialLeftPosition: 0,
-    finalTopPosition: 0,
-  });
+  const [layoutDimensions, setLayoutDimensions] = useState(null);
   // Used to hide placeholder while label is inside the TextInput
   const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
 
@@ -326,7 +323,7 @@ const TextInput = ({
                 <Size height="36px" minHeight="auto">
                   <Space padding={[1, 0, 1, 0]}>
                     <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
-                      {hasAnimatedLabel ? (
+                      {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
                         <Label.Animated
                           position={labelPosition}
                           disabled={disabled}
@@ -424,7 +421,6 @@ const TextInput = ({
                     </FillContainer>
                   </Space>
                 </Size>
-
                 {/* Bottom texts */}
                 {hasError || helpText || successText ? (
                   <Flex flexDirection="row" justifyContent="space-between">
