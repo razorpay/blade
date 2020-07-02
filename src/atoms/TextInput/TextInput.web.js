@@ -7,7 +7,6 @@ import Space from '../Space';
 import Size from '../Size';
 import isEmpty from '../../_helpers/isEmpty';
 import isDefined from '../../_helpers/isDefined';
-import { getLineHeight } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
 import Label from './Label';
 import CharacterCount from './CharacterCount';
@@ -22,10 +21,7 @@ const styles = {
       if (variant === 'filled') {
         return [0, 1, 0, 1];
       }
-      return [0, 0, 0, 0];
-    },
-    lineHeight({ theme }) {
-      return getLineHeight(theme, 'medium');
+      return [0];
     },
     color({ theme, disabled }) {
       if (disabled) {
@@ -84,14 +80,13 @@ const InputContainer = styled(View)`
 
 const StyledInput = styled.input`
   font-size: ${(props) => props.theme.fonts.size.medium};
-  line-height: ${styles.textInput.lineHeight};
+  line-height: ${(props) => props.theme.fonts.lineHeight.medium};
   font-family: ${(props) => props.theme.fonts.family.lato.regular};
   color: ${styles.textInput.color};
   border: none;
   text-transform: ${styles.textInput.textTransform};
   background-color: transparent;
   pointer-events: ${(props) => (props.disabled ? 'none' : '')};
-  min-width: 0; /* without min-width:0 Input will ignore flex */
   &::selection {
     background-color: ${(props) => props.onSelect};
   }
@@ -309,7 +304,6 @@ const TextInput = ({
         {/* Text Input Container */}
         <Flex flexDirection="row" alignItems="flex-start">
           <View>
-            {/* Fixed Left Label */}
             {!hasAnimatedLabel && labelPosition === 'left' ? (
               <Label.Regular
                 position={labelPosition}
@@ -370,7 +364,6 @@ const TextInput = ({
                                 hasLeftIcon={hasLeftIcon}
                               />
                             ) : null}
-
                             <Flex flex={1}>
                               <Space
                                 padding={styles.textInput.padding({
@@ -380,7 +373,7 @@ const TextInput = ({
                                   hasText,
                                 })}
                               >
-                                <Size minHeight="auto">
+                                <Size minWidth={[0]}>
                                   <StyledInput
                                     id={label}
                                     type={type}
