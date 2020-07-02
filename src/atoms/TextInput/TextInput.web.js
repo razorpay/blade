@@ -247,6 +247,18 @@ const TextInput = ({
     return theme.colors.primary[980];
   };
 
+  const onKeyPress = (e) => {
+    if (type === 'number') {
+      const charCode = typeof e.which === 'number' ? e.which : e.keyCode;
+      const char = String.fromCharCode(charCode);
+      const isAllowed = /[0-9]/g.test(char) || char === '-' || char === '.';
+
+      if (!isAllowed) {
+        e.preventDefault();
+      }
+    }
+  };
+
   useEffect(() => {
     if (isDefined(value)) {
       setInput(value);
@@ -368,6 +380,7 @@ const TextInput = ({
                                     maxLength={maxLength}
                                     value={input}
                                     ref={inputRef}
+                                    onKeyPress={onKeyPress}
                                     {...automation(testID)}
                                   />
                                 </Size>
