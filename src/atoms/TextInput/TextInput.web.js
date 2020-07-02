@@ -105,6 +105,10 @@ const StyledInput = styled.input`
   &::placeholder {
     color: ${(props) => props.placeholderTextColor};
   }
+  /* Removes red box shadow rectangle on firefox */
+  &:invalid {
+    box-shadow: none;
+  }
 `;
 
 const FillContainer = styled(View)`
