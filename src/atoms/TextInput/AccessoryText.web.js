@@ -12,21 +12,21 @@ const styles = {
       return 'shade.950';
     }
   },
-  padding({ variant, hasPrefix, hasSuffix }) {
+  padding({ variant, position }) {
     let padding = [0];
     if (variant === 'filled') {
-      if (hasPrefix) {
+      if (position === 'left') {
         padding = [0, 0, 0, 1];
       }
-      if (hasSuffix) {
+      if (position === 'right') {
         padding = [0, 1, 0, 0];
       }
     }
     if (variant === 'outlined') {
-      if (hasPrefix) {
+      if (position === 'left') {
         padding = [0.5, 1, 0, 0];
       }
-      if (hasSuffix) {
+      if (position === 'right') {
         padding = [0.5, 1, 0, 1];
       }
     }
@@ -34,9 +34,9 @@ const styles = {
   },
 };
 
-const AccessoryText = ({ children, disabled, variant, hasPrefix, hasSuffix }) => {
+const AccessoryText = ({ children, disabled, variant, position }) => {
   return (
-    <Space padding={styles.padding({ variant, hasPrefix, hasSuffix })}>
+    <Space padding={styles.padding({ variant, position })}>
       <View>
         <Text color={styles.color({ disabled })} size="medium">
           {children}
@@ -50,8 +50,7 @@ AccessoryText.propTypes = {
   children: PropTypes.string,
   disabled: PropTypes.bool,
   variant: PropTypes.string.isRequired,
-  hasPrefix: PropTypes.bool,
-  hasSuffix: PropTypes.bool,
+  position: PropTypes.string,
 };
 
 AccessoryText.defaultProps = {

@@ -8,15 +8,6 @@ import Text from '../Text';
 import View from '../View';
 
 const styles = {
-  container: {
-    height({ variant }) {
-      if (variant === 'outlined') {
-        return '10px';
-      } else {
-        return '20px';
-      }
-    },
-  },
   text: {
     color({ theme, isFocused, hasError, disabled, variant, value }) {
       if (variant === 'outlined') {

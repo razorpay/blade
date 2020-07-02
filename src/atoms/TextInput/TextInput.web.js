@@ -29,13 +29,6 @@ const styles = {
       }
       return theme.colors.shade[980];
     },
-    textTransform({ autoCapitalize }) {
-      if (autoCapitalize === 'words') {
-        return 'capitalize';
-      } else if (autoCapitalize === 'characters') {
-        return 'uppercase';
-      } else return 'none';
-    },
   },
   fillContainer: {
     backgroundColor({ variant, isFocused, theme, disabled }) {
@@ -84,7 +77,6 @@ const StyledInput = styled.input`
   font-family: ${(props) => props.theme.fonts.family.lato.regular};
   color: ${styles.textInput.color};
   border: none;
-  text-transform: ${styles.textInput.textTransform};
   background-color: transparent;
   pointer-events: ${(props) => (props.disabled ? 'none' : '')};
   &::selection {
@@ -169,7 +161,6 @@ const TextInput = ({
   labelPosition,
   width,
   type,
-  autoCapitalize,
 }) => {
   const theme = useContext(ThemeContext);
   const inputRef = useRef();
@@ -281,17 +272,13 @@ const TextInput = ({
       <View ref={containerRef}>
         {!hasAnimatedLabel && labelPosition === 'top' ? (
           <Label.Regular
-            animated={hasAnimatedLabel}
             position={labelPosition}
             disabled={disabled}
             isFocused={isFocused}
-            hasText={hasText}
             variant={variant}
             hasError={hasError}
-            iconLeft={iconLeft}
-            prefix={prefix}
+            hasText={hasText}
             value={input}
-            layoutDimensions={layoutDimensions}
             width={width}
           >
             {label}
@@ -306,11 +293,9 @@ const TextInput = ({
                 position={labelPosition}
                 disabled={disabled}
                 isFocused={isFocused}
-                hasText={hasText}
                 variant={variant}
                 hasError={hasError}
-                iconLeft={iconLeft}
-                prefix={prefix}
+                hasText={hasText}
                 value={input}
                 width={width}
               >
@@ -328,12 +313,10 @@ const TextInput = ({
                           position={labelPosition}
                           disabled={disabled}
                           isFocused={isFocused}
-                          hasText={hasText}
                           variant={variant}
                           hasError={hasError}
-                          iconLeft={iconLeft}
-                          prefix={prefix}
                           value={input}
+                          hasText={hasText}
                           layoutDimensions={layoutDimensions}
                           width={width}
                         >
@@ -344,11 +327,7 @@ const TextInput = ({
                         <Size width={styles.inputContainer.width({ width })}>
                           <InputContainer>
                             {hasPrefix ? (
-                              <AccessoryText
-                                hasPrefix={hasPrefix}
-                                variant={variant}
-                                disabled={disabled}
-                              >
+                              <AccessoryText position="left" variant={variant} disabled={disabled}>
                                 {prefix}
                               </AccessoryText>
                             ) : null}
@@ -358,7 +337,7 @@ const TextInput = ({
                                 name={iconLeft}
                                 disabled={disabled}
                                 hasError={hasError}
-                                hasLeftIcon={hasLeftIcon}
+                                position="left"
                               />
                             ) : null}
                             <Flex flex={1}>
@@ -388,7 +367,6 @@ const TextInput = ({
                                     hasLeftIcon={hasLeftIcon}
                                     maxLength={maxLength}
                                     value={input}
-                                    autoCapitalize={autoCapitalize}
                                     ref={inputRef}
                                     {...automation(testID)}
                                   />
@@ -396,11 +374,7 @@ const TextInput = ({
                               </Space>
                             </Flex>
                             {hasSuffix ? (
-                              <AccessoryText
-                                hasSuffix={hasSuffix}
-                                variant={variant}
-                                disabled={disabled}
-                              >
+                              <AccessoryText position="right" variant={variant} disabled={disabled}>
                                 {suffix}
                               </AccessoryText>
                             ) : null}
@@ -410,8 +384,7 @@ const TextInput = ({
                                 name={iconRight}
                                 disabled={disabled}
                                 hasError={hasError}
-                                size="xsmall"
-                                hasRightIcon={hasRightIcon}
+                                position="right"
                               />
                             ) : null}
                           </InputContainer>
@@ -465,13 +438,11 @@ TextInput.propTypes = {
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
   maxLength: PropTypes.number,
-  position: PropTypes.bool,
   label: PropTypes.string,
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
   type: PropTypes.oneOf(['text', 'password', 'number', 'email']),
-  autoCapitalize: PropTypes.oneOf(['none', 'sentences', 'words', 'characters']),
 };
 
 TextInput.defaultProps = {
@@ -494,7 +465,6 @@ TextInput.defaultProps = {
   labelPosition: 'top',
   width: 'medium',
   type: 'text',
-  autoCapitalize: undefined,
 };
 
 export default TextInput;
