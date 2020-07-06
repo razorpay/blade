@@ -469,18 +469,9 @@ TextInput.propTypes = {
 
 TextInput.defaultProps = {
   placeholder: 'Enter text here',
-  helpText: undefined,
-  errorText: undefined,
-  successText: undefined,
   onChange: () => {},
   onBlur: () => {},
-  prefix: undefined,
-  suffix: undefined,
   disabled: false,
-  value: undefined,
-  iconLeft: undefined,
-  iconRight: undefined,
-  maxLength: undefined,
   variant: 'outlined',
   label: 'Label',
   testID: 'ds-text-input',
