@@ -81,6 +81,7 @@ const RegularLabel = ({
   value,
   isFocused,
   width,
+  id,
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -88,6 +89,7 @@ const RegularLabel = ({
     <Space margin={styles.label.margin({ position })}>
       <StyledText
         as="label"
+        htmlFor={id}
         hasError={hasError}
         disabled={disabled}
         variant={variant}
@@ -97,6 +99,7 @@ const RegularLabel = ({
         isFocused={isFocused}
         position={position}
         width={width}
+        id={id}
       >
         {children}
       </StyledText>
@@ -114,6 +117,7 @@ RegularLabel.propTypes = {
   hasText: PropTypes.bool,
   value: PropTypes.string,
   width: PropTypes.string,
+  id: PropTypes.string,
 };
 
 RegularLabel.defaultProps = {
@@ -141,6 +145,7 @@ const AnimatedLabel = ({
   hasText,
   layoutDimensions,
   width,
+  id,
 }) => {
   const theme = useContext(ThemeContext);
   const floatViewAnimationStyle = getFloatViewAnimationStyle({
@@ -154,7 +159,7 @@ const AnimatedLabel = ({
       <FloatView layoutDimensions={layoutDimensions} style={floatViewAnimationStyle}>
         <StyledText
           as="label"
-          htmlFor={children}
+          htmlFor={id}
           isFocused={isFocused}
           hasError={hasError}
           hasText={hasText}
@@ -186,6 +191,7 @@ AnimatedLabel.propTypes = {
     finalTopPosition: PropTypes.number,
   }),
   width: PropTypes.string,
+  id: PropTypes.string,
 };
 
 AnimatedLabel.defaultProps = {

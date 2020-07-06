@@ -165,6 +165,7 @@ const TextInput = ({
   labelPosition,
   width,
   type,
+  id,
 }) => {
   const theme = useContext(ThemeContext);
   const inputRef = useRef();
@@ -296,6 +297,7 @@ const TextInput = ({
             hasText={hasText}
             value={input}
             width={width}
+            id={id}
           >
             {label}
           </Label.Regular>
@@ -314,6 +316,7 @@ const TextInput = ({
                 hasText={hasText}
                 value={input}
                 width={width}
+                id={id}
               >
                 {label}
               </Label.Regular>
@@ -335,6 +338,7 @@ const TextInput = ({
                           hasText={hasText}
                           layoutDimensions={layoutDimensions}
                           width={width}
+                          id={id}
                         >
                           {label}
                         </Label.Animated>
@@ -367,7 +371,7 @@ const TextInput = ({
                               >
                                 <Size minWidth={[0]}>
                                   <StyledInput
-                                    id={label}
+                                    id={id}
                                     type={type}
                                     placeholder={placeholder}
                                     placeholderTextColor={placeholderTextColor}
@@ -460,6 +464,7 @@ TextInput.propTypes = {
   labelPosition: PropTypes.oneOf(['top', 'left']),
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
   type: PropTypes.oneOf(['text', 'password', 'number', 'email']),
+  id: PropTypes.string,
 };
 
 TextInput.defaultProps = {
