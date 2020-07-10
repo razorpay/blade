@@ -35,6 +35,7 @@ configure(() => {
   require('../../src/molecules/SegmentControl/SegmentControl.stories');
   require('../../src/molecules/Snackbar/Snackbar.stories');
   require('../../src/molecules/Tabs/Tabs.stories');
+  require('../../src/molecules/BottomSheet/BottomSheet.stories');
 }, module);
 
 // add decorators

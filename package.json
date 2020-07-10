@@ -30,6 +30,7 @@
     "react-native-status-bar-height": "2.5.0",
     "react-native-svg": "12.1.0",
     "react-native-tab-view": "2.14.0",
+    "reanimated-bottom-sheet": "^1.0.0-alpha.20",
     "typescript": "3.7.5"
   },
   "devDependencies": {
