@@ -36,6 +36,7 @@ const HeaderContainer = styled(View)`
 const BottomSheet = ({ snapPoints, initialSnap, header, content, footer }) => {
   const bottomsheetRef = useRef(null);
   const fall = new Value(1);
+  //const x = new Value(0);
   const [showFooter, setShowFooter] = useState(!!footer);
 
   const renderHeader = () => {
@@ -109,7 +110,6 @@ const BottomSheet = ({ snapPoints, initialSnap, header, content, footer }) => {
       inputRange: [0, 1],
       outputRange: [0.5, 0],
     });
-
     return (
       <Position position="absolute" top={0} left={0} bottom={0} right={0}>
         <AnimatedView
