@@ -7,9 +7,9 @@ import Size from '../Size';
 import Space from '../Space';
 import Icon from '../Icon';
 import Text from '../Text';
-import View from '../View';
 import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
+import isEmpty from '../../_helpers/isEmpty';
 
 const BORDER_WIDTH = makePxValue(0.125);
 
@@ -283,7 +283,11 @@ const styles = {
         return 'small';
     }
   },
-  spaceBetween({ size, iconAlign }) {
+  spaceBetween({ size, iconAlign, children }) {
+    if (isEmpty(children)) {
+      return null;
+    }
+
     switch (size) {
       case 'xsmall':
         if (iconAlign === 'left') {
@@ -399,15 +403,12 @@ const Button = ({
           >
             <React.Fragment>
               {icon && iconAlign === 'left' ? (
-                <Icon
-                  name={icon}
-                  size={styles.iconSize({ size, children })}
-                  fill={styles.fontColor({ variant, variantColor, disabled })}
-                />
-              ) : null}
-              {icon && iconAlign === 'left' && children ? (
-                <Space margin={styles.spaceBetween({ size, iconAlign })}>
-                  <View />
+                <Space margin={styles.spaceBetween({ size, iconAlign, children })}>
+                  <Icon
+                    name={icon}
+                    size={styles.iconSize({ size, children })}
+                    fill={styles.fontColor({ variant, variantColor, disabled })}
+                  />
                 </Space>
               ) : null}
               {children ? (
@@ -422,17 +423,14 @@ const Button = ({
                   {size === 'xsmall' ? children.toUpperCase() : children}
                 </Text>
               ) : null}
-              {icon && iconAlign === 'right' && children ? (
-                <Space margin={styles.spaceBetween({ size, iconAlign })}>
-                  <View />
-                </Space>
-              ) : null}
               {icon && iconAlign === 'right' ? (
-                <Icon
-                  name={icon}
-                  size={styles.iconSize({ size, children })}
-                  fill={styles.fontColor({ variant, variantColor, disabled })}
-                />
+                <Space margin={styles.spaceBetween({ size, iconAlign, children })}>
+                  <Icon
+                    name={icon}
+                    size={styles.iconSize({ size, children })}
+                    fill={styles.fontColor({ variant, variantColor, disabled })}
+                  />
+                </Space>
               ) : null}
             </React.Fragment>
           </StyledButton>
