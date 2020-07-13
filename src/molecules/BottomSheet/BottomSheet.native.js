@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import styled, { useTheme } from 'styled-components/native';
 import { Modalize as RNModalize } from 'react-native-modalize';
 import PropTypes from 'prop-types';
@@ -7,10 +7,11 @@ import Flex from '../../atoms/Flex';
 import Space from '../../atoms/Space';
 import Size from '../../atoms/Size';
 import Position from '../../atoms/Position';
+import View from '../../atoms/View';
 
 const screenHeight = Dimensions.get('window').height;
-
 const DEFAULT_SNAP_POINT = screenHeight * 0.4; // 40% of screen height
+
 const styles = {
   overlayStyle: ({ theme }) => {
     return {
@@ -36,7 +37,7 @@ const BottomSheetDragBar = styled(View)`
   border-radius: 4px;
 `;
 
-const Modalize = forwardRef(
+const BottomSheet = forwardRef(
   (
     {
       snapPoint = DEFAULT_SNAP_POINT,
@@ -73,12 +74,7 @@ const Modalize = forwardRef(
         FloatingComponent={
           FooterComponent ? (
             <Position position="absolute" bottom={0} left={0} right={0} zIndex={2}>
-              <FooterContainer>
-                <View>
-                  <Text>shridhar</Text>
-                </View>
-                {FooterComponent}
-              </FooterContainer>
+              <FooterContainer>{FooterComponent}</FooterContainer>
             </Position>
           ) : null
         }
@@ -96,9 +92,9 @@ const Modalize = forwardRef(
   },
 );
 
-Modalize.displayName = 'Modalize';
+BottomSheet.displayName = 'BladeBottomSheet';
 
-Modalize.propTypes = {
+BottomSheet.propTypes = {
   snapPoint: PropTypes.number,
   children: PropTypes.node,
   HeaderComponent: PropTypes.node,
@@ -109,4 +105,4 @@ Modalize.propTypes = {
   onBackDropPress: PropTypes.func,
 };
 
-export default Modalize;
+export default BottomSheet;
