@@ -9,11 +9,9 @@ describe('<BottomSheet />', () => {
   it('renders default BottomSheet', () => {
     const bottomSheetRef = React.createRef();
     const { container } = renderWithTheme(<BottomSheet ref={bottomSheetRef} />);
-
     act(() => {
       bottomSheetRef.current.open();
     });
-
     expect(container).toMatchSnapshot();
   });
 
@@ -38,11 +36,9 @@ describe('<BottomSheet />', () => {
         </View>
       </BottomSheet>,
     );
-
     act(() => {
       bottomSheetRef.current.open();
     });
-
     expect(container).toMatchSnapshot();
   });
 });

@@ -1,3 +1,3 @@
-const Modalize = () => null;
+const BottomSheet = () => null;
 
-export default Modalize;
+export default BottomSheet;
