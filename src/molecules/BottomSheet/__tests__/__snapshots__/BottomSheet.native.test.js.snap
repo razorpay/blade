@@ -175,7 +175,6 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
           style={
             Object {
               "backgroundColor": "rgba(255, 255, 255, 1.0)",
-              "childrenStyle": Object {},
               "flex": 1,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -268,12 +267,10 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
             Array [
               Object {
                 "position": "absolute",
-                "zIndex": 2,
               },
             ],
           ]
         }
-        zIndex={2}
       >
         <View
           color="shade.920"
@@ -469,7 +466,6 @@ exports[`<BottomSheet /> renders default BottomSheet 1`] = `
           style={
             Object {
               "backgroundColor": "rgba(255, 255, 255, 1.0)",
-              "childrenStyle": Object {},
               "flex": 1,
               "flexGrow": 1,
               "flexShrink": 1,
