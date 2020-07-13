@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
+exports[`<Button /> block should render a block button 1`] = `
 <div>
   <button
     class="Buttonweb__StyledButton-gxhxmy-0 fUrnbk Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 hBDZyG"
@@ -12,13 +12,198 @@ exports[`Renders <Button /> correctly Renders Primary block <Button /> 1`] = `
       color="light.900"
       data-testid="ds-text"
     >
-      Click Me
+      click me
     </div>
   </button>
 </div>
 `;
 
-exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] = `
+exports[`<Button /> disabled should render a disabled button 1`] = `
+<div>
+  <button
+    class="Buttonweb__StyledButton-gxhxmy-0 juyGMq Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    data-testid="ds-button"
+    disabled=""
+    type="button"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 fTtHfx"
+      color="light.950"
+      data-testid="ds-text"
+    >
+      Disabled
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> icon with children with iconAlign left should render a button with text with icon on left 1`] = `
+<div>
+  <button
+    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    data-testid="ds-button"
+    type="button"
+  >
+    <svg
+      class="Spaceweb__Space-njatzl-0 fIWTfg"
+      data-testid="ds-icon"
+      fill="rgba(255, 255, 255, 1.0)"
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+    >
+      <path
+        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      />
+    </svg>
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+      color="light.900"
+      data-testid="ds-text"
+    >
+      Button
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> icon with children with iconAlign left should render a button with text with icon on left 2`] = `
+<div>
+  <button
+    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    data-testid="ds-button"
+    type="button"
+  >
+    <svg
+      class="Spaceweb__Space-njatzl-0 fIWTfg"
+      data-testid="ds-icon"
+      fill="rgba(255, 255, 255, 1.0)"
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+    >
+      <path
+        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      />
+    </svg>
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+      color="light.900"
+      data-testid="ds-text"
+    >
+      Button
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> icon with children with iconAlign right should render a button with text with icon on right 1`] = `
+<div>
+  <button
+    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    data-testid="ds-button"
+    type="button"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+      color="light.900"
+      data-testid="ds-text"
+    >
+      Button
+    </div>
+    <svg
+      class="Spaceweb__Space-njatzl-0 keYFvM"
+      data-testid="ds-icon"
+      fill="rgba(255, 255, 255, 1.0)"
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+    >
+      <path
+        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`<Button /> icon with children with iconAlign right should render a button with text with icon on right 2`] = `
+<div>
+  <button
+    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    data-testid="ds-button"
+    type="button"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+      color="light.900"
+      data-testid="ds-text"
+    >
+      Button
+    </div>
+    <svg
+      class="Spaceweb__Space-njatzl-0 keYFvM"
+      data-testid="ds-icon"
+      fill="rgba(255, 255, 255, 1.0)"
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+    >
+      <path
+        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`<Button /> icon without children should render icon only button 1`] = `
+<div>
+  <button
+    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 cPoqMa Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    data-testid="ds-button"
+    type="button"
+  >
+    <svg
+      class="Spaceweb__Space-njatzl-0 jBqZrs"
+      data-testid="ds-icon"
+      fill="rgba(255, 255, 255, 1.0)"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path
+        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`<Button /> icon without children should render icon only button 2`] = `
+<div>
+  <button
+    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 cPoqMa Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    data-testid="ds-button"
+    type="button"
+  >
+    <svg
+      class="Spaceweb__Space-njatzl-0 jBqZrs"
+      data-testid="ds-icon"
+      fill="rgba(255, 255, 255, 1.0)"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path
+        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`<Button /> onChange with disabled should not call onChange handler 1`] = `
 <div>
   <button
     class="Buttonweb__StyledButton-gxhxmy-0 juyGMq Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
@@ -37,99 +222,7 @@ exports[`Renders <Button /> correctly Renders a disabled Primary <Button /> 1`] 
 </div>
 `;
 
-exports[`Renders <Button /> correctly Renders a disabled Secondary <Button /> 1`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 hoJrlF Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    disabled=""
-    type="button"
-  >
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 byhHWP"
-      color="shade.940"
-      data-testid="ds-text"
-    >
-      Click Me
-    </div>
-  </button>
-</div>
-`;
-
-exports[`Renders <Button /> correctly Renders a disabled Tertiary <Button /> 1`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 eRpevU Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    disabled=""
-    type="button"
-  >
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 byhHWP"
-      color="shade.940"
-      data-testid="ds-text"
-    >
-      Click Me
-    </div>
-  </button>
-</div>
-`;
-
-exports[`Renders <Button /> correctly Renders a large Primary <Button /> 1`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    type="button"
-  >
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
-      color="light.900"
-      data-testid="ds-text"
-    >
-      Click Me
-    </div>
-  </button>
-</div>
-`;
-
-exports[`Renders <Button /> correctly Renders a large Secondary <Button /> 1`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 ctpJNE Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    type="button"
-  >
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 bOoYmY"
-      color="primary.800"
-      data-testid="ds-text"
-    >
-      Click Me
-    </div>
-  </button>
-</div>
-`;
-
-exports[`Renders <Button /> correctly Renders a large Tertiary <Button /> 1`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iTllvu Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    type="button"
-  >
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 bOoYmY"
-      color="primary.800"
-      data-testid="ds-text"
-    >
-      Click Me
-    </div>
-  </button>
-</div>
-`;
-
-exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button /> 1`] = `
+exports[`<Button /> onChange without disabled should call onChange handler exactly one time 1`] = `
 <div>
   <button
     class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
@@ -147,43 +240,43 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
 </div>
 `;
 
-exports[`Renders <Button /> correctly Renders a medium(Default) Secondary <Button /> 1`] = `
+exports[`<Button /> size should render a large button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 ctpJNE Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 bOoYmY"
-      color="primary.800"
+      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+      color="light.900"
       data-testid="ds-text"
     >
-      Click Me
+      click me
     </div>
   </button>
 </div>
 `;
 
-exports[`Renders <Button /> correctly Renders a medium(Default) Tertiary <Button /> 1`] = `
+exports[`<Button /> size should render a medium(default) button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iTllvu Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 bOoYmY"
-      color="primary.800"
+      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+      color="light.900"
       data-testid="ds-text"
     >
-      Click Me
+      click me
     </div>
   </button>
 </div>
 `;
 
-exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
+exports[`<Button /> size should render a small button 1`] = `
 <div>
   <button
     class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 cubrzf Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
@@ -195,49 +288,13 @@ exports[`Renders <Button /> correctly Renders a small Primary <Button /> 1`] = `
       color="light.900"
       data-testid="ds-text"
     >
-      Click Me
+      click me
     </div>
   </button>
 </div>
 `;
 
-exports[`Renders <Button /> correctly Renders a small Secondary <Button /> 1`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 ctpJNE Spaceweb__Space-njatzl-0 cubrzf Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    type="button"
-  >
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 dFexrR"
-      color="primary.800"
-      data-testid="ds-text"
-    >
-      Click Me
-    </div>
-  </button>
-</div>
-`;
-
-exports[`Renders <Button /> correctly Renders a small Tertiary <Button /> 1`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iTllvu Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    type="button"
-  >
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 dFexrR"
-      color="primary.800"
-      data-testid="ds-text"
-    >
-      Click Me
-    </div>
-  </button>
-</div>
-`;
-
-exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
+exports[`<Button /> size should render a xsmall button 1`] = `
 <div>
   <button
     class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 klaaMc Sizeweb__Size-sc-10bl685-0 yoKtN Flexweb__Flex-ni2cjg-0 dfbkqx"
@@ -255,27 +312,53 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
 </div>
 `;
 
-exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with left(Default) icon 1`] = `
+exports[`<Button /> type should call form submit handler if type is submit 1`] = `
+<div>
+  <form>
+    <button
+      class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+      data-testid="ds-button"
+      type="submit"
+    >
+      <div
+        class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+        color="light.900"
+        data-testid="ds-text"
+      >
+        Click Me
+      </div>
+    </button>
+  </form>
+</div>
+`;
+
+exports[`<Button /> type should not call submit handler if type is button 1`] = `
+<div>
+  <form>
+    <button
+      class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+      data-testid="ds-button"
+      type="button"
+    >
+      <div
+        class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+        color="light.900"
+        data-testid="ds-text"
+      >
+        Click Me
+      </div>
+    </button>
+  </form>
+</div>
+`;
+
+exports[`<Button /> variant should render a primary(default) button 1`] = `
 <div>
   <button
     class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
-    <svg
-      data-testid="ds-icon"
-      fill="rgba(255, 255, 255, 1.0)"
-      height="20"
-      viewBox="0 0 24 24"
-      width="20"
-    >
-      <path
-        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-      />
-    </svg>
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 fIWTfg"
-    />
     <div
       class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
       color="light.900"
@@ -287,30 +370,16 @@ exports[`Renders an icon <Button /> correctly Renders a Primary <Button /> with 
 </div>
 `;
 
-exports[`Renders an icon <Button /> correctly Renders a large Primary <Button /> with right icon 1`] = `
+exports[`<Button /> variant should render a secondary button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 ctpJNE Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
-    <svg
-      data-testid="ds-icon"
-      fill="rgba(255, 255, 255, 1.0)"
-      height="20"
-      viewBox="0 0 24 24"
-      width="20"
-    >
-      <path
-        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-      />
-    </svg>
     <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 fIWTfg"
-    />
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
-      color="light.900"
+      class="Textweb__Text-sc-6jf9e4-0 bOoYmY"
+      color="primary.800"
       data-testid="ds-text"
     >
       Click Me
@@ -319,24 +388,20 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
 </div>
 `;
 
-exports[`Renders an icon <Button /> correctly Renders an icon only <Button /> 1`] = `
+exports[`<Button /> variant should render a tertiary button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 cPoqMa Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 iTllvu Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
-    <svg
-      data-testid="ds-icon"
-      fill="rgba(255, 255, 255, 1.0)"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 bOoYmY"
+      color="primary.800"
+      data-testid="ds-text"
     >
-      <path
-        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-      />
-    </svg>
+      click me
+    </div>
   </button>
 </div>
 `;
