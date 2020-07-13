@@ -42,14 +42,16 @@ const BottomSheet = forwardRef(
   (
     {
       snapPoint = DEFAULT_SNAP_POINT,
-      children = null,
-      HeaderComponent = null,
-      FooterComponent = null,
+      children,
+      HeaderComponent,
+      FooterComponent,
       onBackDropPress = () => {},
       onBackButtonPress = () => {},
       onOpened = () => {},
       onClosed = () => {},
       childrenStyle = {},
+      adjustToContentHeight = false,
+      overlayStyle = {},
     },
     ref,
   ) => {
@@ -71,28 +73,29 @@ const BottomSheet = forwardRef(
               </Space>
             </Flex>
             {HeaderComponent}
-            <Divider color="shade.920" />
+            <Divider color="shade.920" horizontal />
           </HeaderContainer>
         }
         FloatingComponent={
           FooterComponent ? (
-            <Position position="absolute" bottom={0} left={0} right={0} zIndex={2}>
+            <Position position="absolute" bottom={0} left={0} right={0}>
               <View>
-                <Divider color="shade.920" />
+                <Divider color="shade.920" horizontal />
                 {FooterComponent}
               </View>
             </Position>
           ) : null
         }
-        overlayStyle={styles.overlayStyle({ theme })}
+        overlayStyle={{ ...styles.overlayStyle({ theme }), ...overlayStyle }}
         onOverlayPress={onBackDropPress}
         avoidKeyboardLikeIOS={true}
         onOpened={onOpened}
         onClosed={onClosed}
         onBackButtonPress={onBackButtonPress}
-        childrenStyle={{ ...styles.childrenStyle({ theme }), childrenStyle }}
+        childrenStyle={{ ...styles.childrenStyle({ theme }), ...childrenStyle }}
         withHandle={false}
         panGestureComponentEnabled={true}
+        adjustToContentHeight={adjustToContentHeight}
       >
         {children}
       </RNModalize>
@@ -112,6 +115,8 @@ BottomSheet.propTypes = {
   onBackButtonPress: PropTypes.func,
   onBackDropPress: PropTypes.func,
   childrenStyle: PropTypes.object,
+  adjustToContentHeight: PropTypes.bool,
+  overlayStyle: PropTypes.object,
 };
 
 export default BottomSheet;

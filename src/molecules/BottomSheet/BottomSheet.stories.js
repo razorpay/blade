@@ -12,7 +12,7 @@ const Item = styled(View)`
   padding: 8px;
 `;
 
-const LIST = [
+const list = [
   'Samsung',
   'Xiaomi',
   'OnePlus',
@@ -25,9 +25,9 @@ const LIST = [
   'HTC',
 ];
 
-const data = new Array(LIST.length).fill({}).map((item, index) => ({
+const data = new Array(list.length).fill({}).map((item, index) => ({
   id: index,
-  name: LIST[index],
+  name: list[index],
 }));
 
 storiesOf('BottomSheet')
