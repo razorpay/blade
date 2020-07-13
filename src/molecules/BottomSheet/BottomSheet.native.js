@@ -52,6 +52,7 @@ const BottomSheet = forwardRef(
       childrenStyle = {},
       adjustToContentHeight = false,
       overlayStyle = {},
+      alwaysOpen = 0,
     },
     ref,
   ) => {
@@ -96,6 +97,7 @@ const BottomSheet = forwardRef(
         withHandle={false}
         panGestureComponentEnabled={true}
         adjustToContentHeight={adjustToContentHeight}
+        alwaysOpen={alwaysOpen}
       >
         {children}
       </RNModalize>
@@ -117,6 +119,7 @@ BottomSheet.propTypes = {
   childrenStyle: PropTypes.object,
   adjustToContentHeight: PropTypes.bool,
   overlayStyle: PropTypes.object,
+  alwaysOpen: PropTypes.number,
 };
 
 export default BottomSheet;
