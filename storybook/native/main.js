@@ -36,7 +36,6 @@ configure(() => {
   require('../../src/molecules/SegmentControl/SegmentControl.stories');
   require('../../src/molecules/Snackbar/Snackbar.stories');
   require('../../src/molecules/Tabs/Tabs.stories');
-  require('../../src/molecules/BottomSheet/BottomSheet.stories');
   require('../../src/molecules/Modalize/Modalize.stories');
 }, module);
 
