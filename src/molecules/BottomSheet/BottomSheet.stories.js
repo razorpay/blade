@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components/native';
 import { TouchableOpacity } from 'react-native';
 import { storiesOf } from '@storybook/react';
-import Modalize from '../BottomSheet';
+import BottomSheet from '../BottomSheet';
 import Text from '../../atoms/Text';
 import View from '../../atoms/View';
+import Space from '../../atoms/Space';
 
 const Item = styled(View)`
   height: 40px;
@@ -29,26 +30,42 @@ const data = new Array(LIST.length).fill({}).map((item, index) => ({
   name: LIST[index],
 }));
 
-storiesOf('Modalize')
-  .addParameters({ component: Modalize })
+storiesOf('BottomSheet')
+  .addParameters({ component: BottomSheet })
   .add('default', () => {
-    const modalRef = React.createRef();
+    const bottomSheetRef = useRef();
     return (
       <>
         <TouchableOpacity
           onPress={() => {
-            modalRef?.current.open();
+            bottomSheetRef?.current.open();
           }}
         >
           <Text>Open BottomSheet</Text>
         </TouchableOpacity>
-        <Modalize ref={modalRef}>
+        <BottomSheet
+          ref={bottomSheetRef}
+          HeaderComponent={
+            <Space padding={[1]}>
+              <View>
+                <Text>Header</Text>
+              </View>
+            </Space>
+          }
+          FooterComponent={
+            <Space padding={[1]}>
+              <View>
+                <Text>Footer</Text>
+              </View>
+            </Space>
+          }
+        >
           {data.map((item) => (
             <Item key={item.id}>
               <Text>{item.name}</Text>
             </Item>
           ))}
-        </Modalize>
+        </BottomSheet>
       </>
     );
   });

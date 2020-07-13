@@ -8,6 +8,7 @@ import Space from '../../atoms/Space';
 import Size from '../../atoms/Size';
 import Position from '../../atoms/Position';
 import View from '../../atoms/View';
+import Divider from '../../atoms/Divider';
 
 const screenHeight = Dimensions.get('window').height;
 const DEFAULT_SNAP_POINT = screenHeight * 0.4; // 40% of screen height
@@ -18,6 +19,11 @@ const styles = {
       backgroundColor: theme.colors.shade[950],
     };
   },
+  childrenStyle: ({ theme }) => {
+    return {
+      backgroundColor: theme.colors.background[200],
+    };
+  },
 };
 
 const HeaderContainer = styled(View)`
@@ -25,11 +31,6 @@ const HeaderContainer = styled(View)`
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   box-shadow: ${(props) => `0px -4px 15px ${props.theme.colors.primary[930]}`};
-`;
-
-const FooterContainer = styled(View)`
-  border-top-color: ${(props) => props.theme.colors.shade[920]};
-  border-top-width: 1px;
 `;
 
 const BottomSheetDragBar = styled(View)`
@@ -48,6 +49,7 @@ const BottomSheet = forwardRef(
       onBackButtonPress = () => {},
       onOpened = () => {},
       onClosed = () => {},
+      childrenStyle = {},
     },
     ref,
   ) => {
@@ -69,12 +71,16 @@ const BottomSheet = forwardRef(
               </Space>
             </Flex>
             {HeaderComponent}
+            <Divider color="shade.920" />
           </HeaderContainer>
         }
         FloatingComponent={
           FooterComponent ? (
             <Position position="absolute" bottom={0} left={0} right={0} zIndex={2}>
-              <FooterContainer>{FooterComponent}</FooterContainer>
+              <View>
+                <Divider color="shade.920" />
+                {FooterComponent}
+              </View>
             </Position>
           ) : null
         }
@@ -84,7 +90,9 @@ const BottomSheet = forwardRef(
         onOpened={onOpened}
         onClosed={onClosed}
         onBackButtonPress={onBackButtonPress}
+        childrenStyle={{ ...styles.childrenStyle({ theme }), childrenStyle }}
         withHandle={false}
+        panGestureComponentEnabled={true}
       >
         {children}
       </RNModalize>
@@ -103,6 +111,7 @@ BottomSheet.propTypes = {
   onClosed: PropTypes.func,
   onBackButtonPress: PropTypes.func,
   onBackDropPress: PropTypes.func,
+  childrenStyle: PropTypes.object,
 };
 
 export default BottomSheet;
