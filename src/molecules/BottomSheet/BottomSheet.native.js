@@ -6,9 +6,12 @@ import PropTypes from 'prop-types';
 import Flex from '../../atoms/Flex';
 import Space from '../../atoms/Space';
 import Size from '../../atoms/Size';
-import Position from '../../atoms/Position';
 import View from '../../atoms/View';
 import Divider from '../../atoms/Divider';
+import reactChildrenGroupByType from '../../_helpers/reactChildrenGroupByType';
+import Header from './BottomSheetHeader';
+import Footer from './BottomSheetFooter';
+import Content from './BottomSheetContent';
 
 const screenHeight = Dimensions.get('window').height;
 const DEFAULT_SNAP_POINT = screenHeight * 0.4; // 40% of screen height
@@ -31,6 +34,7 @@ const HeaderContainer = styled(View)`
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   box-shadow: ${(props) => `0px -4px 15px ${props.theme.colors.primary[930]}`};
+  elevation: 4;
 `;
 
 const BottomSheetDragBar = styled(View)`
@@ -43,8 +47,6 @@ const BottomSheet = forwardRef(
     {
       snapPoint = DEFAULT_SNAP_POINT,
       children,
-      HeaderComponent,
-      FooterComponent,
       onBackDropPress = () => {},
       onBackButtonPress = () => {},
       onOpened = () => {},
@@ -57,6 +59,23 @@ const BottomSheet = forwardRef(
     ref,
   ) => {
     const theme = useTheme();
+    const bottomsheetChildrenGroupByType = reactChildrenGroupByType(children);
+
+    const headerComponent = bottomsheetChildrenGroupByType[Header];
+    const footerComponent = bottomsheetChildrenGroupByType[Footer];
+    const contentComponent = bottomsheetChildrenGroupByType[Content];
+
+    if (headerComponent.length > 1) {
+      throw new Error(
+        `expected to have single \`BottomSheet.Header\` but found ${headerComponent.length}`,
+      );
+    }
+
+    if (footerComponent.length > 1) {
+      throw new Error(
+        `expected to have single \`BottomSheet.Footer\` but found ${footerComponent.length}`,
+      );
+    }
 
     return (
       <RNModalize
@@ -73,20 +92,15 @@ const BottomSheet = forwardRef(
                 </View>
               </Space>
             </Flex>
-            {HeaderComponent}
-            <Divider color="shade.920" horizontal />
+            {headerComponent ? (
+              <>
+                {headerComponent}
+                <Divider color="shade.920" horizontal />
+              </>
+            ) : null}
           </HeaderContainer>
         }
-        FloatingComponent={
-          FooterComponent ? (
-            <Position position="absolute" bottom={0} left={0} right={0}>
-              <View>
-                <Divider color="shade.920" horizontal />
-                {FooterComponent}
-              </View>
-            </Position>
-          ) : null
-        }
+        FloatingComponent={footerComponent ? footerComponent : null}
         overlayStyle={{ ...styles.overlayStyle({ theme }), ...overlayStyle }}
         onOverlayPress={onBackDropPress}
         avoidKeyboardLikeIOS={true}
@@ -99,19 +113,20 @@ const BottomSheet = forwardRef(
         adjustToContentHeight={adjustToContentHeight}
         alwaysOpen={alwaysOpen}
       >
-        {children}
+        {contentComponent}
       </RNModalize>
     );
   },
 );
 
 BottomSheet.displayName = 'BladeBottomSheet';
+BottomSheet.Header = Header;
+BottomSheet.Footer = Footer;
+BottomSheet.Content = Content;
 
 BottomSheet.propTypes = {
   snapPoint: PropTypes.number,
   children: PropTypes.node,
-  HeaderComponent: PropTypes.node,
-  FooterComponent: PropTypes.node,
   onOpened: PropTypes.func,
   onClosed: PropTypes.func,
   onBackButtonPress: PropTypes.func,
