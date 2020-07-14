@@ -65,13 +65,13 @@ const BottomSheet = forwardRef(
     const footerComponent = bottomsheetChildrenGroupByType[Footer];
     const contentComponent = bottomsheetChildrenGroupByType[Content];
 
-    if (headerComponent.length > 1) {
+    if (headerComponent?.length > 1) {
       throw new Error(
         `expected to have single \`BottomSheet.Header\` but found ${headerComponent.length}`,
       );
     }
 
-    if (footerComponent.length > 1) {
+    if (footerComponent?.length > 1) {
       throw new Error(
         `expected to have single \`BottomSheet.Footer\` but found ${footerComponent.length}`,
       );

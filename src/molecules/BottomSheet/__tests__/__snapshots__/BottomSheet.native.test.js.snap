@@ -81,6 +81,7 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
                   "backgroundColor": "rgba(255, 255, 255, 1.0)",
                   "borderTopLeftRadius": 8,
                   "borderTopRightRadius": 8,
+                  "elevation": 4,
                   "shadowColor": "rgba(11, 112, 231, 0.10)",
                   "shadowOffset": Object {
                     "height": -4,
@@ -398,6 +399,7 @@ exports[`<BottomSheet /> renders default BottomSheet 1`] = `
                   "backgroundColor": "rgba(255, 255, 255, 1.0)",
                   "borderTopLeftRadius": 8,
                   "borderTopRightRadius": 8,
+                  "elevation": 4,
                   "shadowColor": "rgba(11, 112, 231, 0.10)",
                   "shadowOffset": Object {
                     "height": -4,
@@ -446,19 +448,6 @@ exports[`<BottomSheet /> renders default BottomSheet 1`] = `
                 }
               />
             </View>
-            <View
-              color="shade.920"
-              dividerDirection="horizontal"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "rgba(22, 47, 86, 0.05)",
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
           </View>
         </View>
         <View
