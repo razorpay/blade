@@ -51,9 +51,7 @@ const BottomSheet = forwardRef(
       onBackButtonPress = () => {},
       onOpened = () => {},
       onClosed = () => {},
-      childrenStyle = {},
       adjustToContentHeight = false,
-      overlayStyle = {},
       alwaysOpen = 0,
     },
     ref,
@@ -101,13 +99,13 @@ const BottomSheet = forwardRef(
           </HeaderContainer>
         }
         FloatingComponent={footerComponent ? footerComponent : null}
-        overlayStyle={{ ...styles.overlayStyle({ theme }), ...overlayStyle }}
+        overlayStyle={styles.overlayStyle({ theme })}
         onOverlayPress={onBackDropPress}
         avoidKeyboardLikeIOS={true}
         onOpened={onOpened}
         onClosed={onClosed}
         onBackButtonPress={onBackButtonPress}
-        childrenStyle={{ ...styles.childrenStyle({ theme }), ...childrenStyle }}
+        childrenStyle={styles.childrenStyle({ theme })}
         withHandle={false}
         panGestureComponentEnabled={true}
         adjustToContentHeight={adjustToContentHeight}
@@ -131,9 +129,7 @@ BottomSheet.propTypes = {
   onClosed: PropTypes.func,
   onBackButtonPress: PropTypes.func,
   onBackDropPress: PropTypes.func,
-  childrenStyle: PropTypes.object,
   adjustToContentHeight: PropTypes.bool,
-  overlayStyle: PropTypes.object,
   alwaysOpen: PropTypes.number,
 };
 
