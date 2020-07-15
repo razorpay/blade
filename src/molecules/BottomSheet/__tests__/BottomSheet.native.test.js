@@ -52,6 +52,91 @@ describe('<BottomSheet />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('renders bottomsheet when alwaysOpen prop is passed', () => {
+    const bottomSheetRef = React.createRef();
+    const { container } = renderWithTheme(
+      <BottomSheet
+        ref={bottomSheetRef}
+        alwaysOpen
+        FooterComponent={
+          <View>
+            <Text>Footer</Text>
+          </View>
+        }
+      >
+        <BottomSheet.Header>
+          <View>
+            <Text>Header</Text>
+          </View>
+        </BottomSheet.Header>
+        <BottomSheet.Content>
+          <View>
+            <Text>Bottomsheet content</Text>
+          </View>
+        </BottomSheet.Content>
+        <BottomSheet.Footer>
+          <View>
+            <Text>Footer</Text>
+          </View>
+        </BottomSheet.Footer>
+      </BottomSheet>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('renders linear-gradient view at bottom when content height is more than open bottomsheet height', () => {
+    const list = [
+      'Samsung',
+      'Xiaomi',
+      'OnePlus',
+      'Apple',
+      'Vivo',
+      'Oppo',
+      'Lenovo',
+      'LG',
+      'Nokia',
+      'HTC',
+    ];
+    const data = new Array(list.length).fill({}).map((item, index) => ({
+      id: index,
+      name: list[index],
+    }));
+    const bottomSheetRef = React.createRef();
+    const { container } = renderWithTheme(
+      <BottomSheet
+        ref={bottomSheetRef}
+        FooterComponent={
+          <View>
+            <Text>Footer</Text>
+          </View>
+        }
+      >
+        <BottomSheet.Header>
+          <View>
+            <Text>Header</Text>
+          </View>
+        </BottomSheet.Header>
+        <BottomSheet.Content>
+          {data.map((item) => (
+            <View key={item.id}>
+              <Text>{item.name}</Text>
+            </View>
+          ))}
+        </BottomSheet.Content>
+        <BottomSheet.Footer>
+          <View>
+            <Text>Footer</Text>
+          </View>
+        </BottomSheet.Footer>
+      </BottomSheet>,
+    );
+    act(() => {
+      bottomSheetRef.current.open();
+    });
+    expect(container).toMatchSnapshot();
+  });
+
   it('should throw error when multiple Headers are passed to bottomsheet', () => {
     const bottomSheetRef = React.createRef();
 
