@@ -1,20 +1,23 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState, useCallback } from 'react';
 import { Dimensions } from 'react-native';
 import styled, { useTheme } from 'styled-components/native';
 import { Modalize as RNModalize } from 'react-native-modalize';
 import PropTypes from 'prop-types';
+import LinearGradient from 'react-native-linear-gradient';
 import Flex from '../../atoms/Flex';
 import Space from '../../atoms/Space';
 import Size from '../../atoms/Size';
 import View from '../../atoms/View';
 import Divider from '../../atoms/Divider';
 import reactChildrenGroupByType from '../../_helpers/reactChildrenGroupByType';
+import Position from '../../atoms/Position';
 import Header from './BottomSheetHeader';
 import Footer from './BottomSheetFooter';
 import Content from './BottomSheetContent';
 
 const screenHeight = Dimensions.get('window').height;
 const DEFAULT_SNAP_POINT = screenHeight * 0.4; // 40% of screen height
+const linearGradientLocations = [0, 0.2969, 1]; // 0%, 29.69%, 100%
 
 const styles = {
   overlayStyle: ({ theme }) => {
@@ -25,6 +28,16 @@ const styles = {
   childrenStyle: ({ theme }) => {
     return {
       backgroundColor: theme.colors.background[200],
+    };
+  },
+  linearGradient: () => {
+    return {
+      transform: [
+        {
+          scaleX: 1,
+        },
+        { scaleY: -1 },
+      ],
     };
   },
 };
@@ -57,6 +70,8 @@ const BottomSheet = forwardRef(
     ref,
   ) => {
     const theme = useTheme();
+    const [headerHeight, setHeaderHeight] = useState(0);
+    const [contentHeight, setContentHeight] = useState(0);
     const bottomsheetChildrenGroupByType = reactChildrenGroupByType(children);
 
     const headerComponent = bottomsheetChildrenGroupByType[Header];
@@ -75,30 +90,69 @@ const BottomSheet = forwardRef(
       );
     }
 
+    const handleHeaderLayoutChange = useCallback((e) => {
+      setHeaderHeight(e.nativeEvent.layout.height);
+    }, []);
+
+    const handleContentLayoutChange = useCallback((e) => {
+      setContentHeight(e.nativeEvent.layout.height);
+    }, []);
+
+    let contentContainerHeight = DEFAULT_SNAP_POINT - headerHeight;
+    if (alwaysOpen > 0) {
+      contentContainerHeight = alwaysOpen - headerHeight;
+    }
+    const isScrollableContent = contentHeight > contentContainerHeight;
+
     return (
       <RNModalize
         ref={ref}
         snapPoint={snapPoint}
         HeaderComponent={
-          <HeaderContainer>
-            <Flex alignItems="center">
-              <Space padding={[1, 0, 1.5, 0]}>
-                <View>
-                  <Size height={0.5} width={8}>
-                    <BottomSheetDragBar />
-                  </Size>
-                </View>
-              </Space>
-            </Flex>
-            {headerComponent ? (
-              <>
-                {headerComponent}
-                <Divider color="shade.920" horizontal />
-              </>
-            ) : null}
-          </HeaderContainer>
+          <View onLayout={handleHeaderLayoutChange}>
+            <HeaderContainer>
+              <Flex alignItems="center">
+                <Space padding={[1, 0, 1.5, 0]}>
+                  <View>
+                    <Size height={0.5} width={8}>
+                      <BottomSheetDragBar />
+                    </Size>
+                  </View>
+                </Space>
+              </Flex>
+              {headerComponent ? (
+                <>
+                  {headerComponent}
+                  <Divider color="shade.920" horizontal />
+                </>
+              ) : null}
+            </HeaderContainer>
+          </View>
         }
-        FloatingComponent={footerComponent ? footerComponent : null}
+        FloatingComponent={
+          <Position position="absolute" left={0} right={0} bottom={0}>
+            <View>
+              {isScrollableContent && (
+                <LinearGradient
+                  locations={linearGradientLocations}
+                  colors={[
+                    'rgba(249, 251, 254, 1)',
+                    'rgba(249, 251, 254, 0.6)',
+                    'rgba(249, 251, 254, 0)',
+                  ]}
+                  useAngle={true}
+                  angle={180}
+                  style={styles.linearGradient()}
+                >
+                  <Size height={7}>
+                    <View />
+                  </Size>
+                </LinearGradient>
+              )}
+              {footerComponent ? footerComponent : null}
+            </View>
+          </Position>
+        }
         overlayStyle={styles.overlayStyle({ theme })}
         onOverlayPress={onBackDropPress}
         avoidKeyboardLikeIOS={true}
@@ -111,7 +165,7 @@ const BottomSheet = forwardRef(
         adjustToContentHeight={adjustToContentHeight}
         alwaysOpen={alwaysOpen}
       >
-        {contentComponent}
+        <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
       </RNModalize>
     );
   },

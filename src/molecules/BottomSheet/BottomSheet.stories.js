@@ -43,6 +43,7 @@ storiesOf('BottomSheet')
         >
           Open BottomSheet
         </Button>
+
         <BottomSheet ref={bottomSheetRef}>
           <BottomSheet.Header>
             <Space padding={[1]}>
