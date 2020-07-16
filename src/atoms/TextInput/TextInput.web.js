@@ -50,6 +50,12 @@ const styles = {
       }
       return '';
     },
+    height({ _isMultiline }) {
+      if (_isMultiline) {
+        return '64px';
+      }
+      return '36px';
+    },
   },
   inputContainer: {
     width({ width }) {
@@ -79,6 +85,7 @@ const StyledInput = styled.input`
   border: none;
   background-color: transparent;
   pointer-events: ${(props) => (props.disabled ? 'none' : '')};
+  resize: none;
   &::selection {
     background-color: ${(props) => props.onSelect};
   }
@@ -166,6 +173,7 @@ const TextInput = ({
   width,
   type,
   id,
+  _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
   const inputRef = useRef();
@@ -324,7 +332,7 @@ const TextInput = ({
             {/* Text Input */}
             <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
               <View>
-                <Size height="36px" minHeight="auto">
+                <Size height={styles.fillContainer.height({ _isMultiline })} minHeight="auto">
                   <Space padding={[1, 0, 1, 0]}>
                     <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
                       {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
@@ -389,6 +397,7 @@ const TextInput = ({
                                     value={input}
                                     ref={inputRef}
                                     onKeyPress={onKeyPress}
+                                    as={_isMultiline ? 'textarea' : 'input'}
                                     {...automation(testID)}
                                   />
                                 </Size>
@@ -465,6 +474,7 @@ TextInput.propTypes = {
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
   type: PropTypes.oneOf(['text', 'password', 'number', 'email']),
   id: PropTypes.string,
+  _isMultiline: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
@@ -478,6 +488,7 @@ TextInput.defaultProps = {
   labelPosition: 'top',
   width: 'medium',
   type: 'text',
+  _isMultiline: false,
 };
 
 export default TextInput;
