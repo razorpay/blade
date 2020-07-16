@@ -1,7 +1,20 @@
-const Content = ({ children }) => {
-  return children ? children : null;
+import React from 'react';
+import PropTypes from 'prop-types';
+import Space from '../../atoms/Space';
+import View from '../../atoms/View';
+
+const BottomSheetContent = ({ children }) => {
+  return children ? (
+    <Space padding={[1, 2, 1, 2]}>
+      <View>{children}</View>
+    </Space>
+  ) : null;
 };
 
-Content.displayName = 'BSContent';
+BottomSheetContent.propTypes = {
+  children: PropTypes.node,
+};
 
-export default Content;
+BottomSheetContent.displayName = 'BottomSheetContent';
+
+export default BottomSheetContent;

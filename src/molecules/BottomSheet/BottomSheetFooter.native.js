@@ -8,7 +8,7 @@ const FooterContainer = styled(View)`
   background-color: ${(props) => props.theme.colors.background[200]};
 `;
 
-const Footer = ({ children }) => {
+const BottomSheetFooter = ({ children }) => {
   return children ? (
     <FooterContainer>
       <Divider color="shade.920" horizontal />
@@ -17,10 +17,10 @@ const Footer = ({ children }) => {
   ) : null;
 };
 
-Footer.displayName = 'BSFooter';
+BottomSheetFooter.displayName = 'BottomSheetFooter';
 
-Footer.propTypes = {
+BottomSheetFooter.propTypes = {
   children: PropTypes.node,
 };
 
-export default Footer;
+export default BottomSheetFooter;

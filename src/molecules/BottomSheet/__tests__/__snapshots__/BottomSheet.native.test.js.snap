@@ -192,31 +192,46 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
             scrollEventThrottle={16}
           >
             <View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
+              <View
+                style={
+                  Array [
                     Array [
                       Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
                       },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Bottomsheet content
-                </Text>
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Bottomsheet content
+                  </Text>
+                </View>
               </View>
             </View>
           </ScrollView>
@@ -524,31 +539,46 @@ exports[`<BottomSheet /> renders bottomsheet when alwaysOpen prop is passed 1`] 
             scrollEventThrottle={16}
           >
             <View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
+              <View
+                style={
+                  Array [
                     Array [
                       Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
                       },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Bottomsheet content
-                </Text>
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Bottomsheet content
+                  </Text>
+                </View>
               </View>
             </View>
           </ScrollView>
@@ -1072,265 +1102,280 @@ exports[`<BottomSheet /> renders linear-gradient view at bottom when content hei
             scrollEventThrottle={16}
           >
             <View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
+              <View
+                style={
+                  Array [
                     Array [
                       Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
                       },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Samsung
-                </Text>
-              </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Xiaomi
-                </Text>
-              </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  OnePlus
-                </Text>
-              </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Apple
-                </Text>
-              </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Vivo
-                </Text>
-              </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Oppo
-                </Text>
-              </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Lenovo
-                </Text>
-              </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  LG
-                </Text>
-              </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Nokia
-                </Text>
-              </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  HTC
-                </Text>
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Samsung
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Xiaomi
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    OnePlus
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Apple
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Vivo
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Oppo
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Lenovo
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    LG
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Nokia
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    HTC
+                  </Text>
+                </View>
               </View>
             </View>
           </ScrollView>

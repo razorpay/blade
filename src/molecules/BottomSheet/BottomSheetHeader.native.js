@@ -1,5 +1,5 @@
-const Header = ({ children }) => {
+const BottomSheetHeader = ({ children }) => {
   return children ? children : null;
 };
-Header.displayName = 'BSHeader';
-export default Header;
+BottomSheetHeader.displayName = 'BottomSheetHeader';
+export default BottomSheetHeader;

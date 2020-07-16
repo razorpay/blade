@@ -11,9 +11,9 @@ import View from '../../atoms/View';
 import Divider from '../../atoms/Divider';
 import reactChildrenGroupByType from '../../_helpers/reactChildrenGroupByType';
 import Position from '../../atoms/Position';
-import Header from './BottomSheetHeader';
-import Footer from './BottomSheetFooter';
-import Content from './BottomSheetContent';
+import BottomSheetHeader from './BottomSheetHeader';
+import BottomSheetFooter from './BottomSheetFooter';
+import BottomSheetContent from './BottomSheetContent';
 
 const screenHeight = Dimensions.get('window').height;
 const DEFAULT_SNAP_POINT = screenHeight * 0.4; // 40% of screen height
@@ -44,15 +44,15 @@ const styles = {
 
 const HeaderContainer = styled(View)`
   background-color: ${(props) => props.theme.colors.background[200]};
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
+  border-top-right-radius: ${(props) => props.theme.spacings.small};
+  border-top-left-radius: ${(props) => props.theme.spacings.small};
   box-shadow: ${(props) => `0px -4px 15px ${props.theme.colors.primary[930]}`};
   elevation: 4;
 `;
 
 const BottomSheetDragBar = styled(View)`
   background-color: ${(props) => props.theme.colors.shade[920]};
-  border-radius: 4px;
+  border-radius: ${(props) => props.theme.spacings.xsmall};
 `;
 
 const BottomSheet = forwardRef(
@@ -60,8 +60,8 @@ const BottomSheet = forwardRef(
     {
       snapPoint = DEFAULT_SNAP_POINT,
       children,
-      onBackDropPress = () => {},
-      onBackButtonPress = () => {},
+      onBackDropClick = () => {},
+      onBackButtonClick = () => {},
       onOpened = () => {},
       onClosed = () => {},
       adjustToContentHeight = false,
@@ -74,9 +74,9 @@ const BottomSheet = forwardRef(
     const [contentHeight, setContentHeight] = useState(0);
     const bottomsheetChildrenGroupByType = reactChildrenGroupByType(children);
 
-    const headerComponent = bottomsheetChildrenGroupByType[Header];
-    const footerComponent = bottomsheetChildrenGroupByType[Footer];
-    const contentComponent = bottomsheetChildrenGroupByType[Content];
+    const headerComponent = bottomsheetChildrenGroupByType[BottomSheetHeader];
+    const footerComponent = bottomsheetChildrenGroupByType[BottomSheetFooter];
+    const contentComponent = bottomsheetChildrenGroupByType[BottomSheetContent];
 
     if (headerComponent?.length > 1) {
       throw new Error(
@@ -154,11 +154,11 @@ const BottomSheet = forwardRef(
           </Position>
         }
         overlayStyle={styles.overlayStyle({ theme })}
-        onOverlayPress={onBackDropPress}
+        onOverlayPress={onBackDropClick}
         avoidKeyboardLikeIOS={true}
         onOpened={onOpened}
         onClosed={onClosed}
-        onBackButtonPress={onBackButtonPress}
+        onBackButtonPress={onBackButtonClick}
         childrenStyle={styles.childrenStyle({ theme })}
         withHandle={false}
         panGestureComponentEnabled={true}
@@ -172,17 +172,17 @@ const BottomSheet = forwardRef(
 );
 
 BottomSheet.displayName = 'BladeBottomSheet';
-BottomSheet.Header = Header;
-BottomSheet.Footer = Footer;
-BottomSheet.Content = Content;
+BottomSheet.Header = BottomSheetHeader;
+BottomSheet.Footer = BottomSheetFooter;
+BottomSheet.Content = BottomSheetContent;
 
 BottomSheet.propTypes = {
   snapPoint: PropTypes.number,
   children: PropTypes.node,
   onOpened: PropTypes.func,
   onClosed: PropTypes.func,
-  onBackButtonPress: PropTypes.func,
-  onBackDropPress: PropTypes.func,
+  onBackButtonClick: PropTypes.func,
+  onBackDropClick: PropTypes.func,
   adjustToContentHeight: PropTypes.bool,
   alwaysOpen: PropTypes.number,
 };
