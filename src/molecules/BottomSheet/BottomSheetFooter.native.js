@@ -17,6 +17,8 @@ const Footer = ({ children }) => {
   ) : null;
 };
 
+Footer.displayName = 'BSFooter';
+
 Footer.propTypes = {
   children: PropTypes.node,
 };

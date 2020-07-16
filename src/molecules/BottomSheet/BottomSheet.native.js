@@ -120,7 +120,7 @@ const BottomSheet = forwardRef(
                   </View>
                 </Space>
               </Flex>
-              {headerComponent ? (
+              {headerComponent?.length ? (
                 <>
                   {headerComponent}
                   <Divider color="shade.920" horizontal />
@@ -149,7 +149,7 @@ const BottomSheet = forwardRef(
                   </Size>
                 </LinearGradient>
               )}
-              {footerComponent ? footerComponent : null}
+              {footerComponent?.length ? footerComponent : null}
             </View>
           </Position>
         }
