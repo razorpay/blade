@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components/native';
 import { storiesOf } from '@storybook/react';
-import BottomSheet from '../BottomSheet';
 import Text from '../../atoms/Text';
 import View from '../../atoms/View';
 import Space from '../../atoms/Space';
 import Button from '../../atoms/Button';
 import TextInput from '../../atoms/TextInput';
+import BottomSheet from './BottomSheet';
 
 const Item = styled(View)`
   height: 40px;
@@ -31,7 +31,7 @@ const data = new Array(list.length).fill({}).map((item, index) => ({
   name: list[index],
 }));
 
-storiesOf('BottomSheet')
+storiesOf('BottomSheet', module)
   .addParameters({ component: BottomSheet })
   .add('default', () => {
     const bottomSheetRef = useRef();
