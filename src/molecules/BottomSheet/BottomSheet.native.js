@@ -62,7 +62,7 @@ const BottomSheet = forwardRef(
       children,
       onBackDropClick = () => {},
       onBackButtonClick = () => {},
-      onOpened = () => {},
+      onChange = () => {},
       onClosed = () => {},
       adjustToContentHeight = false,
       alwaysOpen = 0,
@@ -156,7 +156,7 @@ const BottomSheet = forwardRef(
         overlayStyle={styles.overlayStyle({ theme })}
         onOverlayPress={onBackDropClick}
         avoidKeyboardLikeIOS={true}
-        onOpened={onOpened}
+        onPositionChange={onChange}
         onClosed={onClosed}
         onBackButtonPress={onBackButtonClick}
         childrenStyle={styles.childrenStyle({ theme })}
@@ -179,7 +179,7 @@ BottomSheet.Content = BottomSheetContent;
 BottomSheet.propTypes = {
   snapPoint: PropTypes.number,
   children: PropTypes.node,
-  onOpened: PropTypes.func,
+  onChange: PropTypes.func,
   onClosed: PropTypes.func,
   onBackButtonClick: PropTypes.func,
   onBackDropClick: PropTypes.func,
