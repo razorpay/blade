@@ -1,13 +1,13 @@
 import React, { forwardRef, useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { Dimensions } from 'react-native';
 import styled, { useTheme } from 'styled-components/native';
 import { Modalize as RNModalize } from 'react-native-modalize';
-import PropTypes from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
+import View from '../../atoms/View';
 import Flex from '../../atoms/Flex';
 import Space from '../../atoms/Space';
 import Size from '../../atoms/Size';
-import View from '../../atoms/View';
 import Divider from '../../atoms/Divider';
 import reactChildrenGroupByType from '../../_helpers/reactChildrenGroupByType';
 import Position from '../../atoms/Position';

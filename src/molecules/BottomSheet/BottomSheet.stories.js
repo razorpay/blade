@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
-import Text from '../../atoms/Text';
+import Button from '../../atoms/Button';
 import View from '../../atoms/View';
 import Space from '../../atoms/Space';
-import Button from '../../atoms/Button';
+import Text from '../../atoms/Text';
 import TextInput from '../../atoms/TextInput';
 import BottomSheet from './BottomSheet';
 
@@ -32,7 +32,9 @@ const data = new Array(list.length).fill({}).map((item, index) => ({
 }));
 
 storiesOf('BottomSheet', module)
-  .addParameters({ component: BottomSheet })
+  .addParameters({
+    component: BottomSheet,
+  })
   .add('default', () => {
     const bottomSheetRef = useRef();
     return (
@@ -44,7 +46,6 @@ storiesOf('BottomSheet', module)
         >
           Open BottomSheet
         </Button>
-
         <BottomSheet ref={bottomSheetRef}>
           <BottomSheet.Header>
             <Space padding={[1]}>
@@ -53,7 +54,6 @@ storiesOf('BottomSheet', module)
               </View>
             </Space>
           </BottomSheet.Header>
-
           <BottomSheet.Content>
             {data.map((item) => (
               <Item key={item.id}>
@@ -169,32 +169,22 @@ storiesOf('BottomSheet', module)
   .add('with text-input', () => {
     const bottomSheetRef = useRef();
     return (
-      <>
-        <Button
-          onClick={() => {
-            bottomSheetRef?.current.open();
-          }}
-        >
-          Open BottomSheet
-        </Button>
-
-        <BottomSheet ref={bottomSheetRef} alwaysOpen={300}>
-          <BottomSheet.Content>
-            <Space padding={[2]}>
-              <TextInput value="blade" />
-            </Space>
-            <Space padding={[2, 0, 2, 0]}>
-              <View>
-                <Text>Honda</Text>
-              </View>
-            </Space>
-            <Space padding={[2, 0, 2, 0]}>
-              <View>
-                <Text>Kawasaki</Text>
-              </View>
-            </Space>
-          </BottomSheet.Content>
-        </BottomSheet>
-      </>
+      <BottomSheet ref={bottomSheetRef} alwaysOpen={300}>
+        <BottomSheet.Content>
+          <Space padding={[2]}>
+            <TextInput value="blade" />
+          </Space>
+          <Space padding={[2, 0, 2, 0]}>
+            <View>
+              <Text>Honda</Text>
+            </View>
+          </Space>
+          <Space padding={[2, 0, 2, 0]}>
+            <View>
+              <Text>Kawasaki</Text>
+            </View>
+          </Space>
+        </BottomSheet.Content>
+      </BottomSheet>
     );
   });
