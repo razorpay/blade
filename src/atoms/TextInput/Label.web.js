@@ -6,6 +6,7 @@ import { getColor } from '../../_helpers/theme';
 import Space from '../Space';
 import Text from '../Text';
 import View from '../View';
+import Size from '../Size';
 
 const styles = {
   text: {
@@ -43,6 +44,15 @@ const styles = {
     fontFamily({ theme }) {
       return theme.fonts.family.lato.regular;
     },
+    visibility({ variant, position, isFocused, hasText }) {
+      if (position === 'top' && variant === 'outlined') {
+        if (isFocused || hasText) {
+          return 'initial';
+        }
+        return 'hidden';
+      }
+      return 'initial';
+    },
   },
   label: {
     margin({ position }) {
@@ -71,6 +81,10 @@ const StyledText = styled(Text)`
   transition: font-size 0.1s ease-in, line-height 0.1s ease-in, color 0.1s ease-in;
 `;
 
+const RegularLabelText = styled(StyledText)`
+  visibility: ${styles.text.visibility};
+`;
+
 const RegularLabel = ({
   children,
   position,
@@ -87,22 +101,26 @@ const RegularLabel = ({
 
   return (
     <Space margin={styles.label.margin({ position })}>
-      <StyledText
-        as="label"
-        htmlFor={id}
-        hasError={hasError}
-        disabled={disabled}
-        variant={variant}
-        value={value}
-        hasText={hasText}
-        theme={theme}
-        isFocused={isFocused}
-        position={position}
-        width={width}
-        id={id}
-      >
-        {children}
-      </StyledText>
+      <Size height="20px">
+        <View>
+          <RegularLabelText
+            as="label"
+            htmlFor={id}
+            hasError={hasError}
+            disabled={disabled}
+            variant={variant}
+            value={value}
+            hasText={hasText}
+            theme={theme}
+            isFocused={isFocused}
+            position={position}
+            width={width}
+            id={id}
+          >
+            {children}
+          </RegularLabelText>
+        </View>
+      </Size>
     </Space>
   );
 };
@@ -130,7 +148,10 @@ const getFloatViewAnimationStyle = ({ isFocused, hasText, layoutDimensions }) =>
   const finalTopPosition = layoutDimensions.finalTopPosition;
   const finalLeftPosition = layoutDimensions.initialLeftPosition;
   return isFocused || hasText
-    ? { transform: `translate(-${finalLeftPosition}px,-${finalTopPosition}px)` }
+    ? {
+        transform: `translate(-${finalLeftPosition}px,-${finalTopPosition}px)`,
+        opacity: 0,
+      }
     : {};
 };
 
