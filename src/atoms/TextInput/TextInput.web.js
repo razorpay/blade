@@ -225,7 +225,6 @@ const TextInput = ({
 
   const onFocus = useCallback(() => {
     setIsFocused(true);
-
     /* Wait for 90ms to show the placeholder since it takes 100ms for Label to animate from inside to top of the TextInput.
        Otherwise they both overlap */
     /* Don't have any delay if label is on left of TextInput */
@@ -309,7 +308,7 @@ const TextInput = ({
       const containerRect = containerRef.current.getBoundingClientRect();
       const inputRect = inputRef.current.getBoundingClientRect();
       const initialLeftPosition = inputRect.x - containerRect.x;
-      const finalTopPosition = inputRef.current.offsetHeight;
+      const finalTopPosition = fillContainerRef.current.offsetHeight;
 
       setLayoutDimensions({
         initialLeftPosition,

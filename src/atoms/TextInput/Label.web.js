@@ -44,14 +44,14 @@ const styles = {
     fontFamily({ theme }) {
       return theme.fonts.family.lato.regular;
     },
-    visibility({ variant, position, isFocused, hasText }) {
+    opacity({ variant, position, isFocused, hasText }) {
       if (position === 'top' && variant === 'outlined') {
         if (isFocused || hasText) {
-          return 'initial';
+          return 1;
         }
-        return 'hidden';
+        return 0;
       }
-      return 'initial';
+      return 1;
     },
   },
   label: {
@@ -67,9 +67,10 @@ const styles = {
 const FloatView = styled(View)`
   will-change: transform;
   position: absolute;
-  transition: transform 0.1s ease-in;
+  transition: transform 0.1s ease-in, opacity 0.1s ease-in;
   bottom: 0;
   left: ${(props) => props.layoutDimensions.initialLeftPosition}px;
+  opacity: 1;
   pointer-events: none;
 `;
 
@@ -78,11 +79,13 @@ const StyledText = styled(Text)`
   font-size: ${styles.text.fontSize};
   line-height: ${styles.text.lineHeight};
   color: ${styles.text.color};
-  transition: font-size 0.1s ease-in, line-height 0.1s ease-in, color 0.1s ease-in;
+  opacity: 1;
+  transition: font-size 0.1s ease-in, line-height 0.1s ease-in, color 0.1s ease-in,
+    opacity 0.1s ease-in;
 `;
 
 const RegularLabelText = styled(StyledText)`
-  visibility: ${styles.text.visibility};
+  opacity: ${styles.text.opacity};
 `;
 
 const RegularLabel = ({
@@ -101,7 +104,7 @@ const RegularLabel = ({
 
   return (
     <Space margin={styles.label.margin({ position })}>
-      <Size height="20px">
+      <Size height="19px">
         <View>
           <RegularLabelText
             as="label"
