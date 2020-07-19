@@ -259,7 +259,7 @@ const TextInput = ({
         onChange(text);
       }
 
-      if (_isMultiline) {
+      if (_isMultiline && variant === 'outlined') {
         setTimeout(() => {
           inputRef.current.style.height = 'inherit';
           fillContainerRef.current.style.height = 'inherit';
@@ -270,7 +270,16 @@ const TextInput = ({
         }, 0);
       }
     },
-    [maxLength, onChange, setInput, _isMultiline, inputRef, fillContainerRef],
+    [
+      maxLength,
+      onChange,
+      setInput,
+      _isMultiline,
+      inputRef,
+      fillContainerRef,
+      _isMultiline,
+      variant,
+    ],
   );
 
   const onSelectText = () => {
