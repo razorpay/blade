@@ -50,8 +50,11 @@ const styles = {
       }
       return '';
     },
-    height({ _isMultiline }) {
+    height({ _isMultiline, variant }) {
       if (_isMultiline) {
+        if (variant === 'outlined') {
+          return '40px';
+        }
         return '64px';
       }
       return '36px';
@@ -82,6 +85,7 @@ const StyledInput = styled.input`
   line-height: ${(props) => props.theme.fonts.lineHeight.medium};
   font-family: ${(props) => props.theme.fonts.family.lato.regular};
   color: ${styles.textInput.color};
+  max-height: 64px;
   border: none;
   background-color: transparent;
   pointer-events: ${(props) => (props.disabled ? 'none' : '')};
@@ -125,6 +129,7 @@ const FillContainer = styled(View)`
   margin-top: auto;
   position: relative;
   box-sizing: border-box;
+  max-height: 64px;
   &:hover {
     background-color: ${styles.fillContainer.hoverBackgroundColor};
   }
@@ -178,6 +183,7 @@ const TextInput = ({
   const theme = useContext(ThemeContext);
   const inputRef = useRef();
   const containerRef = useRef();
+  const fillContainerRef = useRef();
   const [isFocused, setIsFocused] = useState(false);
   const [input, setInput] = useState(value || '');
   // Used for storing layout value of TextInput
@@ -252,8 +258,19 @@ const TextInput = ({
       if (onChange) {
         onChange(text);
       }
+
+      if (_isMultiline) {
+        setTimeout(() => {
+          inputRef.current.style.height = 'inherit';
+          fillContainerRef.current.style.height = 'inherit';
+          // Calculate the height
+          const height = inputRef.current.scrollHeight;
+          fillContainerRef.current.style.height = `${height}px`;
+          inputRef.current.style.height = `${height}px`;
+        }, 0);
+      }
     },
-    [maxLength, onChange, setInput],
+    [maxLength, onChange, setInput, _isMultiline, inputRef, fillContainerRef],
   );
 
   const onSelectText = () => {
@@ -295,7 +312,7 @@ const TextInput = ({
   return (
     <Flex justifyContent="flex-end" flexDirection="column">
       <View ref={containerRef}>
-        {!hasAnimatedLabel && labelPosition === 'top' ? (
+        {labelPosition === 'top' || variant === 'outlined' ? (
           <Label.Regular
             position={labelPosition}
             disabled={disabled}
@@ -332,9 +349,14 @@ const TextInput = ({
             {/* Text Input */}
             <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
               <View>
-                <Size height={styles.fillContainer.height({ _isMultiline })} minHeight="auto">
+                <Size height={styles.fillContainer.height({ variant, _isMultiline })}>
                   <Space padding={[1, 0, 1, 0]}>
-                    <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
+                    <FillContainer
+                      ref={fillContainerRef}
+                      variant={variant}
+                      isFocused={isFocused}
+                      disabled={disabled}
+                    >
                       {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
                         <Label.Animated
                           position={labelPosition}
@@ -352,7 +374,7 @@ const TextInput = ({
                         </Label.Animated>
                       ) : null}
                       <Flex flexDirection="row" alignItems="center">
-                        <Size width={styles.inputContainer.width({ width })}>
+                        <Size width={styles.inputContainer.width({ width })} maxHeight="100%">
                           <InputContainer>
                             {hasPrefix ? (
                               <AccessoryText position="left" variant={variant} disabled={disabled}>
@@ -420,10 +442,10 @@ const TextInput = ({
                           </InputContainer>
                         </Size>
                       </Flex>
-                      <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
                     </FillContainer>
                   </Space>
                 </Size>
+                <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
                 {/* Bottom texts */}
                 {hasError || helpText || successText ? (
                   <Flex flexDirection="row" justifyContent="space-between">
