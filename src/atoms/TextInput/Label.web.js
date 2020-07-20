@@ -68,7 +68,7 @@ const FloatView = styled(View)`
   will-change: transform;
   position: absolute;
   transition: transform 0.1s ease-in, opacity 0.1s ease-in;
-  bottom: 4px;
+  top: 2px;
   left: ${(props) => props.layoutDimensions.initialLeftPosition}px;
   opacity: 1;
   pointer-events: none;
@@ -153,7 +153,6 @@ const getFloatViewAnimationStyle = ({ isFocused, hasText, layoutDimensions }) =>
   return isFocused || hasText
     ? {
         transform: `translate(-${finalLeftPosition}px,-${finalTopPosition}px)`,
-        opacity: 0,
       }
     : {};
 };
