@@ -6,20 +6,34 @@ exports[`<TextInput /> disabled renders a disabled input 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
+    >
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 kWxLGz"
+        color="shade.980"
+        data-testid="ds-text"
+        disabled=""
+        value=""
+        width="medium"
+      >
+        Label
+      </label>
+    </div>
+    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cBgQdA Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 jBHUZT"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
           disabled=""
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 lmieMq Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 lfSTWH"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 jnjFuj"
               color="shade.980"
               data-testid="ds-text"
               disabled=""
@@ -30,10 +44,10 @@ exports[`<TextInput /> disabled renders a disabled input 1`] = `
             </label>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <input
-              class="TextInputweb__StyledInput-sc-199z6oj-1 cFjZzr Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 dabfkj Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               disabled=""
               placeholder="Enter text here"
@@ -41,11 +55,11 @@ exports[`<TextInput /> disabled renders a disabled input 1`] = `
               value=""
             />
           </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 ijeuir Sizeweb__Size-sc-10bl685-0 htlLka"
-            disabled=""
-          />
         </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 nuHEy Sizeweb__Size-sc-10bl685-0 htlLka"
+          disabled=""
+        />
       </div>
     </div>
   </div>
@@ -60,36 +74,40 @@ exports[`<TextInput /> label renders input with labelPosition on left and varian
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw Spaceweb__Space-njatzl-0 iqcLxO"
-        color="shade.980"
-        data-testid="ds-text"
-        value=""
-        width="medium"
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 iqcLxO"
       >
-        Example label
-      </label>
+        <label
+          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDqtt"
+          color="shade.980"
+          data-testid="ds-text"
+          value=""
+          width="medium"
+        >
+          Example label
+        </label>
+      </div>
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 ioJDih Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 jBHUZT"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 elHTOk Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <input
-              class="TextInputweb__StyledInput-sc-199z6oj-1 fTqBcg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 kmIVkY Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               placeholder="Enter text here"
               type="text"
               value=""
             />
           </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 hZczNw Sizeweb__Size-sc-10bl685-0 htlLka"
-          />
         </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
       </div>
     </div>
   </div>
@@ -101,15 +119,19 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
-    <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cxwFhF Spaceweb__Space-njatzl-0 eDHZqM"
-      color="shade.980"
-      data-testid="ds-text"
-      value=""
-      width="medium"
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
     >
-      Example label
-    </label>
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 idFfeI"
+        color="shade.980"
+        data-testid="ds-text"
+        value=""
+        width="medium"
+      >
+        Example label
+      </label>
+    </div>
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
@@ -117,23 +139,23 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 ioJDih Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 jBHUZT"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 elHTOk Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <input
-              class="TextInputweb__StyledInput-sc-199z6oj-1 fTqBcg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 kmIVkY Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               placeholder="Enter text here"
               type="text"
               value=""
             />
           </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 hZczNw Sizeweb__Size-sc-10bl685-0 htlLka"
-          />
         </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
       </div>
     </div>
   </div>
@@ -146,19 +168,32 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
+    >
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
+        color="shade.980"
+        data-testid="ds-text"
+        value=""
+        width="medium"
+      >
+        Example label
+      </label>
+    </div>
+    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cBgQdA Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 jBHUZT"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 lmieMq Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -168,20 +203,20 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
             </label>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <input
-              class="TextInputweb__StyledInput-sc-199z6oj-1 bNedDc Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               placeholder="Enter text here"
               type="text"
               value=""
             />
           </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 hZczNw Sizeweb__Size-sc-10bl685-0 htlLka"
-          />
         </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
       </div>
     </div>
   </div>
@@ -194,19 +229,32 @@ exports[`<TextInput /> placeholder renders input with default placeholder if not
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
+    >
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
+        color="shade.980"
+        data-testid="ds-text"
+        value=""
+        width="medium"
+      >
+        Label
+      </label>
+    </div>
+    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cBgQdA Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 jBHUZT"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 lmieMq Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -216,20 +264,20 @@ exports[`<TextInput /> placeholder renders input with default placeholder if not
             </label>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <input
-              class="TextInputweb__StyledInput-sc-199z6oj-1 bNedDc Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               placeholder="Enter text here"
               type="text"
               value=""
             />
           </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 hZczNw Sizeweb__Size-sc-10bl685-0 htlLka"
-          />
         </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
       </div>
     </div>
   </div>
@@ -242,19 +290,32 @@ exports[`<TextInput /> placeholder renders input with provided placeholder 1`] =
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
+    >
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
+        color="shade.980"
+        data-testid="ds-text"
+        value=""
+        width="medium"
+      >
+        Label
+      </label>
+    </div>
+    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cBgQdA Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 jBHUZT"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 lmieMq Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -264,20 +325,20 @@ exports[`<TextInput /> placeholder renders input with provided placeholder 1`] =
             </label>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <input
-              class="TextInputweb__StyledInput-sc-199z6oj-1 bNedDc Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               placeholder="Example Placeholder"
               type="text"
               value=""
             />
           </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 hZczNw Sizeweb__Size-sc-10bl685-0 htlLka"
-          />
         </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
       </div>
     </div>
   </div>
@@ -289,15 +350,19 @@ exports[`<TextInput /> variant renders filled variant with default props 1`] = `
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
-    <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cxwFhF Spaceweb__Space-njatzl-0 eDHZqM"
-      color="shade.980"
-      data-testid="ds-text"
-      value=""
-      width="medium"
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
     >
-      Label
-    </label>
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 idFfeI"
+        color="shade.980"
+        data-testid="ds-text"
+        value=""
+        width="medium"
+      >
+        Label
+      </label>
+    </div>
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
@@ -305,23 +370,23 @@ exports[`<TextInput /> variant renders filled variant with default props 1`] = `
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 ioJDih Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 jBHUZT"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 elHTOk Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <input
-              class="TextInputweb__StyledInput-sc-199z6oj-1 fTqBcg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 kmIVkY Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               placeholder="Enter text here"
               type="text"
               value=""
             />
           </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 hZczNw Sizeweb__Size-sc-10bl685-0 htlLka"
-          />
         </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
       </div>
     </div>
   </div>
@@ -334,19 +399,32 @@ exports[`<TextInput /> variant renders outlined variant with default props 1`] =
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
+    >
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
+        color="shade.980"
+        data-testid="ds-text"
+        value=""
+        width="medium"
+      >
+        Label
+      </label>
+    </div>
+    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cBgQdA Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 jBHUZT"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 lmieMq Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -356,20 +434,20 @@ exports[`<TextInput /> variant renders outlined variant with default props 1`] =
             </label>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <input
-              class="TextInputweb__StyledInput-sc-199z6oj-1 bNedDc Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               placeholder="Enter text here"
               type="text"
               value=""
             />
           </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 hZczNw Sizeweb__Size-sc-10bl685-0 htlLka"
-          />
         </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
       </div>
     </div>
   </div>
@@ -382,19 +460,32 @@ exports[`<TextInput /> width renders input with auto width 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
+    >
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
+        color="shade.980"
+        data-testid="ds-text"
+        value=""
+        width="auto"
+      >
+        Label
+      </label>
+    </div>
+    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 fsjcxB"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cBgQdA Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 jBHUZT"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 lmieMq Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -404,20 +495,20 @@ exports[`<TextInput /> width renders input with auto width 1`] = `
             </label>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 HOkBi Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 juRaGm Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <input
-              class="TextInputweb__StyledInput-sc-199z6oj-1 bNedDc Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               placeholder="Enter text here"
               type="text"
               value=""
             />
           </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 hZczNw Sizeweb__Size-sc-10bl685-0 htlLka"
-          />
         </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
       </div>
     </div>
   </div>
@@ -430,19 +521,32 @@ exports[`<TextInput /> width renders input with medium(default) width 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
+    >
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
+        color="shade.980"
+        data-testid="ds-text"
+        value=""
+        width="medium"
+      >
+        Label
+      </label>
+    </div>
+    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cBgQdA Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 jBHUZT"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 lmieMq Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -452,20 +556,20 @@ exports[`<TextInput /> width renders input with medium(default) width 1`] = `
             </label>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 jAiJdI Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <input
-              class="TextInputweb__StyledInput-sc-199z6oj-1 bNedDc Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               placeholder="Enter text here"
               type="text"
               value=""
             />
           </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 hZczNw Sizeweb__Size-sc-10bl685-0 htlLka"
-          />
         </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
       </div>
     </div>
   </div>
@@ -478,19 +582,32 @@ exports[`<TextInput /> width renders input with small width 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
+    >
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
+        color="shade.980"
+        data-testid="ds-text"
+        value=""
+        width="small"
+      >
+        Label
+      </label>
+    </div>
+    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cBgQdA Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 jBHUZT"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 lmieMq Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -500,20 +617,20 @@ exports[`<TextInput /> width renders input with small width 1`] = `
             </label>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 iGFYJZ Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 eRcLdB Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <input
-              class="TextInputweb__StyledInput-sc-199z6oj-1 bNedDc Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               placeholder="Enter text here"
               type="text"
               value=""
             />
           </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 hZczNw Sizeweb__Size-sc-10bl685-0 htlLka"
-          />
         </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
       </div>
     </div>
   </div>
