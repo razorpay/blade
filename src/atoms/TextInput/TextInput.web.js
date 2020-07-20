@@ -314,6 +314,8 @@ const TextInput = ({
     }
   }, [inputRef, containerRef]);
 
+  const _rows = variant === 'outlined' ? 1 : 3;
+
   return (
     <Flex justifyContent="flex-end" flexDirection="column">
       <View ref={containerRef}>
@@ -425,6 +427,7 @@ const TextInput = ({
                                     ref={inputRef}
                                     onKeyPress={onKeyPress}
                                     as={_isMultiline ? 'textarea' : 'input'}
+                                    rows={_isMultiline ? _rows : ''}
                                     {...automation(testID)}
                                   />
                                 </Size>
