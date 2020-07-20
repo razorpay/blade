@@ -6,7 +6,6 @@ import { getColor } from '../../_helpers/theme';
 import Space from '../Space';
 import Text from '../Text';
 import View from '../View';
-import Size from '../Size';
 
 const styles = {
   text: {
@@ -44,15 +43,6 @@ const styles = {
     fontFamily({ theme }) {
       return theme.fonts.family.lato.regular;
     },
-    opacity({ variant, position, isFocused, hasText }) {
-      if (position === 'top' && variant === 'outlined') {
-        if (isFocused || hasText) {
-          return 1;
-        }
-        return 0;
-      }
-      return 1;
-    },
   },
   label: {
     margin({ position }) {
@@ -67,10 +57,9 @@ const styles = {
 const FloatView = styled(View)`
   will-change: transform;
   position: absolute;
-  transition: transform 0.1s ease-in, opacity 0.1s ease-in;
+  transition: transform 0.1s ease-in;
   top: 2px;
   left: ${(props) => props.layoutDimensions.initialLeftPosition}px;
-  opacity: 1;
   pointer-events: none;
 `;
 
@@ -79,13 +68,7 @@ const StyledText = styled(Text)`
   font-size: ${styles.text.fontSize};
   line-height: ${styles.text.lineHeight};
   color: ${styles.text.color};
-  opacity: 1;
-  transition: font-size 0.1s ease-in, line-height 0.1s ease-in, color 0.1s ease-in,
-    opacity 0.1s ease-in;
-`;
-
-const RegularLabelText = styled(StyledText)`
-  opacity: ${styles.text.opacity};
+  transition: font-size 0.1s ease-in, line-height 0.1s ease-in, color 0.1s ease-in;
 `;
 
 const RegularLabel = ({
@@ -104,26 +87,22 @@ const RegularLabel = ({
 
   return (
     <Space margin={styles.label.margin({ position })}>
-      <Size height="18px">
-        <View>
-          <RegularLabelText
-            as="label"
-            htmlFor={id}
-            hasError={hasError}
-            disabled={disabled}
-            variant={variant}
-            value={value}
-            hasText={hasText}
-            theme={theme}
-            isFocused={isFocused}
-            position={position}
-            width={width}
-            id={id}
-          >
-            {children}
-          </RegularLabelText>
-        </View>
-      </Size>
+      <StyledText
+        as="label"
+        htmlFor={id}
+        hasError={hasError}
+        disabled={disabled}
+        variant={variant}
+        value={value}
+        hasText={hasText}
+        theme={theme}
+        isFocused={isFocused}
+        position={position}
+        width={width}
+        id={id}
+      >
+        {children}
+      </StyledText>
     </Space>
   );
 };
