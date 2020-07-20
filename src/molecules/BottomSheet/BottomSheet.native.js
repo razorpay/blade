@@ -47,7 +47,6 @@ const HeaderContainer = styled(View)`
   border-top-right-radius: ${(props) => props.theme.spacings.small};
   border-top-left-radius: ${(props) => props.theme.spacings.small};
   box-shadow: ${(props) => `0px -4px 15px ${props.theme.colors.primary[930]}`};
-  elevation: 4;
 `;
 
 const BottomSheetDragBar = styled(View)`
@@ -65,7 +64,7 @@ const BottomSheet = forwardRef(
       onChange = () => {},
       onClosed = () => {},
       adjustToContentHeight = false,
-      alwaysOpen = 0,
+      initialHeight = 0,
     },
     ref,
   ) => {
@@ -99,8 +98,8 @@ const BottomSheet = forwardRef(
     }, []);
 
     let contentContainerHeight = DEFAULT_SNAP_POINT - headerHeight;
-    if (alwaysOpen > 0) {
-      contentContainerHeight = alwaysOpen - headerHeight;
+    if (initialHeight > 0) {
+      contentContainerHeight = initialHeight - headerHeight;
     }
     const isScrollableContent = contentHeight > contentContainerHeight;
 
@@ -133,21 +132,19 @@ const BottomSheet = forwardRef(
           <Position position="absolute" left={0} right={0} bottom={0}>
             <View>
               {isScrollableContent && (
-                <LinearGradient
-                  locations={linearGradientLocations}
-                  colors={[
-                    'rgba(249, 251, 254, 1)',
-                    'rgba(249, 251, 254, 0.6)',
-                    'rgba(249, 251, 254, 0)',
-                  ]}
-                  useAngle={true}
-                  angle={180}
-                  style={styles.linearGradient()}
-                >
-                  <Size height={7}>
-                    <View />
-                  </Size>
-                </LinearGradient>
+                <Size height={7}>
+                  <LinearGradient
+                    locations={linearGradientLocations}
+                    colors={[
+                      'rgba(249, 251, 254, 1)',
+                      'rgba(249, 251, 254, 0.6)',
+                      'rgba(249, 251, 254, 0)',
+                    ]}
+                    useAngle={true}
+                    angle={180}
+                    style={styles.linearGradient()}
+                  />
+                </Size>
               )}
               {footerComponent?.length ? footerComponent : null}
             </View>
@@ -163,7 +160,7 @@ const BottomSheet = forwardRef(
         withHandle={false}
         panGestureComponentEnabled={true}
         adjustToContentHeight={adjustToContentHeight}
-        alwaysOpen={alwaysOpen}
+        alwaysOpen={initialHeight}
       >
         <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
       </RNModalize>
@@ -184,7 +181,7 @@ BottomSheet.propTypes = {
   onBackButtonClick: PropTypes.func,
   onBackDropClick: PropTypes.func,
   adjustToContentHeight: PropTypes.bool,
-  alwaysOpen: PropTypes.number,
+  initialHeight: PropTypes.number,
 };
 
 export default BottomSheet;

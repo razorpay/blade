@@ -169,7 +169,7 @@ storiesOf('BottomSheet', module)
   .add('with text-input', () => {
     const bottomSheetRef = useRef();
     return (
-      <BottomSheet ref={bottomSheetRef} alwaysOpen={300}>
+      <BottomSheet ref={bottomSheetRef} initialHeight={300}>
         <BottomSheet.Content>
           <Space padding={[2]}>
             <TextInput value="blade" />
