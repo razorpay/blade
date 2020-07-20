@@ -6,34 +6,20 @@ exports[`<TextInput /> disabled renders a disabled input 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
-    >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 kWxLGz"
-        color="shade.980"
-        data-testid="ds-text"
-        disabled=""
-        value=""
-        width="medium"
-      >
-        Label
-      </label>
-    </div>
-    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
           disabled=""
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 jnjFuj"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 lfSTWH"
               color="shade.980"
               data-testid="ds-text"
               disabled=""
@@ -74,19 +60,15 @@ exports[`<TextInput /> label renders input with labelPosition on left and varian
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 iqcLxO"
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw Spaceweb__Space-njatzl-0 iqcLxO"
+        color="shade.980"
+        data-testid="ds-text"
+        value=""
+        width="medium"
       >
-        <label
-          class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDqtt"
-          color="shade.980"
-          data-testid="ds-text"
-          value=""
-          width="medium"
-        >
-          Example label
-        </label>
-      </div>
+        Example label
+      </label>
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
@@ -119,19 +101,15 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cxwFhF Spaceweb__Space-njatzl-0 egTcPC"
+      color="shade.980"
+      data-testid="ds-text"
+      value=""
+      width="medium"
     >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 idFfeI"
-        color="shade.980"
-        data-testid="ds-text"
-        value=""
-        width="medium"
-      >
-        Example label
-      </label>
-    </div>
+      Example label
+    </label>
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
@@ -168,32 +146,19 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
-    >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
-        color="shade.980"
-        data-testid="ds-text"
-        value=""
-        width="medium"
-      >
-        Example label
-      </label>
-    </div>
-    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -229,32 +194,19 @@ exports[`<TextInput /> placeholder renders input with default placeholder if not
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
-    >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
-        color="shade.980"
-        data-testid="ds-text"
-        value=""
-        width="medium"
-      >
-        Label
-      </label>
-    </div>
-    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -290,32 +242,19 @@ exports[`<TextInput /> placeholder renders input with provided placeholder 1`] =
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
-    >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
-        color="shade.980"
-        data-testid="ds-text"
-        value=""
-        width="medium"
-      >
-        Label
-      </label>
-    </div>
-    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -350,19 +289,15 @@ exports[`<TextInput /> variant renders filled variant with default props 1`] = `
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cxwFhF Spaceweb__Space-njatzl-0 egTcPC"
+      color="shade.980"
+      data-testid="ds-text"
+      value=""
+      width="medium"
     >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 idFfeI"
-        color="shade.980"
-        data-testid="ds-text"
-        value=""
-        width="medium"
-      >
-        Label
-      </label>
-    </div>
+      Label
+    </label>
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
@@ -399,32 +334,19 @@ exports[`<TextInput /> variant renders outlined variant with default props 1`] =
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
-    >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
-        color="shade.980"
-        data-testid="ds-text"
-        value=""
-        width="medium"
-      >
-        Label
-      </label>
-    </div>
-    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -460,32 +382,19 @@ exports[`<TextInput /> width renders input with auto width 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
-    >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
-        color="shade.980"
-        data-testid="ds-text"
-        value=""
-        width="auto"
-      >
-        Label
-      </label>
-    </div>
-    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 fsjcxB"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -521,32 +430,19 @@ exports[`<TextInput /> width renders input with medium(default) width 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
-    >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
-        color="shade.980"
-        data-testid="ds-text"
-        value=""
-        width="medium"
-      >
-        Label
-      </label>
-    </div>
-    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -582,32 +478,19 @@ exports[`<TextInput /> width renders input with small width 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 caucDL Spaceweb__Space-njatzl-0 eDHZqM"
-    >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 Labelweb__RegularLabelText-jw60wd-2 gIDCSE"
-        color="shade.980"
-        data-testid="ds-text"
-        value=""
-        width="small"
-      >
-        Label
-      </label>
-    </div>
-    <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <div
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 bPNzzG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cZHZGG Spaceweb__Space-njatzl-0 eDHZqM"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gmJCvQ"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
               color="shade.980"
               data-testid="ds-text"
               value=""
