@@ -51,13 +51,10 @@ const styles = {
       return '';
     },
     height({ _isMultiline, variant }) {
-      if (_isMultiline) {
-        if (variant === 'outlined') {
-          return '40px';
-        }
-        return '64px';
-      }
       if (variant === 'filled') {
+        if (_isMultiline) {
+          return '64px';
+        }
         return '36px';
       }
       return 'auto';
@@ -278,16 +275,7 @@ const TextInput = ({
         }, 0);
       }
     },
-    [
-      maxLength,
-      onChange,
-      setInput,
-      _isMultiline,
-      inputRef,
-      fillContainerRef,
-      _isMultiline,
-      variant,
-    ],
+    [maxLength, onChange, setInput, _isMultiline, inputRef, fillContainerRef, variant],
   );
 
   const onSelectText = () => {
