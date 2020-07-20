@@ -22,7 +22,9 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
           "top": 0,
           "zIndex": 9998,
         },
-        [Function],
+        Object {
+          "elevation": 5,
+        },
       ]
     }
   >
@@ -381,7 +383,9 @@ exports[`<BottomSheet /> renders default BottomSheet 1`] = `
           "top": 0,
           "zIndex": 9998,
         },
-        [Function],
+        Object {
+          "elevation": 5,
+        },
       ]
     }
   >
@@ -597,7 +601,9 @@ exports[`<BottomSheet /> renders linear-gradient view at bottom when content hei
           "top": 0,
           "zIndex": 9998,
         },
-        [Function],
+        Object {
+          "elevation": 5,
+        },
       ]
     }
   >

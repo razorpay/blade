@@ -167,7 +167,7 @@ const BottomSheet = forwardRef(
         panGestureComponentEnabled={true}
         adjustToContentHeight={adjustToContentHeight}
         alwaysOpen={initialHeight}
-        rootStyle={styles.rootStyle}
+        rootStyle={styles.rootStyle()}
       >
         <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
       </RNModalize>
