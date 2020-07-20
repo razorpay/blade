@@ -189,7 +189,6 @@ const TextInput = ({
   const theme = useContext(ThemeContext);
   const inputRef = useRef();
   const containerRef = useRef();
-  const fillContainerRef = useRef();
   const [isFocused, setIsFocused] = useState(false);
   const [input, setInput] = useState(value || '');
   // Used for storing layout value of TextInput
@@ -267,15 +266,13 @@ const TextInput = ({
       if (_isMultiline && variant === 'outlined') {
         setTimeout(() => {
           inputRef.current.style.height = 'inherit';
-          fillContainerRef.current.style.height = 'inherit';
           // Calculate the height
           const height = inputRef.current.scrollHeight;
-          fillContainerRef.current.style.height = `${height}px`;
           inputRef.current.style.height = `${height}px`;
         }, 0);
       }
     },
-    [maxLength, onChange, setInput, _isMultiline, inputRef, fillContainerRef, variant],
+    [maxLength, onChange, setInput, _isMultiline, inputRef, variant],
   );
 
   const onSelectText = () => {
@@ -305,7 +302,7 @@ const TextInput = ({
       const containerRect = containerRef.current.getBoundingClientRect();
       const inputRect = inputRef.current.getBoundingClientRect();
       const initialLeftPosition = inputRect.x - containerRect.x;
-      const finalTopPosition = fillContainerRef.current.offsetHeight;
+      const finalTopPosition = inputRef.current.offsetHeight;
 
       setLayoutDimensions({
         initialLeftPosition,
@@ -319,7 +316,7 @@ const TextInput = ({
   return (
     <Flex justifyContent="flex-end" flexDirection="column">
       <View ref={containerRef}>
-        {labelPosition === 'top' || variant === 'outlined' ? (
+        {labelPosition === 'top' && !hasAnimatedLabel ? (
           <Label.Regular
             position={labelPosition}
             disabled={disabled}
@@ -358,12 +355,7 @@ const TextInput = ({
               <View>
                 <Size height={styles.fillContainer.height({ variant, _isMultiline })}>
                   <Space padding={styles.fillContainer.padding({ variant })}>
-                    <FillContainer
-                      ref={fillContainerRef}
-                      variant={variant}
-                      isFocused={isFocused}
-                      disabled={disabled}
-                    >
+                    <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
                       {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
                         <Label.Animated
                           position={labelPosition}
