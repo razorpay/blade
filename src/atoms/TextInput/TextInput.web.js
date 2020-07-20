@@ -57,7 +57,16 @@ const styles = {
         }
         return '64px';
       }
-      return '36px';
+      if (variant === 'filled') {
+        return '36px';
+      }
+      return 'auto';
+    },
+    padding({ variant }) {
+      if (variant === 'outlined') {
+        return [0, 0, 1, 0];
+      }
+      return [1, 0, 1, 0];
     },
   },
   inputContainer: {
@@ -358,7 +367,7 @@ const TextInput = ({
             <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
               <View>
                 <Size height={styles.fillContainer.height({ variant, _isMultiline })}>
-                  <Space padding={[1, 0, 1, 0]}>
+                  <Space padding={styles.fillContainer.padding({ variant })}>
                     <FillContainer
                       ref={fillContainerRef}
                       variant={variant}

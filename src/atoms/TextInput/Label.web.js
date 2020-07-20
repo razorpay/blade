@@ -59,7 +59,7 @@ const styles = {
       if (position === 'left') {
         return [1, 3, 1, 0];
       }
-      return [0, 0, 0.5, 0];
+      return [0, 0, 0.25, 0];
     },
   },
 };
@@ -104,7 +104,7 @@ const RegularLabel = ({
 
   return (
     <Space margin={styles.label.margin({ position })}>
-      <Size height="19px">
+      <Size height="18px">
         <View>
           <RegularLabelText
             as="label"
