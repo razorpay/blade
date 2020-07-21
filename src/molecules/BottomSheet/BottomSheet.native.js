@@ -148,10 +148,8 @@ const BottomSheet = forwardRef(
                     colors={[
                       theme.colors.primary[930],
                       theme.colors.primary[920],
-                      theme.colors.primary[910],
+                      'rgba(255, 255, 255, 0)',
                     ]}
-                    useAngle={true}
-                    angle={180}
                     style={styles.linearGradient()}
                   />
                 </Size>
