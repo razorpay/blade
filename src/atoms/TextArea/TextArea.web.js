@@ -8,6 +8,7 @@ const TextArea = ({
   helpText,
   errorText,
   onChange,
+  onBlur,
   variant,
   disabled,
   value,
@@ -29,6 +30,7 @@ const TextArea = ({
       helpText={helpText}
       errorText={errorText}
       onChange={onChange}
+      onBlur={onBlur}
       variant={variant}
       disabled={disabled}
       maxLength={maxLength}
@@ -48,6 +50,7 @@ TextArea.propTypes = {
   helpText: PropTypes.string,
   errorText: PropTypes.string,
   onChange: PropTypes.func,
+  onBlur: PropTypes.func,
   variant: PropTypes.oneOf(['filled', 'outlined']),
   disabled: PropTypes.bool,
   value: PropTypes.string,
@@ -62,6 +65,7 @@ TextArea.propTypes = {
 TextArea.defaultProps = {
   placeholder: '',
   onChange: () => {},
+  onBlur: () => {},
   disabled: false,
   variant: 'outlined',
   label: 'Label',
