@@ -17,12 +17,19 @@ import BottomSheetContent from './BottomSheetContent';
 
 const screenHeight = Dimensions.get('window').height;
 const DEFAULT_SNAP_POINT = screenHeight * 0.4; // 40% of screen height
-const linearGradientLocations = [0, 0.2969, 1]; // 0%, 29.69%, 100%
+const linearGradientLocations = [0.1, 0.2969, 1]; // 0%, 29.69%, 100%
 
 const styles = {
-  rootStyle: () => {
+  rootStyle: ({ theme }) => {
     return {
-      elevation: 5, // to be removed once Home TabsBottomSheet is changed
+      elevation: 5,
+      shadowColor: theme.colors.primary[930],
+      shadowOffset: {
+        width: 0,
+        height: -4,
+      },
+      shadowOpacity: 0.8,
+      shadowRadius: 15,
     };
   },
   overlayStyle: ({ theme }) => {
@@ -51,8 +58,6 @@ const HeaderContainer = styled(View)`
   background-color: ${(props) => props.theme.colors.background[200]};
   border-top-right-radius: ${(props) => props.theme.spacings.small};
   border-top-left-radius: ${(props) => props.theme.spacings.small};
-  box-shadow: ${(props) => `0px -4px 15px ${props.theme.colors.primary[930]}`};
-  elevation: 5;
 `;
 
 const BottomSheetDragBar = styled(View)`
@@ -165,7 +170,7 @@ const BottomSheet = forwardRef(
         panGestureComponentEnabled={true}
         adjustToContentHeight={adjustToContentHeight}
         alwaysOpen={initialHeight}
-        rootStyle={styles.rootStyle()}
+        rootStyle={styles.rootStyle({ theme })}
       >
         <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
       </RNModalize>
