@@ -30,10 +30,6 @@ storiesOf('TextArea', module)
             width={select('Width', sizeOptions, 'medium')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
-            prefix=""
-            suffix=""
             placeholder="Type here"
             helpText=""
             errorText=""
@@ -47,98 +43,6 @@ storiesOf('TextArea', module)
         <View>
           <Space margin={[0, 0, 1, 0]}>
             <View>
-              <Text>Outlined Leading Icon:</Text>
-            </View>
-          </Space>
-          <TextArea
-            width={select('Width', sizeOptions, 'large')}
-            label="Label"
-            disabled={false}
-            iconLeft="info"
-            iconRight=""
-            prefix=""
-            suffix=""
-            placeholder="Type here"
-            helpText="This is a help text"
-            errorText=""
-            onChange={() => {}}
-            variant="outlined"
-          />
-        </View>
-      </Space>
-      <Space margin={[0, 1, 4, 0]}>
-        <View>
-          <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Outlined Trailing Icon:</Text>
-            </View>
-          </Space>
-          <TextArea
-            width={select('Width', sizeOptions, 'large')}
-            label="Label"
-            disabled={false}
-            iconLeft=""
-            iconRight="info"
-            prefix=""
-            suffix=""
-            placeholder="Type here"
-            helpText="This is a help text"
-            errorText=""
-            onChange={() => {}}
-            variant="outlined"
-          />
-        </View>
-      </Space>
-      <Space margin={[0, 1, 4, 0]}>
-        <View>
-          <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Outlined prefix:</Text>
-            </View>
-          </Space>
-          <TextArea
-            width={select('Width', sizeOptions, 'large')}
-            label="Label"
-            disabled={false}
-            iconLeft=""
-            iconRight=""
-            prefix="₹"
-            suffix=""
-            placeholder="Type here"
-            helpText="This is a help text"
-            errorText=""
-            onChange={() => {}}
-            variant="outlined"
-          />
-        </View>
-      </Space>
-      <Space margin={[0, 1, 4, 0]}>
-        <View>
-          <Space margin={[0, 0, 1, 0]}>
-            <View>
-              <Text>Outlined suffix:</Text>
-            </View>
-          </Space>
-          <TextArea
-            width={select('Width', sizeOptions, 'large')}
-            label="Label"
-            disabled={false}
-            iconLeft=""
-            iconRight=""
-            prefix=""
-            suffix="₹"
-            placeholder="Type here"
-            helpText="This is a help text"
-            errorText=""
-            onChange={() => {}}
-            variant="outlined"
-          />
-        </View>
-      </Space>
-      <Space margin={[0, 1, 4, 0]}>
-        <View>
-          <Space margin={[0, 0, 1, 0]}>
-            <View>
               <Text>Outlined character count:</Text>
             </View>
           </Space>
@@ -146,10 +50,6 @@ storiesOf('TextArea', module)
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
-            prefix=""
-            suffix=""
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
@@ -170,10 +70,6 @@ storiesOf('TextArea', module)
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
-            iconLeft="info"
-            iconRight=""
-            prefix=""
-            suffix=""
             placeholder="Type here"
             helpText="This is a help text"
             errorText="This is the reason for the error"
@@ -193,10 +89,6 @@ storiesOf('TextArea', module)
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
-            iconLeft=""
-            iconRight=""
-            prefix="₹"
-            suffix=""
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
@@ -216,10 +108,6 @@ storiesOf('TextArea', module)
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
-            iconLeft=""
-            iconRight=""
-            prefix="₹"
-            suffix=""
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
@@ -242,98 +130,6 @@ storiesOf('TextArea', module)
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
-            prefix=""
-            suffix=""
-            placeholder="Type here"
-            helpText="This is a help text"
-            errorText=""
-            onChange={() => {}}
-            variant="filled"
-          />
-        </View>
-      </Space>
-      <Space margin={[0, 1, 4, 0]}>
-        <View>
-          <Space margin={[0, 0, 1, 0]}>
-            <View />
-          </Space>
-          <Text>Filled Leading Icon:</Text>
-          <TextArea
-            width={select('Width', sizeOptions, 'large')}
-            label="Label"
-            disabled={false}
-            iconLeft="info"
-            iconRight=""
-            prefix=""
-            suffix=""
-            placeholder="Type here"
-            helpText="This is a help text"
-            errorText=""
-            onChange={() => {}}
-            variant="filled"
-          />
-        </View>
-      </Space>
-      <Space margin={[0, 1, 4, 0]}>
-        <View>
-          <Space margin={[0, 0, 1, 0]}>
-            <View />
-          </Space>
-          <Text>Filled Trailing Icon:</Text>
-          <TextArea
-            width={select('Width', sizeOptions, 'large')}
-            label="Label"
-            disabled={false}
-            iconLeft=""
-            iconRight="info"
-            prefix=""
-            suffix=""
-            placeholder="Type here"
-            helpText="This is a help text"
-            errorText=""
-            onChange={() => {}}
-            variant="filled"
-          />
-        </View>
-      </Space>
-      <Space margin={[0, 1, 4, 0]}>
-        <View>
-          <Space margin={[0, 0, 1, 0]}>
-            <View />
-          </Space>
-          <Text>Filled prefix:</Text>
-          <TextArea
-            width={select('Width', sizeOptions, 'large')}
-            label="Label"
-            disabled={false}
-            iconLeft=""
-            iconRight=""
-            prefix="₹"
-            suffix=""
-            placeholder="Type here"
-            helpText="This is a help text"
-            errorText=""
-            onChange={() => {}}
-            variant="filled"
-          />
-        </View>
-      </Space>
-      <Space margin={[0, 1, 4, 0]}>
-        <View>
-          <Space margin={[0, 0, 1, 0]}>
-            <View />
-          </Space>
-          <Text>Filled suffix:</Text>
-          <TextArea
-            width={select('Width', sizeOptions, 'large')}
-            label="Label"
-            disabled={false}
-            iconLeft=""
-            iconRight=""
-            prefix=""
-            suffix="₹"
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
@@ -352,10 +148,6 @@ storiesOf('TextArea', module)
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
-            prefix=""
-            suffix=""
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
@@ -375,10 +167,6 @@ storiesOf('TextArea', module)
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
-            iconLeft="info"
-            iconRight=""
-            prefix=""
-            suffix=""
             placeholder="Type here"
             helpText="This is a help text"
             errorText="This is the reason for the error"
@@ -397,10 +185,6 @@ storiesOf('TextArea', module)
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
-            iconLeft=""
-            iconRight=""
-            prefix="₹"
-            suffix=""
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
@@ -419,10 +203,6 @@ storiesOf('TextArea', module)
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={true}
-            iconLeft=""
-            iconRight=""
-            prefix="₹"
-            suffix=""
             placeholder="Type here"
             helpText="This is a help text"
             errorText=""
@@ -443,10 +223,6 @@ storiesOf('TextArea', module)
             width={select('Width', sizeOptions, 'large')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
-            prefix=""
-            suffix=""
             placeholder="Type here"
             helpText=""
             errorText=""
