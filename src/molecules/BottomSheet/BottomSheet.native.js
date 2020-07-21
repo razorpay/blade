@@ -66,9 +66,8 @@ const BottomSheet = forwardRef(
       snapPoint = DEFAULT_SNAP_POINT,
       children,
       onBackDropClick = () => {},
-      onBackButtonClick = () => {},
       onChange = () => {},
-      onClosed = () => {},
+      onClose = () => {},
       adjustToContentHeight = false,
       initialHeight = 0,
     },
@@ -160,8 +159,7 @@ const BottomSheet = forwardRef(
         onOverlayPress={onBackDropClick}
         avoidKeyboardLikeIOS={true}
         onPositionChange={onChange}
-        onClosed={onClosed}
-        onBackButtonPress={onBackButtonClick}
+        onClosed={onClose}
         childrenStyle={styles.childrenStyle({ theme })}
         withHandle={false}
         panGestureComponentEnabled={true}
@@ -184,8 +182,7 @@ BottomSheet.propTypes = {
   snapPoint: PropTypes.number,
   children: PropTypes.node,
   onChange: PropTypes.func,
-  onClosed: PropTypes.func,
-  onBackButtonClick: PropTypes.func,
+  onClose: PropTypes.func,
   onBackDropClick: PropTypes.func,
   adjustToContentHeight: PropTypes.bool,
   initialHeight: PropTypes.number,
