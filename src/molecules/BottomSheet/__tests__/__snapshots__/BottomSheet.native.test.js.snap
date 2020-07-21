@@ -24,6 +24,13 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
         },
         Object {
           "elevation": 5,
+          "shadowColor": "rgba(11, 112, 231, 0.10)",
+          "shadowOffset": Object {
+            "height": -4,
+            "width": 0,
+          },
+          "shadowOpacity": 0.8,
+          "shadowRadius": 15,
         },
       ]
     }
@@ -84,14 +91,6 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
                     "backgroundColor": "rgba(255, 255, 255, 1.0)",
                     "borderTopLeftRadius": 8,
                     "borderTopRightRadius": 8,
-                    "elevation": 5,
-                    "shadowColor": "rgba(11, 112, 231, 0.10)",
-                    "shadowOffset": Object {
-                      "height": -4,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 1,
-                    "shadowRadius": 15,
                   },
                 ]
               }
@@ -385,6 +384,13 @@ exports[`<BottomSheet /> renders default BottomSheet 1`] = `
         },
         Object {
           "elevation": 5,
+          "shadowColor": "rgba(11, 112, 231, 0.10)",
+          "shadowOffset": Object {
+            "height": -4,
+            "width": 0,
+          },
+          "shadowOpacity": 0.8,
+          "shadowRadius": 15,
         },
       ]
     }
@@ -445,14 +451,6 @@ exports[`<BottomSheet /> renders default BottomSheet 1`] = `
                     "backgroundColor": "rgba(255, 255, 255, 1.0)",
                     "borderTopLeftRadius": 8,
                     "borderTopRightRadius": 8,
-                    "elevation": 5,
-                    "shadowColor": "rgba(11, 112, 231, 0.10)",
-                    "shadowOffset": Object {
-                      "height": -4,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 1,
-                    "shadowRadius": 15,
                   },
                 ]
               }
@@ -603,6 +601,13 @@ exports[`<BottomSheet /> renders linear-gradient view at bottom when content hei
         },
         Object {
           "elevation": 5,
+          "shadowColor": "rgba(11, 112, 231, 0.10)",
+          "shadowOffset": Object {
+            "height": -4,
+            "width": 0,
+          },
+          "shadowOpacity": 0.8,
+          "shadowRadius": 15,
         },
       ]
     }
@@ -663,14 +668,6 @@ exports[`<BottomSheet /> renders linear-gradient view at bottom when content hei
                     "backgroundColor": "rgba(255, 255, 255, 1.0)",
                     "borderTopLeftRadius": 8,
                     "borderTopRightRadius": 8,
-                    "elevation": 5,
-                    "shadowColor": "rgba(11, 112, 231, 0.10)",
-                    "shadowOffset": Object {
-                      "height": -4,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 1,
-                    "shadowRadius": 15,
                   },
                 ]
               }
