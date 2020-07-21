@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../TextInput';
 import automation from '../../_helpers/automation-attributes';
-import isEmpty from '../../_helpers/isEmpty';
 
 const TextArea = ({
   placeholder,
@@ -10,28 +9,16 @@ const TextArea = ({
   errorText,
   onChange,
   variant,
-  prefix,
-  suffix,
   disabled,
   value,
-  iconLeft,
-  iconRight,
   maxLength,
   label,
   testID,
   labelPosition,
   width,
 }) => {
-  if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
-    throw Error('Cannot have prefix and left icon together');
-  }
-
-  if (!isEmpty(suffix) && !isEmpty(iconRight)) {
-    throw Error('Cannot have suffix and right icon together');
-  }
-
+  // Outlined TextArea has only a top label
   if (labelPosition === 'left' && variant === 'outlined') {
-    // Outlined Text Area has only a top label
     throw Error('Cannot have a left label on an outlined Text Area');
   }
 
@@ -42,11 +29,7 @@ const TextArea = ({
       errorText={errorText}
       onChange={onChange}
       variant={variant}
-      prefix={prefix}
-      suffix={suffix}
       disabled={disabled}
-      iconLeft={iconLeft}
-      iconRight={iconRight}
       maxLength={maxLength}
       label={label}
       labelPosition={labelPosition}
@@ -64,12 +47,8 @@ TextArea.propTypes = {
   errorText: PropTypes.string,
   onChange: PropTypes.func,
   variant: PropTypes.oneOf(['filled', 'outlined']),
-  prefix: PropTypes.string,
-  suffix: PropTypes.string,
   disabled: PropTypes.bool,
   value: PropTypes.string,
-  iconLeft: PropTypes.string,
-  iconRight: PropTypes.string,
   maxLength: PropTypes.number,
   label: PropTypes.string,
   testID: PropTypes.string,
