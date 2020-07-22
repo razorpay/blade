@@ -17,6 +17,7 @@ const TextArea = ({
   labelPosition,
   width,
   id,
+  name,
 }) => {
   // Outlined TextArea has only a top label
   if (labelPosition === 'left' && variant === 'outlined') {
@@ -25,6 +26,8 @@ const TextArea = ({
 
   return (
     <TextInput
+      id={id}
+      name={name}
       placeholder={placeholder}
       helpText={helpText}
       errorText={errorText}
@@ -37,7 +40,6 @@ const TextArea = ({
       labelPosition={labelPosition}
       width={width}
       value={value}
-      id={id}
       testID={testID}
       _isMultiline={true}
     />
@@ -59,6 +61,7 @@ TextArea.propTypes = {
   labelPosition: PropTypes.oneOf(['top', 'left']),
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
   id: PropTypes.string,
+  name: PropTypes.string,
 };
 
 TextArea.defaultProps = {
