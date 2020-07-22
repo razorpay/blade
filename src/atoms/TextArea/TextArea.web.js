@@ -41,7 +41,7 @@ const TextArea = ({
       width={width}
       value={value}
       testID={testID}
-      _isMultiline={true}
+      _isMultiline
     />
   );
 };
