@@ -1,19 +1,20 @@
-import React, { useContext, useState, useCallback, useEffect, useRef } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import Flex from '../Flex';
-import View from '../View';
-import Space from '../Space';
-import Size from '../Size';
-import isEmpty from '../../_helpers/isEmpty';
-import isDefined from '../../_helpers/isDefined';
+import styled, { ThemeContext } from 'styled-components';
 import automation from '../../_helpers/automation-attributes';
-import Label from './Label';
-import CharacterCount from './CharacterCount';
+import isDefined from '../../_helpers/isDefined';
+import isEmpty from '../../_helpers/isEmpty';
+import { makePxValue } from '../../_helpers/theme';
+import Flex from '../Flex';
+import Size from '../Size';
+import Space from '../Space';
+import View from '../View';
 import AccessoryIcon from './AccessoryIcon';
 import AccessoryText from './AccessoryText';
-import Text from './Text';
+import CharacterCount from './CharacterCount';
+import Label from './Label';
 import Line from './Line';
+import Text from './Text';
 
 const styles = {
   textInput: {
@@ -53,9 +54,9 @@ const styles = {
     height({ _isMultiline, variant }) {
       if (variant === 'filled') {
         if (_isMultiline) {
-          return '64px';
+          return makePxValue(8);
         }
-        return '36px';
+        return makePxValue(4.5);
       }
       return 'auto';
     },
@@ -72,11 +73,11 @@ const styles = {
         case 'auto':
           return '100%';
         case 'small':
-          return '160px';
+          return makePxValue(20);
         case 'medium':
-          return '240px';
+          return makePxValue(30);
         default:
-          return '240px';
+          return makePxValue(30);
       }
     },
   },
@@ -91,7 +92,6 @@ const StyledInput = styled.input`
   line-height: ${(props) => props.theme.fonts.lineHeight.medium};
   font-family: ${(props) => props.theme.fonts.family.lato.regular};
   color: ${styles.textInput.color};
-  max-height: 64px;
   border: none;
   background-color: transparent;
   pointer-events: ${(props) => (props.disabled ? 'none' : '')};
@@ -135,7 +135,6 @@ const FillContainer = styled(View)`
   margin-top: auto;
   position: relative;
   box-sizing: border-box;
-  max-height: 64px;
   &:hover {
     background-color: ${styles.fillContainer.hoverBackgroundColor};
   }
@@ -354,7 +353,7 @@ const TextInput = ({
             {/* Text Input */}
             <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
               <View>
-                <Size height={styles.fillContainer.height({ variant, _isMultiline })}>
+                <Size height={styles.fillContainer.height({ variant, _isMultiline })} maxHeight={8}>
                   <Space padding={styles.fillContainer.padding({ variant })}>
                     <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
                       {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
@@ -399,7 +398,7 @@ const TextInput = ({
                                   hasText,
                                 })}
                               >
-                                <Size minWidth={[0]}>
+                                <Size minWidth={0} maxHeight={8}>
                                   <StyledInput
                                     id={id}
                                     name={name}
