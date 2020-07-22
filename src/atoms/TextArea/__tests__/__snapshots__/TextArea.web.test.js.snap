@@ -35,6 +35,7 @@ exports[`<TextArea /> helpText should render TextArea with help text if helpText
               data-testid="ds-text-area"
               placeholder=""
               rows="1"
+              style="height: 0px;"
               type="text"
             />
           </div>
@@ -99,6 +100,7 @@ exports[`<TextArea /> helpText with maxLength should render TextArea with charac
               maxlength="10"
               placeholder=""
               rows="1"
+              style="height: 0px;"
               type="text"
             />
           </div>
@@ -269,6 +271,7 @@ exports[`<TextArea /> label renders TextArea with labelPosition on top(default) 
               id="sample-id"
               placeholder=""
               rows="1"
+              style="height: 0px;"
               type="text"
             />
           </div>
@@ -361,6 +364,7 @@ exports[`<TextArea /> variant renders outlined variant with default props 1`] = 
               data-testid="ds-text-area"
               placeholder=""
               rows="1"
+              style="height: 0px;"
               type="text"
             />
           </div>
@@ -409,6 +413,7 @@ exports[`<TextArea /> width renders TextArea with auto width 1`] = `
               data-testid="ds-text-area"
               placeholder=""
               rows="1"
+              style="height: 0px;"
               type="text"
             />
           </div>
@@ -457,6 +462,7 @@ exports[`<TextArea /> width renders TextArea with medium(default) width 1`] = `
               data-testid="ds-text-area"
               placeholder=""
               rows="1"
+              style="height: 0px;"
               type="text"
             />
           </div>
@@ -505,6 +511,7 @@ exports[`<TextArea /> width renders TextArea with small width 1`] = `
               data-testid="ds-text-area"
               placeholder=""
               rows="1"
+              style="height: 0px;"
               type="text"
             />
           </div>

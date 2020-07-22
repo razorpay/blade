@@ -87,6 +87,7 @@ exports[`<TextInput /> _isMultiline should render a textarea tag if _isMultiline
               id="sample-id"
               placeholder="Enter text here"
               rows="1"
+              style="height: 0px;"
               type="text"
             />
           </div>
