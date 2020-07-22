@@ -263,17 +263,8 @@ const TextInput = ({
       if (onChange) {
         onChange(text);
       }
-
-      if (_isMultiline && variant === 'outlined') {
-        setTimeout(() => {
-          inputRef.current.style.height = 'inherit';
-          // Calculate the height
-          const height = inputRef.current.scrollHeight;
-          inputRef.current.style.height = `${height}px`;
-        }, 0);
-      }
     },
-    [maxLength, onChange, setInput, _isMultiline, inputRef, variant],
+    [maxLength, onChange, setInput],
   );
 
   const onSelectText = () => {
@@ -311,6 +302,15 @@ const TextInput = ({
       });
     }
   }, [inputRef, containerRef]);
+
+  useEffect(() => {
+    // adjust height of textarea as user types for outlined variant
+    if (_isMultiline && variant === 'outlined') {
+      inputRef.current.style.height = 'inherit';
+      const height = inputRef.current.scrollHeight;
+      inputRef.current.style.height = `${height}px`;
+    }
+  }, [_isMultiline, variant, inputRef, input]);
 
   const _rows = variant === 'outlined' ? 1 : 3;
 
