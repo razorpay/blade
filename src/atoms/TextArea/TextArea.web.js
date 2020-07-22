@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../TextInput';
-import automation from '../../_helpers/automation-attributes';
 
 const TextArea = ({
   placeholder,
@@ -39,8 +38,8 @@ const TextArea = ({
       width={width}
       value={value}
       id={id}
+      testID={testID}
       _isMultiline={true}
-      {...automation(testID)}
     />
   );
 };
