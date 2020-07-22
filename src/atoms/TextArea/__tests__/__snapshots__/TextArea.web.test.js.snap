@@ -1,6 +1,144 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TextArea /> label renders input with labelPosition on left and variant filled 1`] = `
+exports[`<TextArea /> helpText should render TextArea with help text if helpText is provided as prop 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
+          >
+            <label
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              color="shade.980"
+              data-testid="ds-text"
+              value=""
+              width="medium"
+            >
+              Label
+            </label>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <textarea
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-area"
+              placeholder=""
+              rows="1"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 fLzvVb"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              This is help text
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> helpText with maxLength should render TextArea with character count as fraction 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
+          >
+            <label
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              color="shade.980"
+              data-testid="ds-text"
+              value=""
+              width="medium"
+            >
+              Label
+            </label>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <textarea
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-area"
+              maxlength="10"
+              placeholder=""
+              rows="1"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 fLzvVb"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              This is help text
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 iiiHlL"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 fLzvVb"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              0/10
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> label renders TextArea with labelPosition on left and variant filled 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -30,7 +168,7 @@ exports[`<TextArea /> label renders input with labelPosition on left and variant
           >
             <textarea
               class="TextInputweb__StyledInput-sc-199z6oj-1 kmIVkY Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-input"
+              data-testid="ds-text-area"
               id="sample-id"
               placeholder=""
               rows="3"
@@ -47,7 +185,7 @@ exports[`<TextArea /> label renders input with labelPosition on left and variant
 </div>
 `;
 
-exports[`<TextArea /> label renders input with labelPosition on top(default) and variant filled 1`] = `
+exports[`<TextArea /> label renders TextArea with labelPosition on top(default) and variant filled 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -77,7 +215,7 @@ exports[`<TextArea /> label renders input with labelPosition on top(default) and
           >
             <textarea
               class="TextInputweb__StyledInput-sc-199z6oj-1 kmIVkY Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-input"
+              data-testid="ds-text-area"
               id="sample-id"
               placeholder=""
               rows="3"
@@ -94,7 +232,7 @@ exports[`<TextArea /> label renders input with labelPosition on top(default) and
 </div>
 `;
 
-exports[`<TextArea /> label renders input with labelPosition on top(default) and variant outlined(default) 1`] = `
+exports[`<TextArea /> label renders TextArea with labelPosition on top(default) and variant outlined(default) 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -127,7 +265,7 @@ exports[`<TextArea /> label renders input with labelPosition on top(default) and
           >
             <textarea
               class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-input"
+              data-testid="ds-text-area"
               id="sample-id"
               placeholder=""
               rows="1"
@@ -172,7 +310,7 @@ exports[`<TextArea /> variant renders filled variant with default props 1`] = `
           >
             <textarea
               class="TextInputweb__StyledInput-sc-199z6oj-1 kmIVkY Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-input"
+              data-testid="ds-text-area"
               placeholder=""
               rows="3"
               type="text"
@@ -220,7 +358,151 @@ exports[`<TextArea /> variant renders outlined variant with default props 1`] = 
           >
             <textarea
               class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-input"
+              data-testid="ds-text-area"
+              placeholder=""
+              rows="1"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> width renders TextArea with auto width 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 fsjcxB"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
+          >
+            <label
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              color="shade.980"
+              data-testid="ds-text"
+              value=""
+              width="auto"
+            >
+              Label
+            </label>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 juRaGm Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <textarea
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-area"
+              placeholder=""
+              rows="1"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> width renders TextArea with medium(default) width 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
+          >
+            <label
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              color="shade.980"
+              data-testid="ds-text"
+              value=""
+              width="medium"
+            >
+              Label
+            </label>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <textarea
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-area"
+              placeholder=""
+              rows="1"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> width renders TextArea with small width 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 cOOVRp Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 hqWiBk"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 cILqKw Spaceweb__Space-njatzl-0 egTcPC"
+          >
+            <label
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
+              color="shade.980"
+              data-testid="ds-text"
+              value=""
+              width="small"
+            >
+              Label
+            </label>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 eRcLdB Flexweb__Flex-ni2cjg-0 jOkEVe"
+          >
+            <textarea
+              class="TextInputweb__StyledInput-sc-199z6oj-1 bzzJhg Sizeweb__Size-sc-10bl685-0 fYTMIh Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+              data-testid="ds-text-area"
               placeholder=""
               rows="1"
               type="text"
