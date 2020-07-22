@@ -22,6 +22,21 @@ describe('<TextInput />', () => {
     });
   });
 
+  describe('id', () => {
+    it('should not have id attribute if not provded as prop', () => {
+      const { getByTestId } = renderWithTheme(<TextInput label={SAMPLE_LABEL} />);
+      const textInput = getByTestId('ds-text-input');
+      expect(textInput).not.toHaveAttribute('id');
+    });
+
+    it('should have provided id attribute if id provded as prop', () => {
+      const { getByTestId } = renderWithTheme(<TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} />);
+      const textInput = getByTestId('ds-text-input');
+      expect(textInput).toHaveAttribute('id');
+      expect(textInput.id).toEqual(SAMPLE_ID);
+    });
+  });
+
   describe('name', () => {
     it('should not have name attribute if not provded as prop', () => {
       const { getByLabelText } = renderWithTheme(<TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} />);
