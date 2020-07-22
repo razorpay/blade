@@ -166,6 +166,7 @@ const TextInput = ({
   width,
   type,
   id,
+  name,
 }) => {
   const theme = useContext(ThemeContext);
   const inputRef = useRef();
@@ -372,6 +373,7 @@ const TextInput = ({
                                 <Size minWidth={[0]}>
                                   <StyledInput
                                     id={id}
+                                    name={name}
                                     type={type}
                                     placeholder={placeholder}
                                     placeholderTextColor={placeholderTextColor}
@@ -465,6 +467,7 @@ TextInput.propTypes = {
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
   type: PropTypes.oneOf(['text', 'password', 'number', 'email']),
   id: PropTypes.string,
+  name: PropTypes.string,
 };
 
 TextInput.defaultProps = {
