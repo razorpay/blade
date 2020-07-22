@@ -192,6 +192,42 @@ describe('<TextInput />', () => {
     });
   });
 
+  describe('iconLeft', () => {
+    it('renders TextInput with iconLeft', () => {
+      const { container } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} iconLeft="info" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('iconRight', () => {
+    it('renders TextInput with iconRight', () => {
+      const { container } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} iconRight="info" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('prefix', () => {
+    it('renders TextInput with prefix', () => {
+      const { container } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} prefix="₹" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('suffix', () => {
+    it('renders TextInput with suffix', () => {
+      const { container } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} suffix="₹" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
   describe('testID', () => {
     it('should have default testID(ds-text-input) if no testID is provided as prop', () => {
       const { queryByTestId } = renderWithTheme(<TextInput />);
