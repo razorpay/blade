@@ -22,6 +22,39 @@ describe('<TextInput />', () => {
     });
   });
 
+  describe('id', () => {
+    it('should not have id attribute if not provded as prop', () => {
+      const { getByTestId } = renderWithTheme(<TextInput label={SAMPLE_LABEL} />);
+      const textInput = getByTestId('ds-text-input');
+      expect(textInput).not.toHaveAttribute('id');
+    });
+
+    it('should have provided id attribute if id provded as prop', () => {
+      const { getByTestId } = renderWithTheme(<TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} />);
+      const textInput = getByTestId('ds-text-input');
+      expect(textInput).toHaveAttribute('id');
+      expect(textInput.id).toEqual(SAMPLE_ID);
+    });
+  });
+
+  describe('name', () => {
+    it('should not have name attribute if not provded as prop', () => {
+      const { getByLabelText } = renderWithTheme(<TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} />);
+      const textInput = getByLabelText(SAMPLE_LABEL);
+      expect(textInput).not.toHaveAttribute('name');
+    });
+
+    it('should have provided name attribute if name provded as prop', () => {
+      const name = 'sample-name';
+      const { getByLabelText } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} name={name} />,
+      );
+      const textInput = getByLabelText(SAMPLE_LABEL);
+      expect(textInput).toHaveAttribute('name');
+      expect(textInput.name).toEqual(name);
+    });
+  });
+
   describe('label', () => {
     it('renders input with labelPosition on top(default) and variant outlined(default)', () => {
       const { queryByLabelText, container } = renderWithTheme(
@@ -171,6 +204,42 @@ describe('<TextInput />', () => {
         // check after input character count = 10/10
         expect(container).toHaveTextContent('10/10');
       });
+    });
+  });
+
+  describe('iconLeft', () => {
+    it('renders TextInput with iconLeft', () => {
+      const { container } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} iconLeft="info" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('iconRight', () => {
+    it('renders TextInput with iconRight', () => {
+      const { container } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} iconRight="info" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('prefix', () => {
+    it('renders TextInput with prefix', () => {
+      const { container } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} prefix="₹" />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('suffix', () => {
+    it('renders TextInput with suffix', () => {
+      const { container } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} suffix="₹" />,
+      );
+      expect(container).toMatchSnapshot();
     });
   });
 
