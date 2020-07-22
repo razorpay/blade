@@ -37,6 +37,24 @@ describe('<TextArea />', () => {
     });
   });
 
+  describe('name', () => {
+    it('should not have name attribute if not provded as prop', () => {
+      const { getByLabelText } = renderWithTheme(<TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} />);
+      const textArea = getByLabelText(SAMPLE_LABEL);
+      expect(textArea).not.toHaveAttribute('name');
+    });
+
+    it('should have provided name attribute if name provded as prop', () => {
+      const name = 'sample-name';
+      const { getByLabelText } = renderWithTheme(
+        <TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} name={name} />,
+      );
+      const textArea = getByLabelText(SAMPLE_LABEL);
+      expect(textArea).toHaveAttribute('name');
+      expect(textArea.name).toEqual(name);
+    });
+  });
+
   describe('label', () => {
     it('renders TextArea with labelPosition on top(default) and variant outlined(default)', () => {
       const { queryByLabelText, container } = renderWithTheme(
