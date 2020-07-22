@@ -22,6 +22,24 @@ describe('<TextInput />', () => {
     });
   });
 
+  describe('name', () => {
+    it('should not have name attribute if not provded as prop', () => {
+      const { getByLabelText } = renderWithTheme(<TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} />);
+      const textInput = getByLabelText(SAMPLE_LABEL);
+      expect(textInput).not.toHaveAttribute('name');
+    });
+
+    it('should have provided name attribute if name provded as prop', () => {
+      const name = 'sample-name';
+      const { getByLabelText } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} name={name} />,
+      );
+      const textInput = getByLabelText(SAMPLE_LABEL);
+      expect(textInput).toHaveAttribute('name');
+      expect(textInput.name).toEqual(name);
+    });
+  });
+
   describe('label', () => {
     it('renders input with labelPosition on top(default) and variant outlined(default)', () => {
       const { queryByLabelText, container } = renderWithTheme(
