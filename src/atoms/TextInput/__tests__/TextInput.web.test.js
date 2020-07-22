@@ -316,4 +316,24 @@ describe('<TextInput />', () => {
       expect(handleBlur).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe('_isMultiline', () => {
+    it('should render a input tag if _isMultiline is false(default)', () => {
+      const { queryByLabelText, container } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} />,
+      );
+      const textInput = queryByLabelText(SAMPLE_LABEL, { selector: 'input' });
+      expect(textInput).not.toBeNull();
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should render a textarea tag if _isMultiline is true', () => {
+      const { queryByLabelText, container } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} _isMultiline={true} />,
+      );
+      const textarea = queryByLabelText(SAMPLE_LABEL, { selector: 'textarea' });
+      expect(textarea).not.toBeNull();
+      expect(container).toMatchSnapshot();
+    });
+  });
 });
