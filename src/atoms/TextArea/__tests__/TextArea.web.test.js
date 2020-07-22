@@ -22,6 +22,21 @@ describe('<TextArea />', () => {
     });
   });
 
+  describe('id', () => {
+    it('should not have id attribute if not provded as prop', () => {
+      const { getByTestId } = renderWithTheme(<TextArea label={SAMPLE_LABEL} />);
+      const textArea = getByTestId('ds-text-area');
+      expect(textArea).not.toHaveAttribute('id');
+    });
+
+    it('should have provided id attribute if id provded as prop', () => {
+      const { getByTestId } = renderWithTheme(<TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} />);
+      const textArea = getByTestId('ds-text-area');
+      expect(textArea).toHaveAttribute('id');
+      expect(textArea.id).toEqual(SAMPLE_ID);
+    });
+  });
+
   describe('label', () => {
     it('renders TextArea with labelPosition on top(default) and variant outlined(default)', () => {
       const { queryByLabelText, container } = renderWithTheme(
