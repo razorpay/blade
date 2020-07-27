@@ -2,7 +2,6 @@ import React, { useCallback, useContext, useEffect, useRef, useState } from 'rea
 import PropTypes from 'prop-types';
 import styled, { ThemeContext } from 'styled-components';
 import automation from '../../_helpers/automation-attributes';
-import isDefined from '../../_helpers/isDefined';
 import isEmpty from '../../_helpers/isEmpty';
 import { makePxValue } from '../../_helpers/theme';
 import Flex from '../Flex';
@@ -96,9 +95,6 @@ const StyledInput = styled.input`
   background-color: transparent;
   pointer-events: ${(props) => (props.disabled ? 'none' : '')};
   resize: none;
-  &::selection {
-    background-color: ${(props) => props.onSelect};
-  }
   &::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
@@ -122,6 +118,9 @@ const StyledInput = styled.input`
   &::placeholder {
     color: ${(props) => props.placeholderTextColor};
   }
+  &::selection {
+    background-color: ${(props) => props.theme.colors.primary[980]};
+  }
   /* Removes red box shadow rectangle on firefox */
   &:invalid {
     box-shadow: none;
@@ -129,11 +128,11 @@ const StyledInput = styled.input`
 `;
 
 const FillContainer = styled(View)`
+  position: relative;
   background-color: ${styles.fillContainer.backgroundColor};
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   margin-top: auto;
-  position: relative;
   box-sizing: border-box;
   &:hover {
     background-color: ${styles.fillContainer.hoverBackgroundColor};
@@ -196,7 +195,7 @@ const TextInput = ({
   // Used to hide placeholder while label is inside the TextInput
   const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(isFocused);
 
-  const hasText = !!(isDefined(input) && input.length > 0);
+  const hasText = !isEmpty(input);
   const hasAnimatedLabel = variant === 'outlined';
 
   const placeholderTextColor = getPlaceholderTextColor({
@@ -237,16 +236,16 @@ const TextInput = ({
     setTimeout(() => {
       setIsPlaceholderVisible(true);
     }, 90);
-  }, []);
+  }, [setIsFocused, setIsPlaceholderVisible]);
 
   const onBlurText = useCallback(
     (event) => {
       setIsFocused(false);
       setIsPlaceholderVisible(false);
-      const text = event.target.value;
-      setInput(text);
+      const inputValue = event.target.value;
+      setInput(inputValue);
       if (onBlur) {
-        onBlur(text);
+        onBlur(inputValue);
       }
     },
     [setIsFocused, setIsPlaceholderVisible, setInput, onBlur],
@@ -254,36 +253,35 @@ const TextInput = ({
 
   const onChangeText = useCallback(
     (event) => {
-      const text = event.target.value;
-      if (text.length > maxLength) {
+      const inputValue = event.target.value;
+      if (inputValue.length > maxLength) {
         return;
       }
-      setInput(text);
+      setInput(inputValue);
       if (onChange) {
-        onChange(text);
+        onChange(inputValue);
       }
     },
     [maxLength, onChange, setInput],
   );
 
-  const onSelectText = () => {
-    return theme.colors.primary[980];
-  };
+  const onKeyPress = useCallback(
+    (event) => {
+      if (type === 'number') {
+        const charCode = typeof event.which === 'number' ? event.which : event.keyCode;
+        const char = String.fromCharCode(charCode);
+        const isAllowed = /[0-9]/g.test(char) || char === '-' || char === '.';
 
-  const onKeyPress = (e) => {
-    if (type === 'number') {
-      const charCode = typeof e.which === 'number' ? e.which : e.keyCode;
-      const char = String.fromCharCode(charCode);
-      const isAllowed = /[0-9]/g.test(char) || char === '-' || char === '.';
-
-      if (!isAllowed) {
-        e.preventDefault();
+        if (!isAllowed) {
+          event.preventDefault();
+        }
       }
-    }
-  };
+    },
+    [type],
+  );
 
   useEffect(() => {
-    if (isDefined(value)) {
+    if (value) {
       setInput(value);
     }
   }, [value]);
@@ -300,7 +298,7 @@ const TextInput = ({
         finalTopPosition,
       });
     }
-  }, [inputRef, containerRef]);
+  }, [inputRef, containerRef, setLayoutDimensions]);
 
   useEffect(() => {
     // adjust height of textarea as user types for outlined variant
@@ -409,7 +407,6 @@ const TextInput = ({
                                     onBlur={onBlurText}
                                     onChange={onChangeText}
                                     hasText={hasText}
-                                    onSelect={onSelectText}
                                     readonly={disabled}
                                     disabled={disabled}
                                     variant={variant}
@@ -457,11 +454,11 @@ const TextInput = ({
                         successText={successText}
                         disabled={disabled}
                       />
-                      {maxLength !== undefined ? (
+                      {maxLength ? (
                         <CharacterCount
                           disabled={disabled}
                           maxLength={maxLength}
-                          currentLength={isDefined(input) ? input.length : 0}
+                          currentLength={input.length || 0}
                         />
                       ) : null}
                     </View>
