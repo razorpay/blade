@@ -6,7 +6,6 @@ import View from '../View';
 import Space from '../Space';
 import Size from '../Size';
 import isEmpty from '../../_helpers/isEmpty';
-import isDefined from '../../_helpers/isDefined';
 import automation from '../../_helpers/automation-attributes';
 import Label from './Label';
 import CharacterCount from './CharacterCount';
@@ -265,7 +264,7 @@ const TextInput = ({
   );
 
   useEffect(() => {
-    if (isDefined(value)) {
+    if (value) {
       setInput(value);
     }
   }, [value]);
