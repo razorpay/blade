@@ -372,6 +372,9 @@ const Button = ({
   align,
   block,
   type,
+  testID,
+  id,
+  name,
 }) => {
   const theme = useTheme();
 
@@ -399,7 +402,9 @@ const Button = ({
             block={block}
             variant={variant}
             type={type}
-            {...automation('ds-button')}
+            id={id}
+            name={name}
+            {...automation(testID)}
           >
             <React.Fragment>
               {icon && iconAlign === 'left' ? (
@@ -452,6 +457,9 @@ Button.propTypes = {
   icon: PropTypes.string,
   iconAlign: PropTypes.oneOf(['left', 'right']),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
+  testID: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -464,6 +472,9 @@ Button.defaultProps = {
   iconAlign: 'left',
   type: 'button',
   onClick: () => {},
+  testID: 'ds-button',
+  id: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default Button;
