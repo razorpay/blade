@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Text from '../Text';
 import Space from '../Space';
 import View from '../View';
-import Flex from '../Flex';
 
 const styles = {
   color({ disabled }) {
@@ -18,13 +17,11 @@ const styles = {
 const CharacterCount = ({ maxLength, currentLength, disabled }) => {
   return (
     <Space padding={[0.5, 0, 0, 1]}>
-      <Flex flex={0}>
-        <View>
-          <Text disabled={disabled} color={styles.color({ disabled })} size="xsmall">
-            {`${currentLength}/${maxLength}`}
-          </Text>
-        </View>
-      </Flex>
+      <View>
+        <Text disabled={disabled} color={styles.color({ disabled })} size="xsmall">
+          {`${currentLength}/${maxLength}`}
+        </Text>
+      </View>
     </Space>
   );
 };
@@ -36,7 +33,6 @@ CharacterCount.propTypes = {
 };
 
 CharacterCount.defaultProps = {
-  maxLength: 10,
   currentLength: 0,
   disabled: false,
 };
