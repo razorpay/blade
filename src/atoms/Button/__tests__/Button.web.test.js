@@ -101,39 +101,6 @@ describe('<Button />', () => {
     });
   });
 
-  describe('icon', () => {
-    describe('with children', () => {
-      describe('with iconAlign left', () => {
-        it('should render a button with text with icon on left', () => {
-          const { container } = renderWithTheme(
-            <Button icon="info" iconAlign="left">
-              Button
-            </Button>,
-          );
-          expect(container).toMatchSnapshot();
-        });
-      });
-
-      describe('with iconAlign right', () => {
-        it('should render a button with text with icon on right', () => {
-          const { container } = renderWithTheme(
-            <Button icon="info" iconAlign="right">
-              Button
-            </Button>,
-          );
-          expect(container).toMatchSnapshot();
-        });
-      });
-    });
-
-    describe('without children', () => {
-      it('should render icon only button', () => {
-        const { container } = renderWithTheme(<Button icon="info" />);
-        expect(container).toMatchSnapshot();
-      });
-    });
-  });
-
   describe('disabled', () => {
     it('should render a disabled button', () => {
       const { container } = renderWithTheme(<Button disabled>Disabled</Button>);

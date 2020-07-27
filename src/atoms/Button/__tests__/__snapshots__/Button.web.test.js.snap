@@ -67,36 +67,6 @@ exports[`<Button /> icon with children with iconAlign left should render a butto
 </div>
 `;
 
-exports[`<Button /> icon with children with iconAlign left should render a button with text with icon on left 2`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    type="button"
-  >
-    <svg
-      class="Spaceweb__Space-njatzl-0 fIWTfg"
-      data-testid="ds-icon"
-      fill="rgba(255, 255, 255, 1.0)"
-      height="20"
-      viewBox="0 0 24 24"
-      width="20"
-    >
-      <path
-        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-      />
-    </svg>
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
-      color="light.900"
-      data-testid="ds-text"
-    >
-      Button
-    </div>
-  </button>
-</div>
-`;
-
 exports[`<Button /> icon with children with iconAlign right should render a button with text with icon on right 1`] = `
 <div>
   <button
@@ -127,60 +97,7 @@ exports[`<Button /> icon with children with iconAlign right should render a butt
 </div>
 `;
 
-exports[`<Button /> icon with children with iconAlign right should render a button with text with icon on right 2`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    type="button"
-  >
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
-      color="light.900"
-      data-testid="ds-text"
-    >
-      Button
-    </div>
-    <svg
-      class="Spaceweb__Space-njatzl-0 keYFvM"
-      data-testid="ds-icon"
-      fill="rgba(255, 255, 255, 1.0)"
-      height="20"
-      viewBox="0 0 24 24"
-      width="20"
-    >
-      <path
-        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-      />
-    </svg>
-  </button>
-</div>
-`;
-
 exports[`<Button /> icon without children should render icon only button 1`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 cPoqMa Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    type="button"
-  >
-    <svg
-      class="Spaceweb__Space-njatzl-0 jBqZrs"
-      data-testid="ds-icon"
-      fill="rgba(255, 255, 255, 1.0)"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path
-        d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-      />
-    </svg>
-  </button>
-</div>
-`;
-
-exports[`<Button /> icon without children should render icon only button 2`] = `
 <div>
   <button
     class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 cPoqMa Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
