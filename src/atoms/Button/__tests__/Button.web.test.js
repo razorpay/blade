@@ -8,7 +8,40 @@ import { renderWithTheme } from '../../../_helpers/testing';
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
+const SAMPLE_ID = 'sample-id';
+
 describe('<Button />', () => {
+  describe('id', () => {
+    it('should not have id attribute if not provded as prop', () => {
+      const { getByRole } = renderWithTheme(<Button>Click Me</Button>);
+      const button = getByRole('button');
+      expect(button).not.toHaveAttribute('id');
+    });
+
+    it('should have provided id attribute if id provded as prop', () => {
+      const { getByRole } = renderWithTheme(<Button id={SAMPLE_ID}>Click Me</Button>);
+      const button = getByRole('button');
+      expect(button).toHaveAttribute('id');
+      expect(button.id).toEqual(SAMPLE_ID);
+    });
+  });
+
+  describe('name', () => {
+    it('should not have name attribute if not provded as prop', () => {
+      const { getByRole } = renderWithTheme(<Button>Click Me</Button>);
+      const button = getByRole('button');
+      expect(button).not.toHaveAttribute('name');
+    });
+
+    it('should have provided name attribute if name provded as prop', () => {
+      const name = 'sample-name';
+      const { getByRole } = renderWithTheme(<Button name={name}>Click Me</Button>);
+      const button = getByRole('button');
+      expect(button).toHaveAttribute('name');
+      expect(button.name).toEqual(name);
+    });
+  });
+
   describe('variant', () => {
     it('should render a primary(default) button', () => {
       const { container } = renderWithTheme(<Button>Click Me</Button>);
@@ -23,19 +56,6 @@ describe('<Button />', () => {
     it('should render a tertiary button', () => {
       const { container } = renderWithTheme(<Button variant="tertiary">click me</Button>);
       expect(container).toMatchSnapshot();
-    });
-  });
-
-  describe('error', () => {
-    it('should throw error if children is not string', () => {
-      const errorMessage = 'Error in Button: expected `children` of type `string` but found object';
-      expect(() =>
-        renderWithTheme(
-          <Button>
-            <View />
-          </Button>,
-        ),
-      ).toThrow(errorMessage);
     });
   });
 
@@ -103,37 +123,42 @@ describe('<Button />', () => {
 
   describe('disabled', () => {
     it('should render a disabled button', () => {
-      const { container } = renderWithTheme(<Button disabled>Disabled</Button>);
+      const { container, getByRole } = renderWithTheme(<Button disabled>Disabled Button</Button>);
+      const button = getByRole('button');
+      expect(button).toBeDisabled();
       expect(container).toMatchSnapshot();
     });
   });
 
+  describe('focus', () => {
+    it('should have focus when input is focused', () => {
+      const { getByRole } = renderWithTheme(<Button>Click Me</Button>);
+      const button = getByRole('button');
+      button.focus();
+      expect(button).toHaveFocus();
+    });
+  });
+
   describe('onChange', () => {
-    describe('without disabled', () => {
-      it('should call onChange handler exactly one time', () => {
-        const handleClick = jest.fn();
-        const { container, getByTestId } = renderWithTheme(
-          <Button onClick={handleClick}>Click Me</Button>,
-        );
-        const button = getByTestId('ds-button');
-        fireEvent.click(button);
-        expect(handleClick).toHaveBeenCalledTimes(1);
-        expect(container).toMatchSnapshot();
-      });
+    it('should call onChange handler exactly one time', () => {
+      const handleClick = jest.fn();
+      const { getByRole } = renderWithTheme(<Button onClick={handleClick}>Click Me</Button>);
+      const button = getByRole('button');
+      fireEvent.click(button);
+      expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
     describe('with disabled', () => {
       it('should not call onChange handler', () => {
         const handleClick = jest.fn();
-        const { container, getByTestId } = renderWithTheme(
+        const { getByRole } = renderWithTheme(
           <Button disabled onClick={handleClick}>
             Click Me
           </Button>,
         );
-        const button = getByTestId('ds-button');
+        const button = getByRole('button');
         fireEvent.click(button);
         expect(handleClick).not.toBeCalled();
-        expect(container).toMatchSnapshot();
       });
     });
   });
@@ -141,43 +166,67 @@ describe('<Button />', () => {
   describe('type', () => {
     it('should call form submit handler if type is submit', () => {
       const handleSubmit = jest.fn();
-      const { container, getByTestId } = renderWithTheme(
+      const { getByRole } = renderWithTheme(
         <form onSubmit={handleSubmit}>
           <Button type="submit">Click Me</Button>
         </form>,
       );
-      const button = getByTestId('ds-button');
+      const button = getByRole('button');
       fireEvent.click(button);
       expect(handleSubmit).toHaveBeenCalledTimes(1);
-      expect(container).toMatchSnapshot();
     });
 
     // Skipping since Jest 24 does not handle the reset event correctly due to JSDOM 11
     // It is supposed to be fixed in Jest 25 (JSDOM 15)
     it.skip('should call form reset handler if type is reset', () => {
       const handleReset = jest.fn();
-      const { container, getByTestId } = renderWithTheme(
+      const { getByRole } = renderWithTheme(
         <form onReset={handleReset}>
           <Button type="reset">Click Me</Button>
         </form>,
       );
-      const button = getByTestId('ds-button');
+      const button = getByRole('button');
       fireEvent.click(button);
       expect(handleReset).toHaveBeenCalledTimes(1);
-      expect(container).toMatchSnapshot();
     });
 
     it('should not call submit handler if type is button', () => {
       const handleSubmit = jest.fn();
-      const { container, getByTestId } = renderWithTheme(
+      const { getByRole } = renderWithTheme(
         <form onSubmit={handleSubmit}>
           <Button type="button">Click Me</Button>
         </form>,
       );
-      const button = getByTestId('ds-button');
+      const button = getByRole('button');
       fireEvent.click(button);
       expect(handleSubmit).not.toBeCalled();
-      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('testID', () => {
+    it('should have default testID(ds-button) if no testID is provided as prop', () => {
+      const { queryByTestId } = renderWithTheme(<Button>Click Me</Button>);
+      expect(queryByTestId('ds-button')).not.toBeNull();
+    });
+
+    it('should update testID if testID is provided as prop', () => {
+      const testID = 'sample-test-id';
+      const { queryByTestId } = renderWithTheme(<Button testID={testID}>Click Me</Button>);
+      expect(queryByTestId('ds-button')).toBeNull();
+      expect(queryByTestId(testID)).not.toBeNull();
+    });
+  });
+
+  describe('error', () => {
+    it('should throw error if children is not string', () => {
+      const errorMessage = 'Error in Button: expected `children` of type `string` but found object';
+      expect(() =>
+        renderWithTheme(
+          <Button>
+            <View />
+          </Button>,
+        ),
+      ).toThrow(errorMessage);
     });
   });
 });

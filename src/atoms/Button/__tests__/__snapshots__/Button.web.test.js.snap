@@ -31,7 +31,7 @@ exports[`<Button /> disabled should render a disabled button 1`] = `
       color="light.950"
       data-testid="ds-text"
     >
-      Disabled
+      Disabled Button
     </div>
   </button>
 </div>
@@ -120,43 +120,6 @@ exports[`<Button /> icon without children should render icon only button 1`] = `
 </div>
 `;
 
-exports[`<Button /> onChange with disabled should not call onChange handler 1`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 juyGMq Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    disabled=""
-    type="button"
-  >
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 fTtHfx"
-      color="light.950"
-      data-testid="ds-text"
-    >
-      Click Me
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<Button /> onChange without disabled should call onChange handler exactly one time 1`] = `
-<div>
-  <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
-    data-testid="ds-button"
-    type="button"
-  >
-    <div
-      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
-      color="light.900"
-      data-testid="ds-text"
-    >
-      Click Me
-    </div>
-  </button>
-</div>
-`;
-
 exports[`<Button /> size should render a large button 1`] = `
 <div>
   <button
@@ -226,46 +189,6 @@ exports[`<Button /> size should render a xsmall button 1`] = `
       CLICK ME
     </div>
   </button>
-</div>
-`;
-
-exports[`<Button /> type should call form submit handler if type is submit 1`] = `
-<div>
-  <form>
-    <button
-      class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
-      data-testid="ds-button"
-      type="submit"
-    >
-      <div
-        class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
-        color="light.900"
-        data-testid="ds-text"
-      >
-        Click Me
-      </div>
-    </button>
-  </form>
-</div>
-`;
-
-exports[`<Button /> type should not call submit handler if type is button 1`] = `
-<div>
-  <form>
-    <button
-      class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
-      data-testid="ds-button"
-      type="button"
-    >
-      <div
-        class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
-        color="light.900"
-        data-testid="ds-text"
-      >
-        Click Me
-      </div>
-    </button>
-  </form>
 </div>
 `;
 
