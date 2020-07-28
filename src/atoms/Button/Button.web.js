@@ -370,13 +370,20 @@ const Button = ({
   id,
   name,
 }) => {
-  const theme = useTheme();
-
   if (typeof children !== 'string' && typeof children !== 'undefined') {
     throw new Error(
       `Error in Button: expected \`children\` of type \`string\` but found ${typeof children}.`,
     );
   }
+
+  const theme = useTheme();
+
+  /* Buttons remain focused on chrome after click unless user clicks on any external area.
+   * This causes the focus styles to be present on the button even after click is done.
+   * _handleMouseUpByBlurring manually calls blur on the button when user click and releases the mouse button. */
+  const _handleMouseUpByBlurring = ({ currentTarget }) => {
+    currentTarget.blur();
+  };
 
   return (
     <Flex
@@ -391,6 +398,7 @@ const Button = ({
           <StyledButton
             variantColor={variantColor}
             onClick={onClick}
+            onMouseUp={_handleMouseUpByBlurring}
             disabled={disabled}
             size={size}
             block={block}
