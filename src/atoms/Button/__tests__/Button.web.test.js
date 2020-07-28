@@ -125,8 +125,8 @@ describe('<Button />', () => {
 
   describe('icon', () => {
     describe('with children', () => {
-      describe('with iconAlign left', () => {
-        it('should render a button with text with icon on left', () => {
+      describe('with icon left', () => {
+        it('should render a button with icon on left', () => {
           const { container } = renderWithTheme(
             <Button icon="info" iconAlign="left">
               Button
@@ -136,8 +136,8 @@ describe('<Button />', () => {
         });
       });
 
-      describe('with iconAlign right', () => {
-        it('should render a button with text with icon on right', () => {
+      describe('with icon right', () => {
+        it('should render a button with icon on right', () => {
           const { container } = renderWithTheme(
             <Button icon="info" iconAlign="right">
               Button
