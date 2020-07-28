@@ -3,7 +3,7 @@
 exports[`<Button /> block should render a block button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 fUrnbk Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 hBDZyG"
+    class="Buttonweb__StyledButton-gxhxmy-0 gBCsZh Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 hBDZyG"
     data-testid="ds-button"
     type="button"
   >
@@ -21,7 +21,7 @@ exports[`<Button /> block should render a block button 1`] = `
 exports[`<Button /> disabled should render a disabled button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 juyGMq Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 oflLr Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     disabled=""
     type="button"
@@ -40,7 +40,7 @@ exports[`<Button /> disabled should render a disabled button 1`] = `
 exports[`<Button /> icon with children with iconAlign left should render a button with text with icon on left 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
@@ -70,7 +70,7 @@ exports[`<Button /> icon with children with iconAlign left should render a butto
 exports[`<Button /> icon with children with iconAlign right should render a button with text with icon on right 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
@@ -100,7 +100,7 @@ exports[`<Button /> icon with children with iconAlign right should render a butt
 exports[`<Button /> icon without children should render icon only button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 cPoqMa Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 tyMaB Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
@@ -123,7 +123,7 @@ exports[`<Button /> icon without children should render icon only button 1`] = `
 exports[`<Button /> size should render a large button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 eFHgXX Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
@@ -141,7 +141,7 @@ exports[`<Button /> size should render a large button 1`] = `
 exports[`<Button /> size should render a medium(default) button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
@@ -159,7 +159,7 @@ exports[`<Button /> size should render a medium(default) button 1`] = `
 exports[`<Button /> size should render a small button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 cubrzf Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 gkgBsY Sizeweb__Size-sc-10bl685-0 cwUXCl Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
@@ -177,7 +177,7 @@ exports[`<Button /> size should render a small button 1`] = `
 exports[`<Button /> size should render a xsmall button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 klaaMc Sizeweb__Size-sc-10bl685-0 yoKtN Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 hqmUpj Sizeweb__Size-sc-10bl685-0 yoKtN Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
@@ -195,7 +195,7 @@ exports[`<Button /> size should render a xsmall button 1`] = `
 exports[`<Button /> variant should render a primary(default) button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 jnOEEc Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
@@ -213,7 +213,7 @@ exports[`<Button /> variant should render a primary(default) button 1`] = `
 exports[`<Button /> variant should render a secondary button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 ctpJNE Spaceweb__Space-njatzl-0 hlIKaS Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 inGAXd Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
@@ -231,7 +231,7 @@ exports[`<Button /> variant should render a secondary button 1`] = `
 exports[`<Button /> variant should render a tertiary button 1`] = `
 <div>
   <button
-    class="Buttonweb__StyledButton-gxhxmy-0 iTllvu Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    class="Buttonweb__StyledButton-gxhxmy-0 hZNGWL Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
     data-testid="ds-button"
     type="button"
   >
