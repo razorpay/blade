@@ -7,38 +7,25 @@ import Flex from '../Flex';
 import isEmpty from '../../_helpers/isEmpty';
 
 const styles = {
-  color({ disabled, errorText, successText, rightAlignComponent }) {
-    if (disabled && !rightAlignComponent) {
+  color({ disabled, errorText }) {
+    if (disabled) {
       return 'shade.930';
     } else if (!isEmpty(errorText)) {
       return 'negative.900';
-    } else if (!isEmpty(successText)) {
-      return 'positive.900';
     } else {
       return 'shade.950';
     }
   },
 };
 
-const Text = ({ helpText, errorText, disabled, successText, rightAlignComponent }) => {
-  let displayText;
-  if (!isEmpty(errorText)) {
-    displayText = errorText;
-  } else if (!isEmpty(successText)) {
-    displayText = successText;
-  } else {
-    displayText = helpText;
-  }
+const Text = ({ helpText, errorText, disabled }) => {
+  const displayText = isEmpty(errorText) ? helpText : errorText;
 
   return (
     <Space padding={[0.5, 0, 0, 0]}>
       <Flex flex={1}>
         <View>
-          <AtomText
-            disabled={disabled}
-            color={styles.color({ disabled, errorText, successText, rightAlignComponent })}
-            size="xsmall"
-          >
+          <AtomText disabled={disabled} color={styles.color({ disabled, errorText })} size="xsmall">
             {displayText}
           </AtomText>
         </View>
@@ -48,19 +35,15 @@ const Text = ({ helpText, errorText, disabled, successText, rightAlignComponent 
 };
 
 Text.propTypes = {
-  helpText: PropTypes.node,
-  successText: PropTypes.node,
+  helpText: PropTypes.string,
   errorText: PropTypes.string,
   disabled: PropTypes.bool,
-  rightAlignComponent: PropTypes.node,
 };
 
 Text.defaultProps = {
   errorText: '',
   helpText: '',
-  successText: '',
   disabled: false,
-  rightAlignComponent: '',
 };
 
 export default Text;
