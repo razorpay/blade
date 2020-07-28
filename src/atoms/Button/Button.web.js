@@ -13,13 +13,6 @@ import isEmpty from '../../_helpers/isEmpty';
 
 const BORDER_WIDTH = makePxValue(0.125);
 
-const relativePadding = (variant, padding, border = BORDER_WIDTH) => {
-  if (variant === 'tertiary') {
-    return makePxValue(padding);
-  }
-  return makePxValue(`${parseFloat(padding) - parseFloat(border)}px`);
-};
-
 const styles = {
   fontColor({ variant, variantColor, disabled }) {
     switch (variant) {
@@ -191,33 +184,33 @@ const styles = {
         return makePxValue(4.5);
     }
   },
-  padding({ size, theme, children, variant }) {
+  padding({ size, theme, children }) {
     switch (size) {
       case 'xsmall':
         if (children) {
-          return [0, relativePadding(variant, theme.spacings.small)];
+          return [0, theme.spacings.small];
         }
-        return [0, relativePadding(variant, theme.spacings.xxsmall)];
+        return [0, theme.spacings.xxsmall];
       case 'small':
         if (children) {
-          return [0, relativePadding(variant, theme.spacings.large)];
+          return [0, theme.spacings.large];
         }
-        return [0, relativePadding(variant, theme.spacings.xsmall)];
+        return [0, theme.spacings.xsmall];
       case 'medium':
         if (children) {
-          return [0, relativePadding(variant, theme.spacings.xxlarge)];
+          return [0, theme.spacings.xxlarge];
         }
-        return [0, relativePadding(variant, makePxValue(0.75))];
+        return [0, makePxValue(0.75)];
       case 'large':
         if (children) {
-          return [0, relativePadding(variant, theme.spacings.xxlarge)];
+          return [0, theme.spacings.xxlarge];
         }
-        return [0, relativePadding(variant, theme.spacings.small)];
+        return [0, theme.spacings.small];
       default:
         if (children) {
-          return [0, relativePadding(variant, theme.spacings.xxlarge)];
+          return [0, theme.spacings.xxlarge];
         }
-        return [0, relativePadding(variant, makePxValue(0.75))];
+        return [0, makePxValue(0.75)];
     }
   },
   iconSize({ size, children }) {
@@ -339,6 +332,7 @@ const styles = {
 };
 
 const StyledButton = styled.button`
+  box-sizing: border-box;
   background-color: ${styles.backgroundColor};
   border-radius: ${(props) => props.theme.spacings.xxsmall};
   border: ${styles.border};
@@ -393,7 +387,7 @@ const Button = ({
       justifyContent="center"
     >
       <Size height={styles.height({ size, theme })}>
-        <Space padding={styles.padding({ size, children, theme, variant })}>
+        <Space padding={styles.padding({ size, children, theme })}>
           <StyledButton
             variantColor={variantColor}
             onClick={onClick}
