@@ -12,7 +12,7 @@ exports[`<Button /> block should render a block button 1`] = `
       color="light.900"
       data-testid="ds-text"
     >
-      click me
+      Click Me
     </div>
   </button>
 </div>
@@ -132,7 +132,7 @@ exports[`<Button /> size should render a large button 1`] = `
       color="light.900"
       data-testid="ds-text"
     >
-      click me
+      Click Me
     </div>
   </button>
 </div>
@@ -150,7 +150,7 @@ exports[`<Button /> size should render a medium(default) button 1`] = `
       color="light.900"
       data-testid="ds-text"
     >
-      click me
+      Click Me
     </div>
   </button>
 </div>
@@ -168,7 +168,7 @@ exports[`<Button /> size should render a small button 1`] = `
       color="light.900"
       data-testid="ds-text"
     >
-      click me
+      Click Me
     </div>
   </button>
 </div>
@@ -240,7 +240,7 @@ exports[`<Button /> variant should render a tertiary button 1`] = `
       color="primary.800"
       data-testid="ds-text"
     >
-      click me
+      Click Me
     </div>
   </button>
 </div>

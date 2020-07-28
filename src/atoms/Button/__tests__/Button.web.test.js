@@ -12,13 +12,13 @@ const SAMPLE_ID = 'sample-id';
 
 describe('<Button />', () => {
   describe('id', () => {
-    it('should not have id attribute if not provded as prop', () => {
+    it('should not have id attribute if not provided as prop', () => {
       const { getByRole } = renderWithTheme(<Button>Click Me</Button>);
       const button = getByRole('button');
       expect(button).not.toHaveAttribute('id');
     });
 
-    it('should have provided id attribute if id provded as prop', () => {
+    it('should have provided id attribute if id provided as prop', () => {
       const { getByRole } = renderWithTheme(<Button id={SAMPLE_ID}>Click Me</Button>);
       const button = getByRole('button');
       expect(button).toHaveAttribute('id');
@@ -27,13 +27,13 @@ describe('<Button />', () => {
   });
 
   describe('name', () => {
-    it('should not have name attribute if not provded as prop', () => {
+    it('should not have name attribute if not provided as prop', () => {
       const { getByRole } = renderWithTheme(<Button>Click Me</Button>);
       const button = getByRole('button');
       expect(button).not.toHaveAttribute('name');
     });
 
-    it('should have provided name attribute if name provded as prop', () => {
+    it('should have provided name attribute if name provided as prop', () => {
       const name = 'sample-name';
       const { getByRole } = renderWithTheme(<Button name={name}>Click Me</Button>);
       const button = getByRole('button');
@@ -54,36 +54,36 @@ describe('<Button />', () => {
     });
 
     it('should render a tertiary button', () => {
-      const { container } = renderWithTheme(<Button variant="tertiary">click me</Button>);
+      const { container } = renderWithTheme(<Button variant="tertiary">Click Me</Button>);
       expect(container).toMatchSnapshot();
     });
   });
 
   describe('block', () => {
     it('should render a block button', () => {
-      const { container } = renderWithTheme(<Button block>click me</Button>);
+      const { container } = renderWithTheme(<Button block>Click Me</Button>);
       expect(container).toMatchSnapshot();
     });
   });
 
   describe('size', () => {
     it('should render a medium(default) button', () => {
-      const { container } = renderWithTheme(<Button>click me</Button>);
+      const { container } = renderWithTheme(<Button>Click Me</Button>);
       expect(container).toMatchSnapshot();
     });
 
     it('should render a large button', () => {
-      const { container } = renderWithTheme(<Button size="large">click me</Button>);
+      const { container } = renderWithTheme(<Button size="large">Click Me</Button>);
       expect(container).toMatchSnapshot();
     });
 
     it('should render a small button', () => {
-      const { container } = renderWithTheme(<Button size="small">click me</Button>);
+      const { container } = renderWithTheme(<Button size="small">Click Me</Button>);
       expect(container).toMatchSnapshot();
     });
 
     it('should render a xsmall button', () => {
-      const { container } = renderWithTheme(<Button size="xsmall">click me</Button>);
+      const { container } = renderWithTheme(<Button size="xsmall">Click Me</Button>);
       expect(container).toMatchSnapshot();
     });
   });
