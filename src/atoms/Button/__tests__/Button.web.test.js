@@ -59,6 +59,17 @@ describe('<Button />', () => {
     });
   });
 
+  describe('variantColor', () => {
+    it('should render a primary button based on provided variantColor', () => {
+      const { container } = renderWithTheme(
+        <Button variant="primary" variantColor="tone">
+          Click Me
+        </Button>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
   describe('block', () => {
     it('should render a block button', () => {
       const { container } = renderWithTheme(<Button block>Click Me</Button>);
@@ -212,7 +223,7 @@ describe('<Button />', () => {
     });
 
     // Skipping since Jest 24 does not handle the reset event correctly due to JSDOM 11
-    // It is supposed to be fixed in Jest 25 (JSDOM 15)
+    // It is fixed in Jest 25 (JSDOM 15)
     it.skip('should call form reset handler if type is reset', () => {
       const handleReset = jest.fn();
       const { getByRole } = renderWithTheme(
