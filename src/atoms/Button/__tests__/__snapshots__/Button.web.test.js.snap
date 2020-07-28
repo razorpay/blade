@@ -1,5 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Button /> align should render a center aligned button if align=center 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 fsjcxB"
+  >
+    <button
+      class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 iRurrc"
+      data-testid="ds-button"
+      type="button"
+    >
+      <div
+        class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+        color="light.900"
+        data-testid="ds-text"
+      >
+        Click Me
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<Button /> align should render a left aligned button if align=left 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 fsjcxB"
+  >
+    <button
+      class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+      data-testid="ds-button"
+      type="button"
+    >
+      <div
+        class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+        color="light.900"
+        data-testid="ds-text"
+      >
+        Click Me
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<Button /> align should render a right aligned button if align=right 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 fsjcxB"
+  >
+    <button
+      class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 cYvmMG"
+      data-testid="ds-button"
+      type="button"
+    >
+      <div
+        class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+        color="light.900"
+        data-testid="ds-text"
+      >
+        Click Me
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
 exports[`<Button /> block should render a block button 1`] = `
 <div>
   <button

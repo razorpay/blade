@@ -1,9 +1,9 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
-
-import Button from '../index';
-import View from '../../View';
 import { renderWithTheme } from '../../../_helpers/testing';
+import Flex from '../../Flex';
+import View from '../../View';
+import Button from '../index';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -62,6 +62,41 @@ describe('<Button />', () => {
   describe('block', () => {
     it('should render a block button', () => {
       const { container } = renderWithTheme(<Button block>Click Me</Button>);
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('align', () => {
+    it('should render a left aligned button if align=left', () => {
+      const { container } = renderWithTheme(
+        <Flex flex={1} flexDirection="column">
+          <View>
+            <Button align="left">Click Me</Button>
+          </View>
+        </Flex>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should render a center aligned button if align=center', () => {
+      const { container } = renderWithTheme(
+        <Flex flex={1} flexDirection="column">
+          <View>
+            <Button align="center">Click Me</Button>
+          </View>
+        </Flex>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should render a right aligned button if align=right', () => {
+      const { container } = renderWithTheme(
+        <Flex flex={1} flexDirection="column">
+          <View>
+            <Button align="right">Click Me</Button>
+          </View>
+        </Flex>,
+      );
       expect(container).toMatchSnapshot();
     });
   });
