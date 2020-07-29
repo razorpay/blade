@@ -370,14 +370,14 @@ const Button = ({
   id,
   name,
 }) => {
+  const theme = useTheme();
+
   /* children can only be string or undefined (icon only button) */
   if (typeof children !== 'string' && typeof children !== 'undefined') {
     throw new Error(
       `Error in Button: expected \`children\` of type \`string\` but found ${typeof children}.`,
     );
   }
-
-  const theme = useTheme();
 
   /* Button remains focused on Chrome after click until focused on any other element.
    * This causes the focus styles to be present on the button.
