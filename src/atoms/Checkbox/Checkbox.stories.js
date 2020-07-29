@@ -29,7 +29,7 @@ storiesOf('Checkbox', module)
     <Checkbox
       checked={boolean('Checked', true)}
       size={select('Size', sizeOptions, 'large')}
-      title={text('Title', 'Enable beast Mode')}
+      title={text('Title', 'Enable Beast Mode')}
       helpText={text('Help Text', 'Play with addons')}
       disabled={boolean('Disabled', false)}
       onChange={action('Changed')}
