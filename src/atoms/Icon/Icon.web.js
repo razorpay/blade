@@ -33,7 +33,7 @@ Icon.defaultProps = {
 };
 
 Icon.propTypes = {
-  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
+  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   name: PropTypes.oneOf(Object.keys(icons)).isRequired,
   fill: PropTypes.oneOf(getColorKeys()),
 };
