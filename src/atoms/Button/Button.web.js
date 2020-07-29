@@ -379,10 +379,10 @@ const Button = ({
 
   const theme = useTheme();
 
-  /* Buttons remain focused on chrome after click unless user clicks on any external area.
-   * This causes the focus styles to be present on the button even after click is done.
-   * _handleMouseUpByBlurring manually calls blur on the button when user click and releases the mouse button. */
-  const _handleMouseUpByBlurring = ({ currentTarget }) => {
+  /* Button remains focused on Chrome after click until focused on any other element.
+   * This causes the focus styles to be present on the button.
+   * Manually call blur on the button when user click and releases the mouse button. */
+  const onMouseUp = ({ currentTarget }) => {
     currentTarget.blur();
   };
 
@@ -399,7 +399,7 @@ const Button = ({
           <StyledButton
             variantColor={variantColor}
             onClick={onClick}
-            onMouseUp={_handleMouseUpByBlurring}
+            onMouseUp={onMouseUp}
             disabled={disabled}
             size={size}
             block={block}
