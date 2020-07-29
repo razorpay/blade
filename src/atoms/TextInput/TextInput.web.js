@@ -166,7 +166,6 @@ const TextInput = ({
   onChange,
   onBlur,
   helpText,
-  successText,
   errorText,
   variant,
   prefix,
@@ -445,15 +444,10 @@ const TextInput = ({
                 </Size>
                 <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
                 {/* Bottom texts */}
-                {hasError || helpText || successText ? (
+                {hasError || helpText ? (
                   <Flex flexDirection="row" justifyContent="space-between">
                     <View>
-                      <Text
-                        errorText={errorText}
-                        helpText={helpText}
-                        successText={successText}
-                        disabled={disabled}
-                      />
+                      <Text errorText={errorText} helpText={helpText} disabled={disabled} />
                       {maxLength ? (
                         <CharacterCount
                           disabled={disabled}
@@ -476,7 +470,6 @@ const TextInput = ({
 TextInput.propTypes = {
   placeholder: PropTypes.string,
   helpText: PropTypes.node,
-  successText: PropTypes.node,
   errorText: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
