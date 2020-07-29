@@ -4,6 +4,7 @@ import styled, { ThemeContext } from 'styled-components/native';
 import PropTypes from 'prop-types';
 import { getLineHeight } from '../../_helpers/theme';
 import Flex from '../Flex';
+import Position from '../Position';
 import automation from '../../_helpers/automation-attributes';
 import View from '../View';
 import isEmpty from '../../_helpers/isEmpty';
@@ -18,6 +19,14 @@ import Text from './Text';
 import Line from './Line';
 
 const IS_ANDROID = Platform.OS === 'android';
+
+const TextAreaSignifier = styled(View)`
+  background-color: ${(props) => props.theme.colors.shade[940]};
+`;
+
+const TextAreaSignifierContainer = styled(View)`
+  transform: rotate(135deg);
+`;
 
 const styles = {
   textInput: {
@@ -301,7 +310,6 @@ const TextInput = React.forwardRef(
               {label}
             </Label.Animated>
           ) : null}
-
           {/* Text Input Container */}
           <Flex flexDirection="row" alignItems="flex-start">
             <View>
@@ -346,7 +354,6 @@ const TextInput = React.forwardRef(
                               _isMultiline={_isMultiline}
                             />
                           ) : null}
-
                           <Flex flex={1}>
                             <Space
                               padding={styles.textInput.padding({
@@ -408,9 +415,26 @@ const TextInput = React.forwardRef(
                         </InputContainer>
                       </Size>
                     </Flex>
+                    {_isMultiline ? (
+                      <Position position="absolute" bottom="1px">
+                        <Size height="8px" width="8px">
+                          <Flex alignItems="center" alignSelf="flex-end" justifyContent="center">
+                            <TextAreaSignifierContainer>
+                              <Size height="1px" width="4px">
+                                <TextAreaSignifier />
+                              </Size>
+                              <Space margin={['2px', 0, 0, 0]}>
+                                <Size height="1px" width="8px">
+                                  <TextAreaSignifier />
+                                </Size>
+                              </Space>
+                            </TextAreaSignifierContainer>
+                          </Flex>
+                        </Size>
+                      </Position>
+                    ) : null}
                     <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
                   </FillContainer>
-
                   {/* Bottom texts */}
                   {hasError || helpText ? (
                     <Flex flexDirection="row" justifyContent="space-between">

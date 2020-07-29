@@ -134,6 +134,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot after focus (fil
             />
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -291,6 +365,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot after focus (fil
             />
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={true}
@@ -445,6 +593,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing (filled 
               underlineColorAndroid="transparent"
               value="user@domain.com"
               variant="filled"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -608,6 +830,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with aut
             />
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -763,6 +1059,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with cha
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -1017,6 +1387,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with dis
                 </RNSVGGroup>
               </RNSVGSvgView>
             </View>
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
           </View>
           <View
             disabled={true}
@@ -1333,6 +1777,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with err
             </View>
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={true}
             isFocused={false}
@@ -1549,6 +2067,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -1812,6 +2404,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with hel
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -2145,6 +2811,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
             </View>
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -2355,6 +3095,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -2571,6 +3385,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
             </View>
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -2725,6 +3613,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with lab
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -2925,6 +3887,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with pre
             </View>
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -3122,6 +4158,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with pre
             />
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -3276,6 +4386,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with sma
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -3476,6 +4660,80 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with suf
             </View>
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -3633,6 +4891,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot after focus 1`
             />
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -3787,6 +5119,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot after focus 2`
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -3950,6 +5356,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with a
             />
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -4105,6 +5585,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with c
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -4359,6 +5913,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with d
                 </RNSVGGroup>
               </RNSVGSvgView>
             </View>
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
           </View>
           <View
             disabled={true}
@@ -4675,6 +6303,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with e
             </View>
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={true}
             isFocused={false}
@@ -4893,6 +6595,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with f
             />
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -5047,6 +6823,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -5266,6 +7116,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with h
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -5588,6 +7512,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
             />
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -5857,6 +7855,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
             </View>
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -6070,6 +8142,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
             </View>
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -6224,6 +8370,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with l
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -6424,6 +8644,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with p
             </View>
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -6621,6 +8915,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with p
             />
           </View>
           <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
+          </View>
+          <View
             disabled={false}
             hasError={false}
             isFocused={false}
@@ -6775,6 +9143,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with s
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
+            />
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
             />
           </View>
           <View
@@ -6973,6 +9415,80 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with s
                 kg
               </Text>
             </View>
+          </View>
+          <View
+            bottom="1px"
+            position="absolute"
+            style={
+              Array [
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotate": "135deg",
+                    },
+                  ],
+                },
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "flex-end",
+                    "flexDirection": "column",
+                    "justifyContent": "center",
+                  },
+                  Array [
+                    Object {
+                      "height": 8,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "bottom": 1,
+                        "position": "absolute",
+                      },
+                    ],
+                  ],
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 4,
+                    },
+                  ],
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.24)",
+                  },
+                  Array [
+                    Object {
+                      "height": 1,
+                      "width": 8,
+                    },
+                    Array [
+                      Object {
+                        "marginBottom": 0,
+                        "marginLeft": 0,
+                        "marginRight": 0,
+                        "marginTop": 2,
+                      },
+                    ],
+                  ],
+                ]
+              }
+            />
           </View>
           <View
             disabled={false}
