@@ -6,10 +6,10 @@ import isEmpty from '../../_helpers/isEmpty';
 import { getVariantColorKeys } from '../../_helpers/theme';
 import Flex from '../Flex';
 import Icon from '../Icon';
+import Size from '../Size';
 import Space from '../Space';
 import Text from '../Text';
 import View from '../View';
-import Size from '../Size';
 import Backdrop from './Backdrop';
 
 const styles = {
@@ -95,6 +95,7 @@ const Checkbox = ({
   helpText,
   errorText,
   testID,
+  id,
 }) => {
   let titleTextColor = 'shade.980';
   let helpTextColor = 'shade.950';
@@ -128,12 +129,15 @@ const Checkbox = ({
           <View>
             <Size width={styles.backdrop.width[size]} height={styles.backdrop.height[size]}>
               <Backdrop
+                id={id}
                 tabIndex={0}
                 role="checkbox"
                 isChecked={isChecked}
                 disabled={disabled}
                 size={size}
                 onClick={onClick}
+                aria-checked={isChecked}
+                aria-labelledby={id ? `${id}-label` : undefined}
               >
                 <Icon
                   size={styles.icon.size({ size })}
@@ -146,7 +150,13 @@ const Checkbox = ({
               <Flex alignSelf="center">
                 <Space margin={styles.title.margin()}>
                   <View>
-                    <Text color={titleTextColor} size={size}>
+                    <Text
+                      onClick={onClick}
+                      id={id ? `${id}-label` : undefined}
+                      as="label"
+                      color={titleTextColor}
+                      size={size}
+                    >
                       {title}
                     </Text>
                   </View>
@@ -182,6 +192,7 @@ Checkbox.propTypes = {
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
   onChange: PropTypes.func.isRequired,
   testID: PropTypes.string,
+  id: PropTypes.string,
   helpText: (props, propName, componentName) => {
     if (props.size === 'small') {
       return new Error(
