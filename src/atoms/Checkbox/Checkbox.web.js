@@ -41,9 +41,9 @@ const styles = {
     margin(size) {
       switch (size) {
         case 'large':
-          return [0, 0, 0, 4];
+          return [0.5, 0, 0, 4];
         case 'medium':
-          return [0, 0, 0, 3.5];
+          return [0.5, 0, 0, 3.5];
         case 'small':
           return [0, 0, 0, 3];
         case 'xsmall':
