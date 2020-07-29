@@ -9,6 +9,7 @@ import Icon from '../Icon';
 import Space from '../Space';
 import Text from '../Text';
 import View from '../View';
+import Size from '../Size';
 import Backdrop from './Backdrop';
 
 const styles = {
@@ -68,39 +69,17 @@ const styles = {
     },
   },
   backdrop: {
-    dimensions(size) {
-      switch (size) {
-        case 'large':
-          return {
-            width: '28px',
-            height: '28px',
-            borderRadius: '14px',
-          };
-        case 'medium':
-          return {
-            width: '24px',
-            height: '24px',
-            borderRadius: '12px',
-          };
-        case 'small':
-          return {
-            width: '20px',
-            height: '20px',
-            borderRadius: '10px',
-          };
-        case 'xsmall':
-          return {
-            width: '16px',
-            height: '16px',
-            borderRadius: '8px',
-          };
-        default:
-          return {
-            width: '24px',
-            height: '24px',
-            borderRadius: '12px',
-          };
-      }
+    width: {
+      large: '28px',
+      medium: '24px',
+      small: '20px',
+      xsmall: '16px',
+    },
+    height: {
+      large: '28px',
+      medium: '24px',
+      small: '20px',
+      xsmall: '16px',
     },
   },
 };
@@ -144,22 +123,25 @@ const Checkbox = ({
 
   return (
     <Flex alignSelf="flex-start" flexDirection="column">
-      <View onClick={onClick} disabled={disabled} {...automation(testID)}>
+      <View {...automation(testID)}>
         <Flex flexDirection="row" alignItems="center">
           <View>
-            <Backdrop
-              tabIndex={0}
-              role="checkbox"
-              isChecked={isChecked}
-              disabled={disabled}
-              {...styles.backdrop.dimensions(size)}
-            >
-              <Icon
-                size={styles.icon.size({ size })}
-                name={externalChecked ?? isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
-                fill={styles.icon.fill({ isChecked, disabled, variantColor, externalChecked })}
-              />
-            </Backdrop>
+            <Size width={styles.backdrop.width[size]} height={styles.backdrop.height[size]}>
+              <Backdrop
+                tabIndex={0}
+                role="checkbox"
+                isChecked={isChecked}
+                disabled={disabled}
+                size={size}
+                onClick={onClick}
+              >
+                <Icon
+                  size={styles.icon.size({ size })}
+                  name={externalChecked ?? isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
+                  fill={styles.icon.fill({ isChecked, disabled, variantColor, externalChecked })}
+                />
+              </Backdrop>
+            </Size>
             {title ? (
               <Flex alignSelf="center">
                 <Space margin={styles.title.margin()}>

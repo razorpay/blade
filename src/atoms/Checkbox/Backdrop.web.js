@@ -26,14 +26,18 @@ const styles = {
         return 'transparent';
     }
   },
+  borderRadius: {
+    large: '14px',
+    medium: '12px',
+    small: '10px',
+    xsmall: '8px',
+  },
 };
 
 const Backdrop = styled(View)`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  border-radius: ${(props) => props.borderRadius};
-  outline: none;
   background-color: ${styles.backgroundColor};
+  border-radius: ${(props) => styles.borderRadius[props.size]};
+  outline: none;
   &:hover {
     background-color: ${(props) => styles.backgroundColor({ ...props, state: 'hover' })};
   }
