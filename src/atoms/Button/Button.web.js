@@ -332,7 +332,7 @@ const styles = {
 };
 
 const StyledButton = styled.button`
-  box-sizing: border-box;
+  box-sizing: border-box; /* TODO: remove after box-sizing: border-box added globally */
   background-color: ${styles.backgroundColor};
   border-radius: ${(props) => props.theme.spacings.xxsmall};
   border: ${styles.border};
