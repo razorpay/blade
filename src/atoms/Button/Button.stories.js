@@ -4,6 +4,7 @@ import { select } from '@storybook/addon-knobs';
 
 import Flex from '../Flex';
 import View from '../View';
+import Space from '../Space';
 import Button from './Button';
 
 const variants = {
@@ -32,38 +33,44 @@ storiesOf('Button', module)
     <Flex flex={1} justifyContent="space-around" flexDirection="column">
       <View>
         <Flex flexDirection="row">
-          <View>
-            <Button
-              size={select('Sizes', sizes, 'medium')}
-              variant={select('Variants', variants, 'primary')}
-              block
-            >
-              Block Button
-            </Button>
-          </View>
+          <Space margin={[1, 0]}>
+            <View>
+              <Button
+                size={select('Sizes', sizes, 'medium')}
+                variant={select('Variants', variants, 'primary')}
+                block
+              >
+                Block Button
+              </Button>
+            </View>
+          </Space>
         </Flex>
         <Flex flexDirection="row">
-          <View>
-            <Button
-              size={select('Sizes', sizes, 'medium')}
-              variant={select('Variants', variants, 'primary')}
-              icon="info"
-              block
-            />
-          </View>
+          <Space margin={[1, 0]}>
+            <View>
+              <Button
+                size={select('Sizes', sizes, 'medium')}
+                variant={select('Variants', variants, 'primary')}
+                icon="info"
+                block
+              />
+            </View>
+          </Space>
         </Flex>
         <Flex flexDirection="row">
-          <View>
-            <Button
-              size={select('Sizes', sizes, 'medium')}
-              variant={select('Variants', variants, 'primary')}
-              icon="info"
-              block
-              iconAlign={select('iconAlign', iconAlign, 'left')}
-            >
-              Block Button
-            </Button>
-          </View>
+          <Space margin={[1, 0]}>
+            <View>
+              <Button
+                size={select('Sizes', sizes, 'medium')}
+                variant={select('Variants', variants, 'primary')}
+                icon="info"
+                block
+                iconAlign={select('iconAlign', iconAlign, 'left')}
+              >
+                Block Button
+              </Button>
+            </View>
+          </Space>
         </Flex>
         <Button
           size={select('Sizes', sizes, 'medium')}
@@ -71,20 +78,28 @@ storiesOf('Button', module)
           icon="info"
           align="center"
         />
-        <Button
-          size={select('Sizes', sizes, 'medium')}
-          variant={select('Variants', variants, 'primary')}
-        >
-          Button
-        </Button>
-        <Button
-          size={select('Sizes', sizes, 'medium')}
-          variant={select('Variants', variants, 'primary')}
-          icon="info"
-          iconAlign={select('iconAlign', iconAlign, 'left')}
-        >
-          Button with Icon
-        </Button>
+        <Space margin={[1, 0]}>
+          <View>
+            <Button
+              size={select('Sizes', sizes, 'medium')}
+              variant={select('Variants', variants, 'primary')}
+            >
+              Button
+            </Button>
+          </View>
+        </Space>
+        <Space margin={[1, 0]}>
+          <View>
+            <Button
+              size={select('Sizes', sizes, 'medium')}
+              variant={select('Variants', variants, 'primary')}
+              icon="info"
+              iconAlign={select('iconAlign', iconAlign, 'left')}
+            >
+              Button with Icon
+            </Button>
+          </View>
+        </Space>
         <Button
           size={select('Sizes', sizes, 'medium')}
           variant={select('Variants', variants, 'primary')}
