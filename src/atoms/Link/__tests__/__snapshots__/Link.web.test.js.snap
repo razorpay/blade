@@ -9,7 +9,7 @@ exports[`<Link /> Selectors hover 1`] = `[MockFunction]`;
 exports[`<Link /> Size large 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dehpfc"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 ehXWjQ"
     color="shade.980"
     data-testid="ds-text"
     target="_self"
@@ -22,7 +22,7 @@ exports[`<Link /> Size large 1`] = `
 exports[`<Link /> Size medium 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 ijFoxK"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 bEnuyy"
     color="shade.980"
     data-testid="ds-text"
     target="_self"
@@ -35,7 +35,7 @@ exports[`<Link /> Size medium 1`] = `
 exports[`<Link /> Size small 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 euiZGS"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 lnuMty"
     color="shade.980"
     data-testid="ds-text"
     target="_self"
@@ -48,7 +48,7 @@ exports[`<Link /> Size small 1`] = `
 exports[`<Link /> various link props href 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dehpfc"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 ehXWjQ"
     color="shade.980"
     data-testid="ds-text"
     href="https://www.razorpay.com"
@@ -62,7 +62,7 @@ exports[`<Link /> various link props href 1`] = `
 exports[`<Link /> various link props rel 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dehpfc"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 ehXWjQ"
     color="shade.980"
     data-testid="ds-text"
     href="https://www.razorpay.com"
@@ -77,7 +77,7 @@ exports[`<Link /> various link props rel 1`] = `
 exports[`<Link /> various link props renders a link with default props 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 ijFoxK"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 bEnuyy"
     color="shade.980"
     data-testid="ds-text"
     target="_self"
@@ -90,7 +90,7 @@ exports[`<Link /> various link props renders a link with default props 1`] = `
 exports[`<Link /> various link props renders a link with disabled prop 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 eXEUkW"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 cyMJUi"
     color="shade.980"
     data-testid="ds-text"
     disabled=""
@@ -105,7 +105,7 @@ exports[`<Link /> various link props renders a link with disabled prop 1`] = `
 exports[`<Link /> various link props target 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 dehpfc"
+    class="Textweb__Text-sc-6jf9e4-0 Linkweb__StyledText-sc-1u7mgfj-0 ehXWjQ"
     color="shade.980"
     data-testid="ds-text"
     href="https://www.razorpay.com"
