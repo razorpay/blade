@@ -370,7 +370,7 @@ const Button = ({
   id,
   name,
 }) => {
-  /* children can only be string or undefined(eg: icon only buttons)  */
+  /* children can only be string or undefined (icon only button) */
   if (typeof children !== 'string' && typeof children !== 'undefined') {
     throw new Error(
       `Error in Button: expected \`children\` of type \`string\` but found ${typeof children}.`,
