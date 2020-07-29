@@ -108,11 +108,15 @@ const Checkbox = ({
 
   const onClick = useCallback(() => {
     if (isDefined(externalChecked)) {
-      onChange(!externalChecked);
+      if (onChange) {
+        onChange(!externalChecked);
+      }
       return;
     }
     setIsChecked((prevState) => {
-      onChange(!prevState);
+      if (onChange) {
+        onChange(!prevState);
+      }
       return !prevState;
     });
   }, [externalChecked, onChange]);
@@ -136,6 +140,7 @@ const Checkbox = ({
                 disabled={disabled}
                 size={size}
                 onClick={onClick}
+                checked={isChecked}
                 aria-checked={isChecked}
                 aria-labelledby={id ? `${id}-label` : undefined}
               >
