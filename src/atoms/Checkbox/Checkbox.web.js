@@ -131,7 +131,7 @@ const Checkbox = ({
 
   return (
     <Flex alignSelf="flex-start" flexDirection="column">
-      <View {...automation(testID)}>
+      <View>
         <Flex flexDirection="row" alignItems="center">
           <View>
             <Size width={styles.backdrop.width[size]} height={styles.backdrop.height[size]}>
@@ -149,6 +149,7 @@ const Checkbox = ({
                 aria-checked={isChecked}
                 aria-labelledby={id ? `${id}-label` : undefined}
                 variantColor={variantColor}
+                {...automation(testID)}
               >
                 <Icon
                   size={styles.icon.size({ size })}
