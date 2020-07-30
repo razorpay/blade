@@ -126,12 +126,12 @@ const BottomSheet = ({
   const handleBottomSheetClose = () => {
     if (onClose && typeof onClose === 'function') {
       onClose();
+      setTimeout(() => {
+        if (visible) {
+          bottomSheetRef.current?.open();
+        }
+      }, 100);
     }
-    setTimeout(() => {
-      if (visible) {
-        bottomSheetRef.current?.open();
-      }
-    }, 100);
   };
 
   return (
