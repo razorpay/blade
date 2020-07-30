@@ -1,18 +1,19 @@
-import React, { useContext, useState, useCallback, useEffect, useRef } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import Flex from '../Flex';
-import View from '../View';
-import Space from '../Space';
-import Size from '../Size';
-import isEmpty from '../../_helpers/isEmpty';
+import styled, { ThemeContext } from 'styled-components';
 import automation from '../../_helpers/automation-attributes';
-import Label from './Label';
-import CharacterCount from './CharacterCount';
+import isEmpty from '../../_helpers/isEmpty';
+import { makePxValue } from '../../_helpers/theme';
+import Flex from '../Flex';
+import Size from '../Size';
+import Space from '../Space';
+import View from '../View';
 import AccessoryIcon from './AccessoryIcon';
 import AccessoryText from './AccessoryText';
-import Text from './Text';
+import CharacterCount from './CharacterCount';
+import Label from './Label';
 import Line from './Line';
+import Text from './Text';
 
 const styles = {
   textInput: {
@@ -49,6 +50,21 @@ const styles = {
       }
       return '';
     },
+    height({ _isMultiline, variant }) {
+      if (variant === 'filled') {
+        if (_isMultiline) {
+          return makePxValue(8);
+        }
+        return makePxValue(4.5);
+      }
+      return 'auto';
+    },
+    padding({ variant }) {
+      if (variant === 'outlined') {
+        return [0, 0, 1, 0];
+      }
+      return [1, 0, 1, 0];
+    },
   },
   inputContainer: {
     width({ width }) {
@@ -56,11 +72,11 @@ const styles = {
         case 'auto':
           return '100%';
         case 'small':
-          return '160px';
+          return makePxValue(20);
         case 'medium':
-          return '240px';
+          return makePxValue(30);
         default:
-          return '240px';
+          return makePxValue(30);
       }
     },
   },
@@ -78,6 +94,7 @@ const StyledInput = styled.input`
   border: none;
   background-color: transparent;
   pointer-events: ${(props) => (props.disabled ? 'none' : '')};
+  resize: none;
   &::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
@@ -165,6 +182,7 @@ const TextInput = ({
   type,
   id,
   name,
+  _isMultiline,
 }) => {
   const theme = useContext(ThemeContext);
   const inputRef = useRef();
@@ -210,7 +228,6 @@ const TextInput = ({
 
   const onFocus = useCallback(() => {
     setIsFocused(true);
-
     /* Wait for 90ms to show the placeholder since it takes 100ms for Label to animate from inside to top of the TextInput.
        Otherwise they both overlap */
     /* Don't have any delay if label is on left of TextInput */
@@ -282,10 +299,21 @@ const TextInput = ({
     }
   }, [inputRef, containerRef, setLayoutDimensions]);
 
+  useEffect(() => {
+    // adjust height of textarea as user types for outlined variant
+    if (_isMultiline && variant === 'outlined') {
+      inputRef.current.style.height = 'inherit';
+      const height = inputRef.current.scrollHeight;
+      inputRef.current.style.height = `${height}px`;
+    }
+  }, [_isMultiline, variant, inputRef, input]);
+
+  const _rows = variant === 'outlined' ? 1 : 3;
+
   return (
     <Flex justifyContent="flex-end" flexDirection="column">
       <View ref={containerRef}>
-        {!hasAnimatedLabel && labelPosition === 'top' ? (
+        {labelPosition === 'top' && !hasAnimatedLabel ? (
           <Label.Regular
             position={labelPosition}
             disabled={disabled}
@@ -322,8 +350,8 @@ const TextInput = ({
             {/* Text Input */}
             <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
               <View>
-                <Size height="36px" minHeight="auto">
-                  <Space padding={[1, 0, 1, 0]}>
+                <Size height={styles.fillContainer.height({ variant, _isMultiline })} maxHeight={8}>
+                  <Space padding={styles.fillContainer.padding({ variant })}>
                     <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
                       {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
                         <Label.Animated
@@ -342,7 +370,7 @@ const TextInput = ({
                         </Label.Animated>
                       ) : null}
                       <Flex flexDirection="row" alignItems="center">
-                        <Size width={styles.inputContainer.width({ width })}>
+                        <Size width={styles.inputContainer.width({ width })} maxHeight="100%">
                           <InputContainer>
                             {hasPrefix ? (
                               <AccessoryText position="left" variant={variant} disabled={disabled}>
@@ -367,7 +395,7 @@ const TextInput = ({
                                   hasText,
                                 })}
                               >
-                                <Size minWidth={0}>
+                                <Size minWidth={0} maxHeight={8}>
                                   <StyledInput
                                     id={id}
                                     name={name}
@@ -387,6 +415,8 @@ const TextInput = ({
                                     value={input}
                                     ref={inputRef}
                                     onKeyPress={onKeyPress}
+                                    as={_isMultiline ? 'textarea' : 'input'}
+                                    rows={_isMultiline ? _rows : ''}
                                     {...automation(testID)}
                                   />
                                 </Size>
@@ -409,10 +439,10 @@ const TextInput = ({
                           </InputContainer>
                         </Size>
                       </Flex>
-                      <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
                     </FillContainer>
                   </Space>
                 </Size>
+                <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
                 {/* Bottom texts */}
                 {hasError || helpText ? (
                   <Flex flexDirection="row" justifyContent="space-between">
@@ -458,6 +488,7 @@ TextInput.propTypes = {
   type: PropTypes.oneOf(['text', 'password', 'number', 'email']),
   id: PropTypes.string,
   name: PropTypes.string,
+  _isMultiline: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
@@ -471,6 +502,7 @@ TextInput.defaultProps = {
   labelPosition: 'top',
   width: 'medium',
   type: 'text',
+  _isMultiline: false,
 };
 
 export default TextInput;

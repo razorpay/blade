@@ -20,8 +20,6 @@ const styles = {
 
 const StyledLine = styled(View)`
   background-color: ${styles.backgroundColor};
-  position: absolute;
-  bottom: 0;
 `;
 
 const Line = ({ isFocused, hasError, disabled }) => {

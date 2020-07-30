@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import styled, { ThemeContext } from 'styled-components';
 import isEmpty from '../../_helpers/isEmpty';
 import { getColor } from '../../_helpers/theme';
@@ -49,7 +49,7 @@ const styles = {
       if (position === 'left') {
         return [1, 3, 1, 0];
       }
-      return [0, 0, 0.5, 0];
+      return [0, 0, 0.25, 0];
     },
   },
 };
@@ -58,7 +58,7 @@ const FloatView = styled(View)`
   position: absolute;
   will-change: transform;
   transition: transform 0.1s ease-in;
-  bottom: 0;
+  top: 2px;
   left: ${(props) => props.layoutDimensions.initialLeftPosition}px;
   pointer-events: none;
 `;
@@ -130,7 +130,9 @@ const getFloatViewAnimationStyle = ({ isFocused, hasText, layoutDimensions }) =>
   const finalTopPosition = layoutDimensions.finalTopPosition;
   const finalLeftPosition = layoutDimensions.initialLeftPosition;
   return isFocused || hasText
-    ? { transform: `translate(-${finalLeftPosition}px,-${finalTopPosition}px)` }
+    ? {
+        transform: `translate(-${finalLeftPosition}px,-${finalTopPosition}px)`,
+      }
     : {};
 };
 
