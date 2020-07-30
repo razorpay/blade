@@ -1,27 +1,30 @@
 import styled from 'styled-components';
 import View from '../View';
+import { getColor } from '../../_helpers/theme';
 
 const styles = {
-  backgroundColor({ theme, state, isChecked, disabled }) {
+  backgroundColor({ theme, state, isChecked, disabled, variantColor }) {
     if (disabled) {
       return 'transparent';
     }
+
+    const colorKey = variantColor || 'primary';
     switch (state) {
       case 'hover':
         if (!isChecked) {
           return theme.colors.tone[930];
         }
-        return theme.colors.primary[920];
+        return getColor(theme, `${colorKey}.920`);
       case 'focus':
         if (!isChecked) {
           return theme.colors.tone[940];
         }
-        return theme.colors.primary[930];
+        return getColor(theme, `${colorKey}.930`);
       case 'active':
         if (!isChecked) {
           return theme.colors.tone[940];
         }
-        return theme.colors.primary[940];
+        return getColor(theme, `${colorKey}.940`);
       default:
         return 'transparent';
     }

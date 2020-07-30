@@ -21,7 +21,6 @@ const styles = {
       if (isChecked || externalChecked) {
         return `${variantColor || 'primary'}.800`;
       }
-
       return 'shade.950';
     },
     size({ size }) {
@@ -149,6 +148,7 @@ const Checkbox = ({
                 onMouseUp={_onMouseup}
                 aria-checked={isChecked}
                 aria-labelledby={id ? `${id}-label` : undefined}
+                variantColor={variantColor}
               >
                 <Icon
                   size={styles.icon.size({ size })}
