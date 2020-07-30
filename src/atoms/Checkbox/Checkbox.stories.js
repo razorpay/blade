@@ -17,7 +17,7 @@ storiesOf('Checkbox', module)
     component: Checkbox,
   })
   .add('defaultChecked', () => (
-    <Flex>
+    <Flex flexDirection="column">
       <View>
         <Checkbox
           defaultChecked={boolean('Default Checked', false)}

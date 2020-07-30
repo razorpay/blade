@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import automation from '../../_helpers/automation-attributes';
 import isDefined from '../../_helpers/isDefined';
 import isEmpty from '../../_helpers/isEmpty';
-import { getVariantColorKeys } from '../../_helpers/theme';
+import { getColor, getVariantColorKeys } from '../../_helpers/theme';
 import Flex from '../Flex';
 import Icon from '../Icon';
 import Size from '../Size';
@@ -68,6 +69,32 @@ const styles = {
     },
   },
   backdrop: {
+    backgroundColor({ theme, state, isChecked, disabled, variantColor }) {
+      if (disabled) {
+        return 'transparent';
+      }
+
+      const colorKey = variantColor || 'primary';
+      switch (state) {
+        case 'hover':
+          if (!isChecked) {
+            return theme.colors.tone[930];
+          }
+          return getColor(theme, `${colorKey}.920`);
+        case 'focus':
+          if (!isChecked) {
+            return theme.colors.tone[940];
+          }
+          return getColor(theme, `${colorKey}.930`);
+        case 'active':
+          if (!isChecked) {
+            return theme.colors.tone[940];
+          }
+          return getColor(theme, `${colorKey}.940`);
+        default:
+          return 'transparent';
+      }
+    },
     width: {
       large: '28px',
       medium: '24px',
@@ -80,8 +107,54 @@ const styles = {
       small: '20px',
       xsmall: '16px',
     },
+    borderRadius: {
+      large: '14px',
+      medium: '12px',
+      small: '10px',
+      xsmall: '8px',
+    },
   },
 };
+
+const Input = styled.input.attrs({
+  type: 'checkbox',
+})`
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(1px 0 0 0);
+
+  &:hover {
+    + ${Backdrop} {
+      background-color: ${(props) => styles.backdrop.backgroundColor({ ...props, state: 'hover' })};
+    }
+  }
+
+  &:focus {
+    + ${Backdrop} {
+      background-color: ${(props) => styles.backdrop.backgroundColor({ ...props, state: 'focus' })};
+    }
+  }
+
+  &:active {
+    + ${Backdrop} {
+      background-color: ${(props) =>
+        styles.backdrop.backgroundColor({ ...props, state: 'active' })};
+    }
+  }
+`;
+
+const Label = styled.label`
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  overflow: hidden;
+`;
 
 const Checkbox = ({
   defaultChecked,
@@ -120,10 +193,6 @@ const Checkbox = ({
     });
   }, [externalChecked, onChange]);
 
-  const _onMouseup = ({ currentTarget }) => {
-    currentTarget.blur();
-  };
-
   if (disabled) {
     titleTextColor = 'shade.950';
     helpTextColor = 'shade.930';
@@ -133,24 +202,18 @@ const Checkbox = ({
     <Flex alignSelf="flex-start" flexDirection="column">
       <View>
         <Flex flexDirection="row" alignItems="center">
-          <View>
+          <Label htmlFor={id}>
+            <Input
+              id={id}
+              checked={isChecked}
+              onChange={onCheckChange}
+              isChecked={isChecked}
+              disabled={disabled}
+              variantColor={variantColor}
+              {...automation(testID)}
+            />
             <Size width={styles.backdrop.width[size]} height={styles.backdrop.height[size]}>
-              <Backdrop
-                id={id}
-                tabIndex={0}
-                role="checkbox"
-                isChecked={isChecked}
-                checked={isChecked}
-                disabled={disabled}
-                size={size}
-                onClick={onCheckChange}
-                onKeyPress={onCheckChange}
-                onMouseUp={_onMouseup}
-                aria-checked={isChecked}
-                aria-labelledby={id ? `${id}-label` : undefined}
-                variantColor={variantColor}
-                {...automation(testID)}
-              >
+              <Backdrop borderRadius={styles.backdrop.borderRadius[size]}>
                 <Icon
                   size={styles.icon.size({ size })}
                   name={externalChecked ?? isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
@@ -158,24 +221,20 @@ const Checkbox = ({
                 />
               </Backdrop>
             </Size>
-            {title ? (
-              <Flex alignSelf="center">
-                <Space margin={styles.title.margin()}>
-                  <View>
-                    <Text
-                      onClick={onCheckChange}
-                      id={id ? `${id}-label` : undefined}
-                      as="label"
-                      color={titleTextColor}
-                      size={size}
-                    >
-                      {title}
-                    </Text>
-                  </View>
-                </Space>
-              </Flex>
-            ) : null}
-          </View>
+            <View>
+              {title ? (
+                <Flex alignSelf="center">
+                  <Space margin={styles.title.margin()}>
+                    <View>
+                      <Text color={titleTextColor} size={size}>
+                        {title}
+                      </Text>
+                    </View>
+                  </Space>
+                </Flex>
+              ) : null}
+            </View>
+          </Label>
         </Flex>
 
         {title && (!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' ? (
