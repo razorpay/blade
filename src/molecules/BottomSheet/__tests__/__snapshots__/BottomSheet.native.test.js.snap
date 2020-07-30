@@ -132,31 +132,46 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
                   }
                 />
               </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
+              <View
+                style={
+                  Array [
                     Array [
                       Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
                       },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Header
-                </Text>
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Header
+                  </Text>
+                </View>
               </View>
               <View
                 color="shade.920"
@@ -315,7 +330,20 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
               ]
             }
           />
-          <View>
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "paddingBottom": 8,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 8,
+                  },
+                ],
+              ]
+            }
+          >
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
@@ -480,31 +508,46 @@ exports[`<BottomSheet /> renders bottomsheet when initialHeight prop is passed 1
                   }
                 />
               </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
+              <View
+                style={
+                  Array [
                     Array [
                       Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
                       },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Header
-                </Text>
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Header
+                  </Text>
+                </View>
               </View>
               <View
                 color="shade.920"
@@ -663,7 +706,20 @@ exports[`<BottomSheet /> renders bottomsheet when initialHeight prop is passed 1
               ]
             }
           />
-          <View>
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "paddingBottom": 8,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 8,
+                  },
+                ],
+              ]
+            }
+          >
             <Text
               _isUnderlined={false}
               _letterSpacing="small"
@@ -1045,31 +1101,46 @@ exports[`<BottomSheet /> renders linear-gradient view at bottom when content hei
                   }
                 />
               </View>
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
+              <View
+                style={
+                  Array [
                     Array [
                       Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
                       },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Header
-                </Text>
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Header
+                  </Text>
+                </View>
               </View>
               <View
                 color="shade.920"
@@ -1462,7 +1533,20 @@ exports[`<BottomSheet /> renders linear-gradient view at bottom when content hei
               ]
             }
           />
-          <View>
+          <View
+            style={
+              Array [
+                Array [
+                  Object {
+                    "paddingBottom": 8,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 8,
+                  },
+                ],
+              ]
+            }
+          >
             <Text
               _isUnderlined={false}
               _letterSpacing="small"

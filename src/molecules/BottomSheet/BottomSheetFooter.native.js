@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import View from '../../atoms/View';
 import Divider from '../../atoms/Divider';
+import Space from '../../atoms/Space';
 
 const FooterContainer = styled(View)`
   background-color: ${(props) => props.theme.colors.background[200]};
@@ -12,7 +13,7 @@ const BottomSheetFooter = ({ children }) => {
   return children ? (
     <FooterContainer>
       <Divider color="shade.920" horizontal />
-      {children}
+      {children ? <Space padding={[1, 2, 1, 2]}>{children}</Space> : null}
     </FooterContainer>
   ) : null;
 };

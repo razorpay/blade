@@ -94,17 +94,17 @@ const BottomSheet = ({
   }, [visible]);
 
   if (!onClose) {
-    throw new Error(`expected to provide an onClose method for \`BottomSheet\``);
+    throw Error(`expected onClose prop for \`BottomSheet\``);
   }
 
   if (headerComponent?.length > 1) {
-    throw new Error(
+    throw Error(
       `expected to have single \`BottomSheet.Header\` but found ${headerComponent.length}`,
     );
   }
 
   if (footerComponent?.length > 1) {
-    throw new Error(
+    throw Error(
       `expected to have single \`BottomSheet.Footer\` but found ${footerComponent.length}`,
     );
   }
@@ -124,7 +124,9 @@ const BottomSheet = ({
   const isScrollableContent = contentHeight > contentContainerHeight;
 
   const handleBottomSheetClose = () => {
-    if (onClose && typeof onClose === 'function') onClose();
+    if (onClose && typeof onClose === 'function') {
+      onClose();
+    }
     setTimeout(() => {
       if (visible) {
         bottomSheetRef.current?.open();

@@ -239,6 +239,6 @@ describe('<BottomSheet />', () => {
           </BottomSheet.Footer>
         </BottomSheet>,
       ),
-    ).toThrow('expected to provide an onClose method for `BottomSheet`');
+    ).toThrow('expected onClose prop for `BottomSheet`');
   });
 });
