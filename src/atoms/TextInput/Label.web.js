@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import styled, { ThemeContext } from 'styled-components';
 import isEmpty from '../../_helpers/isEmpty';
 import { getColor } from '../../_helpers/theme';
