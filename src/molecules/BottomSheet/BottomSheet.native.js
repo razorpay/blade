@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Dimensions } from 'react-native';
 import styled, { useTheme } from 'styled-components/native';
@@ -65,116 +65,134 @@ const BottomSheetDragBar = styled(View)`
   border-radius: ${(props) => props.theme.spacings.xsmall};
 `;
 
-const BottomSheet = forwardRef(
-  (
-    {
-      snapPoint = DEFAULT_SNAP_POINT,
-      children,
-      onBackDropClick = () => {},
-      onChange = () => {},
-      onClose = () => {},
-      adjustToContentHeight = false,
-      initialHeight = 0,
-    },
-    ref,
-  ) => {
-    const theme = useTheme();
-    const [headerHeight, setHeaderHeight] = useState(0);
-    const [contentHeight, setContentHeight] = useState(0);
-    const bottomsheetChildrenGroupByType = reactChildrenGroupByType(children);
+const BottomSheet = ({
+  visible = false,
+  snapPoint = DEFAULT_SNAP_POINT,
+  children,
+  onBackDropClick = () => {},
+  onChange = () => {},
+  onClose,
+  adjustToContentHeight = false,
+  initialHeight = 0,
+}) => {
+  const theme = useTheme();
+  const bottomSheetRef = useRef();
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const [contentHeight, setContentHeight] = useState(0);
+  const bottomsheetChildrenGroupByType = reactChildrenGroupByType(children);
 
-    const headerComponent = bottomsheetChildrenGroupByType[BottomSheetHeader];
-    const footerComponent = bottomsheetChildrenGroupByType[BottomSheetFooter];
-    const contentComponent = bottomsheetChildrenGroupByType[BottomSheetContent];
+  const headerComponent = bottomsheetChildrenGroupByType[BottomSheetHeader];
+  const footerComponent = bottomsheetChildrenGroupByType[BottomSheetFooter];
+  const contentComponent = bottomsheetChildrenGroupByType[BottomSheetContent];
 
-    if (headerComponent?.length > 1) {
-      throw new Error(
-        `expected to have single \`BottomSheet.Header\` but found ${headerComponent.length}`,
-      );
+  useEffect(() => {
+    if (visible) {
+      bottomSheetRef.current?.open();
+    } else {
+      bottomSheetRef.current?.close();
     }
+  }, [visible]);
 
-    if (footerComponent?.length > 1) {
-      throw new Error(
-        `expected to have single \`BottomSheet.Footer\` but found ${footerComponent.length}`,
-      );
-    }
+  if (!onClose) {
+    throw new Error(`expected to provide an onClose method for \`BottomSheet\``);
+  }
 
-    const handleHeaderLayoutChange = useCallback((e) => {
-      setHeaderHeight(e.nativeEvent.layout.height);
-    }, []);
-
-    const handleContentLayoutChange = useCallback((e) => {
-      setContentHeight(e.nativeEvent.layout.height);
-    }, []);
-
-    let contentContainerHeight = DEFAULT_SNAP_POINT - headerHeight;
-    if (initialHeight > 0) {
-      contentContainerHeight = initialHeight - headerHeight;
-    }
-    const isScrollableContent = contentHeight > contentContainerHeight;
-
-    return (
-      <RNModalize
-        ref={ref}
-        snapPoint={snapPoint}
-        HeaderComponent={
-          <View onLayout={handleHeaderLayoutChange}>
-            <HeaderContainer>
-              <Flex alignItems="center">
-                <Space padding={[1, 0, 1.5, 0]}>
-                  <View>
-                    <Size height={0.5} width={8}>
-                      <BottomSheetDragBar />
-                    </Size>
-                  </View>
-                </Space>
-              </Flex>
-              {headerComponent?.length ? (
-                <>
-                  {headerComponent}
-                  <Divider color="shade.920" horizontal />
-                </>
-              ) : null}
-            </HeaderContainer>
-          </View>
-        }
-        FloatingComponent={
-          <Position position="absolute" left={0} right={0} bottom={0}>
-            <View>
-              {isScrollableContent && (
-                <Size height={7}>
-                  <LinearGradient
-                    locations={linearGradientLocations}
-                    colors={[
-                      theme.colors.primary[930],
-                      theme.colors.primary[920],
-                      'rgba(255, 255, 255, 0)',
-                    ]}
-                    style={styles.linearGradient()}
-                  />
-                </Size>
-              )}
-              {footerComponent?.length ? footerComponent : null}
-            </View>
-          </Position>
-        }
-        overlayStyle={styles.overlayStyle({ theme })}
-        onOverlayPress={onBackDropClick}
-        avoidKeyboardLikeIOS={true}
-        onPositionChange={onChange}
-        onClosed={onClose}
-        childrenStyle={styles.childrenStyle({ theme })}
-        withHandle={false}
-        panGestureComponentEnabled={true}
-        adjustToContentHeight={adjustToContentHeight}
-        alwaysOpen={initialHeight}
-        rootStyle={styles.rootStyle({ theme })}
-      >
-        <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
-      </RNModalize>
+  if (headerComponent?.length > 1) {
+    throw new Error(
+      `expected to have single \`BottomSheet.Header\` but found ${headerComponent.length}`,
     );
-  },
-);
+  }
+
+  if (footerComponent?.length > 1) {
+    throw new Error(
+      `expected to have single \`BottomSheet.Footer\` but found ${footerComponent.length}`,
+    );
+  }
+
+  const handleHeaderLayoutChange = useCallback((e) => {
+    setHeaderHeight(e.nativeEvent.layout.height);
+  }, []);
+
+  const handleContentLayoutChange = useCallback((e) => {
+    setContentHeight(e.nativeEvent.layout.height);
+  }, []);
+
+  let contentContainerHeight = DEFAULT_SNAP_POINT - headerHeight;
+  if (initialHeight > 0) {
+    contentContainerHeight = initialHeight - headerHeight;
+  }
+  const isScrollableContent = contentHeight > contentContainerHeight;
+
+  const handleBottomSheetClose = () => {
+    if (onClose && typeof onClose === 'function') onClose();
+    setTimeout(() => {
+      if (visible) {
+        bottomSheetRef.current?.open();
+      }
+    }, 100);
+  };
+
+  return (
+    <RNModalize
+      ref={bottomSheetRef}
+      snapPoint={snapPoint}
+      HeaderComponent={
+        <View onLayout={handleHeaderLayoutChange}>
+          <HeaderContainer>
+            <Flex alignItems="center">
+              <Space padding={[1, 0, 1.5, 0]}>
+                <View>
+                  <Size height={0.5} width={8}>
+                    <BottomSheetDragBar />
+                  </Size>
+                </View>
+              </Space>
+            </Flex>
+            {headerComponent?.length ? (
+              <>
+                {headerComponent}
+                <Divider color="shade.920" horizontal />
+              </>
+            ) : null}
+          </HeaderContainer>
+        </View>
+      }
+      FloatingComponent={
+        <Position position="absolute" left={0} right={0} bottom={0}>
+          <View>
+            {isScrollableContent && (
+              <Size height={7}>
+                <LinearGradient
+                  locations={linearGradientLocations}
+                  colors={[
+                    theme.colors.primary[930],
+                    theme.colors.primary[920],
+                    'rgba(255, 255, 255, 0)',
+                  ]}
+                  style={styles.linearGradient()}
+                />
+              </Size>
+            )}
+            {footerComponent?.length ? footerComponent : null}
+          </View>
+        </Position>
+      }
+      overlayStyle={styles.overlayStyle({ theme })}
+      onOverlayPress={onBackDropClick}
+      avoidKeyboardLikeIOS={true}
+      onPositionChange={onChange}
+      onClosed={handleBottomSheetClose}
+      childrenStyle={styles.childrenStyle({ theme })}
+      withHandle={false}
+      panGestureComponentEnabled={true}
+      adjustToContentHeight={adjustToContentHeight}
+      alwaysOpen={initialHeight}
+      rootStyle={styles.rootStyle({ theme })}
+    >
+      <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
+    </RNModalize>
+  );
+};
 
 BottomSheet.displayName = 'BladeBottomSheet';
 BottomSheet.Header = BottomSheetHeader;
@@ -182,6 +200,7 @@ BottomSheet.Footer = BottomSheetFooter;
 BottomSheet.Content = BottomSheetContent;
 
 BottomSheet.propTypes = {
+  visible: PropTypes.bool,
   snapPoint: PropTypes.number,
   children: PropTypes.node,
   onChange: PropTypes.func,

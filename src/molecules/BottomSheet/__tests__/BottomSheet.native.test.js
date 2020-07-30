@@ -1,5 +1,4 @@
 import React from 'react';
-import { act } from '@testing-library/react-native';
 import BottomSheet from '../BottomSheet';
 import { renderWithTheme } from '../../../_helpers/testing';
 import View from '../../../atoms/View';
@@ -9,25 +8,25 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<BottomSheet />', () => {
+  let mockOnClose;
+  beforeEach(() => {
+    mockOnClose = jest.fn();
+  });
   it('renders default BottomSheet', () => {
-    const bottomSheetRef = React.createRef();
-    const { container } = renderWithTheme(<BottomSheet ref={bottomSheetRef} />);
-    act(() => {
-      bottomSheetRef.current.open();
-    });
+    const { container } = renderWithTheme(<BottomSheet visible={true} onClose={mockOnClose} />);
     expect(container).toMatchSnapshot();
   });
 
   it('renders BottomSheet with Header, Footer and Content Defined', () => {
-    const bottomSheetRef = React.createRef();
     const { container } = renderWithTheme(
       <BottomSheet
-        ref={bottomSheetRef}
+        visible={true}
         FooterComponent={
           <View>
             <Text>Footer</Text>
           </View>
         }
+        onClose={mockOnClose}
       >
         <BottomSheet.Header>
           <View>
@@ -46,23 +45,20 @@ describe('<BottomSheet />', () => {
         </BottomSheet.Footer>
       </BottomSheet>,
     );
-    act(() => {
-      bottomSheetRef.current.open();
-    });
     expect(container).toMatchSnapshot();
   });
 
-  it('renders bottomsheet when alwaysOpen prop is passed', () => {
-    const bottomSheetRef = React.createRef();
+  it('renders bottomsheet when initialHeight prop is passed', () => {
     const { container } = renderWithTheme(
       <BottomSheet
-        ref={bottomSheetRef}
-        alwaysOpen
+        visible={true}
+        initialHeight={300}
         FooterComponent={
           <View>
             <Text>Footer</Text>
           </View>
         }
+        onClose={() => {}}
       >
         <BottomSheet.Header>
           <View>
@@ -98,19 +94,21 @@ describe('<BottomSheet />', () => {
       'Nokia',
       'HTC',
     ];
+
     const data = new Array(list.length).fill({}).map((item, index) => ({
       id: index,
       name: list[index],
     }));
-    const bottomSheetRef = React.createRef();
+
     const { container } = renderWithTheme(
       <BottomSheet
-        ref={bottomSheetRef}
+        visible={true}
         FooterComponent={
           <View>
             <Text>Footer</Text>
           </View>
         }
+        onClose={mockOnClose}
       >
         <BottomSheet.Header>
           <View>
@@ -131,24 +129,20 @@ describe('<BottomSheet />', () => {
         </BottomSheet.Footer>
       </BottomSheet>,
     );
-    act(() => {
-      bottomSheetRef.current.open();
-    });
     expect(container).toMatchSnapshot();
   });
 
   it('should throw error when multiple Headers are passed to bottomsheet', () => {
-    const bottomSheetRef = React.createRef();
-
     expect(() =>
       renderWithTheme(
         <BottomSheet
-          ref={bottomSheetRef}
+          visible={true}
           FooterComponent={
             <View>
               <Text>Footer</Text>
             </View>
           }
+          onClose={mockOnClose}
         >
           <BottomSheet.Header>
             <View>
@@ -176,12 +170,47 @@ describe('<BottomSheet />', () => {
   });
 
   it('should throw error when multiple Footer are passed to bottomsheet', () => {
-    const bottomSheetRef = React.createRef();
-
     expect(() =>
       renderWithTheme(
         <BottomSheet
-          ref={bottomSheetRef}
+          visible={true}
+          FooterComponent={
+            <View>
+              <Text>Footer</Text>
+            </View>
+          }
+          onClose={mockOnClose}
+        >
+          <BottomSheet.Header>
+            <View>
+              <Text>Header1</Text>
+            </View>
+          </BottomSheet.Header>
+          <BottomSheet.Content>
+            <View>
+              <Text>Bottomsheet content</Text>
+            </View>
+          </BottomSheet.Content>
+          <BottomSheet.Footer>
+            <View>
+              <Text>Footer1</Text>
+            </View>
+          </BottomSheet.Footer>
+          <BottomSheet.Footer>
+            <View>
+              <Text>Footer2</Text>
+            </View>
+          </BottomSheet.Footer>
+        </BottomSheet>,
+      ),
+    ).toThrow('expected to have single `BottomSheet.Footer` but found 2');
+  });
+
+  it('should throw error when onClose method callback is not passed', () => {
+    expect(() =>
+      renderWithTheme(
+        <BottomSheet
+          visible={true}
           FooterComponent={
             <View>
               <Text>Footer</Text>
@@ -210,6 +239,6 @@ describe('<BottomSheet />', () => {
           </BottomSheet.Footer>
         </BottomSheet>,
       ),
-    ).toThrow('expected to have single `BottomSheet.Footer` but found 2');
+    ).toThrow('expected to provide an onClose method for `BottomSheet`');
   });
 });

@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
-import Button from '../../atoms/Button';
 import View from '../../atoms/View';
 import Space from '../../atoms/Space';
 import Text from '../../atoms/Text';
@@ -36,17 +35,10 @@ storiesOf('BottomSheet', module)
     component: BottomSheet,
   })
   .add('default', () => {
-    const bottomSheetRef = useRef();
     return (
       <>
-        <Button
-          onClick={() => {
-            bottomSheetRef?.current.open();
-          }}
-        >
-          Open BottomSheet
-        </Button>
-        <BottomSheet ref={bottomSheetRef}>
+        <Text>Default</Text>
+        <BottomSheet visible={true} onClose={() => {}}>
           <BottomSheet.Header>
             <Space padding={[1]}>
               <View>
@@ -71,18 +63,10 @@ storiesOf('BottomSheet', module)
     );
   })
   .add('non-scrollable', () => {
-    const bottomSheetRef = useRef();
     return (
       <>
-        <Button
-          onClick={() => {
-            bottomSheetRef?.current.open();
-          }}
-        >
-          Open BottomSheet
-        </Button>
-
-        <BottomSheet ref={bottomSheetRef} adjustToContentHeight>
+        <Text>Non-Scrollable BottomSheet</Text>
+        <BottomSheet visible={true} onClose={() => {}} adjustToContentHeight>
           <BottomSheet.Header>
             <Space padding={[1]}>
               <View>
@@ -115,18 +99,10 @@ storiesOf('BottomSheet', module)
     );
   })
   .add('without Header', () => {
-    const bottomSheetRef = useRef();
     return (
       <>
-        <Button
-          onClick={() => {
-            bottomSheetRef?.current.open();
-          }}
-        >
-          Open BottomSheet
-        </Button>
-
-        <BottomSheet ref={bottomSheetRef}>
+        <Text>Without Header</Text>
+        <BottomSheet visible={true} onClose={() => {}}>
           <BottomSheet.Content>
             {data.map((item) => (
               <Item key={item.id}>
@@ -144,17 +120,10 @@ storiesOf('BottomSheet', module)
     );
   })
   .add('without Footer', () => {
-    const bottomSheetRef = useRef();
     return (
       <>
-        <Button
-          onClick={() => {
-            bottomSheetRef?.current.open();
-          }}
-        >
-          Open BottomSheet
-        </Button>
-        <BottomSheet ref={bottomSheetRef}>
+        <Text>Without Footer</Text>
+        <BottomSheet visible={true} onClose={() => {}}>
           <BottomSheet.Content>
             {data.map((item) => (
               <Item key={item.id}>
@@ -167,24 +136,26 @@ storiesOf('BottomSheet', module)
     );
   })
   .add('with text-input', () => {
-    const bottomSheetRef = useRef();
     return (
-      <BottomSheet ref={bottomSheetRef} initialHeight={300}>
-        <BottomSheet.Content>
-          <Space padding={[2]}>
-            <TextInput value="blade" />
-          </Space>
-          <Space padding={[2, 0, 2, 0]}>
-            <View>
-              <Text>Honda</Text>
-            </View>
-          </Space>
-          <Space padding={[2, 0, 2, 0]}>
-            <View>
-              <Text>Kawasaki</Text>
-            </View>
-          </Space>
-        </BottomSheet.Content>
-      </BottomSheet>
+      <>
+        <Text>With Text-Input</Text>
+        <BottomSheet visible={true} initialHeight={300} onClose={() => {}}>
+          <BottomSheet.Content>
+            <Space padding={[2]}>
+              <TextInput value="blade" />
+            </Space>
+            <Space padding={[2, 0, 2, 0]}>
+              <View>
+                <Text>Honda</Text>
+              </View>
+            </Space>
+            <Space padding={[2, 0, 2, 0]}>
+              <View>
+                <Text>Kawasaki</Text>
+              </View>
+            </Space>
+          </BottomSheet.Content>
+        </BottomSheet>
+      </>
     );
   });
