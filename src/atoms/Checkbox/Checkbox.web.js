@@ -106,7 +106,7 @@ const Checkbox = ({
 
   const [isChecked, setIsChecked] = useState(defaultChecked || false);
 
-  const onClick = useCallback(() => {
+  const onCheckChange = useCallback(() => {
     if (isDefined(externalChecked)) {
       if (onChange) {
         onChange(!externalChecked);
@@ -120,6 +120,10 @@ const Checkbox = ({
       return !prevState;
     });
   }, [externalChecked, onChange]);
+
+  const _onMouseup = ({ currentTarget }) => {
+    currentTarget.blur();
+  };
 
   if (disabled) {
     titleTextColor = 'shade.950';
@@ -137,10 +141,12 @@ const Checkbox = ({
                 tabIndex={0}
                 role="checkbox"
                 isChecked={isChecked}
+                checked={isChecked}
                 disabled={disabled}
                 size={size}
-                onClick={onClick}
-                checked={isChecked}
+                onClick={onCheckChange}
+                onKeyPress={onCheckChange}
+                onMouseUp={_onMouseup}
                 aria-checked={isChecked}
                 aria-labelledby={id ? `${id}-label` : undefined}
               >
@@ -156,7 +162,7 @@ const Checkbox = ({
                 <Space margin={styles.title.margin()}>
                   <View>
                     <Text
-                      onClick={onClick}
+                      onClick={onCheckChange}
                       id={id ? `${id}-label` : undefined}
                       as="label"
                       color={titleTextColor}
