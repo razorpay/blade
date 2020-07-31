@@ -1258,7 +1258,7 @@ exports[`Renders <Button /> correctly Renders xsmall Primary <Button /> 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0.5,
-            "lineHeight": 14,
+            "lineHeight": 18,
             "textAlign": "center",
             "textDecorationLine": "none",
           },

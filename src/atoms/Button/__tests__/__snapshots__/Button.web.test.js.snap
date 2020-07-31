@@ -248,7 +248,7 @@ exports[`<Button /> size should render a xsmall button 1`] = `
     type="button"
   >
     <div
-      class="Textweb__Text-sc-6jf9e4-0 jFBnpn"
+      class="Textweb__Text-sc-6jf9e4-0 cIRfzb"
       color="light.900"
       data-testid="ds-text"
     >

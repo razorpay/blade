@@ -172,7 +172,7 @@ exports[`<Snackbar /> action label 1`] = `
                   "fontFamily": "Lato-Bold",
                   "fontSize": 10,
                   "letterSpacing": 0.5,
-                  "lineHeight": 14,
+                  "lineHeight": 18,
                   "textAlign": "center",
                   "textDecorationLine": "none",
                 },

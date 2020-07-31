@@ -23,7 +23,7 @@ const fonts = {
     bold: '700',
   },
   lineHeight: {
-    xsmall: '14px',
+    xsmall: '18px',
     small: '18px',
     medium: '20px',
     large: '24px',
