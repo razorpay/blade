@@ -38,7 +38,7 @@ const styles = {
       }
     },
   },
-  helpText: {
+  descriptionText: {
     margin(size) {
       switch (size) {
         case 'large':
@@ -63,10 +63,14 @@ const styles = {
           return 'small';
       }
     },
-  },
-  title: {
-    margin() {
-      return [0, 0, 0, 0.5];
+    color({ disabled, errorText }) {
+      if (errorText) {
+        return 'negative.900';
+      }
+      if (disabled) {
+        return 'shade.930';
+      }
+      return 'shade.950';
     },
   },
   backdrop: {
@@ -114,6 +118,14 @@ const styles = {
       xsmall: '8px',
     },
   },
+  title: {
+    color({ disabled }) {
+      if (disabled) {
+        return 'shade.950';
+      }
+      return 'shade.980';
+    },
+  },
 };
 
 const Checkbox = ({
@@ -129,9 +141,6 @@ const Checkbox = ({
   testID,
   id,
 }) => {
-  let titleTextColor = 'shade.980';
-  let helpTextColor = 'shade.950';
-
   if (isDefined(defaultChecked) && isDefined(externalChecked)) {
     throw Error('One of defaultChecked or checked should be supplied.');
   }
@@ -149,10 +158,7 @@ const Checkbox = ({
     });
   }, [externalChecked, onChange]);
 
-  if (disabled) {
-    titleTextColor = 'shade.950';
-    helpTextColor = 'shade.930';
-  }
+  const descriptionText = errorText || helpText;
 
   return (
     <Flex alignSelf="flex-start" flexDirection="column">
@@ -180,10 +186,10 @@ const Checkbox = ({
             </Size>
             <View>
               {title ? (
-                <Flex alignSelf="center">
-                  <Space margin={styles.title.margin()}>
+                <Flex>
+                  <Space margin={[0, 0, 0, 0.5]}>
                     <View>
-                      <Text color={titleTextColor} size={size}>
+                      <Text color={styles.title.color({ disabled })} size={size}>
                         {title}
                       </Text>
                     </View>
@@ -195,13 +201,13 @@ const Checkbox = ({
         </Flex>
 
         {title && (!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' ? (
-          <Space margin={styles.helpText.margin(size)}>
+          <Space margin={styles.descriptionText.margin(size)}>
             <View>
               <Text
-                size={styles.helpText.size(size)}
-                color={errorText ? 'negative.900' : helpTextColor}
+                size={styles.descriptionText.size(size)}
+                color={styles.descriptionText.color({ disabled, errorText, helpText })}
               >
-                {errorText || helpText}
+                {descriptionText}
               </Text>
             </View>
           </Space>
