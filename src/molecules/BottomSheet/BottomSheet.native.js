@@ -9,7 +9,7 @@ import Flex from '../../atoms/Flex';
 import Space from '../../atoms/Space';
 import Size from '../../atoms/Size';
 import Divider from '../../atoms/Divider';
-import reactChildrenGroupByType from '../../_helpers/reactChildrenGroupByType';
+import reactChildrenGroupByDisplayName from '../../_helpers/reactChildrenGroupByDisplayName';
 import Position from '../../atoms/Position';
 import BottomSheetHeader from './BottomSheetHeader';
 import BottomSheetFooter from './BottomSheetFooter';
@@ -77,13 +77,14 @@ const BottomSheet = ({
 }) => {
   const theme = useTheme();
   const bottomSheetRef = useRef();
+  const bottomSheetVisibility = useRef(visible);
   const [headerHeight, setHeaderHeight] = useState(0);
   const [contentHeight, setContentHeight] = useState(0);
-  const bottomsheetChildrenGroupByType = reactChildrenGroupByType(children);
+  const bottomsheetChildrenGroupByDisplayName = reactChildrenGroupByDisplayName(children);
 
-  const headerComponent = bottomsheetChildrenGroupByType[BottomSheetHeader];
-  const footerComponent = bottomsheetChildrenGroupByType[BottomSheetFooter];
-  const contentComponent = bottomsheetChildrenGroupByType[BottomSheetContent];
+  const headerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetHeader;
+  const footerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetFooter;
+  const contentComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetContent;
 
   useEffect(() => {
     if (visible) {
@@ -91,6 +92,7 @@ const BottomSheet = ({
     } else {
       bottomSheetRef.current?.close();
     }
+    bottomSheetVisibility.current = visible;
   }, [visible]);
 
   if (!onClose) {
@@ -127,7 +129,7 @@ const BottomSheet = ({
     if (onClose && typeof onClose === 'function') {
       onClose();
       setTimeout(() => {
-        if (visible) {
+        if (bottomSheetVisibility.current) {
           bottomSheetRef.current?.open();
         }
       }, 100);
