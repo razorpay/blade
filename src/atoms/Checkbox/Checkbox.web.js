@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import automation from '../../_helpers/automation-attributes';
 import isDefined from '../../_helpers/isDefined';
 import isEmpty from '../../_helpers/isEmpty';
@@ -12,6 +11,8 @@ import Space from '../Space';
 import Text from '../Text';
 import View from '../View';
 import Backdrop from './Backdrop';
+import Label from './Label';
+import Input from './Input';
 
 const styles = {
   icon: {
@@ -116,46 +117,6 @@ const styles = {
   },
 };
 
-const Input = styled.input.attrs({
-  type: 'checkbox',
-})`
-  position: absolute;
-  width: 0px;
-  height: 0px;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  clip-path: inset(1px 0 0 0);
-
-  &:hover {
-    + ${Backdrop} {
-      background-color: ${(props) => styles.backdrop.backgroundColor({ ...props, state: 'hover' })};
-    }
-  }
-
-  &:focus {
-    + ${Backdrop} {
-      background-color: ${(props) => styles.backdrop.backgroundColor({ ...props, state: 'focus' })};
-    }
-  }
-
-  &:active {
-    + ${Backdrop} {
-      background-color: ${(props) =>
-        styles.backdrop.backgroundColor({ ...props, state: 'active' })};
-    }
-  }
-`;
-
-const Label = styled.label`
-  position: relative;
-  display: flex;
-  cursor: pointer;
-  overflow: hidden;
-`;
-
 const Checkbox = ({
   defaultChecked,
   checked: externalChecked,
@@ -210,6 +171,7 @@ const Checkbox = ({
               isChecked={isChecked}
               disabled={disabled}
               variantColor={variantColor}
+              backdropStyles={styles.backdrop}
               {...automation(testID)}
             />
             <Size width={styles.backdrop.width[size]} height={styles.backdrop.height[size]}>
