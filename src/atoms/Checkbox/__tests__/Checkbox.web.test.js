@@ -9,6 +9,37 @@ afterAll(() => jest.restoreAllMocks());
 const SAMPLE_ID = 'sample-checkbox';
 
 describe('<Checkbox />', () => {
+  describe('id', () => {
+    it('should not have id attribute if not provded as prop', () => {
+      const { getByRole } = renderWithTheme(<Checkbox defaultChecked={false} />);
+      const checkbox = getByRole('checkbox');
+      expect(checkbox).not.toHaveAttribute('id');
+    });
+
+    it('should have provided id attribute if id provded as prop', () => {
+      const { getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} defaultChecked={false} />);
+      const checkbox = getByRole('checkbox');
+      expect(checkbox.id).toEqual(SAMPLE_ID);
+    });
+  });
+
+  describe('name', () => {
+    it('should not have name attribute if not provded as prop', () => {
+      const { getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} defaultChecked={false} />);
+      const checkbox = getByRole('checkbox');
+      expect(checkbox).not.toHaveAttribute('name');
+    });
+
+    it('should have provided name attribute if name provded as prop', () => {
+      const name = 'sample-name';
+      const { getByRole } = renderWithTheme(
+        <Checkbox id={SAMPLE_ID} name={name} defaultChecked={false} />,
+      );
+      const checkbox = getByRole('checkbox');
+      expect(checkbox.name).toEqual(name);
+    });
+  });
+
   describe('size', () => {
     it('should render a large checkbox', () => {
       const { container } = renderWithTheme(
@@ -118,6 +149,17 @@ describe('<Checkbox />', () => {
       );
       const checkbox = getByRole('checkbox');
       expect(checkbox.checked).toBe(true);
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('disabled', () => {
+    it('should render a disabled checkbox if disabled is true', () => {
+      const { container, getByRole } = renderWithTheme(
+        <Checkbox id={SAMPLE_ID} disabled={true} checked={false} />,
+      );
+      const checkbox = getByRole('checkbox');
+      expect(checkbox).toBeDisabled();
       expect(container).toMatchSnapshot();
     });
   });

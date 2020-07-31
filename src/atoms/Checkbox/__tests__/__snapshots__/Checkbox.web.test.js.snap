@@ -166,6 +166,48 @@ exports[`<Checkbox /> defaultChecked should render checkbox with checked(attr)=f
 </div>
 `;
 
+exports[`<Checkbox /> disabled should render a disabled checkbox if disabled is true 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+  >
+    <label
+      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 jQaHpg Flexweb__Flex-ni2cjg-0 jOkEVe"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-tent3b-0 gewFUo"
+        data-testid="ds-checkbox"
+        disabled=""
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.10)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
+      />
+    </label>
+  </div>
+</div>
+`;
+
 exports[`<Checkbox /> errorText should render checkbox with provided errorText 1`] = `
 <div>
   <div
