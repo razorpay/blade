@@ -6,12 +6,12 @@ exports[`<Checkbox /> checked should render checkbox checked(attr)=true if check
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
   >
     <label
-      class="Checkboxweb__Label-sc-1jywz70-1 cEmQAl Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Labelweb__Label-sc-1xm1a0x-0 hqUWat Flexweb__Flex-ni2cjg-0 jOkEVe"
       for="sample-checkbox"
     >
       <input
         checked=""
-        class="Checkboxweb__Input-sc-1jywz70-0 djeySD"
+        class="Inputweb__Input-tent3b-0 ehBSbZ"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -48,11 +48,11 @@ exports[`<Checkbox /> checked should render checkbox with checked(attr)=false if
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
   >
     <label
-      class="Checkboxweb__Label-sc-1jywz70-1 cEmQAl Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Labelweb__Label-sc-1xm1a0x-0 hqUWat Flexweb__Flex-ni2cjg-0 jOkEVe"
       for="sample-checkbox"
     >
       <input
-        class="Checkboxweb__Input-sc-1jywz70-0 djeySD"
+        class="Inputweb__Input-tent3b-0 ehBSbZ"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -89,12 +89,12 @@ exports[`<Checkbox /> defaultChecked should render checkbox checked(attr)=true i
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
   >
     <label
-      class="Checkboxweb__Label-sc-1jywz70-1 cEmQAl Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Labelweb__Label-sc-1xm1a0x-0 hqUWat Flexweb__Flex-ni2cjg-0 jOkEVe"
       for="sample-checkbox"
     >
       <input
         checked=""
-        class="Checkboxweb__Input-sc-1jywz70-0 xPOBd"
+        class="Inputweb__Input-tent3b-0 dyuKMD"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -131,11 +131,11 @@ exports[`<Checkbox /> defaultChecked should render checkbox with checked(attr)=f
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
   >
     <label
-      class="Checkboxweb__Label-sc-1jywz70-1 cEmQAl Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Labelweb__Label-sc-1xm1a0x-0 hqUWat Flexweb__Flex-ni2cjg-0 jOkEVe"
       for="sample-checkbox"
     >
       <input
-        class="Checkboxweb__Input-sc-1jywz70-0 djeySD"
+        class="Inputweb__Input-tent3b-0 ehBSbZ"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -172,11 +172,11 @@ exports[`<Checkbox /> errorText should render checkbox with provided errorText 1
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
   >
     <label
-      class="Checkboxweb__Label-sc-1jywz70-1 cEmQAl Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Labelweb__Label-sc-1xm1a0x-0 hqUWat Flexweb__Flex-ni2cjg-0 jOkEVe"
       for="sample-checkbox"
     >
       <input
-        class="Checkboxweb__Input-sc-1jywz70-0 djeySD"
+        class="Inputweb__Input-tent3b-0 ehBSbZ"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -236,11 +236,11 @@ exports[`<Checkbox /> helpText should render checkbox with provided helpText 1`]
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
   >
     <label
-      class="Checkboxweb__Label-sc-1jywz70-1 cEmQAl Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Labelweb__Label-sc-1xm1a0x-0 hqUWat Flexweb__Flex-ni2cjg-0 jOkEVe"
       for="sample-checkbox"
     >
       <input
-        class="Checkboxweb__Input-sc-1jywz70-0 djeySD"
+        class="Inputweb__Input-tent3b-0 ehBSbZ"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -300,11 +300,11 @@ exports[`<Checkbox /> size should render a large checkbox 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
   >
     <label
-      class="Checkboxweb__Label-sc-1jywz70-1 cEmQAl Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Labelweb__Label-sc-1xm1a0x-0 hqUWat Flexweb__Flex-ni2cjg-0 jOkEVe"
       for="sample-checkbox"
     >
       <input
-        class="Checkboxweb__Input-sc-1jywz70-0 djeySD"
+        class="Inputweb__Input-tent3b-0 ehBSbZ"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -341,11 +341,11 @@ exports[`<Checkbox /> size should render a medium(default) checkbox 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
   >
     <label
-      class="Checkboxweb__Label-sc-1jywz70-1 cEmQAl Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Labelweb__Label-sc-1xm1a0x-0 hqUWat Flexweb__Flex-ni2cjg-0 jOkEVe"
       for="sample-checkbox"
     >
       <input
-        class="Checkboxweb__Input-sc-1jywz70-0 djeySD"
+        class="Inputweb__Input-tent3b-0 ehBSbZ"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -382,11 +382,11 @@ exports[`<Checkbox /> size should render a small checkbox 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
   >
     <label
-      class="Checkboxweb__Label-sc-1jywz70-1 cEmQAl Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Labelweb__Label-sc-1xm1a0x-0 hqUWat Flexweb__Flex-ni2cjg-0 jOkEVe"
       for="sample-checkbox"
     >
       <input
-        class="Checkboxweb__Input-sc-1jywz70-0 djeySD"
+        class="Inputweb__Input-tent3b-0 ehBSbZ"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -423,11 +423,11 @@ exports[`<Checkbox /> variantColor should render a checkbox with default variant
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
   >
     <label
-      class="Checkboxweb__Label-sc-1jywz70-1 cEmQAl Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Labelweb__Label-sc-1xm1a0x-0 hqUWat Flexweb__Flex-ni2cjg-0 jOkEVe"
       for="sample-checkbox"
     >
       <input
-        class="Checkboxweb__Input-sc-1jywz70-0 djeySD"
+        class="Inputweb__Input-tent3b-0 ehBSbZ"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -464,11 +464,11 @@ exports[`<Checkbox /> variantColor should render a checkbox with provided varian
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
   >
     <label
-      class="Checkboxweb__Label-sc-1jywz70-1 cEmQAl Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Labelweb__Label-sc-1xm1a0x-0 hqUWat Flexweb__Flex-ni2cjg-0 jOkEVe"
       for="sample-checkbox"
     >
       <input
-        class="Checkboxweb__Input-sc-1jywz70-0 djeySD"
+        class="Inputweb__Input-tent3b-0 ehBSbZ"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
