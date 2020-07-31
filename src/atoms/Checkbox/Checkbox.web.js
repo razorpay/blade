@@ -139,6 +139,7 @@ const Checkbox = ({
   helpText,
   errorText,
   testID,
+  name,
   id,
 }) => {
   if (isDefined(defaultChecked) && isDefined(externalChecked)) {
@@ -167,6 +168,7 @@ const Checkbox = ({
           <Label as="label" htmlFor={id}>
             <Input
               id={id}
+              name={name}
               onClick={onCheckChange}
               defaultChecked={externalChecked || isChecked}
               isChecked={isChecked}
@@ -227,6 +229,7 @@ Checkbox.propTypes = {
   onChange: PropTypes.func,
   testID: PropTypes.string,
   id: PropTypes.string,
+  name: PropTypes.string,
   helpText: (props, propName, componentName) => {
     if (props.size === 'small') {
       return new Error(
