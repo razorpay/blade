@@ -162,8 +162,8 @@ const Checkbox = ({
           <Label htmlFor={id}>
             <Input
               id={id}
-              checked={externalChecked || isChecked}
               onClick={onCheckChange}
+              defaultChecked={externalChecked || isChecked}
               isChecked={isChecked}
               disabled={disabled}
               variantColor={variantColor}
