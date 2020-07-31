@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import automation from '../../_helpers/automation-attributes';
 import isDefined from '../../_helpers/isDefined';
 import isEmpty from '../../_helpers/isEmpty';
-import { getColor, getVariantColorKeys } from '../../_helpers/theme';
+import { makePxValue, getColor, getVariantColorKeys } from '../../_helpers/theme';
 import Flex from '../Flex';
 import Icon from '../Icon';
 import Size from '../Size';
@@ -100,22 +100,22 @@ const styles = {
       }
     },
     width: {
-      large: '28px',
-      medium: '24px',
-      small: '20px',
-      xsmall: '16px',
+      large: makePxValue(3.5),
+      medium: makePxValue(3),
+      small: makePxValue(2.5),
+      xsmall: makePxValue(2),
     },
     height: {
-      large: '28px',
-      medium: '24px',
-      small: '20px',
-      xsmall: '16px',
+      large: makePxValue(3.5),
+      medium: makePxValue(3),
+      small: makePxValue(2.5),
+      xsmall: makePxValue(2),
     },
     borderRadius: {
-      large: '14px',
-      medium: '12px',
-      small: '10px',
-      xsmall: '8px',
+      large: makePxValue(1.75),
+      medium: makePxValue(1.5),
+      small: makePxValue(1.25),
+      xsmall: makePxValue(1),
     },
   },
   title: {
