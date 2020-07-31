@@ -21,7 +21,7 @@ const styles = {
         return 'shade.930';
       }
       if (isChecked || externalChecked) {
-        return `${variantColor || 'primary'}.800`;
+        return `${variantColor}.800`;
       }
       return 'shade.950';
     },
@@ -75,23 +75,22 @@ const styles = {
         return 'transparent';
       }
 
-      const colorKey = variantColor || 'primary';
       switch (state) {
         case 'hover':
           if (!isChecked) {
             return theme.colors.tone[930];
           }
-          return getColor(theme, `${colorKey}.920`);
+          return getColor(theme, `${variantColor}.920`);
         case 'focus':
           if (!isChecked) {
             return theme.colors.tone[940];
           }
-          return getColor(theme, `${colorKey}.930`);
+          return getColor(theme, `${variantColor}.930`);
         case 'active':
           if (!isChecked) {
             return theme.colors.tone[940];
           }
-          return getColor(theme, `${colorKey}.940`);
+          return getColor(theme, `${variantColor}.940`);
         default:
           return 'transparent';
       }
