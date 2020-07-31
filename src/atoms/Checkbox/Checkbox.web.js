@@ -141,15 +141,11 @@ const Checkbox = ({
 
   const onCheckChange = useCallback(() => {
     if (isDefined(externalChecked)) {
-      if (onChange) {
-        onChange(!externalChecked);
-      }
+      onChange(!externalChecked);
       return;
     }
     setIsChecked((prevState) => {
-      if (onChange) {
-        onChange(!prevState);
-      }
+      onChange(!prevState);
       return !prevState;
     });
   }, [externalChecked, onChange]);
@@ -223,7 +219,7 @@ Checkbox.propTypes = {
   title: PropTypes.string,
   disabled: PropTypes.bool,
   variantColor: PropTypes.oneOf(getVariantColorKeys()),
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   testID: PropTypes.string,
   id: PropTypes.string,
   helpText: (props, propName, componentName) => {
@@ -265,6 +261,7 @@ Checkbox.defaultProps = {
   errorText: '',
   variantColor: 'primary',
   testID: 'ds-checkbox',
+  onChange: () => {},
 };
 
 export default Checkbox;
