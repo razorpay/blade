@@ -57,35 +57,6 @@ const styles = {
     },
   },
   backdrop: {
-    dimensions(size) {
-      switch (size) {
-        case 'large':
-          return {
-            width: makePxValue(3.5),
-            height: makePxValue(3.5),
-            borderRadius: makePxValue(1.75),
-          };
-        case 'medium':
-          return {
-            width: makePxValue(3),
-            height: makePxValue(3),
-            borderRadius: makePxValue(1.5),
-          };
-        case 'small':
-          return {
-            width: makePxValue(2.5),
-            height: makePxValue(2.5),
-            borderRadius: makePxValue(1.25),
-          };
-
-        default:
-          return {
-            width: makePxValue(3),
-            height: makePxValue(3),
-            borderRadius: makePxValue(1.5),
-          };
-      }
-    },
     backgroundColor({ theme, checked, disabled, state }) {
       if (disabled) {
         return 'transparent';
@@ -111,69 +82,59 @@ const styles = {
           return 'transparent';
       }
     },
+    width: {
+      small: makePxValue(2.5),
+      medium: makePxValue(3),
+      large: makePxValue(3.5),
+    },
+    height: {
+      small: makePxValue(2.5),
+      medium: makePxValue(3),
+      large: makePxValue(3.5),
+    },
+    borderRadius: {
+      small: makePxValue(1.25),
+      medium: makePxValue(1.5),
+      large: makePxValue(1.75),
+    },
   },
   circle: {
-    dimensions(size) {
-      switch (size) {
-        case 'large':
-          return {
-            width: makePxValue(1.75),
-            height: makePxValue(1.75),
-            borderRadius: makePxValue(0.875),
-            borderWidth: makePxValue(0.175),
-          };
-        case 'medium':
-          return {
-            width: makePxValue(1.5),
-            height: makePxValue(1.5),
-            borderRadius: makePxValue(0.75),
-            borderWidth: makePxValue(0.15),
-          };
-        case 'small':
-          return {
-            width: makePxValue(1.25),
-            height: makePxValue(1.25),
-            borderRadius: makePxValue(0.625),
-            borderWidth: makePxValue(0.125),
-          };
-        default:
-          return {
-            width: makePxValue(1.5),
-            height: makePxValue(1.5),
-            borderRadius: makePxValue(0.75),
-            borderWidth: makePxValue(0.15),
-          };
-      }
+    width: {
+      small: makePxValue(1.25),
+      medium: makePxValue(1.5),
+      large: makePxValue(1.75),
+    },
+    height: {
+      small: makePxValue(1.25),
+      medium: makePxValue(1.5),
+      large: makePxValue(1.75),
+    },
+    borderRadius: {
+      small: makePxValue(0.625),
+      medium: makePxValue(0.75),
+      large: makePxValue(0.875),
+    },
+    borderWidth: {
+      small: makePxValue(0.125),
+      medium: makePxValue(0.15),
+      large: makePxValue(0.175),
     },
   },
   dot: {
-    dimensions(size) {
-      switch (size) {
-        case 'large':
-          return {
-            width: makePxValue(0.875),
-            height: makePxValue(0.875),
-            borderRadius: makePxValue(0.4375),
-          };
-        case 'medium':
-          return {
-            width: makePxValue(0.75),
-            height: makePxValue(0.75),
-            borderRadius: makePxValue(0.375),
-          };
-        case 'small':
-          return {
-            width: makePxValue(0.625),
-            height: makePxValue(0.625),
-            borderRadius: makePxValue(0.3125),
-          };
-        default:
-          return {
-            width: makePxValue(0.75),
-            height: makePxValue(0.75),
-            borderRadius: makePxValue(0.375),
-          };
-      }
+    width: {
+      small: makePxValue(0.625),
+      medium: makePxValue(0.75),
+      large: makePxValue(0.875),
+    },
+    height: {
+      small: makePxValue(0.625),
+      medium: makePxValue(0.75),
+      large: makePxValue(0.875),
+    },
+    borderRadius: {
+      small: makePxValue(0.3125),
+      medium: makePxValue(0.375),
+      large: makePxValue(0.4375),
     },
   },
 };
@@ -181,7 +142,7 @@ const styles = {
 const Dot = styled(View)(
   (props) =>
     `
-    border-radius: ${props.borderRadius};
+    border-radius: ${styles.dot.borderRadius[props.size]};
     background-color: ${props.backgroundColor};
   `,
 );
@@ -189,8 +150,8 @@ const Dot = styled(View)(
 const Circle = styled(View)(
   (props) =>
     `
-    border-radius: ${props.borderRadius};
-    border: ${props.borderWidth} solid ${props.color};'
+    border-radius: ${styles.circle.borderRadius[props.size]};
+    border: ${styles.circle.borderWidth[props.size]} solid ${props.color};'
   `,
 );
 
@@ -206,7 +167,7 @@ const Input = styled.input.attrs({
   outline: none;
   + ${Backdrop} {
     background-color: transparent;
-    border-radius: ${(props) => styles.backdrop.dimensions(props.size).borderRadius};
+    border-radius: ${(props) => styles.backdrop.borderRadius[props.size]};
   }
   &:hover {
     + ${Backdrop} {
@@ -271,20 +232,18 @@ const RadioOption = ({
               value={value}
               disabled={disabled}
               checked={checked}
+              size={size}
               {...automation(testID)}
             />
             <Flex flexDirection="column" justifyContent="center" alignItems="center">
-              <Size
-                width={`${styles.backdrop.dimensions(size).width}`}
-                height={`${styles.backdrop.dimensions(size).height}`}
-              >
+              <Size width={styles.backdrop.width[size]} height={styles.backdrop.height[size]}>
                 <Backdrop>
                   <Flex justifyContent="center" alignItems="center">
-                    <Size {...styles.circle.dimensions(size)}>
-                      <Circle color={radioColor}>
+                    <Size width={styles.circle.width[size]} height={styles.circle.height[size]}>
+                      <Circle size={size} color={radioColor}>
                         {checked ? (
-                          <Size {...styles.dot.dimensions(size)}>
-                            <Dot backgroundColor={radioColor} />
+                          <Size width={styles.dot.width[size]} height={styles.dot.height[size]}>
+                            <Dot size={size} backgroundColor={radioColor} />
                           </Size>
                         ) : null}
                       </Circle>
