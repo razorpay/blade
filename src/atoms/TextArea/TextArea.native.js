@@ -4,61 +4,69 @@ import TextInput from '../TextInput';
 import automation from '../../_helpers/automation-attributes';
 import isEmpty from '../../_helpers/isEmpty';
 
-const TextArea = ({
-  autoFocus,
-  placeholder,
-  helpText,
-  errorText,
-  onChange,
-  variant,
-  prefix,
-  suffix,
-  disabled,
-  value,
-  iconLeft,
-  iconRight,
-  maxLength,
-  label,
-  testID,
-  labelPosition,
-  width,
-}) => {
-  if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
-    throw Error('Cannot have prefix and left icon together');
-  }
+const TextArea = React.forwardRef(
+  (
+    {
+      autoFocus,
+      placeholder,
+      helpText,
+      errorText,
+      onChange,
+      variant,
+      prefix,
+      suffix,
+      disabled,
+      value,
+      iconLeft,
+      iconRight,
+      maxLength,
+      label,
+      testID,
+      labelPosition,
+      width,
+      onSubmitEditing,
+    },
+    ref,
+  ) => {
+    if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
+      throw Error('Cannot have prefix and left icon together');
+    }
 
-  if (!isEmpty(suffix) && !isEmpty(iconRight)) {
-    throw Error('Cannot have suffix and right icon together');
-  }
+    if (!isEmpty(suffix) && !isEmpty(iconRight)) {
+      throw Error('Cannot have suffix and right icon together');
+    }
 
-  if (labelPosition === 'left' && variant === 'outlined') {
-    // Outlined Text Area has only a top label
-    throw Error('Cannot have a left label on an outlined Text Area');
-  }
+    if (labelPosition === 'left' && variant === 'outlined') {
+      // Outlined Text Area has only a top label
+      throw Error('Cannot have a left label on an outlined Text Area');
+    }
 
-  return (
-    <TextInput
-      autoFocus={autoFocus}
-      placeholder={placeholder}
-      helpText={helpText}
-      errorText={errorText}
-      onChange={onChange}
-      variant={variant}
-      prefix={prefix}
-      suffix={suffix}
-      disabled={disabled}
-      iconLeft={iconLeft}
-      iconRight={iconRight}
-      maxLength={maxLength}
-      label={label}
-      labelPosition={labelPosition}
-      width={width}
-      value={value}
-      _isMultiline={true}
-      {...automation(testID)}
-    />
-  );
-};
+    return (
+      <TextInput
+        ref={ref}
+        autoFocus={autoFocus}
+        placeholder={placeholder}
+        helpText={helpText}
+        errorText={errorText}
+        onChange={onChange}
+        variant={variant}
+        prefix={prefix}
+        suffix={suffix}
+        disabled={disabled}
+        iconLeft={iconLeft}
+        iconRight={iconRight}
+        maxLength={maxLength}
+        label={label}
+        labelPosition={labelPosition}
+        width={width}
+        value={value}
+        onSubmitEditing={onSubmitEditing}
+        _isMultiline={true}
+        {...automation(testID)}
+      />
+    );
+  },
+);
 
 TextArea.propTypes = {
   placeholder: PropTypes.string,
@@ -78,6 +86,7 @@ TextArea.propTypes = {
   testID: PropTypes.string,
   labelPosition: PropTypes.oneOf(['top', 'left']),
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
+  onSubmitEditing: PropTypes.func,
 };
 
 TextArea.defaultProps = {
@@ -90,5 +99,7 @@ TextArea.defaultProps = {
   labelPosition: 'top',
   width: 'medium',
 };
+
+TextArea.displayName = 'TextArea';
 
 export default TextArea;
