@@ -5,6 +5,7 @@ import automation from '../../_helpers/automation-attributes';
 import isEmpty from '../../_helpers/isEmpty';
 
 const TextArea = ({
+  autoFocus,
   placeholder,
   helpText,
   errorText,
@@ -37,6 +38,7 @@ const TextArea = ({
 
   return (
     <TextInput
+      autoFocus={autoFocus}
       placeholder={placeholder}
       helpText={helpText}
       errorText={errorText}
@@ -60,6 +62,7 @@ const TextArea = ({
 
 TextArea.propTypes = {
   placeholder: PropTypes.string,
+  autoFocus: PropTypes.bool,
   helpText: PropTypes.string,
   errorText: PropTypes.string,
   onChange: PropTypes.func,

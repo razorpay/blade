@@ -165,6 +165,7 @@ const TextInput = React.forwardRef(
   (
     {
       placeholder,
+      autoFocus,
       onChange,
       helpText,
       errorText,
@@ -363,6 +364,7 @@ const TextInput = React.forwardRef(
                               >
                                 <StyledInput
                                   ref={ref}
+                                  autoFocus={autoFocus}
                                   placeholder={placeholder}
                                   placeholderTextColor={placeholderTextColor}
                                   onFocus={onFocus}
@@ -436,6 +438,7 @@ const TextInput = React.forwardRef(
 
 TextInput.propTypes = {
   placeholder: PropTypes.string,
+  autoFocus: PropTypes.bool,
   helpText: PropTypes.string,
   errorText: PropTypes.string,
   onChange: PropTypes.func,
