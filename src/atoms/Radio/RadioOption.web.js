@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeContext } from 'styled-components';
 import View from '../View';
@@ -15,14 +15,14 @@ import { useRadioButtonContext } from './RadioContext';
 
 const styles = {
   radio: {
-    color({ theme, disabled, checked, variantColor }) {
+    color({ theme, disabled }) {
       if (disabled) {
         return getColor(theme, 'shade.930');
       }
-      if (checked) {
-        const color = variantColor || 'primary';
-        return getColor(theme, `${color}.800`);
-      }
+      // if (checked) {
+      //   const color = variantColor || 'primary';
+      //   return getColor(theme, `${color}.800`);
+      // }
 
       return getColor(theme, 'shade.950');
     },
@@ -84,6 +84,18 @@ const styles = {
             height: makePxValue(3),
             borderRadius: makePxValue(1.5),
           };
+      }
+    },
+    backgroundColor({ theme, state }) {
+      switch (state) {
+        case 'hover':
+          return getColor(theme, 'primary.920');
+        case 'focus':
+          return getColor(theme, 'primary.930');
+        case 'active':
+          return getColor(theme, 'primary.940');
+        default:
+          return 'transparent';
       }
     },
   },
@@ -165,14 +177,48 @@ const Circle = styled(View)(
   (props) =>
     `
     border-radius: ${props.borderRadius};
-    border-color: ${props.color};
-    border-width: ${props.borderWidth};
+    border: ${props.borderWidth} solid ${props.color};'
   `,
 );
 
 const isChecked = ({ context, value }) => {
   return context && isDefined(context.value) && context.value === value;
 };
+
+const Input = styled.input.attrs({
+  type: 'radio',
+})`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  clip-path: inset(2px 2px 2px 0);
+  + ${Backdrop} {
+    background-color: transparent;
+    border-radius: ${(props) => styles.backdrop.dimensions(props.size).borderRadius};
+  }
+  &:hover {
+    + ${Backdrop} {
+      background-color: ${(props) => styles.backdrop.backgroundColor({ ...props, state: 'hover' })};
+    }
+  }
+  &:focus {
+    + ${Backdrop} {
+      background-color: ${(props) => styles.backdrop.backgroundColor({ ...props, state: 'focus' })};
+    }
+  }
+  &:active {
+    + ${Backdrop} {
+      background-color: ${(props) =>
+        styles.backdrop.backgroundColor({ ...props, state: 'active' })};
+    }
+  }
+`;
+
+const Label = styled.label`
+  position: relative;
+`;
 
 const RadioOption = ({
   size,
@@ -193,34 +239,18 @@ const RadioOption = ({
 
   const radioColor = styles.radio.color({ theme, disabled, checked, variantColor });
 
-  const onPressIn = useCallback(() => {
-    let color = 'tone.940';
-    if (checked) {
-      color = `${variantColor || 'primary'}.930`;
-    }
-    const newUnderlayColor = getColor(theme, color);
-  }, [checked, theme, variantColor]);
-
-  const onPressOut = useCallback(() => {
-    if (isDefined(context.onChange)) {
-      context.onChange(value);
-    }
-
-  }, [context, value]);
-
   return (
-    <Flex alignSelf="flex-start">
-      <View
-        disabled={disabled}
-        onPressIn={onPressIn}
-        onPressOut={onPressOut}
-        {...automation(testID)}
-      >
+    <Flex alignSelf="flex-start" flexDirection="column">
+      <View>
         <Flex flexDirection="row" alignItems="center">
-          <View>
-            <Flex justifyContent="center" alignItems="center">
-              <Size {...styles.backdrop.dimensions(size)}>
-                <Backdrop backgroundColor='primary.930'>
+          <Label>
+            <Input {...automation(testID)} />
+            <Flex flexDirection="column" justifyContent="center" alignItems="center">
+              <Size
+                width={`${styles.backdrop.dimensions(size).width}`}
+                height={`${styles.backdrop.dimensions(size).height}`}
+              >
+                <Backdrop>
                   <Flex justifyContent="center" alignItems="center">
                     <Size {...styles.circle.dimensions(size)}>
                       <Circle color={radioColor}>
@@ -244,7 +274,7 @@ const RadioOption = ({
                 </View>
               </Space>
             </Flex>
-          </View>
+          </Label>
         </Flex>
 
         {(!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' ? (
