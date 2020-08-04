@@ -1,7 +1,14 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import RadioButtonContext from './RadioContext';
 import RadioOption from './RadioOption';
+
+const RadioGroup = styled.fieldset`
+  border: none;
+  margin: 0;
+  padding: 0;
+`;
 
 const Radio = ({ value, onChange, defaultValue, children }) => {
   const [selected, setSelected] = useState(value || defaultValue);
@@ -23,7 +30,7 @@ const Radio = ({ value, onChange, defaultValue, children }) => {
 
   return (
     <RadioButtonContext.Provider value={contextValue}>
-      <fieldset>{children}</fieldset>
+      <RadioGroup>{children}</RadioGroup>
     </RadioButtonContext.Provider>
   );
 };

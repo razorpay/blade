@@ -194,10 +194,6 @@ const Circle = styled(View)(
   `,
 );
 
-const isChecked = ({ context, value }) => {
-  return context && isDefined(context.value) && context.value === value;
-};
-
 const Input = styled.input.attrs({
   type: 'radio',
 })`
@@ -233,6 +229,10 @@ const Input = styled.input.attrs({
 const Label = styled.label`
   position: relative;
 `;
+
+const isChecked = ({ context, value }) => {
+  return context && isDefined(context.value) && context.value === value;
+};
 
 const RadioOption = ({
   size,
