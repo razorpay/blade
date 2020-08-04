@@ -35,14 +35,34 @@ storiesOf('RadioButton', module)
   ))
   .add('onChange', () => (
     <Radio
+      defaultValue="1"
       onChange={(value) => {
         action('Value', value);
       }}
     >
-      <Radio.Option value="1" size="large" title="Unchecked" helpText="I'm unchecked" />
-      <Radio.Option value="2" size="large" title="Checked" helpText="I'm active" />
-      <Radio.Option value="3" size="large" disabled title="Disabled" helpText="I'm disabled" />
-      <Radio.Option value="4" size="large" title="Error" errorText="Something's not right!" />
+      <Radio.Option
+        name="group1"
+        value="1"
+        size="large"
+        title="Unchecked"
+        helpText="I'm unchecked"
+      />
+      <Radio.Option name="group1" value="2" size="large" title="Checked" helpText="I'm active" />
+      <Radio.Option
+        name="group1"
+        value="3"
+        size="large"
+        disabled
+        title="Disabled"
+        helpText="I'm disabled"
+      />
+      <Radio.Option
+        name="group1"
+        value="4"
+        size="large"
+        title="Error"
+        errorText="Something's not right!"
+      />
     </Radio>
   ))
   .add('controlled', () => (

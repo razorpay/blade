@@ -21,7 +21,11 @@ const Radio = ({ value, onChange, defaultValue, children }) => {
     selected,
   ]);
 
-  return <RadioButtonContext.Provider value={contextValue}>{children}</RadioButtonContext.Provider>;
+  return (
+    <RadioButtonContext.Provider value={contextValue}>
+      <fieldset>{children}</fieldset>
+    </RadioButtonContext.Provider>
+  );
 };
 
 Radio.propTypes = {

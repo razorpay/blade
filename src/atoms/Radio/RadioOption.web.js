@@ -15,14 +15,14 @@ import { useRadioButtonContext } from './RadioContext';
 
 const styles = {
   radio: {
-    color({ theme, disabled }) {
+    color({ theme, disabled, checked, variantColor }) {
       if (disabled) {
         return getColor(theme, 'shade.930');
       }
-      // if (checked) {
-      //   const color = variantColor || 'primary';
-      //   return getColor(theme, `${color}.800`);
-      // }
+
+      if (checked) {
+        return getColor(theme, `${variantColor}.800`);
+      }
 
       return getColor(theme, 'shade.950');
     },
@@ -86,14 +86,27 @@ const styles = {
           };
       }
     },
-    backgroundColor({ theme, state }) {
+    backgroundColor({ theme, checked, disabled, state }) {
+      if (disabled) {
+        return 'transparent';
+      }
+
       switch (state) {
         case 'hover':
-          return getColor(theme, 'primary.920');
+          if (checked) {
+            return getColor(theme, 'primary.920');
+          }
+          return getColor(theme, 'tone.930');
         case 'focus':
-          return getColor(theme, 'primary.930');
+          if (checked) {
+            return getColor(theme, 'primary.930');
+          }
+          return getColor(theme, 'tone.940');
         case 'active':
-          return getColor(theme, 'primary.940');
+          if (checked) {
+            return getColor(theme, 'primary.940');
+          }
+          return getColor(theme, 'shade.940');
         default:
           return 'transparent';
       }
@@ -194,6 +207,7 @@ const Input = styled.input.attrs({
   margin: 0;
   padding: 0;
   clip-path: inset(2px 2px 2px 0);
+  outline: none;
   + ${Backdrop} {
     background-color: transparent;
     border-radius: ${(props) => styles.backdrop.dimensions(props.size).borderRadius};
@@ -229,6 +243,7 @@ const RadioOption = ({
   errorText,
   variantColor,
   testID,
+  name,
 }) => {
   const titleTextColor = disabled ? 'shade.950' : 'shade.980';
   const helpTextColor = disabled ? 'shade.930' : 'shade.950';
@@ -239,12 +254,25 @@ const RadioOption = ({
 
   const radioColor = styles.radio.color({ theme, disabled, checked, variantColor });
 
+  const onClick = () => {
+    if (isDefined(context.onChange)) {
+      context.onChange(value);
+    }
+  };
+
   return (
     <Flex alignSelf="flex-start" flexDirection="column">
       <View>
         <Flex flexDirection="row" alignItems="center">
           <Label>
-            <Input {...automation(testID)} />
+            <Input
+              name={name}
+              onClick={onClick}
+              value={value}
+              disabled={disabled}
+              checked={checked}
+              {...automation(testID)}
+            />
             <Flex flexDirection="column" justifyContent="center" alignItems="center">
               <Size
                 width={`${styles.backdrop.dimensions(size).width}`}
@@ -295,6 +323,7 @@ const RadioOption = ({
 };
 
 RadioOption.propTypes = {
+  name: PropTypes.string,
   value: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
