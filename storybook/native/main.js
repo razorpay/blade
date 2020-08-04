@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { withKnobs } from '@storybook/addon-ondevice-knobs';
 import { darkTheme, lightTheme } from '../../src/tokens/theme';
 import storybookTheme from './storybookTheme';
+import 'react-native-gesture-handler';
 
 const theme = {
   light: lightTheme,
@@ -31,6 +32,7 @@ configure(() => {
   require('../../src/atoms/TextArea/TextArea.stories');
   require('../../src/atoms/TextInput/TextInput.stories');
   require('../../src/molecules/Amount/Amount.stories');
+  require('../../src/molecules/BottomSheet/BottomSheet.stories');
   require('../../src/molecules/Modal/Modal.stories');
   require('../../src/molecules/SegmentControl/SegmentControl.stories');
   require('../../src/molecules/Snackbar/Snackbar.stories');
