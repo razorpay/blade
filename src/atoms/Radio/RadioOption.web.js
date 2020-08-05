@@ -14,26 +14,21 @@ import Backdrop from './Backdrop';
 import { useRadioButtonContext } from './RadioContext';
 
 const styles = {
-  radio: {
-    color({ theme, disabled, checked, variantColor }) {
+  title: {
+    color({ disabled }) {
       if (disabled) {
-        return getColor(theme, 'shade.930');
+        return 'shade.950';
       }
-
-      if (checked) {
-        return getColor(theme, `${variantColor}.800`);
-      }
-
-      return getColor(theme, 'shade.950');
+      return 'shade.980';
     },
   },
-  helpText: {
+  descriptionText: {
     margin(size) {
       switch (size) {
         case 'large':
-          return [0, 0, 0, 4];
+          return [0.5, 0, 0, 4];
         case 'medium':
-          return [0, 0, 0, 3.5];
+          return [0.5, 0, 0, 3.5];
         case 'small':
           return [0, 0, 0, 3];
         default:
@@ -50,10 +45,27 @@ const styles = {
           return 'small';
       }
     },
+    color({ disabled, errorText }) {
+      if (errorText) {
+        return 'negative.900';
+      }
+      if (disabled) {
+        return 'shade.930';
+      }
+      return 'shade.950';
+    },
   },
-  title: {
-    margin() {
-      return [0, 0, 0, 0.5];
+  radio: {
+    color({ theme, disabled, checked, variantColor }) {
+      if (disabled) {
+        return getColor(theme, 'shade.930');
+      }
+
+      if (checked) {
+        return getColor(theme, `${variantColor}.800`);
+      }
+
+      return getColor(theme, 'shade.950');
     },
   },
   backdrop: {
@@ -206,13 +218,10 @@ const RadioOption = ({
   testID,
   name,
 }) => {
-  const titleTextColor = disabled ? 'shade.950' : 'shade.980';
-  const helpTextColor = disabled ? 'shade.930' : 'shade.950';
   const context = useRadioButtonContext();
-
   const theme = useContext(ThemeContext);
-  const checked = isChecked({ context, value });
 
+  const checked = isChecked({ context, value });
   const radioColor = styles.radio.color({ theme, disabled, checked, variantColor });
 
   const onClick = (event) => {
@@ -253,9 +262,9 @@ const RadioOption = ({
               </Size>
             </Flex>
             <Flex alignSelf="center">
-              <Space margin={styles.title.margin()}>
+              <Space margin={[0, 0, 0, 0.5]}>
                 <View>
-                  <Text color={titleTextColor} size={size}>
+                  <Text color={styles.title.color({ disabled })} size={size}>
                     {title}
                   </Text>
                 </View>
@@ -265,11 +274,11 @@ const RadioOption = ({
         </Flex>
 
         {(!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' ? (
-          <Space margin={styles.helpText.margin(size)}>
+          <Space margin={styles.descriptionText.margin(size)}>
             <View>
               <Text
-                size={styles.helpText.size(size)}
-                color={errorText ? 'negative.900' : helpTextColor}
+                size={styles.descriptionText.size(size)}
+                color={styles.descriptionText.color({ disabled, errorText })}
               >
                 {errorText || helpText}
               </Text>
