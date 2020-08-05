@@ -74,24 +74,24 @@ const styles = {
     },
   },
   backdrop: {
-    backgroundColor({ theme, state, isChecked, disabled, variantColor }) {
+    backgroundColor({ theme, state, isChecked, externalChecked, disabled, variantColor }) {
       if (disabled) {
         return 'transparent';
       }
 
       switch (state) {
         case 'hover':
-          if (!isChecked) {
+          if (!(isChecked || externalChecked)) {
             return theme.colors.tone[930];
           }
           return getColor(theme, `${variantColor}.920`);
         case 'focus':
-          if (!isChecked) {
+          if (!(isChecked || externalChecked)) {
             return theme.colors.tone[940];
           }
           return getColor(theme, `${variantColor}.930`);
         case 'active':
-          if (!isChecked) {
+          if (!(isChecked || externalChecked)) {
             return theme.colors.tone[940];
           }
           return getColor(theme, `${variantColor}.940`);
@@ -148,16 +148,23 @@ const Checkbox = ({
 
   const [isChecked, setIsChecked] = useState(defaultChecked || false);
 
-  const onCheckChange = useCallback(() => {
-    if (isDefined(externalChecked)) {
-      onChange(!externalChecked);
-      return;
-    }
-    setIsChecked((prevState) => {
-      onChange(!prevState);
-      return !prevState;
-    });
-  }, [externalChecked, onChange]);
+  const onCheckChange = useCallback(
+    (event) => {
+      /* prevent default behaviour of label firing click event on the associated input */
+      event.preventDefault();
+      if (!disabled) {
+        if (isDefined(externalChecked)) {
+          onChange(!externalChecked);
+          return;
+        }
+        setIsChecked((prevState) => {
+          onChange(!prevState);
+          return !prevState;
+        });
+      }
+    },
+    [externalChecked, onChange],
+  );
 
   const descriptionText = errorText || helpText;
 
@@ -165,13 +172,13 @@ const Checkbox = ({
     <Flex alignSelf="flex-start" flexDirection="column">
       <View>
         <Flex flexDirection="row" alignItems="center">
-          <Label as="label" htmlFor={id}>
+          <Label as="label" onClick={onCheckChange} htmlFor={id}>
             <Input
               id={id}
               name={name}
-              onClick={onCheckChange}
-              defaultChecked={externalChecked || isChecked}
+              defaultChecked={isChecked || externalChecked}
               isChecked={isChecked}
+              externalChecked={externalChecked}
               disabled={disabled}
               variantColor={variantColor}
               backdropStyles={styles.backdrop}
