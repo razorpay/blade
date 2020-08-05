@@ -11,7 +11,7 @@ exports[`<Checkbox /> checked should render checkbox checked(attr)=true if check
     >
       <input
         checked=""
-        class="Inputweb__Input-tent3b-0 ehBSbZ"
+        class="Inputweb__Input-tent3b-0 dyuKMD"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
