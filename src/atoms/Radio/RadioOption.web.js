@@ -215,7 +215,8 @@ const RadioOption = ({
 
   const radioColor = styles.radio.color({ theme, disabled, checked, variantColor });
 
-  const onClick = () => {
+  const onClick = (event) => {
+    event.preventDefault();
     if (isDefined(context.onChange)) {
       context.onChange(value);
     }
@@ -225,10 +226,9 @@ const RadioOption = ({
     <Flex alignSelf="flex-start" flexDirection="column">
       <View>
         <Flex flexDirection="row" alignItems="center">
-          <Label>
+          <Label onClick={onClick}>
             <Input
               name={name}
-              onClick={onClick}
               value={value}
               disabled={disabled}
               checked={checked}
