@@ -50,7 +50,7 @@ const styles = {
         case 'xsmall':
           return [0, 0, 0, 2.5];
         default:
-          return [0, 0, 0, 3.5];
+          return [0.5, 0, 0, 3.5];
       }
     },
     size(checkboxSize) {
