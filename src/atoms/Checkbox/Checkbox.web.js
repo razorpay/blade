@@ -163,7 +163,7 @@ const Checkbox = ({
         });
       }
     },
-    [externalChecked, onChange],
+    [externalChecked, onChange, disabled],
   );
 
   const descriptionText = errorText || helpText;
