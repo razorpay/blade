@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeContext } from 'styled-components';
+import { ThemeContext } from 'styled-components';
 import View from '../View';
 import Text from '../Text';
 import isDefined from '../../_helpers/isDefined';
@@ -11,6 +11,10 @@ import Space from '../Space';
 import isEmpty from '../../_helpers/isEmpty';
 import automation from '../../_helpers/automation-attributes';
 import Backdrop from './Backdrop';
+import Label from './Label';
+import Input from './Input';
+import Circle from './Circle';
+import Dot from './Dot';
 import { useRadioButtonContext } from './RadioContext';
 
 const styles = {
@@ -134,64 +138,6 @@ const styles = {
   },
 };
 
-const Dot = styled(View)(
-  (props) =>
-    `
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 50%;
-    background-color: ${props.backgroundColor};
-  `,
-);
-
-const Circle = styled(View)(
-  (props) =>
-    `
-    position: relative;
-    border-radius: 50%;
-    border: ${styles.circle.borderWidth[props.size]} solid ${props.color};'
-  `,
-);
-
-const Input = styled.input.attrs({
-  type: 'radio',
-})`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: 0;
-  padding: 0;
-  clip-path: inset(2px 2px 2px 0);
-  outline: none;
-  + ${Backdrop} {
-    background-color: transparent;
-    border-radius: 50%;
-  }
-  &:hover {
-    + ${Backdrop} {
-      background-color: ${(props) => styles.backdrop.backgroundColor({ ...props, state: 'hover' })};
-    }
-  }
-  &:focus {
-    + ${Backdrop} {
-      background-color: ${(props) => styles.backdrop.backgroundColor({ ...props, state: 'focus' })};
-    }
-  }
-  &:active {
-    + ${Backdrop} {
-      background-color: ${(props) =>
-        styles.backdrop.backgroundColor({ ...props, state: 'active' })};
-    }
-  }
-`;
-
-const Label = styled.label`
-  position: relative;
-  cursor: pointer;
-`;
-
 const isChecked = ({ context, value }) => {
   return context && isDefined(context.value) && context.value === value;
 };
@@ -231,16 +177,17 @@ const RadioOption = ({
               disabled={disabled}
               checked={checked}
               size={size}
+              backdropStyles={styles.backdrop}
               {...automation(testID)}
             />
             <Flex flexDirection="column" justifyContent="center" alignItems="center">
               <Size width={styles.backdrop.width[size]} height={styles.backdrop.height[size]}>
                 <Backdrop>
                   <Size width={styles.circle.width[size]} height={styles.circle.height[size]}>
-                    <Circle size={size} color={radioColor}>
+                    <Circle borderWidth={styles.circle.borderWidth[size]} color={radioColor}>
                       {checked ? (
                         <Size width={styles.dot.width[size]} height={styles.dot.height[size]}>
-                          <Dot size={size} backgroundColor={radioColor} />
+                          <Dot backgroundColor={radioColor} />
                         </Size>
                       ) : null}
                     </Circle>
