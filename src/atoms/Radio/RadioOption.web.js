@@ -71,7 +71,7 @@ const styles = {
     },
   },
   backdrop: {
-    backgroundColor({ theme, checked, disabled, state }) {
+    backgroundColor({ theme, checked, disabled, variantColor, state }) {
       if (disabled) {
         return 'transparent';
       }
@@ -79,17 +79,17 @@ const styles = {
       switch (state) {
         case 'hover':
           if (checked) {
-            return getColor(theme, 'primary.920');
+            return getColor(theme, `${variantColor}.920`);
           }
           return getColor(theme, 'tone.930');
         case 'focus':
           if (checked) {
-            return getColor(theme, 'primary.930');
+            return getColor(theme, `${variantColor}.930`);
           }
           return getColor(theme, 'tone.940');
         case 'active':
           if (checked) {
-            return getColor(theme, 'primary.940');
+            return getColor(theme, `${variantColor}.940`);
           }
           return getColor(theme, 'shade.940');
         default:
@@ -178,6 +178,7 @@ const RadioOption = ({
               checked={checked}
               size={size}
               backdropStyles={styles.backdrop}
+              variantColor={variantColor}
               {...automation(testID)}
             />
             <Flex flexDirection="column" justifyContent="center" alignItems="center">
