@@ -215,7 +215,7 @@ const RadioOption = ({
 
   const onClick = (event) => {
     event.preventDefault();
-    if (isDefined(context.onChange)) {
+    if (isDefined(context.onChange) && !disabled) {
       context.onChange(value);
     }
   };
