@@ -152,6 +152,7 @@ const RadioOption = ({
   variantColor,
   testID,
   name,
+  id,
 }) => {
   const context = useRadioButtonContext();
   const theme = useContext(ThemeContext);
@@ -172,6 +173,7 @@ const RadioOption = ({
         <Flex flexDirection="row" alignItems="center">
           <Label onClick={onClick}>
             <Input
+              id={id}
               name={name}
               value={value}
               disabled={disabled}
@@ -226,6 +228,7 @@ const RadioOption = ({
 };
 
 RadioOption.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
