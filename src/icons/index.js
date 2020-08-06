@@ -1,4 +1,5 @@
 const icons = {
+  alertCircle: require('./AlertCircle').default,
   arrowDown: require('./ArrowDown').default,
   arrowLeft: require('./ArrowLeft').default,
   arrowRight: require('./ArrowRight').default,
