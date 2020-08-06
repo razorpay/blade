@@ -60,11 +60,9 @@ const styles = {
       if (disabled) {
         return getColor(theme, 'shade.930');
       }
-
       if (checked) {
         return getColor(theme, `${variantColor}.800`);
       }
-
       return getColor(theme, 'shade.950');
     },
   },
@@ -104,11 +102,6 @@ const styles = {
       medium: makePxValue(3),
       large: makePxValue(3.5),
     },
-    borderRadius: {
-      small: makePxValue(1.25),
-      medium: makePxValue(1.5),
-      large: makePxValue(1.75),
-    },
   },
   circle: {
     width: {
@@ -120,11 +113,6 @@ const styles = {
       small: makePxValue(1.25),
       medium: makePxValue(1.5),
       large: makePxValue(1.75),
-    },
-    borderRadius: {
-      small: makePxValue(0.625),
-      medium: makePxValue(0.75),
-      large: makePxValue(0.875),
     },
     borderWidth: {
       small: makePxValue(0.125),
@@ -143,18 +131,17 @@ const styles = {
       medium: makePxValue(0.75),
       large: makePxValue(0.875),
     },
-    borderRadius: {
-      small: makePxValue(0.3125),
-      medium: makePxValue(0.375),
-      large: makePxValue(0.4375),
-    },
   },
 };
 
 const Dot = styled(View)(
   (props) =>
     `
-    border-radius: ${styles.dot.borderRadius[props.size]};
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
     background-color: ${props.backgroundColor};
   `,
 );
@@ -162,7 +149,8 @@ const Dot = styled(View)(
 const Circle = styled(View)(
   (props) =>
     `
-    border-radius: ${styles.circle.borderRadius[props.size]};
+    position: relative;
+    border-radius: 50%;
     border: ${styles.circle.borderWidth[props.size]} solid ${props.color};'
   `,
 );
@@ -179,7 +167,7 @@ const Input = styled.input.attrs({
   outline: none;
   + ${Backdrop} {
     background-color: transparent;
-    border-radius: ${(props) => styles.backdrop.borderRadius[props.size]};
+    border-radius: 50%;
   }
   &:hover {
     + ${Backdrop} {
@@ -201,6 +189,7 @@ const Input = styled.input.attrs({
 
 const Label = styled.label`
   position: relative;
+  cursor: pointer;
 `;
 
 const isChecked = ({ context, value }) => {
@@ -247,17 +236,15 @@ const RadioOption = ({
             <Flex flexDirection="column" justifyContent="center" alignItems="center">
               <Size width={styles.backdrop.width[size]} height={styles.backdrop.height[size]}>
                 <Backdrop>
-                  <Flex justifyContent="center" alignItems="center">
-                    <Size width={styles.circle.width[size]} height={styles.circle.height[size]}>
-                      <Circle size={size} color={radioColor}>
-                        {checked ? (
-                          <Size width={styles.dot.width[size]} height={styles.dot.height[size]}>
-                            <Dot size={size} backgroundColor={radioColor} />
-                          </Size>
-                        ) : null}
-                      </Circle>
-                    </Size>
-                  </Flex>
+                  <Size width={styles.circle.width[size]} height={styles.circle.height[size]}>
+                    <Circle size={size} color={radioColor}>
+                      {checked ? (
+                        <Size width={styles.dot.width[size]} height={styles.dot.height[size]}>
+                          <Dot size={size} backgroundColor={radioColor} />
+                        </Size>
+                      ) : null}
+                    </Circle>
+                  </Size>
                 </Backdrop>
               </Size>
             </Flex>
