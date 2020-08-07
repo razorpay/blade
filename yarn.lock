@@ -13625,9 +13625,9 @@ react-native-color-picker@^0.4.0:
     prop-types "^15.5.10"
     tinycolor2 "^1.4.1"
 
-react-native-gesture-handler@chaitanyadeorukhkar/react-native-gesture-handler.git#603018e:
+"react-native-gesture-handler@https://github.com/chaitanyadeorukhkar/react-native-gesture-handler.git#603018e":
   version "1.7.0"
-  resolved "https://codeload.github.com/chaitanyadeorukhkar/react-native-gesture-handler/tar.gz/603018e96817856a102f557437f8ae99153cfa0e"
+  resolved "https://github.com/chaitanyadeorukhkar/react-native-gesture-handler.git#603018e96817856a102f557437f8ae99153cfa0e"
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
     hoist-non-react-statics "^2.3.1"
