@@ -99,23 +99,39 @@ const styles = {
           return 'transparent';
       }
     },
-    width: {
-      large: makePxValue(3.5),
-      medium: makePxValue(3),
-      small: makePxValue(2.5),
-      xsmall: makePxValue(2),
-    },
-    height: {
-      large: makePxValue(3.5),
-      medium: makePxValue(3),
-      small: makePxValue(2.5),
-      xsmall: makePxValue(2),
-    },
-    borderRadius: {
-      large: makePxValue(1.75),
-      medium: makePxValue(1.5),
-      small: makePxValue(1.25),
-      xsmall: makePxValue(1),
+    dimensions({ size }) {
+      switch (size) {
+        case 'large':
+          return {
+            width: makePxValue(3.5),
+            height: makePxValue(3.5),
+            borderRadius: makePxValue(1.75),
+          };
+        case 'medium':
+          return {
+            width: makePxValue(3),
+            height: makePxValue(3),
+            borderRadius: makePxValue(1.5),
+          };
+        case 'small':
+          return {
+            width: makePxValue(2.5),
+            height: makePxValue(2.5),
+            borderRadius: makePxValue(1.25),
+          };
+        case 'xsmall':
+          return {
+            width: makePxValue(2),
+            height: makePxValue(2),
+            borderRadius: makePxValue(1),
+          };
+        default:
+          return {
+            width: makePxValue(3),
+            height: makePxValue(3),
+            borderRadius: makePxValue(1.5),
+          };
+      }
     },
   },
   title: {
@@ -184,8 +200,11 @@ const Checkbox = ({
               backdropStyles={styles.backdrop}
               {...automation(testID)}
             />
-            <Size width={styles.backdrop.width[size]} height={styles.backdrop.height[size]}>
-              <Backdrop borderRadius={styles.backdrop.borderRadius[size]}>
+            <Size
+              width={styles.backdrop.dimensions({ size }).width}
+              height={styles.backdrop.dimensions({ size }).height}
+            >
+              <Backdrop borderRadius={styles.backdrop.dimensions({ size }).borderRadius}>
                 <Icon
                   size={styles.icon.size({ size })}
                   name={externalChecked ?? isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
