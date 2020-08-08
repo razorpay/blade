@@ -10,31 +10,29 @@ const SAMPLE_ID = 'sample-checkbox';
 
 describe('<Checkbox />', () => {
   describe('id', () => {
-    it('should not have id attribute if not provded as prop', () => {
-      const { getByRole } = renderWithTheme(<Checkbox defaultChecked={false} />);
+    it('should not have id attribute if not provided as prop', () => {
+      const { getByRole } = renderWithTheme(<Checkbox />);
       const checkbox = getByRole('checkbox');
       expect(checkbox).not.toHaveAttribute('id');
     });
 
-    it('should have provided id attribute if id provded as prop', () => {
-      const { getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} defaultChecked={false} />);
+    it('should have provided id attribute if id provided as prop', () => {
+      const { getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} />);
       const checkbox = getByRole('checkbox');
       expect(checkbox.id).toEqual(SAMPLE_ID);
     });
   });
 
   describe('name', () => {
-    it('should not have name attribute if not provded as prop', () => {
-      const { getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} defaultChecked={false} />);
+    it('should not have name attribute if not provided as prop', () => {
+      const { getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} />);
       const checkbox = getByRole('checkbox');
       expect(checkbox).not.toHaveAttribute('name');
     });
 
-    it('should have provided name attribute if name provded as prop', () => {
+    it('should have provided name attribute if name provided as prop', () => {
       const name = 'sample-name';
-      const { getByRole } = renderWithTheme(
-        <Checkbox id={SAMPLE_ID} name={name} defaultChecked={false} />,
-      );
+      const { getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} name={name} />);
       const checkbox = getByRole('checkbox');
       expect(checkbox.name).toEqual(name);
     });
@@ -42,36 +40,30 @@ describe('<Checkbox />', () => {
 
   describe('size', () => {
     it('should render a large checkbox', () => {
-      const { container } = renderWithTheme(
-        <Checkbox id={SAMPLE_ID} defaultChecked={false} size="large" />,
-      );
+      const { container } = renderWithTheme(<Checkbox id={SAMPLE_ID} size="large" />);
       expect(container).toMatchSnapshot();
     });
 
     it('should render a medium(default) checkbox', () => {
-      const { container } = renderWithTheme(
-        <Checkbox id={SAMPLE_ID} defaultChecked={false} size="medium" />,
-      );
+      const { container } = renderWithTheme(<Checkbox id={SAMPLE_ID} size="medium" />);
       expect(container).toMatchSnapshot();
     });
 
     it('should render a small checkbox', () => {
-      const { container } = renderWithTheme(
-        <Checkbox id={SAMPLE_ID} defaultChecked={false} size="small" />,
-      );
+      const { container } = renderWithTheme(<Checkbox id={SAMPLE_ID} size="small" />);
       expect(container).toMatchSnapshot();
     });
   });
 
   describe('variantColor', () => {
     it('should render a checkbox with default variantColor if variantColor not provided', () => {
-      const { container } = renderWithTheme(<Checkbox id={SAMPLE_ID} defaultChecked={false} />);
+      const { container } = renderWithTheme(<Checkbox defaultChecked id={SAMPLE_ID} />);
       expect(container).toMatchSnapshot();
     });
 
     it('should render a checkbox with provided variantColor', () => {
       const { container } = renderWithTheme(
-        <Checkbox id={SAMPLE_ID} defaultChecked={false} variantColor="shade" />,
+        <Checkbox id={SAMPLE_ID} defaultChecked variantColor="shade" />,
       );
       expect(container).toMatchSnapshot();
     });
@@ -81,12 +73,7 @@ describe('<Checkbox />', () => {
     it('should render checkbox with provided helpText', () => {
       const helpText = 'This is some sample help text.';
       const { container } = renderWithTheme(
-        <Checkbox
-          id={SAMPLE_ID}
-          defaultChecked={false}
-          title="Nice checkbox"
-          helpText={helpText}
-        />,
+        <Checkbox id={SAMPLE_ID} title="Nice checkbox" helpText={helpText} />,
       );
       expect(container).toHaveTextContent(helpText);
       expect(container).toMatchSnapshot();
@@ -97,12 +84,7 @@ describe('<Checkbox />', () => {
     it('should render checkbox with provided errorText', () => {
       const errorText = 'This is some sample error text.';
       const { container } = renderWithTheme(
-        <Checkbox
-          id={SAMPLE_ID}
-          defaultChecked={false}
-          title="Nice checkbox"
-          errorText={errorText}
-        />,
+        <Checkbox id={SAMPLE_ID} title="Nice checkbox" errorText={errorText} />,
       );
       expect(container).toHaveTextContent(errorText);
       expect(container).toMatchSnapshot();
@@ -134,7 +116,7 @@ describe('<Checkbox />', () => {
   });
 
   describe('defaultChecked', () => {
-    it('should render checkbox with checked(attr)=false if defaultChecked(prop) is false', () => {
+    it('should render checkbox with checked(attr) as false if defaultChecked(prop) is false', () => {
       const { container, getByRole } = renderWithTheme(
         <Checkbox id={SAMPLE_ID} defaultChecked={false} />,
       );
@@ -143,10 +125,8 @@ describe('<Checkbox />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('should render checkbox checked(attr)=true if defaultChecked(prop) is true', () => {
-      const { container, getByRole } = renderWithTheme(
-        <Checkbox id={SAMPLE_ID} defaultChecked={true} />,
-      );
+    it('should render checkbox checked(attr) as true if defaultChecked(prop) is true', () => {
+      const { container, getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} defaultChecked />);
       const checkbox = getByRole('checkbox');
       expect(checkbox.checked).toBe(true);
       expect(container).toMatchSnapshot();
@@ -156,7 +136,7 @@ describe('<Checkbox />', () => {
   describe('disabled', () => {
     it('should render a disabled checkbox if disabled is true', () => {
       const { container, getByRole } = renderWithTheme(
-        <Checkbox id={SAMPLE_ID} disabled={true} checked={false} />,
+        <Checkbox id={SAMPLE_ID} disabled defaultChecked={false} />,
       );
       const checkbox = getByRole('checkbox');
       expect(checkbox).toBeDisabled();
@@ -165,15 +145,15 @@ describe('<Checkbox />', () => {
   });
 
   describe('checked', () => {
-    it('should render checkbox with checked(attr)=false if checked(prop) is false', () => {
+    it('should render checkbox with checked(attr) as false if checked(prop) is false', () => {
       const { container, getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} checked={false} />);
       const checkbox = getByRole('checkbox');
       expect(checkbox.checked).toBe(false);
       expect(container).toMatchSnapshot();
     });
 
-    it('should render checkbox checked(attr)=true if checked(prop) is true', () => {
-      const { container, getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} checked={true} />);
+    it('should render checkbox checked(attr) as true if checked(prop) is true', () => {
+      const { container, getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} checked />);
       const checkbox = getByRole('checkbox');
       expect(checkbox.checked).toBe(true);
       expect(container).toMatchSnapshot();
@@ -195,7 +175,7 @@ describe('<Checkbox />', () => {
 
   describe('error', () => {
     it('should throw error if both defaultChecked and checked is passed', () => {
-      const error = 'One of defaultChecked or checked should be supplied.';
+      const error = 'Only one of defaultChecked or checked should be supplied.';
       expect(() =>
         renderWithTheme(<Checkbox id={SAMPLE_ID} defaultChecked={false} checked={false} />),
       ).toThrow(error);

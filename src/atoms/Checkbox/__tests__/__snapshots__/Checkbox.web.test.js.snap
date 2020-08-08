@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Checkbox /> checked should render checkbox checked(attr)=true if checked(prop) is true 1`] = `
+exports[`<Checkbox /> checked should render checkbox checked(attr) as true if checked(prop) is true 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -39,7 +39,7 @@ exports[`<Checkbox /> checked should render checkbox checked(attr)=true if check
 </div>
 `;
 
-exports[`<Checkbox /> checked should render checkbox with checked(attr)=false if checked(prop) is false 1`] = `
+exports[`<Checkbox /> checked should render checkbox with checked(attr) as false if checked(prop) is false 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -77,7 +77,7 @@ exports[`<Checkbox /> checked should render checkbox with checked(attr)=false if
 </div>
 `;
 
-exports[`<Checkbox /> defaultChecked should render checkbox checked(attr)=true if defaultChecked(prop) is true 1`] = `
+exports[`<Checkbox /> defaultChecked should render checkbox checked(attr) as true if defaultChecked(prop) is true 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -116,7 +116,7 @@ exports[`<Checkbox /> defaultChecked should render checkbox checked(attr)=true i
 </div>
 `;
 
-exports[`<Checkbox /> defaultChecked should render checkbox with checked(attr)=false if defaultChecked(prop) is false 1`] = `
+exports[`<Checkbox /> defaultChecked should render checkbox with checked(attr) as false if defaultChecked(prop) is false 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -421,7 +421,8 @@ exports[`<Checkbox /> variantColor should render a checkbox with default variant
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 ehBSbZ"
+        checked=""
+        class="Inputweb__Input-tent3b-0 dyuKMD"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -434,12 +435,12 @@ exports[`<Checkbox /> variantColor should render a checkbox with default variant
           height="24"
           viewBox="0 0 24 24"
           width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             clip-rule="evenodd"
-            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
-            fill-opacity="0.38"
+            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
+            fill="rgba(43, 131, 234, 1.0 )"
             fill-rule="evenodd"
           />
         </svg>
@@ -459,7 +460,8 @@ exports[`<Checkbox /> variantColor should render a checkbox with provided varian
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 ehBSbZ"
+        checked=""
+        class="Inputweb__Input-tent3b-0 bYPbII"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
@@ -472,12 +474,12 @@ exports[`<Checkbox /> variantColor should render a checkbox with provided varian
           height="24"
           viewBox="0 0 24 24"
           width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             clip-rule="evenodd"
-            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
-            fill-opacity="0.38"
+            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
+            fill="rgba(52, 74, 108, 1.0)"
             fill-rule="evenodd"
           />
         </svg>
