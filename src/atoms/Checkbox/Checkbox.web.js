@@ -187,7 +187,7 @@ const Checkbox = ({
   );
 
   const descriptionText = errorText || helpText;
-  const hasDescriptionText =
+  const shouldShowDescriptionText =
     title && (!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small';
 
   return (
@@ -228,7 +228,7 @@ const Checkbox = ({
           </Label>
         </Flex>
 
-        {hasDescriptionText ? (
+        {shouldShowDescriptionText ? (
           <Space margin={styles.descriptionText.margin(size)}>
             <Text
               size={styles.descriptionText.size(size)}
