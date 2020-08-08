@@ -34,9 +34,6 @@ exports[`<Checkbox /> checked should render checkbox checked(attr)=true if check
           />
         </svg>
       </div>
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-      />
     </label>
   </div>
 </div>
@@ -75,9 +72,6 @@ exports[`<Checkbox /> checked should render checkbox with checked(attr)=false if
           />
         </svg>
       </div>
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-      />
     </label>
   </div>
 </div>
@@ -117,9 +111,6 @@ exports[`<Checkbox /> defaultChecked should render checkbox checked(attr)=true i
           />
         </svg>
       </div>
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-      />
     </label>
   </div>
 </div>
@@ -158,9 +149,6 @@ exports[`<Checkbox /> defaultChecked should render checkbox with checked(attr)=f
           />
         </svg>
       </div>
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-      />
     </label>
   </div>
 </div>
@@ -200,9 +188,6 @@ exports[`<Checkbox /> disabled should render a disabled checkbox if disabled is 
           />
         </svg>
       </div>
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-      />
     </label>
   </div>
 </div>
@@ -242,31 +227,19 @@ exports[`<Checkbox /> errorText should render checkbox with provided errorText 1
         </svg>
       </div>
       <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
+        class="Textweb__Text-sc-6jf9e4-0 xqQS Spaceweb__Space-njatzl-0 cEoilA"
+        color="shade.980"
+        data-testid="ds-text"
       >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 dzXWge"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 xqQS"
-            color="shade.980"
-            data-testid="ds-text"
-          >
-            Nice checkbox
-          </div>
-        </div>
+        Nice checkbox
       </div>
     </label>
     <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cMStXi"
+      class="Textweb__Text-sc-6jf9e4-0 juvyQj Spaceweb__Space-njatzl-0 cMStXi"
+      color="negative.900"
+      data-testid="ds-text"
     >
-      <div
-        class="Textweb__Text-sc-6jf9e4-0 juvyQj"
-        color="negative.900"
-        data-testid="ds-text"
-      >
-        This is some sample error text.
-      </div>
+      This is some sample error text.
     </div>
   </div>
 </div>
@@ -306,31 +279,19 @@ exports[`<Checkbox /> helpText should render checkbox with provided helpText 1`]
         </svg>
       </div>
       <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
+        class="Textweb__Text-sc-6jf9e4-0 xqQS Spaceweb__Space-njatzl-0 cEoilA"
+        color="shade.980"
+        data-testid="ds-text"
       >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 dzXWge"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 xqQS"
-            color="shade.980"
-            data-testid="ds-text"
-          >
-            Nice checkbox
-          </div>
-        </div>
+        Nice checkbox
       </div>
     </label>
     <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cMStXi"
+      class="Textweb__Text-sc-6jf9e4-0 fLzvVb Spaceweb__Space-njatzl-0 cMStXi"
+      color="shade.950"
+      data-testid="ds-text"
     >
-      <div
-        class="Textweb__Text-sc-6jf9e4-0 fLzvVb"
-        color="shade.950"
-        data-testid="ds-text"
-      >
-        This is some sample help text.
-      </div>
+      This is some sample help text.
     </div>
   </div>
 </div>
@@ -369,9 +330,6 @@ exports[`<Checkbox /> size should render a large checkbox 1`] = `
           />
         </svg>
       </div>
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-      />
     </label>
   </div>
 </div>
@@ -410,9 +368,6 @@ exports[`<Checkbox /> size should render a medium(default) checkbox 1`] = `
           />
         </svg>
       </div>
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-      />
     </label>
   </div>
 </div>
@@ -451,9 +406,6 @@ exports[`<Checkbox /> size should render a small checkbox 1`] = `
           />
         </svg>
       </div>
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-      />
     </label>
   </div>
 </div>
@@ -492,9 +444,6 @@ exports[`<Checkbox /> variantColor should render a checkbox with default variant
           />
         </svg>
       </div>
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-      />
     </label>
   </div>
 </div>
@@ -533,9 +482,6 @@ exports[`<Checkbox /> variantColor should render a checkbox with provided varian
           />
         </svg>
       </div>
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
-      />
     </label>
   </div>
 </div>
