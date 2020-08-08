@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import automation from '../../_helpers/automation-attributes';
 import isDefined from '../../_helpers/isDefined';
 import isEmpty from '../../_helpers/isEmpty';
-import { makePxValue, getColor, getVariantColorKeys } from '../../_helpers/theme';
+import { getColor, getVariantColorKeys, makePxValue } from '../../_helpers/theme';
 import Flex from '../Flex';
 import Icon from '../Icon';
 import Size from '../Size';
@@ -11,8 +11,8 @@ import Space from '../Space';
 import Text from '../Text';
 import View from '../View';
 import Backdrop from './Backdrop';
-import Label from './Label';
 import Input from './Input';
+import Label from './Label';
 
 const styles = {
   icon: {
@@ -81,20 +81,20 @@ const styles = {
 
       switch (state) {
         case 'hover':
-          if (!(isChecked || externalChecked)) {
-            return theme.colors.tone[930];
+          if (isChecked || externalChecked) {
+            return getColor(theme, `${variantColor}.920`);
           }
-          return getColor(theme, `${variantColor}.920`);
+          return theme.colors.tone[930];
         case 'focus':
-          if (!(isChecked || externalChecked)) {
-            return theme.colors.tone[940];
+          if (isChecked || externalChecked) {
+            return getColor(theme, `${variantColor}.930`);
           }
-          return getColor(theme, `${variantColor}.930`);
+          return theme.colors.tone[940];
         case 'active':
-          if (!(isChecked || externalChecked)) {
-            return theme.colors.tone[940];
+          if (isChecked || externalChecked) {
+            return getColor(theme, `${variantColor}.940`);
           }
-          return getColor(theme, `${variantColor}.940`);
+          return theme.colors.tone[940];
         default:
           return 'transparent';
       }
@@ -141,6 +141,9 @@ const styles = {
       }
       return 'shade.980';
     },
+    margin() {
+      return [0, 0, 0, 0.5];
+    },
   },
 };
 
@@ -168,6 +171,7 @@ const Checkbox = ({
     (event) => {
       /* prevent default behaviour of label firing click event on the associated input */
       event.preventDefault();
+
       if (!disabled) {
         if (isDefined(externalChecked)) {
           onChange(!externalChecked);
@@ -183,11 +187,13 @@ const Checkbox = ({
   );
 
   const descriptionText = errorText || helpText;
+  const hasDescriptionText =
+    title && (!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small';
 
   return (
-    <Flex alignSelf="flex-start" flexDirection="column">
+    <Flex flexDirection="column" alignSelf="flex-start">
       <View>
-        <Flex flexDirection="row" alignItems="center">
+        <Flex alignItems="center">
           <Label as="label" onClick={onCheckChange} htmlFor={id}>
             <Input
               id={id}
@@ -212,32 +218,24 @@ const Checkbox = ({
                 />
               </Backdrop>
             </Size>
-            <View>
-              {title ? (
-                <Flex>
-                  <Space margin={[0, 0, 0, 0.5]}>
-                    <View>
-                      <Text color={styles.title.color({ disabled })} size={size}>
-                        {title}
-                      </Text>
-                    </View>
-                  </Space>
-                </Flex>
-              ) : null}
-            </View>
+            {title ? (
+              <Space margin={styles.title.margin()}>
+                <Text color={styles.title.color({ disabled })} size={size}>
+                  {title}
+                </Text>
+              </Space>
+            ) : null}
           </Label>
         </Flex>
 
-        {title && (!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' ? (
+        {hasDescriptionText ? (
           <Space margin={styles.descriptionText.margin(size)}>
-            <View>
-              <Text
-                size={styles.descriptionText.size(size)}
-                color={styles.descriptionText.color({ disabled, errorText, helpText })}
-              >
-                {descriptionText}
-              </Text>
-            </View>
+            <Text
+              size={styles.descriptionText.size(size)}
+              color={styles.descriptionText.color({ disabled, errorText, helpText })}
+            >
+              {descriptionText}
+            </Text>
           </Space>
         ) : null}
       </View>
