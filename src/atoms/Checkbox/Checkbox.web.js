@@ -162,7 +162,7 @@ const Checkbox = ({
   id,
 }) => {
   if (isDefined(defaultChecked) && isDefined(externalChecked)) {
-    throw Error('One of defaultChecked or checked should be supplied.');
+    throw Error('Only one of defaultChecked or checked should be supplied.');
   }
 
   const [isChecked, setIsChecked] = useState(defaultChecked || false);
