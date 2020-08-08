@@ -103,9 +103,6 @@ const StyledInput = styled.input`
     appearance: none;
     margin: 0;
   }
-  &[type='number'] {
-    appearance: textfield;
-  }
   &:hover {
     background-color: ${styles.textInput.hoverBackgroundColor};
   }
@@ -120,6 +117,9 @@ const StyledInput = styled.input`
   }
   &::selection {
     background-color: ${(props) => props.theme.colors.primary[980]};
+  }
+  &[type='number'] {
+    appearance: textfield;
   }
   /* Removes red box shadow rectangle on firefox */
   &:invalid {
@@ -152,12 +152,10 @@ const getPlaceholderTextColor = ({ theme, disabled, isPlaceholderVisible, hasAni
   if (isPlaceholderVisible || !hasAnimatedLabel) {
     if (disabled) {
       return theme.colors.shade[930];
-    } else {
-      return theme.colors.shade[940];
     }
-  } else {
-    return 'transparent';
+    return theme.colors.shade[940];
   }
+  return 'transparent';
 };
 
 // eslint-disable-next-line complexity
@@ -308,7 +306,7 @@ const TextInput = ({
     }
   }, [_isMultiline, variant, inputRef, input]);
 
-  const _rows = variant === 'outlined' ? 1 : 3;
+  const noOfRows = variant === 'outlined' ? 1 : 3;
 
   return (
     <Flex justifyContent="flex-end" flexDirection="column">
@@ -416,7 +414,7 @@ const TextInput = ({
                                     ref={inputRef}
                                     onKeyPress={onKeyPress}
                                     as={_isMultiline ? 'textarea' : 'input'}
-                                    rows={_isMultiline ? _rows : ''}
+                                    rows={_isMultiline ? noOfRows : ''}
                                     {...automation(testID)}
                                   />
                                 </Size>

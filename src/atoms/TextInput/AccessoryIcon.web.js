@@ -11,9 +11,8 @@ const styles = {
       return 'negative.900';
     } else if (disabled) {
       return 'shade.930';
-    } else {
-      return 'shade.950';
     }
+    return 'shade.950';
   },
   padding({ variant, position }) {
     let padding = [0];
