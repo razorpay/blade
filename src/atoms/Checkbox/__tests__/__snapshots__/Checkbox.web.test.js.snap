@@ -283,7 +283,7 @@ exports[`<Checkbox /> errorText should render checkbox with provided errorText 1
 </div>
 `;
 
-exports[`<Checkbox /> focus with checked should render focus styles on checkbox when defaultChecked is false 1`] = `
+exports[`<Checkbox /> focus with checked should render focus styles on checkbox when checked is false 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -321,7 +321,7 @@ exports[`<Checkbox /> focus with checked should render focus styles on checkbox 
 </div>
 `;
 
-exports[`<Checkbox /> focus with checked should render focus styles on checkbox when defaultChecked is true 1`] = `
+exports[`<Checkbox /> focus with checked should render focus styles on checkbox when checked is true 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"

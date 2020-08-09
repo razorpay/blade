@@ -131,7 +131,7 @@ describe('<Checkbox />', () => {
     });
 
     describe('with checked', () => {
-      it('should render focus styles on checkbox when defaultChecked is false', () => {
+      it('should render focus styles on checkbox when checked is false', () => {
         const { container, getByRole } = renderWithTheme(
           <Checkbox id={SAMPLE_ID} checked={false} />,
         );
@@ -141,7 +141,7 @@ describe('<Checkbox />', () => {
         expect(container).toMatchSnapshot();
       });
 
-      it('should render focus styles on checkbox when defaultChecked is true', () => {
+      it('should render focus styles on checkbox when checked is true', () => {
         const { container, getByRole } = renderWithTheme(
           <Checkbox id={SAMPLE_ID} checked={true} />,
         );
