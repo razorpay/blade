@@ -8,21 +8,21 @@ afterAll(() => jest.restoreAllMocks());
 
 describe('<Radio />', () => {
   describe('id', () => {
-    it('should not have id attribute if not provded as prop', () => {
+    it('should not have id attribute if not provided as prop', () => {
       const { getByRole } = renderWithTheme(
         <Radio value="1">
-          <Radio.Option value="1" title="React" />
+          <Radio.Option value="1" />
         </Radio>,
       );
       const radio = getByRole('radio');
       expect(radio).not.toHaveAttribute('id');
     });
 
-    it('should have provided id attribute if id provded as prop', () => {
+    it('should have provided id attribute if id provided as prop', () => {
       const sampleID = 'sampleID';
       const { getByRole } = renderWithTheme(
         <Radio value="1">
-          <Radio.Option id={sampleID} value="1" title="React" />
+          <Radio.Option id={sampleID} value="1" />
         </Radio>,
       );
       const radio = getByRole('radio');
@@ -31,21 +31,21 @@ describe('<Radio />', () => {
   });
 
   describe('name', () => {
-    it('should not have name attribute if not provded as prop', () => {
+    it('should not have name attribute if not provided as prop', () => {
       const { getByRole } = renderWithTheme(
         <Radio value="1">
-          <Radio.Option value="1" title="React" />
+          <Radio.Option value="1" />
         </Radio>,
       );
       const radio = getByRole('radio');
       expect(radio).not.toHaveAttribute('name');
     });
 
-    it('should have provided name attribute if name provded as prop', () => {
+    it('should have provided name attribute if name provided as prop', () => {
       const name = 'sample-name';
       const { getByRole } = renderWithTheme(
         <Radio value="1">
-          <Radio.Option value="1" title="React" name={name} />
+          <Radio.Option value="1" name={name} />
         </Radio>,
       );
       const radio = getByRole('radio');
@@ -53,11 +53,23 @@ describe('<Radio />', () => {
     });
   });
 
+  describe('title', () => {
+    it('should render radio with provided title', () => {
+      const title = 'Radio Button';
+      const { container } = renderWithTheme(
+        <Radio value="1">
+          <Radio.Option value="1" title={title} />
+        </Radio>,
+      );
+      expect(container).toHaveTextContent(title);
+    });
+  });
+
   describe('size', () => {
     it('should render a large radio input', () => {
       const { container } = renderWithTheme(
-        <Radio value="1">
-          <Radio.Option value="1" title="React" size="large" />
+        <Radio value="1" size="large">
+          <Radio.Option value="1" />
         </Radio>,
       );
       expect(container).toMatchSnapshot();
@@ -65,8 +77,8 @@ describe('<Radio />', () => {
 
     it('should render a medium(default) radio input', () => {
       const { container } = renderWithTheme(
-        <Radio value="1">
-          <Radio.Option value="1" title="React" size="medium" />
+        <Radio value="1" size="medium">
+          <Radio.Option value="1" />
         </Radio>,
       );
       expect(container).toMatchSnapshot();
@@ -74,8 +86,8 @@ describe('<Radio />', () => {
 
     it('should render a small radio input', () => {
       const { container } = renderWithTheme(
-        <Radio value="1">
-          <Radio.Option value="1" title="React" size="small" />
+        <Radio value="1" size="small">
+          <Radio.Option value="1" />
         </Radio>,
       );
       expect(container).toMatchSnapshot();
@@ -83,31 +95,85 @@ describe('<Radio />', () => {
   });
 
   describe('variantColor', () => {
-    it('should render a checkbox with default variantColor if variantColor not provided', () => {
+    it('should render a radio with default variantColor if variantColor not provided', () => {
       const { container } = renderWithTheme(
         <Radio value="1">
-          <Radio.Option value="1" title="React" />
+          <Radio.Option value="1" />
         </Radio>,
       );
       expect(container).toMatchSnapshot();
     });
 
-    it('should render a checkbox with provided variantColor', () => {
+    it('should render a radio with provided variantColor', () => {
       const { container } = renderWithTheme(
-        <Radio value="1">
-          <Radio.Option value="1" title="React" variantColor="shade" />
+        <Radio value="1" variantColor="shade">
+          <Radio.Option value="1" />
         </Radio>,
       );
       expect(container).toMatchSnapshot();
     });
   });
 
+  describe('focus', () => {
+    describe('with defaultValue', () => {
+      it('should render focus styles on radio when radio is not checked', () => {
+        const { container, getByRole } = renderWithTheme(
+          <Radio defaultValue="1">
+            <Radio.Option value="2" />
+          </Radio>,
+        );
+        const radio = getByRole('radio');
+        radio.focus();
+        expect(radio).toHaveFocus();
+        expect(container).toMatchSnapshot();
+      });
+
+      it('should render focus styles on radio when radio is checked', () => {
+        const { container, getByRole } = renderWithTheme(
+          <Radio defaultValue="1">
+            <Radio.Option value="1" />
+          </Radio>,
+        );
+        const radio = getByRole('radio');
+        radio.focus();
+        expect(radio).toHaveFocus();
+        expect(container).toMatchSnapshot();
+      });
+    });
+
+    describe('with value', () => {
+      it('should render focus styles on radio when radio is not checked', () => {
+        const { container, getByRole } = renderWithTheme(
+          <Radio value="1">
+            <Radio.Option value="2" />
+          </Radio>,
+        );
+        const radio = getByRole('radio');
+        radio.focus();
+        expect(radio).toHaveFocus();
+        expect(container).toMatchSnapshot();
+      });
+
+      it('should render focus styles on radio when radio is checked', () => {
+        const { container, getByRole } = renderWithTheme(
+          <Radio value="1">
+            <Radio.Option value="1" />
+          </Radio>,
+        );
+        const radio = getByRole('radio');
+        radio.focus();
+        expect(radio).toHaveFocus();
+        expect(container).toMatchSnapshot();
+      });
+    });
+  });
+
   describe('helpText', () => {
-    it('should render checkbox with provided helpText', () => {
+    it('should render radio with provided helpText', () => {
       const helpText = 'This is some sample help text.';
       const { container } = renderWithTheme(
         <Radio value="1">
-          <Radio.Option value="1" title="React" helpText={helpText} />
+          <Radio.Option value="1" helpText={helpText} />
         </Radio>,
       );
       expect(container).toHaveTextContent(helpText);
@@ -116,11 +182,11 @@ describe('<Radio />', () => {
   });
 
   describe('errorText', () => {
-    it('should render checkbox with provided errorText', () => {
+    it('should render radio with provided errorText', () => {
       const errorText = 'This is some sample error text.';
       const { container } = renderWithTheme(
         <Radio value="1">
-          <Radio.Option value="1" title="React" errorText={errorText} />
+          <Radio.Option value="1" errorText={errorText} />
         </Radio>,
       );
       expect(container).toHaveTextContent(errorText);
@@ -129,54 +195,70 @@ describe('<Radio />', () => {
   });
 
   describe('onChange', () => {
-    it('should call onChange with updated check value', () => {
-      const onChange = jest.fn();
-      const { getByRole } = renderWithTheme(
-        <Radio onChange={onChange}>
-          <Radio.Option value="1" title="React" />
-        </Radio>,
-      );
-      const radio = getByRole('radio');
-      fireEvent.click(radio);
-      expect(onChange).toHaveBeenCalledTimes(1);
-    });
-
-    describe('with disabled', () => {
-      it('should not call onChange if checkbox is disabled', () => {
+    describe('with defaultValue(uncontrolled)', () => {
+      it('should call onChange with updated check value', () => {
         const onChange = jest.fn();
         const { getByRole } = renderWithTheme(
-          <Radio onChange={onChange}>
-            <Radio.Option value="1" title="React" disabled />
+          <Radio onChange={onChange} defaultValue="1">
+            <Radio.Option value="2" />
           </Radio>,
         );
         const radio = getByRole('radio');
+        expect(radio.checked).toBe(false);
         fireEvent.click(radio);
-        expect(onChange).not.toBeCalled();
+        expect(radio.checked).toBe(true);
+        expect(onChange).toHaveBeenCalledTimes(1);
+        expect(onChange).toHaveBeenCalledWith('2');
+      });
+
+      describe('with disabled', () => {
+        it('should not call onChange if radio is disabled', () => {
+          const onChange = jest.fn();
+          const { getByRole } = renderWithTheme(
+            <Radio onChange={onChange} defaultValue="1">
+              <Radio.Option value="2" disabled />
+            </Radio>,
+          );
+          const radio = getByRole('radio');
+          expect(radio.checked).toBe(false);
+          fireEvent.click(radio);
+          expect(radio.checked).toBe(false);
+          expect(onChange).not.toBeCalled();
+        });
       });
     });
-  });
 
-  describe('defaultValue', () => {
-    it('should render radio input with checked(attr)=false if defaultValue(prop) is not provided', () => {
-      const { container, getByRole } = renderWithTheme(
-        <Radio>
-          <Radio.Option value="1" title="React" />
-        </Radio>,
-      );
-      const radio = getByRole('radio');
-      expect(radio.checked).toBe(false);
-      expect(container).toMatchSnapshot();
-    });
+    describe('with value(controlled)', () => {
+      it('should call onChange with updated check value', () => {
+        const onChange = jest.fn();
+        const { getByRole } = renderWithTheme(
+          <Radio onChange={onChange} value="1">
+            <Radio.Option value="2" />
+          </Radio>,
+        );
+        const radio = getByRole('radio');
+        expect(radio.checked).toBe(false);
+        fireEvent.click(radio);
+        expect(radio.checked).toBe(false);
+        expect(onChange).toHaveBeenCalledTimes(1);
+        expect(onChange).toHaveBeenCalledWith('2');
+      });
 
-    it('should render checkbox checked(attr)=true if defaultValue(prop) is provided', () => {
-      const { container, getByRole } = renderWithTheme(
-        <Radio defaultValue="1">
-          <Radio.Option value="1" title="React" />
-        </Radio>,
-      );
-      const radio = getByRole('radio');
-      expect(radio.checked).toBe(true);
-      expect(container).toMatchSnapshot();
+      describe('with disabled', () => {
+        it('should not call onChange if radio is disabled', () => {
+          const onChange = jest.fn();
+          const { getByRole } = renderWithTheme(
+            <Radio onChange={onChange} value="1">
+              <Radio.Option value="2" disabled />
+            </Radio>,
+          );
+          const radio = getByRole('radio');
+          expect(radio.checked).toBe(false);
+          fireEvent.click(radio);
+          expect(radio.checked).toBe(false);
+          expect(onChange).not.toBeCalled();
+        });
+      });
     });
   });
 
@@ -184,7 +266,7 @@ describe('<Radio />', () => {
     it('should render a disabled radio input if disabled is true', () => {
       const { container, getByRole } = renderWithTheme(
         <Radio defaultValue="1">
-          <Radio.Option value="1" disabled title="React" />
+          <Radio.Option value="1" disabled />
         </Radio>,
       );
       const radio = getByRole('radio');
@@ -193,11 +275,11 @@ describe('<Radio />', () => {
     });
   });
 
-  describe('value', () => {
-    it('should render radio input with checked(attr)=false if value(prop) is not provided', () => {
+  describe('defaultValue', () => {
+    it('should render radio input with checked(attr) as false if defaultValue(prop) is not provided', () => {
       const { container, getByRole } = renderWithTheme(
         <Radio>
-          <Radio.Option value="1" disabled title="React" />
+          <Radio.Option value="1" />
         </Radio>,
       );
       const radio = getByRole('radio');
@@ -205,10 +287,34 @@ describe('<Radio />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('should render radio input checked(attr)=true if value(prop) is provided', () => {
+    it('should render radio checked(attr) as true if defaultValue(prop) is provided', () => {
+      const { container, getByRole } = renderWithTheme(
+        <Radio defaultValue="1">
+          <Radio.Option value="1" />
+        </Radio>,
+      );
+      const radio = getByRole('radio');
+      expect(radio.checked).toBe(true);
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('value', () => {
+    it('should render radio input with checked(attr) as false if value(prop) is not provided', () => {
+      const { container, getByRole } = renderWithTheme(
+        <Radio>
+          <Radio.Option value="1" disabled />
+        </Radio>,
+      );
+      const radio = getByRole('radio');
+      expect(radio.checked).toBe(false);
+      expect(container).toMatchSnapshot();
+    });
+
+    it('should render radio input checked(attr) as true if value(prop) is provided', () => {
       const { container, getByRole } = renderWithTheme(
         <Radio value="1">
-          <Radio.Option value="1" disabled title="React" />
+          <Radio.Option value="1" disabled />
         </Radio>,
       );
       const radio = getByRole('radio');
@@ -221,7 +327,7 @@ describe('<Radio />', () => {
     it('should have default testID(ds-radio-button) if no testID is provided as prop', () => {
       const { queryByTestId } = renderWithTheme(
         <Radio value="1">
-          <Radio.Option value="1" title="React" />
+          <Radio.Option value="1" />
         </Radio>,
       );
       expect(queryByTestId('ds-radio-button')).not.toBeNull();
@@ -231,7 +337,7 @@ describe('<Radio />', () => {
       const testID = 'sample-test-id';
       const { queryByTestId } = renderWithTheme(
         <Radio value="1">
-          <Radio.Option value="1" title="React" testID={testID} />
+          <Radio.Option value="1" testID={testID} />
         </Radio>,
       );
       expect(queryByTestId(testID)).not.toBeNull();

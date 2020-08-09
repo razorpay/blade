@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Radio /> defaultValue should render checkbox checked(attr)=true if defaultValue(prop) is provided 1`] = `
+exports[`<Radio /> defaultValue should render radio checked(attr) as true if defaultValue(prop) is provided 1`] = `
 <div>
   <fieldset
     class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
@@ -37,9 +37,7 @@ exports[`<Radio /> defaultValue should render checkbox checked(attr)=true if def
             class="Textweb__Text-sc-6jf9e4-0 bYInBW"
             color="shade.980"
             data-testid="ds-text"
-          >
-            React
-          </div>
+          />
         </div>
       </label>
     </div>
@@ -47,7 +45,7 @@ exports[`<Radio /> defaultValue should render checkbox checked(attr)=true if def
 </div>
 `;
 
-exports[`<Radio /> defaultValue should render radio input with checked(attr)=false if defaultValue(prop) is not provided 1`] = `
+exports[`<Radio /> defaultValue should render radio input with checked(attr) as false if defaultValue(prop) is not provided 1`] = `
 <div>
   <fieldset
     class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
@@ -79,9 +77,7 @@ exports[`<Radio /> defaultValue should render radio input with checked(attr)=fal
             class="Textweb__Text-sc-6jf9e4-0 bYInBW"
             color="shade.980"
             data-testid="ds-text"
-          >
-            React
-          </div>
+          />
         </div>
       </label>
     </div>
@@ -127,9 +123,7 @@ exports[`<Radio /> disabled should render a disabled radio input if disabled is 
             class="Textweb__Text-sc-6jf9e4-0 iFsPRm"
             color="shade.950"
             data-testid="ds-text"
-          >
-            React
-          </div>
+          />
         </div>
       </label>
     </div>
@@ -137,7 +131,7 @@ exports[`<Radio /> disabled should render a disabled radio input if disabled is 
 </div>
 `;
 
-exports[`<Radio /> errorText should render checkbox with provided errorText 1`] = `
+exports[`<Radio /> errorText should render radio with provided errorText 1`] = `
 <div>
   <fieldset
     class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
@@ -174,9 +168,7 @@ exports[`<Radio /> errorText should render checkbox with provided errorText 1`] 
             class="Textweb__Text-sc-6jf9e4-0 bYInBW"
             color="shade.980"
             data-testid="ds-text"
-          >
-            React
-          </div>
+          />
         </div>
       </label>
       <div
@@ -195,7 +187,7 @@ exports[`<Radio /> errorText should render checkbox with provided errorText 1`] 
 </div>
 `;
 
-exports[`<Radio /> helpText should render checkbox with provided helpText 1`] = `
+exports[`<Radio /> focus with defaultValue should render focus styles on radio when radio is checked 1`] = `
 <div>
   <fieldset
     class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
@@ -232,9 +224,177 @@ exports[`<Radio /> helpText should render checkbox with provided helpText 1`] = 
             class="Textweb__Text-sc-6jf9e4-0 bYInBW"
             color="shade.980"
             data-testid="ds-text"
+          />
+        </div>
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> focus with defaultValue should render focus styles on radio when radio is not checked 1`] = `
+<div>
+  <fieldset
+    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          class="Inputweb__Input-sc-1aqyk3g-0 gwAJyU"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="2"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 ftrjid Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(22, 47, 86, 0.38)"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
+        >
+          <div
+            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
+            color="shade.980"
+            data-testid="ds-text"
+          />
+        </div>
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> focus with value should render focus styles on radio when radio is checked 1`] = `
+<div>
+  <fieldset
+    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
           >
-            React
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
           </div>
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
+        >
+          <div
+            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
+            color="shade.980"
+            data-testid="ds-text"
+          />
+        </div>
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> focus with value should render focus styles on radio when radio is not checked 1`] = `
+<div>
+  <fieldset
+    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          class="Inputweb__Input-sc-1aqyk3g-0 gwAJyU"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="2"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 ftrjid Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(22, 47, 86, 0.38)"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
+        >
+          <div
+            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
+            color="shade.980"
+            data-testid="ds-text"
+          />
+        </div>
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> helpText should render radio with provided helpText 1`] = `
+<div>
+  <fieldset
+    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
+        >
+          <div
+            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
+            color="shade.980"
+            data-testid="ds-text"
+          />
         </div>
       </label>
       <div
@@ -290,9 +450,7 @@ exports[`<Radio /> size should render a large radio input 1`] = `
             class="Textweb__Text-sc-6jf9e4-0 eKxMBE"
             color="shade.980"
             data-testid="ds-text"
-          >
-            React
-          </div>
+          />
         </div>
       </label>
     </div>
@@ -337,9 +495,7 @@ exports[`<Radio /> size should render a medium(default) radio input 1`] = `
             class="Textweb__Text-sc-6jf9e4-0 bYInBW"
             color="shade.980"
             data-testid="ds-text"
-          >
-            React
-          </div>
+          />
         </div>
       </label>
     </div>
@@ -384,9 +540,7 @@ exports[`<Radio /> size should render a small radio input 1`] = `
             class="Textweb__Text-sc-6jf9e4-0 kNsceG"
             color="shade.980"
             data-testid="ds-text"
-          >
-            React
-          </div>
+          />
         </div>
       </label>
     </div>
@@ -394,7 +548,7 @@ exports[`<Radio /> size should render a small radio input 1`] = `
 </div>
 `;
 
-exports[`<Radio /> value should render radio input checked(attr)=true if value(prop) is provided 1`] = `
+exports[`<Radio /> value should render radio input checked(attr) as true if value(prop) is provided 1`] = `
 <div>
   <fieldset
     class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
@@ -432,9 +586,7 @@ exports[`<Radio /> value should render radio input checked(attr)=true if value(p
             class="Textweb__Text-sc-6jf9e4-0 iFsPRm"
             color="shade.950"
             data-testid="ds-text"
-          >
-            React
-          </div>
+          />
         </div>
       </label>
     </div>
@@ -442,7 +594,7 @@ exports[`<Radio /> value should render radio input checked(attr)=true if value(p
 </div>
 `;
 
-exports[`<Radio /> value should render radio input with checked(attr)=false if value(prop) is not provided 1`] = `
+exports[`<Radio /> value should render radio input with checked(attr) as false if value(prop) is not provided 1`] = `
 <div>
   <fieldset
     class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
@@ -475,9 +627,7 @@ exports[`<Radio /> value should render radio input with checked(attr)=false if v
             class="Textweb__Text-sc-6jf9e4-0 iFsPRm"
             color="shade.950"
             data-testid="ds-text"
-          >
-            React
-          </div>
+          />
         </div>
       </label>
     </div>
@@ -485,7 +635,7 @@ exports[`<Radio /> value should render radio input with checked(attr)=false if v
 </div>
 `;
 
-exports[`<Radio /> variantColor should render a checkbox with default variantColor if variantColor not provided 1`] = `
+exports[`<Radio /> variantColor should render a radio with default variantColor if variantColor not provided 1`] = `
 <div>
   <fieldset
     class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
@@ -522,9 +672,7 @@ exports[`<Radio /> variantColor should render a checkbox with default variantCol
             class="Textweb__Text-sc-6jf9e4-0 bYInBW"
             color="shade.980"
             data-testid="ds-text"
-          >
-            React
-          </div>
+          />
         </div>
       </label>
     </div>
@@ -532,7 +680,7 @@ exports[`<Radio /> variantColor should render a checkbox with default variantCol
 </div>
 `;
 
-exports[`<Radio /> variantColor should render a checkbox with provided variantColor 1`] = `
+exports[`<Radio /> variantColor should render a radio with provided variantColor 1`] = `
 <div>
   <fieldset
     class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
@@ -569,9 +717,7 @@ exports[`<Radio /> variantColor should render a checkbox with provided variantCo
             class="Textweb__Text-sc-6jf9e4-0 bYInBW"
             color="shade.980"
             data-testid="ds-text"
-          >
-            React
-          </div>
+          />
         </div>
       </label>
     </div>
