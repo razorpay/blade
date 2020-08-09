@@ -218,7 +218,7 @@ const RadioOption = ({
     <Flex alignSelf="flex-start" flexDirection="column">
       <View>
         <Flex flexDirection="row" alignItems="center">
-          <Label onClick={onClick}>
+          <Label onClick={onClick} htmlFor={id}>
             <Input
               id={id}
               name={name}
