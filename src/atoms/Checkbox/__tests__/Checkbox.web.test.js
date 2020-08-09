@@ -38,6 +38,15 @@ describe('<Checkbox />', () => {
     });
   });
 
+  describe('title', () => {
+    it('should render a checkbox with provided title', () => {
+      const title = 'Enable Beast Mode';
+      const { container } = renderWithTheme(<Checkbox id={SAMPLE_ID} title={title} />);
+      expect(container).toHaveTextContent(title);
+      expect(container).toMatchSnapshot();
+    });
+  });
+
   describe('size', () => {
     it('should render a large checkbox', () => {
       const { container } = renderWithTheme(<Checkbox id={SAMPLE_ID} size="large" />);
@@ -91,26 +100,113 @@ describe('<Checkbox />', () => {
     });
   });
 
-  describe('onChange', () => {
-    it('should call onChange with updated check value', () => {
-      const onChange = jest.fn();
-      const { getByRole } = renderWithTheme(
-        <Checkbox id={SAMPLE_ID} defaultChecked={false} onChange={onChange} />,
-      );
-      const checkBox = getByRole('checkbox');
-      fireEvent.click(checkBox);
-      expect(onChange).toHaveBeenCalledTimes(1);
+  describe('checkbox only', () => {
+    it('should render a icon only checkbox', () => {
+      const { container } = renderWithTheme(<Checkbox id={SAMPLE_ID} />);
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('focus', () => {
+    describe('with defaultChecked', () => {
+      it('should render focus styles on checkbox when defaultChecked is false', () => {
+        const { container, getByRole } = renderWithTheme(
+          <Checkbox id={SAMPLE_ID} defaultChecked={false} />,
+        );
+        const checkbox = getByRole('checkbox');
+        checkbox.focus();
+        expect(checkbox).toHaveFocus();
+        expect(container).toMatchSnapshot();
+      });
+
+      it('should render focus styles on checkbox when defaultChecked is true', () => {
+        const { container, getByRole } = renderWithTheme(
+          <Checkbox id={SAMPLE_ID} defaultChecked={true} />,
+        );
+        const checkbox = getByRole('checkbox');
+        checkbox.focus();
+        expect(checkbox).toHaveFocus();
+        expect(container).toMatchSnapshot();
+      });
     });
 
-    describe('with disabled', () => {
-      it('should not call onChange if checkbox is disabled', () => {
+    describe('with checked', () => {
+      it('should render focus styles on checkbox when defaultChecked is false', () => {
+        const { container, getByRole } = renderWithTheme(
+          <Checkbox id={SAMPLE_ID} checked={false} />,
+        );
+        const checkbox = getByRole('checkbox');
+        checkbox.focus();
+        expect(checkbox).toHaveFocus();
+        expect(container).toMatchSnapshot();
+      });
+
+      it('should render focus styles on checkbox when defaultChecked is true', () => {
+        const { container, getByRole } = renderWithTheme(
+          <Checkbox id={SAMPLE_ID} checked={true} />,
+        );
+        const checkbox = getByRole('checkbox');
+        checkbox.focus();
+        expect(checkbox).toHaveFocus();
+        expect(container).toMatchSnapshot();
+      });
+    });
+  });
+
+  describe('onChange', () => {
+    describe('with defaultChecked(uncontrolled)', () => {
+      it('should call onChange with updated check value', () => {
         const onChange = jest.fn();
         const { getByRole } = renderWithTheme(
-          <Checkbox id={SAMPLE_ID} disabled defaultChecked={false} onChange={onChange} />,
+          <Checkbox id={SAMPLE_ID} defaultChecked={false} onChange={onChange} />,
         );
-        const checkBox = getByRole('checkbox');
-        fireEvent.click(checkBox);
-        expect(onChange).not.toBeCalled();
+        const checkbox = getByRole('checkbox');
+        expect(checkbox.checked).toBe(false);
+        fireEvent.click(checkbox);
+        expect(checkbox.checked).toBe(true);
+        expect(onChange).toHaveBeenCalledTimes(1);
+      });
+
+      describe('with disabled', () => {
+        it('should not call onChange if checkbox is disabled', () => {
+          const onChange = jest.fn();
+          const { getByRole } = renderWithTheme(
+            <Checkbox id={SAMPLE_ID} disabled defaultChecked={false} onChange={onChange} />,
+          );
+          const checkbox = getByRole('checkbox');
+          expect(checkbox.defaultChecked).toBe(false);
+          fireEvent.click(checkbox);
+          expect(checkbox.defaultChecked).toBe(false);
+          expect(onChange).not.toBeCalled();
+        });
+      });
+    });
+
+    describe('with checked(controlled)', () => {
+      it('should call onChange with updated check value', () => {
+        const onChange = jest.fn();
+        const { getByRole } = renderWithTheme(
+          <Checkbox id={SAMPLE_ID} checked={false} onChange={onChange} />,
+        );
+        const checkbox = getByRole('checkbox');
+        expect(checkbox.checked).toBe(false);
+        fireEvent.click(checkbox);
+        expect(checkbox.checked).toBe(true);
+        expect(onChange).toHaveBeenCalledTimes(1);
+      });
+
+      describe('with disabled', () => {
+        it('should not call onChange if checkbox is disabled', () => {
+          const onChange = jest.fn();
+          const { getByRole } = renderWithTheme(
+            <Checkbox id={SAMPLE_ID} disabled checked={false} onChange={onChange} />,
+          );
+          const checkbox = getByRole('checkbox');
+          expect(checkbox.defaultChecked).toBe(false);
+          fireEvent.click(checkbox);
+          expect(checkbox.defaultChecked).toBe(false);
+          expect(onChange).not.toBeCalled();
+        });
       });
     });
   });
