@@ -25,9 +25,12 @@ const styles = {
       }
       return 'shade.980';
     },
+    margin() {
+      return [0, 0, 0, 0.5];
+    },
   },
   descriptionText: {
-    margin(size) {
+    margin({ size }) {
       switch (size) {
         case 'large':
           return [0.5, 0, 0, 4];
@@ -39,8 +42,8 @@ const styles = {
           return [0, 0, 0, 3.5];
       }
     },
-    size(checkboxSize) {
-      switch (checkboxSize) {
+    textSize({ size }) {
+      switch (size) {
         case 'large':
           return 'medium';
         case 'medium':
@@ -208,6 +211,9 @@ const RadioOption = ({
     }
   };
 
+  const descriptionText = errorText || helpText;
+  const shouldShowDescriptionText = (!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small';
+
   return (
     <Flex alignSelf="flex-start" flexDirection="column">
       <View>
@@ -252,7 +258,7 @@ const RadioOption = ({
               </Size>
             </Flex>
             <Flex alignSelf="center">
-              <Space margin={[0, 0, 0, 0.5]}>
+              <Space margin={styles.title.margin()}>
                 <View>
                   <Text color={styles.title.color({ disabled })} size={size}>
                     {title}
@@ -263,14 +269,14 @@ const RadioOption = ({
           </Label>
         </Flex>
 
-        {(!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small' ? (
-          <Space margin={styles.descriptionText.margin(size)}>
+        {shouldShowDescriptionText ? (
+          <Space margin={styles.descriptionText.margin({ size })}>
             <View>
               <Text
-                size={styles.descriptionText.size(size)}
+                size={styles.descriptionText.textSize({ size })}
                 color={styles.descriptionText.color({ disabled, errorText })}
               >
-                {errorText || helpText}
+                {descriptionText}
               </Text>
             </View>
           </Space>
