@@ -4,7 +4,7 @@ import { ThemeContext } from 'styled-components';
 import View from '../View';
 import Text from '../Text';
 import isDefined from '../../_helpers/isDefined';
-import { getVariantColorKeys, getColor, makePxValue } from '../../_helpers/theme';
+import { getColor, makePxValue } from '../../_helpers/theme';
 import Flex from '../Flex';
 import Size from '../Size';
 import Space from '../Space';
@@ -186,22 +186,13 @@ const isChecked = ({ context, value }) => {
   return context && isDefined(context.value) && context.value === value;
 };
 
-const RadioOption = ({
-  size,
-  value,
-  disabled,
-  title,
-  helpText,
-  errorText,
-  variantColor,
-  testID,
-  name,
-  id,
-}) => {
+const RadioOption = ({ value, disabled, title, helpText, errorText, testID, name, id }) => {
   const context = useRadioButtonContext();
   const theme = useContext(ThemeContext);
 
   const checked = isChecked({ context, value });
+  const variantColor = context.variantColor;
+  const size = context.size;
   const radioColor = styles.radio.color({ theme, disabled, checked, variantColor });
 
   const onClick = (event) => {
@@ -290,10 +281,8 @@ RadioOption.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
-  variantColor: PropTypes.oneOf(getVariantColorKeys()),
   testID: PropTypes.string,
   helpText: (props, propName, componentName) => {
     if (props.size === 'small') {
@@ -328,11 +317,9 @@ RadioOption.propTypes = {
 };
 
 RadioOption.defaultProps = {
-  size: 'medium',
   helpText: '',
   disabled: false,
   errorText: '',
-  variantColor: 'primary',
   testID: 'ds-radio-button',
 };
 
