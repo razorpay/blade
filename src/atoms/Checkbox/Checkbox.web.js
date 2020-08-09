@@ -198,12 +198,12 @@ const Checkbox = ({
             <Input
               id={id}
               name={name}
-              defaultChecked={isChecked || externalChecked}
               isChecked={isChecked}
               externalChecked={externalChecked}
               disabled={disabled}
               variantColor={variantColor}
               backdropStyles={styles.backdrop}
+              checked={isDefined(externalChecked) ? externalChecked : isChecked}
               {...automation(testID)}
             />
             <Size

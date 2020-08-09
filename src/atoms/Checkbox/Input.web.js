@@ -5,8 +5,8 @@ const Input = styled.input.attrs({
   type: 'checkbox',
 })`
   position: absolute;
-  width: 0px;
-  height: 0px;
+  width: 1px;
+  height: 1px;
   padding: 0;
   margin: 0;
   overflow: hidden;
