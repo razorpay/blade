@@ -44,11 +44,13 @@ const styles = {
     },
   },
   label: {
-    margin({ position }) {
+    margin({ position, variant }) {
       if (position === 'left') {
         return [1, 3, 1, 0];
+      } else if (position === 'top' && variant !== 'outlined') {
+        return [0, 0, 0.5, 0];
       }
-      return [0, 0, 0.25, 0];
+      return [0];
     },
   },
 };
@@ -63,6 +65,7 @@ const FloatView = styled(View)`
 `;
 
 const StyledText = styled(Text)`
+  display: flex;
   font-family: ${styles.text.fontFamily};
   font-size: ${styles.text.fontSize};
   line-height: ${styles.text.lineHeight};
@@ -85,7 +88,7 @@ const RegularLabel = ({
   const theme = useContext(ThemeContext);
 
   return (
-    <Space margin={styles.label.margin({ position })}>
+    <Space margin={styles.label.margin({ position, variant })}>
       <StyledText
         as="label"
         htmlFor={id}
@@ -156,7 +159,7 @@ const AnimatedLabel = ({
   });
 
   return (
-    <Space margin={styles.label.margin({ position })}>
+    <Space margin={styles.label.margin({ position, variant })}>
       <FloatView layoutDimensions={layoutDimensions} style={floatViewAnimationStyle}>
         <StyledText
           as="label"

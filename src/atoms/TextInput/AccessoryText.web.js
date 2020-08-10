@@ -22,10 +22,10 @@ const styles = {
     }
     if (variant === 'outlined') {
       if (position === 'left') {
-        padding = [0.5, 1, 0, 0];
+        padding = [0.25, 1, 0, 0];
       }
       if (position === 'right') {
-        padding = [0.5, 1, 0, 1];
+        padding = [0.25, 1, 0, 1];
       }
     }
     return padding;
