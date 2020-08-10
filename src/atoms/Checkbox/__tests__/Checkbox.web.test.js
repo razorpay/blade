@@ -121,7 +121,7 @@ describe('<Checkbox />', () => {
 
       it('should render focus styles on checkbox when defaultChecked is true', () => {
         const { container, getByRole } = renderWithTheme(
-          <Checkbox id={SAMPLE_ID} defaultChecked={true} />,
+          <Checkbox id={SAMPLE_ID} defaultChecked />,
         );
         const checkbox = getByRole('checkbox');
         checkbox.focus();
@@ -142,9 +142,7 @@ describe('<Checkbox />', () => {
       });
 
       it('should render focus styles on checkbox when checked is true', () => {
-        const { container, getByRole } = renderWithTheme(
-          <Checkbox id={SAMPLE_ID} checked={true} />,
-        );
+        const { container, getByRole } = renderWithTheme(<Checkbox id={SAMPLE_ID} checked />);
         const checkbox = getByRole('checkbox');
         checkbox.focus();
         expect(checkbox).toHaveFocus();
@@ -155,7 +153,7 @@ describe('<Checkbox />', () => {
 
   describe('onChange', () => {
     describe('with defaultChecked(uncontrolled)', () => {
-      it('should call onChange with updated check value', () => {
+      it('should call onChange with updated check value when intial value of defaultChecked is false', () => {
         const onChange = jest.fn();
         const { getByRole } = renderWithTheme(
           <Checkbox id={SAMPLE_ID} defaultChecked={false} onChange={onChange} />,
@@ -164,6 +162,18 @@ describe('<Checkbox />', () => {
         expect(checkbox.checked).toBe(false);
         fireEvent.click(checkbox);
         expect(checkbox.checked).toBe(true);
+        expect(onChange).toHaveBeenCalledTimes(1);
+      });
+
+      it('should call onChange with updated check value when initial value of defaultChecked true', () => {
+        const onChange = jest.fn();
+        const { getByRole } = renderWithTheme(
+          <Checkbox id={SAMPLE_ID} defaultChecked onChange={onChange} />,
+        );
+        const checkbox = getByRole('checkbox');
+        expect(checkbox.checked).toBe(true);
+        fireEvent.click(checkbox);
+        expect(checkbox.checked).toBe(false);
         expect(onChange).toHaveBeenCalledTimes(1);
       });
 
@@ -183,7 +193,7 @@ describe('<Checkbox />', () => {
     });
 
     describe('with checked(controlled)', () => {
-      it('should call onChange with updated check value', () => {
+      it('should call onChange with updated check value when inital value of checked is false', () => {
         const onChange = jest.fn();
         const { getByRole } = renderWithTheme(
           <Checkbox id={SAMPLE_ID} checked={false} onChange={onChange} />,
@@ -192,6 +202,18 @@ describe('<Checkbox />', () => {
         expect(checkbox.checked).toBe(false);
         fireEvent.click(checkbox);
         expect(checkbox.checked).toBe(true);
+        expect(onChange).toHaveBeenCalledTimes(1);
+      });
+
+      it('should call onChange with updated check value when inital value of checked is true', () => {
+        const onChange = jest.fn();
+        const { getByRole } = renderWithTheme(
+          <Checkbox id={SAMPLE_ID} checked onChange={onChange} />,
+        );
+        const checkbox = getByRole('checkbox');
+        expect(checkbox.checked).toBe(true);
+        fireEvent.click(checkbox);
+        expect(checkbox.checked).toBe(false);
         expect(onChange).toHaveBeenCalledTimes(1);
       });
 
