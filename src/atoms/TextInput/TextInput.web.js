@@ -248,6 +248,7 @@ const TextInput = ({
 
   const onChangeText = useCallback(
     (event) => {
+      console.log('onChange', event.target.value);
       const inputValue = event.target.value;
       if (inputValue.length > maxLength) {
         return;
@@ -261,10 +262,10 @@ const TextInput = ({
   const onKeyPress = useCallback(
     (event) => {
       if (type === 'number') {
+        console.log('onKeyPress');
         const charCode = typeof event.which === 'number' ? event.which : event.keyCode;
         const char = String.fromCharCode(charCode);
-        const isAllowed = /[0-9]/g.test(char) || char === '-' || char === '.';
-
+        const isAllowed = /^[0-9.-]+$/g.test(char);
         if (!isAllowed) {
           event.preventDefault();
         }
@@ -305,6 +306,8 @@ const TextInput = ({
   /* Specifies the initial value for rows in textarea(_isMultiline)
    * Has no effect on text-input as rows is not passed if _isMultiline = false */
   const noOfRows = variant === 'outlined' ? 1 : 3;
+
+  console.log({inputValue: input});
 
   return (
     <Flex flexDirection="column" justifyContent="flex-end">
@@ -395,7 +398,7 @@ const TextInput = ({
                                   <StyledInput
                                     id={id}
                                     name={name}
-                                    type={type}
+                                    inputMode="numeric"
                                     placeholder={placeholder}
                                     placeholderTextColor={placeholderTextColor}
                                     onFocus={onFocus}

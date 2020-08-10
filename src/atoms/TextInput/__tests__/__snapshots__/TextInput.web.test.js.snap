@@ -33,8 +33,8 @@ exports[`<TextInput /> default renders default props 1`] = `
             <input
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -81,8 +81,8 @@ exports[`<TextInput /> helpText should render TextInput with help text if helpTe
             <input
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -144,9 +144,9 @@ exports[`<TextInput /> helpText with maxLength should render TextInput with char
             <input
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
+              inputmode="numeric"
               maxlength="10"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -233,8 +233,8 @@ exports[`<TextInput /> iconLeft renders TextInput with iconLeft 1`] = `
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               id="sample-id"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -283,8 +283,8 @@ exports[`<TextInput /> iconRight renders TextInput with iconRight 1`] = `
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               id="sample-id"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
             <svg
@@ -342,8 +342,8 @@ exports[`<TextInput /> label renders input with labelPosition on left and varian
               class="TextInputweb__StyledInput-sc-199z6oj-1 gZpLsp Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               id="sample-id"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -389,8 +389,8 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
               class="TextInputweb__StyledInput-sc-199z6oj-1 gZpLsp Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               id="sample-id"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -439,8 +439,8 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               id="sample-id"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -496,8 +496,8 @@ exports[`<TextInput /> prefix renders TextInput with prefix 1`] = `
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               id="sample-id"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -546,8 +546,8 @@ exports[`<TextInput /> suffix renders TextInput with suffix 1`] = `
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
               id="sample-id"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
             <div
@@ -597,8 +597,8 @@ exports[`<TextInput /> variant renders filled variant with default props 1`] = `
             <input
               class="TextInputweb__StyledInput-sc-199z6oj-1 gZpLsp Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -645,8 +645,8 @@ exports[`<TextInput /> variant renders outlined variant with default props 1`] =
             <input
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -693,8 +693,8 @@ exports[`<TextInput /> width renders input with auto width 1`] = `
             <input
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -741,8 +741,8 @@ exports[`<TextInput /> width renders input with medium(default) width 1`] = `
             <input
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>
@@ -789,8 +789,8 @@ exports[`<TextInput /> width renders input with small width 1`] = `
             <input
               class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
               data-testid="ds-text-input"
+              inputmode="numeric"
               placeholder="Enter text here"
-              type="text"
               value=""
             />
           </div>

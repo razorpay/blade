@@ -67,7 +67,7 @@ storiesOf('TextInput', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
-            type={select('Type', typeOptions, 'text', 'Native')}
+            type="number"
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
             autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
