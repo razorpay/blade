@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeContext } from 'styled-components';
-import isEmpty from '../../_helpers/isEmpty';
 import { getColor } from '../../_helpers/theme';
 import Space from '../Space';
 import Text from '../Text';
@@ -13,7 +12,7 @@ const styles = {
       if (variant === 'outlined') {
         if (isFocused && !hasError) {
           return getColor(theme, 'primary.800');
-        } else if (!isEmpty(value)) {
+        } else if (value) {
           return getColor(theme, 'shade.950');
         }
       }

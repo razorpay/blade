@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
 import Space from '../Space';
-import View from '../View';
 import Flex from '../Flex';
 
 const styles = {
@@ -40,9 +39,7 @@ const AccessoryIcon = ({ name, disabled, hasError, variant, position }) => {
   return (
     <Space padding={styles.padding({ variant, position })}>
       <Flex>
-        <View>
-          <Icon name={name} size="small" fill={styles.color({ disabled, hasError })} />
-        </View>
+        <Icon name={name} size="small" fill={styles.color({ disabled, hasError })} />
       </Flex>
     </Space>
   );

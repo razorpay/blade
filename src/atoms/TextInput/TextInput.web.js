@@ -302,6 +302,8 @@ const TextInput = ({
     }
   }, [_isMultiline, variant, inputRef, input]);
 
+  /* Specifies the initial value for rows in textarea(_isMultiline)
+   * Has no effect on text-input as rows is not passed if _isMultiline = false */
   const noOfRows = variant === 'outlined' ? 1 : 3;
 
   return (

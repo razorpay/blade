@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Text from '../Text';
 import Space from '../Space';
-import View from '../View';
 
 const styles = {
   color({ disabled }) {
@@ -36,11 +35,9 @@ const styles = {
 const AccessoryText = ({ children, disabled, variant, position }) => {
   return (
     <Space padding={styles.padding({ variant, position })}>
-      <View>
-        <Text color={styles.color({ disabled })} size="medium">
-          {children}
-        </Text>
-      </View>
+      <Text color={styles.color({ disabled })} size="medium">
+        {children}
+      </Text>
     </Space>
   );
 };
