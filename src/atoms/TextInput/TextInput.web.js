@@ -241,11 +241,9 @@ const TextInput = ({
       setIsPlaceholderVisible(false);
       const inputValue = event.target.value;
       setInput(inputValue);
-      if (onBlur) {
-        onBlur(inputValue);
-      }
+      onBlur(inputValue);
     },
-    [setIsFocused, setIsPlaceholderVisible, setInput, onBlur],
+    [onBlur],
   );
 
   const onChangeText = useCallback(
@@ -255,11 +253,9 @@ const TextInput = ({
         return;
       }
       setInput(inputValue);
-      if (onChange) {
-        onChange(inputValue);
-      }
+      onChange(inputValue);
     },
-    [maxLength, onChange, setInput],
+    [maxLength, onChange],
   );
 
   const onKeyPress = useCallback(
@@ -295,7 +291,7 @@ const TextInput = ({
         finalTopPosition,
       });
     }
-  }, [inputRef, containerRef, setLayoutDimensions]);
+  }, [inputRef, containerRef]);
 
   useEffect(() => {
     // adjust height of textarea as user types for outlined variant
@@ -309,7 +305,7 @@ const TextInput = ({
   const noOfRows = variant === 'outlined' ? 1 : 3;
 
   return (
-    <Flex justifyContent="flex-end" flexDirection="column">
+    <Flex flexDirection="column" justifyContent="flex-end">
       <View ref={containerRef}>
         {labelPosition === 'top' && !hasAnimatedLabel ? (
           <Label.Regular
@@ -393,7 +389,7 @@ const TextInput = ({
                                   hasText,
                                 })}
                               >
-                                <Size minWidth={0} maxHeight={8}>
+                                <Size minWidth="0" maxHeight={8}>
                                   <StyledInput
                                     id={id}
                                     name={name}

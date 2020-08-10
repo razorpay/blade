@@ -4,13 +4,12 @@ import AtomText from '../Text';
 import Space from '../Space';
 import View from '../View';
 import Flex from '../Flex';
-import isEmpty from '../../_helpers/isEmpty';
 
 const styles = {
   color({ disabled, errorText }) {
     if (disabled) {
       return 'shade.930';
-    } else if (!isEmpty(errorText)) {
+    } else if (errorText) {
       return 'negative.900';
     }
     return 'shade.950';
@@ -18,7 +17,7 @@ const styles = {
 };
 
 const Text = ({ helpText, errorText, disabled }) => {
-  const displayText = isEmpty(errorText) ? helpText : errorText;
+  const displayText = errorText || helpText;
 
   return (
     <Space padding={[0.5, 0, 0, 0]}>
