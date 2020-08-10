@@ -64,11 +64,11 @@ const styles = {
       }
     },
     color({ disabled, errorText }) {
-      if (errorText) {
-        return 'negative.900';
-      }
       if (disabled) {
         return 'shade.930';
+      }
+      if (errorText) {
+        return 'negative.900';
       }
       return 'shade.950';
     },
