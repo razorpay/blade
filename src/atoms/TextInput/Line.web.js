@@ -12,9 +12,8 @@ const styles = {
       return theme.colors.negative[900];
     } else if (isFocused) {
       return theme.colors.primary[800];
-    } else {
-      return theme.colors.shade[940];
     }
+    return theme.colors.shade[940];
   },
 };
 

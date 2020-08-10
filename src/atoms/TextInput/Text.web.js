@@ -12,9 +12,8 @@ const styles = {
       return 'shade.930';
     } else if (!isEmpty(errorText)) {
       return 'negative.900';
-    } else {
-      return 'shade.950';
     }
+    return 'shade.950';
   },
 };
 
