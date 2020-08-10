@@ -15,10 +15,10 @@ exports[`<TextInput /> default renders default props 1`] = `
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -63,10 +63,10 @@ exports[`<TextInput /> helpText should render TextInput with help text if helpTe
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -126,10 +126,10 @@ exports[`<TextInput /> helpText with maxLength should render TextInput with char
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -201,10 +201,10 @@ exports[`<TextInput /> iconLeft renders TextInput with iconLeft 1`] = `
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               for="sample-id"
@@ -218,7 +218,7 @@ exports[`<TextInput /> iconLeft renders TextInput with iconLeft 1`] = `
             class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <svg
-              class="Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 EdEFf"
+              class="Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 lbJTjt"
               data-testid="ds-icon"
               fill="rgba(22, 47, 86, 0.38)"
               height="16"
@@ -263,10 +263,10 @@ exports[`<TextInput /> iconRight renders TextInput with iconRight 1`] = `
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               for="sample-id"
@@ -288,7 +288,7 @@ exports[`<TextInput /> iconRight renders TextInput with iconRight 1`] = `
               value=""
             />
             <svg
-              class="Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 kyDZkb"
+              class="Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 jGOEpt"
               data-testid="ds-icon"
               fill="rgba(22, 47, 86, 0.38)"
               height="16"
@@ -319,7 +319,7 @@ exports[`<TextInput /> label renders input with labelPosition on left and varian
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk Spaceweb__Space-njatzl-0 iqcLxO"
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw Spaceweb__Space-njatzl-0 iqcLxO"
         color="shade.980"
         data-testid="ds-text"
         for="sample-id"
@@ -363,7 +363,7 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bujbGJ Spaceweb__Space-njatzl-0 egTcPC"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 exXJhJ Spaceweb__Space-njatzl-0 eDHZqM"
       color="shade.980"
       data-testid="ds-text"
       for="sample-id"
@@ -419,10 +419,10 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               for="sample-id"
@@ -469,10 +469,10 @@ exports[`<TextInput /> prefix renders TextInput with prefix 1`] = `
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               for="sample-id"
@@ -486,7 +486,7 @@ exports[`<TextInput /> prefix renders TextInput with prefix 1`] = `
             class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
           >
             <div
-              class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 EdEFf"
+              class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 lbJTjt"
               color="shade.950"
               data-testid="ds-text"
             >
@@ -526,10 +526,10 @@ exports[`<TextInput /> suffix renders TextInput with suffix 1`] = `
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               for="sample-id"
@@ -551,7 +551,7 @@ exports[`<TextInput /> suffix renders TextInput with suffix 1`] = `
               value=""
             />
             <div
-              class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 kyDZkb"
+              class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 jGOEpt"
               color="shade.950"
               data-testid="ds-text"
             >
@@ -574,7 +574,7 @@ exports[`<TextInput /> variant renders filled variant with default props 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bujbGJ Spaceweb__Space-njatzl-0 egTcPC"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 exXJhJ Spaceweb__Space-njatzl-0 eDHZqM"
       color="shade.980"
       data-testid="ds-text"
       value=""
@@ -627,10 +627,10 @@ exports[`<TextInput /> variant renders outlined variant with default props 1`] =
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -675,10 +675,10 @@ exports[`<TextInput /> width renders input with auto width 1`] = `
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -723,10 +723,10 @@ exports[`<TextInput /> width renders input with medium(default) width 1`] = `
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               value=""
@@ -771,10 +771,10 @@ exports[`<TextInput /> width renders input with small width 1`] = `
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
           >
             <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 iaevDk"
+              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
               color="shade.980"
               data-testid="ds-text"
               value=""
