@@ -62,6 +62,18 @@ describe('<Radio />', () => {
         </Radio>,
       );
       expect(container).toHaveTextContent(title);
+      expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('radio only', () => {
+    it('should render a radio only without title, helptext/errortext', () => {
+      const { container } = renderWithTheme(
+        <Radio value="1">
+          <Radio.Option value="1" />
+        </Radio>,
+      );
+      expect(container).toMatchSnapshot();
     });
   });
 

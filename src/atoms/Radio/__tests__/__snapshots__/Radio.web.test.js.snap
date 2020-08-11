@@ -31,14 +31,10 @@ exports[`<Radio /> defaultValue should render radio checked(attr) as true if def
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -71,14 +67,10 @@ exports[`<Radio /> defaultValue should render radio input with checked(attr) as 
           />
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -117,14 +109,10 @@ exports[`<Radio /> disabled should render a disabled radio input if disabled is 
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 iFsPRm"
-            color="shade.950"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.950"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -162,25 +150,17 @@ exports[`<Radio /> errorText should render radio with provided errorText 1`] = `
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
       <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cMStXi"
+        class="Textweb__Text-sc-6jf9e4-0 bvsJJn Spaceweb__Space-njatzl-0 cMStXi"
+        color="negative.900"
+        data-testid="ds-text"
       >
-        <div
-          class="Textweb__Text-sc-6jf9e4-0 bvsJJn"
-          color="negative.900"
-          data-testid="ds-text"
-        >
-          This is some sample error text.
-        </div>
+        This is some sample error text.
       </div>
     </div>
   </fieldset>
@@ -218,14 +198,10 @@ exports[`<Radio /> focus with defaultValue should render focus styles on radio w
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -258,14 +234,10 @@ exports[`<Radio /> focus with defaultValue should render focus styles on radio w
           />
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -303,14 +275,10 @@ exports[`<Radio /> focus with value should render focus styles on radio when rad
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -343,14 +311,10 @@ exports[`<Radio /> focus with value should render focus styles on radio when rad
           />
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -388,26 +352,59 @@ exports[`<Radio /> helpText should render radio with provided helpText 1`] = `
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
       <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cMStXi"
+        class="Textweb__Text-sc-6jf9e4-0 krUdvH Spaceweb__Space-njatzl-0 cMStXi"
+        color="shade.950"
+        data-testid="ds-text"
       >
-        <div
-          class="Textweb__Text-sc-6jf9e4-0 krUdvH"
-          color="shade.950"
-          data-testid="ds-text"
-        >
-          This is some sample help text.
-        </div>
+        This is some sample help text.
       </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> radio only should render a radio only without title, helptext/errortext 1`] = `
+<div>
+  <fieldset
+    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
     </div>
   </fieldset>
 </div>
@@ -444,14 +441,10 @@ exports[`<Radio /> size should render a large radio input 1`] = `
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 eKxMBE"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 eKxMBE Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -489,14 +482,10 @@ exports[`<Radio /> size should render a medium(default) radio input 1`] = `
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -534,13 +523,52 @@ exports[`<Radio /> size should render a small radio input 1`] = `
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
+          class="Textweb__Text-sc-6jf9e4-0 kNsceG Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> title should render radio with provided title 1`] = `
+<div>
+  <fieldset
+    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
         >
           <div
-            class="Textweb__Text-sc-6jf9e4-0 kNsceG"
-            color="shade.980"
-            data-testid="ds-text"
-          />
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        >
+          Radio Button
         </div>
       </label>
     </div>
@@ -580,14 +608,10 @@ exports[`<Radio /> value should render radio input checked(attr) as true if valu
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 iFsPRm"
-            color="shade.950"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.950"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -621,14 +645,10 @@ exports[`<Radio /> value should render radio input with checked(attr) as false i
           />
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 iFsPRm"
-            color="shade.950"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.950"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -666,14 +686,10 @@ exports[`<Radio /> variantColor should render a radio with default variantColor 
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
@@ -711,14 +727,10 @@ exports[`<Radio /> variantColor should render a radio with provided variantColor
           </div>
         </div>
         <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 cEoilA Flexweb__Flex-ni2cjg-0 izmuDM"
-        >
-          <div
-            class="Textweb__Text-sc-6jf9e4-0 bYInBW"
-            color="shade.980"
-            data-testid="ds-text"
-          />
-        </div>
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
       </label>
     </div>
   </fieldset>
