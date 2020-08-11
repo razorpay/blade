@@ -9,15 +9,21 @@ import View from '../View';
 const styles = {
   text: {
     color({ theme, isFocused, hasError, disabled, variant, value }) {
+      if (disabled) {
+        if (variant === 'outlined') {
+          if (value) {
+            return getColor(theme, 'shade.930');
+          }
+          return getColor(theme, 'shade.940');
+        }
+        return getColor(theme, 'shade.940');
+      }
       if (variant === 'outlined') {
         if (isFocused && !hasError) {
           return getColor(theme, 'primary.800');
         } else if (value) {
           return getColor(theme, 'shade.950');
         }
-      }
-      if (disabled) {
-        return getColor(theme, 'shade.940');
       }
       return getColor(theme, 'shade.960');
     },
