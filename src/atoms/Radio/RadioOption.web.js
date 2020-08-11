@@ -1,20 +1,20 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeContext } from 'styled-components';
-import View from '../View';
-import Text from '../Text';
+import automation from '../../_helpers/automation-attributes';
 import isDefined from '../../_helpers/isDefined';
+import isEmpty from '../../_helpers/isEmpty';
 import { getColor, makePxValue } from '../../_helpers/theme';
 import Flex from '../Flex';
 import Size from '../Size';
 import Space from '../Space';
-import isEmpty from '../../_helpers/isEmpty';
-import automation from '../../_helpers/automation-attributes';
+import Text from '../Text';
+import View from '../View';
 import Backdrop from './Backdrop';
-import Label from './Label';
-import Input from './Input';
 import Circle from './Circle';
 import Dot from './Dot';
+import Input from './Input';
+import Label from './Label';
 import { useRadioButtonContext } from './RadioContext';
 
 const styles = {
@@ -36,10 +36,8 @@ const styles = {
           return [0.5, 0, 0, 4];
         case 'medium':
           return [0.5, 0, 0, 3.5];
-        case 'small':
-          return [0, 0, 0, 3];
         default:
-          return [0, 0, 0, 3.5];
+          return [0.5, 0, 0, 3.5];
       }
     },
     textSize({ size }) {
@@ -49,15 +47,14 @@ const styles = {
         case 'medium':
           return 'xsmall';
         default:
-          return 'small';
+          return 'xsmall';
       }
     },
     color({ disabled, errorText }) {
-      if (errorText) {
-        return 'negative.900';
-      }
       if (disabled) {
         return 'shade.930';
+      } else if (errorText) {
+        return 'negative.900';
       }
       return 'shade.950';
     },
@@ -66,8 +63,7 @@ const styles = {
     color({ theme, disabled, checked, variantColor }) {
       if (disabled) {
         return getColor(theme, 'shade.930');
-      }
-      if (checked) {
+      } else if (checked) {
         return getColor(theme, `${variantColor}.800`);
       }
       return getColor(theme, 'shade.950');
@@ -196,6 +192,7 @@ const RadioOption = ({ value, disabled, title, helpText, errorText, testID, name
   const radioColor = styles.radio.color({ theme, disabled, checked, variantColor });
 
   const onClick = (event) => {
+    /* prevent default behaviour of label firing click event on the associated input */
     event.preventDefault();
     if (isDefined(context.onChange) && !disabled) {
       context.onChange(value);
@@ -206,9 +203,9 @@ const RadioOption = ({ value, disabled, title, helpText, errorText, testID, name
   const shouldShowDescriptionText = (!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small';
 
   return (
-    <Flex alignSelf="flex-start" flexDirection="column">
+    <Flex flexDirection="column" alignSelf="flex-start">
       <View>
-        <Flex flexDirection="row" alignItems="center">
+        <Flex alignItems="center">
           <Label onClick={onClick} htmlFor={id}>
             <Input
               id={id}
@@ -248,28 +245,22 @@ const RadioOption = ({ value, disabled, title, helpText, errorText, testID, name
                 </Backdrop>
               </Size>
             </Flex>
-            <Flex alignSelf="center">
-              <Space margin={styles.title.margin()}>
-                <View>
-                  <Text color={styles.title.color({ disabled })} size={size}>
-                    {title}
-                  </Text>
-                </View>
-              </Space>
-            </Flex>
+            <Space margin={styles.title.margin()}>
+              <Text color={styles.title.color({ disabled })} size={size}>
+                {title}
+              </Text>
+            </Space>
           </Label>
         </Flex>
 
         {shouldShowDescriptionText ? (
           <Space margin={styles.descriptionText.margin({ size })}>
-            <View>
-              <Text
-                size={styles.descriptionText.textSize({ size })}
-                color={styles.descriptionText.color({ disabled, errorText })}
-              >
-                {descriptionText}
-              </Text>
-            </View>
+            <Text
+              size={styles.descriptionText.textSize({ size })}
+              color={styles.descriptionText.color({ disabled, errorText })}
+            >
+              {descriptionText}
+            </Text>
           </Space>
         ) : null}
       </View>

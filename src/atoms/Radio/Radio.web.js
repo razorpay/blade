@@ -13,7 +13,7 @@ const Radio = ({ value, onChange, defaultValue, variantColor, size, children }) 
       if (!value) {
         setSelected(newValue);
       }
-      if (onChange) onChange(newValue);
+      onChange(newValue);
     },
     [onChange, value],
   );
