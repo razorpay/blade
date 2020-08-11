@@ -5,11 +5,15 @@ import Space from '../Space';
 import Flex from '../Flex';
 
 const styles = {
-  color({ disabled, hasError }) {
+  color({ disabled, hasError, isFocused }) {
+    if (disabled) {
+      return 'shade.930';
+    }
     if (hasError) {
       return 'negative.900';
-    } else if (disabled) {
-      return 'shade.930';
+    }
+    if (isFocused) {
+      return 'shade.960';
     }
     return 'shade.950';
   },
@@ -35,11 +39,11 @@ const styles = {
   },
 };
 
-const AccessoryIcon = ({ name, disabled, hasError, variant, position }) => {
+const AccessoryIcon = ({ name, disabled, hasError, variant, isFocused, position }) => {
   return (
     <Space padding={styles.padding({ variant, position })}>
       <Flex>
-        <Icon name={name} size="small" fill={styles.color({ disabled, hasError })} />
+        <Icon name={name} size="small" fill={styles.color({ disabled, hasError, isFocused })} />
       </Flex>
     </Space>
   );
@@ -51,6 +55,7 @@ AccessoryIcon.propTypes = {
   hasError: PropTypes.bool,
   variant: PropTypes.oneOf(['filled', 'outlined']).isRequired,
   position: PropTypes.string,
+  isFocused: PropTypes.bool,
 };
 
 AccessoryIcon.defaultProps = {

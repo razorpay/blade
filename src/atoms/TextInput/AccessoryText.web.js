@@ -4,9 +4,12 @@ import Text from '../Text';
 import Space from '../Space';
 
 const styles = {
-  color({ disabled }) {
+  color({ disabled, isFocused }) {
     if (disabled) {
       return 'shade.930';
+    }
+    if (isFocused) {
+      return 'shade.960';
     }
     return 'shade.950';
   },
@@ -32,10 +35,10 @@ const styles = {
   },
 };
 
-const AccessoryText = ({ children, disabled, variant, position }) => {
+const AccessoryText = ({ children, disabled, variant, position, isFocused }) => {
   return (
     <Space padding={styles.padding({ variant, position })}>
-      <Text color={styles.color({ disabled })} size="medium">
+      <Text color={styles.color({ disabled, isFocused })} size="medium">
         {children}
       </Text>
     </Space>
@@ -47,6 +50,7 @@ AccessoryText.propTypes = {
   disabled: PropTypes.bool,
   variant: PropTypes.string.isRequired,
   position: PropTypes.string,
+  isFocused: PropTypes.bool,
 };
 
 AccessoryText.defaultProps = {

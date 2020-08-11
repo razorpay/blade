@@ -369,7 +369,12 @@ const TextInput = ({
                         <Size width={styles.inputContainer.width({ width })} maxHeight="100%">
                           <InputContainer>
                             {hasPrefix ? (
-                              <AccessoryText position="left" variant={variant} disabled={disabled}>
+                              <AccessoryText
+                                position="left"
+                                variant={variant}
+                                disabled={disabled}
+                                isFocused={isFocused}
+                              >
                                 {prefix}
                               </AccessoryText>
                             ) : null}
@@ -379,6 +384,7 @@ const TextInput = ({
                                 name={iconLeft}
                                 disabled={disabled}
                                 hasError={hasError}
+                                isFocused={isFocused}
                                 position="left"
                               />
                             ) : null}
@@ -419,7 +425,12 @@ const TextInput = ({
                               </Space>
                             </Flex>
                             {hasSuffix ? (
-                              <AccessoryText position="right" variant={variant} disabled={disabled}>
+                              <AccessoryText
+                                position="right"
+                                variant={variant}
+                                disabled={disabled}
+                                isFocused={isFocused}
+                              >
                                 {suffix}
                               </AccessoryText>
                             ) : null}
@@ -429,6 +440,7 @@ const TextInput = ({
                                 name={iconRight}
                                 disabled={disabled}
                                 hasError={hasError}
+                                isFocused={isFocused}
                                 position="right"
                               />
                             ) : null}
