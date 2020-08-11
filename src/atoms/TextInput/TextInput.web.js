@@ -181,6 +181,7 @@ const TextInput = ({
   id,
   name,
   _isMultiline,
+  inputMode
 }) => {
   const theme = useContext(ThemeContext);
   const inputRef = useRef();
@@ -261,7 +262,7 @@ const TextInput = ({
 
   const onKeyPress = useCallback(
     (event) => {
-      if (type === 'number') {
+      if (inputMode === 'numeric' || inputMode === 'tel') {
         console.log('onKeyPress');
         const charCode = typeof event.which === 'number' ? event.which : event.keyCode;
         const char = String.fromCharCode(charCode);
@@ -398,7 +399,8 @@ const TextInput = ({
                                   <StyledInput
                                     id={id}
                                     name={name}
-                                    inputMode="numeric"
+                                    type="text"
+                                    inputMode={inputMode}
                                     placeholder={placeholder}
                                     placeholderTextColor={placeholderTextColor}
                                     onFocus={onFocus}
@@ -488,6 +490,7 @@ TextInput.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   _isMultiline: PropTypes.bool,
+  inputMode: PropTypes.string,
 };
 
 TextInput.defaultProps = {
@@ -502,6 +505,7 @@ TextInput.defaultProps = {
   width: 'medium',
   type: 'text',
   _isMultiline: false,
+  inputMode: 'text',
 };
 
 export default TextInput;
