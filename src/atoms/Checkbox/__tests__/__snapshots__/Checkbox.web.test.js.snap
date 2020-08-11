@@ -265,7 +265,7 @@ exports[`<Checkbox /> errorText should render checkbox with provided errorText 1
         </svg>
       </div>
       <div
-        class="Textweb__Text-sc-6jf9e4-0 xqQS Spaceweb__Space-njatzl-0 cEoilA"
+        class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
         color="shade.980"
         data-testid="ds-text"
       >
@@ -273,7 +273,7 @@ exports[`<Checkbox /> errorText should render checkbox with provided errorText 1
       </div>
     </label>
     <div
-      class="Textweb__Text-sc-6jf9e4-0 juvyQj Spaceweb__Space-njatzl-0 cMStXi"
+      class="Textweb__Text-sc-6jf9e4-0 bvsJJn Spaceweb__Space-njatzl-0 cMStXi"
       color="negative.900"
       data-testid="ds-text"
     >
@@ -471,7 +471,7 @@ exports[`<Checkbox /> helpText should render checkbox with provided helpText 1`]
         </svg>
       </div>
       <div
-        class="Textweb__Text-sc-6jf9e4-0 xqQS Spaceweb__Space-njatzl-0 cEoilA"
+        class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
         color="shade.980"
         data-testid="ds-text"
       >
@@ -479,7 +479,7 @@ exports[`<Checkbox /> helpText should render checkbox with provided helpText 1`]
       </div>
     </label>
     <div
-      class="Textweb__Text-sc-6jf9e4-0 fLzvVb Spaceweb__Space-njatzl-0 cMStXi"
+      class="Textweb__Text-sc-6jf9e4-0 krUdvH Spaceweb__Space-njatzl-0 cMStXi"
       color="shade.950"
       data-testid="ds-text"
     >
@@ -637,7 +637,7 @@ exports[`<Checkbox /> title should render a checkbox with provided title 1`] = `
         </svg>
       </div>
       <div
-        class="Textweb__Text-sc-6jf9e4-0 xqQS Spaceweb__Space-njatzl-0 cEoilA"
+        class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
         color="shade.980"
         data-testid="ds-text"
       >
