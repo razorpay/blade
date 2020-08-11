@@ -19,7 +19,10 @@ const styles = {
         return getColor(theme, 'shade.940');
       }
       if (variant === 'outlined') {
-        if (isFocused && !hasError) {
+        if (isFocused) {
+          if (hasError) {
+            return getColor(theme, 'shade.950');
+          }
           return getColor(theme, 'primary.800');
         } else if (value) {
           return getColor(theme, 'shade.950');
