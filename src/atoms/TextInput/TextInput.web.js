@@ -258,12 +258,32 @@ const TextInput = ({
     [maxLength, onChange],
   );
 
+  // Tests valid inputs for input type=number
+  // allowed values = 0-9 "." "," "whitespace" "-"
+  const isInputAllowed = (inputValue) => {
+    return /^[0-9., -]+$/g.test(inputValue);
+  };
+
   const onKeyPress = useCallback(
     (event) => {
       if (type === 'number') {
         const charCode = typeof event.which === 'number' ? event.which : event.keyCode;
         const char = String.fromCharCode(charCode);
-        const isAllowed = /[0-9]/g.test(char) || char === '-' || char === '.';
+        const isAllowed = isInputAllowed(char);
+
+        if (!isAllowed) {
+          event.preventDefault();
+        }
+      }
+    },
+    [type],
+  );
+
+  const onPaste = useCallback(
+    (event) => {
+      if (type === 'number') {
+        const inputValue = event.clipboardData.getData('Text');
+        const isAllowed = isInputAllowed(inputValue);
 
         if (!isAllowed) {
           event.preventDefault();
@@ -294,13 +314,16 @@ const TextInput = ({
   }, [inputRef, containerRef]);
 
   useEffect(() => {
-    // adjust height of textarea as user types for outlined variant
+    // Adjust height of textarea as user types for outlined variant
     if (_isMultiline && variant === 'outlined') {
       inputRef.current.style.height = 'inherit';
       const height = inputRef.current.scrollHeight;
       inputRef.current.style.height = `${height}px`;
     }
   }, [_isMultiline, variant, inputRef, input]);
+
+  // Due to browser issues, if type=number we use type=text and show numpad on mobile devices using inputMode=numeric
+  const inputType = type === 'number' ? 'text' : type;
 
   /* Specifies the initial value for rows in textarea(_isMultiline)
    * Has no effect on text-input as rows is not passed if _isMultiline = false */
@@ -401,12 +424,14 @@ const TextInput = ({
                                   <StyledInput
                                     id={id}
                                     name={name}
-                                    type={type}
+                                    type={inputType}
                                     placeholder={placeholder}
                                     placeholderTextColor={placeholderTextColor}
                                     onFocus={onFocus}
                                     onBlur={onBlurText}
                                     onChange={onChangeText}
+                                    onKeyPress={onKeyPress}
+                                    onPaste={onPaste}
                                     hasText={hasText}
                                     readonly={disabled}
                                     disabled={disabled}
@@ -416,9 +441,9 @@ const TextInput = ({
                                     maxLength={maxLength}
                                     value={input}
                                     ref={inputRef}
-                                    onKeyPress={onKeyPress}
                                     as={_isMultiline ? 'textarea' : 'input'}
                                     rows={_isMultiline ? noOfRows : ''}
+                                    inputMode={type === 'number' ? 'numeric' : null} // pass only for type=number, otherwise let browser infer via type
                                     {...automation(testID)}
                                   />
                                 </Size>
