@@ -47,8 +47,6 @@ const styles = {
           return [0.5, 0, 0, 3.5];
         case 'small':
           return [0, 0, 0, 3];
-        case 'xsmall':
-          return [0, 0, 0, 2.5];
         default:
           return [0.5, 0, 0, 3.5];
       }
@@ -118,12 +116,6 @@ const styles = {
             width: makePxValue(2.5),
             height: makePxValue(2.5),
             borderRadius: makePxValue(1.25),
-          };
-        case 'xsmall':
-          return {
-            width: makePxValue(2),
-            height: makePxValue(2),
-            borderRadius: makePxValue(1),
           };
         default:
           return {
