@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { ThemeContext } from 'styled-components';
 import automation from '../../_helpers/automation-attributes';
 import isEmpty from '../../_helpers/isEmpty';
-import { makePxValue } from '../../_helpers/theme';
+import { getColor, makePxValue } from '../../_helpers/theme';
 import Flex from '../Flex';
 import Size from '../Size';
 import Space from '../Space';
@@ -80,6 +80,24 @@ const styles = {
       }
     },
   },
+  line: {
+    backgroundColor({ theme, disabled, hasError, state }) {
+      if (disabled) {
+        return getColor(theme, 'shade.930');
+      }
+      if (hasError) {
+        return getColor(theme, 'negative.900');
+      }
+      switch (state) {
+        case 'hover':
+          return getColor(theme, 'shade.960');
+        case 'focus':
+          return getColor(theme, 'primary.800');
+        default:
+          return getColor(theme, 'shade.940');
+      }
+    },
+  },
 };
 
 const InputContainer = styled(View)`
@@ -136,6 +154,22 @@ const FillContainer = styled(View)`
   box-sizing: border-box;
   &:hover {
     background-color: ${styles.fillContainer.hoverBackgroundColor};
+  }
+`;
+
+const InteractionContainer = styled(View)`
+  ${Line} {
+    background-color: ${(props) => styles.line.backgroundColor({ ...props, state: '' })};
+  }
+  &:hover {
+    ${Line} {
+      background-color: ${(props) => styles.line.backgroundColor({ ...props, state: 'hover' })};
+    }
+  }
+  &:focus-within {
+    ${Line} {
+      background-color: ${(props) => styles.line.backgroundColor({ ...props, state: 'focus' })};
+    }
   }
 `;
 
@@ -369,113 +403,118 @@ const TextInput = ({
             {/* Text Input */}
             <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
               <View>
-                <Size height={styles.fillContainer.height({ variant, _isMultiline })} maxHeight={8}>
-                  <Space padding={styles.fillContainer.padding({ variant })}>
-                    <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
-                      {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
-                        <Label.Animated
-                          position={labelPosition}
-                          disabled={disabled}
-                          isFocused={isFocused}
-                          variant={variant}
-                          hasError={hasError}
-                          value={input}
-                          hasText={hasText}
-                          layoutDimensions={layoutDimensions}
-                          width={width}
-                          id={id}
-                        >
-                          {label}
-                        </Label.Animated>
-                      ) : null}
-                      <Flex flexDirection="row" alignItems="center">
-                        <Size width={styles.inputContainer.width({ width })} maxHeight="100%">
-                          <InputContainer>
-                            {hasPrefix ? (
-                              <AccessoryText
-                                position="left"
-                                variant={variant}
-                                disabled={disabled}
-                                isFocused={isFocused}
-                              >
-                                {prefix}
-                              </AccessoryText>
-                            ) : null}
-                            {hasLeftIcon ? (
-                              <AccessoryIcon
-                                variant={variant}
-                                name={iconLeft}
-                                disabled={disabled}
-                                hasError={hasError}
-                                isFocused={isFocused}
-                                position="left"
-                              />
-                            ) : null}
-                            <Flex flex={1}>
-                              <Space
-                                padding={styles.textInput.padding({
-                                  variant,
-                                  hasLeftIcon,
-                                  hasPrefix,
-                                  hasText,
-                                })}
-                              >
-                                <Size minWidth="0" maxHeight={8}>
-                                  <StyledInput
-                                    id={id}
-                                    name={name}
-                                    type={inputType}
-                                    placeholder={placeholder}
-                                    placeholderTextColor={placeholderTextColor}
-                                    onFocus={onFocus}
-                                    onBlur={onBlurText}
-                                    onChange={onChangeText}
-                                    onKeyPress={onKeyPress}
-                                    onPaste={onPaste}
-                                    hasText={hasText}
-                                    readonly={disabled}
-                                    disabled={disabled}
-                                    variant={variant}
-                                    hasPrefix={hasPrefix}
-                                    hasLeftIcon={hasLeftIcon}
-                                    maxLength={maxLength}
-                                    value={input}
-                                    ref={inputRef}
-                                    as={_isMultiline ? 'textarea' : 'input'}
-                                    rows={_isMultiline ? noOfRows : ''}
-                                    inputMode={type === 'number' ? 'numeric' : null} // pass only for type=number, otherwise let browser infer via type
-                                    {...automation(testID)}
-                                  />
-                                </Size>
-                              </Space>
-                            </Flex>
-                            {hasSuffix ? (
-                              <AccessoryText
-                                position="right"
-                                variant={variant}
-                                disabled={disabled}
-                                isFocused={isFocused}
-                              >
-                                {suffix}
-                              </AccessoryText>
-                            ) : null}
-                            {hasRightIcon ? (
-                              <AccessoryIcon
-                                variant={variant}
-                                name={iconRight}
-                                disabled={disabled}
-                                hasError={hasError}
-                                isFocused={isFocused}
-                                position="right"
-                              />
-                            ) : null}
-                          </InputContainer>
-                        </Size>
-                      </Flex>
-                    </FillContainer>
-                  </Space>
-                </Size>
-                <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
+                <InteractionContainer disabled={disabled} hasError={hasError}>
+                  <Size
+                    height={styles.fillContainer.height({ variant, _isMultiline })}
+                    maxHeight={8}
+                  >
+                    <Space padding={styles.fillContainer.padding({ variant })}>
+                      <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
+                        {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
+                          <Label.Animated
+                            position={labelPosition}
+                            disabled={disabled}
+                            isFocused={isFocused}
+                            variant={variant}
+                            hasError={hasError}
+                            value={input}
+                            hasText={hasText}
+                            layoutDimensions={layoutDimensions}
+                            width={width}
+                            id={id}
+                          >
+                            {label}
+                          </Label.Animated>
+                        ) : null}
+                        <Flex flexDirection="row" alignItems="center">
+                          <Size width={styles.inputContainer.width({ width })} maxHeight="100%">
+                            <InputContainer>
+                              {hasPrefix ? (
+                                <AccessoryText
+                                  position="left"
+                                  variant={variant}
+                                  disabled={disabled}
+                                  isFocused={isFocused}
+                                >
+                                  {prefix}
+                                </AccessoryText>
+                              ) : null}
+                              {hasLeftIcon ? (
+                                <AccessoryIcon
+                                  variant={variant}
+                                  name={iconLeft}
+                                  disabled={disabled}
+                                  hasError={hasError}
+                                  isFocused={isFocused}
+                                  position="left"
+                                />
+                              ) : null}
+                              <Flex flex={1}>
+                                <Space
+                                  padding={styles.textInput.padding({
+                                    variant,
+                                    hasLeftIcon,
+                                    hasPrefix,
+                                    hasText,
+                                  })}
+                                >
+                                  <Size minWidth="0" maxHeight={8}>
+                                    <StyledInput
+                                      id={id}
+                                      name={name}
+                                      type={inputType}
+                                      placeholder={placeholder}
+                                      placeholderTextColor={placeholderTextColor}
+                                      onFocus={onFocus}
+                                      onBlur={onBlurText}
+                                      onChange={onChangeText}
+                                      onKeyPress={onKeyPress}
+                                      onPaste={onPaste}
+                                      hasText={hasText}
+                                      readonly={disabled}
+                                      disabled={disabled}
+                                      variant={variant}
+                                      hasPrefix={hasPrefix}
+                                      hasLeftIcon={hasLeftIcon}
+                                      maxLength={maxLength}
+                                      value={input}
+                                      ref={inputRef}
+                                      as={_isMultiline ? 'textarea' : 'input'}
+                                      rows={_isMultiline ? noOfRows : ''}
+                                      inputMode={type === 'number' ? 'numeric' : null} // pass only for type=number, otherwise let browser infer via type
+                                      {...automation(testID)}
+                                    />
+                                  </Size>
+                                </Space>
+                              </Flex>
+                              {hasSuffix ? (
+                                <AccessoryText
+                                  position="right"
+                                  variant={variant}
+                                  disabled={disabled}
+                                  isFocused={isFocused}
+                                >
+                                  {suffix}
+                                </AccessoryText>
+                              ) : null}
+                              {hasRightIcon ? (
+                                <AccessoryIcon
+                                  variant={variant}
+                                  name={iconRight}
+                                  disabled={disabled}
+                                  hasError={hasError}
+                                  isFocused={isFocused}
+                                  position="right"
+                                />
+                              ) : null}
+                            </InputContainer>
+                          </Size>
+                        </Flex>
+                      </FillContainer>
+                    </Space>
+                  </Size>
+                  <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
+                </InteractionContainer>
                 {/* Bottom texts */}
                 {hasError || helpText ? (
                   <Flex flexDirection="row" justifyContent="space-between">

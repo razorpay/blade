@@ -10,12 +10,6 @@ const styles = {
   text: {
     color({ theme, isFocused, hasError, disabled, variant, value }) {
       if (disabled) {
-        if (variant === 'outlined') {
-          if (value) {
-            return getColor(theme, 'shade.930');
-          }
-          return getColor(theme, 'shade.940');
-        }
         return getColor(theme, 'shade.940');
       }
       if (variant === 'outlined') {
