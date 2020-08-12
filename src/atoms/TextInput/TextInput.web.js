@@ -292,18 +292,15 @@ const TextInput = ({
     [maxLength, onChange],
   );
 
-  // Tests valid inputs for input type=number
   // allowed values = 0-9 "." "," "whitespace" "-"
-  const isInputAllowed = (inputValue) => {
-    return /^[0-9., -]+$/g.test(inputValue);
-  };
+  const isInputNumberAllowed = (inputValue) => /^[0-9., -]+$/g.test(inputValue);
 
   const onKeyPress = useCallback(
     (event) => {
       if (type === 'number') {
         const charCode = typeof event.which === 'number' ? event.which : event.keyCode;
         const char = String.fromCharCode(charCode);
-        const isAllowed = isInputAllowed(char);
+        const isAllowed = isInputNumberAllowed(char);
 
         if (!isAllowed) {
           event.preventDefault();
@@ -317,7 +314,7 @@ const TextInput = ({
     (event) => {
       if (type === 'number') {
         const inputValue = event.clipboardData.getData('Text');
-        const isAllowed = isInputAllowed(inputValue);
+        const isAllowed = isInputNumberAllowed(inputValue);
 
         if (!isAllowed) {
           event.preventDefault();
