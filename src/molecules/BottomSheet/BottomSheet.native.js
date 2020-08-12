@@ -37,10 +37,14 @@ const styles = {
       backgroundColor: theme.colors.shade[950],
     };
   },
-  childrenStyle: ({ theme }) => {
-    return {
+  childrenStyle: ({ theme, isSectionList }) => {
+    const childrenStyles = {
       backgroundColor: theme.colors.background[200],
     };
+    if (isSectionList) {
+      return { ...childrenStyles, ...{ paddingVertical: 8, paddingHorizontal: 16 } };
+    }
+    return childrenStyles;
   },
   linearGradient: () => {
     return {
@@ -74,6 +78,7 @@ const BottomSheet = ({
   onClose,
   adjustToContentHeight = false,
   initialHeight = 0,
+  isSectionList = false,
 }) => {
   const theme = useTheme();
   const bottomSheetRef = useRef();
@@ -98,6 +103,12 @@ const BottomSheet = ({
 
   if (!onClose) {
     throw Error(`expected onClose prop for \`BottomSheet\``);
+  }
+
+  if (isSectionList && contentComponent.length > 1) {
+    throw Error(
+      `expected to have single \`BottomSheet.Content when isSectionList is true\` but found ${contentComponent.length}`,
+    );
   }
 
   if (headerComponent?.length > 1) {
@@ -196,15 +207,18 @@ const BottomSheet = ({
       avoidKeyboardLikeIOS={true}
       onPositionChange={onChange}
       onClosed={handleBottomSheetClose}
-      childrenStyle={styles.childrenStyle({ theme })}
+      childrenStyle={styles.childrenStyle({ theme, isSectionList })}
       withHandle={false}
       panGestureComponentEnabled={true}
       adjustToContentHeight={adjustToContentHeight}
       alwaysOpen={initialHeight}
       rootStyle={styles.rootStyle({ theme })}
+      sectionListProps={isSectionList ? contentComponent[0].props.children.props : undefined}
     >
       <Space padding={[0, 0, footerHeight / 8, 0]}>
-        <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
+        {!isSectionList ? (
+          <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
+        ) : null}
       </Space>
     </RNModalize>
   );
@@ -224,6 +238,7 @@ BottomSheet.propTypes = {
   onBackDropClick: PropTypes.func,
   adjustToContentHeight: PropTypes.bool,
   initialHeight: PropTypes.number,
+  isSectionList: PropTypes.bool,
 };
 
 export default BottomSheet;

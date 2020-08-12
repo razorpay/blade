@@ -1,4 +1,5 @@
 import React from 'react';
+import { SectionList } from 'react-native';
 import styled from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import View from '../../atoms/View';
@@ -13,22 +14,45 @@ const Item = styled(View)`
 `;
 
 const list = [
-  'Samsung',
-  'Xiaomi',
-  'OnePlus',
   'Apple',
-  'Vivo',
-  'Oppo',
+  'Asus',
+  'Blackberry',
+  'Honor',
+  'HTC',
+  'Huawei',
+  'Lava',
   'Lenovo',
   'LG',
+  'Motorola',
+  'Nexus',
   'Nokia',
-  'HTC',
+  'OnePlus',
+  'Oppo',
+  'Panasonic',
+  'Pixel',
+  'Realme',
+  'Samsung',
+  'Sony',
+  'Toshiba',
+  'Vivo',
+  'Xiaomi',
 ];
 
 const data = new Array(list.length).fill({}).map((item, index) => ({
   id: index,
   name: list[index],
 }));
+
+const sections = [
+  {
+    title: 'Section1',
+    data: list,
+  },
+  {
+    title: 'Section2',
+    data: list,
+  },
+];
 
 storiesOf('BottomSheet', module)
   .addParameters({
@@ -198,5 +222,29 @@ storiesOf('BottomSheet', module)
           </BottomSheet.Content>
         </BottomSheet>
       </>
+    );
+  })
+  .add('SectionList inside Content', () => {
+    return (
+      <BottomSheet visible={true} initialHeight={300} onClose={() => {}} isSectionList>
+        <BottomSheet.Content>
+          <SectionList
+            sections={sections}
+            renderItem={({ item }) => (
+              <Space padding={[1]}>
+                <View>
+                  <Text>{item}</Text>
+                </View>
+              </Space>
+            )}
+            renderSectionHeader={({ section }) => (
+              <View>
+                <Text>{section.title}</Text>
+              </View>
+            )}
+            keyExtractor={(item) => item}
+          />
+        </BottomSheet.Content>
+      </BottomSheet>
     );
   });
