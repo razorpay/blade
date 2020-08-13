@@ -14,6 +14,7 @@ import Position from '../../atoms/Position';
 import BottomSheetHeader from './BottomSheetHeader';
 import BottomSheetFooter from './BottomSheetFooter';
 import BottomSheetContent from './BottomSheetContent';
+import BottomSheetSectionList from './BottomSheetSectionList';
 
 const screenHeight = Dimensions.get('window').height;
 const DEFAULT_SNAP_POINT = screenHeight * 0.4; // 40% of screen height
@@ -78,7 +79,6 @@ const BottomSheet = ({
   onClose,
   adjustToContentHeight = false,
   initialHeight = 0,
-  isSectionList = false,
 }) => {
   const theme = useTheme();
   const bottomSheetRef = useRef();
@@ -91,6 +91,7 @@ const BottomSheet = ({
   const headerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetHeader;
   const footerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetFooter;
   const contentComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetContent;
+  const sectionListComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetSectionList;
 
   useEffect(() => {
     if (visible) {
@@ -105,9 +106,15 @@ const BottomSheet = ({
     throw Error(`expected onClose prop for \`BottomSheet\``);
   }
 
-  if (isSectionList && contentComponent.length > 1) {
+  if (sectionListComponent && contentComponent) {
     throw Error(
-      `expected to have single \`BottomSheet.Content when isSectionList is true\` but found ${contentComponent.length}`,
+      `expected to have one of \`BottomSheet.Content or BottomSheet.SectionList\` but found both`,
+    );
+  }
+
+  if (sectionListComponent?.length > 1) {
+    throw Error(
+      `expected to have single \`BottomSheet.SectionList\` but found but found ${sectionListComponent.length}`,
     );
   }
 
@@ -207,16 +214,16 @@ const BottomSheet = ({
       avoidKeyboardLikeIOS={true}
       onPositionChange={onChange}
       onClosed={handleBottomSheetClose}
-      childrenStyle={styles.childrenStyle({ theme, isSectionList })}
+      childrenStyle={styles.childrenStyle({ theme, isSectionList: Boolean(sectionListComponent) })}
       withHandle={false}
       panGestureComponentEnabled={true}
       adjustToContentHeight={adjustToContentHeight}
       alwaysOpen={initialHeight}
       rootStyle={styles.rootStyle({ theme })}
-      sectionListProps={isSectionList ? contentComponent[0].props.children.props : undefined}
+      sectionListProps={sectionListComponent ? sectionListComponent[0].props : undefined}
     >
       <Space padding={[0, 0, footerHeight / 8, 0]}>
-        {!isSectionList ? (
+        {!sectionListComponent ? (
           <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
         ) : null}
       </Space>
@@ -228,6 +235,7 @@ BottomSheet.displayName = 'BladeBottomSheet';
 BottomSheet.Header = BottomSheetHeader;
 BottomSheet.Footer = BottomSheetFooter;
 BottomSheet.Content = BottomSheetContent;
+BottomSheet.SectionList = BottomSheetSectionList;
 
 BottomSheet.propTypes = {
   visible: PropTypes.bool,
@@ -238,7 +246,6 @@ BottomSheet.propTypes = {
   onBackDropClick: PropTypes.func,
   adjustToContentHeight: PropTypes.bool,
   initialHeight: PropTypes.number,
-  isSectionList: PropTypes.bool,
 };
 
 export default BottomSheet;
