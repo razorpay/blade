@@ -11,7 +11,7 @@ const SAMPLE_LABEL = 'Sample Label';
 
 describe('<TextInput />', () => {
   describe('default', () => {
-    it('renders default props', () => {
+    it('renders TextInput default props', () => {
       const { container } = renderWithTheme(<TextInput />);
       expect(container).toMatchSnapshot();
     });
@@ -202,6 +202,47 @@ describe('<TextInput />', () => {
 
         // check initial character count = 0/10
         expect(container).toHaveTextContent('This is help text');
+        expect(container).toHaveTextContent('0/10');
+
+        const textInput = getByLabelText(SAMPLE_LABEL);
+        const userInput = 'Ten Chars.';
+        fireEvent.change(textInput, { target: { value: userInput } });
+
+        // check after input character count = 10/10
+        expect(container).toHaveTextContent('10/10');
+      });
+    });
+  });
+
+  describe('errorText', () => {
+    it('should render TextInput with error text if errorText is provided as prop', () => {
+      const { container } = renderWithTheme(<TextInput errorText="This is error text" />);
+      expect(container).toHaveTextContent('This is error text');
+      expect(container).toMatchSnapshot();
+    });
+
+    describe('with maxLength', () => {
+      it('should render TextInput with character count as fraction', () => {
+        const { container } = renderWithTheme(
+          <TextInput errorText="This is error text" maxLength={10} />,
+        );
+        expect(container).toHaveTextContent('This is error text');
+        expect(container).toHaveTextContent('0/10');
+        expect(container).toMatchSnapshot();
+      });
+
+      it('should display updated character count when user inputs text', () => {
+        const { getByLabelText, container } = renderWithTheme(
+          <TextInput
+            label={SAMPLE_LABEL}
+            id={SAMPLE_ID}
+            helpText="This is error text"
+            maxLength={10}
+          />,
+        );
+
+        // check initial character count = 0/10
+        expect(container).toHaveTextContent('This is error text');
         expect(container).toHaveTextContent('0/10');
 
         const textInput = getByLabelText(SAMPLE_LABEL);
@@ -407,7 +448,7 @@ describe('<TextInput />', () => {
 
     it('should render a textarea tag if _isMultiline is true', () => {
       const { queryByLabelText, container } = renderWithTheme(
-        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} _isMultiline={true} />,
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} _isMultiline />,
       );
       const textarea = queryByLabelText(SAMPLE_LABEL, { selector: 'textarea' });
       expect(textarea).not.toBeNull();

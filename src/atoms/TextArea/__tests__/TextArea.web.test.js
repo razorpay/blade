@@ -149,7 +149,7 @@ describe('<TextArea />', () => {
   describe('disabled', () => {
     it('renders a disabled TextArea', () => {
       const { getByLabelText } = renderWithTheme(
-        <TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} disabled={true} />,
+        <TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} disabled />,
       );
       const textArea = getByLabelText(SAMPLE_LABEL);
       expect(textArea).toBeDisabled();
@@ -185,6 +185,47 @@ describe('<TextArea />', () => {
 
         // check initial character count = 0/10
         expect(container).toHaveTextContent('This is help text');
+        expect(container).toHaveTextContent('0/10');
+
+        const textArea = getByLabelText(SAMPLE_LABEL);
+        const userInput = 'Ten Chars.';
+        fireEvent.change(textArea, { target: { value: userInput } });
+
+        // check after input character count = 10/10
+        expect(container).toHaveTextContent('10/10');
+      });
+    });
+  });
+
+  describe('errorText', () => {
+    it('should render TextArea with help text if errorText is provided as prop', () => {
+      const { container } = renderWithTheme(<TextArea errorText="This is help text" />);
+      expect(container).toHaveTextContent('This is help text');
+      expect(container).toMatchSnapshot();
+    });
+
+    describe('with maxLength', () => {
+      it('should render TextArea with character count as fraction', () => {
+        const { container } = renderWithTheme(
+          <TextArea errorText="This is error text" maxLength={10} />,
+        );
+        expect(container).toHaveTextContent('This is error text');
+        expect(container).toHaveTextContent('0/10');
+        expect(container).toMatchSnapshot();
+      });
+
+      it('should display updated character count when user inputs text', () => {
+        const { getByLabelText, container } = renderWithTheme(
+          <TextArea
+            label={SAMPLE_LABEL}
+            id={SAMPLE_ID}
+            errorText="This is error text"
+            maxLength={10}
+          />,
+        );
+
+        // check initial character count = 0/10
+        expect(container).toHaveTextContent('This is error text');
         expect(container).toHaveTextContent('0/10');
 
         const textArea = getByLabelText(SAMPLE_LABEL);
