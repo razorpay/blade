@@ -6,6 +6,7 @@ const Label = styled(View)`
   display: flex;
   cursor: pointer;
   overflow: hidden;
+  pointer-events: ${(props) => (props.disabled ? 'none' : '')};
 `;
 
 export default Label;
