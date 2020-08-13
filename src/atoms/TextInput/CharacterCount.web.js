@@ -8,9 +8,8 @@ const styles = {
   color({ disabled }) {
     if (disabled) {
       return 'shade.930';
-    } else {
-      return 'shade.950';
     }
+    return 'shade.950';
   },
 };
 

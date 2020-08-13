@@ -12,37 +12,41 @@ exports[`<TextArea /> helpText should render TextArea with help text if helpText
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
           >
-            <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
-              color="shade.980"
-              data-testid="ds-text"
-              value=""
-              width="medium"
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
             >
-              Label
-            </label>
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
+                color="shade.980"
+                data-testid="ds-text"
+                value=""
+                width="medium"
+              >
+                Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-          >
-            <textarea
-              class="TextInputweb__StyledInput-sc-199z6oj-1 ivySSF Sizeweb__Size-sc-10bl685-0 bbAIss Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-area"
-              placeholder=""
-              rows="1"
-              style="height: 0px;"
-              type="text"
-            />
-          </div>
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
         </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
-        />
         <div
           class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
         >
@@ -50,7 +54,7 @@ exports[`<TextArea /> helpText should render TextArea with help text if helpText
             class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
           >
             <div
-              class="Textweb__Text-sc-6jf9e4-0 fLzvVb"
+              class="Textweb__Text-sc-6jf9e4-0 krUdvH"
               color="shade.950"
               data-testid="ds-text"
             >
@@ -76,38 +80,42 @@ exports[`<TextArea /> helpText with maxLength should render TextArea with charac
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
           >
-            <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
-              color="shade.980"
-              data-testid="ds-text"
-              value=""
-              width="medium"
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
             >
-              Label
-            </label>
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
+                color="shade.980"
+                data-testid="ds-text"
+                value=""
+                width="medium"
+              >
+                Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                maxlength="10"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-          >
-            <textarea
-              class="TextInputweb__StyledInput-sc-199z6oj-1 ivySSF Sizeweb__Size-sc-10bl685-0 bbAIss Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-area"
-              maxlength="10"
-              placeholder=""
-              rows="1"
-              style="height: 0px;"
-              type="text"
-            />
-          </div>
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
         </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
-        />
         <div
           class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
         >
@@ -115,7 +123,7 @@ exports[`<TextArea /> helpText with maxLength should render TextArea with charac
             class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
           >
             <div
-              class="Textweb__Text-sc-6jf9e4-0 fLzvVb"
+              class="Textweb__Text-sc-6jf9e4-0 krUdvH"
               color="shade.950"
               data-testid="ds-text"
             >
@@ -126,7 +134,7 @@ exports[`<TextArea /> helpText with maxLength should render TextArea with charac
             class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 iiiHlL"
           >
             <div
-              class="Textweb__Text-sc-6jf9e4-0 fLzvVb"
+              class="Textweb__Text-sc-6jf9e4-0 krUdvH"
               color="shade.950"
               data-testid="ds-text"
             >
@@ -149,7 +157,7 @@ exports[`<TextArea /> label renders TextArea with labelPosition on left and vari
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
     >
       <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw Spaceweb__Space-njatzl-0 iqcLxO"
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw Spaceweb__Space-njatzl-0 iqcLxO"
         color="shade.980"
         data-testid="ds-text"
         for="sample-id"
@@ -163,24 +171,28 @@ exports[`<TextArea /> label renders TextArea with labelPosition on left and vari
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 cJPAjH"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 cJPAjH"
           >
-            <textarea
-              class="TextInputweb__StyledInput-sc-199z6oj-1 csrvhR Sizeweb__Size-sc-10bl685-0 bbAIss Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-area"
-              id="sample-id"
-              placeholder=""
-              rows="3"
-              type="text"
-            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 gZpLsp Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                id="sample-id"
+                placeholder=""
+                rows="3"
+                type="text"
+              />
+            </div>
           </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
         </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
-        />
       </div>
     </div>
   </div>
@@ -193,7 +205,7 @@ exports[`<TextArea /> label renders TextArea with labelPosition on top(default) 
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cxwFhF Spaceweb__Space-njatzl-0 egTcPC"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 exXJhJ Spaceweb__Space-njatzl-0 eDHZqM"
       color="shade.980"
       data-testid="ds-text"
       for="sample-id"
@@ -210,24 +222,28 @@ exports[`<TextArea /> label renders TextArea with labelPosition on top(default) 
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 cJPAjH"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 cJPAjH"
           >
-            <textarea
-              class="TextInputweb__StyledInput-sc-199z6oj-1 csrvhR Sizeweb__Size-sc-10bl685-0 bbAIss Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-area"
-              id="sample-id"
-              placeholder=""
-              rows="3"
-              type="text"
-            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 gZpLsp Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                id="sample-id"
+                placeholder=""
+                rows="3"
+                type="text"
+              />
+            </div>
           </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
         </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
-        />
       </div>
     </div>
   </div>
@@ -246,39 +262,43 @@ exports[`<TextArea /> label renders TextArea with labelPosition on top(default) 
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
           >
-            <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
-              color="shade.980"
-              data-testid="ds-text"
-              for="sample-id"
-              value=""
-              width="medium"
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
             >
-              Sample Label
-            </label>
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
+                color="shade.980"
+                data-testid="ds-text"
+                for="sample-id"
+                value=""
+                width="medium"
+              >
+                Sample Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                id="sample-id"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-          >
-            <textarea
-              class="TextInputweb__StyledInput-sc-199z6oj-1 ivySSF Sizeweb__Size-sc-10bl685-0 bbAIss Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-area"
-              id="sample-id"
-              placeholder=""
-              rows="1"
-              style="height: 0px;"
-              type="text"
-            />
-          </div>
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
         </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
-        />
       </div>
     </div>
   </div>
@@ -291,7 +311,7 @@ exports[`<TextArea /> variant renders filled variant with default props 1`] = `
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
   >
     <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 cxwFhF Spaceweb__Space-njatzl-0 egTcPC"
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 exXJhJ Spaceweb__Space-njatzl-0 eDHZqM"
       color="shade.980"
       data-testid="ds-text"
       value=""
@@ -306,23 +326,27 @@ exports[`<TextArea /> variant renders filled variant with default props 1`] = `
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 cJPAjH"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 cJPAjH"
           >
-            <textarea
-              class="TextInputweb__StyledInput-sc-199z6oj-1 csrvhR Sizeweb__Size-sc-10bl685-0 bbAIss Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-area"
-              placeholder=""
-              rows="3"
-              type="text"
-            />
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 gZpLsp Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="3"
+                type="text"
+              />
+            </div>
           </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
         </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
-        />
       </div>
     </div>
   </div>
@@ -341,37 +365,41 @@ exports[`<TextArea /> variant renders outlined variant with default props 1`] = 
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
           >
-            <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
-              color="shade.980"
-              data-testid="ds-text"
-              value=""
-              width="medium"
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
             >
-              Label
-            </label>
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
+                color="shade.980"
+                data-testid="ds-text"
+                value=""
+                width="medium"
+              >
+                Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-          >
-            <textarea
-              class="TextInputweb__StyledInput-sc-199z6oj-1 ivySSF Sizeweb__Size-sc-10bl685-0 bbAIss Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-area"
-              placeholder=""
-              rows="1"
-              style="height: 0px;"
-              type="text"
-            />
-          </div>
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
         </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
-        />
       </div>
     </div>
   </div>
@@ -390,37 +418,41 @@ exports[`<TextArea /> width renders TextArea with auto width 1`] = `
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 fsjcxB"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
           >
-            <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
-              color="shade.980"
-              data-testid="ds-text"
-              value=""
-              width="auto"
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
             >
-              Label
-            </label>
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
+                color="shade.980"
+                data-testid="ds-text"
+                value=""
+                width="auto"
+              >
+                Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 juRaGm Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 juRaGm Flexweb__Flex-ni2cjg-0 jOkEVe"
-          >
-            <textarea
-              class="TextInputweb__StyledInput-sc-199z6oj-1 ivySSF Sizeweb__Size-sc-10bl685-0 bbAIss Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-area"
-              placeholder=""
-              rows="1"
-              style="height: 0px;"
-              type="text"
-            />
-          </div>
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
         </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
-        />
       </div>
     </div>
   </div>
@@ -439,37 +471,41 @@ exports[`<TextArea /> width renders TextArea with medium(default) width 1`] = `
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
           >
-            <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
-              color="shade.980"
-              data-testid="ds-text"
-              value=""
-              width="medium"
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
             >
-              Label
-            </label>
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
+                color="shade.980"
+                data-testid="ds-text"
+                value=""
+                width="medium"
+              >
+                Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-          >
-            <textarea
-              class="TextInputweb__StyledInput-sc-199z6oj-1 ivySSF Sizeweb__Size-sc-10bl685-0 bbAIss Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-area"
-              placeholder=""
-              rows="1"
-              style="height: 0px;"
-              type="text"
-            />
-          </div>
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
         </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
-        />
       </div>
     </div>
   </div>
@@ -488,37 +524,41 @@ exports[`<TextArea /> width renders TextArea with small width 1`] = `
         class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
       >
         <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 egTcPC"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
           >
-            <label
-              class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 dGEJmw"
-              color="shade.980"
-              data-testid="ds-text"
-              value=""
-              width="small"
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
             >
-              Label
-            </label>
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
+                color="shade.980"
+                data-testid="ds-text"
+                value=""
+                width="small"
+              >
+                Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 eRcLdB Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 hqOwlt Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
           </div>
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 eRcLdB Flexweb__Flex-ni2cjg-0 jOkEVe"
-          >
-            <textarea
-              class="TextInputweb__StyledInput-sc-199z6oj-1 ivySSF Sizeweb__Size-sc-10bl685-0 bbAIss Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-              data-testid="ds-text-area"
-              placeholder=""
-              rows="1"
-              style="height: 0px;"
-              type="text"
-            />
-          </div>
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
         </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 Lineweb__StyledLine-jxwo4z-0 dqNyBh Sizeweb__Size-sc-10bl685-0 htlLka"
-        />
       </div>
     </div>
   </div>

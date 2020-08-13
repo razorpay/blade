@@ -49,7 +49,7 @@ storiesOf('TextInput', module)
     <ScrollView>
       <Space margin={[0, 1, 4, 0]}>
         <View>
-          <Space margin={[0, 0, 1, 0]}>
+          <Space margin={[0, 0, 2, 0]}>
             <View>
               <Text>Outlined:</Text>
             </View>
@@ -77,7 +77,7 @@ storiesOf('TextInput', module)
 
       <Space margin={[0, 1, 4, 0]}>
         <View>
-          <Space margin={[0, 0, 1, 0]}>
+          <Space margin={[0, 0, 2, 0]}>
             <View>
               <Text>Outlined Leading Icon:</Text>
             </View>
@@ -104,7 +104,7 @@ storiesOf('TextInput', module)
       </Space>
       <Space margin={[0, 1, 4, 0]}>
         <View>
-          <Space margin={[0, 0, 1, 0]}>
+          <Space margin={[0, 0, 2, 0]}>
             <View>
               <Text>Outlined Trailing Icon:</Text>
             </View>
@@ -131,7 +131,7 @@ storiesOf('TextInput', module)
       </Space>
       <Space margin={[0, 1, 4, 0]}>
         <View>
-          <Space margin={[0, 0, 1, 0]}>
+          <Space margin={[0, 0, 2, 0]}>
             <View>
               <Text>Outlined prefix:</Text>
             </View>
@@ -158,7 +158,7 @@ storiesOf('TextInput', module)
       </Space>
       <Space margin={[0, 1, 4, 0]}>
         <View>
-          <Space margin={[0, 0, 1, 0]}>
+          <Space margin={[0, 0, 2, 0]}>
             <View>
               <Text>Outlined suffix:</Text>
             </View>
@@ -185,7 +185,7 @@ storiesOf('TextInput', module)
       </Space>
       <Space margin={[0, 1, 4, 0]}>
         <View>
-          <Space margin={[0, 0, 1, 0]}>
+          <Space margin={[0, 0, 2, 0]}>
             <View>
               <Text>Outlined character count:</Text>
             </View>
@@ -213,7 +213,7 @@ storiesOf('TextInput', module)
       </Space>
       <Space margin={[0, 1, 4, 0]}>
         <View>
-          <Space margin={[0, 0, 1, 0]}>
+          <Space margin={[0, 0, 2, 0]}>
             <View>
               <Text>Outlined error:</Text>
             </View>
@@ -240,7 +240,7 @@ storiesOf('TextInput', module)
       </Space>
       <Space margin={[0, 1, 4, 0]}>
         <View>
-          <Space margin={[0, 0, 1, 0]}>
+          <Space margin={[0, 0, 2, 0]}>
             <View>
               <Text>Outlined Disabled:</Text>
             </View>
@@ -267,7 +267,35 @@ storiesOf('TextInput', module)
       </Space>
       <Space margin={[0, 1, 4, 0]}>
         <View>
-          <Space margin={[0, 0, 1, 0]}>
+          <Space margin={[0, 0, 2, 0]}>
+            <View>
+              <Text>Outlined Disabled With Value:</Text>
+            </View>
+          </Space>
+          <TextInput
+            width={select('Width', sizeOptions, 'large', 'Common')}
+            label="Label"
+            value="Some Value"
+            disabled={true}
+            iconLeft=""
+            iconRight=""
+            prefix="₹"
+            suffix=""
+            placeholder="Type here"
+            helpText="This is a help text"
+            errorText=""
+            onChange={() => {}}
+            variant="outlined"
+            type={select('Type', typeOptions, 'text', 'Native')}
+            keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
+            returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+          />
+        </View>
+      </Space>
+      <Space margin={[0, 1, 4, 0]}>
+        <View>
+          <Space margin={[0, 0, 2, 0]}>
             <View>
               <Text>Outlined Disabled With Text:</Text>
             </View>

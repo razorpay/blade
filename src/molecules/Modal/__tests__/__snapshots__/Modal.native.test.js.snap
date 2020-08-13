@@ -32,7 +32,7 @@ exports[`<Modal /> centered Modal onClose callback is not passed 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "rgba(22, 47, 86, 0.74)",
+            "backgroundColor": "rgba(22, 47, 86, 0.38)",
             "bottom": 0,
             "height": 1334,
             "left": 0,
@@ -242,7 +242,7 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "rgba(22, 47, 86, 0.74)",
+            "backgroundColor": "rgba(22, 47, 86, 0.38)",
             "bottom": 0,
             "height": 1334,
             "left": 0,
@@ -564,7 +564,7 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "rgba(22, 47, 86, 0.74)",
+            "backgroundColor": "rgba(22, 47, 86, 0.38)",
             "bottom": 0,
             "height": 1334,
             "left": 0,
@@ -774,7 +774,7 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "rgba(22, 47, 86, 0.74)",
+            "backgroundColor": "rgba(22, 47, 86, 0.38)",
             "bottom": 0,
             "height": 1334,
             "left": 0,

@@ -10,6 +10,7 @@ const iconSize = {
   small: 16,
   medium: 20,
   large: 24,
+  xlarge: 28,
 };
 
 const Icon = ({ size, name, fill, ...rest }) => {
@@ -32,7 +33,7 @@ Icon.defaultProps = {
 };
 
 Icon.propTypes = {
-  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
+  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   name: PropTypes.oneOf(Object.keys(icons)).isRequired,
   fill: PropTypes.oneOf(getColorKeys()),
 };

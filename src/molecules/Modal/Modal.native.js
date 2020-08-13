@@ -56,7 +56,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
           isVisible={visible}
           onBackdropPress={onBackdropClick}
           onBackButtonPress={onClose}
-          backdropColor={theme.colors.shade[970]}
+          backdropColor={theme.colors.shade[950]}
         >
           <ModalContainer variant="centered">
             {onClose ? (
@@ -109,7 +109,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
             onSwipeComplete={onClose}
             onBackButtonPress={onClose}
             avoidKeyboard={true}
-            backdropColor={theme.colors.background[200]}
+            backdropColor={theme.colors.shade[950]}
           >
             <ModalContainer variant="bottomsheet">
               <Flex alignItems="center">

@@ -106,18 +106,10 @@ Tabs.propTypes = {
   onChange: PropTypes.func,
   gestureHandlerProps: PropTypes.shape({
     minOffsetY: PropTypes.number,
-    activeOffsetY:
-      PropTypes.oneOf([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]) ||
-      PropTypes.arrayOf(PropTypes.number),
-    activeOffsetX:
-      PropTypes.oneOf([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]) ||
-      PropTypes.arrayOf(PropTypes.number),
-    failOffsetY:
-      PropTypes.oneOf([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]) ||
-      PropTypes.arrayOf(PropTypes.number),
-    failOffsetX:
-      PropTypes.oneOf([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]) ||
-      PropTypes.arrayOf(PropTypes.number),
+    activeOffsetY: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]),
+    activeOffsetX: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]),
+    failOffsetY: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]),
+    failOffsetX: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]),
     minDist: PropTypes.number,
     minVelocity: PropTypes.number,
     minVelocityX: PropTypes.number,

@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Text from '../Text';
 import Space from '../Space';
-import View from '../View';
 
 const styles = {
-  color({ disabled }) {
+  color({ disabled, isFocused }) {
     if (disabled) {
       return 'shade.930';
-    } else {
-      return 'shade.950';
     }
+    if (isFocused) {
+      return 'shade.960';
+    }
+    return 'shade.950';
   },
   padding({ variant, position }) {
     let padding = [0];
@@ -24,24 +25,22 @@ const styles = {
     }
     if (variant === 'outlined') {
       if (position === 'left') {
-        padding = [0.5, 1, 0, 0];
+        padding = [0.25, 1, 0, 0];
       }
       if (position === 'right') {
-        padding = [0.5, 1, 0, 1];
+        padding = [0.25, 1, 0, 1];
       }
     }
     return padding;
   },
 };
 
-const AccessoryText = ({ children, disabled, variant, position }) => {
+const AccessoryText = ({ children, disabled, variant, position, isFocused }) => {
   return (
     <Space padding={styles.padding({ variant, position })}>
-      <View>
-        <Text color={styles.color({ disabled })} size="medium">
-          {children}
-        </Text>
-      </View>
+      <Text color={styles.color({ disabled, isFocused })} size="medium">
+        {children}
+      </Text>
     </Space>
   );
 };
@@ -51,6 +50,7 @@ AccessoryText.propTypes = {
   disabled: PropTypes.bool,
   variant: PropTypes.string.isRequired,
   position: PropTypes.string,
+  isFocused: PropTypes.bool,
 };
 
 AccessoryText.defaultProps = {

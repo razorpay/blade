@@ -2,18 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
 import Space from '../Space';
-import View from '../View';
 import Flex from '../Flex';
 
 const styles = {
-  color({ disabled, hasError }) {
+  color({ disabled, hasError, isFocused }) {
+    if (disabled) {
+      return 'shade.930';
+    }
     if (hasError) {
       return 'negative.900';
-    } else if (disabled) {
-      return 'shade.930';
-    } else {
-      return 'shade.950';
     }
+    if (isFocused) {
+      return 'shade.960';
+    }
+    return 'shade.950';
   },
   padding({ variant, position }) {
     let padding = [0];
@@ -27,23 +29,21 @@ const styles = {
     }
     if (variant === 'outlined') {
       if (position === 'left') {
-        padding = [0.5, 1, 0, 0];
+        padding = [0.25, 1, 0, 0];
       }
       if (position === 'right') {
-        padding = [0.5, 1, 0, 1];
+        padding = [0.25, 1, 0, 1];
       }
     }
     return padding;
   },
 };
 
-const AccessoryIcon = ({ name, disabled, hasError, variant, position }) => {
+const AccessoryIcon = ({ name, disabled, hasError, variant, isFocused, position }) => {
   return (
     <Space padding={styles.padding({ variant, position })}>
       <Flex>
-        <View>
-          <Icon name={name} size="small" fill={styles.color({ disabled, hasError })} />
-        </View>
+        <Icon name={name} size="small" fill={styles.color({ disabled, hasError, isFocused })} />
       </Flex>
     </Space>
   );
@@ -55,6 +55,7 @@ AccessoryIcon.propTypes = {
   hasError: PropTypes.bool,
   variant: PropTypes.oneOf(['filled', 'outlined']).isRequired,
   position: PropTypes.string,
+  isFocused: PropTypes.bool,
 };
 
 AccessoryIcon.defaultProps = {

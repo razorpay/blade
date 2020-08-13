@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { ThemeContext } from 'styled-components';
 import automation from '../../_helpers/automation-attributes';
 import isEmpty from '../../_helpers/isEmpty';
-import { makePxValue } from '../../_helpers/theme';
+import { getColor, makePxValue } from '../../_helpers/theme';
 import Flex from '../Flex';
 import Size from '../Size';
 import Space from '../Space';
@@ -80,6 +80,24 @@ const styles = {
       }
     },
   },
+  line: {
+    backgroundColor({ theme, disabled, hasError, state }) {
+      if (disabled) {
+        return getColor(theme, 'shade.930');
+      }
+      if (hasError) {
+        return getColor(theme, 'negative.900');
+      }
+      switch (state) {
+        case 'hover':
+          return getColor(theme, 'shade.960');
+        case 'focus':
+          return getColor(theme, 'primary.800');
+        default:
+          return getColor(theme, 'shade.940');
+      }
+    },
+  },
 };
 
 const InputContainer = styled(View)`
@@ -103,9 +121,6 @@ const StyledInput = styled.input`
     appearance: none;
     margin: 0;
   }
-  &[type='number'] {
-    appearance: textfield;
-  }
   &:hover {
     background-color: ${styles.textInput.hoverBackgroundColor};
   }
@@ -120,6 +135,9 @@ const StyledInput = styled.input`
   }
   &::selection {
     background-color: ${(props) => props.theme.colors.primary[980]};
+  }
+  &[type='number'] {
+    appearance: textfield;
   }
   /* Removes red box shadow rectangle on firefox */
   &:invalid {
@@ -139,6 +157,22 @@ const FillContainer = styled(View)`
   }
 `;
 
+const InteractionContainer = styled(View)`
+  ${Line} {
+    background-color: ${(props) => styles.line.backgroundColor({ ...props, state: '' })};
+  }
+  &:hover {
+    ${Line} {
+      background-color: ${(props) => styles.line.backgroundColor({ ...props, state: 'hover' })};
+    }
+  }
+  &:focus-within {
+    ${Line} {
+      background-color: ${(props) => styles.line.backgroundColor({ ...props, state: 'focus' })};
+    }
+  }
+`;
+
 const getAccessoryConfig = ({ errorText, prefix, suffix, iconLeft, iconRight }) => {
   const hasError = !isEmpty(errorText);
   const hasPrefix = !isEmpty(prefix);
@@ -152,12 +186,10 @@ const getPlaceholderTextColor = ({ theme, disabled, isPlaceholderVisible, hasAni
   if (isPlaceholderVisible || !hasAnimatedLabel) {
     if (disabled) {
       return theme.colors.shade[930];
-    } else {
-      return theme.colors.shade[940];
     }
-  } else {
-    return 'transparent';
+    return theme.colors.shade[940];
   }
+  return 'transparent';
 };
 
 // eslint-disable-next-line complexity
@@ -243,11 +275,9 @@ const TextInput = ({
       setIsPlaceholderVisible(false);
       const inputValue = event.target.value;
       setInput(inputValue);
-      if (onBlur) {
-        onBlur(inputValue);
-      }
+      onBlur(inputValue);
     },
-    [setIsFocused, setIsPlaceholderVisible, setInput, onBlur],
+    [onBlur],
   );
 
   const onChangeText = useCallback(
@@ -257,19 +287,34 @@ const TextInput = ({
         return;
       }
       setInput(inputValue);
-      if (onChange) {
-        onChange(inputValue);
-      }
+      onChange(inputValue);
     },
-    [maxLength, onChange, setInput],
+    [maxLength, onChange],
   );
+
+  // allowed values = 0-9 "." "," "whitespace" "-"
+  const isInputNumberAllowed = (inputValue) => /^[0-9., -]+$/g.test(inputValue);
 
   const onKeyPress = useCallback(
     (event) => {
       if (type === 'number') {
         const charCode = typeof event.which === 'number' ? event.which : event.keyCode;
         const char = String.fromCharCode(charCode);
-        const isAllowed = /[0-9]/g.test(char) || char === '-' || char === '.';
+        const isAllowed = isInputNumberAllowed(char);
+
+        if (!isAllowed) {
+          event.preventDefault();
+        }
+      }
+    },
+    [type],
+  );
+
+  const onPaste = useCallback(
+    (event) => {
+      if (type === 'number') {
+        const inputValue = event.clipboardData.getData('Text');
+        const isAllowed = isInputNumberAllowed(inputValue);
 
         if (!isAllowed) {
           event.preventDefault();
@@ -297,10 +342,10 @@ const TextInput = ({
         finalTopPosition,
       });
     }
-  }, [inputRef, containerRef, setLayoutDimensions]);
+  }, [inputRef, containerRef]);
 
   useEffect(() => {
-    // adjust height of textarea as user types for outlined variant
+    // Adjust height of textarea as user types for outlined variant
     if (_isMultiline && variant === 'outlined') {
       inputRef.current.style.height = 'inherit';
       const height = inputRef.current.scrollHeight;
@@ -308,10 +353,15 @@ const TextInput = ({
     }
   }, [_isMultiline, variant, inputRef, input]);
 
-  const _rows = variant === 'outlined' ? 1 : 3;
+  // Due to browser issues, if type=number we use type=text and show numpad on mobile devices using inputMode=numeric
+  const inputType = type === 'number' ? 'text' : type;
+
+  /* Specifies the initial value for rows in textarea(_isMultiline)
+   * Has no effect on text-input as rows is not passed if _isMultiline = false */
+  const noOfRows = variant === 'outlined' ? 1 : 3;
 
   return (
-    <Flex justifyContent="flex-end" flexDirection="column">
+    <Flex flexDirection="column" justifyContent="flex-end">
       <View ref={containerRef}>
         {labelPosition === 'top' && !hasAnimatedLabel ? (
           <Label.Regular
@@ -350,99 +400,118 @@ const TextInput = ({
             {/* Text Input */}
             <Flex flexDirection="column" flex={width === 'auto' ? 1 : 0}>
               <View>
-                <Size height={styles.fillContainer.height({ variant, _isMultiline })} maxHeight={8}>
-                  <Space padding={styles.fillContainer.padding({ variant })}>
-                    <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
-                      {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
-                        <Label.Animated
-                          position={labelPosition}
-                          disabled={disabled}
-                          isFocused={isFocused}
-                          variant={variant}
-                          hasError={hasError}
-                          value={input}
-                          hasText={hasText}
-                          layoutDimensions={layoutDimensions}
-                          width={width}
-                          id={id}
-                        >
-                          {label}
-                        </Label.Animated>
-                      ) : null}
-                      <Flex flexDirection="row" alignItems="center">
-                        <Size width={styles.inputContainer.width({ width })} maxHeight="100%">
-                          <InputContainer>
-                            {hasPrefix ? (
-                              <AccessoryText position="left" variant={variant} disabled={disabled}>
-                                {prefix}
-                              </AccessoryText>
-                            ) : null}
-                            {hasLeftIcon ? (
-                              <AccessoryIcon
-                                variant={variant}
-                                name={iconLeft}
-                                disabled={disabled}
-                                hasError={hasError}
-                                position="left"
-                              />
-                            ) : null}
-                            <Flex flex={1}>
-                              <Space
-                                padding={styles.textInput.padding({
-                                  variant,
-                                  hasLeftIcon,
-                                  hasPrefix,
-                                  hasText,
-                                })}
-                              >
-                                <Size minWidth={0} maxHeight={8}>
-                                  <StyledInput
-                                    id={id}
-                                    name={name}
-                                    type={type}
-                                    placeholder={placeholder}
-                                    placeholderTextColor={placeholderTextColor}
-                                    onFocus={onFocus}
-                                    onBlur={onBlurText}
-                                    onChange={onChangeText}
-                                    hasText={hasText}
-                                    readonly={disabled}
-                                    disabled={disabled}
-                                    variant={variant}
-                                    hasPrefix={hasPrefix}
-                                    hasLeftIcon={hasLeftIcon}
-                                    maxLength={maxLength}
-                                    value={input}
-                                    ref={inputRef}
-                                    onKeyPress={onKeyPress}
-                                    as={_isMultiline ? 'textarea' : 'input'}
-                                    rows={_isMultiline ? _rows : ''}
-                                    {...automation(testID)}
-                                  />
-                                </Size>
-                              </Space>
-                            </Flex>
-                            {hasSuffix ? (
-                              <AccessoryText position="right" variant={variant} disabled={disabled}>
-                                {suffix}
-                              </AccessoryText>
-                            ) : null}
-                            {hasRightIcon ? (
-                              <AccessoryIcon
-                                variant={variant}
-                                name={iconRight}
-                                disabled={disabled}
-                                hasError={hasError}
-                                position="right"
-                              />
-                            ) : null}
-                          </InputContainer>
-                        </Size>
-                      </Flex>
-                    </FillContainer>
-                  </Space>
-                </Size>
-                <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
+                <InteractionContainer disabled={disabled} hasError={hasError}>
+                  <Size
+                    height={styles.fillContainer.height({ variant, _isMultiline })}
+                    maxHeight={8}
+                  >
+                    <Space padding={styles.fillContainer.padding({ variant })}>
+                      <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
+                        {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
+                          <Label.Animated
+                            position={labelPosition}
+                            disabled={disabled}
+                            isFocused={isFocused}
+                            variant={variant}
+                            hasError={hasError}
+                            value={input}
+                            hasText={hasText}
+                            layoutDimensions={layoutDimensions}
+                            width={width}
+                            id={id}
+                          >
+                            {label}
+                          </Label.Animated>
+                        ) : null}
+                        <Flex flexDirection="row" alignItems="center">
+                          <Size width={styles.inputContainer.width({ width })} maxHeight="100%">
+                            <InputContainer>
+                              {hasPrefix ? (
+                                <AccessoryText
+                                  position="left"
+                                  variant={variant}
+                                  disabled={disabled}
+                                  isFocused={isFocused}
+                                >
+                                  {prefix}
+                                </AccessoryText>
+                              ) : null}
+                              {hasLeftIcon ? (
+                                <AccessoryIcon
+                                  variant={variant}
+                                  name={iconLeft}
+                                  disabled={disabled}
+                                  hasError={hasError}
+                                  isFocused={isFocused}
+                                  position="left"
+                                />
+                              ) : null}
+                              <Flex flex={1}>
+                                <Space
+                                  padding={styles.textInput.padding({
+                                    variant,
+                                    hasLeftIcon,
+                                    hasPrefix,
+                                    hasText,
+                                  })}
+                                >
+                                  <Size minWidth="0" maxHeight={8}>
+                                    <StyledInput
+                                      id={id}
+                                      name={name}
+                                      type={inputType}
+                                      placeholder={placeholder}
+                                      placeholderTextColor={placeholderTextColor}
+                                      onFocus={onFocus}
+                                      onBlur={onBlurText}
+                                      onChange={onChangeText}
+                                      onKeyPress={onKeyPress}
+                                      onPaste={onPaste}
+                                      hasText={hasText}
+                                      readonly={disabled}
+                                      disabled={disabled}
+                                      variant={variant}
+                                      hasPrefix={hasPrefix}
+                                      hasLeftIcon={hasLeftIcon}
+                                      maxLength={maxLength}
+                                      value={input}
+                                      ref={inputRef}
+                                      as={_isMultiline ? 'textarea' : 'input'}
+                                      rows={_isMultiline ? noOfRows : ''}
+                                      inputMode={type === 'number' ? 'numeric' : null} // pass only for type=number, otherwise let browser infer via type
+                                      {...automation(testID)}
+                                    />
+                                  </Size>
+                                </Space>
+                              </Flex>
+                              {hasSuffix ? (
+                                <AccessoryText
+                                  position="right"
+                                  variant={variant}
+                                  disabled={disabled}
+                                  isFocused={isFocused}
+                                >
+                                  {suffix}
+                                </AccessoryText>
+                              ) : null}
+                              {hasRightIcon ? (
+                                <AccessoryIcon
+                                  variant={variant}
+                                  name={iconRight}
+                                  disabled={disabled}
+                                  hasError={hasError}
+                                  isFocused={isFocused}
+                                  position="right"
+                                />
+                              ) : null}
+                            </InputContainer>
+                          </Size>
+                        </Flex>
+                      </FillContainer>
+                    </Space>
+                  </Size>
+                  <Line isFocused={isFocused} hasError={hasError} disabled={disabled} />
+                </InteractionContainer>
                 {/* Bottom texts */}
                 {hasError || helpText ? (
                   <Flex flexDirection="row" justifyContent="space-between">
