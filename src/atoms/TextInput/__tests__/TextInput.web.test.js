@@ -155,12 +155,8 @@ describe('<TextInput />', () => {
     it('should not have focus after input blur', () => {
       const { getByLabelText } = renderWithTheme(<TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} />);
       const textInput = getByLabelText(SAMPLE_LABEL);
-
-      // should have focus initially
       textInput.focus();
       expect(textInput).toHaveFocus();
-
-      // should not have focus after blur is called
       textInput.blur();
       expect(textInput).not.toHaveFocus();
     });
@@ -310,7 +306,7 @@ describe('<TextInput />', () => {
   });
 
   describe('error', () => {
-    it('should throw error when labelPosition === left & variant === outlined', () => {
+    it('should throw error when labelPosition is left and variant is outlined', () => {
       const errorMessage = 'Cannot have a left label on an outlined Text Input';
       expect(() => renderWithTheme(<TextInput labelPosition="left" />)).toThrow(errorMessage);
     });

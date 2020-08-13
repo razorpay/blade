@@ -138,12 +138,8 @@ describe('<TextArea />', () => {
     it('should not have focus after TextArea blur', () => {
       const { getByLabelText } = renderWithTheme(<TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} />);
       const textArea = getByLabelText(SAMPLE_LABEL);
-
-      // should have focus initially
       textArea.focus();
       expect(textArea).toHaveFocus();
-
-      // should not have focus after blur is called
       textArea.blur();
       expect(textArea).not.toHaveFocus();
     });
@@ -257,7 +253,7 @@ describe('<TextArea />', () => {
   });
 
   describe('error', () => {
-    it('should throw error when labelPosition === left & variant === outlined', () => {
+    it('should throw error when labelPosition is left and variant is outlined', () => {
       const errorMessage = 'Cannot have a left label on an outlined Text Area';
       expect(() => renderWithTheme(<TextArea labelPosition="left" />)).toThrow(errorMessage);
     });
