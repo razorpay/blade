@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TextArea /> default renders TextArea with default props 1`] = `
+exports[`<TextArea /> default should render TextArea with default props 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -45,6 +45,66 @@ exports[`<TextArea /> default renders TextArea with default props 1`] = `
           </div>
           <div
             class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> disabled should render a disabled TextArea 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 eotGJY"
+          disabled=""
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+            disabled=""
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
+            >
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 fYxwNP"
+                color="shade.980"
+                data-testid="ds-text"
+                disabled=""
+                for="sample-id"
+                value=""
+                width="medium"
+              >
+                Sample Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 KvQTO Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                disabled=""
+                id="sample-id"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+            disabled=""
           />
         </div>
       </div>
@@ -201,6 +261,62 @@ exports[`<TextArea /> errorText with maxLength should render TextArea with chara
 </div>
 `;
 
+exports[`<TextArea /> focus should have focus when TextArea is focused 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
+              style="transform: translate(-NaNpx,-0px);"
+            >
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 fRDuhx"
+                color="shade.980"
+                data-testid="ds-text"
+                for="sample-id"
+                value=""
+                width="medium"
+              >
+                Sample Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                id="sample-id"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<TextArea /> helpText should render TextArea with help text if helpText is provided as prop 1`] = `
 <div>
   <div
@@ -349,7 +465,7 @@ exports[`<TextArea /> helpText with maxLength should render TextArea with charac
 </div>
 `;
 
-exports[`<TextArea /> label renders TextArea with labelPosition on left and variant filled 1`] = `
+exports[`<TextArea /> label should render a TextArea with labelPosition on left and variant filled 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -400,7 +516,7 @@ exports[`<TextArea /> label renders TextArea with labelPosition on left and vari
 </div>
 `;
 
-exports[`<TextArea /> label renders TextArea with labelPosition on top(default) and variant filled 1`] = `
+exports[`<TextArea /> label should render a TextArea with labelPosition on top(default) and variant filled 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -451,7 +567,7 @@ exports[`<TextArea /> label renders TextArea with labelPosition on top(default) 
 </div>
 `;
 
-exports[`<TextArea /> label renders TextArea with labelPosition on top(default) and variant outlined(default) 1`] = `
+exports[`<TextArea /> label should render a TextArea with labelPosition on top(default) and variant outlined(default) 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -506,7 +622,7 @@ exports[`<TextArea /> label renders TextArea with labelPosition on top(default) 
 </div>
 `;
 
-exports[`<TextArea /> variant renders filled variant with default props 1`] = `
+exports[`<TextArea /> variant should render filled variant with default props 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -554,7 +670,7 @@ exports[`<TextArea /> variant renders filled variant with default props 1`] = `
 </div>
 `;
 
-exports[`<TextArea /> variant renders outlined variant with default props 1`] = `
+exports[`<TextArea /> variant should render outlined variant with default props 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -607,7 +723,7 @@ exports[`<TextArea /> variant renders outlined variant with default props 1`] = 
 </div>
 `;
 
-exports[`<TextArea /> width renders TextArea with auto width 1`] = `
+exports[`<TextArea /> width should render a TextArea with auto width 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -660,7 +776,7 @@ exports[`<TextArea /> width renders TextArea with auto width 1`] = `
 </div>
 `;
 
-exports[`<TextArea /> width renders TextArea with medium(default) width 1`] = `
+exports[`<TextArea /> width should render a TextArea with medium(default) width 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -713,7 +829,7 @@ exports[`<TextArea /> width renders TextArea with medium(default) width 1`] = `
 </div>
 `;
 
-exports[`<TextArea /> width renders TextArea with small width 1`] = `
+exports[`<TextArea /> width should render a TextArea with small width 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"

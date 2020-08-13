@@ -11,19 +11,19 @@ const SAMPLE_LABEL = 'Sample Label';
 
 describe('<TextInput />', () => {
   describe('default', () => {
-    it('renders TextInput default props', () => {
+    it('should render a TextInput with default props', () => {
       const { container } = renderWithTheme(<TextInput />);
       expect(container).toMatchSnapshot();
     });
   });
 
   describe('variant', () => {
-    it('renders outlined variant with default props', () => {
+    it('should render a outlined variant with default props', () => {
       const { container } = renderWithTheme(<TextInput variant="outlined" />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders filled variant with default props', () => {
+    it('should render a filled variant with default props', () => {
       const { container } = renderWithTheme(<TextInput variant="filled" />);
       expect(container).toMatchSnapshot();
     });
@@ -63,7 +63,7 @@ describe('<TextInput />', () => {
   });
 
   describe('label', () => {
-    it('renders input with labelPosition on top(default) and variant outlined(default)', () => {
+    it('should render a TextInput with labelPosition on top(default) and variant outlined(default)', () => {
       const { queryByLabelText, container } = renderWithTheme(
         <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} labelPosition="top" />,
       );
@@ -72,7 +72,7 @@ describe('<TextInput />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('renders input with labelPosition on top(default) and variant filled', () => {
+    it('should render a TextInput with labelPosition on top(default) and variant filled', () => {
       const { queryByLabelText, container } = renderWithTheme(
         <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} labelPosition="top" variant="filled" />,
       );
@@ -81,7 +81,7 @@ describe('<TextInput />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('renders input with labelPosition on left and variant filled', () => {
+    it('should render a TextInput with labelPosition on left and variant filled', () => {
       const { queryByLabelText, container } = renderWithTheme(
         <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} labelPosition="left" variant="filled" />,
       );
@@ -125,17 +125,17 @@ describe('<TextInput />', () => {
   });
 
   describe('width', () => {
-    it('renders input with medium(default) width', () => {
+    it('should render a TextInput with medium(default) width', () => {
       const { container } = renderWithTheme(<TextInput width="medium" />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders input with small width', () => {
+    it('should render a TextInput with small width', () => {
       const { container } = renderWithTheme(<TextInput width="small" />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders input with auto width', () => {
+    it('should render a TextInput with auto width', () => {
       const { container } = renderWithTheme(<TextInput width="auto" />);
       expect(container).toMatchSnapshot();
     });
@@ -143,10 +143,13 @@ describe('<TextInput />', () => {
 
   describe('focus', () => {
     it('should have focus when input is focused', () => {
-      const { getByLabelText } = renderWithTheme(<TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} />);
+      const { container, getByLabelText } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} />,
+      );
       const textInput = getByLabelText(SAMPLE_LABEL);
       textInput.focus();
       expect(textInput).toHaveFocus();
+      expect(container).toMatchSnapshot();
     });
 
     it('should not have focus after input blur', () => {
@@ -164,24 +167,25 @@ describe('<TextInput />', () => {
   });
 
   describe('disabled', () => {
-    it('renders a disabled input', () => {
-      const { getByLabelText } = renderWithTheme(
+    it('should render a disabled TextInput', () => {
+      const { container, getByLabelText } = renderWithTheme(
         <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} disabled value="some value" />,
       );
       const textInput = getByLabelText(SAMPLE_LABEL);
       expect(textInput).toBeDisabled();
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('helpText', () => {
-    it('should render TextInput with help text if helpText is provided as prop', () => {
+    it('should render a TextInput with help text if helpText is provided as prop', () => {
       const { container } = renderWithTheme(<TextInput helpText="This is help text" />);
       expect(container).toHaveTextContent('This is help text');
       expect(container).toMatchSnapshot();
     });
 
     describe('with maxLength', () => {
-      it('should render TextInput with character count as fraction', () => {
+      it('should render a TextInput with character count as fraction', () => {
         const { container } = renderWithTheme(
           <TextInput helpText="This is help text" maxLength={10} />,
         );
@@ -215,14 +219,14 @@ describe('<TextInput />', () => {
   });
 
   describe('errorText', () => {
-    it('should render TextInput with error text if errorText is provided as prop', () => {
+    it('should render a TextInput with error text if errorText is provided as prop', () => {
       const { container } = renderWithTheme(<TextInput errorText="This is error text" />);
       expect(container).toHaveTextContent('This is error text');
       expect(container).toMatchSnapshot();
     });
 
     describe('with maxLength', () => {
-      it('should render TextInput with character count as fraction', () => {
+      it('should render a TextInput with character count as fraction', () => {
         const { container } = renderWithTheme(
           <TextInput errorText="This is error text" maxLength={10} />,
         );
@@ -256,7 +260,7 @@ describe('<TextInput />', () => {
   });
 
   describe('iconLeft', () => {
-    it('renders TextInput with iconLeft', () => {
+    it('should render a TextInput with iconLeft', () => {
       const { container } = renderWithTheme(
         <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} iconLeft="info" />,
       );
@@ -265,7 +269,7 @@ describe('<TextInput />', () => {
   });
 
   describe('iconRight', () => {
-    it('renders TextInput with iconRight', () => {
+    it('should render a TextInput with iconRight', () => {
       const { container } = renderWithTheme(
         <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} iconRight="info" />,
       );
@@ -274,7 +278,7 @@ describe('<TextInput />', () => {
   });
 
   describe('prefix', () => {
-    it('renders TextInput with prefix', () => {
+    it('should render a TextInput with prefix', () => {
       const { container } = renderWithTheme(
         <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} prefix="₹" />,
       );
@@ -283,7 +287,7 @@ describe('<TextInput />', () => {
   });
 
   describe('suffix', () => {
-    it('renders TextInput with suffix', () => {
+    it('should render a TextInput with suffix', () => {
       const { container } = renderWithTheme(
         <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} suffix="₹" />,
       );

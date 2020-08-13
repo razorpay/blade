@@ -11,19 +11,19 @@ const SAMPLE_LABEL = 'Sample Label';
 
 describe('<TextArea />', () => {
   describe('default', () => {
-    it('renders TextArea with default props', () => {
+    it('should render TextArea with default props', () => {
       const { container } = renderWithTheme(<TextArea />);
       expect(container).toMatchSnapshot();
     });
   });
 
   describe('variant', () => {
-    it('renders outlined variant with default props', () => {
+    it('should render outlined variant with default props', () => {
       const { container } = renderWithTheme(<TextArea variant="outlined" />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders filled variant with default props', () => {
+    it('should render filled variant with default props', () => {
       const { container } = renderWithTheme(<TextArea variant="filled" />);
       expect(container).toMatchSnapshot();
     });
@@ -63,7 +63,7 @@ describe('<TextArea />', () => {
   });
 
   describe('label', () => {
-    it('renders TextArea with labelPosition on top(default) and variant outlined(default)', () => {
+    it('should render a TextArea with labelPosition on top(default) and variant outlined(default)', () => {
       const { queryByLabelText, container } = renderWithTheme(
         <TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} labelPosition="top" />,
       );
@@ -72,7 +72,7 @@ describe('<TextArea />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('renders TextArea with labelPosition on top(default) and variant filled', () => {
+    it('should render a TextArea with labelPosition on top(default) and variant filled', () => {
       const { queryByLabelText, container } = renderWithTheme(
         <TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} labelPosition="top" variant="filled" />,
       );
@@ -81,7 +81,7 @@ describe('<TextArea />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('renders TextArea with labelPosition on left and variant filled', () => {
+    it('should render a TextArea with labelPosition on left and variant filled', () => {
       const { queryByLabelText, container } = renderWithTheme(
         <TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} labelPosition="left" variant="filled" />,
       );
@@ -108,17 +108,17 @@ describe('<TextArea />', () => {
   });
 
   describe('width', () => {
-    it('renders TextArea with medium(default) width', () => {
+    it('should render a TextArea with medium(default) width', () => {
       const { container } = renderWithTheme(<TextArea width="medium" />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders TextArea with small width', () => {
+    it('should render a TextArea with small width', () => {
       const { container } = renderWithTheme(<TextArea width="small" />);
       expect(container).toMatchSnapshot();
     });
 
-    it('renders TextArea with auto width', () => {
+    it('should render a TextArea with auto width', () => {
       const { container } = renderWithTheme(<TextArea width="auto" />);
       expect(container).toMatchSnapshot();
     });
@@ -126,10 +126,13 @@ describe('<TextArea />', () => {
 
   describe('focus', () => {
     it('should have focus when TextArea is focused', () => {
-      const { getByLabelText } = renderWithTheme(<TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} />);
+      const { container, getByLabelText } = renderWithTheme(
+        <TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} />,
+      );
       const textArea = getByLabelText(SAMPLE_LABEL);
       textArea.focus();
       expect(textArea).toHaveFocus();
+      expect(container).toMatchSnapshot();
     });
 
     it('should not have focus after TextArea blur', () => {
@@ -147,12 +150,13 @@ describe('<TextArea />', () => {
   });
 
   describe('disabled', () => {
-    it('renders a disabled TextArea', () => {
-      const { getByLabelText } = renderWithTheme(
+    it('should render a disabled TextArea', () => {
+      const { container, getByLabelText } = renderWithTheme(
         <TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} disabled />,
       );
       const textArea = getByLabelText(SAMPLE_LABEL);
       expect(textArea).toBeDisabled();
+      expect(container).toMatchSnapshot();
     });
   });
 

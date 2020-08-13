@@ -109,7 +109,7 @@ exports[`<TextInput /> _isMultiline should render a textarea tag if _isMultiline
 </div>
 `;
 
-exports[`<TextInput /> default renders TextInput default props 1`] = `
+exports[`<TextInput /> default should render a TextInput with default props 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -161,7 +161,67 @@ exports[`<TextInput /> default renders TextInput default props 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> errorText should render TextInput with error text if errorText is provided as prop 1`] = `
+exports[`<TextInput /> disabled should render a disabled TextInput 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 eotGJY"
+          disabled=""
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+            disabled=""
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
+              style="transform: translate(-NaNpx,-0px);"
+            >
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bcrRBm"
+                color="shade.980"
+                data-testid="ds-text"
+                disabled=""
+                for="sample-id"
+                value="some value"
+                width="medium"
+              >
+                Sample Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <input
+                class="TextInputweb__StyledInput-sc-199z6oj-1 KvQTO Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-input"
+                disabled=""
+                id="sample-id"
+                placeholder="Enter text here"
+                type="text"
+                value="some value"
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+            disabled=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextInput /> errorText should render a TextInput with error text if errorText is provided as prop 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -228,7 +288,7 @@ exports[`<TextInput /> errorText should render TextInput with error text if erro
 </div>
 `;
 
-exports[`<TextInput /> errorText with maxLength should render TextInput with character count as fraction 1`] = `
+exports[`<TextInput /> errorText with maxLength should render a TextInput with character count as fraction 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -307,7 +367,62 @@ exports[`<TextInput /> errorText with maxLength should render TextInput with cha
 </div>
 `;
 
-exports[`<TextInput /> helpText should render TextInput with help text if helpText is provided as prop 1`] = `
+exports[`<TextInput /> focus should have focus when input is focused 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
+              style="transform: translate(-NaNpx,-0px);"
+            >
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 fRDuhx"
+                color="shade.980"
+                data-testid="ds-text"
+                for="sample-id"
+                value=""
+                width="medium"
+              >
+                Sample Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <input
+                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-input"
+                id="sample-id"
+                placeholder="Enter text here"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextInput /> helpText should render a TextInput with help text if helpText is provided as prop 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -374,7 +489,7 @@ exports[`<TextInput /> helpText should render TextInput with help text if helpTe
 </div>
 `;
 
-exports[`<TextInput /> helpText with maxLength should render TextInput with character count as fraction 1`] = `
+exports[`<TextInput /> helpText with maxLength should render a TextInput with character count as fraction 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -453,7 +568,7 @@ exports[`<TextInput /> helpText with maxLength should render TextInput with char
 </div>
 `;
 
-exports[`<TextInput /> iconLeft renders TextInput with iconLeft 1`] = `
+exports[`<TextInput /> iconLeft should render a TextInput with iconLeft 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -519,7 +634,7 @@ exports[`<TextInput /> iconLeft renders TextInput with iconLeft 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> iconRight renders TextInput with iconRight 1`] = `
+exports[`<TextInput /> iconRight should render a TextInput with iconRight 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -585,7 +700,7 @@ exports[`<TextInput /> iconRight renders TextInput with iconRight 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> label renders input with labelPosition on left and variant filled 1`] = `
+exports[`<TextInput /> label should render a TextInput with labelPosition on left and variant filled 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -636,7 +751,7 @@ exports[`<TextInput /> label renders input with labelPosition on left and varian
 </div>
 `;
 
-exports[`<TextInput /> label renders input with labelPosition on top(default) and variant filled 1`] = `
+exports[`<TextInput /> label should render a TextInput with labelPosition on top(default) and variant filled 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -687,7 +802,7 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
 </div>
 `;
 
-exports[`<TextInput /> label renders input with labelPosition on top(default) and variant outlined(default) 1`] = `
+exports[`<TextInput /> label should render a TextInput with labelPosition on top(default) and variant outlined(default) 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -741,7 +856,7 @@ exports[`<TextInput /> label renders input with labelPosition on top(default) an
 </div>
 `;
 
-exports[`<TextInput /> prefix renders TextInput with prefix 1`] = `
+exports[`<TextInput /> prefix should render a TextInput with prefix 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -802,7 +917,7 @@ exports[`<TextInput /> prefix renders TextInput with prefix 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> suffix renders TextInput with suffix 1`] = `
+exports[`<TextInput /> suffix should render a TextInput with suffix 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -863,7 +978,7 @@ exports[`<TextInput /> suffix renders TextInput with suffix 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> variant renders filled variant with default props 1`] = `
+exports[`<TextInput /> variant should render a filled variant with default props 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -911,7 +1026,7 @@ exports[`<TextInput /> variant renders filled variant with default props 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> variant renders outlined variant with default props 1`] = `
+exports[`<TextInput /> variant should render a outlined variant with default props 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -963,7 +1078,7 @@ exports[`<TextInput /> variant renders outlined variant with default props 1`] =
 </div>
 `;
 
-exports[`<TextInput /> width renders input with auto width 1`] = `
+exports[`<TextInput /> width should render a TextInput with auto width 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -1015,7 +1130,7 @@ exports[`<TextInput /> width renders input with auto width 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> width renders input with medium(default) width 1`] = `
+exports[`<TextInput /> width should render a TextInput with medium(default) width 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -1067,7 +1182,7 @@ exports[`<TextInput /> width renders input with medium(default) width 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> width renders input with small width 1`] = `
+exports[`<TextInput /> width should render a TextInput with small width 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
