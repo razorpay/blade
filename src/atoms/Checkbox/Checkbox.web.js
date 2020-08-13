@@ -186,7 +186,7 @@ const Checkbox = ({
     <Flex flexDirection="column" alignSelf="flex-start">
       <View>
         <Flex alignItems="center">
-          <Label as="label" onClick={onCheckChange} htmlFor={id}>
+          <Label as="label" onClick={onCheckChange} htmlFor={id} disabled={disabled}>
             <Input
               id={id}
               name={name}
