@@ -30,13 +30,13 @@ describe('<TextInput />', () => {
   });
 
   describe('id', () => {
-    it('should not have id attribute if not provded as prop', () => {
+    it('should not have id attribute if not provided as prop', () => {
       const { getByTestId } = renderWithTheme(<TextInput label={SAMPLE_LABEL} />);
       const textInput = getByTestId('ds-text-input');
       expect(textInput).not.toHaveAttribute('id');
     });
 
-    it('should have provided id attribute if id provded as prop', () => {
+    it('should have provided id attribute if id provided as prop', () => {
       const { getByTestId } = renderWithTheme(<TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} />);
       const textInput = getByTestId('ds-text-input');
       expect(textInput).toHaveAttribute('id');
@@ -45,13 +45,13 @@ describe('<TextInput />', () => {
   });
 
   describe('name', () => {
-    it('should not have name attribute if not provded as prop', () => {
+    it('should not have name attribute if not provided as prop', () => {
       const { getByLabelText } = renderWithTheme(<TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} />);
       const textInput = getByLabelText(SAMPLE_LABEL);
       expect(textInput).not.toHaveAttribute('name');
     });
 
-    it('should have provided name attribute if name provded as prop', () => {
+    it('should have provided name attribute if name provided as prop', () => {
       const name = 'sample-name';
       const { getByLabelText } = renderWithTheme(
         <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} name={name} />,

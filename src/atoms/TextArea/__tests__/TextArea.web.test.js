@@ -10,6 +10,13 @@ const SAMPLE_ID = 'sample-id';
 const SAMPLE_LABEL = 'Sample Label';
 
 describe('<TextArea />', () => {
+  describe('default', () => {
+    it('renders TextArea with default props', () => {
+      const { container } = renderWithTheme(<TextArea />);
+      expect(container).toMatchSnapshot();
+    });
+  });
+
   describe('variant', () => {
     it('renders outlined variant with default props', () => {
       const { container } = renderWithTheme(<TextArea variant="outlined" />);
@@ -23,13 +30,13 @@ describe('<TextArea />', () => {
   });
 
   describe('id', () => {
-    it('should not have id attribute if not provded as prop', () => {
+    it('should not have id attribute if not provided as prop', () => {
       const { getByTestId } = renderWithTheme(<TextArea label={SAMPLE_LABEL} />);
       const textArea = getByTestId('ds-text-area');
       expect(textArea).not.toHaveAttribute('id');
     });
 
-    it('should have provided id attribute if id provded as prop', () => {
+    it('should have provided id attribute if id provided as prop', () => {
       const { getByTestId } = renderWithTheme(<TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} />);
       const textArea = getByTestId('ds-text-area');
       expect(textArea).toHaveAttribute('id');
@@ -38,13 +45,13 @@ describe('<TextArea />', () => {
   });
 
   describe('name', () => {
-    it('should not have name attribute if not provded as prop', () => {
+    it('should not have name attribute if not provided as prop', () => {
       const { getByLabelText } = renderWithTheme(<TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} />);
       const textArea = getByLabelText(SAMPLE_LABEL);
       expect(textArea).not.toHaveAttribute('name');
     });
 
-    it('should have provided name attribute if name provded as prop', () => {
+    it('should have provided name attribute if name provided as prop', () => {
       const name = 'sample-name';
       const { getByLabelText } = renderWithTheme(
         <TextArea label={SAMPLE_LABEL} id={SAMPLE_ID} name={name} />,
