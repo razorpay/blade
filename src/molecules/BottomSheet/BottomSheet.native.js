@@ -80,6 +80,7 @@ const BottomSheet = ({
   const bottomSheetVisibility = useRef(visible);
   const [headerHeight, setHeaderHeight] = useState(0);
   const [contentHeight, setContentHeight] = useState(0);
+  const [footerHeight, setFooterHeight] = useState(0);
   const bottomsheetChildrenGroupByDisplayName = reactChildrenGroupByDisplayName(children);
 
   const headerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetHeader;
@@ -119,11 +120,18 @@ const BottomSheet = ({
     setContentHeight(e.nativeEvent.layout.height);
   }, []);
 
+  const handleFooterLayoutChange = useCallback((e) => {
+    setFooterHeight(e.nativeEvent.layout.height);
+  }, []);
+
   let contentContainerHeight = DEFAULT_SNAP_POINT - headerHeight;
   if (initialHeight > 0) {
     contentContainerHeight = initialHeight - headerHeight;
   }
-  const isScrollableContent = contentHeight > contentContainerHeight;
+  // scrollable is always false when adjustToContentHeight={true}
+  const isScrollableContent = adjustToContentHeight
+    ? false
+    : contentHeight > contentContainerHeight;
 
   const handleBottomSheetClose = () => {
     if (onClose && typeof onClose === 'function') {
@@ -177,7 +185,9 @@ const BottomSheet = ({
                 />
               </Size>
             )}
-            {footerComponent?.length ? footerComponent : null}
+            {footerComponent?.length ? (
+              <View onLayout={handleFooterLayoutChange}>{footerComponent}</View>
+            ) : null}
           </View>
         </Position>
       }
@@ -193,7 +203,9 @@ const BottomSheet = ({
       alwaysOpen={initialHeight}
       rootStyle={styles.rootStyle({ theme })}
     >
-      <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
+      <Space padding={[0, 0, footerHeight / 8, 0]}>
+        <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
+      </Space>
     </RNModalize>
   );
 };

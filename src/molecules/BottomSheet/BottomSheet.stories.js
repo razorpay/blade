@@ -98,6 +98,47 @@ storiesOf('BottomSheet', module)
       </>
     );
   })
+  .add('non-scrollable with footer', () => {
+    return (
+      <>
+        <Text>Non-Scrollable BottomSheet with Footer</Text>
+        <BottomSheet visible={true} onClose={() => {}} adjustToContentHeight>
+          <BottomSheet.Header>
+            <Space padding={[1]}>
+              <View>
+                <Text>Header</Text>
+              </View>
+            </Space>
+          </BottomSheet.Header>
+
+          <BottomSheet.Content>
+            <Space padding={[2]}>
+              <View>
+                <Text>Yamaha</Text>
+              </View>
+            </Space>
+
+            <Space padding={[2]}>
+              <View>
+                <Text>Honda</Text>
+              </View>
+            </Space>
+
+            <Space padding={[2]}>
+              <View>
+                <Text>Kawasaki</Text>
+              </View>
+            </Space>
+          </BottomSheet.Content>
+          <BottomSheet.Footer>
+            <View>
+              <Text>Footer</Text>
+            </View>
+          </BottomSheet.Footer>
+        </BottomSheet>
+      </>
+    );
+  })
   .add('without Header', () => {
     return (
       <>

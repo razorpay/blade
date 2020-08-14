@@ -13,7 +13,11 @@ const BottomSheetFooter = ({ children }) => {
   return children ? (
     <FooterContainer>
       <Divider color="shade.920" horizontal />
-      {children ? <Space padding={[1, 2, 1, 2]}>{children}</Space> : null}
+      {children ? (
+        <Space padding={[1, 2, 1, 2]}>
+          <View>{children}</View>
+        </Space>
+      ) : null}
     </FooterContainer>
   ) : null;
 };
