@@ -1642,3 +1642,630 @@ exports[`<BottomSheet /> renders linear-gradient view at bottom when content hei
   </View>
 </View>
 `;
+
+exports[`<BottomSheet /> renders non-scrollable bottomsheet 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    pointerEvents="auto"
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 9998,
+        },
+        Object {
+          "elevation": 5,
+          "shadowColor": "rgba(11, 112, 231, 0.10)",
+          "shadowOffset": Object {
+            "height": -4,
+            "width": 0,
+          },
+          "shadowOpacity": 0.8,
+          "shadowRadius": 15,
+        },
+      ]
+    }
+  >
+    <View
+      collapsable={false}
+      pointerEvents="box-none"
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#fff",
+              "borderTopLeftRadius": 12,
+              "borderTopRightRadius": 12,
+              "elevation": 4,
+              "height": undefined,
+              "marginTop": "auto",
+              "maxHeight": 1299,
+              "shadowColor": "#000",
+              "shadowOffset": Object {
+                "height": 10,
+                "width": 0,
+              },
+              "shadowOpacity": 0.1,
+              "shadowRadius": 12,
+              "transform": Array [
+                Object {
+                  "translateY": 1299,
+                },
+              ],
+              "zIndex": 5,
+            },
+            Object {
+              "paddingBottom": 0,
+            },
+          ]
+        }
+      >
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "zIndex": undefined,
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(255, 255, 255, 1.0)",
+                    "borderTopLeftRadius": 8,
+                    "borderTopRightRadius": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Array [
+                      Object {
+                        "paddingBottom": 12,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 8,
+                      },
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexDirection": "column",
+                        },
+                      ],
+                    ],
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                        "borderRadius": 4,
+                      },
+                      Array [
+                        Object {
+                          "height": 4,
+                          "width": 64,
+                        },
+                      ],
+                    ]
+                  }
+                />
+              </View>
+              <View
+                style={
+                  Array [
+                    Array [
+                      Object {
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Header
+                  </Text>
+                </View>
+              </View>
+              <View
+                color="shade.920"
+                dividerDirection="horizontal"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "backgroundColor": "rgba(255, 255, 255, 1.0)",
+              "flex": 0,
+              "flexGrow": 0,
+              "flexShrink": 1,
+            }
+          }
+        >
+          <ScrollView
+            bounces={true}
+            collapsable={false}
+            keyboardDismissMode="interactive"
+            scrollEnabled={false}
+            scrollEventThrottle={16}
+          >
+            <View
+              style={
+                Array [
+                  Array [
+                    Object {
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                  ],
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Array [
+                      Object {
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Samsung
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Xiaomi
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    OnePlus
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Apple
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Vivo
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Oppo
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Lenovo
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    LG
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Nokia
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    HTC
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+      </View>
+      <View
+        collapsable={false}
+        pointerEvents="auto"
+        style={
+          Object {
+            "bottom": 0,
+            "height": undefined,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "zIndex": 0,
+          }
+        }
+      >
+        <View
+          collapsable={false}
+          pointerEvents="auto"
+          style={
+            Object {
+              "backgroundColor": "rgba(22, 47, 86, 0.38)",
+              "bottom": 0,
+              "left": 0,
+              "opacity": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
+    </View>
+    <View
+      collapsable={false}
+      style={
+        Object {
+          "zIndex": undefined,
+        }
+      }
+    >
+      <View
+        bottom={0}
+        left={0}
+        position="absolute"
+        right={0}
+        style={
+          Array [
+            Array [
+              Object {
+                "position": "absolute",
+              },
+            ],
+          ]
+        }
+      >
+        <View>
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgba(255, 255, 255, 1.0)",
+                },
+              ]
+            }
+          >
+            <View
+              color="shade.920"
+              dividerDirection="horizontal"
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                    "height": 1,
+                    "width": "100%",
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Array [
+                    Object {
+                      "paddingBottom": 8,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 8,
+                    },
+                  ],
+                ]
+              }
+            >
+              <View>
+                <Text
+                  _isUnderlined={false}
+                  _letterSpacing="small"
+                  align="left"
+                  color="shade.980"
+                  size="large"
+                  style={
+                    Array [
+                      Object {
+                        "color": "rgba(22, 47, 86, 0.87)",
+                        "fontFamily": "Lato-Regular",
+                        "fontSize": 16,
+                        "letterSpacing": 0,
+                        "lineHeight": 24,
+                        "textAlign": "left",
+                        "textDecorationLine": "none",
+                      },
+                    ]
+                  }
+                  testID="ds-text"
+                  weight="regular"
+                >
+                  Footer
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
