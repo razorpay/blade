@@ -260,7 +260,7 @@ describe('<BottomSheet />', () => {
     ).toThrow('expected onClose prop for `BottomSheet`');
   });
 
-  it('renders BottomSheet with sectionList', () => {
+  it('renders BottomSheet with SectionList', () => {
     const { container } = renderWithTheme(
       <BottomSheet visible={true} initialHeight={300} onClose={() => {}}>
         <BottomSheet.SectionList
@@ -282,7 +282,34 @@ describe('<BottomSheet />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should throw error when Content and SectionList are rendered', () => {
+  it('renders BottomSheet with SectionList and Footer', () => {
+    const { container } = renderWithTheme(
+      <BottomSheet visible={true} initialHeight={300} onClose={() => {}}>
+        <BottomSheet.SectionList
+          sections={sections}
+          renderItem={({ item }) => (
+            <View>
+              <Text>{item}</Text>
+            </View>
+          )}
+          renderSectionHeader={({ section }) => (
+            <View>
+              <Text>{section.title}</Text>
+            </View>
+          )}
+          keyExtractor={(item) => item}
+        />
+        <BottomSheet.Footer>
+          <View>
+            <Text>Footer1</Text>
+          </View>
+        </BottomSheet.Footer>
+      </BottomSheet>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should throw error when both Content and SectionList are provided', () => {
     expect(() =>
       renderWithTheme(
         <BottomSheet visible={true} initialHeight={300} onClose={() => {}}>
@@ -312,7 +339,7 @@ describe('<BottomSheet />', () => {
     );
   });
 
-  it('should throw error when multiple SectionList are passed', () => {
+  it('should throw error when multiple SectionList are provided', () => {
     expect(() =>
       renderWithTheme(
         <BottomSheet visible={true} initialHeight={300} onClose={() => {}}>

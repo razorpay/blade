@@ -220,13 +220,13 @@ const BottomSheet = ({
       adjustToContentHeight={adjustToContentHeight}
       alwaysOpen={initialHeight}
       rootStyle={styles.rootStyle({ theme })}
-      sectionListProps={sectionListComponent ? sectionListComponent[0].props : undefined}
+      sectionListProps={sectionListComponent?.[0].props}
     >
-      <Space padding={[0, 0, footerHeight / 8, 0]}>
-        {!sectionListComponent ? (
+      {!sectionListComponent ? (
+        <Space padding={[0, 0, footerHeight / 8, 0]}>
           <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
-        ) : null}
-      </Space>
+        </Space>
+      ) : null}
     </RNModalize>
   );
 };

@@ -242,6 +242,11 @@ storiesOf('BottomSheet', module)
           )}
           keyExtractor={(item) => item}
         />
+        <BottomSheet.Footer>
+          <View>
+            <Text>Footer1</Text>
+          </View>
+        </BottomSheet.Footer>
       </BottomSheet>
     );
   });

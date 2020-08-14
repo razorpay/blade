@@ -1,10 +1,5 @@
-import { SectionList } from 'react-native';
-
-const BottomSheetSectionList = () => null;
+import { SectionList as BottomSheetSectionList } from 'react-native';
 
 BottomSheetSectionList.displayName = 'BottomSheetSectionList';
-
-/**Not sure if this works :( */
-BottomSheetSectionList.propTypes = SectionList;
 
 export default BottomSheetSectionList;
