@@ -5,7 +5,7 @@ import View from '../index';
 
 describe('<View />', () => {
   describe('as', () => {
-    it('renders View as div', () => {
+    it('should render View as div', () => {
       const { container } = renderWithTheme(
         <View as="div">
           <Text>{'simple div'}</Text>
@@ -13,7 +13,7 @@ describe('<View />', () => {
       );
       expect(container).toMatchSnapshot();
     });
-    it('renders View as span', () => {
+    it('should render View as span', () => {
       const { container } = renderWithTheme(
         <View as="span">
           <Text>{'simple span'}</Text>
@@ -21,7 +21,7 @@ describe('<View />', () => {
       );
       expect(container).toMatchSnapshot();
     });
-    it('renders View as p', () => {
+    it('should render View as p', () => {
       const { container } = renderWithTheme(
         <View as="p">
           <Text>{'simple p'}</Text>

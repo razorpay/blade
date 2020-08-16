@@ -5,26 +5,26 @@ import { renderWithTheme } from '../../../_helpers/testing';
 
 describe('<Link />', () => {
   describe('Size', () => {
-    it('small', () => {
+    it('should render a small Link', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(<Link size="small">{displayText}</Link>);
       expect(container).toMatchSnapshot();
     });
 
-    it('medium', () => {
+    it('should render a medium Link', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(<Link size="medium">{displayText}</Link>);
       expect(container).toMatchSnapshot();
     });
 
-    it('large', () => {
+    it('should render a large Link', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(<Link size="large">{displayText}</Link>);
       expect(container).toMatchSnapshot();
     });
   });
   describe('Selectors', () => {
-    it('hover', () => {
+    it('should render a Link with hover styles', () => {
       const displayText = 'Displaying some link';
       const mockOnPress = jest.fn();
       const { getByText } = renderWithTheme(<Link>{displayText}</Link>);
@@ -32,7 +32,7 @@ describe('<Link />', () => {
       fireEvent.mouseOver(link);
       expect(mockOnPress).toMatchSnapshot();
     });
-    it('focus', () => {
+    it('should render a Link with focus styles', () => {
       const displayText = 'Displaying some link';
       const mockOnPress = jest.fn();
       const { getByText } = renderWithTheme(<Link>{displayText}</Link>);
@@ -40,7 +40,7 @@ describe('<Link />', () => {
       fireEvent.focus(link);
       expect(mockOnPress).toMatchSnapshot();
     });
-    it('active', () => {
+    it('should render a Link with active styles', () => {
       const displayText = 'Displaying some link';
       const mockOnPress = jest.fn();
       const { getByText } = renderWithTheme(<Link>{displayText}</Link>);
@@ -49,18 +49,18 @@ describe('<Link />', () => {
       expect(mockOnPress).toMatchSnapshot();
     });
   });
-  describe('various link props', () => {
-    it('renders a link with default props', () => {
+  describe('various Link props', () => {
+    it('should render a Link with default props', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(<Link>{displayText}</Link>);
       expect(container).toMatchSnapshot();
     });
-    it('renders a link with disabled prop', () => {
+    it('should a render a Link with disabled prop', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(<Link disabled>{displayText}</Link>);
       expect(container).toMatchSnapshot();
     });
-    it('href', () => {
+    it('should render a Link with href attr', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(
         <Link size="large" href="https://www.razorpay.com">
@@ -69,7 +69,7 @@ describe('<Link />', () => {
       );
       expect(container).toMatchSnapshot();
     });
-    it('target', () => {
+    it('should reender a Link with target attr', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(
         <Link size="large" href="https://www.razorpay.com" target="_blank">
@@ -78,7 +78,7 @@ describe('<Link />', () => {
       );
       expect(container).toMatchSnapshot();
     });
-    it('rel', () => {
+    it('should render a Link with rel attribute', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(
         <Link

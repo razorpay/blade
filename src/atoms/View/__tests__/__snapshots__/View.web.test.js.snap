@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<View /> as renders View as div 1`] = `
+exports[`<View /> as should render View as div 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
@@ -16,7 +16,7 @@ exports[`<View /> as renders View as div 1`] = `
 </div>
 `;
 
-exports[`<View /> as renders View as p 1`] = `
+exports[`<View /> as should render View as p 1`] = `
 <div>
   <p
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp"
@@ -32,7 +32,7 @@ exports[`<View /> as renders View as p 1`] = `
 </div>
 `;
 
-exports[`<View /> as renders View as span 1`] = `
+exports[`<View /> as should render View as span 1`] = `
 <div>
   <span
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp"

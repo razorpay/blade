@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Text /> renders bold text 1`] = `
+exports[`<Text /> should render bold text 1`] = `
 <div>
   <div
     class="Textweb__Text-sc-6jf9e4-0 bzRITc"
@@ -12,7 +12,7 @@ exports[`<Text /> renders bold text 1`] = `
 </div>
 `;
 
-exports[`<Text /> renders regular text 1`] = `
+exports[`<Text /> should render regular text 1`] = `
 <div>
   <div
     class="Textweb__Text-sc-6jf9e4-0 eKxMBE"
@@ -24,7 +24,7 @@ exports[`<Text /> renders regular text 1`] = `
 </div>
 `;
 
-exports[`<Text /> renders text with display content auto aligned when align prop is of value "inherit" 1`] = `
+exports[`<Text /> should render text with display content auto aligned when align prop is of value "inherit" 1`] = `
 <div>
   <div
     class="Textweb__Text-sc-6jf9e4-0 dYLxfq"
@@ -36,7 +36,7 @@ exports[`<Text /> renders text with display content auto aligned when align prop
 </div>
 `;
 
-exports[`<Text /> renders text with display content auto aligned when align prop is of value "initial" 1`] = `
+exports[`<Text /> should render text with display content auto aligned when align prop is of value "initial" 1`] = `
 <div>
   <div
     class="Textweb__Text-sc-6jf9e4-0 cUzWrl"
@@ -48,7 +48,7 @@ exports[`<Text /> renders text with display content auto aligned when align prop
 </div>
 `;
 
-exports[`<Text /> renders text with display content center aligned 1`] = `
+exports[`<Text /> should render text with display content center aligned 1`] = `
 <div>
   <div
     class="Textweb__Text-sc-6jf9e4-0 hTjrlE"
@@ -60,7 +60,7 @@ exports[`<Text /> renders text with display content center aligned 1`] = `
 </div>
 `;
 
-exports[`<Text /> renders text with display content right aligned 1`] = `
+exports[`<Text /> should render text with display content right aligned 1`] = `
 <div>
   <div
     class="Textweb__Text-sc-6jf9e4-0 frrVjD"
@@ -72,7 +72,7 @@ exports[`<Text /> renders text with display content right aligned 1`] = `
 </div>
 `;
 
-exports[`<Text /> renders underlined text 1`] = `
+exports[`<Text /> should render underlined text 1`] = `
 <div>
   <div
     class="Textweb__Text-sc-6jf9e4-0 cemcnY"

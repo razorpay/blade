@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Icon /> fill renders a color filled icon 1`] = `
+exports[`<Icon /> fill should render a color filled icon 1`] = `
 <div>
   <svg
     data-testid="ds-icon"
@@ -16,7 +16,7 @@ exports[`<Icon /> fill renders a color filled icon 1`] = `
 </div>
 `;
 
-exports[`<Icon /> size renders a medium icon 1`] = `
+exports[`<Icon /> size should render a medium icon 1`] = `
 <div>
   <svg
     data-testid="ds-icon"
@@ -32,7 +32,7 @@ exports[`<Icon /> size renders a medium icon 1`] = `
 </div>
 `;
 
-exports[`<Icon /> size renders a small icon 1`] = `
+exports[`<Icon /> size should render a small icon 1`] = `
 <div>
   <svg
     data-testid="ds-icon"

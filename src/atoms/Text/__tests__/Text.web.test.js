@@ -3,43 +3,43 @@ import Text from '../index';
 import { renderWithTheme } from '../../../_helpers/testing';
 
 describe('<Text />', () => {
-  it('renders regular text', () => {
+  it('should render regular text', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(<Text>{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders bold text', () => {
+  it('should render bold text', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(<Text weight="bold">{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders underlined text', () => {
+  it('should render underlined text', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(<Text _isUnderlined>{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders text with display content center aligned', () => {
+  it('should render text with display content center aligned', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(<Text align="center">{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders text with display content right aligned', () => {
+  it('should render text with display content right aligned', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(<Text align="right">{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders text with display content auto aligned when align prop is of value "initial"', () => {
+  it('should render text with display content auto aligned when align prop is of value "initial"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(<Text align="initial">{displayText}</Text>);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders text with display content auto aligned when align prop is of value "inherit"', () => {
+  it('should render text with display content auto aligned when align prop is of value "inherit"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(<Text align="inherit">{displayText}</Text>);
     expect(container).toMatchSnapshot();
