@@ -9,7 +9,7 @@ exports[`<Radio /> defaultValue should render radio checked(attr) as true if def
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""
@@ -50,7 +50,7 @@ exports[`<Radio /> defaultValue should render radio input with checked(attr) as 
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           class="Inputweb__Input-sc-1aqyk3g-0 gwAJyU"
@@ -86,7 +86,8 @@ exports[`<Radio /> disabled should render a disabled radio input if disabled is 
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 hWufdL Flexweb__Flex-ni2cjg-0 jOkEVe"
+        disabled=""
       >
         <input
           checked=""
@@ -128,7 +129,7 @@ exports[`<Radio /> errorText should render radio with provided errorText 1`] = `
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""
@@ -176,7 +177,7 @@ exports[`<Radio /> focus with defaultValue should render focus styles on radio w
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""
@@ -217,7 +218,7 @@ exports[`<Radio /> focus with defaultValue should render focus styles on radio w
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           class="Inputweb__Input-sc-1aqyk3g-0 gwAJyU"
@@ -253,7 +254,7 @@ exports[`<Radio /> focus with value should render focus styles on radio when rad
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""
@@ -294,7 +295,7 @@ exports[`<Radio /> focus with value should render focus styles on radio when rad
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           class="Inputweb__Input-sc-1aqyk3g-0 gwAJyU"
@@ -330,7 +331,7 @@ exports[`<Radio /> helpText should render radio with provided helpText 1`] = `
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""
@@ -378,7 +379,7 @@ exports[`<Radio /> radio only should render a radio only without title, helptext
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""
@@ -419,7 +420,7 @@ exports[`<Radio /> size should render a large radio input 1`] = `
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""
@@ -460,7 +461,7 @@ exports[`<Radio /> size should render a medium(default) radio input 1`] = `
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""
@@ -501,7 +502,7 @@ exports[`<Radio /> size should render a small radio input 1`] = `
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""
@@ -542,7 +543,7 @@ exports[`<Radio /> title should render radio with provided title 1`] = `
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""
@@ -585,7 +586,8 @@ exports[`<Radio /> value should render radio input checked(attr) as true if valu
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 hWufdL Flexweb__Flex-ni2cjg-0 jOkEVe"
+        disabled=""
       >
         <input
           checked=""
@@ -627,7 +629,8 @@ exports[`<Radio /> value should render radio input with checked(attr) as false i
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 hWufdL Flexweb__Flex-ni2cjg-0 jOkEVe"
+        disabled=""
       >
         <input
           class="Inputweb__Input-sc-1aqyk3g-0 ejKGQP"
@@ -664,7 +667,7 @@ exports[`<Radio /> variantColor should render a radio with default variantColor 
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""
@@ -705,7 +708,7 @@ exports[`<Radio /> variantColor should render a radio with provided variantColor
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
     >
       <label
-        class="Labelweb__Label-yn9olg-0 jgHhDV Flexweb__Flex-ni2cjg-0 jOkEVe"
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
       >
         <input
           checked=""

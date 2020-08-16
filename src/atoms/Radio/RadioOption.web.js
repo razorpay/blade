@@ -206,7 +206,7 @@ const RadioOption = ({ value, disabled, title, helpText, errorText, testID, name
     <Flex flexDirection="column" alignSelf="flex-start">
       <View>
         <Flex alignItems="center">
-          <Label onClick={onClick} htmlFor={id}>
+          <Label as="label" onClick={onClick} htmlFor={id} disabled={disabled}>
             <Input
               id={id}
               name={name}
