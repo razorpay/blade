@@ -112,16 +112,16 @@ const BottomSheet = ({
     );
   }
 
-  const handleHeaderLayoutChange = useCallback((e) => {
-    setHeaderHeight(e.nativeEvent.layout.height);
+  const handleHeaderLayoutChange = useCallback(({ nativeEvent }) => {
+    setHeaderHeight(nativeEvent.layout.height);
   }, []);
 
-  const handleContentLayoutChange = useCallback((e) => {
-    setContentHeight(e.nativeEvent.layout.height);
+  const handleContentLayoutChange = useCallback(({ nativeEvent }) => {
+    setContentHeight(nativeEvent.layout.height);
   }, []);
 
-  const handleFooterLayoutChange = useCallback((e) => {
-    setFooterHeight(e.nativeEvent.layout.height);
+  const handleFooterLayoutChange = useCallback(({ nativeEvent }) => {
+    setFooterHeight(nativeEvent.layout.height);
   }, []);
 
   let contentContainerHeight = DEFAULT_SNAP_POINT - headerHeight;
