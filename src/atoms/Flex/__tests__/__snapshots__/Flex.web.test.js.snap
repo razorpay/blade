@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Flex /> components composition renders child by applying flex and space properties 1`] = `
+exports[`<Flex /> components composition should render a child by applying flex and space properties 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 jBqZrs"
@@ -19,7 +19,7 @@ exports[`<Flex /> components composition renders child by applying flex and spac
 </div>
 `;
 
-exports[`<Flex /> flex renders an inline styled child with flex property 1`] = `
+exports[`<Flex /> flex should render a an inline styled child with flex property 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 jBqZrs Flexweb__Flex-ni2cjg-0 libPPx"
@@ -43,7 +43,7 @@ exports[`<Flex /> flex renders an inline styled child with flex property 1`] = `
 </div>
 `;
 
-exports[`<Flex /> flexDirection renders a child with flexDirection row 1`] = `
+exports[`<Flex /> flexDirection should render a child with flexDirection row 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 dzXWge"

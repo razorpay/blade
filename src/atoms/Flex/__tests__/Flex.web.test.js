@@ -9,7 +9,7 @@ import Flex from '../index';
 
 describe('<Flex />', () => {
   describe('components composition', () => {
-    it('renders child by applying flex and space properties', () => {
+    it('should render a child by applying flex and space properties', () => {
       const { container } = render(
         <Space>
           <Flex>
@@ -24,7 +24,7 @@ describe('<Flex />', () => {
     });
   });
   describe('flexDirection', () => {
-    it('renders a child with flexDirection row', () => {
+    it('should render a child with flexDirection row', () => {
       const { container } = renderWithTheme(
         <Flex flexDirection="row">
           <View>
@@ -41,7 +41,7 @@ describe('<Flex />', () => {
     });
   });
   describe('flex', () => {
-    it('renders an inline styled child with flex property', () => {
+    it('should render a an inline styled child with flex property', () => {
       const viewStyles = { backgroundColor: 'red', height: 100 };
       const { container } = renderWithTheme(
         <Flex flex={1}>

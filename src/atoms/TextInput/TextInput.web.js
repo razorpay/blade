@@ -136,9 +136,6 @@ const StyledInput = styled.input`
   &::selection {
     background-color: ${(props) => props.theme.colors.primary[980]};
   }
-  &[type='number'] {
-    appearance: textfield;
-  }
   /* Removes red box shadow rectangle on firefox */
   &:invalid {
     box-shadow: none;
@@ -349,7 +346,12 @@ const TextInput = ({
     if (_isMultiline && variant === 'outlined') {
       inputRef.current.style.height = 'inherit';
       const height = inputRef.current.scrollHeight;
-      inputRef.current.style.height = `${height}px`;
+      // if scroll-height is greater than 60 then keep height at 60 for some space between Input & Line
+      if (height > 60) {
+        inputRef.current.style.height = `60px`;
+      } else {
+        inputRef.current.style.height = `${height}px`;
+      }
     }
   }, [_isMultiline, variant, inputRef, input]);
 

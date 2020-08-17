@@ -178,10 +178,11 @@ describe('<Button />', () => {
 
   describe('focus', () => {
     it('should have focus when input is focused', () => {
-      const { getByRole } = renderWithTheme(<Button>Click Me</Button>);
+      const { container, getByRole } = renderWithTheme(<Button>Click Me</Button>);
       const button = getByRole('button');
       button.focus();
       expect(button).toHaveFocus();
+      expect(container).toMatchSnapshot();
     });
   });
 
