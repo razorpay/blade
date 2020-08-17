@@ -3,33 +3,33 @@ import Heading from '../index';
 import { renderWithTheme } from '../../../_helpers/testing';
 
 describe('<Heading />', () => {
-  it('renders heading with default props', () => {
+  it('should render a heading with default props', () => {
     const displayText = 'Heading';
     const { container } = renderWithTheme(<Heading size="medium">{displayText}</Heading>);
     expect(container).toMatchSnapshot();
   });
   describe('size', () => {
-    it('renders heading with size medium', () => {
+    it('should render a heading with size medium', () => {
       const displayText = 'Heading';
       const { container } = renderWithTheme(<Heading size="medium">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
     });
-    it('renders heading with size large', () => {
+    it('should render a heading with size large', () => {
       const displayText = 'Heading';
       const { container } = renderWithTheme(<Heading size="large">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
     });
-    it('renders heading with size xlarge', () => {
+    it('should render a heading with size xlarge', () => {
       const displayText = 'Heading';
       const { container } = renderWithTheme(<Heading size="xlarge">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
     });
-    it('renders heading with size xxlarge', () => {
+    it('should render a heading with size xxlarge', () => {
       const displayText = 'Heading';
       const { container } = renderWithTheme(<Heading size="xxlarge">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
     });
-    it('renders heading with size xxxlarge', () => {
+    it('should render a heading with size xxxlarge', () => {
       const displayText = 'Heading';
       const { container } = renderWithTheme(<Heading size="xxxlarge">{displayText}</Heading>);
       expect(container).toMatchSnapshot();
@@ -37,7 +37,7 @@ describe('<Heading />', () => {
   });
 
   describe('color', () => {
-    it('renders heading with custom color', () => {
+    it('should render a heading with custom color', () => {
       const displayText = 'Heading';
       const { container } = renderWithTheme(
         <Heading size="medium" color="primary.900">
@@ -49,7 +49,7 @@ describe('<Heading />', () => {
   });
 
   describe('weight', () => {
-    it('renders heading with regular weight', () => {
+    it('should render a heading with regular weight', () => {
       const displayText = 'Heading';
       const { container } = renderWithTheme(
         <Heading size="medium" weight="regular">
@@ -58,7 +58,7 @@ describe('<Heading />', () => {
       );
       expect(container).toMatchSnapshot();
     });
-    it('renders heading with bold weight', () => {
+    it('should render a heading with bold weight', () => {
       const displayText = 'Heading';
       const { container } = renderWithTheme(
         <Heading size="medium" weight="bold">

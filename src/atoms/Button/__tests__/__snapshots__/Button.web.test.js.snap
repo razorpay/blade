@@ -103,6 +103,24 @@ exports[`<Button /> disabled should render a disabled button 1`] = `
 </div>
 `;
 
+exports[`<Button /> focus should have focus when input is focused 1`] = `
+<div>
+  <button
+    class="Buttonweb__StyledButton-gxhxmy-0 ddCfrZ Spaceweb__Space-njatzl-0 jGLucJ Sizeweb__Size-sc-10bl685-0 bPNzzG Flexweb__Flex-ni2cjg-0 dfbkqx"
+    data-testid="ds-button"
+    type="button"
+  >
+    <div
+      class="Textweb__Text-sc-6jf9e4-0 dxOYOr"
+      color="light.900"
+      data-testid="ds-text"
+    >
+      Click Me
+    </div>
+  </button>
+</div>
+`;
+
 exports[`<Button /> icon with children with icon left should render a button with icon on left 1`] = `
 <div>
   <button

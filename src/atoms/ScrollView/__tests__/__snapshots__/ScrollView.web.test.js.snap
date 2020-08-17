@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ScrollView /> renders Text 1`] = `
+exports[`<ScrollView /> should render Text in scroll view 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp"

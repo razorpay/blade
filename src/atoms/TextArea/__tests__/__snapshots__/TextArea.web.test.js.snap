@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TextInput /> _isMultiline should render a input tag if _isMultiline is false(default) 1`] = `
+exports[`<TextArea /> default should render TextArea with default props 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -24,23 +24,22 @@ exports[`<TextInput /> _isMultiline should render a input tag if _isMultiline is
                 class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
                 color="shade.980"
                 data-testid="ds-text"
-                for="sample-id"
                 value=""
                 width="medium"
               >
-                Sample Label
+                Label
               </label>
             </div>
             <div
               class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
             >
-              <input
+              <textarea
                 class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                id="sample-id"
-                placeholder="Enter text here"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
                 type="text"
-                value=""
               />
             </div>
           </div>
@@ -54,7 +53,521 @@ exports[`<TextInput /> _isMultiline should render a input tag if _isMultiline is
 </div>
 `;
 
-exports[`<TextInput /> _isMultiline should render a textarea tag if _isMultiline is true 1`] = `
+exports[`<TextArea /> disabled should render a disabled TextArea 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 eotGJY"
+          disabled=""
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+            disabled=""
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
+            >
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 fYxwNP"
+                color="shade.980"
+                data-testid="ds-text"
+                disabled=""
+                for="sample-id"
+                value=""
+                width="medium"
+              >
+                Sample Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 KvQTO Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                disabled=""
+                id="sample-id"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+            disabled=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> errorText should render TextArea with help text if errorText is provided as prop 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 wcTCi"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
+            >
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
+                color="shade.980"
+                data-testid="ds-text"
+                value=""
+                width="medium"
+              >
+                Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 bvsJJn"
+              color="negative.900"
+              data-testid="ds-text"
+            >
+              This is help text
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> errorText with maxLength should render TextArea with character count as fraction 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 wcTCi"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
+            >
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
+                color="shade.980"
+                data-testid="ds-text"
+                value=""
+                width="medium"
+              >
+                Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                maxlength="10"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 bvsJJn"
+              color="negative.900"
+              data-testid="ds-text"
+            >
+              This is error text
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 iiiHlL"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 krUdvH"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              0/10
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> focus should have focus when TextArea is focused 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
+              style="transform: translate(-NaNpx,-0px);"
+            >
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 fRDuhx"
+                color="shade.980"
+                data-testid="ds-text"
+                for="sample-id"
+                value=""
+                width="medium"
+              >
+                Sample Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                id="sample-id"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> helpText should render TextArea with help text if helpText is provided as prop 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
+            >
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
+                color="shade.980"
+                data-testid="ds-text"
+                value=""
+                width="medium"
+              >
+                Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 krUdvH"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              This is help text
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> helpText with maxLength should render TextArea with character count as fraction 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
+            >
+              <label
+                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
+                color="shade.980"
+                data-testid="ds-text"
+                value=""
+                width="medium"
+              >
+                Label
+              </label>
+            </div>
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                maxlength="10"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
+        </div>
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 krUdvH"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              This is help text
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 iiiHlL"
+          >
+            <div
+              class="Textweb__Text-sc-6jf9e4-0 krUdvH"
+              color="shade.950"
+              data-testid="ds-text"
+            >
+              0/10
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> label should render a TextArea with labelPosition on left and variant filled 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <label
+        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw Spaceweb__Space-njatzl-0 iqcLxO"
+        color="shade.980"
+        data-testid="ds-text"
+        for="sample-id"
+        id="sample-id"
+        value=""
+        width="medium"
+      >
+        Sample Label
+      </label>
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 cJPAjH"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 hpQvPd Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                id="sample-id"
+                placeholder=""
+                rows="3"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> label should render a TextArea with labelPosition on top(default) and variant filled 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
+  >
+    <label
+      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 exXJhJ Spaceweb__Space-njatzl-0 eDHZqM"
+      color="shade.980"
+      data-testid="ds-text"
+      for="sample-id"
+      id="sample-id"
+      value=""
+      width="medium"
+    >
+      Sample Label
+    </label>
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
+    >
+      <div
+        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
+      >
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 cJPAjH"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
+            >
+              <textarea
+                class="TextInputweb__StyledInput-sc-199z6oj-1 hpQvPd Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
+                data-testid="ds-text-area"
+                id="sample-id"
+                placeholder=""
+                rows="3"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextArea /> label should render a TextArea with labelPosition on top(default) and variant outlined(default) 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -90,9 +603,9 @@ exports[`<TextInput /> _isMultiline should render a textarea tag if _isMultiline
             >
               <textarea
                 class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
+                data-testid="ds-text-area"
                 id="sample-id"
-                placeholder="Enter text here"
+                placeholder=""
                 rows="1"
                 style="height: 0px;"
                 type="text"
@@ -109,876 +622,7 @@ exports[`<TextInput /> _isMultiline should render a textarea tag if _isMultiline
 </div>
 `;
 
-exports[`<TextInput /> default should render a TextInput with default props 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
-                color="shade.980"
-                data-testid="ds-text"
-                value=""
-                width="medium"
-              >
-                Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> disabled should render a disabled TextInput 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 eotGJY"
-          disabled=""
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-            disabled=""
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-              style="transform: translate(-NaNpx,-0px);"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 bcrRBm"
-                color="shade.980"
-                data-testid="ds-text"
-                disabled=""
-                for="sample-id"
-                value="some value"
-                width="medium"
-              >
-                Sample Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 KvQTO Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                disabled=""
-                id="sample-id"
-                placeholder="Enter text here"
-                type="text"
-                value="some value"
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-            disabled=""
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> errorText should render a TextInput with error text if errorText is provided as prop 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 wcTCi"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
-                color="shade.980"
-                data-testid="ds-text"
-                value=""
-                width="medium"
-              >
-                Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
-          >
-            <div
-              class="Textweb__Text-sc-6jf9e4-0 bvsJJn"
-              color="negative.900"
-              data-testid="ds-text"
-            >
-              This is error text
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> errorText with maxLength should render a TextInput with character count as fraction 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 wcTCi"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
-                color="shade.980"
-                data-testid="ds-text"
-                value=""
-                width="medium"
-              >
-                Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                maxlength="10"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
-          >
-            <div
-              class="Textweb__Text-sc-6jf9e4-0 bvsJJn"
-              color="negative.900"
-              data-testid="ds-text"
-            >
-              This is error text
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 iiiHlL"
-          >
-            <div
-              class="Textweb__Text-sc-6jf9e4-0 krUdvH"
-              color="shade.950"
-              data-testid="ds-text"
-            >
-              0/10
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> focus should have focus when input is focused 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-              style="transform: translate(-NaNpx,-0px);"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 fRDuhx"
-                color="shade.980"
-                data-testid="ds-text"
-                for="sample-id"
-                value=""
-                width="medium"
-              >
-                Sample Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                id="sample-id"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> helpText should render a TextInput with help text if helpText is provided as prop 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
-                color="shade.980"
-                data-testid="ds-text"
-                value=""
-                width="medium"
-              >
-                Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
-          >
-            <div
-              class="Textweb__Text-sc-6jf9e4-0 krUdvH"
-              color="shade.950"
-              data-testid="ds-text"
-            >
-              This is help text
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> helpText with maxLength should render a TextInput with character count as fraction 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
-                color="shade.980"
-                data-testid="ds-text"
-                value=""
-                width="medium"
-              >
-                Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                maxlength="10"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jxcXPq"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 libPPx Spaceweb__Space-njatzl-0 cUyWDv"
-          >
-            <div
-              class="Textweb__Text-sc-6jf9e4-0 krUdvH"
-              color="shade.950"
-              data-testid="ds-text"
-            >
-              This is help text
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 lhSUkp Spaceweb__Space-njatzl-0 iiiHlL"
-          >
-            <div
-              class="Textweb__Text-sc-6jf9e4-0 krUdvH"
-              color="shade.950"
-              data-testid="ds-text"
-            >
-              0/10
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> iconLeft should render a TextInput with iconLeft 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
-                color="shade.980"
-                data-testid="ds-text"
-                for="sample-id"
-                value=""
-                width="medium"
-              >
-                Sample Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <svg
-                class="Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 lbJTjt"
-                data-testid="ds-icon"
-                fill="rgba(22, 47, 86, 0.38)"
-                height="16"
-                viewBox="0 0 24 24"
-                width="16"
-              >
-                <path
-                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                />
-              </svg>
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                id="sample-id"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> iconRight should render a TextInput with iconRight 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
-                color="shade.980"
-                data-testid="ds-text"
-                for="sample-id"
-                value=""
-                width="medium"
-              >
-                Sample Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                id="sample-id"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-              <svg
-                class="Flexweb__Flex-ni2cjg-0 dzXWge Spaceweb__Space-njatzl-0 jGOEpt"
-                data-testid="ds-icon"
-                fill="rgba(22, 47, 86, 0.38)"
-                height="16"
-                viewBox="0 0 24 24"
-                width="16"
-              >
-                <path
-                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                />
-              </svg>
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> label should render a TextInput with labelPosition on left and variant filled 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <label
-        class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw Spaceweb__Space-njatzl-0 iqcLxO"
-        color="shade.980"
-        data-testid="ds-text"
-        for="sample-id"
-        id="sample-id"
-        value=""
-        width="medium"
-      >
-        Sample Label
-      </label>
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 nAZvE"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 hpQvPd Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                id="sample-id"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> label should render a TextInput with labelPosition on top(default) and variant filled 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <label
-      class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 exXJhJ Spaceweb__Space-njatzl-0 eDHZqM"
-      color="shade.980"
-      data-testid="ds-text"
-      for="sample-id"
-      id="sample-id"
-      value=""
-      width="medium"
-    >
-      Sample Label
-    </label>
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 nAZvE"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 hpQvPd Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                id="sample-id"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> label should render a TextInput with labelPosition on top(default) and variant outlined(default) 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
-                color="shade.980"
-                data-testid="ds-text"
-                for="sample-id"
-                value=""
-                width="medium"
-              >
-                Sample Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                id="sample-id"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> prefix should render a TextInput with prefix 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
-                color="shade.980"
-                data-testid="ds-text"
-                for="sample-id"
-                value=""
-                width="medium"
-              >
-                Sample Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <div
-                class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 lbJTjt"
-                color="shade.950"
-                data-testid="ds-text"
-              >
-                ₹
-              </div>
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                id="sample-id"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> suffix should render a TextInput with suffix 1`] = `
-<div>
-  <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 hjAxCH"
-    >
-      <div
-        class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 jhuIde"
-      >
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 emyWjc Spaceweb__Space-njatzl-0 gfWbbX Sizeweb__Size-sc-10bl685-0 ecrXiG"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Labelweb__FloatView-jw60wd-0 kOyWtk Spaceweb__Space-njatzl-0 ebahRE"
-            >
-              <label
-                class="Textweb__Text-sc-6jf9e4-0 Labelweb__StyledText-jw60wd-1 gkCBhw"
-                color="shade.980"
-                data-testid="ds-text"
-                for="sample-id"
-                value=""
-                width="medium"
-              >
-                Sample Label
-              </label>
-            </div>
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
-            >
-              <input
-                class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                id="sample-id"
-                placeholder="Enter text here"
-                type="text"
-                value=""
-              />
-              <div
-                class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 jGOEpt"
-                color="shade.950"
-                data-testid="ds-text"
-              >
-                ₹
-              </div>
-            </div>
-          </div>
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Lineweb__Line-jxwo4z-0 cYqKhO"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<TextInput /> variant should render a filled variant with default props 1`] = `
+exports[`<TextArea /> variant should render filled variant with default props 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -1002,17 +646,17 @@ exports[`<TextInput /> variant should render a filled variant with default props
           class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InteractionContainer-sc-199z6oj-3 biXCuL"
         >
           <div
-            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 nAZvE"
+            class="Viewweb__View-sc-1cphyjf-0 TextInputweb__FillContainer-sc-199z6oj-2 bZFGKN Spaceweb__Space-njatzl-0 jXWaIv Sizeweb__Size-sc-10bl685-0 cJPAjH"
           >
             <div
               class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
             >
-              <input
+              <textarea
                 class="TextInputweb__StyledInput-sc-199z6oj-1 hpQvPd Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 dWKXUv Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                placeholder="Enter text here"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="3"
                 type="text"
-                value=""
               />
             </div>
           </div>
@@ -1026,7 +670,7 @@ exports[`<TextInput /> variant should render a filled variant with default props
 </div>
 `;
 
-exports[`<TextInput /> variant should render a outlined variant with default props 1`] = `
+exports[`<TextArea /> variant should render outlined variant with default props 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -1059,12 +703,13 @@ exports[`<TextInput /> variant should render a outlined variant with default pro
             <div
               class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
             >
-              <input
+              <textarea
                 class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                placeholder="Enter text here"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
                 type="text"
-                value=""
               />
             </div>
           </div>
@@ -1078,7 +723,7 @@ exports[`<TextInput /> variant should render a outlined variant with default pro
 </div>
 `;
 
-exports[`<TextInput /> width should render a TextInput with auto width 1`] = `
+exports[`<TextArea /> width should render a TextArea with auto width 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -1111,12 +756,13 @@ exports[`<TextInput /> width should render a TextInput with auto width 1`] = `
             <div
               class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 juRaGm Flexweb__Flex-ni2cjg-0 jOkEVe"
             >
-              <input
+              <textarea
                 class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                placeholder="Enter text here"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
                 type="text"
-                value=""
               />
             </div>
           </div>
@@ -1130,7 +776,7 @@ exports[`<TextInput /> width should render a TextInput with auto width 1`] = `
 </div>
 `;
 
-exports[`<TextInput /> width should render a TextInput with medium(default) width 1`] = `
+exports[`<TextArea /> width should render a TextArea with medium(default) width 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -1163,12 +809,13 @@ exports[`<TextInput /> width should render a TextInput with medium(default) widt
             <div
               class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 ifVRzc Flexweb__Flex-ni2cjg-0 jOkEVe"
             >
-              <input
+              <textarea
                 class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                placeholder="Enter text here"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
                 type="text"
-                value=""
               />
             </div>
           </div>
@@ -1182,7 +829,7 @@ exports[`<TextInput /> width should render a TextInput with medium(default) widt
 </div>
 `;
 
-exports[`<TextInput /> width should render a TextInput with small width 1`] = `
+exports[`<TextArea /> width should render a TextArea with small width 1`] = `
 <div>
   <div
     class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 btLJAM"
@@ -1215,12 +862,13 @@ exports[`<TextInput /> width should render a TextInput with small width 1`] = `
             <div
               class="Viewweb__View-sc-1cphyjf-0 TextInputweb__InputContainer-sc-199z6oj-0 btXkAA Sizeweb__Size-sc-10bl685-0 eRcLdB Flexweb__Flex-ni2cjg-0 jOkEVe"
             >
-              <input
+              <textarea
                 class="TextInputweb__StyledInput-sc-199z6oj-1 BTdep Sizeweb__Size-sc-10bl685-0 ccPMIj Spaceweb__Space-njatzl-0 ka-DExz Flexweb__Flex-ni2cjg-0 libPPx"
-                data-testid="ds-text-input"
-                placeholder="Enter text here"
+                data-testid="ds-text-area"
+                placeholder=""
+                rows="1"
+                style="height: 0px;"
                 type="text"
-                value=""
               />
             </div>
           </div>

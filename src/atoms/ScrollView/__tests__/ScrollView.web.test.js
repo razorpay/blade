@@ -4,7 +4,7 @@ import ScrollView from '../index';
 import Text from '../../Text';
 
 describe('<ScrollView />', () => {
-  it('renders Text', () => {
+  it('should render Text in scroll view', () => {
     const { container } = renderWithTheme(
       <ScrollView>
         <Text>Hello World</Text>

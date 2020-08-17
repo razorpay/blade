@@ -4,7 +4,7 @@ import View from '../../View';
 import Size from '../index';
 
 describe('<Size />', () => {
-  it('renders a child by applying height, width, maxHeight, maxWidth, minWidth, minHeight', () => {
+  it('should render a child by applying height, width, maxHeight, maxWidth, minWidth, minHeight', () => {
     const { container } = renderWithTheme(
       <Size
         height="100%"
@@ -19,7 +19,7 @@ describe('<Size />', () => {
     );
     expect(container).toMatchSnapshot();
   });
-  it('renders a child by applying height, width, maxHeight, maxWidth, minWidth, minHeight in numeric values', () => {
+  it('should render a child by applying height, width, maxHeight, maxWidth, minWidth, minHeight in numeric values', () => {
     const { container } = renderWithTheme(
       <Size height={100} width={10} maxHeight={20} maxWidth={20} minHeight={5} minWidth={5}>
         <View />
@@ -27,7 +27,7 @@ describe('<Size />', () => {
     );
     expect(container).toMatchSnapshot();
   });
-  it('renders a child component without any sizing properties being applied', () => {
+  it('should render a child component without any sizing properties being applied', () => {
     const { container } = renderWithTheme(
       <Size>
         <View testID="size-view" />
