@@ -19,15 +19,7 @@ describe('<BottomSheet />', () => {
 
   it('renders BottomSheet with Header, Footer and Content Defined', () => {
     const { container } = renderWithTheme(
-      <BottomSheet
-        visible={true}
-        FooterComponent={
-          <View>
-            <Text>Footer</Text>
-          </View>
-        }
-        onClose={mockOnClose}
-      >
+      <BottomSheet visible={true} onClose={mockOnClose}>
         <BottomSheet.Header>
           <View>
             <Text>Header</Text>
@@ -50,16 +42,7 @@ describe('<BottomSheet />', () => {
 
   it('renders bottomsheet when initialHeight prop is passed', () => {
     const { container } = renderWithTheme(
-      <BottomSheet
-        visible={true}
-        initialHeight={300}
-        FooterComponent={
-          <View>
-            <Text>Footer</Text>
-          </View>
-        }
-        onClose={() => {}}
-      >
+      <BottomSheet visible={true} initialHeight={300} onClose={() => {}}>
         <BottomSheet.Header>
           <View>
             <Text>Header</Text>
@@ -101,15 +84,50 @@ describe('<BottomSheet />', () => {
     }));
 
     const { container } = renderWithTheme(
-      <BottomSheet
-        visible={true}
-        FooterComponent={
+      <BottomSheet visible={true} onClose={mockOnClose}>
+        <BottomSheet.Header>
+          <View>
+            <Text>Header</Text>
+          </View>
+        </BottomSheet.Header>
+        <BottomSheet.Content>
+          {data.map((item) => (
+            <View key={item.id}>
+              <Text>{item.name}</Text>
+            </View>
+          ))}
+        </BottomSheet.Content>
+        <BottomSheet.Footer>
           <View>
             <Text>Footer</Text>
           </View>
-        }
-        onClose={mockOnClose}
-      >
+        </BottomSheet.Footer>
+      </BottomSheet>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('renders non-scrollable bottomsheet', () => {
+    const list = [
+      'Samsung',
+      'Xiaomi',
+      'OnePlus',
+      'Apple',
+      'Vivo',
+      'Oppo',
+      'Lenovo',
+      'LG',
+      'Nokia',
+      'HTC',
+    ];
+
+    const data = new Array(list.length).fill({}).map((item, index) => ({
+      id: index,
+      name: list[index],
+    }));
+
+    const { container } = renderWithTheme(
+      <BottomSheet visible={true} onClose={mockOnClose} adjustToContentHeight>
         <BottomSheet.Header>
           <View>
             <Text>Header</Text>
@@ -135,15 +153,7 @@ describe('<BottomSheet />', () => {
   it('should throw error when multiple Headers are passed to bottomsheet', () => {
     expect(() =>
       renderWithTheme(
-        <BottomSheet
-          visible={true}
-          FooterComponent={
-            <View>
-              <Text>Footer</Text>
-            </View>
-          }
-          onClose={mockOnClose}
-        >
+        <BottomSheet visible={true} onClose={mockOnClose}>
           <BottomSheet.Header>
             <View>
               <Text>Header1</Text>
@@ -172,15 +182,7 @@ describe('<BottomSheet />', () => {
   it('should throw error when multiple Footer are passed to bottomsheet', () => {
     expect(() =>
       renderWithTheme(
-        <BottomSheet
-          visible={true}
-          FooterComponent={
-            <View>
-              <Text>Footer</Text>
-            </View>
-          }
-          onClose={mockOnClose}
-        >
+        <BottomSheet visible={true} onClose={mockOnClose}>
           <BottomSheet.Header>
             <View>
               <Text>Header1</Text>
@@ -209,14 +211,7 @@ describe('<BottomSheet />', () => {
   it('should throw error when onClose method callback is not passed', () => {
     expect(() =>
       renderWithTheme(
-        <BottomSheet
-          visible={true}
-          FooterComponent={
-            <View>
-              <Text>Footer</Text>
-            </View>
-          }
-        >
+        <BottomSheet visible={true}>
           <BottomSheet.Header>
             <View>
               <Text>Header1</Text>
