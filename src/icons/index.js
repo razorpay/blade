@@ -20,6 +20,7 @@ const icons = {
   info: require('./Info').default,
   invoice: require('./Invoice').default,
   lifeBuoy: require('./LifeBuoy').default,
+  link: require('./Link').default,
   mail: require('./Mail').default,
   maximize: require('./Maximize').default,
   minimize: require('./Minimize').default,
