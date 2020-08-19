@@ -85,7 +85,6 @@ const BottomSheet = ({
   const bottomSheetVisibility = useRef(visible);
   const [headerHeight, setHeaderHeight] = useState(0);
   const [contentHeight, setContentHeight] = useState(0);
-  const [footerHeight, setFooterHeight] = useState(0);
   const bottomsheetChildrenGroupByDisplayName = reactChildrenGroupByDisplayName(children);
 
   const headerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetHeader;
@@ -138,10 +137,6 @@ const BottomSheet = ({
     setContentHeight(nativeEvent.layout.height);
   }, []);
 
-  const handleFooterLayoutChange = useCallback(({ nativeEvent }) => {
-    setFooterHeight(nativeEvent.layout.height);
-  }, []);
-
   let contentContainerHeight = DEFAULT_SNAP_POINT - headerHeight;
   if (initialHeight > 0) {
     contentContainerHeight = initialHeight - headerHeight;
@@ -187,27 +182,23 @@ const BottomSheet = ({
           </HeaderContainer>
         </View>
       }
+      FooterComponent={footerComponent?.length ? <View>{footerComponent}</View> : null}
       FloatingComponent={
-        <Position position="absolute" left={0} right={0} bottom={0}>
-          <View>
-            {isScrollableContent && (
-              <Size height={7}>
-                <LinearGradient
-                  locations={linearGradientLocations}
-                  colors={[
-                    theme.colors.primary[930],
-                    theme.colors.primary[920],
-                    'rgba(255, 255, 255, 0)',
-                  ]}
-                  style={styles.linearGradient()}
-                />
-              </Size>
-            )}
-            {footerComponent?.length ? (
-              <View onLayout={handleFooterLayoutChange}>{footerComponent}</View>
-            ) : null}
-          </View>
-        </Position>
+        isScrollableContent ? (
+          <Position position="absolute" left={0} right={0} bottom={0}>
+            <Size height={7}>
+              <LinearGradient
+                locations={linearGradientLocations}
+                colors={[
+                  theme.colors.primary[930],
+                  theme.colors.primary[920],
+                  'rgba(255, 255, 255, 0)',
+                ]}
+                style={styles.linearGradient()}
+              />
+            </Size>
+          </Position>
+        ) : null
       }
       overlayStyle={styles.overlayStyle({ theme })}
       onOverlayPress={onBackDropClick}
@@ -223,9 +214,7 @@ const BottomSheet = ({
       sectionListProps={sectionListComponent?.[0].props}
     >
       {!sectionListComponent ? (
-        <Space padding={[0, 0, footerHeight / 8, 0]}>
-          <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
-        </Space>
+        <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
       ) : null}
     </RNModalize>
   );
