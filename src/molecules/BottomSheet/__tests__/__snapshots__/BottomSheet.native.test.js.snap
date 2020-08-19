@@ -207,20 +207,7 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
             scrollEnabled={false}
             scrollEventThrottle={16}
           >
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
-            >
+            <View>
               <View
                 style={
                   Array [
@@ -265,6 +252,81 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
             </View>
           </ScrollView>
         </View>
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "zIndex": undefined,
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(255, 255, 255, 1.0)",
+                  },
+                ]
+              }
+            >
+              <View
+                color="shade.920"
+                dividerDirection="horizontal"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Array [
+                      Object {
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Footer
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
       <View
         collapsable={false}
@@ -296,97 +358,6 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
             }
           }
         />
-      </View>
-    </View>
-    <View
-      collapsable={false}
-      style={
-        Object {
-          "zIndex": undefined,
-        }
-      }
-    >
-      <View
-        bottom={0}
-        left={0}
-        position="absolute"
-        right={0}
-        style={
-          Array [
-            Array [
-              Object {
-                "position": "absolute",
-              },
-            ],
-          ]
-        }
-      >
-        <View>
-          <View
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "rgba(255, 255, 255, 1.0)",
-                },
-              ]
-            }
-          >
-            <View
-              color="shade.920"
-              dividerDirection="horizontal"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "rgba(22, 47, 86, 0.05)",
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 8,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 8,
-                    },
-                  ],
-                ]
-              }
-            >
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Footer
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
       </View>
     </View>
   </View>
@@ -1019,30 +990,6 @@ exports[`<BottomSheet /> renders BottomSheet with SectionList 1`] = `
         />
       </View>
     </View>
-    <View
-      collapsable={false}
-      style={
-        Object {
-          "zIndex": undefined,
-        }
-      }
-    >
-      <View
-        bottom={0}
-        left={0}
-        position="absolute"
-        right={0}
-        style={
-          Array [
-            Array [
-              Object {
-                "position": "absolute",
-              },
-            ],
-          ]
-        }
-      />
-    </View>
   </View>
 </View>
 `;
@@ -1640,6 +1587,81 @@ exports[`<BottomSheet /> renders BottomSheet with SectionList and Footer 1`] = `
             />
           </ScrollView>
         </View>
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "zIndex": undefined,
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(255, 255, 255, 1.0)",
+                  },
+                ]
+              }
+            >
+              <View
+                color="shade.920"
+                dividerDirection="horizontal"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Array [
+                      Object {
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Footer1
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
       <View
         collapsable={false}
@@ -1671,97 +1693,6 @@ exports[`<BottomSheet /> renders BottomSheet with SectionList and Footer 1`] = `
             }
           }
         />
-      </View>
-    </View>
-    <View
-      collapsable={false}
-      style={
-        Object {
-          "zIndex": undefined,
-        }
-      }
-    >
-      <View
-        bottom={0}
-        left={0}
-        position="absolute"
-        right={0}
-        style={
-          Array [
-            Array [
-              Object {
-                "position": "absolute",
-              },
-            ],
-          ]
-        }
-      >
-        <View>
-          <View
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "rgba(255, 255, 255, 1.0)",
-                },
-              ]
-            }
-          >
-            <View
-              color="shade.920"
-              dividerDirection="horizontal"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "rgba(22, 47, 86, 0.05)",
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 8,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 8,
-                    },
-                  ],
-                ]
-              }
-            >
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Footer1
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
       </View>
     </View>
   </View>
@@ -1975,20 +1906,7 @@ exports[`<BottomSheet /> renders bottomsheet when initialHeight prop is passed 1
             scrollEnabled={false}
             scrollEventThrottle={16}
           >
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
-            >
+            <View>
               <View
                 style={
                   Array [
@@ -2033,6 +1951,81 @@ exports[`<BottomSheet /> renders bottomsheet when initialHeight prop is passed 1
             </View>
           </ScrollView>
         </View>
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "zIndex": undefined,
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(255, 255, 255, 1.0)",
+                  },
+                ]
+              }
+            >
+              <View
+                color="shade.920"
+                dividerDirection="horizontal"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Array [
+                      Object {
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Footer
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
       <View
         collapsable={false}
@@ -2064,97 +2057,6 @@ exports[`<BottomSheet /> renders bottomsheet when initialHeight prop is passed 1
             }
           }
         />
-      </View>
-    </View>
-    <View
-      collapsable={false}
-      style={
-        Object {
-          "zIndex": undefined,
-        }
-      }
-    >
-      <View
-        bottom={0}
-        left={0}
-        position="absolute"
-        right={0}
-        style={
-          Array [
-            Array [
-              Object {
-                "position": "absolute",
-              },
-            ],
-          ]
-        }
-      >
-        <View>
-          <View
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "rgba(255, 255, 255, 1.0)",
-                },
-              ]
-            }
-          >
-            <View
-              color="shade.920"
-              dividerDirection="horizontal"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "rgba(22, 47, 86, 0.05)",
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 8,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 8,
-                    },
-                  ],
-                ]
-              }
-            >
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Footer
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
       </View>
     </View>
   </View>
@@ -2314,20 +2216,7 @@ exports[`<BottomSheet /> renders default BottomSheet 1`] = `
             scrollEnabled={false}
             scrollEventThrottle={16}
           >
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
-            />
+            <View />
           </ScrollView>
         </View>
       </View>
@@ -2362,30 +2251,6 @@ exports[`<BottomSheet /> renders default BottomSheet 1`] = `
           }
         />
       </View>
-    </View>
-    <View
-      collapsable={false}
-      style={
-        Object {
-          "zIndex": undefined,
-        }
-      }
-    >
-      <View
-        bottom={0}
-        left={0}
-        position="absolute"
-        right={0}
-        style={
-          Array [
-            Array [
-              Object {
-                "position": "absolute",
-              },
-            ],
-          ]
-        }
-      />
     </View>
   </View>
 </View>
@@ -2598,20 +2463,7 @@ exports[`<BottomSheet /> renders linear-gradient view at bottom when content hei
             scrollEnabled={false}
             scrollEventThrottle={16}
           >
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
-            >
+            <View>
               <View
                 style={
                   Array [
@@ -3202,6 +3054,81 @@ exports[`<BottomSheet /> renders linear-gradient view at bottom when content hei
             </View>
           </ScrollView>
         </View>
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "zIndex": undefined,
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(255, 255, 255, 1.0)",
+                  },
+                ]
+              }
+            >
+              <View
+                color="shade.920"
+                dividerDirection="horizontal"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Array [
+                      Object {
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Footer
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
       <View
         collapsable={false}
@@ -3233,97 +3160,6 @@ exports[`<BottomSheet /> renders linear-gradient view at bottom when content hei
             }
           }
         />
-      </View>
-    </View>
-    <View
-      collapsable={false}
-      style={
-        Object {
-          "zIndex": undefined,
-        }
-      }
-    >
-      <View
-        bottom={0}
-        left={0}
-        position="absolute"
-        right={0}
-        style={
-          Array [
-            Array [
-              Object {
-                "position": "absolute",
-              },
-            ],
-          ]
-        }
-      >
-        <View>
-          <View
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "rgba(255, 255, 255, 1.0)",
-                },
-              ]
-            }
-          >
-            <View
-              color="shade.920"
-              dividerDirection="horizontal"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "rgba(22, 47, 86, 0.05)",
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 8,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 8,
-                    },
-                  ],
-                ]
-              }
-            >
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Footer
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
       </View>
     </View>
   </View>
@@ -3537,20 +3373,7 @@ exports[`<BottomSheet /> renders non-scrollable bottomsheet 1`] = `
             scrollEnabled={false}
             scrollEventThrottle={16}
           >
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
-            >
+            <View>
               <View
                 style={
                   Array [
@@ -3829,6 +3652,81 @@ exports[`<BottomSheet /> renders non-scrollable bottomsheet 1`] = `
             </View>
           </ScrollView>
         </View>
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "zIndex": undefined,
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(255, 255, 255, 1.0)",
+                  },
+                ]
+              }
+            >
+              <View
+                color="shade.920"
+                dividerDirection="horizontal"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(22, 47, 86, 0.05)",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Array [
+                      Object {
+                        "paddingBottom": 8,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 8,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    _isUnderlined={false}
+                    _letterSpacing="small"
+                    align="left"
+                    color="shade.980"
+                    size="large"
+                    style={
+                      Array [
+                        Object {
+                          "color": "rgba(22, 47, 86, 0.87)",
+                          "fontFamily": "Lato-Regular",
+                          "fontSize": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 24,
+                          "textAlign": "left",
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                    testID="ds-text"
+                    weight="regular"
+                  >
+                    Footer
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
       <View
         collapsable={false}
@@ -3860,97 +3758,6 @@ exports[`<BottomSheet /> renders non-scrollable bottomsheet 1`] = `
             }
           }
         />
-      </View>
-    </View>
-    <View
-      collapsable={false}
-      style={
-        Object {
-          "zIndex": undefined,
-        }
-      }
-    >
-      <View
-        bottom={0}
-        left={0}
-        position="absolute"
-        right={0}
-        style={
-          Array [
-            Array [
-              Object {
-                "position": "absolute",
-              },
-            ],
-          ]
-        }
-      >
-        <View>
-          <View
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "rgba(255, 255, 255, 1.0)",
-                },
-              ]
-            }
-          >
-            <View
-              color="shade.920"
-              dividerDirection="horizontal"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "rgba(22, 47, 86, 0.05)",
-                    "height": 1,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 8,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 8,
-                    },
-                  ],
-                ]
-              }
-            >
-              <View>
-                <Text
-                  _isUnderlined={false}
-                  _letterSpacing="small"
-                  align="left"
-                  color="shade.980"
-                  size="large"
-                  style={
-                    Array [
-                      Object {
-                        "color": "rgba(22, 47, 86, 0.87)",
-                        "fontFamily": "Lato-Regular",
-                        "fontSize": 16,
-                        "letterSpacing": 0,
-                        "lineHeight": 24,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                  testID="ds-text"
-                  weight="regular"
-                >
-                  Footer
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
       </View>
     </View>
   </View>
