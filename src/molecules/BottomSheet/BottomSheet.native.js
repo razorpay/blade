@@ -14,6 +14,7 @@ import Position from '../../atoms/Position';
 import BottomSheetHeader from './BottomSheetHeader';
 import BottomSheetFooter from './BottomSheetFooter';
 import BottomSheetContent from './BottomSheetContent';
+import BottomSheetSectionList from './BottomSheetSectionList';
 
 const screenHeight = Dimensions.get('window').height;
 const DEFAULT_SNAP_POINT = screenHeight * 0.4; // 40% of screen height
@@ -37,10 +38,14 @@ const styles = {
       backgroundColor: theme.colors.shade[950],
     };
   },
-  childrenStyle: ({ theme }) => {
-    return {
+  childrenStyle: ({ theme, isSectionList }) => {
+    const childrenStyles = {
       backgroundColor: theme.colors.background[200],
     };
+    if (isSectionList) {
+      return { ...childrenStyles, ...{ paddingVertical: 8, paddingHorizontal: 16 } };
+    }
+    return childrenStyles;
   },
   linearGradient: () => {
     return {
@@ -86,6 +91,7 @@ const BottomSheet = ({
   const headerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetHeader;
   const footerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetFooter;
   const contentComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetContent;
+  const sectionListComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetSectionList;
 
   useEffect(() => {
     if (visible) {
@@ -98,6 +104,18 @@ const BottomSheet = ({
 
   if (!onClose) {
     throw Error(`expected onClose prop for \`BottomSheet\``);
+  }
+
+  if (sectionListComponent && contentComponent) {
+    throw Error(
+      `expected to have one of \`BottomSheet.Content or BottomSheet.SectionList\` but found both`,
+    );
+  }
+
+  if (sectionListComponent?.length > 1) {
+    throw Error(
+      `expected to have single \`BottomSheet.SectionList\` but found but found ${sectionListComponent.length}`,
+    );
   }
 
   if (headerComponent?.length > 1) {
@@ -196,16 +214,19 @@ const BottomSheet = ({
       avoidKeyboardLikeIOS={true}
       onPositionChange={onChange}
       onClosed={handleBottomSheetClose}
-      childrenStyle={styles.childrenStyle({ theme })}
+      childrenStyle={styles.childrenStyle({ theme, isSectionList: Boolean(sectionListComponent) })}
       withHandle={false}
       panGestureComponentEnabled={true}
       adjustToContentHeight={adjustToContentHeight}
       alwaysOpen={initialHeight}
       rootStyle={styles.rootStyle({ theme })}
+      sectionListProps={sectionListComponent?.[0].props}
     >
-      <Space padding={[0, 0, footerHeight / 8, 0]}>
-        <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
-      </Space>
+      {!sectionListComponent ? (
+        <Space padding={[0, 0, footerHeight / 8, 0]}>
+          <View onLayout={handleContentLayoutChange}>{contentComponent}</View>
+        </Space>
+      ) : null}
     </RNModalize>
   );
 };
@@ -214,6 +235,7 @@ BottomSheet.displayName = 'BladeBottomSheet';
 BottomSheet.Header = BottomSheetHeader;
 BottomSheet.Footer = BottomSheetFooter;
 BottomSheet.Content = BottomSheetContent;
+BottomSheet.SectionList = BottomSheetSectionList;
 
 BottomSheet.propTypes = {
   visible: PropTypes.bool,

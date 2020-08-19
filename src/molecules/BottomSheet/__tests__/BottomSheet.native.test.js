@@ -4,6 +4,42 @@ import { renderWithTheme } from '../../../_helpers/testing';
 import View from '../../../atoms/View';
 import Text from '../../../atoms/Text';
 
+const list = [
+  'Apple',
+  'Asus',
+  'Blackberry',
+  'Honor',
+  'HTC',
+  'Huawei',
+  'Lava',
+  'Lenovo',
+  'LG',
+  'Motorola',
+  'Nexus',
+  'Nokia',
+  'OnePlus',
+  'Oppo',
+  'Panasonic',
+  'Pixel',
+  'Realme',
+  'Samsung',
+  'Sony',
+  'Toshiba',
+  'Vivo',
+  'Xiaomi',
+];
+
+export const sections = [
+  {
+    title: 'Section1',
+    data: list,
+  },
+  {
+    title: 'Section2',
+    data: list,
+  },
+];
+
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
@@ -65,19 +101,6 @@ describe('<BottomSheet />', () => {
   });
 
   it('renders linear-gradient view at bottom when content height is more than open bottomsheet height', () => {
-    const list = [
-      'Samsung',
-      'Xiaomi',
-      'OnePlus',
-      'Apple',
-      'Vivo',
-      'Oppo',
-      'Lenovo',
-      'LG',
-      'Nokia',
-      'HTC',
-    ];
-
     const data = new Array(list.length).fill({}).map((item, index) => ({
       id: index,
       name: list[index],
@@ -235,5 +258,121 @@ describe('<BottomSheet />', () => {
         </BottomSheet>,
       ),
     ).toThrow('expected onClose prop for `BottomSheet`');
+  });
+
+  it('renders BottomSheet with SectionList', () => {
+    const { container } = renderWithTheme(
+      <BottomSheet visible={true} initialHeight={300} onClose={() => {}}>
+        <BottomSheet.SectionList
+          sections={sections}
+          renderItem={({ item }) => (
+            <View>
+              <Text>{item}</Text>
+            </View>
+          )}
+          renderSectionHeader={({ section }) => (
+            <View>
+              <Text>{section.title}</Text>
+            </View>
+          )}
+          keyExtractor={(item) => item}
+        />
+      </BottomSheet>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('renders BottomSheet with SectionList and Footer', () => {
+    const { container } = renderWithTheme(
+      <BottomSheet visible={true} initialHeight={300} onClose={() => {}}>
+        <BottomSheet.SectionList
+          sections={sections}
+          renderItem={({ item }) => (
+            <View>
+              <Text>{item}</Text>
+            </View>
+          )}
+          renderSectionHeader={({ section }) => (
+            <View>
+              <Text>{section.title}</Text>
+            </View>
+          )}
+          keyExtractor={(item) => item}
+        />
+        <BottomSheet.Footer>
+          <View>
+            <Text>Footer1</Text>
+          </View>
+        </BottomSheet.Footer>
+      </BottomSheet>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should throw error when both Content and SectionList are provided', () => {
+    expect(() =>
+      renderWithTheme(
+        <BottomSheet visible={true} initialHeight={300} onClose={() => {}}>
+          <BottomSheet.SectionList
+            sections={sections}
+            renderItem={({ item }) => (
+              <View>
+                <Text>{item}</Text>
+              </View>
+            )}
+            renderSectionHeader={({ section }) => (
+              <View>
+                <Text>{section.title}</Text>
+              </View>
+            )}
+            keyExtractor={(item) => item}
+          />
+          <BottomSheet.Content>
+            <View>
+              <Text>Bottomsheet content</Text>
+            </View>
+          </BottomSheet.Content>
+        </BottomSheet>,
+      ),
+    ).toThrow(
+      'expected to have one of `BottomSheet.Content or BottomSheet.SectionList` but found both',
+    );
+  });
+
+  it('should throw error when multiple SectionList are provided', () => {
+    expect(() =>
+      renderWithTheme(
+        <BottomSheet visible={true} initialHeight={300} onClose={() => {}}>
+          <BottomSheet.SectionList
+            sections={sections}
+            renderItem={({ item }) => (
+              <View>
+                <Text>{item}</Text>
+              </View>
+            )}
+            renderSectionHeader={({ section }) => (
+              <View>
+                <Text>{section.title}</Text>
+              </View>
+            )}
+            keyExtractor={(item) => item}
+          />
+          <BottomSheet.SectionList
+            sections={sections}
+            renderItem={({ item }) => (
+              <View>
+                <Text>{item}</Text>
+              </View>
+            )}
+            renderSectionHeader={({ section }) => (
+              <View>
+                <Text>{section.title}</Text>
+              </View>
+            )}
+            keyExtractor={(item) => item}
+          />
+        </BottomSheet>,
+      ),
+    ).toThrow('expected to have single `BottomSheet.SectionList` but found but found 2');
   });
 });
