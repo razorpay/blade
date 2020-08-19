@@ -38,6 +38,7 @@ const icons = {
   trash: require('./Trash').default,
   wiFiOn: require('./WiFiOn').default,
   wiFiOff: require('./WiFiOff').default,
+  link: require('./Link').default,
 };
 
 export default icons;
