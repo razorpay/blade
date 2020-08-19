@@ -13,22 +13,45 @@ const Item = styled(View)`
 `;
 
 const list = [
-  'Samsung',
-  'Xiaomi',
-  'OnePlus',
   'Apple',
-  'Vivo',
-  'Oppo',
+  'Asus',
+  'Blackberry',
+  'Honor',
+  'HTC',
+  'Huawei',
+  'Lava',
   'Lenovo',
   'LG',
+  'Motorola',
+  'Nexus',
   'Nokia',
-  'HTC',
+  'OnePlus',
+  'Oppo',
+  'Panasonic',
+  'Pixel',
+  'Realme',
+  'Samsung',
+  'Sony',
+  'Toshiba',
+  'Vivo',
+  'Xiaomi',
 ];
 
 const data = new Array(list.length).fill({}).map((item, index) => ({
   id: index,
   name: list[index],
 }));
+
+export const sections = [
+  {
+    title: 'Section1',
+    data: list,
+  },
+  {
+    title: 'Section2',
+    data: list,
+  },
+];
 
 storiesOf('BottomSheet', module)
   .addParameters({
@@ -198,5 +221,32 @@ storiesOf('BottomSheet', module)
           </BottomSheet.Content>
         </BottomSheet>
       </>
+    );
+  })
+  .add('SectionList', () => {
+    return (
+      <BottomSheet visible={true} initialHeight={300} onClose={() => {}}>
+        <BottomSheet.SectionList
+          sections={sections}
+          renderItem={({ item }) => (
+            <Space padding={[1]}>
+              <View>
+                <Text>{item}</Text>
+              </View>
+            </Space>
+          )}
+          renderSectionHeader={({ section }) => (
+            <View>
+              <Text>{section.title}</Text>
+            </View>
+          )}
+          keyExtractor={(item) => item}
+        />
+        <BottomSheet.Footer>
+          <View>
+            <Text>Footer1</Text>
+          </View>
+        </BottomSheet.Footer>
+      </BottomSheet>
     );
   });
