@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getVariantColorKeys } from '../../_helpers/theme';
 import RadioContext from './RadioContext';
 import RadioOption from './RadioOption';
-import Fieldset from './Fieldset';
+import RadioGroup from './RadioGroup';
 
 const Radio = ({ value, onChange, defaultValue, variantColor, size, children }) => {
   const [selected, setSelected] = useState(value || defaultValue);
@@ -25,7 +25,7 @@ const Radio = ({ value, onChange, defaultValue, variantColor, size, children }) 
 
   return (
     <RadioContext.Provider value={contextValue}>
-      <Fieldset>{children}</Fieldset>
+      <RadioGroup>{children}</RadioGroup>
     </RadioContext.Provider>
   );
 };
