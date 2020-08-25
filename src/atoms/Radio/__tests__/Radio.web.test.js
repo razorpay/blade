@@ -7,6 +7,17 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<Radio />', () => {
+  describe('default', () => {
+    it('should render a radio only without title, helptext/errortext', () => {
+      const { container } = renderWithTheme(
+        <Radio value="1">
+          <Radio.Option value="1" />
+        </Radio>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
   describe('id', () => {
     it('should not have id attribute if not provided as prop', () => {
       const { getByRole } = renderWithTheme(
@@ -66,17 +77,6 @@ describe('<Radio />', () => {
     });
   });
 
-  describe('radio only', () => {
-    it('should render a radio only without title, helptext/errortext', () => {
-      const { container } = renderWithTheme(
-        <Radio value="1">
-          <Radio.Option value="1" />
-        </Radio>,
-      );
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('size', () => {
     it('should render a large radio input', () => {
       const { container } = renderWithTheme(
@@ -87,7 +87,7 @@ describe('<Radio />', () => {
       expect(container).toMatchSnapshot();
     });
 
-    it('should render a medium(default) radio input', () => {
+    it('should render a medium radio input', () => {
       const { container } = renderWithTheme(
         <Radio value="1" size="medium">
           <Radio.Option value="1" />
@@ -210,15 +210,19 @@ describe('<Radio />', () => {
     describe('with defaultValue(uncontrolled)', () => {
       it('should call onChange with updated check value', () => {
         const onChange = jest.fn();
-        const { getByRole } = renderWithTheme(
+        const { getByLabelText } = renderWithTheme(
           <Radio onChange={onChange} defaultValue="1">
-            <Radio.Option value="2" />
+            <Radio.Option value="1" title="First Option" />
+            <Radio.Option value="2" title="Second Option" />
           </Radio>,
         );
-        const radio = getByRole('radio');
-        expect(radio.checked).toBe(false);
-        fireEvent.click(radio);
-        expect(radio.checked).toBe(true);
+        const firstOption = getByLabelText('First Option');
+        const secondOption = getByLabelText('Second Option');
+        expect(firstOption.checked).toBe(true);
+        expect(secondOption.checked).toBe(false);
+        fireEvent.click(secondOption);
+        expect(firstOption.checked).toBe(false);
+        expect(secondOption.checked).toBe(true);
         expect(onChange).toHaveBeenCalledTimes(1);
         expect(onChange).toHaveBeenCalledWith('2');
       });
@@ -228,13 +232,13 @@ describe('<Radio />', () => {
           const onChange = jest.fn();
           const { getByRole } = renderWithTheme(
             <Radio onChange={onChange} defaultValue="1">
-              <Radio.Option value="2" disabled />
+              <Radio.Option value="1" disabled />
             </Radio>,
           );
           const radio = getByRole('radio');
-          expect(radio.checked).toBe(false);
+          expect(radio.checked).toBe(true);
           fireEvent.click(radio);
-          expect(radio.checked).toBe(false);
+          expect(radio.checked).toBe(true);
           expect(onChange).not.toBeCalled();
         });
       });
@@ -243,15 +247,19 @@ describe('<Radio />', () => {
     describe('with value(controlled)', () => {
       it('should call onChange with updated check value', () => {
         const onChange = jest.fn();
-        const { getByRole } = renderWithTheme(
+        const { getByLabelText } = renderWithTheme(
           <Radio onChange={onChange} value="1">
-            <Radio.Option value="2" />
+            <Radio.Option value="1" title="First Option" />
+            <Radio.Option value="2" title="Second Option" />
           </Radio>,
         );
-        const radio = getByRole('radio');
-        expect(radio.checked).toBe(false);
-        fireEvent.click(radio);
-        expect(radio.checked).toBe(false);
+        const firstOption = getByLabelText('First Option');
+        const secondOption = getByLabelText('Second Option');
+        expect(firstOption.checked).toBe(true);
+        expect(secondOption.checked).toBe(false);
+        fireEvent.click(secondOption);
+        expect(firstOption.checked).toBe(true);
+        expect(secondOption.checked).toBe(false);
         expect(onChange).toHaveBeenCalledTimes(1);
         expect(onChange).toHaveBeenCalledWith('2');
       });
@@ -352,7 +360,9 @@ describe('<Radio />', () => {
           <Radio.Option value="1" testID={testID} />
         </Radio>,
       );
-      expect(queryByTestId(testID)).not.toBeNull();
+      const radio = queryByTestId(testID);
+      expect(radio.checked).toBe(true);
+      expect(radio).not.toBeNull();
     });
   });
 });

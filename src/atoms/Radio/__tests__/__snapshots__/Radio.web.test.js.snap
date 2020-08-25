@@ -1,9 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Radio /> default should render a radio only without title, helptext/errortext 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
 exports[`<Radio /> defaultValue should render radio checked(attr) as true if defaultValue(prop) is provided 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -44,7 +85,7 @@ exports[`<Radio /> defaultValue should render radio checked(attr) as true if def
 exports[`<Radio /> defaultValue should render radio input with checked(attr) as false if defaultValue(prop) is not provided 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -80,7 +121,7 @@ exports[`<Radio /> defaultValue should render radio input with checked(attr) as 
 exports[`<Radio /> disabled should render a disabled radio input if disabled is true 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -123,7 +164,7 @@ exports[`<Radio /> disabled should render a disabled radio input if disabled is 
 exports[`<Radio /> errorText should render radio with provided errorText 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -171,7 +212,7 @@ exports[`<Radio /> errorText should render radio with provided errorText 1`] = `
 exports[`<Radio /> focus with defaultValue should render focus styles on radio when radio is checked 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -212,7 +253,7 @@ exports[`<Radio /> focus with defaultValue should render focus styles on radio w
 exports[`<Radio /> focus with defaultValue should render focus styles on radio when radio is not checked 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -248,7 +289,7 @@ exports[`<Radio /> focus with defaultValue should render focus styles on radio w
 exports[`<Radio /> focus with value should render focus styles on radio when radio is checked 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -289,7 +330,7 @@ exports[`<Radio /> focus with value should render focus styles on radio when rad
 exports[`<Radio /> focus with value should render focus styles on radio when radio is not checked 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -325,7 +366,7 @@ exports[`<Radio /> focus with value should render focus styles on radio when rad
 exports[`<Radio /> helpText should render radio with provided helpText 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -370,51 +411,10 @@ exports[`<Radio /> helpText should render radio with provided helpText 1`] = `
 </div>
 `;
 
-exports[`<Radio /> radio only should render a radio only without title, helptext/errortext 1`] = `
-<div>
-  <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
-  >
-    <div
-      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
-    >
-      <label
-        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
-      >
-        <input
-          checked=""
-          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
-          data-testid="ds-radio-button"
-          type="radio"
-          value="1"
-        />
-        <div
-          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
-        >
-          <div
-            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
-            color="rgba(43, 131, 234, 1.0 )"
-          >
-            <div
-              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
-            />
-          </div>
-        </div>
-        <div
-          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
-          color="shade.980"
-          data-testid="ds-text"
-        />
-      </label>
-    </div>
-  </fieldset>
-</div>
-`;
-
 exports[`<Radio /> size should render a large radio input 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -452,10 +452,10 @@ exports[`<Radio /> size should render a large radio input 1`] = `
 </div>
 `;
 
-exports[`<Radio /> size should render a medium(default) radio input 1`] = `
+exports[`<Radio /> size should render a medium radio input 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -496,7 +496,7 @@ exports[`<Radio /> size should render a medium(default) radio input 1`] = `
 exports[`<Radio /> size should render a small radio input 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -537,7 +537,7 @@ exports[`<Radio /> size should render a small radio input 1`] = `
 exports[`<Radio /> title should render radio with provided title 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -580,7 +580,7 @@ exports[`<Radio /> title should render radio with provided title 1`] = `
 exports[`<Radio /> value should render radio input checked(attr) as true if value(prop) is provided 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -623,7 +623,7 @@ exports[`<Radio /> value should render radio input checked(attr) as true if valu
 exports[`<Radio /> value should render radio input with checked(attr) as false if value(prop) is not provided 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -661,7 +661,7 @@ exports[`<Radio /> value should render radio input with checked(attr) as false i
 exports[`<Radio /> variantColor should render a radio with default variantColor if variantColor not provided 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
@@ -702,7 +702,7 @@ exports[`<Radio /> variantColor should render a radio with default variantColor 
 exports[`<Radio /> variantColor should render a radio with provided variantColor 1`] = `
 <div>
   <fieldset
-    class="Fieldset__RadioGroup-f7tmkl-0 imUrla"
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
   >
     <div
       class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
