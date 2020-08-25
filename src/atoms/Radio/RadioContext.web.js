@@ -1,13 +1,13 @@
 import React from 'react';
 
-const RadioButtonContext = React.createContext(null);
+const RadioContext = React.createContext(null);
 
-export const useRadioButtonContext = () => {
-  const radioButtonContext = React.useContext(RadioButtonContext);
-  if (radioButtonContext === undefined) {
-    throw new Error('useRadioButtonContext must be used within a RadioButtonProvider');
+export const useRadioContext = () => {
+  const radioContext = React.useContext(RadioContext);
+  if (radioContext === undefined) {
+    throw new Error('useRadioContext must be used within a RadioProvider');
   }
-  return radioButtonContext;
+  return radioContext;
 };
 
-export default RadioButtonContext;
+export default RadioContext;

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { getVariantColorKeys } from '../../_helpers/theme';
-import RadioButtonContext from './RadioContext';
+import RadioContext from './RadioContext';
 import RadioOption from './RadioOption';
 import Fieldset from './Fieldset';
 
@@ -24,9 +24,9 @@ const Radio = ({ value, onChange, defaultValue, variantColor, size, children }) 
   );
 
   return (
-    <RadioButtonContext.Provider value={contextValue}>
+    <RadioContext.Provider value={contextValue}>
       <Fieldset>{children}</Fieldset>
-    </RadioButtonContext.Provider>
+    </RadioContext.Provider>
   );
 };
 
