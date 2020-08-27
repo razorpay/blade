@@ -3,6 +3,7 @@ const icons = {
   arrowLeft: require('./ArrowLeft').default,
   arrowRight: require('./ArrowRight').default,
   arrowUp: require('./ArrowUp').default,
+  bell: require('./Bell').default,
   briefcase: require('./Briefcase').default,
   check: require('./Check').default,
   checkboxFilled: require('./CheckboxFilled').default,
