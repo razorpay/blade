@@ -33,6 +33,7 @@ const icons = {
   power: require('./Power').default,
   refund: require('./Refund').default,
   search: require('./Search').default,
+  share: require('./Share').default,
   smartCollect: require('./SmartCollect').default,
   subscription: require('./Subscription').default,
   success: require('./Success').default,
