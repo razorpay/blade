@@ -25,6 +25,7 @@ const icons = {
   mail: require('./Mail').default,
   maximize: require('./Maximize').default,
   minimize: require('./Minimize').default,
+  message: require('./Message').default,
   moreVertical: require('./MoreVertical').default,
   paymentLink: require('./PaymentLink').default,
   paymentCapture: require('./PaymentCapture').default,
