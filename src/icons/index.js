@@ -24,12 +24,12 @@ const icons = {
   link: require('./Link').default,
   mail: require('./Mail').default,
   maximize: require('./Maximize').default,
-  minimize: require('./Minimize').default,
   message: require('./Message').default,
+  minimize: require('./Minimize').default,
   moreVertical: require('./MoreVertical').default,
-  paymentLink: require('./PaymentLink').default,
   paymentCapture: require('./PaymentCapture').default,
   paymentGateway: require('./PaymentGateway').default,
+  paymentLink: require('./PaymentLink').default,
   paymentPage: require('./PaymentPage').default,
   phone: require('./Phone').default,
   power: require('./Power').default,
@@ -40,8 +40,8 @@ const icons = {
   subscription: require('./Subscription').default,
   success: require('./Success').default,
   trash: require('./Trash').default,
-  wiFiOn: require('./WiFiOn').default,
   wiFiOff: require('./WiFiOff').default,
+  wiFiOn: require('./WiFiOn').default,
 };
 
 export default icons;
