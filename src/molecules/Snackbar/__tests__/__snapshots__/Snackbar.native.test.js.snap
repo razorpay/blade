@@ -11,17 +11,20 @@ exports[`<Snackbar /> action label 1`] = `
   }
 >
   <View
-    position="absolute"
     style={
-      Object {
-        "opacity": 0,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
@@ -201,17 +204,20 @@ exports[`<Snackbar /> icon renders with an icon 1`] = `
   }
 >
   <View
-    position="absolute"
     style={
-      Object {
-        "opacity": 0,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
@@ -363,17 +369,20 @@ exports[`<Snackbar /> maxLines renders 1 line 1`] = `
   }
 >
   <View
-    position="absolute"
     style={
-      Object {
-        "opacity": 0,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
@@ -470,17 +479,20 @@ exports[`<Snackbar /> maxLines renders multiple lines 1`] = `
   }
 >
   <View
-    position="absolute"
     style={
-      Object {
-        "opacity": 0,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
@@ -577,18 +589,21 @@ exports[`<Snackbar /> position change bottom position 1`] = `
 >
   <View
     bottom={4}
-    position="absolute"
     style={
-      Object {
-        "bottom": 32,
-        "opacity": 0,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "bottom": 32,
+          "position": "absolute",
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
@@ -685,18 +700,21 @@ exports[`<Snackbar /> position change left position 1`] = `
 >
   <View
     left={2}
-    position="absolute"
     style={
-      Object {
-        "left": 16,
-        "opacity": 0,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "left": 16,
+          "position": "absolute",
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
@@ -792,19 +810,22 @@ exports[`<Snackbar /> position change right position 1`] = `
   }
 >
   <View
-    position="absolute"
     right={2}
     style={
-      Object {
-        "opacity": 0,
-        "position": "absolute",
-        "right": 16,
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "position": "absolute",
+          "right": 16,
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
@@ -900,18 +921,21 @@ exports[`<Snackbar /> position change top position 1`] = `
   }
 >
   <View
-    position="absolute"
     style={
-      Object {
-        "opacity": 0,
-        "position": "absolute",
-        "top": 32,
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "position": "absolute",
+          "top": 32,
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
     top={4}
   >
@@ -1008,17 +1032,20 @@ exports[`<Snackbar /> variant default 1`] = `
   }
 >
   <View
-    position="absolute"
     style={
-      Object {
-        "opacity": 0,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
@@ -1114,17 +1141,20 @@ exports[`<Snackbar /> variant negative 1`] = `
   }
 >
   <View
-    position="absolute"
     style={
-      Object {
-        "opacity": 0,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
@@ -1220,17 +1250,20 @@ exports[`<Snackbar /> variant neutral 1`] = `
   }
 >
   <View
-    position="absolute"
     style={
-      Object {
-        "opacity": 0,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
@@ -1326,17 +1359,20 @@ exports[`<Snackbar /> variant positive 1`] = `
   }
 >
   <View
-    position="absolute"
     style={
-      Object {
-        "opacity": 0,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
@@ -1432,17 +1468,20 @@ exports[`<Snackbar /> variant warning 1`] = `
   }
 >
   <View
-    position="absolute"
     style={
-      Object {
-        "opacity": 0,
-        "position": "absolute",
-        "transform": Array [
-          Object {
-            "translateY": 1334,
-          },
-        ],
-      }
+      Array [
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "translateY": 1334,
+            },
+          ],
+        },
+      ]
     }
   >
     <View
