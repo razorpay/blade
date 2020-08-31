@@ -127,7 +127,7 @@ describe('<Radio />', () => {
   });
 
   describe('focus', () => {
-    describe('with defaultValue', () => {
+    describe('with defaultValue(uncontrolled)', () => {
       it('should render focus styles on radio when radio is not checked', () => {
         const { container, getByRole } = renderWithTheme(
           <Radio defaultValue="1">
@@ -153,7 +153,7 @@ describe('<Radio />', () => {
       });
     });
 
-    describe('with value', () => {
+    describe('with value(controlled)', () => {
       it('should render focus styles on radio when radio is not checked', () => {
         const { container, getByRole } = renderWithTheme(
           <Radio value="1">

@@ -209,7 +209,7 @@ exports[`<Radio /> errorText should render radio with provided errorText 1`] = `
 </div>
 `;
 
-exports[`<Radio /> focus with defaultValue should render focus styles on radio when radio is checked 1`] = `
+exports[`<Radio /> focus with defaultValue(uncontrolled) should render focus styles on radio when radio is checked 1`] = `
 <div>
   <fieldset
     class="RadioGroup-sc-1z00cyt-0 erfQPN"
@@ -250,7 +250,7 @@ exports[`<Radio /> focus with defaultValue should render focus styles on radio w
 </div>
 `;
 
-exports[`<Radio /> focus with defaultValue should render focus styles on radio when radio is not checked 1`] = `
+exports[`<Radio /> focus with defaultValue(uncontrolled) should render focus styles on radio when radio is not checked 1`] = `
 <div>
   <fieldset
     class="RadioGroup-sc-1z00cyt-0 erfQPN"
@@ -286,7 +286,7 @@ exports[`<Radio /> focus with defaultValue should render focus styles on radio w
 </div>
 `;
 
-exports[`<Radio /> focus with value should render focus styles on radio when radio is checked 1`] = `
+exports[`<Radio /> focus with value(controlled) should render focus styles on radio when radio is checked 1`] = `
 <div>
   <fieldset
     class="RadioGroup-sc-1z00cyt-0 erfQPN"
@@ -327,7 +327,7 @@ exports[`<Radio /> focus with value should render focus styles on radio when rad
 </div>
 `;
 
-exports[`<Radio /> focus with value should render focus styles on radio when radio is not checked 1`] = `
+exports[`<Radio /> focus with value(controlled) should render focus styles on radio when radio is not checked 1`] = `
 <div>
   <fieldset
     class="RadioGroup-sc-1z00cyt-0 erfQPN"
