@@ -19,13 +19,13 @@ storiesOf('RadioButton', module)
   .add('default', () => (
     <Radio
       value="1"
+      size={select('Size', sizeOptions, 'large')}
       onChange={(value) => {
         action('Value', value);
       }}
     >
       <Radio.Option
         value="1"
-        size={select('Size', sizeOptions, 'large')}
         title={text('Title', 'Enable Beast Mode')}
         helpText={text('Help Text', 'Play with addons to see changes')}
         disabled={boolean('Disabled', false)}
@@ -35,14 +35,17 @@ storiesOf('RadioButton', module)
   ))
   .add('onChange', () => (
     <Radio
+      defaultValue="1"
       onChange={(value) => {
         action('Value', value);
       }}
+      variantColor="shade"
+      size="large"
     >
-      <Radio.Option value="1" size="large" title="Unchecked" helpText="I'm unchecked" />
-      <Radio.Option value="2" size="large" title="Checked" helpText="I'm active" />
-      <Radio.Option value="3" size="large" disabled title="Disabled" helpText="I'm disabled" />
-      <Radio.Option value="4" size="large" title="Error" errorText="Something's not right!" />
+      <Radio.Option name="group1" value="1" title="Unchecked" helpText="I'm unchecked" />
+      <Radio.Option name="group1" value="2" title="Checked" helpText="I'm active" />
+      <Radio.Option name="group1" value="3" disabled title="Disabled" helpText="I'm disabled" />
+      <Radio.Option name="group1" value="4" title="Error" errorText="Something's not right!" />
     </Radio>
   ))
   .add('controlled', () => (
@@ -50,14 +53,15 @@ storiesOf('RadioButton', module)
       <View>
         <Radio
           value="1"
+          size="large"
           onChange={(value) => {
             action('Value', value);
           }}
         >
-          <Radio.Option value="1" size="large" title="Unchecked" helpText="I'm unchecked" />
-          <Radio.Option value="2" size="large" title="Checked" helpText="I'm active" />
-          <Radio.Option value="3" size="large" disabled title="Disabled" helpText="I'm disabled" />
-          <Radio.Option value="4" size="large" title="Error" errorText="Something's not right!" />
+          <Radio.Option value="1" title="Unchecked" helpText="I'm unchecked" />
+          <Radio.Option value="2" title="Checked" helpText="I'm active" />
+          <Radio.Option value="3" disabled title="Disabled" helpText="I'm disabled" />
+          <Radio.Option value="4" title="Error" errorText="Something's not right!" />
         </Radio>
       </View>
     </Flex>
