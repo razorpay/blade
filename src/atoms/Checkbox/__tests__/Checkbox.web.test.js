@@ -193,6 +193,8 @@ describe('<Checkbox />', () => {
     });
 
     describe('with checked(controlled)', () => {
+      // Since its a controlled component, the checked attribute should only update after component re-renders with new Prop value from Parent.
+      // TODO: Check after updating Jest and JSDom
       it('should call onChange with updated check value when inital value of checked is false', () => {
         const onChange = jest.fn();
         const { getByRole } = renderWithTheme(

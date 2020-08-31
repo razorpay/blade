@@ -258,6 +258,8 @@ describe('<Radio />', () => {
         expect(firstOption.checked).toBe(true);
         expect(secondOption.checked).toBe(false);
         fireEvent.click(secondOption);
+        // Assertions should be made after re-render, however it is observed that checked attribute does not update even after re-render
+        // TODO: Check after updating Jest & JSDom
         expect(firstOption.checked).toBe(true);
         expect(secondOption.checked).toBe(false);
         expect(onChange).toHaveBeenCalledTimes(1);
