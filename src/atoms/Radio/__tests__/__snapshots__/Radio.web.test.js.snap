@@ -1,0 +1,741 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Radio /> default should render a radio only without title, helptext/errortext 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> defaultValue should render radio checked(attr) as true if defaultValue(prop) is provided 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> defaultValue should render radio input with checked(attr) as false if defaultValue(prop) is not provided 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          class="Inputweb__Input-sc-1aqyk3g-0 gwAJyU"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 ftrjid Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(22, 47, 86, 0.38)"
+          />
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> disabled should render a disabled radio input if disabled is true 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 hWufdL Flexweb__Flex-ni2cjg-0 jOkEVe"
+        disabled=""
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 ejKGQP"
+          data-testid="ds-radio-button"
+          disabled=""
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 dJZWbf Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(22, 47, 86, 0.10)"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 hclUjj Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.950"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> errorText should render radio with provided errorText 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+      <div
+        class="Textweb__Text-sc-6jf9e4-0 bvsJJn Spaceweb__Space-njatzl-0 cMStXi"
+        color="negative.900"
+        data-testid="ds-text"
+      >
+        This is some sample error text.
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> focus with defaultValue(uncontrolled) should render focus styles on radio when radio is checked 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> focus with defaultValue(uncontrolled) should render focus styles on radio when radio is not checked 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          class="Inputweb__Input-sc-1aqyk3g-0 gwAJyU"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="2"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 ftrjid Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(22, 47, 86, 0.38)"
+          />
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> focus with value(controlled) should render focus styles on radio when radio is checked 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> focus with value(controlled) should render focus styles on radio when radio is not checked 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          class="Inputweb__Input-sc-1aqyk3g-0 gwAJyU"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="2"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 ftrjid Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(22, 47, 86, 0.38)"
+          />
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> helpText should render radio with provided helpText 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+      <div
+        class="Textweb__Text-sc-6jf9e4-0 krUdvH Spaceweb__Space-njatzl-0 cMStXi"
+        color="shade.950"
+        data-testid="ds-text"
+      >
+        This is some sample help text.
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> size should render a large radio input 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 bHckdz Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 ekjUSZ Sizeweb__Size-sc-10bl685-0 hBxgpP"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 ipZgvr"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 eKxMBE Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> size should render a medium radio input 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> size should render a small radio input 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 kBzgkT Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 corUOz Sizeweb__Size-sc-10bl685-0 GIRVz"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 gItvwT"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 kNsceG Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> title should render radio with provided title 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        >
+          Radio Button
+        </div>
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> value should render radio input checked(attr) as true if value(prop) is provided 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 hWufdL Flexweb__Flex-ni2cjg-0 jOkEVe"
+        disabled=""
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 ejKGQP"
+          data-testid="ds-radio-button"
+          disabled=""
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 dJZWbf Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(22, 47, 86, 0.10)"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 hclUjj Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.950"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> value should render radio input with checked(attr) as false if value(prop) is not provided 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 hWufdL Flexweb__Flex-ni2cjg-0 jOkEVe"
+        disabled=""
+      >
+        <input
+          class="Inputweb__Input-sc-1aqyk3g-0 ejKGQP"
+          data-testid="ds-radio-button"
+          disabled=""
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 dJZWbf Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(22, 47, 86, 0.10)"
+          />
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 iFsPRm Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.950"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> variantColor should render a radio with default variantColor if variantColor not provided 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 gSSezE"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 iEIPeL Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(43, 131, 234, 1.0 )"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 kppwFv Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`<Radio /> variantColor should render a radio with provided variantColor 1`] = `
+<div>
+  <fieldset
+    class="RadioGroup-sc-1z00cyt-0 erfQPN"
+  >
+    <div
+      class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    >
+      <label
+        class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-yn9olg-0 huKThF Flexweb__Flex-ni2cjg-0 jOkEVe"
+      >
+        <input
+          checked=""
+          class="Inputweb__Input-sc-1aqyk3g-0 frtfBX"
+          data-testid="ds-radio-button"
+          type="radio"
+          value="1"
+        />
+        <div
+          class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-sc-1v1pz23-0 ivnJlW Sizeweb__Size-sc-10bl685-0 ggRLgn Flexweb__Flex-ni2cjg-0 gOmkjy"
+        >
+          <div
+            class="Viewweb__View-sc-1cphyjf-0 Circleweb__Circle-sc-16arf6k-0 bKuAjf Sizeweb__Size-sc-10bl685-0 kDdxwT"
+            color="rgba(52, 74, 108, 1.0)"
+          >
+            <div
+              class="Viewweb__View-sc-1cphyjf-0 Dotweb__Dot-k0n41t-0 heNUZb Sizeweb__Size-sc-10bl685-0 cQAZev"
+            />
+          </div>
+        </div>
+        <div
+          class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+          color="shade.980"
+          data-testid="ds-text"
+        />
+      </label>
+    </div>
+  </fieldset>
+</div>
+`;
