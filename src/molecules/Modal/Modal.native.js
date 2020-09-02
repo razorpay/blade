@@ -57,6 +57,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
           onBackdropPress={onBackdropClick}
           onBackButtonPress={onClose}
           backdropColor={theme.colors.shade[950]}
+          propagateSwipe
         >
           <ModalContainer variant="centered">
             {onClose ? (
@@ -86,7 +87,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
   if (variant === 'fullscreen') {
     return (
       <Space margin={[`${getStatusBarHeight(true)}px`, 0, 0, 0]}>
-        <RNModal isVisible={visible} hasBackdrop={false} onBackButtonPress={onClose}>
+        <RNModal isVisible={visible} hasBackdrop={false} onBackButtonPress={onClose} propagateSwipe>
           <Flex flex={1}>
             <ModalContainer variant="fullscreen">
               {React.Children.map(children, (child) => {
@@ -110,6 +111,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
             onBackButtonPress={onClose}
             avoidKeyboard={true}
             backdropColor={theme.colors.shade[950]}
+            propagateSwipe
           >
             <ModalContainer variant="bottomsheet">
               <Flex alignItems="center">
