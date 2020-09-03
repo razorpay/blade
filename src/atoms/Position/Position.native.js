@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { makePxValue } from '../../_helpers/theme';
 
-const Position = styled(({ children, style, ...props }) => {
-  if (React.Children.toArray(children).length !== 1) {
-    throw new Error('Expected a single child for Position component');
-  }
-  return React.cloneElement(children, {
-    ...props,
-    style: [style, children.props.style].filter(Boolean),
-  });
-})`
+const Position = styled(
+  ({ position, top, right, bottom, left, zIndex, children, style, ...props }) => {
+    if (React.Children.toArray(children).length !== 1) {
+      throw new Error('Expected a single child for Position component');
+    }
+    return React.cloneElement(children, {
+      ...props,
+      style: [style, children.props.style].filter(Boolean),
+    });
+  },
+)`
   ${(props) => (props.position ? `position: ${props.position};` : '')};
   ${(props) => (props.top ? `top: ${makePxValue(props.top)};` : '')};
   ${(props) => (props.right ? `right: ${makePxValue(props.right)};` : '')};

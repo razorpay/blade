@@ -11,10 +11,6 @@ exports[`<Position /> renders should apply specified props to child component 1`
   }
 >
   <View
-    bottom={2}
-    left={2}
-    position="absolute"
-    right={2}
     style={
       Array [
         Array [
@@ -29,8 +25,6 @@ exports[`<Position /> renders should apply specified props to child component 1`
         ],
       ]
     }
-    top={2}
-    zIndex={2}
   />
 </View>
 `;
@@ -46,7 +40,6 @@ exports[`<Position /> renders should render component with default props 1`] = `
   }
 >
   <View
-    position="relative"
     style={
       Array [
         Array [
