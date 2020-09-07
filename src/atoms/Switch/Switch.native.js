@@ -120,10 +120,12 @@ const moveKnobLeft = ({
     Animated.timing(animatedLeftValue, {
       toValue: animationConfig.off.leftSpace,
       duration: animationConfig.knob.translationDuration,
+      useNativeDriver: false,
     }),
     Animated.timing(animatedRightValue, {
       toValue: animationConfig.off.rightSpace,
       duration: animationConfig.knob.translationDuration,
+      useNativeDriver: false,
     }),
   ]).start(onAnimationEnd);
 };
@@ -138,10 +140,12 @@ const moveKnobRight = ({
     Animated.timing(animatedLeftValue, {
       toValue: animationConfig.on.leftSpace,
       duration: animationConfig.knob.translationDuration,
+      useNativeDriver: false,
     }),
     Animated.timing(animatedRightValue, {
       toValue: animationConfig.on.rightSpace,
       duration: animationConfig.knob.translationDuration,
+      useNativeDriver: false,
     }),
   ]).start(onAnimationEnd);
 };
@@ -155,6 +159,7 @@ const scaleKnob = ({
   Animated.timing(animatedValue, {
     toValue: animateToValue,
     duration: animationDuration,
+    useNativeDriver: false,
   }).start(onAnimationEnd);
 };
 

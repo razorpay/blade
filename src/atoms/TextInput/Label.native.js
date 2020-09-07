@@ -80,6 +80,7 @@ const onFocus = ({ animationConfig, labelAnimatedValue }) => {
   Animated.timing(labelAnimatedValue, {
     toValue: animationConfig.animationValue.final,
     duration: animationConfig.duration,
+    useNativeDriver: false,
   }).start();
 };
 
@@ -87,6 +88,7 @@ const onBlur = ({ animationConfig, labelAnimatedValue }) => {
   Animated.timing(labelAnimatedValue, {
     toValue: animationConfig.animationValue.initial,
     duration: animationConfig.duration,
+    useNativeDriver: false,
   }).start();
 };
 
