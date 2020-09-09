@@ -5,6 +5,17 @@ import Text from '../Text';
 import automation from '../../_helpers/automation-attributes';
 import Flex from '../Flex';
 
+const styles = {
+  hitSlop() {
+    return {
+      top: 4,
+      bottom: 4,
+      left: 4,
+      right: 4,
+    };
+  },
+};
+
 const Link = ({ children, onClick, size, testID }) => {
   const [active, setActive] = useState(false);
   const inactiveTextColor = 'primary.800';
@@ -24,6 +35,7 @@ const Link = ({ children, onClick, size, testID }) => {
         onPress={onClick}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
+        hitSlop={styles.hitSlop()}
         {...automation(testID)}
       >
         <Text
