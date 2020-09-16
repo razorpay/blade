@@ -5,18 +5,7 @@ import Text from '../Text';
 import automation from '../../_helpers/automation-attributes';
 import Flex from '../Flex';
 
-const styles = {
-  hitSlop() {
-    return {
-      top: 4,
-      bottom: 4,
-      left: 4,
-      right: 4,
-    };
-  },
-};
-
-const Link = ({ children, onClick, size, testID }) => {
+const Link = ({ children, onClick, size, hitSlop, testID }) => {
   const [active, setActive] = useState(false);
   const inactiveTextColor = 'primary.800';
   const activeTextColor = 'primary.600';
@@ -35,7 +24,7 @@ const Link = ({ children, onClick, size, testID }) => {
         onPress={onClick}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
-        hitSlop={styles.hitSlop()}
+        hitSlop={hitSlop}
         {...automation(testID)}
       >
         <Text
@@ -55,12 +44,24 @@ Link.propTypes = {
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
   testID: PropTypes.string,
+  hitSlop: PropTypes.shape({
+    left: PropTypes.number,
+    top: PropTypes.number,
+    right: PropTypes.number,
+    bottom: PropTypes.number,
+  }),
 };
 
 Link.defaultProps = {
   onClick: () => {},
   size: 'medium',
   testID: 'ds-link',
+  hitSlop: {
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
 };
 
 export default Link;
