@@ -56,12 +56,6 @@ Link.defaultProps = {
   onClick: () => {},
   size: 'medium',
   testID: 'ds-link',
-  hitSlop: {
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
 };
 
 export default Link;

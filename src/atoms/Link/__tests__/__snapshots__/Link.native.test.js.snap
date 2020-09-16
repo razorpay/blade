@@ -12,14 +12,6 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
 >
   <TouchableOpacity
     activeOpacity={1}
-    hitSlop={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "top": 0,
-      }
-    }
     style={
       Array [
         Array [
@@ -72,14 +64,6 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
 >
   <TouchableOpacity
     activeOpacity={1}
-    hitSlop={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "top": 0,
-      }
-    }
     style={
       Array [
         Array [
@@ -132,14 +116,6 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
-    hitSlop={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "top": 0,
-      }
-    }
     style={
       Array [
         Array [
@@ -192,14 +168,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
-    hitSlop={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "top": 0,
-      }
-    }
     style={
       Array [
         Array [
@@ -252,14 +220,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = 
 >
   <TouchableOpacity
     activeOpacity={1}
-    hitSlop={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "top": 0,
-      }
-    }
     style={
       Array [
         Array [
@@ -312,14 +272,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
-    hitSlop={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "top": 0,
-      }
-    }
     style={
       Array [
         Array [
@@ -372,14 +324,6 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
 >
   <TouchableOpacity
     activeOpacity={1}
-    hitSlop={
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "top": 0,
-      }
-    }
     style={
       Array [
         Array [
