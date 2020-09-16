@@ -221,6 +221,7 @@ const RadioOption = ({
         disabled={disabled}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
+        delayPressIn={0}
         {...automation(testID)}
       >
         <Flex flexDirection="row" alignItems="center">

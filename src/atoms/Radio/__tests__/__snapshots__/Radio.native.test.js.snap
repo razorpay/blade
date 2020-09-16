@@ -4,6 +4,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
 <TouchableOpacity
   accessibilityRole="radio"
   activeOpacity={1}
+  delayPressIn={0}
   disabled={false}
   style={
     Array [
@@ -138,6 +139,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should match snapshot when 
 <TouchableOpacity
   accessibilityRole="radio"
   activeOpacity={1}
+  delayPressIn={0}
   disabled={false}
   style={
     Array [
@@ -300,6 +302,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -431,6 +434,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -562,6 +566,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -706,6 +711,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={true}
     style={
       Array [
@@ -876,6 +882,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={true}
     style={
       Array [
@@ -1046,6 +1053,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={true}
     style={
       Array [
@@ -1190,6 +1198,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -1360,6 +1369,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -1530,6 +1540,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render radio buttons
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -1674,6 +1685,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -1805,6 +1817,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -1936,6 +1949,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> should render uncontrolled 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -2080,6 +2094,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -2211,6 +2226,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -2342,6 +2358,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -2486,6 +2503,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -2617,6 +2635,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -2748,6 +2767,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -2892,6 +2912,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -3023,6 +3044,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -3173,6 +3195,7 @@ exports[`Native <RadioButton /> Uncontrolled <Radio> snapshot testing when user 
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -3317,6 +3340,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -3448,6 +3472,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -3598,6 +3623,7 @@ exports[`Native <RadioButton /> controlled component should match snapshot testi
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -3742,6 +3768,7 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -3892,6 +3919,7 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
@@ -4023,6 +4051,7 @@ exports[`Native <RadioButton /> controlled component should render controlled Ra
   <TouchableOpacity
     accessibilityRole="radio"
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     style={
       Array [
