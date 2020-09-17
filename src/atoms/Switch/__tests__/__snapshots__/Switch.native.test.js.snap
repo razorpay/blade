@@ -12,6 +12,7 @@ exports[`Renders <Switch /> correctly renders a controlled ON Switch 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     size="medium"
     style={
@@ -65,6 +66,7 @@ exports[`Renders <Switch /> correctly renders a default Switch 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     size="medium"
     style={
@@ -118,6 +120,7 @@ exports[`Renders <Switch /> correctly renders a disabled/OFF Switch 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
+    delayPressIn={0}
     disabled={true}
     size="medium"
     style={
@@ -171,6 +174,7 @@ exports[`Renders <Switch /> correctly renders a disabled/ON Switch 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
+    delayPressIn={0}
     disabled={true}
     size="medium"
     style={
@@ -224,6 +228,7 @@ exports[`Renders <Switch /> correctly renders a large Switch 1`] = `
 >
   <TouchableOpacity
     activeOpacity={1}
+    delayPressIn={0}
     disabled={false}
     size="large"
     style={
