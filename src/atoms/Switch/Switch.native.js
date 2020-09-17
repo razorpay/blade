@@ -331,6 +331,7 @@ const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
           size={size}
           onPressIn={onPressIn}
           onPressOut={onPressOut}
+          delayPressIn={0}
           style={[
             {
               backgroundColor:
