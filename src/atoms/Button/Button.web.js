@@ -476,8 +476,6 @@ Button.defaultProps = {
   type: 'button',
   onClick: () => {},
   testID: 'ds-button',
-  id: PropTypes.string,
-  name: PropTypes.string,
 };
 
 export default Button;
