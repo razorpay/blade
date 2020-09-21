@@ -18,6 +18,7 @@ const icons = {
   failure: require('./Failure').default,
   feather: require('./Feather').default,
   gear: require('./Gear').default,
+  helpCircle: require('./HelpCircle').default,
   info: require('./Info').default,
   invoice: require('./Invoice').default,
   lifeBuoy: require('./LifeBuoy').default,
