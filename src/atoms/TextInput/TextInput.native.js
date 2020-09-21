@@ -186,6 +186,8 @@ const TextInput = React.forwardRef(
       returnKeyType,
       autoCapitalize,
       onSubmitEditing,
+      onFocus,
+      onBlur,
       _isMultiline,
     },
     ref,
@@ -222,9 +224,9 @@ const TextInput = React.forwardRef(
     }
 
     const hasText = !!(input && input.length > 0);
-    const onFocus = useCallback(() => {
+    const onTextInputFocus = useCallback(() => {
       setIsFocused(true);
-
+      onFocus();
       /* Wait for 90ms to show the placeholder since it takes 100ms for Label to animate from inside to top of the TextInput.
        Otherwise they both overlap */
       /* Don't have any delay if label is on left of TextInput */
@@ -234,8 +236,9 @@ const TextInput = React.forwardRef(
       }, 90);
     }, []);
 
-    const onBlur = useCallback(() => {
+    const onTextInputBlur = useCallback(() => {
       setIsFocused(false);
+      onBlur();
       setIsPlaceholderVisible(false);
     }, [setIsFocused, setIsPlaceholderVisible]);
 
@@ -367,8 +370,8 @@ const TextInput = React.forwardRef(
                                   autoFocus={autoFocus}
                                   placeholder={placeholder}
                                   placeholderTextColor={placeholderTextColor}
-                                  onFocus={onFocus}
-                                  onBlur={onBlur}
+                                  onFocus={onTextInputFocus}
+                                  onBlur={onTextInputBlur}
                                   onChangeText={onChangeText}
                                   hasText={hasText}
                                   selectionColor={theme.colors.shade[980]} // not able to change this for Android
@@ -465,6 +468,8 @@ TextInput.propTypes = {
   returnKeyType: PropTypes.oneOf(['done', 'go', 'next', 'search', 'send']),
   autoCapitalize: PropTypes.oneOf(['none', 'sentences', 'words', 'characters']),
   onSubmitEditing: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   _isMultiline: PropTypes.bool,
 };
 
@@ -478,6 +483,8 @@ TextInput.defaultProps = {
   labelPosition: 'top',
   width: 'medium',
   type: 'text',
+  onFocus: () => {},
+  onBlur: () => {},
 };
 
 export default TextInput;
