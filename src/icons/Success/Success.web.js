@@ -5,21 +5,16 @@ import colors from '../../tokens/colors';
 
 function Success({ width, height, fill }) {
   return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 20 19"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M3.465 4.956a7.5 7.5 0 018.754-1.978.833.833 0 00.679-1.522 9.167 9.167 0 105.435 8.378v-.775a.833.833 0 10-1.666 0v.774A7.5 7.5 0 113.465 4.956z"
-        fill={fill}
-      />
-      <path
-        d="M18.923 2.923a.833.833 0 10-1.179-1.179l-8.577 8.578L7.256 8.41a.833.833 0 10-1.179 1.178l2.5 2.5a.833.833 0 001.179 0l9.167-9.166z"
-        fill={fill}
-      />
+    <svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+      <g clipPath="url(#prefix__clip0)" fill={fill}>
+        <path d="M4.158 7.147a9 9 0 0110.505-2.374 1 1 0 10.814-1.826A11 11 0 1022 13v-.93a1 1 0 10-2 0V13A9 9 0 114.158 7.146z" />
+        <path d="M22.707 4.707a1 1 0 00-1.414-1.414L11 13.586l-2.293-2.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l11-11z" />
+      </g>
+      <defs>
+        <clipPath id="prefix__clip0">
+          <path fill={fill} d="M0 0h24v24H0z" />
+        </clipPath>
+      </defs>
     </svg>
   );
 }
