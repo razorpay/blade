@@ -343,7 +343,7 @@ const TextInput = ({
 
   useEffect(() => {
     // Adjust height of textarea as user types for outlined variant
-    if (_isMultiline && variant === 'outlined') {
+    if (inputRef.current && _isMultiline && variant === 'outlined') {
       inputRef.current.style.height = 'inherit';
       const height = inputRef.current.scrollHeight;
       // if scroll-height is greater than 60 then keep height at 60 for some space between Input & Line
