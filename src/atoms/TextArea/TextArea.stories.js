@@ -13,6 +13,13 @@ const sizeOptions = {
   auto: 'auto',
 };
 
+const autoCapitalizeOptions = {
+  none: 'none',
+  sentences: 'sentences',
+  words: 'words',
+  characters: 'characters',
+};
+
 storiesOf('TextArea', module)
   .addParameters({
     component: TextArea,
@@ -35,6 +42,7 @@ storiesOf('TextArea', module)
             errorText=""
             onChange={() => {}}
             variant="outlined"
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
