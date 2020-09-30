@@ -25,6 +25,8 @@ const TextArea = React.forwardRef(
       labelPosition,
       width,
       onSubmitEditing,
+      onFocus,
+      onBlur,
     },
     ref,
   ) => {
@@ -61,6 +63,8 @@ const TextArea = React.forwardRef(
         width={width}
         value={value}
         onSubmitEditing={onSubmitEditing}
+        onFocus={onFocus}
+        onBlur={onBlur}
         _isMultiline={true}
         {...automation(testID)}
       />
@@ -87,6 +91,8 @@ TextArea.propTypes = {
   labelPosition: PropTypes.oneOf(['top', 'left']),
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
   onSubmitEditing: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 TextArea.defaultProps = {
