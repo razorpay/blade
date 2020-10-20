@@ -582,13 +582,13 @@ exports[`<Checkbox /> size should render a small checkbox 1`] = `
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 hRjElz Sizeweb__Size-sc-10bl685-0 kBzgkT"
+        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
       >
         <svg
           fill="none"
-          height="20"
+          height="24"
           viewBox="0 0 24 24"
-          width="20"
+          width="24"
         >
           <path
             clip-rule="evenodd"

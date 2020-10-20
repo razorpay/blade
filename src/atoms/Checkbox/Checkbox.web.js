@@ -30,11 +30,10 @@ const styles = {
         case 'large':
           return 'xlarge';
         case 'medium':
-          return 'large';
         case 'small':
-          return 'medium';
+          return 'large';
         default:
-          return 'medium';
+          return 'large';
       }
     },
   },
@@ -106,16 +105,11 @@ const styles = {
             borderRadius: makePxValue(1.75),
           };
         case 'medium':
+        case 'small':
           return {
             width: makePxValue(3),
             height: makePxValue(3),
             borderRadius: makePxValue(1.5),
-          };
-        case 'small':
-          return {
-            width: makePxValue(2.5),
-            height: makePxValue(2.5),
-            borderRadius: makePxValue(1.25),
           };
         default:
           return {

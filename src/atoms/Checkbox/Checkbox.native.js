@@ -30,11 +30,10 @@ const styles = {
         case 'large':
           return 'xlarge';
         case 'medium':
-          return 'large';
         case 'small':
-          return 'medium';
+          return 'large';
         default:
-          return 'medium';
+          return 'large';
       }
     },
   },
@@ -79,16 +78,11 @@ const styles = {
             borderRadius: '14px',
           };
         case 'medium':
+        case 'small':
           return {
             width: '24px',
             height: '24px',
             borderRadius: '12px',
-          };
-        case 'small':
-          return {
-            width: '20px',
-            height: '20px',
-            borderRadius: '10px',
           };
         case 'xsmall':
           return {
