@@ -56,7 +56,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
           isVisible={visible}
           onBackdropPress={onBackdropClick}
           onBackButtonPress={onClose}
-          backdropColor={theme.colors.shade[950]}
+          backdropColor={theme.colors.shade[960]}
           propagateSwipe
         >
           <ModalContainer variant="centered">
@@ -110,7 +110,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
             onSwipeComplete={onClose}
             onBackButtonPress={onClose}
             avoidKeyboard={true}
-            backdropColor={theme.colors.shade[950]}
+            backdropColor={theme.colors.shade[960]}
             propagateSwipe
           >
             <ModalContainer variant="bottomsheet">
