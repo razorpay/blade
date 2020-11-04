@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getThemeColors } from '../../_helpers/theme';
 import colors from '../../tokens/colors';
 
-function Star({ width, height, fill }) {
+function StarOutlined({ width, height, fill }) {
   return (
     <svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <path
@@ -16,16 +16,16 @@ function Star({ width, height, fill }) {
   );
 }
 
-Star.propTypes = {
+StarOutlined.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   fill: PropTypes.oneOf(getThemeColors()),
 };
 
-Star.defaultProps = {
+StarOutlined.defaultProps = {
   width: 24,
   height: 24,
   fill: colors.sapphire[800],
 };
 
-export default Star;
+export default StarOutlined;

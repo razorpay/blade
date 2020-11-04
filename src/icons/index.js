@@ -38,6 +38,7 @@ const icons = {
   search: require('./Search').default,
   share: require('./Share').default,
   smartCollect: require('./SmartCollect').default,
+  starFilled: require('./StarFilled').default,
   starOutlined: require('./StarOutlined').default,
   subscription: require('./Subscription').default,
   success: require('./Success').default,
