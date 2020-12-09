@@ -1,11 +1,15 @@
 {
   "name": "@razorpay/blade",
+  "private": "true",
   "author": "kamleshchandnani",
   "version": "0.0.1",
   "license": "MIT",
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=12.19.0"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "web": "npm run web:storybook",
     "web:storybook": "BABEL_ENV=web-development start-storybook -c ./storybook/web -p 9009 -s docs",
