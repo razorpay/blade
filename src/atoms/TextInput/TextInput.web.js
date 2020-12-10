@@ -584,11 +584,11 @@ TextInput.defaultProps = {
 
 export default TextInput;
 
-function transformString(string = '', transformType = 'none') {
-  switch (transformType) {
+function transformString(inputValue = '', autoCapitalize = 'none') {
+  switch (autoCapitalize) {
     case 'characters':
-      return string.toUpperCase();
+      return inputValue.toUpperCase();
     default:
-      return string;
+      return inputValue;
   }
 }
