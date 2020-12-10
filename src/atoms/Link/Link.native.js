@@ -42,7 +42,7 @@ const Link = ({ children, onClick, size, hitSlop, testID }) => {
 Link.propTypes = {
   children: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
+  size: PropTypes.oneOf(["'xsmall'", 'xsmall', 'small', 'medium', 'large']),
   testID: PropTypes.string,
   hitSlop: PropTypes.shape({
     left: PropTypes.number,
