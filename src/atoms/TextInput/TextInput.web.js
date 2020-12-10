@@ -212,6 +212,7 @@ const TextInput = ({
   id,
   name,
   _isMultiline,
+  autoCapitalize,
 }) => {
   const theme = useContext(ThemeContext);
   const inputRef = useRef();
@@ -279,14 +280,17 @@ const TextInput = ({
 
   const onChangeText = useCallback(
     (event) => {
-      const inputValue = event.target.value;
+      let inputValue = event.target.value;
       if (inputValue.length > maxLength) {
         return;
+      }
+      if (autoCapitalize !== 'none') {
+        inputValue = transformString(inputValue, autoCapitalize);
       }
       setInput(inputValue);
       onChange(inputValue);
     },
-    [maxLength, onChange],
+    [maxLength, onChange, autoCapitalize],
   );
 
   // allowed values = 0-9 "." "," "whitespace" "-"
@@ -560,6 +564,7 @@ TextInput.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   _isMultiline: PropTypes.bool,
+  autoCapitalize: PropTypes.oneOf(['none', 'characters']),
 };
 
 TextInput.defaultProps = {
@@ -574,6 +579,16 @@ TextInput.defaultProps = {
   width: 'medium',
   type: 'text',
   _isMultiline: false,
+  autoCapitalize: 'none',
 };
 
 export default TextInput;
+
+function transformString(inputValue = '', autoCapitalize = 'none') {
+  switch (autoCapitalize) {
+    case 'characters':
+      return inputValue.toUpperCase();
+    default:
+      return inputValue;
+  }
+}
