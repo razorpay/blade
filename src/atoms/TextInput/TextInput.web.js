@@ -14,7 +14,6 @@ import CharacterCount from './CharacterCount';
 import Label from './Label';
 import Line from './Line';
 import Text from './Text';
-import { transformString } from './utils';
 
 const styles = {
   textInput: {
@@ -565,7 +564,7 @@ TextInput.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   _isMultiline: PropTypes.bool,
-  autoCapitalize: PropTypes.oneOf(['none', 'characters', 'words', 'sentences']),
+  autoCapitalize: PropTypes.oneOf(['none', 'characters']),
 };
 
 TextInput.defaultProps = {
@@ -584,3 +583,12 @@ TextInput.defaultProps = {
 };
 
 export default TextInput;
+
+function transformString(string = '', transformType = 'none') {
+  switch (transformType) {
+    case 'characters':
+      return string.toUpperCase();
+    default:
+      return string;
+  }
+}
