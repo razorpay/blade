@@ -70,7 +70,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -98,7 +98,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -125,7 +125,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -152,7 +152,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -179,7 +179,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -206,7 +206,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
             maxLength={10}
           />
         </View>
@@ -234,7 +234,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -261,7 +261,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -289,7 +289,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -316,7 +316,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           >
             This is disabled
           </TextInput>
@@ -346,7 +346,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -373,7 +373,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -400,7 +400,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -427,7 +427,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -454,7 +454,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -481,7 +481,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
             maxLength={10}
           />
         </View>
@@ -509,7 +509,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -536,7 +536,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           />
         </View>
       </Space>
@@ -563,7 +563,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
           >
             This is disabled
           </TextInput>
@@ -592,7 +592,7 @@ storiesOf('TextInput', module)
             type={select('Type', typeOptions, 'text', 'Native')}
             keyboardType={select('Keyboard Type', keyboardTypeOptions, undefined, 'Native')}
             returnKeyType={select('Return Key Type', returnKeyTypeOptions, undefined, 'Native')}
-            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Native')}
+            autoCapitalize={select('Auto Capitalize', autoCapitalizeOptions, undefined, 'Common')}
             labelPosition="left"
           />
         </View>
