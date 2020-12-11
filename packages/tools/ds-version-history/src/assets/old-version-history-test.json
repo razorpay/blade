@@ -1,0 +1,160 @@
+{
+  "oldVersionHistory" : [
+    {
+      "id": "4526974751",
+      "created_at": "2020-09-10T11:57:34Z",
+      "label": "ADDED button documentation with some components",
+      "description": "This update includes:\n• Inherited icon-only components in all button types\n• Group button components (ready-to-use)\n• Button Constraints\n• Button Types\n• Usage Guidelines\n• Renamed Icon names\n• Fab Button (large & medium)\n• New light/dark theme color added to the palette\n• Box shadow removal from all button types",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": null
+    },
+    {
+      "id": "4446700931",
+      "created_at": "2020-09-03T11:45:38Z",
+      "label": "FIXED button styles and added button groups",
+      "description": "This update includes:\n• Updated button styles with removed shadows, although shadow versions still exists.\n• Added button-group (segmented buttons) for secondary & tertiary styles.\n• Edited link styles.\n• Updated main index into categories, and added buttons.\n• Added introductions to all the versions of buttons.",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": "https://s3-alpha-sig.figma.com/thumbnails/e34b5553-5fc3-4646-9255-8b1b619014d1?Expires=1606694400&Signature=ZfVglZhzlcKJQoMc04c6QQAwf-o9QTwFVeKmTS~Gzmv8eplsI1amVkEK9Vtv172AEHudneJhYkBwt5X6WCTSc-9D33kHtA9v-I78uuuTAYXd2yvsCsxs7~ugLpurZ1qVTs1t9pfyIN~UqrV8p21Y-hebh4ad5OsXJfbwF5PunaT-59DgRDuJ0C7JIOLgfGXQVNxv-QjHydCtBQ3GzwcwZSRtskhRvzn42~3mCO4mTfgA-lGNeR6PUQdyg65tMZUi24T0RFhu0IMgzLMwyy4GaaM7tR-KRJAPAMT5mb5-aT72ioMxqPiPf0D6AOG1AgXC~ju3kRYcDO9wWCqAE7Yoiw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+    },
+    {
+      "id": "4431739121",
+      "created_at": "2020-09-02T11:51:00Z",
+      "label": "ADDED button component to the library",
+      "description": "This update includes:\n• Button Component Page\n• Button Types (Primary, Secondary, Default, Success, Danger & Link)\n• Changed elevation 100 & 200 styles.",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": null
+    },
+    {
+      "id": "4350261801",
+      "created_at": "2020-08-26T09:19:52Z",
+      "label": "FIXED structure of component pages and added accessibility guidelines to all other components",
+      "description": "Whats included in this version:\n• Added \"_Neutrals\" shades & tints to the library styles.\n• Added accessibility guidelines & principles (if required) for all the tokens (Typography, Icons, Colors, Object Styles & Layout)\n• Fixed overall canvas structure for components in terms of placement of artboards.",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": "https://s3-alpha-sig.figma.com/thumbnails/247441c7-8f69-4f68-99ea-7e454db1450e?Expires=1606694400&Signature=bhj~v67gn7WLsuMW9mmpRJePa0Utn85gNakNNk1LPMcNIfIJ-Rv~rzng5NtPFqBCJuV5PaS07-YKZsXWVmT1UoUQjzpfrDua6s5FOyS~~1SSCZI4NBkDxNQRDeVpu4cJghjSSbnDWXGkhwlIwVbFaYXvjgjnHsLZ5xqz41ZfEil1D4MX728wn14BAUQuTVYos9Vw0vkL6X2e3hVoDThCugNwK7kjT4UO8X8DQzAW~3o8c61FNeiIsjo1AA45jvW-403VdXfJ4lD8muJegawu49mqJzzOdVQhtWjYAv8ZjUJsIXoEQBfk6OWd2GIxt4zeX74ocivHoJ~hSSkaa2S-7g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+    },
+    {
+      "id": "4334072281",
+      "created_at": "2020-08-25T07:44:50Z",
+      "label": "ADDED introduction to layout and minor color docs",
+      "description": "This update includes:\n• Added a introduction section to layouts.\n• Documentation of principles of colors.\n• Added statuses on index cards.",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": null
+    },
+    {
+      "id": "4287110991",
+      "created_at": "2020-08-20T09:52:06Z",
+      "label": "ADDED layouts tokens in the DS",
+      "description": "This update includes:\n• Containers\n• Column Grids\n• Spacer (X-Axis / Y-Axis / Both)\n• Minor color changes (Light & Dark themes)\n• Removed Global '_Neutral' color shades for all themes (Light & Dark)",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": null
+    },
+    {
+      "id": "4245058521",
+      "created_at": "2020-08-17T10:42:22Z",
+      "label": "Components Published",
+      "description": "All New - Blade Design System (WIP)",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": null
+    },
+    {
+      "id": "4221652111",
+      "created_at": "2020-08-14T06:35:18Z",
+      "label": "FIXED structuring of Object styles and minor color changes",
+      "description": "This update incudes:\n- Index, Leftovers & Thumb added to Object Styles.\n- Replaced \"Slate\" color palette overall to \"Neutral\" palette.",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": null
+    },
+    {
+      "id": "4213008651",
+      "created_at": "2020-08-13T13:00:30Z",
+      "label": "ADDED borders, elevations to object styles & neutral for light & dark theme",
+      "description": "This update includes:\n- Border Width (Object Styles)\n- Elevation (Object Styles)\n- Colors (Neutral for light & dark themes)\n- Removed All colors palette & transparencies",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": "https://s3-alpha-sig.figma.com/thumbnails/b6b1499c-5762-4c27-9032-f15fd0b141d5?Expires=1606694400&Signature=CVKMaxEDmPU-a5K0TzYvZKrakNzxBd47VUmIAVAzdo-QbXDgP2pGu5ysXGgn-Jcc8P9crXDMsziIdbHmh5CZdye8uGzRu47o55Uo4Iu8nQAo65StMqYxTgqRB5pOvN-pfpZ4~uYaVxFBqUcJJcTFSncV0La9ZL33v09UyIiA~vWSLbqzBNx0pX7afc2Alw8brF62dBWcHbgwbYJGfsSqVX97ghRVY3sDdw4IzfvpG7SULJKpYwVu0ToOx4RahkUSH24rfhVmD6tW~ivnGOTw-3Zrm2~lk43Knv5~MCkq6klrlCtYI7J5wiZfONwt5husZA83dielAPGU8ZQ0hg9Akg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+    },
+    {
+      "id": "4197759911",
+      "created_at": "2020-08-12T11:25:24Z",
+      "label": "ADDED rounding to object styles",
+      "description": "This update includes:\n- Rounding (Object Styles)\n- New \"Frame Header\" & \"Uses\" component for interal DS use.\n- Minor structure change of header in almost all header frames.",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": "https://s3-alpha-sig.figma.com/thumbnails/4135e15a-07dc-4293-9966-ccab568bb930?Expires=1606694400&Signature=dLvcb8Zi8SwpdRfOOoL4RHuM2N2RLWLk8QVQRbfYsa-j8mVsnykVuFSWi7TvRJogEibixWfX9Xt0krjNBogCIhxRqaXvCPQvtR-dmU13qb347~fkSTCuSCRuDX08Q~koYlPvnn9TqqTfnqzqFbuV2UZ40cSj9HSO4qT4LnuZm5M15oTeek~LuGDwO5-7zgIbyBBd8fcMP7BfT3BPD6zPQAr0aCTPVs1GVo5DWQSyWLFXmR4hdGWuL-niSqJiJ3RbL1k0XqkySwlBoSWvdrqwvj9ub~EmOhw1917utjdk4lmvggXqpUcpIUHfIZq4Gu5qWANXV21cvgmWxl77UBHTTQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+    },
+    {
+      "id": "4194148731",
+      "created_at": "2020-08-12T06:45:36Z",
+      "label": "ADDED color system with tests and examples",
+      "description": "This update contains first version of finalized color system:\n- 8 color palette (4 major ones).\n- 5 shades, 5 tints and 1 hue.\n- 12 variants of a color.\n- Having similar contrast ratios for each shades.\n- Transparency color.\n- Usage/Creation guidelines.",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": null
+    },
+    {
+      "id": "4048531101",
+      "created_at": "2020-07-29T10:49:18Z",
+      "label": "ADDED do's don'ts for typography & icon structure",
+      "description": "This update includes:\n- Do's & Don'ts of typography\n- Notes inside each frame (where relevant)\n- Icon structure to icons\n- Flag icons\n- Few more icon categories",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": null
+    },
+    {
+      "id": "3997933871",
+      "created_at": "2020-07-24T08:19:33Z",
+      "label": "ADDED Typography Styles",
+      "description": "This update has all the styles and components related to typography.\n\n- Type Faces\n- Fallbacks\n- Example Template\n- Type Scale - Heading, Body & Code (Styles)\n- Amount (Component)\n- Code (Component)",
+      "user": {
+        "handle": "Saurav Rastogi",
+        "img_url": "https://www.gravatar.com/avatar/7a1453d176845486f294397d5373eb2b?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_s_v2.png",
+        "id": "849272828170299804"
+      },
+      "thumbnail_url": null
+    }
+]
+}
