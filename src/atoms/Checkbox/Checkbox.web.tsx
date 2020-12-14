@@ -218,7 +218,7 @@ const Checkbox = ({
           <Space margin={styles.descriptionText.margin(size)}>
             <Text
               size={styles.descriptionText.size(size)}
-              color={styles.descriptionText.color({ disabled, errorText, helpText })}
+              color={styles.descriptionText.color({ disabled, errorText })}
             >
               {descriptionText}
             </Text>

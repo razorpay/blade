@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import View from '../View';
 import Size from '../Size';
 import { getColor } from '../../_helpers/theme';
@@ -54,7 +54,7 @@ const StyledIndicator = styled(View)`
 `;
 
 const Indicator = ({ variant, fill }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   return (
     <Size height={theme.spacings.small} width={theme.spacings.small}>
       <StyledIndicator variant={variant} fill={fill} />

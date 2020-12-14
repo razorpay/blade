@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     development: {
-      presets: ['module:metro-react-native-babel-preset'],
+      presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
       plugins: [
         [
           'module-resolver',
@@ -14,7 +14,7 @@ module.exports = {
       ],
     },
     production: {
-      presets: ['module:metro-react-native-babel-preset'],
+      presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
       plugins: [
         [
           'module-resolver',
@@ -27,7 +27,7 @@ module.exports = {
       ],
     },
     'web-test': {
-      presets: ['@babel/preset-env', '@babel/preset-react'],
+      presets: ['@babel/preset-env', '@babel/preset-typescript', '@babel/preset-react'],
       plugins: [
         [
           'babel-plugin-styled-components',
@@ -40,7 +40,11 @@ module.exports = {
       ],
     },
     'web-development': {
-      presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
+      presets: [
+        ['@babel/preset-env', { modules: false }],
+        '@babel/preset-typescript',
+        '@babel/preset-react',
+      ],
       plugins: [
         [
           'babel-plugin-styled-components',
@@ -53,7 +57,11 @@ module.exports = {
       ],
     },
     'web-production': {
-      presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
+      presets: [
+        ['@babel/preset-env', { modules: false }],
+        '@babel/preset-typescript',
+        '@babel/preset-react',
+      ],
       plugins: [
         [
           'babel-plugin-styled-components',

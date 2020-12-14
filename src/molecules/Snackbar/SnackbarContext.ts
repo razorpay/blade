@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SnackbarContext = React.createContext();
+const SnackbarContext = React.createContext({});
 
 const useSnackbar = () => {
-  const context = React.useContext(SnackbarContext);
+  const context = React.useContext<any>(SnackbarContext);
 
   if (context === undefined) {
     throw new Error('useSnackbar must be used within SnackbarProvider');

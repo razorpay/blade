@@ -47,7 +47,18 @@ const styles = {
     }
     return childrenStyles;
   },
-  linearGradient: () => {
+  linearGradient: (): {
+    transform: (
+      | {
+          scaleX: number;
+          scaleY?: undefined;
+        }
+      | {
+          scaleY: number;
+          scaleX?: undefined;
+        }
+    )[];
+  } => {
     return {
       transform: [
         {
@@ -81,11 +92,11 @@ const BottomSheet = ({
   initialHeight = 0,
 }) => {
   const theme = useTheme();
-  const bottomSheetRef = useRef();
+  const bottomSheetRef = useRef<any>();
   const bottomSheetVisibility = useRef(visible);
   const [headerHeight, setHeaderHeight] = useState(0);
   const [contentHeight, setContentHeight] = useState(0);
-  const bottomsheetChildrenGroupByDisplayName = reactChildrenGroupByDisplayName(children);
+  const bottomsheetChildrenGroupByDisplayName: any = reactChildrenGroupByDisplayName(children);
 
   const headerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetHeader;
   const footerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetFooter;
@@ -194,6 +205,7 @@ const BottomSheet = ({
                   theme.colors.primary[920],
                   'rgba(255, 255, 255, 0)',
                 ]}
+                // @ts-expect-error
                 style={styles.linearGradient()}
               />
             </Size>

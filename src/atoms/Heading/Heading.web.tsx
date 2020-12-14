@@ -60,11 +60,11 @@ const Heading = ({ size, color, children, maxLines, weight }) => {
     <Space margin={[0]}>
       <Text
         as={headingLevel[size]}
-        size={styles.fontSize({ theme, size })}
+        size={styles.fontSize({ size })}
         color={color}
         maxLines={maxLines}
         weight={weight}
-        _lineHeight={styles.lineHeight({ theme, size, weight })}
+        _lineHeight={styles.lineHeight({ size, weight })}
         _letterSpacing="small"
         {...automation('ds-heading')}
       >

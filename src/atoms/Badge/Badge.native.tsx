@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import View from '../View';
 import Text from '../Text';
 import Space from '../Space';
@@ -87,7 +87,7 @@ const StyledBadge = styled(View)`
 `;
 
 const Badge = ({ children, variant, fill, shape }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
 
   if (typeof children !== 'string') {
     throw new Error(

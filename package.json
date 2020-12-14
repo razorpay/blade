@@ -42,6 +42,7 @@
     "@babel/core": "7.9.0",
     "@babel/preset-env": "7.9.0",
     "@babel/preset-react": "7.9.4",
+    "@babel/preset-typescript": "7.12.7",
     "@babel/runtime": "7.9.2",
     "@react-native-community/eslint-config": "0.0.5",
     "@rollup/plugin-commonjs": "11.0.2",

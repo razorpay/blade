@@ -1,7 +1,7 @@
 import React, { useState, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import View from '../View';
 import Text from '../Text';
 import isDefined from '../../_helpers/isDefined';
@@ -190,7 +190,7 @@ const RadioOption = ({
   const [underlayColor, setUnderlayColor] = useState('transparent');
   const context = useRadioButtonContext();
 
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   const checked = isChecked({ context, value });
 
   const radioColor = styles.radio.color({ theme, disabled, checked, variantColor });

@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import Text from '../../atoms/Text';
 import isDefined from '../../_helpers/isDefined';
 import Flex from '../../atoms/Flex';
@@ -128,7 +128,7 @@ const SegmentControlOption = ({
   children,
 }) => {
   const context = useSegmentControlContext();
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   const size = context.size;
 
   const selected = context && !isEmpty(context.value) && context.value === value;

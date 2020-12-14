@@ -53,7 +53,7 @@ const getRouteValueFromIndex = ({ index, routes }) =>
   routes.find((route) => route.index === index)?.value;
 
 const Tabs = ({ children, defaultValue, value, onChange, gestureHandlerProps }) => {
-  const tabs = getTabs({ children });
+  const tabs: any = getTabs({ children });
   const routes = getRoutes({ tabs });
   const disableSwipe = shouldDisableSwipe({ tabs });
   const initialIndex =

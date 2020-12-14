@@ -4,7 +4,7 @@ import TextInput from '../TextInput';
 import automation from '../../_helpers/automation-attributes';
 import isEmpty from '../../_helpers/isEmpty';
 
-const TextArea = React.forwardRef(
+const TextArea = React.forwardRef<any, any>(
   (
     {
       autoFocus,

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import { TouchableHighlight } from 'react-native';
 
 import Flex from '../Flex';
@@ -248,7 +248,7 @@ const Button = ({
   block,
   testID,
 }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
 
   const color = `${variantColor || 'primary'}`;
 

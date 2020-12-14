@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeContext } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import automation from '../../_helpers/automation-attributes';
 import isEmpty from '../../_helpers/isEmpty';
 import { getColor, makePxValue } from '../../_helpers/theme';
@@ -121,9 +121,6 @@ const StyledInput = styled.input`
     appearance: none;
     margin: 0;
   }
-  &:hover {
-    background-color: ${styles.textInput.hoverBackgroundColor};
-  }
   &:focus {
     outline: none;
   }
@@ -213,9 +210,9 @@ const TextInput = ({
   name,
   _isMultiline,
 }) => {
-  const theme = useContext(ThemeContext);
-  const inputRef = useRef();
-  const containerRef = useRef();
+  const theme = useTheme();
+  const inputRef = useRef<any>();
+  const containerRef = useRef<any>();
   const [isFocused, setIsFocused] = useState(false);
   const [input, setInput] = useState(value || '');
   // Used for storing layout value of TextInput
@@ -452,9 +449,6 @@ const TextInput = ({
                                 <Space
                                   padding={styles.textInput.padding({
                                     variant,
-                                    hasLeftIcon,
-                                    hasPrefix,
-                                    hasText,
                                   })}
                                 >
                                   <Size minWidth="0" maxHeight={8}>

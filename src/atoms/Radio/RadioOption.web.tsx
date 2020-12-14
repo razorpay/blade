@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { ThemeContext } from 'styled-components';
+import { useTheme } from 'styled-components';
 import automation from '../../_helpers/automation-attributes';
 import isDefined from '../../_helpers/isDefined';
 import isEmpty from '../../_helpers/isEmpty';
@@ -184,7 +184,7 @@ const isChecked = ({ context, value }) => {
 
 const RadioOption = ({ value, disabled, title, helpText, errorText, testID, name, id }) => {
   const context = useRadioContext();
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
 
   const checked = isChecked({ context, value });
   const variantColor = context.variantColor;

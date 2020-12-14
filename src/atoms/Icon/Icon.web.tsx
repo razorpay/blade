@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { ThemeContext } from 'styled-components';
+import { useTheme } from 'styled-components';
 import icons from '../../icons';
 import automation from '../../_helpers/automation-attributes';
 import { getColorKeys, getColor } from '../../_helpers/theme';
@@ -15,7 +15,7 @@ const iconSize = {
 
 const Icon = ({ size, name, fill, ...rest }) => {
   const IconComponent = icons[name];
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   return (
     <IconComponent
       fill={getColor(theme, fill)}

@@ -49,11 +49,11 @@ const Heading = ({ size, testID, color, children, maxLines, weight }) => {
 
   return (
     <Text
-      size={styles.fontSize({ theme, size })}
+      size={styles.fontSize({ size })}
       color={color}
       maxLines={maxLines}
       weight={weight}
-      _lineHeight={styles.lineHeight({ theme, size, weight })}
+      _lineHeight={styles.lineHeight({ size, weight })}
       _letterSpacing="small"
       {...automation(testID)}
     >

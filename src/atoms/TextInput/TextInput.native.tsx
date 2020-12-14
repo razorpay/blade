@@ -1,6 +1,6 @@
 import React, { useContext, useState, useCallback, useEffect } from 'react';
 import { TextInput as NativeTextInput, Platform } from 'react-native';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import PropTypes from 'prop-types';
 import { getLineHeight } from '../../_helpers/theme';
 import Flex from '../Flex';
@@ -161,7 +161,7 @@ const getPlaceholderTextColor = ({ theme, disabled, isPlaceholderVisible, hasAni
   }
 };
 
-const TextInput = React.forwardRef(
+const TextInput = React.forwardRef<any, any>(
   (
     {
       placeholder,
@@ -192,7 +192,7 @@ const TextInput = React.forwardRef(
     },
     ref,
   ) => {
-    const theme = useContext(ThemeContext);
+    const theme = useTheme();
     const [isFocused, setIsFocused] = useState(false);
     const [input, setInput] = useState(value || '');
     // Used for storing layout value of TextInput

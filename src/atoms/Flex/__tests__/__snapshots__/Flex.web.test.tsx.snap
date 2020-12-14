@@ -3,15 +3,15 @@
 exports[`<Flex /> components composition should render a child by applying flex and space properties 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 bpsvBt Spaceweb__Space-sc-1gh69p2-0 cwrkNt"
+    class="Viewweb__View-sc-11897uc-0 kVbtsq Flexweb__Flex-sc-10onnkk-0 dAAVna Spaceweb__Space-sc-1fdjx97-0 jSrHfV"
   >
     <span
-      class="Viewweb__View-sc-1i53gcl-0 iLSGsw"
+      class="Viewweb__View-sc-11897uc-0 kVbtsq"
     >
       Flex Item #1
     </span>
     <span
-      class="Viewweb__View-sc-1i53gcl-0 iLSGsw"
+      class="Viewweb__View-sc-11897uc-0 kVbtsq"
     >
       Flex Item #2
     </span>
@@ -22,18 +22,18 @@ exports[`<Flex /> components composition should render a child by applying flex 
 exports[`<Flex /> flex should render a an inline styled child with flex property 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Spaceweb__Space-sc-1gh69p2-0 cwrkNt Flexweb__Flex-h5ddrw-0 cndXnK"
+    class="Viewweb__View-sc-11897uc-0 kVbtsq Spaceweb__Space-sc-1fdjx97-0 jSrHfV Flexweb__Flex-sc-10onnkk-0 epKApN"
     style="background-color: red; height: 100px;"
   >
     <div
-      class="Textweb__Text-dvo2dp-0 kgLoKE"
+      class="Textweb__Text-sc-1qdvl51-0 diSxms"
       color="shade.980"
       data-testid="ds-text"
     >
       Flex Item #1
     </div>
     <div
-      class="Textweb__Text-dvo2dp-0 kgLoKE"
+      class="Textweb__Text-sc-1qdvl51-0 diSxms"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -46,17 +46,17 @@ exports[`<Flex /> flex should render a an inline styled child with flex property
 exports[`<Flex /> flexDirection should render a child with flexDirection row 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 bpsvBt"
+    class="Viewweb__View-sc-11897uc-0 kVbtsq Flexweb__Flex-sc-10onnkk-0 dAAVna"
   >
     <div
-      class="Textweb__Text-dvo2dp-0 kgLoKE Spaceweb__Space-sc-1gh69p2-0 cwrkNt"
+      class="Textweb__Text-sc-1qdvl51-0 diSxms Spaceweb__Space-sc-1fdjx97-0 jSrHfV"
       color="shade.980"
       data-testid="ds-text"
     >
       Flex Item #1
     </div>
     <div
-      class="Textweb__Text-dvo2dp-0 kgLoKE Spaceweb__Space-sc-1gh69p2-0 cwrkNt"
+      class="Textweb__Text-sc-1qdvl51-0 diSxms Spaceweb__Space-sc-1fdjx97-0 jSrHfV"
       color="shade.980"
       data-testid="ds-text"
     >
