@@ -3,20 +3,20 @@
 exports[`<Checkbox /> checkbox only should render a icon only checkbox 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 Dggux"
+        class="Inputweb__Input-dxda5r-0 guvfAn"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -41,21 +41,21 @@ exports[`<Checkbox /> checkbox only should render a icon only checkbox 1`] = `
 exports[`<Checkbox /> checked should render checkbox checked(attr) as true if checked(prop) is true 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
         checked=""
-        class="Inputweb__Input-tent3b-0 hqlWbb"
+        class="Inputweb__Input-dxda5r-0 egDdgV"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -80,20 +80,20 @@ exports[`<Checkbox /> checked should render checkbox checked(attr) as true if ch
 exports[`<Checkbox /> checked should render checkbox with checked(attr) as false if checked(prop) is false 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 Dggux"
+        class="Inputweb__Input-dxda5r-0 guvfAn"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -118,21 +118,21 @@ exports[`<Checkbox /> checked should render checkbox with checked(attr) as false
 exports[`<Checkbox /> defaultChecked should render checkbox checked(attr) as true if defaultChecked(prop) is true 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
         checked=""
-        class="Inputweb__Input-tent3b-0 hqlWbb"
+        class="Inputweb__Input-dxda5r-0 egDdgV"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -157,20 +157,20 @@ exports[`<Checkbox /> defaultChecked should render checkbox checked(attr) as tru
 exports[`<Checkbox /> defaultChecked should render checkbox with checked(attr) as false if defaultChecked(prop) is false 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 Dggux"
+        class="Inputweb__Input-dxda5r-0 guvfAn"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -195,22 +195,22 @@ exports[`<Checkbox /> defaultChecked should render checkbox with checked(attr) a
 exports[`<Checkbox /> disabled should render a disabled checkbox if disabled is true 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 kfclCH Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 cFAoRD Flexweb__Flex-h5ddrw-0 bXkbdN"
       disabled=""
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 cSXrdk"
+        class="Inputweb__Input-dxda5r-0 jvwuSK"
         data-testid="ds-checkbox"
         disabled=""
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -235,20 +235,20 @@ exports[`<Checkbox /> disabled should render a disabled checkbox if disabled is 
 exports[`<Checkbox /> errorText should render checkbox with provided errorText 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 Dggux"
+        class="Inputweb__Input-dxda5r-0 guvfAn"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -266,7 +266,7 @@ exports[`<Checkbox /> errorText should render checkbox with provided errorText 1
         </svg>
       </div>
       <div
-        class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+        class="Textweb__Text-dvo2dp-0 gRymcG Spaceweb__Space-sc-1gh69p2-0 bryIoN"
         color="shade.980"
         data-testid="ds-text"
       >
@@ -274,7 +274,7 @@ exports[`<Checkbox /> errorText should render checkbox with provided errorText 1
       </div>
     </label>
     <div
-      class="Textweb__Text-sc-6jf9e4-0 bvsJJn Spaceweb__Space-njatzl-0 cMStXi"
+      class="Textweb__Text-dvo2dp-0 jlzvmT Spaceweb__Space-sc-1gh69p2-0 giAGWf"
       color="negative.900"
       data-testid="ds-text"
     >
@@ -287,20 +287,20 @@ exports[`<Checkbox /> errorText should render checkbox with provided errorText 1
 exports[`<Checkbox /> focus with checked should render focus styles on checkbox when checked is false 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 Dggux"
+        class="Inputweb__Input-dxda5r-0 guvfAn"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -325,21 +325,21 @@ exports[`<Checkbox /> focus with checked should render focus styles on checkbox 
 exports[`<Checkbox /> focus with checked should render focus styles on checkbox when checked is true 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
         checked=""
-        class="Inputweb__Input-tent3b-0 hqlWbb"
+        class="Inputweb__Input-dxda5r-0 egDdgV"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -364,20 +364,20 @@ exports[`<Checkbox /> focus with checked should render focus styles on checkbox 
 exports[`<Checkbox /> focus with defaultChecked should render focus styles on checkbox when defaultChecked is false 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 Dggux"
+        class="Inputweb__Input-dxda5r-0 guvfAn"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -402,21 +402,21 @@ exports[`<Checkbox /> focus with defaultChecked should render focus styles on ch
 exports[`<Checkbox /> focus with defaultChecked should render focus styles on checkbox when defaultChecked is true 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
         checked=""
-        class="Inputweb__Input-tent3b-0 hqlWbb"
+        class="Inputweb__Input-dxda5r-0 egDdgV"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -441,20 +441,20 @@ exports[`<Checkbox /> focus with defaultChecked should render focus styles on ch
 exports[`<Checkbox /> helpText should render checkbox with provided helpText 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 Dggux"
+        class="Inputweb__Input-dxda5r-0 guvfAn"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -472,7 +472,7 @@ exports[`<Checkbox /> helpText should render checkbox with provided helpText 1`]
         </svg>
       </div>
       <div
-        class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+        class="Textweb__Text-dvo2dp-0 gRymcG Spaceweb__Space-sc-1gh69p2-0 bryIoN"
         color="shade.980"
         data-testid="ds-text"
       >
@@ -480,7 +480,7 @@ exports[`<Checkbox /> helpText should render checkbox with provided helpText 1`]
       </div>
     </label>
     <div
-      class="Textweb__Text-sc-6jf9e4-0 krUdvH Spaceweb__Space-njatzl-0 cMStXi"
+      class="Textweb__Text-dvo2dp-0 cqcyer Spaceweb__Space-sc-1gh69p2-0 giAGWf"
       color="shade.950"
       data-testid="ds-text"
     >
@@ -493,20 +493,20 @@ exports[`<Checkbox /> helpText should render checkbox with provided helpText 1`]
 exports[`<Checkbox /> size should render a large checkbox 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 Dggux"
+        class="Inputweb__Input-dxda5r-0 guvfAn"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 ejxzQz Sizeweb__Size-sc-10bl685-0 bHckdz"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 jBQwhl Sizeweb__Size-t4oux4-0 leRtoI"
       >
         <svg
           fill="none"
@@ -531,20 +531,20 @@ exports[`<Checkbox /> size should render a large checkbox 1`] = `
 exports[`<Checkbox /> size should render a medium(default) checkbox 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 Dggux"
+        class="Inputweb__Input-dxda5r-0 guvfAn"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -569,20 +569,20 @@ exports[`<Checkbox /> size should render a medium(default) checkbox 1`] = `
 exports[`<Checkbox /> size should render a small checkbox 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 Dggux"
+        class="Inputweb__Input-dxda5r-0 guvfAn"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -607,20 +607,20 @@ exports[`<Checkbox /> size should render a small checkbox 1`] = `
 exports[`<Checkbox /> title should render a checkbox with provided title 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
-        class="Inputweb__Input-tent3b-0 Dggux"
+        class="Inputweb__Input-dxda5r-0 guvfAn"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -638,7 +638,7 @@ exports[`<Checkbox /> title should render a checkbox with provided title 1`] = `
         </svg>
       </div>
       <div
-        class="Textweb__Text-sc-6jf9e4-0 bYInBW Spaceweb__Space-njatzl-0 cEoilA"
+        class="Textweb__Text-dvo2dp-0 gRymcG Spaceweb__Space-sc-1gh69p2-0 bryIoN"
         color="shade.980"
         data-testid="ds-text"
       >
@@ -652,21 +652,21 @@ exports[`<Checkbox /> title should render a checkbox with provided title 1`] = `
 exports[`<Checkbox /> variantColor should render a checkbox with default variantColor if variantColor not provided 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
         checked=""
-        class="Inputweb__Input-tent3b-0 hqlWbb"
+        class="Inputweb__Input-dxda5r-0 egDdgV"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
@@ -691,21 +691,21 @@ exports[`<Checkbox /> variantColor should render a checkbox with default variant
 exports[`<Checkbox /> variantColor should render a checkbox with provided variantColor 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Flexweb__Flex-ni2cjg-0 EmlzJ"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
   >
     <label
-      class="Viewweb__View-sc-1cphyjf-0 Labelweb__Label-sc-1xm1a0x-0 csQbMd Flexweb__Flex-ni2cjg-0 jOkEVe"
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
       for="sample-checkbox"
     >
       <input
         checked=""
-        class="Inputweb__Input-tent3b-0 gbJrDg"
+        class="Inputweb__Input-dxda5r-0 FiHTK"
         data-testid="ds-checkbox"
         id="sample-checkbox"
         type="checkbox"
       />
       <div
-        class="Viewweb__View-sc-1cphyjf-0 Backdropweb__Backdrop-jhevv8-0 iXemix Sizeweb__Size-sc-10bl685-0 ggRLgn"
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
       >
         <svg
           fill="none"
