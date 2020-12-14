@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { makePxValue } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
 import isDefined from '../../_helpers/isDefined';
-import View from '../View/';
+import View from '../View';
 import Flex from '../Flex';
 import Size from '../Size';
 
