@@ -1,5 +1,5 @@
 {
-	"name": "DS Version History",
+	"name": "BladeDSL Version History",
 	"api": "1.0.0",
 	"main": "dist/code.js",
 	"ui": "dist/ui.html",
