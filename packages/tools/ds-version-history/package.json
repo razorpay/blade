@@ -1,5 +1,5 @@
 {
-	"name": "vue-plugin-template",
+	"name": "@razorpay-blade-tools/version-history",
 	"version": "1.0.0",
 	"main": "index.js",
 	"license": "MIT",
