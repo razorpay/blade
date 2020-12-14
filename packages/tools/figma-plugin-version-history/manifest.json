@@ -1,7 +1,7 @@
 {
-	"name": "BladeDSL Version History",
-	"api": "1.0.0",
-	"main": "dist/code.js",
-	"ui": "dist/ui.html",
-	"id": "Fudrqfk3xj4uZ4nnyBSrNd"
+  "name": "BladeDSL Version History",
+  "api": "1.0.0",
+  "main": "build/code.js",
+  "ui": "build/ui.html",
+  "id": "Fudrqfk3xj4uZ4nnyBSrNd"
 }
