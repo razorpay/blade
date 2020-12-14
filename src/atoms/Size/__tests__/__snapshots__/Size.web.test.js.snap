@@ -3,7 +3,7 @@
 exports[`<Size /> should render a child by applying height, width, maxHeight, maxWidth, minWidth, minHeight 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 lmgfZC"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Sizeweb__Size-t4oux4-0 dGNBl"
   />
 </div>
 `;
@@ -11,7 +11,7 @@ exports[`<Size /> should render a child by applying height, width, maxHeight, ma
 exports[`<Size /> should render a child by applying height, width, maxHeight, maxWidth, minWidth, minHeight in numeric values 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 fHeyBj"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Sizeweb__Size-t4oux4-0 gzomaA"
   />
 </div>
 `;
@@ -19,7 +19,7 @@ exports[`<Size /> should render a child by applying height, width, maxHeight, ma
 exports[`<Size /> should render a child component without any sizing properties being applied 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-1cphyjf-0 lhSUkp Sizeweb__Size-sc-10bl685-0 dyblWC"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Sizeweb__Size-t4oux4-0 fmHHqd"
   />
 </div>
 `;
