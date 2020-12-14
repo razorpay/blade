@@ -8,7 +8,7 @@
     "node": ">=12.19.0"
   },
   "workspaces": [
-    "packages/*"
+    "packages/**"
   ],
   "scripts": {
     "web": "npm run web:storybook",
