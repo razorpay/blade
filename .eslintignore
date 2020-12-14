@@ -8,6 +8,9 @@ coverage
 **/docs
 **/build
 
+#temporary ignore
+packages/tools/figma-plugin-version-history
+
 # misc
 .DS_Store
 .env.local
