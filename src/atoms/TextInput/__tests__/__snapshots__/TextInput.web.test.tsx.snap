@@ -607,6 +607,7 @@ exports[`<TextInput /> iconLeft should render a TextInput with iconLeft 1`] = `
                 data-testid="ds-icon"
                 fill="rgba(22, 47, 86, 0.38)"
                 height="16"
+                testID="input-icon"
                 viewBox="0 0 24 24"
                 width="16"
               >
@@ -681,6 +682,7 @@ exports[`<TextInput /> iconRight should render a TextInput with iconRight 1`] = 
                 data-testid="ds-icon"
                 fill="rgba(22, 47, 86, 0.38)"
                 height="16"
+                testID="input-icon"
                 viewBox="0 0 24 24"
                 width="16"
               >

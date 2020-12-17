@@ -416,6 +416,7 @@ const Button = ({
                     name={icon}
                     size={styles.iconSize({ size, children })}
                     fill={styles.fontColor({ variant, variantColor, disabled })}
+                    testID="button-left-icon"
                   />
                 </Space>
               ) : null}
@@ -437,6 +438,7 @@ const Button = ({
                     name={icon}
                     size={styles.iconSize({ size, children })}
                     fill={styles.fontColor({ variant, variantColor, disabled })}
+                    testID="button-right-icon"
                   />
                 </Space>
               ) : null}

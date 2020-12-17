@@ -59,6 +59,7 @@ const Heading = ({ size, color, children, maxLines, weight }) => {
   return (
     <Space margin={[0]}>
       <Text
+        //@ts-expect-error
         as={headingLevel[size]}
         size={styles.fontSize({ size })}
         color={color}

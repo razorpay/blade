@@ -27,6 +27,7 @@ storiesOf('Text', module)
     <Text
       size={select('Size', sizeOptions, 'large')}
       weight={select('Weight', weightOptions, 'regular')}
+      //@ts-expect-error
       as={select('as', htmlTagOptions, 'div')}
     >
       {text('Display Text', 'The quick brown fox jumps over the lazy dog ')}
@@ -36,6 +37,7 @@ storiesOf('Text', module)
     <Text
       size={select('Size', sizeOptions, 'large')}
       weight={select('Weight', weightOptions, 'regular')}
+      //@ts-expect-error
       as={select('as', htmlTagOptions, 'div')}
       maxLines={number('maxLines', 3)}
     >

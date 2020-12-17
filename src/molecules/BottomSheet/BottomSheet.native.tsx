@@ -187,7 +187,7 @@ const BottomSheet = ({
             {headerComponent?.length ? (
               <>
                 {headerComponent}
-                <Divider color="shade.920" horizontal />
+                <Divider color="shade.920" direction="horizontal" />
               </>
             ) : null}
           </HeaderContainer>

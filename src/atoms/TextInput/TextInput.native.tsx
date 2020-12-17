@@ -405,7 +405,6 @@ const TextInput = React.forwardRef<any, any>(
                               name={iconRight}
                               disabled={disabled}
                               hasError={hasError}
-                              size="xsmall"
                             />
                           ) : null}
                         </InputContainer>

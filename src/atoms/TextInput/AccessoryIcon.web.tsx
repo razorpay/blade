@@ -43,7 +43,12 @@ const AccessoryIcon = ({ name, disabled, hasError, variant, isFocused, position 
   return (
     <Space padding={styles.padding({ variant, position })}>
       <Flex>
-        <Icon name={name} size="small" fill={styles.color({ disabled, hasError, isFocused })} />
+        <Icon
+          name={name}
+          size="small"
+          fill={styles.color({ disabled, hasError, isFocused })}
+          testID="input-icon"
+        />
       </Flex>
     </Space>
   );

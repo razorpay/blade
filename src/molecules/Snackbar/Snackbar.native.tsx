@@ -118,7 +118,7 @@ const Snackbar = ({ variant, title, action, onClose, maxLines, icon, position })
                 {icon ? (
                   <Space padding={[0, 1, 0, 0]}>
                     <View>
-                      <Icon name={icon} size="medium" fill="light.900" />
+                      <Icon name={icon} size="medium" fill="light.900" testID="snackbar-icon" />
                     </View>
                   </Space>
                 ) : null}

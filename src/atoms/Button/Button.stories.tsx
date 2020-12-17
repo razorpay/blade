@@ -76,7 +76,6 @@ storiesOf('Button', module)
           size={select('Sizes', sizes, 'medium')}
           variant={select('Variants', variants, 'primary')}
           icon="info"
-          align="center"
         />
         <Space margin={[1, 0]}>
           <View>

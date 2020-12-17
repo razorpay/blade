@@ -133,6 +133,7 @@ exports[`<Button /> icon with children with icon left should render a button wit
       data-testid="ds-icon"
       fill="rgba(255, 255, 255, 1.0)"
       height="20"
+      testID="button-left-icon"
       viewBox="0 0 24 24"
       width="20"
     >
@@ -170,6 +171,7 @@ exports[`<Button /> icon with children with icon right should render a button wi
       data-testid="ds-icon"
       fill="rgba(255, 255, 255, 1.0)"
       height="20"
+      testID="button-right-icon"
       viewBox="0 0 24 24"
       width="20"
     >
@@ -193,6 +195,7 @@ exports[`<Button /> icon without children should render icon only button 1`] = `
       data-testid="ds-icon"
       fill="rgba(255, 255, 255, 1.0)"
       height="24"
+      testID="button-left-icon"
       viewBox="0 0 24 24"
       width="24"
     >

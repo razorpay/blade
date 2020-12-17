@@ -17,7 +17,10 @@ storiesOf('Space', module)
   .add('with margin and padding', () => (
     <Space margin={[1, 1]} padding={[2, 2]}>
       <StyledView>
-        <Text as="span">
+        <Text
+          //@ts-expect-error
+          as="span"
+        >
           {text('Display Text', 'The quick brown fox jumps over the lazy dog ')}
         </Text>
       </StyledView>

@@ -1,2 +1,2 @@
-export { default } from './RadioContext.native';
-export * from './RadioContext.native';
+export { default } from './RadioContext';
+export * from './RadioContext';

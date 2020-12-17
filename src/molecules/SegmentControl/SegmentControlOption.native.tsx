@@ -171,6 +171,7 @@ const SegmentControlOption = ({
                               name={icon}
                               fill={styles.text.color({ selected, disabled })}
                               size={styles.icon.size({ size })}
+                              testID="segment-control-icon"
                             />
                           </View>
                         </Space>

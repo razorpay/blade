@@ -15,7 +15,7 @@ import Circle from './Circle';
 import Dot from './Dot';
 import Input from './Input';
 import Label from './Label';
-import { useRadioContext } from './RadioContext';
+import { useRadioButtonContext } from './RadioContext';
 
 const styles = {
   title: {
@@ -183,7 +183,7 @@ const isChecked = ({ context, value }) => {
 };
 
 const RadioOption = ({ value, disabled, title, helpText, errorText, testID, name, id }) => {
-  const context = useRadioContext();
+  const context = useRadioButtonContext();
   const theme = useTheme();
 
   const checked = isChecked({ context, value });

@@ -24,36 +24,12 @@ storiesOf('Switch', module)
   .add('default', () => (
     <Flex flex={1} justifyContent="space-around" flexDirection="column">
       <View>
-        <Switch
-          align={select('align', alignOptions, 'center')}
-          size={select('size', sizeOptions, 'large')}
-        />
-        <Switch
-          align={select('align', alignOptions, 'center')}
-          size={select('size', sizeOptions, 'large')}
-          defaultOn={true}
-        />
-        <Switch
-          align={select('align', alignOptions, 'center')}
-          size={select('size', sizeOptions, 'large')}
-          on={true}
-        />
-        <Switch
-          align={select('align', alignOptions, 'center')}
-          size={select('size', sizeOptions, 'large')}
-          on={false}
-        />
-        <Switch
-          align={select('align', alignOptions, 'center')}
-          size={select('size', sizeOptions, 'large')}
-          disabled
-        />
-        <Switch
-          align={select('align', alignOptions, 'center')}
-          size={select('size', sizeOptions, 'large')}
-          disabled
-          defaultOn={true}
-        />
+        <Switch size={select('size', sizeOptions, 'large')} />
+        <Switch size={select('size', sizeOptions, 'large')} defaultOn={true} />
+        <Switch size={select('size', sizeOptions, 'large')} on={true} />
+        <Switch size={select('size', sizeOptions, 'large')} on={false} />
+        <Switch size={select('size', sizeOptions, 'large')} disabled />
+        <Switch size={select('size', sizeOptions, 'large')} disabled defaultOn={true} />
       </View>
     </Flex>
   ));

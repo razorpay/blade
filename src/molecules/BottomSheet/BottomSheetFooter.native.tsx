@@ -12,7 +12,7 @@ const FooterContainer = styled(View)`
 const BottomSheetFooter = ({ children }) => {
   return children ? (
     <FooterContainer>
-      <Divider color="shade.920" horizontal />
+      <Divider color="shade.920" direction="horizontal" />
       <Space padding={[1, 2, 1, 2]}>
         <View>{children}</View>
       </Space>

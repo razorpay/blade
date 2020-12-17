@@ -370,6 +370,7 @@ const TextInput = ({
           <Label.Regular
             position={labelPosition}
             disabled={disabled}
+            //@ts-expect-error
             isFocused={isFocused}
             variant={variant}
             hasError={hasError}
@@ -389,6 +390,7 @@ const TextInput = ({
               <Label.Regular
                 position={labelPosition}
                 disabled={disabled}
+                //@ts-expect-error
                 isFocused={isFocused}
                 variant={variant}
                 hasError={hasError}
@@ -412,6 +414,7 @@ const TextInput = ({
                       <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
                         {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
                           <Label.Animated
+                            //@ts-expect-error
                             position={labelPosition}
                             disabled={disabled}
                             isFocused={isFocused}
@@ -431,6 +434,7 @@ const TextInput = ({
                             <InputContainer>
                               {hasPrefix ? (
                                 <AccessoryText
+                                  //@ts-expect-error
                                   position="left"
                                   variant={variant}
                                   disabled={disabled}
@@ -445,6 +449,7 @@ const TextInput = ({
                                   name={iconLeft}
                                   disabled={disabled}
                                   hasError={hasError}
+                                  //@ts-expect-error
                                   isFocused={isFocused}
                                   position="left"
                                 />
@@ -486,6 +491,7 @@ const TextInput = ({
                               </Flex>
                               {hasSuffix ? (
                                 <AccessoryText
+                                  //@ts-expect-error
                                   position="right"
                                   variant={variant}
                                   disabled={disabled}
@@ -500,6 +506,7 @@ const TextInput = ({
                                   name={iconRight}
                                   disabled={disabled}
                                   hasError={hasError}
+                                  //@ts-expect-error
                                   isFocused={isFocused}
                                   position="right"
                                 />

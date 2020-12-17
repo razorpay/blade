@@ -19,6 +19,7 @@ storiesOf('RadioButton', module)
   .add('default', () => (
     <Radio
       value="1"
+      //@ts-expect-error
       size={select('Size', sizeOptions, 'large')}
       onChange={(value) => {
         action('Value', value);
@@ -39,13 +40,39 @@ storiesOf('RadioButton', module)
       onChange={(value) => {
         action('Value', value);
       }}
+      //@ts-expect-error
       variantColor="shade"
       size="large"
     >
-      <Radio.Option name="group1" value="1" title="Unchecked" helpText="I'm unchecked" />
-      <Radio.Option name="group1" value="2" title="Checked" helpText="I'm active" />
-      <Radio.Option name="group1" value="3" disabled title="Disabled" helpText="I'm disabled" />
-      <Radio.Option name="group1" value="4" title="Error" errorText="Something's not right!" />
+      <Radio.Option
+        //@ts-expect-error
+        name="group1"
+        value="1"
+        title="Unchecked"
+        helpText="I'm unchecked"
+      />
+      <Radio.Option
+        //@ts-expect-error
+        name="group1"
+        value="2"
+        title="Checked"
+        helpText="I'm active"
+      />
+      <Radio.Option
+        //@ts-expect-error
+        name="group1"
+        value="3"
+        disabled
+        title="Disabled"
+        helpText="I'm disabled"
+      />
+      <Radio.Option
+        //@ts-expect-error
+        name="group1"
+        value="4"
+        title="Error"
+        errorText="Something's not right!"
+      />
     </Radio>
   ))
   .add('controlled', () => (
@@ -53,6 +80,7 @@ storiesOf('RadioButton', module)
       <View>
         <Radio
           value="1"
+          //@ts-expect-error
           size="large"
           onChange={(value) => {
             action('Value', value);

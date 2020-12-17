@@ -172,6 +172,7 @@ const Checkbox = ({
                 size={styles.icon.size({ size })}
                 name={externalChecked ?? isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
                 fill={styles.icon.fill({ isChecked, disabled, variantColor, externalChecked })}
+                testID="checkbox-icon"
               />
             </Backdrop>
             {title ? (

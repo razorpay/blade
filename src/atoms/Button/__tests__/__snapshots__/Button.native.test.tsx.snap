@@ -645,7 +645,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
           },
         ]
       }
-      testID="ds-icon"
+      testID="button-left-icon"
       vbHeight={24}
       vbWidth={24}
       width={20}
@@ -1429,7 +1429,7 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
           },
         ]
       }
-      testID="ds-icon"
+      testID="button-left-icon"
       vbHeight={24}
       vbWidth={24}
       width={20}

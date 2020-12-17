@@ -280,6 +280,7 @@ const Button = ({
                   name={icon}
                   size={styles.iconSize({ size, children })}
                   fill={styles.fontColor({ variant, variantColor, disabled })}
+                  testID="button-left-icon"
                 />
               )}
               {icon && iconAlign === 'left' && children && (
@@ -309,6 +310,7 @@ const Button = ({
                   name={icon}
                   size={styles.iconSize({ size, children })}
                   fill={styles.fontColor({ variant, variantColor, disabled })}
+                  testID="button-right-icon"
                 />
               )}
             </React.Fragment>
