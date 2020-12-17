@@ -3,7 +3,7 @@ const ignores = ['/node_modules/'];
 module.exports = {
   roots: ['src/'],
   testPathIgnorePatterns: [...ignores],
-  collectCoverageFrom: ['./src/**/*.web.{js,jsx}'],
+  collectCoverageFrom: ['./src/**/*.web.{ts,tsx}'],
   coverageThreshold: {
     global: {
       branches: 75,
@@ -12,10 +12,10 @@ module.exports = {
       statements: 75,
     },
   },
-  moduleFileExtensions: ['web.js', 'js', 'jsx', 'json', 'node'],
-  testMatch: ['**/__tests__/**/*.web.test.js'],
+  moduleFileExtensions: ['web.ts', 'web.tsx', 'js', 'ts', 'tsx', 'json', 'node'],
+  testMatch: ['**/__tests__/**/*.web.test.tsx'],
   transform: {
-    '\\.(js|jsx)?$': 'babel-jest',
+    '\\.(ts|tsx)?$': 'babel-jest',
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
 };

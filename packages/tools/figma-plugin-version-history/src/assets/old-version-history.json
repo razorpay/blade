@@ -1,5 +1,5 @@
 {
-  "oldVersionHistory" : [
+  "oldVersionHistory": [
     {
       "id": "452697475",
       "created_at": "2020-09-10T11:57:34Z",
@@ -156,5 +156,5 @@
       },
       "thumbnail_url": null
     }
-]
+  ]
 }
