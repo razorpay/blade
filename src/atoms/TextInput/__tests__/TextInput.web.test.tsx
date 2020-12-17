@@ -455,4 +455,35 @@ describe('<TextInput />', () => {
       expect(container).toMatchSnapshot();
     });
   });
+
+  describe('autoCapitalize', () => {
+    it('should not transform input if autoCapitalize is none(default)', () => {
+      const handleChange = jest.fn();
+      const { getByLabelText } = renderWithTheme(
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} onChange={handleChange} />,
+      );
+      const textInput = getByLabelText(SAMPLE_LABEL);
+      const userInput = 'hello world';
+      fireEvent.change(textInput, { target: { value: userInput } });
+      expect(handleChange).toHaveBeenCalledWith('hello world');
+      expect(textInput.value).toEqual('hello world');
+    });
+
+    it('should transform input to uppercase if autoCapitalize is characters', () => {
+      const handleChange = jest.fn();
+      const { getByLabelText } = renderWithTheme(
+        <TextInput
+          label={SAMPLE_LABEL}
+          id={SAMPLE_ID}
+          onChange={handleChange}
+          autoCapitalize="characters"
+        />,
+      );
+      const textInput = getByLabelText(SAMPLE_LABEL);
+      const userInput = 'hello world';
+      fireEvent.change(textInput, { target: { value: userInput } });
+      expect(handleChange).toHaveBeenCalledWith('HELLO WORLD');
+      expect(textInput.value).toEqual('HELLO WORLD');
+    });
+  });
 });

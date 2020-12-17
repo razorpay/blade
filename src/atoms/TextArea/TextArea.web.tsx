@@ -18,6 +18,7 @@ const TextArea = ({
   width,
   id,
   name,
+  autoCapitalize,
 }) => {
   // Outlined TextArea has only a top label
   if (labelPosition === 'left' && variant === 'outlined') {
@@ -41,6 +42,7 @@ const TextArea = ({
       width={width}
       value={value}
       testID={testID}
+      autoCapitalize={autoCapitalize}
       _isMultiline
     />
   );
@@ -62,6 +64,7 @@ TextArea.propTypes = {
   width: PropTypes.oneOf(['small', 'medium', 'auto']),
   id: PropTypes.string,
   name: PropTypes.string,
+  autoCapitalize: PropTypes.oneOf(['none', 'characters', 'words', 'sentences']),
 };
 
 TextArea.defaultProps = {
@@ -74,6 +77,7 @@ TextArea.defaultProps = {
   testID: 'ds-text-area',
   labelPosition: 'top',
   width: 'medium',
+  autoCapitalize: 'none',
 };
 
 export default TextArea;

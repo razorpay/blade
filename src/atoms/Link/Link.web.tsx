@@ -68,7 +68,7 @@ const Link = ({ size, children, href, target, testID, rel, disabled }) => {
 
 Link.propTypes = {
   children: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
+  size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
   href: PropTypes.string,
   target: PropTypes.oneOf(['_blank', '_self', '_parent', '_top']),
   testID: PropTypes.string,
