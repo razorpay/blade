@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from 'styled-components';
 import Space from '../Space';
 import Text from '../Text';
 import { getColorKeys } from '../../_helpers/theme';
@@ -54,17 +53,16 @@ const headingLevel = {
 };
 
 const Heading = ({ size, color, children, maxLines, weight }) => {
-  const theme = useTheme();
-
   return (
     <Space margin={[0]}>
       <Text
+        //@ts-expect-error
         as={headingLevel[size]}
-        size={styles.fontSize({ theme, size })}
+        size={styles.fontSize({ size })}
         color={color}
         maxLines={maxLines}
         weight={weight}
-        _lineHeight={styles.lineHeight({ theme, size, weight })}
+        _lineHeight={styles.lineHeight({ size, weight })}
         _letterSpacing="small"
         {...automation('ds-heading')}
       >

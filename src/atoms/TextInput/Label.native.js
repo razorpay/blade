@@ -1,6 +1,6 @@
-import React, { useContext, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Animated, Platform } from 'react-native';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import PropTypes from 'prop-types';
 import { getColor } from '../../_helpers/theme';
 import View from '../View';
@@ -171,7 +171,7 @@ const AnimatedLabel = ({
   hasError,
   _isMultiline,
 }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
 
   const animationConfig = {
     fontSize: {

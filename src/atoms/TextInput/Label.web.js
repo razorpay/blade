@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeContext } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { getColor } from '../../_helpers/theme';
 import Space from '../Space';
 import Text from '../Text';
@@ -88,7 +88,7 @@ const RegularLabel = ({
   width,
   id,
 }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
 
   return (
     <Space margin={styles.label.margin({ position, variant })}>
@@ -154,7 +154,7 @@ const AnimatedLabel = ({
   width,
   id,
 }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   const floatViewAnimationStyle = getFloatViewAnimationStyle({
     isFocused,
     hasText,

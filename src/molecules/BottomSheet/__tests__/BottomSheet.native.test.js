@@ -131,7 +131,7 @@ describe('<BottomSheet />', () => {
   });
 
   it('renders non-scrollable bottomsheet', () => {
-    const list = [
+    const nonScrollableList = [
       'Samsung',
       'Xiaomi',
       'OnePlus',
@@ -144,9 +144,9 @@ describe('<BottomSheet />', () => {
       'HTC',
     ];
 
-    const data = new Array(list.length).fill({}).map((item, index) => ({
+    const data = new Array(nonScrollableList.length).fill({}).map((item, index) => ({
       id: index,
-      name: list[index],
+      name: nonScrollableList[index],
     }));
 
     const { container } = renderWithTheme(

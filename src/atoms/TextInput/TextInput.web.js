@@ -1,6 +1,6 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeContext } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import automation from '../../_helpers/automation-attributes';
 import isEmpty from '../../_helpers/isEmpty';
 import { getColor, makePxValue } from '../../_helpers/theme';
@@ -121,9 +121,6 @@ const StyledInput = styled.input`
     appearance: none;
     margin: 0;
   }
-  &:hover {
-    background-color: ${styles.textInput.hoverBackgroundColor};
-  }
   &:focus {
     outline: none;
   }
@@ -214,7 +211,7 @@ const TextInput = ({
   _isMultiline,
   autoCapitalize,
 }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   const inputRef = useRef();
   const containerRef = useRef();
   const [isFocused, setIsFocused] = useState(false);
@@ -373,6 +370,7 @@ const TextInput = ({
           <Label.Regular
             position={labelPosition}
             disabled={disabled}
+            //@ts-expect-error
             isFocused={isFocused}
             variant={variant}
             hasError={hasError}
@@ -392,6 +390,7 @@ const TextInput = ({
               <Label.Regular
                 position={labelPosition}
                 disabled={disabled}
+                //@ts-expect-error
                 isFocused={isFocused}
                 variant={variant}
                 hasError={hasError}
@@ -415,6 +414,7 @@ const TextInput = ({
                       <FillContainer variant={variant} isFocused={isFocused} disabled={disabled}>
                         {hasAnimatedLabel && !isEmpty(layoutDimensions) ? (
                           <Label.Animated
+                            //@ts-expect-error
                             position={labelPosition}
                             disabled={disabled}
                             isFocused={isFocused}
@@ -434,6 +434,7 @@ const TextInput = ({
                             <InputContainer>
                               {hasPrefix ? (
                                 <AccessoryText
+                                  //@ts-expect-error
                                   position="left"
                                   variant={variant}
                                   disabled={disabled}
@@ -448,6 +449,7 @@ const TextInput = ({
                                   name={iconLeft}
                                   disabled={disabled}
                                   hasError={hasError}
+                                  //@ts-expect-error
                                   isFocused={isFocused}
                                   position="left"
                                 />
@@ -456,9 +458,6 @@ const TextInput = ({
                                 <Space
                                   padding={styles.textInput.padding({
                                     variant,
-                                    hasLeftIcon,
-                                    hasPrefix,
-                                    hasText,
                                   })}
                                 >
                                   <Size minWidth="0" maxHeight={8}>
@@ -492,6 +491,7 @@ const TextInput = ({
                               </Flex>
                               {hasSuffix ? (
                                 <AccessoryText
+                                  //@ts-expect-error
                                   position="right"
                                   variant={variant}
                                   disabled={disabled}
@@ -506,6 +506,7 @@ const TextInput = ({
                                   name={iconRight}
                                   disabled={disabled}
                                   hasError={hasError}
+                                  //@ts-expect-error
                                   isFocused={isFocused}
                                   position="right"
                                 />

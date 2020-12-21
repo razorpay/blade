@@ -201,6 +201,7 @@ const Checkbox = ({
                   size={styles.icon.size({ size })}
                   name={externalChecked ?? isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
                   fill={styles.icon.fill({ isChecked, disabled, variantColor, externalChecked })}
+                  testID="checkbox-icon"
                 />
               </Backdrop>
             </Size>
@@ -218,7 +219,7 @@ const Checkbox = ({
           <Space margin={styles.descriptionText.margin(size)}>
             <Text
               size={styles.descriptionText.size(size)}
-              color={styles.descriptionText.color({ disabled, errorText, helpText })}
+              color={styles.descriptionText.color({ disabled, errorText })}
             >
               {descriptionText}
             </Text>

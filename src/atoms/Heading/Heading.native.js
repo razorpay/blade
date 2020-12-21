@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from 'styled-components/native';
 import Text from '../Text';
 import { getColorKeys } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
@@ -45,15 +44,13 @@ const styles = {
 };
 
 const Heading = ({ size, testID, color, children, maxLines, weight }) => {
-  const theme = useTheme();
-
   return (
     <Text
-      size={styles.fontSize({ theme, size })}
+      size={styles.fontSize({ size })}
       color={color}
       maxLines={maxLines}
       weight={weight}
-      _lineHeight={styles.lineHeight({ theme, size, weight })}
+      _lineHeight={styles.lineHeight({ size, weight })}
       _letterSpacing="small"
       {...automation(testID)}
     >

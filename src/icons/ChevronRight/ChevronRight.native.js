@@ -6,13 +6,7 @@ import colors from '../../tokens/colors';
 
 export default function ChevronRight({ width, height, fill }) {
   return (
-    <Svg
-      width={width}
-      height={height}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         fill-rule="evenodd"
         clip-rule="evenodd"

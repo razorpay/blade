@@ -2,7 +2,16 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = ({ config }) => {
-  config.resolve.extensions = ['.web.js', '.mjs', '.js', '.jsx', '.json'];
+  config.resolve.extensions = [
+    '.web.tsx',
+    '.web.ts',
+    '.ts',
+    '.web.js',
+    '.mjs',
+    '.js',
+    '.jsx',
+    '.json',
+  ];
   config.module.rules.push({
     test: /\.(woff|woff2|eot|ttf|otf)$/,
     use: [

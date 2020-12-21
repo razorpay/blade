@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SnackbarContext = React.createContext();
+const SnackbarContext = React.createContext({});
 
 const useSnackbar = () => {
   const context = React.useContext(SnackbarContext);

@@ -3,7 +3,7 @@
 exports[`<Text /> should render bold text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 bzRITc"
+    class="Textweb__Text-dvo2dp-0 djUVTE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -15,7 +15,7 @@ exports[`<Text /> should render bold text 1`] = `
 exports[`<Text /> should render regular text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 eKxMBE"
+    class="Textweb__Text-dvo2dp-0 kgLoKE"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -27,7 +27,7 @@ exports[`<Text /> should render regular text 1`] = `
 exports[`<Text /> should render text with display content auto aligned when align prop is of value "inherit" 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 dYLxfq"
+    class="Textweb__Text-dvo2dp-0 dFAqUy"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -39,7 +39,7 @@ exports[`<Text /> should render text with display content auto aligned when alig
 exports[`<Text /> should render text with display content auto aligned when align prop is of value "initial" 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 cUzWrl"
+    class="Textweb__Text-dvo2dp-0 caFnTx"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -51,7 +51,7 @@ exports[`<Text /> should render text with display content auto aligned when alig
 exports[`<Text /> should render text with display content center aligned 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 hTjrlE"
+    class="Textweb__Text-dvo2dp-0 hqzAEM"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -63,7 +63,7 @@ exports[`<Text /> should render text with display content center aligned 1`] = `
 exports[`<Text /> should render text with display content right aligned 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 frrVjD"
+    class="Textweb__Text-dvo2dp-0 gRelOf"
     color="shade.980"
     data-testid="ds-text"
   >
@@ -75,7 +75,7 @@ exports[`<Text /> should render text with display content right aligned 1`] = `
 exports[`<Text /> should render underlined text 1`] = `
 <div>
   <div
-    class="Textweb__Text-sc-6jf9e4-0 cemcnY"
+    class="Textweb__Text-dvo2dp-0 llgsMQ"
     color="shade.980"
     data-testid="ds-text"
   >

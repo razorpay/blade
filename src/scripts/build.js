@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const babel = require('rollup-plugin-babel');
 const commonjs = require('@rollup/plugin-commonjs');
-const external = require('rollup-plugin-peer-deps-external');
+const peerDependenciesExternal = require('rollup-plugin-peer-deps-external');
 const nodeResolve = require('@rollup/plugin-node-resolve');
 const json = require('@rollup/plugin-json');
 const rollup = require('rollup');
@@ -32,7 +32,7 @@ components.forEach(async (component) => {
     const webBundle = await rollup.rollup({
       input: inputFileName,
       plugins: [
-        external(),
+        peerDependenciesExternal(),
         babel({
           exclude: 'node_modules/**',
           runtimeHelpers: true,

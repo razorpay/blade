@@ -1,7 +1,7 @@
-import React, { useState, useContext, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
-import { ThemeContext } from 'styled-components/native';
+import { useTheme } from 'styled-components/native';
 import Text from '../Text';
 import Flex from '../Flex';
 import isEmpty from '../../_helpers/isEmpty';
@@ -122,7 +122,7 @@ const Checkbox = ({
 
   const [isChecked, setIsChecked] = useState(defaultChecked || false);
   const [underlayColor, setUnderlayColor] = useState('transparent');
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
 
   const onPressIn = useCallback(() => {
     let colorKey = 'tone.940';
@@ -172,6 +172,7 @@ const Checkbox = ({
                 size={styles.icon.size({ size })}
                 name={externalChecked ?? isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
                 fill={styles.icon.fill({ isChecked, disabled, variantColor, externalChecked })}
+                testID="checkbox-icon"
               />
             </Backdrop>
             {title ? (

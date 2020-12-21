@@ -28,6 +28,7 @@ storiesOf('Icon', module)
         name={select('Name', iconOptions, 'info')}
         fill={select('fill', getColorKeys(), 'shade.980')}
         size={select('sizes', sizes, 'medium')}
+        testID="icon"
       />
     );
   });

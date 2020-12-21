@@ -2373,7 +2373,7 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
                   },
                 ]
               }
-              testID="ds-icon"
+              testID="tab-button-icon"
               vbHeight={24}
               vbWidth={24}
               width={16}
@@ -2509,7 +2509,7 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
                   },
                 ]
               }
-              testID="ds-icon"
+              testID="tab-button-icon"
               vbHeight={24}
               vbWidth={24}
               width={16}
@@ -2762,7 +2762,7 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
                   },
                 ]
               }
-              testID="ds-icon"
+              testID="tab-button-icon"
               vbHeight={24}
               vbWidth={24}
               width={16}
@@ -2898,7 +2898,7 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
                   },
                 ]
               }
-              testID="ds-icon"
+              testID="tab-button-icon"
               vbHeight={24}
               vbWidth={24}
               width={16}

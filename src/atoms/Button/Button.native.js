@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import { TouchableHighlight } from 'react-native';
 
 import Flex from '../Flex';
@@ -248,7 +248,7 @@ const Button = ({
   block,
   testID,
 }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
 
   const color = `${variantColor || 'primary'}`;
 
@@ -280,6 +280,7 @@ const Button = ({
                   name={icon}
                   size={styles.iconSize({ size, children })}
                   fill={styles.fontColor({ variant, variantColor, disabled })}
+                  testID="button-left-icon"
                 />
               )}
               {icon && iconAlign === 'left' && children && (
@@ -309,6 +310,7 @@ const Button = ({
                   name={icon}
                   size={styles.iconSize({ size, children })}
                   fill={styles.fontColor({ variant, variantColor, disabled })}
+                  testID="button-right-icon"
                 />
               )}
             </React.Fragment>
