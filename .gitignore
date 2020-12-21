@@ -5,8 +5,8 @@ node_modules
 coverage
 
 # build direcotries
-docs
-build
+**/docs
+**/build 
 
 # misc
 .DS_Store

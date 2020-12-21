@@ -25,12 +25,7 @@ const Text = ({ helpText, errorText, disabled }) => {
     <Space padding={[0.5, 0, 0, 0]}>
       <Flex flex={1}>
         <View>
-          <AtomText
-            maxLines={2}
-            disabled={disabled}
-            color={styles.color({ disabled, errorText })}
-            size="xsmall"
-          >
+          <AtomText maxLines={2} color={styles.color({ disabled, errorText })} size="xsmall">
             {displayText}
           </AtomText>
         </View>

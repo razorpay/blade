@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeContext } from 'styled-components';
+import { useTheme } from 'styled-components';
 import automation from '../../_helpers/automation-attributes';
 import isDefined from '../../_helpers/isDefined';
 import isEmpty from '../../_helpers/isEmpty';
@@ -15,7 +15,7 @@ import Circle from './Circle';
 import Dot from './Dot';
 import Input from './Input';
 import Label from './Label';
-import { useRadioContext } from './RadioContext';
+import { useRadioButtonContext } from './RadioContext';
 
 const styles = {
   title: {
@@ -183,8 +183,8 @@ const isChecked = ({ context, value }) => {
 };
 
 const RadioOption = ({ value, disabled, title, helpText, errorText, testID, name, id }) => {
-  const context = useRadioContext();
-  const theme = useContext(ThemeContext);
+  const context = useRadioButtonContext();
+  const theme = useTheme();
 
   const checked = isChecked({ context, value });
   const variantColor = context.variantColor;

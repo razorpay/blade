@@ -279,7 +279,7 @@ exports[`<Snackbar /> icon renders with an icon 1`] = `
               },
             ]
           }
-          testID="ds-icon"
+          testID="snackbar-icon"
           vbHeight={24}
           vbWidth={24}
           width={20}

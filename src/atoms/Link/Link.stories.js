@@ -24,6 +24,7 @@ storiesOf('Link', module)
   .add('default', () => (
     <Link
       size={select('Size', sizeOptions, 'large')}
+      //@ts-expect-error
       href={text('Href', 'https://razorpay.com', 'Web')}
       target={select('Target', targetOptions, 'link', 'Web')}
       rel={text('Rel', 'author', 'Web')}

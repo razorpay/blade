@@ -44,6 +44,7 @@ storiesOf('Tabs', module)
   })
   .add('default', () => (
     <Tabs defaultValue="payments">
+      {/*@ts-expect-error*/}
       <Tabs.Tab
         value="payments"
         title="Payments"
@@ -52,6 +53,7 @@ storiesOf('Tabs', module)
       >
         <Content color="emerald.900">This is the Payments screen</Content>
       </Tabs.Tab>
+      {/*@ts-expect-error*/}
       <Tabs.Tab
         value="payment-links"
         title="Payment Links"
@@ -60,6 +62,7 @@ storiesOf('Tabs', module)
       >
         <Content color="mustard.900">This is the Payment Links screen</Content>
       </Tabs.Tab>
+      {/*@ts-expect-error*/}
       <Tabs.Tab
         value="settlements"
         title="Settlements"
@@ -72,6 +75,7 @@ storiesOf('Tabs', module)
   ))
   .add('controlled', () => (
     <Tabs value={select('Value', valueOptions, 'payments')}>
+      {/*@ts-expect-error*/}
       <Tabs.Tab
         value="payments"
         title="Payments"
@@ -80,6 +84,7 @@ storiesOf('Tabs', module)
       >
         <Content color="emerald.900">This is the Payments screen</Content>
       </Tabs.Tab>
+      {/*@ts-expect-error*/}
       <Tabs.Tab
         value="payment-links"
         title="Payment Links"
@@ -88,6 +93,7 @@ storiesOf('Tabs', module)
       >
         <Content color="mustard.900">This is the Payment Links screen</Content>
       </Tabs.Tab>
+      {/*@ts-expect-error*/}
       <Tabs.Tab
         value="settlements"
         title="Settlements"

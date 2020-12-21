@@ -93,11 +93,16 @@ const TabButton = ({ title, active, icon, onPress, disabled, testID }) => {
               {!isEmpty(icon) ? (
                 <Space margin={[0, 0.5, 0, 0]}>
                   <View>
-                    <Icon name={icon} fill={titleColor} size="small" />
+                    <Icon name={icon} fill={titleColor} size="small" testID="tab-button-icon" />
                   </View>
                 </Space>
               ) : null}
-              <Text color={titleColor} disabled={disabled} numberOfLines={1} size="medium">
+              <Text
+                color={titleColor}
+                //@ts-expect-error
+                numberOfLines={1}
+                size="medium"
+              >
                 {title}
               </Text>
             </Title>

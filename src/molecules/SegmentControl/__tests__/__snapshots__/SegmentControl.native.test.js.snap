@@ -2040,7 +2040,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                   },
                 ]
               }
-              testID="ds-icon"
+              testID="segment-control-icon"
               vbHeight={24}
               vbWidth={24}
               width={16}
@@ -2188,7 +2188,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                   },
                 ]
               }
-              testID="ds-icon"
+              testID="segment-control-icon"
               vbHeight={24}
               vbWidth={24}
               width={16}
@@ -2350,7 +2350,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                   },
                 ]
               }
-              testID="ds-icon"
+              testID="segment-control-icon"
               vbHeight={24}
               vbWidth={24}
               width={16}
@@ -2533,7 +2533,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                   },
                 ]
               }
-              testID="ds-icon"
+              testID="segment-control-icon"
               vbHeight={24}
               vbWidth={24}
               width={16}
@@ -2681,7 +2681,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                   },
                 ]
               }
-              testID="ds-icon"
+              testID="segment-control-icon"
               vbHeight={24}
               vbWidth={24}
               width={16}
@@ -2829,7 +2829,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                   },
                 ]
               }
-              testID="ds-icon"
+              testID="segment-control-icon"
               vbHeight={24}
               vbWidth={24}
               width={16}

@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeContext } from 'styled-components/native';
+import { useTheme } from 'styled-components/native';
 import icons from '../../icons';
 import { getColorKeys, getColor } from '../../_helpers/theme';
 
@@ -14,7 +14,7 @@ const iconSize = {
 
 const Icon = ({ size, name, fill, testID, ...rest }) => {
   const IconComponent = icons[name];
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   return (
     <IconComponent
       fill={getColor(theme, fill)}

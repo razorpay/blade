@@ -1,12 +1,12 @@
-import React, { useState, useContext, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Animated, TouchableOpacity } from 'react-native';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import PropTypes from 'prop-types';
 
 import { makePxValue } from '../../_helpers/theme';
 import automation from '../../_helpers/automation-attributes';
 import isDefined from '../../_helpers/isDefined';
-import View from '../View/';
+import View from '../View';
 import Flex from '../Flex';
 import Size from '../Size';
 
@@ -164,7 +164,7 @@ const scaleKnob = ({
 };
 
 const Switch = ({ disabled, on, defaultOn, onChange, size, testID }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useTheme();
   const containerWidth = parseInt(styles.container.width({ size, theme }), 10);
   const knobWidth = parseInt(styles.knob.width({ size, theme }), 10);
   const knobActiveWidth = parseInt(styles.knob.activeWidth({ size, theme }), 10);

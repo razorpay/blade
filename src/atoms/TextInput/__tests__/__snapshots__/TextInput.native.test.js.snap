@@ -3170,7 +3170,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}
@@ -3482,7 +3482,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}
@@ -4182,7 +4182,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}
@@ -4288,7 +4288,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}
@@ -4449,7 +4449,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}
@@ -4710,7 +4710,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}
@@ -6790,7 +6790,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}
@@ -7102,7 +7102,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}
@@ -7957,7 +7957,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}
@@ -8168,7 +8168,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}
@@ -8274,7 +8274,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}
@@ -8485,7 +8485,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                     },
                   ]
                 }
-                testID="ds-icon"
+                testID="input-icon"
                 vbHeight={24}
                 vbWidth={24}
                 width={16}

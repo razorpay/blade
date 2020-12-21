@@ -17,7 +17,7 @@ const CharacterCount = ({ maxLength, currentLength, disabled }) => {
   return (
     <Space padding={[0.5, 0, 0, 1]}>
       <View>
-        <Text disabled={disabled} color={styles.color({ disabled })} size="xsmall">
+        <Text color={styles.color({ disabled })} size="xsmall">
           {`${currentLength}/${maxLength}`}
         </Text>
       </View>

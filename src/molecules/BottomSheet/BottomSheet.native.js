@@ -47,7 +47,18 @@ const styles = {
     }
     return childrenStyles;
   },
-  linearGradient: () => {
+  linearGradient: (): {
+    transform: (
+      | {
+          scaleX: number,
+          scaleY?: undefined,
+        }
+      | {
+          scaleY: number,
+          scaleX?: undefined,
+        }
+    )[],
+  } => {
     return {
       transform: [
         {
@@ -94,8 +105,10 @@ const BottomSheet = ({
 
   useEffect(() => {
     if (visible) {
+      // eslint-disable-next-line babel/no-unused-expressions
       bottomSheetRef.current?.open();
     } else {
+      // eslint-disable-next-line babel/no-unused-expressions
       bottomSheetRef.current?.close();
     }
     bottomSheetVisibility.current = visible;
@@ -151,6 +164,7 @@ const BottomSheet = ({
       onClose();
       setTimeout(() => {
         if (bottomSheetVisibility.current) {
+          // eslint-disable-next-line babel/no-unused-expressions
           bottomSheetRef.current?.open();
         }
       }, 100);
@@ -176,7 +190,7 @@ const BottomSheet = ({
             {headerComponent?.length ? (
               <>
                 {headerComponent}
-                <Divider color="shade.920" horizontal />
+                <Divider color="shade.920" direction="horizontal" />
               </>
             ) : null}
           </HeaderContainer>

@@ -5,8 +5,11 @@ node_modules
 coverage
 
 # build direcotries
-docs
-build
+**/docs
+**/build
+
+#temporary ignore
+packages/tools/figma-plugin-version-history
 
 # misc
 .DS_Store

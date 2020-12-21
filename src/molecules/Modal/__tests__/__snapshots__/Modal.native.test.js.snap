@@ -386,7 +386,6 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
               vbHeight={24}
               vbWidth={24}
               width={24}
-              xmlns="http://www.w3.org/2000/svg"
             >
               <RNSVGGroup
                 fill={null}
@@ -918,7 +917,6 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
               vbHeight={24}
               vbWidth={24}
               width={24}
-              xmlns="http://www.w3.org/2000/svg"
             >
               <RNSVGGroup
                 fill={null}
