@@ -112,7 +112,7 @@ const styles = {
   },
 };
 
-const StyledOption = styled(TouchableHighlight)`
+const StyledOption = styled(TouchableHighlight)<any>`
   background-color: ${styles.option.backgroundColor};
   border-bottom-width: ${styles.option.borderBottomWidth};
   border-color: ${styles.option.borderColor};

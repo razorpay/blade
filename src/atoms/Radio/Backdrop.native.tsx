@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import View from '../View';
 
-const Backdrop = styled(View)(
+const Backdrop = styled(View)<any>(
   (props) =>
     `
     width: ${props.width};

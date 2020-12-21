@@ -40,7 +40,7 @@ const styles = {
   },
 };
 
-const StyledText = styled(NativeText)`
+const StyledText = styled(NativeText)<any>`
   font-family: ${styles.fontFamily};
   font-size: ${styles.fontSize};
   color: ${styles.color};

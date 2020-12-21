@@ -7,9 +7,9 @@ import View from '../../atoms/View';
 import Button from '../../atoms/Button';
 import Divider from '../../atoms/Divider';
 
-const FullScreenModalHeader = styled(View)`
-  background-color: ${(props) => props.theme.colors.background[200]};
-  shadow-color: ${(props) => props.theme.colors.primary[930]};
+const FullScreenModalHeader = styled(View)<any>`
+  background-color: ${(props: any) => props.theme.colors.background[200]};
+  shadow-color: ${(props: any) => props.theme.colors.primary[930]};
   shadow-offset: 0px 4px;
   shadow-opacity: 1;
   shadow-radius: 15px;

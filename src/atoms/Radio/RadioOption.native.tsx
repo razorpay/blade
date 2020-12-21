@@ -154,7 +154,7 @@ const styles = {
   },
 };
 
-const Dot = styled(View)(
+const Dot = styled(View)<any>(
   (props) =>
     `
     border-radius: ${props.borderRadius};
@@ -162,7 +162,7 @@ const Dot = styled(View)(
   `,
 );
 
-const Circle = styled(View)(
+const Circle = styled(View)<any>(
   (props) =>
     `
     border-radius: ${props.borderRadius}; 

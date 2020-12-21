@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Backdrop from './Backdrop';
 
-const Input = styled.input.attrs({
+const Input = styled.input.attrs<any>({
   type: 'radio',
 })`
   position: absolute;
@@ -13,19 +13,19 @@ const Input = styled.input.attrs({
   outline: none;
   &:hover {
     + ${Backdrop} {
-      background-color: ${(props) =>
+      background-color: ${(props: any) =>
         props.backdropStyles.backgroundColor({ ...props, state: 'hover' })};
     }
   }
   &:focus {
     + ${Backdrop} {
-      background-color: ${(props) =>
+      background-color: ${(props: any) =>
         props.backdropStyles.backgroundColor({ ...props, state: 'focus' })};
     }
   }
   &:active {
     + ${Backdrop} {
-      background-color: ${(props) =>
+      background-color: ${(props: any) =>
         props.backdropStyles.backgroundColor({ ...props, state: 'active' })};
     }
   }

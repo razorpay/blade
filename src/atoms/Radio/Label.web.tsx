@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import View from '../View';
 
-const Label = styled(View)`
+const Label = styled(View)<any>`
   position: relative;
   cursor: pointer;
-  pointer-events: ${(props) => (props.disabled ? 'none' : '')};
+  pointer-events: ${(props: any) => (props.disabled ? 'none' : '')};
 `;
 
 export default Label;

@@ -230,9 +230,9 @@ const styles = {
   },
 };
 
-const StyledButton = styled(TouchableHighlight)`
+const StyledButton = styled(TouchableHighlight)<any>`
   background-color: ${styles.backgroundColor};
-  border-radius: ${(props) => props.theme.spacings.xxsmall};
+  border-radius: ${(props: any) => props.theme.spacings.xxsmall};
   border: ${styles.border};
 `;
 

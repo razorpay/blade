@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import View from '../View';
 
-const Dot = styled(View)(
+const Dot = styled(View)<any>(
   (props) =>
     `
     position: absolute;

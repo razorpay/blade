@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Backdrop from './Backdrop';
 
-const Input = styled.input.attrs({
+const Input = styled.input.attrs<any>({
   type: 'checkbox',
 })`
   position: absolute;
@@ -16,21 +16,21 @@ const Input = styled.input.attrs({
 
   &:hover {
     + ${Backdrop} {
-      background-color: ${(props) =>
+      background-color: ${(props: any) =>
         props.backdropStyles.backgroundColor({ ...props, state: 'hover' })};
     }
   }
 
   &:focus {
     + ${Backdrop} {
-      background-color: ${(props) =>
+      background-color: ${(props: any) =>
         props.backdropStyles.backgroundColor({ ...props, state: 'focus' })};
     }
   }
 
   &:active {
     + ${Backdrop} {
-      background-color: ${(props) =>
+      background-color: ${(props: any) =>
         props.backdropStyles.backgroundColor({ ...props, state: 'active' })};
     }
   }

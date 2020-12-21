@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import View from '../View';
 
-const Circle = styled(View)(
+const Circle = styled(View)<any>(
   (props) =>
     `
     position: relative;

@@ -50,7 +50,7 @@ const styles = {
   },
 };
 
-const StyledCard = styled(View)`
+const StyledCard = styled(View)<any>`
   shadow-color: ${styles.shadowColor};
   shadow-offset: ${styles.shadowOffset};
   shadow-opacity: ${styles.shadowOpacity};

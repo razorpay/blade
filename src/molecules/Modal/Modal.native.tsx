@@ -39,10 +39,10 @@ const styles = ({ variant, theme }) => {
   return null;
 };
 
-const ModalContainer = styled(View)(({ variant, theme }) => styles({ variant, theme }));
+const ModalContainer = styled(View)<any>(({ variant, theme }) => styles({ variant, theme }));
 
-const BottomSheetDragBar = styled(View)`
-  background-color: ${(props) => props.theme.colors.shade[920]};
+const BottomSheetDragBar = styled(View)<any>`
+  background-color: ${(props: any) => props.theme.colors.shade[920]};
   border-radius: 4px;
 `;
 

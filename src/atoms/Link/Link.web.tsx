@@ -26,27 +26,27 @@ const styles = {
   },
 };
 
-const StyledText = styled(Text)`
+const StyledText = styled(Text)<any>`
   color: ${styles.color};
   text-decoration: none;
   cursor: ${styles.cursor};
   &:hover {
     text-decoration: ${styles.textDecoration};
-    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.800')};
+    color: ${(props: any) => !props.disabled && getColor(props.theme, 'primary.800')};
   }
   &:focus {
     outline: none;
     text-decoration: ${styles.textDecoration};
-    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.900')};
+    color: ${(props: any) => !props.disabled && getColor(props.theme, 'primary.900')};
   }
   &:active {
     outline: none;
     text-decoration: ${styles.textDecoration};
-    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.700')};
+    color: ${(props: any) => !props.disabled && getColor(props.theme, 'primary.700')};
   }
   &:visited {
     outline: none;
-    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.700')};
+    color: ${(props: any) => !props.disabled && getColor(props.theme, 'primary.700')};
   }
 `;
 

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import View from '../View';
 
-const Backdrop = styled(View)`
+const Backdrop = styled(View)<any>`
   display: flex;
   background-color: transparent;
-  border-radius: ${(props) => props.borderRadius};
+  border-radius: ${(props: any) => props.borderRadius};
   outline: none;
 `;
 

@@ -7,7 +7,7 @@ import Text from '../../atoms/Text';
 import TextInput from '../../atoms/TextInput';
 import BottomSheet from './BottomSheet';
 
-const Item = styled(View)`
+const Item = styled(View)<any>`
   height: 40px;
   padding: 8px;
 `;

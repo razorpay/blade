@@ -5,8 +5,8 @@ import View from '../../atoms/View';
 import Divider from '../../atoms/Divider';
 import Space from '../../atoms/Space';
 
-const FooterContainer = styled(View)`
-  background-color: ${(props) => props.theme.colors.background[200]};
+const FooterContainer = styled(View)<any>`
+  background-color: ${(props: any) => props.theme.colors.background[200]};
 `;
 
 const BottomSheetFooter = ({ children }) => {

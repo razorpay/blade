@@ -100,18 +100,18 @@ const styles = {
   },
 };
 
-const InputContainer = styled(View)`
+const InputContainer = styled(View)<any>`
   background-color: transparent;
 `;
 
-const StyledInput = styled.input`
-  font-size: ${(props) => props.theme.fonts.size.medium};
-  line-height: ${(props) => props.theme.fonts.lineHeight.medium};
-  font-family: ${(props) => props.theme.fonts.family.lato.regular};
+const StyledInput = styled.input<any>`
+  font-size: ${(props: any) => props.theme.fonts.size.medium};
+  line-height: ${(props: any) => props.theme.fonts.lineHeight.medium};
+  font-family: ${(props: any) => props.theme.fonts.family.lato.regular};
   color: ${styles.textInput.color};
   border: none;
   background-color: transparent;
-  pointer-events: ${(props) => (props.disabled ? 'none' : '')};
+  pointer-events: ${(props: any) => (props.disabled ? 'none' : '')};
   resize: none;
   &::-webkit-outer-spin-button {
     appearance: none;
@@ -128,10 +128,10 @@ const StyledInput = styled.input`
     outline: none;
   }
   &::placeholder {
-    color: ${(props) => props.placeholderTextColor};
+    color: ${(props: any) => props.placeholderTextColor};
   }
   &::selection {
-    background-color: ${(props) => props.theme.colors.primary[980]};
+    background-color: ${(props: any) => props.theme.colors.primary[980]};
   }
   /* Removes red box shadow rectangle on firefox */
   &:invalid {
@@ -139,7 +139,7 @@ const StyledInput = styled.input`
   }
 `;
 
-const FillContainer = styled(View)`
+const FillContainer = styled(View)<any>`
   position: relative;
   background-color: ${styles.fillContainer.backgroundColor};
   border-top-left-radius: 2px;
@@ -151,18 +151,20 @@ const FillContainer = styled(View)`
   }
 `;
 
-const InteractionContainer = styled(View)`
+const InteractionContainer = styled<any>(View)<any>`
   ${Line} {
-    background-color: ${(props) => styles.line.backgroundColor({ ...props, state: '' })};
+    background-color: ${(props: any) => styles.line.backgroundColor({ ...props, state: '' })};
   }
   &:hover {
     ${Line} {
-      background-color: ${(props) => styles.line.backgroundColor({ ...props, state: 'hover' })};
+      background-color: ${(props: any) =>
+        styles.line.backgroundColor({ ...props, state: 'hover' })};
     }
   }
   &:focus-within {
     ${Line} {
-      background-color: ${(props) => styles.line.backgroundColor({ ...props, state: 'focus' })};
+      background-color: ${(props: any) =>
+        styles.line.backgroundColor({ ...props, state: 'focus' })};
     }
   }
 `;

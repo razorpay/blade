@@ -18,7 +18,7 @@ const styles = {
   },
 };
 
-const StyledLine = styled(View)`
+const StyledLine = styled(View)<any>`
   background-color: ${styles.backgroundColor};
 `;
 

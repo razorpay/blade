@@ -34,7 +34,7 @@ const styles = {
   },
 };
 
-const SnackbarContainer = styled(View)`
+const SnackbarContainer = styled(View)<any>`
   border-radius: 2px;
   background-color: ${styles.backgroundColor};
 `;

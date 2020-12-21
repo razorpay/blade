@@ -81,7 +81,7 @@ const styles = {
   },
 };
 
-const StyledBadge = styled(View)`
+const StyledBadge = styled(View)<any>`
   background-color: ${styles.backgroundColor};
   border-radius: ${styles.borderRadius};
 `;

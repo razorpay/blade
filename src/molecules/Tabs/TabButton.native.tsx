@@ -50,14 +50,14 @@ const styles = {
   },
 };
 
-const StyledTabButton = styled(TouchableOpacity)`
+const StyledTabButton = styled(TouchableOpacity)<any>`
   min-width: ${makePxValue(6)};
   background-color: ${styles.tab.backgroundColor};
-  border-top-left-radius: ${(props) => props.theme.spacings.xxsmall};
-  border-top-right-radius: ${(props) => props.theme.spacings.xxsmall};
+  border-top-left-radius: ${(props: any) => props.theme.spacings.xxsmall};
+  border-top-right-radius: ${(props: any) => props.theme.spacings.xxsmall};
 `;
 
-const Title = styled(View)`
+const Title = styled(View)<any>`
   border-bottom-width: 1px;
   border-bottom-color: ${styles.title.borderBottomColor};
 `;

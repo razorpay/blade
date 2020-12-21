@@ -331,12 +331,12 @@ const styles = {
   },
 };
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<any>`
   box-sizing: border-box; /* TODO: remove after box-sizing: border-box added globally */
   background-color: ${styles.backgroundColor};
-  border-radius: ${(props) => props.theme.spacings.xxsmall};
+  border-radius: ${(props: any) => props.theme.spacings.xxsmall};
   border: ${styles.border};
-  width: ${(props) => (props.block ? '100%' : '')};
+  width: ${(props: any) => (props.block ? '100%' : '')};
   cursor: pointer;
   pointer-events: ${styles.pointerEvents};
   outline: none;

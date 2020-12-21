@@ -6,8 +6,8 @@ import Text from '../Text';
 import View from '../View';
 import Space from './Space';
 
-const StyledView = styled(View)`
-  background-color: ${(props) => props.theme.colors.shade[940]};
+const StyledView = styled(View)<any>`
+  background-color: ${(props: any) => props.theme.colors.shade[940]};
 `;
 
 storiesOf('Space', module)

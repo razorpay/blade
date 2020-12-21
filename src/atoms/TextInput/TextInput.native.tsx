@@ -122,18 +122,18 @@ const styles = {
   },
 };
 
-const InputContainer = styled(View)`
+const InputContainer = styled(View)<any>`
   background-color: transparent;
 `;
 
-const StyledInput = styled(NativeTextInput)`
+const StyledInput = styled(NativeTextInput)<any>`
   font-size: ${styles.textInput.fontSize};
   line-height: ${styles.textInput.lineHeight};
   font-family: ${styles.textInput.fontFamily};
   color: ${styles.textInput.color};
 `;
 
-const FillContainer = styled(View)`
+const FillContainer = styled(View)<any>`
   background-color: ${styles.fillContainer.backgroundColor};
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;

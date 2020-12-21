@@ -70,15 +70,15 @@ const styles = {
   },
 };
 
-const HeaderContainer = styled(View)`
-  background-color: ${(props) => props.theme.colors.background[200]};
-  border-top-right-radius: ${(props) => props.theme.spacings.small};
-  border-top-left-radius: ${(props) => props.theme.spacings.small};
+const HeaderContainer = styled(View)<any>`
+  background-color: ${(props: any) => props.theme.colors.background[200]};
+  border-top-right-radius: ${(props: any) => props.theme.spacings.small};
+  border-top-left-radius: ${(props: any) => props.theme.spacings.small};
 `;
 
-const BottomSheetDragBar = styled(View)`
-  background-color: ${(props) => props.theme.colors.shade[920]};
-  border-radius: ${(props) => props.theme.spacings.xsmall};
+const BottomSheetDragBar = styled(View)<any>`
+  background-color: ${(props: any) => props.theme.colors.shade[920]};
+  border-radius: ${(props: any) => props.theme.spacings.xsmall};
 `;
 
 const BottomSheet = ({
@@ -205,7 +205,6 @@ const BottomSheet = ({
                   theme.colors.primary[920],
                   'rgba(255, 255, 255, 0)',
                 ]}
-                // @ts-expect-error
                 style={styles.linearGradient()}
               />
             </Size>

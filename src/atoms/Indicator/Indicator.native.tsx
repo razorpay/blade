@@ -47,10 +47,10 @@ const styles = {
   },
 };
 
-const StyledIndicator = styled(View)`
+const StyledIndicator = styled(View)<any>`
   background-color: ${styles.backgroundColor};
   border: ${styles.border};
-  border-radius: ${(props) => props.theme.spacings.xsmall};
+  border-radius: ${(props: any) => props.theme.spacings.xsmall};
 `;
 
 const Indicator = ({ variant, fill }) => {

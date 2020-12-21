@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import View from '../View';
 
-const Backdrop = styled(View)`
+const Backdrop = styled(View)<any>`
   border-radius: 50%;
 `;
 

@@ -97,14 +97,14 @@ const styles = {
   },
 };
 
-const StyledContainer = styled(TouchableOpacity)`
+const StyledContainer = styled(TouchableOpacity)<any>`
   border-radius: ${styles.container.radius};
 `;
 
-const StyledKnob = styled(View)`
+const StyledKnob = styled(View)<any>`
   position: absolute;
   border-radius: ${styles.knob.radius};
-  background-color: ${(props) => props.theme.colors.light[900]};
+  background-color: ${(props: any) => props.theme.colors.light[900]};
 `;
 
 const AnimatedContainer = Animated.createAnimatedComponent(StyledContainer);

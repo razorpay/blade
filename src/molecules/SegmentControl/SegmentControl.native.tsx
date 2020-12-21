@@ -28,7 +28,7 @@ const styles = {
   },
 };
 
-const SegmentOptionsContainer = styled(View)`
+const SegmentOptionsContainer = styled(View)<any>`
   border: ${styles.container.border};
   border-radius: ${styles.container.borderRadius};
   overflow: hidden;

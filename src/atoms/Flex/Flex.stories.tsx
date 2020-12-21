@@ -40,8 +40,8 @@ const alignItemsOptions = {
   stretch: 'stretch',
 };
 
-const StyledView = styled(View)`
-  background-color: ${(props) => props.theme.colors.shade[940]};
+const StyledView = styled(View)<any>`
+  background-color: ${(props: any) => props.theme.colors.shade[940]};
 `;
 
 storiesOf('Flex', module)

@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes, { any } from 'prop-types';
 import styled from 'styled-components';
 
-const View = styled.div``;
+const View = styled.div<any>``;
 
 View.propTypes = {
   as: PropTypes.string,

@@ -10,8 +10,8 @@ import View from '../../atoms/View';
 import Button from '../../atoms/Button';
 import Modal from './Modal';
 
-const HeaderPlaceholder = styled(View)`
-  background-color: ${(props) => props.theme.colors.tone[940]};
+const HeaderPlaceholder = styled(View)<any>`
+  background-color: ${(props: any) => props.theme.colors.tone[940]};
 `;
 
 const ModalDemo = () => {

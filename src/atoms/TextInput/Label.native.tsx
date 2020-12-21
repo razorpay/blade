@@ -63,11 +63,11 @@ const styles = {
   },
 };
 
-const FloatView = styled(Animated.View)`
+const FloatView = styled(Animated.View)<any>`
   position: absolute;
 `;
 
-const StyledText = styled(Animated.Text)`
+const StyledText = styled(Animated.Text)<any>`
   font-family: ${styles.text.fontFamily};
   font-style: normal;
   font-weight: normal;

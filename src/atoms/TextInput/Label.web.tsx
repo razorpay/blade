@@ -58,16 +58,16 @@ const styles = {
   },
 };
 
-const FloatView = styled(View)`
+const FloatView = styled(View)<any>`
   position: absolute;
   will-change: transform;
   transition: transform 0.1s ease-in;
   top: 2px;
-  left: ${(props) => props.layoutDimensions.initialLeftPosition}px;
+  left: ${(props: any) => props.layoutDimensions.initialLeftPosition}px;
   pointer-events: none;
 `;
 
-const StyledText = styled(Text)`
+const StyledText = styled(Text)<any>`
   display: flex;
   font-family: ${styles.text.fontFamily};
   font-size: ${styles.text.fontSize};
