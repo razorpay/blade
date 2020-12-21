@@ -14,7 +14,7 @@ module.exports = {
   ],
   setupFilesAfterEnv: ['@testing-library/react-native/cleanup-after-each'],
   testPathIgnorePatterns: [...ignores],
-  collectCoverageFrom: ['./src/**/*.native.{ts,tsx}'],
+  collectCoverageFrom: ['./src/**/*.native.{js,ts,tsx}'],
   coverageThreshold: {
     global: {
       branches: 75,
