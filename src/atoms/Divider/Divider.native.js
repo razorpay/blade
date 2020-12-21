@@ -5,9 +5,9 @@ import View from '../View';
 import { getColor, getColorKeys } from '../../_helpers/theme';
 
 const StyledView = styled(View)`
-  height: ${(props: any) => (props.dividerDirection === 'horizontal' ? '1px' : '100%')};
-  width: ${(props: any) => (props.dividerDirection === 'horizontal' ? '100%' : '1px')};
-  background-color: ${(props: any) => getColor(props.theme, props.color)};
+  height: ${(props) => (props.dividerDirection === 'horizontal' ? '1px' : '100%')};
+  width: ${(props) => (props.dividerDirection === 'horizontal' ? '100%' : '1px')};
+  background-color: ${(props) => getColor(props.theme, props.color)};
 `;
 
 const Divider = ({ direction, color }) => <StyledView dividerDirection={direction} color={color} />;

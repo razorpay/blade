@@ -3,10 +3,10 @@
 exports[`<View /> as should render View as div 1`] = `
 <div>
   <div
-    class="Viewweb__View-sc-11897uc-0 kVbtsq"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw"
   >
     <div
-      class="Textweb__Text-sc-1qdvl51-0 diSxms"
+      class="Textweb__Text-dvo2dp-0 kgLoKE"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -19,10 +19,10 @@ exports[`<View /> as should render View as div 1`] = `
 exports[`<View /> as should render View as p 1`] = `
 <div>
   <p
-    class="Viewweb__View-sc-11897uc-0 kVbtsq"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw"
   >
     <div
-      class="Textweb__Text-sc-1qdvl51-0 diSxms"
+      class="Textweb__Text-dvo2dp-0 kgLoKE"
       color="shade.980"
       data-testid="ds-text"
     >
@@ -35,10 +35,10 @@ exports[`<View /> as should render View as p 1`] = `
 exports[`<View /> as should render View as span 1`] = `
 <div>
   <span
-    class="Viewweb__View-sc-11897uc-0 kVbtsq"
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw"
   >
     <div
-      class="Textweb__Text-sc-1qdvl51-0 diSxms"
+      class="Textweb__Text-dvo2dp-0 kgLoKE"
       color="shade.980"
       data-testid="ds-text"
     >

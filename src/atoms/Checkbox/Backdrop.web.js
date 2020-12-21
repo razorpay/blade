@@ -4,7 +4,7 @@ import View from '../View';
 const Backdrop = styled(View)`
   display: flex;
   background-color: transparent;
-  border-radius: ${(props: any) => props.borderRadius};
+  border-radius: ${(props) => props.borderRadius};
   outline: none;
 `;
 

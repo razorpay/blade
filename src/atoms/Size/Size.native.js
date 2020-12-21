@@ -14,12 +14,12 @@ const Size = styled(
     });
   },
 )`
-  ${(props: any) => (props.width ? `width: ${makePxValue(props.width)}` : '')};
-  ${(props: any) => (props.height ? `height: ${makePxValue(props.height)}` : '')};
-  ${(props: any) => (props.minWidth ? `min-width: ${makePxValue(props.minWidth)}` : '')};
-  ${(props: any) => (props.maxWidth ? `max-width: ${makePxValue(props.maxWidth)}` : '')};
-  ${(props: any) => (props.minHeight ? `min-height: ${makePxValue(props.minHeight)}` : '')};
-  ${(props: any) => (props.maxHeight ? `max-height: ${makePxValue(props.maxHeight)}` : '')};
+  ${(props) => (props.width ? `width: ${makePxValue(props.width)}` : '')};
+  ${(props) => (props.height ? `height: ${makePxValue(props.height)}` : '')};
+  ${(props) => (props.minWidth ? `min-width: ${makePxValue(props.minWidth)}` : '')};
+  ${(props) => (props.maxWidth ? `max-width: ${makePxValue(props.maxWidth)}` : '')};
+  ${(props) => (props.minHeight ? `min-height: ${makePxValue(props.minHeight)}` : '')};
+  ${(props) => (props.maxHeight ? `max-height: ${makePxValue(props.maxHeight)}` : '')};
 `;
 
 Size.propTypes = {

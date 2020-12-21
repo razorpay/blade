@@ -11,8 +11,8 @@ const Space = styled(({ margin, padding, children, ...props }) => {
   return React.cloneElement(children, props);
 })`
   &&& {
-    ${(props: any) => (props.margin ? `margin: ${makePxValue(props.margin)}` : '')};
-    ${(props: any) => (props.padding ? `padding: ${makePxValue(props.padding)}` : '')};
+    ${(props) => (props.margin ? `margin: ${makePxValue(props.margin)}` : '')};
+    ${(props) => (props.padding ? `padding: ${makePxValue(props.padding)}` : '')};
   }
 `;
 

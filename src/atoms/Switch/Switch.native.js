@@ -104,7 +104,7 @@ const StyledContainer = styled(TouchableOpacity)`
 const StyledKnob = styled(View)`
   position: absolute;
   border-radius: ${styles.knob.radius};
-  background-color: ${(props: any) => props.theme.colors.light[900]};
+  background-color: ${(props) => props.theme.colors.light[900]};
 `;
 
 const AnimatedContainer = Animated.createAnimatedComponent(StyledContainer);

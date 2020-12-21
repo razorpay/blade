@@ -63,7 +63,7 @@ const FloatView = styled(View)`
   will-change: transform;
   transition: transform 0.1s ease-in;
   top: 2px;
-  left: ${(props: any) => props.layoutDimensions.initialLeftPosition}px;
+  left: ${(props) => props.layoutDimensions.initialLeftPosition}px;
   pointer-events: none;
 `;
 

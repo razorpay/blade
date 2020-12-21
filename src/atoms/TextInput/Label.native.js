@@ -17,7 +17,7 @@ const REGULAR_PADDING_TOP_MULTIPLIER_MULTILINE = 0.2;
 const styles = {
   regularLabelContainer: {
     padding({ position, inputLayoutDimensions, _isMultiline }) {
-      let [top, right, bottom]: any[] = [0, 0, 0.5];
+      let [top, right, bottom] = [0, 0, 0.5];
       const left = 0;
 
       if (position === 'top') {

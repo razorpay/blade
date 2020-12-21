@@ -26,17 +26,17 @@ const Flex = styled(
   },
 )`
   &&& {
-    ${(props: any) => (props.alignContent ? `align-content: ${props.alignContent};` : '')};
-    ${(props: any) => (props.alignItems ? `align-items: ${props.alignItems};` : '')};
-    ${(props: any) => (props.alignSelf ? `align-self: ${props.alignSelf};` : '')};
-    ${(props: any) => (props.flex ? `flex: ${props.flex};` : '')};
-    ${(props: any) => (props.flexBasis ? `flex-basis: ${props.flexBasis};` : '')};
-    ${(props: any) => (props.flexDirection ? `flex-direction: ${props.flexDirection};` : '')};
-    ${(props: any) => (props.flexGrow ? `flex-grow: ${props.flexGrow};` : '')};
-    ${(props: any) => (props.flexShrink ? `flex-shrink: ${props.flexShrink};` : '')};
-    ${(props: any) => (props.flexWrap ? `flex-wrap: ${props.flexWrap};` : '')};
-    ${(props: any) => (props.justifyContent ? `justify-content: ${props.justifyContent};` : '')};
-    ${(props: any) => (props.display ? `display: ${props.display};` : '')};
+    ${(props) => (props.alignContent ? `align-content: ${props.alignContent};` : '')};
+    ${(props) => (props.alignItems ? `align-items: ${props.alignItems};` : '')};
+    ${(props) => (props.alignSelf ? `align-self: ${props.alignSelf};` : '')};
+    ${(props) => (props.flex ? `flex: ${props.flex};` : '')};
+    ${(props) => (props.flexBasis ? `flex-basis: ${props.flexBasis};` : '')};
+    ${(props) => (props.flexDirection ? `flex-direction: ${props.flexDirection};` : '')};
+    ${(props) => (props.flexGrow ? `flex-grow: ${props.flexGrow};` : '')};
+    ${(props) => (props.flexShrink ? `flex-shrink: ${props.flexShrink};` : '')};
+    ${(props) => (props.flexWrap ? `flex-wrap: ${props.flexWrap};` : '')};
+    ${(props) => (props.justifyContent ? `justify-content: ${props.justifyContent};` : '')};
+    ${(props) => (props.display ? `display: ${props.display};` : '')};
   }
 `;
 

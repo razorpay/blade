@@ -53,15 +53,15 @@ const styles = {
   },
 };
 
-const Text = styled.div.attrs((props: any) => ({
+const Text = styled.div.attrs((props) => ({
   ...automationAttributes(props.testID),
 }))`
-  font-family: ${(props: any) => props.theme.fonts.family.lato[props.weight]};
-  font-weight: ${(props: any) => props.theme.fonts.weight[props.weight]};
-  font-size: ${(props: any) => props.theme.fonts.size[props.size]};
+  font-family: ${(props) => props.theme.fonts.family.lato[props.weight]};
+  font-weight: ${(props) => props.theme.fonts.weight[props.weight]};
+  font-size: ${(props) => props.theme.fonts.size[props.size]};
   color: ${styles.color};
   text-decoration: ${styles.textDecoration};
-  text-align: ${(props: any) => props.align};
+  text-align: ${(props) => props.align};
   letter-spacing: ${styles.letterSpacing};
   line-height: ${styles.lineHeight};
   overflow: ${styles.overflow};

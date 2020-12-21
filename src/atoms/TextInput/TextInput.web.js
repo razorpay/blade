@@ -105,13 +105,13 @@ const InputContainer = styled(View)`
 `;
 
 const StyledInput = styled.input`
-  font-size: ${(props: any) => props.theme.fonts.size.medium};
-  line-height: ${(props: any) => props.theme.fonts.lineHeight.medium};
-  font-family: ${(props: any) => props.theme.fonts.family.lato.regular};
+  font-size: ${(props) => props.theme.fonts.size.medium};
+  line-height: ${(props) => props.theme.fonts.lineHeight.medium};
+  font-family: ${(props) => props.theme.fonts.family.lato.regular};
   color: ${styles.textInput.color};
   border: none;
   background-color: transparent;
-  pointer-events: ${(props: any) => (props.disabled ? 'none' : '')};
+  pointer-events: ${(props) => (props.disabled ? 'none' : '')};
   resize: none;
   &::-webkit-outer-spin-button {
     appearance: none;
@@ -128,10 +128,10 @@ const StyledInput = styled.input`
     outline: none;
   }
   &::placeholder {
-    color: ${(props: any) => props.placeholderTextColor};
+    color: ${(props) => props.placeholderTextColor};
   }
   &::selection {
-    background-color: ${(props: any) => props.theme.colors.primary[980]};
+    background-color: ${(props) => props.theme.colors.primary[980]};
   }
   /* Removes red box shadow rectangle on firefox */
   &:invalid {
@@ -153,18 +153,16 @@ const FillContainer = styled(View)`
 
 const InteractionContainer = styled(View)`
   ${Line} {
-    background-color: ${(props: any) => styles.line.backgroundColor({ ...props, state: '' })};
+    background-color: ${(props) => styles.line.backgroundColor({ ...props, state: '' })};
   }
   &:hover {
     ${Line} {
-      background-color: ${(props: any) =>
-        styles.line.backgroundColor({ ...props, state: 'hover' })};
+      background-color: ${(props) => styles.line.backgroundColor({ ...props, state: 'hover' })};
     }
   }
   &:focus-within {
     ${Line} {
-      background-color: ${(props: any) =>
-        styles.line.backgroundColor({ ...props, state: 'focus' })};
+      background-color: ${(props) => styles.line.backgroundColor({ ...props, state: 'focus' })};
     }
   }
 `;

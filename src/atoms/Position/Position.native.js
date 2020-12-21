@@ -15,12 +15,12 @@ const Position = styled(
     });
   },
 )`
-  ${(props: any) => (isDefined(props.position) ? `position: ${props.position};` : '')};
-  ${(props: any) => (isDefined(props.top) ? `top: ${makePxValue(props.top)};` : '')};
-  ${(props: any) => (isDefined(props.right) ? `right: ${makePxValue(props.right)};` : '')};
-  ${(props: any) => (isDefined(props.bottom) ? `bottom: ${makePxValue(props.bottom)};` : '')};
-  ${(props: any) => (isDefined(props.left) ? `left: ${makePxValue(props.left)};` : '')};
-  ${(props: any) => (isDefined(props.zIndex) ? `z-index: ${props.zIndex};` : '')};
+  ${(props) => (isDefined(props.position) ? `position: ${props.position};` : '')};
+  ${(props) => (isDefined(props.top) ? `top: ${makePxValue(props.top)};` : '')};
+  ${(props) => (isDefined(props.right) ? `right: ${makePxValue(props.right)};` : '')};
+  ${(props) => (isDefined(props.bottom) ? `bottom: ${makePxValue(props.bottom)};` : '')};
+  ${(props) => (isDefined(props.left) ? `left: ${makePxValue(props.left)};` : '')};
+  ${(props) => (isDefined(props.zIndex) ? `z-index: ${props.zIndex};` : '')};
 `;
 
 Position.propTypes = {

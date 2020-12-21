@@ -232,7 +232,7 @@ const styles = {
 
 const StyledButton = styled(TouchableHighlight)`
   background-color: ${styles.backgroundColor};
-  border-radius: ${(props: any) => props.theme.spacings.xxsmall};
+  border-radius: ${(props) => props.theme.spacings.xxsmall};
   border: ${styles.border};
 `;
 

@@ -13,9 +13,9 @@ module.exports = {
     },
   },
   moduleFileExtensions: ['web.ts', 'web.tsx', 'web.js', 'js', 'ts', 'tsx', 'json', 'node'],
-  testMatch: ['**/__tests__/**/*.web.test.tsx'],
+  testMatch: ['**/__tests__/**/*.web.test.js'],
   transform: {
-    '\\.(ts|tsx)?$': 'babel-jest',
+    '\\.(js|ts|tsx)?$': 'babel-jest',
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
 };

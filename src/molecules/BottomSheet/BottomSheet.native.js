@@ -71,14 +71,14 @@ const styles = {
 };
 
 const HeaderContainer = styled(View)`
-  background-color: ${(props: any) => props.theme.colors.background[200]};
-  border-top-right-radius: ${(props: any) => props.theme.spacings.small};
-  border-top-left-radius: ${(props: any) => props.theme.spacings.small};
+  background-color: ${(props) => props.theme.colors.background[200]};
+  border-top-right-radius: ${(props) => props.theme.spacings.small};
+  border-top-left-radius: ${(props) => props.theme.spacings.small};
 `;
 
 const BottomSheetDragBar = styled(View)`
-  background-color: ${(props: any) => props.theme.colors.shade[920]};
-  border-radius: ${(props: any) => props.theme.spacings.xsmall};
+  background-color: ${(props) => props.theme.colors.shade[920]};
+  border-radius: ${(props) => props.theme.spacings.xsmall};
 `;
 
 const BottomSheet = ({
@@ -96,7 +96,7 @@ const BottomSheet = ({
   const bottomSheetVisibility = useRef(visible);
   const [headerHeight, setHeaderHeight] = useState(0);
   const [contentHeight, setContentHeight] = useState(0);
-  const bottomsheetChildrenGroupByDisplayName: any = reactChildrenGroupByDisplayName(children);
+  const bottomsheetChildrenGroupByDisplayName = reactChildrenGroupByDisplayName(children);
 
   const headerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetHeader;
   const footerComponent = bottomsheetChildrenGroupByDisplayName.BottomSheetFooter;

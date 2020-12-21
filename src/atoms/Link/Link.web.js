@@ -32,21 +32,21 @@ const StyledText = styled(Text)`
   cursor: ${styles.cursor};
   &:hover {
     text-decoration: ${styles.textDecoration};
-    color: ${(props: any) => !props.disabled && getColor(props.theme, 'primary.800')};
+    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.800')};
   }
   &:focus {
     outline: none;
     text-decoration: ${styles.textDecoration};
-    color: ${(props: any) => !props.disabled && getColor(props.theme, 'primary.900')};
+    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.900')};
   }
   &:active {
     outline: none;
     text-decoration: ${styles.textDecoration};
-    color: ${(props: any) => !props.disabled && getColor(props.theme, 'primary.700')};
+    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.700')};
   }
   &:visited {
     outline: none;
-    color: ${(props: any) => !props.disabled && getColor(props.theme, 'primary.700')};
+    color: ${(props) => !props.disabled && getColor(props.theme, 'primary.700')};
   }
 `;
 

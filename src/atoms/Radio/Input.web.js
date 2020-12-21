@@ -13,19 +13,19 @@ const Input = styled.input.attrs({
   outline: none;
   &:hover {
     + ${Backdrop} {
-      background-color: ${(props: any) =>
+      background-color: ${(props) =>
         props.backdropStyles.backgroundColor({ ...props, state: 'hover' })};
     }
   }
   &:focus {
     + ${Backdrop} {
-      background-color: ${(props: any) =>
+      background-color: ${(props) =>
         props.backdropStyles.backgroundColor({ ...props, state: 'focus' })};
     }
   }
   &:active {
     + ${Backdrop} {
-      background-color: ${(props: any) =>
+      background-color: ${(props) =>
         props.backdropStyles.backgroundColor({ ...props, state: 'active' })};
     }
   }

@@ -9,7 +9,7 @@ exports[`<Link /> Selectors should render a Link with hover styles 1`] = `[MockF
 exports[`<Link /> Size should render a large Link 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-1qdvl51-0 Linkweb__StyledText-l5skt-0 OLTDV"
+    class="Textweb__Text-dvo2dp-0 Linkweb__StyledText-tdtpkb-0 cAfayR"
     color="shade.980"
     data-testid="ds-text"
     target="_self"
@@ -22,7 +22,7 @@ exports[`<Link /> Size should render a large Link 1`] = `
 exports[`<Link /> Size should render a medium Link 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-1qdvl51-0 Linkweb__StyledText-l5skt-0 kxVElj"
+    class="Textweb__Text-dvo2dp-0 Linkweb__StyledText-tdtpkb-0 tOcKD"
     color="shade.980"
     data-testid="ds-text"
     target="_self"
@@ -35,7 +35,7 @@ exports[`<Link /> Size should render a medium Link 1`] = `
 exports[`<Link /> Size should render a small Link 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-1qdvl51-0 Linkweb__StyledText-l5skt-0 gTilFn"
+    class="Textweb__Text-dvo2dp-0 Linkweb__StyledText-tdtpkb-0 jNiVEz"
     color="shade.980"
     data-testid="ds-text"
     target="_self"
@@ -48,7 +48,7 @@ exports[`<Link /> Size should render a small Link 1`] = `
 exports[`<Link /> various Link props should a render a Link with disabled prop 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-1qdvl51-0 Linkweb__StyledText-l5skt-0 bCXeHz"
+    class="Textweb__Text-dvo2dp-0 Linkweb__StyledText-tdtpkb-0 bLbrBz"
     color="shade.980"
     data-testid="ds-text"
     disabled=""
@@ -63,7 +63,7 @@ exports[`<Link /> various Link props should a render a Link with disabled prop 1
 exports[`<Link /> various Link props should reender a Link with target attr 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-1qdvl51-0 Linkweb__StyledText-l5skt-0 OLTDV"
+    class="Textweb__Text-dvo2dp-0 Linkweb__StyledText-tdtpkb-0 cAfayR"
     color="shade.980"
     data-testid="ds-text"
     href="https://www.razorpay.com"
@@ -77,7 +77,7 @@ exports[`<Link /> various Link props should reender a Link with target attr 1`] 
 exports[`<Link /> various Link props should render a Link with default props 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-1qdvl51-0 Linkweb__StyledText-l5skt-0 kxVElj"
+    class="Textweb__Text-dvo2dp-0 Linkweb__StyledText-tdtpkb-0 tOcKD"
     color="shade.980"
     data-testid="ds-text"
     target="_self"
@@ -90,7 +90,7 @@ exports[`<Link /> various Link props should render a Link with default props 1`]
 exports[`<Link /> various Link props should render a Link with href attr 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-1qdvl51-0 Linkweb__StyledText-l5skt-0 OLTDV"
+    class="Textweb__Text-dvo2dp-0 Linkweb__StyledText-tdtpkb-0 cAfayR"
     color="shade.980"
     data-testid="ds-text"
     href="https://www.razorpay.com"
@@ -104,7 +104,7 @@ exports[`<Link /> various Link props should render a Link with href attr 1`] = `
 exports[`<Link /> various Link props should render a Link with rel attribute 1`] = `
 <div>
   <a
-    class="Textweb__Text-sc-1qdvl51-0 Linkweb__StyledText-l5skt-0 OLTDV"
+    class="Textweb__Text-dvo2dp-0 Linkweb__StyledText-tdtpkb-0 cAfayR"
     color="shade.980"
     data-testid="ds-text"
     href="https://www.razorpay.com"
