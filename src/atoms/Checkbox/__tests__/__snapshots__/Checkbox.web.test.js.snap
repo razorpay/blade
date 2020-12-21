@@ -1,0 +1,728 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Checkbox /> checkbox only should render a icon only checkbox 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 guvfAn"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.38)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> checked should render checkbox checked(attr) as true if checked(prop) is true 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        checked=""
+        class="Inputweb__Input-dxda5r-0 egDdgV"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
+            fill="rgba(43, 131, 234, 1.0 )"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> checked should render checkbox with checked(attr) as false if checked(prop) is false 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 guvfAn"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.38)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> defaultChecked should render checkbox checked(attr) as true if defaultChecked(prop) is true 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        checked=""
+        class="Inputweb__Input-dxda5r-0 egDdgV"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
+            fill="rgba(43, 131, 234, 1.0 )"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> defaultChecked should render checkbox with checked(attr) as false if defaultChecked(prop) is false 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 guvfAn"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.38)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> disabled should render a disabled checkbox if disabled is true 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 cFAoRD Flexweb__Flex-h5ddrw-0 bXkbdN"
+      disabled=""
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 jvwuSK"
+        data-testid="ds-checkbox"
+        disabled=""
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.10)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> errorText should render checkbox with provided errorText 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 guvfAn"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.38)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="Textweb__Text-dvo2dp-0 gRymcG Spaceweb__Space-sc-1gh69p2-0 bryIoN"
+        color="shade.980"
+        data-testid="ds-text"
+      >
+        Nice checkbox
+      </div>
+    </label>
+    <div
+      class="Textweb__Text-dvo2dp-0 jlzvmT Spaceweb__Space-sc-1gh69p2-0 giAGWf"
+      color="negative.900"
+      data-testid="ds-text"
+    >
+      This is some sample error text.
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> focus with checked should render focus styles on checkbox when checked is false 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 guvfAn"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.38)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> focus with checked should render focus styles on checkbox when checked is true 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        checked=""
+        class="Inputweb__Input-dxda5r-0 egDdgV"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
+            fill="rgba(43, 131, 234, 1.0 )"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> focus with defaultChecked should render focus styles on checkbox when defaultChecked is false 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 guvfAn"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.38)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> focus with defaultChecked should render focus styles on checkbox when defaultChecked is true 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        checked=""
+        class="Inputweb__Input-dxda5r-0 egDdgV"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
+            fill="rgba(43, 131, 234, 1.0 )"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> helpText should render checkbox with provided helpText 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 guvfAn"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.38)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="Textweb__Text-dvo2dp-0 gRymcG Spaceweb__Space-sc-1gh69p2-0 bryIoN"
+        color="shade.980"
+        data-testid="ds-text"
+      >
+        Nice checkbox
+      </div>
+    </label>
+    <div
+      class="Textweb__Text-dvo2dp-0 cqcyer Spaceweb__Space-sc-1gh69p2-0 giAGWf"
+      color="shade.950"
+      data-testid="ds-text"
+    >
+      This is some sample help text.
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> size should render a large checkbox 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 guvfAn"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 jBQwhl Sizeweb__Size-t4oux4-0 leRtoI"
+      >
+        <svg
+          fill="none"
+          height="28"
+          viewBox="0 0 24 24"
+          width="28"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.38)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> size should render a medium(default) checkbox 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 guvfAn"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.38)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> size should render a small checkbox 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 guvfAn"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.38)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> title should render a checkbox with provided title 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        class="Inputweb__Input-dxda5r-0 guvfAn"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill="rgba(22, 47, 86, 0.38)"
+            fill-opacity="0.38"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="Textweb__Text-dvo2dp-0 gRymcG Spaceweb__Space-sc-1gh69p2-0 bryIoN"
+        color="shade.980"
+        data-testid="ds-text"
+      >
+        Enable Beast Mode
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> variantColor should render a checkbox with default variantColor if variantColor not provided 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        checked=""
+        class="Inputweb__Input-dxda5r-0 egDdgV"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
+            fill="rgba(43, 131, 234, 1.0 )"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`<Checkbox /> variantColor should render a checkbox with provided variantColor 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw Flexweb__Flex-h5ddrw-0 hRPkye"
+  >
+    <label
+      class="Viewweb__View-sc-1i53gcl-0 Labelweb__Label-sc-1jyfflj-0 FnzkB Flexweb__Flex-h5ddrw-0 bXkbdN"
+      for="sample-checkbox"
+    >
+      <input
+        checked=""
+        class="Inputweb__Input-dxda5r-0 FiHTK"
+        data-testid="ds-checkbox"
+        id="sample-checkbox"
+        type="checkbox"
+      />
+      <div
+        class="Viewweb__View-sc-1i53gcl-0 Backdropweb__Backdrop-sc-18fq2ai-0 fjCtQz Sizeweb__Size-t4oux4-0 gFbSlU"
+      >
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
+            fill="rgba(52, 74, 108, 1.0)"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </label>
+  </div>
+</div>
+`;

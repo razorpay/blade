@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<View /> as should render View as div 1`] = `
+<div>
+  <div
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw"
+  >
+    <div
+      class="Textweb__Text-dvo2dp-0 kgLoKE"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      simple div
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<View /> as should render View as p 1`] = `
+<div>
+  <p
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw"
+  >
+    <div
+      class="Textweb__Text-dvo2dp-0 kgLoKE"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      simple p
+    </div>
+  </p>
+</div>
+`;
+
+exports[`<View /> as should render View as span 1`] = `
+<div>
+  <span
+    class="Viewweb__View-sc-1i53gcl-0 iLSGsw"
+  >
+    <div
+      class="Textweb__Text-dvo2dp-0 kgLoKE"
+      color="shade.980"
+      data-testid="ds-text"
+    >
+      simple span
+    </div>
+  </span>
+</div>
+`;

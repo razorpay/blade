@@ -1,7 +1,8 @@
 {
   "exclude": ["**/__tests__/**"] /* Enable incremental compilation */,
-  "include": ["src", "storybook/themed.ts"],
+  "include": ["packages", "storybook/themed.ts"],
   "compilerOptions": {
+    "skipLibCheck": true,
     /* Basic Options */
     // "incremental": true,
     "target": "ES2019" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */,
@@ -45,7 +46,7 @@
     //   // "tokens/theme": ["src/tokens/theme.native", "src/tokens/theme.web"]
     // } /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */,
     "rootDirs": [
-      "src"
+      "packages"
     ] /* List of root folders whose combined content represents the structure of the project at runtime. */,
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
     // "types": [],                           /* Type declaration files to be included in compilation. */
