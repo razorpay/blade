@@ -1,6 +1,9 @@
 {
-  "exclude": ["**/__tests__/**"] /* Enable incremental compilation */,
-  "include": ["packages", "storybook/themed.ts"],
+  "exclude": [
+    "**/__tests__/**",
+    "packages/tools/figma-plugin-version-history/**"
+  ] /* Enable incremental compilation */,
+  "include": ["packages"],
   "compilerOptions": {
     "skipLibCheck": true,
     /* Basic Options */
@@ -25,8 +28,8 @@
     // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
     // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
     /* Strict Type-Checking Options */
-    "strict": false /* Enable all strict type-checking options. */,
-    "noImplicitAny": false /* Raise error on expressions and declarations with an implied 'any' type. */,
+    "strict": true /* Enable all strict type-checking options. */,
+    "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
     // "strictNullChecks": true,              /* Enable strict null checks. */
     // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
     // "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
@@ -34,9 +37,9 @@
     // "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
     // "alwaysStrict": true,                  /* Parse in strict mode and emit "use strict" for each source file. */
     /* Additional Checks */
-    // "noUnusedLocals": true,                /* Report errors on unused locals. */
+    "noUnusedLocals": true /* Report errors on unused locals. */,
     // "noUnusedParameters": true,            /* Report errors on unused parameters. */
-    // "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
+    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
     // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
     /* Module Resolution Options */
     // "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
@@ -46,7 +49,7 @@
     //   // "tokens/theme": ["src/tokens/theme.native", "src/tokens/theme.web"]
     // } /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */,
     "rootDirs": [
-      "packages"
+      "./packages"
     ] /* List of root folders whose combined content represents the structure of the project at runtime. */,
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
     // "types": [],                           /* Type declaration files to be included in compilation. */
