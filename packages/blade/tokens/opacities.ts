@@ -5,11 +5,11 @@ type opacity = Readonly<{
   9: number;
 }>;
 
-const opacity: opacity = {
+const opacities: opacity = {
   1: 0.09,
   2: 0.18,
   3: 0.32,
   9: 1.0,
 };
 
-export default opacity;
+export default opacities;
