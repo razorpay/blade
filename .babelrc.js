@@ -54,6 +54,7 @@ module.exports = {
             ssr: true,
           },
         ],
+        '@babel/plugin-proposal-nullish-coalescing-operator',
       ],
     },
     'web-production': {
