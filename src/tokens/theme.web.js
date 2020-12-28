@@ -13,6 +13,9 @@ const lightTheme = {
       800: colors.grey[500],
     },
     shade: {
+      500: colors.slate[500],
+      600: colors.slate[600],
+      700: colors.slate[700],
       800: colors.slate[800],
       900: colors.slate[900],
       910: colors.slate[910],
@@ -115,6 +118,7 @@ const darkTheme = {
       980: colors.xCloud[980],
     },
     tone: {
+      800: colors.xSlate[800],
       900: colors.xSlate[900],
       920: colors.xSlate[920],
       930: colors.xSlate[930],
@@ -156,6 +160,7 @@ const darkTheme = {
       960: colors.xHoney[960],
     },
     light: {
+      800: colors.white[800],
       900: colors.white[900],
       920: colors.white[920],
       930: colors.white[930],
@@ -166,8 +171,8 @@ const darkTheme = {
       980: colors.white[980],
     },
     dark: {
-      930: colors.slate[930],
-      940: colors.slate[940],
+      730: colors.slate[930],
+      740: colors.slate[940],
     },
     highlight: {
       700: colors.xDarkBlue[200],
