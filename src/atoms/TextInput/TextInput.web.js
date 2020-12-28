@@ -127,15 +127,17 @@ const StyledInput = styled.input`
   &:active {
     outline: none;
   }
-  &::placeholder {
-    color: ${(props) => props.placeholderTextColor};
-  }
   &::selection {
     background-color: ${(props) => props.theme.colors.primary[980]};
   }
   /* Removes red box shadow rectangle on firefox */
   &:invalid {
     box-shadow: none;
+  }
+  &&& {
+    &::placeholder {
+      color: ${(props) => props.placeholderTextColor};
+    }
   }
 `;
 

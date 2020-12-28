@@ -34,7 +34,7 @@ exports[`<TextArea /> default should render TextArea with default props 1`] = `
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 jYgNJX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dKteyD Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 placeholder=""
                 rows="1"
@@ -91,7 +91,7 @@ exports[`<TextArea /> disabled should render a disabled TextArea 1`] = `
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 UVPts Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 jYgntY Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 disabled=""
                 id="sample-id"
@@ -147,7 +147,7 @@ exports[`<TextArea /> errorText should render TextArea with help text if errorTe
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 jYgNJX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dKteyD Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 placeholder=""
                 rows="1"
@@ -215,7 +215,7 @@ exports[`<TextArea /> errorText with maxLength should render TextArea with chara
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 jYgNJX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dKteyD Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 maxlength="10"
                 placeholder=""
@@ -297,7 +297,7 @@ exports[`<TextArea /> focus should have focus when TextArea is focused 1`] = `
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 jYgNJX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dKteyD Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 id="sample-id"
                 placeholder=""
@@ -351,7 +351,7 @@ exports[`<TextArea /> helpText should render TextArea with help text if helpText
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 jYgNJX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dKteyD Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 placeholder=""
                 rows="1"
@@ -419,7 +419,7 @@ exports[`<TextArea /> helpText with maxLength should render TextArea with charac
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 jYgNJX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dKteyD Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 maxlength="10"
                 placeholder=""
@@ -497,7 +497,7 @@ exports[`<TextArea /> label should render a TextArea with labelPosition on left 
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 cQyOdz Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 iBpGMC Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dilovX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 iBpGMC Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 id="sample-id"
                 placeholder=""
@@ -548,7 +548,7 @@ exports[`<TextArea /> label should render a TextArea with labelPosition on top(d
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 cQyOdz Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 iBpGMC Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dilovX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 iBpGMC Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 id="sample-id"
                 placeholder=""
@@ -602,7 +602,7 @@ exports[`<TextArea /> label should render a TextArea with labelPosition on top(d
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 jYgNJX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dKteyD Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 id="sample-id"
                 placeholder=""
@@ -652,7 +652,7 @@ exports[`<TextArea /> variant should render filled variant with default props 1`
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 cQyOdz Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 iBpGMC Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dilovX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 iBpGMC Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 placeholder=""
                 rows="3"
@@ -704,7 +704,7 @@ exports[`<TextArea /> variant should render outlined variant with default props 
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 jYgNJX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dKteyD Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 placeholder=""
                 rows="1"
@@ -757,7 +757,7 @@ exports[`<TextArea /> width should render a TextArea with auto width 1`] = `
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 hHYXCZ Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 jYgNJX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dKteyD Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 placeholder=""
                 rows="1"
@@ -810,7 +810,7 @@ exports[`<TextArea /> width should render a TextArea with medium(default) width 
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 cTcGbL Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 jYgNJX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dKteyD Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 placeholder=""
                 rows="1"
@@ -863,7 +863,7 @@ exports[`<TextArea /> width should render a TextArea with small width 1`] = `
               class="Viewweb__View-sc-1i53gcl-0 TextInputweb__InputContainer-th1lpa-0 cXrEYp Sizeweb__Size-t4oux4-0 dCQgNm Flexweb__Flex-h5ddrw-0 bXkbdN"
             >
               <textarea
-                class="TextInputweb__StyledInput-th1lpa-1 jYgNJX Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
+                class="TextInputweb__StyledInput-th1lpa-1 dKteyD Sizeweb__Size-t4oux4-0 fitCCE Spaceweb__Space-sc-1gh69p2-0 elJMNa Flexweb__Flex-h5ddrw-0 cndXnK"
                 data-testid="ds-text-area"
                 placeholder=""
                 rows="1"
