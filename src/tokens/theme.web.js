@@ -100,7 +100,7 @@ const darkTheme = {
       200: colors.xDarkBlue[400],
       400: colors.xDarkBlue[500],
       600: colors.xDarkBlue[600],
-      800: colors.xDarkBlue[700],
+      800: colors.xDarkBlue[800],
     },
     shade: {
       500: colors.xCloud[500],
