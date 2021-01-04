@@ -6,7 +6,7 @@ Blade Issue: (leave this empty if no issue yet)
 
 # Title of the RFC <!-- omit in toc -->
 
-## Table Of Contents <!-- omit in toc -->
+### Table Of Contents <!-- omit in toc -->
 - [Summary](#summary)
 - [Basic Example](#basic-example)
 - [Motivation](#motivation)
@@ -25,7 +25,9 @@ Brief explanation about the proposal.
 Include a basic code example. Omit this section if it's not applicable.
 
 # Motivation
-Why are we doing this? What use cases does it support? What is the expected outcome?
+- Why are we doing this?
+- What use cases does it support?
+- What is the expected outcome?
 
 Please focus on explaining the motivation so that if this RFC is not accepted, the motivation could be used to develop alternative solutions. In other words, enumerate the constraints you are trying to solve without coupling them too closely to the solution you have in mind.
 
