@@ -14,7 +14,7 @@ Blade Issue: (leave this empty if no issue yet)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
-- [How Do We Educate People?](#how-do-we-educate-people)
+- [How do we educate people?](#how-do-we-educate-people)
 - [Open Questions](#open-questions)
 - [References](#references)
 
@@ -29,14 +29,13 @@ Include a basic code example. Omit this section if it's not applicable.
 - What use cases does it support?
 - What is the expected outcome?
 
-Please focus on explaining the motivation so that if this RFC is not accepted, the motivation could be used to develop alternative solutions. In other words, enumerate the constraints you are trying to solve without coupling them too closely to the solution you have in mind.
+Try to focus on explaining the motivation so that if this RFC is not accepted, the motivation could be used to develop alternative solutions. In other words, try to list down the constraints you are trying to solve without coupling them too closely to the solution you have in mind.
 
 # Detailed Design
 This is the bulk of the RFC. Explain the design in enough detail for somebody familiar with the Design System to understand, and for somebody familiar with the implementation to implement. This should get into specifics and corner-cases, and include examples of how the feature is used. Any new terminology should be defined here.
 
 # Drawbacks/Constraints
-Why should we *not* do this? Please consider:
-
+Why should we *not* do this? Maybe try to consider the following constraints
 - Implementation cost, both in terms of code size and complexity.
 - The impact of it on new as well as existing consumer projects.
 - Cost of migration.
@@ -53,7 +52,7 @@ If we implement this proposal, how will existing consumer projects adopt it?
 - How do we prioritise this with business and product folks?
 - How do we communicate with other teams? Will updating docs suffice or do we need a dedicated interaction with them?
 
-# How Do We Educate People?
+# How do we educate people?
 - How should this be taught to other folks?
 - What names and terminology work best for these concepts and why? 
 - How is this idea best presented?
