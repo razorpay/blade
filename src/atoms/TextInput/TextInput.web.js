@@ -113,6 +113,7 @@ const StyledInput = styled.input`
   background-color: transparent;
   pointer-events: ${(props) => (props.disabled ? 'none' : '')};
   resize: none;
+  width: 100%;
   &::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
@@ -462,7 +463,7 @@ const TextInput = ({
                                     variant,
                                   })}
                                 >
-                                  <Size minWidth="0" maxHeight={8}>
+                                  <Size maxHeight={8}>
                                     <StyledInput
                                       id={id}
                                       name={name}
