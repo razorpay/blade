@@ -8,6 +8,7 @@ Blade Issue: NA
 
 ### Table Of Contents <!-- omit in toc -->
 - [Summary](#summary)
+  - [What are design tokens?](#what-are-design-tokens)
 - [Motivation](#motivation)
     - [Why are we doing this?](#why-are-we-doing-this)
     - [The current state](#the-current-state)
@@ -28,14 +29,13 @@ Blade Issue: NA
       - [Mode](#mode)
       - [TL;DR](#tldr-2)
     - [Ordering](#ordering)
+  - [**Polyhierarchy**](#polyhierarchy)
       - [In a nutshell](#in-a-nutshell)
   - [Principles Used](#principles-used)
     - [Specificity over Flexibility](#specificity-over-flexibility)
     - [Start within, then promote across**](#start-within-then-promote-across)
     - [Theme ≠ Mode](#theme--mode)
   - [How/Where will we store these tokens?](#howwhere-will-we-store-these-tokens)
-  - [**Order**](#order)
-  - [**Polyhierarchy**](#polyhierarchy)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
@@ -44,6 +44,10 @@ Blade Issue: NA
 - [References](#references)
 
 # Summary
+## What are design tokens?
+* Design tokens are pieces of data that take the place of hard-coded properties. They are the consistent colors, fonts, sizing, and spacing that developers use to create applications. 
+* Design tokens are the design decisions stored at a central place and are agnostic of any underlying implementation/consumer framework.
+
 This RFC discusses about the naming convention and strategies for tokens in our Design System. There are different types of tokens - global, local etc. and in order to build a scalable system we need to define some convention and strategies.
 
 # Motivation
@@ -274,7 +278,34 @@ For example: `theme.color.action.text.primary.focus.dark`, `Button.color.text.pr
   2. **state** - `hover`, `click`, `active` etc.
   3. **scale** - `100`, `200`, `1`, `2`, `s`, `m`, `l` etc.
   4. **mode** - `dark`, `light` etc.
+
 ### Ordering
+As evidenced in reviewing tokens across my projects and other public collections, there’s no prevailing token level order. As such, here are some patterns I’ve sensed hold steady:
+
+- **Base** levels (*category*, *property*, *concept*) are a backbone in the middle.
+- Levels within **Base** vary based on preferences for hierarchical strictness (`color-interactive-background`), readability (`interactive-background-color`), or keeping levels like *category* and *property* paired together (`color-background-interactive`).
+- **Namespaces** (*system*, *theme*, *domain*) are prepended first.
+- **Modifiers** (*variant*, *state*, *scale*, *mode*) tend to be appended last.
+- **Object** levels (*component group*, *component*, and nested *element*) are subordinate to namespaces and establish context that can contain and therefore precede **base** and **modifier** levels.
+- Order within **modifiers** isn’t consistent, although *mode* is often last (given its framing of “on” and use limited to only color and, even then, only when there’s a distinction).
+
+While level order presented here is an option, it’s not the only option. Your system’s level order depends on what levels you use, what your system needs, and the discriminating tastes of each team member.
+
+## **Polyhierarchy**
+
+*Concept*, *category*, *variant* and other levels can overlap and compete. For example, an “error red” can be both *concept variant* `color-feedback-error` and *object* *variant* of `ui-controls-color-text-error` (included in packages for Input, Checkbox, Select, and other form controls). This forces us to decide:
+
+> At what level(s) do I store this purposeful decision?Is it ok to store the same decision in two different locations?If purpose of two different choices is nearly identical, should it be 1 or 2 tokens?
+
+Both `color-feedback` and `ui-controls-color-text` concepts have other variants (`warning`, `success`, `info` and `label`, `value`, and `helper-text`, respectively) for which `error` completes a set. Even if the actual red value is the same, I value the completeness of both sets. Therefore, I would consider aliasing one (the *object variant*) to the other (the *concept variant*).
+
+```
+$ui-controls-color-text-error = $color-feedback-error
+                             (= $color-red-36)
+                             (= #B90000)
+```
+
+This also hedges against the possibility that the `ui-controls-color-text-error` red could be adjusted later without impacting other uses of `color-feedback-error`, tracing a change to only those values fitting that purpose.
 #### In a nutshell
 - **Object** refers to
   1. **component** - `button`, `theme` etc.
@@ -304,69 +335,42 @@ A theme may eventually require `light`, `dark` color applications. PG might requ
 
 
 
+
+## How/Where will we store these tokens?
+theme file
+component file/different file
 Object<theme/component/sub-component(s)>.Base<category/behavior/property>.Modifier<variant/state/scale/mode>
 
 document all the possible ways to create a token name
 document the dont's in the naming
 
-## How/Where will we store these tokens?
-theme file
-component file/different file
-
-
-## **Order**
-
-As evidenced in reviewing tokens across my projects and other public collections, there’s no prevailing token level order. As such, here are some patterns I’ve sensed hold steady:
-
-- **Base** levels (*category*, *property*, *concept*) are a backbone in the middle.
-- Levels within **Base** vary based on preferences for hierarchical strictness (`color-interactive-background`), readability (`interactive-background-color`), or keeping levels like *category* and *property* paired together (`color-background-interactive`).
-- **Namespaces** (*system*, *theme*, *domain*) are prepended first.
-- **Modifiers** (*variant*, *state*, *scale*, *mode*) tend to be appended last.
-- **Object** levels (*component group*, *component*, and nested *element*) are subordinate to namespaces and establish context that can contain and therefore precede **base** and **modifier** levels.
-- Order within **modifiers** isn’t consistent, although *mode* is often last (given its framing of “on” and use limited to only color and, even then, only when there’s a distinction).
-
-While level order presented here is an option, it’s not the only option. Your system’s level order depends on what levels you use, what your system needs, and the discriminating tastes of each team member.
-
-## **Polyhierarchy**
-
-*Concept*, *category*, *variant* and other levels can overlap and compete. For example, an “error red” can be both *concept variant* `color-feedback-error` and *object* *variant* of `ui-controls-color-text-error` (included in packages for Input, Checkbox, Select, and other form controls). This forces us to decide:
-
-> At what level(s) do I store this purposeful decision?Is it ok to store the same decision in two different locations?If purpose of two different choices is nearly identical, should it be 1 or 2 tokens?
-
-Both `color-feedback` and `ui-controls-color-text` concepts have other variants (`warning`, `success`, `info` and `label`, `value`, and `helper-text`, respectively) for which `error` completes a set. Even if the actual red value is the same, I value the completeness of both sets. Therefore, I would consider aliasing one (the *object variant*) to the other (the *concept variant*).
-
-```
-$ui-controls-color-text-error = $color-feedback-error
-                             (= $color-red-36)
-                             (= #B90000)
-```
-
-This also hedges against the possibility that the `ui-controls-color-text-error` red could be adjusted later without impacting other uses of `color-feedback-error`, tracing a change to only those values fitting that purpose.
-
 # Drawbacks/Constraints
-Why should we *not* do this? Maybe try to consider the following constraints
-- Implementation cost, both in terms of code size and complexity.
-- The impact of it on new as well as existing consumer projects.
-- Cost of migration.
-
-There are tradeoffs to choosing any path. Attempt to identify them here.
-
+- Introducing a new guidelines/framework to name certain things means more time to understand on how to get this right.
+- The meaning of each and every category or the entire hierachical structure might not be intuitive to someone looking it at a glance.
+- Few concepts are overlapping and for example `size` is a category(base) as if used in the context of sizing and it's a property(base) if paired along with category like `font` i.e `font.size`. Even though these are rare scenarios but it needs a careful consideration whenever some new token is being created.
 # Alternatives
-Mention Infor design system pattern
-Just write object, property convention and how that lacks
-What other designs/patterns/strategies have been considered?
+One approach which was very close to fit in our use case and inspired from [Infor Design System](https://design.infor.com/resources/design-tokens). It looks something like below
 
+For Theme-level tokens, the naming convention is roughly like this:
+`theme.attributeType.attribute.attributeVariant`
+
+For component-level tokens, the naming convention is roughly like this:
+`componentName.attributeType.componentVariant.componentState.attribute`
+
+This worked for basic categories like `Button.color.primary.hover.background` but it fails as soon as there are some more granular details which we want to capture with respect to theme mode, state, scale, behavior etc. For example:
+* `Button.color.text.primary.hover.dark` - says that this token points to the text color of a primary button when in hovered state on a dark mode
+* `Button.font.size.primary.disabled.m` - says that this token points to the font size medium of a primary button when in disabled state.
+
+I had tried other ways to form a reasonably simpler structure but all of them broke as the complexity increased. Hence we needed a verbose framework which covers current as well as future scenarios.
 # Adoption strategy
-If we implement this proposal, how will existing consumer projects adopt it? 
-- Is this a breaking change? 
-- Can we write a codemod?
-- How do we prioritise this with business and product folks?
-- How do we communicate with other teams? Will updating docs suffice or do we need a dedicated interaction with them?
+* Immediately, this won't impact any existing consumers of the design system.
+* This is being built in isolation(though merged into master regularly as we follow Trunk based development) and hence nothing will break on the projects using blade design system directly from git commit.
+* Since this is being built as an activity of re-architecture of our design system the migration of the old system to the new will be a breaking change which is out of the scope of this RFC and will be handled separately.
 
 # How do we educate people?
-- How should this be taught to other folks?
-- What names and terminology work best for these concepts and why? 
-- How is this idea best presented?
+* The best way to educate people is to put more and more visual representation of this staruture with contextual examples.
+* All the examples written in this RFC along with hierarchical representational images can be pulled out and put it in our *future* documentation website
+* Until we have our documentation site in place, this RFC can serve the purpose of documentation.
 
 # Open Questions
 - Any open questions that you have?
@@ -377,6 +381,3 @@ If we implement this proposal, how will existing consumer projects adopt it?
 - [Naming Tokens in Design Systems](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676)
 - [Design Tokens](https://spectrum.adobe.com/page/design-tokens/)
 - [Tokens in Design System](https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd82d58421)
-
-Any references that you can share for those who are curious to understand anything beyond the scope of this RFC in general but related to the topic of this RFC.
-
