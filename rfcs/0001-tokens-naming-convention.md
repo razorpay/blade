@@ -351,6 +351,7 @@ This also hedges against the possibility that the `ui-controls-color-text-error
   4. **mode** - `dark`, `light` etc.
 
 ## Principles Used
+There are certain principles that were kept in mind while creating this naming framework
 ### Specificity over Flexibility
 Tokens like `theme.color.success` combine *category* (`color`) and *variant* (`success`) leaves interpretation to the user to apply `theme.color.success` to any of `background`, `border` or `text`.
 
@@ -362,10 +363,6 @@ Start with making the tokens `local` to the components, then follow the usage pa
 ### Theme ≠ Mode
 
 A theme may eventually require `light`, `dark` color applications. PG might require a light and dark mode but their theme is different from Razorpay X. Similarly Razorpay X may require dark and light mode and their dark and light will be different from any other product's theme
-
-
-
-
 ## How/Where will we store these tokens?
 theme file
 component file/different file
@@ -373,7 +370,6 @@ Object<theme/component/sub-component(s)>.Base<category/behavior/property>.Modifi
 
 document all the possible ways to create a token name
 document the dont's in the naming
-
 # Drawbacks/Constraints
 - Introducing a new guidelines/framework to name certain things means more time to understand on how to get this right.
 - The meaning of each and every category or the entire hierachical structure might not be intuitive to someone looking it at a glance.
