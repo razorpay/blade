@@ -28,8 +28,8 @@ Blade Issue: NA
       - [Scale](#scale)
       - [Mode](#mode)
       - [TL;DR](#tldr-2)
-    - [Ordering](#ordering)
-  - [**Polyhierarchy**](#polyhierarchy)
+    - [Creating a new token](#creating-a-new-token)
+  - [Overlapping Decisions](#overlapping-decisions)
       - [In a nutshell](#in-a-nutshell)
   - [Principles Used](#principles-used)
     - [Specificity over Flexibility](#specificity-over-flexibility)
@@ -279,19 +279,49 @@ For example: `theme.color.action.text.primary.focus.dark`, `Button.color.text.pr
   3. **scale** - `100`, `200`, `1`, `2`, `s`, `m`, `l` etc.
   4. **mode** - `dark`, `light` etc.
 
-### Ordering
-As evidenced in reviewing tokens across my projects and other public collections, there’s no prevailing token level order. As such, here are some patterns I’ve sensed hold steady:
+### Creating a new token
+We have covered all the base concepts involved in structring or creating a token so put it together this what we have got so far:
+`Object.Base.Modifier`
 
-- **Base** levels (*category*, *property*, *concept*) are a backbone in the middle.
-- Levels within **Base** vary based on preferences for hierarchical strictness (`color-interactive-background`), readability (`interactive-background-color`), or keeping levels like *category* and *property* paired together (`color-background-interactive`).
-- **Namespaces** (*system*, *theme*, *domain*) are prepended first.
-- **Modifiers** (*variant*, *state*, *scale*, *mode*) tend to be appended last.
-- **Object** levels (*component group*, *component*, and nested *element*) are subordinate to namespaces and establish context that can contain and therefore precede **base** and **modifier** levels.
-- Order within **modifiers** isn’t consistent, although *mode* is often last (given its framing of “on” and use limited to only color and, even then, only when there’s a distinction).
+Let's break it down to what does this mean?
+* All the parts of the structure are optional and should be used only when applicable.
+* If either of the above is used in combination then the hierarchy needs to be followed as:
+  1. **Object**
+  2. **Base**
+  3. **Modifer**
 
-While level order presented here is an option, it’s not the only option. Your system’s level order depends on what levels you use, what your system needs, and the discriminating tastes of each team member.
+An `Object` can be either of the following(at the moment):
+* `theme`
+* `componentName`
 
-## **Polyhierarchy**
+A `Base` can be further split into following sub-categories based on the granularity of informatin we want to store in our token and follows the hierarchy as:
+1. **category** - `color`, `space`, `size`, `font` etc.
+2. **behavior** - `action`, `feedback` etc.
+3. **property** - `size`, `weight`, `border` etc.
+
+You can use multiple `base` in the same token to add more granularity and you can even skip any of the sub-categories but the hierarchical levels needs to be intact as mentioned above. For example you can construct a token by pairing the sub-categories of `base` as `category.behavior.property` or `category.property`
+
+A `Modifier` can be further split into following sub-categories based on the granularity of informatin we want to store in our token and follows the hierarchy as:
+1. **variant** - `primary`, `secondary` etc.
+2. **state** - `hover`, `click`, `active` etc.
+3. **scale** - `100`, `200`, `1`, `2`, `s`, `m`, `l` etc.
+4. **mode** - `dark`, `light` etc.
+
+You can use multiple `modifier` in the same token to add more granularity and you can even skip any of the sub-categories but the hierarchical levels needs to be intact as mentioned above. For example you can construct a token by pairing the sub-categories of `modifier` as `variant.state.scale.mode` or `variant.scale.mode` or `variant.state.mode` or `variant.mode` and so on.
+
+You can basically use any/all of the above categories and their sub-categories and pair them up to form a very specific self explanatory token. Below are some examples:
+```js
+Button.font.size.primary.disabled.m
+Button.color.text.primary.hover.dark
+Button.color.text.primary
+theme.font.family
+theme.font.size
+theme.font.weight
+theme.color.chromatic.azure.100
+theme.space.s
+```
+
+## Overlapping Decisions
 
 *Concept*, *category*, *variant* and other levels can overlap and compete. For example, an “error red” can be both *concept variant* `color-feedback-error` and *object* *variant* of `ui-controls-color-text-error` (included in packages for Input, Checkbox, Select, and other form controls). This forces us to decide:
 
@@ -373,10 +403,7 @@ I had tried other ways to form a reasonably simpler structure but all of them br
 * Until we have our documentation site in place, this RFC can serve the purpose of documentation.
 
 # Open Questions
-- Any open questions that you have?
-- Any undiscovered areas that you have encountered?
-- Any dependencies on other teams(Design/Engineering) that needs to be resolved upfront?
-
+- Maybe a better name for `behavior` which is defined as the the sub level in `Base`.
 # References
 - [Naming Tokens in Design Systems](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676)
 - [Design Tokens](https://spectrum.adobe.com/page/design-tokens/)
