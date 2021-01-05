@@ -15,13 +15,25 @@ Blade Issue: NA
 - [Detailed Design](#detailed-design)
   - [Proposed Structure](#proposed-structure)
     - [Object](#object)
+      - [TL;DR](#tldr)
     - [Base](#base)
+      - [Category](#category)
+      - [Property](#property)
+      - [Behavior](#behavior)
+      - [TL;DR](#tldr-1)
     - [Modifier](#modifier)
+      - [Variant](#variant)
+      - [State](#state)
+      - [Scale](#scale)
+      - [Mode](#mode)
+      - [TL;DR](#tldr-2)
+    - [Ordering](#ordering)
       - [In a nutshell](#in-a-nutshell)
-  - [**Principle: Flexibility or Specificity?**](#principle-flexibility-or-specificity)
-  - [**Principle: Start Within, Then Promote Across Components**](#principle-start-within-then-promote-across-components)
-  - [**Principle: Don’t Globalize Decisions Prematurely**](#principle-dont-globalize-decisions-prematurely)
-  - [Principle: Theme ≠ Mode](#principle-theme--mode)
+  - [Principles Used](#principles-used)
+    - [Specificity over Flexibility](#specificity-over-flexibility)
+    - [Start within, then promote across**](#start-within-then-promote-across)
+    - [Theme ≠ Mode](#theme--mode)
+  - [How/Where will we store these tokens?](#howwhere-will-we-store-these-tokens)
   - [**Order**](#order)
   - [**Polyhierarchy**](#polyhierarchy)
 - [Drawbacks/Constraints](#drawbacksconstraints)
@@ -39,7 +51,43 @@ This RFC discusses about the naming convention and strategies for tokens in our 
 As our system is scaling we are seeing a lot of ambiguities about how to name certain things. Hence, this RFC will propose certain conventions that we need to set before going to build the components.
 
 ### The current state
-Until now we don't have any naming framework or guidelines that defines how we shall name things. For eg:
+We just have global tokens until now in our systems. We don't have component level tokens specifically and all the values for properties of a component are derived with hardcoded values inside `if..else` blocks
+```js
+fontColor({ variant, variantColor, disabled }) {
+  switch (variant) {
+    case 'primary':
+      if (disabled) {
+        return 'light.950';
+      }
+      return 'light.900';
+    case 'secondary':
+      if (disabled) {
+        return 'shade.940';
+      }
+      return `${variantColor}.800`;
+    case 'tertiary':
+      if (disabled) {
+        return 'shade.940';
+      }
+      return `${variantColor}.800`;
+    default:
+      if (disabled) {
+        return 'light.950';
+      }
+      return 'light.900';
+  }
+}
+
+// and then we use it like this
+<Icon
+  name={icon}
+  size={styles.iconSize({ size, children })}
+  fill={styles.fontColor({ variant, variantColor, disabled })}
+  testID="button-left-icon"
+/>
+```
+
+We don't have any naming framework or guidelines that defines how we shall name things. For eg:
 >If I have to refer what's in their a `theme` object I've to manually lookup the structure of theme file and then identify that color is at the first level so I can access `theme.color.primary.800`
 
 Similarly, If I need to add any new object inside theme I don't know what shall be the structure. For eg:
@@ -53,7 +101,6 @@ As you can see with the current system there are a lot of issues with the naming
 ### What is the expected outcome?
 - A well defined naming framework that we can use to name and access tokens at any level in our design system.
 - A structured system which makes accessing our tokens predictable.
-
 
 # Detailed Design
 Tokens are the core foundation of our design system since tokens are something
@@ -73,9 +120,161 @@ We need a well descriptive tokenized language that incorporates all these concer
 The proposed grouping that will fit our use case would look something like `object.base.modifier`. Let's look at the breakdown for each of the group:
 
 ### Object
-### Base
-### Modifier
+An object level classifies tokens specific to a component, element nested within a component, or a component group or even a theme to differentiate whether it's a theme level global token or component level local token. `Object` level will become the first level of classification in our new token structure.
 
+For example if we don't use this specifier then we might end up creating a token like `color.background` for let's say a `Button` component. But this leads to an ambiguity since we we don't have any context attached to the color and we don't know what color we are referring to. 
+
+Rather if we start the token naming with a `Base` which means prefixing the component name then things might become more clear and contextual. For eg: `button.color.background`
+
+But now if we want to refer a component within a component for example we need to refer to the `color` of an `icon` component inside a `Button` component then how shall we do that? An object can also split further and can have sub-component nesting to it as well. Eg: `button.leftIcon.color.background` 
+
+Similarly, if we want to refer to a token value within a theme like `font.family` we can't do it alone since it doesn't has any context attached to it and we don't even know if what are we referring to? a theme token or a component token?
+
+But as soon as we attach the context our problem will be solved. For eg: `theme.font.family` tells us that we are trying to refer to font family token inside our theme.
+
+#### TL;DR
+**Object** refers to
+  1. **component** - `button`, `theme` etc.
+  2. **sub-component** - one or more component within a component - `left-icon`, `right-icon` etc.
+
+### Base
+Base acts as a token’s backbone. Once we have `Object` as the first level classification the next level is `Base`. For example `color`, `font`, `size` etc becomes the `Base`. For eg: `Button.color`, `Button.font`, `theme.color` etc. 
+
+But as our collection grows the `Base` alone can't serve the purpose and it literally doesn't mean anything. For eg: `Button.color` itself is ambiguous becuase a color could be `textColor`, `backgroundColor`, `borderColor` or anything else, so instead we need a further level of pairing. Hence the `Base` itself can be categorised into following
+
+#### Category
+Categories span visual style concerns and may overlap at times
+
+Common categories includes but not limited to:
+- `color`
+- `font` (aka type, typography, text)
+- `space` (aka units, dimension, spacing)
+- `size` (aka sizing)
+- `elevation` (aka z-index, layer, layering)
+- `breakpoints` (aka media-query, responsive)
+- `shadow` (aka depth)
+- `time` (aka animation, duration)
+
+#### Property
+Property is something that attach some meaning to the category in such a way that a menainful value can be derived
+
+Common properties includes but not limited to:
+- `text`
+- `background`
+- `border`
+- `weight`
+
+Usually a property is paired up with category to form a meaningful token value. For eg:
+- `color.text`
+- `color.background`
+- `color.border`
+- `font.weight`
+
+Some meaningful token name examples:
+```jsonc
+// Object.Base<category.property>
+Button.color.text
+Button.color.background 
+Button.color.border 
+Button.font.weight
+Button.font.size
+```
+
+#### Behavior
+Category-property pairs are exceedingly general and not purposefully useful when we want to create few generalised global tokens. 
+
+For example if we need to create a global token which applies to all the actionable elements i.e Button, Link etc. then we can't something general by just using category:property pairing(`color.text`) or if we want to have a token which applies to the `body` or maybe just elements which give feedbacks `snackbar`, `alerts` etc. Hence, we need another level in between which is `behavior`.
+
+Common behavior includes but not limited to:
+- `action`
+- `feedback`
+- `heading`
+- `body`
+
+We can combine concepts with categories and properties to form more generalised tokens:
+```
+color.action.background
+color.feedback.text
+font.heading.size
+font.body.weight
+```
+
+#### TL;DR
+**Base** refers to a token’s backbone that combines
+  1. **category** - `color`, `space`, `size`, `font` etc.
+  2. **behavior** - `action`, `feedback` etc.
+  3. **property** - `size`, `weight`, `border` etc.
+> 📝 Note: It's not mandatory to use all the three sub levels of the `Base` i.e `category.behavior.property` always. You can use them as per the use case by skipping some of the grouping levels if required.
+### Modifier
+Whenever we will build components we will always come across use cases like defining token for a particular `variant`(primary, secondory, success, error, information etc.) of a component in a particular `state`(hover, click, active, state etc.). 
+
+To achieve the above use case we will use modifiers which can further be categorised into `variant`, `state`, `scale`, and `mode`. 
+
+Modifiers will be the last level in our token naming hierarchy.
+
+Modifiers can be used independently or can be paired with levels like category, behavior and property to form a purposeful decision(a.k.a meaningful self explanatory token). For eg: 
+- `Button.color.text.primary`
+  - `Button` - Object
+  - `color` - Base(category)
+  - `text` - Base(property)
+  - `primary` - Modifier(variant)
+- `theme.color.action.background.hover`
+  - `theme` - Object
+  - `color` - Base(category)
+  - `action` - Base(behavior)
+  - `background` - Base(property)
+  - `hover` - Modifier(state)
+
+#### Variant
+A variant distinguishes alternative use cases.
+
+For example different variants of a `Button`
+* `primary`
+* `secondary`
+* `tertiary`
+
+Similarly, different variant of `Notification`
+* `success` - to indicate a successful action
+* `error` - to indicate that an action errored out
+* `information` - to nudge the user with information
+* `warning` - to indicate a warning
+
+For example: `theme.color.action.text.primary`
+#### State
+Tokens can specify properties based on interactive states, like:
+* `default`
+* `hover` - when a pointer is positioned above an object
+* `click` - when a user presses an object
+* `focus` - when an object is able to accept input
+* `disabled` - when an object is not able to accept input
+* `visited` - when a link is already visited
+* `error` - when an object is in an error state
+
+For example: `theme.color.action.text.primary.focus`
+
+#### Scale
+Scale serves as a mofifer to create more granular token name in scenarios where we want to create a token which work differently on different scales
+
+* Linear Scale: `1`, `2`, `3`, `4` and so on
+* T-shirt Size Scale: `s`, `m`, `l`, `xl` and so on
+
+For example: `theme.font.size.s`, `Button.space.paddingLeft.primary.hover.m`
+
+#### Mode
+Mode is usually a modifier to help us create tokens to distinguish values across two or more surface/background settings on which elements appear 
+
+* `dark`
+* `light`
+* `midNight`
+
+For example: `theme.color.action.text.primary.focus.dark`, `Button.color.text.primary.hover.dark`
+#### TL;DR
+**Modifier** refers to one or more of
+  1. **variant** - `primary`, `secondary` etc.
+  2. **state** - `hover`, `click`, `active` etc.
+  3. **scale** - `100`, `200`, `1`, `2`, `s`, `m`, `l` etc.
+  4. **mode** - `dark`, `light` etc.
+### Ordering
 #### In a nutshell
 - **Object** refers to
   1. **component** - `button`, `theme` etc.
@@ -90,31 +289,30 @@ The proposed grouping that will fit our use case would look something like `obje
   3. **scale** - `100`, `200`, `1`, `2` etc.
   4. **mode** - `dark`, `light` etc.
 
+## Principles Used
+### Specificity over Flexibility
+Tokens like `theme.color.success` combine *category* (`color`) and *variant* (`success`) leaves interpretation to the user to apply `theme.color.success` to any of `background`, `border` or `text`.
+
+Flexibility comes at the expense of specificity. A `success` color may only be intended for `text` or `background` but not both. Even more, an object reflecting `success` may require distinct colors for `text` versus `background` versus `border`. In this case, including a *property* level in a token results in a more specific yet less flexiblity eg: `theme.color.background.success` or `theme.color.text.success`.
+
+### Start within, then promote across**
+
+Start with making the tokens `local` to the components, then follow the usage pattern, if used more than twice then promote it to `global` token. This is a healthy way to add tokens gradually without adding things blindly to local components or globally.
+### Theme ≠ Mode
+
+A theme may eventually require `light`, `dark` color applications. PG might require a light and dark mode but their theme is different from Razorpay X. Similarly Razorpay X may require dark and light mode and their dark and light will be different from any other product's theme
+
+
 
 Object<theme/component/sub-component(s)>.Base<category/behavior/property>.Modifier<variant/state/scale/mode>
 
 document all the possible ways to create a token name
 document the dont's in the naming
 
-## **Principle: Flexibility or Specificity?**
+## How/Where will we store these tokens?
+theme file
+component file/different file
 
-Tokens like `$color-success` combine *category* (`color`) and *variant* (`success`) as a parsimonious identifier applicable to many scenarios. This leaves interpretation to the user to apply `$color-success` to any of `background`, `border` or `text`.
-
-Flexibility comes at the expense of specificity and — by extension — potentially precision of application. A `success` color may only be intended for `text` or `background` but not both. Even more, an object reflecting `success` may require distinct colors for `text` versus `background` versus `border`. In this case, including a *property* level in a token results in a more specific yet less flexibly applied `$color-background-success` or `$color-text-success`.
-
-## **Principle: Start Within, Then Promote Across Components**
-
-The emergent practice of identifying candidates for and promoting token ideas from **local** to **global** locations is a healthy way to add tokens gradually.
-
-## **Principle: Don’t Globalize Decisions Prematurely**
-
-The shared need for a consistent form element border is predictable. Such elements are designed together, and these conventions emerge quickly.
-
-Other cases aren’t as clear cut. Imagine working on tooltip, with popover and menu maybe to come later. A system *might* reuse shadows and notch roundedness, but can’t guarantee it. In this case, keep tooltip-specific tokens local to that component, and reference them later as work on popover or menu starts. This can avoid annoyingly subjective debates (“These are the `notched-layers`!”) and polluting a global namespace prematurely.
-
-## Principle: Theme ≠ Mode
-
-A theme may eventually require on-light, on-dark color applications. Marriott courtyard components may very well require light and dark modes just as much as Marriott renaissance components require. As a result, a theme is orthogonal to a color mode in systems using both concepts.
 
 ## **Order**
 
