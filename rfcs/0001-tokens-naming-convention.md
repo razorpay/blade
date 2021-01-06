@@ -488,6 +488,7 @@ I had tried other ways to form a reasonably simpler structure but all of them br
 - I'm still not able to visualise if creating component tokens under `packages/blade/tokens` makes sense at all? 
   - Will we gain anything on the consumer side if we just consume the tokens? Didn't come across any use case yet.
   - This has an upside though, for example all our tokens can be referenced from just one package. Again can't visualise what will we gain.
+- Tooling to ensure the naming convention when developers are building components in design system. Typescript will do the helping, but maybe a custom lint rule?
 # References
 - [Naming Tokens in Design Systems](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676)
 - [Design Tokens](https://spectrum.adobe.com/page/design-tokens/)
