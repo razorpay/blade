@@ -347,6 +347,71 @@ theme.font.weight
 theme.color.chromatic.azure.100
 theme.space.s
 ```
+
+With this system If I take the example mentioned earlier about the usage this is how it will look
+```js
+const IconTokens = {
+  color: {
+    text: {
+      primary: {
+        value: theme.color.light[900],
+        disabled: {
+          value: theme.color.light[950],
+        },
+      },
+      secondary: {
+        value: theme.color.shade[800],
+        disabled: {
+          value: theme.color.shade[940],
+        },
+      },
+      tertiary: {
+        value: theme.color.shade[800],
+        disabled: {
+          value: theme.color.shade[940],
+        },
+      },
+      value: theme.color.light[900],
+      disabled: {
+        value: theme.color.light[950],
+      },
+    },
+  },
+};
+fontColor({ variant, variantColor, disabled }) {
+  switch (variant) {
+    case 'primary':
+      if (disabled) {
+        return IconTokens.color.text.primary.disabled.value;
+      }
+      return IconTokens.color.text.primary.value;
+    case 'secondary':
+      if (disabled) {
+        return IconTokens.color.text.secondary.disabled.value;
+      }
+      return IconTokens.color.text.secondary.value;
+    case 'tertiary':
+      if (disabled) {
+        return IconTokens.color.text.tertiary.disabled.value;
+      }
+      return IconTokens.color.text.tertiary.value;
+    default:
+      if (disabled) {
+        return IconTokens.color.text.disabled.value;
+      }
+      return IconTokens.color.text.value;
+  }
+}
+// and then we use it like this
+<Icon
+  name={icon}
+  size={styles.iconSize({ size, children })}
+  fill={styles.fontColor({ variant, variantColor, disabled })}
+  testID="Button-left-icon"
+/>
+```
+
+>P.S Some work still needs to be done. I need to figure out if we can completely get rid of styles.fontColor function
 ## Overlapping Decisions
 
 *behavior*, *category*, *variant* and other levels can overlap and compete. For example, an “error red” can be both generic(*category.behavior.variant*) i.e. `color.feedback.error` and specific(*object.category.propery.variant*) i.e. `Notification.color.text.error`. This forces us to decide:
