@@ -121,9 +121,16 @@ It's quite evident that we need a system that's flexible and also specific.
 We need a well descriptive tokenized language that incorporates all these concerns and gives us a structure in a hierarchical manner. The language should be elaborative enough that accessing the tokens almost becomes self explanatory. This means we need to start defining some kind of groups.
 
 ## Proposed Structure
-<!-- Create an image and add that here -->
+The proposed grouping that will fit our use case would look something like `object.base.modifier`.
+<br/>
+<br/>
+A picture worth thousand words 😄
 
-The proposed grouping that will fit our use case would look something like `object.base.modifier`. Let's look at the breakdown for each of the group:
+![image](./images/token-naming-overview.png)
+
+
+
+Let's look at the breakdown for each of the group:
 
 ### Object
 An object level classifies tokens specific to a component, element nested within a component, or a component group or even a theme to differentiate whether it's a theme level global token or component level local token. `Object` level will become the first level of classification in our new token structure.
@@ -295,6 +302,9 @@ For example: `theme.color.action.text.primary.focus.dark`, `Button.color.text.pr
   2. **state** - `hover`, `pressed`, `active` etc.
   3. **scale** - `100`, `200`, `1`, `2` etc.
   4. **mode** - `dark`, `light` etc.
+
+A visual example demonstrating above terminology
+![image](./images/token-naming-example.png)
 
 ## Creating a new token
 We have covered all the base concepts involved in structring or creating a token so put it together this what we have got so far:
