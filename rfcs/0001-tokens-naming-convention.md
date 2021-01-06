@@ -4,7 +4,7 @@ RFC PR: NA
 Blade Issue: NA
 ---
 
-# Title of the RFC <!-- omit in toc -->
+# Tokens Naming Convention <!-- omit in toc -->
 
 ### Table Of Contents <!-- omit in toc -->
 - [Summary](#summary)
