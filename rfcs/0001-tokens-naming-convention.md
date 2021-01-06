@@ -36,6 +36,8 @@ Blade Issue: NA
     - [Start within, then promote across](#start-within-then-promote-across)
     - [Theme ≠ Mode](#theme--mode)
   - [How/Where will we store these tokens?](#howwhere-will-we-store-these-tokens)
+    - [Storing theme tokens](#storing-theme-tokens)
+    - [Storing component tokens](#storing-component-tokens)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
@@ -363,9 +365,18 @@ Start with making the tokens `local` to the components, then follow the usage pa
 
 A theme may eventually require `light`, `dark` modes. PG might require a `light` and `dark` mode but their theme is different from Razorpay X. Similarly, Razorpay X may require `dark` and `light` mode but their dark and light could be different from any other product's theme
 ## How/Where will we store these tokens?
-theme file
-component file/different file
-Object<theme/component/sub-component(s)>.Base<category/behavior/property>.Modifier<variant/state/scale/mode>
+### Storing theme tokens
+The theme tokens shall we created under `packages/blade/themes`
+### Storing component tokens
+The component tokens can be created in 2 ways:
+1. Co-located inside the component file.
+2. Create a token file under the component's directory i.e `packages/blade/components/Button/tokens.ts`.
+3. Create component tokens under `packages/blade/tokens`.
+
+Until now I believe that if we store the component level tokens under the components directory that'll be better because:
+1. We can refer them from a central token file in all the platform level implementation of a particular component(React/React Native/Svelte etc.)
+2. We can declare the typings easily so all other platform level implementation can utilise the typings easily
+
 
 document all the possible ways to create a token name
 document the dont's in the naming
@@ -398,7 +409,10 @@ I had tried other ways to form a reasonably simpler structure but all of them br
 * Until we have our documentation site in place, this RFC can serve the purpose of documentation.
 
 # Open Questions
-- Maybe a better name for `behavior` which is defined as the the sub level in `Base`.
+- Maybe a better name for `behavior` which is defined as the the sub level in `Base`?
+- I'm still not able to visualise if creating component tokens under `packages/blade/tokens` makes sense at all? 
+  - Will we gain anything on the consumer side if we just consume the tokens? Didn't come across any use case yet.
+  - This has an upside though, for example all our tokens can be referenced from just one package. Again can't visualise what will we gain.
 # References
 - [Naming Tokens in Design Systems](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676)
 - [Design Tokens](https://spectrum.adobe.com/page/design-tokens/)
