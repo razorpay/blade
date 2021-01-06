@@ -29,7 +29,7 @@ Blade Issue: NA
       - [Mode](#mode)
       - [TL;DR](#tldr-2)
     - [In a nutshell](#in-a-nutshell)
-    - [Creating a new token](#creating-a-new-token)
+  - [Creating a new token](#creating-a-new-token)
   - [Overlapping Decisions](#overlapping-decisions)
   - [Principles Used](#principles-used)
     - [Specificity over Flexibility](#specificity-over-flexibility)
@@ -294,7 +294,7 @@ For example: `theme.color.action.text.primary.focus.dark`, `Button.color.text.pr
   3. **scale** - `100`, `200`, `1`, `2` etc.
   4. **mode** - `dark`, `light` etc.
 
-### Creating a new token
+## Creating a new token
 We have covered all the base concepts involved in structring or creating a token so put it together this what we have got so far:
 `Object.Base.Modifier`
 
