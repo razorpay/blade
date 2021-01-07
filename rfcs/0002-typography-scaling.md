@@ -37,12 +37,18 @@ Typography is an integral part of web design. The user who is consuming informat
 This is how the typography will look after the implementation of type scales.
 
 #### **On Desktop**
-<img width="600" src="https://i.ibb.co/k3D6cbM/razorpay-com-Laptop-with-MDPI-screen.png" />
+<img width="600" src="./images/website-example-desktop.png" />
+<img width="600" src="./images/dashboard-example-desktop.png" />
 
 ---
 
 #### **On Mobile**
-<img width="300" src="https://i.ibb.co/qdcDfCF/razorpay-com-i-Phone-X.png" />
+<div style="display:flex; align-items: flex-start">
+<img width="300" src="./images/website-example-mobile.png" />
+<img width="300" src="./images/dashboard-example-mobile.png" />
+</div>
+
+<br>
 
 # Motivation
 ### **Why do we need a type scale?**
