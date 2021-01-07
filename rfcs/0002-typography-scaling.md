@@ -77,29 +77,29 @@ In this approach, we use the same ratio of `1.125` down each page and across eac
 
 ### **Exception**
 This only applies to heading styles as we don't want to change our base font size (`14px`) which remains consistent across all devices/breakpoints.
-Simply put, heading styles for mobile devices will be always in increments of `1.125` times that of the current desktop/tablet heading style.
+Simply put, heading styles for mobile devices will be always in decrements of `1.125` times that of the current desktop/tablet heading style.
 
 ### **Example:**
 
-| Style  | Mobiles | Desktops/Tablets |
-|--------|---------|------------------|
-| `<h6>` | 16px    | 14px             |
-| `<h5>` | 18px    | 16px             |
-| `<h4>` | 20px    | 18px             |
-| `<h3>` | 25px    | 20px             |
-| `<h2>` | 32px    | 25px             |
-| `<h1>` | 40px    | 32px             |
+| Style  | Mobile | Desktops/Tablets |
+|--------|--------|------------------|
+| `<h6>` | 14px   | 16px             |
+| `<h5>` | 16px   | 18px             |
+| `<h4>` | 18px   | 20px             |
+| `<h3>` | 20px   | 25px             |
+| `<h2>` | 25px   | 32px             |
+| `<h1>` | 32px   | 40px             |
 
-That means, for devices like, **desktops/tablets** if `<h6> = 14px` than, for **mobiles** `<h6> = (14 * 1.125) = 16px`.
+That means, for devices like, **desktops/tablets** if `<h6> = 16px` than, for **mobiles** `<h6> = (16 / 1.125) = 14px`.
 
 >📝 Note: Here we're rounding-off all the numbers for the sake of simplicity and to align the content according to the grid-system.
 
 # Drawbacks/Constraints
 Few things to consider here:
-- As we are moving towards adaptive-layout so we need to consider should we also support responsive layout. For both cases, I don't see any challenges as the typography system remains the same.
+- As we are moving towards adaptive-layout so we need to consider - should we also support responsive layout? For both cases, I don't see any challenges as the typography system remains the same.
 - How will this be managed on the tech-side? This might create more work as we'll have to maintain four scales,
-  - Landing/Marketing page (mobile & dekstop/tablets)
-  - Product/Dashboard (mobile & dekstop/tablets)
+  - Landing/Marketing page (mobile & desktop/tablets)
+  - Product/Dashboard (mobile & desktop/tablets)
 
 
 # Alternatives
