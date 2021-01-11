@@ -35,14 +35,18 @@ Blade Issue: NA
     - [Specificity over Flexibility](#specificity-over-flexibility)
     - [Start within, then promote across](#start-within-then-promote-across)
     - [Theme ≠ Mode](#theme--mode)
-  - [How/Where will we store these tokens?](#howwhere-will-we-store-these-tokens)
-    - [Storing theme tokens](#storing-theme-tokens)
-    - [Storing component tokens](#storing-component-tokens)
+  - [Storing and accessing tokens](#storing-and-accessing-tokens)
+    - [Where to store tokens?](#where-to-store-tokens)
+      - [Storing theme tokens](#storing-theme-tokens)
+      - [Storing component tokens](#storing-component-tokens)
+    - [How to store tokens?](#how-to-store-tokens)
+    - [How to access tokens?](#how-to-access-tokens)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
 - [How do we educate people?](#how-do-we-educate-people)
 - [Open Questions](#open-questions)
+- [Some team discussions notes](#some-team-discussions-notes)
 - [References](#references)
 
 # Summary
@@ -378,6 +382,7 @@ const IconTokens = {
     },
   },
 };
+
 fontColor({ variant, variantColor, disabled }) {
   switch (variant) {
     case 'primary':
@@ -439,10 +444,12 @@ Start with making the tokens `local` to the components, then follow the usage pa
 ### Theme ≠ Mode
 
 A theme may eventually require `light`, `dark` modes. PG might require a `light` and `dark` mode but their theme is different from Razorpay X. Similarly, Razorpay X may require `dark` and `light` mode but their dark and light could be different from any other product's theme
-## How/Where will we store these tokens?
-### Storing theme tokens
-The theme tokens shall we created under `packages/blade/themes`
-### Storing component tokens
+## Storing and accessing tokens
+
+### Where to store tokens?
+#### Storing theme tokens
+The theme tokens shall we created under `packages/blade/tokens/theme`
+#### Storing component tokens
 The component tokens can be created in 2 ways:
 1. Co-located inside the component file.
 2. Create a token file under the component's directory i.e `packages/blade/components/Button/tokens.ts`.
@@ -452,9 +459,101 @@ Until now I believe that if we store the component level tokens under the compon
 1. We can refer them from a central token file in all the platform level implementation of a particular component(React/React Native/Svelte etc.)
 2. We can declare the typings easily so all other platform level implementation can utilise the typings easily
 
+### How to store tokens?
+* For storing tokens we'll be following json structure because of it's flexibility.
+* The structure will look something like below
+```js
+const ButtonTokens = {
+  color: {
+    text: {
+      primary: {
+        value: theme.color.light[900],
+        disabled: {
+          value: theme.color.light[950],
+        },
+      },
+      secondary: {
+        value: theme.color.shade[800],
+        disabled: {
+          value: theme.color.shade[940],
+        },
+      },
+      tertiary: {
+        value: theme.color.shade[800],
+        disabled: {
+          value: theme.color.shade[940],
+        },
+      },
+      value: theme.color.light[900],
+      disabled: {
+        value: theme.color.light[950],
+      },
+    },
+  },
+}
+```
+* And then we'll access it as `ButtonTokens.color.text.primary.disabled.value` the `.value` is a circuit breaker at each level since every property can have a **value** or a **nested object** or **both**.
 
-document all the possible ways to create a token name
-document the dont's in the naming
+### How to access tokens?
+* We need to access tokens at 2 places
+  * In styles of any component
+    ```js
+    const Button = styled.button`
+      background-color: ${ButtonTokens.color.background.value}
+    `
+    ```
+  * In deriving value for props or maybe subcomponent. Eg: `Icon` inside a `Button` component
+    ```js
+    <Icon
+      fill={tokens.color.primary.background.value}
+    />
+    ```
+But, the problem over here is that these token lookups are not always straight forward as they depend on a lot of variable conditions for above example the color of the icon depends on the variant(primary) of the button and state(disbaled) of the button. So we can solve it with 2 solutions:
+1. Have switch cases in all the components
+```js
+const fontColor = ({ variant, variantColor, disabled }) => ({
+  switch (variant) {
+    case 'primary':
+      if (disabled) {
+        return IconTokens.color.text.primary.disabled.value;
+      }
+      return IconTokens.color.text.primary.value;
+    case 'secondary':
+      if (disabled) {
+        return IconTokens.color.text.secondary.disabled.value;
+      }
+      return IconTokens.color.text.secondary.value;
+    case 'tertiary':
+      if (disabled) {
+        return IconTokens.color.text.tertiary.disabled.value;
+      }
+      return IconTokens.color.text.tertiary.value;
+    default:
+      if (disabled) {
+        return IconTokens.color.text.disabled.value;
+      }
+      return IconTokens.color.text.value;
+  }
+})
+```
+2. Have a generic function as a utility and use that for all the property lookups
+```js
+// getTokenValue.js
+const getTokenValue = (theme, {variablePrams}, propertyName) => ({})
+
+// component.js
+const Button = styled.button`
+  background-color: `${(props) => gettokenValue(props.theme,{variant, disabled},backgroundColor)}`
+`
+
+//somewhere inside the implementation button
+<Icon
+  fill={gettokenValue(props.theme,{variant, disabled},backgroundColor)}
+/>
+```
+
+Looking at the above solutions the option-2 is a no-brainer choice since you just write the `getTokenValue` once which then handles use cases for all the property lookups and returns an atomic value.
+
 # Drawbacks/Constraints
 - Introducing a new guidelines/framework to name certain things means more time to understand on how to get this right.
 - The meaning of each and every category or the entire hierachical structure might not be intuitive to someone looking it at a glance.
@@ -489,7 +588,32 @@ I had tried other ways to form a reasonably simpler structure but all of them br
   - Will we gain anything on the consumer side if we just consume the tokens? Didn't come across any use case yet.
   - This has an upside though, for example all our tokens can be referenced from just one package. Again can't visualise what will we gain.
 - Tooling to ensure the naming convention when developers are building components in design system. Typescript will do the helping, but maybe a custom lint rule?
+themeprovider? open question
+
+# Some team discussions notes
+- We agreed to have the following directory structure for tokens
+```
+tokens
+  global
+    colors
+    opacity
+  theme
+    grayTheme
+    midNightTheme
+components
+  Button
+    ButtonTokens
+```
+- Theme tokens will just have all the theme specific tokens and global  tokens by creating aliases.
+- We will publish tokens as a package which will have global and theme tokens.
+- We won't publish component specific tokens because we don't have a use case for it yet.
+- How do we do a property lookup for a component token `button.color.background.primary.disabled` when the value needs to be derived based on multiple conditions(here `primary` variant and `disabled` state)?
+  - We will have a generic function i.e getTokenValue(variablePropertyParams, tokenObject) and this will do all the permutation and combination and return back the value based on the variable conditions
+  - This function parameters need to be typed and also the component level tokens will be typed
+  - Can we abstract out styles is still an open question
+
 # References
 - [Naming Tokens in Design Systems](https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676)
 - [Design Tokens](https://spectrum.adobe.com/page/design-tokens/)
 - [Tokens in Design System](https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd82d58421)
+- [Style Dictionary](https://github.com/amzn/style-dictionary)
