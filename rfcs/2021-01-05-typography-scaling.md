@@ -14,6 +14,7 @@ Blade Issue: NA
 - [Motivation](#motivation)
   - [Why do we need a type scale?](#why-do-we-need-a-type-scale)
   - [Use Cases](#use-cases)
+  - [Examples from the current system](#examples-from-the-current-system)
   - [Expected Outcome](#expected-outcome)
 - [Detailed Design](#detailed-design)
   - [Our Approach](#our-approach)
@@ -37,15 +38,15 @@ Typography is an integral part of web design. The user who is consuming informat
 This is how the typography will look after the implementation of type scales.
 
 #### **On Desktop**
-<img width="600" src="./images/website-example-desktop.png" />
-<img width="600" src="./images/dashboard-example-desktop.png" />
+<img width="600" src="./images/typography/website-example-desktop.png" />
+<img width="600" src="./images/typography/dashboard-example-desktop.png" />
 
 ---
 
 #### **On Mobile**
 <div style="display:flex; align-items: flex-start">
-<img width="300" src="./images/website-example-mobile.png" />
-<img width="300" src="./images/dashboard-example-mobile.png" />
+<img width="300" src="./images/typography/website-example-mobile.png" />
+<img width="300" src="./images/typography/dashboard-example-mobile.png" />
 </div>
 
 <br>
@@ -62,31 +63,45 @@ There can be several use-cases when a user wants to access the dashboard on mult
 
 Or in-general a user can visit the company's marketing/landing page and consume information about us and our offerings.
 
+### **Examples from the current system**
+Here are a few examples in the current system.
+- Dashboard Route - Desktop vs. Mobile:
+![Dashboard Route: Desktop vs. Mobile](./images/typography/dashboard-route-mobile-desktop-comparison.png)
+
+- Dashboard Invoices - Desktop vs. Mobile:
+![Dashboard Invoices: Desktop vs. Mobile](./images/typography/dashboard-invoices-mobile-desktop-comparison.png)
+
+- Dashboard Invoices (Mobile) - Font Ratios:
+![Dashboard Invoices (Mobile): Font Ratios](./images/typography/dashboard-invoices-mobile-problems.png)
+
 ### **Expected Outcome**
 A typography system that is more readable/consumable across different devices (mobiles/tablets/desktops).
 
 # Detailed Design
-We are following a [**Major Second**](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) modular scale (1.125) for our typography system but that currently has two major limitations,
-- **Does not cater for landing/marketing pages.** Which are generally much larger compared to the size-ratio on the dashboard (Maybe a [Major Third](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) scale will work better). This is currently being looked by the comm. design team based on the same principles.
-- **Same type scale across all devices.** After the type scale is defined, we also need to define the scale across multiple device sizes. There are few approaches that we've came up with and after research from other DS/products like *GitHub*, *Eightshapes*, *Paystack*, *Stripe*, and a few more we've observed that for dashboards generally tweaking the **heading** sizes works best and the base font-size will remain same for all other devices/breakpoints.
+We are following a [**Major Second**](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) modular scale (`1.125`) for our typography system. Simply put, the font-sizes will be derived in multiples of 1.125. Also, we will be using [**Lato**](https://fonts.google.com/specimen/Lato?sidebar.open=true&selection.family=Lato:wght@400;700) as our primary font with **Regular(400)** & **Bold(700)** weights (*as of now*).
+
+### **Base font size**
+After auditing the whole product it came out that we are mostly using `13px` & `14px` as a base font-size on the body text. For the internal products, it is better to go with **`14px`** as a base font-size. Because for dashboards the content is pretty dense and we need to maintain a small font-size ratio compared to marketing/landing pages. This will help the users to consume more content into a readable format. Although, we can still play with spacings so that it doesn't feel much complex.
+
+### **Current Limitations**
+There are two major limitations while scaling typography to multiple breakpoints,
+1. **It does not cater to landing/marketing pages.** Which are generally much larger compared to the size-ratio on the dashboard (Maybe a [Major Third](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) scale will work better). This is currently being looked by the comm. design team based on the same principles.
+2. **Same type scaling across all devices/breakpoints.** After the type scale is defined, we also need to define the scale across multiple device sizes. There are few approaches that we've came up with and after research from other DS/products like *GitHub*, *Eightshapes*, *Paystack*, *Stripe*, and a few more we've observed that for dashboards generally tweaking the **heading** sizes works best and the base font-size will remain same for all other devices/breakpoints.
 
 We'll look into the responsive type scale and see what approach fits best for our use case.
+
+>📝 Note: **Responsive Typography** will scale in segments. Which means if `h1` at `1440px` is `40px`, then at `991px` it will become `32px` directly rather than going from `40px -> 38px -> 36px -> 34px -> 32px...`.
 
 ### **Our Approach**
 >**Similar vertical & horizontal ratio across multiple breakpoints (for headings)**
 
 Our product is majorly used on mobiles/tablets/desktops. Therefore, We'll  consider only two breakpoints for the typography scale, one for mobiles & one for both desktops & tablets. Which is for devices having width `>=991px` (approx.)
 
-![Scaling: Similar vertical & horizontal ratio](https://miro.medium.com/max/2000/1*LpBKPTjjtW3I3xKEcae--Q.png)
+![Scaling: Similar vertical & horizontal ratio](./images/typography/typography-same-vertical-horizontal-ratio.png)
 
-In this approach, we use the same ratio of `1.125` down each page and across each breakpoint. Pretty straightforward, we multiply everything down and across by the same ratio.
-
-### **Exception**
-This only applies to heading styles as we don't want to change our base font size (`14px`) which remains consistent across all devices/breakpoints.
-Simply put, heading styles for mobile devices will be always in decrements of `1.125` times that of the current desktop/tablet heading style.
+In this approach, we use the same ratio of `1.125` down across each breakpoint. Pretty straightforward, we multiply everything down and across by the same ratio.
 
 ### **Example:**
-
 | Style  | Mobile | Desktops/Tablets |
 |--------|--------|------------------|
 | `<h6>` | 14px   | 16px             |
@@ -98,7 +113,14 @@ Simply put, heading styles for mobile devices will be always in decrements of `1
 
 That means, for devices like, **desktops/tablets** if `<h6> = 16px` than, for **mobiles** `<h6> = (16 / 1.125) = 14px`.
 
->📝 Note: Here we're rounding-off all the numbers for the sake of simplicity and to align the content according to the grid-system.
+>📝 Note: Here we're rounding-off all the numbers for the sake of simplicity and to align the content according to the grid-system. Also, various browsers treat fractional font sizes differently.
+
+This is how it will look like across desktop & mobile.
+![Scaling: Desktop & Mobile](./images/typography/type-scale-blade.png)
+
+### **Exception**
+This only applies to heading styles as we don't want to change our base font size (`14px`) which remains consistent across all devices/breakpoints.
+Simply put, heading styles for mobile devices will be always in decrements of `1.125` times that of the current desktop/tablet heading style.
 
 # Drawbacks/Constraints
 Few things to consider here:
@@ -116,19 +138,19 @@ In this type of scaling the modular scale changes on every breakpoint. For examp
 
 This doesn't suit our product use case, as there will be a big difference between all the type levels. For example:
 
-![Scaling: Multiple type scales ratio](https://miro.medium.com/max/4800/1*Gd6HOQUgDSisN0Ebubgk5g.png)
+![Scaling: Multiple type scales ratio](./images/typography/typography-multi-type-scaling.png)
 
 ### **No type-scaling across breakpoints**
 As the name suggests, there will be no scaling across all breakpoints, which is not at all recommended as all the font sizes will remain the same across all breakpoints, which will degrade the readability and overall experience. For example:
 
-![Scaling: No type scales ratio](https://miro.medium.com/max/4800/1*zH_frLw4eZCsBajEfcScHw.png)
+![Scaling: No type scales ratio](./images/typography/typography-no-type-scaling.png)
 
 > [Read here](https://medium.com/sketch-app-sources/exploring-responsive-type-scales-cf1da541be54) for more info on the above two.
 
 ### **Fluid Typography**
 This is viewport-based scaling and uses the `calc()` CSS function, which allows you to perform mathematical operations using a combination of different CSS units. Viewport units, specifically the viewport width (`vw`) units. For example:
 
-![Fluid Typography](https://blog.logrocket.com/wp-content/uploads/2019/10/minimum-font-size-nocdn.png)
+![Fluid Typography](./images/typography/typography-css-responsive-type-scale.png)
 
 This type of scale is a bit complex and very dynamic, as per our use case we don't need that much of flexibility in typography across devices.
 
@@ -141,8 +163,9 @@ As the name suggests this type of scaling is preferred based on visual assumptio
 
 # Adoption strategy
 We need to implement this type-scale as a core part of DS. This will automatically drive adoption.
+- This will be implemented as tokens in the new version of DS.
 - This won't impact the existing DS.
-- It is a part of the new DS and whenever the new DS is implemented the whole typography across all devices and pages will be affected.
+- It is a part of the new version of DS whenever the new version of DS is implemented the whole typography across all devices and pages will be affected.
 
 # How do we educate people?
 Two types of people need to be educated (**designers & developers**).
