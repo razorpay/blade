@@ -17,6 +17,9 @@ Blade Issue: NA
   - [Examples from the current system](#examples-from-the-current-system)
   - [Expected Outcome](#expected-outcome)
 - [Detailed Design](#detailed-design)
+  - [Introduction](#introduction)
+  - [Base font size](#base-font-size)
+  - [Current Limitations](#current-limitations)
   - [Our Approach](#our-approach)
   - [Exception](#exception)
   - [Example](#example)
@@ -78,6 +81,8 @@ Here are a few examples in the current system.
 A typography system that is more readable/consumable across different devices (mobiles/tablets/desktops).
 
 # Detailed Design
+
+### **Introduction**
 We are following a [**Major Second**](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) modular scale (`1.125`) for our typography system. Simply put, the font-sizes will be derived in multiples of 1.125. Also, we will be using [**Lato**](https://fonts.google.com/specimen/Lato?sidebar.open=true&selection.family=Lato:wght@400;700) as our primary font with **Regular(400)** & **Bold(700)** weights (*as of now*).
 
 ### **Base font size**
