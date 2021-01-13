@@ -19,6 +19,7 @@ Blade Issue: NA
 - [Detailed Design](#detailed-design)
   - [Introduction](#introduction)
   - [Base font size](#base-font-size)
+  - [Line Height](#line-height)
   - [Current Limitations](#current-limitations)
   - [Our Approach](#our-approach)
   - [Exception](#exception)
@@ -83,14 +84,23 @@ A typography system that is more readable/consumable across different devices (m
 # Detailed Design
 
 ### **Introduction**
-We are following a [**Major Second**](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) modular scale (`1.125`) for our typography system. Simply put, the font-sizes will be derived in multiples of 1.125. Also, we will be using [**Lato**](https://fonts.google.com/specimen/Lato?sidebar.open=true&selection.family=Lato:wght@400;700) as our primary font with **Regular(400)** & **Bold(700)** weights (*as of now*).
+We are following a [**Major Second**](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) modular scale (`1.125`) for our typography system. Simply put, the font-sizes will be derived in multiples of 1.125. Also, we will be using [**Lato**](https://fonts.google.com/specimen/Lato?sidebar.open=true&selection.family=Lato:wght@400;700) as our primary font with **Regular(400)** & **Bold(700)** weights *(as of now)*.
 
 ### **Base font size**
 After auditing the whole product it came out that we are mostly using `13px` & `14px` as a base font-size on the body text. For the internal products, it is better to go with **`14px`** as a base font-size. Because for dashboards the content is pretty dense and we need to maintain a small font-size ratio compared to marketing/landing pages. This will help the users to consume more content into a readable format. Although, we can still play with spacings so that it doesn't feel much complex.
 
+### **Line Height**
+Line heights also plays a significant role in the whole typography spectrum. If the font-size is smaller the text will be cramped and difficult to read, instead if it is larger the eyes can get lost. So for optimal readability & accessibility aim for about `140% - 180%` line-height.
+
+Considering blade we generally have a simple formula that derives the line-height and we consider it to be 150% of the font-size. i.e,
+
+>**`line-height = font-size * 1.5`**
+
+And will round-off the resulting value.
+
 ### **Current Limitations**
 There are two major limitations while scaling typography to multiple breakpoints,
-1. **It does not cater to landing/marketing pages.** Which are generally much larger compared to the size-ratio on the dashboard (Maybe a [Major Third](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) scale will work better). This is currently being looked by the comm. design team based on the same principles.
+1. **It does not cater to landing/marketing pages.** Which are generally much larger compared to the size-ratio on the dashboard (Maybe a [Major Third](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) scale will work better). This is currently being looked at by the comm. design team based on the same principles.
 2. **Same type scaling across all devices/breakpoints.** After the type scale is defined, we also need to define the scale across multiple device sizes. There are few approaches that we've came up with and after research from other DS/products like *GitHub*, *Eightshapes*, *Paystack*, *Stripe*, and a few more we've observed that for dashboards generally tweaking the **heading** sizes works best and the base font-size will remain same for all other devices/breakpoints.
 
 We'll look into the responsive type scale and see what approach fits best for our use case.
@@ -116,7 +126,7 @@ In this approach, we use the same ratio of `1.125` down across each breakpoint. 
 | `<h2>` | 25px   | 32px             |
 | `<h1>` | 32px   | 40px             |
 
-That means, for devices like, **desktops/tablets** if `<h6> = 16px` than, for **mobiles** `<h6> = (16 / 1.125) = 14px`.
+That means, for devices like, **desktops/tablets** if font-size for `<h6> = 16px` than, for **mobiles** font-size for `<h6> = (16 / 1.125) = 14px`.
 
 >📝 Note: Here we're rounding-off all the numbers for the sake of simplicity and to align the content according to the grid-system. Also, various browsers treat fractional font sizes differently.
 
