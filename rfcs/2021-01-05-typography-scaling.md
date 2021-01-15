@@ -18,6 +18,7 @@ Blade Issue: NA
   - [Expected Outcome](#expected-outcome)
 - [Detailed Design](#detailed-design)
   - [Introduction](#introduction)
+  - [Typeface](#typeface)
   - [Base font size](#base-font-size)
   - [Line Height](#line-height)
   - [Current Limitations](#current-limitations)
@@ -42,16 +43,12 @@ Typography is an integral part of web design. The user who is consuming informat
 This is how the typography will look after the implementation of type scales.
 
 #### **On Desktop**
-<img width="600" src="./images/typography/website-example-desktop.png" />
 <img width="600" src="./images/typography/dashboard-example-desktop.png" />
 
 ---
 
 #### **On Mobile**
-<div style="display:flex; align-items: flex-start">
-<img width="300" src="./images/typography/website-example-mobile.png" />
 <img width="300" src="./images/typography/dashboard-example-mobile.png" />
-</div>
 
 <br>
 
@@ -84,7 +81,17 @@ A typography system that is more readable/consumable across different devices (m
 # Detailed Design
 
 ### **Introduction**
-We are following a [**Major Second**](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) modular scale (`1.125`) for our typography system. Simply put, the font-sizes will be derived in multiples of 1.125. Also, we will be using [**Lato**](https://fonts.google.com/specimen/Lato?sidebar.open=true&selection.family=Lato:wght@400;700) as our primary font with **Regular(400)** & **Bold(700)** weights *(as of now)*.
+We are following a [**Major Second**](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) modular scale (`1.125`) for our typography system. Simply put, the font-sizes will be derived in multiples of 1.125.
+
+### **Typefaces**
+**Primary:** We will be using [**Lato**](https://fonts.google.com/specimen/Lato?sidebar.open=true&selection.family=Lato:wght@400;700) as our primary font having two weights, **Regular(400)** & **Bold(700)**.
+
+**Code:** For code modules/segments we'll use [**Menlo**](https://en.wikipedia.org/wiki/Menlo_(typeface)) as our default font throughout the system having two weights, **Regular** & **Bold**.
+
+**Fallbacks:** We'll use default system fonts (according to platform) as a fallback,
+```
+“Lato”, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif
+```
 
 ### **Base font size**
 After auditing the whole product it came out that we are mostly using `13px` & `14px` as a base font-size on the body text. For the internal products, it is better to go with **`14px`** as a base font-size. Because for dashboards the content is pretty dense and we need to maintain a small font-size ratio compared to marketing/landing pages. This will help the users to consume more content into a readable format. Although, we can still play with spacings so that it doesn't feel much complex.
@@ -117,14 +124,11 @@ Our product is majorly used on mobiles/tablets/desktops. Therefore, We'll  consi
 In this approach, we use the same ratio of `1.125` down across each breakpoint. Pretty straightforward, we multiply everything down and across by the same ratio.
 
 ### **Example:**
-| Style  | Mobile | Desktops/Tablets |
-|--------|--------|------------------|
-| `<h6>` | 14px   | 16px             |
-| `<h5>` | 16px   | 18px             |
-| `<h4>` | 18px   | 20px             |
-| `<h3>` | 20px   | 25px             |
-| `<h2>` | 25px   | 32px             |
-| `<h1>` | 32px   | 40px             |
+| Heading | Mobile | Desktops/Tablets |
+|---------|--------|------------------|
+| Level 1 | 32px   | 40px             |
+| Level 2 | 25px   | 32px             |
+| Level 3 | 20px   | 25px             |
 
 That means, for devices like, **desktops/tablets** if font-size for `<h6> = 16px` than, for **mobiles** font-size for `<h6> = (16 / 1.125) = 14px`.
 
