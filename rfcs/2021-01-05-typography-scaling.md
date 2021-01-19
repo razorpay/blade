@@ -84,9 +84,9 @@ A typography system that is more readable/consumable across different devices (m
 We are following a [**Major Second**](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) modular scale (`1.125`) for our typography system. Simply put, the font-sizes will be derived in multiples of 1.125.
 
 ### **Typefaces**
-**Primary:** We will be using [**Lato**](https://fonts.google.com/specimen/Lato?sidebar.open=true&selection.family=Lato:wght@400;700) as our primary font having two weights, **Regular(400)** & **Bold(700)**.
+**Base:** We will be using [**Lato**](https://fonts.google.com/specimen/Lato?sidebar.open=true&selection.family=Lato:wght@400;700) as our base font family having two weights, **Regular(400)** & **Bold(700)**.
 
-**Code:** For code modules/segments we'll use [**Menlo**](https://en.wikipedia.org/wiki/Menlo_(typeface)) as our default font throughout the system having two weights, **Regular** & **Bold**.
+**Code:** For code modules/snippets we'll use [**Menlo**](https://en.wikipedia.org/wiki/Menlo_(typeface)) font family throughout the system having two weights, **Regular** & **Bold**.
 
 **Fallbacks:** We'll use default system fonts (according to platform) as a fallback,
 ```
@@ -97,11 +97,9 @@ We are following a [**Major Second**](https://type-scale.com/?size=14&scale=1.12
 After auditing the whole product it came out that we are mostly using `13px` & `14px` as a base font-size on the body text. For the internal products, it is better to go with **`14px`** as a base font-size. Because for dashboards the content is pretty dense and we need to maintain a small font-size ratio compared to marketing/landing pages. This will help the users to consume more content into a readable format. Although, we can still play with spacings so that it doesn't feel much complex.
 
 ### **Line Height**
-Line heights also plays a significant role in the whole typography spectrum. If the font-size is smaller the text will be cramped and difficult to read, instead if it is larger the eyes can get lost. So for optimal readability & accessibility aim for about `140% - 180%` line-height.
+Line heights also plays a significant role in the whole typography spectrum. If the font-size is smaller the text will be cramped and difficult to read, instead if it is larger the eyes can get lost. So for optimal readability & accessibility aim for about `110% - 150%` line-height. This also depends on the font and font-size you are using. Generally for Headings it is around `110% - 125%` of the font-size and for other body text elements it is around `125% - 150%` of the font-size.
 
-Considering blade we generally have a simple formula that derives the line-height and we consider it to be 150% of the font-size. i.e,
-
->**`line-height = font-size * 1.5`**
+>**`line-height = font-size * height-factor`**
 
 And will round-off the resulting value.
 
