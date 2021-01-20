@@ -113,31 +113,32 @@ We'll look into the responsive type scale and see what approach fits best for ou
 >📝 Note: **Responsive Typography** will scale in segments. Which means if `h1` at `1440px` is `40px`, then at `991px` it will become `32px` directly rather than going from `40px -> 38px -> 36px -> 34px -> 32px...`.
 
 ### **Our Approach**
->**Similar vertical & horizontal ratio across multiple breakpoints (for headings)**
+>**Similar vertical & horizontal ratio across multiple breakpoints**
 
 Our product is majorly used on mobiles/tablets/desktops. Therefore, We'll  consider only two breakpoints for the typography scale, one for mobiles & one for both desktops & tablets. Which is for devices having width `>=991px` (approx.)
 
 ![Scaling: Similar vertical & horizontal ratio](./images/typography/typography-same-vertical-horizontal-ratio.png)
 
-In this approach, we use the same ratio of `1.125` down across each breakpoint. Pretty straightforward, we multiply everything down and across by the same ratio.
-
-### **Example:**
-| Heading | Mobile | Desktops/Tablets |
-|---------|--------|------------------|
-| Level 1 | 32px   | 40px             |
-| Level 2 | 25px   | 32px             |
-| Level 3 | 20px   | 25px             |
+In this approach, we use the same ratio of `1.125` (Major Second) down across each breakpoint. Pretty straightforward, we multiply everything down and across by the same ratio.
 
 That means, for devices like, **desktops/tablets** if font-size for `<h6> = 16px` than, for **mobiles** font-size for `<h6> = (16 / 1.125) = 14px`.
 
 >📝 Note: Here we're rounding-off all the numbers for the sake of simplicity and to align the content according to the grid-system. Also, various browsers treat fractional font sizes differently.
 
+### **Example:**
 This is how it will look like across desktop & mobile.
+
+**Headings on Desktop vs Mobile**
+
+![Headings on Desktop vs Mobile (Typography)](./images/typography/typography-heading.png)
+
+**Body (Text) on Desktop vs Mobile**
+
+![Body on Desktop vs Mobile (Typography)](./images/typography/typography-body.png)
+
+**Another visual indicator**
 ![Scaling: Desktop & Mobile](./images/typography/type-scale-blade.png)
 
-### **Exception**
-This only applies to heading styles as we don't want to change our base font size (`14px`) which remains consistent across all devices/breakpoints.
-Simply put, heading styles for mobile devices will be always in decrements of `1.125` times that of the current desktop/tablet heading style.
 
 # Drawbacks/Constraints
 Few things to consider here:
