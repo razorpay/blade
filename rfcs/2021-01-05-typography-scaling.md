@@ -23,7 +23,6 @@ Blade Issue: NA
   - [Line Height](#line-height)
   - [Current Limitations](#current-limitations)
   - [Our Approach](#our-approach)
-  - [Exception](#exception)
   - [Example](#example)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
@@ -66,15 +65,16 @@ Or in-general a user can visit the company's marketing/landing page and consume 
 
 ### **Examples from the current system**
 Here are a few examples in the current system.
-- Dashboard Route - Desktop vs. Mobile:
+- **Dashboard Route - Desktop vs. Mobile:**
 ![Dashboard Route: Desktop vs. Mobile](./images/typography/dashboard-route-mobile-desktop-comparison.png)
 
-- Dashboard Invoices - Desktop vs. Mobile:
+- **Dashboard Invoices - Desktop vs. Mobile:**
 ![Dashboard Invoices: Desktop vs. Mobile](./images/typography/dashboard-invoices-mobile-desktop-comparison.png)
 
-- Dashboard Invoices (Mobile) - Font Ratios:
+- **Dashboard Invoices (Mobile) - Font Ratios:**
 ![Dashboard Invoices (Mobile): Font Ratios](./images/typography/dashboard-invoices-mobile-problems.png)
 
+In the above examples, you can see there is no scaling across different devices/screens. Which is not considered as a good experience as we are compromising on the readability of things on different devices.
 ### **Expected Outcome**
 A typography system that is more readable/consumable across different devices (mobiles/tablets/desktops).
 
@@ -128,15 +128,13 @@ That means, for devices like, **desktops/tablets** if font-size for `<h6> = 16px
 ### **Example:**
 This is how it will look like across desktop & mobile.
 
-**Headings on Desktop vs Mobile**
-
+- **Headings on Desktop vs Mobile**
 ![Headings on Desktop vs Mobile (Typography)](./images/typography/typography-heading.png)
 
-**Body (Text) on Desktop vs Mobile**
-
+- **Body (Text) on Desktop vs Mobile**
 ![Body on Desktop vs Mobile (Typography)](./images/typography/typography-body.png)
 
-**Another visual indicator**
+- **Another visual indicator**
 ![Scaling: Desktop & Mobile](./images/typography/type-scale-blade.png)
 
 
