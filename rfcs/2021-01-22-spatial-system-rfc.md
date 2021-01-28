@@ -19,28 +19,28 @@ Blade Issue: (leave this empty if no issue yet)
 - [References](#references)
 
 # Summary
-**Spatial System:** A system with a set of rules and principles on how to measure `size` & `spacing` of your UI elements. Generally, this is considered to be a very small thing in the overall UI but it creates a lot of impact if done correctly.
+**Spatial System** is a system with a set of rules and principles on how to measure `size` & `spacing` of your UI elements. Spacing is important, generally which is overlooked as a part of the visual design.
 
 # Motivation
 ### **Why do we need a spatial system?**
-Most of us consider spacing a very tiny part of the system, but this is something without which the UI is incomplete.
+Without space none of your elements get seen, instead they become noise. There is a great relationship that exsist between space and elements. By controlling and shaping space in our designs, we create rhythm, direction, & motion.
 
-Uniformity in spacing & sizing doesn't only allows the product to be more consistent but it also helps designers and developers to communicate better & reduce number of decisions a designer has to make on daily-basis.
+Uniformity in spacing & sizing doesn't only allows the product to look more consistent but it also helps designers and developers to communicate better & reduce number of decisions a designer has to make on daily-basis.
 
 There are so many inconsistencies which we see in the current UI, here are a few examples:
 ![Inconsistent Spacing & Alignment](./images/spatial/uneven-spacing.png)
 
 ### **Expected Outcome**
-Due to these inconsistencies the users using our product can get a feeling of cheap design, inconsistency, and generally untrustworthy. When everything looks aligned it creates a visual rhythm which in turns look pleasing and something our users expect from a brand like us especially in the fintech space.
+Due to these inconsistencies the users using our product can get a feeling of untrustworthy, cheap design, & inconsistency. When everything looks aligned it creates a visual rhythm which in turns look pleasing and something our users expect from a brand like us especially in the fintech space.
 
-To avoid this, we need to build a flexible **spatial system** that can drive minor everyday decisions and make our designs looks consistent & pleasing to our users.
+To avoid this, we need to build a flexible **spatial system** that can drive minor everyday decisions and make our designs looks consistent, organised & pleasing to our users eyes.
 
 # Detailed Design
 ### **Space ≠ Grid**
 Industry generally considers space as grids, but these two are different things. Spaces are used to make grids (i.e. grids/containers/etc. are built using spaces).
 
 ### **8pt grid system**
-Before diving into the **8pt grid system** we need to consider few things where this spatial system will be used. We'll use this in overall layout `components` (molecules, organisms, templates) as well as on the `typography`.
+Before diving into the **8pt grid system** we need to consider few things where this spatial system will be used. We'll use this in overall layout for `components` (molecules, organisms, templates) as well as on the `typography`.
 
 >**📝Note:** This system will used across mobiles, tablets & desktops.
 
@@ -51,20 +51,23 @@ There is no right or wrong answer here, but there are few reasons for choosing 8
 - It's simple for us to do the math. The `4` & `8` are simpler to calculate and they are flexible enough to setup a scale.
 
 ### **Base Unit**
-We'll start with the base unit, this will allow us to create a scale of all the sizes in your spatial system. For us this also means using multiples of 8 to define dimensions, padding, and margin of elements.
+We'll start with the base unit, this will allow us to create a scale of all the sizes in your spatial system. For us this also means using multiples of `x8` to define dimensions, padding, and margin of elements.
 
 ### **What system will work for Razorpay?**
-We should consider few cases that will make the system flexible for us. Few things to consider here is the **needs of our users**.
+We should consider few cases that will make the system flexible for us. Few things to consider here are the **user needs**.
 
-As a merchant (user) do they want the interface to be spacious with large fonts and limited number of actions? Absolutely not, we need something that doesn't look *too-dense* or *too-spacious*. Therefore we'll consider **`4pt grid system`** which will give us the flexibility to scale the UI in multiples of 4 points.
+As a merchant (user) do they want the interface to be spacious with large fonts and limited number of actions? Absolutely not, we need something that doesn't look *too-dense* or *too-spacious*. Therefore we'll consider **`4pt base unit`** which will give us the flexibility to scale the UI in multiples of `x4`.
 
-We also need to focus on the number of variables we'll have in our scale. These are the variables developers will use to while defining a grid layout.
+We also need to focus on the number of variables we'll have in our scale. These are the variables/tokens developers will use to while defining a grid layout.
 
 ### **How to apply a spatial system?**
 Applying a system can come in the form of `padding`, `margins`, `width` & `height`. So there are two things we can control here *main sizing* & *internal element sizing*.
 
-- **Element-first (strict element sizing):** In this type the size takes the priority. For examples buttons, form inputs, etc.
+- **Element-first (strict element sizing):** In this type the size takes the priority. For examples *buttons*, *form inputs*, *etc*.
+![Element-First Spacing](./images/spatial/element-first.png)
+
 - **Content first (strict internal padding):** This is to be used when the content is dynamic or less predictable. Therefore, we will enforce the strict internal padding to those components. Simply put, this is the spacing around the elements.
+![Content-First Spacing](./images/spatial/content-first.png)
 
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
