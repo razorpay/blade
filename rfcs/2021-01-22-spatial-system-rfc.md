@@ -85,6 +85,24 @@ Here we'll have 3 types of column grids, these will be used depending on the use
 3. **Spacious:** This has a gutter of `48px` & will be used for landing/marketing pages.
 ![Condensed Column-Grid](./images/spatial/col-grid-spacious.png)
 
+These column grids can also be used internally based on the what component we are building. For example, let's say we are building inline form, then we'll use condensed col-grid for organising elements.
+
+### **Spatial Scale**
+Our spatial scale would look like this:
+| Alias      | Value |
+|------------|-------|
+| $spacer-0  | 0px   |
+| $spacer-1  | 4px   |
+| $spacer-2  | 8px   |
+| $spacer-3  | 12px  |
+| $spacer-4  | 16px  |
+| $spacer-5  | 20px  |
+| $spacer-6  | 24px  |
+| $spacer-7  | 32px  |
+| $spacer-8  | 40px  |
+| $spacer-9  | 48px  |
+| $spacer-10 | 56px  |
+
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
 - Implementation cost, both in terms of code size and complexity.
