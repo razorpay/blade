@@ -4,13 +4,23 @@ RFC PR: (leave this empty if no PR yet)
 Blade Issue: (leave this empty if no issue yet)
 ---
 
-# Title of the RFC <!-- omit in toc -->
+# Spatial System <!-- omit in toc -->
 
 ### Table Of Contents <!-- omit in toc -->
 - [Summary](#summary)
-- [Basic Example](#basic-example)
 - [Motivation](#motivation)
+  - [Why do we need a spatial system?](#why-do-we-need-a-spatial-system)
+  - [Expected Outcome](#expected-outcome)
 - [Detailed Design](#detailed-design)
+  - [Space ≠ Grid](#space--grid)
+  - [8pt Grid System](#8pt-grid-system)
+  - [But Why 8pt Grid?](#but-why-8pt-grid)
+  - [Base Unit](#base-unit)
+  - [What system will work for Razorpay?](#what-system-will-work-for-razorpay)
+  - [How to apply a spatial system?](#how-to-apply-a-spatial-system)
+  - [Grids](#grids)
+  - [Column Grid](#column-grid)
+  - [Spatial Scale](#spatial-scale)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
@@ -88,7 +98,10 @@ Here we'll have 3 types of column grids, these will be used depending on the use
 These column grids can also be used internally based on the what component we are building. For example, let's say we are building inline form, then we'll use condensed col-grid for organising elements.
 
 ### **Spatial Scale**
-Our spatial scale would look like this:
+We'll follow a **8pt** linear scale for the elements with the **4pt** half-step for spacing smaller content (icons, etc.) and typography (line-heights).
+
+This is how the scale will look like:
+
 | Alias      | Value |
 |------------|-------|
 | $spacer-0  | 0px   |
@@ -103,34 +116,36 @@ Our spatial scale would look like this:
 | $spacer-9  | 48px  |
 | $spacer-10 | 56px  |
 
-# Drawbacks/Constraints
-Why should we *not* do this? Maybe try to consider the following constraints
-- Implementation cost, both in terms of code size and complexity.
-- The impact of it on new as well as existing consumer projects.
-- Cost of migration.
+>These are mixed values, it contains multiple of 4 as well as 8.
 
-There are tradeoffs to choosing any path. Attempt to identify them here.
+# Drawbacks/Constraints
+There are no major drawbacks here,
+- We need to make sure that all the spacing between the elements should not be hardcoded. They should use the spatial tokens whenever required.
+- We might find few screens where it is difficult to organise the spacing. For example, iPhone 6 (`375x667`). For such scenarios we don't need to break the pixels, instead we need to keep the margins & paddings consistent. It's ok to have oodly-sized layout which keeps the grid consistent. Although, no user will likely see the actual measurements here.
 
 # Alternatives
-What other designs/patterns/strategies have been considered?
+There are many other spatial systems we might have considered, such as **5pt grid**, **6pt grid**. But we are not using them because of already mentioned reason,
+- With odd numbers like 5, it is hard to align things to center as the outcome will result in fraction values that will split the pixels. This can also result in blurry pixel.
+- Similarly the scaling will also not work properly while scaling on mobile/tablets, which will again result into pixel blurriness.
 
 # Adoption strategy
-If we implement this proposal, how will existing consumer projects adopt it? 
-- Is this a breaking change? 
-- Can we write a codemod?
-- How do we prioritise this with business and product folks?
-- How do we communicate with other teams? Will updating docs suffice or do we need a dedicated interaction with them?
+Spatial scale needs to be implemented as a core part of the DS in terms of the tokens which will automatically derive the adoption.
+- Implement the [spatial scale](#spatial-scale) (as tokens).
+- Implement the 3 types of [column-grid](#column-grid) structure using the same spatial scale.
+- Make sure all the components are using the same spatial scale tokens while building them.
 
 # How do we educate people?
-- How should this be taught to other folks?
-- What names and terminology work best for these concepts and why? 
-- How is this idea best presented?
+Both **designers** & **developers** need to be educated.
+- Designers should always use the spatial (multiple of 4pt) scale while working on any layout.
+- Similarly, developers should always use the spatial tokens while defining the space between the adjacent elements inside the UI which should not be a problem as it is coming from a designer.
 
 # Open Questions
-- Any open questions that you have?
-- Any undiscovered areas that you have encountered?
-- Any dependencies on other teams(Design/Engineering) that needs to be resolved upfront?
+- We can name the tokens in a better way, just like how we have did for colors.
+- We already have static tokens (i.e. which works for both desktops & mobiles) in place, should be need dynamic tokens that changes with the device?
 
 # References
-Any references that you can share for those who are curious to understand anything beyond the scope of this RFC in general but related to the topic of this RFC.
-
+- [Space in Design Systems](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62) by *Nathan Curtis*
+- [The 8pt Grid](https://spec.fm/specifics/8-pt-grid) by *spec[dot]fm*
+- [How to create stronger layout with 8pt grid](https://marcandrew.me/how-to-create-stronger-layouts-with-the-8pt-grid/) by *Marc Andrew*
+- [Spacing in Carbon Design System](https://www.carbondesignsystem.com/guidelines/spacing/overview/) by *IBM*
+- [Global Tokens](https://spectrum.adobe.com/page/design-tokens/#Size-tokens) by *Adobe Spectrum*
