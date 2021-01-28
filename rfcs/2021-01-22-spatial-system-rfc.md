@@ -1,6 +1,6 @@
 ---
 Start Date: 22-05-2020
-RFC PR: [235](https://github.com/razorpay/blade/pull/235)
+RFC PR: 235
 Blade Issue: NA
 ---
 
