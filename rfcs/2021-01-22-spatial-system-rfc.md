@@ -69,6 +69,22 @@ Applying a system can come in the form of `padding`, `margins`, `width` & `heigh
 - **Content first (strict internal padding):** This is to be used when the content is dynamic or less predictable. Therefore, we will enforce the strict internal padding to those components. Simply put, this is the spacing around the elements.
 ![Content-First Spacing](./images/spatial/content-first.png)
 
+### **Grids**
+The grid system helps align page elements based on sequenced columns and rows. Basically it helps you arrange your structure into structured manner. Here we'll look into 2D organisation of information.
+
+### **Column Grid**
+As the name suggests, this type of grid will help you organise content into evenly spaced vertical columns. The spacer which divide this grid is called as `gutter`. We'll use a **12 column grid** as it helps divide the area into *halfs*, *thirds*, *fourths*, *sixths*.
+
+Here we'll have 3 types of column grids, these will be used depending on the use case.
+1. **Default:** This has a gutter of `32px` & will be used on the internal dashboard.
+![Default Column-Grid](./images/spatial/col-grid-default.png)
+
+2. **Condensed:** This has a gutter of `16px` & will be used on mobile layouts.
+![Condensed Column-Grid](./images/spatial/col-grid-condensed.png)
+
+3. **Spacious:** This has a gutter of `48px` & will be used for landing/marketing pages.
+![Condensed Column-Grid](./images/spatial/col-grid-spacious.png)
+
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
 - Implementation cost, both in terms of code size and complexity.
