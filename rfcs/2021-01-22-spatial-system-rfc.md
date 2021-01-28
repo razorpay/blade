@@ -1,7 +1,7 @@
 ---
 Start Date: 22-05-2020
-RFC PR: (leave this empty if no PR yet)
-Blade Issue: (leave this empty if no issue yet)
+RFC PR: [235](https://github.com/razorpay/blade/pull/235)
+Blade Issue: NA
 ---
 
 # Spatial System <!-- omit in toc -->
@@ -12,6 +12,7 @@ Blade Issue: (leave this empty if no issue yet)
   - [Why do we need a spatial system?](#why-do-we-need-a-spatial-system)
   - [Expected Outcome](#expected-outcome)
 - [Detailed Design](#detailed-design)
+  - [What is a pt?](#what-is-a-pt)
   - [Space ≠ Grid](#space--grid)
   - [8pt Grid System](#8pt-grid-system)
   - [But Why 8pt Grid?](#but-why-8pt-grid)
@@ -46,6 +47,13 @@ Due to these inconsistencies the users using our product can get a feeling of un
 To avoid this, we need to build a flexible **spatial system** that can drive minor everyday decisions and make our designs looks consistent, organised & pleasing to our users eyes.
 
 # Detailed Design
+### **What is a pt?**
+A point (`pt`) is a measurement of space that is dependent on screen resolution. Simply put, at a `1x` resolution (or `@1x`). That is,
+```
+1pt = 1px
+```
+>**📝Note:** It is always recommended to design in **`1x`** and then exporting your assets to different sizes (`@2x`, `@3x`, etc.) depending upon the use case.
+
 ### **Space ≠ Grid**
 Industry generally considers space as grids, but these two are different things. Spaces are used to make grids (i.e. grids/containers/etc. are built using spaces).
 
