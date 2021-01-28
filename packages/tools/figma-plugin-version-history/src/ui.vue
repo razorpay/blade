@@ -49,9 +49,8 @@ export default {
   data() {
     return {
       message: "Loading...",
-      // fileKey: "ht9pEZnQi2WvPjgChbPrnu", // old file
-      fileKey: "LV9kjgzhkfsktvbRgTuGJ3", // new file
-      figmaToken: "59832-be42bf32-846b-431a-a4ca-bbc529e8b6c2",
+      fileKey: "<file-key>",
+      figmaToken: "<figma-token>",
       isLoading: true,
       listLoaded: false,
       versions: "",
