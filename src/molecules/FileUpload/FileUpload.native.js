@@ -59,12 +59,6 @@ const FileUpload = ({
           ? DocumentPicker.types.allFiles
           : Object.keys(DocumentPicker.types).filter((type) => accept.includes(type)),
       });
-      console.log('OPOPOP', {
-        uri: res.uri,
-        type: res.type,
-        name: res.name,
-        size: res.size,
-      });
       onFileUpload({
         uri: res.uri,
         type: res.type,
