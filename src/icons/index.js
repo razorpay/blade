@@ -47,6 +47,7 @@ const icons = {
   subscription: require('./Subscription').default,
   success: require('./Success').default,
   trash: require('./Trash').default,
+  uploadCloud: require('./UploadCloud').default,
   wiFiOff: require('./WiFiOff').default,
   wiFiOn: require('./WiFiOn').default,
 };
