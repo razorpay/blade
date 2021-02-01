@@ -141,10 +141,10 @@ This is how it will look like across desktop & mobile.
 # Drawbacks/Constraints
 Few things to consider here:
 - As we are moving towards adaptive-layout so we need to consider - should we also support responsive layout? For both cases, I don't see any challenges as the typography system remains the same.
-- How will this be managed on the tech-side? This might create more work as we'll have to maintain four scales,
+- How will this be managed on the tech-side? This might create more work as we'll have to maintain more scales,
   - Landing/Marketing page (mobile & desktop/tablets)
   - Product/Dashboard (mobile & desktop/tablets)
-
+  - Emails
 
 # Alternatives
 Few other things we considered:
