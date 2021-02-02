@@ -1,6 +1,6 @@
 ---
-Start Date: 22-05-2020
-RFC PR: 235
+Start Date: 22-05-2021
+RFC PR: NA
 Blade Issue: NA
 ---
 
@@ -129,7 +129,7 @@ This is how the scale will look like:
 # Drawbacks/Constraints
 There are no major drawbacks here,
 - We need to make sure that all the spacing between the elements should not be hardcoded. They should use the spatial tokens whenever required.
-- We might find few screens where it is difficult to organise the spacing. For example, iPhone 6 (`375x667`). For such scenarios we don't need to break the pixels, instead we need to keep the margins & paddings consistent. It's ok to have oodly-sized layout which keeps the grid consistent. Although, no user will likely see the actual measurements here.
+- We might find few screens where it is difficult to organise the spacing. For example, iPhone 6 (`375x667`). For such scenarios we don't need to break the pixels, instead we need to keep the margins & paddings consistent. It's ok to have oddly sized layout which keeps the grid consistent. Although, no user will likely see the actual measurements here.
 
 # Alternatives
 There are many other spatial systems we might have considered, such as **5pt grid**, **6pt grid**. But we are not using them because of already mentioned reason,
