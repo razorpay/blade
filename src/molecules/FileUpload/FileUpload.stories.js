@@ -10,7 +10,7 @@ storiesOf('FileUpload', module)
     component: FileUpload,
   })
   .add('default', () => (
-    <Flex flex={1} justifyContent="space-between" alignItems="center">
+    <Flex flex={1} alignItems="center">
       <View>
         <Space margin={[1, 0]}>
           <View>

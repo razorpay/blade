@@ -35,13 +35,14 @@ const FileUpload = ({
   helpText,
   onError,
   onFileUpload,
+  onRemove,
 }) => {
   const [fileName, setFileName] = useState(file);
   const hasUploadCompleted = progress >= MAX_PROGRESS_VALUE;
 
   const handleClose = () => {
-    setFileName('');
-    LayoutAnimation.easeInEaseOut();
+    // setFileName('');
+    onRemove();
   };
 
   useEffect(() => {
@@ -50,6 +51,7 @@ const FileUpload = ({
     } else if (!file) {
       setFileName('');
     }
+    LayoutAnimation.easeInEaseOut();
   }, [file]);
 
   const handleDocumentPick = async () => {
@@ -145,6 +147,7 @@ FileUpload.propTypes = {
   helpText: PropTypes.string,
   onError: PropTypes.func,
   onFileUpload: PropTypes.func,
+  onRemove: PropTypes.func,
 };
 
 FileUpload.defaultProps = {
@@ -152,6 +155,7 @@ FileUpload.defaultProps = {
   title: 'Upload',
   onError: () => {},
   onFileUpload: () => {},
+  onRemove: () => {},
 };
 
 export default FileUpload;
