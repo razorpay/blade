@@ -16,7 +16,7 @@ const lightTheme = {
         secondary: {
           default: '',
           hover: globalColors.chromatic.azure.a50,
-          focused: globalColors.chromatic.azure[700],
+          focused: globalColors.chromatic.azure.a200,
           disabled: '', // confirm with saurav
         },
       },
@@ -119,7 +119,7 @@ const lightTheme = {
         },
         infromation: {
           highContrast: globalColors.neutral.blueGray[0],
-          lowContrast: globalColors.chromatic.sapphire[600],
+          lowContrast: globalColors.chromatic.sapphire[500],
         },
       },
     },
