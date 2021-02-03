@@ -1,9 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
 import Space from '../../atoms/Space';
 import View from '../../atoms/View';
 import Flex from '../../atoms/Flex';
 import FileUpload from '../FileUpload';
+
+const FileUploadProgressDemo = () => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress(Math.random() * 100);
+    }, 1000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  return (
+    <Flex flex={1} alignItems="center">
+      <View>
+        <FileUpload
+          file="abc"
+          title="Uploading file abc"
+          progress={progress}
+          onFileSelectionError={() => {}}
+          onFileSelected={() => {}}
+          helpText="Progress bar changing randomly"
+        />
+      </View>
+    </Flex>
+  );
+};
 
 storiesOf('FileUpload', module)
   .addParameters({
@@ -69,4 +97,7 @@ storiesOf('FileUpload', module)
         </Space>
       </View>
     </Flex>
-  ));
+  ))
+  .add('FileUpload with progress change', () => {
+    return <FileUploadProgressDemo />;
+  });
