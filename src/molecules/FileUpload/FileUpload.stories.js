@@ -14,7 +14,11 @@ storiesOf('FileUpload', module)
       <View>
         <Space margin={[1, 0]}>
           <View>
-            <FileUpload onError={() => {}} onFileUpload={() => {}} helpText="File Upload Empty" />
+            <FileUpload
+              onFileSelectionError={() => {}}
+              onFileSelected={() => {}}
+              helpText="File Upload Empty"
+            />
           </View>
         </Space>
         <Space margin={[1, 0]}>
@@ -23,8 +27,8 @@ storiesOf('FileUpload', module)
               file="abc"
               title="Uploading file abc"
               progress={30}
-              onError={() => {}}
-              onFileUpload={() => {}}
+              onFileSelectionError={() => {}}
+              onFileSelected={() => {}}
               helpText="Uploading file with 30% progress"
             />
           </View>
@@ -35,8 +39,8 @@ storiesOf('FileUpload', module)
               file="abc"
               title="Uploaded the file"
               progress={100}
-              onError={() => {}}
-              onFileUpload={() => {}}
+              onFileSelectionError={() => {}}
+              onFileSelected={() => {}}
               helpText="Uploaded file with progress 100%"
             />
           </View>
@@ -45,8 +49,8 @@ storiesOf('FileUpload', module)
           <View>
             <FileUpload
               file=""
-              onError={() => {}}
-              onFileUpload={() => {}}
+              onFileSelectionError={() => {}}
+              onFileSelected={() => {}}
               errorText="Error for not meeting the file constraints"
             />
           </View>
@@ -57,8 +61,8 @@ storiesOf('FileUpload', module)
               file="abc"
               title="Uploaded file abc"
               progress={100}
-              onError={() => {}}
-              onFileUpload={() => {}}
+              onFileSelectionError={() => {}}
+              onFileSelected={() => {}}
               errorText="Case where some server error occured"
             />
           </View>

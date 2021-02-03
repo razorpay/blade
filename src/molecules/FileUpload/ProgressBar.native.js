@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import View from '../../atoms/View';
 import Position from '../../atoms/Position';
 import { getColor, getColorKeys } from '../../_helpers/theme';
+import Size from '../../atoms/Size';
 
 const styles = {
   height({ size }) {
@@ -25,10 +26,8 @@ const styles = {
 };
 
 const ProgressContainer = styled(View)`
-  width: 100%;
   max-height: ${(props) => props.height};
   height: ${(props) => props.height};
-  max-width: 100%;
   border-radius: 100px;
   background-color: ${(props) => props.theme.colors.background[800]};
 `;
@@ -57,16 +56,18 @@ const ProgressBar = ({ progress, error, size, color }) => {
   });
 
   return (
-    <ProgressContainer height={styles.height({ size })}>
-      <Position position="absolute" top={0} bottom={0} left={0} right={0}>
-        <StyledProgressBar
-          height={styles.height({ size })}
-          error={error}
-          style={{ width }}
-          color={styles.progressColor({ error, color })}
-        />
-      </Position>
-    </ProgressContainer>
+    <Size width="100%" maxWidth="100%">
+      <ProgressContainer height={styles.height({ size })}>
+        <Position position="absolute" top={0} bottom={0} left={0} right={0}>
+          <StyledProgressBar
+            height={styles.height({ size })}
+            error={error}
+            style={{ width }}
+            color={styles.progressColor({ error, color })}
+          />
+        </Position>
+      </ProgressContainer>
+    </Size>
   );
 };
 

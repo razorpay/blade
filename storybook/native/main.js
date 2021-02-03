@@ -33,11 +33,11 @@ configure(() => {
   require('../../src/atoms/TextInput/TextInput.stories');
   require('../../src/molecules/Amount/Amount.stories');
   require('../../src/molecules/BottomSheet/BottomSheet.stories');
+  require('../../src/molecules/FileUpload/FileUpload.stories');
   require('../../src/molecules/Modal/Modal.stories');
   require('../../src/molecules/SegmentControl/SegmentControl.stories');
   require('../../src/molecules/Snackbar/Snackbar.stories');
   require('../../src/molecules/Tabs/Tabs.stories');
-  require('../../src/molecules/FileUpload/FileUpload.stories');
 }, module);
 
 // add decorators
