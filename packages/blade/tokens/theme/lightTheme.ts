@@ -2,9 +2,11 @@ import globalColors from '../global/colors';
 
 const lightTheme = {
   colors: {
-    black: globalColors.neutral.blueGray[1300],
-    primary: globalColors.chromatic.azure[500],
-    white: globalColors.neutral.blueGray[0],
+    brand: {
+      primary: globalColors.chromatic.azure[500],
+      secondary: globalColors.chromatic.azure.a50,
+      tertiary: globalColors.chromatic.emerald[500],
+    },
     action: {
       background: {
         primary: {
@@ -14,10 +16,10 @@ const lightTheme = {
           disabled: globalColors.chromatic.azure.a200,
         },
         secondary: {
-          default: '',
-          hover: globalColors.chromatic.azure.a50,
+          default: globalColors.chromatic.azure.a50,
+          hover: globalColors.chromatic.azure.a100,
           focused: globalColors.chromatic.azure.a200,
-          disabled: '', // confirm with saurav
+          disabled: globalColors.chromatic.azure.a50,
         },
       },
       border: {
@@ -29,7 +31,7 @@ const lightTheme = {
         },
         secondary: {
           default: globalColors.chromatic.azure[500],
-          hover: globalColors.chromatic.azure[400], // check with saurav
+          hover: globalColors.chromatic.azure[500],
           focused: globalColors.chromatic.azure[700],
           disabled: globalColors.chromatic.azure.a200,
         },
@@ -42,8 +44,8 @@ const lightTheme = {
           disabled: globalColors.neutral.blueGray[0],
         },
         secondary: {
-          default: globalColors.chromatic.azure[500], // check with saurav it should have neutral scale
-          hover: globalColors.chromatic.azure[500], // check with saurav the color looks different but the name is same,
+          default: globalColors.chromatic.azure[500],
+          hover: globalColors.chromatic.azure[500],
           focused: globalColors.chromatic.azure[500],
           disabled: globalColors.chromatic.azure.a200,
         },
@@ -124,15 +126,53 @@ const lightTheme = {
       },
     },
     surface: {
+      background: {
+        level1: {
+          lowContrast: globalColors.neutral.blueGray[100],
+          highContrast: globalColors.neutral.blueGray[1100],
+        },
+        level2: {
+          lowContrast: globalColors.neutral.blueGray[0],
+          highContrast: globalColors.neutral.blueGray[900],
+        },
+        level3: {
+          lowContrast: globalColors.neutral.blueGray[50],
+          highContrast: globalColors.neutral.blueGray[1300],
+        },
+      },
+      border: {
+        normal: {
+          lowContrast: globalColors.neutral.blueGray[400],
+          highContrast: globalColors.neutral.blueGray[400],
+        },
+        subtle: {
+          lowContrast: globalColors.neutral.blueGray[800],
+          highContrast: globalColors.neutral.blueGray[800],
+        },
+      },
       text: {
-        1: globalColors.neutral.blueGray[1200],
-        2: globalColors.neutral.blueGray[1000],
-        3: globalColors.neutral.blueGray[800],
-        4: globalColors.neutral.blueGray[600],
-        5: globalColors.neutral.blueGray[500],
+        normal: {
+          lowContrast: globalColors.neutral.blueGray[1200],
+          highContrast: globalColors.neutral.blueGray[0],
+        },
+        subtle: {
+          lowContrast: globalColors.neutral.blueGray[1000],
+          highContrast: globalColors.neutral.blueGray[100],
+        },
+        subdued: {
+          lowContrast: globalColors.neutral.blueGray[800],
+          highContrast: globalColors.neutral.blueGray[300],
+        },
+        muted: {
+          lowContrast: globalColors.neutral.blueGray[600],
+          highContrast: globalColors.neutral.blueGray[400],
+        },
+        placeholder: {
+          lowContrast: globalColors.neutral.blueGray[500],
+          highContrast: globalColors.neutral.blueGray[700],
+        },
       },
     },
-    body: {},
   },
   fonts: {},
   spacing: {},
