@@ -28,7 +28,7 @@ const UploadContainer = styled(View)`
 const FileUpload = ({
   title,
   progress,
-  file,
+  fileName,
   fileTypes,
   errorText,
   helpText,
@@ -36,7 +36,7 @@ const FileUpload = ({
   onFileSelected,
   onFileRemoved,
 }) => {
-  const [fileName, setFileName] = useState(file);
+  const [file, setFileName] = useState(fileName);
   const hasUploadCompleted = progress >= MAX_PROGRESS_VALUE;
 
   const handleFileRemoval = () => {
@@ -45,13 +45,13 @@ const FileUpload = ({
   };
 
   useEffect(() => {
-    if (file) {
-      setFileName(file);
-    } else if (!file) {
+    if (fileName) {
+      setFileName(fileName);
+    } else if (!fileName) {
       setFileName('');
     }
     LayoutAnimation.easeInEaseOut();
-  }, [file]);
+  }, [fileName]);
 
   const handleFilePick = async () => {
     try {
@@ -79,7 +79,7 @@ const FileUpload = ({
     <View>
       <Size height={6} width={30}>
         <Flex alignItems="center" justifyContent="center">
-          {fileName ? (
+          {file ? (
             <Space padding={[1, 1.5]}>
               <UploadContainer>
                 <Flex flexDirection="row" alignItems="center">
@@ -144,7 +144,7 @@ const FileUpload = ({
 FileUpload.propTypes = {
   progress: PropTypes.number,
   title: PropTypes.string,
-  file: PropTypes.string,
+  fileName: PropTypes.string,
   fileTypes: PropTypes.arrayOf(Object.keys(DocumentPicker.types)), // Accepts: ["allFiles", "audio", "csv", "doc", "docx", "images", "pdf", "plainText", "ppt", "pptx", "video", "xls", "xlsx", "zip"]
   errorText: PropTypes.string,
   helpText: PropTypes.string,
@@ -154,7 +154,7 @@ FileUpload.propTypes = {
 };
 
 FileUpload.defaultProps = {
-  file: '',
+  fileName: '',
   title: 'Upload',
   onFileSelectionError: () => {},
   onFileSelected: () => {},

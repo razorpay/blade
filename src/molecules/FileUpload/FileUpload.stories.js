@@ -21,7 +21,7 @@ const FileUploadProgressDemo = () => {
     <Flex flex={1} alignItems="center">
       <View>
         <FileUpload
-          file="abc"
+          fileName="abc"
           title="Uploading file abc"
           progress={progress}
           onFileSelectionError={() => {}}
@@ -52,7 +52,7 @@ storiesOf('FileUpload', module)
         <Space margin={[1, 0]}>
           <View>
             <FileUpload
-              file="abc"
+              fileName="abc"
               title="Uploading file abc"
               progress={30}
               onFileSelectionError={() => {}}
@@ -64,7 +64,7 @@ storiesOf('FileUpload', module)
         <Space margin={[1, 0]}>
           <View>
             <FileUpload
-              file="abc"
+              fileName="abc"
               title="Uploaded the file"
               progress={100}
               onFileSelectionError={() => {}}
@@ -76,7 +76,7 @@ storiesOf('FileUpload', module)
         <Space margin={[1, 0]}>
           <View>
             <FileUpload
-              file=""
+              fileName=""
               onFileSelectionError={() => {}}
               onFileSelected={() => {}}
               errorText="Error for not meeting the file constraints"
@@ -86,7 +86,7 @@ storiesOf('FileUpload', module)
         <Space margin={[1, 0]}>
           <View>
             <FileUpload
-              file="abc"
+              fileName="abc"
               title="Uploaded file abc"
               progress={100}
               onFileSelectionError={() => {}}

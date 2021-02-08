@@ -52,7 +52,7 @@ describe('<FileUpload />', () => {
 
   test('renders FileUpload with custom title', () => {
     const { getByText } = renderWithTheme(
-      <FileUpload progress={80} file="abc" title="Uploading file abc" />,
+      <FileUpload progress={80} fileName="abc" title="Uploading file abc" />,
     );
     expect(getByText(/uploading file abc/i)).toBeTruthy();
   });
@@ -61,7 +61,7 @@ describe('<FileUpload />', () => {
     const { getByText } = renderWithTheme(
       <FileUpload
         progress={80}
-        file="abc"
+        fileName="abc"
         title="Uploading file abc"
         helpText="This is FileUpload helpText"
       />,
@@ -73,7 +73,7 @@ describe('<FileUpload />', () => {
     const { getByText } = renderWithTheme(
       <FileUpload
         progress={80}
-        file="abc"
+        fileName="abc"
         title="Uploading file abc"
         errorText="This is FileUpload errorText"
       />,
