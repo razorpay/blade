@@ -55,16 +55,16 @@ const FileUpload = ({
 
   const handleFilePick = async () => {
     try {
-      const res = await DocumentPicker.pick({
+      const document = await DocumentPicker.pick({
         type: !fileTypes
           ? DocumentPicker.types.allFiles
           : Object.keys(DocumentPicker.types).filter((type) => fileTypes.includes(type)),
       });
       onFileSelected({
-        uri: res.uri,
-        type: res.type,
-        name: res.name,
-        size: res.size,
+        uri: document.uri,
+        type: document.type,
+        name: document.name,
+        size: document.size,
       });
     } catch (err) {
       if (DocumentPicker.isCancel(err)) {
