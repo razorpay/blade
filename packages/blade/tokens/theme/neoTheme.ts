@@ -3,52 +3,22 @@ import globalColors from '../global/colors';
 const neoTheme = {
   colors: {
     brand: {
-      primary: globalColors.chromatic.azure[400],
-      secondary: globalColors.chromatic.azure.a50,
-      tertiary: globalColors.chromatic.emerald[500],
-    },
-    action: {
-      background: {
-        primary: {
-          default: globalColors.chromatic.azure[500],
-          hover: globalColors.chromatic.azure[400],
-          focused: globalColors.chromatic.azure[700],
-          disabled: globalColors.chromatic.azure.a200,
-        },
-        secondary: {
-          default: globalColors.chromatic.azure.a50,
-          hover: globalColors.chromatic.azure.a100,
-          focused: globalColors.chromatic.azure.a200,
-          disabled: globalColors.chromatic.azure.a50,
-        },
+      primary: {
+        lightest: globalColors.chromatic.azure.a100,
+        light: globalColors.chromatic.azure.a200,
+        normal: globalColors.chromatic.azure[400],
+        dark: globalColors.chromatic.azure[500],
+        darkest: globalColors.chromatic.azure[600],
       },
-      border: {
-        primary: {
-          default: globalColors.chromatic.azure[500],
-          hover: globalColors.chromatic.azure[400],
-          focused: globalColors.chromatic.azure[700],
-          disabled: globalColors.chromatic.azure.a200,
-        },
-        secondary: {
-          default: globalColors.chromatic.azure[500],
-          hover: globalColors.chromatic.azure[500],
-          focused: globalColors.chromatic.azure[700],
-          disabled: globalColors.chromatic.azure.a200,
-        },
+      secondary: {
+        normal: globalColors.chromatic.emerald[500],
       },
-      text: {
-        primary: {
-          default: globalColors.neutral.navyGray[0],
-          hover: globalColors.neutral.navyGray[0],
-          focused: globalColors.neutral.navyGray[0],
-          disabled: globalColors.neutral.navyGray[0],
-        },
-        secondary: {
-          default: globalColors.chromatic.azure[500],
-          hover: globalColors.chromatic.azure[500],
-          focused: globalColors.chromatic.azure[500],
-          disabled: globalColors.chromatic.azure.a200,
-        },
+      gray: {
+        lightest: globalColors.neutral.navyGray[100],
+        light: globalColors.neutral.navyGray[200],
+        normal: globalColors.neutral.navyGray[300],
+        dark: globalColors.neutral.navyGray[600],
+        darkest: globalColors.neutral.navyGray[800],
       },
     },
     feedback: {
