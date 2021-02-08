@@ -38,65 +38,63 @@ storiesOf('FileUpload', module)
     component: FileUpload,
   })
   .add('default', () => (
-    <Flex flex={1} alignItems="center">
-      <View>
-        <Space margin={[1, 0]}>
-          <View>
-            <FileUpload
-              onFileSelectionError={() => {}}
-              onFileSelected={() => {}}
-              helpText="File Upload Empty"
-            />
-          </View>
-        </Space>
-        <Space margin={[1, 0]}>
-          <View>
-            <FileUpload
-              fileName="abc"
-              title="Uploading file abc"
-              progress={30}
-              onFileSelectionError={() => {}}
-              onFileSelected={() => {}}
-              helpText="Uploading file with 30% progress"
-            />
-          </View>
-        </Space>
-        <Space margin={[1, 0]}>
-          <View>
-            <FileUpload
-              fileName="abc"
-              title="Uploaded the file"
-              progress={100}
-              onFileSelectionError={() => {}}
-              onFileSelected={() => {}}
-              helpText="Uploaded file with progress 100%"
-            />
-          </View>
-        </Space>
-        <Space margin={[1, 0]}>
-          <View>
-            <FileUpload
-              fileName=""
-              onFileSelectionError={() => {}}
-              onFileSelected={() => {}}
-              errorText="Error for not meeting the file constraints"
-            />
-          </View>
-        </Space>
-        <Space margin={[1, 0]}>
-          <View>
-            <FileUpload
-              fileName="abc"
-              title="Uploaded file abc"
-              progress={100}
-              onFileSelectionError={() => {}}
-              onFileSelected={() => {}}
-              errorText="Case where some server error occured"
-            />
-          </View>
-        </Space>
-      </View>
-    </Flex>
+    <React.Fragment>
+      <Space margin={[1, 0]}>
+        <View>
+          <FileUpload
+            onFileSelectionError={() => {}}
+            onFileSelected={() => {}}
+            helpText="File Upload Empty"
+          />
+        </View>
+      </Space>
+      <Space margin={[1, 0]}>
+        <View>
+          <FileUpload
+            fileName="abc"
+            title="Uploading file abc"
+            progress={30}
+            onFileSelectionError={() => {}}
+            onFileSelected={() => {}}
+            helpText="Uploading file with 30% progress"
+          />
+        </View>
+      </Space>
+      <Space margin={[1, 0]}>
+        <View>
+          <FileUpload
+            fileName="abc"
+            title="Uploaded the file"
+            progress={100}
+            onFileSelectionError={() => {}}
+            onFileSelected={() => {}}
+            helpText="Uploaded file with progress 100%"
+          />
+        </View>
+      </Space>
+      <Space margin={[1, 0]}>
+        <View>
+          <FileUpload
+            fileName=""
+            onFileSelectionError={() => {}}
+            onFileSelected={() => {}}
+            errorText="Error for not meeting the file constraints"
+          />
+        </View>
+      </Space>
+      <Space margin={[1, 0]}>
+        <View>
+          <FileUpload
+            fileName="abc"
+            title="Uploaded file abc"
+            progress={100}
+            onFileSelectionError={() => {}}
+            onFileSelected={() => {}}
+            errorText="Case where some server error occured"
+          />
+        </View>
+      </Space>
+    </React.Fragment>
   ))
   .add('FileUpload with progress change', () => {
     return <FileUploadProgressDemo />;

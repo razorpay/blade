@@ -76,68 +76,70 @@ const FileUpload = ({
   };
 
   return (
-    <View>
-      <Size height={6} width={30}>
-        <Flex alignItems="center" justifyContent="center">
-          {file ? (
-            <Space padding={[1, 1.5]}>
-              <UploadContainer>
-                <Flex flexDirection="row" alignItems="center">
-                  <Space margin={[0, 0, 1, 0]}>
-                    <View>
-                      {hasUploadCompleted && !errorText ? (
-                        <Space margin={[0, 1, 0, 0]}>
+    <Size width="100%">
+      <View>
+        <Size height={6}>
+          <Flex alignItems="center" justifyContent="center">
+            {file ? (
+              <Space padding={[1, 1.5]}>
+                <UploadContainer>
+                  <Flex flexDirection="row" alignItems="center">
+                    <Space margin={[0, 0, 1, 0]}>
+                      <View>
+                        {hasUploadCompleted && !errorText ? (
+                          <Space margin={[0, 1, 0, 0]}>
+                            <View>
+                              <Icon size="small" fill="positive.960" name="checkedCircle" />
+                            </View>
+                          </Space>
+                        ) : null}
+                        <Flex flex={2}>
                           <View>
-                            <Icon size="small" fill="positive.960" name="checkedCircle" />
+                            <Text size="xsmall" color="shade.980">
+                              {title}
+                            </Text>
                           </View>
-                        </Space>
-                      ) : null}
-                      <Flex flex={2}>
+                        </Flex>
+                        <TouchableOpacity onPress={handleFileRemoval}>
+                          <Icon size="small" name="close" fill="shade.800" />
+                        </TouchableOpacity>
+                      </View>
+                    </Space>
+                  </Flex>
+                  <ProgressBar size="small" progress={progress} error={errorText} />
+                </UploadContainer>
+              </Space>
+            ) : (
+              <Space padding={[1.25, 1.5]}>
+                <DashedButton onPress={handleFilePick} activeOpacity={0.7}>
+                  <Flex flexDirection="row">
+                    <View>
+                      <Icon name="uploadCloud" fill="primary.800" size="small" />
+                      <Space margin={[0, 0, 0, 0.5]}>
                         <View>
-                          <Text size="xsmall" color="shade.980">
+                          <Text size="xsmall" weight="bold" color="primary.800" maxLines={1}>
                             {title}
                           </Text>
                         </View>
-                      </Flex>
-                      <TouchableOpacity onPress={handleFileRemoval}>
-                        <Icon size="small" name="close" fill="shade.800" />
-                      </TouchableOpacity>
+                      </Space>
                     </View>
-                  </Space>
-                </Flex>
-                <ProgressBar size="small" progress={progress} error={errorText} />
-              </UploadContainer>
-            </Space>
-          ) : (
-            <Space padding={[1.25, 1.5]}>
-              <DashedButton onPress={handleFilePick} activeOpacity={0.7}>
-                <Flex flexDirection="row">
-                  <View>
-                    <Icon name="uploadCloud" fill="primary.800" size="small" />
-                    <Space margin={[0, 0, 0, 0.5]}>
-                      <View>
-                        <Text size="xsmall" weight="bold" color="primary.800" maxLines={1}>
-                          {title}
-                        </Text>
-                      </View>
-                    </Space>
-                  </View>
-                </Flex>
-              </DashedButton>
-            </Space>
-          )}
-        </Flex>
-      </Size>
-      {errorText || helpText ? (
-        <Space margin={[0.5, 0, 0, 0]}>
-          <View>
-            <Text size="xsmall" color={errorText ? 'negative.900' : 'shade.950'}>
-              {errorText || helpText}
-            </Text>
-          </View>
-        </Space>
-      ) : null}
-    </View>
+                  </Flex>
+                </DashedButton>
+              </Space>
+            )}
+          </Flex>
+        </Size>
+        {errorText || helpText ? (
+          <Space margin={[0.5, 0, 0, 0]}>
+            <View>
+              <Text size="xsmall" color={errorText ? 'negative.900' : 'shade.950'}>
+                {errorText || helpText}
+              </Text>
+            </View>
+          </Space>
+        ) : null}
+      </View>
+    </Size>
   );
 };
 

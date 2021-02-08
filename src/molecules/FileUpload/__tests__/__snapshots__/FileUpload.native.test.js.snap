@@ -10,7 +10,17 @@ exports[`<FileUpload /> renders FileUpload when file is already selected 1`] = `
     }
   }
 >
-  <View>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "width": "100%",
+          },
+        ],
+      ]
+    }
+  >
     <TouchableOpacity
       activeOpacity={0.7}
       style={
@@ -38,7 +48,6 @@ exports[`<FileUpload /> renders FileUpload when file is already selected 1`] = `
               Array [
                 Object {
                   "height": 48,
-                  "width": 240,
                 },
               ],
             ],
@@ -181,7 +190,17 @@ exports[`<FileUpload /> renders empty FileUpload component 1`] = `
     }
   }
 >
-  <View>
+  <View
+    style={
+      Array [
+        Array [
+          Object {
+            "width": "100%",
+          },
+        ],
+      ]
+    }
+  >
     <TouchableOpacity
       activeOpacity={0.7}
       style={
@@ -209,7 +228,6 @@ exports[`<FileUpload /> renders empty FileUpload component 1`] = `
               Array [
                 Object {
                   "height": 48,
-                  "width": 240,
                 },
               ],
             ],
