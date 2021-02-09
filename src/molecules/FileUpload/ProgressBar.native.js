@@ -26,17 +26,13 @@ const styles = {
 };
 
 const ProgressContainer = styled(View)`
-  max-height: ${(props) => props.height};
-  height: ${(props) => props.height};
   border-radius: 100px;
   background-color: ${(props) => props.theme.colors.background[800]};
 `;
 
 const StyledProgressBar = styled(Animated.View)`
   background-color: ${(props) => getColor(props.theme, props.color)};
-  height: ${(props) => props.height};
   border-radius: 100px;
-  max-width: 100%;
 `;
 
 const ProgressBar = ({ progress, error, size, color }) => {
@@ -56,15 +52,16 @@ const ProgressBar = ({ progress, error, size, color }) => {
   });
 
   return (
-    <Size width="100%" maxWidth="100%">
-      <ProgressContainer height={styles.height({ size })}>
+    <Size width="100%" maxWidth="100%" height={styles.height({ size })}>
+      <ProgressContainer>
         <Position position="absolute" top={0} bottom={0} left={0} right={0}>
-          <StyledProgressBar
-            height={styles.height({ size })}
-            error={error}
-            style={{ width }}
-            color={styles.progressColor({ error, color })}
-          />
+          <Size maxWidth="100%" height={styles.height({ size })}>
+            <StyledProgressBar
+              error={error}
+              style={{ width }}
+              color={styles.progressColor({ error, color })}
+            />
+          </Size>
         </Position>
       </ProgressContainer>
     </Size>
