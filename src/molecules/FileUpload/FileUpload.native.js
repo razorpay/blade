@@ -40,7 +40,6 @@ const FileUpload = ({
   const hasUploadCompleted = progress >= MAX_PROGRESS_VALUE;
 
   const handleFileRemoval = () => {
-    // setFileName('');
     onFileRemoved();
   };
 
