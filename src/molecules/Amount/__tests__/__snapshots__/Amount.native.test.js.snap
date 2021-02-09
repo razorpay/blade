@@ -74,6 +74,7 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -84,7 +85,7 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -173,6 +174,7 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -183,7 +185,7 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -272,6 +274,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -282,7 +285,7 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -371,6 +374,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -381,7 +385,7 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -470,6 +474,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -480,7 +485,7 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -569,6 +574,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -579,7 +585,7 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -668,6 +674,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -678,7 +685,7 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -767,6 +774,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -777,7 +785,7 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -866,6 +874,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -876,7 +885,7 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -965,6 +974,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -975,7 +985,7 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -1064,6 +1074,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1074,7 +1085,7 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -1163,6 +1174,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1173,7 +1185,7 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -1262,6 +1274,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xsmall"
@@ -1272,7 +1285,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
             "letterSpacing": 0,
-            "lineHeight": 18,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -1361,6 +1374,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1371,7 +1385,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -1461,6 +1475,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="xlarge"
       align="left"
       color="shade.950"
       size="medium"
@@ -1471,7 +1486,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
-            "lineHeight": 20,
+            "lineHeight": 30,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -1561,6 +1576,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="xxlarge"
       align="left"
       color="shade.950"
       size="medium"
@@ -1571,7 +1587,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
-            "lineHeight": 20,
+            "lineHeight": 36,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -1661,6 +1677,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="xxlarge"
       align="left"
       color="shade.950"
       size="large"
@@ -1671,7 +1688,7 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
             "fontFamily": "Lato-Bold",
             "fontSize": 16,
             "letterSpacing": 0,
-            "lineHeight": 24,
+            "lineHeight": 36,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -1760,6 +1777,7 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xsmall"
@@ -1770,7 +1788,7 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
             "fontFamily": "Lato-Bold",
             "fontSize": 12,
             "letterSpacing": 0,
-            "lineHeight": 18,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -1859,6 +1877,7 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -1869,7 +1888,7 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -1959,6 +1978,7 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="xlarge"
       align="left"
       color="shade.950"
       size="medium"
@@ -1969,7 +1989,7 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
-            "lineHeight": 20,
+            "lineHeight": 30,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -2059,6 +2079,7 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="xxlarge"
       align="left"
       color="shade.950"
       size="medium"
@@ -2069,7 +2090,7 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
             "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
-            "lineHeight": 20,
+            "lineHeight": 36,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -2159,6 +2180,7 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="xxlarge"
       align="left"
       color="shade.950"
       size="large"
@@ -2169,7 +2191,7 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
             "fontFamily": "Lato-Bold",
             "fontSize": 16,
             "letterSpacing": 0,
-            "lineHeight": 24,
+            "lineHeight": 36,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -2634,6 +2656,7 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2644,7 +2667,7 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -2770,6 +2793,7 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2780,7 +2804,7 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -2869,6 +2893,7 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2879,7 +2904,7 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -2968,6 +2993,7 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -2978,7 +3004,7 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
             "fontFamily": "Lato-Bold",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
@@ -3067,6 +3093,7 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
     <Text
       _isUnderlined={false}
       _letterSpacing="small"
+      _lineHeight="medium"
       align="left"
       color="shade.950"
       size="xxsmall"
@@ -3077,7 +3104,7 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
             "fontFamily": "Lato-Regular",
             "fontSize": 10,
             "letterSpacing": 0,
-            "lineHeight": 14,
+            "lineHeight": 20,
             "textAlign": "left",
             "textDecorationLine": "none",
           },
