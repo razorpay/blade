@@ -53,6 +53,7 @@ const icons = {
   taxPayments: require('./TaxPayments').default,
   trash: require('./Trash').default,
   uploadCloud: require('./UploadCloud').default,
+  user: require('./User').default,
   wiFiOff: require('./WiFiOff').default,
   wiFiOn: require('./WiFiOn').default,
 };
