@@ -27,8 +27,8 @@ const neoTheme = {
       },
       secondary: {
         500: {
-          onLight: globalColors.chromatic.emerald[500],
-          onDark: globalColors.chromatic.emerald[500],
+          onLight: globalColors.chromatic.cider[600],
+          onDark: globalColors.chromatic.cider[600],
         },
       },
       gray: {

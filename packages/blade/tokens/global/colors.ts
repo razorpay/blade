@@ -50,8 +50,8 @@ type color = Readonly<{
     blueGrayDark: colorNeutralScale;
     navyGrayLight: colorNeutralScale;
     navyGrayDark: colorNeutralScale;
-    warmGray: colorNeutralScale;
-    coolGray: colorNeutralScale;
+    ashGrayLight: colorNeutralScale;
+    ashGrayDark: colorNeutralScale;
   };
 }>;
 
@@ -239,7 +239,7 @@ const colors: color = {
       1200: `hsla(231, 59%, 13%, ${opacity[9]})`,
       1300: `hsla(231, 67%, 10%, ${opacity[9]})`,
     },
-    warmGray: {
+    ashGrayLight: {
       0: `hsla(0, 0, 100%, ${opacity[9]})`,
       50: `hsla(216, 9%, 98%, ${opacity[9]})`,
       100: `hsla(216, 9%, 96%, ${opacity[9]})`,
@@ -256,7 +256,7 @@ const colors: color = {
       1200: `hsla(216, 15, 13%, ${opacity[9]})`,
       1300: `hsla(214, 24%, 6%, ${opacity[9]})`,
     },
-    coolGray: {
+    ashGrayDark: {
       0: `hsla(0, 0, 99%, ${opacity[9]})`,
       50: `hsla(240, 2%, 92%, ${opacity[9]})`,
       100: `hsla(240, 1%, 84%, ${opacity[9]})`,
