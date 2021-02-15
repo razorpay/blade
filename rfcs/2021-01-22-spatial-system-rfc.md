@@ -12,6 +12,7 @@ Blade Issue: NA
   - [Why do we need a spatial system?](#why-do-we-need-a-spatial-system)
   - [Expected Outcome](#expected-outcome)
 - [Detailed Design](#detailed-design)
+  - [The Box Model](#the-box-model)
   - [What is a pt?](#what-is-a-pt)
   - [Space ≠ Grid](#space--grid)
   - [8pt Grid System](#8pt-grid-system)
@@ -23,6 +24,8 @@ Blade Issue: NA
   - [Column Grid](#column-grid)
   - [Spatial Scale](#spatial-scale)
 - [Drawbacks/Constraints](#drawbacksconstraints)
+  - [Type of Grid Usage](#type-of-grid-usage)
+  - [Multi-platform Design](#multi-platform-design)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
 - [How do we educate people?](#how-do-we-educate-people)
@@ -47,6 +50,19 @@ Due to these inconsistencies the users using our product can get a feeling of un
 To avoid this, we need to build a flexible **spatial system** that can drive minor everyday decisions and make our designs looks consistent, organised & pleasing to our users eyes.
 
 # Detailed Design
+### **The Box Model**
+A box-model is a representation of element's dimensions and spacing. It consists of four things *content (element)*, *padding*, *border*, & *margin*.
+
+1. **Content:** The main element of the box that may contain text & images.
+
+2. **Padding:** An area around the content's border and its child elements.
+
+3. **Border:** A stroke/line that goes around the padding & content.
+
+4. **Margin:** An area around the content's border and it's neighbouring element.
+
+![The Box Model](./images/spatial/box-model.png)
+
 ### **What is a pt?**
 A point (`pt`) is a measurement of space that is dependent on screen resolution. Simply put, at a `1x` resolution (or `@1x`). That is,
 ```
@@ -127,12 +143,24 @@ This is how the scale will look like:
 | $spacer-9  | 48px  |
 | $spacer-10 | 56px  |
 
->These are mixed values, it contains multiple of 4 as well as 8.
+>These are mixed values, it contains multiple of `4` as well as `8`.
 
 # Drawbacks/Constraints
-There are no major drawbacks here,
-- We need to make sure that all the spacing between the elements should not be hardcoded. They should use the spatial tokens whenever required.
-- We might find few screens where it is difficult to organise the spacing. For example, iPhone 6 (`375x667`). For such scenarios we don't need to break the pixels, instead we need to keep the margins & paddings consistent. It's ok to have oddly sized layout which keeps the grid consistent. Although, no user will likely see the actual measurements here.
+### **Type of Grid Usage**
+Grids can be used in two ways,
+
+- **Hard Grid:** In this type, everything snaps into a `8x8` grid and typography sits on a `baseline`. This sounds ideal but while implementing on the development side it create several issues which end up into the spacing between elements that is not divisible by 4 or 8.
+
+- **Soft Grid:** Here everything still follows the 8-pt grid but we remove the baseline and horizontal grid line to a strict `8x8` grid. This creates a uniform spacing between elements which is always divisible by 4 or 8 which also helps developers on the implementation side.
+### **Multi-platform design**
+Also, we might find few screens where it is difficult to organise the spacing. For example, iPhone 6 (`375x667`). For such scenarios we don't need to break the pixels, instead we need to keep the margins & paddings consistent. It's ok to have oddly sized layout which keeps the grid consistent. Although, no user will likely see the actual measurements here.
+
+![Hard vs Soft Grid](./images/spatial/hard-soft-grid.png)
+
+>**📝Note:** We'll also use the **Soft Grid** in our products.
+
+### **Drawbacks**
+There are no major drawbacks as such, although we need to make sure that all the spacing between the elements should not be hardcoded. They should use the spatial tokens whenever required.
 
 # Alternatives
 There are many other spatial systems we might have considered, such as **5pt grid**, **6pt grid**. But we are not using them because of already mentioned reason,
@@ -143,7 +171,9 @@ There are many other spatial systems we might have considered, such as **5pt gri
 Spatial scale needs to be implemented as a core part of the DS in terms of the tokens which will automatically derive the adoption.
 - Implement the [spatial scale](#spatial-scale) (as tokens).
 - Implement the 3 types of [column-grid](#column-grid) structure using the same spatial scale.
-- Make sure all the components are using the same spatial scale tokens while building them.
+- Make sure all the **components** are using the same spatial scale tokens while building them.
+- Every **product icon** is being made using the same spatial system canvas as defined inside Figma.
+- The `line-height` for **typography** should follow the same spatial system (of 8-pt grid) so that it aligns well with each other.
 
 # How do we educate people?
 Both **designers** & **developers** need to be educated.
