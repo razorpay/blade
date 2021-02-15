@@ -42,7 +42,7 @@ There are so many inconsistencies which we see in the current UI, here are a few
 ![Inconsistent Spacing & Alignment](./images/spatial/uneven-spacing.png)
 
 ### **Expected Outcome**
-Due to these inconsistencies the users using our product can get a feeling of untrustworthy, cheap design, & inconsistency. When everything looks aligned it creates a visual rhythm which in turns look pleasing and something our users expect from a brand like us especially in the fintech space.
+Due to these inconsistencies the users using our product can get a feeling of untrustworthyness & inconsist design. When everything looks aligned it creates a visual rhythm which in turns look pleasing and something our users expect from a brand like us especially in the fintech space.
 
 To avoid this, we need to build a flexible **spatial system** that can drive minor everyday decisions and make our designs looks consistent, organised & pleasing to our users eyes.
 
@@ -69,7 +69,7 @@ There is no right or wrong answer here, but there are few reasons for choosing 8
 - It's simple for us to do the math. The `4` & `8` are simpler to calculate and they are flexible enough to setup a scale.
 
 ### **Base Unit**
-We'll start with the base unit, this will allow us to create a scale of all the sizes in your spatial system. For us this also means using multiples of `x8` to define dimensions, padding, and margin of elements.
+We'll start with the base unit, this will allow us to create a scale of all the sizes in your spatial system. For us this also means using multiples of `x8` to define dimensions, **padding**, and **margin** of elements. But for our use-case multiple of `x8` won't work, as multiples of 8 can go too high (prctically) to work at a system-level.
 
 ### **What system will work for Razorpay?**
 We should consider few cases that will make the system flexible for us. Few things to consider here are the **user needs**.
@@ -93,17 +93,20 @@ The grid system helps align page elements based on sequenced columns and rows. B
 ### **Column Grid**
 As the name suggests, this type of grid will help you organise content into evenly spaced vertical columns. The spacer which divide this grid is called as `gutter`. We'll use a **12 column grid** as it helps divide the area into *halfs*, *thirds*, *fourths*, *sixths*.
 
-Here we'll have 3 types of column grids, these will be used depending on the use case.
+Here we'll have 3 types of column grids, these will be used depending on the use case. All of them are following the same maximum width of `1280px`.
 1. **Default:** This has a gutter of `32px` & will be used on the internal dashboard.
 ![Default Column-Grid](./images/spatial/col-grid-default.png)
 
-2. **Condensed:** This has a gutter of `16px` & will be used on mobile layouts.
+2. **Condensed:** This has a gutter of `16px` & will be used on mobile layouts *(only for dashboards)*.
 ![Condensed Column-Grid](./images/spatial/col-grid-condensed.png)
 
-3. **Spacious:** This has a gutter of `48px` & will be used for landing/marketing pages.
+3. **Spacious:** This has a gutter of `48px` & will be used for landing/marketing pages *(on desktop)*.
 ![Condensed Column-Grid](./images/spatial/col-grid-spacious.png)
 
 These column grids can also be used internally based on the what component we are building. For example, let's say we are building inline form, then we'll use condensed col-grid for organising elements.
+
+### **Marketing Pages**
+For marketing pages, the UI is more spacious. Therefore, we can go ahead and use the **spacious system** (gutter of `48px`) and on mobiles the same system will be converterd to a default system (gutter of `24px`).
 
 ### **Spatial Scale**
 We'll follow a **8pt** linear scale for the elements with the **4pt** half-step for spacing smaller content (icons, etc.) and typography (line-heights).
