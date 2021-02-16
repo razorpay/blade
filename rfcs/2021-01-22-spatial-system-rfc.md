@@ -20,9 +20,10 @@ Blade Issue: NA
   - [Base Unit](#base-unit)
   - [What system will work for Razorpay?](#what-system-will-work-for-razorpay)
   - [How to apply a spatial system?](#how-to-apply-a-spatial-system)
+  - [Spatial Scale](#spatial-scale)
   - [Grids](#grids)
   - [Column Grid](#column-grid)
-  - [Spatial Scale](#spatial-scale)
+  - [Columns, Gutters and Margins](#columns-gutters-and-margins)
 - [Drawbacks/Constraints](#drawbacksconstraints)
   - [Type of Grid Usage](#type-of-grid-usage)
   - [Multi-platform Design](#multi-platform-design)
@@ -103,27 +104,6 @@ Applying a system can come in the form of `padding`, `margins`, `width` & `heigh
 - **Content first (strict internal padding):** This is to be used when the content is dynamic or less predictable. Therefore, we will enforce the strict internal padding to those components. Simply put, this is the spacing around the elements.
 ![Content-First Spacing](./images/spatial/content-first.png)
 
-### **Grids**
-The grid system helps align page elements based on sequenced columns and rows. Basically it helps you arrange your structure into structured manner. Here we'll look into 2D organisation of information.
-
-### **Column Grid**
-As the name suggests, this type of grid will help you organise content into evenly spaced vertical columns. The spacer which divide this grid is called as `gutter`. We'll use a **12 column grid** as it helps divide the area into *halfs*, *thirds*, *fourths*, *sixths*.
-
-Here we'll have 3 types of column grids, these will be used depending on the use case. All of them are following the same maximum width of `1280px`.
-1. **Default:** This has a gutter of `32px` & will be used on the internal dashboard.
-![Default Column-Grid](./images/spatial/col-grid-default.png)
-
-2. **Condensed:** This has a gutter of `16px` & will be used on mobile layouts *(only for dashboards)*.
-![Condensed Column-Grid](./images/spatial/col-grid-condensed.png)
-
-3. **Spacious:** This has a gutter of `48px` & will be used for landing/marketing pages *(on desktop)*.
-![Condensed Column-Grid](./images/spatial/col-grid-spacious.png)
-
-These column grids can also be used internally based on the what component we are building. For example, let's say we are building inline form, then we'll use condensed col-grid for organising elements.
-
-### **Marketing Pages**
-For marketing pages, the UI is more spacious. Therefore, we can go ahead and use the **spacious system** (gutter of `48px`) and on mobiles the same system will be converterd to a default system (gutter of `24px`).
-
 ### **Spatial Scale**
 We'll follow a **8pt** linear scale for the elements with the **4pt** half-step for spacing smaller content (icons, etc.) and typography (line-heights).
 
@@ -145,6 +125,38 @@ This is how the scale will look like:
 
 >These are mixed values, it contains multiple of `4` as well as `8`.
 
+### **Grids**
+The grid system helps align page elements based on sequenced columns and rows. Basically it helps you arrange your structure into structured manner. Here we'll look into 2D organisation of information.
+
+### **Column Grid**
+As the name suggests, this type of grid will help you organise content into evenly spaced vertical columns. The spacer which divide this grid is called as `gutter`. We'll use a **12 column grid** as it helps divide the area into *halfs*, *thirds*, *fourths*, *sixths*.
+
+Here we'll have 3 types of column grids, these will be used depending on the use case. All of them are following the same maximum width of `1280px`.
+1. **Default:** This has a gutter of `32px` & will be used on the internal dashboard.
+![Default Column-Grid](./images/spatial/col-grid-default.png)
+
+2. **Condensed:** This has a gutter of `16px` & will be used on mobile layouts *(only for dashboards)*.
+![Condensed Column-Grid](./images/spatial/col-grid-condensed.png)
+
+3. **Spacious:** This has a gutter of `48px` & will be used for landing/marketing pages *(on desktop)*.
+![Condensed Column-Grid](./images/spatial/col-grid-spacious.png)
+
+These column grids can also be used internally based on the what component we are building. For example, let's say we are building inline form, then we'll use condensed col-grid for organising elements.
+
+### **Marketing Pages**
+For marketing pages, the UI is more spacious. Therefore, we can go ahead and use the **spacious system** (gutter of `48px`) and on mobiles the same system will be converterd to a default system (gutter of `24px`).
+### **Columns, Gutters and Margins**
+A place where the content is placed inside a layout. These vary depending on the screen size or device you are designing on. Here are few examples,
+
+- **Mobile Layout**
+![Mobile Layout](./images/spatial/mobile-layout.png)
+
+- **Tablet Layout**
+![Tablet Layout](./images/spatial/tablet-layout.png)
+
+- **Desktop Layout**
+![Desktop Layout](./images/spatial/desktop-layout.png)
+
 # Drawbacks/Constraints
 ### **Type of Grid Usage**
 Grids can be used in two ways,
@@ -157,7 +169,7 @@ Also, we might find few screens where it is difficult to organise the spacing. F
 
 ![Hard vs Soft Grid](./images/spatial/hard-soft-grid.png)
 
->**📝Note:** We'll also use the **Soft Grid** in our products.
+>**📝Note:** We'll use the **Soft Grid** across all our products.
 
 ### **Drawbacks**
 There are no major drawbacks as such, although we need to make sure that all the spacing between the elements should not be hardcoded. They should use the spatial tokens whenever required.
