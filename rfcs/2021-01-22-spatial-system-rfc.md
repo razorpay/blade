@@ -111,17 +111,17 @@ This is how the scale will look like:
 
 | Alias      | Value |
 |------------|-------|
-| $spacer-0  | 0px   |
-| $spacer-1  | 4px   |
-| $spacer-2  | 8px   |
-| $spacer-3  | 12px  |
-| $spacer-4  | 16px  |
-| $spacer-5  | 20px  |
-| $spacer-6  | 24px  |
-| $spacer-7  | 32px  |
-| $spacer-8  | 40px  |
-| $spacer-9  | 48px  |
-| $spacer-10 | 56px  |
+| spacer-0  | 0px   |
+| spacer-1  | 4px   |
+| spacer-2  | 8px   |
+| spacer-3  | 12px  |
+| spacer-4  | 16px  |
+| spacer-5  | 20px  |
+| spacer-6  | 24px  |
+| spacer-7  | 32px  |
+| spacer-8  | 40px  |
+| spacer-9  | 48px  |
+| spacer-10 | 56px  |
 
 >These are mixed values, it contains multiple of `4` as well as `8`.
 
@@ -131,17 +131,17 @@ The grid system helps align page elements based on sequenced columns and rows. B
 ### **Column Grid**
 As the name suggests, this type of grid will help you organise content into evenly spaced vertical columns. The spacer which divide this grid is called as `gutter`. We'll use a **12 column grid** as it helps divide the area into *halfs*, *thirds*, *fourths*, *sixths*.
 
-Here we'll have 3 types of column grids, these will be used depending on the use case. All of them are following the same maximum width of `1280px`.
-1. **Default:** This has a gutter of `32px` & will be used on the internal dashboard.
+Here we'll have 3 types of column grids, these will be used depending on the use case. All of them are following the same maximum width of `1280px` and can be variable depending upon the screen size. Also, we are not considering margins in the below grid system to make it simpler.
+1. **Default:** This has a gutter of `24px` & will be used on the internal dashboard for spacing the main layout containers. For example, dividing sidebars from the main content view.
 ![Default Column-Grid](./images/spatial/col-grid-default.png)
 
-2. **Condensed:** This has a gutter of `16px` & will be used on mobile layouts *(only for dashboards)*.
+2. **Condensed:** This has a gutter of `16px` & will be used on the internal dashboards ( mostly on mobile layouts) and can also be used inside component-level elements. For example, in-between the elements of a form.
 ![Condensed Column-Grid](./images/spatial/col-grid-condensed.png)
 
-3. **Spacious:** This has a gutter of `48px` & will be used for landing/marketing pages *(on desktop)*.
+3. **Spacious:** This has a gutter of `32px` & will be used for landing/marketing pages *(on desktop)* which helps in better and clean representation of information.
 ![Condensed Column-Grid](./images/spatial/col-grid-spacious.png)
 
-These column grids can also be used internally based on the what component we are building. For example, let's say we are building inline form, then we'll use condensed col-grid for organising elements.
+> **📝 Note:** These column grids can also be used internally based on the what component we are building. For example, let's say we are building inline form, then we'll use condensed col-grid for organising elements.
 
 ### **Marketing Pages**
 For marketing pages, the UI is more spacious. Therefore, we can go ahead and use the **spacious system** (gutter of `48px`) and on mobiles the same system will be converterd to a default system (gutter of `24px`).
@@ -169,7 +169,7 @@ Also, we might find few screens where it is difficult to organise the spacing. F
 
 ![Hard vs Soft Grid](./images/spatial/hard-soft-grid.png)
 
->**📝Note:** We'll use the **Soft Grid** across all our products.
+>**📝 Note:** We'll use the **Soft Grid** across all our products.
 
 ### **Drawbacks**
 There are no major drawbacks as such, although we need to make sure that all the spacing between the elements should not be hardcoded. They should use the spatial tokens whenever required.
@@ -199,6 +199,7 @@ Both **designers** & **developers** need to be educated.
 # References
 - [Space in Design Systems](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62) by *Nathan Curtis*
 - [The 8pt Grid](https://spec.fm/specifics/8-pt-grid) by *spec[dot]fm*
+- [Hard and Soft 8 Point Grids](https://www.youtube.com/watch?v=aPwwv-6pRWY) by *Christopher Deane (Youtube Video)*
 - [How to create stronger layout with 8pt grid](https://marcandrew.me/how-to-create-stronger-layouts-with-the-8pt-grid/) by *Marc Andrew*
 - [Spacing in Carbon Design System](https://www.carbondesignsystem.com/guidelines/spacing/overview/) by *IBM*
 - [Global Tokens](https://spectrum.adobe.com/page/design-tokens/#Size-tokens) by *Adobe Spectrum*
