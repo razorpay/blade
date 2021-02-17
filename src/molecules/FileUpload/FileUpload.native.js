@@ -146,7 +146,7 @@ FileUpload.propTypes = {
   progress: PropTypes.number,
   title: PropTypes.string,
   fileName: PropTypes.string,
-  fileTypes: PropTypes.arrayOf(Object.keys(DocumentPicker.types)), // Accepts: ["allFiles", "audio", "csv", "doc", "docx", "images", "pdf", "plainText", "ppt", "pptx", "video", "xls", "xlsx", "zip"]
+  fileTypes: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DocumentPicker.types))), // Accepts: ["allFiles", "audio", "csv", "doc", "docx", "images", "pdf", "plainText", "ppt", "pptx", "video", "xls", "xlsx", "zip"]
   errorText: PropTypes.string,
   helpText: PropTypes.string,
   onFileSelectionError: PropTypes.func,
