@@ -59,6 +59,7 @@ const FileUpload = ({
           ? DocumentPicker.types.allFiles
           : Object.keys(DocumentPicker.types).filter((type) => fileTypes.includes(type)),
       });
+      setFileName(document.name);
       onFileSelected({
         uri: document.uri,
         type: document.type,
@@ -160,6 +161,7 @@ FileUpload.defaultProps = {
   onFileSelectionError: () => {},
   onFileSelected: () => {},
   onFileRemoved: () => {},
+  progress: 0,
 };
 
 export default FileUpload;
