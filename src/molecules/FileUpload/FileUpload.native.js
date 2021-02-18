@@ -59,6 +59,7 @@ const FileUpload = ({
           ? DocumentPicker.types.allFiles
           : Object.keys(DocumentPicker.types).filter((type) => fileTypes.includes(type)),
       });
+      setFileName(document.name);
       onFileSelected({
         uri: document.uri,
         type: document.type,
@@ -146,7 +147,7 @@ FileUpload.propTypes = {
   progress: PropTypes.number,
   title: PropTypes.string,
   fileName: PropTypes.string,
-  fileTypes: PropTypes.arrayOf(Object.keys(DocumentPicker.types)), // Accepts: ["allFiles", "audio", "csv", "doc", "docx", "images", "pdf", "plainText", "ppt", "pptx", "video", "xls", "xlsx", "zip"]
+  fileTypes: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DocumentPicker.types))), // Accepts: ["allFiles", "audio", "csv", "doc", "docx", "images", "pdf", "plainText", "ppt", "pptx", "video", "xls", "xlsx", "zip"]
   errorText: PropTypes.string,
   helpText: PropTypes.string,
   onFileSelectionError: PropTypes.func,
@@ -160,6 +161,7 @@ FileUpload.defaultProps = {
   onFileSelectionError: () => {},
   onFileSelected: () => {},
   onFileRemoved: () => {},
+  progress: 0,
 };
 
 export default FileUpload;
