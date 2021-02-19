@@ -103,4 +103,43 @@ storiesOf('Tabs', module)
         <Content color="rose.900">This is the Settlements screen</Content>
       </Tabs.Tab>
     </Tabs>
+  ))
+  .add('scrollable', () => (
+    <Tabs scrollEnabled>
+      {/*@ts-expect-error*/}
+      <Tabs.Tab
+        value="contactDetails"
+        title="Contact Details"
+        disabled={boolean('Disable Tab 1', false)}
+        icon={select('Icon Tab 1', iconOptions, undefined)}
+      >
+        <Content color="emerald.900">Contact details</Content>
+      </Tabs.Tab>
+      {/*@ts-expect-error*/}
+      <Tabs.Tab
+        value="businessOverview"
+        title="Business Overview"
+        disabled={boolean('Disable Tab 2', false)}
+        icon={select('Icon Tab 2', iconOptions, undefined)}
+      >
+        <Content color="mustard.900">Business overview</Content>
+      </Tabs.Tab>
+      {/*@ts-expect-error*/}
+      <Tabs.Tab
+        value="businessDetails"
+        title="Business Details"
+        disabled={boolean('Disable Tab 3', false)}
+        icon={select('Icon Tab 3', iconOptions, undefined)}
+      >
+        <Content color="rose.900">Business details</Content>
+      </Tabs.Tab>
+      <Tabs.Tab
+        value="bankAndCompanyDetails"
+        title="Bank and Company Details"
+        disabled={boolean('Disable Tab 4', false)}
+        icon={select('Icon Tab 4', iconOptions, undefined)}
+      >
+        <Content color="primary.900">Bank and company details</Content>
+      </Tabs.Tab>
+    </Tabs>
   ));

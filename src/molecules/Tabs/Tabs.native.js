@@ -52,7 +52,7 @@ const getRouteIndexFromValue = ({ value, routes }) =>
 const getRouteValueFromIndex = ({ index, routes }) =>
   routes.find((route) => route.index === index)?.value;
 
-const Tabs = ({ children, defaultValue, value, onChange, gestureHandlerProps }) => {
+const Tabs = ({ children, defaultValue, value, onChange, scrollEnabled, gestureHandlerProps }) => {
   const tabs = getTabs({ children });
   const routes = getRoutes({ tabs });
   const disableSwipe = shouldDisableSwipe({ tabs });
@@ -84,11 +84,15 @@ const Tabs = ({ children, defaultValue, value, onChange, gestureHandlerProps }) 
     [onChange, value, routes],
   );
 
+  const renderTabBar = useCallback((props) => <TabBar {...props} scrollEnabled={scrollEnabled} />, [
+    scrollEnabled,
+  ]);
+
   return (
     <TabView
       navigationState={{ index, routes }}
       renderScene={renderScene}
-      renderTabBar={TabBar}
+      renderTabBar={renderTabBar}
       onIndexChange={onIndexChange}
       initialLayout={initialLayout}
       swipeEnabled={!disableSwipe}
@@ -104,6 +108,7 @@ Tabs.propTypes = {
   defaultValue: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  scrollEnabled: PropTypes.bool,
   gestureHandlerProps: PropTypes.shape({
     minOffsetY: PropTypes.number,
     activeOffsetY: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]),

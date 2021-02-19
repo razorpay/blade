@@ -62,7 +62,7 @@ const Title = styled(View)`
   border-bottom-color: ${styles.title.borderBottomColor};
 `;
 
-const TabButton = ({ title, active, icon, onPress, disabled, testID }) => {
+const TabButton = ({ title, active, icon, onPress, disabled, testID, scrollEnabled }) => {
   const [pressed, setPressed] = useState(false);
 
   const onPressIn = useCallback(() => {
@@ -76,7 +76,12 @@ const TabButton = ({ title, active, icon, onPress, disabled, testID }) => {
   const titleColor = styles.title.color({ active, disabled, pressed });
 
   return (
-    <Flex flex={1} justifyContent="center">
+    <Flex
+      flex={1}
+      flexShrink={scrollEnabled ? 0 : undefined}
+      flexBasis={scrollEnabled ? 'auto' : undefined}
+      justifyContent="center"
+    >
       <StyledTabButton
         activeOpacity={1}
         disabled={disabled}
@@ -120,6 +125,7 @@ TabButton.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.oneOf(getIconNames()),
   testID: PropTypes.string,
+  scrollEnabled: PropTypes.bool,
 };
 
 TabButton.defaultProps = {
