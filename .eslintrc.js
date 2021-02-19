@@ -6,6 +6,7 @@ module.exports = {
     'max-lines-per-function': 'off',
     'no-console': ['warn'],
     complexity: ['off'],
+    'object-property-newline': ['error', { allowAllPropertiesOnSameLine: false }],
     'import/order': [
       'error',
       {

@@ -1,34 +1,42 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { TabBar as RNTabBar } from 'react-native-tab-view';
 import PropTypes from 'prop-types';
-import View from '../../atoms/View';
-import Flex from '../../atoms/Flex';
 import { getIconNames } from '../../_helpers/icon';
 import TabButton from './TabButton';
 
-const TabBar = ({ navigationState, jumpTo }) => {
+const TabBar = (props) => {
+  const { navigationState, jumpTo, scrollEnabled } = props;
+
+  const renderTabBarItem = useCallback(
+    ({ route }) => (
+      <TabButton
+        key={route.key}
+        title={route.title}
+        icon={route.icon}
+        disabled={route.disabled}
+        testID={route.testID}
+        onPress={() => {
+          if (route.onPress) {
+            route.onPress();
+          }
+          jumpTo(route.value);
+        }}
+        active={navigationState.index === route.index}
+        scrollEnabled={scrollEnabled}
+      />
+    ),
+    [jumpTo, navigationState.index, scrollEnabled],
+  );
+
   return (
-    <Flex flexDirection="row">
-      <View>
-        {navigationState.routes.map(
-          ({ key, title, index, value, testID, onPress, icon, disabled }) => (
-            <TabButton
-              key={key}
-              active={navigationState.index === index}
-              title={title}
-              onPress={() => {
-                if (onPress) {
-                  onPress();
-                }
-                jumpTo(value);
-              }}
-              icon={icon}
-              disabled={disabled}
-              testID={testID}
-            />
-          ),
-        )}
-      </View>
-    </Flex>
+    <RNTabBar
+      {...props}
+      scrollEnabled={scrollEnabled}
+      bounces={false}
+      renderTabBarItem={renderTabBarItem}
+      style={{ backgroundColor: 'transparent' }}
+      renderIndicator={() => null}
+    />
   );
 };
 
@@ -50,11 +58,13 @@ TabBar.propTypes = {
     ),
   }),
   jumpTo: PropTypes.func,
+  scrollEnabled: PropTypes.bool,
 };
 
 TabBar.defaultProps = {
   navigationState: { routes: [] },
   jumpTo: () => {},
+  scrollEnabled: false,
 };
 
 export default TabBar;

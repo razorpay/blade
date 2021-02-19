@@ -139,6 +139,7 @@ const Amount = ({ size, testID, children, currency, weight, variant, variantColo
           color={styles.text.color({ variant, variantColor, subtle })}
           size={styles.text.size({ size })}
           weight={weight}
+          _lineHeight={styles.text.lineHeight({ size })}
         >
           {`.${fractionPart}`}
         </AtomText>

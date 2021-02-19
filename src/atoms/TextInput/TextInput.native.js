@@ -236,11 +236,14 @@ const TextInput = React.forwardRef(
       }, 90);
     }, [onFocus]);
 
-    const onTextInputBlur = useCallback(() => {
-      setIsFocused(false);
-      onBlur();
-      setIsPlaceholderVisible(false);
-    }, [onBlur]);
+    const onTextInputBlur = useCallback(
+      (event) => {
+        setIsFocused(false);
+        onBlur(event);
+        setIsPlaceholderVisible(false);
+      },
+      [onBlur],
+    );
 
     const onChangeText = useCallback(
       (text) => {
