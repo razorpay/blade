@@ -46,10 +46,12 @@ type color = Readonly<{
     sapphire: colorChromaticScale;
   };
   neutral: {
-    blueGray: colorNeutralScale;
-    warmGray: colorNeutralScale;
-    navyGray: colorNeutralScale;
-    coolGray: colorNeutralScale;
+    blueGrayLight: colorNeutralScale;
+    blueGrayDark: colorNeutralScale;
+    navyGrayLight: colorNeutralScale;
+    navyGrayDark: colorNeutralScale;
+    ashGrayLight: colorNeutralScale;
+    ashGrayDark: colorNeutralScale;
   };
 }>;
 
@@ -169,8 +171,8 @@ const colors: color = {
     },
   },
   neutral: {
-    blueGray: {
-      0: `hsla(0, 0%, 100%, ${opacity[9]})`,
+    blueGrayLight: {
+      0: `hsla(0, 0, 100%, ${opacity[9]})`,
       50: `hsla(220, 27%, 98%, ${opacity[9]})`,
       100: `hsla(220, 30%, 96%, ${opacity[9]})`,
       200: `hsla(214, 21%, 94%, ${opacity[9]})`,
@@ -186,24 +188,41 @@ const colors: color = {
       1200: `hsla(217, 56%, 17%, ${opacity[9]})`,
       1300: `hsla(215, 70%, 13%, ${opacity[9]})`,
     },
-    warmGray: {
-      0: `hsla(0, 0%, 100%, ${opacity[9]})`,
-      50: `hsla(216, 9%, 98%, ${opacity[9]})`,
-      100: `hsla(216, 9%, 96%, ${opacity[9]})`,
-      200: `hsla(216, 6%, 94%, ${opacity[9]})`,
-      300: `hsla(216, 4%, 89%, ${opacity[9]})`,
-      400: `hsla(214, 7%, 81%, ${opacity[9]})`,
-      500: `hsla(216, 6%, 69%, ${opacity[9]})`,
-      600: `hsla(215, 6%, 60%, ${opacity[9]})`,
-      700: `hsla(214, 6%, 55%, ${opacity[9]})`,
-      800: `hsla(216, 7%, 45%, ${opacity[9]})`,
-      900: `hsla(218, 9%, 36%, ${opacity[9]})`,
-      1000: `hsla(219, 12%, 28%, ${opacity[9]})`,
-      1100: `hsla(214, 15%, 18%, ${opacity[9]})`,
-      1200: `hsla(216, 15, 13%, ${opacity[9]})`,
-      1300: `hsla(214, 24%, 6%, ${opacity[9]})`,
+    blueGrayDark: {
+      0: `hsla(0, 0, 99%, ${opacity[9]})`,
+      50: `hsla(215, 12%, 92%, ${opacity[9]})`,
+      100: `hsla(218, 11%, 84%, ${opacity[9]})`,
+      200: `hsla(218, 11%, 76%, ${opacity[9]})`,
+      300: `hsla(219, 10%, 60%, ${opacity[9]})`,
+      400: `hsla(219, 12%, 45%, ${opacity[9]})`,
+      500: `hsla(220, 16%, 37%, ${opacity[9]})`,
+      600: `hsla(220, 23%, 29%, ${opacity[9]})`,
+      700: `hsla(220, 35%, 22%, ${opacity[9]})`,
+      800: `hsla(219, 41%, 19%, ${opacity[9]})`,
+      900: `hsla(218, 49%, 17%, ${opacity[9]})`,
+      1000: `hsla(218, 52%, 16%, ${opacity[9]})`,
+      1100: `hsla(218, 54%, 15%, ${opacity[9]})`,
+      1200: `hsla(218, 59%, 13%, ${opacity[9]})`,
+      1300: `hsla(218, 67%, 10%, ${opacity[9]})`,
     },
-    navyGray: {
+    navyGrayLight: {
+      0: `hsla(0, 0, 100%, ${opacity[9]})`,
+      50: `hsla(230, 27%, 98%, ${opacity[9]})`,
+      100: `hsla(230, 30%, 96%, ${opacity[9]})`,
+      200: `hsla(224, 21%, 94%, ${opacity[9]})`,
+      300: `hsla(226, 19%, 89%, ${opacity[9]})`,
+      400: `hsla(228, 19%, 81%, ${opacity[9]})`,
+      500: `hsla(225, 18%, 69%, ${opacity[9]})`,
+      600: `hsla(226, 16%, 60%, ${opacity[9]})`,
+      700: `hsla(226, 15%, 54%, ${opacity[9]})`,
+      800: `hsla(227, 18%, 45%, ${opacity[9]})`,
+      900: `hsla(226, 27%, 36%, ${opacity[9]})`,
+      1000: `hsla(226, 33%, 29%, ${opacity[9]})`,
+      1100: `hsla(226, 44%, 23%, ${opacity[9]})`,
+      1200: `hsla(228, 56%, 17%, ${opacity[9]})`,
+      1300: `hsla(226, 70%, 13%, ${opacity[9]})`,
+    },
+    navyGrayDark: {
       0: `hsla(0, 0, 99%, ${opacity[9]})`,
       50: `hsla(228, 12%, 92%, ${opacity[9]})`,
       100: `hsla(233, 11%, 84%, ${opacity[9]})`,
@@ -220,8 +239,25 @@ const colors: color = {
       1200: `hsla(231, 59%, 13%, ${opacity[9]})`,
       1300: `hsla(231, 67%, 10%, ${opacity[9]})`,
     },
-    coolGray: {
-      0: `hsla(0, 0%, 99%, ${opacity[9]})`,
+    ashGrayLight: {
+      0: `hsla(0, 0, 100%, ${opacity[9]})`,
+      50: `hsla(216, 9%, 98%, ${opacity[9]})`,
+      100: `hsla(216, 9%, 96%, ${opacity[9]})`,
+      200: `hsla(216, 6%, 94%, ${opacity[9]})`,
+      300: `hsla(216, 4%, 89%, ${opacity[9]})`,
+      400: `hsla(214, 7%, 81%, ${opacity[9]})`,
+      500: `hsla(216, 6%, 69%, ${opacity[9]})`,
+      600: `hsla(215, 6%, 60%, ${opacity[9]})`,
+      700: `hsla(214, 6%, 55%, ${opacity[9]})`,
+      800: `hsla(216, 7%, 45%, ${opacity[9]})`,
+      900: `hsla(218, 9%, 36%, ${opacity[9]})`,
+      1000: `hsla(219, 12%, 28%, ${opacity[9]})`,
+      1100: `hsla(214, 15%, 18%, ${opacity[9]})`,
+      1200: `hsla(216, 15, 13%, ${opacity[9]})`,
+      1300: `hsla(214, 24%, 6%, ${opacity[9]})`,
+    },
+    ashGrayDark: {
+      0: `hsla(0, 0, 99%, ${opacity[9]})`,
       50: `hsla(240, 2%, 92%, ${opacity[9]})`,
       100: `hsla(240, 1%, 84%, ${opacity[9]})`,
       200: `hsla(228, 4%, 76%, ${opacity[9]})`,
