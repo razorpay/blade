@@ -30,9 +30,9 @@ Blade Issue: NA
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
-- [How do we educate people?](#how-do-we-educate-people)
 - [Open Questions](#open-questions)
 - [References](#references)
+- [Lesser known facts](#lesser-known-facts)
 
 # Summary
 To render anything on the screen we need some space so in order to define that space we also need to define a unit of that measurement. There are different types of units like `px`, `rems`, `ems`, `percentages` etc.
@@ -114,7 +114,7 @@ Eg-1: `font-size: 1rem` - It will be rendered as 16px by default. If the user ch
 
 Eg-2: `padding: 1rem` - the padding will be calculated as 16px by defualt. If the user changes the default brwoser font-size to 14 then the padding will be calculated as 14px.
 
-> 📝 Note: 1 rem = 16px default in all the browsers unless the default font-size of the browser is set to anything else explicitly.
+> 📝 Note: 1rem = 16px default in all the browsers unless the default font-size of the browser is set to anything else explicitly.
 
 See below how browser devtools show `px` equivalent to `rem`
 ![Rem in devtools as computed styles](./images/unit-font-size-rem.png)
@@ -277,38 +277,23 @@ html {
 }
 
 # Drawbacks/Constraints
-Why should we *not* do this? Maybe try to consider the following constraints
-- Implementation cost, both in terms of code size and complexity.
-- The impact of it on new as well as existing consumer projects.
-- Cost of migration.
-
-There are tradeoffs to choosing any path. Attempt to identify them here.
+- Vocabulary is the biggest drawback. Thinking and visualising in relative units is difficult compared to absolute units like pixels(`px`) but we can work it out with the help of tools. We can think in pixels and render in relative units of the target platform(`rems` for web and `x` for react-native apps).
 
 # Alternatives
-What other designs/patterns/strategies have been considered?
+- Here's the [absolute unit vs relative unit matrix](#absolute-unit-vs-relative-unit-matrix) which states all the altternatives with the details.
 
 # Adoption strategy
-If we implement this proposal, how will existing consumer projects adopt it? 
-- Is this a breaking change? 
-- Can we write a codemod?
-- How do we prioritise this with business and product folks?
-- How do we communicate with other teams? Will updating docs suffice or do we need a dedicated interaction with them?
-
-# How do we educate people?
-- How should this be taught to other folks?
-- What names and terminology work best for these concepts and why? 
-- How is this idea best presented?
-- Not required since tokens are abstractions
+- For devs All these decisions shouldn't matter, as this will be stored in our tokens as an abstraction. The end consumers will just use the typography and layout scale tokens for their purpose and not the actual values.
+- For designers - ask Saurav how it will be done on Figma
+- Migration of existing projects is out of the scope of this RFC since that will be a breaking change.
 
 # Open Questions
 1. Browser zoom and browser font size behave differently? Couldn't figure out what does browser zoom does differently like what css props does it changes so in order to have parity we need to mimic it? Asking since the POC I shared and the most systems they either work well with browser zoom or browser font size change but rarely both.
 ![Browser font size change](./images/unit-browser-font-size.jpeg)
 ![Browser zoom](./images/unit-browser-zoom.jpeg)
-2. Rems only for typography or even for spacings(padding, margins etc)? IMO, both since if one is absolute and other one is relative then the layout will break? Like text in rem and padding/height in px might lead to break text if you increase browser font size?
-3. Building the vocabulary in the team? rems are hard to visualise? Maybe store in px and render in rems.
-4. Design tokens for cross platforms(react for web, react native for apps) which means the typography and spacing scale needs to be stored in a unitless fashion?
-5. Couldn't find what does WCAG says about this exactly? For eg: it just says the content should be readable at 200% zoom - put the link to wcag guideline
-6. React Native equivalent for rem?
+1. Design tokens for cross platforms(react for web, react native for apps) which means the typography and spacing scale needs to be stored in a unitless fashion?
+2. Couldn't find what does WCAG says about this exactly? For eg: it just says the content should be readable at 200% zoom - put the link to wcag guideline
+3. React Native equivalent for rem?
 
 # References
 * Accessible font Sizing - [CSS Tricks](https://css-tricks.com/accessible-font-sizing-explained/)
@@ -320,6 +305,10 @@ If we implement this proposal, how will existing consumer projects adopt it?
 
 * Scaling issues - https://twitter.com/_kamlesh_/status/1362384908375584774
 * POC to visualise how things are different for different units on web - https://twitter.com/_kamlesh_/status/1362350508242042884
+
+# Lesser known facts
+1. `1rem` = `16px` - default in all the browsers unless the default font-size of the browser is set to anything else explicitly.
+2. `padding: 1rem` - rems always takes base value as font-size of the browser regardless of the property they are used on. In this example 1rem = 16px so `padding: 16px`
 
 Common Questions:
 Do we need rems in typography?
