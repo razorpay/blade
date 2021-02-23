@@ -4,6 +4,7 @@ const icons = {
   arrowLeft: require('./ArrowLeft').default,
   arrowRight: require('./ArrowRight').default,
   arrowUp: require('./ArrowUp').default,
+  arrowUpRight: require('./ArrowUpRight').default,
   bell: require('./Bell').default,
   box: require('./Box').default,
   briefcase: require('./Briefcase').default,
@@ -49,8 +50,10 @@ const icons = {
   starOutlined: require('./StarOutlined').default,
   subscription: require('./Subscription').default,
   success: require('./Success').default,
+  taxPayments: require('./TaxPayments').default,
   trash: require('./Trash').default,
   uploadCloud: require('./UploadCloud').default,
+  user: require('./User').default,
   wiFiOff: require('./WiFiOff').default,
   wiFiOn: require('./WiFiOn').default,
 };
