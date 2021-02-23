@@ -45,7 +45,7 @@ button {
   line-height: 16px;
   padding: 8px;
   margin: 2px;
-  height: 48px;
+  min-height: 48px;
   width: 200px;
 }
 ```
@@ -55,7 +55,7 @@ button {
   line-height: 1.5;
   padding: 0.5rem;
   margin: 0.125rem;
-  height: 3rem;
+  min-height: 3rem;
   width: 12.5rem;
 }
 ```
@@ -110,7 +110,7 @@ To choose which unit will work best for us we can use the below checklist:
 
 Eg-1: `font-size: 1rem` - It will be rendered as 16px by default. If the user changes their default browser font-size to 14 then it'll be rendered as 14px.
 
-Eg-2: `padding: 1rem` - the padding will be calculated as 16px by defualt. If the user changes the default brwoser font-size to 14 then the padding will be calculated as 14px.
+Eg-2: `padding: 1rem` - the padding will be calculated as 16px by defualt. If the user changes the default browser font-size to 14 then the padding will be calculated as 14px.
 
 > 📝 Note: 1rem = 16px default in all the browsers unless the default font-size of the browser is set to anything else explicitly.
 
@@ -142,7 +142,7 @@ I've created 4 buttons which have same css properties but the units are differen
    padding-right: 1.5rem; /* 24px */
    padding-top: 0.75rem; /* 12px */
    padding-bottom: 0.75rem; /* 12px */
-   height: 3rem; /* 48px */
+   min-height: 3rem; /* 48px */
    }
    .Button1 > div {
    color: white;
@@ -160,7 +160,7 @@ I've created 4 buttons which have same css properties but the units are differen
    border-radius: 2px;
    
    margin-bottom: 16px;
-   height: 3rem; /* 48px */
+   min-height: 3rem; /* 48px */
    padding-left: 1.5rem; /* 24px */
    padding-right: 1.5rem; /* 24px */
    padding-top: 0.75rem; /* 12px */
@@ -182,7 +182,7 @@ I've created 4 buttons which have same css properties but the units are differen
    border-radius: 2px;
    
    margin-bottom: 16px;
-   height: 48px;
+   min-height: 48px;
    padding: 16px;
    }
    .Button3 > div {
@@ -196,14 +196,14 @@ I've created 4 buttons which have same css properties but the units are differen
    ```css
    .Button4 {
    margin-bottom: 16px;
-   height: 48px;
+   min-height: 48px;
    background: #3987f0;
    border: 1px solid #3987f0;
    box-sizing: border-box;
    border-radius: 2px;
    
    margin-bottom: 16px;
-   height: 48px;
+   min-height: 48px;
    padding: 16px;
    }
    .Button4 > div {
@@ -213,11 +213,11 @@ I've created 4 buttons which have same css properties but the units are differen
    ```
 * Now if we increase the browser font size **everything** will remain **unchanged** to the browser font size since everything is in absolute units. [Try it out here](https://codesandbox.io/s/scaling-test-szi8i)
 
-Now let's see how things look when we increase the browsers default font size
+Let's see how things look when we increase the browsers default font size
 
 <img alt="Layout and typography at increased font size" src="./images/unit-font-size-increased.png" width="400px">
 
-Now let's see how things look when we zoom to 200% in the browser
+Let's see how things look when we zoom to 200% in the browser
 
 <img alt="Layout and typography at 200% zoom" src="./images/unit-zoom.png" width="400px">
 
@@ -250,9 +250,9 @@ Until now we saw how typography and layout reacts to font sizes and zoom with di
 | Everything rems           |           ✅           |          ✅           |         ⚠️         |        ✅         |
 | Tyography rems, layout px |           ✅           |          ❌           |         ✅         |        ✅         |
 
->⚠️: Doesn't breaks but doesn't renders as expected
+>⚠️ Doesn't breaks but doesn't renders as expected
 ### Accessibility Guideline?
-The WCAG guideline says that content satisfies the success criterion if it can be scaled up to 200%. It can go beyond that but logically beyond that the scaling becomes more extreme and adaptive layouts may introduce usability problems.
+The WCAG guideline says that content satisfies the **success criterion** if it can be **scaled up to 200%**. It can go beyond that but logically beyond that the scaling becomes more extreme and adaptive layouts may introduce usability problems.
 
 For example, words may be too wide to fit into the horizontal space available to them, causing them to be truncated; layout constraints may cause text to overlap with other content when it is scaled larger; or only one word of a sentence may fit on each line, causing the sentence to be displayed as a vertical column of text that is difficult to read.
 >🔗 [WCAG guideline link](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html)
@@ -288,10 +288,15 @@ Let's see some examples of layouts with `rems` and `px`
 
 #### Output - `Layout relative units, typography relative unit` with default font-size of 32px <!-- omit in toc -->
 <img alt="Layout relative units, typography relative unit" src="./images/unit-layout-relative-font-relative.png" width="800px">
-Can you spot the difference when everything is relative unit? the layout also changed with the increase in font size and it looks different from what we want it to.
+Can you spot the difference when everything is relative unit? The layout also changed with the increase in font size and it looks different from what we expected it to look like.
 <br/> <br/>
 
 > 🔗 You can play around with all the [demos here](https://szi8i.csb.app/)
+
+Let's tally our decision with our [checklist](#checklist)
+1. Whether the content is accessible when the user changes the default font size of the browser ✅
+2. Whether the content is accessible when the user zooms in/out on the browser ✅
+3. Whether the interface is able to render on different screen sizes, pixel densities etc ✅
 
 
 ## How will we store it?
@@ -308,7 +313,7 @@ Can you spot the difference when everything is relative unit? the layout also ch
       3: 24,
    }
    ```
-* With the above approach we can keep the vocabulary consistent that everything is stored in `px` and while rendering the respective platforms(web/react-native) attaches the unit for the target rendering engine.
+* With the above approach we can keep the vocabulary consistent that everything is stored in `px`  but while rendering the respective platforms(web/react-native) attaches the unit for the target rendering engine.
 * We will implement a generic funtion that will attach the units to the scale values.
 * For typography the units that'll be constructed will be relative(`rems` for web and `x` for react-native apps).
 * For layout i.e height, width, padding, margin the units that'll be constructed will be absolute i.e `px`(pixels).
@@ -335,19 +340,19 @@ html {
 - Migration of existing projects is out of the scope of this RFC since that will be a breaking change.
 
 # Open Questions
-1. Browser zoom and browser font size behave differently? Couldn't figure out what does browser zoom does differently like what css props does it changes so in order to have parity we need to mimic it? Asking since the POC I shared and the most systems they either work well with browser zoom or browser font size change but rarely both.
+1. Browser zoom and browser font size behave differently? Couldn't figure out what does browser zoom does differently like what css props does it changes so in order to have parity we need to mimic it?
 
    <img alt="Browser font size change" src="./images/unit-browser-font-size.png" width="700px">
 
    <img alt="Browser zoom" src="./images/unit-browser-zoom.png" width="700px">
 
 2. Design tokens for cross platforms(react for web, react native for apps) which means the typography and spacing scale needs to be stored in a unitless fashion?
-3. Couldn't find what does WCAG says about this exactly? For eg: it just says the content should be readable at 200% zoom - put the link to wcag guideline
+3. Couldn't find what does WCAG says about this exactly? For eg: it just says the content should be readable at 200% zoom - [WCAG Guideline](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html)
 4. React Native equivalent for rem?
 
 # References
 * Accessible font Sizing - [CSS Tricks](https://css-tricks.com/accessible-font-sizing-explained/)
-* px vs relative units - [24a11y](https://www.24a11y.com/2019/pixels-vs-relative-units-in-css-why-its-still-a-big-deal/)
+* Absolute vs Relative units - [24a11y](https://www.24a11y.com/2019/pixels-vs-relative-units-in-css-why-its-still-a-big-deal/)
 * Discussion threads on Twitter which has thoughts from different people for different use cases and scenarios
   1. https://twitter.com/_kamlesh_/status/1361264818821468163
   2. https://twitter.com/threepointone/status/1362348163689033732
