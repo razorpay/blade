@@ -111,17 +111,17 @@ This is how the scale will look like:
 
 | Alias      | Value |
 |------------|-------|
-| spacer-0  | 0px   |
-| spacer-1  | 4px   |
-| spacer-2  | 8px   |
-| spacer-3  | 12px  |
-| spacer-4  | 16px  |
-| spacer-5  | 20px  |
-| spacer-6  | 24px  |
-| spacer-7  | 32px  |
-| spacer-8  | 40px  |
-| spacer-9  | 48px  |
-| spacer-10 | 56px  |
+| spacing-0  | 0px   |
+| spacing-1  | 4px   |
+| spacing-2  | 8px   |
+| spacing-3  | 12px  |
+| spacing-4  | 16px  |
+| spacing-5  | 20px  |
+| spacing-6  | 24px  |
+| spacing-7  | 32px  |
+| spacing-8  | 40px  |
+| spacing-9  | 48px  |
+| spacing-10 | 56px  |
 
 >These are mixed values, it contains multiple of `4` as well as `8`.
 
@@ -193,8 +193,12 @@ Both **designers** & **developers** need to be educated.
 - Similarly, developers should always use the spatial tokens while defining the space between the adjacent elements inside the UI which should not be a problem as it is coming from a designer.
 
 # Open Questions
-- We can name the tokens in a better way, just like how we have did for colors.
-- We already have static tokens (i.e. which works for both desktops & mobiles) in place, should be need dynamic tokens that changes with the device?
+- *We can name the tokens in a better way, just like how we have did for colors.*
+  - This has already been considered and as we are only mapping spatial scales as of now. We are going with `spacing` for now which is more direct and self-explanatory.
+- *We already have static tokens (i.e. which works for both desktops & mobiles) in place, should be need dynamic tokens that changes with the device?*
+  - We don't need dynamic sizing of tokens. Scaling happens according to device size. Going forwards we are opting for adaptive layout and dynamic scaling doesn't help in any way for that.
+- *Scaling System for Emails*
+  - We haven't think of a system for mailer till yet. But that will also fall under the same 8pt grid system. Not investing on that as of now. Once we are there, will pick this up.
 
 # References
 - [Space in Design Systems](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62) by *Nathan Curtis*
