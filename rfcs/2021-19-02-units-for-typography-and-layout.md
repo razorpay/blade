@@ -117,8 +117,8 @@ Eg-2: `padding: 1rem` - the padding will be calculated as 16px by defualt. If th
 > 📝 Note: 1rem = 16px default in all the browsers unless the default font-size of the browser is set to anything else explicitly.
 
 See below how browser devtools show `px` equivalent to `rem`
-![Rem in devtools as computed styles](./images/unit-font-size-rem.png)
 
+<img alt="Rem in devtools as computed styles" src="./images/unit-font-size-rem.png" width="500px">
 ### `dp`
 * density independent pixels
 **WIP**
@@ -127,7 +127,9 @@ See below how browser devtools show `px` equivalent to `rem`
 Until now we have understood few basic things. Now let's deep dive and see how this actually matters when things get rendered on screen. I've created an [interactive POC](https://codesandbox.io/s/scaling-test-szi8i) that you can play around with. I'll be using the same to demonstrate few things in this section.
 
 I've created 4 buttons which have same css properties but the units are different.
-![Scaling POC](./images/unit-output.png)
+
+<img alt="Scaling POC" src="./images/unit-output.png" width="400px">
+
 ### layout rem, text rem <!-- omit in TOC -->
 * This button has all the layout and typography properties defined in `rem`. Here's how the css looks like
    ```css
@@ -214,10 +216,12 @@ I've created 4 buttons which have same css properties but the units are differen
 * Now if we increase the browser font size **everything** will remain **unchanged** to the browser font size since everything is in absolute units. [Try it out here](https://codesandbox.io/s/scaling-test-szi8i)
 
 Now let's see how things look when we increase the browsers default font size
-![Layout and typography at increased font size](./images/unit-font-size-increased.png)
+
+<img alt="Layout and typography at increased font size" src="./images/unit-font-size-increased.png" width="400px">
 
 Now let's see how things look when we zoom to 200% in the browser
-![Layout and typography at 200% zoom](./images/unit-zoom.png)
+
+<img alt="Layout and typography at 200% zoom" src="./images/unit-zoom.png" width="400px">
 
 > 📝 Note: The page zoom and font size change don't mimic each other. Hence things at x font size are not same as y% zoom. 
 
@@ -245,7 +249,7 @@ Until now we saw how typography and layout reacts to font sizes and zoom with di
 | Unit                      | content size changes? | layout size changes? | layout breakages? | page zoom works? |
 | ------------------------- | :-------------------: | :------------------: | :---------------: | :--------------: |
 | Everything px             |           ❌           |          ❌           |         ❌         |        ✅         |
-| Everything rems           |           ✅           |          ✅           |         ❌         |        ✅         |
+| Everything rems           |           ✅           |          ✅           |         ⚠️         |        ✅         |
 | Tyography rems, layout px |           ✅           |          ❌           |         ✅         |        ✅         |
 
 ### Accessibility Guideline?
@@ -321,11 +325,14 @@ html {
 
 # Open Questions
 1. Browser zoom and browser font size behave differently? Couldn't figure out what does browser zoom does differently like what css props does it changes so in order to have parity we need to mimic it? Asking since the POC I shared and the most systems they either work well with browser zoom or browser font size change but rarely both.
-![Browser font size change](./images/unit-browser-font-size.jpeg)
-![Browser zoom](./images/unit-browser-zoom.jpeg)
-1. Design tokens for cross platforms(react for web, react native for apps) which means the typography and spacing scale needs to be stored in a unitless fashion?
-2. Couldn't find what does WCAG says about this exactly? For eg: it just says the content should be readable at 200% zoom - put the link to wcag guideline
-3. React Native equivalent for rem?
+
+   <img alt="Browser font size change" src="./images/unit-browser-font-size.jpeg" width="500px">
+
+   <img alt="Browser zoom" src="./images/unit-browser-zoom.jpeg" width="500px">
+
+2. Design tokens for cross platforms(react for web, react native for apps) which means the typography and spacing scale needs to be stored in a unitless fashion?
+3. Couldn't find what does WCAG says about this exactly? For eg: it just says the content should be readable at 200% zoom - put the link to wcag guideline
+4. React Native equivalent for rem?
 
 # References
 * Accessible font Sizing - [CSS Tricks](https://css-tricks.com/accessible-font-sizing-explained/)
