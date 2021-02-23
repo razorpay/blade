@@ -4,6 +4,11 @@ RFC PR: NA
 Blade Issue: NA
 ---
 
+<style>
+img {
+filter: drop-shadow(0 0 0.50rem #878787);
+}
+</style>
 
 # Units for typography and layout <!-- omit in toc -->
 
@@ -252,6 +257,7 @@ Until now we saw how typography and layout reacts to font sizes and zoom with di
 | Everything rems           |           ✅           |          ✅           |         ⚠️         |        ✅         |
 | Tyography rems, layout px |           ✅           |          ❌           |         ✅         |        ✅         |
 
+>⚠️: Doesn't breaks but doesn't renders as expected
 ### Accessibility Guideline?
 The WCAG guideline says that content satisfies the success criterion if it can be scaled up to 200%. It can go beyond that but logically beyond that the scaling becomes more extreme and adaptive layouts may introduce usability problems.
 
@@ -259,31 +265,41 @@ For example, words may be too wide to fit into the horizontal space available to
 >🔗 [WCAG guideline link](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html)
 ### What units other Design Systems are using?
 
-| Name                                                                                     | Font Size | Layouts/Spacing | Comments                                 |
-| ---------------------------------------------------------------------------------------- | --------- | --------------- | ---------------------------------------- |
-| [Primer - GitHub](https://primer.style/css/support/spacing)                              | px        | px              | NA                                       |
-| [Spectrum - Adobe](https://react-spectrum.adobe.com/react-spectrum/getting-started.html) | px        | px              | revisitng decision                       |
-| [Braid - Seek](https://seek-oss.github.io/braid-design-system/)                          | px        | px              | revisiting decision                      |
-| [Styled System](https://styled-system.com/)                                              | px        | px              | default px, can change by suffixing unit |
-| [Facebook](https://twitter.com/naman34/status/1362626358539481090)                       | rems      | px              | NA                                       |
-| [Chakra](https://chakra-ui.com/docs/getting-started)                                     | rems      | rems            | default rems, option for other units     |
+| Name                                                                                     | Typography | Layout | Comments                                 |
+| ---------------------------------------------------------------------------------------- | ---------- | ------ | ---------------------------------------- |
+| [Primer - GitHub](https://primer.style/css/support/spacing)                              | px         | px     | NA                                       |
+| [Spectrum - Adobe](https://react-spectrum.adobe.com/react-spectrum/getting-started.html) | px         | px     | revisitng decision                       |
+| [Braid - Seek](https://seek-oss.github.io/braid-design-system/)                          | px         | px     | revisiting decision                      |
+| [Styled System](https://styled-system.com/)                                              | px         | px     | default px, can change by suffixing unit |
+| [Facebook](https://twitter.com/naman34/status/1362626358539481090)                       | rems       | px     | NA                                       |
+| [Chakra](https://chakra-ui.com/docs/getting-started)                                     | rems       | rems   | default rems, option for other units     |
 
 ### What will work for us?
-Looking at the POC and the [matrix](#absolute-unit-vs-relative-unit-matrix), relative units looks no brainer but ideally it has some downsides too:
+Looking at the POC and the [matrix](#absolute-unit-vs-relative-unit-matrix), relative units looks no brainer but it has some downsides too:
 * Assume we have few responsive layouts then increasing the font-size on desktop might trigger the media queries to kick in and because of that our layout will be re-arranged assuming that the screen size has changed. Now the user was just intending to increase the font-size but they got tricked into different layout since everything is relative which impacts their experience.
-* Since everything is relative increase in font-size is identical to page zoom so the intent of the user to increase the content size goes for a toss.
+* Since everything is relative, increase in font-size is identical to page zoom so the intent of the user to increase the content size goes for a toss.
 
 So, what's the next best option? It's **layout in px and typography in relative units**. Why?
 * We want to give flexibility to the user to take the control of content readability and might want to still make the layout predictable and not change it when the font size of the browser changes.
 * There might be layout breakages for sure but again it's serving the purpose of content readability for the user in the same layout in which they intended to. The cons weighs off the pros i.e **content readability**
 
+Let's see some examples of layouts with `rems` and `px`
 #### Output - `layout pixel, typography rem` with default font-size of 32px <!-- omit in toc -->
 <img alt="Layout px text rem" src="./images/unit-font-size-rem-increase.png" width="400px">
 
-#### Output - `layout pixel, typography rem` with zoomed in at 200% <!-- omit in toc -->
+#### Output - `layout pixel, typography rem` with browser window zoomed in at 200% <!-- omit in toc -->
 <img alt="Layout px text rem" src="./images/unit-font-size-rem-zoom.png" width="400px">
 
-Layout demo in POC
+#### Output - `Layout absolute units, typography relative unit` with default font-size of 32px <!-- omit in toc -->
+<img alt="Layout absolute units, typography relative unit" src="./images/unit-layout-absolute-font-relative.png" width="800px">
+
+#### Output - `Layout relative units, typography relative unit` with default font-size of 32px <!-- omit in toc -->
+<img alt="Layout relative units, typography relative unit" src="./images/unit-layout-relative-font-relative.png" width="800px">
+Can you spot the difference when everything is relative unit? the layout also changed with the increase in font size and it looks different from what we want it to.
+<br/> <br/>
+
+> 🔗 You can play around with all the [demos here](https://szi8i.csb.app/)
+
 
 ## How will we store it?
 * While storing we can compute the value in `px` and store it in a unitless way. While rendering we can attach the units.
@@ -305,7 +321,9 @@ Layout demo in POC
 * For layout i.e height, width, padding, margin the units that'll be constructed will be absolute i.e `px`(pixels).
 
 storing unitless scale values in tokens?
+
 store in px and render in rems?
+
 Global Reset to make it work for our use case i.e base = 14px
 html {
   font-size: 100% // i.e 16px
@@ -326,9 +344,9 @@ html {
 # Open Questions
 1. Browser zoom and browser font size behave differently? Couldn't figure out what does browser zoom does differently like what css props does it changes so in order to have parity we need to mimic it? Asking since the POC I shared and the most systems they either work well with browser zoom or browser font size change but rarely both.
 
-   <img alt="Browser font size change" src="./images/unit-browser-font-size.jpeg" width="500px">
+   <img alt="Browser font size change" src="./images/unit-browser-font-size.jpeg" width="700px">
 
-   <img alt="Browser zoom" src="./images/unit-browser-zoom.jpeg" width="500px">
+   <img alt="Browser zoom" src="./images/unit-browser-zoom.jpeg" width="700px">
 
 2. Design tokens for cross platforms(react for web, react native for apps) which means the typography and spacing scale needs to be stored in a unitless fashion?
 3. Couldn't find what does WCAG says about this exactly? For eg: it just says the content should be readable at 200% zoom - put the link to wcag guideline
