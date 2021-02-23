@@ -3,13 +3,6 @@ Start Date: 19-02-2021
 RFC PR: NA
 Blade Issue: NA
 ---
-
-<style>
-img {
-filter: drop-shadow(0 0 0.50rem #878787);
-}
-</style>
-
 # Units for typography and layout <!-- omit in toc -->
 
 ### Table Of Contents <!-- omit in toc -->
@@ -344,9 +337,9 @@ html {
 # Open Questions
 1. Browser zoom and browser font size behave differently? Couldn't figure out what does browser zoom does differently like what css props does it changes so in order to have parity we need to mimic it? Asking since the POC I shared and the most systems they either work well with browser zoom or browser font size change but rarely both.
 
-   <img alt="Browser font size change" src="./images/unit-browser-font-size.jpeg" width="700px">
+   <img alt="Browser font size change" src="./images/unit-browser-font-size.png" width="700px">
 
-   <img alt="Browser zoom" src="./images/unit-browser-zoom.jpeg" width="700px">
+   <img alt="Browser zoom" src="./images/unit-browser-zoom.png" width="700px">
 
 2. Design tokens for cross platforms(react for web, react native for apps) which means the typography and spacing scale needs to be stored in a unitless fashion?
 3. Couldn't find what does WCAG says about this exactly? For eg: it just says the content should be readable at 200% zoom - put the link to wcag guideline
@@ -366,27 +359,3 @@ html {
 # Lesser known facts
 1. `1rem` = `16px` - default in all the browsers unless the default font-size of the browser is set to anything else explicitly.
 2. `padding: 1rem` - rems always takes base value as font-size of the browser regardless of the property they are used on. In this example 1rem = 16px so `padding: 16px`
-
-Common Questions:
-Do we need rems in typography?
-Do we need rems in spacing?
-Do we need spacing and sizing? or just spacing will do the job?
-What happens with everything rems
-what happens with everything px
-what happens with font size rems and rest everything px
-How do we store it in tokens? Store in px and render in dependent platform units?
-React Native is still gray area. What are rems equivalent in RN?
-
-Properties that will be affected with units
-
-Font Size
-font-size
-line-height
-
-Layout
-  space
-    padding
-    margin
-  size
-    height
-    width
