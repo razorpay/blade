@@ -108,16 +108,18 @@ Aspect ratio is basically `width x height` of a screen and then divide them with
 Examples:
 
 800x600 = 4:3
+
 1024x768 = 4:3
+
 1920x1200 = 16:10
+
 3840x2160 = 16:9
 ### PPI
 PPI is short for pixels per inch which says the number of pixels that can be accommodated in 1 sq inch on the screen. 
 
 PPI plays a signficant role of how things are physically rendered on the screen
 
-How is PPI calculated? multiply the dimension for eg: 1920*1080 = 2073600 (21600 inches) and then divide this by the area of screen size for eg: 20" monitor has an area of 20.5x12.5=256 sq.in 
-now to get the ppi do 21600/256 = 84ppi
+How is PPI calculated? multiply the dimension for eg: **1920*1080 = 2073600 (21600 inches)** and then divide this by the area of screen size for eg: 20" monitor has an area of **20.5x12.5=256 sq.in** now to get the ppi do **21600/256 = 84ppi**
 
 ### Software vs Hardware pixel
 * **Software pixel** - 
@@ -138,19 +140,27 @@ On web we write things in css pixel which is software pixel, it gets converted t
 Example:
 
 _CSS Pixel = Device Pixels / Device Pixel Ratio_
+
 _Device Pixel = CSS Pixel * Device Pixel Ratio_
+
 Device Pixels for macbook pro screen - `3072x1920`(resolution) = `3072` width and `1920` height.
+
 Pixel ratio - 2
+
 so,
+
 CSS pixel(width) = 3072/2 = 1536
+
 CSS pixel(height) = 1920/2 = 960
 
 That's the reason we design at `@1x`. So when we define width and height as `1536px` and `960px` and then when it gets rendered on a screen with device pixel ratio as `2` it becomes `3072x1920`. For web, browsers do all this heavy lifting so we don't need to put any extra efforts for scaling on different ppi screens we just write things in css pixels.
 
 How is device pixel ratio calculated?
+
 _Device Pixel Ratio = ppi/150_
 
 For macbook pro screen the ppi is 226
+
 so, Device Pixel Ratio = 226/150 = 1.5 rounded to 2
 
 > ❓ Where did 150 came from in the denominator? It's a magic number and is standardised based on some calculations. Check the [detailed explanation here](https://www.html5rocks.com/en/mobile/high-dpi/)
@@ -170,19 +180,27 @@ _Device Pixel = density independent pixel(dp) * PixelRatio.roundToNearestPixel(d
 Example:
 
 Device Pixels for iphone 7 - `750x1334`(resolution) = `3072` width and `1920` height
+
 Pixel ratio - 2
+
 so,
+
 Density independent pixel(width) = 750/2 = 375
+
 Density independent pixel(height) = 1334/2 = 667
 
 That's the reason we design at `@1x`. So when we define width and height as `375px` and `667px` and then when it gets rendered on a screen with device pixel ratio as `2` we need to do the math and return the value to the rendering engine as:
+
 Device Pixel(width) = 375*2 = 750_
+
 Device Pixel(height) = 667*2 = 1334_
 
 How is device pixel ratio calculated?
+
 _Device Pixel Ratio = ppi/160_
 
 For iphone7 the ppi is 326
+
 so, Device Pixel Ratio = 326/160 = 2.03 rounded to 2
 
 > ❓ Where did 160 came from in the denominator? It's a magic number and is standardised based on some calculations. Check the [detailed explanation here](https://developer.android.com/training/multiscreen/screendensities)
