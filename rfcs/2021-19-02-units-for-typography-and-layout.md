@@ -13,6 +13,12 @@ Blade Issue: NA
     - [What use cases does it support?](#what-use-cases-does-it-support)
     - [What is the expected outcome?](#what-is-the-expected-outcome)
 - [Detailed Design](#detailed-design)
+  - [Screen resoltuions and densities](#screen-resoltuions-and-densities)
+    - [Aspect Ratio](#aspect-ratio)
+    - [PPI](#ppi)
+    - [Software vs Hardware pixel](#software-vs-hardware-pixel)
+    - [How things render on web](#how-things-render-on-web)
+    - [How things render on native apps(React Native)](#how-things-render-on-native-appsreact-native)
   - [Checklist](#checklist)
   - [Different units:](#different-units)
     - [`px`](#px)
@@ -33,7 +39,7 @@ Blade Issue: NA
 - [Lesser known facts](#lesser-known-facts)
 
 # Summary
-To render anything on the screen we need some space so in order to define that space we also need to define a unit of that measurement. There are different types of units like `px`, `rems`, `ems`, `percentages` etc.
+To render anything on the screen we need some space so in order to define that space we also need to define a unit of that measurement. There are different types of units like `px`, `rems`, `ems`, `percentages`, `dp` etc.
 
 This RFC discusses about why and what units we will be using in our design system.
 
@@ -93,6 +99,94 @@ The styling properties that require units are:
       * `height` - height, min-height, max-height
       * `width` - width, min-width, max-width
 
+## Screen resoltuions and densities
+One of the main goal for layouts and content on the screen is that they should adapt to different screen resolutions and densities and things should still visually appear the same. Now what are some different factors that affect this?
+
+### Aspect Ratio
+Aspect ratio is basically `width x height` of a screen and then divide them with the greatest common number i.e find ratios
+
+Examples:
+
+800x600 = 4:3
+1024x768 = 4:3
+1920x1200 = 16:10
+3840x2160 = 16:9
+### PPI
+PPI is short for pixels per inch which says the number of pixels that can be accommodated in 1 sq inch on the screen. 
+
+PPI plays a signficant role of how things are physically rendered on the screen
+
+How is PPI calculated? multiply the dimension for eg: 1920*1080 = 2073600 (21600 inches) and then divide this by the area of screen size for eg: 20" monitor has an area of 20.5x12.5=256 sq.in 
+now to get the ppi do 21600/256 = 84ppi
+
+### Software vs Hardware pixel
+* **Software pixel** - 
+  * Software pixel is something that we define while implementing the styles. `16px`, `1rem`, `16dp` etc are all examples of software pixel.
+  * Software pixels help us to write consistent code without bothering about the screen sizes and where things will be rendered.
+* **Hardware pixel**
+  * Hardware pixel is something that is a physical pixel on the screen visible to the users.
+  * Software pixels are converted to hardware pixels before they get rendered on the screen.
+
+The ratio of software pixel to hardware pixel is termed as device pixel ratio
+
+>📝 Device Pixel Ratio = Software Pixel : Hardware Pixel
+
+Now, how all these things are important when it comes to rendering? Let's see in the below sections.
+### How things render on web
+On web we write things in css pixel which is software pixel, it gets converted to hardware pixel by the browsers while rendering, which means `16px` in css doesn't render as `16` physical pixels on the screen.
+
+Example:
+
+_CSS Pixel = Device Pixels / Device Pixel Ratio_
+_Device Pixel = CSS Pixel * Device Pixel Ratio_
+Device Pixels for macbook pro screen - `3072x1920`(resolution) = `3072` width and `1920` height.
+Pixel ratio - 2
+so,
+CSS pixel(width) = 3072/2 = 1536
+CSS pixel(height) = 1920/2 = 960
+
+That's the reason we design at `@1x`. So when we define width and height as `1536px` and `960px` and then when it gets rendered on a screen with device pixel ratio as `2` it becomes `3072x1920`. For web, browsers do all this heavy lifting so we don't need to put any extra efforts for scaling on different ppi screens we just write things in css pixels.
+
+How is device pixel ratio calculated?
+_Device Pixel Ratio = ppi/150_
+
+For macbook pro screen the ppi is 226
+so, Device Pixel Ratio = 226/150 = 1.5 rounded to 2
+
+> ❓ Where did 150 came from in the denominator? It's a magic number and is standardised based on some calculations. Check the [detailed explanation here](https://www.html5rocks.com/en/mobile/high-dpi/)
+
+### How things render on native apps(React Native)
+On react native we write things in unitless format which is nothing but `dp` and when it gets rendered it renders as it is and doesn't takes into account about the screen sizes and densities.
+
+_Device Pixel = density independent pixel(dp)_
+
+Now, because of this the content rendered on a low resolution screen is not same as high resolution screen since react native doesn't auto scales. 
+
+So how can we fix that?
+
+React Native provides access to device's pixel density and font scale via `[PixelRatio](https://reactnative.dev/docs/pixelratio)` class. Now using this we can tweak our formula of device pixel to following:
+_Device Pixel = density independent pixel(dp) * PixelRatio.roundToNearestPixel(density independent pixel(dp))_
+
+Example:
+
+Device Pixels for iphone 7 - `750x1334`(resolution) = `3072` width and `1920` height
+Pixel ratio - 2
+so,
+Density independent pixel(width) = 750/2 = 375
+Density independent pixel(height) = 1334/2 = 667
+
+That's the reason we design at `@1x`. So when we define width and height as `375px` and `667px` and then when it gets rendered on a screen with device pixel ratio as `2` we need to do the math and return the value to the rendering engine as:
+Device Pixel(width) = 375*2 = 750_
+Device Pixel(height) = 667*2 = 1334_
+
+How is device pixel ratio calculated?
+_Device Pixel Ratio = ppi/160_
+
+For iphone7 the ppi is 326
+so, Device Pixel Ratio = 326/160 = 2.03 rounded to 2
+
+> ❓ Where did 160 came from in the denominator? It's a magic number and is standardised based on some calculations. Check the [detailed explanation here](https://developer.android.com/training/multiscreen/screendensities)
+
 ## Checklist
 To choose which unit will work best for us we can use the below checklist:
 1. Whether the content is accessible when the user changes the default font size of the browser.
@@ -117,9 +211,11 @@ Eg-2: `padding: 1rem` - the padding will be calculated as 16px by defualt. If th
 See below how browser devtools show `px` equivalent to `rem`
 
 <img alt="Rem in devtools as computed styles" src="./images/unit-font-size-rem.png" width="500px">
+
 ### `dp`
-* density independent pixels
-**WIP**
+* `dp` is a density independent pixel unit which is used by react native apps
+* It works on iOS/android but **not** on web.
+* It doesn't scale with different screen densitites hence the name **density independent**.
 
 ## Deep Dive
 Until now we have understood few basic things. Now let's deep dive and see how this actually matters when things get rendered on screen. I've created an [interactive POC](https://codesandbox.io/s/scaling-test-szi8i) that you can play around with. I'll be using the same to demonstrate few things in this section.
@@ -225,30 +321,40 @@ Let's see how things look when we zoom to 200% in the browser
 
 ## Absolute unit vs relative unit?
 Until now we saw how typography and layout reacts to font sizes and zoom with different units. Referring to [our checklist](#checklist) gives us 3 options:
-1. **Everything px**
+1. **Everything `px`(web)**
    1. Changing default font-size on the browser level doesn't changes the text content size.
    2. Changing default font-size on the browser level doesn't changes the layout sizes. Nothing breaks as everything is in absolute unit.
    3. Page zoom works as expected and the layout never breaks.
    4. Image when font-size is `32px`
    <img alt="Layout px text px" src="./images/unit-layout-px-text-px.png" width="300px">
-2. **Everything rems**
+2. **Everything `rems`(web)**
    1. Changing default font-size changes the font size of the content.
    2. Changing default font-size changes layout sizes relatively. Things mostly doesn't break as everything is in ratios.
    3. Page zoom works as expected and the layout mostly doesn't breaks.
    4. Image when font-size is `32px`
    <img alt="Layout rem text rem" src="./images/unit-layout-rem-text-rem.png" width="300px">
-3. **Typography rems and Layout px**
+3. **Typography `rems` and Layout `px`(web)**
    1. Changing default font-size changes the font size of the content.
    2. Changing default font-size changes doesn't changes the layout sizes. Some layout breakages can happen as the text may end up being bigger than you expect in your layout.
    3. Page zoom works as expected.
    4. Image when font-size is `32px`
    <img alt="Layout px text rem" src="./images/unit-layout-px-text-rem.png" width="300px">
+4. **Everything `dp`(native)**
+   1. Changing device font size doesn't changes the font size of the content.
+   2. Changing device font size doesn't changes the layout size.
+   3. TODO: Put image
+5. **Tyography auto scale, layout pixel ratio(native)**
+   1. Changing device font size changes the font size of the content.
+   2. Changing device font size doesn't changes the layout size. Some layout breakages can happen as the text may end up being bigger than you expect in your layout.
+   3. TODO: Put image
 ### Absolute unit vs relative unit matrix
-| Unit                      | content size changes? | layout size changes? | layout breakages? | page zoom works? |
-| ------------------------- | :-------------------: | :------------------: | :---------------: | :--------------: |
-| Everything px             |           ❌           |          ❌           |         ❌         |        ✅         |
-| Everything rems           |           ✅           |          ✅           |         ⚠️         |        ✅         |
-| Tyography rems, layout px |           ✅           |          ❌           |         ✅         |        ✅         |
+| Unit                                             | content size changes? | layout size changes? | layout breakages? | page zoom works? |
+| ------------------------------------------------ | :-------------------: | :------------------: | :---------------: | :--------------: |
+| Everything px(web)                               |           ❌           |          ❌           |         ❌         |        ✅         |
+| Everything rems(web)                             |           ✅           |          ✅           |         ⚠️         |        ✅         |
+| Tyography rems, layout px(web)                   |           ✅           |          ❌           |         ✅         |        ✅         |
+| Everything dp(native)                            |           ❌           |          ❌           |         ❌         |        🚫         |
+| Tyography auto scale, layout pixel ratio(native) |           ✅           |          ❌           |         ✅         |        🚫         |
 
 >⚠️ Doesn't breaks but doesn't renders as expected
 ### Accessibility Guideline?
@@ -267,12 +373,15 @@ For example, words may be too wide to fit into the horizontal space available to
 | [Facebook](https://twitter.com/naman34/status/1362626358539481090)                       | rems       | px     | NA                                       |
 | [Chakra](https://chakra-ui.com/docs/getting-started)                                     | rems       | rems   | default rems, option for other units     |
 
+>📝 Note: Couldn't find anything similar for react native
 ### What will work for us?
 Looking at the POC and the [matrix](#absolute-unit-vs-relative-unit-matrix), relative units looks no brainer but it has some downsides too:
 * Assume we have few responsive layouts then increasing the font-size on desktop might trigger the media queries to kick in and because of that our layout will be re-arranged assuming that the screen size has changed. Now the user was just intending to increase the font-size but they got tricked into different layout since everything is relative which impacts their experience.
 * Since everything is relative, increase in font-size is identical to page zoom so the intent of the user to increase the content size goes for a toss.
 
-So, what's the next best option? It's **layout in px and typography in relative units**. Why?
+So, what's the next best option? 
+#### For Web <!-- omit in toc -->
+It's **layout in px and typography in relative units**. Why?
 * We want to give flexibility to the user to take the control of content readability and might want to still make the layout predictable and not change it when the font size of the browser changes.
 * There might be layout breakages for sure but again it's serving the purpose of content readability for the user in the same layout in which they intended to. The cons weighs off the pros i.e **content readability**
 
@@ -293,14 +402,17 @@ Can you spot the difference when everything is relative unit? The layout also ch
 
 > 🔗 You can play around with all the [demos here](https://szi8i.csb.app/)
 
+#### For React Native <!-- omit in toc -->
+put images
+
 Let's tally our decision with our [checklist](#checklist)
-1. Whether the content is accessible when the user changes the default font size of the browser ✅
+1. Whether the content is accessible when the user changes the default font size of the browser/device ✅
 2. Whether the content is accessible when the user zooms in/out on the browser ✅
 3. Whether the interface is able to render on different screen sizes, pixel densities etc ✅
 
 
 ## How will we store it?
-* While storing we can compute the value in `px` and store it in a unitless way. While rendering we can attach the units.
+* While storing we can compute the value in `px/dp` and store it in a unitless way. While rendering we can attach the units.
    ```js
    const space = {
       1: 8,
@@ -313,23 +425,13 @@ Let's tally our decision with our [checklist](#checklist)
       3: 24,
    }
    ```
-* With the above approach we can keep the vocabulary consistent that everything is stored in `px`  but while rendering the respective platforms(web/react-native) attaches the unit for the target rendering engine.
-* We will implement a generic funtion that will attach the units to the scale values.
-* For typography the units that'll be constructed will be relative(`rems` for web and `x` for react-native apps).
-* For layout i.e height, width, padding, margin the units that'll be constructed will be absolute i.e `px`(pixels).
-
-storing unitless scale values in tokens?
-
-store in px and render in rems?
-
-Global Reset to make it work for our use case i.e base = 14px
-html {
-  font-size: 100% // i.e 16px
-  font-size: 87.5% // i.e 14px
-}
+* With the above approach we can keep the vocabulary consistent that everything is stored in `px` for web and `dp` for react native  but while rendering the respective platforms(web/react-native) attaches the unit for the target rendering engine.
+* We will implement a generic funtion that will attach the units to the tokens.
+* For typography the units that'll be constructed will be relative(`rems` for web and `autoScale` value on text enabled for react-native apps).
+* For layout i.e height, width, padding, margin the units that'll be constructed will be absolute i.e `px`(pixels) for web and `dp` for react-native apps but with device pixel ratio to ensure consistency with various screen densities.
 
 # Drawbacks/Constraints
-- Vocabulary is the biggest drawback. Thinking and visualising in relative units is difficult compared to absolute units like pixels(`px`) but we can work it out with the help of tools. We can think and store in pixels but render in relative units of the target platform(`rems` for web and `x` for react-native apps).
+- Vocabulary is the biggest drawback. Thinking and visualising in relative units is difficult compared to absolute units like pixels(`px`) or density independent pixels(`dp`) but we can work it out with the help of tools. We can think and store in pixels but render in relative units of the target platform(`rems` for web and `dp` with device pixel ratio for react-native apps).
 
 # Alternatives
 - Here's the [absolute unit vs relative unit matrix](#absolute-unit-vs-relative-unit-matrix) which states all the altternatives with the details.
@@ -360,6 +462,11 @@ html {
 
 * Scaling issues - https://twitter.com/_kamlesh_/status/1362384908375584774
 * POC to visualise how things are different for different units on web - https://twitter.com/_kamlesh_/status/1362350508242042884
+* [Designing for a new generation of mobile devices](https://juiceboxinteractive.com/blog/a-pixel-is-not-a-pixel-designing-for-a-new-generation-of-mobile-devices/)
+* [Compare device's width, height, ppi](https://www.mydevice.io/#compare-devices)
+* [How device pixel ratio is calculated for web](https://www.html5rocks.com/en/mobile/high-dpi/)
+* [How device pixel ratio is calculated for native apps](https://www.perfecto.io/blog/how-mobile-screen-size-resolution-and-ppi-screen-affect-test-coverage)
+* [Understanding Device Resolution for Web Design and Development](https://medium.com/@flik185/understanding-device-resolution-for-web-design-and-development-3bb4a5183478)
 
 # Lesser known facts
 1. `1rem` = `16px` - default in all the browsers unless the default font-size of the browser is set to anything else explicitly.
