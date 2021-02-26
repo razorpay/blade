@@ -174,7 +174,7 @@ Now, because of this the content rendered on a low resolution screen is not same
 
 So how can we fix that?
 
-React Native provides access to device's pixel density and font scale via `[PixelRatio](https://reactnative.dev/docs/pixelratio)` class. Now using this we can tweak our formula of device pixel to following:
+React Native provides access to device's pixel density and font scale via [`PixelRatio`](https://reactnative.dev/docs/pixelratio) class. Now using this we can tweak our formula of device pixel to following:
 _Device Pixel = density independent pixel(dp) * PixelRatio.roundToNearestPixel(density independent pixel(dp))_
 
 Example:
