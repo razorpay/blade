@@ -149,19 +149,21 @@ Pixel ratio - 2
 
 so,
 
-CSS pixel(width) = 3072/2 = 1536
+_CSS pixel(width) = 3072/2 = 1536_
 
-CSS pixel(height) = 1920/2 = 960
+_CSS pixel(height) = 1920/2 = 960_
 
 That's the reason we design at `@1x`. So when we define width and height as `1536px` and `960px` and then when it gets rendered on a screen with device pixel ratio as `2` it becomes `3072x1920`. For web, browsers do all this heavy lifting so we don't need to put any extra efforts for scaling on different ppi screens we just write things in css pixels.
 
-How is device pixel ratio calculated?
+**How is device pixel ratio calculated?**
 
 _Device Pixel Ratio = ppi/150_
 
-For macbook pro screen the ppi is 226
+For macbook pro screen the ppi is **226**
 
-so, Device Pixel Ratio = 226/150 = 1.5 rounded to 2
+so,
+
+_Device Pixel Ratio = 226/150 = 1.5 rounded to 2_
 
 > ❓ Where did 150 came from in the denominator? It's a magic number and is standardised based on some calculations. Check the [detailed explanation here](https://www.html5rocks.com/en/mobile/high-dpi/)
 
@@ -175,6 +177,7 @@ Now, because of this the content rendered on a low resolution screen is not same
 So how can we fix that?
 
 React Native provides access to device's pixel density and font scale via [`PixelRatio`](https://reactnative.dev/docs/pixelratio) class. Now using this we can tweak our formula of device pixel to following:
+
 _Device Pixel = density independent pixel(dp) * PixelRatio.roundToNearestPixel(density independent pixel(dp))_
 
 Example:
@@ -185,23 +188,25 @@ Pixel ratio - 2
 
 so,
 
-Density independent pixel(width) = 750/2 = 375
+_Density independent pixel(width) = 750/2 = 375_
 
-Density independent pixel(height) = 1334/2 = 667
+_Density independent pixel(height) = 1334/2 = 667_
 
 That's the reason we design at `@1x`. So when we define width and height as `375px` and `667px` and then when it gets rendered on a screen with device pixel ratio as `2` we need to do the math and return the value to the rendering engine as:
 
-Device Pixel(width) = 375*2 = 750_
+_Device Pixel(width) = 375*2 = 750_
 
-Device Pixel(height) = 667*2 = 1334_
+_Device Pixel(height) = 667*2 = 1334_
 
-How is device pixel ratio calculated?
+**How is device pixel ratio calculated?**
 
 _Device Pixel Ratio = ppi/160_
 
 For iphone7 the ppi is 326
 
-so, Device Pixel Ratio = 326/160 = 2.03 rounded to 2
+so,
+
+_Device Pixel Ratio = 326/160 = 2.03 rounded to 2_
 
 > ❓ Where did 160 came from in the denominator? It's a magic number and is standardised based on some calculations. Check the [detailed explanation here](https://developer.android.com/training/multiscreen/screendensities)
 
