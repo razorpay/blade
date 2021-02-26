@@ -13,7 +13,7 @@ Blade Issue: NA
     - [What use cases does it support?](#what-use-cases-does-it-support)
     - [What is the expected outcome?](#what-is-the-expected-outcome)
 - [Detailed Design](#detailed-design)
-  - [Screen resoltuions and densities](#screen-resoltuions-and-densities)
+  - [Screen resolutions and densities](#screen-resolutions-and-densities)
     - [Aspect Ratio](#aspect-ratio)
     - [PPI](#ppi)
     - [Software vs Hardware pixel](#software-vs-hardware-pixel)
@@ -99,7 +99,7 @@ The styling properties that require units are:
       * `height` - height, min-height, max-height
       * `width` - width, min-width, max-width
 
-## Screen resoltuions and densities
+## Screen resolutions and densities
 One of the main goal for layouts and content on the screen is that they should adapt to different screen resolutions and densities and things should still visually appear the same. Now what are some different factors that affect this?
 
 ### Aspect Ratio
