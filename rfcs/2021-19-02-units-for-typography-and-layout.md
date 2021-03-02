@@ -34,7 +34,7 @@ Blade Issue: NA
     - [Accessibility Guideline?](#accessibility-guideline)
     - [What units other Design Systems are using?](#what-units-other-design-systems-are-using)
     - [What will work for us?](#what-will-work-for-us)
-  - [How will we store it?](#how-will-we-store-it)
+  - [How will we store and use it?](#how-will-we-store-and-use-it)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
@@ -449,7 +449,7 @@ Until now we saw how typography and layout reacts to font sizes and zoom with di
    2. Changing device font size doesn't changes the layout size.
    3. Image when device font-size is largest `@1x`
    <img alt="Layout dp 1x" src="./images/unit-layout-dp-1x.png" width="300px">
-   
+
    4. Image when device font-size is largest `@3x`
    <img alt="Layout dp 3x" src="./images/unit-layout-dp-3x.png" width="300px">
 5. **Tyography auto scale, layout pixel ratio(native)**
@@ -517,7 +517,10 @@ Can you spot the difference when everything is relative unit? The layout also ch
 > 🔗 You can play around with all the [demos here](https://szi8i.csb.app/)
 
 #### For React Native <!-- omit in toc -->
-put images
+It's **layout in dp and typography in dp w/ autoscale**. Why?
+* React native platform only allows `dp` as units.
+* It's better since the layouts become much more predictable as the platform just asks us to define things at a base layout and takes care of scaling on different devices with different screen densities automatically.
+* We will always honor user's device font size since we want the content to be readable as per user's preference. It might break the layout in some cases but the cons weighs off the pros i.e **content readability**
 
 Let's tally our decision with our [checklist](#checklist)
 1. Whether the content is accessible when the user changes the default font size of the browser/device ✅
@@ -525,7 +528,9 @@ Let's tally our decision with our [checklist](#checklist)
 3. Whether the interface is able to render on different screen sizes, pixel densities etc ✅
 
 
-## How will we store it?
+## How will we store and use it?
+<img alt="storing and getting tokens" src="./images/unit-storing-and-getting.png" width="1200px">
+
 * While storing we can compute the value in `px/dp` and store it in a unitless way. While rendering we can attach the units.
    ```js
    const space = {
@@ -543,7 +548,6 @@ Let's tally our decision with our [checklist](#checklist)
 * We will implement a generic funtion that will attach the units to the tokens.
 * For typography the units that'll be constructed will be relative(`rems` for web and `autoScale` value on text enabled for react-native apps).
 * For layout i.e height, width, padding, margin the units that'll be constructed will be absolute i.e `px`(pixels) for web and `dp` for react-native apps but with device pixel ratio to ensure consistency with various screen densities.
-
 # Drawbacks/Constraints
 - Vocabulary is the biggest drawback. Thinking and visualising in relative units is difficult compared to absolute units like pixels(`px`) or density independent pixels(`dp`) but we can work it out with the help of tools. We can think and store in pixels but render in relative units of the target platform(`rems` for web and `dp` with device pixel ratio for react-native apps).
 
