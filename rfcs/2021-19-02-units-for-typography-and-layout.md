@@ -575,7 +575,7 @@ Let's tally our decision with our [checklist](#checklist)
 4. React Native equivalent for rem?
    * There's no equivalent. React Native is unitless and everything is considerd as `dp`
 5. The layout and typography scale for web and react native has to be differnt?
-   * Probably yes. Because resolution on mobile are becoming denser and the area is still the same which means if we keep things on mobile comparatively bigger to it's desktop counterparts it'll yield better results. [Spectrum](https://spectrum.adobe.com/page/platform-scale/#Proportions) has did a user reasearch and came up with desktop to mobile ratio of `1:1.25` i.e on mobile, things are 25% bigger compared to desktop.
+   * Probably yes. Because resolution on mobile are becoming denser and the area is still the same which means if we keep things on mobile comparatively bigger to it's desktop counterparts it'll yield better results. [Spectrum](https://spectrum.adobe.com/page/platform-scale/#Proportions) did a user reasearch and came up with desktop to mobile ratio of `1:1.25` i.e on mobile, things are 25% bigger compared to desktop.
 
 # References
 * Accessible font Sizing - [CSS Tricks](https://css-tricks.com/accessible-font-sizing-explained/)
