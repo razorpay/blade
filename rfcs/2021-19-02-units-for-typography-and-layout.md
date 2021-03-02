@@ -451,13 +451,13 @@ Until now we saw how typography and layout reacts to font sizes and zoom with di
    <img alt="Layout dp 1x" src="./images/unit-layout-dp-1x.png" width="300px">
    4. Image when device font-size is largest `@3x`
    <img alt="Layout dp 3x" src="./images/unit-layout-dp-3x.png" width="300px">
-6. **Tyography auto scale, layout pixel ratio(native)**
+5. **Tyography auto scale, layout pixel ratio(native)**
    1. Changing device font size changes the font size of the content.
    2. Changing device font size doesn't changes the layout size. Some layout breakages can happen as the text may end up being bigger than you expect in your layout.
    3. Things just look bigger if we use pixel ratio as a multiplicative factor as react native uses `dp` it automatically does those things for us.
    4. Image when device font-size is largest `@1x`
    <img alt="Layout pr 1x" src="./images/unit-layout-pr-1x.png" width="300px">
-   5. Image when device font-size is largest `@3x`
+   1. Image when device font-size is largest `@3x`
    <img alt="Layout pr 3x" src="./images/unit-layout-pr-3x.png" width="300px">
 ### Absolute unit vs relative unit matrix
 | Unit                                             | content size changes? | layout size changes? | layout breakages? | page zoom works? |
