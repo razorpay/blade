@@ -555,10 +555,12 @@ Let's tally our decision with our [checklist](#checklist)
 - Here's the [absolute unit vs relative unit matrix](#absolute-unit-vs-relative-unit-matrix) which states all the altternatives with the details.
 
 # Adoption strategy
-- For devs All these decisions shouldn't matter, as this will be stored in our tokens as an abstraction. The end consumers will just use the typography and layout scale tokens for their purpose and not the actual values.
-- For designers - ask Saurav how it will be done on Figma
+- **For developers** - All these decisions shouldn't matter, as this will be stored in our tokens as an abstraction. The end consumers will just use the typography and layout scale tokens for their purpose and not the actual values.
 - Migration of existing projects is out of the scope of this RFC since that will be a breaking change.
-- TODO: Add figma adoption strategy
+- **For Designers** - All the designs shall be created `@1x` and the assets(images) shall be exported `@2x`, `@3x` accordingly. The standard artboard size for mobile is `360x640` for android and `375x677` for iPhone.
+- **For Designers** - When doing visual QA of any design which is implemented the comparision cannot be done by keeping the screenshot from device side by side with the design implemented `@1x`. That'll always give wrong comparision results.
+
+- We should have a different scale for each platform (mainly web & mobile) we are designing for instead of having a singular scale that accommodate all devices.
 
 # Open Questions
 1. Browser zoom and browser font size behave differently? Couldn't figure out what does browser zoom does differently like what css props does it changes so in order to have parity we need to mimic it?
@@ -568,8 +570,12 @@ Let's tally our decision with our [checklist](#checklist)
    <img alt="Browser zoom" src="./images/unit-browser-zoom.png" width="700px">
 
 2. Design tokens for cross platforms(react for web, react native for apps) which means the typography and spacing scale needs to be stored in a unitless fashion?
+   * Yes. we'll store things as unitless in tokens
 3. Couldn't find what does WCAG says about this exactly? For eg: it just says the content should be readable at 200% zoom - [WCAG Guideline](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html)
 4. React Native equivalent for rem?
+   * There's no equivalent. React Native is unitless and everything is considerd as `dp`
+5. The layout and typography scale for web and react native has to be differnt?
+   * Probably yes. Because resolution on mobile are becoming denser and the area is still the same which means if we keep things on mobile comparatively bigger to it's desktop counterparts it'll yield better results. [Spectrum](https://spectrum.adobe.com/page/platform-scale/#Proportions) has did a user reasearch and came up with desktop to mobile ratio of `1:1.25` i.e on mobile, things are 25% bigger compared to desktop.
 
 # References
 * Accessible font Sizing - [CSS Tricks](https://css-tricks.com/accessible-font-sizing-explained/)
