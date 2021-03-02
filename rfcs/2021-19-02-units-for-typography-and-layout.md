@@ -8,6 +8,8 @@ Blade Issue: NA
 ### Table Of Contents <!-- omit in toc -->
 - [Summary](#summary)
 - [Basic Example](#basic-example)
+  - [Web](#web)
+  - [React Native](#react-native)
 - [Motivation](#motivation)
     - [Why are we doing this?](#why-are-we-doing-this)
     - [What use cases does it support?](#what-use-cases-does-it-support)
@@ -25,6 +27,8 @@ Blade Issue: NA
     - [`rem`](#rem)
     - [`dp`](#dp)
   - [Deep Dive](#deep-dive)
+    - [Web](#web-1)
+    - [React Native](#react-native-1)
   - [Absolute unit vs relative unit?](#absolute-unit-vs-relative-unit)
     - [Absolute unit vs relative unit matrix](#absolute-unit-vs-relative-unit-matrix)
     - [Accessibility Guideline?](#accessibility-guideline)
@@ -45,6 +49,7 @@ This RFC discusses about why and what units we will be using in our design syste
 
 # Basic Example
 Some examples of where and how units are used
+## Web
 ```css
 button {
   font-size: 14px;
@@ -64,6 +69,16 @@ button {
   min-height: 3rem;
   width: 12.5rem;
 }
+```
+## React Native
+```js
+Stylesheet.create({
+  fontSize: 16, /* 16dp */
+  padding: 8, /* 8dp */
+  margin: 2, /* 2dp */
+  minHeight: 48, /* 48dp */
+  width: 200, /* 200dp */
+})
 ```
 
 # Motivation
@@ -168,21 +183,11 @@ _Device Pixel Ratio = 226/150 = 1.5 rounded to 2_
 > ❓ Where did 150 came from in the denominator? It's a magic number and is standardised based on some calculations. Check the [detailed explanation here](https://www.html5rocks.com/en/mobile/high-dpi/)
 
 ### How things render on native apps(React Native)
-On react native we write things in unitless format which is nothing but `dp` and when it gets rendered it renders as it is and doesn't takes into account about the screen sizes and densities.
-
-_Device Pixel = density independent pixel(dp)_
-
-Now, because of this the content rendered on a low resolution screen is not same as high resolution screen since react native doesn't auto scales. 
-
-So how can we fix that?
-
-React Native provides access to device's pixel density and font scale via [`PixelRatio`](https://reactnative.dev/docs/pixelratio) class. Now using this we can tweak our formula of device pixel to following:
-
-_Device Pixel = density independent pixel(dp) * PixelRatio.roundToNearestPixel(density independent pixel(dp))_
+On react native we write things in unitless format which is nothing but `dp` and when it gets rendered the respective platform(iOS/android) handles the conversion to actual hardware pixels based on screen resolution and densities so we don't need to explicitly do anything for it.
 
 Example:
 
-Device Pixels for iphone 7 - `750x1334`(resolution) = `3072` width and `1920` height
+Device Pixels for iPhone7 - `750x1334`(resolution) = `750` width and `1334` height
 
 Pixel ratio - 2
 
@@ -192,7 +197,7 @@ _Density independent pixel(width) = 750/2 = 375_
 
 _Density independent pixel(height) = 1334/2 = 667_
 
-That's the reason we design at `@1x`. So when we define width and height as `375px` and `667px` and then when it gets rendered on a screen with device pixel ratio as `2` we need to do the math and return the value to the rendering engine as:
+That's the reason we design at `@1x`. So when we define width and height as `375px` and `667px` and then when it gets rendered on a screen with device pixel ratio as `2` the platforms scale everything up if we use the `dp` as units
 
 _Device Pixel(width) = 375*2 = 750_
 
@@ -238,10 +243,14 @@ See below how browser devtools show `px` equivalent to `rem`
 ### `dp`
 * `dp` is a density independent pixel unit which is used by react native apps
 * It works on iOS/android but **not** on web.
-* It doesn't scale with different screen densitites hence the name **density independent**.
+* It auto scales with different screen densitites hence the name **density independent**. Think about `dp` as software pixels.
 
 ## Deep Dive
-Until now we have understood few basic things. Now let's deep dive and see how this actually matters when things get rendered on screen. I've created an [interactive POC](https://codesandbox.io/s/scaling-test-szi8i) that you can play around with. I'll be using the same to demonstrate few things in this section.
+Until now we have understood few basic things. Now let's deep dive and see how this actually matters when things get rendered on screen. 
+
+
+### Web
+I've created an [interactive POC](https://codesandbox.io/s/scaling-test-szi8i) that you can play around with. I'll be using the same to demonstrate few things in this section.
 
 I've created 4 buttons which have same css properties but the units are different.
 
@@ -342,6 +351,79 @@ Let's see how things look when we zoom to 200% in the browser
 
 > 📝 Note: The page zoom and font size change don't mimic each other. Hence things at x font size are not same as y% zoom. 
 
+### React Native
+### layout pr(pixel ratio), text pr(pixel ratio) <!-- omit in TOC -->
+* This button has all the layout and typography properties  defined using pixel ratio of device.
+   ```js
+   const styles = StyleSheet.create({
+      button1: {
+         marginBottom: 16,
+         height: 48 * PixelRatio.get(),
+         backgroundColor: '#3987f0',
+         borderRadius: 2,
+         paddingLeft: 24 * PixelRatio.get(),
+         paddingRight: 24 * PixelRatio.get(),
+         paddingTop: 12 * PixelRatio.get(),
+         paddingBottom: 12 * PixelRatio.get(),
+      },
+      button1Text: {
+         color: '#ffffff',
+         textAlign: 'center',
+         fontSize: 16 * PixelRatio.get(),
+      },
+   }
+   ```
+### layout dp, text pr(pixel ratio) <!-- omit in TOC -->
+* This button layout properties defined in `dp` and typography in pixel ratio of the device.
+   ```js
+   const styles = StyleSheet.create({
+      button2: {
+         marginBottom: 16,
+         minHeight: 48,
+         backgroundColor: '#3987f0',
+         borderRadius: 2,
+         paddingLeft: 24,
+         paddingRight: 24,
+         paddingTop: 12,
+         paddingBottom: 12,
+      },
+      button2Text: {
+         color: '#ffffff',
+         textAlign: 'center',
+         fontSize: 16 * PixelRatio.get(),
+      },
+   }
+   ```
+### layout dp, text dp with autoscale <!-- omit in TOC -->
+* This button has all the layout and typography properties  defined using `dp` and text scaling set to honor device's font size.
+   ```js
+   const styles = StyleSheet.create({
+      button3: {
+         marginBottom: 16,
+         height: 48,
+         backgroundColor: '#3987f0',
+         borderRadius: 2,
+         paddingLeft: 24,
+         paddingRight: 24,
+         paddingTop: 12,
+         paddingBottom: 12,
+      },
+      button3Text: {
+         color: '#ffffff',
+         textAlign: 'center',
+         fontSize: 16,
+      },
+   }
+   ```
+Let's see how things look on devices with different resolution and densities with default device font size
+
+<img alt="Layout and typography at increased font size" src="./images/unit-default-font-size-app.png" width="1400px">
+
+Let's see how things look on devices with different resolution and densities with largest device font size
+
+
+<img alt="Layout and typography at 200% zoom" src="./images/unit-largest-font-size-app.png" width="1400px">
+
 ## Absolute unit vs relative unit?
 Until now we saw how typography and layout reacts to font sizes and zoom with different units. Referring to [our checklist](#checklist) gives us 3 options:
 1. **Everything `px`(web)**
@@ -363,20 +445,27 @@ Until now we saw how typography and layout reacts to font sizes and zoom with di
    4. Image when font-size is `32px`
    <img alt="Layout px text rem" src="./images/unit-layout-px-text-rem.png" width="300px">
 4. **Everything `dp`(native)**
-   1. Changing device font size doesn't changes the font size of the content.
+   1. Changing device font size changes the font size of the content.
    2. Changing device font size doesn't changes the layout size.
-   3. TODO: Put image
-5. **Tyography auto scale, layout pixel ratio(native)**
+   3. Image when device font-size is largest `@1x`
+   <img alt="Layout dp 1x" src="./images/unit-layout-dp-1x.png" width="300px">
+   4. Image when device font-size is largest `@3x`
+   <img alt="Layout dp 3x" src="./images/unit-layout-dp-3x.png" width="300px">
+6. **Tyography auto scale, layout pixel ratio(native)**
    1. Changing device font size changes the font size of the content.
    2. Changing device font size doesn't changes the layout size. Some layout breakages can happen as the text may end up being bigger than you expect in your layout.
-   3. TODO: Put image
+   3. Things just look bigger if we use pixel ratio as a multiplicative factor as react native uses `dp` it automatically does those things for us.
+   4. Image when device font-size is largest `@1x`
+   <img alt="Layout pr 1x" src="./images/unit-layout-pr-1x.png" width="300px">
+   5. Image when device font-size is largest `@3x`
+   <img alt="Layout pr 3x" src="./images/unit-layout-pr-3x.png" width="300px">
 ### Absolute unit vs relative unit matrix
 | Unit                                             | content size changes? | layout size changes? | layout breakages? | page zoom works? |
 | ------------------------------------------------ | :-------------------: | :------------------: | :---------------: | :--------------: |
 | Everything px(web)                               |           ❌           |          ❌           |         ❌         |        ✅         |
 | Everything rems(web)                             |           ✅           |          ✅           |         ⚠️         |        ✅         |
 | Tyography rems, layout px(web)                   |           ✅           |          ❌           |         ✅         |        ✅         |
-| Everything dp(native)                            |           ❌           |          ❌           |         ❌         |        🚫         |
+| Everything dp(native)                            |           ❌           |          ✅           |         ❌         |        🚫         |
 | Tyography auto scale, layout pixel ratio(native) |           ✅           |          ❌           |         ✅         |        🚫         |
 
 >⚠️ Doesn't breaks but doesn't renders as expected
@@ -490,7 +579,12 @@ Let's tally our decision with our [checklist](#checklist)
 * [How device pixel ratio is calculated for web](https://www.html5rocks.com/en/mobile/high-dpi/)
 * [How device pixel ratio is calculated for native apps](https://www.perfecto.io/blog/how-mobile-screen-size-resolution-and-ppi-screen-affect-test-coverage)
 * [Understanding Device Resolution for Web Design and Development](https://medium.com/@flik185/understanding-device-resolution-for-web-design-and-development-3bb4a5183478)
+* [Pixel density on native apps](https://material.io/design/layout/pixel-density.html)
+* [Designing for multiple screen densities on Android](https://developerlife.com/2018/07/21/designing-for-multiple-screen-densities-on-android/)
+* [Build responsive React Native views for any device and support orientation change](https://medium.com/react-native-training/build-responsive-react-native-views-for-any-device-and-support-orientation-change-1c8beba5bc23)
+* [iPhone Resolutions](https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions)
 
 # Lesser known facts
 1. `1rem` = `16px` - default in all the browsers unless the default font-size of the browser is set to anything else explicitly.
-2. `padding: 1rem` - rems always takes base value as font-size of the browser regardless of the property they are used on. In this example 1rem = 16px so `padding: 16px`
+2. `padding: 1rem` - rems always takes base value as font-size of the browser regardless of the property they are used on. In this example 1rem = 16px so `padding: 16px`.
+3. `1dp = 1px` at `360x640` and `160ppi`(a.k.a `@1x`), therefore `1dp = 3px` at `1080x1920` and `440ppi`(a.k.a `@3x`).
