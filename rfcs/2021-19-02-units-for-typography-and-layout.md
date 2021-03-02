@@ -218,14 +218,14 @@ _Device Pixel Ratio = 326/160 = 2.03 rounded to 2_
 ## Checklist
 To choose which unit will work best for us we can use the below checklist:
 1. Whether the content is accessible when the user changes the default font size of the browser.
-2. Whether the content is accessible when the user zooms in/out on the browser.
+2. Whether the content is accessible when the user zooms in/out on the browser. (As per the[ WCAG guideline](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html) the content shall be readable at 200% zoom)
 3. Whether the interface is able to render on different screen sizes, pixel densities etc.
 
 ## Different units:
 ### `px`
 * The most commonly used unit is `px` i.e pixels.
 * It works on both web and iOS/android apps.
-* `px` defines an absolute value for typography and layout, which means anything that has px as a unit will be rendered same at all the screen sizes, resolutions, pixel densities. For example, `padding: 16px` will be `16px` regardless of the screen resolution/platform `1680x1050`, `1024x640` or `360x640`.
+* `px` defines an absolute value but it's still a software pixel for typography and layout, which means anything that has px as a unit when it gets rendered the browser takes into account for screen resolutions and pixel densities and then it converts it into hardware pixels. For example, `padding: 16px` is `16px` software pixel and when it renders on different screen resolutions `1680x1050`, `1024x640` or `360x640` the browser takes care of scaling things as per the device pixel ratio. So `16px` rendered on a device with device pixel ratio of 1 will be rendered as 16 hardware pixels and if the device pixel ratio is 2 then it gets rendered as 32 hardware pixels.
 ### `rem`
 * `rem` is a relative css unit which works in relative to the users device settings and screen resolutions.
 * It works on web but **not** on iOS/android.
@@ -558,6 +558,7 @@ Let's tally our decision with our [checklist](#checklist)
 - For devs All these decisions shouldn't matter, as this will be stored in our tokens as an abstraction. The end consumers will just use the typography and layout scale tokens for their purpose and not the actual values.
 - For designers - ask Saurav how it will be done on Figma
 - Migration of existing projects is out of the scope of this RFC since that will be a breaking change.
+- TODO: Add figma adoption strategy
 
 # Open Questions
 1. Browser zoom and browser font size behave differently? Couldn't figure out what does browser zoom does differently like what css props does it changes so in order to have parity we need to mimic it?
