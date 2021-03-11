@@ -14,6 +14,7 @@ Blade Issue: NA
     - [Why are we doing this?](#why-are-we-doing-this)
     - [What use cases does it support?](#what-use-cases-does-it-support)
     - [What is the expected outcome?](#what-is-the-expected-outcome)
+- [Lesser known facts](#lesser-known-facts)
 - [Detailed Design](#detailed-design)
   - [Screen resolutions and densities](#screen-resolutions-and-densities)
     - [Aspect Ratio](#aspect-ratio)
@@ -40,7 +41,6 @@ Blade Issue: NA
 - [Adoption strategy](#adoption-strategy)
 - [Open Questions](#open-questions)
 - [References](#references)
-- [Lesser known facts](#lesser-known-facts)
 
 # Summary
 To render anything on the screen we need some space so in order to define that space we also need to define a unit of that measurement. There are different types of units like `px`, `rems`, `ems`, `percentages`, `dp` etc.
@@ -99,6 +99,11 @@ We shall be able to answer following questions as a conclusion to this RFC
 3. How will we use platform dependent units(px, rem, dp etc) in order to render the components on a particular platform in a generic way without polluting our design system components.
 4. How/where we will store the unit as design tokens?
 
+# Lesser known facts
+1. `1rem` = `16px` - default in all the browsers unless the default font-size of the browser is set to anything else explicitly.
+2. `padding: 1rem` - rems always takes base value as font-size of the browser regardless of the property they are used on. In this example 1rem = 16px so `padding: 16px`.
+3. `1dp = 1px` at `360x640` and `160ppi`(a.k.a `@1x`), therefore `1dp = 3px` at `1080x1920` and `440ppi`(a.k.a `@3x`).
+
 # Detailed Design
 For anything to be rendered on the screen it needs to have a space on the screen and that space needs to have a measurable unit for the rendering engine to understand how to organise things on the screen.
 
@@ -118,7 +123,7 @@ The styling properties that require units are:
 One of the main goal for layouts and content on the screen is that they should adapt to different screen resolutions and densities and things should still visually appear the same. Now what are some different factors that affect this?
 
 ### Aspect Ratio
-Aspect ratio is basically `width x height` of a screen and then divide them with the greatest common number i.e find ratios
+Aspect ratio is basically `width/height` of a screen i.e find ratios with the greatest common divisor
 
 Examples:
 
@@ -134,7 +139,15 @@ PPI is short for pixels per inch which says the number of pixels that can be acc
 
 PPI plays a signficant role of how things are physically rendered on the screen
 
-How is PPI calculated? multiply the dimension for eg: **1920*1080 = 2073600 (21600 inches)** and then divide this by the area of screen size for eg: 20" monitor has an area of **20.5x12.5=256 sq.in** now to get the ppi do **21600/256 = 84ppi**
+How is PPI calculated? **`area of screen/resolution`**
+
+Example:
+
+_Area of **20"** Screen: **20.5x12.5=256 sq.in**_
+
+_Screen Resolution: **1920*1080 = 2073600 (21600 inches)**_
+
+_PPI: **21600/256 = 84ppi**_
 
 ### Software vs Hardware pixel
 * **Software pixel** - 
@@ -486,6 +499,8 @@ For example, words may be too wide to fit into the horizontal space available to
 | [Styled System](https://styled-system.com/)                                              | px         | px     | default px, can change by suffixing unit |
 | [Facebook](https://twitter.com/naman34/status/1362626358539481090)                       | rems       | px     | NA                                       |
 | [Chakra](https://chakra-ui.com/docs/getting-started)                                     | rems       | rems   | default rems, option for other units     |
+| [Wix](https://github.com/wix/react-native-ui-lib)                                        | dp         | dp     | NA                                       |
+| [Ant](https://github.com/ant-design/ant-design-mobile-rn)                                | dp         | dp     | NA                                       |
 
 >📝 Note: Couldn't find anything similar for react native
 ### What will work for us?
@@ -547,7 +562,7 @@ Let's tally our decision with our [checklist](#checklist)
 * With the above approach we can keep the vocabulary consistent that everything is stored in `px` for web and `dp` for react native  but while rendering the respective platforms(web/react-native) attaches the unit for the target rendering engine.
 * We will implement a generic funtion that will attach the units to the tokens.
 * For typography the units that'll be constructed will be relative(`rems` for web and `autoScale` value on text enabled for react-native apps).
-* For layout i.e height, width, padding, margin the units that'll be constructed will be absolute i.e `px`(pixels) for web and `dp` for react-native apps but with device pixel ratio to ensure consistency with various screen densities.
+* For layout i.e height, width, padding, margin the units that'll be constructed will be absolute i.e `px`(pixels) for web and `dp` for react-native apps.
 # Drawbacks/Constraints
 - Vocabulary is the biggest drawback. Thinking and visualising in relative units is difficult compared to absolute units like pixels(`px`) or density independent pixels(`dp`) but we can work it out with the help of tools. We can think and store in pixels but render in relative units of the target platform(`rems` for web and `dp` with device pixel ratio for react-native apps).
 
@@ -569,13 +584,15 @@ Let's tally our decision with our [checklist](#checklist)
 
    <img alt="Browser zoom" src="./images/unit-browser-zoom.png" width="700px">
 
+   * Turns out Zoom just seems to **stretch** the actual hardware pixels. [Source](https://stackoverflow.com/questions/29390155/what-exactly-changes-in-the-css-rendering-when-desktop-browsers-zoom-in-or-out)
+
 2. Design tokens for cross platforms(react for web, react native for apps) which means the typography and spacing scale needs to be stored in a unitless fashion?
    * Yes. we'll store things as unitless in tokens
 3. Couldn't find what does WCAG says about this exactly? For eg: it just says the content should be readable at 200% zoom - [WCAG Guideline](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html)
 4. React Native equivalent for rem?
    * There's no equivalent. React Native is unitless and everything is considerd as `dp`
-5. The layout and typography scale for web and react native has to be differnt?
-   * Probably yes. Because resolution on mobile are becoming denser and the area is still the same which means if we keep things on mobile comparatively bigger to it's desktop counterparts it'll yield better results. [Spectrum](https://spectrum.adobe.com/page/platform-scale/#Proportions) did a user reasearch and came up with desktop to mobile ratio of `1:1.25` i.e on mobile, things are 25% bigger compared to desktop.
+5. The layout and typography scale for web and react native has to be different?
+   * Probably yes. Because resolution on mobile are becoming denser and the area is still the same which means if we keep things on mobile comparatively bigger to it's desktop counterparts it'll yield better results. [Spectrum](https://spectrum.adobe.com/page/platform-scale/#Proportions) did a user research and came up with desktop to mobile ratio of `1:1.25` i.e on mobile, things are 25% bigger compared to desktop.
 
 # References
 * Accessible font Sizing - [CSS Tricks](https://css-tricks.com/accessible-font-sizing-explained/)
@@ -596,8 +613,3 @@ Let's tally our decision with our [checklist](#checklist)
 * [Designing for multiple screen densities on Android](https://developerlife.com/2018/07/21/designing-for-multiple-screen-densities-on-android/)
 * [Build responsive React Native views for any device and support orientation change](https://medium.com/react-native-training/build-responsive-react-native-views-for-any-device-and-support-orientation-change-1c8beba5bc23)
 * [iPhone Resolutions](https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions)
-
-# Lesser known facts
-1. `1rem` = `16px` - default in all the browsers unless the default font-size of the browser is set to anything else explicitly.
-2. `padding: 1rem` - rems always takes base value as font-size of the browser regardless of the property they are used on. In this example 1rem = 16px so `padding: 16px`.
-3. `1dp = 1px` at `360x640` and `160ppi`(a.k.a `@1x`), therefore `1dp = 3px` at `1080x1920` and `440ppi`(a.k.a `@3x`).
