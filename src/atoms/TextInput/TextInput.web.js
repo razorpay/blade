@@ -326,7 +326,7 @@ const TextInput = ({
   );
 
   useEffect(() => {
-    if (value !== null && typeof value !== 'undefined') {
+    if (value === '' || value) {
       setInput(value);
     }
   }, [value]);
