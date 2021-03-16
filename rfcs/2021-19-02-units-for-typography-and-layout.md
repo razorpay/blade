@@ -127,13 +127,13 @@ Aspect ratio is basically `width/height` of a screen i.e find ratios with the gr
 
 Examples:
 
-800x600 = 4:3
+800/600 = 4:3
 
-1024x768 = 4:3
+1024/768 = 4:3
 
-1920x1200 = 16:10
+1920/1200 = 16:10
 
-3840x2160 = 16:9
+3840/2160 = 16:9
 ### PPI
 PPI is short for pixels per inch which says the number of pixels that can be accommodated in 1 sq inch on the screen. 
 
