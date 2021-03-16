@@ -54,6 +54,10 @@ const lightTheme = {
       950: colors.sapphire[950],
       970: colors.sapphire[970],
     },
+    tertiary: {
+      900: colors.xCyan[900],
+      960: colors.xCyan[960],
+    },
     negative: {
       900: colors.red[900],
       930: colors.red[930],
@@ -143,6 +147,10 @@ const darkTheme = {
       940: colors.xAzzure[940],
       950: colors.xAzzure[950],
       970: colors.xAzzure[970],
+    },
+    tertiary: {
+      900: colors.xCyan[900],
+      960: colors.xCyan[960],
     },
     negative: {
       900: colors.xRose[900],
