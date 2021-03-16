@@ -123,7 +123,7 @@ The styling properties that require units are:
 One of the main goal for layouts and content on the screen is that they should adapt to different screen resolutions and densities and things should still visually appear the same. Now what are some different factors that affect this?
 
 ### Aspect Ratio
-Aspect ratio is basically `width/height` of a screen i.e find ratios with the greatest common divisor
+Aspect ratio is basically `width/height` of a screen i.e ratio of width to height
 
 Examples:
 
