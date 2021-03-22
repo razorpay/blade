@@ -1,10 +1,14 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RadioButtonContext from './RadioContext';
 import RadioOption from './RadioOption';
 
 const Radio = ({ value, onChange, defaultValue, children }) => {
   const [selected, setSelected] = useState(value || defaultValue);
+
+  useEffect(() => {
+    setSelected(value);
+  }, [value]);
 
   const onValueChange = useCallback(
     (newValue) => {
