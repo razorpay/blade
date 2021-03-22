@@ -23,6 +23,7 @@ const icons = {
   close: require('./Close').default,
   copy: require('./Copy').default,
   emptyCircle: require('./EmptyCircle').default,
+  externalLink: require('./ExternalLink').default,
   failure: require('./Failure').default,
   feather: require('./Feather').default,
   file: require('./File').default,
