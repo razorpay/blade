@@ -73,11 +73,13 @@ button {
 ## React Native
 ```js
 Stylesheet.create({
-  fontSize: 16, /* 16dp */
-  padding: 8, /* 8dp */
-  margin: 2, /* 2dp */
-  minHeight: 48, /* 48dp */
-  width: 200, /* 200dp */
+  button: { 
+  	fontSize: 16, /* 16dp */
+  	padding: 8, /* 8dp */
+  	margin: 2, /* 2dp */
+  	minHeight: 48, /* 48dp */
+  	width: 200, /* 200dp */
+  }
 })
 ```
 
