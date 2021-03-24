@@ -123,17 +123,17 @@ The styling properties that require units are:
 One of the main goal for layouts and content on the screen is that they should adapt to different screen resolutions and densities and things should still visually appear the same. Now what are some different factors that affect this?
 
 ### Aspect Ratio
-Aspect ratio is basically `width/height` of a screen i.e find ratios with the greatest common divisor
+Aspect ratio is basically `width/height` of a screen i.e ratio of width to height
 
 Examples:
 
-800x600 = 4:3
+800/600 = 4:3
 
-1024x768 = 4:3
+1024/768 = 4:3
 
-1920x1200 = 16:10
+1920/1200 = 16:10
 
-3840x2160 = 16:9
+3840/2160 = 16:9
 ### PPI
 PPI is short for pixels per inch which says the number of pixels that can be accommodated in 1 sq inch on the screen. 
 
