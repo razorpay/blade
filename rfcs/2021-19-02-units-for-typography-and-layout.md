@@ -141,13 +141,7 @@ PPI plays a signficant role of how things are physically rendered on the screen
 
 How is PPI calculated? **`area of screen/resolution`**
 
-Example:
-
-_Area of **20"** Screen: **20.5x12.5=256 sq.in**_
-
-_Screen Resolution: **1920*1080 = 2073600 (21600 inches)**_
-
-_PPI: **21600/256 = 84ppi**_
+Check this [PPI calculator](https://www.sven.de/dpi/)
 
 ### Software vs Hardware pixel
 * **Software pixel** - 
