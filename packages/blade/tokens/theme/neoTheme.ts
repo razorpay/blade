@@ -336,56 +336,68 @@ const colors = {
 };
 
 const shadows = {
-  level1: {
-    onLight: [
-      `0 1px 2px 0 ${colors.brand.gray[700].onLight}`, // need to confirm alpha here
-      `0 0 1px 0 ${colors.brand.gray[700].onLight}`,
-    ].join(', '),
-    onDark: [
-      `0 1px 2px 0 ${colors.brand.gray[700].onDark}`,
-      `0 0 1px 0 ${colors.brand.gray[700].onDark}`,
-    ].join(', '),
+  offsetX: {
+    level: {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+    },
   },
-  level2: {
-    onLight: [
-      `0 3px 8px 0 ${colors.brand.gray[700].onLight}`,
-      `0 0 1px 0 ${colors.brand.gray[700].onLight}`,
-    ].join(', '),
-    onDark: [
-      `0 3px 8px 0 ${colors.brand.gray[700].onDark}`,
-      `0 0 1px 0 ${colors.brand.gray[700].onDark}`,
-    ].join(', '),
+  offsetY: {
+    level: {
+      1: 2,
+      2: 2,
+      3: 2,
+      4: 2,
+      5: 2,
+    },
   },
-  level3: {
-    onLight: [
-      `0 8px 12px 0 ${colors.brand.gray[700].onLight}`,
-      `0 0 1px 0 ${colors.brand.gray[700].onLight}`,
-    ].join(', '),
-    onDark: [
-      `0 8px 12px 0 ${colors.brand.gray[700].onDark}`,
-      `0 0 1px 0 ${colors.brand.gray[700].onDark}`,
-    ].join(', '),
+  blurRadius: {
+    level: {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+    },
   },
-  level4: {
-    onLight: [
-      `0 10px 18px 0 ${colors.brand.gray[700].onLight}`,
-      `0 0 1px 0 ${colors.brand.gray[700].onLight}`,
-    ].join(', '),
-    onDark: [
-      `0 10px 18px 0 ${colors.brand.gray[700].onDark}`,
-      `0 0 1px 0 ${colors.brand.gray[700].onDark}`,
-    ].join(', '),
+  color: {
+    level: {
+      1: {
+        onLight: colors.brand.gray[700].onLight,
+        onDark: colors.brand.gray[700].onDark,
+      },
+      2: {
+        onLight: colors.brand.gray[700].onLight,
+        onDark: colors.brand.gray[700].onDark,
+      },
+      3: {
+        onLight: colors.brand.gray[700].onLight,
+        onDark: colors.brand.gray[700].onDark,
+      },
+      4: {
+        onLight: colors.brand.gray[700].onLight,
+        onDark: colors.brand.gray[700].onDark,
+      },
+      5: {
+        onLight: colors.brand.gray[700].onLight,
+        onDark: colors.brand.gray[700].onDark,
+      },
+    },
   },
-  level5: {
-    onLight: [
-      `0 18px 28px 0 ${colors.brand.gray[700].onLight}`,
-      `0 0 1px 0 ${colors.brand.gray[700].onLight}`,
-    ].join(', '),
-    onDark: [
-      `0 18px 28px 0 ${colors.brand.gray[700].onDark}`,
-      `0 0 1px 0 ${colors.brand.gray[700].onDark}`,
-    ].join(', '),
+  androidElevation: {
+    // this is required for android
+    level: {
+      1: 5,
+      2: 5,
+      3: 5,
+      4: 5,
+      5: 5,
+    },
   },
+  // shadowOpacity: 1, // this is required for iOS
 };
 
 const neoTheme = {
