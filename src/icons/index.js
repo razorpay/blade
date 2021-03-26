@@ -26,6 +26,7 @@ const icons = {
   failure: require('./Failure').default,
   feather: require('./Feather').default,
   file: require('./File').default,
+  gallery: require('./Gallery').default,
   gear: require('./Gear').default,
   helpCircle: require('./HelpCircle').default,
   home: require('./Home').default,
