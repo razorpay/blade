@@ -213,7 +213,7 @@ const colors = {
           onDark: globalColors.chromatic.cider[600],
         },
       },
-      infromation: {
+      information: {
         highContrast: {
           onLight: globalColors.neutral.blueGrayLight[0],
           onDark: globalColors.neutral.blueGrayDark[0],

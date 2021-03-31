@@ -12,7 +12,10 @@ type BorderWidth = Readonly<{
   thin: number;
 }>;
 
-type Border = Readonly<{ radius: BorderRadius; width: BorderWidth }>;
+type Border = Readonly<{
+  radius: BorderRadius;
+  width: BorderWidth;
+}>;
 
 const border: Border = {
   radius: {
