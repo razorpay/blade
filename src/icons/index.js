@@ -35,7 +35,7 @@ const icons = {
   lifeBuoy: require('./LifeBuoy').default,
   link: require('./Link').default,
   lock: require('./Lock').default,
-  logOut: require('./LogOut').default,
+  logout: require('./Logout').default,
   mail: require('./Mail').default,
   maximize: require('./Maximize').default,
   message: require('./Message').default,

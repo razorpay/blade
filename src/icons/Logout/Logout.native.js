@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Svg, { Path } from 'react-native-svg';
 
-export default function LogOut({ width, height, fill }) {
+export default function Logout({ width, height, fill }) {
   return (
     <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
@@ -17,13 +17,13 @@ export default function LogOut({ width, height, fill }) {
   );
 }
 
-LogOut.propTypes = {
+Logout.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   fill: PropTypes.string,
 };
 
-LogOut.defaultProps = {
+Logout.defaultProps = {
   width: 24,
   height: 24,
 };

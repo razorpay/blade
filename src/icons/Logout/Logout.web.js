@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function LogOut({ width, height, fill }) {
+export default function Logout({ width, height, fill }) {
   return (
     <svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <path
@@ -16,13 +16,13 @@ export default function LogOut({ width, height, fill }) {
   );
 }
 
-LogOut.propTypes = {
+Logout.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   fill: PropTypes.string,
 };
 
-LogOut.defaultProps = {
+Logout.defaultProps = {
   width: 24,
   height: 24,
 };
