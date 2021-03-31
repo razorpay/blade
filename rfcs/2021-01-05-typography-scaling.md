@@ -123,6 +123,8 @@ And will round-off the resulting value.
 
 Units such as `line-height`, `letter-spacing`, `case` should not be stored separately. As the implementation doesn't have any logic to it. It is too much dependent on the type of font or the font-family we are using. So I'd suggest that we should store everything inside the typography scale itself.
 
+Also, the scale should be stored at theme level rather than at a global level. So that, in case if there is any new product in the future, it will be flexible to interchange things that way. For now all the products will follow the same font structure as mentioned above.
+
 ### **Current Limitations**
 There are two major limitations while scaling typography to multiple breakpoints,
 1. **It does not cater to landing/marketing pages.** Which are generally much larger compared to the size-ratio on the dashboard (Maybe a [Major Third](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) scale will work better). This is currently being looked at by the comm. design team based on the same principles.
