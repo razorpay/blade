@@ -119,7 +119,7 @@ General Formula,
 
 And will round-off the resulting value.
 
-**Storage of Units**
+### **Storage of Units**
 
 Units such as `line-height`, `letter-spacing`, `case` should not be stored separately. As the implementation doesn't have any logic to it. It is too much dependent on the type of font or the font-family we are using. So I'd suggest that we should store everything inside the typography scale itself.
 
