@@ -98,17 +98,19 @@ We are following a [**Major Second**](https://type-scale.com/?size=14&scale=1.12
 After auditing the whole product it came out that we are mostly using `13px` & `14px` as a base font-size on the body text. For the internal products, it is better to go with **`14px`** as a base font-size. And for small screens (mobile) it is better to go with **`15px`** as a base font-size. Because for dashboards the content is pretty dense and we need to maintain a small font-size ratio compared to marketing/landing pages. This will help the users to consume more content into a readable format. Although, we can still play with spacings so that it doesn't feel much complex.
 
 ### **Line Height**
-Line heights also plays a significant role in the whole typography spectrum. If the font-size is smaller the text will be cramped and difficult to read, instead if it is larger the eyes can get lost. According to [WCAG](https://www.w3.org/WAI/WCAG21/Understanding/text-spacing.html), the line-height should be between `150% - 200%` of the font-size. But instead of blindly copying these values, we should also consider the font-face and platform on which this is getting rendered. Therefore, for optimal readability & accessibility aim for about `125% - 160%` line-height.
+Line heights also plays a significant role in the whole typography spectrum. If the font-size is smaller the text will be cramped and difficult to read, instead if it is larger the eyes can get lost. According to [WCAG](https://www.w3.org/WAI/WCAG21/Understanding/text-spacing.html), the height factor should be between `150% - 200%` of the font-size. But instead of blindly copying these values, we should also consider the font-face and platform on which this is getting rendered. Therefore, for optimal readability & accessibility aim for about `125% - 160%` height-factor.
+
+A `height-factor` is the unit which tells you that how many times the font-size should be multiplied by it to get actual `line-height`.
 
 For example,
 ```
 .headingXXL-Desktop {
-  line-height: 1.25; /* looks good on large screens */
+  line-height: 60px; /* (1.5) looks good on large screens */
   font-size: 40px;
 }
 
 .headingXXL-Mobile {
-  line-height: 1.5; /* looks good on small screens */
+  line-height: 38px; /* (1.3) looks good on small screens */
   font-size: 28px;
 }
 ```
@@ -120,14 +122,15 @@ General Formula,
 And will round-off the resulting value.
 
 ### **Storage of Units**
+**Global Level Tokens:** All the font attributes such as `font-family`, `line-height`, `font-size` & `font-weight` will be stored as global-level tokens.
 
-Units such as `line-height`, `letter-spacing`, `case` should not be stored separately. As the implementation doesn't have any logic to it. It is too much dependent on the type of font or the font-family we are using. So I'd suggest that we should store everything inside the typography scale itself.
+**Alias-Level Tokens:** Text colors will be stored as a alias/theme-level tokens.
 
-Also, the scale should be stored at theme level rather than at a global level. So that, in case if there is any new product in the future, it will be flexible to interchange things that way. For now all the products will follow the same font structure as mentioned above.
+**Component-Level Tokens:** The main typography-scale such as `headings`, `body`, etc. will be stored as component-level tokens.
 
 ### **Current Limitations**
 There are two major limitations while scaling typography to multiple breakpoints,
-1. **It does not cater to landing/marketing pages.** Which are generally much larger compared to the size-ratio on the dashboard (Maybe a [Major Third](https://type-scale.com/?size=14&scale=1.125&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=Poppins&bodyfontweight=400&lineheight=1.65&backgroundcolor=white&fontcolor=%23333&preview=false) scale will work better). This is currently being looked at by the comm. design team based on the same principles.
+1. **Need of a different typography scale.** If any product wants to bring in their own typography scale then they need to override the current typography scale (without addition/subtraction of any levels) provided by blade. This also means that you cannot add/remove levels from the base scale. This is currently being looked at by the comm. design team.
 2. **Same type scaling across all devices/breakpoints.** After the type scale is defined, we also need to define the scale across multiple device sizes. There are few approaches that we've came up with and after research from other DS/products like *GitHub*, *Eightshapes*, *Paystack*, *Stripe*, and a few more we've observed that for dashboards generally tweaking the **heading** sizes works best and the base font-size will remain same for all other devices/breakpoints.
 
 We'll look into the responsive type scale and see what approach fits best for our use case.
@@ -148,10 +151,10 @@ In this type of scaling the modular scale changes on every breakpoint. For examp
 ### **Example:**
 This is how it will look like across desktop & mobile.
 
-- **Type Unit Scale**
+- **Type Unit Scale:** These are stored as global tokens which can be utilised by the alias-level or component-level tokens to make sense of things.
 ![Type Unit Scale (Typography)](./images/typography/type-unit-scale.png)
 
-- **Typography Scale**
+- **Typography Scale:** These are stored as component-level tokens which can be utilised by the components in the system to make meaning of things.
 ![Typography Scale on Desktop vs Mobile (Typography)](./images/typography/typography-scale.png)
 
 - **Another visual indicator**
@@ -161,10 +164,7 @@ This is how it will look like across desktop & mobile.
 # Drawbacks/Constraints
 Few things to consider here:
 - As we are moving towards adaptive-layout so we need to consider - should we also support responsive layout? For both cases, I don't see any challenges as the typography system remains the same.
-- How will this be managed on the tech-side? This might create more work as we'll have to maintain more scales,
-  - Landing/Marketing page (mobile & desktop/tablets)
-  - Product/Dashboard (mobile & desktop/tablets)
-  - Emails
+- If any product wants to bring in their own typography scale then they need to override the current typography scale provided by blade. This also means that you cannot add/remove levels from the base scale
 
 # Alternatives
 Few other things we considered:
@@ -194,8 +194,8 @@ This type of scale is a bit complex and very dynamic, as per our use case we don
 
 > [Read here](https://blog.logrocket.com/the-elements-of-responsive-typography/) for more info on fluid typography.
 
-### **Custom Scaling**
-As the name suggests this type of scaling is preferred based on visual assumptions and is very custom in nature. The decisions around the type scale here doesn't hold any principles and are best suited for fancy marketing/landing pages.
+### **Visual Scaling**
+As the name suggests this type of scaling is preferred based on visual assumptions and is very custom in nature. The decisions around the type scale here doesn't hold any principles and are best suited for fancy landing pages.
 
 > [Read here](https://eightshapes.com/articles/typography-in-design-systems/) for more info on responsive typography.
 
@@ -212,9 +212,7 @@ Two types of people need to be educated (**designers & developers**).
 - For some cases, we might also need usage guidelines to help the consumers go-through before implementing anything based on content.
 
 # Open Questions
-- How are we going to implement this type-scale? Using styled-components or CSS?
-- Marketing/Landing pages will need their own responsive type-scale as the scale ratio for such sites is more compared to the product. This is already in progress from the Comm. design team. Should we include that as well in the current system? Just for reference, Figma uses [FLEGO](https://www.figma.com/file/MVngi9fGdUpkEmjQ5WOqHX/FLEGO-%E2%80%94-Figma-Web-LEGOs-2019-(DS.com)?node-id=0%3A5) *(Figma file)* - this is how they are using the same system for the overall product/marketing/landing pages.
-
+- Tech implementation of type-units & type-scale?
 # References
 - [Typography in Design Systems](https://eightshapes.com/articles/typography-in-design-systems/) by *Nathan Curtis*
 - [Exploring Responsive Type Scales](https://medium.com/sketch-app-sources/exploring-responsive-type-scales-cf1da541be54) by *Joseph Mueller*
