@@ -20,6 +20,7 @@ const icons = {
   chevronRight: require('./ChevronRight').default,
   chevronUp: require('./ChevronUp').default,
   clipboard: require('./Clipboard').default,
+  clock: require('./Clock').default,
   close: require('./Close').default,
   copy: require('./Copy').default,
   emptyCircle: require('./EmptyCircle').default,
