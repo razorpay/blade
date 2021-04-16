@@ -1,22 +1,22 @@
 import { useState, useCallback } from 'react';
-import { ColorScheme } from '../../components/ThemeProvider/ThemeProvider';
+import { ColorSchemeNames, colorSchemeNames } from '../../tokens/theme';
 import getColorScheme from '../getColorScheme';
 
 export type UseColorScheme = {
-  colorScheme: Exclude<ColorScheme, 'system'>;
-  setColorScheme: (colorScheme: ColorScheme) => void;
+  colorScheme: Exclude<ColorSchemeNames, 'system'>;
+  setColorScheme: (colorScheme: ColorSchemeNames) => void;
 };
 
-const useColorScheme = (initialColorScheme: ColorScheme = 'light'): UseColorScheme => {
+const useColorScheme = (initialColorScheme: ColorSchemeNames = 'light'): UseColorScheme => {
   // if colorscheme defined use that else fallback to 'light'
-  const [colorSchemeState, setColorSchemeState] = useState<Exclude<ColorScheme, 'system'>>(() =>
-    getColorScheme(initialColorScheme),
+  const [colorSchemeState, setColorSchemeState] = useState<Exclude<ColorSchemeNames, 'system'>>(
+    () => getColorScheme(initialColorScheme),
   );
 
-  const setColorScheme = useCallback(function setThemeMode(colorScheme: ColorScheme) {
-    if (!['light', 'dark', 'system'].includes(colorScheme)) {
+  const setColorScheme = useCallback(function setThemeMode(colorScheme: ColorSchemeNames) {
+    if (!colorSchemeNames.includes(colorScheme)) {
       throw new Error(
-        `[useColorScheme]: Expected color scheme to be one of [light, dark, system] but received ${colorScheme}`,
+        `[useColorScheme]: Expected color scheme to be one of [${colorSchemeNames.toString()}] but received ${colorScheme}`,
       );
     }
     setColorSchemeState(getColorScheme(colorScheme));

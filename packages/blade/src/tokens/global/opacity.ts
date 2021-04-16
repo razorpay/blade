@@ -1,14 +1,5 @@
-type opacity = Readonly<{
-  1: number;
-  2: number;
-  3: number;
-  4: number;
-  5: number;
-  6: number;
-  7: number;
-  8: number;
-  9: number;
-}>;
+type OpacityLevels = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+type opacity = Readonly<Record<OpacityLevels, number>>;
 
 const opacities: opacity = {
   1: 0.09,

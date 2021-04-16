@@ -1,8 +1,8 @@
 import { Appearance } from 'react-native';
-import { ColorScheme } from '../../components/ThemeProvider/ThemeProvider';
+import { ColorSchemeNames } from '../../tokens/theme';
 
-const getColorScheme = (colorScheme: ColorScheme): Exclude<ColorScheme, 'system'> => {
-  // @TODO: create a useMediaQuery hook with an event listener which will subscribe to changes and move all this logic there
+const getColorScheme = (colorScheme: ColorSchemeNames): Exclude<ColorSchemeNames, 'system'> => {
+  // @TODO: convert this to hook as Appearance API also adds an eventListener which subsribes to the colorscheme changes on the device
   if (colorScheme === 'light' || colorScheme === 'dark') {
     return colorScheme;
   }

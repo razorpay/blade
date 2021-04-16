@@ -1,6 +1,6 @@
 import opacity from './opacity';
 
-export type ColorChromaticScale = Readonly<{
+type ColorChromaticScale = Readonly<{
   50: string;
   100: string;
   200: string;
@@ -17,12 +17,7 @@ export type ColorChromaticScale = Readonly<{
   a200: string;
 }>;
 
-type ColorChromatic = Record<
-  'azure' | 'emerald' | 'crimson' | 'cider' | 'orchid' | 'magenta' | 'sapphire',
-  ColorChromaticScale
->;
-
-export type ColorNeutralScale = Readonly<{
+type ColorNeutralScale = Readonly<{
   0: string;
   50: string;
   100: string;
@@ -40,19 +35,24 @@ export type ColorNeutralScale = Readonly<{
   1300: string;
 }>;
 
-type ColorNeutral = Record<
-  | 'blueGrayLight'
-  | 'blueGrayDark'
-  | 'navyGrayLight'
-  | 'navyGrayDark'
-  | 'ashGrayLight'
-  | 'ashGrayDark',
-  ColorNeutralScale
->;
-
 type Color = Readonly<{
-  chromatic: ColorChromatic;
-  neutral: ColorNeutral;
+  chromatic: {
+    azure: ColorChromaticScale;
+    emerald: ColorChromaticScale;
+    crimson: ColorChromaticScale;
+    cider: ColorChromaticScale;
+    orchid: ColorChromaticScale;
+    magenta: ColorChromaticScale;
+    sapphire: ColorChromaticScale;
+  };
+  neutral: {
+    blueGrayLight: ColorNeutralScale;
+    blueGrayDark: ColorNeutralScale;
+    navyGrayLight: ColorNeutralScale;
+    navyGrayDark: ColorNeutralScale;
+    ashGrayLight: ColorNeutralScale;
+    ashGrayDark: ColorNeutralScale;
+  };
 }>;
 
 const colors: Color = {
