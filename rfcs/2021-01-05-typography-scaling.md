@@ -144,14 +144,14 @@ Our product is majorly used on mobiles/tablets/desktops. Therefore, We'll  consi
 
 ![Scaling: Multiple type scales ratio](./images/typography/typography-multi-type-scaling.png)
 
-In this type of scaling the modular scale changes on every breakpoint. For example: **mobiles** will use `Minor Third (1.2)` and **desktops/tablets** will use `Custom Scale (1.1)`.
+In this type of scaling the modular scale changes on every breakpoint. For example: **desktops/tablets** will use `Major Second (1.125)` and **mobiles** will use `Custom Scale (1.1)`.
 
 >📝 Note: Here we're rounding-off all the numbers for the sake of simplicity and to align the content according to the grid-system. Also, various browsers treat fractional font sizes differently.
 
 ### **Example:**
 This is how it will look like across desktop & mobile.
 
-- **Type Unit Scale:** These are stored as global tokens which can be utilised by the alias-level or component-level tokens to make sense of things.
+- **Type Unit Scale:** These are stored as global tokens which can be utilised by the theme-level or component-level tokens to make sense of things.
 ![Type Unit Scale (Typography)](./images/typography/type-unit-scale.png)
 
 - **Typography Scale:** These are stored as component-level tokens which can be utilised by the components in the system to make meaning of things.
