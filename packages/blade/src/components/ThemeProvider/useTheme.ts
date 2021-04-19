@@ -1,5 +1,5 @@
 import { useContext, createContext } from 'react';
-import { lightTheme, Theme } from '../../tokens/theme';
+import { paymentsTheme, Theme } from '../../tokens/theme';
 import { UseColorScheme } from '../../utils/useColorScheme';
 
 export type ThemeContext = {
@@ -7,9 +7,9 @@ export type ThemeContext = {
 } & UseColorScheme;
 
 export const ThemeContext = createContext<ThemeContext>({
-  theme: lightTheme,
+  theme: paymentsTheme,
   colorScheme: 'light',
-  setColorScheme: () => '',
+  setColorScheme: () => null,
 });
 
 const useTheme = (): ThemeContext => {

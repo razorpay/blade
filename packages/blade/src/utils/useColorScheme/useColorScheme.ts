@@ -8,7 +8,7 @@ export type UseColorScheme = {
 };
 
 const useColorScheme = (initialColorScheme: ColorSchemeNames = 'light'): UseColorScheme => {
-  // if colorscheme defined use that else fallback to 'light'
+  // if colorScheme defined use that else fallback to 'light'
   const [colorSchemeState, setColorSchemeState] = useState<Exclude<ColorSchemeNames, 'system'>>(
     () => getColorScheme(initialColorScheme),
   );
