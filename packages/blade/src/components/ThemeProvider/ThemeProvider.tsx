@@ -1,6 +1,6 @@
 import React, { ReactNode, ReactElement } from 'react';
 import { useColorScheme } from '../../utils';
-import { Theme, ColorSchemeNames, colorSchemeNames } from '../../tokens/theme';
+import { Theme, ColorSchemeNames, colorSchemeNamesInput } from '../../tokens/theme';
 import { ThemeContext } from './useTheme';
 
 type ThemeProviderProps = {
@@ -30,9 +30,9 @@ const ThemeProvider = ({
    * Future:
    * - locale
    */
-  if (!colorSchemeNames.includes(initialColorScheme)) {
+  if (!colorSchemeNamesInput.includes(initialColorScheme)) {
     throw new Error(
-      `[ThemeProvider]: Expected color scheme to be one of [${colorSchemeNames.toString()}] but received ${initialColorScheme}`,
+      `[ThemeProvider]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${initialColorScheme}`,
     );
   }
 

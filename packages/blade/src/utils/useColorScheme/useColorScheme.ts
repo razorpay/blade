@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { ColorSchemeNames, ColorSchemeNamesInput, colorSchemeNames } from '../../tokens/theme';
+import { ColorSchemeNames, ColorSchemeNamesInput, colorSchemeNamesInput } from '../../tokens/theme';
 import getColorScheme from '../getColorScheme';
 
 export type UseColorScheme = {
@@ -14,9 +14,9 @@ const useColorScheme = (initialColorScheme: ColorSchemeNamesInput = 'light'): Us
   );
 
   const setColorScheme = useCallback(function setThemeMode(colorScheme: ColorSchemeNamesInput) {
-    if (!colorSchemeNames.includes(colorScheme)) {
+    if (!colorSchemeNamesInput.includes(colorScheme)) {
       throw new Error(
-        `[useColorScheme]: Expected color scheme to be one of [${colorSchemeNames.toString()}] but received ${colorScheme}`,
+        `[useColorScheme]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${colorScheme}`,
       );
     }
     setColorSchemeState(getColorScheme(colorScheme));
