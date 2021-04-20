@@ -1,6 +1,6 @@
-import { ColorSchemeNames } from '../../tokens/theme';
+import { ColorSchemeNames, ColorSchemeNamesInput } from '../../tokens/theme';
 
-const getColorScheme = (colorScheme: ColorSchemeNames): Exclude<ColorSchemeNames, 'system'> => {
+const getColorScheme = (colorScheme: ColorSchemeNamesInput): ColorSchemeNames => {
   // @TODO: create a useMediaQuery hook with an event listener which will subscribe to changes and move all this logic there
   const colorSchemeMediaQueryMap = {
     light: '(prefers-color-scheme: light)',

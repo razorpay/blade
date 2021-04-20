@@ -1,7 +1,8 @@
 import { Spacing } from '../global/spacing';
 import { Border } from '../global/border';
 
-export type ColorSchemeNames = 'light' | 'dark' | 'system';
+export type ColorSchemeNames = 'light' | 'dark';
+export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
 
 export type ColorSchemeModes = {
   onLight: string;
