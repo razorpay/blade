@@ -10,6 +10,9 @@
   "workspaces": [
     "packages/**"
   ],
+  "nohoist": [
+    "packages/**"
+  ],
   "scripts": {
     "web": "npm run web:storybook",
     "web:storybook": "BABEL_ENV=web-development start-storybook -c ./storybook/web -p 9009 -s docs",
