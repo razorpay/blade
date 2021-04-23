@@ -7,12 +7,14 @@
   "engines": {
     "node": ">=12.19.0"
   },
-  "workspaces": [
-    "packages/**"
-  ],
-  "nohoist": [
-    "packages/@razorpay/blade/**"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/**"
+    ],
+    "nohoist": [
+      "@razorpay/blade/**"
+    ]
+  },
   "scripts": {
     "web": "npm run web:storybook",
     "web:storybook": "BABEL_ENV=web-development start-storybook -c ./storybook/web -p 9009 -s docs",
