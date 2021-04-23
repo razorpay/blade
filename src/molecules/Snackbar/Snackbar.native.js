@@ -111,59 +111,61 @@ const Snackbar = ({ variant, title, action, onClose, maxLines, icon, position })
         }}
         onLayout={handleLayout}
       >
-        <Size width={`${SNACKBAR_WIDTH}px`}>
-          <Space padding={[1.5]}>
-            <Flex flexDirection="row" alignItems="center">
-              <SnackbarContainer variant={variant}>
-                {icon ? (
-                  <Space padding={[0, 1, 0, 0]}>
-                    <View>
-                      <Icon name={icon} size="medium" fill="light.900" testID="snackbar-icon" />
-                    </View>
+        {isVisible ? (
+          <Size width={`${SNACKBAR_WIDTH}px`}>
+            <Space padding={[1.5]}>
+              <Flex flexDirection="row" alignItems="center">
+                <SnackbarContainer variant={variant}>
+                  {icon ? (
+                    <Space padding={[0, 1, 0, 0]}>
+                      <View>
+                        <Icon name={icon} size="medium" fill="light.900" testID="snackbar-icon" />
+                      </View>
+                    </Space>
+                  ) : null}
+                  <Space padding={[0, 2, 0, 0]}>
+                    <Flex flex={1}>
+                      <View>
+                        <Text size="medium" color="light.900" maxLines={maxLines}>
+                          {title}
+                        </Text>
+                      </View>
+                    </Flex>
                   </Space>
-                ) : null}
-                <Space padding={[0, 2, 0, 0]}>
-                  <Flex flex={1}>
-                    <View>
-                      <Text size="medium" color="light.900" maxLines={maxLines}>
-                        {title}
-                      </Text>
-                    </View>
-                  </Flex>
-                </Space>
-                {action?.label ? (
-                  <Space padding={[0, 0.75, 0, 0]}>
-                    <View>
-                      <Button
-                        variant="secondary"
-                        size="xsmall"
-                        variantColor="light"
-                        onClick={handleAction}
-                        testID="ds-snackbar-action-button"
-                      >
-                        {action.label}
-                      </Button>
-                    </View>
-                  </Space>
-                ) : null}
-                {onClose ? (
-                  <Space padding={[0, 0.75, 0, 0]}>
-                    <View>
-                      <Button
-                        variant="tertiary"
-                        size="xsmall"
-                        icon="close"
-                        variantColor="light"
-                        onClick={handleClose}
-                        testID="ds-snackbar-close-button"
-                      />
-                    </View>
-                  </Space>
-                ) : null}
-              </SnackbarContainer>
-            </Flex>
-          </Space>
-        </Size>
+                  {action?.label ? (
+                    <Space padding={[0, 0.75, 0, 0]}>
+                      <View>
+                        <Button
+                          variant="secondary"
+                          size="xsmall"
+                          variantColor="light"
+                          onClick={handleAction}
+                          testID="ds-snackbar-action-button"
+                        >
+                          {action.label}
+                        </Button>
+                      </View>
+                    </Space>
+                  ) : null}
+                  {onClose ? (
+                    <Space padding={[0, 0.75, 0, 0]}>
+                      <View>
+                        <Button
+                          variant="tertiary"
+                          size="xsmall"
+                          icon="close"
+                          variantColor="light"
+                          onClick={handleClose}
+                          testID="ds-snackbar-close-button"
+                        />
+                      </View>
+                    </Space>
+                  ) : null}
+                </SnackbarContainer>
+              </Flex>
+            </Space>
+          </Size>
+        ) : null}
       </Animated.View>
     </Position>
   );
@@ -172,7 +174,10 @@ const Snackbar = ({ variant, title, action, onClose, maxLines, icon, position })
 Snackbar.propTypes = {
   variant: PropTypes.oneOf(['positive', 'negative', 'warning', 'neutral']),
   title: PropTypes.string,
-  action: PropTypes.shape({ label: PropTypes.string, onClick: PropTypes.func }),
+  action: PropTypes.shape({
+    label: PropTypes.string,
+    onClick: PropTypes.func,
+  }),
   onClose: PropTypes.func,
   maxLines: PropTypes.number,
   icon: PropTypes.oneOf(Object.keys(icons)),
