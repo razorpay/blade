@@ -11,7 +11,7 @@
     "packages/**"
   ],
   "nohoist": [
-    "packages/**"
+    "packages/@razorpay/blade/**"
   ],
   "scripts": {
     "web": "npm run web:storybook",
