@@ -115,7 +115,7 @@ const Snackbar = ({ variant, title, action, onClose, maxLines, icon, position })
         }}
         onLayout={handleLayout}
       >
-        {isContentVisible ? (
+        {isVisible || isContentVisible ? (
           <Size width={`${SNACKBAR_WIDTH}px`}>
             <Space padding={[1.5]}>
               <Flex flexDirection="row" alignItems="center">
