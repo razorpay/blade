@@ -1,6 +1,6 @@
 {
   "exclude": [
-    "**/__tests__/**",
+    "src/__tests__/**",
     "packages/tools/figma-plugin-version-history/**"
   ] /* Enable incremental compilation */,
   "include": ["packages"],

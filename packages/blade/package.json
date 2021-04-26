@@ -8,6 +8,9 @@
     "blade": "3.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-native": "0.64.0"
+    "react-native": "0.64.0",
+    "jest-matchmedia-mock": "1.1.0",
+    "@testing-library/react-native": "7.2.0",
+    "@testing-library/react-hooks": "5.1.2"
   }
 }

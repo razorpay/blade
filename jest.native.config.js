@@ -3,7 +3,9 @@ const ignores = ['/node_modules/'];
 
 module.exports = {
   preset: '@testing-library/react-native',
-  transform: { '^.+\\.js$': './jest-preprocess.js' },
+  transform: {
+    '^.+\\.js$': './jest-preprocess.js',
+  },
   setupFiles: [
     ...jestPreset.setupFiles,
     './jest-setup.native.js',
