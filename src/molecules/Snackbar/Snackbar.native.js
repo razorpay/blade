@@ -42,6 +42,7 @@ const SnackbarContainer = styled(View)`
 const Snackbar = ({ variant, title, action, onClose, maxLines, icon, position }) => {
   const { isVisible, close } = useSnackbar();
   const [bottomY, setBottomY] = useState(0);
+  const [isContentVisible, setIsContentVisible] = useState(false);
   const animationConfig = {
     animationValue: {
       initial: 0,
@@ -70,6 +71,7 @@ const Snackbar = ({ variant, title, action, onClose, maxLines, icon, position })
 
   useEffect(() => {
     if (isVisible) {
+      setIsContentVisible(true);
       Animated.timing(visibility, {
         toValue: animationConfig.animationValue.final,
         useNativeDriver: true,
@@ -80,7 +82,9 @@ const Snackbar = ({ variant, title, action, onClose, maxLines, icon, position })
         toValue: animationConfig.animationValue.initial,
         useNativeDriver: true,
         duration: animationConfig.duration,
-      }).start();
+      }).start(() => {
+        setIsContentVisible(false);
+      });
     }
   }, [isVisible]);
 
@@ -111,7 +115,7 @@ const Snackbar = ({ variant, title, action, onClose, maxLines, icon, position })
         }}
         onLayout={handleLayout}
       >
-        {isVisible ? (
+        {isContentVisible ? (
           <Size width={`${SNACKBAR_WIDTH}px`}>
             <Space padding={[1.5]}>
               <Flex flexDirection="row" alignItems="center">
