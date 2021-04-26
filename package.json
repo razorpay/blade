@@ -10,9 +10,6 @@
   "workspaces": {
     "packages": [
       "packages/**"
-    ],
-    "nohoist": [
-      "@razorpay/blade/**"
     ]
   },
   "scripts": {
