@@ -6,7 +6,29 @@ module.exports = {
     'max-lines-per-function': 'off',
     'no-console': ['warn'],
     complexity: ['off'],
-    'object-property-newline': ['error', { allowAllPropertiesOnSameLine: false }],
+    'object-property-newline': [
+      'error',
+      {
+        allowAllPropertiesOnSameLine: false,
+      },
+    ],
+    'object-curly-newline': [
+      'error',
+      {
+        ObjectExpression: {
+          multiline: true,
+          minProperties: 1,
+        },
+        ObjectPattern: {
+          multiline: true,
+        },
+        ImportDeclaration: 'never',
+        ExportDeclaration: {
+          multiline: true,
+          minProperties: 3,
+        },
+      },
+    ],
     'import/order': [
       'error',
       {
@@ -24,6 +46,7 @@ module.exports = {
         extensions: [
           '.js',
           '.ts',
+          '.tsx',
           '.web.js',
           '.web.ts',
           '.web.tsx',
@@ -55,6 +78,8 @@ module.exports = {
       },
       plugins: ['@typescript-eslint/eslint-plugin'],
       rules: {
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': ['error'],
         'no-undef': 'off',
         'react/react-in-jsx-scope': 'error',
         'react/jsx-filename-extension': ['error', { extensions: ['.ts', '.tsx'] }],
