@@ -12,7 +12,7 @@ type BorderWidth = Readonly<{
   thin: number;
 }>;
 
-type Border = Readonly<{
+export type Border = Readonly<{
   radius: BorderRadius;
   width: BorderWidth;
 }>;
