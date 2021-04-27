@@ -1,6 +1,6 @@
 import opacity from './opacity';
 
-type colorChromaticScale = Readonly<{
+type ColorChromaticScale = Readonly<{
   50: string;
   100: string;
   200: string;
@@ -17,7 +17,7 @@ type colorChromaticScale = Readonly<{
   a200: string;
 }>;
 
-type colorNeutralScale = Readonly<{
+type ColorNeutralScale = Readonly<{
   0: string;
   50: string;
   100: string;
@@ -35,27 +35,27 @@ type colorNeutralScale = Readonly<{
   1300: string;
 }>;
 
-type color = Readonly<{
+type Color = Readonly<{
   chromatic: {
-    azure: colorChromaticScale;
-    emerald: colorChromaticScale;
-    crimson: colorChromaticScale;
-    cider: colorChromaticScale;
-    orchid: colorChromaticScale;
-    magenta: colorChromaticScale;
-    sapphire: colorChromaticScale;
+    azure: ColorChromaticScale;
+    emerald: ColorChromaticScale;
+    crimson: ColorChromaticScale;
+    cider: ColorChromaticScale;
+    orchid: ColorChromaticScale;
+    magenta: ColorChromaticScale;
+    sapphire: ColorChromaticScale;
   };
   neutral: {
-    blueGrayLight: colorNeutralScale;
-    blueGrayDark: colorNeutralScale;
-    navyGrayLight: colorNeutralScale;
-    navyGrayDark: colorNeutralScale;
-    ashGrayLight: colorNeutralScale;
-    ashGrayDark: colorNeutralScale;
+    blueGrayLight: ColorNeutralScale;
+    blueGrayDark: ColorNeutralScale;
+    navyGrayLight: ColorNeutralScale;
+    navyGrayDark: ColorNeutralScale;
+    ashGrayLight: ColorNeutralScale;
+    ashGrayDark: ColorNeutralScale;
   };
 }>;
 
-const colors: color = {
+const colors: Color = {
   chromatic: {
     azure: {
       50: `hsla(222, 100%, 96%, ${opacity[9]})`,
