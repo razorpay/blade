@@ -7,9 +7,11 @@
   "engines": {
     "node": ">=12.19.0"
   },
-  "workspaces": [
-    "packages/**"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/**"
+    ]
+  },
   "scripts": {
     "web": "npm run web:storybook",
     "web:storybook": "BABEL_ENV=web-development start-storybook -c ./storybook/web -p 9009 -s docs",
@@ -44,9 +46,9 @@
     "@babel/plugin-proposal-nullish-coalescing-operator": "7.12.1",
     "@babel/preset-env": "7.9.0",
     "@babel/preset-react": "7.9.4",
-    "@babel/preset-typescript": "7.12.7",
+    "@babel/preset-typescript": "7.13.0",
     "@babel/runtime": "7.9.2",
-    "@react-native-community/eslint-config": "0.0.5",
+    "@react-native-community/cli-platform-android": "3.1.4",
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-json": "4.0.2",
     "@rollup/plugin-node-resolve": "7.1.1",
@@ -69,8 +71,8 @@
     "@types/react": "16.14.0",
     "@types/react-native": "0.61.5",
     "@types/styled-components": "5.0.1",
-    "@typescript-eslint/eslint-plugin": "4.11.0",
-    "@typescript-eslint/parser": "4.11.0",
+    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/parser": "4.22.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "24.9.0",
     "babel-loader": "8.1.0",
@@ -106,7 +108,7 @@
     "stylelint-config-recommended": "3.0.0",
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "1.10.0",
-    "typescript": "4.1.3"
+    "typescript": "4.2.4"
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
