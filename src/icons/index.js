@@ -48,6 +48,7 @@ const icons = {
   phone: require('./Phone').default,
   power: require('./Power').default,
   profile: require('./Profile').default,
+  plus: require('./Plus').default,
   refund: require('./Refund').default,
   search: require('./Search').default,
   share: require('./Share').default,
