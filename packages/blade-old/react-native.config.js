@@ -7,6 +7,6 @@ module.exports = {
     },
   },
   dependency: {
-    assets: ['../../public/fonts/'],
+    assets: ['public/fonts/'],
   },
 };

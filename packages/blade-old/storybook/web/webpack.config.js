@@ -26,7 +26,7 @@ module.exports = ({ config }) => {
   config.plugins.push(
     new CopyWebpackPlugin([
       {
-        from: '../../public/fonts',
+        from: 'public/fonts',
         to: 'fonts',
       },
     ]),
