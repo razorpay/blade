@@ -14,7 +14,9 @@
       "**"
     ]
   },
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint --ext js,jsx,ts,tsx packages"
+  },
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "26.0.23",

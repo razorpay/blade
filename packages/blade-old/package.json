@@ -17,7 +17,8 @@
     "test:native": "BABEL_ENV=development jest -c ./jest.native.config.js",
     "test:native:coverage": "yarn run test:native --coverage",
     "test:web": "BABEL_ENV=web-test jest -c ./jest.web.config.js",
-    "test:web:coverage": "yarn run test:web --coverage"
+    "test:web:coverage": "yarn run test:web --coverage",
+    "version:publish": "npm version patch -m \"chore(blade-old): update version to %s [ci skip]\""
   },
   "dependencies": {
     "@react-native-community/async-storage": "1.7.1",

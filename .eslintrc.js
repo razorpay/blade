@@ -94,6 +94,7 @@ module.exports = {
         // '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/explicit-function-return-type': 'error',
+        '@typescript-eslint/no-unnecessary-condition': 'off',
       },
       extends: [
         'plugin:@typescript-eslint/recommended',
