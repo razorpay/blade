@@ -15,7 +15,8 @@
     ]
   },
   "scripts": {
-    "lint": "eslint --ext js,jsx,ts,tsx packages"
+    "lint": "eslint --ext js,jsx,ts,tsx packages",
+    "release": "changeset publish"
   },
   "dependencies": {},
   "devDependencies": {
