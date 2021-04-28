@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade-old",
   "author": "kamleshchandnani",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "engines": {
     "node": ">=12.19.0"
