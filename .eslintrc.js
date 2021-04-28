@@ -1,8 +1,7 @@
 module.exports = {
-  extends: ['kentcdodds', 'kentcdodds/react', 'plugin:prettier/recommended'],
+  extends: ['kentcdodds', 'kentcdodds/react', 'prettier'],
   rules: {
     'no-negated-condition': 'off',
-    'import/order': 'off',
     'max-lines-per-function': 'off',
     'no-console': ['warn'],
     complexity: ['off'],
@@ -25,14 +24,16 @@ module.exports = {
         ImportDeclaration: 'never',
         ExportDeclaration: {
           multiline: true,
-          minProperties: 3,
+          minProperties: 10,
         },
       },
     ],
     'import/order': [
       'error',
       {
-        alphabetize: { order: 'ignore' },
+        alphabetize: {
+          order: 'ignore',
+        },
       },
     ],
   },
@@ -82,18 +83,24 @@ module.exports = {
         '@typescript-eslint/no-use-before-define': ['error'],
         'no-undef': 'off',
         'react/react-in-jsx-scope': 'error',
-        'react/jsx-filename-extension': ['error', { extensions: ['.ts', '.tsx'] }],
+        'react/jsx-filename-extension': [
+          'error',
+          {
+            extensions: ['.ts', '.tsx'],
+          },
+        ],
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unused-vars': ['error'],
         // '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/explicit-function-return-type': 'error',
+        '@typescript-eslint/no-unnecessary-condition': 'off',
       },
       extends: [
         'plugin:@typescript-eslint/recommended',
         // 'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'prettier/@typescript-eslint',
+        'prettier',
       ],
     },
   ],
