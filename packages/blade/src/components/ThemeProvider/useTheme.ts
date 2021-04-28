@@ -2,9 +2,9 @@ import { useContext, createContext } from 'react';
 import { paymentsTheme, Theme } from '../../tokens/theme';
 import { UseColorScheme } from '../../utils/useColorScheme';
 
-export type ThemeContext = {
+export type ThemeContext = UseColorScheme & {
   theme: Theme;
-} & UseColorScheme;
+};
 
 export const ThemeContext = createContext<ThemeContext>({
   theme: paymentsTheme,
