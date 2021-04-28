@@ -32,11 +32,12 @@ jobs:
       - name: Run Native Tests
         run: yarn test:native
         working-directory: packages/blade-old
-      - name: Copy .npmrc to packages/blade-old for publishing
-        run: cp .npmrc packages/blade-old
-      - name: Publish package
-        run: |
-          git config --global user.email "tools+cibot@razorpay.com"
-          git config --global user.name "rzpcibot"
-          yarn version:publish
-        working-directory: packages/blade-old
+      - name: Create Release Pull Request & Publish packages
+        id: changesets
+        uses: changesets/action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+        with:
+          publish: yarn release
+          commit: "build(blade-old): update version"
+          title: "build(blade-old): update version"
