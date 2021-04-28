@@ -6,6 +6,10 @@
   "engines": {
     "node": ">=12.19.0"
   },
+  "files": [
+    "src",
+    "public"
+  ],
   "scripts": {
     "web": "npm run web:storybook",
     "web:storybook": "BABEL_ENV=web-development start-storybook -c ./storybook/web -p 9009 -s docs",
