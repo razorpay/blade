@@ -14,9 +14,12 @@
       "**"
     ]
   },
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint --ext js,jsx,ts,tsx packages"
+  },
   "dependencies": {},
   "devDependencies": {
+    "@changesets/cli": "2.16.0",
     "@types/jest": "26.0.23",
     "@types/react": "17.0.4",
     "@types/react-native": "0.64.4",

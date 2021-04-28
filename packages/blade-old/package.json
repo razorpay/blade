@@ -6,6 +6,10 @@
   "engines": {
     "node": ">=12.19.0"
   },
+  "files": [
+    "src",
+    "public"
+  ],
   "scripts": {
     "web": "npm run web:storybook",
     "web:storybook": "BABEL_ENV=web-development start-storybook -c ./storybook/web -p 9009 -s docs",
@@ -17,7 +21,8 @@
     "test:native": "BABEL_ENV=development jest -c ./jest.native.config.js",
     "test:native:coverage": "yarn run test:native --coverage",
     "test:web": "BABEL_ENV=web-test jest -c ./jest.web.config.js",
-    "test:web:coverage": "yarn run test:web --coverage"
+    "test:web:coverage": "yarn run test:web --coverage",
+    "release": "changeset publish"
   },
   "dependencies": {
     "@react-native-community/async-storage": "1.7.1",
