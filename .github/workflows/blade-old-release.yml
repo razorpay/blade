@@ -32,6 +32,8 @@ jobs:
       - name: Run Native Tests
         run: yarn test:native
         working-directory: packages/blade-old
+      - name: Copy .npmrc to HOME directory
+        run: cp .npmrc $HOME
       - name: Create Release Pull Request & Publish packages
         id: changesets
         uses: changesets/action@master
