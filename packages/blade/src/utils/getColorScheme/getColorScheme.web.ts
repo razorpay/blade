@@ -1,10 +1,11 @@
 import { ColorSchemeNames, ColorSchemeNamesInput } from '../../tokens/theme';
 
-const getColorScheme = (colorScheme: ColorSchemeNamesInput = 'light'): ColorSchemeNames => {
+const getColorScheme = (colorScheme: ColorSchemeNamesInput): ColorSchemeNames => {
   // @TODO: create a useMediaQuery hook with an event listener which will subscribe to changes and move all this logic there
   const colorSchemeMediaQueryMap = {
     light: '(prefers-color-scheme: light)',
     dark: '(prefers-color-scheme: dark)',
+    system: 'default',
   };
   const supportsMatchMedia =
     typeof window !== 'undefined' && typeof window.matchMedia === 'function';

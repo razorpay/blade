@@ -1,7 +1,12 @@
 {
   "name": "@razorpay/blade",
+  "private": "true",
   "version": "0.0.1",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/razorpay/blade.git"
+  },
   "devDependencies": {
     "@types/react": "17.0.3",
     "@types/react-native": "0.64.2",
