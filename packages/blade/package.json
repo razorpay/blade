@@ -7,15 +7,29 @@
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
   },
+  "scripts": {
+    "test:web": "BABEL_ENV=web-test jest -c ./jest.web.config.js",
+    "test:native": "BABEL_ENV=development jest -c ./jest.native.config.js"
+  },
   "devDependencies": {
+    "@babel/core": "7.13.16",
+    "@babel/preset-env": "7.13.15",
+    "@babel/preset-react": "7.13.13",
+    "@babel/preset-typescript": "7.13.0",
+    "@testing-library/jest-dom": "5.12.0",
+    "@testing-library/react": "11.2.6",
+    "@testing-library/react-hooks": "5.1.2",
+    "@testing-library/react-native": "7.2.0",
     "@types/react": "17.0.3",
     "@types/react-native": "0.64.2",
-    "blade": "3.3.1",
+    "babel-jest": "26.6.3",
+    "babel-plugin-module-resolver": "4.1.0",
+    "babel-plugin-styled-components": "1.12.0",
+    "jest": "26.6.3",
+    "jest-matchmedia-mock": "1.1.0",
+    "metro-react-native-babel-preset": "0.66.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-native": "0.64.0",
-    "jest-matchmedia-mock": "1.1.0",
-    "@testing-library/react-native": "7.2.0",
-    "@testing-library/react-hooks": "5.1.2"
+    "react-native": "0.64.0"
   }
 }

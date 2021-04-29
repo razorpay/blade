@@ -1,4 +1,4 @@
-import React, { ReactNode, ReactElement } from 'react';
+import { ReactNode, ReactElement } from 'react';
 import { useColorScheme } from '../../utils';
 import { Theme, ColorSchemeNames, colorSchemeNamesInput } from '../../tokens/theme';
 import { ThemeContext } from './useTheme';
