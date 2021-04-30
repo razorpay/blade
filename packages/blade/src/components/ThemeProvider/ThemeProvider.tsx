@@ -1,11 +1,11 @@
 import { ReactNode, ReactElement } from 'react';
 import { useColorScheme } from '../../utils';
-import { Theme, ColorSchemeNames, colorSchemeNamesInput } from '../../tokens/theme';
+import { Theme, ColorSchemeNamesInput, colorSchemeNamesInput } from '../../tokens/theme';
 import { ThemeContext } from './useTheme';
 
-type ThemeProviderProps = {
+export type ThemeProviderProps = {
   theme: Theme;
-  colorScheme: ColorSchemeNames;
+  colorScheme?: ColorSchemeNamesInput;
   children: ReactNode;
 };
 
@@ -14,23 +14,13 @@ const ThemeProvider = ({
   colorScheme: initialColorScheme,
   children,
 }: ThemeProviderProps): ReactElement => {
-  /**
-   * return all the theme related stuff:
-   * [x] - current theme mode
-   * [x] - function to change theme mode
-   * [x] - current theme object
-   * [x] - Create a function/hook to identify system settings for color scheme mode
-   * [x] - eslint object multiline
-   * [x] - Rename the ThemeProvider to ThemeProvider
-   * [x] - Add types
-   * [x] - move the constants and check for color scheme out at a central place for color scheme
-   * [] - Add tests
-   * [] - a sandbox environment to test these new changes
-   *
-   * Future:
-   * - locale
-   */
-  if (!colorSchemeNamesInput.includes(initialColorScheme)) {
+  if (!theme) {
+    throw new Error(
+      `[ThemeProvider]: Expected valid theme object of type Theme to be passed but found ${typeof theme}`,
+    );
+  }
+
+  if (initialColorScheme && !colorSchemeNamesInput.includes(initialColorScheme)) {
     throw new Error(
       `[ThemeProvider]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${initialColorScheme}`,
     );

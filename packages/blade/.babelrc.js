@@ -11,6 +11,12 @@ module.exports = {
             },
           },
         ],
+        [
+          '@babel/plugin-transform-react-jsx',
+          {
+            runtime: 'automatic',
+          },
+        ],
       ],
     },
     production: {
@@ -22,6 +28,12 @@ module.exports = {
             alias: {
               '@storybook/react': '@storybook/react-native',
             },
+          },
+        ],
+        [
+          '@babel/plugin-transform-react-jsx',
+          {
+            runtime: 'automatic',
           },
         ],
       ],
