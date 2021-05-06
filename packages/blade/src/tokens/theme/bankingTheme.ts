@@ -401,11 +401,11 @@ const shadows: Shadows = {
   // shadowOpacity: 1, // this is required for iOS
 };
 
-const neoTheme: Theme = {
+const bankingTheme: Theme = {
   colors,
   border,
   spacing,
   shadows,
 };
 
-export default neoTheme;
+export default bankingTheme;

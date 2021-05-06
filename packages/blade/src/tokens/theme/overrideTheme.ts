@@ -1,6 +1,7 @@
-import { isEqual, merge, isPartialMatchObjectKeys } from '../../utils';
+import { cloneDeep, isEqual, merge, isPartialMatchObjectKeys } from '../../utils';
 import { paymentsTheme } from '../theme';
 import type { Theme } from './theme.d';
+// Pick < T, K extends keyof T > = { [P in K]: T[P]; }
 
 type OverrideTheme = {
   baseTheme: Theme;
@@ -11,8 +12,9 @@ const overrideTheme = ({ baseTheme, overrides }: OverrideTheme): Theme => {
   /**
    * [] check if the theme is of type base theme else throw error for ts users
    * [] check if the overrides are valid else throw error for ts users
-   * [] write tests
    * [] Make autocomplete work for TS users in properties
+   * [] Nested pick type for partial object keys
+   * [x] write tests
    * [x] check if the overrides are valid else throw error for non-ts users
    * [x] check if the theme is of type base theme else throw error for non-ts users
    * [x] deep merge theme and overrides and return the new theme
@@ -25,7 +27,7 @@ const overrideTheme = ({ baseTheme, overrides }: OverrideTheme): Theme => {
     throw new Error('[Blade:overrideTheme]: The overrides object is not valid');
   }
 
-  return merge(baseTheme, overrides);
+  return merge(cloneDeep(baseTheme), overrides);
 };
 
 export default overrideTheme;

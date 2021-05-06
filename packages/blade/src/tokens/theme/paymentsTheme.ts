@@ -401,11 +401,11 @@ const shadows: Shadows = {
   // shadowOpacity: 1, // this is required for iOS
 };
 
-const lightTheme: Theme = {
+const paymentsTheme: Theme = {
   colors,
   border,
   spacing,
   shadows,
 };
 
-export default lightTheme;
+export default paymentsTheme;
