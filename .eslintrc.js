@@ -79,10 +79,11 @@ module.exports = {
       },
       plugins: ['@typescript-eslint/eslint-plugin'],
       rules: {
+        'react/jsx-uses-react': 'off',
+        'react/react-in-jsx-scope': 'off',
         'no-use-before-define': 'off',
         '@typescript-eslint/no-use-before-define': ['error'],
         'no-undef': 'off',
-        'react/react-in-jsx-scope': 'error',
         'react/jsx-filename-extension': [
           'error',
           {
