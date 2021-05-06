@@ -15,8 +15,6 @@ jobs:
       - name: Yarn Lock Changes
         uses: Simek/yarn-lock-changes@main
         with:
-          collapsibleThreshold: '25'
           path: 'yarn.lock'
           token: ${{ secrets.CI_BOT_TOKEN }}
-          updateComment: 'true'
 
