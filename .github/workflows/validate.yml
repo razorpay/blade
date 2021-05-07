@@ -15,6 +15,6 @@ jobs:
       - name: Yarn Lock Changes
         uses: Simek/yarn-lock-changes@main
         with:
-          path: 'yarn.lock'
+          updateComment: false
           token: ${{ secrets.CI_BOT_TOKEN }}
 
