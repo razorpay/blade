@@ -83,6 +83,7 @@ describe('isPartialMatchObjectKeys', () => {
     };
 
     const isPartialMatchObjectKeysResult = isPartialMatchObjectKeys({
+      // @ts-expect-error checking the error case
       objectToMatch: overrides,
       objectToInspect: baseTheme,
     });

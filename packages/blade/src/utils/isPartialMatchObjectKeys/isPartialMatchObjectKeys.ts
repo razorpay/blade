@@ -1,22 +1,16 @@
 /* eslint-disable no-console */
 import isObject from 'lodash/isObject';
 
-type PartialMatchObjectShape = {
-  [key in number | string]: PartialMatchObjectShape | number | string;
+export type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends Record<number | string, unknown> ? DeepPartial<T[P]> : T[P];
 };
 
-// declare module "lodash" {
-//   interface LoDashStatic {
-//     isObject<T>(value?: T): value is T;
-//   }
-// }
-
-const isPartialMatchObjectKeys = ({
+const isPartialMatchObjectKeys = <ActualObject>({
   objectToMatch,
   objectToInspect,
 }: {
-  objectToMatch: Pick<PartialMatchObjectShape, keyof PartialMatchObjectShape>;
-  objectToInspect: PartialMatchObjectShape;
+  objectToMatch: DeepPartial<ActualObject>;
+  objectToInspect: ActualObject;
 }): boolean => {
   const matchResponses: boolean[] = [];
 
@@ -24,11 +18,11 @@ const isPartialMatchObjectKeys = ({
     innerObjectToMatch,
     innerObjectToInspect,
   }: {
-    innerObjectToMatch: Pick<PartialMatchObjectShape, keyof PartialMatchObjectShape>;
-    innerObjectToInspect: Pick<PartialMatchObjectShape, keyof PartialMatchObjectShape>;
+    innerObjectToMatch: DeepPartial<ActualObject>;
+    innerObjectToInspect: DeepPartial<ActualObject>;
   }): void => {
     for (const [key, valueToMatch] of Object.entries(innerObjectToMatch)) {
-      const valueToInspect = innerObjectToInspect[key];
+      const valueToInspect = innerObjectToInspect[key as keyof DeepPartial<ActualObject>];
 
       if (innerObjectToInspect.hasOwnProperty(key)) {
         if (

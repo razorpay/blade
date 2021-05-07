@@ -62,7 +62,6 @@ describe('overrideTheme', () => {
       },
     };
 
-    // @ts-expect-error change the type to nested pick in the souruce
     const overrideThemeResult = overrideTheme({ baseTheme: paymentsTheme, overrides });
     expect(overrideThemeResult).toEqual(overridenTheme);
   });
@@ -93,7 +92,6 @@ describe('overrideTheme', () => {
     expect(() => {
       overrideTheme({
         baseTheme: paymentsTheme,
-        // @ts-expect-error change the type to nested pick in the souruce
         overrides,
       });
     }).toThrowError(invalidOverridesObjectError);
@@ -126,7 +124,6 @@ describe('overrideTheme', () => {
       overrideTheme({
         // @ts-expect-error test the invalid base theme case
         baseTheme: invalidBaseTheme,
-        // @ts-expect-error change the type to nested pick in the souruce
         overrides: invalidBaseTheme,
       });
     }).toThrowError(invalidBaseThemeError);

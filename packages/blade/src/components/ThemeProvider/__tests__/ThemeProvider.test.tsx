@@ -28,7 +28,7 @@ describe('<ThemeProvider/>', () => {
 
   it('should select colorscheme as "light" when colorscheme not provided', () => {
     const { result } = renderHook(() => useTheme(), {
-      wrapper,
+      // wrapper,
       initialProps: {
         theme: paymentsTheme,
         children: null,
