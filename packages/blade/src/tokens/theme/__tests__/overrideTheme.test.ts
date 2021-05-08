@@ -1,5 +1,6 @@
 import overrideTheme from '../overrideTheme';
 import paymentsTheme from '../paymentsTheme';
+import { cloneDeep } from '../../../utils';
 import { Theme } from '../theme.d';
 
 const invalidOverridesObjectError = '[Blade:overrideTheme]: The overrides object is not valid';
@@ -32,34 +33,14 @@ describe('overrideTheme', () => {
       },
     };
 
-    const overridenTheme: Theme = {
-      ...paymentsTheme,
-      colors: {
-        ...paymentsTheme.colors,
-        brand: {
-          ...paymentsTheme.colors.brand,
-          primary: {
-            ...paymentsTheme.colors.brand.primary,
-            300: {
-              ...paymentsTheme.colors.brand.primary[300],
-              ...overrides.colors.brand.primary[300],
-            },
-          },
-        },
-        feedback: {
-          ...paymentsTheme.colors.feedback,
-          background: {
-            ...paymentsTheme.colors.feedback.background,
-            positive: {
-              ...paymentsTheme.colors.feedback.background.positive,
-              highContrast: {
-                ...paymentsTheme.colors.feedback.background.positive.highContrast,
-                ...overrides.colors.feedback.background.positive.highContrast,
-              },
-            },
-          },
-        },
-      },
+    const overridenTheme: Theme = cloneDeep(paymentsTheme);
+    overridenTheme.colors.brand.primary[300] = {
+      ...overridenTheme.colors.brand.primary[300],
+      ...overrides.colors.brand.primary[300],
+    };
+    overridenTheme.colors.feedback.background.positive.highContrast = {
+      ...overridenTheme.colors.feedback.background.positive.highContrast,
+      ...overrides.colors.feedback.background.positive.highContrast,
     };
 
     const overrideThemeResult = overrideTheme({ baseTheme: paymentsTheme, overrides });

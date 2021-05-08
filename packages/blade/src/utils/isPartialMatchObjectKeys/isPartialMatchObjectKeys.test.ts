@@ -90,7 +90,7 @@ describe('isPartialMatchObjectKeys', () => {
     expect(isPartialMatchObjectKeysResult).toBe(false);
   });
 
-  it('should return "false" when objectToMatch has falsy values for keys in objecttoInspect', () => {
+  it('should return "false" when objectToMatch has falsy values for keys in objectToInspect', () => {
     const overrides = {
       colors: {
         brand: {

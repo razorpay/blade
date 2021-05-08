@@ -30,9 +30,10 @@ const isPartialMatchObjectKeys = <ActualObject>({
           valueToMatch === undefined ||
           valueToMatch === '' ||
           Array.isArray(valueToMatch) ||
+          // the condition checks if the "valueToMatch" is not of type object then "valueToMatch" type should be same as type of "valueToInspect"
           (!(valueToMatch instanceof Object) && typeof valueToMatch !== typeof valueToInspect)
         ) {
-          // this is an ivalid case, so we log error
+          // this is an invalid case, so we log error
           console.error(
             `[isPartialMatchObjectKeys]: Unexpected value: ${JSON.stringify(
               valueToMatch,
