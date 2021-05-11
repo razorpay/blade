@@ -1,6 +1,6 @@
 import { cloneDeep, isEqual, merge, isPartialMatchObjectKeys, DeepPartial } from '../../utils';
-import { paymentsTheme } from '../theme';
-import type { Theme } from './theme.d';
+import { paymentTheme } from '../theme';
+import type { Theme } from '../theme';
 
 type OverrideTheme = {
   baseTheme: Theme;
@@ -8,7 +8,7 @@ type OverrideTheme = {
 };
 
 const overrideTheme = ({ baseTheme, overrides }: OverrideTheme): Theme => {
-  if (!isEqual(baseTheme, paymentsTheme)) {
+  if (!isEqual(baseTheme, paymentTheme)) {
     throw new Error('[Blade:overrideTheme]: The base theme provided is not a valid Blade theme');
   }
 

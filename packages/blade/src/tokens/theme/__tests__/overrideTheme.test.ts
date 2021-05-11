@@ -1,7 +1,7 @@
 import overrideTheme from '../overrideTheme';
-import paymentsTheme from '../paymentsTheme';
+import paymentTheme from '../paymentTheme';
 import { cloneDeep } from '../../../utils';
-import { Theme } from '../theme.d';
+import type { Theme } from '../../theme';
 
 const invalidOverridesObjectError = '[Blade:overrideTheme]: The overrides object is not valid';
 const invalidBaseThemeError =
@@ -33,7 +33,7 @@ describe('overrideTheme', () => {
       },
     };
 
-    const overridenTheme: Theme = cloneDeep(paymentsTheme);
+    const overridenTheme: Theme = cloneDeep(paymentTheme);
     overridenTheme.colors.brand.primary[300] = {
       ...overridenTheme.colors.brand.primary[300],
       ...overrides.colors.brand.primary[300],
@@ -43,7 +43,7 @@ describe('overrideTheme', () => {
       ...overrides.colors.feedback.background.positive.highContrast,
     };
 
-    const overrideThemeResult = overrideTheme({ baseTheme: paymentsTheme, overrides });
+    const overrideThemeResult = overrideTheme({ baseTheme: paymentTheme, overrides });
     expect(overrideThemeResult).toEqual(overridenTheme);
   });
 
@@ -72,7 +72,7 @@ describe('overrideTheme', () => {
 
     expect(() => {
       overrideTheme({
-        baseTheme: paymentsTheme,
+        baseTheme: paymentTheme,
         overrides,
       });
     }).toThrowError(invalidOverridesObjectError);

@@ -12,7 +12,7 @@ module.exports = {
     },
   },
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
-  testMatch: ['**/*.web.test.{ts,tsx}', '**/*.test.{ts,tsx}'],
+  testMatch: ['**/*.test.{ts,tsx}'],
   transform: {
     '\\.(js|ts|tsx)?$': 'babel-jest',
   },

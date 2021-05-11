@@ -1,7 +1,7 @@
 import border from '../global/border';
 import spacing from '../global/spacing';
 import globalColors from '../global/colors';
-import { Theme, Colors, Shadows } from './theme.d';
+import type { Theme, Colors, Shadows } from '../theme';
 
 const colors: Colors = {
   brand: {
