@@ -13,7 +13,7 @@ module.exports = {
     },
   },
   moduleFileExtensions: ['native.ts', 'native.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
-  testMatch: ['**/__tests__/**/*.native.test.{ts,tsx}', '**/__tests__/**/*.test.{ts,tsx}'],
+  testMatch: ['**/*.test.{ts,tsx}'],
   transform: {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',
   },

@@ -1,5 +1,5 @@
 import MatchMediaMock from 'jest-matchmedia-mock';
-import getColorScheme from '../../getColorScheme';
+import getColorScheme from './';
 
 const mediaQueryLight = '(prefers-color-scheme: light)';
 const mediaQueryDark = '(prefers-color-scheme: dark)';
