@@ -1,5 +1,5 @@
 import { renderHook, act, WrapperComponent } from '@testing-library/react-hooks';
-import { paymentsTheme, colorSchemeNamesInput } from '../../../tokens/theme';
+import { paymentTheme, colorSchemeNamesInput } from '../../../tokens/theme';
 import { ThemeProvider, useTheme, ThemeProviderProps } from '../../ThemeProvider';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -16,13 +16,13 @@ describe('<ThemeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        theme: paymentsTheme,
+        theme: paymentTheme,
         colorScheme: 'light',
         children: null,
       },
     });
 
-    expect(result.current.theme).toEqual(paymentsTheme);
+    expect(result.current.theme).toEqual(paymentTheme);
     expect(result.current.colorScheme).toBe('light');
   });
 
@@ -30,7 +30,7 @@ describe('<ThemeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        theme: paymentsTheme,
+        theme: paymentTheme,
         children: null,
       },
     });
@@ -42,7 +42,7 @@ describe('<ThemeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        theme: paymentsTheme,
+        theme: paymentTheme,
         colorScheme: 'light',
         children: null,
       },
@@ -75,7 +75,7 @@ describe('<ThemeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        theme: paymentsTheme,
+        theme: paymentTheme,
         // @ts-expect-error testing the error case when colorscheme is not one of [light, dark, system]
         colorScheme: initialColorScheme,
         children: null,

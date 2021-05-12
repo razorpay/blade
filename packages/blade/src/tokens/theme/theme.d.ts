@@ -1,7 +1,7 @@
 import { Spacing } from '../global/spacing';
 import { Border } from '../global/border';
 
-export type ColorSchemeNames = 'light' | 'dark';
+export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
 
 export type ColorSchemeModes = {
@@ -28,7 +28,7 @@ export type Shadows = {
   };
 };
 
-export type Feedback = 'positive' | 'negative' | 'notice' | 'information';
+export type Feedback = 'information' | 'negative' | 'notice' | 'positive';
 
 export type ColorContrast = {
   highContrast: ColorSchemeModes;
@@ -50,7 +50,7 @@ export type Colors = {
   surface: {
     background: Record<'level1' | 'level2' | 'level3', ColorContrast>;
     border: Record<'normal' | 'subtle', ColorContrast>;
-    text: Record<'normal' | 'subtle' | 'subdued' | 'muted' | 'placeholder', ColorContrast>;
+    text: Record<'muted' | 'normal' | 'placeholder' | 'subdued' | 'subtle', ColorContrast>;
   };
 };
 

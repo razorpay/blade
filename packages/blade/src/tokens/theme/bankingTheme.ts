@@ -1,7 +1,7 @@
 import border from '../global/border';
 import spacing from '../global/spacing';
 import globalColors from '../global/colors';
-import { Theme, Colors, Shadows } from './theme.d';
+import type { Theme, Colors, Shadows } from '../theme';
 
 const colors: Colors = {
   brand: {
@@ -401,11 +401,11 @@ const shadows: Shadows = {
   // shadowOpacity: 1, // this is required for iOS
 };
 
-const neoTheme: Theme = {
+const bankingTheme: Theme = {
   colors,
   border,
   spacing,
   shadows,
 };
 
-export default neoTheme;
+export default bankingTheme;
