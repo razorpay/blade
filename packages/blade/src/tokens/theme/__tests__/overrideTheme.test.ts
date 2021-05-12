@@ -1,5 +1,5 @@
 import overrideTheme from '../overrideTheme';
-import paymentTheme from '../paymentTheme';
+import { paymentTheme, bankingTheme } from '../';
 import { cloneDeep } from '../../../utils';
 import type { Theme } from '../../theme';
 
@@ -11,7 +11,7 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('overrideTheme', () => {
-  it('should return new theme based on overrides', () => {
+  it('should return new theme based on overrides for paymentTheme', () => {
     const overrides = {
       colors: {
         brand: {
@@ -44,6 +44,42 @@ describe('overrideTheme', () => {
     };
 
     const overrideThemeResult = overrideTheme({ baseTheme: paymentTheme, overrides });
+    expect(overrideThemeResult).toEqual(overridenTheme);
+  });
+
+  it('should return new theme based on overrides for bankingTheme', () => {
+    const overrides = {
+      colors: {
+        brand: {
+          primary: {
+            300: {
+              onLight: 'someothercolor',
+            },
+          },
+        },
+        feedback: {
+          background: {
+            positive: {
+              highContrast: {
+                onLight: 'someothercolor',
+              },
+            },
+          },
+        },
+      },
+    };
+
+    const overridenTheme: Theme = cloneDeep(bankingTheme);
+    overridenTheme.colors.brand.primary[300] = {
+      ...overridenTheme.colors.brand.primary[300],
+      ...overrides.colors.brand.primary[300],
+    };
+    overridenTheme.colors.feedback.background.positive.highContrast = {
+      ...overridenTheme.colors.feedback.background.positive.highContrast,
+      ...overrides.colors.feedback.background.positive.highContrast,
+    };
+
+    const overrideThemeResult = overrideTheme({ baseTheme: bankingTheme, overrides });
     expect(overrideThemeResult).toEqual(overridenTheme);
   });
 
