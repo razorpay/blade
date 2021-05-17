@@ -1,33 +1,10 @@
 module.exports = {
-  extends: ['kentcdodds', 'kentcdodds/react', 'prettier'],
+  extends: ['kentcdodds', 'kentcdodds/react', 'plugin:prettier/recommended'],
   rules: {
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
     'no-console': ['warn'],
     complexity: ['off'],
-    'object-property-newline': [
-      'error',
-      {
-        allowAllPropertiesOnSameLine: false,
-      },
-    ],
-    'object-curly-newline': [
-      'error',
-      {
-        ObjectExpression: {
-          multiline: true,
-          minProperties: 1,
-        },
-        ObjectPattern: {
-          multiline: true,
-        },
-        ImportDeclaration: 'never',
-        ExportDeclaration: {
-          multiline: true,
-          minProperties: 10,
-        },
-      },
-    ],
     'import/order': [
       'error',
       {
@@ -73,6 +50,12 @@ module.exports = {
   overrides: [
     {
       files: ['**/*.{ts,tsx}'],
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        // 'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:prettier/recommended',
+      ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
         project: './tsconfig.json',
@@ -97,12 +80,6 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 'error',
         '@typescript-eslint/no-unnecessary-condition': 'off',
       },
-      extends: [
-        'plugin:@typescript-eslint/recommended',
-        // 'plugin:@typescript-eslint/eslint-recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'prettier',
-      ],
     },
   ],
 };
