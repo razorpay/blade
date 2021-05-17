@@ -1,0 +1,32 @@
+name: Blade Validate
+
+on: [pull_request]
+
+env:
+  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+
+jobs:
+  validate:
+    name: Validate Source Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v2
+      - name: Use Node v14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Setup Cache & Install Dependencies
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn --frozen-lockfile
+      - name: Lint Source Code
+        run: yarn lint
+      - name: Run Web Tests
+        run: yarn test:web
+        working-directory: packages/blade
+      - name: Run Native Tests
+        run: yarn test:native
+        working-directory: packages/blade
+      - name: Run TypeScript Checks
+        run: yarn tsc
