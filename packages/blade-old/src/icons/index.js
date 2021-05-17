@@ -49,6 +49,7 @@ const icons = {
   power: require('./Power').default,
   profile: require('./Profile').default,
   plus: require('./Plus').default,
+  refresh: require('./Refresh').default,
   refund: require('./Refund').default,
   search: require('./Search').default,
   share: require('./Share').default,
