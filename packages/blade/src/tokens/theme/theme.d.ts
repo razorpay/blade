@@ -1,5 +1,6 @@
-import { Spacing } from '../global/spacing';
-import { Border } from '../global/border';
+import type { Spacing } from '../global/spacing';
+import type { Border } from '../global/border';
+import type { Typography } from '../global/typography';
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
@@ -59,4 +60,5 @@ export type Theme = {
   border: Border;
   spacing: Spacing;
   shadows: Shadows;
+  typography: Typography;
 };
