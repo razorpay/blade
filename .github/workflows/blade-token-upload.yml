@@ -1,0 +1,16 @@
+name: Blade Token Upload
+
+on: 
+  workflow_dispatch:
+    inputs:
+      tokenObject:
+        description: 'Token Object'
+        required: true
+
+jobs:
+  token-upload:
+    name: Upload Tokens
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "dispatch event triggered"
