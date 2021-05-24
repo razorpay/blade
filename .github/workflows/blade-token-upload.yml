@@ -12,5 +12,12 @@ jobs:
     name: Upload Tokens
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "dispatch event triggered"
+      - name: Checkout Codebase
+        uses: actions/checkout@v2
+      - name: Use Node v14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Test the script
+        working-directory: packages/blade
+        run: node ./scripts/tokenUpload.js
