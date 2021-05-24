@@ -1,6 +1,7 @@
 import border from '../global/border';
 import spacing from '../global/spacing';
 import globalColors from '../global/colors';
+import typography from '../global/typography';
 import type { Theme, Colors, Shadows } from '../theme';
 
 const colors: Colors = {
@@ -406,6 +407,7 @@ const bankingTheme: Theme = {
   border,
   spacing,
   shadows,
+  typography,
 };
 
 export default bankingTheme;
