@@ -55,7 +55,7 @@ const uploadColorTokens = async () => {
   });
 
   // 7. Raise a PR: Output PR link
-  execa.commandSync(`hub pull-request --push --message feat(tokens):\\ add new tokens`);
+  execa.commandSync(`hub pull-request --push --message feat(tokens):\\ add\\ new\\ tokens`);
   console.log(`[info]: PR created`);
 };
 uploadColorTokens();
