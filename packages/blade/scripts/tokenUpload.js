@@ -50,10 +50,12 @@ const uploadColorTokens = async () => {
   // 6. Commit all changes
   execa.commandSync('yarn prettier --write src/tokens/theme/*.ts');
   execa.commandSync('git add -A');
-  execa.commandSync(`git commit -m feat(tokens):\\ add\\ new\\ tokens --no-verify`);
+  execa.commandSync(`git commit -m feat(tokens):\\ add\\ new\\ tokens --no-verify`, {
+    env: { HUSKY_SKIP_HOOKS: 1 },
+  });
 
   // 7. Raise a PR: Output PR link
-  // execa.commandSync(`hub pull-request --push --message feat(tokens):\\ add new tokens`);
+  execa.commandSync(`hub pull-request --push --message feat(tokens):\\ add new tokens`);
   console.log(`[info]: PR created`);
 };
 uploadColorTokens();
