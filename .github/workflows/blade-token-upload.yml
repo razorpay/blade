@@ -3,7 +3,7 @@ name: Blade Token Upload
 on: 
   workflow_dispatch:
     inputs:
-      tokenObject:
+      tokens:
         description: 'Token Object'
         required: true
 
@@ -17,7 +17,9 @@ jobs:
       - name: Use Node v14
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 14.17
       - name: Test the script
         working-directory: packages/blade
-        run: node ./scripts/tokenUpload.js
+        run: |
+          echo "${{ github.event.inputs.tokens }}"
+          node ./scripts/tokenUpload.js
