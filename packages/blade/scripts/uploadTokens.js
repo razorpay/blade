@@ -46,7 +46,6 @@ const uploadColorTokens = async () => {
   execa.commandSync(`git checkout -b ${branchName}`);
   execa.commandSync(`git config user.email ${GITHUB_BOT_EMAIL}`);
   execa.commandSync(`git config user.name ${GITHUB_BOT_USERNAME}`);
-  execa.commandSync(`git push origin ${branchName}`);
 
   // 6. Commit all changes
   execa.commandSync('yarn prettier --write src/tokens/theme/*.ts');
@@ -56,7 +55,7 @@ const uploadColorTokens = async () => {
   });
 
   // 7. Raise a PR: Output PR link
-  // execa.commandSync(`hub pull-request --push --message feat(tokens):\\ add\\ new\\ tokens`);
+  execa.commandSync(`git push origin ${branchName}`);
   execa.commandSync(
     `gh pr create --title feat(tokens):\\ add\\ new\\ tokens --head ${branchName} --repo razorpay/blade --body This\\ PR\\ adds\\ new\\ tokens`,
   );
