@@ -43,14 +43,14 @@ const uploadColorTokens = async () => {
   fs.writeFileSync(bankingThemePath, updatedBankingTheme);
 
   // 5. create branch
-  execa.commandSync(`git checkout -b add/tokens`);
+  // execa.commandSync(`git checkout -b add/tokens`);
   execa.commandSync(`git config user.email ${GITHUB_BOT_EMAIL}`);
   execa.commandSync(`git config user.name ${GITHUB_BOT_USERNAME}`);
 
   // 6. Commit all changes
   execa.commandSync('yarn prettier --write src/tokens/theme/*.ts');
   execa.commandSync('git add -A');
-  execa.commandSync(`git commit -m tokens --no-verify`);
+  execa.commandSync(`git commit -m feat(tokens):\\ add\\ new\\ tokens --no-verify`);
 
   // 7. Raise a PR: Output PR link
   // execa.commandSync(`hub pull-request --push --message feat(tokens):\\ add new tokens`);
