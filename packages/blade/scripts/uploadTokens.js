@@ -42,7 +42,7 @@ const uploadColorTokens = async () => {
   fs.writeFileSync(bankingThemePath, updatedBankingTheme);
 
   // 5. create branch
-  execa.commandSync(`git checkout -b add/tokens`);
+  execa.commandSync(`git checkout -b tokens/dummy/pr`);
   execa.commandSync(`git config user.email ${GITHUB_BOT_EMAIL}`);
   execa.commandSync(`git config user.name ${GITHUB_BOT_USERNAME}`);
 
@@ -54,6 +54,7 @@ const uploadColorTokens = async () => {
   });
 
   // 7. Raise a PR: Output PR link
-  execa.commandSync(`hub pull-request --push --message feat(tokens):\\ add\\ new\\ tokens`);
+  // execa.commandSync(`hub pull-request --push --message feat(tokens):\\ add\\ new\\ tokens`);
+  execa.commandSync(`gh pr create --title feat(tokens):\\ add\\ new\\ tokens`);
 };
 uploadColorTokens();
