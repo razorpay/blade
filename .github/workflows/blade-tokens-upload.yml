@@ -1,4 +1,4 @@
-name: Blade Token Upload
+name: Blade Tokens Upload
 
 on: 
   workflow_dispatch:
@@ -14,12 +14,16 @@ jobs:
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.CI_BOT_TOKEN }}
       - name: Use Node v14
         uses: actions/setup-node@v2
         with:
           node-version: 14.17
+      - name: Setup Cache & Install Dependencies
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn --frozen-lockfile
       - name: Test the script
         working-directory: packages/blade
-        run: |
-          echo "${{ github.event.inputs.tokens }}"
-          node ./scripts/tokenUpload.js
+        run: node ./scripts/uploadTokens.js ${{ github.event.inputs.tokens }}

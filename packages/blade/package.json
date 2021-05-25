@@ -32,7 +32,6 @@
     "jest-matchmedia-mock": "1.1.0",
     "lodash": "4.17.21",
     "metro-react-native-babel-preset": "0.66.0",
-    "octokit": "1.0.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.64.0"
