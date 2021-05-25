@@ -2,9 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const execa = require('execa');
 
-// const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_BOT_EMAIL = process.env.GIT_EMAIL;
-const GITHUB_BOT_USERNAME = process.env.GIT_USERNAME;
+const GITHUB_BOT_EMAIL = 'tools+cibot@razorpay.com';
+const GITHUB_BOT_USERNAME = 'rzpcibot';
 
 const uploadColorTokens = async () => {
   // 1. read the tokens object
@@ -50,13 +49,13 @@ const uploadColorTokens = async () => {
   // 6. Commit all changes
   execa.commandSync('yarn prettier --write src/tokens/theme/*.ts');
   execa.commandSync('git add -A');
-  execa.commandSync(`git commit -m feat(tokens):\\ add\\ new\\ tokens --no-verify`, {
+  execa.commandSync(`git commit -m feat(tokens):\\ add\\ new\\ tokens`, {
     env: { HUSKY_SKIP_HOOKS: 1 },
   });
 
   // 7. Raise a PR: Output PR link
-  execa.commandSync(`hub pull-request --push --message feat(tokens):\\ add\\ new\\ tokens`);
-  console.log(`[info]: PR created`);
+  // execa.commandSync(`hub pull-request --push --message feat(tokens):\\ add\\ new\\ tokens`);
+  // console.log(`[info]: PR created`);
 };
 uploadColorTokens();
 
