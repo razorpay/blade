@@ -57,6 +57,6 @@ const uploadColorTokens = async () => {
 
   // 7. Raise a PR: Output PR link
   // execa.commandSync(`hub pull-request --push --message feat(tokens):\\ add\\ new\\ tokens`);
-  execa.commandSync(`gh pr create --title feat(tokens):\\ add\\ new\\ tokens`);
+  execa.commandSync(`gh pr create --title feat(tokens):\\ add\\ new\\ tokens --head ${branchName}`);
 };
 uploadColorTokens();
