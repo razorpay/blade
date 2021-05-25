@@ -3,8 +3,8 @@ const path = require('path');
 const execa = require('execa');
 
 // const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_BOT_EMAIL = 'tools+cibot@razorpay.com';
-const GITHUB_BOT_USERNAME = 'rzpcibot';
+const GITHUB_BOT_EMAIL = process.env.GIT_EMAIL;
+const GITHUB_BOT_USERNAME = process.env.GIT_USERNAME;
 
 const uploadColorTokens = async () => {
   // 1. read the tokens object
