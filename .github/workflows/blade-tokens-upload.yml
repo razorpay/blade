@@ -30,3 +30,6 @@ jobs:
       - name: Upload Tokens
         working-directory: packages/blade
         run: node ./scripts/uploadTokens.js '${{ github.event.inputs.tokens }}'
+        env: 
+          GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+
