@@ -27,3 +27,4 @@ jobs:
       - name: Test the script
         working-directory: packages/blade
         run: node ./scripts/uploadTokens.js ${{ github.event.inputs.tokens }}
+        
