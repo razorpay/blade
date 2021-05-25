@@ -7,6 +7,9 @@ on:
         description: 'Token Object'
         required: true
 
+env:
+  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+
 jobs:
   token-upload:
     name: Upload Tokens
