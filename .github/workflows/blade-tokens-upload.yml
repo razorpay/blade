@@ -27,7 +27,6 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           install-command: yarn --frozen-lockfile
-      - name: Test the script
+      - name: Upload Tokens
         working-directory: packages/blade
-        run: node ./scripts/uploadTokens.js ${{ github.event.inputs.tokens }}
-        
+        run: node ./scripts/uploadTokens.js '${{ github.event.inputs.tokens }}'
