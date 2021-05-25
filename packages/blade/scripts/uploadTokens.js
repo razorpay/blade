@@ -42,9 +42,11 @@ const uploadColorTokens = async () => {
   fs.writeFileSync(bankingThemePath, updatedBankingTheme);
 
   // 5. create branch
-  execa.commandSync(`git checkout -b tokens/dummy/pr`);
+  const branchName = 'tokens/dummy/pr';
+  // execa.commandSync(`git checkout -b ${branchName}`);
   execa.commandSync(`git config user.email ${GITHUB_BOT_EMAIL}`);
   execa.commandSync(`git config user.name ${GITHUB_BOT_USERNAME}`);
+  execa.commandSync(`git push origin ${branchName}`);
 
   // 6. Commit all changes
   execa.commandSync('yarn prettier --write src/tokens/theme/*.ts');
