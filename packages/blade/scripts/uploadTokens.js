@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const execa = require('execa');
+const randomNameGenerator = require('moniker');
 
 const GITHUB_BOT_EMAIL = 'tools+cibot@razorpay.com';
 const GITHUB_BOT_USERNAME = 'rzpcibot';
@@ -42,7 +43,9 @@ const uploadColorTokens = async () => {
   fs.writeFileSync(bankingThemePath, updatedBankingTheme);
 
   // 5. create branch
-  const branchName = 'add/tokens';
+  const branchName = randomNameGenerator
+    .generator([randomNameGenerator.verb, randomNameGenerator.noun])
+    .choose();
   execa.commandSync(`git checkout -b ${branchName}`);
   execa.commandSync(`git config user.email ${GITHUB_BOT_EMAIL}`);
   execa.commandSync(`git config user.name ${GITHUB_BOT_USERNAME}`);
@@ -57,7 +60,7 @@ const uploadColorTokens = async () => {
   // 7. Raise a PR: Output PR link
   execa.commandSync(`git push origin ${branchName}`);
   execa.commandSync(
-    `gh pr create --title feat(tokens):\\ add\\ new\\ tokens --head ${branchName} --repo razorpay/blade --body This\\ PR\\ adds\\ new\\ tokens`,
+    `gh pr create --title feat(tokens):\\ add\\ new\\ tokens --head ${branchName} --repo razorpay/blade --body This\\ PR\\ was\\ opened\\ by\\ the\\ Token\\ Upload\\ GitHub\\ action.\\ It\\ updates\\ source\\ token\\ files\\ based\\ on\\ the\\ payload\\ from\\ Figma\\ Plugin.`,
   );
 };
 uploadColorTokens();
