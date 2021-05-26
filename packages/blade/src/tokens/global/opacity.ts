@@ -1,4 +1,5 @@
 type Opacity = Readonly<{
+  0: number;
   1: number;
   2: number;
   3: number;
@@ -11,6 +12,7 @@ type Opacity = Readonly<{
 }>;
 
 const opacities: Opacity = {
+  0: 0.0,
   1: 0.09,
   2: 0.18,
   3: 0.32,
