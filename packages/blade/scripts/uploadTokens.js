@@ -31,7 +31,7 @@ const uploadColorTokens = async () => {
   const bankingThemePath = path.resolve(__dirname, '../src/tokens/theme/bankingTheme.ts');
   const bankingTheme = fs.readFileSync(bankingThemePath, 'utf8');
 
-  // 4. write the new tokens to bankingTheme file
+  // 5. write the new tokens to bankingTheme file
   const updatedBankingThemeColors = JSON.stringify(tokens.bankingThemeColors.colors).replace(
     /"/g,
     '',
@@ -42,7 +42,7 @@ const uploadColorTokens = async () => {
   );
   fs.writeFileSync(bankingThemePath, updatedBankingTheme);
 
-  // 5. create branch
+  // 6. create branch
   const branchName = randomNameGenerator
     .generator([randomNameGenerator.verb, randomNameGenerator.noun])
     .choose();
@@ -50,14 +50,14 @@ const uploadColorTokens = async () => {
   execa.commandSync(`git config user.email ${GITHUB_BOT_EMAIL}`);
   execa.commandSync(`git config user.name ${GITHUB_BOT_USERNAME}`);
 
-  // 6. Commit all changes
+  // 7. Commit all changes
   execa.commandSync('yarn prettier --write src/tokens/theme/*.ts');
   execa.commandSync('git add -A');
   execa.commandSync(`git commit -m feat(tokens):\\ add\\ new\\ tokens`, {
     env: { HUSKY_SKIP_HOOKS: 1 },
   });
 
-  // 7. Raise a PR: Output PR link
+  // 8. Raise a PR
   execa.commandSync(`git push origin ${branchName}`);
   execa.commandSync(
     `gh pr create --title feat(tokens):\\ add\\ new\\ tokens --head ${branchName} --repo razorpay/blade --body This\\ PR\\ was\\ opened\\ by\\ the\\ Token\\ Upload\\ GitHub\\ action.\\ It\\ updates\\ source\\ token\\ files\\ based\\ on\\ the\\ payload\\ from\\ Figma\\ Plugin.`,
