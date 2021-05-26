@@ -3,6 +3,7 @@ module.exports = {
   rules: {
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
+    'max-lines': 'off',
     'no-console': ['warn'],
     complexity: ['off'],
     'import/order': [
