@@ -46,6 +46,8 @@ const styles = {
     },
     lineHeight({ size }) {
       switch (size) {
+        case 'xsmall':
+          return 'small';
         case 'medium':
           return 'medium';
         case 'large':
