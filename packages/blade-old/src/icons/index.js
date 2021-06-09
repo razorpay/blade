@@ -64,6 +64,7 @@ const icons = {
   user: require('./User').default,
   userSwitch: require('./UserSwitch').default,
   upi: require('./Upi').default,
+  wallet: require('./Wallet').default,
   wiFiOff: require('./WiFiOff').default,
   wiFiOn: require('./WiFiOn').default,
 };
