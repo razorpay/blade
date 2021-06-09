@@ -174,7 +174,7 @@ exports[`<BottomSheet /> renders BottomSheet with Header, Footer and Content Def
                 </View>
               </View>
               <View
-                color="shade.920"
+                color="overlay.50"
                 dividerDirection="horizontal"
                 style={
                   Array [
@@ -1873,7 +1873,7 @@ exports[`<BottomSheet /> renders bottomsheet when initialHeight prop is passed 1
                 </View>
               </View>
               <View
-                color="shade.920"
+                color="overlay.50"
                 dividerDirection="horizontal"
                 style={
                   Array [
@@ -2430,7 +2430,7 @@ exports[`<BottomSheet /> renders linear-gradient view at bottom when content hei
                 </View>
               </View>
               <View
-                color="shade.920"
+                color="overlay.50"
                 dividerDirection="horizontal"
                 style={
                   Array [
@@ -3340,7 +3340,7 @@ exports[`<BottomSheet /> renders non-scrollable bottomsheet 1`] = `
                 </View>
               </View>
               <View
-                color="shade.920"
+                color="overlay.50"
                 dividerDirection="horizontal"
                 style={
                   Array [

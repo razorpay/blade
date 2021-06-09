@@ -35,7 +35,7 @@ const styles = {
   },
   overlayStyle: ({ theme }) => {
     return {
-      backgroundColor: theme.colors.shade[950],
+      backgroundColor: theme.colors.overlay[100],
     };
   },
   childrenStyle: ({ theme, isSectionList }) => {
@@ -85,7 +85,7 @@ const HeaderContainer = styled(View)`
 `;
 
 const BottomSheetDragBar = styled(View)`
-  background-color: ${(props) => props.theme.colors.shade[920]};
+  background-color: ${(props) => props.theme.colors.overlay[50]};
   border-radius: ${(props) => props.theme.spacings.xsmall};
 `;
 
@@ -198,7 +198,7 @@ const BottomSheet = ({
             {headerComponent?.length ? (
               <>
                 {headerComponent}
-                <Divider color="shade.920" direction="horizontal" />
+                <Divider color="overlay.50" direction="horizontal" />
               </>
             ) : null}
           </HeaderContainer>
