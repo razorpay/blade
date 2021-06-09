@@ -1,5 +1,12 @@
 # @razorpay/blade-old
 
+## 0.0.4
+
+### Patch Changes
+
+- a746f68: feat(blade-old): add wallet icon
+- 8dce874: chore(Overlay Colors): Update Modal and BottomSheet Overlay, Dragbar colors
+
 ## 0.0.3
 
 ### Patch Changes
