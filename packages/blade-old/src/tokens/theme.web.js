@@ -91,6 +91,11 @@ const lightTheme = {
     highlight: {
       700: colors.darkBlue[200],
     },
+    overlay: {
+      50: colors.slate[920],
+      100: colors.slate[950],
+      200: colors.slate[960],
+    },
   },
 };
 
@@ -184,6 +189,11 @@ const darkTheme = {
     },
     highlight: {
       700: colors.xDarkBlue[200],
+    },
+    overlay: {
+      50: colors.xSlate[940],
+      100: colors.xSlate[950],
+      200: colors.xSlate[960],
     },
   },
 };

@@ -47,7 +47,7 @@ const ModalContainer = styled(View)(({ variant, theme }) =>
 );
 
 const BottomSheetDragBar = styled(View)`
-  background-color: ${(props) => props.theme.colors.shade[920]};
+  background-color: ${(props) => props.theme.colors.overlay[50]};
   border-radius: 4px;
 `;
 
@@ -61,7 +61,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
           isVisible={visible}
           onBackdropPress={onBackdropClick}
           onBackButtonPress={onClose}
-          backdropColor={theme.colors.shade[960]}
+          backdropColor={theme.colors.overlay[200]}
           propagateSwipe
         >
           <ModalContainer variant="centered">
@@ -122,7 +122,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
             onSwipeComplete={onClose}
             onBackButtonPress={onClose}
             avoidKeyboard={true}
-            backdropColor={theme.colors.shade[960]}
+            backdropColor={theme.colors.overlay[200]}
             propagateSwipe
           >
             <ModalContainer variant="bottomsheet">
