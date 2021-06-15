@@ -31,7 +31,7 @@
     "@react-native-community/async-storage": "1.7.1",
     "@testing-library/react-hooks": "3.2.1",
     "intl": "1.2.5",
-    "lodash": "4.17.15",
+    "lodash": "4.17.21",
     "react-native-document-picker": "4.2.0",
     "react-native-gesture-handler": "1.8.0",
     "react-native-linear-gradient": "2.5.6",
