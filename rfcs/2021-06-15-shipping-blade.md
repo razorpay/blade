@@ -72,7 +72,7 @@ This problem is has multiple pieces to it and in order to come up with a solutio
 Here's the visual representation for decision making of bundling. 
 > You can look at the actual source [file of the diagram here](https://drive.google.com/file/d/1AM0ryQCXMbfP4z2PUWpt86KUU5iE8rvR/view?usp=sharing) if you can't see things properly in attached image
 
-![Blade Bundling](./images/bundling-blade-guideline.jpeg)
+![Blade Bundling](./images/bundling-blade-guideline.png)
 
 ## What do we want to actually ship?
 * components
