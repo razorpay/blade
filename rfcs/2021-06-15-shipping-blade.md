@@ -67,7 +67,7 @@ In the end we should be able to ship the code in such a way that:
 * We restrict them to only use what is useful for them and hide away unnecessary underlying details.
 
 # Detailed Design
-This problem is has multiple pieces to it and in order to come up with a solution I have tried to break it down into questions that we must ask to ourselves and then conclude every question.
+This problem has multiple pieces to it and in order to come up with a solution I have tried to break it down into questions that we must ask to ourselves and then conclude every question.
 
 Here's the visual representation for decision making of bundling. 
 > You can look at the actual source [file of the diagram here](https://drive.google.com/file/d/1AM0ryQCXMbfP4z2PUWpt86KUU5iE8rvR/view?usp=sharing) if you can't see things properly in attached image
@@ -122,7 +122,7 @@ import { Button, Text, overrideTheme, paymentTheme } from '@razorpay/blade'
 ```
 
 #### Cons
-* No need to maintain a top level re-exports on the library side. Everytime we add anything we need to ensure that we re-export it from the top level re-exports.
+* Everytime we add anything we need to ensure that we re-export it from the top level re-exports.
 
 ```js
 // packages/blade/index.ts
@@ -300,15 +300,15 @@ It'll bundle the code into one single file/multiple(depending on our config).Bef
 4. Since we ship the packaged code we don't care what tools config or versions the consumer app is using. We'll ship code that they just need to plug in and it would work.
 
 ### Conclusion
-I feel we below is the checklist that we need.
+I feel below is the checklist that we need.
 
 ✅ Can use library with the script tag in html(umd bundle).
 
 ✅ Library author responsible for tree shaking
 
-❌ Import anything from anywhere
+✅ Restricted imports(depends on what we re-export and bundle)
 
-❌ Working of library depends on the build tools config of consumer apps
+✅ Make the library work regardless of the consumer apps build tools chains or config
 
 And this can be achieved by going with the approach of bundling using rollup.
 
@@ -328,7 +328,7 @@ And this can be achieved by going with the approach of bundling using rollup.
 * Less code shipped to the browsers which means better download, parse execute times.
 
 ### Conclusion
-We should definitely going with ESM. There might be few gotchas and unknowns that might pop up but we'll move ahead and fix them instead of taking a back seat and ship CJS.
+We should definitely go with ESM. There might be few gotchas and unknowns that might pop up but we'll move ahead and fix them instead of taking a back seat and ship CJS.
 
 ## Meta information in package.json
 * If we decide to bundle(instead of transpile) then we need to define values for `main`, `module`, `react-native` fields in package.json.
