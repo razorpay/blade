@@ -155,9 +155,9 @@ export * from src/components/Button
 export * from src/components/Text
 
 // packages/blade/src/tokens/theme/index.ts
-export * from src/tokens/theme/paymentTheme
-export * from src/tokens/theme/bankingTheme
-export * from src/tokens/theme/overrideTheme
+export * from 'src/tokens/theme/paymentTheme'
+export * from 'src/tokens/theme/bankingTheme'
+export * from 'src/tokens/theme/overrideTheme'
 
 // packages/blade/src/utils/index.ts
 export * from src/tokens/utils/getColorScheme
@@ -352,4 +352,3 @@ There's no adoption strategy as such. We'll just need to document the usage of d
 
 # References
 Any references that you can share for those who are curious to understand anything beyond the scope of this RFC in general but related to the topic of this RFC.
-
