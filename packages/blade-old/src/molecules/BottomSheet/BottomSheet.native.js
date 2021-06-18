@@ -40,7 +40,7 @@ const styles = {
   },
   childrenStyle: ({ theme, isSectionList }) => {
     const childrenStyles = {
-      backgroundColor: theme.colors.background[200],
+      backgroundColor: theme.colors.background[300],
     };
     if (isSectionList) {
       return {
@@ -79,7 +79,7 @@ const styles = {
 };
 
 const HeaderContainer = styled(View)`
-  background-color: ${(props) => props.theme.colors.background[200]};
+  background-color: ${(props) => props.theme.colors.background[300]};
   border-top-right-radius: ${(props) => props.theme.spacings.small};
   border-top-left-radius: ${(props) => props.theme.spacings.small};
 `;

@@ -8,6 +8,7 @@ const lightTheme = {
     background: {
       100: colors.white[900],
       200: colors.white[900],
+      300: colors.white[900],
       400: colors.grey[300],
       600: colors.grey[400],
       800: colors.grey[500],
@@ -107,6 +108,7 @@ const darkTheme = {
     background: {
       100: colors.xDarkBlue[300],
       200: colors.xDarkBlue[400],
+      300: colors.xDarkBlue[600],
       400: colors.xDarkBlue[500],
       600: colors.xDarkBlue[600],
       800: colors.xDarkBlue[800],
