@@ -99,9 +99,9 @@ import useColorScheme from '@razorpay-blade/useColorScheme'
 
 ```js
 // packages/blade/index.ts
-export * from src/components/Button
-export * from src/components/Text
-export * from src/tokens/theme
+export * from 'src/components/Button'
+export * from 'src/components/Text'
+export * from 'src/tokens/theme'
 ```
 
 #### Cons
@@ -126,9 +126,9 @@ import { Button, Text, overrideTheme, paymentTheme } from '@razorpay/blade'
 
 ```js
 // packages/blade/index.ts
-export * from src/components/Button
-export * from src/components/Text
-export * from src/tokens/theme
+export * from 'src/components/Button'
+export * from 'src/components/Text'
+export * from 'src/tokens/theme'
 ```
 
 ### 3. `import` from each category(components, tokens,types, utils) root package
@@ -151,8 +151,8 @@ import { Button, Text, overrideTheme, paymentTheme, getColorScheme, useColorSche
 * We need to maintain top level re-exports per category
 ```js
 // packages/blade/src/components/index.ts
-export * from src/components/Button
-export * from src/components/Text
+export * from 'src/components/Button'
+export * from 'src/components/Text'
 
 // packages/blade/src/tokens/theme/index.ts
 export * from 'src/tokens/theme/paymentTheme'
@@ -160,8 +160,8 @@ export * from 'src/tokens/theme/bankingTheme'
 export * from 'src/tokens/theme/overrideTheme'
 
 // packages/blade/src/utils/index.ts
-export * from src/tokens/utils/getColorScheme
-export * from src/tokens/utils/useColorScheme
+export * from 'src/tokens/utils/getColorScheme'
+export * from 'src/tokens/utils/useColorScheme'
 ```
 
 ### 4. `import` named components from each category(components, tokens,types, utils) root package
@@ -177,17 +177,17 @@ import paymentTheme from '@razorpay/blade/theme/paymentTheme'
 
 ```js
 // packages/blade/src/components/index.ts
-export * from src/components/Button
-export * from src/components/Text
+export * from 'src/components/Button'
+export * from 'src/components/Text'
 
 // packages/blade/src/tokens/theme/index.ts
-export * from src/tokens/theme/paymentTheme
-export * from src/tokens/theme/bankingTheme
-export * from src/tokens/theme/overrideTheme
+export * from 'src/tokens/theme/paymentTheme'
+export * from 'src/tokens/theme/bankingTheme'
+export * from 'src/tokens/theme/overrideTheme'
 
 // packages/blade/src/utils/index.ts
-export * from src/tokens/utils/getColorScheme
-export * from src/tokens/utils/useColorScheme
+export * from 'src/tokens/utils/getColorScheme'
+export * from 'src/tokens/utils/useColorScheme'
 ```
 
 #### Cons
