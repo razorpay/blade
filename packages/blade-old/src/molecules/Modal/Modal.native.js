@@ -15,7 +15,7 @@ import ModalFooter from './ModalFooter.native';
 const styles = ({ variant, theme }) => {
   if (variant === 'centered') {
     return {
-      'background-color': theme.colors.background[200],
+      'background-color': theme.colors.background[300],
       'border-radius': theme.spacings.xsmall,
     };
   }
@@ -26,7 +26,7 @@ const styles = ({ variant, theme }) => {
   }
   if (variant === 'bottomsheet') {
     return {
-      'background-color': theme.colors.background[200],
+      'background-color': theme.colors.background[300],
       'border-top-left-radius': '8px',
       'border-top-right-radius': '8px',
       'shadow-color': theme.colors.primary[930],
