@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 0.0.5
+
+### Patch Changes
+
+- 63aff19: style(theme): Change variant for BottomSheet and Modal background
+
 ## 0.0.4
 
 ### Patch Changes
