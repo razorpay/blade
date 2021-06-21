@@ -6,7 +6,7 @@ coverage
 
 # build direcotries
 **/docs
-**/build 
+**/build
 
 # misc
 .DS_Store

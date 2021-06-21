@@ -20,7 +20,10 @@ module.exports = {
       ],
     },
     production: {
-      presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
+      presets: [
+        '@babel/preset-typescript',
+        ['module:metro-react-native-babel-preset', { disableImportExportTransform: true }],
+      ],
       plugins: [
         [
           'module-resolver',
@@ -36,6 +39,14 @@ module.exports = {
             runtime: 'automatic',
           },
         ],
+        // [
+        //   '@babel/plugin-transform-runtime',
+        //   {
+        //     corejs: 3,
+        //     helpers: true,
+        //     regenerator: true,
+        //   },
+        // ],
       ],
     },
     'web-test': {

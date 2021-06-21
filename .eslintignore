@@ -22,3 +22,6 @@ packages/tools/figma-plugin-version-history
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# don't ignore dot files
+!.*rc.js

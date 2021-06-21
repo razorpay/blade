@@ -1,6 +1,11 @@
-import { cloneDeep, isEqual, merge, isPartialMatchObjectKeys, DeepPartial } from '../../utils';
-import { paymentTheme, bankingTheme } from '../theme';
-import type { Theme } from '../theme';
+import cloneDeep from '../../utils/cloneDeep';
+import isEqual from '../../utils/isEqual';
+import merge from '../../utils/merge';
+import isPartialMatchObjectKeys from '../../utils/isPartialMatchObjectKeys';
+import type { DeepPartial } from '../../utils/isPartialMatchObjectKeys';
+import paymentTheme from './paymentTheme';
+import bankingTheme from './bankingTheme';
+import type { Theme } from './theme.d';
 
 type OverrideTheme = {
   baseTheme: Theme;
