@@ -7,6 +7,20 @@
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
   },
+  "exports": {
+    "./components": {
+      "react-native": "./dist/components/index.native.js",
+      "default": "./dist/components/index.web.js"
+    },
+    "./tokens": {
+      "react-native": "./dist/tokens/index.native.js",
+      "deafult": "./dist/tokens/index.web.js"
+    },
+    "./utils": {
+      "react-native": "./dist/tokens/index.native.js",
+      "default": "./dist/tokens/index.web.js"
+    }
+  },
   "scripts": {
     "build": "rollup -c",
     "roll:web": "BABEL_ENV=web-production babel src/tokens/theme --extensions .ts -d dist",
