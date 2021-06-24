@@ -342,7 +342,7 @@ import {ThemeProvider, useTheme} from '@razorpay/blade/build/components';
 import {paymentTheme, globalColors} from '@razorpay/blade/build/tokens';
 ```
 
-Can you see that extra `/build` path? Tha's unnecessary. So how do we fix it?
+Can you see that extra `/build` path? That's unnecessary. So how do we fix it?
 
 `package.json` has a lot of fields that can describe the entry points or resolutions for certain paths of our package. Let's see how we can use them
 
