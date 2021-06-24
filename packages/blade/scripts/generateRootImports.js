@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const figures = require('figures');
+
 const componentTypes = ['components', 'tokens', 'utils'];
 const buildDirectory = 'build';
 

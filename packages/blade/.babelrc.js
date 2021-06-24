@@ -39,14 +39,6 @@ module.exports = {
             runtime: 'automatic',
           },
         ],
-        // [
-        //   '@babel/plugin-transform-runtime',
-        //   {
-        //     corejs: 3,
-        //     helpers: true,
-        //     regenerator: true,
-        //   },
-        // ],
       ],
     },
     'web-test': {

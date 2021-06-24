@@ -6,10 +6,6 @@ import commonjs from '@rollup/plugin-commonjs';
 // import typescript from '@rollup/plugin-typescript';
 
 const webExtensions = [
-  '.js',
-  '.ts',
-  '.jsx',
-  '.tsx',
   '.web.js',
   '.web.ts',
   '.web.tsx',
@@ -19,28 +15,28 @@ const webExtensions = [
   '.mobile.js',
   '.mobile.ts',
   '.mobile.tsx',
-  '.es6',
-  '.es',
-  '.mjs',
-];
-
-const nativeExtensions = [
   '.js',
   '.ts',
   '.jsx',
   '.tsx',
-  '.es6',
-  '.es',
   '.mjs',
+];
+
+const nativeExtensions = [
   '.native.js',
   '.native.ts',
   '.native.tsx',
-  '.ios.js',
-  '.ios.ts',
-  '.ios.tsx',
   '.android.js',
   '.android.ts',
   '.android.tsx',
+  '.ios.js',
+  '.ios.ts',
+  '.ios.tsx',
+  '.js',
+  '.ts',
+  '.jsx',
+  '.tsx',
+  '.mjs',
 ];
 
 const inputRootDirectory = 'src';
@@ -69,7 +65,6 @@ const getWebConfig = ({ componentType }) => ({
     babel({
       exclude: 'node_modules/**',
       babelHelpers: 'bundled',
-      // configFile: './.babelrc.js',
       envName: 'web-production',
       extensions: webExtensions,
     }),
@@ -98,14 +93,13 @@ const getNativeConfig = ({ componentType }) => ({
     babel({
       exclude: 'node_modules/**',
       babelHelpers: 'runtime',
-      // configFile: './.babelrc.js',
       envName: 'production',
       extensions: nativeExtensions,
     }),
   ],
 });
 
-// clean build directory before building
+// clean outputRootDirectory before building
 fs.rmdirSync(outputRootDirectory, { recursive: true });
 
 const config = componentTypes
