@@ -38,7 +38,10 @@ Blade Issue:
     - [CommonJS(a.k.a cjs)](#commonjsaka-cjs)
     - [ES Modules(a.k.a esm)](#es-modulesaka-esm)
     - [Conclusion](#conclusion-2)
-  - [Meta information in package.json](#meta-information-in-packagejson)
+  - [Package consumption information in `package.json`](#package-consumption-information-in-packagejson)
+    - [`exports` map field](#exports-map-field)
+    - [`main`, `module`, `browser`, `react-native` fields in `package.json`](#main-module-browser-react-native-fields-in-packagejson)
+    - [Conclusion](#conclusion-3)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
@@ -330,11 +333,88 @@ And this can be achieved by going with the approach of bundling using rollup.
 ### Conclusion
 We should definitely go with ESM. There might be few gotchas and unknowns that might pop up but we'll move ahead and fix them instead of taking a back seat and ship CJS.
 
-## Meta information in package.json
-* If we decide to bundle(instead of transpile) then we need to define values for `main`, `module`, `react-native` fields in package.json.
-* If we our final bundle has `components`, `tokens`, `types`, `utils`  as individual pieces then we can't define these values since these fields in `package.json` accepts only single string value. So we might need to explore `exports` field of `package.json`. [Check Preact for reference.](https://github.com/preactjs/preact/blob/master/package.json#L12-L71)
-* if we just produce one final bundle then we can define values for `main`, `module`, `react-native` fields in package.json. I think the above point should be fine.
+## Package consumption information in `package.json`
+Once we have bundled our package and it's ready to be shipped, we need to add some information for resolution in our `package.json` so that the tools on the consumer apps understand how to resolve things from our package.
 
+For example, our bundles `components`, `tokens`, `utils` are generated inside `blade/build` directory so if our consumers need to consume our packages then they need to do
+```js
+import {ThemeProvider, useTheme} from '@razorpay/blade/build/components';
+import {paymentTheme, globalColors} from '@razorpay/blade/build/tokens';
+```
+
+Can you see that extra `/build` path? Tha's unnecessary. So how do we fix it?
+
+`package.json` has a lot of fields that can describe the entry points or resolutions for certain paths of our package. Let's see how we can use them
+
+### `exports` map field 
+
+This is introduced by node js from node v12.7+ where we can define paths and subpaths in our `package.json` for our package. Here's an example
+
+```json
+{
+  "exports": {
+    "./components": {
+      "react-native": "./build/components/index.native.js",
+      "default": "./build/components/index.web.js"
+    },
+    "./tokens": {
+      "react-native": "./build/tokens/index.native.js",
+      "default": "./build/tokens/index.web.js"
+    },
+    "./utils": {
+      "react-native": "./build/tokens/index.native.js",
+      "default": "./build/tokens/index.web.js"
+    }
+  }
+}
+```
+
+With the above approach we tell tools like webpack, metro, node on how to resolve subpaths. Now after above addition we should be able to do like following:
+```js
+import {ThemeProvider, useTheme} from '@razorpay/blade/components';
+import {paymentTheme, globalColors} from '@razorpay/blade/tokens';
+```
+The downside of `exports` map is that not all the bundler tools have implemented it. Webpack has [it in v5+](https://github.com/webpack/webpack/pull/10953) and metro [hasn't implemented](https://github.com/facebook/metro/issues/670) this yet.
+
+> You can read more about the [exports map here](https://docs.skypack.dev/package-authors/package-checks#export-map). I've added few more links in the [references section](#references) below.
+
+### `main`, `module`, `browser`, `react-native` fields in `package.json`
+
+The older way to define this consumption information used to be via `main`, `module`, `browser`, `react-native` fields in `package.json`.
+* `main`: defines entry point for commonjs bundle
+* `module`: defines entry point for esm bundle.
+* `browser`: defines entry point for browser specific bundle. If not provided, then fallback to `main` or `module`.
+* `react-native`: defines entry point for react-native bundle. If not provided, then fallback to `main`.
+* The problem with all of the above fields is that they accept a single string value and can be useful if you have single bundle of your package. For our use case we have multiple bundles. Hence, this won't be useful for us.
+
+### Conclusion
+Now based on the above discussions we definitely want to go ahead with `exports` map to define subpaths for our package but that is not supported by all the tools. So what do we do? We need to provide fallback for backward compatibility. So how do we do that? We generate `components`, `tokens`, `utils`  files at the root and re-export things from `build`.
+```
+blade/
+  build/
+    components/
+      index.web.js
+      index.native.js
+    tokens/
+      index.web.js
+      index.native.js
+    utils/
+      index.web.js
+      index.native.js
+  src/
+  components.js
+    export * from './build/components';
+  tokens.js
+    export * from './build/tokens';
+  utils.js
+    export * from './build/utils';
+```
+
+With the above we would still be able to import in following way:
+```js
+import {ThemeProvider, useTheme} from '@razorpay/blade/components';
+import {paymentTheme, globalColors} from '@razorpay/blade/tokens';
+```
 
 # Drawbacks/Constraints
 I've already spoken about multiple approaches and constraints of each of them in the respective sections itself.
@@ -351,4 +431,8 @@ There's no adoption strategy as such. We'll just need to document the usage of d
    * Maybe use something similar to [this library](https://www.npmjs.com/package/npm-dts).
 
 # References
-Any references that you can share for those who are curious to understand anything beyond the scope of this RFC in general but related to the topic of this RFC.
+* [NodeJS packages support](https://nodejs.org/api/packages.html)
+* [`exports` map](https://docs.skypack.dev/package-authors/package-checks#export-map)
+* [Webpack `exports` field handling and examples](https://webpack.js.org/guides/package-exports/)
+* [`exports` implementation PR in webpack](https://github.com/webpack/webpack/pull/10953)
+* [`exports` field issue in metro](https://github.com/facebook/metro/issues/670)
