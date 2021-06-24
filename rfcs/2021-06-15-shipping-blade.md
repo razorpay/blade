@@ -1,7 +1,7 @@
 ---
 Start Date: 15-06-2021
-RFC PR:
-Blade Issue:
+RFC PR: https://github.com/razorpay/blade/pull/312
+Blade Issue: NA
 ---
 
 # 🛳 Shipping Blade <!-- omit in toc -->
