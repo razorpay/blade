@@ -19,10 +19,10 @@ Blade Issue: NA
     - [2. `import` everything from root package](#2-import-everything-from-root-package)
       - [Pros](#pros-1)
       - [Cons](#cons-1)
-    - [3. `import` from each category(components, tokens,types, utils) root package](#3-import-from-each-categorycomponents-tokenstypes-utils-root-package)
+    - [3. `import` from each category(components, tokens,types, utils) from root package](#3-import-from-each-categorycomponents-tokenstypes-utils-from-root-package)
       - [Pros](#pros-2)
       - [Cons](#cons-2)
-    - [4. `import` named components from each category(components, tokens,types, utils) root package](#4-import-named-components-from-each-categorycomponents-tokenstypes-utils-root-package)
+    - [4. `import` named components from each category(components, tokens,types, utils) from root package](#4-import-named-components-from-each-categorycomponents-tokenstypes-utils-from-root-package)
       - [Pros](#pros-3)
       - [Cons](#cons-3)
     - [Which approach we'll take?](#which-approach-well-take)
@@ -33,6 +33,9 @@ Blade Issue: NA
   - [How to package?](#how-to-package)
     - [Shall we Transpile(using babel)?](#shall-we-transpileusing-babel)
     - [Shall we Bundle(using rollup/similar tools)?](#shall-we-bundleusing-rollupsimilar-tools)
+    - [Difference between library authors doing tree shaking vs consumer apps doing tree shaking.](#difference-between-library-authors-doing-tree-shaking-vs-consumer-apps-doing-tree-shaking)
+      - [Library authors doing tree shaking](#library-authors-doing-tree-shaking)
+      - [Consumer apps doing tree shaking](#consumer-apps-doing-tree-shaking)
     - [Conclusion](#conclusion-1)
   - [What module system to target?](#what-module-system-to-target)
     - [CommonJS(a.k.a cjs)](#commonjsaka-cjs)
@@ -98,17 +101,17 @@ import useColorScheme from '@razorpay-blade/useColorScheme'
 ```
 
 #### Pros
-* No need to maintain a top level re-exports. Just write the component and be done with it.
+As maintainers of Blade, we don't need to maintain a top level re-exports. Just write the component and be done with it.
 
 ```js
-// packages/blade/index.ts
+// example: top level re-exports "packages/blade/index.ts"
 export * from 'src/components/Button'
 export * from 'src/components/Text'
 export * from 'src/tokens/theme'
 ```
 
 #### Cons
-* We have to write the whole `import` statement for every component we want. Not a good DX. Imagine importing 15 components and writing 15 import statements for each of them.
+We have to write the whole `import` statement for every component we want. Not a good DX. Imagine importing 15 components and writing 15 import statements for each of them.
 
 ### 2. `import` everything from root package
 ```js
@@ -117,24 +120,21 @@ import { Button, Text, overrideTheme, paymentTheme, getColorScheme, useColorSche
 ```
 
 #### Pros
-* Don't have to write the whole import statement for every component we want. If there's an import statement already we just add it to the existing named import statement
-
-```js
-// consumer/src/App.tsx
-import { Button, Text, overrideTheme, paymentTheme } from '@razorpay/blade'
-```
+As a consumer, we don't have to write the whole import statement for every component we want in our app. If there's an import statement already we just add our thing to the existing named import statement.
 
 #### Cons
-* Everytime we add anything we need to ensure that we re-export it from the top level re-exports.
+* As a maintainer, every time we add anything we need to ensure that we re-export it from the top level.
+>It can be automated with scripts but not recommended because as maintainer we need to pick consciously what to re-export as there might be some internal things which we might not want to re-export
 
-```js
-// packages/blade/index.ts
-export * from 'src/components/Button'
-export * from 'src/components/Text'
-export * from 'src/tokens/theme'
-```
+  ```js
+  // packages/blade/index.ts
+  export * from 'src/components/Button'
+  export * from 'src/components/Text'
+  export * from 'src/tokens/theme'
+  ```
+* As a consumer, over time the imports will be long running in the app and might mix concerns. For example you might want to import `Button`, `Text`, `overrideTheme`, `paymentTheme`, `getColorScheme`, `useColorScheme` all these will be part of one single import statement and consumers might get confused looking at all these things mixing up. Not problem from performance point but could bring down the DX and also the readability of imports.
 
-### 3. `import` from each category(components, tokens,types, utils) root package
+### 3. `import` from each category(components, tokens,types, utils) from root package
 ```js
 /* mono-package with per category import */
 import { Button, Text } from '@razorpay/blade/components'
@@ -143,15 +143,26 @@ import { getColorScheme, useColorScheme } from '@razorpay/blade/utils'
 ```
 
 #### Pros
-* Better readability and structured imports. We know what we want and from where will it come.
-* No long running import statements with concerns mixed
+* As a consumer it provides better readability with categorized imports. Consumers will know what they want and from where will it come. For example, if as a consumer I just want the `tokens` then I can import it from `tokens`, similarly If I just want to import `components`(which will be majority of the use case) I know as a consumer that I can import it from `components` directly and same goes for `utils`
+  ```js
+  // every import statement is meaningful and consumers will be able to 
+  import { Button, Text } from '@razorpay/blade/components'
+  import { overrideTheme, paymentTheme } from '@razorpay/blade/theme'
+  import { getColorScheme, useColorScheme } from '@razorpay/blade/utils'
 
-```js
-import { Button, Text, overrideTheme, paymentTheme, getColorScheme, useColorScheme } from '@razorpay/blade'
-```
+  import { Button, Text, overrideTheme, paymentTheme, getColorScheme, useColorScheme } from '@razorpay/blade'
+  ```
+* No long running import statements for consumers with mixed concerns.
+  >P.S the imports for a particular category might grow longer over time but at least the categories won't be mixed
+  ```js
+  // example of long running import
+  import { Button, Text, overrideTheme, paymentTheme, getColorScheme, useColorScheme } from '@razorpay/blade'
+  ```
+
 
 #### Cons
-* We need to maintain top level re-exports per category
+* As a maintainer, we need to maintain top level re-exports per category
+>It can be automated with scripts but not recommended because as maintainer we need to pick consciously what to re-export as there might be some internal things which we might not want to re-export
 ```js
 // packages/blade/src/components/index.ts
 export * from 'src/components/Button'
@@ -167,7 +178,7 @@ export * from 'src/tokens/utils/getColorScheme'
 export * from 'src/tokens/utils/useColorScheme'
 ```
 
-### 4. `import` named components from each category(components, tokens,types, utils) root package
+### 4. `import` named components from each category(components, tokens,types, utils) from root package
 ```js
 /* mono-package with per category per component import */
 import Button from '@razorpay/blade/components/Button'
@@ -176,9 +187,10 @@ import paymentTheme from '@razorpay/blade/theme/paymentTheme'
 ```
 
 #### Pros
-* No need to maintain top level re-exports per category. Just write your components and be done with it.
+No need to maintain top level re-exports per category. Just write your components and be done with it.
 
 ```js
+// example of top level re-exports
 // packages/blade/src/components/index.ts
 export * from 'src/components/Button'
 export * from 'src/components/Text'
@@ -195,9 +207,10 @@ export * from 'src/tokens/utils/useColorScheme'
 
 #### Cons
 * We have to write the whole named `import` statement for everything we want to import and with every category
+* As a consumer it will be overkill to import each component from each category. It'll slow things down and hamper the DX.
 
 ### Which approach we'll take?
-We'll go with approach [#3](#3-import-from-each-categorycomponents-tokenstypes-utils-root-package)
+We'll go with approach [#3](#3-import-from-each-categorycomponents-tokenstypes-utils-root-package) because I believe we can a have mono-package with per category exports so consumer can import things from a particular category i.e. `components`, `tokens`, `utils`, based on what they need. It's similar to importing `renderToString` from `react-dom/server` and not `react-dom`. This approach will require consumers to read usage documentation but IMO that's acceptable.
 
 ## What strategy to take for packaging?
 
@@ -251,22 +264,25 @@ Using individually versioned packages does have some downsides that we should lo
     * Assume Payment's team is using `Modal` component and they need to just upgrade `Modal`.
     * But, `Modal` might have other components like `Button`, `Icon` and `Theme` which also would have undergone changes so they need to bump those packages too, now `Button` might depend on `Text` so they need to update `Text` too.
 
-2. Avoid duplicate versions
+2. Avoid duplicate versions(accidentally increasing bundle size)
 
    * You should ensure that you do not unintentionally introduce multiple versions of the same component into your app. While this does technically work, it will cause your application to include more code than necessary, so it should only be used as a temporary fix if at all.
 
-   * For eg: You might use `Modal@1.0.2` which internally might have dependency on `Button@1.0.2`. Now what happens if you accidentally have `Button@1.0.1` as a dependency already? It might lead to inconsistent behaviors.
+   * For eg: You might use `Modal@1.0.2` which internally might have dependency on `Button@1.0.2`. Now what happens if you accidentally have `Button@1.0.1` as a dependency already? It might lead to inconsistent behaviors. Even though package managers can take care of it to extent but if you different pinned versions of the same component then the package manager is going to install 2 different versions.
 
 ### Conclusion
 * In theory the multi-package does looks appealing but has inherent consequences that are not worth the efforts on publishing team as well as consuming team side.
 * Would we like teams to buy into blade as a whole and upgrade versions regularly? Yes, since there's no performance implication as such of mono-package. If teams are not regularly upgrading to newer versions then we'll figure out a way to solve that problem in a different way.
 
+Hence, I believe we should go ahead with the simplest and more maintainable approach i.e mono-package and come to multi-package versions once we see a need.
+
 ## How to package?
-We have different tools at hand to package.
-* Babel: It'll just transpile the code and won't bundle things
-* Rollup: It'll bundle the code into one single file/multiple(depending on our config)
-* Parcel: It'll bundle the code into one single file/multiple(depending on our config)
-* Bob: This under the hood transpiles things using babel and is more suitable for complex libraries built for react native apps and esp ones interacting with native side(android/iOS). Don't yet see a use case for this so not considering it at the moment.
+We have different tools at hand to package:
+* **Babel**: It'll just transpile the code and won't bundle things
+* **Rollup**: It'll bundle the code into one single file/multiple(depending on our config)
+* **Parcel**: It'll bundle the code into one single file/multiple(depending on our config)
+* **Webpack**: It'll bundle the code into one single file/multiple(depending on our config).
+* **Bob**: This under the hood transpile source files using babel and is more suitable for complex libraries built for react native apps and esp ones interacting with native side(android/iOS). Don't yet see a use case for this so not considering it at the moment.
 
 ### Shall we Transpile(using babel)?
 It'll just transpile the code and won't bundle things. Before we take a call let's see a checklist of what transpiling can/can't do.
@@ -275,7 +291,7 @@ It'll just transpile the code and won't bundle things. Before we take a call let
     ```html
     <script src="https://unpkg.com/@razorpay/blade@0.1.1/index.js" crossorigin></script>
     ```
-2. Consumers are allwoed to import anything from anywhere.
+2. Consumers are allowed to import anything from anywhere.
     ```js
     // this is allowed
     import { Button } from '@razorpay/blade'
@@ -287,7 +303,7 @@ It'll just transpile the code and won't bundle things. Before we take a call let
 > 📝 We can create our custom plugins and ask consumers to import it but that's again too much effort to maintain another piece.
 
 ### Shall we Bundle(using rollup/similar tools)?
-It'll bundle the code into one single file/multiple(depending on our config).Before we take a call let's see a checklist of what transpiling can/can't do.
+It'll bundle the code into one single file/multiple(depending on our config).Before we take a call let's see a checklist of what bundling can/can't do.
 1. We can use library with the script tag in html(umd bundle).
     ```html
     <script src="https://unpkg.com/@razorpay/blade@0.1.1/index.js" crossorigin></script>
@@ -302,6 +318,26 @@ It'll bundle the code into one single file/multiple(depending on our config).Bef
 3. As library authors we are responsible for tree shaking since we'll be bundling the code which will be ready to be used by the consumers.
 4. Since we ship the packaged code we don't care what tools config or versions the consumer app is using. We'll ship code that they just need to plug in and it would work.
 
+### Difference between library authors doing tree shaking vs consumer apps doing tree shaking.
+
+First things first, what is tree shaking?
+* Tree shaking is a term commonly used within a JavaScript context to describe the removal of dead code.
+
+The principle behind tree shaking is as follows:
+* You declare all of your imports and exports for each of your modules.
+* Your bundler (Webpack, Rollup, and so on) analyzes your dependency tree during the compilation step.
+* Any unused code is dropped from the final bundle, or ‘tree-shaken’.
+
+#### Library authors doing tree shaking
+* We give out a concise version of our library to our consumers which they can just plug and play without worrying about performance.
+* The tools we use might remove all the `imports` and `export` statements so there can't be further tree shaking in our library code itself on consumer side. But since we library authors are doing it we can control it and make it tree shakeable even further.
+
+
+#### Consumer apps doing tree shaking
+* The consumer tools/configs are unpredictable which means a small issue on their end and the code will bloat up and to some extent our library will also be part of that blunder since even we didn't tree shake things before publishing.
+* Our library performance is highly dependent on consumers bundler configs and tool chains. They need to care about tree shaking even for our library. If we screw up somewhere in transpile our consumers will be in dangling state that whether it's their fault or ours but in the end the performance of the app suffers which means our end users suffer.
+
+Hence, I believe it's better if we take care of all these things, at least our consumers will have one less problem to worry about.
 ### Conclusion
 I feel below is the checklist that we need.
 
@@ -315,9 +351,13 @@ I feel below is the checklist that we need.
 
 And this can be achieved by going with the approach of bundling using rollup.
 
-> Not choosing parcel for following reasons:
+> Not choosing **parcel** for following reasons:
 > 1. Not familiar with the tool
 > 2. We need to bundle react-native as well so I'm not too sure how smooth it will be with parcel.
+
+> Not choosing **webpack** for following reasons:
+> 1. Can't build ESM as output target
+> 2. Well suited for apps and not libraries.
 
 ## What module system to target?
 
@@ -417,13 +457,13 @@ import {paymentTheme, globalColors} from '@razorpay/blade/tokens';
 ```
 
 # Drawbacks/Constraints
-I've already spoken about multiple approaches and constraints of each of them in the respective sections itself.
+I've already spoken about multiple approaches and constraints of each of them in the respective sections.
 
 # Alternatives
-I've already spoken about multiple approaches and constraints of each of them in the respective sections itself.
+I've already spoken about multiple approaches and constraints of each of them in the respective sections.
 
 # Adoption strategy
-There's no adoption strategy as such. We'll just need to document the usage of design system once it's published.
+Based on the above approaches we will be bundling blade, have top level exports like `@razorpay/blade/components`, `@razorpay/blade/tokens`, `@razorpay/blade/utils` and we'll be publishing it as a mono-package. Now for these things there's no adoption strategy but the only thing that will help document the usage of design system and the imports once it's published.
 
 # Open Questions
 1. Do we need any changes in our src directory structure to support our needs?
