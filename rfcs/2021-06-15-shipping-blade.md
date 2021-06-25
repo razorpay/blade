@@ -456,6 +456,10 @@ import {ThemeProvider, useTheme} from '@razorpay/blade/components';
 import {paymentTheme, globalColors} from '@razorpay/blade/tokens';
 ```
 
+One common question you might have: If exports is not supported by all the tools, then why do we even need `exports` map support in the package.json?
+
+The answer to that is because in new versions of webpack(5.x.x) it’s supported. Plus all the new tools are supporting it. Node already supports it. So we want to support modern tools but also have escape hatch/fallback for legacy tools until they upgrade(because we can’t guarantee what versions consumer apps are using)
+
 # Drawbacks/Constraints
 I've already spoken about multiple approaches and constraints of each of them in the respective sections.
 
