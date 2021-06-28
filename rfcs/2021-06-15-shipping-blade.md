@@ -124,7 +124,7 @@ As a consumer, we don't have to write the whole import statement for every compo
 
 #### Cons
 * As a maintainer, every time we add anything we need to ensure that we re-export it from the top level.
->It can be automated with scripts but not recommended because as maintainer we need to pick consciously what to re-export as there might be some internal things which we might not want to re-export
+  >It can be automated with scripts but not recommended because as maintainer we need to pick consciously what to re-export as there might be some internal things which we might not want to re-export
 
   ```js
   // packages/blade/index.ts
@@ -161,7 +161,7 @@ import { getColorScheme, useColorScheme } from '@razorpay/blade/utils'
 
 
 #### Cons
-* As a maintainer, we need to maintain top level re-exports per category
+As a maintainer, we need to maintain top level re-exports per category
 >It can be automated with scripts but not recommended because as maintainer we need to pick consciously what to re-export as there might be some internal things which we might not want to re-export
 ```js
 // packages/blade/src/components/index.ts
