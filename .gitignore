@@ -6,7 +6,10 @@ coverage
 
 # build direcotries
 **/docs
-**/build 
+**/build
+packages/blade/components.js
+packages/blade/tokens.js
+packages/blade/utils.js
 
 # misc
 .DS_Store

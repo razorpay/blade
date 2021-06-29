@@ -20,7 +20,10 @@ module.exports = {
       ],
     },
     production: {
-      presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
+      presets: [
+        '@babel/preset-typescript',
+        ['module:metro-react-native-babel-preset', { disableImportExportTransform: true }],
+      ],
       plugins: [
         [
           'module-resolver',
@@ -46,6 +49,14 @@ module.exports = {
       ],
       plugins: [
         [
+          '@babel/plugin-transform-runtime',
+          {
+            corejs: 3,
+            helpers: true,
+            regenerator: true,
+          },
+        ],
+        [
           'babel-plugin-styled-components',
           {
             displayName: true,
@@ -63,6 +74,14 @@ module.exports = {
       ],
       plugins: [
         [
+          '@babel/plugin-transform-runtime',
+          {
+            corejs: 3,
+            helpers: true,
+            regenerator: true,
+          },
+        ],
+        [
           'babel-plugin-styled-components',
           {
             displayName: true,
@@ -79,6 +98,14 @@ module.exports = {
         ['@babel/preset-react', { runtime: 'automatic' }],
       ],
       plugins: [
+        [
+          '@babel/plugin-transform-runtime',
+          {
+            corejs: 3,
+            helpers: true,
+            regenerator: true,
+          },
+        ],
         [
           'babel-plugin-styled-components',
           {

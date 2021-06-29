@@ -4,7 +4,8 @@ module.exports = {
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
     'max-lines': 'off',
-    'no-console': ['warn'],
+    'no-console': 'off',
+    'import/no-cycle': 'error',
     complexity: ['off'],
     'import/order': [
       'error',
