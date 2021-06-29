@@ -49,6 +49,14 @@ module.exports = {
       ],
       plugins: [
         [
+          '@babel/plugin-transform-runtime',
+          {
+            corejs: 3,
+            helpers: true,
+            regenerator: true,
+          },
+        ],
+        [
           'babel-plugin-styled-components',
           {
             displayName: true,
@@ -66,6 +74,14 @@ module.exports = {
       ],
       plugins: [
         [
+          '@babel/plugin-transform-runtime',
+          {
+            corejs: 3,
+            helpers: true,
+            regenerator: true,
+          },
+        ],
+        [
           'babel-plugin-styled-components',
           {
             displayName: true,
@@ -82,6 +98,14 @@ module.exports = {
         ['@babel/preset-react', { runtime: 'automatic' }],
       ],
       plugins: [
+        [
+          '@babel/plugin-transform-runtime',
+          {
+            corejs: 3,
+            helpers: true,
+            regenerator: true,
+          },
+        ],
         [
           'babel-plugin-styled-components',
           {

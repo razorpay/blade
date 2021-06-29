@@ -3,7 +3,6 @@ import { babel } from '@rollup/plugin-babel';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-// import typescript from '@rollup/plugin-typescript';
 
 const webExtensions = [
   '.web.js',
@@ -41,54 +40,44 @@ const nativeExtensions = [
 
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
-const componentTypes = ['components', 'tokens', 'utils'];
+const exportCategories = ['components', 'tokens', 'utils'];
 
-const getWebConfig = ({ componentType }) => ({
-  input: `${inputRootDirectory}/${componentType}/index.ts`,
+const getWebConfig = ({ exportCategory }) => ({
+  input: `${inputRootDirectory}/${exportCategory}/index.ts`,
   output: [
     {
-      file: `${outputRootDirectory}/${componentType}/index.web.js`,
+      file: `${outputRootDirectory}/${exportCategory}/index.web.js`,
       format: 'esm',
       sourcemap: true,
     },
   ],
+  external: [/@babel\/runtime/],
   plugins: [
     peerDepsExternal(),
     resolve({ extensions: webExtensions }),
-    // typescript({
-    //   tsconfig: './tsconfig.json',
-    //   declaration: true,
-    //   noEmit: false,
-    //   declarationDir: 'build/types',
-    // }),
     commonjs(),
     babel({
       exclude: 'node_modules/**',
-      babelHelpers: 'bundled',
+      babelHelpers: 'runtime',
       envName: 'web-production',
       extensions: webExtensions,
     }),
   ],
 });
 
-const getNativeConfig = ({ componentType }) => ({
-  input: `${inputRootDirectory}/${componentType}/index.ts`,
+const getNativeConfig = ({ exportCategory }) => ({
+  input: `${inputRootDirectory}/${exportCategory}/index.ts`,
   output: [
     {
-      file: `${outputRootDirectory}/${componentType}/index.native.js`,
+      file: `${outputRootDirectory}/${exportCategory}/index.native.js`,
       format: 'esm',
       sourcemap: true,
     },
   ],
+  external: [/@babel\/runtime/],
   plugins: [
     peerDepsExternal(),
     resolve({ extensions: nativeExtensions }),
-    // typescript({
-    //   tsconfig: './tsconfig.json',
-    //   declaration: true,
-    //   noEmit: false,
-    //   declarationDir: 'build/types',
-    // }),
     commonjs(),
     babel({
       exclude: 'node_modules/**',
@@ -100,10 +89,10 @@ const getNativeConfig = ({ componentType }) => ({
 });
 
 // clean outputRootDirectory before building
-fs.rmdirSync(outputRootDirectory, { recursive: true });
+fs.rmSync(outputRootDirectory, { recursive: true, force: true });
 
-const config = componentTypes
-  .map((componentType) => [getWebConfig({ componentType }), getNativeConfig({ componentType })])
+const config = exportCategories
+  .map((exportCategory) => [getWebConfig({ exportCategory }), getNativeConfig({ exportCategory })])
   .flat();
 
 export default config;
