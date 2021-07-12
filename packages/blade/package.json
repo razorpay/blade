@@ -23,7 +23,7 @@
     },
     "./utils": {
       "react-native": "./build/tokens/index.native.js",
-      "default": "./build/tokens/index.web.js"
+      "default": "./build/utils/index.web.js"
     }
   },
   "scripts": {
