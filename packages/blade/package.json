@@ -34,7 +34,6 @@
     "build:copy-declarations": "copyfiles -u 1 \"src/**/*.d.ts\" build/types",
     "build:source": "rollup -c && node ./scripts/generateRootImports.js",
     "build:clean-declarations": "rm -rf build/types",
-    "generateTypes": "rm -rf build && tsc -p ./tsconfig-generate-types.json",
     "test:web": "BABEL_ENV=web-test jest -c ./jest.web.config.js",
     "test:native": "BABEL_ENV=development jest -c ./jest.native.config.js"
   },
