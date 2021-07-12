@@ -1,8 +1,8 @@
-import fs from 'fs';
-import { babel } from '@rollup/plugin-babel';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
+import { babel as pluginBabel } from '@rollup/plugin-babel';
+import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
+import pluginResolve from '@rollup/plugin-node-resolve';
+import pluginCommonjs from '@rollup/plugin-commonjs';
+import pluginDeclarations from 'rollup-plugin-dts';
 
 const webExtensions = [
   '.web.js',
@@ -53,10 +53,10 @@ const getWebConfig = ({ exportCategory }) => ({
   ],
   external: [/@babel\/runtime/],
   plugins: [
-    peerDepsExternal(),
-    resolve({ extensions: webExtensions }),
-    commonjs(),
-    babel({
+    pluginPeerDepsExternal(),
+    pluginResolve({ extensions: webExtensions }),
+    pluginCommonjs(),
+    pluginBabel({
       exclude: 'node_modules/**',
       babelHelpers: 'runtime',
       envName: 'web-production',
@@ -76,10 +76,10 @@ const getNativeConfig = ({ exportCategory }) => ({
   ],
   external: [/@babel\/runtime/],
   plugins: [
-    peerDepsExternal(),
-    resolve({ extensions: nativeExtensions }),
-    commonjs(),
-    babel({
+    pluginPeerDepsExternal(),
+    pluginResolve({ extensions: nativeExtensions }),
+    pluginCommonjs(),
+    pluginBabel({
       exclude: 'node_modules/**',
       babelHelpers: 'runtime',
       envName: 'production',
@@ -88,11 +88,23 @@ const getNativeConfig = ({ exportCategory }) => ({
   ],
 });
 
-// clean outputRootDirectory before building
-fs.rmSync(outputRootDirectory, { recursive: true, force: true });
+const getDeclarationsConfig = ({ exportCategory }) => ({
+  input: `${outputRootDirectory}/types/${exportCategory}/index.d.ts`,
+  output: [
+    {
+      file: `${outputRootDirectory}/${exportCategory}/index.d.ts`,
+      format: 'esm',
+    },
+  ],
+  plugins: [pluginDeclarations()],
+});
 
 const config = exportCategories
-  .map((exportCategory) => [getWebConfig({ exportCategory }), getNativeConfig({ exportCategory })])
+  .map((exportCategory) => [
+    getWebConfig({ exportCategory }),
+    getNativeConfig({ exportCategory }),
+    getDeclarationsConfig({ exportCategory }),
+  ])
   .flat();
 
 export default config;
