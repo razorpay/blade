@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     },
     "./utils": {
       "react-native": "./build/tokens/index.native.js",
-      "default": "./build/tokens/index.web.js"
+      "default": "./build/utils/index.web.js"
     }
   },
   "scripts": {
