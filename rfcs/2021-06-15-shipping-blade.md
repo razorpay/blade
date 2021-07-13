@@ -613,14 +613,6 @@ const getDeclarationsConfig = ({ exportCategory }) => ({
 const config = exportCategories.map((exportCategory) => getDeclarationsConfig({ exportCategory }))
 
 ```
-
-### In a nutshell
-Here's what all we need to do to generate types for consumers:
-1. Emit types with `tsc` to `build/types`.
-2. Copy custom `*.d.ts` from `src` to `build/types` using `copyfiles`.
-3. Bundle our declarations from `build/types` to match the library output using rollup.
-4. Remove `build/types` as a cleanup process.
-
 This will bundle our declarations from `build/types` for each category and place the respective declarations files under `build/components/index.d.ts`, `build/tokens/index.d.ts`, `build/utils/index.d.ts`. 
 
 Now since we have our types bundled we don't need `build/types` directory so we'll clean it up. Here's how our final output will look like:
@@ -639,6 +631,12 @@ build/
     ├── index.web.js
     └── index.native.js
 ```
+### In a nutshell
+Here's what all we need to do to generate types for consumers:
+1. Emit types with `tsc` to `build/types`.
+2. Copy custom `*.d.ts` from `src` to `build/types` using `copyfiles`.
+3. Bundle our declarations from `build/types` to match the library output using rollup.
+4. Remove `build/types` as a cleanup process.
 
 # Drawbacks/Constraints
 I've already spoken about multiple approaches and constraints of each of them in the respective sections.
