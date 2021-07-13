@@ -103,6 +103,7 @@ const config = exportCategories
   .map((exportCategory) => [
     getWebConfig({ exportCategory }),
     getNativeConfig({ exportCategory }),
+    // bundle our declarations for each category `components`, `tokens` and `utils` and place it next to each category under `build`
     getDeclarationsConfig({ exportCategory }),
   ])
   .flat();

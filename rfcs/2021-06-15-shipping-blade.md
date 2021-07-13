@@ -597,23 +597,22 @@ We need to bundle our declarations so that it maps to `components`, `tokens` and
 
 Here's how our rollup config will look like:
 ```js
-const exportCategories = ['components', 'tokens', 'utils'];
-
-const getDeclarationsConfig = ({ exportCategory }) => ({
-  input: `${outputRootDirectory}/types/${exportCategory}/index.d.ts`,
+// `exportCategory` could be one of `components`, `tokens` or `utils`
+const config = {
+  input: `build/types/${exportCategory}/index.d.ts`,
   output: [
     {
-      file: `${outputRootDirectory}/${exportCategory}/index.d.ts`,
+      file: `build/${exportCategory}/index.d.ts`,
       format: 'esm',
     },
   ],
   plugins: [pluginDeclarations()],
-});
-
-const config = exportCategories.map((exportCategory) => getDeclarationsConfig({ exportCategory }))
+}
 
 ```
 This will bundle our declarations from `build/types` for each category and place the respective declarations files under `build/components/index.d.ts`, `build/tokens/index.d.ts`, `build/utils/index.d.ts`. 
+
+>Note: Each category has `index.d.ts`, eg: `components/index.d.ts` which is a top level re-export for all the types under `components` at any nested level. We just tell rollup where to start(entry point) and then it bundles everything from there.
 
 Now since we have our types bundled we don't need `build/types` directory so we'll clean it up. Here's how our final output will look like:
 ```
