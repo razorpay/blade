@@ -1,7 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "exclude": ["**/**.test.ts", "**/**.test.tsx", "__tests__"],
-  "include": ["src", "src/tokens/theme/theme.d.ts"],
   "compilerOptions": {
     "declaration": true,
     "emitDeclarationOnly": true,
