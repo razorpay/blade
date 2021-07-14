@@ -5,6 +5,6 @@
     "declaration": true /* Generates corresponding '.d.ts' file. */,
     "emitDeclarationOnly": true /* Only output d.ts files and not JavaScript files.*/,
     "noEmit": false /* Enable emitting file from a compilation. */,
-    "declarationDir": "build/types" /* Specify the output directory for generated declaration files. */
+    "declarationDir": "build/types" /* The output directory for generated declaration files. */
   }
 }
