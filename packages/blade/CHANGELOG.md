@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.0.4
+
+### Patch Changes
+
+- efb59d9: feat(blade): add type generation scripts
+
 ## 0.0.3
 
 ### Patch Changes
