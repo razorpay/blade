@@ -45,6 +45,12 @@ Blade Issue: NA
     - [`exports` map field](#exports-map-field)
     - [`main`, `module`, `browser`, `react-native` fields in `package.json`](#main-module-browser-react-native-fields-in-packagejson)
     - [Conclusion](#conclusion-3)
+  - [Generating TS types for consumers](#generating-ts-types-for-consumers)
+    - [Phase 1](#phase-1)
+    - [Phase 2](#phase-2)
+    - [Phase 3](#phase-3)
+    - [Phase 4](#phase-4)
+    - [In a nutshell](#in-a-nutshell)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
@@ -431,23 +437,23 @@ The older way to define this consumption information used to be via `main`, `mod
 Now based on the above discussions we definitely want to go ahead with `exports` map to define subpaths for our package but that is not supported by all the tools. So what do we do? We need to provide fallback for backward compatibility. So how do we do that? We generate `components`, `tokens`, `utils`  files at the root and re-export things from `build`.
 ```
 blade/
-  build/
-    components/
-      index.web.js
-      index.native.js
-    tokens/
-      index.web.js
-      index.native.js
-    utils/
-      index.web.js
-      index.native.js
-  src/
-  components.js
-    export * from './build/components';
-  tokens.js
-    export * from './build/tokens';
-  utils.js
-    export * from './build/utils';
+├── build/
+│   ├── components/
+│   │   ├── index.web.js
+│   │   └── index.native.js
+│   ├── tokens/
+│   │   ├── index.web.js
+│   │   └── index.native.js
+│   └── utils/
+│       ├── index.web.js
+│       └── index.native.js
+├── src/
+├── components.js/
+│   └── export * from './build/components';
+├── tokens.js/
+│   └── export * from './build/tokens';
+└── utils.js/
+    └── export * from './build/utils';
 ```
 
 With the above we would still be able to import in following way:
@@ -460,6 +466,177 @@ One common question you might have: If exports is not supported by all the tools
 
 The answer to that is because in new versions of webpack(5.x.x) it’s supported. Plus all the new tools are supporting it. Node already supports it. So we want to support modern tools but also have escape hatch/fallback for legacy tools until they upgrade(because we can’t guarantee what versions consumer apps are using)
 
+## Generating TS types for consumers
+I wish generating types was as simple as bundling our source code with rollup. But unfortunately it isn't. There are multiple steps involved for generating types which is of same structure as our output bundle.
+
+Here's the visual representation of the entire process
+![Generating Types](./images/generating-types.png)
+
+Let's see the step by step process of generating types. 
+
+### Phase 1
+First let's begin by looking at our source code. Now if you look at it we have custom declarations files which we also want to be bundled in the output.
+```
+blade/
+└── src/
+    ├── components/
+    │   ├── ThemeProvider/
+    │   │   └── index.ts
+    │   └── index.ts
+    ├── tokens/
+    │   ├── theme/
+    │   │   ├── paymentTheme.ts
+    │   │   └── theme.d.ts
+    │   └── index.ts
+    └── utils/
+        ├── getColorScheme/
+        │   ├── getColorScheme.d.ts  
+        │   └── index.ts
+        └── index.ts
+```
+
+### Phase 2
+We need to now emit types for our source files. So we'll run `tsc` and pass it a typescript config with following options
+```json
+{
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "declarationDir": "build/types"
+  }
+}
+```
+If you look at it we are telling TS compiler to only emit declarations(because we use rollup with babel to transpile and bundle our code) and we also mention that emit the declarations to `build/types` directory. After running the `tsc` compiler we'll get something like below in the `build` directory.
+```
+build/
+└── types/
+    ├── components/
+    │   ├── ThemeProvider/
+    │   │   └── index.d.ts
+    │   └── index.d.ts
+    ├── tokens/
+    │   ├── theme/
+    │   │   ├── paymentTheme.d.ts
+    │   └── index.d.ts
+    └── utils/
+        ├── getColorScheme/
+        │   └── index.d.ts
+        └── index.d.ts
+```
+If you look closely it emitted the types but it didn't copy our custom declarations file(`theme.d.ts`, `getColorScheme.d.ts` etc.) that we had written by hand in our source code. This is by design in TS compiler that it doesn't considers the `.d.ts` files while emitting. [Here's the explanation](https://github.com/Microsoft/TypeScript/issues/5112#issuecomment-145633791) from the maintainer. 
+
+So what do we do?
+
+We need to run a script that does this for us. In simpler terms we need to copy these files ourselves. We'll use [`copyfiles`](https://www.npmjs.com/package/copyfiles) for this which will copy our custom `*.d.ts` files to the exact location under `build/types` as in source. Following is the script that we need to run
+```bash
+copyfiles -u 1 \"src/**/*.d.ts\" build/types
+```
+So here are the steps in a nutshell we need to perform to emit types and copy our custom `.d.ts` files:
+1. Run `tsc` to emit types to `build/types`
+2. Run `copyfiles` to copy our custom `*.d.ts` files to `build/types`
+
+After doing the above steps here's the build directory structure that we'll get
+```
+build/
+└── types/
+    ├── components/
+    │   ├── ThemeProvider/
+    │   │   └── index.d.ts
+    │   └── index.d.ts
+    ├── tokens/
+    │   ├── theme/
+    │   │   ├── paymentTheme.d.ts
+    │   │   └── theme.d.ts
+    │   └── index.d.ts
+    └── utils/
+        ├── getColorScheme/
+        │   ├── getColorScheme.d.ts 
+        │   └── index.d.ts
+        └── index.d.ts
+```
+So we have our types emitted as well as our custom `*.d.ts` files copied under `build/types`
+
+### Phase 3
+The next step is to run rollup to bundle our source code. Once we run rollup here's how the `build` directory will look like.
+```
+build/
+├── components/
+│   ├── index.web.js
+│   └── index.native.js
+├── tokens/
+│   ├── index.web.js
+│   └── index.native.js
+├── utils/
+│   ├── index.web.js
+│   └── index.native.js  
+└── types/
+    ├── components/
+    │   ├── ThemeProvider/
+    │   │   └── index.d.ts
+    │   └── index.d.ts
+    ├── tokens/
+    │   ├── theme/
+    │   │   ├── paymentTheme.d.ts
+    │   │   └── theme.d.ts
+    │   └── index.d.ts
+    └── utils/
+        ├── getColorScheme/
+        │   ├── getColorScheme.d.ts 
+        │   └── index.d.ts
+        └── index.d.ts
+```
+Now do you see any issues?
+
+The issue is our source code got bundled into `components`, `tokens` and `utils` but we have our `types` structure same as our source code. So how will TS map types when the consumers will consume our library? It won't. 
+
+So what do we do?
+
+### Phase 4
+We need to bundle our declarations so that it maps to `components`, `tokens` and `utils`. We'll use rollup to bundle our declarations with [`rollup-plugin-dts`](https://github.com/Swatinem/rollup-plugin-dts).
+
+Here's how our rollup config will look like:
+```js
+// `exportCategory` could be one of `components`, `tokens` or `utils`
+const config = {
+  input: `build/types/${exportCategory}/index.d.ts`,
+  output: [
+    {
+      file: `build/${exportCategory}/index.d.ts`,
+      format: 'esm',
+    },
+  ],
+  plugins: [pluginDeclarations()],
+}
+
+```
+This will bundle our declarations from `build/types` for each category and place the respective declarations files under `build/components/index.d.ts`, `build/tokens/index.d.ts`, `build/utils/index.d.ts`. 
+
+>Note: Each category has `index.d.ts`, eg: `components/index.d.ts` which is a top level re-export for all the types under `components` at any nested level. We just tell rollup where to start(entry point) and then it bundles everything from there.
+
+Now since we have our types bundled we don't need `build/types` directory so we'll clean it up. Here's how our final output will look like:
+```
+build/
+├── components/
+│   ├── index.d.ts
+│   ├── index.web.js
+│   └── index.native.js
+├── tokens/
+│   ├── index.d.ts
+│   ├── index.web.js
+│   └── index.native.js
+└── utils/
+    ├── index.d.ts
+    ├── index.web.js
+    └── index.native.js
+```
+### In a nutshell
+Here's what all we need to do to generate types for consumers:
+1. Emit types with `tsc` to `build/types`.
+2. Copy custom `*.d.ts` from `src` to `build/types` using `copyfiles`.
+3. Bundle our declarations from `build/types` to match the library output using rollup.
+4. Remove `build/types` as a cleanup process.
+
 # Drawbacks/Constraints
 I've already spoken about multiple approaches and constraints of each of them in the respective sections.
 
@@ -471,7 +648,7 @@ Based on the above approaches we will be bundling blade, have top level exports 
 
 # Open Questions
 1. Do we need any changes in our src directory structure to support our needs?
-2. We have custom types defined at a lot of place so how do we merge them with the types generated by tsconfig?
+2. We have custom types defined at a lot of place so how do we merge them with the types generated by tsconfig? - _Resolved in [Generating TS types for consumers](#generating-ts-types-for-consumers) section_
    * Maybe use something similar to [this library](https://www.npmjs.com/package/npm-dts).
 
 # References
