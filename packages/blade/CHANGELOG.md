@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.0.5
+
+### Patch Changes
+
+- 057cf66: build(blade): add re-exports to `.ts` instead of `.js`
+
 ## 0.0.4
 
 ### Patch Changes
