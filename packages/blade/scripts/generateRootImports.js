@@ -8,8 +8,9 @@ const buildDirectory = 'build';
 
 try {
   exportCategories.forEach((exportCategory) => {
+    // generate root export for js
     const content = `export * from './${buildDirectory}/${exportCategory}';\n`;
-    const componentTypeFile = path.resolve(__dirname, `../${exportCategory}.js`);
+    const componentTypeFile = path.resolve(__dirname, `../${exportCategory}.ts`);
     fs.writeFileSync(componentTypeFile, content);
   });
   console.log(
