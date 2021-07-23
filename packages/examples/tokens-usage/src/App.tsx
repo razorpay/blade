@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import { ThemeProvider } from '@razorpay/blade';
 
 function App(): JSX.Element {
   return (
