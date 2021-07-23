@@ -8,9 +8,9 @@
   },
   "files": [
     "build",
-    "components.js",
-    "tokens.js",
-    "utils.js"
+    "components.ts",
+    "tokens.ts",
+    "utils.ts"
   ],
   "exports": {
     "./components": {
