@@ -24,16 +24,6 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           install-command: yarn --frozen-lockfile
-      - name: Lint Source Code
-        run: yarn lint
-      - name: Run Web Tests
-        run: yarn test:web
-        working-directory: packages/blade
-      - name: Run Native Tests
-        run: yarn test:native
-        working-directory: packages/blade
-      - name: Copy .npmrc to HOME directory
-        run: cp .npmrc $HOME
       - name: Create Release Pull Request & Publish packages
         id: changesets
         uses: changesets/action@master
