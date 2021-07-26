@@ -10,7 +10,7 @@ try {
   exportCategories.forEach((exportCategory) => {
     // generate root export for js
     const exportCategoryContent = `export * from './${buildDirectory}/${exportCategory}';\n`;
-    const exportCategoryFile = path.resolve(__dirname, `../${exportCategory}.ts`);
+    const exportCategoryFile = path.resolve(__dirname, `../${exportCategory}.js`);
     fs.writeFileSync(exportCategoryFile, exportCategoryContent);
 
     // generate root export for typings
