@@ -7,11 +7,11 @@ coverage
 # build direcotries
 **/docs
 **/build
-packages/blade/components.ts
+packages/blade/components.js
 packages/blade/components.d.ts
-packages/blade/tokens.ts
+packages/blade/tokens.js
 packages/blade/tokens.d.ts
-packages/blade/utils.ts
+packages/blade/utils.js
 packages/blade/utils.d.ts
 
 # misc
