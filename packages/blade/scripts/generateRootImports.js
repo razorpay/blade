@@ -9,9 +9,14 @@ const buildDirectory = 'build';
 try {
   exportCategories.forEach((exportCategory) => {
     // generate root export for js
-    const content = `export * from './${buildDirectory}/${exportCategory}';\n`;
-    const componentTypeFile = path.resolve(__dirname, `../${exportCategory}.ts`);
-    fs.writeFileSync(componentTypeFile, content);
+    const exportCategoryContent = `export * from './${buildDirectory}/${exportCategory}';\n`;
+    const exportCategoryFile = path.resolve(__dirname, `../${exportCategory}.ts`);
+    fs.writeFileSync(exportCategoryFile, exportCategoryContent);
+
+    // generate root export for typings
+    const typingsContent = `export * from './${buildDirectory}/${exportCategory}';\n`;
+    const typingsFile = path.resolve(__dirname, `../${exportCategory}.d.ts`);
+    fs.writeFileSync(typingsFile, typingsContent);
   });
   console.log(
     '\n',
