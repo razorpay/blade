@@ -87,7 +87,7 @@
     "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "0.61.5",
+    "react-native": "0.62.3",
     "react-test-renderer": "16.13.1",
     "shelljs": "0.8.3",
     "styled-components": "5.0.1"
@@ -96,7 +96,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-native": "0.61.5",
+    "react-native": "0.62.3",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-reanimated": "^1.9.0",
     "react-native-svg": "^12.1.0",
