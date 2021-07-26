@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.0.6
+
+### Patch Changes
+
+- 8374dc1: build(blade): generate root `.d.ts`
+
 ## 0.0.5
 
 ### Patch Changes
