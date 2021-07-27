@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import React from 'react';
+import { ThemeProvider } from '@razorpay/blade/components';
+import { paymentTheme } from '@razorpay/blade/tokens';
+import { createGlobalStyle } from 'styled-components';
+// import logo from './logo.svg';
+import Card from './Card';
+import '@fontsource/lato';
+
+const GlobalStyle = createGlobalStyle`
+html {
+  box-sizing: border-box;
+}
+body {
+    margin: 16px;
+    font-family: ${paymentTheme.typography.desktop.fonts.family.text};
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: ${paymentTheme.colors.surface.background.level1.lowContrast.onLight};
+  }
+`;
 
 function App(): JSX.Element {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <GlobalStyle />
+      <ThemeProvider theme={paymentTheme}>
+        <Card />
+      </ThemeProvider>
+    </React.Fragment>
   );
 }
 

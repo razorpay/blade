@@ -2380,43 +2380,43 @@ const shadows: Shadows = {
   },
   offsetY: {
     level: {
-      1: 2,
-      2: 2,
-      3: 2,
-      4: 2,
-      5: 2,
+      1: 1,
+      2: 3,
+      3: 8,
+      4: 10,
+      5: 18,
     },
   },
   blurRadius: {
     level: {
-      1: 0,
-      2: 0,
-      3: 0,
-      4: 0,
-      5: 0,
+      1: 2,
+      2: 8,
+      3: 12,
+      4: 18,
+      5: 28,
     },
   },
   color: {
     level: {
       1: {
-        onLight: colors.brand.gray[700].onLight,
-        onDark: colors.brand.gray[700].onDark,
+        onLight: globalColors.neutral.navyGrayLight.a100,
+        onDark: globalColors.neutral.navyGrayDark.a100,
       },
       2: {
-        onLight: colors.brand.gray[700].onLight,
-        onDark: colors.brand.gray[700].onDark,
+        onLight: globalColors.neutral.navyGrayLight.a100,
+        onDark: globalColors.neutral.navyGrayDark.a100,
       },
       3: {
-        onLight: colors.brand.gray[700].onLight,
-        onDark: colors.brand.gray[700].onDark,
+        onLight: globalColors.neutral.navyGrayLight.a100,
+        onDark: globalColors.neutral.navyGrayDark.a100,
       },
       4: {
-        onLight: colors.brand.gray[700].onLight,
-        onDark: colors.brand.gray[700].onDark,
+        onLight: globalColors.neutral.navyGrayLight.a100,
+        onDark: globalColors.neutral.navyGrayDark.a100,
       },
       5: {
-        onLight: colors.brand.gray[700].onLight,
-        onDark: colors.brand.gray[700].onDark,
+        onLight: globalColors.neutral.navyGrayLight.a100,
+        onDark: globalColors.neutral.navyGrayDark.a100,
       },
     },
   },
