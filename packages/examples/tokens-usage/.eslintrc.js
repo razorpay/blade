@@ -9,5 +9,6 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-type-constraint': 'off',
     '@typescript-eslint/non-nullable-type-assertion-style': 'off',
     '@typescript-eslint/sort-type-union-intersection-members': 'off',
+    '@typescript-eslint/triple-slash-reference': 'off',
   },
 };
