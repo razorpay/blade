@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -8,9 +8,12 @@
   },
   "files": [
     "build",
-    "components.ts",
-    "tokens.ts",
-    "utils.ts"
+    "components.d.ts",
+    "components.js",
+    "tokens.d.ts",
+    "tokens.js",
+    "utils.d.ts",
+    "utils.js"
   ],
   "exports": {
     "./components": {
