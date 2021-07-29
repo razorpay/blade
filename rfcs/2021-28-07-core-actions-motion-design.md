@@ -47,9 +47,6 @@ Core actions or animation properties is one of the elements of motion (out of 3 
 
 For consistency and branding, we need to define what kind of actions we can use within an animation in our products. Defining these properties will help us in guiding the designers and communicating with the developers. Also, developers can optimize performance by using correct properties if these core actions are pre-defined.
 
-### What use cases does it support?
-> ???
-
 ### What is the expected outcome?
 We shall be able to answer following questions as a conclusion to this RFC
 1. What unit we'll be using for these core actions defined?
