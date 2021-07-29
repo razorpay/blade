@@ -1,14 +1,22 @@
 type BorderRadius = Readonly<{
+  /** none: 0(px/rem/pt) */
   none: number;
+  /** small: 2(px/rem/pt) */
   small: number;
+  /** medium: 4(px/rem/pt) */
   medium: number;
+  /** large: 8(px/rem/pt) */
   large: number;
+  /** max: 9999(px/rem/pt). This will round the left and right side of your box */
   max: number;
+  /** round: 9999(px/rem/pt). This will your box element as circle */
   round: string;
 }>;
 
 type BorderWidth = Readonly<{
+  /** none: 0(px/rem/pt) */
   none: number;
+  /** thin: 1(px/rem/pt) */
   thin: number;
 }>;
 
