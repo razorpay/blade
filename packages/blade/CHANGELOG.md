@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 0.0.7
+
+### Patch Changes
+
+- 1aa2961: fix(blade): export all the types of global tokens for consumers
+- d8d8027: fix(blade): typo in color tokens
+
 ## 0.0.6
 
 ### Patch Changes
