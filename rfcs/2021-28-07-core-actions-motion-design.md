@@ -12,8 +12,7 @@ Blade Issue: NA
 - [Detailed Design](#detailed-design)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
-- [Adoption strategy](#adoption-strategy)
-- [How do we educate people?](#how-do-we-educate-people)
+- [Adoption Strategy](#adoption-strategy)
 - [Open Questions](#open-questions)
 - [References](#references)
 
@@ -90,7 +89,6 @@ Based on our the products pre-existing actions and branding we've decided on the
 |---|---|---|
 | **Zoom** | Where the `aspect-ratio` is the same; don’t squash and stretch UI elements<br>**Ex:** Hovering a card.<br>**Unit:** `%` | <img src="images/motion/core-actions/image4.gif" alt="core-action-scale-zoom" width="200px"> |
 | **Expansion** | Where `length` and `height` changes separately.<br>**Ex:** Expansion of a modal or opening of a dropdown.<br>**Unit:** `px`,`%`,`%y`,`%` | <img src="images/motion/core-actions/image5.gif" alt="core-action-scale-expand" width="200px"> |
-|  |  |  |
 
 ### 2. **Move**
 * **Anchor points(`I` & `F`):** Initial & Final anchor-point coordinates; `(x1, y1)(x2, y2)`.
@@ -103,7 +101,6 @@ Based on our the products pre-existing actions and branding we've decided on the
 |---|---|---|
 | **Elements in the same layer (`z-space`)** | Use type-2 pathway, it makes space for the movement<br>**Ex:** Check out Spotify play icons and top-bar icons. | <img src="images/motion/core-actions/image7.gif" alt="core-action-scale-zoom" width="200px"> |
 | **No other element in the same layers** | Use type 1 pathway, it’s straight-forward and avoids unnecessary distraction. | <img src="images/motion/core-actions/image8.png" alt="core-action-scale-expand" width="200px"> |
-|  |  |  |
 
 ### 3. **Fade**
 * **Opacity:** Percentage(`%`) change in the `opacity`.
@@ -113,7 +110,6 @@ Based on our the products pre-existing actions and branding we've decided on the
 |---|---|---|
 | **Fade In** | Opacity value moves from a lower to higher. <br>**Ex:** Appearing of a card on a page.<br>**Unit:** `%` | <img src="images/motion/core-actions/image9.gif" alt="core-action-fade-in" width="200px"> |
 | **Fade Out** | Opacity value moves from a higher to lower.<br>**Ex:** Disappearing of a card from a page.<br>**Unit:** `%` | <img src="images/motion/core-actions/image9.gif" alt="core-action-fade-out" width="200px"> |
-|  |  |  |
 
 ### 4. **Fill**
 * **Color tokens:** Change in the color value.
@@ -122,7 +118,6 @@ Based on our the products pre-existing actions and branding we've decided on the
 | Type | Description | Example |
 |---|---|---|
 | **Color token change** | When there is a change in state of a UI element, use the fill effect. <br>**Ex:** Hovering over a button.<br>**Unit:** token value (`color.btn.primary.hover`) | <img src="images/motion/core-actions/image10.gif" alt="core-action-fill" width="200px"> |
-|  |  |  |
 
 ### 5. **Morph**
 > It can be used on mask
@@ -132,7 +127,6 @@ Based on our the products pre-existing actions and branding we've decided on the
 | Type | Description | Example |
 |---|---|---|
 | **Shape change** | When a shape gets morhed into another. <br>**Ex:** Opening of dropdown menu.<br>**Unit:** - | <img src="images/motion/core-actions/image11.gif" alt="core-action-morph" width="200px"> |
-|  |  |  |
 
 ### **Combination of Properties**
 |  | Scale | Move | Fade | Fill | Morph |
@@ -151,7 +145,6 @@ Based on our the products pre-existing actions and branding we've decided on the
 | **Morph Move** | <img src="images/motion/core-actions/image14.gif" alt="core-actions-combination-morph-move" width="200px"> |
 | **Scale Move** | <img src="images/motion/core-actions/image15.gif" alt="core-actions-combination-scale-move" width="200px"> |
 | **Morph Fill** | <img src="images/motion/core-actions/image16.gif" alt="core-actions-combination-morph-fill" width="200px"> |
-|  |  |
 
 > **Note:** Try not to combine more than 2 properties.
 
