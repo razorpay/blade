@@ -40,7 +40,7 @@ type ColorNeutralScale = Readonly<{
   a200: string;
 }>;
 
-type Color = Readonly<{
+export type Color = Readonly<{
   chromatic: {
     azure: ColorChromaticScale;
     emerald: ColorChromaticScale;
@@ -184,7 +184,7 @@ const colors: Color = {
   },
   neutral: {
     blueGrayLight: {
-      0: `hsla(0, 0, 100%, ${opacity[9]})`,
+      0: `hsla(0, 0%, 100%, ${opacity[9]})`,
       50: `hsla(220, 27%, 98%, ${opacity[9]})`,
       100: `hsla(220, 30%, 96%, ${opacity[9]})`,
       200: `hsla(214, 21%, 94%, ${opacity[9]})`,
@@ -205,7 +205,7 @@ const colors: Color = {
       a200: `hsla(216, 44%, 23%, ${opacity[3]})`,
     },
     blueGrayDark: {
-      0: `hsla(0, 0, 99%, ${opacity[9]})`,
+      0: `hsla(0, 0%, 99%, ${opacity[9]})`,
       50: `hsla(215, 12%, 92%, ${opacity[9]})`,
       100: `hsla(218, 11%, 84%, ${opacity[9]})`,
       200: `hsla(218, 11%, 76%, ${opacity[9]})`,
@@ -226,7 +226,7 @@ const colors: Color = {
       a200: `hsla(220, 11%, 84%, ${opacity[3]})`,
     },
     navyGrayLight: {
-      0: `hsla(0, 0, 100%, ${opacity[9]})`,
+      0: `hsla(0, 0%, 100%, ${opacity[9]})`,
       50: `hsla(230, 27%, 98%, ${opacity[9]})`,
       100: `hsla(230, 30%, 96%, ${opacity[9]})`,
       200: `hsla(224, 21%, 94%, ${opacity[9]})`,
@@ -247,7 +247,7 @@ const colors: Color = {
       a200: `hsla(226, 44%, 23%, ${opacity[3]})`,
     },
     navyGrayDark: {
-      0: `hsla(0, 0, 99%, ${opacity[9]})`,
+      0: `hsla(0, 0%, 99%, ${opacity[9]})`,
       50: `hsla(228, 12%, 92%, ${opacity[9]})`,
       100: `hsla(233, 11%, 84%, ${opacity[9]})`,
       200: `hsla(231, 11%, 76%, ${opacity[9]})`,
@@ -262,13 +262,13 @@ const colors: Color = {
       1100: `hsla(231, 54%, 15%, ${opacity[9]})`,
       1200: `hsla(231, 59%, 13%, ${opacity[9]})`,
       1300: `hsla(231, 67%, 10%, ${opacity[9]})`,
-      a00: `hsla((233, 11%, 84%, ${opacity[0]})`,
-      a50: `hsla((233, 11%, 84%, ${opacity[1]})`,
-      a100: `hsla((233, 11%, 84%, ${opacity[2]})`,
-      a200: `hsla((233, 11%, 84%, ${opacity[3]})`,
+      a00: `hsla(233, 11%, 84%, ${opacity[0]})`,
+      a50: `hsla(233, 11%, 84%, ${opacity[1]})`,
+      a100: `hsla(233, 11%, 84%, ${opacity[2]})`,
+      a200: `hsla(233, 11%, 84%, ${opacity[3]})`,
     },
     ashGrayLight: {
-      0: `hsla(0, 0, 100%, ${opacity[9]})`,
+      0: `hsla(0, 0%, 100%, ${opacity[9]})`,
       50: `hsla(216, 9%, 98%, ${opacity[9]})`,
       100: `hsla(216, 9%, 96%, ${opacity[9]})`,
       200: `hsla(216, 6%, 94%, ${opacity[9]})`,
@@ -289,7 +289,7 @@ const colors: Color = {
       a200: `hsla(214, 15%, 18%, ${opacity[3]})`,
     },
     ashGrayDark: {
-      0: `hsla(0, 0, 99%, ${opacity[9]})`,
+      0: `hsla(0, 0%, 99%, ${opacity[9]})`,
       50: `hsla(240, 2%, 92%, ${opacity[9]})`,
       100: `hsla(240, 1%, 84%, ${opacity[9]})`,
       200: `hsla(228, 4%, 76%, ${opacity[9]})`,
