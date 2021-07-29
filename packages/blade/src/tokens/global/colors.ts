@@ -40,7 +40,7 @@ type ColorNeutralScale = Readonly<{
   a200: string;
 }>;
 
-type Color = Readonly<{
+export type Color = Readonly<{
   chromatic: {
     azure: ColorChromaticScale;
     emerald: ColorChromaticScale;
