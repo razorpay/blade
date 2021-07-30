@@ -7,9 +7,9 @@ type BorderRadius = Readonly<{
   medium: number;
   /** large: 8(px/rem/pt) */
   large: number;
-  /** max: 9999(px/rem/pt). This will round the left and right side of your box */
+  /** max: 9999(px/rem/pt). This will round the left and right side of the box element */
   max: number;
-  /** round: 9999(px/rem/pt). This will your box element as circle */
+  /** round: 9999(px/rem/pt). This will turn the box element into a circle */
   round: string;
 }>;
 

@@ -1,7 +1,7 @@
 export type FontFamily = {
-  /** Used for all type of textual content except code */
+  /** Used for all type of textual content except code snippets */
   text: string;
-  /** Used whenever you want to write any code snippets  */
+  /** Used for code snippets  */
   code: string;
 };
 

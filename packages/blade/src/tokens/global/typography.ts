@@ -24,10 +24,10 @@ type FontSize = {
   50: number;
   /** desktop: 12(px/rem/pt)
    *
-   * mobile: 13(px/rem/pt)
+   * mobile: 14(px/rem/pt)
    */
   75: number;
-  /** desktop: 12(px/rem/pt)
+  /** desktop: 13(px/rem/pt)
    *
    * mobile: 15(px/rem/pt)
    */
