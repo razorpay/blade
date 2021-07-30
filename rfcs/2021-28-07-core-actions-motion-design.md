@@ -177,4 +177,4 @@ There are all the ways (listed above) to achieve an animation using the core act
 * [Motion Paths](https://material.io/design/motion/customization.html#motion-paths) *by Google Material*
 * [Shapes](https://www.w3.org/TR/SVG2/shapes.html) *by W3C*
 * [Paths](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) *by MDN*
-* [Design for reduced motion sensitivities](https://www.smashingmagazine.com/2020/09/design-reduced-motion-sensitivities/) *by Smashing Magazine*
+* [Design for reduced motion sensitivities](https://www.smashingmagazine.com/2020/09/design-reduced-motion-sensitivities/) *by Smashing Magazine*.
