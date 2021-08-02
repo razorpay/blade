@@ -38,9 +38,9 @@ const styles = {
         return getColor(theme, 'primary.900');
       default:
         if (fill === 'subtle') {
-          return getColor(theme, 'positive.930');
+          return variant ? getColor(theme, variant) : getColor(theme, 'positive.930');
         }
-        return getColor(theme, 'positive.900');
+        return variant ? getColor(theme, variant) : getColor(theme, 'positive.900');
     }
   },
   borderRadius({ shape, theme }) {
