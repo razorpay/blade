@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.0.8
+
+### Patch Changes
+
+- 7a09800: fix(blade): add description in token types
+
 ## 0.0.7
 
 ### Patch Changes
