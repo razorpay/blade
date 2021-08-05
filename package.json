@@ -8,7 +8,11 @@
   },
   "workspaces": {
     "packages": [
-      "packages/**"
+      "packages/blade",
+      "packages/blade-old",
+      "packages/tools/figma-plugin-version-history",
+      "packages/types",
+      "packages/examples/token-usage"
     ],
     "nohoist": [
       "**"
