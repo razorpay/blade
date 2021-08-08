@@ -83,8 +83,8 @@ Based on motion purposes we need 4 types of easings-
 ## Final easings
 | Easing types | Easing Value | Example|
 |---|---|---|
-| **Effective** | (0.30,0.00,0.20,1.00) <br> <img src="images/motion/easing/image8.png" alt="effectice-standard" width="200" > | <img src="images/motion/easing/image10.png" alt="effectice-standard" width="200" > |
-| **Reveling** | (0.50,0.00,0.00,1.00) <br> <img src="images/motion/easing/image2.png" alt="reveling-standard" width="200" > | <img src="images/motion/easing/image7.png" alt="reveling-standard" width="200" > |
+| **Effective** | (0.30,0.00,0.20,1.00) <br> <img src="images/motion/easing/image8.png" alt="effectice-standard" width="200" > | <img src="images/motion/easing/image3.gif" alt="effectice-standard" width="200" > |
+| **Reveling** | (0.50,0.00,0.00,1.00) <br> <img src="images/motion/easing/image2.png" alt="reveling-standard" width="200" > | <img src="images/motion/easing/image16.gif" alt="reveling-standard" width="200" > |
 | **Attentive** | (0.50,0.00,0.30,1.50)<br><img src="images/motion/easing/image12.png" alt="attentive-entrance" width="200" >|<img src="images/motion/easing/image15.gif" alt="attentive-entrance" width="200" > |
 | **Wary** | (1.00,0.50,0.00,0.50) <br> <img src="images/motion/easing/image5.png" alt="wary-standard" width="200" > | <img src="images/motion/easing/image6.gif" alt="wary-standard" width="200" > |
 
