@@ -16,6 +16,7 @@ packages/blade/utils.d.ts
 
 #temporary ignore
 packages/tools/figma-plugin-version-history
+packages/examples/tokens-usage
 
 # misc
 .DS_Store
