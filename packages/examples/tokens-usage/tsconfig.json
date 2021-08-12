@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "typesRoots": ["@razorpay/blade/components", "@razorpay/blade/tokens", "@razorpay/blade/utils"],
     "target": "ES2019",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
