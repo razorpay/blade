@@ -9,7 +9,7 @@
     "build": "webpack --mode=production"
   },
   "dependencies": {
-    "axios": "0.20.0",
+    "axios": "0.21.1",
     "pug": "3.0.0",
     "pug-loader": "2.4.0",
     "pug-plain-loader": "1.0.0"
