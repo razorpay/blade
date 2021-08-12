@@ -8,13 +8,14 @@
   },
   "workspaces": {
     "packages": [
-      "packages/*",
+      "packages/blade",
+      "packages/blade-old",
       "packages/tools/*",
-      "packages/types/*",
+      "packages/types",
       "packages/examples/*"
     ],
     "nohoist": [
-      "packages/**"
+      "**"
     ]
   },
   "scripts": {

@@ -61,7 +61,6 @@ const getWebConfig = ({ exportCategory }) => ({
       babelHelpers: 'runtime',
       envName: 'web-production',
       extensions: webExtensions,
-      skipPreflightCheck: true,
     }),
   ],
 });
@@ -85,7 +84,6 @@ const getNativeConfig = ({ exportCategory }) => ({
       babelHelpers: 'runtime',
       envName: 'production',
       extensions: nativeExtensions,
-      skipPreflightCheck: true,
     }),
   ],
 });
