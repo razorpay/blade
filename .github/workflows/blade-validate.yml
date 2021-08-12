@@ -21,7 +21,7 @@ jobs:
         with:
           install-command: yarn --frozen-lockfile
       - name: List modules
-        run: ls node_modules ; ls packages/examples/tokens-usage/node_modules
+        run: ls node_modules ; ls packages/examples/tokens-usage
       - name: Lint Source Code
         run: yarn lint
       - name: Run Web Tests
