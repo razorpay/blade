@@ -20,6 +20,8 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           install-command: yarn --frozen-lockfile
+      - name: List modules
+        run: ls node_modules ; ls packages/examples/tokens-usage/node_modules
       - name: Lint Source Code
         run: yarn lint
       - name: Run Web Tests
