@@ -1,6 +1,6 @@
 {
   "name": "tokens-usage",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "5.11.4",
@@ -8,7 +8,7 @@
     "@testing-library/user-event": "12.1.10",
     "@fontsource/lato": "4.5.0",
     "styled-components": "5.3.0",
-    "@razorpay/blade": "0.0.7",
+    "@razorpay/blade": "0.0.8",
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
     "@svgr/webpack": "5.5.0",
@@ -59,7 +59,7 @@
     "prompts": "2.4.0",
     "react": "17.0.2",
     "react-app-polyfill": "2.0.0",
-    "react-dev-utils": "11.0.3",
+    "react-dev-utils": "11.0.4",
     "react-dom": "17.0.2",
     "react-refresh": "0.8.3",
     "resolve": "1.18.1",
