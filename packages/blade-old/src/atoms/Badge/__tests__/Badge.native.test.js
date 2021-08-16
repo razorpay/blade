@@ -59,6 +59,17 @@ describe('Renders <Badge /> (Stadium)', () => {
     expect(titleElement).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
+  it('renders subtle cyan(Stadium) <Badge />', () => {
+    const title = 'cyan';
+    const { container, getByText } = renderWithTheme(
+      <Badge variant="cyan" shape="stadium" fill="subtle">
+        {title}
+      </Badge>,
+    );
+    const titleElement = getByText(title.toUpperCase());
+    expect(titleElement).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
   it('renders solid positive(Stadium) <Badge />', () => {
     const title = 'positive';
     const { container, getByText } = renderWithTheme(
@@ -107,6 +118,17 @@ describe('Renders <Badge /> (Stadium)', () => {
     const title = 'neutral';
     const { container, getByText } = renderWithTheme(
       <Badge variant="neutral" shape="stadium">
+        {title}
+      </Badge>,
+    );
+    const titleElement = getByText(title.toUpperCase());
+    expect(titleElement).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
+  it('renders solid cyan(Stadium) <Badge />', () => {
+    const title = 'positive';
+    const { container, getByText } = renderWithTheme(
+      <Badge variant="cyan" shape="stadium" fill="solid">
         {title}
       </Badge>,
     );
@@ -172,6 +194,17 @@ describe('Renders <Badge /> (Rectangle)', () => {
     expect(titleElement).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
+  it('renders subtle cyan(rectangle) <Badge />', () => {
+    const title = 'cyan';
+    const { container, getByText } = renderWithTheme(
+      <Badge variant="cyan" shape="rectangle" fill="subtle">
+        {title}
+      </Badge>,
+    );
+    const titleElement = getByText(title.toUpperCase());
+    expect(titleElement).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
   it('renders solid positive(rectangle) <Badge />', () => {
     const title = 'positive';
     const { container, getByText } = renderWithTheme(
@@ -220,6 +253,17 @@ describe('Renders <Badge /> (Rectangle)', () => {
     const title = 'neutral';
     const { container, getByText } = renderWithTheme(
       <Badge variant="neutral" shape="rectangle">
+        {title}
+      </Badge>,
+    );
+    const titleElement = getByText(title.toUpperCase());
+    expect(titleElement).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
+  it('renders solid cyan(rectangle) <Badge />', () => {
+    const title = 'cyan';
+    const { container, getByText } = renderWithTheme(
+      <Badge variant="cyan" shape="rectangle" fill="solid">
         {title}
       </Badge>,
     );

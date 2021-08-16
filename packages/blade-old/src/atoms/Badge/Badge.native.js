@@ -36,6 +36,11 @@ const styles = {
           return getColor(theme, 'primary.930');
         }
         return getColor(theme, 'primary.900');
+      case 'cyan':
+        if (fill === 'subtle') {
+          return getColor(theme, 'tertiary.930');
+        }
+        return getColor(theme, 'tertiary.900');
       default:
         if (fill === 'subtle') {
           return getColor(theme, 'positive.930');
@@ -62,6 +67,8 @@ const styles = {
           return 'neutral.900';
         case 'neutral':
           return 'primary.900';
+        case 'cyan':
+          return 'tertiary.900';
         default:
       }
     }
@@ -132,7 +139,7 @@ const Badge = ({ children, variant, fill, shape }) => {
 
 Badge.propTypes = {
   children: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf(['positive', 'negative', 'information', 'warning', 'neutral']),
+  variant: PropTypes.oneOf(['positive', 'negative', 'information', 'warning', 'neutral', 'cyan']),
   fill: PropTypes.oneOf(['subtle', 'solid']),
   shape: PropTypes.oneOf(['stadium', 'rectangle']),
 };
