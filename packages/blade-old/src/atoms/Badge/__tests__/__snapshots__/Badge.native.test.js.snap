@@ -1,5 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Renders <Badge /> (Rectangle) renders solid cyan(rectangle) <Badge /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    fill="solid"
+    shape="rectangle"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(14, 137, 130, 1)",
+          "borderRadius": 2,
+        },
+        Array [
+          Object {
+            "paddingBottom": 0,
+            "paddingLeft": 4,
+            "paddingRight": 4,
+            "paddingTop": 0,
+          },
+          Array [
+            Object {
+              "height": 16,
+            },
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "flexDirection": "column",
+                "justifyContent": "center",
+              },
+            ],
+          ],
+        ],
+      ]
+    }
+    variant="cyan"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="medium"
+      align="left"
+      color="light.900"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0.5,
+            "lineHeight": 14,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+      weight="bold"
+    >
+      CYAN
+    </Text>
+  </View>
+</View>
+`;
+
 exports[`Renders <Badge /> (Rectangle) renders solid information(rectangle) <Badge /> 1`] = `
 <View
   collapsable={true}
@@ -355,6 +427,78 @@ exports[`Renders <Badge /> (Rectangle) renders solid warning(rectangle) <Badge /
       weight="bold"
     >
       WARNING
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Renders <Badge /> (Rectangle) renders subtle cyan(rectangle) <Badge /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    fill="subtle"
+    shape="rectangle"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(14, 137, 130, 0.1)",
+          "borderRadius": 2,
+        },
+        Array [
+          Object {
+            "paddingBottom": 0,
+            "paddingLeft": 4,
+            "paddingRight": 4,
+            "paddingTop": 0,
+          },
+          Array [
+            Object {
+              "height": 16,
+            },
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "flexDirection": "column",
+                "justifyContent": "center",
+              },
+            ],
+          ],
+        ],
+      ]
+    }
+    variant="cyan"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="medium"
+      align="left"
+      color="tertiary.900"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(14, 137, 130, 1)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0.5,
+            "lineHeight": 14,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+      weight="bold"
+    >
+      CYAN
     </Text>
   </View>
 </View>
@@ -720,6 +864,78 @@ exports[`Renders <Badge /> (Rectangle) renders subtle warning(rectangle) <Badge 
 </View>
 `;
 
+exports[`Renders <Badge /> (Stadium) renders solid cyan(Stadium) <Badge /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    fill="solid"
+    shape="stadium"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(14, 137, 130, 1)",
+          "borderRadius": 10,
+        },
+        Array [
+          Object {
+            "paddingBottom": 0,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 0,
+          },
+          Array [
+            Object {
+              "height": 20,
+            },
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "flexDirection": "column",
+                "justifyContent": "center",
+              },
+            ],
+          ],
+        ],
+      ]
+    }
+    variant="cyan"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="medium"
+      align="left"
+      color="light.900"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(255, 255, 255, 1.0)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0.5,
+            "lineHeight": 14,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+      weight="bold"
+    >
+      POSITIVE
+    </Text>
+  </View>
+</View>
+`;
+
 exports[`Renders <Badge /> (Stadium) renders solid information(Stadium) <Badge /> 1`] = `
 <View
   collapsable={true}
@@ -1075,6 +1291,78 @@ exports[`Renders <Badge /> (Stadium) renders solid warning(Stadium) <Badge /> 1`
       weight="bold"
     >
       WARNING
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Renders <Badge /> (Stadium) renders subtle cyan(Stadium) <Badge /> 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    fill="subtle"
+    shape="stadium"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(14, 137, 130, 0.1)",
+          "borderRadius": 10,
+        },
+        Array [
+          Object {
+            "paddingBottom": 0,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 0,
+          },
+          Array [
+            Object {
+              "height": 20,
+            },
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "flexDirection": "column",
+                "justifyContent": "center",
+              },
+            ],
+          ],
+        ],
+      ]
+    }
+    variant="cyan"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="medium"
+      align="left"
+      color="tertiary.900"
+      size="xxsmall"
+      style={
+        Array [
+          Object {
+            "color": "rgba(14, 137, 130, 1)",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 10,
+            "letterSpacing": 0.5,
+            "lineHeight": 14,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+      weight="bold"
+    >
+      CYAN
     </Text>
   </View>
 </View>
