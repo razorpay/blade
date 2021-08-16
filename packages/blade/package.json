@@ -75,7 +75,8 @@
     "react-native": "0.64.0",
     "rollup": "2.51.1",
     "rollup-plugin-dts": "3.0.2",
-    "rollup-plugin-peer-deps-external": "2.2.4"
+    "rollup-plugin-peer-deps-external": "2.2.4",
+    "moment": "2.29.1"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.14.6",
