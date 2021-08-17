@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 0.0.6
+
+### Patch Changes
+
+- 3de1543: Allow Badge's variant prop to take non-semantic colors as well
+
 ## 0.0.5
 
 ### Patch Changes
