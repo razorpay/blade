@@ -355,6 +355,7 @@ const StyledButton = styled.button`
 `;
 
 const Button = ({
+  accessibilityLabel,
   onClick,
   children,
   variant,
@@ -420,7 +421,7 @@ const Button = ({
             type={type}
             id={id}
             name={name}
-            {...automation(testID)}
+            {...automation({ testID, accessibilityLabel })}
           >
             <React.Fragment>
               {icon && iconAlign === 'left' ? (
@@ -500,6 +501,7 @@ const Button = ({
 };
 
 Button.propTypes = {
+  accessibilityLabel: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.string,
   variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),

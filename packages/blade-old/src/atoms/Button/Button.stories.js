@@ -39,6 +39,8 @@ storiesOf('Button', module)
                 size={select('Sizes', sizes, 'medium')}
                 variant={select('Variants', variants, 'primary')}
                 block
+                testID="button_1"
+                accessibilityLabel="block_button"
               >
                 Block Button
               </Button>

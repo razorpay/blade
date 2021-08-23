@@ -237,6 +237,7 @@ const StyledButton = styled(TouchableHighlight)`
 `;
 
 const Button = ({
+  accessibilityLabel,
   onClick,
   children,
   variant,
@@ -287,7 +288,7 @@ const Button = ({
               color,
               theme,
             })}
-            {...automation(testID)}
+            {...automation({ testID, accessibilityLabel })}
           >
             <React.Fragment>
               {icon && iconAlign === 'left' && (
@@ -371,6 +372,7 @@ const Button = ({
 };
 
 Button.propTypes = {
+  accessibilityLabel: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.string,
   variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
