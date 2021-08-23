@@ -519,6 +519,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  accessibilityLabel: null,
   variant: 'primary',
   variantColor: 'primary',
   block: false,

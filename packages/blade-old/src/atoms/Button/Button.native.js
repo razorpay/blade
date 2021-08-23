@@ -386,6 +386,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  accessibilityLabel: null,
   testID: 'ds-button',
   variant: 'primary',
   block: false,

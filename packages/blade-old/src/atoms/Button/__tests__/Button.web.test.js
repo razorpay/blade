@@ -264,6 +264,16 @@ describe('<Button />', () => {
     });
   });
 
+  describe('accessibilityLabel', () => {
+    it('should have  accessibilityLabel(aria-label) attribute if accessibilityLabel provided as prop', () => {
+      const accessibilityLabel = 'sample-accessibility-label';
+      const { getByLabelText } = renderWithTheme(
+        <Button accessibilityLabel={accessibilityLabel}>Click Me</Button>,
+      );
+      expect(getByLabelText(accessibilityLabel)).not.toBeNull();
+    });
+  });
+
   describe('error', () => {
     it('should throw error if children is not string', () => {
       const errorMessage = 'Error in Button: expected `children` of type `string` but found object';

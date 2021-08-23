@@ -159,6 +159,30 @@ describe('Renders an icon <Button /> correctly', () => {
   });
 });
 
+describe('accessibilityLabel', () => {
+  it('should have  accessibilityLabel(aria-label) attribute if accessibilityLabel provided as prop', () => {
+    const accessibilityLabel = 'sample-accessibility-label';
+    const { getByLabelText } = renderWithTheme(
+      <Button accessibilityLabel={accessibilityLabel}>Click Me</Button>,
+    );
+    expect(getByLabelText(accessibilityLabel)).not.toBeNull();
+  });
+});
+
+describe('testID', () => {
+  it('should have default testID(ds-button) if no testID is provided as prop', () => {
+    const { queryByTestId } = renderWithTheme(<Button>Click Me</Button>);
+    expect(queryByTestId('ds-button')).not.toBeNull();
+  });
+
+  it('should update testID if testID is provided as prop', () => {
+    const testID = 'sample-test-id';
+    const { queryByTestId } = renderWithTheme(<Button testID={testID}>Click Me</Button>);
+    expect(queryByTestId('ds-button')).toBeNull();
+    expect(queryByTestId(testID)).not.toBeNull();
+  });
+});
+
 describe('Checks onClick functionality of <Button />', () => {
   it('Checks onClick is called for <Button />', () => {
     const mockPress = jest.fn();
