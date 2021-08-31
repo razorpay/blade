@@ -24,6 +24,7 @@ const icons = {
   clock: require('./Clock').default,
   close: require('./Close').default,
   copy: require('./Copy').default,
+  download: require('./Download').default,
   emptyCircle: require('./EmptyCircle').default,
   failure: require('./Failure').default,
   feather: require('./Feather').default,
