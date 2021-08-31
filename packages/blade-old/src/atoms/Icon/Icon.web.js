@@ -13,7 +13,7 @@ const iconSize = {
   xlarge: 28,
 };
 
-const Icon = ({ size, name, fill, ...rest }) => {
+const Icon = ({ accessibilityLabel, size, name, fill, testID, ...rest }) => {
   const IconComponent = icons[name];
   const theme = useTheme();
   return (
@@ -21,21 +21,25 @@ const Icon = ({ size, name, fill, ...rest }) => {
       fill={getColor(theme, fill)}
       height={iconSize[size]}
       width={iconSize[size]}
-      {...automation('ds-icon')}
+      {...automation({ accessibilityLabel, testID })}
       {...rest}
     />
   );
 };
 
 Icon.defaultProps = {
-  size: 'medium',
+  accessibilityLabel: null,
   fill: 'shade.950',
+  size: 'medium',
+  testID: 'ds-icon',
 };
 
 Icon.propTypes = {
-  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
-  name: PropTypes.oneOf(Object.keys(icons)).isRequired,
+  accessibilityLabel: PropTypes.string,
   fill: PropTypes.oneOf(getColorKeys()),
+  name: PropTypes.oneOf(Object.keys(icons)).isRequired,
+  size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
+  testID: PropTypes.string,
 };
 
 export default Icon;

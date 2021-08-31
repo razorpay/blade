@@ -182,7 +182,17 @@ const isChecked = ({ context, value }) => {
   return context && isDefined(context.value) && context.value === value;
 };
 
-const RadioOption = ({ value, disabled, title, helpText, errorText, testID, name, id }) => {
+const RadioOption = ({
+  accessibilityLabel,
+  value,
+  disabled,
+  title,
+  helpText,
+  errorText,
+  testID,
+  name,
+  id,
+}) => {
   const context = useRadioButtonContext();
   const theme = useTheme();
 
@@ -224,7 +234,7 @@ const RadioOption = ({ value, disabled, title, helpText, errorText, testID, name
               size={size}
               backdropStyles={styles.backdrop}
               variantColor={variantColor}
-              {...automation(testID)}
+              {...automation({ accessibilityLabel, testID })}
             />
             <Flex flexDirection="column" justifyContent="center" alignItems="center">
               <Size
@@ -319,6 +329,7 @@ const RadioOption = ({ value, disabled, title, helpText, errorText, testID, name
 };
 
 RadioOption.propTypes = {
+  accessibilityLabel: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string.isRequired,
@@ -358,6 +369,7 @@ RadioOption.propTypes = {
 };
 
 RadioOption.defaultProps = {
+  accessibilityLabel: null,
   helpText: '',
   disabled: false,
   errorText: '',

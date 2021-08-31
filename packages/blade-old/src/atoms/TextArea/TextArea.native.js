@@ -7,6 +7,7 @@ import isEmpty from '../../_helpers/isEmpty';
 const TextArea = React.forwardRef(
   (
     {
+      accessibilityLabel,
       autoFocus,
       placeholder,
       helpText,
@@ -66,13 +67,14 @@ const TextArea = React.forwardRef(
         onFocus={onFocus}
         onBlur={onBlur}
         _isMultiline={true}
-        {...automation(testID)}
+        {...automation({ accessibilityLabel, testID })}
       />
     );
   },
 );
 
 TextArea.propTypes = {
+  accessibilityLabel: PropTypes.string,
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,
   helpText: PropTypes.string,
@@ -96,6 +98,7 @@ TextArea.propTypes = {
 };
 
 TextArea.defaultProps = {
+  accessibilityLabel: null,
   placeholder: '',
   onChange: () => {},
   disabled: false,

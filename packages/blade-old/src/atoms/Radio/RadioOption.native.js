@@ -176,6 +176,7 @@ const isChecked = ({ context, value }) => {
 };
 
 const RadioOption = ({
+  accessibilityLabel,
   size,
   value,
   disabled,
@@ -230,7 +231,7 @@ const RadioOption = ({
         onPressIn={onPressIn}
         onPressOut={onPressOut}
         delayPressIn={0}
-        {...automation(testID)}
+        {...automation({ accessibilityLabel, testID })}
       >
         <Flex flexDirection="row" alignItems="center">
           <View>
@@ -281,6 +282,7 @@ const RadioOption = ({
 };
 
 RadioOption.propTypes = {
+  accessibilityLabel: PropTypes.string,
   value: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   title: PropTypes.string.isRequired,
@@ -320,6 +322,7 @@ RadioOption.propTypes = {
 };
 
 RadioOption.defaultProps = {
+  accessibilityLabel: null,
   size: 'medium',
   helpText: '',
   disabled: false,

@@ -52,7 +52,7 @@ const headingLevel = {
   medium: 'h5',
 };
 
-const Heading = ({ size, color, children, maxLines, weight }) => {
+const Heading = ({ accessibilityLabel, size, color, children, maxLines, testID, weight }) => {
   return (
     <Space margin={[0]}>
       <Text
@@ -69,7 +69,7 @@ const Heading = ({ size, color, children, maxLines, weight }) => {
           weight,
         })}
         _letterSpacing="small"
-        {...automation('ds-heading')}
+        {...automation({ accessibilityLabel, testID })}
       >
         {children}
       </Text>
@@ -78,15 +78,19 @@ const Heading = ({ size, color, children, maxLines, weight }) => {
 };
 
 Heading.propTypes = {
+  accessibilityLabel: PropTypes.string,
   children: PropTypes.string,
   size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']).isRequired,
   color: PropTypes.oneOf(getColorKeys()),
   maxLines: PropTypes.number,
+  testID: PropTypes.string,
   weight: PropTypes.oneOf(Object.keys(baseTheme.fonts.weight)),
 };
 
 Heading.defaultProps = {
+  accessibilityLabel: null,
   color: 'shade.980',
+  testID: 'ds-heading',
   weight: 'bold',
 };
 

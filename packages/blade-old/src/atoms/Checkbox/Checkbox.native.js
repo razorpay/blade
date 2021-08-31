@@ -102,6 +102,7 @@ const styles = {
 };
 
 const Checkbox = ({
+  accessibilityLabel,
   defaultChecked,
   checked: externalChecked,
   onChange,
@@ -163,7 +164,7 @@ const Checkbox = ({
         disabled={disabled}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
-        {...automation(testID)}
+        {...automation({ accessibilityLabel, testID })}
       >
         <Flex flexDirection="row" alignItems="center">
           <View>
@@ -214,6 +215,7 @@ const Checkbox = ({
 };
 
 Checkbox.propTypes = {
+  accessibilityLabel: PropTypes.string,
   defaultChecked: PropTypes.bool,
   checked: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
@@ -255,6 +257,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
+  accessibilityLabel: null,
   size: 'medium',
   helpText: '',
   disabled: false,

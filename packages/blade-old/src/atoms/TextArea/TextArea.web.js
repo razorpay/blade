@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../TextInput';
+import automation from '../../_helpers/automation-attributes.web';
 
 const TextArea = ({
+  accessibilityLabel,
   placeholder,
   helpText,
   errorText,
@@ -44,11 +46,13 @@ const TextArea = ({
       testID={testID}
       autoCapitalize={autoCapitalize}
       _isMultiline
+      {...automation({ accessibilityLabel, testID })}
     />
   );
 };
 
 TextArea.propTypes = {
+  accessibilityLabel: PropTypes.string,
   placeholder: PropTypes.string,
   helpText: PropTypes.string,
   errorText: PropTypes.string,
@@ -68,6 +72,7 @@ TextArea.propTypes = {
 };
 
 TextArea.defaultProps = {
+  accessibilityLabel: null,
   placeholder: '',
   onChange: () => {},
   onBlur: () => {},

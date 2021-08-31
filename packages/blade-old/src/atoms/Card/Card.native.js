@@ -61,14 +61,14 @@ const StyledCard = styled(View)`
   border-radius: 2px;
 `;
 
-const Card = ({ children, variant, backgroundColor, borderColor, testID }) => {
+const Card = ({ accessibilityLabel, children, variant, backgroundColor, borderColor, testID }) => {
   return (
     <Space padding={[1.5, 1.5, 1.5, 1.5]}>
       <StyledCard
         variant={variant}
         backgroundColor={backgroundColor}
         borderColor={borderColor}
-        {...automation(testID)}
+        {...automation({ accessibilityLabel, testID })}
       >
         {children}
       </StyledCard>
@@ -77,6 +77,7 @@ const Card = ({ children, variant, backgroundColor, borderColor, testID }) => {
 };
 
 Card.propTypes = {
+  accessibilityLabel: PropTypes.string,
   children: PropTypes.node,
   variant: PropTypes.oneOf(['shadowed', 'outlined']),
   testID: PropTypes.string,
@@ -85,6 +86,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
+  accessibilityLabel: null,
   variant: 'shadowed',
   testID: 'ds-card',
   backgroundColor: 'background.200',

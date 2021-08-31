@@ -119,6 +119,7 @@ const StyledOption = styled(TouchableHighlight)`
 `;
 
 const SegmentControlOption = ({
+  accessibilityLabel,
   value,
   subText,
   hideDivider,
@@ -160,7 +161,7 @@ const SegmentControlOption = ({
             variant={context.variant}
             selected={selected}
             disabled={disabled}
-            {...automation(testID)}
+            {...automation({ accessibilityLabel, testID })}
           >
             <React.Fragment>
               <Flex flexDirection="column">
@@ -231,6 +232,7 @@ const SegmentControlOption = ({
 };
 
 SegmentControlOption.propTypes = {
+  accessibilityLabel: PropTypes.string,
   value: PropTypes.string.isRequired,
   subText: PropTypes.string,
   hideDivider: PropTypes.bool,
@@ -241,6 +243,7 @@ SegmentControlOption.propTypes = {
 };
 
 SegmentControlOption.defaultProps = {
+  accessibilityLabel: null,
   hideDivider: true,
   disabled: false,
   testID: 'ds-segment-control-option',

@@ -51,6 +51,7 @@ const StyledText = styled(NativeText)`
 `;
 
 const Text = ({
+  accessibilityLabel,
   size,
   testID,
   color,
@@ -72,7 +73,7 @@ const Text = ({
       _isUnderlined={_isUnderlined}
       _letterSpacing={_letterSpacing}
       _lineHeight={_lineHeight}
-      {...automation(testID)}
+      {...automation({ accessibilityLabel, testID })}
     >
       {children}
     </StyledText>
@@ -80,6 +81,7 @@ const Text = ({
 };
 
 Text.propTypes = {
+  accessibilityLabel: PropTypes.string,
   children: PropTypes.string,
   size: PropTypes.oneOf(Object.keys(baseTheme.fonts.size)),
   color: PropTypes.oneOf(getColorKeys()),
@@ -93,6 +95,7 @@ Text.propTypes = {
 };
 
 Text.defaultProps = {
+  accessibilityLabel: null,
   size: 'large',
   color: 'shade.980',
   align: 'left',

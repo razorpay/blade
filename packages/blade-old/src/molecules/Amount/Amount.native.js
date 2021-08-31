@@ -95,7 +95,17 @@ const formatAmount = ({ amount, currency }) => {
   return formattedAmount;
 };
 
-const Amount = ({ size, testID, children, currency, weight, variant, variantColor, subtle }) => {
+const Amount = ({
+  accessibilityLabel,
+  size,
+  testID,
+  children,
+  currency,
+  weight,
+  variant,
+  variantColor,
+  subtle,
+}) => {
   if (isNaN(children)) {
     throw new Error(`Expected children to be number \n(Eg. "1234", "12.34")`);
   }
@@ -119,7 +129,7 @@ const Amount = ({ size, testID, children, currency, weight, variant, variantColo
         })}
         size={size}
         weight={weight}
-        {...automation(testID)}
+        {...automation({ accessibilityLabel, testID })}
       >
         {formattedAmount}
       </Text>
@@ -178,6 +188,7 @@ const Amount = ({ size, testID, children, currency, weight, variant, variantColo
 };
 
 Amount.propTypes = {
+  accessibilityLabel: PropTypes.string,
   children: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['xsmall', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']),
   testID: PropTypes.string,
@@ -189,6 +200,7 @@ Amount.propTypes = {
 };
 
 Amount.defaultProps = {
+  accessibilityLabel: null,
   size: 'medium',
   testID: 'ds-amount',
   currency: 'INR',

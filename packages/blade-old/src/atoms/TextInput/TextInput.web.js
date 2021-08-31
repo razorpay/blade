@@ -209,6 +209,7 @@ const getPlaceholderTextColor = ({ theme, disabled, isPlaceholderVisible, hasAni
 
 // eslint-disable-next-line complexity
 const TextInput = ({
+  accessibilityLabel,
   placeholder,
   onChange,
   onBlur,
@@ -517,7 +518,7 @@ const TextInput = ({
                                       as={_isMultiline ? 'textarea' : 'input'}
                                       rows={_isMultiline ? noOfRows : ''}
                                       inputMode={type === 'number' ? 'numeric' : null} // pass only for type=number, otherwise let browser infer via type
-                                      {...automation(testID)}
+                                      {...automation({ accessibilityLabel, testID })}
                                     />
                                   </Size>
                                 </Space>
@@ -577,6 +578,7 @@ const TextInput = ({
 };
 
 TextInput.propTypes = {
+  accessibilityLabel: PropTypes.string,
   placeholder: PropTypes.string,
   helpText: PropTypes.node,
   errorText: PropTypes.string,
@@ -602,6 +604,7 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
+  accessibilityLabel: null,
   placeholder: 'Enter text here',
   onChange: () => {},
   onBlur: () => {},

@@ -53,8 +53,8 @@ const styles = {
   },
 };
 
-const Text = styled.div.attrs((props) => ({
-  ...automationAttributes(props.testID),
+const Text = styled.div.attrs(({ accessibilityLabel, testID }) => ({
+  ...automationAttributes({ accessibilityLabel, testID }),
 }))`
   font-family: ${(props) => props.theme.fonts.family.lato[props.weight]};
   font-weight: ${(props) => props.theme.fonts.weight[props.weight]};
@@ -78,6 +78,7 @@ const Text = styled.div.attrs((props) => ({
 `;
 
 Text.propTypes = {
+  accessibilityLabel: PropTypes.string,
   size: PropTypes.oneOf(Object.keys(baseTheme.fonts.size)),
   color: PropTypes.oneOf(getColorKeys()),
   align: PropTypes.oneOf(['left', 'right', 'center', 'justify', 'inherit', 'initial']),
@@ -90,6 +91,7 @@ Text.propTypes = {
 };
 
 Text.defaultProps = {
+  accessibilityLabel: null,
   size: 'large',
   align: 'left',
   color: 'shade.980',

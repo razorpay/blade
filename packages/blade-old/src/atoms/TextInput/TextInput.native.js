@@ -170,6 +170,7 @@ const getPlaceholderTextColor = ({ theme, disabled, isPlaceholderVisible, hasAni
 const TextInput = React.forwardRef(
   (
     {
+      accessibilityLabel,
       placeholder,
       autoFocus,
       onChange,
@@ -409,7 +410,7 @@ const TextInput = React.forwardRef(
                                   returnKeyType={returnKeyType}
                                   autoCapitalize={autoCapitalize}
                                   onSubmitEditing={onSubmitEditing}
-                                  {...automation(testID)}
+                                  {...automation({ accessibilityLabel, testID })}
                                 />
                               </Size>
                             </Space>
@@ -459,6 +460,7 @@ const TextInput = React.forwardRef(
 );
 
 TextInput.propTypes = {
+  accessibilityLabel: PropTypes.string,
   placeholder: PropTypes.string,
   autoFocus: PropTypes.bool,
   helpText: PropTypes.string,
@@ -493,6 +495,7 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
+  accessibilityLabel: null,
   onChange: () => {},
   placeholder: '',
   disabled: false,

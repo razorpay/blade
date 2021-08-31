@@ -43,7 +43,7 @@ const styles = {
   },
 };
 
-const Heading = ({ size, testID, color, children, maxLines, weight }) => {
+const Heading = ({ accessibilityLabel, size, testID, color, children, maxLines, weight }) => {
   return (
     <Text
       size={styles.fontSize({
@@ -57,7 +57,7 @@ const Heading = ({ size, testID, color, children, maxLines, weight }) => {
         weight,
       })}
       _letterSpacing="small"
-      {...automation(testID)}
+      {...automation({ accessibilityLabel, testID })}
     >
       {children}
     </Text>
@@ -65,6 +65,7 @@ const Heading = ({ size, testID, color, children, maxLines, weight }) => {
 };
 
 Heading.propTypes = {
+  accessibilityLabel: PropTypes.string,
   children: PropTypes.string,
   size: PropTypes.oneOf(['medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']).isRequired,
   color: PropTypes.oneOf(getColorKeys()),
@@ -74,6 +75,7 @@ Heading.propTypes = {
 };
 
 Heading.defaultProps = {
+  accessibilityLabel: null,
   color: 'shade.980',
   testID: 'ds-heading',
   weight: 'bold',

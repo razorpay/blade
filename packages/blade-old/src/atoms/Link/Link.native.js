@@ -5,7 +5,7 @@ import Text from '../Text';
 import automation from '../../_helpers/automation-attributes';
 import Flex from '../Flex';
 
-const Link = ({ children, onClick, size, hitSlop, testID }) => {
+const Link = ({ accessibilityLabel, children, onClick, size, hitSlop, testID }) => {
   const [active, setActive] = useState(false);
   const inactiveTextColor = 'primary.800';
   const activeTextColor = 'primary.600';
@@ -25,7 +25,7 @@ const Link = ({ children, onClick, size, hitSlop, testID }) => {
         onPressIn={onPressIn}
         onPressOut={onPressOut}
         hitSlop={hitSlop}
-        {...automation(testID)}
+        {...automation({ accessibilityLabel, testID })}
       >
         <Text
           color={active ? activeTextColor : inactiveTextColor}
@@ -40,6 +40,7 @@ const Link = ({ children, onClick, size, hitSlop, testID }) => {
 };
 
 Link.propTypes = {
+  accessibilityLabel: PropTypes.string,
   children: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large']),
@@ -53,6 +54,7 @@ Link.propTypes = {
 };
 
 Link.defaultProps = {
+  accessibilityLabel: null,
   onClick: () => {},
   size: 'medium',
   testID: 'ds-link',
