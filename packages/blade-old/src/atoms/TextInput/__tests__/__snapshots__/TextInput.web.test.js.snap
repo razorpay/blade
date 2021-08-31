@@ -604,10 +604,9 @@ exports[`<TextInput /> iconLeft should render a TextInput with iconLeft 1`] = `
             >
               <svg
                 class="Flexweb__Flex-sc-1yhcoea-0 fRwLwk Spaceweb__Space-sc-1abqisc-0 kwhRNB"
-                data-testid="ds-icon"
+                data-testid="input-icon"
                 fill="rgba(22, 47, 86, 0.38)"
                 height="16"
-                testID="input-icon"
                 viewBox="0 0 24 24"
                 width="16"
               >
@@ -679,10 +678,9 @@ exports[`<TextInput /> iconRight should render a TextInput with iconRight 1`] = 
               />
               <svg
                 class="Flexweb__Flex-sc-1yhcoea-0 fRwLwk Spaceweb__Space-sc-1abqisc-0 jbmCTB"
-                data-testid="ds-icon"
+                data-testid="input-icon"
                 fill="rgba(22, 47, 86, 0.38)"
                 height="16"
-                testID="input-icon"
                 viewBox="0 0 24 24"
                 width="16"
               >

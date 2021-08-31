@@ -28,7 +28,6 @@ exports[`Renders <Switch /> correctly renders a controlled ON Switch 1`] = `
         },
       ]
     }
-    testID="ds-switch"
   >
     <View
       size="medium"
@@ -82,7 +81,6 @@ exports[`Renders <Switch /> correctly renders a default Switch 1`] = `
         },
       ]
     }
-    testID="ds-switch"
   >
     <View
       size="medium"
@@ -136,7 +134,6 @@ exports[`Renders <Switch /> correctly renders a disabled/OFF Switch 1`] = `
         },
       ]
     }
-    testID="ds-switch"
   >
     <View
       size="medium"
@@ -190,7 +187,6 @@ exports[`Renders <Switch /> correctly renders a disabled/ON Switch 1`] = `
         },
       ]
     }
-    testID="ds-switch"
   >
     <View
       size="medium"
@@ -244,7 +240,6 @@ exports[`Renders <Switch /> correctly renders a large Switch 1`] = `
         },
       ]
     }
-    testID="ds-switch"
   >
     <View
       size="large"

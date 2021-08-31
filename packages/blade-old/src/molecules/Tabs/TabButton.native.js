@@ -62,7 +62,16 @@ const Title = styled(View)`
   border-bottom-color: ${styles.title.borderBottomColor};
 `;
 
-const TabButton = ({ title, active, icon, onPress, disabled, testID, scrollEnabled }) => {
+const TabButton = ({
+  accessibilityLabel,
+  title,
+  active,
+  icon,
+  onPress,
+  disabled,
+  testID,
+  scrollEnabled,
+}) => {
   const [pressed, setPressed] = useState(false);
 
   const onPressIn = useCallback(() => {
@@ -94,7 +103,7 @@ const TabButton = ({ title, active, icon, onPress, disabled, testID, scrollEnabl
         onPressOut={onPressOut}
         pressed={pressed}
         active={active}
-        {...automation(testID)}
+        {...automation({ accessibilityLabel, testID })}
       >
         <Flex alignItems="center" alignSelf="center" flexDirection="row" flexWrap="wrap">
           <Space padding={[1, 0, 1, 0]}>
@@ -123,6 +132,7 @@ const TabButton = ({ title, active, icon, onPress, disabled, testID, scrollEnabl
 };
 
 TabButton.propTypes = {
+  accessibilityLabel: PropTypes.string,
   active: PropTypes.bool,
   onPress: PropTypes.func,
   disabled: PropTypes.bool,
@@ -133,6 +143,7 @@ TabButton.propTypes = {
 };
 
 TabButton.defaultProps = {
+  accessibilityLabel: null,
   active: false,
   onPress: () => {},
   disabled: false,

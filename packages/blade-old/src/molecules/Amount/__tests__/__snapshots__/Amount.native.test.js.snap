@@ -20,7 +20,6 @@ exports[`<Amount /> currency renders amount in EUR 1`] = `
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -120,7 +119,6 @@ exports[`<Amount /> currency renders amount in INR 1`] = `
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -220,7 +218,6 @@ exports[`<Amount /> decimal formatting renders 3 digit amount with indian curren
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -320,7 +317,6 @@ exports[`<Amount /> decimal formatting renders 4 digit amount with indian curren
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -420,7 +416,6 @@ exports[`<Amount /> decimal formatting renders 5 digit amount with indian curren
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -520,7 +515,6 @@ exports[`<Amount /> decimal formatting renders 6 digit amount with indian curren
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -620,7 +614,6 @@ exports[`<Amount /> decimal formatting renders 7 digit amount with indian curren
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -720,7 +713,6 @@ exports[`<Amount /> decimal formatting renders 8 digit amount with indian curren
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -820,7 +812,6 @@ exports[`<Amount /> fractional formatting renders 0 digit fractional part 1`] = 
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -920,7 +911,6 @@ exports[`<Amount /> fractional formatting renders 1 digit fractional part 1`] = 
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -1020,7 +1010,6 @@ exports[`<Amount /> fractional formatting renders 2 digit fractional part 1`] = 
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -1120,7 +1109,6 @@ exports[`<Amount /> fractional formatting renders 3 digit fractional part 1`] = 
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -1220,7 +1208,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with large
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -1320,7 +1307,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with mediu
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -1420,7 +1406,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xlarg
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -1521,7 +1506,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxlar
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -1622,7 +1606,6 @@ exports[`<Amount /> size with camel variant and subtle renders amount with xxxla
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -1723,7 +1706,6 @@ exports[`<Amount /> size with camel variant renders amount with large size 1`] =
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -1823,7 +1805,6 @@ exports[`<Amount /> size with camel variant renders amount with medium size 1`] 
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -1923,7 +1904,6 @@ exports[`<Amount /> size with camel variant renders amount with xlarge size 1`] 
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -2024,7 +2004,6 @@ exports[`<Amount /> size with camel variant renders amount with xxlarge size 1`]
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -2125,7 +2104,6 @@ exports[`<Amount /> size with camel variant renders amount with xxxlarge size 1`
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -2602,7 +2580,6 @@ exports[`<Amount /> variant renders camel variant amount 1`] = `
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -2739,7 +2716,6 @@ exports[`<Amount /> weight with camel variant and subtle renders bold amount 1`]
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -2839,7 +2815,6 @@ exports[`<Amount /> weight with camel variant and subtle renders regular amount 
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -2939,7 +2914,6 @@ exports[`<Amount /> weight with camel variant renders bold amount 1`] = `
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}
@@ -3039,7 +3013,6 @@ exports[`<Amount /> weight with camel variant renders regular amount 1`] = `
         ],
       ]
     }
-    testID="ds-amount"
   >
     <Text
       _isUnderlined={false}

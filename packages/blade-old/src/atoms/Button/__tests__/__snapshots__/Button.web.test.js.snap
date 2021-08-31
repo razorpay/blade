@@ -130,10 +130,9 @@ exports[`<Button /> icon with children with icon left should render a button wit
   >
     <svg
       class="Spaceweb__Space-sc-1abqisc-0 fqjClE"
-      data-testid="ds-icon"
+      data-testid="button-left-icon"
       fill="rgba(255, 255, 255, 1.0)"
       height="20"
-      testID="button-left-icon"
       viewBox="0 0 24 24"
       width="20"
     >
@@ -168,10 +167,9 @@ exports[`<Button /> icon with children with icon right should render a button wi
     </div>
     <svg
       class="Spaceweb__Space-sc-1abqisc-0 jMloCk"
-      data-testid="ds-icon"
+      data-testid="button-right-icon"
       fill="rgba(255, 255, 255, 1.0)"
       height="20"
-      testID="button-right-icon"
       viewBox="0 0 24 24"
       width="20"
     >
@@ -192,10 +190,9 @@ exports[`<Button /> icon without children should render icon only button 1`] = `
   >
     <svg
       class="Spaceweb__Space-sc-1abqisc-0 bnvEug"
-      data-testid="ds-icon"
+      data-testid="button-left-icon"
       fill="rgba(255, 255, 255, 1.0)"
       height="24"
-      testID="button-left-icon"
       viewBox="0 0 24 24"
       width="24"
     >
