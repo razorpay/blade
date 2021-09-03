@@ -1,5 +1,4 @@
 {
-  "private": "true",
   "author": "kamleshchandnani",
   "version": "0.0.1",
   "license": "MIT",
@@ -15,7 +14,11 @@
       "packages/examples/*"
     ],
     "nohoist": [
-      "**"
+      "packages/blade",
+      "packages/blade-old",
+      "packages/tools/*",
+      "packages/types",
+      "packages/examples/*"
     ]
   },
   "scripts": {
@@ -23,9 +26,7 @@
     "release": "changeset publish",
     "postinstall": "lerna run --scope @razorpay/blade build"
   },
-  "dependencies": {},
   "devDependencies": {
-    "lerna": "4.0.0",
     "@changesets/cli": "2.16.0",
     "@types/jest": "26.0.23",
     "@types/react": "17.0.4",
@@ -46,6 +47,7 @@
     "eslint-plugin-react-hooks": "4.2.0",
     "figures": "3.2.0",
     "husky": "4.2.3",
+    "lerna": "4.0.0",
     "lint-staged": "10.5.4",
     "prettier": "2.2.1",
     "shelljs": "0.8.4",
