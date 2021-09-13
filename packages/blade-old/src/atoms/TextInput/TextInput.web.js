@@ -221,6 +221,7 @@ const TextInput = ({
   value,
   iconLeft,
   iconRight,
+  onIconRightClick,
   maxLength,
   label,
   testID,
@@ -534,15 +535,20 @@ const TextInput = ({
                                 </AccessoryText>
                               ) : null}
                               {hasRightIcon ? (
-                                <AccessoryIcon
-                                  variant={variant}
-                                  name={iconRight}
-                                  disabled={disabled}
-                                  hasError={hasError}
-                                  //@ts-expect-error
-                                  isFocused={isFocused}
-                                  position="right"
-                                />
+                                <View
+                                  onClick={onIconRightClick}
+                                  {...automation(`${testID}-right-icon`)}
+                                >
+                                  <AccessoryIcon
+                                    variant={variant}
+                                    name={iconRight}
+                                    disabled={disabled}
+                                    hasError={hasError}
+                                    //@ts-expect-error
+                                    isFocused={isFocused}
+                                    position="right"
+                                  />
+                                </View>
                               ) : null}
                             </InputContainer>
                           </Size>
@@ -589,6 +595,7 @@ TextInput.propTypes = {
   value: PropTypes.string,
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
+  onIconRightClick: PropTypes.func,
   maxLength: PropTypes.number,
   label: PropTypes.string,
   testID: PropTypes.string,

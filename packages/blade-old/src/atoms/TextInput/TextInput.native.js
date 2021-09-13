@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { TextInput as NativeTextInput, Platform } from 'react-native';
+import { TextInput as NativeTextInput, Platform, TouchableOpacity } from 'react-native';
 import styled, { useTheme } from 'styled-components/native';
 import PropTypes from 'prop-types';
 import { getLineHeight } from '../../_helpers/theme';
@@ -182,6 +182,7 @@ const TextInput = React.forwardRef(
       value,
       iconLeft,
       iconRight,
+      onIconRightClick,
       maxLength,
       label,
       testID,
@@ -420,12 +421,18 @@ const TextInput = React.forwardRef(
                             </AccessoryText>
                           ) : null}
                           {hasRightIcon ? (
-                            <AccessoryIcon
-                              variant={variant}
-                              name={iconRight}
-                              disabled={disabled}
-                              hasError={hasError}
-                            />
+                            <TouchableOpacity
+                              onPress={onIconRightClick}
+                              activeOpacity={1}
+                              {...automation(`${testID}-right-icon`)}
+                            >
+                              <AccessoryIcon
+                                variant={variant}
+                                name={iconRight}
+                                disabled={disabled}
+                                hasError={hasError}
+                              />
+                            </TouchableOpacity>
                           ) : null}
                         </InputContainer>
                       </Size>
@@ -471,6 +478,7 @@ TextInput.propTypes = {
   value: PropTypes.string,
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
+  onIconRightClick: PropTypes.func,
   maxLength: PropTypes.number,
   label: PropTypes.string,
   testID: PropTypes.string,
