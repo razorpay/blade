@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { getThemeColors } from '@razorpay/blade-old/src/_helpers/theme';
-import colors from '@razorpay/blade-old/src/tokens/colors';
+import { getThemeColors } from '../../_helpers/theme';
+import colors from '../../tokens/colors';
 
 function EyeOff({ width, height, fill }) {
   return (
