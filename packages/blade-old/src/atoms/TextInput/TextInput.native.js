@@ -182,7 +182,7 @@ const TextInput = React.forwardRef(
       value,
       iconLeft,
       iconRight,
-      onIconRightClick,
+      onRightIconClick,
       maxLength,
       label,
       testID,
@@ -422,7 +422,7 @@ const TextInput = React.forwardRef(
                           ) : null}
                           {hasRightIcon ? (
                             <TouchableOpacity
-                              onPress={onIconRightClick}
+                              onPress={onRightIconClick}
                               activeOpacity={1}
                               {...automation(`${testID}-right-icon`)}
                             >
@@ -478,7 +478,7 @@ TextInput.propTypes = {
   value: PropTypes.string,
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
-  onIconRightClick: PropTypes.func,
+  onRightIconClick: PropTypes.func,
   maxLength: PropTypes.number,
   label: PropTypes.string,
   testID: PropTypes.string,

@@ -221,7 +221,7 @@ const TextInput = ({
   value,
   iconLeft,
   iconRight,
-  onIconRightClick,
+  onRightIconClick,
   maxLength,
   label,
   testID,
@@ -536,7 +536,7 @@ const TextInput = ({
                               ) : null}
                               {hasRightIcon ? (
                                 <View
-                                  onClick={onIconRightClick}
+                                  onClick={onRightIconClick}
                                   {...automation(`${testID}-right-icon`)}
                                 >
                                   <AccessoryIcon
@@ -595,7 +595,7 @@ TextInput.propTypes = {
   value: PropTypes.string,
   iconLeft: PropTypes.string,
   iconRight: PropTypes.string,
-  onIconRightClick: PropTypes.func,
+  onRightIconClick: PropTypes.func,
   maxLength: PropTypes.number,
   label: PropTypes.string,
   testID: PropTypes.string,
