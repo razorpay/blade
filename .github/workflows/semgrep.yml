@@ -9,7 +9,5 @@ jobs:
       - uses: returntocorp/semgrep-action@v1
         with:
           publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
-          # semgrep razorpay organization deployment ID
-          publishDeployment: 339
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
