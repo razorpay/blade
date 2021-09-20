@@ -3133,62 +3133,67 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
               value=""
               variant="filled"
             />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
+            <TouchableOpacity
+              activeOpacity={1}
+              testID="ds-text-input-right-icon"
             >
-              <RNSVGSvgView
-                align="xMidYMid"
-                bbHeight={16}
-                bbWidth={16}
-                fill="rgba(22, 47, 86, 0.10)"
-                focusable={false}
-                height={16}
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
+              <View
                 style={
                   Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    Object {
-                      "flex": 0,
-                      "height": 16,
-                      "width": 16,
-                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 0,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 0,
+                      },
+                    ],
                   ]
                 }
-                testID="input-icon"
-                vbHeight={24}
-                vbWidth={24}
-                width={16}
               >
-                <RNSVGGroup
-                  fill={437661526}
-                  propList={
+                <RNSVGSvgView
+                  align="xMidYMid"
+                  bbHeight={16}
+                  bbWidth={16}
+                  fill="rgba(22, 47, 86, 0.10)"
+                  focusable={false}
+                  height={16}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
                     Array [
-                      "fill",
+                      Object {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      Object {
+                        "flex": 0,
+                        "height": 16,
+                        "width": 16,
+                      },
                     ]
                   }
+                  testID="input-icon"
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={16}
                 >
-                  <RNSVGPath
-                    d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
-            </View>
+                  <RNSVGGroup
+                    fill={437661526}
+                    propList={
+                      Array [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </TouchableOpacity>
           </View>
           <View
             disabled={true}
@@ -3445,62 +3450,67 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
               value=""
               variant="filled"
             />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
+            <TouchableOpacity
+              activeOpacity={1}
+              testID="ds-text-input-right-icon"
             >
-              <RNSVGSvgView
-                align="xMidYMid"
-                bbHeight={16}
-                bbWidth={16}
-                fill="rgba(209, 45, 45, 1.0)"
-                focusable={false}
-                height={16}
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
+              <View
                 style={
                   Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    Object {
-                      "flex": 0,
-                      "height": 16,
-                      "width": 16,
-                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 0,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 0,
+                      },
+                    ],
                   ]
                 }
-                testID="input-icon"
-                vbHeight={24}
-                vbWidth={24}
-                width={16}
               >
-                <RNSVGGroup
-                  fill={4291898669}
-                  propList={
+                <RNSVGSvgView
+                  align="xMidYMid"
+                  bbHeight={16}
+                  bbWidth={16}
+                  fill="rgba(209, 45, 45, 1.0)"
+                  focusable={false}
+                  height={16}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
                     Array [
-                      "fill",
+                      Object {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      Object {
+                        "flex": 0,
+                        "height": 16,
+                        "width": 16,
+                      },
                     ]
                   }
+                  testID="input-icon"
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={16}
                 >
-                  <RNSVGPath
-                    d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
-            </View>
+                  <RNSVGGroup
+                    fill={4291898669}
+                    propList={
+                      Array [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </TouchableOpacity>
           </View>
           <View
             disabled={false}
@@ -4251,62 +4261,67 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               value=""
               variant="filled"
             />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
+            <TouchableOpacity
+              activeOpacity={1}
+              testID="ds-text-input-right-icon"
             >
-              <RNSVGSvgView
-                align="xMidYMid"
-                bbHeight={16}
-                bbWidth={16}
-                fill="rgba(22, 47, 86, 0.38)"
-                focusable={false}
-                height={16}
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
+              <View
                 style={
                   Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    Object {
-                      "flex": 0,
-                      "height": 16,
-                      "width": 16,
-                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 0,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 0,
+                      },
+                    ],
                   ]
                 }
-                testID="input-icon"
-                vbHeight={24}
-                vbWidth={24}
-                width={16}
               >
-                <RNSVGGroup
-                  fill={1628843862}
-                  propList={
+                <RNSVGSvgView
+                  align="xMidYMid"
+                  bbHeight={16}
+                  bbWidth={16}
+                  fill="rgba(22, 47, 86, 0.38)"
+                  focusable={false}
+                  height={16}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
                     Array [
-                      "fill",
+                      Object {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      Object {
+                        "flex": 0,
+                        "height": 16,
+                        "width": 16,
+                      },
                     ]
                   }
+                  testID="input-icon"
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={16}
                 >
-                  <RNSVGPath
-                    d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
-            </View>
+                  <RNSVGGroup
+                    fill={1628843862}
+                    propList={
+                      Array [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </TouchableOpacity>
           </View>
           <View
             disabled={false}
@@ -4673,62 +4688,67 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               value=""
               variant="filled"
             />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
+            <TouchableOpacity
+              activeOpacity={1}
+              testID="ds-text-input-right-icon"
             >
-              <RNSVGSvgView
-                align="xMidYMid"
-                bbHeight={16}
-                bbWidth={16}
-                fill="rgba(22, 47, 86, 0.38)"
-                focusable={false}
-                height={16}
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
+              <View
                 style={
                   Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    Object {
-                      "flex": 0,
-                      "height": 16,
-                      "width": 16,
-                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 0,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 0,
+                      },
+                    ],
                   ]
                 }
-                testID="input-icon"
-                vbHeight={24}
-                vbWidth={24}
-                width={16}
               >
-                <RNSVGGroup
-                  fill={1628843862}
-                  propList={
+                <RNSVGSvgView
+                  align="xMidYMid"
+                  bbHeight={16}
+                  bbWidth={16}
+                  fill="rgba(22, 47, 86, 0.38)"
+                  focusable={false}
+                  height={16}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
                     Array [
-                      "fill",
+                      Object {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      Object {
+                        "flex": 0,
+                        "height": 16,
+                        "width": 16,
+                      },
                     ]
                   }
+                  testID="input-icon"
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={16}
                 >
-                  <RNSVGPath
-                    d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
-            </View>
+                  <RNSVGGroup
+                    fill={1628843862}
+                    propList={
+                      Array [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </TouchableOpacity>
           </View>
           <View
             disabled={false}
@@ -6753,62 +6773,67 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               value=""
               variant="outlined"
             />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 4,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
+            <TouchableOpacity
+              activeOpacity={1}
+              testID="ds-text-input-right-icon"
             >
-              <RNSVGSvgView
-                align="xMidYMid"
-                bbHeight={16}
-                bbWidth={16}
-                fill="rgba(22, 47, 86, 0.10)"
-                focusable={false}
-                height={16}
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
+              <View
                 style={
                   Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    Object {
-                      "flex": 0,
-                      "height": 16,
-                      "width": 16,
-                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 4,
+                        "paddingTop": 0,
+                      },
+                    ],
                   ]
                 }
-                testID="input-icon"
-                vbHeight={24}
-                vbWidth={24}
-                width={16}
               >
-                <RNSVGGroup
-                  fill={437661526}
-                  propList={
+                <RNSVGSvgView
+                  align="xMidYMid"
+                  bbHeight={16}
+                  bbWidth={16}
+                  fill="rgba(22, 47, 86, 0.10)"
+                  focusable={false}
+                  height={16}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
                     Array [
-                      "fill",
+                      Object {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      Object {
+                        "flex": 0,
+                        "height": 16,
+                        "width": 16,
+                      },
                     ]
                   }
+                  testID="input-icon"
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={16}
                 >
-                  <RNSVGPath
-                    d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
-            </View>
+                  <RNSVGGroup
+                    fill={437661526}
+                    propList={
+                      Array [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </TouchableOpacity>
           </View>
           <View
             disabled={true}
@@ -7065,62 +7090,67 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               value=""
               variant="outlined"
             />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 4,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
+            <TouchableOpacity
+              activeOpacity={1}
+              testID="ds-text-input-right-icon"
             >
-              <RNSVGSvgView
-                align="xMidYMid"
-                bbHeight={16}
-                bbWidth={16}
-                fill="rgba(209, 45, 45, 1.0)"
-                focusable={false}
-                height={16}
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
+              <View
                 style={
                   Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    Object {
-                      "flex": 0,
-                      "height": 16,
-                      "width": 16,
-                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 4,
+                        "paddingTop": 0,
+                      },
+                    ],
                   ]
                 }
-                testID="input-icon"
-                vbHeight={24}
-                vbWidth={24}
-                width={16}
               >
-                <RNSVGGroup
-                  fill={4291898669}
-                  propList={
+                <RNSVGSvgView
+                  align="xMidYMid"
+                  bbHeight={16}
+                  bbWidth={16}
+                  fill="rgba(209, 45, 45, 1.0)"
+                  focusable={false}
+                  height={16}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
                     Array [
-                      "fill",
+                      Object {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      Object {
+                        "flex": 0,
+                        "height": 16,
+                        "width": 16,
+                      },
                     ]
                   }
+                  testID="input-icon"
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={16}
                 >
-                  <RNSVGPath
-                    d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
-            </View>
+                  <RNSVGGroup
+                    fill={4291898669}
+                    propList={
+                      Array [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </TouchableOpacity>
           </View>
           <View
             disabled={false}
@@ -8237,62 +8267,67 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               value=""
               variant="outlined"
             />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 4,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
+            <TouchableOpacity
+              activeOpacity={1}
+              testID="ds-text-input-right-icon"
             >
-              <RNSVGSvgView
-                align="xMidYMid"
-                bbHeight={16}
-                bbWidth={16}
-                fill="rgba(22, 47, 86, 0.38)"
-                focusable={false}
-                height={16}
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
+              <View
                 style={
                   Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    Object {
-                      "flex": 0,
-                      "height": 16,
-                      "width": 16,
-                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 4,
+                        "paddingTop": 0,
+                      },
+                    ],
                   ]
                 }
-                testID="input-icon"
-                vbHeight={24}
-                vbWidth={24}
-                width={16}
               >
-                <RNSVGGroup
-                  fill={1628843862}
-                  propList={
+                <RNSVGSvgView
+                  align="xMidYMid"
+                  bbHeight={16}
+                  bbWidth={16}
+                  fill="rgba(22, 47, 86, 0.38)"
+                  focusable={false}
+                  height={16}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
                     Array [
-                      "fill",
+                      Object {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      Object {
+                        "flex": 0,
+                        "height": 16,
+                        "width": 16,
+                      },
                     ]
                   }
+                  testID="input-icon"
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={16}
                 >
-                  <RNSVGPath
-                    d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
-            </View>
+                  <RNSVGGroup
+                    fill={1628843862}
+                    propList={
+                      Array [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </TouchableOpacity>
           </View>
           <View
             disabled={false}
@@ -8448,62 +8483,67 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               value=""
               variant="outlined"
             />
-            <View
-              style={
-                Array [
-                  Array [
-                    Object {
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 4,
-                      "paddingTop": 0,
-                    },
-                  ],
-                ]
-              }
+            <TouchableOpacity
+              activeOpacity={1}
+              testID="ds-text-input-right-icon"
             >
-              <RNSVGSvgView
-                align="xMidYMid"
-                bbHeight={16}
-                bbWidth={16}
-                fill="rgba(22, 47, 86, 0.38)"
-                focusable={false}
-                height={16}
-                meetOrSlice={0}
-                minX={0}
-                minY={0}
+              <View
                 style={
                   Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "borderWidth": 0,
-                    },
-                    Object {
-                      "flex": 0,
-                      "height": 16,
-                      "width": 16,
-                    },
+                    Array [
+                      Object {
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 4,
+                        "paddingTop": 0,
+                      },
+                    ],
                   ]
                 }
-                testID="input-icon"
-                vbHeight={24}
-                vbWidth={24}
-                width={16}
               >
-                <RNSVGGroup
-                  fill={1628843862}
-                  propList={
+                <RNSVGSvgView
+                  align="xMidYMid"
+                  bbHeight={16}
+                  bbWidth={16}
+                  fill="rgba(22, 47, 86, 0.38)"
+                  focusable={false}
+                  height={16}
+                  meetOrSlice={0}
+                  minX={0}
+                  minY={0}
+                  style={
                     Array [
-                      "fill",
+                      Object {
+                        "backgroundColor": "transparent",
+                        "borderWidth": 0,
+                      },
+                      Object {
+                        "flex": 0,
+                        "height": 16,
+                        "width": 16,
+                      },
                     ]
                   }
+                  testID="input-icon"
+                  vbHeight={24}
+                  vbWidth={24}
+                  width={16}
                 >
-                  <RNSVGPath
-                    d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                  />
-                </RNSVGGroup>
-              </RNSVGSvgView>
-            </View>
+                  <RNSVGGroup
+                    fill={1628843862}
+                    propList={
+                      Array [
+                        "fill",
+                      ]
+                    }
+                  >
+                    <RNSVGPath
+                      d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+              </View>
+            </TouchableOpacity>
           </View>
           <View
             disabled={false}

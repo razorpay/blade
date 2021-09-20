@@ -70,6 +70,8 @@ const icons = {
   wallet: require('./Wallet').default,
   wiFiOff: require('./WiFiOff').default,
   wiFiOn: require('./WiFiOn').default,
+  eyeOff: require('./EyeOff').default,
+  eye: require('./Eye').default,
 };
 
 export default icons;
