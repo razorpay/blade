@@ -1,8 +1,8 @@
-name: Semgrep
+name: Security Checks
 on: pull_request
 jobs:
   semgrep:
-    name: Scan
+    name: Semgrep Scan
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
       - uses: actions/checkout@v2
