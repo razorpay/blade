@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 1.0.0
+
+### Major Changes
+
+- c212fa0: Allow textinput right icon to be touchable
+
 ## 0.0.6
 
 ### Patch Changes
