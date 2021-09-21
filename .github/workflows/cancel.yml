@@ -5,7 +5,7 @@ on: [push]
 jobs:
   cancel:
     name: "Cancel Previous Runs"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     timeout-minutes: 3
     steps:
       - uses: styfle/cancel-workflow-action@0.4.0
