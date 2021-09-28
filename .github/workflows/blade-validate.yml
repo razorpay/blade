@@ -23,7 +23,7 @@ jobs:
       - name: Validate Yarn Version
         run: yarn -v
       - name: Install Dependencies
-        run: yarn install
+        run: yarn install --immutable
       - name: Lint Source Code
         run: yarn lint
       - name: Run Web Tests
