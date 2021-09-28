@@ -31,7 +31,7 @@
   },
   "scripts": {
     "prepublish": "yarn build",
-    "build": "run-s build:*",
+    "build": "run-s 'build:*'",
     "build:clean": "rm -rf build",
     "build:generate-types": "tsc -p ./tsconfig-generate-types.json",
     "build:copy-declarations": "copyfiles -u 1 \"src/**/*.d.ts\" build/types",

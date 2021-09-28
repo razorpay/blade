@@ -12,18 +12,12 @@
       "packages/tools/*",
       "packages/types",
       "packages/examples/*"
-    ],
-    "nohoist": [
-      "packages/blade",
-      "packages/blade-old",
-      "packages/tools/*",
-      "packages/types",
-      "packages/examples/*"
     ]
   },
   "scripts": {
     "lint": "eslint --ext js,jsx,ts,tsx packages",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "postinstall": "lerna run --scope @razorpay/blade build"
   },
   "devDependencies": {
     "@changesets/cli": "2.16.0",
