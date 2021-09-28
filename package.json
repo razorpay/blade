@@ -77,5 +77,6 @@
       "path": "./node_modules/cz-conventional-changelog",
       "disableScopeLowerCase": true
     }
-  }
+  },
+  "packageManager": "yarn@3.0.2"
 }
