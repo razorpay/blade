@@ -84,19 +84,20 @@ const fontWeight: FontWeight = {
   bold: 700,
 };
 
-export type Typography = Record<
-  'desktop' | 'mobile',
-  {
-    fonts: {
-      family: FontFamily;
-      size: FontSize;
-      weight: FontWeight;
-    };
-  }
->;
+export type Typography = {
+  fonts: {
+    family: FontFamily;
+    size: FontSize;
+    weight: FontWeight;
+  };
+  // lineHeights: {};
+  // letterSpacings: {};
+};
 
-const typography: Typography = {
-  desktop: {
+export type TypographyWithPlatforms = Record<'onDesktop' | 'onMobile', Typography>;
+
+const typography: TypographyWithPlatforms = {
+  onDesktop: {
     fonts: {
       family: {
         ...fontFamily,
@@ -124,7 +125,7 @@ const typography: Typography = {
     // lineHeights: {},
     // letterSpacings: {},
   },
-  mobile: {
+  onMobile: {
     fonts: {
       family: {
         ...fontFamily,

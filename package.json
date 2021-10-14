@@ -11,8 +11,7 @@
       "packages/blade",
       "packages/blade-old",
       "packages/tools/*",
-      "packages/types",
-      "packages/examples/*"
+      "packages/types"
     ],
     "nohoist": [
       "**"
