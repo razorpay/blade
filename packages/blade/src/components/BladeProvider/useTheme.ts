@@ -4,6 +4,7 @@ import type { Typography } from '../../tokens/global/typography';
 import type { Border } from '../../tokens/global/border';
 import type { Spacing } from '../../tokens/global/spacing';
 import { UseColorScheme } from '../../utils/useColorScheme';
+import emptyTheme from './emptyTheme';
 
 export type Theme = {
   colors: Colors;
@@ -18,11 +19,11 @@ export type Theme = {
 };
 
 export type ThemeContext = UseColorScheme & {
-  theme: Theme | undefined;
+  theme: Theme;
 };
 
 export const ThemeContext = createContext<ThemeContext>({
-  theme: undefined,
+  theme: emptyTheme,
   colorScheme: 'light',
   setColorScheme: () => null,
 });
