@@ -1067,7 +1067,7 @@ const paymentLightTheme: Theme = {
     },
     // shadowOpacity: 1, // this is required for iOS
   },
-  typography: typography.onDesktop,
+  typography: typography.onMobile,
 };
 
 export default paymentLightTheme;

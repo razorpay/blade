@@ -94,7 +94,9 @@ export type Typography = {
   // letterSpacings: {};
 };
 
-export type TypographyWithPlatforms = Record<'onDesktop' | 'onMobile', Typography>;
+export type TypographyPlatforms = 'onDesktop' | 'onMobile';
+
+export type TypographyWithPlatforms = Record<TypographyPlatforms, Typography>;
 
 const typography: TypographyWithPlatforms = {
   onDesktop: {

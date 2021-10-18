@@ -13247,6 +13247,11 @@ jest-specific-snapshot@^2.0.0:
   dependencies:
     jest-snapshot "^24.1.0"
 
+jest-useragent-mock@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/jest-useragent-mock/-/jest-useragent-mock-0.1.1.tgz#e1ec69a78abd833712a6c0b8ca684b3a59d19c34"
+  integrity sha512-QmgydWl2ITj0xuWQfxj+TmXN0GT2XXxfNhsPzfhNVecjX7VnqLmCKXtr+J5QjT01DDp4+oWIGACdywO6XJlkRg==
+
 jest-util@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-24.9.0.tgz#7396814e48536d2e85a37de3e4c431d7cb140162"

@@ -1,4 +1,5 @@
 import { renderHook, act, WrapperComponent } from '@testing-library/react-hooks';
+import { clear, mockUserAgent } from 'jest-useragent-mock';
 import { paymentTheme, colorSchemeNamesInput } from '../../../tokens/theme';
 import { BladeProvider, useTheme, BladeProviderProps } from '../../BladeProvider';
 import paymentLightTheme from './paymentLightTheme';
@@ -7,6 +8,15 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<BladeProvider/>', () => {
+  beforeEach(() => {
+    const mobileUserAgent =
+      'Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Mobile Safari/537.36';
+    mockUserAgent(mobileUserAgent);
+  });
+  afterEach(() => {
+    clear();
+  });
+
   const wrapper: WrapperComponent<BladeProviderProps> = ({
     themeTokens,
     colorScheme,

@@ -1,7 +1,8 @@
 import { ReactNode, ReactElement } from 'react';
-import { useColorScheme, toTitleCase } from '../../utils';
-import { ThemeTokens, ColorSchemeNamesInput, colorSchemeNamesInput } from '../../tokens/theme';
-import { ColorSchemeModes } from '../../tokens/theme/theme';
+import { useColorScheme, toTitleCase, getDeviceType } from '../../utils';
+import { colorSchemeNamesInput } from '../../tokens/theme';
+import { TypographyPlatforms } from '../../tokens/global/typography';
+import { ColorSchemeModes, ThemeTokens, ColorSchemeNamesInput } from '../../tokens/theme/theme.d';
 import { Theme, ThemeContext } from './useTheme';
 
 export type BladeProviderProps = {
@@ -30,6 +31,7 @@ const BladeProvider = ({
   const { colorScheme, setColorScheme } = useColorScheme(initialColorScheme);
 
   const colorMode = `on${toTitleCase(colorScheme)}` as ColorSchemeModes;
+  const deviceType = `on${toTitleCase(getDeviceType())}` as TypographyPlatforms;
 
   const theme: Theme = {
     ...themeTokens,
@@ -39,7 +41,7 @@ const BladeProvider = ({
       color: themeTokens.shadows.color[colorMode],
     },
     // add logic to fetch the platform
-    typography: themeTokens.typography.onDesktop,
+    typography: themeTokens.typography[deviceType],
   };
 
   const themeContextValue = {
