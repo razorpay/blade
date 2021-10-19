@@ -65,6 +65,7 @@ const icons = {
   trash: require('./Trash').default,
   uploadCloud: require('./UploadCloud').default,
   user: require('./User').default,
+  users: require('./Users').default,
   userSwitch: require('./UserSwitch').default,
   upi: require('./Upi').default,
   wallet: require('./Wallet').default,
