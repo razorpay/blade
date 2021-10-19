@@ -54,7 +54,7 @@ const icons = {
   plus: require('./Plus').default,
   refresh: require('./Refresh').default,
   refund: require('./Refund').default,
-  rotateCw: require('./RotateCw').default,
+  rotateClockwise: require('./RotateClockwise').default,
   search: require('./Search').default,
   share: require('./Share').default,
   smartCollect: require('./SmartCollect').default,
