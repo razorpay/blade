@@ -40,7 +40,6 @@ const BladeProvider = ({
       ...themeTokens.shadows,
       color: themeTokens.shadows.color[colorMode],
     },
-    // add logic to fetch the platform
     typography: themeTokens.typography[deviceType],
   };
 

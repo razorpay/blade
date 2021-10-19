@@ -77,7 +77,6 @@ export type Colors = {
     border: Record<Feedback, ColorContrast>;
     text: Record<Feedback, ColorContrast>;
     icon: Record<Feedback, ColorContrast>;
-    // action: Record<Feedback, FeedbackActions>;
     positive: {
       action: FeedbackActions;
     };
@@ -119,11 +118,3 @@ export type ThemeTokens = {
   shadows: Shadows;
   typography: TypographyWithPlatforms;
 };
-
-// // current structure
-// feedback.positive.action.background.primary;
-// feedback.positive;
-// feedback.positive;
-
-// //propose structure
-// feedback.action.background.primary.positive;
