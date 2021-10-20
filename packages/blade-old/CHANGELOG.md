@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 1.1.0
+
+### Minor Changes
+
+- 2c71c63: Added two new icons - `users` & `rotateClockwise`
+
 ## 1.0.0
 
 ### Major Changes
