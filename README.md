@@ -125,7 +125,7 @@ const StyledCard = styled.div(
 ## 📝 Versioning & Publishing
 * The first step in publishing a new version of blade is to first the mention the type of change and bump the version. We are using [`changesets`](https://github.com/atlassian/changesets) to handle automated versioning for us based on the intent of the change we mention in the PR.
 * Once a PR is approved by the authors of blade, based on if the PR needs a new version to be published the author will add a changeset to the PR.
-* After the `changeset` is added and the PR is merged the `realease` workflow gets triggered by GitHub actions.
+* After the `changeset` is added and the PR is merged the `release` workflow gets triggered by GitHub actions.
 * The `release` workflow runs `build` script which runs rollup to bundle `blade` and generates relevant `types` as well.
 * After the build script finishes, we'll have 3 bundles which will be published under `@razorpay/blade` scope
 ```
