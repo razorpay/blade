@@ -99,7 +99,7 @@ const Card = (): React.ReactElement => {
   const { theme } = useTheme();
   return (
     <React.Fragment>
-      <DisplayLarge theme={theme}>Cash Advance </DisplayLarge>
+      <DisplayLarge theme={theme}>Cash Advance</DisplayLarge>
       <StyledCard theme={theme}>
         <CaptionRegular theme={theme}>
           This amount will be deducted in 3 installments from your settlement balance between Feb
