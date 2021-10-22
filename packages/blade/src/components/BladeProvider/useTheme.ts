@@ -3,7 +3,7 @@ import { Colors, Shadows, ShadowLevels } from '../../tokens/theme/theme.d';
 import type { Typography } from '../../tokens/global/typography';
 import type { Border } from '../../tokens/global/border';
 import type { Spacing } from '../../tokens/global/spacing';
-import { UseColorScheme } from '../../utils/useColorScheme';
+import type { UseColorScheme } from '../../utils/useColorScheme';
 
 export type Theme = {
   colors: Colors;
