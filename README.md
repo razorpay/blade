@@ -184,7 +184,7 @@ const StyledCard = styled.div(
 
 ## ⌛️ Current State
 Here's a glimpse of where we are currently in our journey of building the design system.
-![current-state-image](https://user-images.githubusercontent.com/11384858/138654492-81ed1545-69b5-48aa-8cac-b9569c4eb229.jpg)
+![current-state-image](https://user-images.githubusercontent.com/11384858/138658682-92dbcd71-8c81-4a3e-9f2f-331c7a58e3f0.png)
 ## 🤝 How to contribute
 To contribute to this project you should follow these things:
 
