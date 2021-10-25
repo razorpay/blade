@@ -3,9 +3,10 @@ import { paymentTheme, bankingTheme } from '../';
 import { cloneDeep } from '../../../utils';
 import type { ThemeTokens } from '../../theme';
 
-const invalidOverridesObjectError = '[Blade:overrideTheme]: The overrides object is not valid';
+const invalidOverridesObjectError =
+  '[@razorpay/blade:overrideTheme]: The overrides object is not valid';
 const invalidBaseThemeError =
-  '[Blade:overrideTheme]: The base theme provided is not a valid Blade theme';
+  '[@razorpay/blade:overrideTheme]: The base theme provided is not a valid Blade theme';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

@@ -30,7 +30,7 @@ export const ThemeContext = createContext<ThemeContext>({
 const useTheme = (): ThemeContext => {
   const themeContext = useContext<ThemeContext>(ThemeContext);
   if (themeContext === undefined) {
-    throw new Error(`[@razorpay/blade]: useTheme must be used within Blade's Provider`);
+    throw new Error(`[@razorpay/blade:BladeProvider]: useTheme must be used within BladeProvider`);
   }
   return themeContext;
 };
