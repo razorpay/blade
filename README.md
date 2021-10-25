@@ -73,28 +73,28 @@ $ yarn add @razorpay/blade
 We have all the examples under `packages/examples` directory. To run any example project with the updated changes follow the steps below:
 
 1. Setup the example project
-```shell
-$ cd packages/examples/<example-name>
-$ yarn
-```
+    ```shell
+    $ cd packages/examples/<example-name>
+    $ yarn
+    ```
 
 2. Publish the blade package with your changes using [`yalc`](https://www.npmjs.com/package/yalc).
-```shell
-# run this from packages/blade directory
-$ npx yalc publish
-```
+    ```shell
+    # run this from packages/blade directory
+    $ npx yalc publish
+    ```
 
 3. Install the updated `blade` package using [`yalc`](https://www.npmjs.com/package/yalc).
-```shell
-# run this from packages/examples/<example-name> directory
-$ npx yalc add @razorpay/blade
-```
+    ```shell
+    # run this from packages/examples/<example-name> directory
+    $ npx yalc add @razorpay/blade
+    ```
 
 4. Run the example project and verify the changes
-```shell
-# this script can vary based on the kind of project so check the example `package.json` to find the relevant script to start the project
-$ yarn start
-```
+    ```shell
+    # this script can vary based on the kind of project so check the example `package.json` to find the relevant script to start the project
+    $ yarn start
+    ```
 
 #### Running Tests
 We use `react-testing-library` for writing tests. If you want to write platform specific tests then suffix the test file with `filename.native.ts` or `filename.web.ts`
