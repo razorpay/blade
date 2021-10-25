@@ -112,12 +112,12 @@ const Card = (): React.ReactElement => {
 
 const StyledCard = styled.div(
   ({ theme }: { theme: Theme }) => `
-  width: 368px;
-  background-color: ${theme.colors.surface.background.level2.lowContrast.onLight};
-  border-radius: ${theme.border.radius.medium}px;
-  padding: ${theme.spacing[5]}px;
-  display: flex;
-  flex-direction: column;
+    width: 368px;
+    background-color: ${theme.colors.surface.background.level2.lowContrast};
+    border-radius: ${theme.border.radius.medium}px;
+    padding: ${theme.spacing[5]}px;
+    display: flex;
+    flex-direction: column;
 `,
 );
 ```
@@ -137,7 +137,7 @@ const StyledCard = styled.div(
 
 ## ⌛️ Current State
 Here's a glimpse of where we are currently in our journey of building the design system.
-![current-state-image](https://user-images.githubusercontent.com/11384858/138256204-aa17fa73-ac02-431c-a618-34b34ee5fa29.png)
+![current-state-image](https://user-images.githubusercontent.com/11384858/138654492-81ed1545-69b5-48aa-8cac-b9569c4eb229.jpg)
 ## 🤝 How to contribute
 To contribute to this project you should follow these things:
 
