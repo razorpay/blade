@@ -1,5 +1,6 @@
-import icons from '../icons';
+// import icons from '../icons';
 
-const getIconNames = () => Object.keys(icons);
+// todo remove this
+const getIconNames = () => Object.keys({});
 
 export { getIconNames };

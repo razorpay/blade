@@ -1,79 +1,75 @@
-const icons = {
-  alertCircle: require('./AlertCircle').default,
-  arrowDown: require('./ArrowDown').default,
-  arrowLeft: require('./ArrowLeft').default,
-  arrowRight: require('./ArrowRight').default,
-  arrowUp: require('./ArrowUp').default,
-  arrowUpRight: require('./ArrowUpRight').default,
-  bank: require('./Bank').default,
-  bell: require('./Bell').default,
-  book: require('./Book').default,
-  box: require('./Box').default,
-  briefcase: require('./Briefcase').default,
-  camera: require('./Camera').default,
-  card: require('./Card').default,
-  check: require('./Check').default,
-  checkboxFilled: require('./CheckboxFilled').default,
-  checkboxOutlined: require('./CheckboxOutlined').default,
-  checkedCircle: require('./CheckedCircle').default,
-  chevronDown: require('./ChevronDown').default,
-  chevronLeft: require('./ChevronLeft').default,
-  chevronRight: require('./ChevronRight').default,
-  chevronUp: require('./ChevronUp').default,
-  clipboard: require('./Clipboard').default,
-  clock: require('./Clock').default,
-  close: require('./Close').default,
-  copy: require('./Copy').default,
-  download: require('./Download').default,
-  emptyCircle: require('./EmptyCircle').default,
-  failure: require('./Failure').default,
-  feather: require('./Feather').default,
-  file: require('./File').default,
-  gallery: require('./Gallery').default,
-  gear: require('./Gear').default,
-  headphone: require('./Headphone').default,
-  helpCircle: require('./HelpCircle').default,
-  home: require('./Home').default,
-  info: require('./Info').default,
-  invoice: require('./Invoice').default,
-  lifeBuoy: require('./LifeBuoy').default,
-  link: require('./Link').default,
-  lock: require('./Lock').default,
-  mail: require('./Mail').default,
-  maximize: require('./Maximize').default,
-  message: require('./Message').default,
-  minimize: require('./Minimize').default,
-  moreVertical: require('./MoreVertical').default,
-  paymentCapture: require('./PaymentCapture').default,
-  paymentGateway: require('./PaymentGateway').default,
-  paymentLink: require('./PaymentLink').default,
-  paymentPage: require('./PaymentPage').default,
-  phone: require('./Phone').default,
-  power: require('./Power').default,
-  profile: require('./Profile').default,
-  plus: require('./Plus').default,
-  refresh: require('./Refresh').default,
-  refund: require('./Refund').default,
-  rotateClockwise: require('./RotateClockwise').default,
-  search: require('./Search').default,
-  share: require('./Share').default,
-  smartCollect: require('./SmartCollect').default,
-  starFilled: require('./StarFilled').default,
-  starOutlined: require('./StarOutlined').default,
-  subscription: require('./Subscription').default,
-  success: require('./Success').default,
-  taxPayments: require('./TaxPayments').default,
-  trash: require('./Trash').default,
-  uploadCloud: require('./UploadCloud').default,
-  user: require('./User').default,
-  users: require('./Users').default,
-  userSwitch: require('./UserSwitch').default,
-  upi: require('./Upi').default,
-  wallet: require('./Wallet').default,
-  wiFiOff: require('./WiFiOff').default,
-  wiFiOn: require('./WiFiOn').default,
-  eyeOff: require('./EyeOff').default,
-  eye: require('./Eye').default,
-};
-
-export default icons;
+export { default as AlertCircle } from './AlertCircle';
+export { default as ArrowDown } from './ArrowDown';
+export { default as ArrowLeft } from './ArrowLeft';
+export { default as ArrowRight } from './ArrowRight';
+export { default as ArrowUp } from './ArrowUp';
+export { default as ArrowUpRight } from './ArrowUpRight';
+export { default as Bank } from './Bank';
+export { default as Bell } from './Bell';
+export { default as Book } from './Book';
+export { default as Box } from './Box';
+export { default as Briefcase } from './Briefcase';
+export { default as Camera } from './Camera';
+export { default as Card } from './Card';
+export { default as Check } from './Check';
+export { default as CheckboxFilled } from './CheckboxFilled';
+export { default as CheckboxOutlined } from './CheckboxOutlined';
+export { default as CheckedCircle } from './CheckedCircle';
+export { default as ChevronDown } from './ChevronDown';
+export { default as ChevronLeft } from './ChevronLeft';
+export { default as ChevronRight } from './ChevronRight';
+export { default as ChevronUp } from './ChevronUp';
+export { default as Clipboard } from './Clipboard';
+export { default as Clock } from './Clock';
+export { default as Close } from './Close';
+export { default as Copy } from './Copy';
+export { default as Download } from './Download';
+export { default as EmptyCircle } from './EmptyCircle';
+export { default as Failure } from './Failure';
+export { default as Feather } from './Feather';
+export { default as File } from './File';
+export { default as Gallery } from './Gallery';
+export { default as Gear } from './Gear';
+export { default as Headphone } from './Headphone';
+export { default as HelpCircle } from './HelpCircle';
+export { default as Home } from './Home';
+export { default as Info } from './Info';
+export { default as Invoice } from './Invoice';
+export { default as LifeBuoy } from './LifeBuoy';
+export { default as Link } from './Link';
+export { default as Lock } from './Lock';
+export { default as Mail } from './Mail';
+export { default as Maximize } from './Maximize';
+export { default as Message } from './Message';
+export { default as Minimize } from './Minimize';
+export { default as MoreVertical } from './MoreVertical';
+export { default as PaymentCapture } from './PaymentCapture';
+export { default as PaymentGateway } from './PaymentGateway';
+export { default as PaymentLink } from './PaymentLink';
+export { default as PaymentPage } from './PaymentPage';
+export { default as Phone } from './Phone';
+export { default as Power } from './Power';
+export { default as Profile } from './Profile';
+export { default as Plus } from './Plus';
+export { default as Refresh } from './Refresh';
+export { default as Refund } from './Refund';
+export { default as RotateClockwise } from './RotateClockwise';
+export { default as Search } from './Search';
+export { default as Share } from './Share';
+export { default as SmartCollect } from './SmartCollect';
+export { default as StarFilled } from './StarFilled';
+export { default as StarOutlined } from './StarOutlined';
+export { default as Subscription } from './Subscription';
+export { default as Success } from './Success';
+export { default as TaxPayments } from './TaxPayments';
+export { default as Trash } from './Trash';
+export { default as UploadCloud } from './UploadCloud';
+export { default as User } from './User';
+export { default as Users } from './Users';
+export { default as UserSwitch } from './UserSwitch';
+export { default as Upi } from './Upi';
+export { default as Wallet } from './Wallet';
+export { default as WiFiOff } from './WiFiOff';
+export { default as WiFiOn } from './WiFiOn';
+export { default as EyeOff } from './EyeOff';
+export { default as Eye } from './Eye';

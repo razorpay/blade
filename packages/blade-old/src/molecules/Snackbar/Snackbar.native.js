@@ -7,11 +7,9 @@ import Text from '../../atoms/Text';
 import Flex from '../../atoms/Flex';
 import Size from '../../atoms/Size';
 import Space from '../../atoms/Space';
-import Icon from '../../atoms/Icon';
 import Button from '../../atoms/Button';
 import Position from '../../atoms/Position';
 import { getColor } from '../../_helpers/theme';
-import icons from '../../icons';
 import { useSnackbar } from './SnackbarContext';
 
 const SNACKBAR_WIDTH = Dimensions.get('window').width - 32;
@@ -39,7 +37,7 @@ const SnackbarContainer = styled(View)`
   background-color: ${styles.backgroundColor};
 `;
 
-const Snackbar = ({ variant, title, action, onClose, maxLines, icon, position }) => {
+const Snackbar = ({ variant, title, action, onClose, maxLines, icon: Icon, position }) => {
   const { isVisible, close } = useSnackbar();
   const [bottomY, setBottomY] = useState(0);
   const [isContentVisible, setIsContentVisible] = useState(false);
@@ -120,10 +118,10 @@ const Snackbar = ({ variant, title, action, onClose, maxLines, icon, position })
             <Space padding={[1.5]}>
               <Flex flexDirection="row" alignItems="center">
                 <SnackbarContainer variant={variant}>
-                  {icon ? (
+                  {Icon ? (
                     <Space padding={[0, 1, 0, 0]}>
                       <View>
-                        <Icon name={icon} size="medium" fill="light.900" testID="snackbar-icon" />
+                        <Icon size="medium" fill="light.900" testID="snackbar-icon" />
                       </View>
                     </Space>
                   ) : null}
@@ -184,7 +182,7 @@ Snackbar.propTypes = {
   }),
   onClose: PropTypes.func,
   maxLines: PropTypes.number,
-  icon: PropTypes.oneOf(Object.keys(icons)),
+  icon: PropTypes.node,
   position: PropTypes.shape({
     top: PropTypes.number,
     right: PropTypes.number,

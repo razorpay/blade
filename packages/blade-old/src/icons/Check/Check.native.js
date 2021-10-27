@@ -1,30 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Svg, { Path } from 'react-native-svg';
-import { getThemeColors } from '../../_helpers/theme';
-import colors from '../../tokens/colors';
+import { Path } from 'react-native-svg';
+import Icon, { IconPropTypes } from '../../atoms/Icon';
 
-function Check({ width, height, fill }) {
+function Check(props) {
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
-      <Path
-        d="M20.7071 5.29289C21.0976 5.68342 21.0976 6.31658 20.7071 6.70711L9.70711 17.7071C9.31658 18.0976 8.68342 18.0976 8.29289 17.7071L3.29289 12.7071C2.90237 12.3166 2.90237 11.6834 3.29289 11.2929C3.68342 10.9024 4.31658 10.9024 4.70711 11.2929L9 15.5858L19.2929 5.29289C19.6834 4.90237 20.3166 4.90237 20.7071 5.29289Z"
-        fill={fill}
-      />
-    </Svg>
+    <Icon viewBox="0 0 24 24" {...props}>
+      <Path d="M20.7071 5.29289C21.0976 5.68342 21.0976 6.31658 20.7071 6.70711L9.70711 17.7071C9.31658 18.0976 8.68342 18.0976 8.29289 17.7071L3.29289 12.7071C2.90237 12.3166 2.90237 11.6834 3.29289 11.2929C3.68342 10.9024 4.31658 10.9024 4.70711 11.2929L9 15.5858L19.2929 5.29289C19.6834 4.90237 20.3166 4.90237 20.7071 5.29289Z" />
+    </Icon>
   );
 }
 
-Check.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  fill: PropTypes.oneOf(getThemeColors()),
-};
+Check.propTypes = IconPropTypes;
 
 Check.defaultProps = {
-  width: 24,
-  height: 24,
-  fill: colors.sapphire[800],
+  size: 'medium',
+  fill: 'shade.950',
 };
 
 export default Check;

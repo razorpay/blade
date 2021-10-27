@@ -1,36 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Svg, { Path } from 'react-native-svg';
-import { getThemeColors } from '../../_helpers/theme';
-import colors from '../../tokens/colors';
+import { Path } from 'react-native-svg';
+import Icon, { IconPropTypes } from '../../atoms/Icon';
 
-function Clock({ width, height, fill }) {
+function Clock(props) {
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
-      <Path
-        d="M13 6a1 1 0 10-2 0v6a1 1 0 00.293.707l3 3a1 1 0 001.414-1.414L13 11.586V6z"
-        fill={fill}
-      />
+    <Icon viewBox="0 0 24 24" {...props}>
+      <Path d="M13 6a1 1 0 10-2 0v6a1 1 0 00.293.707l3 3a1 1 0 001.414-1.414L13 11.586V6z" />
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
         d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM3 12a9 9 0 1118 0 9 9 0 01-18 0z"
-        fill={fill}
       />
-    </Svg>
+    </Icon>
   );
 }
 
-Clock.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  fill: PropTypes.oneOf(getThemeColors()),
-};
+Clock.propTypes = IconPropTypes;
 
 Clock.defaultProps = {
-  width: 24,
-  height: 24,
-  fill: colors.sapphire[800],
+  size: 'medium',
+  fill: 'shade.950',
 };
 
 export default Clock;
