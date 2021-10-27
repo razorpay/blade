@@ -6,7 +6,6 @@ import { TouchableHighlight } from 'react-native';
 import Flex from '../Flex';
 import Size from '../Size';
 import Space from '../Space';
-import Icon from '../Icon';
 import Text from '../Text';
 import View from '../View';
 import automation from '../../_helpers/automation-attributes';
@@ -243,7 +242,7 @@ const Button = ({
   size,
   disabled,
   variantColor,
-  icon,
+  icon: Icon,
   iconAlign,
   block,
   testID,
@@ -290,9 +289,8 @@ const Button = ({
             {...automation(testID)}
           >
             <React.Fragment>
-              {icon && iconAlign === 'left' && (
+              {Icon && iconAlign === 'left' && (
                 <Icon
-                  name={icon}
                   size={styles.iconSize({
                     size,
                     children,
@@ -305,7 +303,7 @@ const Button = ({
                   testID="button-left-icon"
                 />
               )}
-              {icon && iconAlign === 'left' && children && (
+              {Icon && iconAlign === 'left' && children && (
                 <Space
                   margin={styles.spaceBetween({
                     size,
@@ -337,7 +335,7 @@ const Button = ({
                   {size === 'xsmall' ? children.toUpperCase() : children}
                 </Text>
               ) : null}
-              {icon && iconAlign === 'right' && children && (
+              {Icon && iconAlign === 'right' && children && (
                 <Space
                   margin={styles.spaceBetween({
                     size,
@@ -347,9 +345,8 @@ const Button = ({
                   <View />
                 </Space>
               )}
-              {icon && iconAlign === 'right' && (
+              {Icon && iconAlign === 'right' && (
                 <Icon
-                  name={icon}
                   size={styles.iconSize({
                     size,
                     children,
@@ -378,7 +375,7 @@ Button.propTypes = {
   block: PropTypes.bool,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
   disabled: PropTypes.bool,
-  icon: PropTypes.string,
+  icon: PropTypes.node,
   iconAlign: PropTypes.oneOf(['left', 'right']),
   testID: PropTypes.string,
 };

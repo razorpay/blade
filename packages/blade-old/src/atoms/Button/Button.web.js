@@ -5,7 +5,6 @@ import styled, { useTheme } from 'styled-components';
 import Flex from '../Flex';
 import Size from '../Size';
 import Space from '../Space';
-import Icon from '../Icon';
 import Text from '../Text';
 import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
@@ -361,7 +360,7 @@ const Button = ({
   size,
   disabled,
   variantColor,
-  icon,
+  icon: Icon,
   iconAlign,
   align,
   block,
@@ -423,7 +422,7 @@ const Button = ({
             {...automation(testID)}
           >
             <React.Fragment>
-              {icon && iconAlign === 'left' ? (
+              {Icon && iconAlign === 'left' ? (
                 <Space
                   margin={styles.spaceBetween({
                     size,
@@ -432,7 +431,6 @@ const Button = ({
                   })}
                 >
                   <Icon
-                    name={icon}
                     size={styles.iconSize({
                       size,
                       children,
@@ -468,7 +466,7 @@ const Button = ({
                   {size === 'xsmall' ? children.toUpperCase() : children}
                 </Text>
               ) : null}
-              {icon && iconAlign === 'right' ? (
+              {Icon && iconAlign === 'right' ? (
                 <Space
                   margin={styles.spaceBetween({
                     size,
@@ -477,7 +475,6 @@ const Button = ({
                   })}
                 >
                   <Icon
-                    name={icon}
                     size={styles.iconSize({
                       size,
                       children,
@@ -508,7 +505,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
   align: PropTypes.oneOf(['left', 'center', 'right']),
   disabled: PropTypes.bool,
-  icon: PropTypes.string,
+  icon: PropTypes.node,
   iconAlign: PropTypes.oneOf(['left', 'right']),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   testID: PropTypes.string,

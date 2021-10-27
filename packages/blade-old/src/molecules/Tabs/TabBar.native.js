@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { TabBar as RNTabBar } from 'react-native-tab-view';
 import PropTypes from 'prop-types';
-import { getIconNames } from '../../_helpers/icon';
 import TabButton from './TabButton';
 
 const TabBar = (props) => {
@@ -55,7 +54,7 @@ TabBar.propTypes = {
         active: PropTypes.bool,
         onPress: PropTypes.func,
         disabled: PropTypes.bool,
-        icon: PropTypes.oneOf(getIconNames()),
+        icon: PropTypes.node,
       }),
     ),
   }),

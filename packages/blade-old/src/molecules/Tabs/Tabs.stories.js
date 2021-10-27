@@ -8,6 +8,7 @@ import Flex from '../../atoms/Flex';
 import Space from '../../atoms/Space';
 import { getColorKeys } from '../../_helpers/theme';
 import { getIconNames } from '../../_helpers/icon';
+import { Info } from '../../icons';
 import Tabs from './Tabs';
 
 const iconOptions = getIconNames().reduce(
@@ -52,7 +53,7 @@ storiesOf('Tabs', module)
         value="payments"
         title="Payments"
         disabled={boolean('Disable Tab 1', false)}
-        icon={select('Icon Tab 1', iconOptions, undefined)}
+        icon={Info}
       >
         <Content color="emerald.900">This is the Payments screen</Content>
       </Tabs.Tab>
@@ -61,7 +62,7 @@ storiesOf('Tabs', module)
         value="payment-links"
         title="Payment Links"
         disabled={boolean('Disable Tab 2', false)}
-        icon={select('Icon Tab 2', iconOptions, undefined)}
+        icon={Info}
       >
         <Content color="mustard.900">This is the Payment Links screen</Content>
       </Tabs.Tab>
@@ -70,7 +71,7 @@ storiesOf('Tabs', module)
         value="settlements"
         title="Settlements"
         disabled={boolean('Disable Tab 3', false)}
-        icon={select('Icon Tab 3', iconOptions, undefined)}
+        icon={Info}
       >
         <Content color="rose.900">This is the Settlements screen</Content>
       </Tabs.Tab>
@@ -83,7 +84,7 @@ storiesOf('Tabs', module)
         value="payments"
         title="Payments"
         disabled={boolean('Disable Tab 1', false)}
-        icon={select('Icon Tab 1', iconOptions, undefined)}
+        icon={Info}
       >
         <Content color="emerald.900">This is the Payments screen</Content>
       </Tabs.Tab>
@@ -92,7 +93,7 @@ storiesOf('Tabs', module)
         value="payment-links"
         title="Payment Links"
         disabled={boolean('Disable Tab 2', false)}
-        icon={select('Icon Tab 2', iconOptions, undefined)}
+        icon={Info}
       >
         <Content color="mustard.900">This is the Payment Links screen</Content>
       </Tabs.Tab>
@@ -101,7 +102,7 @@ storiesOf('Tabs', module)
         value="settlements"
         title="Settlements"
         disabled={boolean('Disable Tab 3', false)}
-        icon={select('Icon Tab 3', iconOptions, undefined)}
+        icon={Info}
       >
         <Content color="rose.900">This is the Settlements screen</Content>
       </Tabs.Tab>
@@ -114,7 +115,7 @@ storiesOf('Tabs', module)
         value="contactDetails"
         title="Contact Details"
         disabled={boolean('Disable Tab 1', false)}
-        icon={select('Icon Tab 1', iconOptions, undefined)}
+        icon={Info}
       >
         <Content color="emerald.900">Contact details</Content>
       </Tabs.Tab>
@@ -123,7 +124,7 @@ storiesOf('Tabs', module)
         value="businessOverview"
         title="Business Overview"
         disabled={boolean('Disable Tab 2', false)}
-        icon={select('Icon Tab 2', iconOptions, undefined)}
+        icon={Info}
       >
         <Content color="mustard.900">Business overview</Content>
       </Tabs.Tab>
@@ -132,7 +133,7 @@ storiesOf('Tabs', module)
         value="businessDetails"
         title="Business Details"
         disabled={boolean('Disable Tab 3', false)}
-        icon={select('Icon Tab 3', iconOptions, undefined)}
+        icon={Info}
       >
         <Content color="rose.900">Business details</Content>
       </Tabs.Tab>
