@@ -5,25 +5,32 @@ import isPartialMatchObjectKeys from '../../utils/isPartialMatchObjectKeys';
 import type { DeepPartial } from '../../utils/isPartialMatchObjectKeys';
 import paymentTheme from './paymentTheme';
 import bankingTheme from './bankingTheme';
-import type { Theme } from './theme.d';
+import type { ThemeTokens } from './theme.d';
 
 type OverrideTheme = {
-  baseTheme: Theme;
-  overrides: DeepPartial<Theme>;
+  baseThemeTokens: ThemeTokens;
+  overrides: DeepPartial<ThemeTokens>;
 };
 
-const overrideTheme = ({ baseTheme, overrides }: OverrideTheme): Theme => {
+const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeTokens => {
   // TODO: wrap this check inside a __DEV__ flag so it gets trimmed off in production
-  if (!isEqual(baseTheme, paymentTheme) && !isEqual(baseTheme, bankingTheme)) {
-    throw new Error('[Blade:overrideTheme]: The base theme provided is not a valid Blade theme');
+  if (!isEqual(baseThemeTokens, paymentTheme) && !isEqual(baseThemeTokens, bankingTheme)) {
+    throw new Error(
+      '[@razorpay/blade:overrideTheme]: The base theme provided is not a valid Blade theme',
+    );
   }
 
-  if (!isPartialMatchObjectKeys<Theme>({ objectToMatch: overrides, objectToInspect: baseTheme })) {
-    throw new Error('[Blade:overrideTheme]: The overrides object is not valid');
+  if (
+    !isPartialMatchObjectKeys<ThemeTokens>({
+      objectToMatch: overrides,
+      objectToInspect: baseThemeTokens,
+    })
+  ) {
+    throw new Error('[@razorpay/blade:overrideTheme]: The overrides object is not valid');
   }
 
   // Need to clone before merging since merge changes/mutates the actual object
-  return merge(cloneDeep(baseTheme), overrides);
+  return merge(cloneDeep(baseThemeTokens), overrides);
 };
 
 export default overrideTheme;

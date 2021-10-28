@@ -1,28 +1,43 @@
 import { renderHook, act, WrapperComponent } from '@testing-library/react-hooks';
+import { clear, mockUserAgent } from 'jest-useragent-mock';
 import { paymentTheme, colorSchemeNamesInput } from '../../../tokens/theme';
-import { ThemeProvider, useTheme, ThemeProviderProps } from '../../ThemeProvider';
+import { BladeProvider, useTheme, BladeProviderProps } from '../../BladeProvider';
+import paymentLightTheme from './paymentLightTheme';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
-describe('<ThemeProvider/>', () => {
-  const wrapper: WrapperComponent<ThemeProviderProps> = ({ theme, colorScheme, children }) => (
-    <ThemeProvider theme={theme} colorScheme={colorScheme}>
+describe('<BladeProvider/>', () => {
+  beforeEach(() => {
+    const mobileUserAgent =
+      'Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Mobile Safari/537.36';
+    mockUserAgent(mobileUserAgent);
+  });
+  afterEach(() => {
+    clear();
+  });
+
+  const wrapper: WrapperComponent<BladeProviderProps> = ({
+    themeTokens,
+    colorScheme,
+    children,
+  }) => (
+    <BladeProvider themeTokens={themeTokens} colorScheme={colorScheme}>
       {children}
-    </ThemeProvider>
+    </BladeProvider>
   );
 
   it('should render with provided theme and colorscheme', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        theme: paymentTheme,
+        themeTokens: paymentTheme,
         colorScheme: 'light',
         children: null,
       },
     });
 
-    expect(result.current.theme).toEqual(paymentTheme);
+    expect(result.current.theme).toEqual(paymentLightTheme);
     expect(result.current.colorScheme).toBe('light');
   });
 
@@ -30,7 +45,7 @@ describe('<ThemeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        theme: paymentTheme,
+        themeTokens: paymentTheme,
         children: null,
       },
     });
@@ -42,7 +57,7 @@ describe('<ThemeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        theme: paymentTheme,
+        themeTokens: paymentTheme,
         colorScheme: 'light',
         children: null,
       },
@@ -66,7 +81,7 @@ describe('<ThemeProvider/>', () => {
     });
 
     expect(result.error?.message).toBe(
-      `[ThemeProvider]: Expected valid theme object of type Theme to be passed but found undefined`,
+      `[BladeProvider]: Expected valid themeTokens of type ThemeTokens to be passed but found undefined`,
     );
   });
 
@@ -75,7 +90,7 @@ describe('<ThemeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        theme: paymentTheme,
+        themeTokens: paymentTheme,
         // @ts-expect-error testing the error case when colorscheme is not one of [light, dark, system]
         colorScheme: initialColorScheme,
         children: null,
@@ -83,7 +98,7 @@ describe('<ThemeProvider/>', () => {
     });
 
     expect(result.error?.message).toBe(
-      `[ThemeProvider]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${initialColorScheme}`,
+      `[BladeProvider]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${initialColorScheme}`,
     );
   });
 });

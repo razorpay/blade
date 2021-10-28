@@ -4,15 +4,14 @@
   "version": "0.0.1",
   "license": "MIT",
   "engines": {
-    "node": ">=14.15.0"
+    "node": ">=14.16.1"
   },
   "workspaces": {
     "packages": [
       "packages/blade",
       "packages/blade-old",
       "packages/tools/*",
-      "packages/types",
-      "packages/examples/*"
+      "packages/types"
     ],
     "nohoist": [
       "**"
@@ -21,11 +20,12 @@
   "scripts": {
     "lint": "eslint --ext js,jsx,ts,tsx packages",
     "release": "changeset publish",
-    "postinstall": "lerna run --scope @razorpay/blade build"
+    "postinstall": "run-s build install-tokens-usage-dependencies",
+    "build": "lerna run --scope @razorpay/blade build",
+    "install-tokens-usage-dependencies": "cd packages/examples/tokens-usage && yarn"
   },
   "dependencies": {},
   "devDependencies": {
-    "lerna": "4.0.0",
     "@changesets/cli": "2.16.0",
     "@types/jest": "26.0.23",
     "@types/react": "17.0.4",
@@ -46,7 +46,9 @@
     "eslint-plugin-react-hooks": "4.2.0",
     "figures": "3.2.0",
     "husky": "4.2.3",
+    "lerna": "4.0.0",
     "lint-staged": "10.5.4",
+    "npm-run-all": "4.1.5",
     "prettier": "2.2.1",
     "shelljs": "0.8.4",
     "stylelint": "13.13.0",
