@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-   A Design System that powers Razorpay
+   The Design System that powers Razorpay
 <p align="center">
 
 - [📦 Packages](#-packages)
