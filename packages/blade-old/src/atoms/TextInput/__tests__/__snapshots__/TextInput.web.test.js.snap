@@ -603,10 +603,13 @@ exports[`<TextInput /> iconLeft should render a TextInput with iconLeft 1`] = `
               class="Viewweb__View-sc-1o0hmxm-0 TextInputweb__InputContainer-sc-18gz688-0 bxHyXK Sizeweb__Size-sc-1e5yf1-0 ffEfQL Flexweb__Flex-sc-1yhcoea-0 kSCwNs"
             >
               <svg
+                aria-hidden="true"
                 class="Flexweb__Flex-sc-1yhcoea-0 fRwLwk Spaceweb__Space-sc-1abqisc-0 kwhRNB"
                 data-testid="ds-icon"
                 fill="rgba(22, 47, 86, 0.38)"
+                focusable="false"
                 height="16"
+                name="nodejs"
                 testID="input-icon"
                 viewBox="0 0 24 24"
                 width="16"
@@ -682,10 +685,13 @@ exports[`<TextInput /> iconRight should render a TextInput with iconRight 1`] = 
                 data-testid="ds-text-input-right-icon"
               >
                 <svg
+                  aria-hidden="true"
                   class="Flexweb__Flex-sc-1yhcoea-0 fRwLwk Spaceweb__Space-sc-1abqisc-0 jbmCTB"
                   data-testid="ds-icon"
                   fill="rgba(22, 47, 86, 0.38)"
+                  focusable="false"
                   height="16"
+                  name="nodejs"
                   testID="input-icon"
                   viewBox="0 0 24 24"
                   width="16"
