@@ -2018,15 +2018,12 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
             }
           >
             <RNSVGSvgView
-              align="xMidYMid"
+              accessibilityElementsHidden={true}
               bbHeight={16}
               bbWidth={16}
               fill="rgba(43, 131, 234, 1.0 )"
               focusable={false}
               height={16}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
               style={
                 Array [
                   Object {
@@ -2041,8 +2038,6 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                 ]
               }
               testID="segment-control-icon"
-              vbHeight={24}
-              vbWidth={24}
               width={16}
             >
               <RNSVGGroup
@@ -2052,11 +2047,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                     "fill",
                   ]
                 }
-              >
-                <RNSVGPath
-                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                />
-              </RNSVGGroup>
+              />
             </RNSVGSvgView>
           </View>
           <Text
@@ -2166,15 +2157,12 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
             }
           >
             <RNSVGSvgView
-              align="xMidYMid"
+              accessibilityElementsHidden={true}
               bbHeight={16}
               bbWidth={16}
               fill="rgba(22, 47, 86, 0.54)"
               focusable={false}
               height={16}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
               style={
                 Array [
                   Object {
@@ -2189,8 +2177,6 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                 ]
               }
               testID="segment-control-icon"
-              vbHeight={24}
-              vbWidth={24}
               width={16}
             >
               <RNSVGGroup
@@ -2200,11 +2186,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                     "fill",
                   ]
                 }
-              >
-                <RNSVGPath
-                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                />
-              </RNSVGGroup>
+              />
             </RNSVGSvgView>
           </View>
           <Text
@@ -2328,15 +2310,12 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
             }
           >
             <RNSVGSvgView
-              align="xMidYMid"
+              accessibilityElementsHidden={true}
               bbHeight={16}
               bbWidth={16}
               fill="rgba(22, 47, 86, 0.54)"
               focusable={false}
               height={16}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
               style={
                 Array [
                   Object {
@@ -2351,8 +2330,6 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                 ]
               }
               testID="segment-control-icon"
-              vbHeight={24}
-              vbWidth={24}
               width={16}
             >
               <RNSVGGroup
@@ -2362,11 +2339,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
                     "fill",
                   ]
                 }
-              >
-                <RNSVGPath
-                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                />
-              </RNSVGGroup>
+              />
             </RNSVGSvgView>
           </View>
           <Text
@@ -2511,15 +2484,12 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
             }
           >
             <RNSVGSvgView
-              align="xMidYMid"
+              accessibilityElementsHidden={true}
               bbHeight={16}
               bbWidth={16}
               fill="rgba(43, 131, 234, 1.0 )"
               focusable={false}
               height={16}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
               style={
                 Array [
                   Object {
@@ -2534,8 +2504,6 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                 ]
               }
               testID="segment-control-icon"
-              vbHeight={24}
-              vbWidth={24}
               width={16}
             >
               <RNSVGGroup
@@ -2545,11 +2513,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                     "fill",
                   ]
                 }
-              >
-                <RNSVGPath
-                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                />
-              </RNSVGGroup>
+              />
             </RNSVGSvgView>
           </View>
           <Text
@@ -2659,15 +2623,12 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
             }
           >
             <RNSVGSvgView
-              align="xMidYMid"
+              accessibilityElementsHidden={true}
               bbHeight={16}
               bbWidth={16}
               fill="rgba(22, 47, 86, 0.54)"
               focusable={false}
               height={16}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
               style={
                 Array [
                   Object {
@@ -2682,8 +2643,6 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                 ]
               }
               testID="segment-control-icon"
-              vbHeight={24}
-              vbWidth={24}
               width={16}
             >
               <RNSVGGroup
@@ -2693,11 +2652,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                     "fill",
                   ]
                 }
-              >
-                <RNSVGPath
-                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                />
-              </RNSVGGroup>
+              />
             </RNSVGSvgView>
           </View>
           <Text
@@ -2807,15 +2762,12 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
             }
           >
             <RNSVGSvgView
-              align="xMidYMid"
+              accessibilityElementsHidden={true}
               bbHeight={16}
               bbWidth={16}
               fill="rgba(22, 47, 86, 0.54)"
               focusable={false}
               height={16}
-              meetOrSlice={0}
-              minX={0}
-              minY={0}
               style={
                 Array [
                   Object {
@@ -2830,8 +2782,6 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                 ]
               }
               testID="segment-control-icon"
-              vbHeight={24}
-              vbWidth={24}
               width={16}
             >
               <RNSVGGroup
@@ -2841,11 +2791,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
                     "fill",
                   ]
                 }
-              >
-                <RNSVGPath
-                  d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
-                />
-              </RNSVGGroup>
+              />
             </RNSVGSvgView>
           </View>
           <Text

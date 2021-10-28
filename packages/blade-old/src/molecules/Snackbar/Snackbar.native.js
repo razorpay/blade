@@ -10,6 +10,7 @@ import Space from '../../atoms/Space';
 import Button from '../../atoms/Button';
 import Position from '../../atoms/Position';
 import { getColor } from '../../_helpers/theme';
+import { Close } from '../../icons';
 import { useSnackbar } from './SnackbarContext';
 
 const SNACKBAR_WIDTH = Dimensions.get('window').width - 32;
@@ -155,7 +156,7 @@ const Snackbar = ({ variant, title, action, onClose, maxLines, icon: Icon, posit
                         <Button
                           variant="tertiary"
                           size="xsmall"
-                          icon="close"
+                          icon={Close}
                           variantColor="light"
                           onClick={handleClose}
                           testID="ds-snackbar-close-button"
@@ -182,7 +183,7 @@ Snackbar.propTypes = {
   }),
   onClose: PropTypes.func,
   maxLines: PropTypes.number,
-  icon: PropTypes.node,
+  icon: PropTypes.elementType,
   position: PropTypes.shape({
     top: PropTypes.number,
     right: PropTypes.number,

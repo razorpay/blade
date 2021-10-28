@@ -1,6 +1,7 @@
 import React from 'react';
 import { fireEvent, act } from '@testing-library/react-native';
 import { renderWithTheme } from '../../../_helpers/testing';
+import { Info } from '../../../icons';
 import SegmentControl from './../SegmentControl';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -441,13 +442,13 @@ describe('<SegmentControl />', () => {
     it('renders icon for outlined & medium segment control ', () => {
       const { container } = renderWithTheme(
         <SegmentControl defaultValue="1" variant="outlined" size="medium">
-          <SegmentControl.Option value="1" testID="segment-option-1" icon="info">
+          <SegmentControl.Option value="1" testID="segment-option-1" icon={Info}>
             Option 1
           </SegmentControl.Option>
-          <SegmentControl.Option value="2" testID="segment-option-2" icon="info">
+          <SegmentControl.Option value="2" testID="segment-option-2" icon={Info}>
             Option 2
           </SegmentControl.Option>
-          <SegmentControl.Option value="3" testID="segment-option-3" icon="info">
+          <SegmentControl.Option value="3" testID="segment-option-3" icon={Info}>
             Option 3
           </SegmentControl.Option>
         </SegmentControl>,
@@ -458,13 +459,13 @@ describe('<SegmentControl />', () => {
     it('renders icon for filled & medium segment control ', () => {
       const { container } = renderWithTheme(
         <SegmentControl defaultValue="1" variant="filled" size="medium">
-          <SegmentControl.Option value="1" testID="segment-option-1" icon="info">
+          <SegmentControl.Option value="1" testID="segment-option-1" icon={Info}>
             Option 1
           </SegmentControl.Option>
-          <SegmentControl.Option value="2" testID="segment-option-2" icon="info">
+          <SegmentControl.Option value="2" testID="segment-option-2" icon={Info}>
             Option 2
           </SegmentControl.Option>
-          <SegmentControl.Option value="3" testID="segment-option-3" icon="info">
+          <SegmentControl.Option value="3" testID="segment-option-3" icon={Info}>
             Option 3
           </SegmentControl.Option>
         </SegmentControl>,
@@ -477,13 +478,13 @@ describe('<SegmentControl />', () => {
       expect(() =>
         renderWithTheme(
           <SegmentControl defaultValue="1" variant="filled" size="small">
-            <SegmentControl.Option value="1" testID="segment-option-1" icon="info">
+            <SegmentControl.Option value="1" testID="segment-option-1" icon={Info}>
               Option 1
             </SegmentControl.Option>
-            <SegmentControl.Option value="2" testID="segment-option-2" icon="info">
+            <SegmentControl.Option value="2" testID="segment-option-2" icon={Info}>
               Option 2
             </SegmentControl.Option>
-            <SegmentControl.Option value="3" testID="segment-option-3" icon="info">
+            <SegmentControl.Option value="3" testID="segment-option-3" icon={Info}>
               Option 3
             </SegmentControl.Option>
           </SegmentControl>,
@@ -496,13 +497,13 @@ describe('<SegmentControl />', () => {
       expect(() =>
         renderWithTheme(
           <SegmentControl defaultValue="1" variant="outlined" size="small">
-            <SegmentControl.Option value="1" testID="segment-option-1" icon="info">
+            <SegmentControl.Option value="1" testID="segment-option-1" icon={Info}>
               Option 1
             </SegmentControl.Option>
-            <SegmentControl.Option value="2" testID="segment-option-2" icon="info">
+            <SegmentControl.Option value="2" testID="segment-option-2" icon={Info}>
               Option 2
             </SegmentControl.Option>
-            <SegmentControl.Option value="3" testID="segment-option-3" icon="info">
+            <SegmentControl.Option value="3" testID="segment-option-3" icon={Info}>
               Option 3
             </SegmentControl.Option>
           </SegmentControl>,

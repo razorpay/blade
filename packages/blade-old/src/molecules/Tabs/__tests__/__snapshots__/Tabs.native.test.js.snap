@@ -2837,6 +2837,7 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -2973,6 +2974,7 @@ exports[`<Tabs /> renders two tabs with icons 1`] = `
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -3287,6 +3289,7 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -3423,6 +3426,7 @@ exports[`<Tabs /> renders two tabs with one disabled 1`] = `
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}

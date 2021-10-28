@@ -8,6 +8,7 @@ import Flex from '../../atoms/Flex';
 import Size from '../../atoms/Size';
 import View from '../../atoms/View';
 import Button from '../../atoms/Button';
+import { Close } from '../../icons';
 import ModalHeader from './ModalHeader.native';
 import ModalContent from './ModalContent.native';
 import ModalFooter from './ModalFooter.native';
@@ -73,7 +74,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
                       testID="close-button"
                       variant="tertiary"
                       variantColor="shade"
-                      icon="close"
+                      icon={Close}
                       size="medium"
                       onClick={onClose}
                     />

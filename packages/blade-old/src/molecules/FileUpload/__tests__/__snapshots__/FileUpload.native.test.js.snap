@@ -67,10 +67,11 @@ exports[`<FileUpload /> renders FileUpload when file is already selected 1`] = `
         }
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={16}
           bbWidth={16}
-          fill="none"
+          fill="rgba(43, 131, 234, 1.0 )"
           focusable={false}
           height={16}
           meetOrSlice={0}
@@ -89,12 +90,13 @@ exports[`<FileUpload /> renders FileUpload when file is already selected 1`] = `
               },
             ]
           }
+          testID="ds-icon"
           vbHeight={24}
           vbWidth={24}
           width={16}
         >
           <RNSVGGroup
-            fill={null}
+            fill={4281041898}
             propList={
               Array [
                 "fill",
@@ -247,10 +249,11 @@ exports[`<FileUpload /> renders empty FileUpload component 1`] = `
         }
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={16}
           bbWidth={16}
-          fill="none"
+          fill="rgba(43, 131, 234, 1.0 )"
           focusable={false}
           height={16}
           meetOrSlice={0}
@@ -269,12 +272,13 @@ exports[`<FileUpload /> renders empty FileUpload component 1`] = `
               },
             ]
           }
+          testID="ds-icon"
           vbHeight={24}
           vbWidth={24}
           width={16}
         >
           <RNSVGGroup
-            fill={null}
+            fill={4281041898}
             propList={
               Array [
                 "fill",
