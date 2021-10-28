@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { fireEvent } from '@testing-library/react-native';
 
+import { Info } from '../.././../icons';
 import Button from '../index';
 import { renderWithTheme } from '../../../_helpers/testing';
 
@@ -45,7 +46,7 @@ describe('Renders <Button /> correctly', () => {
   });
 
   it('Renders a medium(Default) Primary <Button />', () => {
-    const { container, getByText } = renderWithTheme(<Button icon="info">Click Me</Button>);
+    const { container, getByText } = renderWithTheme(<Button icon={Info}>Click Me</Button>);
     expect(getByText(/click me/i)).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
@@ -144,7 +145,7 @@ describe('Renders an icon <Button /> correctly', () => {
 
   it('Renders a large Primary <Button /> with right icon', () => {
     const { container, getByText } = renderWithTheme(
-      <Button size="large" icon="info" iconPosition="right">
+      <Button size="large" icon={Info} iconPosition="right">
         Click Me
       </Button>,
     );

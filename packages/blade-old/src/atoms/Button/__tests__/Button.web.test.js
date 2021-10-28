@@ -4,6 +4,7 @@ import { renderWithTheme } from '../../../_helpers/testing';
 import Flex from '../../Flex';
 import View from '../../View';
 import Button from '../index';
+import { Info } from '../../../icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -139,7 +140,7 @@ describe('<Button />', () => {
       describe('with icon left', () => {
         it('should render a button with icon on left', () => {
           const { container } = renderWithTheme(
-            <Button icon="info" iconAlign="left">
+            <Button icon={Info} iconAlign="left">
               Button
             </Button>,
           );
@@ -150,7 +151,7 @@ describe('<Button />', () => {
       describe('with icon right', () => {
         it('should render a button with icon on right', () => {
           const { container } = renderWithTheme(
-            <Button icon="info" iconAlign="right">
+            <Button icon={Info} iconAlign="right">
               Button
             </Button>,
           );
@@ -161,7 +162,7 @@ describe('<Button />', () => {
 
     describe('without children', () => {
       it('should render icon only button', () => {
-        const { container } = renderWithTheme(<Button icon="info" />);
+        const { container } = renderWithTheme(<Button icon={Info} />);
         expect(container).toMatchSnapshot();
       });
     });

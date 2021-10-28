@@ -375,7 +375,7 @@ Button.propTypes = {
   block: PropTypes.bool,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
   disabled: PropTypes.bool,
-  icon: PropTypes.node,
+  icon: PropTypes.elementType,
   iconAlign: PropTypes.oneOf(['left', 'right']),
   testID: PropTypes.string,
 };

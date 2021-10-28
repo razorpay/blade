@@ -505,7 +505,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
   align: PropTypes.oneOf(['left', 'center', 'right']),
   disabled: PropTypes.bool,
-  icon: PropTypes.node,
+  icon: PropTypes.elementType,
   iconAlign: PropTypes.oneOf(['left', 'right']),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   testID: PropTypes.string,
