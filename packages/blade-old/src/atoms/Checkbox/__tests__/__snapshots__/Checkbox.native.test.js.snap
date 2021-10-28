@@ -56,10 +56,11 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(43, 131, 234, 1.0 )"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -78,12 +79,13 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={4281041898}
             propList={
               Array [
                 "fill",
@@ -93,11 +95,9 @@ exports[`Native <Checkbox /> Checked should match snapshot when errorText is pre
             <RNSVGPath
               clipRule={0}
               d="M6 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8zm8.642 2.904a.562.562 0 10-.784-.808l-2.702 2.62-1.014-.983a.563.563 0 00-.784.807l1.407 1.364a.562.562 0 00.783 0l3.094-3z"
-              fill={4281041898}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillRule",
                 ]
               }
@@ -250,10 +250,11 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(43, 131, 234, 1.0 )"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -272,12 +273,13 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={4281041898}
             propList={
               Array [
                 "fill",
@@ -287,11 +289,9 @@ exports[`Native <Checkbox /> Checked should render component when checked with d
             <RNSVGPath
               clipRule={0}
               d="M6 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8zm8.642 2.904a.562.562 0 10-.784-.808l-2.702 2.62-1.014-.983a.563.563 0 00-.784.807l1.407 1.364a.562.562 0 00.783 0l3.094-3z"
-              fill={4281041898}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillRule",
                 ]
               }
@@ -405,10 +405,11 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(43, 131, 234, 1.0 )"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -427,12 +428,13 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={4281041898}
             propList={
               Array [
                 "fill",
@@ -442,11 +444,9 @@ exports[`Native <Checkbox /> Checked snapshot testing when user long presses on 
             <RNSVGPath
               clipRule={0}
               d="M6 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8zm8.642 2.904a.562.562 0 10-.784-.808l-2.702 2.62-1.014-.983a.563.563 0 00-.784.807l1.407 1.364a.562.562 0 00.783 0l3.094-3z"
-              fill={4281041898}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillRule",
                 ]
               }
@@ -560,10 +560,11 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(43, 131, 234, 1.0 )"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -582,12 +583,13 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={4281041898}
             propList={
               Array [
                 "fill",
@@ -597,11 +599,9 @@ exports[`Native <Checkbox /> Checked snapshot testing when user presses out 1`] 
             <RNSVGPath
               clipRule={0}
               d="M6 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8zm8.642 2.904a.562.562 0 10-.784-.808l-2.702 2.62-1.014-.983a.563.563 0 00-.784.807l1.407 1.364a.562.562 0 00.783 0l3.094-3z"
-              fill={4281041898}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillRule",
                 ]
               }
@@ -715,10 +715,11 @@ exports[`Native <Checkbox /> Icon only renders checked icon when other props are
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(43, 131, 234, 1.0 )"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -737,12 +738,13 @@ exports[`Native <Checkbox /> Icon only renders checked icon when other props are
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={4281041898}
             propList={
               Array [
                 "fill",
@@ -752,11 +754,9 @@ exports[`Native <Checkbox /> Icon only renders checked icon when other props are
             <RNSVGPath
               clipRule={0}
               d="M6 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8zm8.642 2.904a.562.562 0 10-.784-.808l-2.702 2.62-1.014-.983a.563.563 0 00-.784.807l1.407 1.364a.562.562 0 00.783 0l3.094-3z"
-              fill={4281041898}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillRule",
                 ]
               }
@@ -825,10 +825,11 @@ exports[`Native <Checkbox /> Icon only renders checked icon when to title prop i
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(43, 131, 234, 1.0 )"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -847,12 +848,13 @@ exports[`Native <Checkbox /> Icon only renders checked icon when to title prop i
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={4281041898}
             propList={
               Array [
                 "fill",
@@ -862,11 +864,9 @@ exports[`Native <Checkbox /> Icon only renders checked icon when to title prop i
             <RNSVGPath
               clipRule={0}
               d="M6 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8zm8.642 2.904a.562.562 0 10-.784-.808l-2.702 2.62-1.014-.983a.563.563 0 00-.784.807l1.407 1.364a.562.562 0 00.783 0l3.094-3z"
-              fill={4281041898}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillRule",
                 ]
               }
@@ -935,10 +935,11 @@ exports[`Native <Checkbox /> Icon only renders unchecked icon when other props a
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(22, 47, 86, 0.38)"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -957,12 +958,13 @@ exports[`Native <Checkbox /> Icon only renders unchecked icon when other props a
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={1628843862}
             propList={
               Array [
                 "fill",
@@ -972,12 +974,10 @@ exports[`Native <Checkbox /> Icon only renders unchecked icon when other props a
             <RNSVGPath
               clipRule={0}
               d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-              fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillOpacity",
                   "fillRule",
                 ]
@@ -1047,10 +1047,11 @@ exports[`Native <Checkbox /> Icon only renders unchecked icon when to title prop
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(22, 47, 86, 0.38)"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -1069,12 +1070,13 @@ exports[`Native <Checkbox /> Icon only renders unchecked icon when to title prop
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={1628843862}
             propList={
               Array [
                 "fill",
@@ -1084,12 +1086,10 @@ exports[`Native <Checkbox /> Icon only renders unchecked icon when to title prop
             <RNSVGPath
               clipRule={0}
               d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-              fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillOpacity",
                   "fillRule",
                 ]
@@ -1159,10 +1159,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(22, 47, 86, 0.38)"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -1181,12 +1182,13 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={1628843862}
             propList={
               Array [
                 "fill",
@@ -1196,12 +1198,10 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when bot
             <RNSVGPath
               clipRule={0}
               d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-              fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillOpacity",
                   "fillRule",
                 ]
@@ -1316,10 +1316,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(22, 47, 86, 0.38)"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -1338,12 +1339,13 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={1628843862}
             propList={
               Array [
                 "fill",
@@ -1353,12 +1355,10 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when che
             <RNSVGPath
               clipRule={0}
               d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-              fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillOpacity",
                   "fillRule",
                 ]
@@ -1473,10 +1473,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(22, 47, 86, 0.38)"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -1495,12 +1496,13 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={1628843862}
             propList={
               Array [
                 "fill",
@@ -1510,12 +1512,10 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when def
             <RNSVGPath
               clipRule={0}
               d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-              fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillOpacity",
                   "fillRule",
                 ]
@@ -1630,10 +1630,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(22, 47, 86, 0.38)"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -1652,12 +1653,13 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={1628843862}
             propList={
               Array [
                 "fill",
@@ -1667,12 +1669,10 @@ exports[`Native <Checkbox /> Unchecked checkbox should render component when not
             <RNSVGPath
               clipRule={0}
               d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-              fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillOpacity",
                   "fillRule",
                 ]
@@ -1787,10 +1787,11 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(22, 47, 86, 0.38)"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -1809,12 +1810,13 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={1628843862}
             propList={
               Array [
                 "fill",
@@ -1824,12 +1826,10 @@ exports[`Native <Checkbox /> Unchecked checkbox should render medium sized Check
             <RNSVGPath
               clipRule={0}
               d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-              fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillOpacity",
                   "fillRule",
                 ]
@@ -1983,10 +1983,11 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(22, 47, 86, 0.38)"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -2005,12 +2006,13 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={1628843862}
             propList={
               Array [
                 "fill",
@@ -2020,12 +2022,10 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user long 
             <RNSVGPath
               clipRule={0}
               d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-              fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillOpacity",
                   "fillRule",
                 ]
@@ -2140,10 +2140,11 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
         width="24px"
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={24}
           bbWidth={24}
-          fill="none"
+          fill="rgba(22, 47, 86, 0.38)"
           focusable={false}
           height={24}
           meetOrSlice={0}
@@ -2162,12 +2163,13 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
               },
             ]
           }
+          testID="checkbox-icon"
           vbHeight={24}
           vbWidth={24}
           width={24}
         >
           <RNSVGGroup
-            fill={null}
+            fill={1628843862}
             propList={
               Array [
                 "fill",
@@ -2177,12 +2179,10 @@ exports[`Native <Checkbox /> Unchecked checkbox snapshot testing when user press
             <RNSVGPath
               clipRule={0}
               d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-              fill={1628843862}
               fillOpacity={0.38}
               fillRule={0}
               propList={
                 Array [
-                  "fill",
                   "fillOpacity",
                   "fillRule",
                 ]
