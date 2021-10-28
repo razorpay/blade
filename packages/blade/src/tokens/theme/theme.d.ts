@@ -1,16 +1,14 @@
 import type { Spacing } from '../global/spacing';
 import type { Border } from '../global/border';
-import type { Typography } from '../global/typography';
+import type { TypographyWithPlatforms } from '../global/typography';
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
 
-export type ColorSchemeModes = {
-  onLight: string;
-  onDark: string;
-};
+export type ColorSchemeModes = 'onDark' | 'onLight';
 
 export type ShadowLevels = 1 | 2 | 3 | 4 | 5;
+
 export type Shadows = {
   offsetX: {
     level: Record<ShadowLevels, number>;
@@ -21,9 +19,12 @@ export type Shadows = {
   blurRadius: {
     level: Record<ShadowLevels, number>;
   };
-  color: {
-    level: Record<ShadowLevels, ColorSchemeModes>;
-  };
+  color: Record<
+    ColorSchemeModes,
+    {
+      level: Record<ShadowLevels, string>;
+    }
+  >;
   androidElevation: {
     level: Record<ShadowLevels, number>;
   };
@@ -32,37 +33,44 @@ export type Shadows = {
 export type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
 export type ColorContrast = {
-  highContrast: ColorSchemeModes;
-  lowContrast: ColorSchemeModes;
+  highContrast: string;
+  lowContrast: string;
 };
 
-type ActionStates = {
-  default: ColorContrast | ColorSchemeModes;
-  hover: ColorContrast | ColorSchemeModes;
-  focus: ColorContrast | ColorSchemeModes;
-  active: ColorContrast | ColorSchemeModes;
-  disabled: ColorContrast | ColorSchemeModes;
+export type ActionStates = {
+  default: ColorContrast | string;
+  hover: ColorContrast | string;
+  focus: ColorContrast | string;
+  active: ColorContrast | string;
+  disabled: ColorContrast | string;
 };
 
-type ActionVariants = {
+export type ActionVariants = {
   primary: ActionStates;
   secondary: ActionStates;
   tertiary: ActionStates;
   link: ActionStates;
 };
 
-type ActionProperties = {
-  background: ActionVariants;
-  border: ActionVariants;
-  text: ActionVariants;
-  icon: ActionVariants;
+// export type ActionProperties = {
+//   background: ActionVariants;
+//   border: ActionVariants;
+//   text: ActionVariants;
+//   icon: ActionVariants;
+// };
+
+export type FeedbackActions = {
+  background: Pick<ActionVariants, 'primary'>;
+  border: Pick<ActionVariants, 'primary'>;
+  text: Pick<ActionVariants, 'link' | 'primary'>;
+  icon: Pick<ActionVariants, 'link' | 'primary'>;
 };
 
 export type Colors = {
   brand: {
-    primary: Record<300 | 400 | 500 | 600 | 700, ColorSchemeModes>;
-    secondary: Record<500, ColorSchemeModes>;
-    gray: Record<300 | 400 | 500 | 600 | 700, ColorSchemeModes>;
+    primary: Record<300 | 400 | 500 | 600 | 700, string>;
+    secondary: Record<500, string>;
+    gray: Record<300 | 400 | 500 | 600 | 700, string>;
   };
   feedback: {
     background: Record<Feedback, ColorContrast>;
@@ -70,44 +78,19 @@ export type Colors = {
     text: Record<Feedback, ColorContrast>;
     icon: Record<Feedback, ColorContrast>;
     positive: {
-      action: {
-        background: Pick<ActionVariants, 'primary'>;
-        border: Pick<ActionVariants, 'primary'>;
-        text: Pick<ActionVariants, 'primary', 'link'>;
-        icon: Pick<ActionVariants, 'primary', 'link'>;
-      };
+      action: FeedbackActions;
     };
     negative: {
-      action: {
-        background: Pick<ActionVariants, 'primary'>;
-        border: Pick<ActionVariants, 'primary'>;
-        text: Pick<ActionVariants, 'primary', 'link'>;
-        icon: Pick<ActionVariants, 'primary', 'link'>;
-      };
+      action: FeedbackActions;
     };
     information: {
-      action: {
-        background: Pick<ActionVariants, 'primary'>;
-        border: Pick<ActionVariants, 'primary'>;
-        text: Pick<ActionVariants, 'primary', 'link'>;
-        icon: Pick<ActionVariants, 'primary', 'link'>;
-      };
+      action: FeedbackActions;
     };
     notice: {
-      action: {
-        background: Pick<ActionVariants, 'primary'>;
-        border: Pick<ActionVariants, 'primary'>;
-        text: Pick<ActionVariants, 'primary', 'link'>;
-        icon: Pick<ActionVariants, 'primary', 'link'>;
-      };
+      action: FeedbackActions;
     };
     neutral: {
-      action: {
-        background: Pick<ActionVariants, 'primary'>;
-        border: Pick<ActionVariants, 'primary'>;
-        text: Pick<ActionVariants, 'primary', 'link'>;
-        icon: Pick<ActionVariants, 'primary', 'link'>;
-      };
+      action: FeedbackActions;
     };
   };
   surface: {
@@ -126,10 +109,12 @@ export type Colors = {
   };
 };
 
-export type Theme = {
-  colors: Colors;
+export type ColorsWithModes = Record<ColorSchemeModes, Colors>;
+
+export type ThemeTokens = {
+  colors: ColorsWithModes;
   border: Border;
   spacing: Spacing;
   shadows: Shadows;
-  typography: Typography;
+  typography: TypographyWithPlatforms;
 };
