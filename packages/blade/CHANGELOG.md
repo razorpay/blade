@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.1.1
+
+### Patch Changes
+
+- 6c69a4d: fix(blade): update imports and exports
+
 ## 0.1.0
 
 ### Minor Changes
