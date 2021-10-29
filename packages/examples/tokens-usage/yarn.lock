@@ -1546,10 +1546,10 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@razorpay/blade@0.1.0":
-  version "0.1.0"
-  resolved "https://npm.pkg.github.com/download/@razorpay/blade/0.1.0/10842105688b1608b6851bd1bb6a939d8abfabca5b2b1e11c2e08de0759f4bd8#f0f43dbbcf9f94ba39797cadb6816b2168997dd9"
-  integrity sha512-oey9TnPFl2bnYAKIwMceHuULdX13slqKE3EUaZ0nygGVjmcQuoxWQm1qqtN5uABKxyIiPqjUjNJZ4ucVMzqKTg==
+"@razorpay/blade@0.1.1":
+  version "0.1.1"
+  resolved "https://npm.pkg.github.com/download/@razorpay/blade/0.1.1/708f0c58a5f4a688a510cf346f6891153b0ee1dbcea9a6e27dc50ab95befc207#0ad76a400cb1eb2dfe8270122b5700eeb403ae83"
+  integrity sha512-dqubqNkwa/AjsQ9ojYrdy5SBSCnfoa+X6dDReHm1Aer1hmsipSucByKB+fADB86IJIPKxtxfpFTut6Sen+ewaA==
   dependencies:
     "@babel/runtime" "7.14.6"
 
