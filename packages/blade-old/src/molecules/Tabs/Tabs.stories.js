@@ -7,17 +7,8 @@ import Text from '../../atoms/Text';
 import Flex from '../../atoms/Flex';
 import Space from '../../atoms/Space';
 import { getColorKeys } from '../../_helpers/theme';
-import { getIconNames } from '../../_helpers/icon';
 import { Info } from '../../icons';
 import Tabs from './Tabs';
-
-const iconOptions = getIconNames().reduce(
-  (options, option) => ({
-    ...options,
-    [option]: option,
-  }),
-  {},
-);
 
 const valueOptions = {
   payments: 'payments',
@@ -141,7 +132,7 @@ storiesOf('Tabs', module)
         value="bankAndCompanyDetails"
         title="Bank and Company Details"
         disabled={boolean('Disable Tab 4', false)}
-        icon={select('Icon Tab 4', iconOptions, undefined)}
+        icon={Info}
       >
         <Content color="primary.900">Bank and company details</Content>
       </Tabs.Tab>

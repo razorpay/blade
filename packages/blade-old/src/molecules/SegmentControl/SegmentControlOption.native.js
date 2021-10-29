@@ -5,11 +5,9 @@ import styled, { useTheme } from 'styled-components/native';
 import Text from '../../atoms/Text';
 import isDefined from '../../_helpers/isDefined';
 import Flex from '../../atoms/Flex';
-import Icon from '../../atoms/Icon';
 import View from '../../atoms/View';
 import Space from '../../atoms/Space';
 import { getColor, makePxValue } from '../../_helpers/theme';
-import { getIconNames } from '../../_helpers/icon';
 import Size from '../../atoms/Size';
 import automation from '../../_helpers/automation-attributes';
 import isEmpty from '../../_helpers/isEmpty';
@@ -122,7 +120,7 @@ const SegmentControlOption = ({
   value,
   subText,
   hideDivider,
-  icon,
+  icon: Icon,
   disabled,
   testID,
   children,
@@ -143,7 +141,7 @@ const SegmentControlOption = ({
     throw new Error(`SegmentControl\n \`subText\` cannot be used with \`size='small'\``);
   }
 
-  if (size === 'small' && isDefined(icon)) {
+  if (size === 'small' && isDefined(Icon)) {
     throw new Error(`SegmentControl\n \`icon\` cannot be used with \`size='small'\``);
   }
 
@@ -167,11 +165,10 @@ const SegmentControlOption = ({
                 <View>
                   <Flex flexDirection="row" alignItems="center">
                     <View>
-                      {isDefined(icon) && size !== 'small' ? (
+                      {isDefined(Icon) && size !== 'small' ? (
                         <Space margin={[0, 0.5, 0, 0]}>
                           <View>
                             <Icon
-                              name={icon}
                               fill={styles.text.color({
                                 selected,
                                 disabled,
@@ -203,7 +200,7 @@ const SegmentControlOption = ({
                   </Flex>
                   {isDefined(subText) && size !== 'small' ? (
                     <View>
-                      <Space padding={isDefined(icon) ? [0, 0, 0, 2.5] : [0, 0, 0, 0]}>
+                      <Space padding={isDefined(Icon) ? [0, 0, 0, 2.5] : [0, 0, 0, 0]}>
                         <View>
                           <Text
                             size="xsmall"
@@ -234,7 +231,7 @@ SegmentControlOption.propTypes = {
   value: PropTypes.string.isRequired,
   subText: PropTypes.string,
   hideDivider: PropTypes.bool,
-  icon: PropTypes.oneOf(getIconNames()),
+  icon: PropTypes.elementType,
   disabled: PropTypes.bool,
   testID: PropTypes.string,
   children: PropTypes.string.isRequired,

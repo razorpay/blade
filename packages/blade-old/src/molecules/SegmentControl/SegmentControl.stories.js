@@ -2,20 +2,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import { Info } from '../../icons';
 import Flex from '../../atoms/Flex';
 import View from '../../atoms/View';
-import { getIconNames } from '../../_helpers/icon';
 import Text from '../../atoms/Text';
 import Space from '../../atoms/Space';
 import SegmentControl from './SegmentControl';
-
-const iconOptions = getIconNames().reduce(
-  (options, option) => ({
-    ...options,
-    [option]: option,
-  }),
-  {},
-);
 
 const variantOptions = {
   outlined: 'outlined',
@@ -79,7 +71,7 @@ storiesOf('SegmentControl', module)
             >
               <SegmentControl.Option
                 value="1"
-                icon={select('Icon', iconOptions, undefined)}
+                icon={Info}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
               >
@@ -87,7 +79,7 @@ storiesOf('SegmentControl', module)
               </SegmentControl.Option>
               <SegmentControl.Option
                 value="2"
-                icon={select('Icon', iconOptions, undefined)}
+                icon={Info}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
               >
@@ -95,7 +87,7 @@ storiesOf('SegmentControl', module)
               </SegmentControl.Option>
               <SegmentControl.Option
                 value="3"
-                icon={select('Icon', iconOptions, undefined)}
+                icon={Info}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
               >
@@ -154,7 +146,7 @@ storiesOf('SegmentControl', module)
             >
               <SegmentControl.Option
                 value="1"
-                icon={select('Icon', iconOptions, undefined)}
+                icon={Info}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
               >
@@ -162,7 +154,7 @@ storiesOf('SegmentControl', module)
               </SegmentControl.Option>
               <SegmentControl.Option
                 value="2"
-                icon={select('Icon', iconOptions, undefined)}
+                icon={Info}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
               >
@@ -170,7 +162,7 @@ storiesOf('SegmentControl', module)
               </SegmentControl.Option>
               <SegmentControl.Option
                 value="3"
-                icon={select('Icon', iconOptions, undefined)}
+                icon={Info}
                 disabled={boolean('Disabled', false)}
                 subText={text('Sub Text', undefined)}
               >
