@@ -15,7 +15,9 @@ type OverrideTheme = {
 const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeTokens => {
   // TODO: wrap this check inside a __DEV__ flag so it gets trimmed off in production
   if (!isEqual(baseThemeTokens, paymentTheme) && !isEqual(baseThemeTokens, bankingTheme)) {
-    throw new Error('[Blade:overrideTheme]: The base theme provided is not a valid Blade theme');
+    throw new Error(
+      '[@razorpay/blade:overrideTheme]: The base theme provided is not a valid Blade theme',
+    );
   }
 
   if (
@@ -24,7 +26,7 @@ const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeToke
       objectToInspect: baseThemeTokens,
     })
   ) {
-    throw new Error('[Blade:overrideTheme]: The overrides object is not valid');
+    throw new Error('[@razorpay/blade:overrideTheme]: The overrides object is not valid');
   }
 
   // Need to clone before merging since merge changes/mutates the actual object

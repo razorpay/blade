@@ -3,7 +3,7 @@ import { Colors, Shadows, ShadowLevels } from '../../tokens/theme/theme.d';
 import type { Typography } from '../../tokens/global/typography';
 import type { Border } from '../../tokens/global/border';
 import type { Spacing } from '../../tokens/global/spacing';
-import { UseColorScheme } from '../../utils/useColorScheme';
+import type { UseColorScheme } from '../../utils/useColorScheme';
 import emptyTheme from './emptyTheme';
 
 export type Theme = {
@@ -31,7 +31,7 @@ export const ThemeContext = createContext<ThemeContext>({
 const useTheme = (): ThemeContext => {
   const themeContext = useContext<ThemeContext>(ThemeContext);
   if (themeContext === undefined) {
-    throw new Error(`[@razorpay/blade]: useTheme must be used within Blade's Provider`);
+    throw new Error(`[@razorpay/blade:BladeProvider]: useTheme must be used within BladeProvider`);
   }
   return themeContext;
 };
