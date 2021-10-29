@@ -54,7 +54,7 @@ TabBar.propTypes = {
         active: PropTypes.bool,
         onPress: PropTypes.func,
         disabled: PropTypes.bool,
-        icon: PropTypes.node,
+        icon: PropTypes.elementType,
       }),
     ),
   }),

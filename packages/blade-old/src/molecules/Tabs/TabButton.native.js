@@ -124,7 +124,7 @@ TabButton.propTypes = {
   onPress: PropTypes.func,
   disabled: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  icon: PropTypes.node,
+  icon: PropTypes.elementType,
   testID: PropTypes.string,
   scrollEnabled: PropTypes.bool,
 };
