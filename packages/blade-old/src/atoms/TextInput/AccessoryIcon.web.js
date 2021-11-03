@@ -48,7 +48,6 @@ const AccessoryIcon = ({ icon: Icon, disabled, hasError, variant, isFocused, pos
     >
       <Flex>
         <Icon
-          name={name}
           size="small"
           fill={styles.color({
             disabled,
