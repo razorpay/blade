@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 1.1.1
+
+### Patch Changes
+
+- 38ff5a9: feat(icons): Add UserCheck and UserClose icons
+
 ## 1.1.0
 
 ### Minor Changes
