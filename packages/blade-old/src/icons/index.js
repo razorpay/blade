@@ -74,6 +74,8 @@ const icons = {
   wiFiOn: require('./WiFiOn').default,
   eyeOff: require('./EyeOff').default,
   eye: require('./Eye').default,
+  userCheck: require('./UserCheck').default,
+  userClose: require('./UserClose').default,
 };
 
 export default icons;
