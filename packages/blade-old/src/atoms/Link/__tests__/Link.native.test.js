@@ -34,6 +34,24 @@ describe('Renders <Link /> correctly', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('snapshot testing, renders regular link', () => {
+    const displayText = 'Displaying some link';
+    const { container } = renderWithTheme(<Link weight="regular">{displayText}</Link>);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('snapshot testing, renders light link', () => {
+    const displayText = 'Displaying some link';
+    const { container } = renderWithTheme(<Link weight="light">{displayText}</Link>);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('snapshot testing, renders bold link', () => {
+    const displayText = 'Displaying some link';
+    const { container } = renderWithTheme(<Link weight="bold">{displayText}</Link>);
+    expect(container).toMatchSnapshot();
+  });
+
   it('onPressIn/onPressOut link styles look as expected', () => {
     const displayText = 'Displaying some link';
     const { getByText, container } = renderWithTheme(<Link>{displayText}</Link>);
