@@ -34,7 +34,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
         Array [
           Object {
             "color": "rgba(123, 178, 242, 1.0)",
-            "fontFamily": "Lato-Regular",
+            "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
@@ -44,7 +44,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
         ]
       }
       testID="ds-text"
-      weight="regular"
+      weight="bold"
     >
       Displaying some link
     </Text>
@@ -86,7 +86,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
         Array [
           Object {
             "color": "rgba(43, 131, 234, 1.0 )",
-            "fontFamily": "Lato-Regular",
+            "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
@@ -96,7 +96,7 @@ exports[`Renders <Link /> correctly onPressIn/onPressOut link styles look as exp
         ]
       }
       testID="ds-text"
-      weight="regular"
+      weight="bold"
     >
       Displaying some link
     </Text>
@@ -138,7 +138,7 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
         Array [
           Object {
             "color": "rgba(43, 131, 234, 1.0 )",
-            "fontFamily": "Lato-Regular",
+            "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
@@ -148,7 +148,59 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
         ]
       }
       testID="ds-text"
-      weight="regular"
+      weight="bold"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders bold link 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      align="left"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+      weight="bold"
     >
       Displaying some link
     </Text>
@@ -190,7 +242,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
         Array [
           Object {
             "color": "rgba(43, 131, 234, 1.0 )",
-            "fontFamily": "Lato-Regular",
+            "fontFamily": "Lato-Bold",
             "fontSize": 16,
             "letterSpacing": 0,
             "lineHeight": 24,
@@ -200,7 +252,59 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
         ]
       }
       testID="ds-text"
-      weight="regular"
+      weight="bold"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders light link 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      align="left"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Light",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+      weight="light"
     >
       Displaying some link
     </Text>
@@ -209,6 +313,58 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
 `;
 
 exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      align="left"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+      weight="bold"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders regular link 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -294,7 +450,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
         Array [
           Object {
             "color": "rgba(43, 131, 234, 1.0 )",
-            "fontFamily": "Lato-Regular",
+            "fontFamily": "Lato-Bold",
             "fontSize": 13,
             "letterSpacing": 0,
             "lineHeight": 18,
@@ -304,7 +460,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders small link 1`] = `
         ]
       }
       testID="ds-text"
-      weight="regular"
+      weight="bold"
     >
       Displaying some link
     </Text>
@@ -346,7 +502,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
         Array [
           Object {
             "color": "rgba(43, 131, 234, 1.0 )",
-            "fontFamily": "Lato-Regular",
+            "fontFamily": "Lato-Bold",
             "fontSize": 14,
             "letterSpacing": 0,
             "lineHeight": 20,
@@ -356,7 +512,7 @@ exports[`Renders <Link /> correctly snapshot testing, renders visited link 1`] =
         ]
       }
       testID="ds-text"
-      weight="regular"
+      weight="bold"
     >
       Displaying some link
     </Text>
