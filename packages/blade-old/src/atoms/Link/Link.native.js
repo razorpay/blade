@@ -58,7 +58,7 @@ Link.propTypes = {
 Link.defaultProps = {
   onClick: () => {},
   size: 'medium',
-  weight: 'bold',
+  weight: 'regular',
   testID: 'ds-link',
 };
 
