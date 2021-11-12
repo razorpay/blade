@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 1.2.0
+
+### Minor Changes
+
+- a2010f1: added weight support in Link native component
+
 ## 1.1.1
 
 ### Patch Changes
