@@ -35,10 +35,11 @@ This RFC discusses about why and what units we will be using in our design syste
 
 # Basic Example
 Few examples of core actions (scale, move & fade)
+| <img src="images/motion/core-actions/image1.gif" alt="core-action-expand" width="100px"> | <img src="images/motion/core-actions/image2.gif" alt="core-action-move" width="100px">| <img src="images/motion/core-actions/image3.gif" alt="core-action-fade" width="100px">|
+|---|---|---|
 
-<img src="images/motion/core-actions/image1.gif" alt="core-action-expand" width="100px">
-<img src="images/motion/core-actions/image2.gif" alt="core-action-move" width="100px">
-<img src="images/motion/core-actions/image3.gif" alt="core-action-fade" width="100px">
+
+
 
 # Motivation
 ### Why are we doing this?
@@ -93,14 +94,13 @@ Based on our the products pre-existing actions and branding we've decided on the
 ### 2. **Move**
 * **Anchor points(`I` & `F`):** Initial & Final anchor-point coordinates; `(x1, y1)(x2, y2)`.
 * **Pathway:** Control points (which decide curve of the line) [path](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) i.e., how the element moves from `position1` to `position2` representing the pathways; depending on the surroundings or the `z-axis`.
-* **Example:**<br>
-<img src="images/motion/core-actions/image6.gif" alt="core-action-scale-expand" width="500px">
 
-### Types:
+
+### Pathway Types:
 | Type | Description | Example |
 |---|---|---|
-| **Elements in the same layer (`z-space`)** | Use type-2 pathway, it makes space for the movement<br>**Ex:** Check out Spotify play icons and top-bar icons. | <img src="images/motion/core-actions/image7.gif" alt="core-action-scale-zoom" width="200px"> |
-| **No other element in the same layers** | Use type 1 pathway, it’s straight-forward and avoids unnecessary distraction. | <img src="images/motion/core-actions/image8.png" alt="core-action-scale-expand" width="200px"> |
+| **Type 1:** <br><br> <img src="images/motion/core-actions/image6.gif" alt="core-action-scale-expand" width="200px"> | **Elements in the same layer (`z-space`)** <br>  Use type 1 pathway, it’s straight-forward and avoids unnecessary distraction.| <img src="images/motion/core-actions/image8.png" alt="core-action-scale-expand" width="200px"> |
+| **Type 2:**  <br><br> <img src="images/motion/core-actions/image17.gif" alt="core-action-scale-expand" width="200px">| **No other element in the same layers** <br> Use type-2 pathway, it makes space for the movement<br>**Ex:** Check out Spotify play icons and top-bar icons.  | <img src="images/motion/core-actions/image7.gif" alt="core-action-scale-zoom" width="200px"> |
 
 ### 3. **Fade**
 * **Opacity:** Percentage(`%`) change in the `opacity`.
@@ -112,7 +112,7 @@ Based on our the products pre-existing actions and branding we've decided on the
 | **Fade Out** | Opacity value moves from a higher to lower.<br>**Ex:** Disappearing of a card from a page.<br>**Unit:** `%` | <img src="images/motion/core-actions/image9.gif" alt="core-action-fade-out" width="200px"> |
 
 ### 4. **Fill**
-* **Color tokens:** Change in the color value.
+* **Color tokens:** Predefined Color tokens within the design system and changing or adding different tokens for diffrent state leads to change in the color value as well.
 
 ### Types:
 | Type | Description | Example |
@@ -138,13 +138,9 @@ Based on our the products pre-existing actions and branding we've decided on the
 | **Morph** | ❌ | ✅ | ❌ | ✅ | ⛔️ |
 
 ### **Examples**
-| Type | Example |
-|---|---|
-| **Scale Fade** | <img src="images/motion/core-actions/image12.gif" alt="core-actions-combination-scale-fade" width="200px"> |
-| **Move Fade** | <img src="images/motion/core-actions/image13.gif" alt="core-actions-combination-move-fade" width="200px"> |
-| **Morph Move** | <img src="images/motion/core-actions/image14.gif" alt="core-actions-combination-morph-move" width="200px"> |
-| **Scale Move** | <img src="images/motion/core-actions/image15.gif" alt="core-actions-combination-scale-move" width="200px"> |
-| **Morph Fill** | <img src="images/motion/core-actions/image16.gif" alt="core-actions-combination-morph-fill" width="200px"> |
+| Type | **Scale Fade** | **Move Fade** |**Morph Move** | **Scale Move** | **Morph Fill** |
+|---|---|---|---|---|---|
+| Example |<img src="images/motion/core-actions/image12.gif" alt="core-actions-combination-scale-fade" width="150px">|<img src="images/motion/core-actions/image13.gif" alt="core-actions-combination-move-fade" width="150px"> | <img src="images/motion/core-actions/image15.gif" alt="core-actions-combination-morph-move" width="150px"> |<img src="images/motion/core-actions/image14.gif" alt="core-actions-combination-scale-move" width="150px"> | <img src="images/motion/core-actions/image16.gif" alt="core-actions-combination-morph-fill" width="150px"> |
 
 > **Note:** Try not to combine more than 2 properties.
 
