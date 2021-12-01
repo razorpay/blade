@@ -1,36 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Svg, { Path } from 'react-native-svg';
-import { getThemeColors } from '../../_helpers/theme';
-import colors from '../../tokens/colors';
+import { Path } from 'react-native-svg';
+import Icon, { IconPropTypes } from '../../atoms/Icon';
 
-function UserCheck({ width, height, fill }) {
+function UserCheck({ size, fill }) {
   return (
-    <Svg width={width} height={height} fill="none" viewBox="0 0 24 24">
+    <Icon size={size} fill={fill} viewBox="0 0 24 24">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
         d="M3.5 7a5 5 0 1110 0 5 5 0 01-10 0zm5-3a3 3 0 100 6 3 3 0 000-6z"
-        fill={fill}
       />
-      <Path
-        d="M0 19a5 5 0 015-5h7a5 5 0 015 5v2a1 1 0 11-2 0v-2a3 3 0 00-3-3H5a3 3 0 00-3 3v2a1 1 0 11-2 0v-2zM23.707 9.707a1 1 0 00-1.414-1.414L19 11.586l-1.293-1.293a1 1 0 10-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-        fill={fill}
-      />
-    </Svg>
+      <Path d="M0 19a5 5 0 015-5h7a5 5 0 015 5v2a1 1 0 11-2 0v-2a3 3 0 00-3-3H5a3 3 0 00-3 3v2a1 1 0 11-2 0v-2zM23.707 9.707a1 1 0 00-1.414-1.414L19 11.586l-1.293-1.293a1 1 0 10-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+    </Icon>
   );
 }
 
-UserCheck.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  fill: PropTypes.oneOf(getThemeColors()),
-};
+UserCheck.propTypes = IconPropTypes;
 
 UserCheck.defaultProps = {
-  width: 24,
-  height: 24,
-  fill: colors.sapphire[800],
+  size: 'medium',
+  fill: 'shade.950',
 };
 
 export default UserCheck;
