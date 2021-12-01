@@ -27,7 +27,7 @@ type FontSize = {
    * mobile: 14(px/rem/pt)
    */
   75: number;
-  /** desktop: 13(px/rem/pt)
+  /** desktop: 14(px/rem/pt)
    *
    * mobile: 15(px/rem/pt)
    */
@@ -109,7 +109,7 @@ const typography: TypographyWithPlatforms = {
         25: 10,
         50: 11,
         75: 12,
-        100: 13,
+        100: 14,
         200: 16,
         300: 18,
         400: 20,
