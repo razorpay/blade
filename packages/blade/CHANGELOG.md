@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.1.2
+
+### Patch Changes
+
+- 8cddfad: fix(blade): update desktop typography scale
+
 ## 0.1.1
 
 ### Patch Changes
