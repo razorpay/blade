@@ -39,7 +39,7 @@ export const IconPropTypes = {
 Icon.propTypes = IconPropTypes;
 Icon.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };
 
 export default Icon;

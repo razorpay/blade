@@ -19,5 +19,5 @@ CheckboxOutlined.propTypes = IconPropTypes;
 
 CheckboxOutlined.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };

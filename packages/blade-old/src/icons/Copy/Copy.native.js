@@ -19,7 +19,7 @@ Copy.propTypes = IconPropTypes;
 
 Copy.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };
 
 export default Copy;

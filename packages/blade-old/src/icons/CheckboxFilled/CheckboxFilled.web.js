@@ -17,5 +17,5 @@ CheckboxFilled.propTypes = IconPropTypes;
 
 CheckboxFilled.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };

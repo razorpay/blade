@@ -13,7 +13,7 @@ RotateClockwise.propTypes = IconPropTypes;
 
 RotateClockwise.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };
 
 export default RotateClockwise;

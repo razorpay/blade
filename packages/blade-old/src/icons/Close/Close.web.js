@@ -13,7 +13,7 @@ Close.propTypes = IconPropTypes;
 
 Close.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };
 
 export default Close;

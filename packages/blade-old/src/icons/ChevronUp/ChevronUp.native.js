@@ -18,5 +18,5 @@ ChevronUp.propTypes = IconPropTypes;
 
 ChevronUp.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };

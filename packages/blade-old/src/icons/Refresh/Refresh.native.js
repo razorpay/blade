@@ -14,5 +14,5 @@ Refresh.propTypes = IconPropTypes;
 
 Refresh.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };

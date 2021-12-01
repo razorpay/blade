@@ -18,7 +18,7 @@ Search.propTypes = IconPropTypes;
 
 Search.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };
 
 export default Search;

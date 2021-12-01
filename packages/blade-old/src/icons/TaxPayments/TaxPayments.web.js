@@ -17,7 +17,7 @@ TaxPayments.propTypes = IconPropTypes;
 
 TaxPayments.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };
 
 export default TaxPayments;

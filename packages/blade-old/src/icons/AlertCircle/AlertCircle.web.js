@@ -18,7 +18,7 @@ AlertCircle.propTypes = IconPropTypes;
 
 AlertCircle.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };
 
 export default AlertCircle;

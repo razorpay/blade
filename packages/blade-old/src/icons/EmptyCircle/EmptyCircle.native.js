@@ -18,5 +18,5 @@ EmptyCircle.propTypes = IconPropTypes;
 
 EmptyCircle.defaultProps = {
   size: 'medium',
-  fill: 'shade.950',
+  fill: 'sapphire.800',
 };
