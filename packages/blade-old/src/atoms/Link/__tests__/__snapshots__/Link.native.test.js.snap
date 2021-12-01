@@ -156,6 +156,58 @@ exports[`Renders <Link /> correctly snapshot testing 1`] = `
 </View>
 `;
 
+exports[`Renders <Link /> correctly snapshot testing, renders bold link 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      align="left"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Bold",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+      weight="bold"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
 exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
 <View
   collapsable={true}
@@ -208,7 +260,111 @@ exports[`Renders <Link /> correctly snapshot testing, renders large link 1`] = `
 </View>
 `;
 
+exports[`Renders <Link /> correctly snapshot testing, renders light link 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      align="left"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Light",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+      weight="light"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
 exports[`Renders <Link /> correctly snapshot testing, renders medium link 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={1}
+    style={
+      Array [
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "flexDirection": "column",
+          },
+        ],
+      ]
+    }
+    testID="ds-link"
+  >
+    <Text
+      _isUnderlined={false}
+      _letterSpacing="small"
+      align="left"
+      color="primary.800"
+      size="medium"
+      style={
+        Array [
+          Object {
+            "color": "rgba(43, 131, 234, 1.0 )",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 14,
+            "letterSpacing": 0,
+            "lineHeight": 20,
+            "textAlign": "left",
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+      testID="ds-text"
+      weight="regular"
+    >
+      Displaying some link
+    </Text>
+  </TouchableOpacity>
+</View>
+`;
+
+exports[`Renders <Link /> correctly snapshot testing, renders regular link 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"

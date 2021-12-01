@@ -1,5 +1,17 @@
 # @razorpay/blade-old
 
+## 1.2.0
+
+### Minor Changes
+
+- a2010f1: added weight support in Link native component
+
+## 1.1.1
+
+### Patch Changes
+
+- 38ff5a9: feat(icons): Add UserCheck and UserClose icons
+
 ## 1.1.0
 
 ### Minor Changes

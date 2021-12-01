@@ -73,3 +73,5 @@ export { default as WiFiOff } from './WiFiOff';
 export { default as WiFiOn } from './WiFiOn';
 export { default as EyeOff } from './EyeOff';
 export { default as Eye } from './Eye';
+export { default as UserCheck } from './UserCheck';
+export { default as UserClose } from './UserClose';
