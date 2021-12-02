@@ -80,6 +80,9 @@ const paymentLightTheme: Theme = {
         },
       },
     },
+    overlay: {
+      background: globalColors.neutral.blueGrayLight.a200,
+    },
     brand: {
       primary: {
         300: globalColors.chromatic.azure.a50,
