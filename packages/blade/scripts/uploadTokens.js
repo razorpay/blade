@@ -68,7 +68,8 @@ const uploadColorTokens = async () => {
       `gh pr create --title feat(tokens):\\ add\\ new\\ tokens --head ${branchName} --repo razorpay/blade --body This\\ PR\\ was\\ opened\\ by\\ the\\ Token\\ Upload\\ GitHub\\ action.\\ It\\ updates\\ source\\ token\\ files\\ based\\ on\\ the\\ payload\\ from\\ Figma\\ Plugin.`,
     );
   } catch (error) {
-    throw new Error(error);
+    console.error(error);
+    process.exit(1);
   }
 };
 uploadColorTokens();
