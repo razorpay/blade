@@ -24,7 +24,7 @@ exports[`<Icon /> size should render a medium icon 1`] = `
   <svg
     aria-hidden="true"
     data-testid="ds-icon"
-    fill="rgba(22, 47, 86, 0.38)"
+    fill="rgba(43, 131, 234, 1.0 )"
     focusable="false"
     height="20"
     width="20"
@@ -43,7 +43,7 @@ exports[`<Icon /> size should render a small icon 1`] = `
   <svg
     aria-hidden="true"
     data-testid="ds-icon"
-    fill="rgba(22, 47, 86, 0.38)"
+    fill="rgba(43, 131, 234, 1.0 )"
     focusable="false"
     height="16"
     width="16"
