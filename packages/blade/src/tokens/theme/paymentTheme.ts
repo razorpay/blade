@@ -80,6 +80,7 @@ const colors: ColorsWithModes = {
         },
       },
     },
+    overlay: { background: globalColors.neutral.blueGrayLight.a200 },
     brand: {
       primary: {
         300: globalColors.chromatic.azure.a50,
@@ -1091,6 +1092,7 @@ const colors: ColorsWithModes = {
         },
       },
     },
+    overlay: { background: globalColors.neutral.blueGrayDark[600] },
     brand: {
       primary: {
         300: globalColors.chromatic.azure.a100,

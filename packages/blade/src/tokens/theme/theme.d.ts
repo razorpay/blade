@@ -101,6 +101,7 @@ export type Colors = {
       icon: Pick<ActionVariants, 'link'>;
     };
   };
+  overlay: Record<'background', string>;
   action: {
     background: Omit<ActionVariants, 'link'>;
     border: Omit<ActionVariants, 'link'>;
