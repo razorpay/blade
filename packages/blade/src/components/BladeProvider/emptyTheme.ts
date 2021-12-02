@@ -76,7 +76,9 @@ const emptyTheme: Theme = {
         },
       },
     },
-    overlay: { background: '' },
+    overlay: {
+      background: '',
+    },
     brand: {
       primary: {
         300: '',
