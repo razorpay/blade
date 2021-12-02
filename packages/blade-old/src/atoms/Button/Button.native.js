@@ -10,6 +10,7 @@ import Text from '../Text';
 import View from '../View';
 import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
+import isValidElement from '../../_helpers/isValidElement';
 
 const styles = {
   fontColor({ variant, variantColor, disabled }) {
@@ -289,7 +290,7 @@ const Button = ({
             {...automation(testID)}
           >
             <React.Fragment>
-              {Icon && iconAlign === 'left' && (
+              {isValidElement(Icon) && iconAlign === 'left' && (
                 <Icon
                   size={styles.iconSize({
                     size,
@@ -335,7 +336,7 @@ const Button = ({
                   {size === 'xsmall' ? children.toUpperCase() : children}
                 </Text>
               ) : null}
-              {Icon && iconAlign === 'right' && children && (
+              {isValidElement(Icon) && iconAlign === 'right' && children && (
                 <Space
                   margin={styles.spaceBetween({
                     size,
@@ -345,7 +346,7 @@ const Button = ({
                   <View />
                 </Space>
               )}
-              {Icon && iconAlign === 'right' && (
+              {isValidElement(Icon) && iconAlign === 'right' && (
                 <Icon
                   size={styles.iconSize({
                     size,

@@ -12,6 +12,7 @@ import Position from '../../atoms/Position';
 import { getColor } from '../../_helpers/theme';
 import { Close } from '../../icons';
 import { useSnackbar } from './SnackbarContext';
+import isValidElement from '../../_helpers/isValidElement';
 
 const SNACKBAR_WIDTH = Dimensions.get('window').width - 32;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -119,7 +120,7 @@ const Snackbar = ({ variant, title, action, onClose, maxLines, icon: Icon, posit
             <Space padding={[1.5]}>
               <Flex flexDirection="row" alignItems="center">
                 <SnackbarContainer variant={variant}>
-                  {Icon ? (
+                  {isValidElement(Icon) ? (
                     <Space padding={[0, 1, 0, 0]}>
                       <View>
                         <Icon size="medium" fill="light.900" testID="snackbar-icon" />

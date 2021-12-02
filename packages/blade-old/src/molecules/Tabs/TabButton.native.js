@@ -7,6 +7,7 @@ import Text from '../../atoms/Text';
 import { getColor, makePxValue } from '../../_helpers/theme';
 import Space from '../../atoms/Space';
 import automation from '../../_helpers/automation-attributes';
+import isValidElement from '../../_helpers/isValidElement';
 
 const styles = {
   title: {
@@ -96,7 +97,7 @@ const TabButton = ({ title, active, icon: Icon, onPress, disabled, testID, scrol
         <Flex alignItems="center" alignSelf="center" flexDirection="row" flexWrap="wrap">
           <Space padding={[1, 0, 1, 0]}>
             <Title active={active} disabled={disabled}>
-              {Icon ? (
+              {isValidElement(Icon) ? (
                 <Space margin={[0, 0.5, 0, 0]}>
                   <View>
                     <Icon fill={titleColor} size="small" testID="tab-button-icon" />

@@ -11,6 +11,7 @@ import { getColor, makePxValue } from '../../_helpers/theme';
 import Size from '../../atoms/Size';
 import automation from '../../_helpers/automation-attributes';
 import isEmpty from '../../_helpers/isEmpty';
+import isValidElement from '../../_helpers/isValidElement';
 import { useSegmentControlContext } from './SegmentControlContext';
 import Divider from './Divider';
 
@@ -165,7 +166,7 @@ const SegmentControlOption = ({
                 <View>
                   <Flex flexDirection="row" alignItems="center">
                     <View>
-                      {isDefined(Icon) && size !== 'small' ? (
+                      {isDefined(Icon) && isValidElement(Icon) && size !== 'small' ? (
                         <Space margin={[0, 0.5, 0, 0]}>
                           <View>
                             <Icon

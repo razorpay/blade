@@ -32,6 +32,7 @@
     "@testing-library/react-hooks": "3.2.1",
     "intl": "1.2.5",
     "lodash": "4.17.21",
+    "react-is": "^17.0.2",
     "react-native-document-picker": "4.2.0",
     "react-native-gesture-handler": "1.8.0",
     "react-native-linear-gradient": "2.5.6",

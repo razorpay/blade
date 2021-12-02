@@ -9,6 +9,7 @@ import Text from '../Text';
 import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
 import isEmpty from '../../_helpers/isEmpty';
+import isValidElement from '../../_helpers/isValidElement';
 
 const BORDER_WIDTH = makePxValue(0.125);
 
@@ -422,7 +423,7 @@ const Button = ({
             {...automation(testID)}
           >
             <React.Fragment>
-              {Icon && iconAlign === 'left' ? (
+              {isValidElement(Icon) && iconAlign === 'left' ? (
                 <Space
                   margin={styles.spaceBetween({
                     size,
@@ -466,7 +467,7 @@ const Button = ({
                   {size === 'xsmall' ? children.toUpperCase() : children}
                 </Text>
               ) : null}
-              {Icon && iconAlign === 'right' ? (
+              {isValidElement(Icon) && iconAlign === 'right' ? (
                 <Space
                   margin={styles.spaceBetween({
                     size,
