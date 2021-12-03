@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.1.3
+
+### Patch Changes
+
+- d32dd9d: fix(blade): add overlay color token
+
 ## 0.1.2
 
 ### Patch Changes
