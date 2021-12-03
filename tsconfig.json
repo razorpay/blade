@@ -4,7 +4,7 @@
     "packages/blade-old/**",
     "packages/tools/figma-plugin-version-history/**"
   ] /* Enable incremental compilation */,
-  "include": ["packages", "packages/blade-old/scripts/icon-migrate-codemod"],
+  "include": ["packages"],
   "compilerOptions": {
     "skipLibCheck": true,
     /* Basic Options */
