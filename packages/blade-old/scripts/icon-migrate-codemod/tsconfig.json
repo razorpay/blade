@@ -1,0 +1,7 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "include": [
+    "transforms/**/*.ts",
+    "iconMap.ts"
+  ]
+}

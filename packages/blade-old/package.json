@@ -3,6 +3,9 @@
   "author": "kamleshchandnani",
   "version": "1.2.0",
   "license": "MIT",
+  "bin": {
+    "migrate-icons": "./scripts/icon-migrate-codemod/cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
