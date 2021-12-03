@@ -48,6 +48,7 @@ const icons = {
   paymentGateway: require('./PaymentGateway').default,
   paymentLink: require('./PaymentLink').default,
   paymentPage: require('./PaymentPage').default,
+  payoutLink: require('./PayoutLink').default,
   phone: require('./Phone').default,
   power: require('./Power').default,
   profile: require('./Profile').default,
