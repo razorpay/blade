@@ -26,8 +26,8 @@ function run() {
     stripEof: false,
   });
 
-  if (result.error) {
-    throw result.error;
+  if (result.failed) {
+    throw result.failed;
   }
 }
 

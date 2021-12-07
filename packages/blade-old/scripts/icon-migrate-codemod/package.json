@@ -6,8 +6,7 @@
     "jscodeshift": "^0.13.0"
   },
   "scripts": {
-    "codeshift": "node ./node_modules/.bin/jscodeshift",
-    "transform": "yarn codeshift -t transforms/blade-old-icon.ts transforms/__testfixtures__/blade-old-icon/nice.tsx"
+    "codeshift": "node ./node_modules/.bin/jscodeshift"
   },
   "license": "MIT",
   "dependencies": {

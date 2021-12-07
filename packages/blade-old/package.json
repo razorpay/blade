@@ -28,7 +28,8 @@
     "test:native": "BABEL_ENV=development jest -c ./jest.native.config.js",
     "test:native:coverage": "yarn run test:native --coverage",
     "test:web": "BABEL_ENV=web-test jest -c ./jest.web.config.js",
-    "test:web:coverage": "yarn run test:web --coverage"
+    "test:web:coverage": "yarn run test:web --coverage",
+    "postinstall": "cd ./scripts/icon-migrate-codemod && npm install"
   },
   "dependencies": {
     "@react-native-community/async-storage": "1.7.1",
