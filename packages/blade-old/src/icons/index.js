@@ -23,6 +23,7 @@ const icons = {
   clipboard: require('./Clipboard').default,
   clock: require('./Clock').default,
   close: require('./Close').default,
+  closeCircle: require('./CloseCircle').default,
   copy: require('./Copy').default,
   download: require('./Download').default,
   emptyCircle: require('./EmptyCircle').default,
