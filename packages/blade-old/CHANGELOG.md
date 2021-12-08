@@ -1,5 +1,15 @@
 # @razorpay/blade-old
 
+## 1.3.0
+
+### Minor Changes
+
+- 83b0aa5: Added new icon of Payout Link
+
+### Patch Changes
+
+- d185650: added CloseCircle new icon and added white background for checkedCircle
+
 ## 1.2.0
 
 ### Minor Changes
