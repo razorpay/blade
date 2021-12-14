@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 1.4.0
+
+### Minor Changes
+
+- 47db09d: fix(blade-old): updated support of react-nataive-modalize for RN v0.65
+
 ## 1.3.0
 
 ### Minor Changes
