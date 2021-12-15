@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.1.4
+
+### Patch Changes
+
+- f992f77: fix(blade): typo in exports field
+
 ## 0.1.3
 
 ### Patch Changes
