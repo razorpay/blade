@@ -90,7 +90,53 @@ export type Typography = {
     size: FontSize;
     weight: FontWeight;
   };
-  // lineHeights: {};
+  lineHeights: {
+    /** desktop: 16(px/rem/pt)
+     *
+     * mobile: 16(px/rem/pt)
+     */
+    s: number;
+    /** desktop: 18(px/rem/pt)
+     *
+     * mobile: 16(px/rem/pt)
+     */
+    m: number;
+    /** desktop: 20(px/rem/pt)
+     *
+     * mobile: 24(px/rem/pt)
+     */
+    l: number;
+    /** desktop: 24(px/rem/pt)
+     *
+     * mobile: 24(px/rem/pt)
+     */
+    xl: number;
+    /** desktop: 24(px/rem/pt)
+     *
+     * mobile: 28(px/rem/pt)
+     */
+    '2xl': number;
+    /** desktop: 28(px/rem/pt)
+     *
+     * mobile: 28(px/rem/pt)
+     */
+    '3xl': number;
+    /** desktop: 38(px/rem/pt)
+     *
+     * mobile: 30(px/rem/pt)
+     */
+    '4xl': number;
+    /** desktop: 42(px/rem/pt)
+     *
+     * mobile: 30(px/rem/pt)
+     */
+    '5xl': number;
+    /** desktop: 60(px/rem/pt)
+     *
+     * mobile: 38(px/rem/pt)
+     */
+    '6xl': number;
+  };
   // letterSpacings: {};
 };
 
@@ -124,7 +170,17 @@ const typography: TypographyWithPlatforms = {
         ...fontWeight,
       },
     },
-    // lineHeights: {},
+    lineHeights: {
+      s: 16,
+      m: 18,
+      l: 20,
+      xl: 24,
+      '2xl': 24,
+      '3xl': 28,
+      '4xl': 38,
+      '5xl': 42,
+      '6xl': 60,
+    },
     // letterSpacings: {},
   },
   onMobile: {
@@ -152,7 +208,17 @@ const typography: TypographyWithPlatforms = {
         ...fontWeight,
       },
     },
-    // lineHeights: {},
+    lineHeights: {
+      s: 16,
+      m: 16,
+      l: 24,
+      xl: 24,
+      '2xl': 28,
+      '3xl': 28,
+      '4xl': 30,
+      '5xl': 30,
+      '6xl': 38,
+    },
     // letterSpacings: {},
   },
 };
