@@ -76,6 +76,9 @@ const emptyTheme: Theme = {
         },
       },
     },
+    overlay: {
+      background: '',
+    },
     brand: {
       primary: {
         300: '',
@@ -1104,7 +1107,17 @@ const emptyTheme: Theme = {
         bold: 700,
       },
     },
-    // lineHeights: {},
+    lineHeights: {
+      s: 0,
+      m: 0,
+      l: 0,
+      xl: 0,
+      '2xl': 0,
+      '3xl': 0,
+      '4xl': 0,
+      '5xl': 0,
+      '6xl': 0,
+    },
     // letterSpacings: {},
   },
 };

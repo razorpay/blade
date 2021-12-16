@@ -1,5 +1,23 @@
 # @razorpay/blade
 
+## 0.1.4
+
+### Patch Changes
+
+- f992f77: fix(blade): typo in exports field
+
+## 0.1.3
+
+### Patch Changes
+
+- d32dd9d: fix(blade): add overlay color token
+
+## 0.1.2
+
+### Patch Changes
+
+- 8cddfad: fix(blade): update desktop typography scale
+
 ## 0.1.1
 
 ### Patch Changes

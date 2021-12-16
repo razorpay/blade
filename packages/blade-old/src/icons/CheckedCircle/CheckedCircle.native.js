@@ -1,14 +1,17 @@
 import React from 'react';
-import { Path } from 'react-native-svg';
+import { Path, Circle } from 'react-native-svg';
 import Icon, { IconPropTypes } from '../../atoms/Icon';
 
 export default function CheckedCircle(props) {
   return (
     <Icon viewBox="0 0 24 24" {...props}>
+      <Circle cx="12" cy="12" r="12" />
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12zm7.06-14.94a1.5 1.5 0 10-2.12-2.12l-7.008 7.007-2.944-2.576a1.5 1.5 0 00-1.976 2.258l4 3.5a1.5 1.5 0 002.049-.068l8-8z"
+        d="M6 12L10 16L18 8"
+        stroke="white"
+        strokeWidth="2.4"
       />
     </Icon>
   );
