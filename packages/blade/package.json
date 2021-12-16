@@ -87,5 +87,11 @@
     "@types/jest": "26.0.23",
     "@types/react-test-renderer": "17.0.1",
     "react-test-renderer": "17.0.2"
+  },
+  "peerDependencies": {
+    "@babel/runtime": "^7.16.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-native": "^0.66.4"
   }
 }
