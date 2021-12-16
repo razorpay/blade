@@ -3,6 +3,9 @@
   "author": "kamleshchandnani",
   "version": "1.2.0",
   "license": "MIT",
+  "bin": {
+    "migrate-icons": "./scripts/icon-migrate-codemod/cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
@@ -25,7 +28,8 @@
     "test:native": "BABEL_ENV=development jest -c ./jest.native.config.js",
     "test:native:coverage": "yarn run test:native --coverage",
     "test:web": "BABEL_ENV=web-test jest -c ./jest.web.config.js",
-    "test:web:coverage": "yarn run test:web --coverage"
+    "test:web:coverage": "yarn run test:web --coverage",
+    "postinstall": "cd ./scripts/icon-migrate-codemod && yarn"
   },
   "dependencies": {
     "@react-native-community/async-storage": "1.7.1",
