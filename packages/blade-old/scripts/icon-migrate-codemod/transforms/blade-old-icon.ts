@@ -1,4 +1,4 @@
-import iconMap from "../iconMap";
+import iconMap from '../iconMap';
 import {
   JSXAttribute,
   JSXSpreadAttribute,
@@ -6,28 +6,22 @@ import {
   Literal,
   JSXExpressionContainer,
   JSXElement,
-} from "jscodeshift";
+} from 'jscodeshift';
 
-export const parser = "jsx";
+export const parser = 'jsx';
 
-const isJSXAttribute = (
-  elm: JSXAttribute | JSXSpreadAttribute
-): elm is JSXAttribute => {
-  return elm.type === "JSXAttribute";
+const isJSXAttribute = (elm: JSXAttribute | JSXSpreadAttribute): elm is JSXAttribute => {
+  return elm.type === 'JSXAttribute';
 };
 
-const isIconNameProp = (
-  prop: JSXAttribute | JSXSpreadAttribute
-): prop is JSXAttribute =>
-  isJSXAttribute(prop) && prop?.name?.name === "name" && !isExpression(prop);
+const isIconNameProp = (prop: JSXAttribute | JSXSpreadAttribute): prop is JSXAttribute =>
+  isJSXAttribute(prop) && prop?.name?.name === 'name' && !isExpression(prop);
 
-const isIconProp = (
-  prop: JSXAttribute | JSXSpreadAttribute
-): prop is JSXAttribute =>
-  isJSXAttribute(prop) && prop?.name?.name === "icon" && !isExpression(prop);
+const isIconProp = (prop: JSXAttribute | JSXSpreadAttribute): prop is JSXAttribute =>
+  isJSXAttribute(prop) && prop?.name?.name === 'icon' && !isExpression(prop);
 
 const isExpression = (prop: unknown): prop is JSXExpressionContainer => {
-  return (prop as JSXAttribute)?.value?.type === "JSXExpressionContainer";
+  return (prop as JSXAttribute)?.value?.type === 'JSXExpressionContainer';
 };
 
 const transform: Transform = (file, api, _options) => {
@@ -36,18 +30,13 @@ const transform: Transform = (file, api, _options) => {
   const imports = [];
   const FIRST_IMPORT = root.find(j.ImportDeclaration).at(0);
 
-  const renameJSXElement = (
-    node: JSXElement,
-    prop: JSXAttribute | JSXSpreadAttribute
-  ) => {
+  const renameJSXElement = (node: JSXElement, prop: JSXAttribute | JSXSpreadAttribute) => {
     if (!node) return;
     if (isExpression(prop) || !isJSXAttribute(prop)) return;
 
-    const value =
-      (prop?.value as Literal)?.value ||
-      (prop?.value as any)?.expression?.value;
+    const value = (prop?.value as Literal)?.value || (prop?.value as any)?.expression?.value;
 
-    const iconName = iconMap[value as unknown as keyof typeof iconMap];
+    const iconName = iconMap[(value as unknown) as keyof typeof iconMap];
     const iconIdentifier = j.jsxIdentifier(iconName);
     imports.push(j.importSpecifier(j.identifier(iconName)));
 
@@ -55,11 +44,9 @@ const transform: Transform = (file, api, _options) => {
     node.closingElement && (node.closingElement.name = iconIdentifier);
   };
 
-  root.findJSXElements("Icon").forEach((path) => {
+  root.findJSXElements('Icon').forEach((path) => {
     const node = path.value;
-    const props = node.openingElement.attributes.filter(
-      (prop) => !isIconNameProp(prop)
-    );
+    const props = node.openingElement.attributes.filter((prop) => !isIconNameProp(prop));
     const nameProps = node.openingElement.attributes.filter((prop) => {
       return isIconNameProp(prop);
     });
@@ -71,11 +58,7 @@ const transform: Transform = (file, api, _options) => {
   });
 
   FIRST_IMPORT.insertAfter(
-    j.importDeclaration(
-      imports,
-      j.stringLiteral("@razorpay/blade-old"),
-      "value"
-    )
+    j.importDeclaration(imports, j.stringLiteral('@razorpay/blade-old/icons'), 'value'),
   );
 
   return root.toSource();
