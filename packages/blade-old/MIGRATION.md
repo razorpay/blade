@@ -1,16 +1,13 @@
----
-"@razorpay/blade-old": major
----
+- [From version 1.4.x to 2.x.x](#from-version-14x-to-2xx)
 
-feat(blade-old): improved icon API
+
+
+# From version 1.4.x to 2.x.x
 
 ## Migration guide for new blade-old icons
 
-As discussed in #363 we had decided to move to a more flexible and open API for the icons,
-Instead of using a single Icon component and passing the name="" prop we will be directly using the icon by importing it.
+### Migrating icons to new API
 
-
-## Migrating icons to new API
 
 ```diff
 - import Icon from "@razorpay/blade-old";
@@ -46,9 +43,89 @@ export const MyCustomIcon = (props) => {
 
 Few of the internal components were using the old \<Icon /> component, thus we also had to change the APIs for them.
 
-> Basically anywhere you see `icon="name-of-the-icon"` replace it with an imported icon.
+```sh
+# migrate-icons [directory_path_glob] [...jscodeshift_options]
+migrate-icons src/App/** parser=jsx
+```
 
-[Check migration guide for Automigration](./MIGRATION.md)
+### Automigration
+
+We've written a codemod to automate the process of replacing the `icon` prop with imported icons. 
+
+Simply install the blade-old package and run
+
+```sh
+// migrate-icons [directory_path_glob] [...jscodeshift_options]
+migrate-icons src/App/** parser=jsx
+```
+
+This codemod automatically changes 
+
+This
+```
+<Icon size="md" name="download" {...{}}>
+    <works />
+</Icon>
+```
+
+To this:
+
+```jsx
+import { Download } from "@razorpay/blade-old";
+
+<Download size="md" {...{}}>
+    <works />
+</Download>
+```
+
+### Limitations & Edge cases
+
+Conditional rendering isn't supported 
+This code will not be transformed.
+
+```ts
+<Icon
+    name={true ? "emptyCircle" : "alertCircle"}
+    fill="bg.950"
+    size="large"
+/>
+```
+
+Icon props on other components aren't handled. 
+
+```tsx
+<Button  icon="chevronLeft">
+
+<TextInput
+  label="Label"
+  iconRight="info"
+  iconLeft="info"
+/>
+
+<Tabs.Tab
+    value="payments"
+    title="Payments"
+    disabled={boolean('Disable Tab 1', false)}
+    icon="info"
+  >
+<SegmentControl.Option
+   value="1"
+   icon="info"
+   disabled={boolean('Disabled', false)}
+   subText={text('Sub Text', undefined)}
+>
+  Option 1
+</SegmentControl.Option>
+
+snackbar.show({ 
+  icon: "info",
+})
+```
+-------
+
+### Manual Migration
+
+> Basically anywhere you see `icon="name-of-the-icon"` replace it with an imported icon.
 
 Modified components are:
 
@@ -114,3 +191,5 @@ snackbar.show({
     Option 1
   </SegmentControl.Option>
 ```
+ 
+
