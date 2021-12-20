@@ -1,5 +1,5 @@
-module.exports = {
-  env: {
+const configs = {
+  reactNative: {
     development: {
       presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
       plugins: [
@@ -41,7 +41,9 @@ module.exports = {
         ],
       ],
     },
-    'web-test': {
+  },
+  react: {
+    test: {
       presets: [
         '@babel/preset-env',
         '@babel/preset-typescript',
@@ -66,9 +68,9 @@ module.exports = {
         ],
       ],
     },
-    'web-development': {
+    development: {
       presets: [
-        ['@babel/preset-env', { modules: false }],
+        ['@babel/preset-env', { modules: false, loose: true }],
         '@babel/preset-typescript',
         ['@babel/preset-react', { runtime: 'automatic' }],
       ],
@@ -89,9 +91,10 @@ module.exports = {
             ssr: true,
           },
         ],
+        // ['react-hot-loader/babel', { skipEnvCheck: true }],
       ],
     },
-    'web-production': {
+    production: {
       presets: [
         ['@babel/preset-env', { modules: false }],
         '@babel/preset-typescript',
@@ -117,4 +120,20 @@ module.exports = {
       ],
     },
   },
+};
+module.exports = function babel(api) {
+  api.cache(true);
+  const framework = process.env.FRAMEWORK;
+  if (framework === 'REACT') {
+    return { env: configs.react };
+  }
+  if (framework === 'REACT_NATIVE') {
+    return { env: configs.reactNative };
+  }
+  return { env: configs.reactNative };
+  // throw new Error(
+  //   `Blade requires "FRAMEWORK" environment variable to be set. Valid values are "REACT" and "REACT_NATIVE". Instead, received: ${JSON.stringify(
+  //     framework,
+  //   )}`,
+  // );
 };
