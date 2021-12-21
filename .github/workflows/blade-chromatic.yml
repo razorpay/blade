@@ -32,5 +32,4 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: packages/blade
           buildScriptName: react:storybook:build
-          storybookBuildDir: docs
           exitOnceUploaded: true
