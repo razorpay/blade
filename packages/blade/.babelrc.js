@@ -1,5 +1,24 @@
 const configs = {
   reactNative: {
+    test: {
+      presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
+      plugins: [
+        [
+          'module-resolver',
+          {
+            alias: {
+              '@storybook/react': '@storybook/react-native',
+            },
+          },
+        ],
+        [
+          '@babel/plugin-transform-react-jsx',
+          {
+            runtime: 'automatic',
+          },
+        ],
+      ],
+    },
     development: {
       presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
       plugins: [
@@ -121,19 +140,16 @@ const configs = {
     },
   },
 };
-module.exports = function babel(api) {
-  api.cache(true);
-  const framework = process.env.FRAMEWORK;
-  if (framework === 'REACT') {
-    return { env: configs.react };
-  }
-  if (framework === 'REACT_NATIVE') {
-    return { env: configs.reactNative };
-  }
-  return { env: configs.reactNative };
-  // throw new Error(
-  //   `Blade requires "FRAMEWORK" environment variable to be set. Valid values are "REACT" and "REACT_NATIVE". Instead, received: ${JSON.stringify(
-  //     framework,
-  //   )}`,
-  // );
-};
+
+const framework = process.env.FRAMEWORK;
+if (framework === 'REACT') {
+  module.exports = { env: configs.react };
+} else if (framework === 'REACT_NATIVE') {
+  module.exports = { env: configs.reactNative };
+} else {
+  throw new Error(
+    `Blade requires "FRAMEWORK" environment variable to be set. Valid values are "REACT" and "REACT_NATIVE". Instead, received: ${JSON.stringify(
+      framework,
+    )}`,
+  );
+}

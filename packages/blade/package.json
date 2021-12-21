@@ -44,7 +44,7 @@
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native",
     "android": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-android",
     "ios": "yarn react-native:get-stories && react-native run-ios",
-    "start": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native start",
+    "start": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
     "react": "yarn run react:storybook",
     "react:storybook": "FRAMEWORK=REACT start-storybook -c ./.storybook/react -p 9009",
     "react:storybook:build": "FRAMEWORK=REACT build-storybook -c ./.storybook/react -o docs"
