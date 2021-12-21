@@ -2,7 +2,6 @@
 const path = require('path');
 const execa = require('execa');
 const argParser = require('args-parser');
-const jscodeshiftExecutable = require.resolve('.bin/jscodeshift');
 const transformerDirectory = path.resolve(__dirname, './transforms');
 
 function run() {
@@ -21,7 +20,7 @@ function run() {
   args.push('--ignore-pattern=**/node_modules/**');
 
   // jscodeshift ./packages/blade-old/example -t ./packages/blade-old/scripts/icon-migrate-codemod/transforms/blade-old-icon.ts
-  const result = execa.sync(jscodeshiftExecutable, args, {
+  const result = execa.sync('jscodeshift', args, {
     stdio: 'inherit',
     stripEof: false,
   });

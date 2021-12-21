@@ -56,7 +56,7 @@ Simply install the blade-old package and run
 
 ```sh
 // migrate-icons [directory_path_glob] [...jscodeshift_options]
-migrate-icons src/App/** parser=jsx
+migrate-icons ./src/App/*
 ```
 
 This codemod automatically changes 

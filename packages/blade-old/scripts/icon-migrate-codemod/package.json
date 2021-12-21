@@ -6,6 +6,7 @@
     "jscodeshift": "^0.13.0"
   },
   "scripts": {
+    "jscodeshift": "jscodeshift",
     "codeshift": "node ./node_modules/.bin/jscodeshift"
   },
   "license": "MIT",

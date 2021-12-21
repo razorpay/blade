@@ -58,7 +58,7 @@ const transform: Transform = (file, api, _options) => {
   });
 
   FIRST_IMPORT.insertAfter(
-    j.importDeclaration(imports, j.stringLiteral('@razorpay/blade-old/icons'), 'value'),
+    j.importDeclaration(imports, j.stringLiteral('@razorpay/blade-old/src/icons'), 'value'),
   );
 
   return root.toSource();
