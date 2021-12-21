@@ -4,26 +4,10 @@
 
 feat(blade-old): improved icon API
 
-## Migration guide for new blade-old icons
-
-As discussed in #363 we had decided to move to a more flexible and open API for the icons,
+As discussed in [#363](https://github.com/razorpay/blade/issues/363) we had decided to move to a more flexible and open API for the icons,
 Instead of using a single Icon component and passing the name="" prop we will be directly using the icon by importing it.
 
-
-## Migrating icons to new API
-
-```diff
-- import Icon from "@razorpay/blade-old";
-+ import { AlertCircle } from "@razorpay/blade-old/icons";
-
-- <Icon name="alert-circle" fill="shade.950" size="medium" />
-+ <AlertCircle fill="shade.950" size="medium" />
-```
-
-To make this process easier I would suggest you use vscode search panel to search all the instances of `name="` which will show you all the places you used icons, and replace them with their respective icon.
-
-
-## Changes in \<Icon />
+### Changes in \<Icon />
 
 Icon component is now a generic wrapper to create new icons. 
 To add new icons to blade's icon library you can use the <Icon /> component like so: 
@@ -42,75 +26,6 @@ export const MyCustomIcon = (props) => {
 <Button icon={MyCustomIcon}>
 ```
 
-## Migrating existing blade-old components
+### Migrating existing blade-old components
 
-Few of the internal components were using the old \<Icon /> component, thus we also had to change the APIs for them.
-
-> Basically anywhere you see `icon="name-of-the-icon"` replace it with an imported icon.
-
-[Check migration guide for Automigration](./MIGRATION.md)
-
-Modified components are:
-
-- Button
-- TextInput
-- Snackbar
-- Tabs.Tab
-- SegmentControl.Option
-
-### Button
-
-```diff
-- <Button icon="info" />
-+ <Button icon={Info} />
-```
-
-### TextInput
-
-```diff
-
-<TextInput
-  label="Label"
--  iconRight="info"
--  iconLeft="info"
-+  iconRight={Info}
-+  iconLeft={Info}
-/>
-```
-
-### Snackbar
-
-```diff
-const snackbar = useSnackbar();
-
-snackbar.show({ 
--  icon: "info",
-+  icon: Info
-})
-```
-
-### Tabs.Tab
-
-```diff
-  <Tabs.Tab
-    value="payments"
-    title="Payments"
-    disabled={boolean('Disable Tab 1', false)}
--   icon="info"
-+   icon={Info}
-  >
-```
-
-### SegmentControl.Option
-
-```diff
-  <SegmentControl.Option
-    value="1"
--   icon="info"
-+   icon={Info}
-    disabled={boolean('Disabled', false)}
-    subText={text('Sub Text', undefined)}
-  >
-    Option 1
-  </SegmentControl.Option>
-```
+[Follow these steps for migration](./MIGRATION.md)
