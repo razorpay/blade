@@ -38,6 +38,8 @@ import { Download } from "@razorpay/blade-old";
 
 ### Limitations & Edge cases of codemod
 
+There are some edge cases where its codemod won't work and hence you need to do those changes manually.
+
 1. Conditional rendering isn't supported 
 
 ```ts
