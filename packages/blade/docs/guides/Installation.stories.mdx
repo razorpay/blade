@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Installation" />
+
+# ⚙️ Installation
+<br/>
+<br/>
+
+## ✍🏻 Pre-requisite
+Before you install the package, make sure that you have performed following steps:
+Before using universe just ensure following things
+
+* You must be running Node version >=14.0.0
+* You must have `yarn` installed
+* Generate a Personal Access Token on GitHub by [visiting this link](https://github.com/settings/tokens/new?scopes=repo,workflow,write:packages,read:repo_hook,write:packages)
+  - From Enable SSO, click `Authorize` button next to Razorpay logo.
+* Run `code ~/.bashrc` or `code ~/.zshrc` in your editor and add this line 
+  ```
+  export GITHUB_ACCESS_TOKEN="<YOUR_TOKEN>"
+  ```
+* Run `source ~/.bashrc` or `source ~/.zshrc` based on the file you added your token.
+* Run `code ~/.npmrc` and append the following
+```bash
+# add following to your .npmrc
+@razorpay:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:always-auth=true
+//npm.pkg.github.com/:_authToken=${GITHUB_ACCESS_TOKEN}
+```
+## ⬇️ Add blade to your application
+```shell
+$ yarn add @razorpay/blade
+```
+## 🔜 Add blade libraries to your figma project

@@ -1,11 +1,15 @@
 module.exports = {
-  stories: ['../../src/**/*.stories.mdx', '../../src/**/*.stories.@(ts|tsx|js|jsx)'],
+  stories: [
+    '../../docs/**/*.stories.mdx',
+    '../../src/**/*.stories.mdx',
+    '../../src/**/*.stories.@(ts|tsx|js|jsx)',
+  ],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/preset-create-react-app',
   ],
-  staticDirs: ['../../public/docs'],
+  staticDirs: ['../../public/storybook-site'],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.

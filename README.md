@@ -64,7 +64,7 @@ Before using universe just ensure following things
 ```
 #### ⬇️ Add blade to your application
 ```shell
-$ yarn add @razorpay/blade
+yarn add @razorpay/blade
 ```
 #### 🔜 Add blade libraries to your figma project
 
@@ -74,26 +74,26 @@ We have all the examples under `packages/examples` directory. To run any example
 
 1. Setup the example project
     ```shell
-    $ cd packages/examples/<example-name>
-    $ yarn
+    cd packages/examples/<example-name>
+    yarn
     ```
 
 2. Publish the blade package with your changes using [`yalc`](https://www.npmjs.com/package/yalc).
     ```shell
     # run this from packages/blade directory
-    $ npx yalc publish
+    npx yalc publish
     ```
 
 3. Install the updated `blade` package using [`yalc`](https://www.npmjs.com/package/yalc).
     ```shell
     # run this from packages/examples/<example-name> directory
-    $ npx yalc add @razorpay/blade
+    npx yalc add @razorpay/blade
     ```
 
 4. Run the example project and verify the changes
     ```shell
     # this script can vary based on the kind of project so check the example `package.json` to find the relevant script to start the project
-    $ yarn start
+    yarn start
     ```
 
 #### Running Tests
@@ -101,13 +101,13 @@ We use `react-testing-library` for writing tests. If you want to write platform 
 
 * To run the tests for web projects follow the steps below:
   ```shell
-  $ cd packages/blade
-  $ yarn test:web
+  cd packages/blade
+  yarn test:web
   ```
 * To run the tests for native projects follow the steps below:
   ```shell
-  $ cd packages/blade
-  $ yarn test:native
+  cd packages/blade
+  yarn test:native
   ```
 > To update the snapshots run the test commands with `-u` as suffix
 
