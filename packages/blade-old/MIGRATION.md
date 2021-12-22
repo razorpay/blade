@@ -38,8 +38,7 @@ import { Download } from "@razorpay/blade-old";
 
 ### Limitations & Edge cases of codemod
 
-Conditional rendering isn't supported 
-This code will not be transformed.
+1. Conditional rendering isn't supported 
 
 ```ts
 <Icon
@@ -49,7 +48,7 @@ This code will not be transformed.
 />
 ```
 
-Icon props on other components aren't handled. 
+2. Icon props on other components aren't handled. 
 
 ```tsx
 <Button icon="chevronLeft">
