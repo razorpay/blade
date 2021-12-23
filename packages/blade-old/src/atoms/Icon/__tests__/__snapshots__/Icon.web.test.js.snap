@@ -3,14 +3,17 @@
 exports[`<Icon /> fill should render a color filled icon 1`] = `
 <div>
   <svg
+    aria-hidden="true"
     data-testid="ds-icon"
     fill="rgba(22, 47, 86, 0.87)"
+    focusable="false"
     height="20"
-    viewBox="0 0 24 24"
     width="20"
   >
     <path
-      d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      clip-rule="evenodd"
+      d="M0 6a3 3 0 013-3h18a3 3 0 013 3v12a3 3 0 01-3 3H3a3 3 0 01-3-3V6zm2 0a1 1 0 011-1h18a1 1 0 011 1v3H2V6zm20 5v7a1 1 0 01-1 1H3a1 1 0 01-1-1v-7h20z"
+      fill-rule="evenodd"
     />
   </svg>
 </div>
@@ -19,14 +22,17 @@ exports[`<Icon /> fill should render a color filled icon 1`] = `
 exports[`<Icon /> size should render a medium icon 1`] = `
 <div>
   <svg
+    aria-hidden="true"
     data-testid="ds-icon"
-    fill="rgba(22, 47, 86, 0.38)"
+    fill="rgba(43, 131, 234, 1.0 )"
+    focusable="false"
     height="20"
-    viewBox="0 0 24 24"
     width="20"
   >
     <path
-      d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      clip-rule="evenodd"
+      d="M0 6a3 3 0 013-3h18a3 3 0 013 3v12a3 3 0 01-3 3H3a3 3 0 01-3-3V6zm2 0a1 1 0 011-1h18a1 1 0 011 1v3H2V6zm20 5v7a1 1 0 01-1 1H3a1 1 0 01-1-1v-7h20z"
+      fill-rule="evenodd"
     />
   </svg>
 </div>
@@ -35,14 +41,17 @@ exports[`<Icon /> size should render a medium icon 1`] = `
 exports[`<Icon /> size should render a small icon 1`] = `
 <div>
   <svg
+    aria-hidden="true"
     data-testid="ds-icon"
-    fill="rgba(22, 47, 86, 0.38)"
+    fill="rgba(43, 131, 234, 1.0 )"
+    focusable="false"
     height="16"
-    viewBox="0 0 24 24"
     width="16"
   >
     <path
-      d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z"
+      clip-rule="evenodd"
+      d="M0 6a3 3 0 013-3h18a3 3 0 013 3v12a3 3 0 01-3 3H3a3 3 0 01-3-3V6zm2 0a1 1 0 011-1h18a1 1 0 011 1v3H2V6zm20 5v7a1 1 0 01-1 1H3a1 1 0 01-1-1v-7h20z"
+      fill-rule="evenodd"
     />
   </svg>
 </div>

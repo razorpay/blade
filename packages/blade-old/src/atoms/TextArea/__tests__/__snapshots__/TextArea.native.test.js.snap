@@ -980,6 +980,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with dis
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -1299,6 +1300,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with err
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -2005,6 +2007,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
               }
             >
               <RNSVGSvgView
+                accessibilityElementsHidden={true}
                 align="xMidYMid"
                 bbHeight={16}
                 bbWidth={16}
@@ -2116,6 +2119,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -2279,6 +2283,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
               }
             >
               <RNSVGSvgView
+                accessibilityElementsHidden={true}
                 align="xMidYMid"
                 bbHeight={16}
                 bbWidth={16}
@@ -2547,6 +2552,7 @@ exports[`Renders <TextArea /> filled variant correctly snapshot testing with ico
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -4342,6 +4348,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with d
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -4661,6 +4668,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with e
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -5524,6 +5532,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
               }
             >
               <RNSVGSvgView
+                accessibilityElementsHidden={true}
                 align="xMidYMid"
                 bbHeight={16}
                 bbWidth={16}
@@ -5737,6 +5746,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
               }
             >
               <RNSVGSvgView
+                accessibilityElementsHidden={true}
                 align="xMidYMid"
                 bbHeight={16}
                 bbWidth={16}
@@ -5848,6 +5858,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -6066,6 +6077,7 @@ exports[`Renders <TextArea /> outlined variant correctly snapshot testing with i
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}

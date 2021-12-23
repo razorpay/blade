@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import { renderWithTheme } from '../../../_helpers/testing';
 import TextInput from '../index';
+import { Info } from '../../../icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -266,7 +267,7 @@ describe('<TextInput />', () => {
   describe('iconLeft', () => {
     it('should render a TextInput with iconLeft', () => {
       const { container } = renderWithTheme(
-        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} iconLeft="info" />,
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} iconLeft={Info} />,
       );
       expect(container).toMatchSnapshot();
     });
@@ -275,7 +276,7 @@ describe('<TextInput />', () => {
   describe('iconRight', () => {
     it('should render a TextInput with iconRight', () => {
       const { container } = renderWithTheme(
-        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} iconRight="info" />,
+        <TextInput label={SAMPLE_LABEL} id={SAMPLE_ID} iconRight={Info} />,
       );
       expect(container).toMatchSnapshot();
     });
@@ -321,12 +322,12 @@ describe('<TextInput />', () => {
 
     it('should throw error when both prefix and iconLeft are passed together', () => {
       const errorMessage = 'Cannot have prefix and left icon together';
-      expect(() => renderWithTheme(<TextInput iconLeft="info" prefix="₹" />)).toThrow(errorMessage);
+      expect(() => renderWithTheme(<TextInput iconLeft={Info} prefix="₹" />)).toThrow(errorMessage);
     });
 
     it('should throw error when both suffix and iconRight are passed together', () => {
       const errorMessage = 'Cannot have suffix and right icon together';
-      expect(() => renderWithTheme(<TextInput iconRight="info" suffix="₹" />)).toThrow(
+      expect(() => renderWithTheme(<TextInput iconRight={Info} suffix="₹" />)).toThrow(
         errorMessage,
       );
     });

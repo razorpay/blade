@@ -8,7 +8,7 @@ import Text from '../../atoms/Text';
 import Size from '../../atoms/Size';
 import Flex from '../../atoms/Flex';
 import Space from '../../atoms/Space';
-import Icon from '../../atoms/Icon';
+import { CheckedCircle, Close, UploadCloud } from '../../icons';
 import ProgressBar from './ProgressBar';
 
 const MAX_PROGRESS_VALUE = 100;
@@ -89,7 +89,7 @@ const FileUpload = ({
                         {hasUploadCompleted && !errorText ? (
                           <Space margin={[0, 1, 0, 0]}>
                             <View>
-                              <Icon size="small" fill="positive.960" name="checkedCircle" />
+                              <CheckedCircle size="small" fill="positive.960" />
                             </View>
                           </Space>
                         ) : null}
@@ -101,7 +101,7 @@ const FileUpload = ({
                           </View>
                         </Flex>
                         <TouchableOpacity onPress={handleFileRemoval}>
-                          <Icon size="small" name="close" fill="shade.800" />
+                          <Close size="small" fill="shade.800" />
                         </TouchableOpacity>
                       </View>
                     </Space>
@@ -114,7 +114,7 @@ const FileUpload = ({
                 <DashedButton onPress={handleFilePick} activeOpacity={0.7}>
                   <Flex flexDirection="row">
                     <View>
-                      <Icon name="uploadCloud" fill="primary.800" size="small" />
+                      <UploadCloud fill="primary.800" size="small" />
                       <Space margin={[0, 0, 0, 0.5]}>
                         <View>
                           <Text size="xsmall" weight="bold" color="primary.800" maxLines={1}>

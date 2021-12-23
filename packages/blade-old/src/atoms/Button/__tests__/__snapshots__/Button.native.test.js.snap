@@ -623,6 +623,7 @@ exports[`Renders <Button /> correctly Renders a medium(Default) Primary <Button 
     variant="primary"
   >
     <RNSVGSvgView
+      accessibilityElementsHidden={true}
       align="xMidYMid"
       bbHeight={20}
       bbWidth={20}
@@ -1407,6 +1408,7 @@ exports[`Renders an icon <Button /> correctly Renders a large Primary <Button />
     variant="primary"
   >
     <RNSVGSvgView
+      accessibilityElementsHidden={true}
       align="xMidYMid"
       bbHeight={20}
       bbWidth={20}

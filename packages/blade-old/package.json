@@ -3,6 +3,9 @@
   "author": "kamleshchandnani",
   "version": "1.4.0",
   "license": "MIT",
+  "bin": {
+    "migrate-icons": "./scripts/icon-migrate-codemod/cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
@@ -25,13 +28,15 @@
     "test:native": "BABEL_ENV=development jest -c ./jest.native.config.js",
     "test:native:coverage": "yarn run test:native --coverage",
     "test:web": "BABEL_ENV=web-test jest -c ./jest.web.config.js",
-    "test:web:coverage": "yarn run test:web --coverage"
+    "test:web:coverage": "yarn run test:web --coverage",
+    "postinstall": "cd ./scripts/icon-migrate-codemod && yarn"
   },
   "dependencies": {
     "@react-native-community/async-storage": "1.7.1",
     "@testing-library/react-hooks": "3.2.1",
     "intl": "1.2.5",
     "lodash": "4.17.21",
+    "react-is": "17.0.2",
     "react-native-document-picker": "4.2.0",
     "react-native-gesture-handler": "1.8.0",
     "react-native-linear-gradient": "2.5.6",

@@ -3152,6 +3152,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -3469,6 +3470,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -4170,6 +4172,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               }
             >
               <RNSVGSvgView
+                accessibilityElementsHidden={true}
                 align="xMidYMid"
                 bbHeight={16}
                 bbWidth={16}
@@ -4280,6 +4283,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -4442,6 +4446,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
               }
             >
               <RNSVGSvgView
+                accessibilityElementsHidden={true}
                 align="xMidYMid"
                 bbHeight={16}
                 bbWidth={16}
@@ -4707,6 +4712,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -6792,6 +6798,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -7109,6 +7116,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -7965,6 +7973,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               }
             >
               <RNSVGSvgView
+                accessibilityElementsHidden={true}
                 align="xMidYMid"
                 bbHeight={16}
                 bbWidth={16}
@@ -8176,6 +8185,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
               }
             >
               <RNSVGSvgView
+                accessibilityElementsHidden={true}
                 align="xMidYMid"
                 bbHeight={16}
                 bbWidth={16}
@@ -8286,6 +8296,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}
@@ -8502,6 +8513,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 }
               >
                 <RNSVGSvgView
+                  accessibilityElementsHidden={true}
                   align="xMidYMid"
                   bbHeight={16}
                   bbWidth={16}

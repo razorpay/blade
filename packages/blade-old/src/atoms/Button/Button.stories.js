@@ -5,6 +5,7 @@ import { select } from '@storybook/addon-knobs';
 import Flex from '../Flex';
 import View from '../View';
 import Space from '../Space';
+import { Info } from '../../icons';
 import Button from './Button';
 
 const variants = {
@@ -51,7 +52,7 @@ storiesOf('Button', module)
               <Button
                 size={select('Sizes', sizes, 'medium')}
                 variant={select('Variants', variants, 'primary')}
-                icon="info"
+                icon={Info}
                 block
               />
             </View>
@@ -63,7 +64,7 @@ storiesOf('Button', module)
               <Button
                 size={select('Sizes', sizes, 'medium')}
                 variant={select('Variants', variants, 'primary')}
-                icon="info"
+                icon={Info}
                 block
                 iconAlign={select('iconAlign', iconAlign, 'left')}
               >
@@ -75,7 +76,7 @@ storiesOf('Button', module)
         <Button
           size={select('Sizes', sizes, 'medium')}
           variant={select('Variants', variants, 'primary')}
-          icon="info"
+          icon={Info}
         />
         <Space margin={[1, 0]}>
           <View>
@@ -92,7 +93,7 @@ storiesOf('Button', module)
             <Button
               size={select('Sizes', sizes, 'medium')}
               variant={select('Variants', variants, 'primary')}
-              icon="info"
+              icon={Info}
               iconAlign={select('iconAlign', iconAlign, 'left')}
             >
               Button with Icon
@@ -102,7 +103,7 @@ storiesOf('Button', module)
         <Button
           size={select('Sizes', sizes, 'medium')}
           variant={select('Variants', variants, 'primary')}
-          icon="info"
+          icon={Info}
           disabled
           iconAlign={select('iconAlign', iconAlign, 'left')}
         >

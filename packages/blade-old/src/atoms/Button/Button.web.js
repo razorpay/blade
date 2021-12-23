@@ -5,11 +5,11 @@ import styled, { useTheme } from 'styled-components';
 import Flex from '../Flex';
 import Size from '../Size';
 import Space from '../Space';
-import Icon from '../Icon';
 import Text from '../Text';
 import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
 import isEmpty from '../../_helpers/isEmpty';
+import isValidElement from '../../_helpers/isValidElement';
 
 const BORDER_WIDTH = makePxValue(0.125);
 
@@ -361,7 +361,7 @@ const Button = ({
   size,
   disabled,
   variantColor,
-  icon,
+  icon: Icon,
   iconAlign,
   align,
   block,
@@ -423,7 +423,7 @@ const Button = ({
             {...automation(testID)}
           >
             <React.Fragment>
-              {icon && iconAlign === 'left' ? (
+              {isValidElement(Icon) && iconAlign === 'left' ? (
                 <Space
                   margin={styles.spaceBetween({
                     size,
@@ -432,7 +432,6 @@ const Button = ({
                   })}
                 >
                   <Icon
-                    name={icon}
                     size={styles.iconSize({
                       size,
                       children,
@@ -468,7 +467,7 @@ const Button = ({
                   {size === 'xsmall' ? children.toUpperCase() : children}
                 </Text>
               ) : null}
-              {icon && iconAlign === 'right' ? (
+              {isValidElement(Icon) && iconAlign === 'right' ? (
                 <Space
                   margin={styles.spaceBetween({
                     size,
@@ -477,7 +476,6 @@ const Button = ({
                   })}
                 >
                   <Icon
-                    name={icon}
                     size={styles.iconSize({
                       size,
                       children,
@@ -508,7 +506,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
   align: PropTypes.oneOf(['left', 'center', 'right']),
   disabled: PropTypes.bool,
-  icon: PropTypes.string,
+  icon: PropTypes.elementType,
   iconAlign: PropTypes.oneOf(['left', 'right']),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
   testID: PropTypes.string,

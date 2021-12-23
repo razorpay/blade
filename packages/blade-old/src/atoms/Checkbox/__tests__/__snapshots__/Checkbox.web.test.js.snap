@@ -19,15 +19,18 @@ exports[`<Checkbox /> checkbox only should render a icon only checkbox 1`] = `
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.38)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -58,16 +61,18 @@ exports[`<Checkbox /> checked should render checkbox checked(attr) as true if ch
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(43, 131, 234, 1.0 )"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             clip-rule="evenodd"
             d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
-            fill="rgba(43, 131, 234, 1.0 )"
             fill-rule="evenodd"
           />
         </svg>
@@ -96,15 +101,18 @@ exports[`<Checkbox /> checked should render checkbox with checked(attr) as false
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.38)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -135,16 +143,19 @@ exports[`<Checkbox /> defaultChecked should render checkbox checked(attr) as tru
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(43, 131, 234, 1.0 )"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             clip-rule="evenodd"
-            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
-            fill="rgba(43, 131, 234, 1.0 )"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill-opacity="0.38"
             fill-rule="evenodd"
           />
         </svg>
@@ -173,15 +184,18 @@ exports[`<Checkbox /> defaultChecked should render checkbox with checked(attr) a
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.38)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -213,15 +227,18 @@ exports[`<Checkbox /> disabled should render a disabled checkbox if disabled is 
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.10)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.10)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -251,15 +268,18 @@ exports[`<Checkbox /> errorText should render checkbox with provided errorText 1
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.38)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -303,15 +323,18 @@ exports[`<Checkbox /> focus with checked should render focus styles on checkbox 
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.38)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -342,16 +365,18 @@ exports[`<Checkbox /> focus with checked should render focus styles on checkbox 
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(43, 131, 234, 1.0 )"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             clip-rule="evenodd"
             d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
-            fill="rgba(43, 131, 234, 1.0 )"
             fill-rule="evenodd"
           />
         </svg>
@@ -380,15 +405,18 @@ exports[`<Checkbox /> focus with defaultChecked should render focus styles on ch
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.38)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -419,16 +447,19 @@ exports[`<Checkbox /> focus with defaultChecked should render focus styles on ch
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(43, 131, 234, 1.0 )"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             clip-rule="evenodd"
-            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
-            fill="rgba(43, 131, 234, 1.0 )"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill-opacity="0.38"
             fill-rule="evenodd"
           />
         </svg>
@@ -457,15 +488,18 @@ exports[`<Checkbox /> helpText should render checkbox with provided helpText 1`]
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.38)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -509,15 +543,18 @@ exports[`<Checkbox /> size should render a large checkbox 1`] = `
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 ldFWsT Sizeweb__Size-sc-1e5yf1-0 gsATFY"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.38)"
+          focusable="false"
           height="28"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="28"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -547,15 +584,18 @@ exports[`<Checkbox /> size should render a medium(default) checkbox 1`] = `
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.38)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -585,15 +625,18 @@ exports[`<Checkbox /> size should render a small checkbox 1`] = `
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.38)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -623,15 +666,18 @@ exports[`<Checkbox /> title should render a checkbox with provided title 1`] = `
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(22, 47, 86, 0.38)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
         >
           <path
             clip-rule="evenodd"
             d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
-            fill="rgba(22, 47, 86, 0.38)"
             fill-opacity="0.38"
             fill-rule="evenodd"
           />
@@ -669,16 +715,19 @@ exports[`<Checkbox /> variantColor should render a checkbox with default variant
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(43, 131, 234, 1.0 )"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             clip-rule="evenodd"
-            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
-            fill="rgba(43, 131, 234, 1.0 )"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill-opacity="0.38"
             fill-rule="evenodd"
           />
         </svg>
@@ -708,16 +757,19 @@ exports[`<Checkbox /> variantColor should render a checkbox with provided varian
         class="Viewweb__View-sc-1o0hmxm-0 Backdropweb__Backdrop-sc-26g88e-0 jeOdol Sizeweb__Size-sc-1e5yf1-0 esSlSU"
       >
         <svg
-          fill="none"
+          aria-hidden="true"
+          data-testid="ds-icon"
+          fill="rgba(52, 74, 108, 1.0)"
+          focusable="false"
           height="24"
+          testID="checkbox-icon"
           viewBox="0 0 24 24"
           width="24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             clip-rule="evenodd"
-            d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8ZM14.6416 10.9038C14.8646 10.6876 14.8701 10.3314 14.6538 10.1084C14.4376 9.8854 14.0814 9.87992 13.8584 10.0962L11.1563 12.7165L10.1416 11.7325C9.91856 11.5163 9.56245 11.5218 9.34618 11.7448C9.12992 11.9678 9.1354 12.3239 9.35842 12.5402L10.7647 13.9038C10.9829 14.1154 11.3296 14.1154 11.5478 13.9038L14.6416 10.9038Z"
-            fill="rgba(52, 74, 108, 1.0)"
+            d="M16 7H8a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V8a1 1 0 00-1-1zM8 6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2V8a2 2 0 00-2-2H8z"
+            fill-opacity="0.38"
             fill-rule="evenodd"
           />
         </svg>

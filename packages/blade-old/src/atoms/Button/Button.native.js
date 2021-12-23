@@ -6,11 +6,11 @@ import { TouchableHighlight } from 'react-native';
 import Flex from '../Flex';
 import Size from '../Size';
 import Space from '../Space';
-import Icon from '../Icon';
 import Text from '../Text';
 import View from '../View';
 import automation from '../../_helpers/automation-attributes';
 import { getColor, makePxValue, getVariantColorKeys } from '../../_helpers/theme';
+import isValidElement from '../../_helpers/isValidElement';
 
 const styles = {
   fontColor({ variant, variantColor, disabled }) {
@@ -243,7 +243,7 @@ const Button = ({
   size,
   disabled,
   variantColor,
-  icon,
+  icon: Icon,
   iconAlign,
   block,
   testID,
@@ -290,9 +290,8 @@ const Button = ({
             {...automation(testID)}
           >
             <React.Fragment>
-              {icon && iconAlign === 'left' && (
+              {isValidElement(Icon) && iconAlign === 'left' && (
                 <Icon
-                  name={icon}
                   size={styles.iconSize({
                     size,
                     children,
@@ -305,7 +304,7 @@ const Button = ({
                   testID="button-left-icon"
                 />
               )}
-              {icon && iconAlign === 'left' && children && (
+              {Icon && iconAlign === 'left' && children && (
                 <Space
                   margin={styles.spaceBetween({
                     size,
@@ -337,7 +336,7 @@ const Button = ({
                   {size === 'xsmall' ? children.toUpperCase() : children}
                 </Text>
               ) : null}
-              {icon && iconAlign === 'right' && children && (
+              {isValidElement(Icon) && iconAlign === 'right' && children && (
                 <Space
                   margin={styles.spaceBetween({
                     size,
@@ -347,9 +346,8 @@ const Button = ({
                   <View />
                 </Space>
               )}
-              {icon && iconAlign === 'right' && (
+              {isValidElement(Icon) && iconAlign === 'right' && (
                 <Icon
-                  name={icon}
                   size={styles.iconSize({
                     size,
                     children,
@@ -378,7 +376,7 @@ Button.propTypes = {
   block: PropTypes.bool,
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large']),
   disabled: PropTypes.bool,
-  icon: PropTypes.string,
+  icon: PropTypes.elementType,
   iconAlign: PropTypes.oneOf(['left', 'right']),
   testID: PropTypes.string,
 };

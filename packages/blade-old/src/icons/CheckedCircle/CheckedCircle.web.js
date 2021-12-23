@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Icon, { IconPropTypes } from '../../atoms/Icon';
 
-export default function CheckedCircle({ width, height, fill }) {
+export default function CheckedCircle(props) {
   return (
-    <svg width={width} height={height} viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="12" fill={fill} />
+    <Icon viewBox="0 0 24 24" {...props}>
+      <circle cx="12" cy="12" r="12" />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -12,17 +12,13 @@ export default function CheckedCircle({ width, height, fill }) {
         stroke="white"
         strokeWidth="2.4"
       />
-    </svg>
+    </Icon>
   );
 }
 
-CheckedCircle.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  fill: PropTypes.string,
-};
+CheckedCircle.propTypes = IconPropTypes;
 
 CheckedCircle.defaultProps = {
-  width: 24,
-  height: 24,
+  size: 'medium',
+  fill: 'sapphire.800',
 };

@@ -4,6 +4,7 @@ import { renderWithTheme } from '../../../_helpers/testing';
 import Tabs from '../Tabs';
 import Text from '../../../atoms/Text';
 import View from '../../../atoms/View';
+import { Info } from '../../../icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -47,10 +48,10 @@ describe('<Tabs />', () => {
     it('two tabs with icons', () => {
       const { container } = renderWithTheme(
         <Tabs defaultValue="one">
-          <Tabs.Tab value="one" title="One" icon="info">
+          <Tabs.Tab value="one" title="One" icon={Info}>
             <Text>Screen One</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="two" title="Two" icon="info">
+          <Tabs.Tab value="two" title="Two" icon={Info}>
             <Text>Screen Two</Text>
           </Tabs.Tab>
         </Tabs>,
@@ -61,10 +62,10 @@ describe('<Tabs />', () => {
     it('two tabs with one disabled', () => {
       const { container } = renderWithTheme(
         <Tabs defaultValue="one">
-          <Tabs.Tab value="one" title="One" icon="info">
+          <Tabs.Tab value="one" title="One" icon={Info}>
             <Text>Screen One</Text>
           </Tabs.Tab>
-          <Tabs.Tab value="two" title="Two" icon="info" disabled>
+          <Tabs.Tab value="two" title="Two" icon={Info} disabled>
             <Text>Screen Two</Text>
           </Tabs.Tab>
         </Tabs>,

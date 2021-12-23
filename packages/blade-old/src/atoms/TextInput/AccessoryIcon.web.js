@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../Icon';
 import Space from '../Space';
 import Flex from '../Flex';
 
@@ -39,7 +38,7 @@ const styles = {
   },
 };
 
-const AccessoryIcon = ({ name, disabled, hasError, variant, isFocused, position }) => {
+const AccessoryIcon = ({ icon: Icon, disabled, hasError, variant, isFocused, position }) => {
   return (
     <Space
       padding={styles.padding({
@@ -49,7 +48,6 @@ const AccessoryIcon = ({ name, disabled, hasError, variant, isFocused, position 
     >
       <Flex>
         <Icon
-          name={name}
           size="small"
           fill={styles.color({
             disabled,
@@ -64,7 +62,7 @@ const AccessoryIcon = ({ name, disabled, hasError, variant, isFocused, position 
 };
 
 AccessoryIcon.propTypes = {
-  name: PropTypes.string,
+  icon: PropTypes.elementType,
   disabled: PropTypes.bool,
   hasError: PropTypes.bool,
   variant: PropTypes.oneOf(['filled', 'outlined']).isRequired,
@@ -73,7 +71,6 @@ AccessoryIcon.propTypes = {
 };
 
 AccessoryIcon.defaultProps = {
-  name: 'info',
   disabled: false,
   hasError: false,
 };
