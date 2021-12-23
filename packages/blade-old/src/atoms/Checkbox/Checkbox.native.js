@@ -8,7 +8,7 @@ import isEmpty from '../../_helpers/isEmpty';
 import automation from '../../_helpers/automation-attributes';
 import Space from '../Space';
 import { getVariantColorKeys, getColor } from '../../_helpers/theme';
-import Icon from '../Icon';
+import { CheckboxFilled, CheckboxOutlined } from '../../icons';
 import View from '../View';
 import isDefined from '../../_helpers/isDefined';
 import Backdrop from './Backdrop';
@@ -153,6 +153,19 @@ const Checkbox = ({
     helpTextColor = 'shade.930';
   }
 
+  const checkboxIconProps = {
+    size: styles.icon.size({
+      size,
+    }),
+    fill: styles.icon.fill({
+      isChecked,
+      disabled,
+      variantColor,
+      externalChecked,
+    }),
+    testID: 'checkbox-icon',
+  };
+
   return (
     <Flex alignSelf="flex-start">
       <TouchableOpacity
@@ -168,19 +181,11 @@ const Checkbox = ({
         <Flex flexDirection="row" alignItems="center">
           <View>
             <Backdrop backgroundColor={underlayColor} {...styles.backdrop.dimensions(size)}>
-              <Icon
-                size={styles.icon.size({
-                  size,
-                })}
-                name={externalChecked ?? isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
-                fill={styles.icon.fill({
-                  isChecked,
-                  disabled,
-                  variantColor,
-                  externalChecked,
-                })}
-                testID="checkbox-icon"
-              />
+              {externalChecked ?? isChecked ? (
+                <CheckboxFilled {...checkboxIconProps} />
+              ) : (
+                <CheckboxOutlined {...checkboxIconProps} />
+              )}
             </Backdrop>
             {title ? (
               <Flex alignSelf="center">

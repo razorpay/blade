@@ -129,9 +129,11 @@ exports[`<Button /> icon with children with icon left should render a button wit
     type="button"
   >
     <svg
+      aria-hidden="true"
       class="Spaceweb__Space-sc-1abqisc-0 fqjClE"
       data-testid="ds-icon"
       fill="rgba(255, 255, 255, 1.0)"
+      focusable="false"
       height="20"
       testID="button-left-icon"
       viewBox="0 0 24 24"
@@ -167,9 +169,11 @@ exports[`<Button /> icon with children with icon right should render a button wi
       Button
     </div>
     <svg
+      aria-hidden="true"
       class="Spaceweb__Space-sc-1abqisc-0 jMloCk"
       data-testid="ds-icon"
       fill="rgba(255, 255, 255, 1.0)"
+      focusable="false"
       height="20"
       testID="button-right-icon"
       viewBox="0 0 24 24"
@@ -191,9 +195,11 @@ exports[`<Button /> icon without children should render icon only button 1`] = `
     type="button"
   >
     <svg
+      aria-hidden="true"
       class="Spaceweb__Space-sc-1abqisc-0 bnvEug"
       data-testid="ds-icon"
       fill="rgba(255, 255, 255, 1.0)"
+      focusable="false"
       height="24"
       testID="button-left-icon"
       viewBox="0 0 24 24"

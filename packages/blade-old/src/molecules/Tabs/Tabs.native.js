@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import { TabView } from 'react-native-tab-view';
-import { getIconNames } from '../../_helpers/icon';
 import isDefined from '../../_helpers/isDefined';
 import TabBar from './TabBar';
 
@@ -18,7 +17,7 @@ Tab.propTypes = {
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func,
   disabled: PropTypes.bool,
-  icon: PropTypes.oneOf(getIconNames()),
+  icon: PropTypes.elementType,
   testID: PropTypes.string,
 };
 

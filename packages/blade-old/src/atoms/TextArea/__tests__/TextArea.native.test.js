@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, act } from '@testing-library/react-native';
 import { renderWithTheme } from '../../../_helpers/testing';
 import TextArea from '../index';
+import { Info } from '../../../icons';
 
 describe('Renders <TextArea /> outlined variant correctly', () => {
   it('snapshot testing with label', () => {
@@ -30,17 +31,17 @@ describe('Renders <TextArea /> outlined variant correctly', () => {
   });
 
   it('snapshot testing with iconLeft ', () => {
-    const { container } = renderWithTheme(<TextArea iconLeft="info" />);
+    const { container } = renderWithTheme(<TextArea iconLeft={Info} />);
     expect(container).toMatchSnapshot();
   });
 
   it('snapshot testing with iconRight ', () => {
-    const { container } = renderWithTheme(<TextArea iconRight="info" />);
+    const { container } = renderWithTheme(<TextArea iconRight={Info} />);
     expect(container).toMatchSnapshot();
   });
 
   it('snapshot testing with iconLeft & iconRight ', () => {
-    const { container } = renderWithTheme(<TextArea iconLeft="info" iconRight="info" />);
+    const { container } = renderWithTheme(<TextArea iconLeft={Info} iconRight={Info} />);
     expect(container).toMatchSnapshot();
   });
 
@@ -63,7 +64,7 @@ describe('Renders <TextArea /> outlined variant correctly', () => {
 
   it('snapshot testing with error ', () => {
     const { container } = renderWithTheme(
-      <TextArea prefix="info" iconRight="info" label="Email" errorText="Some error has occurred" />,
+      <TextArea prefix="info" iconRight={Info} label="Email" errorText="Some error has occurred" />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -72,7 +73,7 @@ describe('Renders <TextArea /> outlined variant correctly', () => {
     const { container } = renderWithTheme(
       <TextArea
         prefix="info"
-        iconRight="info"
+        iconRight={Info}
         label="Email"
         helpText="You can enter your email here"
         disabled={true}
@@ -135,18 +136,18 @@ describe('Renders <TextArea /> filled variant correctly', () => {
   });
 
   it('snapshot testing with iconLeft (filled TextArea)', () => {
-    const { container } = renderWithTheme(<TextArea variant="filled" iconLeft="info" />);
+    const { container } = renderWithTheme(<TextArea variant="filled" iconLeft={Info} />);
     expect(container).toMatchSnapshot();
   });
 
   it('snapshot testing with iconRight (filled TextArea)', () => {
-    const { container } = renderWithTheme(<TextArea variant="filled" iconRight="info" />);
+    const { container } = renderWithTheme(<TextArea variant="filled" iconRight={Info} />);
     expect(container).toMatchSnapshot();
   });
 
   it('snapshot testing with iconLeft & iconRight (filled TextArea)', () => {
     const { container } = renderWithTheme(
-      <TextArea variant="filled" iconLeft="info" iconRight="info" />,
+      <TextArea variant="filled" iconLeft={Info} iconRight={Info} />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -182,7 +183,7 @@ describe('Renders <TextArea /> filled variant correctly', () => {
       <TextArea
         variant="filled"
         prefix="info"
-        iconRight="info"
+        iconRight={Info}
         label="Email"
         errorText="Some error has occurred"
       />,
@@ -195,7 +196,7 @@ describe('Renders <TextArea /> filled variant correctly', () => {
       <TextArea
         variant="filled"
         prefix="info"
-        iconRight="info"
+        iconRight={Info}
         label="Email"
         helpText="You can enter your email here"
         disabled={true}

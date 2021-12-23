@@ -5,11 +5,9 @@ import styled from 'styled-components/native';
 import Flex from '../../atoms/Flex';
 import Text from '../../atoms/Text';
 import { getColor, makePxValue } from '../../_helpers/theme';
-import Icon from '../../atoms/Icon';
 import Space from '../../atoms/Space';
 import automation from '../../_helpers/automation-attributes';
-import isEmpty from '../../_helpers/isEmpty';
-import { getIconNames } from '../../_helpers/icon';
+import isValidElement from '../../_helpers/isValidElement';
 
 const styles = {
   title: {
@@ -62,7 +60,7 @@ const Title = styled(View)`
   border-bottom-color: ${styles.title.borderBottomColor};
 `;
 
-const TabButton = ({ title, active, icon, onPress, disabled, testID, scrollEnabled }) => {
+const TabButton = ({ title, active, icon: Icon, onPress, disabled, testID, scrollEnabled }) => {
   const [pressed, setPressed] = useState(false);
 
   const onPressIn = useCallback(() => {
@@ -99,10 +97,10 @@ const TabButton = ({ title, active, icon, onPress, disabled, testID, scrollEnabl
         <Flex alignItems="center" alignSelf="center" flexDirection="row" flexWrap="wrap">
           <Space padding={[1, 0, 1, 0]}>
             <Title active={active} disabled={disabled}>
-              {!isEmpty(icon) ? (
+              {isValidElement(Icon) ? (
                 <Space margin={[0, 0.5, 0, 0]}>
                   <View>
-                    <Icon name={icon} fill={titleColor} size="small" testID="tab-button-icon" />
+                    <Icon fill={titleColor} size="small" testID="tab-button-icon" />
                   </View>
                 </Space>
               ) : null}
@@ -127,7 +125,7 @@ TabButton.propTypes = {
   onPress: PropTypes.func,
   disabled: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  icon: PropTypes.oneOf(getIconNames()),
+  icon: PropTypes.elementType,
   testID: PropTypes.string,
   scrollEnabled: PropTypes.bool,
 };

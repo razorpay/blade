@@ -2018,6 +2018,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
             }
           >
             <RNSVGSvgView
+              accessibilityElementsHidden={true}
               align="xMidYMid"
               bbHeight={16}
               bbWidth={16}
@@ -2166,6 +2167,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
             }
           >
             <RNSVGSvgView
+              accessibilityElementsHidden={true}
               align="xMidYMid"
               bbHeight={16}
               bbWidth={16}
@@ -2328,6 +2330,7 @@ exports[`<SegmentControl /> icon renders icon for filled & medium segment contro
             }
           >
             <RNSVGSvgView
+              accessibilityElementsHidden={true}
               align="xMidYMid"
               bbHeight={16}
               bbWidth={16}
@@ -2511,6 +2514,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
             }
           >
             <RNSVGSvgView
+              accessibilityElementsHidden={true}
               align="xMidYMid"
               bbHeight={16}
               bbWidth={16}
@@ -2659,6 +2663,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
             }
           >
             <RNSVGSvgView
+              accessibilityElementsHidden={true}
               align="xMidYMid"
               bbHeight={16}
               bbWidth={16}
@@ -2807,6 +2812,7 @@ exports[`<SegmentControl /> icon renders icon for outlined & medium segment cont
             }
           >
             <RNSVGSvgView
+              accessibilityElementsHidden={true}
               align="xMidYMid"
               bbHeight={16}
               bbWidth={16}

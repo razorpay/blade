@@ -6,6 +6,7 @@ import Flex from '../../atoms/Flex';
 import View from '../../atoms/View';
 import Button from '../../atoms/Button';
 import Divider from '../../atoms/Divider';
+import { Close } from '../../icons';
 
 const FullScreenModalHeader = styled(View)`
   background-color: ${(props) => props.theme.colors.background[300]};
@@ -34,7 +35,7 @@ const ModalHeader = ({ children, variant, onClose }) => {
               testID="close-button"
               variant="tertiary"
               variantColor="shade"
-              icon="close"
+              icon={Close}
               size="medium"
               onClick={onClose}
             />
