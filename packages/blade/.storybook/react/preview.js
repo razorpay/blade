@@ -7,7 +7,12 @@ export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
-      order: ['Guides', ['Intro', 'Installation', 'Usage', 'Local Development']],
+      order: [
+        'Guides',
+        ['Intro', 'Installation', 'Usage', 'Local Development'],
+        'Tokens',
+        ['Colors', 'Border', 'Spacing', 'Shadows', 'Typography'],
+      ],
     },
   },
 };
@@ -15,26 +20,19 @@ export const parameters = {
 export const decorators = [
   (Story, context) => {
     const getThemeTokens = () => {
-      console.log(context.globals.themeTokens);
       if (context.globals.themeTokens === 'paymentTheme') {
-        console.log('payment coming');
         return paymentTheme;
       }
       if (context.globals.themeTokens === 'bankingTheme') {
-        console.log('banking coming');
         return bankingTheme;
       }
-    };
-
-    const getColorScheme = () => {
-      return context.globals.colorScheme;
     };
 
     return (
       <BladeProvider
         key={`${context.globals.themeTokens}-${context.globals.colorScheme}`}
         themeTokens={getThemeTokens()}
-        colorScheme={getColorScheme()}
+        colorScheme={context.globals.colorScheme}
       >
         <Story />
       </BladeProvider>

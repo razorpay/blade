@@ -1,10 +1,9 @@
-import { Meta,Story } from '@storybook/addon-docs';
-import { useTheme } from '@razorpay/blade/components';
-import { BladeProvider } from '@razorpay/blade/components';
+import { Meta, DocsContainer } from '@storybook/addon-docs';
+import { useTheme, BladeProvider } from '@razorpay/blade/components';
 import { paymentTheme, bankingTheme } from '@razorpay/blade/tokens';
 
 <Meta
-  title="Tokens/Colors"
+  title="Tokens/Spacing"
   parameters={{
     docs: {
       container: ({ children, context }) => {
@@ -32,5 +31,24 @@ import { paymentTheme, bankingTheme } from '@razorpay/blade/tokens';
   }}
 />
 
+# ↔️ Spacing
 
-# 🎨 Colors
+export const Spacing = () => {
+  const { theme } = useTheme();
+  return (
+    <>
+      <table>
+        <tbody>
+          {Object.entries(theme.spacing).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.spacing.${key}`}</td>
+              <td><div style={{height: `${value}px`, width: `${value}px`, backgroundColor:'rgba(223, 135, 0, 0.18)'}}></div></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+};
+
+<Spacing />
