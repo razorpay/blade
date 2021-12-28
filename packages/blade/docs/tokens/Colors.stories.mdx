@@ -1,0 +1,19 @@
+import { Meta,Story } from '@storybook/addon-docs';
+import { useTheme } from '@razorpay/blade/components';
+import { BladeProvider } from '@razorpay/blade/components';
+import { paymentTheme } from '@razorpay/blade/tokens';
+
+<Meta title="Tokens/Colors" />
+
+
+<Story name="Colors">
+    <Card/>
+</Story>
+
+export const Card = () => {
+    const { theme, colorScheme } = useTheme();
+    console.log({theme,colorScheme});
+    return (
+      <div>hi!</div>
+    )
+}
