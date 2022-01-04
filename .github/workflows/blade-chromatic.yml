@@ -1,13 +1,9 @@
-# Workflow name
-name: Chromatic
+name: Blade Chromatic
 
-# Event for the workflow
 on: push
-
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
 
-# List of jobs
 jobs:
   chromatic-deployment:
     name: Chromatic Deployment
@@ -28,7 +24,7 @@ jobs:
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: packages/blade
           buildScriptName: react:storybook:build
