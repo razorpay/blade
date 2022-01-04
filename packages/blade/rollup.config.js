@@ -106,7 +106,7 @@ const config = () => {
     return exportCategories.map((exportCategory) => [getWebConfig({ exportCategory })]).flat();
   }
 
-  if (framework === 'REACT_NATIVe') {
+  if (framework === 'REACT_NATIVE') {
     return exportCategories.map((exportCategory) => [getNativeConfig({ exportCategory })]).flat();
   }
 
