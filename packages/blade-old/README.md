@@ -33,16 +33,16 @@
 ### ⚙️ Installation
 #### ✍🏻 Pre-requisite
 Before you install the package, make sure that you have performed following steps:
-Before using universe just ensure following things
 
 * You must be running Node version >=14.0.0
 * You must have `yarn` installed
 * Generate a Personal Access Token on GitHub by [visiting this link](https://github.com/settings/tokens/new?scopes=repo,workflow,write:packages,read:repo_hook,write:packages)
-  - From Enable SSO, click `Authorize` button next to Razorpay logo.
+  - If you belong to razorpay organisation then you will need to enable SSO by clicking `Authorize` button next to Razorpay logo.
 * Run `code ~/.bashrc` or `code ~/.zshrc` in your editor and add this line 
   ```
   export GITHUB_ACCESS_TOKEN="<YOUR_TOKEN>"
   ```
+  > Note: Replace `<YOUR_TOKEN>` with your actual GitHub Personal Access Token
 * Run `source ~/.bashrc` or `source ~/.zshrc` based on the file you added your token.
 * Run `code ~/.npmrc` and append the following
 ```bash
@@ -53,7 +53,7 @@ Before using universe just ensure following things
 ```
 #### ⬇️ Add blade to your application
 ```bash
-$ yarn add @razorpay/blade-old
+yarn add @razorpay/blade-old
 ```
 
 #### React Native

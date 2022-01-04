@@ -35,11 +35,11 @@
 - [🤝 How to contribute](#-how-to-contribute)
 - [📝 License](#-license)
 ## 📦 Packages
-Blade right now has 2 packages
+Blade has 2 packages
 ### [`@razorpay/blade`](https://github.com/razorpay/blade/tree/master/packages/blade)
 This package is under **active development**. In this `README` we'll only refer to this version of blade.
 ### [`@razorpay/blade-old`](https://github.com/razorpay/blade/tree/master/packages/blade-old)
-This package is under **maintenance** and it won't have any major releases. It will be soon deprecated once the newer version is released as a stable release. Documentation for this package can be found [here](https://github.com/razorpay/blade/blob/master/packages/blade-old/README.md)
+This package is under **maintenance** and it won't have any major releases. It will be **deprecated** once the newer version (`@razorpay/blade`) is ready for a stable release. Documentation for this package can be found [here](https://github.com/razorpay/blade/blob/master/packages/blade-old/README.md)
 ## 🏁 Getting Started
 ### ⚙️ Installation
 #### ✍🏻 Pre-requisite
@@ -49,11 +49,12 @@ Before using universe just ensure following things
 * You must be running Node version >=14.0.0
 * You must have `yarn` installed
 * Generate a Personal Access Token on GitHub by [visiting this link](https://github.com/settings/tokens/new?scopes=repo,workflow,write:packages,read:repo_hook,write:packages)
-  - From Enable SSO, click `Authorize` button next to Razorpay logo.
+  - If you belong to razorpay organisation then you will need to enable SSO by clicking `Authorize` button next to Razorpay logo.
 * Run `code ~/.bashrc` or `code ~/.zshrc` in your editor and add this line 
   ```
   export GITHUB_ACCESS_TOKEN="<YOUR_TOKEN>"
   ```
+  > Note: Replace `<YOUR_TOKEN>` with your actual GitHub Personal Access Token
 * Run `source ~/.bashrc` or `source ~/.zshrc` based on the file you added your token.
 * Run `code ~/.npmrc` and append the following
 ```bash
@@ -99,22 +100,22 @@ We have all the examples under `packages/examples` directory. To run any example
 #### Running Tests
 We use `react-testing-library` for writing tests. If you want to write platform specific tests then suffix the test file with `filename.native.ts` or `filename.web.ts`
 
-* To run the tests for web projects follow the steps below:
+* To run the tests for react web projects follow the steps below:
   ```shell
   cd packages/blade
-  yarn test:web
+  yarn test:react
   ```
-* To run the tests for native projects follow the steps below:
+* To run the tests for react-native projects follow the steps below:
   ```shell
   cd packages/blade
-  yarn test:native
+  yarn test:react-native
   ```
 > To update the snapshots run the test commands with `-u` as suffix
 
 ### 👀 How to use blade?
 #### Tokens
-To start using tokens in your application you can follow below steps:
-1. Wrap you component tree with `BladeProvider` and pass it `paymentTheme` or `bankingTheme` tokens.
+To start using tokens in your application you can follow these steps:
+1. Wrap your App with `BladeProvider` and pass it `paymentTheme` or `bankingTheme` tokens.
 ```jsx
 // App entry point
 import { BladeProvider } from '@razorpay/blade/components';
@@ -132,15 +133,15 @@ function App(): JSX.Element {
 
 export default App;
 ```
-2. You can also pass in optional `colorScheme` prop to the `BladeProvider` mentioning whether you want the `light`, `dark` or `system`'s default color scheme. The default is `light`.
+2. You can also pass an optional `colorScheme` prop to the `BladeProvider` mentioning whether you want the `light`, `dark` or `system`'s default color scheme. The default is `light`.
 ```jsx
 <BladeProvider themeTokens={paymentTheme} colorScheme='dark'>
    <Card/>
 </BladeProvider>
 ```
-3. After you've wrapped your component tree under `BladeProvider`, you can use the `useTheme()` hook to get the access to the current theme context.
+1. After you've wrapped your App with `BladeProvider`, you can use the `useTheme()` hook to get access to the current theme context.
 ```jsx
-import { useTheme } from '@razorpay/blade/components';
+import { useTheme, Theme } from '@razorpay/blade/components';
 
 const Card = (): React.ReactElement => {
   const { theme } = useTheme();
