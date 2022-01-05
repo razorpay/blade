@@ -47,7 +47,7 @@
     "start": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
     "react": "yarn run react:storybook",
     "react:storybook": "FRAMEWORK=REACT start-storybook -c ./.storybook/react -p 9009",
-    "react:storybook:build": "FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site"
+    "react:storybook:build": "FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site",
     "chromatic": "npx chromatic"
   },
   "dependencies": {
