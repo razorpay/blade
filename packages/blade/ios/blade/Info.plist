@@ -40,7 +40,6 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lato-Bold.ttf</string>
-		<string>Lato-Light.ttf</string>
 		<string>Lato-Regular.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
