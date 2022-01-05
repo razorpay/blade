@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     backgroundColor: 'violet',
   },
-  text: { color: 'black' },
+  text: { color: 'black', fontFamily: 'Lato', fontWeight: '400' },
 });
 
 const Button = ({ onPress, text }: ButtonProps): ReactElement => {
