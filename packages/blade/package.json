@@ -41,7 +41,7 @@
     "build:clean-declarations": "rm -rf build/types",
     "test:react": "FRAMEWORK=REACT jest -c ./jest.web.config.js",
     "test:react-native": "FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js",
-    "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && prettier --write ./.storybook/react-native/storybook.requires.js",
+    "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native",
     "android": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-android",
     "ios": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-ios",
     "start": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
