@@ -48,6 +48,7 @@
     "react": "yarn run react:storybook",
     "react:storybook": "FRAMEWORK=REACT start-storybook -c ./.storybook/react -p 9009",
     "react:storybook:build": "FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site"
+    "chromatic": "npx chromatic"
   },
   "dependencies": {
     "@babel/runtime": "7.16.5"
