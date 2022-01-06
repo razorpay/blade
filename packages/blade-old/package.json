@@ -15,7 +15,8 @@
   },
   "files": [
     "src",
-    "public"
+    "public",
+    "scripts"
   ],
   "scripts": {
     "web": "npm run web:storybook",
