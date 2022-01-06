@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 2.0.1
+
+### Patch Changes
+
+- 842e57a: fix(blade-old): include scripts while publishing
+
 ## 2.0.0
 
 ### Major Changes
