@@ -3,12 +3,16 @@ import { Meta } from '@storybook/addon-docs/blocks';
 <Meta title="Guides/Usage" />
 
 # 👀 How to use blade?
-<br/>
-<br/>
+
+<br />
+<br />
 
 ## Tokens
+
 To start using tokens in your application you can follow these steps:
+
 1. Wrap your App with `BladeProvider` and pass it `paymentTheme` or `bankingTheme` tokens.
+
 ```jsx
 // App entry point
 import { BladeProvider } from '@razorpay/blade/components';
@@ -26,13 +30,17 @@ function App(): JSX.Element {
 
 export default App;
 ```
+
 2. You can also pass an optional `colorScheme` prop to the `BladeProvider` mentioning whether you want the `light`, `dark` or `system`'s default color scheme. The default is `light`.
+
 ```jsx
-<BladeProvider themeTokens={paymentTheme} colorScheme='dark'>
-   <Card/>
+<BladeProvider themeTokens={paymentTheme} colorScheme="dark">
+  <Card />
 </BladeProvider>
 ```
+
 1. After you've wrapped your App with `BladeProvider`, you can use the `useTheme()` hook to get access to the current theme context.
+
 ```jsx
 import { useTheme, Theme } from '@razorpay/blade/components';
 
