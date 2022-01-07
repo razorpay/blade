@@ -1,0 +1,96 @@
+import { Meta, DocsContainer } from '@storybook/addon-docs';
+import { useTheme, BladeProvider } from '@razorpay/blade/components';
+import { paymentTheme, bankingTheme } from '@razorpay/blade/tokens';
+
+<Meta
+  title="Tokens/Typography"
+  parameters={{
+    docs: {
+      container: ({ children, context }) => {
+        const getThemeTokens = () => {
+          if (context.globals.themeTokens === 'paymentTheme') {
+            return paymentTheme;
+          }
+          if (context.globals.themeTokens === 'bankingTheme') {
+            return bankingTheme;
+          }
+          return null;
+        };
+        return (
+          <DocsContainer context={context}>
+            <BladeProvider
+              key={`${context.globals.themeTokens}-${context.globals.colorScheme}`}
+              themeTokens={getThemeTokens()}
+              colorScheme={context.globals.colorScheme}
+            >
+              {children}
+            </BladeProvider>
+          </DocsContainer>
+        );
+      },
+    },
+  }}
+/>
+
+# 🔡 Typography
+
+export const Typography = () => {
+  const { theme } = useTheme();
+  return (
+    <>
+      <h3>Font Family</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Token Name</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(theme.typography.fonts.family).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.typography.fonts.family.${key}`}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h3>Font Weight</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Token Name</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(theme.typography.fonts.weight).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.typography.fonts.weight.${key}`}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h3>Font Size</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Token Name</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(theme.typography.fonts.size).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.typography.fonts.size.${key}`}</td>
+              <td style={{ fontSize: `${value}px`, padding: '16px' }}>Era of rising Fintech</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+};
+
+<Typography />
