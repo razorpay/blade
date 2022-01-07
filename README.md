@@ -139,7 +139,7 @@ export default App;
    <Card/>
 </BladeProvider>
 ```
-1. After you've wrapped your App with `BladeProvider`, you can use the `useTheme()` hook to get access to the current theme context.
+3. After you've wrapped your App with `BladeProvider`, you can use the `useTheme()` hook to get access to the current theme context.
 ```jsx
 import { useTheme, Theme } from '@razorpay/blade/components';
 

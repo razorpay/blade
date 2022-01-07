@@ -1,8 +1,7 @@
-import { Meta, DocsContainer, Story, ColorPalette, ColorItem } from '@storybook/addon-docs';
+import { Meta, DocsContainer, ColorPalette, ColorItem } from '@storybook/addon-docs';
 import { useTheme, BladeProvider } from '@razorpay/blade/components';
 import { paymentTheme, bankingTheme, colors } from '@razorpay/blade/tokens';
 import flat from 'flat';
-import get from 'lodash/get';
 
 <Meta
   title="Tokens/Colors"
@@ -16,6 +15,7 @@ import get from 'lodash/get';
           if (context.globals.themeTokens === 'bankingTheme') {
             return bankingTheme;
           }
+          return null;
         };
         return (
           <DocsContainer context={context}>
@@ -27,37 +27,28 @@ import get from 'lodash/get';
               {children}
             </BladeProvider>
           </DocsContainer>
-        )
-      }
+        );
+      },
     },
   }}
 />
-
 
 # 🎨 Color Palette
 
 ## Chromatic Colors
 
 <ColorPalette>
-{Object.entries(colors.chromatic).map(([category, swatches]) => (
-	<ColorItem
-    key={category}
-		title={category.toUpperCase()}
-		colors={swatches}
-	/>
-))}
+  {Object.entries(colors.chromatic).map(([category, swatches]) => (
+    <ColorItem key={category} title={category.toUpperCase()} colors={swatches} />
+  ))}
 </ColorPalette>
 
 ## Neutral Colors
 
 <ColorPalette>
-{Object.entries(colors.neutral).map(([category, swatches]) => (
-	<ColorItem
-    key={category}
-		title={category.toUpperCase()}
-		colors={swatches}
-	/>
-))}
+  {Object.entries(colors.neutral).map(([category, swatches]) => (
+    <ColorItem key={category} title={category.toUpperCase()} colors={swatches} />
+  ))}
 </ColorPalette>
 
 # 💅🏻 Theme Tokens
@@ -67,43 +58,40 @@ export const ThemeTokens = () => {
   const getColorPalette = () => {
     const colorPalette = [];
     Object.entries(theme.colors).forEach(([colorBase, colorBaseValues]) => {
-      Object.entries(colorBaseValues).forEach(
-        ([colorProperty, colorPropertyValues]) => {
-          if (typeof colorPropertyValues === "string") {
-            colorPalette.push({
-              base: colorBase,
-              title: `${colorProperty}`,
-              colors: { [colorProperty]: colorPropertyValues }
-            });
-            return;
-          }
-          Object.entries(colorPropertyValues).forEach(
-            ([colorVariant, colorVariantValues]) => {
-              colorPalette.push({
-                base: colorBase,
-                title: `${colorProperty}.${colorVariant}`,
-                colors: typeof colorVariantValues === 'string' ? {[colorVariant]: colorVariantValues} : flat(colorVariantValues)
-              });
-            }
-          );
+      Object.entries(colorBaseValues).forEach(([colorProperty, colorPropertyValues]) => {
+        if (typeof colorPropertyValues === 'string') {
+          colorPalette.push({
+            base: colorBase,
+            title: `${colorProperty}`,
+            colors: { [colorProperty]: colorPropertyValues },
+          });
+          return;
         }
-      );
+        Object.entries(colorPropertyValues).forEach(([colorVariant, colorVariantValues]) => {
+          colorPalette.push({
+            base: colorBase,
+            title: `${colorProperty}.${colorVariant}`,
+            colors:
+              typeof colorVariantValues === 'string'
+                ? { [colorVariant]: colorVariantValues }
+                : flat(colorVariantValues),
+          });
+        });
+      });
     });
     return (
       <ColorPalette>
-        {colorPalette.map((colorItem)=>(
+        {colorPalette.map((colorItem) => (
           <ColorItem
             key={colorItem.title}
             title={`theme.colors.${colorItem.base}.${colorItem.title}`}
             colors={colorItem.colors}
-          />))
-        }
+          />
+        ))}
       </ColorPalette>
-    )
+    );
   };
-  
-  return getColorPalette()
+  return getColorPalette();
 };
 
 <ThemeTokens />
-
