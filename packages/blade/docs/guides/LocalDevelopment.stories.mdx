@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Guides/Local Development" />
 
@@ -80,12 +80,11 @@ We use `react-testing-library` for writing tests. If you want to write platform 
   cd packages/blade
   yarn test:react-native
   ```
-  > To update the snapshots run the test commands with `-u` as suffix
+> To update the snapshots run the test commands with `-u` as suffix
 
 ## Troubleshooting
-
-- `Blade requires "FRAMEWORK" environment variable to be set. Valid values are "REACT" and "REACT_NATIVE". Instead, received: undefined`
+* `Blade requires "FRAMEWORK" environment variable to be set. Valid values are "REACT" and "REACT_NATIVE". Instead, received: undefined`
 
   **Issue:** This is an issue that happens mostly if you run `yarn android` directly. For some reason `FRAMEWORK` doesn't gets passed to React Native application
 
-  **Fix:** If you come across this issue then you first run `yarn start` and then run `yarn android`.
+  **Fix:** If you come across this issue then you first run `yarn start` and then run `yarn android`. 

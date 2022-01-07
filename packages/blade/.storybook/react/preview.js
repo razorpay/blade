@@ -1,3 +1,4 @@
+import { theme } from './manager';
 import { BladeProvider } from '@razorpay/blade/components';
 import { paymentTheme, bankingTheme } from '@razorpay/blade/tokens';
 
@@ -14,6 +15,9 @@ export const parameters = {
         ['Colors', 'Border', 'Spacing', 'Shadows', 'Typography'],
       ],
     },
+  },
+  docs: {
+    theme,
   },
 };
 
