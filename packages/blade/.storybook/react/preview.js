@@ -1,8 +1,10 @@
-import { theme } from './manager';
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable import/no-extraneous-dependencies */
 import { BladeProvider } from '@razorpay/blade/components';
 import { paymentTheme, bankingTheme } from '@razorpay/blade/tokens';
-
-let selectedTheme = 'Payment';
+import { theme } from './manager';
+import { getManagerStyles } from './manager-styles';
+import { getPreviewStyles } from './preview-styles';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -25,11 +27,40 @@ export const decorators = [
   (Story, context) => {
     const getThemeTokens = () => {
       if (context.globals.themeTokens === 'paymentTheme') {
+        document.head.insertAdjacentHTML(
+          'beforeend',
+          `<style>${getPreviewStyles({
+            themeTokens: paymentTheme,
+            colorScheme: context.globals.colorScheme,
+          })}</style>`,
+        );
+        parent.document.head.insertAdjacentHTML(
+          'beforeend',
+          `<style>${getManagerStyles({
+            themeTokens: paymentTheme,
+            colorScheme: context.globals.colorScheme,
+          })}</style>`,
+        );
         return paymentTheme;
       }
       if (context.globals.themeTokens === 'bankingTheme') {
+        document.head.insertAdjacentHTML(
+          'beforeend',
+          `<style>${getPreviewStyles({
+            themeTokens: bankingTheme,
+            colorScheme: context.globals.colorScheme,
+          })}</style>`,
+        );
+        parent.document.head.insertAdjacentHTML(
+          'beforeend',
+          `<style>${getManagerStyles({
+            themeTokens: bankingTheme,
+            colorScheme: context.globals.colorScheme,
+          })}</style>`,
+        );
         return bankingTheme;
       }
+      return null;
     };
 
     return (

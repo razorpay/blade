@@ -31,3 +31,4 @@ yarn-error.log*
 
 # don't ignore dot files
 !.*rc.js
+!.storybook
