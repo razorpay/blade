@@ -1,0 +1,101 @@
+import { Meta, DocsContainer } from '@storybook/addon-docs';
+import { useTheme, BladeProvider } from '@razorpay/blade/components';
+import { paymentTheme, bankingTheme } from '@razorpay/blade/tokens';
+
+<Meta
+  title="Tokens/Border"
+  parameters={{
+    docs: {
+      container: ({ children, context }) => {
+        const getThemeTokens = () => {
+          if (context.globals.themeTokens === 'paymentTheme') {
+            return paymentTheme;
+          }
+          if (context.globals.themeTokens === 'bankingTheme') {
+            return bankingTheme;
+          }
+          return null;
+        };
+        return (
+          <DocsContainer context={context}>
+            <BladeProvider
+              key={`${context.globals.themeTokens}-${context.globals.colorScheme}`}
+              themeTokens={getThemeTokens()}
+              colorScheme={context.globals.colorScheme}
+            >
+              {children}
+            </BladeProvider>
+          </DocsContainer>
+        );
+      },
+    },
+  }}
+/>
+
+# ─ Border
+
+export const Border = () => {
+  const { theme } = useTheme();
+  return (
+    <>
+      <br />
+      <h3>Border Radius</h3>
+      <table>
+        <tbody>
+          {Object.entries(theme.border.radius).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.border.radius.${key}`}</td>
+              <td>
+                {key === 'round' ? (
+                  <div
+                    style={{
+                      width: '64px',
+                      height: '64px',
+                      backgroundColor: '#e8e8eb',
+                      borderRadius: `${value}`,
+                      border: '1px solid #c2c2c2',
+                    }}
+                  />
+                ) : (
+                  <div
+                    style={{
+                      width: '96px',
+                      height: '64px',
+                      backgroundColor: '#e8e8eb',
+                      borderRadius: `${value}px`,
+                      border: '1px solid #c2c2c2',
+                    }}
+                  />
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <br />
+      <h3>Border Width</h3>
+      <table>
+        <tbody>
+          {Object.entries(theme.border.width).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.border.width.${key}`}</td>
+              <td>
+                <div
+                  style={{
+                    width: '64px',
+                    height: '64px',
+                    backgroundColor: '#e8e8eb',
+                    borderRadius: `4px`,
+                    border: `${value}px solid #c2c2c2`,
+                  }}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+};
+
+<Border />

@@ -59,7 +59,7 @@ const getWebConfig = ({ exportCategory }) => ({
     pluginBabel({
       exclude: 'node_modules/**',
       babelHelpers: 'runtime',
-      envName: 'web-production',
+      envName: 'production',
       extensions: webExtensions,
     }),
   ],
@@ -99,13 +99,23 @@ const getDeclarationsConfig = ({ exportCategory }) => ({
   plugins: [pluginDeclarations()],
 });
 
-const config = exportCategories
-  .map((exportCategory) => [
-    getWebConfig({ exportCategory }),
-    getNativeConfig({ exportCategory }),
-    // bundle our declarations for each category `components`, `tokens` and `utils` and place it next to each category under `build`
-    getDeclarationsConfig({ exportCategory }),
-  ])
-  .flat();
+const config = () => {
+  const framework = process.env.FRAMEWORK;
 
-export default config;
+  if (framework === 'REACT') {
+    return exportCategories.map((exportCategory) => [getWebConfig({ exportCategory })]).flat();
+  }
+
+  if (framework === 'REACT_NATIVE') {
+    return exportCategories.map((exportCategory) => [getNativeConfig({ exportCategory })]).flat();
+  }
+
+  return exportCategories
+    .map((exportCategory) => [
+      // bundle our declarations for each category `components`, `tokens` and `utils` and place it next to each category under `build`
+      getDeclarationsConfig({ exportCategory }),
+    ])
+    .flat();
+};
+
+export default config();

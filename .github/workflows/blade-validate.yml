@@ -23,10 +23,10 @@ jobs:
       - name: Lint Source Code
         run: yarn lint
       - name: Run Web Tests
-        run: yarn test:web
+        run: yarn test:react
         working-directory: packages/blade
       - name: Run Native Tests
-        run: yarn test:native
+        run: yarn test:react-native
         working-directory: packages/blade
       - name: Run TypeScript Checks
         run: yarn tsc
