@@ -5,11 +5,12 @@ import isDefined from '../../_helpers/isDefined';
 import isEmpty from '../../_helpers/isEmpty';
 import { getColor, getVariantColorKeys, makePxValue } from '../../_helpers/theme';
 import Flex from '../Flex';
-import Icon from '../Icon';
 import Size from '../Size';
 import Space from '../Space';
 import Text from '../Text';
 import View from '../View';
+import CheckboxFilled from '../../icons/CheckboxFilled';
+import CheckboxOutlined from '../../icons/CheckboxOutlined';
 import Backdrop from './Backdrop';
 import Input from './Input';
 import Label from './Label';
@@ -176,6 +177,19 @@ const Checkbox = ({
   const shouldShowDescriptionText =
     title && (!isEmpty(helpText) || !isEmpty(errorText)) && size !== 'small';
 
+  const checkboxIconProps = {
+    size: styles.icon.size({
+      size,
+    }),
+    fill: styles.icon.fill({
+      isChecked,
+      disabled,
+      variantColor,
+      externalChecked,
+    }),
+    testID: 'checkbox-icon',
+  };
+
   return (
     <Flex flexDirection="column" alignSelf="flex-start">
       <View>
@@ -211,19 +225,11 @@ const Checkbox = ({
                   }).borderRadius
                 }
               >
-                <Icon
-                  size={styles.icon.size({
-                    size,
-                  })}
-                  name={externalChecked ?? isChecked ? 'checkboxFilled' : 'checkboxOutlined'}
-                  fill={styles.icon.fill({
-                    isChecked,
-                    disabled,
-                    variantColor,
-                    externalChecked,
-                  })}
-                  testID="checkbox-icon"
-                />
+                {externalChecked ? (
+                  <CheckboxFilled {...checkboxIconProps} />
+                ) : (
+                  <CheckboxOutlined {...checkboxIconProps} />
+                )}
               </Backdrop>
             </Size>
             {title ? (

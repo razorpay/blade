@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.1.5
+
+### Patch Changes
+
+- 04677a3: fix(blade): add lineheight tokens
+
 ## 0.1.4
 
 ### Patch Changes

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import PropTypes from 'prop-types';
-import Icon from '../Icon';
 import Space from '../Space';
 import View from '../View';
 
@@ -31,7 +30,7 @@ const styles = {
   },
 };
 
-const AccessoryIcon = ({ name, disabled, hasError, variant, _isMultiline }) => {
+const AccessoryIcon = ({ icon: Icon, disabled, hasError, variant, _isMultiline }) => {
   return (
     <Space
       padding={styles.padding({
@@ -41,7 +40,6 @@ const AccessoryIcon = ({ name, disabled, hasError, variant, _isMultiline }) => {
     >
       <View>
         <Icon
-          name={name}
           size="small"
           fill={styles.color({
             disabled,
@@ -55,7 +53,7 @@ const AccessoryIcon = ({ name, disabled, hasError, variant, _isMultiline }) => {
 };
 
 AccessoryIcon.propTypes = {
-  name: PropTypes.string,
+  icon: PropTypes.elementType,
   disabled: PropTypes.bool,
   hasError: PropTypes.bool,
   variant: PropTypes.oneOf(['filled', 'outlined']).isRequired,
@@ -63,7 +61,6 @@ AccessoryIcon.propTypes = {
 };
 
 AccessoryIcon.defaultProps = {
-  name: 'info',
   disabled: false,
   hasError: false,
   _isMultiline: false,

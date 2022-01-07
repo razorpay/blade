@@ -3,6 +3,7 @@ import { fireEvent, act } from '@testing-library/react-native';
 import Snackbar from '../Snackbar';
 import { renderWithTheme } from '../../../_helpers/testing';
 import { useSnackbar } from '../SnackbarContext';
+import { Info } from '../../../icons';
 
 jest.mock('../SnackbarContext');
 
@@ -99,7 +100,7 @@ describe('<Snackbar />', () => {
   });
   describe('icon', () => {
     it('renders with an icon', () => {
-      const { container } = renderWithTheme(<Snackbar title="Snackbar text here" icon="info" />);
+      const { container } = renderWithTheme(<Snackbar title="Snackbar text here" icon={Info} />);
       expect(container).toMatchSnapshot();
     });
   });

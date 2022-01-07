@@ -257,6 +257,7 @@ exports[`<Snackbar /> icon renders with an icon 1`] = `
         }
       >
         <RNSVGSvgView
+          accessibilityElementsHidden={true}
           align="xMidYMid"
           bbHeight={20}
           bbWidth={20}

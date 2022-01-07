@@ -5,6 +5,7 @@ import View from '../View';
 import Space from '../Space';
 import Text from '../Text';
 import ScrollView from '../ScrollView';
+import { Info } from '../../icons';
 import TextInput from './TextInput';
 
 const sizeOptions = {
@@ -58,8 +59,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'medium', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
             prefix=""
             suffix=""
             placeholder="Type here"
@@ -86,8 +85,7 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft="info"
-            iconRight=""
+            iconLeft={Info}
             prefix=""
             suffix=""
             placeholder="Type here"
@@ -113,8 +111,7 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight="info"
+            iconRight={Info}
             prefix=""
             suffix=""
             placeholder="Type here"
@@ -140,8 +137,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
             prefix="₹"
             suffix=""
             placeholder="Type here"
@@ -167,8 +162,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
             prefix=""
             suffix="₹"
             placeholder="Type here"
@@ -194,8 +187,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
             prefix=""
             suffix=""
             placeholder="Type here"
@@ -222,8 +213,7 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft="info"
-            iconRight=""
+            iconLeft={Info}
             prefix=""
             suffix=""
             placeholder="Type here"
@@ -249,8 +239,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
-            iconLeft=""
-            iconRight=""
             prefix="₹"
             suffix=""
             placeholder="Type here"
@@ -277,8 +265,6 @@ storiesOf('TextInput', module)
             label="Label"
             value="Some Value"
             disabled={true}
-            iconLeft=""
-            iconRight=""
             prefix="₹"
             suffix=""
             placeholder="Type here"
@@ -304,8 +290,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
-            iconLeft=""
-            iconRight=""
             prefix="₹"
             suffix=""
             placeholder="Type here"
@@ -334,8 +318,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
             prefix=""
             suffix=""
             placeholder="Type here"
@@ -361,8 +343,7 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft="info"
-            iconRight=""
+            iconLeft={Info}
             prefix=""
             suffix=""
             placeholder="Type here"
@@ -388,8 +369,7 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight="info"
+            iconRight={Info}
             prefix=""
             suffix=""
             placeholder="Type here"
@@ -415,8 +395,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
             prefix="₹"
             suffix=""
             placeholder="Type here"
@@ -442,8 +420,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
             prefix=""
             suffix="₹"
             placeholder="Type here"
@@ -469,8 +445,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
             prefix=""
             suffix=""
             placeholder="Type here"
@@ -497,8 +471,7 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft="info"
-            iconRight=""
+            iconLeft={Info}
             prefix=""
             suffix=""
             placeholder="Type here"
@@ -524,8 +497,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
-            iconLeft=""
-            iconRight=""
             prefix="₹"
             suffix=""
             placeholder="Type here"
@@ -551,8 +522,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={true}
-            iconLeft=""
-            iconRight=""
             prefix="₹"
             suffix=""
             placeholder="Type here"
@@ -580,8 +549,6 @@ storiesOf('TextInput', module)
             width={select('Width', sizeOptions, 'large', 'Common')}
             label="Label"
             disabled={false}
-            iconLeft=""
-            iconRight=""
             prefix=""
             suffix=""
             placeholder="Type here"

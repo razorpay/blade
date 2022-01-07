@@ -1,6 +1,7 @@
 import React from 'react';
 import { fireEvent, act } from '@testing-library/react-native';
 import { renderWithTheme } from '../../../_helpers/testing';
+import { Info } from '../../../icons';
 import TextInput from '../index';
 
 describe('Renders <TextInput /> outlined variant correctly', () => {
@@ -30,17 +31,17 @@ describe('Renders <TextInput /> outlined variant correctly', () => {
   });
 
   it('snapshot testing with iconLeft ', () => {
-    const { container } = renderWithTheme(<TextInput iconLeft="info" />);
+    const { container } = renderWithTheme(<TextInput iconLeft={Info} />);
     expect(container).toMatchSnapshot();
   });
 
   it('snapshot testing with iconRight ', () => {
-    const { container } = renderWithTheme(<TextInput iconRight="info" />);
+    const { container } = renderWithTheme(<TextInput iconRight={Info} />);
     expect(container).toMatchSnapshot();
   });
 
   it('snapshot testing with iconLeft & iconRight ', () => {
-    const { container } = renderWithTheme(<TextInput iconLeft="info" iconRight="info" />);
+    const { container } = renderWithTheme(<TextInput iconLeft={Info} iconRight={Info} />);
     expect(container).toMatchSnapshot();
   });
 
@@ -65,7 +66,7 @@ describe('Renders <TextInput /> outlined variant correctly', () => {
     const { container } = renderWithTheme(
       <TextInput
         prefix="info"
-        iconRight="info"
+        iconRight={Info}
         label="Email"
         errorText="Some error has occurred"
       />,
@@ -77,7 +78,7 @@ describe('Renders <TextInput /> outlined variant correctly', () => {
     const { container } = renderWithTheme(
       <TextInput
         prefix="info"
-        iconRight="info"
+        iconRight={Info}
         label="Email"
         helpText="You can enter your email here"
         disabled={true}
@@ -140,18 +141,18 @@ describe('Renders <TextInput /> filled variant correctly', () => {
   });
 
   it('snapshot testing with iconLeft (filled TextInput)', () => {
-    const { container } = renderWithTheme(<TextInput variant="filled" iconLeft="info" />);
+    const { container } = renderWithTheme(<TextInput variant="filled" iconLeft={Info} />);
     expect(container).toMatchSnapshot();
   });
 
   it('snapshot testing with iconRight (filled TextInput)', () => {
-    const { container } = renderWithTheme(<TextInput variant="filled" iconRight="info" />);
+    const { container } = renderWithTheme(<TextInput variant="filled" iconRight={Info} />);
     expect(container).toMatchSnapshot();
   });
 
   it('snapshot testing with iconLeft & iconRight (filled TextInput)', () => {
     const { container } = renderWithTheme(
-      <TextInput variant="filled" iconLeft="info" iconRight="info" />,
+      <TextInput variant="filled" iconLeft={Info} iconRight={Info} />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -180,7 +181,7 @@ describe('Renders <TextInput /> filled variant correctly', () => {
       <TextInput
         variant="filled"
         prefix="info"
-        iconRight="info"
+        iconRight={Info}
         label="Email"
         errorText="Some error has occurred"
       />,
@@ -193,7 +194,7 @@ describe('Renders <TextInput /> filled variant correctly', () => {
       <TextInput
         variant="filled"
         prefix="info"
-        iconRight="info"
+        iconRight={Info}
         label="Email"
         helpText="You can enter your email here"
         disabled={true}

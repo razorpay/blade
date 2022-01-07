@@ -4,8 +4,8 @@ import { select, text, number, boolean } from '@storybook/addon-knobs';
 import Flex from '../../atoms/Flex';
 import View from '../../atoms/View';
 import Button from '../../atoms/Button';
-import { getIconNames } from '../../_helpers/icon';
 import { useSnackbar, SnackbarProvider } from '../Snackbar';
+import { Info } from '../../icons';
 
 const variantOptions = {
   positive: 'positive',
@@ -13,14 +13,6 @@ const variantOptions = {
   warning: 'warning',
   neutral: 'neutral',
 };
-
-const iconOptions = getIconNames().reduce(
-  (options, option) => ({
-    ...options,
-    [option]: option,
-  }),
-  {},
-);
 
 const SnackbarDemo = (props) => {
   const snackbar = useSnackbar();
@@ -80,7 +72,7 @@ storiesOf('Snackbar', module)
             }}
             onClose={() => {}}
             autoHide={boolean('autoHide', true)}
-            icon={select('icon', iconOptions, 'info')}
+            icon={Info}
             position={{
               bottom: 1,
             }}

@@ -51,6 +51,16 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['**/*.{md,mdx}'],
+      extends: ['plugin:mdx/recommended'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'react/jsx-filename-extension': [1, { extensions: ['.md', '.mdx'] }],
+        'react/display-name': 'off',
+        'react/prop-types': 'off',
+      },
+    },
+    {
       files: ['**/*.{ts,tsx}'],
       extends: [
         'plugin:@typescript-eslint/recommended',

@@ -357,7 +357,7 @@ const TextInput = React.forwardRef(
                           {hasLeftIcon ? (
                             <AccessoryIcon
                               variant={variant}
-                              name={iconLeft}
+                              icon={iconLeft}
                               disabled={disabled}
                               hasError={hasError}
                               _isMultiline={_isMultiline}
@@ -428,7 +428,7 @@ const TextInput = React.forwardRef(
                             >
                               <AccessoryIcon
                                 variant={variant}
-                                name={iconRight}
+                                icon={iconRight}
                                 disabled={disabled}
                                 hasError={hasError}
                               />
@@ -476,8 +476,8 @@ TextInput.propTypes = {
   suffix: PropTypes.string,
   disabled: PropTypes.bool,
   value: PropTypes.string,
-  iconLeft: PropTypes.string,
-  iconRight: PropTypes.string,
+  iconLeft: PropTypes.elementType,
+  iconRight: PropTypes.elementType,
   onRightIconClick: PropTypes.func,
   maxLength: PropTypes.number,
   label: PropTypes.string,

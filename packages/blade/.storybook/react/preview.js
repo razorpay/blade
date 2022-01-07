@@ -27,40 +27,11 @@ export const decorators = [
   (Story, context) => {
     const getThemeTokens = () => {
       if (context.globals.themeTokens === 'paymentTheme') {
-        document.head.insertAdjacentHTML(
-          'beforeend',
-          `<style>${getPreviewStyles({
-            themeTokens: paymentTheme,
-            colorScheme: context.globals.colorScheme,
-          })}</style>`,
-        );
-        parent.document.head.insertAdjacentHTML(
-          'beforeend',
-          `<style>${getManagerStyles({
-            themeTokens: paymentTheme,
-            colorScheme: context.globals.colorScheme,
-          })}</style>`,
-        );
         return paymentTheme;
       }
       if (context.globals.themeTokens === 'bankingTheme') {
-        document.head.insertAdjacentHTML(
-          'beforeend',
-          `<style>${getPreviewStyles({
-            themeTokens: bankingTheme,
-            colorScheme: context.globals.colorScheme,
-          })}</style>`,
-        );
-        parent.document.head.insertAdjacentHTML(
-          'beforeend',
-          `<style>${getManagerStyles({
-            themeTokens: bankingTheme,
-            colorScheme: context.globals.colorScheme,
-          })}</style>`,
-        );
         return bankingTheme;
       }
-      return null;
     };
 
     return (
