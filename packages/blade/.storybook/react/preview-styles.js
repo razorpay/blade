@@ -1,3 +1,4 @@
+// src: https://github.com/IgorSzyporyn/storybook-facelift/blob/7a1df9f254/src/styles/manager/managerStyles.ts
 /* eslint-disable no-param-reassign */
 import { toTitleCase } from '../../src/utils';
 

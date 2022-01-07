@@ -11,7 +11,7 @@ module.exports = {
     '@storybook/preset-create-react-app',
   ],
   staticDirs: ['../../public/storybook-site'],
-  webpackFinal: async (config, { configType }) => {
+  webpackFinal: async (config) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
     // 'PRODUCTION' is used when building the static version of storybook.
