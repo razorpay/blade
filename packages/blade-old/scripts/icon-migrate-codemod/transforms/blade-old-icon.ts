@@ -8,8 +8,6 @@ import {
   JSXElement,
 } from 'jscodeshift';
 
-export const parser = 'jsx';
-
 const isJSXAttribute = (elm: JSXAttribute | JSXSpreadAttribute): elm is JSXAttribute => {
   return elm.type === 'JSXAttribute';
 };
@@ -57,9 +55,12 @@ const transform: Transform = (file, api, _options) => {
     node.openingElement.attributes = props;
   });
 
-  FIRST_IMPORT.insertAfter(
-    j.importDeclaration(imports, j.stringLiteral('@razorpay/blade-old/src/icons'), 'value'),
-  );
+  // only add import if we have any icons to replace.
+  if (imports.length > 0) {
+    FIRST_IMPORT.insertAfter(
+      j.importDeclaration(imports, j.stringLiteral('@razorpay/blade-old/src/icons'), 'value'),
+    );
+  }
 
   return root.toSource();
 };
