@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 2.0.2
+
+### Patch Changes
+
+- 6674559: fix: icon migrate script dangling imports
+
 ## 2.0.1
 
 ### Patch Changes
