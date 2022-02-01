@@ -71,12 +71,13 @@ These are all the actions that can affect an element while implementing motion o
 12. **Trim Path:** Change in the start-point and end-point of a line.
 
 ## Animation Properties of the Core Actions
-Based on our the products pre-existing actions and branding we've decided on these 5 core-actions and their attributes:
+Based on our the product's pre-existing animation properties and branding, we've decided following 6 core-actions and their attributes:
 1. **Scale:** `length`, `height`, `anchor-point`, `size`.
 2. **Move:** `anchor-points`, `pathway`.
 3. **Fade:** `opacity`.
 4. **Fill:** `colour-tokens`.
 5. **Morph:** `shape-attributes`.
+6. **Rotation:** `rotation`.
 
 ## Atrribute Details
 ### 1. **Scale**
@@ -108,7 +109,7 @@ Based on our the products pre-existing actions and branding we've decided on the
 ### Types:
 | Type | Description | Example |
 |---|---|---|
-| **Fade In** | Opacity value moves from a lower to higher. <br>**Ex:** Appearing of a card on a page.<br>**Unit:** `%` | <img src="images/motion/core-actions/image9.gif" alt="core-action-fade-in" width="200px"> |
+| **Fade In** | Opacity value moves from a lower to higher. <br>**Ex:** Appearing of a card on a page.<br>**Unit:** `%` | <img src="images/motion/core-actions/image18.gif" alt="core-action-fade-in" width="200px"> |
 | **Fade Out** | Opacity value moves from a higher to lower.<br>**Ex:** Disappearing of a card from a page.<br>**Unit:** `%` | <img src="images/motion/core-actions/image9.gif" alt="core-action-fade-out" width="200px"> |
 
 ### 4. **Fill**
@@ -120,12 +121,22 @@ Based on our the products pre-existing actions and branding we've decided on the
 | **Color token change** | When there is a change in state of a UI element, use the fill effect. <br>**Ex:** Hovering over a button.<br>**Unit:** token value (`color.btn.primary.hover`) | <img src="images/motion/core-actions/image10.gif" alt="core-action-fill" width="200px"> |
 
 ### 5. **Morph**
-> It can be used on mask
+> It can be used as a mask
 * **Shape:** A graphics element that is defined by some combination of straight lines and curves. Read more on [Shapes](https://www.w3.org/TR/SVG2/shapes.html). Specifically: circle, ellipse, line, path, polygon, polyline and rect.
 
 ### Types:
 | Type | Description | Example |
 |---|---|---|
+| **Shape change** | When a shape gets morhed into another. <br>**Ex:** Opening of new screen from a button or card.<br>**Unit:** - | <img src="images/motion/core-actions/image11.gif" alt="core-action-morph" width="200px"> |
+
+### 5. **Rotation**
+* **Anchor point:** Anchor-point coordinates; `(x1, y1)`.
+* **Axis:** Rotation can be along any axis `X` or `Y` or `Z` but within our system, Rotaion should be along Z-axis(out of the screen) only.
+
+### Types:
+| Type | Description | Example |
+|---|---|---|
+| **Z-Axis rotation** | When there is a rotaion along Z-axis which passes from it's centre or Anchor point. <br>**Ex:** Spinners.<br>**Unit:** rotaion degrees | <img src="images/motion/core-actions/image19.gif" alt="core-action-rotation" width="200px"> |
 | **Shape change** | When a shape gets morhed into another. <br>**Ex:** Opening of dropdown menu.<br>**Unit:** - | <img src="images/motion/core-actions/image11.gif" alt="core-action-morph" width="200px"> |
 
 ### **Combination of Properties**
@@ -136,6 +147,7 @@ Based on our the products pre-existing actions and branding we've decided on the
 | **Fade** | ✅ | ✅ | ⛔️ | ❌ | ❌ |
 | **Fill** | ❌ | ❌ | ❌ | ⛔️ | ✅ |
 | **Morph** | ❌ | ✅ | ❌ | ✅ | ⛔️ |
+> **Note:** Roation property can only be used in loaders or icons, and can be used with Scale and Fade.
 
 ### **Examples**
 | Type | **Scale Fade** | **Move Fade** |**Morph Move** | **Scale Move** | **Morph Fill** |
