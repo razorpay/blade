@@ -78,9 +78,24 @@ For lower ration-> less time <br><br>
 
 1. **Step duration:** For easier and quick implementation, we will be defining a few tokens of durations.
 After researching various Design systems and exploring them on UI elements i.e toggle, card hover, Page transitions. We defined these Duration values.<br>
-<img src="images/motion/duration/image9.png" alt="card-expantion-duration" > 
-<br> **Durations tokens:** <br> duration-1: 70ms <br> duration-2: 150ms <br> duration-3: 200ms <br> duration-4: 250ms <br> duration-5: 300ms <br> duration-6: 400ms <br> duration-7: 600ms <br> 
-<br> **Delay Durations Tokens:** Sometimes we also need delay in next following motion, in those cases we can use these Durations intervals- <br> delay-1: 70ms <br> delay-2: 120ms <br> delay-3: 180ms <br> delay-4: 3s <br> delay-5: 5s <br>
+<img src="images/motion/duration/image9.png" alt="card-expantion-duration" >
+
+### **Durations tokens**
+* duration-1: `70ms`
+* duration-2: `150ms`
+* duration-3: `200ms`
+* duration-4: `250ms`
+* duration-5: `300ms`
+* duration-6: `400ms`
+* duration-7: `600ms`
+
+### **Delay Durations Tokens:**
+Sometimes we also need delay in next following motion, in those cases we can use these Durations intervals-
+* delay-1: `70ms`
+* delay-2: `120ms`
+* delay-3: `180ms`
+* delay-4: `3s`
+* delay-5: `5s`
 
 2. **Auto duration:** Motion’s duration should be dynamic based on different dependencies. For example: the larger the change in distance (traveled) or size (scaling) of the element, the longer the animation takes. For that, we need to build a relation between all the above 5 dependencies and make duration dynamic. For ex: A relationship that I am trying to build. I tried to use If/else statement and a range of duration, so that by using this logic and relation one can get a duration to use. <br><br>
 <img src="images/motion/duration/image2.png" alt="card-expantion-duration" >
