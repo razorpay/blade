@@ -3,7 +3,7 @@ Start Date: 09-08-2021
 RFC PR: NA
 Blade Issue: NA
 ---
-# Duration - Motion Design <!-- omit in toc -->
+# Easings - Motion Design <!-- omit in toc -->
 
 ### Table Of Contents <!-- omit in toc -->
 - [Summary](#summary)

@@ -121,7 +121,11 @@ Based on our the product's pre-existing animation properties and branding, we've
 | **Color token change** | When there is a change in state of a UI element, use the fill effect. <br>**Ex:** Hovering over a button.<br>**Unit:** token value (`color.btn.primary.hover`) | <img src="images/motion/core-actions/image10.gif" alt="core-action-fill" width="200px"> |
 
 ### 5. **Morph**
+<<<<<<< HEAD:rfcs/2021-28-07-core-actions-motion-design.md
 > It can be used as mask
+=======
+> It can be used as a mask
+>>>>>>> 937bb139e30c5a666705ffd1de59e77bf8b090c6:rfcs/2021-28-07-motion-design-core-actions.md
 * **Shape:** A graphics element that is defined by some combination of straight lines and curves. Read more on [Shapes](https://www.w3.org/TR/SVG2/shapes.html). Specifically: circle, ellipse, line, path, polygon, polyline and rect.
 
 ### Types:
@@ -137,6 +141,10 @@ Based on our the product's pre-existing animation properties and branding, we've
 | Type | Description | Example |
 |---|---|---|
 | **Z-Axis rotation** | When there is a rotaion along Z-axis which passes from it's centre or Anchor point. <br>**Ex:** Spinners.<br>**Unit:** rotaion degrees | <img src="images/motion/core-actions/image19.gif" alt="core-action-rotation" width="200px"> |
+<<<<<<< HEAD:rfcs/2021-28-07-core-actions-motion-design.md
+=======
+| **Shape change** | When a shape gets morhed into another. <br>**Ex:** Opening of dropdown menu.<br>**Unit:** - | <img src="images/motion/core-actions/image11.gif" alt="core-action-morph" width="200px"> |
+>>>>>>> 937bb139e30c5a666705ffd1de59e77bf8b090c6:rfcs/2021-28-07-motion-design-core-actions.md
 
 ### **Combination of Properties**
 |  | Scale | Move | Fade | Fill | Morph |
