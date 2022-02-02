@@ -123,7 +123,6 @@ Based on our the product's pre-existing animation properties and branding, we've
 ### 5. **Morph**
 
 > It can be used as a mask
->>>>>>> 937bb139e30c5a666705ffd1de59e77bf8b090c6:rfcs/2021-28-07-motion-design-core-actions.md
 * **Shape:** A graphics element that is defined by some combination of straight lines and curves. Read more on [Shapes](https://www.w3.org/TR/SVG2/shapes.html). Specifically: circle, ellipse, line, path, polygon, polyline and rect.
 
 ### Types:
