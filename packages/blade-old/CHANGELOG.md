@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 2.1.0
+
+### Minor Changes
+
+- 13e3c3f: feat(Modal): Migrate react-native-modal to 13.0.0
+
 ## 2.0.2
 
 ### Patch Changes

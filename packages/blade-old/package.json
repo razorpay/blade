@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade-old",
   "author": "kamleshchandnani",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "license": "MIT",
   "bin": {
     "migrate-icons": "./scripts/icon-migrate-codemod/cli.js"
