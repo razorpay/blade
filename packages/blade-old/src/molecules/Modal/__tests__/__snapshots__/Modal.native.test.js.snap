@@ -12,12 +12,16 @@ exports[`<Modal /> centered Modal onClose callback is not passed 1`] = `
 >
   <Modal
     animationType="none"
+    deviceHeight={null}
+    deviceWidth={null}
     hardwareAccelerated={false}
     hideModalContentWhileAnimating={false}
+    panResponderThreshold={4}
     scrollHorizontal={false}
     scrollOffset={0}
     scrollOffsetMax={0}
     scrollTo={null}
+    statusBarTranslucent={false}
     supportedOrientations={
       Array [
         "portrait",
@@ -26,6 +30,7 @@ exports[`<Modal /> centered Modal onClose callback is not passed 1`] = `
     }
     swipeThreshold={100}
     transparent={true}
+    useNativeDriverForBackdrop={true}
     visible={true}
   >
     <TouchableWithoutFeedback>
@@ -46,12 +51,16 @@ exports[`<Modal /> centered Modal onClose callback is not passed 1`] = `
       />
     </TouchableWithoutFeedback>
     <View
+      deviceHeight={null}
+      deviceWidth={null}
       hideModalContentWhileAnimating={false}
+      panResponderThreshold={4}
       pointerEvents="box-none"
       scrollHorizontal={false}
       scrollOffset={0}
       scrollOffsetMax={0}
       scrollTo={null}
+      statusBarTranslucent={false}
       style={
         Object {
           "flex": 1,
@@ -75,6 +84,7 @@ exports[`<Modal /> centered Modal onClose callback is not passed 1`] = `
         ]
       }
       swipeThreshold={100}
+      useNativeDriverForBackdrop={true}
     >
       <View
         style={
@@ -222,12 +232,16 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
 >
   <Modal
     animationType="none"
+    deviceHeight={null}
+    deviceWidth={null}
     hardwareAccelerated={false}
     hideModalContentWhileAnimating={false}
+    panResponderThreshold={4}
     scrollHorizontal={false}
     scrollOffset={0}
     scrollOffsetMax={0}
     scrollTo={null}
+    statusBarTranslucent={false}
     supportedOrientations={
       Array [
         "portrait",
@@ -236,6 +250,7 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
     }
     swipeThreshold={100}
     transparent={true}
+    useNativeDriverForBackdrop={true}
     visible={true}
   >
     <TouchableWithoutFeedback>
@@ -256,12 +271,16 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
       />
     </TouchableWithoutFeedback>
     <View
+      deviceHeight={null}
+      deviceWidth={null}
       hideModalContentWhileAnimating={false}
+      panResponderThreshold={4}
       pointerEvents="box-none"
       scrollHorizontal={false}
       scrollOffset={0}
       scrollOffsetMax={0}
       scrollTo={null}
+      statusBarTranslucent={false}
       style={
         Object {
           "flex": 1,
@@ -285,6 +304,7 @@ exports[`<Modal /> centered Modal onClose callback is passed 1`] = `
         ]
       }
       swipeThreshold={100}
+      useNativeDriverForBackdrop={true}
     >
       <View
         style={
@@ -539,12 +559,16 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
 >
   <Modal
     animationType="none"
+    deviceHeight={null}
+    deviceWidth={null}
     hardwareAccelerated={false}
     hideModalContentWhileAnimating={false}
+    panResponderThreshold={4}
     scrollHorizontal={false}
     scrollOffset={0}
     scrollOffsetMax={0}
     scrollTo={null}
+    statusBarTranslucent={false}
     supportedOrientations={
       Array [
         "portrait",
@@ -553,6 +577,7 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
     }
     swipeThreshold={100}
     transparent={true}
+    useNativeDriverForBackdrop={true}
     visible={true}
   >
     <TouchableWithoutFeedback>
@@ -573,12 +598,16 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
       />
     </TouchableWithoutFeedback>
     <View
+      deviceHeight={null}
+      deviceWidth={null}
       hideModalContentWhileAnimating={false}
+      panResponderThreshold={4}
       pointerEvents="box-none"
       scrollHorizontal={false}
       scrollOffset={0}
       scrollOffsetMax={0}
       scrollTo={null}
+      statusBarTranslucent={false}
       style={
         Object {
           "flex": 1,
@@ -602,6 +631,7 @@ exports[`<Modal /> renders bottomsheet Modal 1`] = `
         ]
       }
       swipeThreshold={100}
+      useNativeDriverForBackdrop={true}
     >
       <View
         style={
@@ -749,12 +779,16 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
 >
   <Modal
     animationType="none"
+    deviceHeight={null}
+    deviceWidth={null}
     hardwareAccelerated={false}
     hideModalContentWhileAnimating={false}
+    panResponderThreshold={4}
     scrollHorizontal={false}
     scrollOffset={0}
     scrollOffsetMax={0}
     scrollTo={null}
+    statusBarTranslucent={false}
     supportedOrientations={
       Array [
         "portrait",
@@ -763,6 +797,7 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
     }
     swipeThreshold={100}
     transparent={true}
+    useNativeDriverForBackdrop={true}
     visible={true}
   >
     <TouchableWithoutFeedback>
@@ -783,12 +818,16 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
       />
     </TouchableWithoutFeedback>
     <View
+      deviceHeight={null}
+      deviceWidth={null}
       hideModalContentWhileAnimating={false}
+      panResponderThreshold={4}
       pointerEvents="box-none"
       scrollHorizontal={false}
       scrollOffset={0}
       scrollOffsetMax={0}
       scrollTo={null}
+      statusBarTranslucent={false}
       style={
         Object {
           "flex": 1,
@@ -812,6 +851,7 @@ exports[`<Modal /> renders fullscreen Modal 1`] = `
         ]
       }
       swipeThreshold={100}
+      useNativeDriverForBackdrop={true}
     >
       <View
         style={

@@ -64,6 +64,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
           onBackButtonPress={onClose}
           backdropColor={theme.colors.overlay[200]}
           propagateSwipe
+          useNativeDriverForBackdrop
         >
           <ModalContainer variant="centered">
             {onClose ? (
@@ -125,6 +126,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
             avoidKeyboard={true}
             backdropColor={theme.colors.overlay[200]}
             propagateSwipe
+            useNativeDriverForBackdrop
           >
             <ModalContainer variant="bottomsheet">
               <Flex alignItems="center">
