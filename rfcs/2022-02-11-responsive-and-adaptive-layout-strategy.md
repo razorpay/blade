@@ -28,11 +28,9 @@ Blade Issue: (leave this empty if no issue yet)
     - [3. Components for Adaptive layout(rendering components conditionally)](#3-components-for-adaptive-layoutrendering-components-conditionally)
   - [How will we actually implement the approaches discussed above?](#how-will-we-actually-implement-the-approaches-discussed-above)
     - [On Blade Code Side](#on-blade-code-side)
-    - [On Consumer Code Side](#on-consumer-code-side)
+    - [On Consumer Developer Side](#on-consumer-developer-side)
     - [On Blade Design Side](#on-blade-design-side)
     - [On Consumer Design Side](#on-consumer-design-side)
-- [Drawbacks/Constraints](#drawbacksconstraints)
-- [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
 - [How do we educate people?](#how-do-we-educate-people)
 - [Open Questions](#open-questions)
@@ -210,7 +208,7 @@ After doing some research and aligning it with our uses cases at Razorpay, I pro
 - The typography will scale in segments. Which means if `h1` at `1440px` is `40px`, then at `960px` it will become `32px` directly rather than going from `40px` ➡️ `38px` ➡️ `36px` ➡️ `34px` ➡️ `32px`. You can read more about it in our [Typography Scaling RFC](https://github.com/razorpay/blade/blob/master/rfcs/2021-01-05-typography-scaling.md)
 - The obvious question that might come to your mind is that what happens to the content after a breakpoint. For eg: after say `960px` the mobile typography scale would be picked up by the system but there are mobile devices who have resolutions ranging from `320px`, `480px`, `760px`, `960px` so won't the mobile typography scale look too small on say `760px` screen width device? Well, that's the reason we have kept the units of typography to be `rems` so it can adjust to these use cases based on resolutions, browsers font size, etc. This will also handle use cases for high resolution mobile screens for eg: iPhone 12. You can [read more about that in our RFC about units for layout and typography](https://github.com/razorpay/blade/blob/master/rfcs/2021-02-19-units-for-typography-and-layout.md#what-will-work-for-us)
 
-### On Consumer Code Side
+### On Consumer Developer Side
 
 Taking the [approaches discussed above](#what-would-work-for-us?)
 
@@ -371,43 +369,26 @@ When designing layouts and consuming components from Design System Library on Fi
 2. Pick the right version of the component for respective screen sizes.
 3. If for different screen sizes you want to render entirely different components(adaptive) then make sure to highlight it properly so the developers can understand it properly
 
-# Drawbacks/Constraints
-
-Why should we _not_ do this? Maybe try to consider the following constraints
-
-- Implementation cost, both in terms of code size and complexity.
-- The impact of it on new as well as existing consumer projects.
-- Cost of migration.
-
-There are tradeoffs to choosing any path. Attempt to identify them here.
-
-# Alternatives
-
-What other designs/patterns/strategies have been considered?
-
 # Adoption strategy
 
-If we implement this proposal, how will existing consumer projects adopt it?
-
-- Is this a breaking change?
-- Can we write a codemod?
-- How do we prioritise this with business and product folks?
-- How do we communicate with other teams? Will updating docs suffice or do we need a dedicated interaction with them?
+The adoption strategy for Consumer Designers [can be found in this section](#on-consumer-design-side) and for [Consumer Developers can be found in this section](#on-consumer-developer-side)
 
 # How do we educate people?
 
-- How should this be taught to other folks?
-- What names and terminology work best for these concepts and why?
-- How is this idea best presented?
+- Through extensive documentation.
 
 # Open Questions
 
-- Any open questions that you have?
-- Any undiscovered areas that you have encountered?
-- Any dependencies on other teams(Design/Engineering) that needs to be resolved upfront?
+- NA
 
 # References
 
-- [https://www.uxpin.com/studio/blog/responsive-vs-adaptive-design-whats-best-choice-designers/](https://www.uxpin.com/studio/blog/responsive-vs-adaptive-design-whats-best-choice-designers/)
-- [https://www.catchpoint.com/blog/responsive-vs-adaptive](https://www.catchpoint.com/blog/responsive-vs-adaptive)
-- [https://www.interaction-design.org/literature/article/adaptive-vs-responsive-design](https://www.interaction-design.org/literature/article/adaptive-vs-responsive-design)
+- [UXPin: Responsive Vs Adaptive](https://www.uxpin.com/studio/blog/responsive-vs-adaptive-design-whats-best-choice-designers/)
+- [Catchpoint's Case Study on Responsive vs Adaptive](https://www.catchpoint.com/blog/responsive-vs-adaptive)
+- [Interaction Design Foundation: Responsive Vs Adaptive](https://www.interaction-design.org/literature/article/adaptive-vs-responsive-design)
+- [Desktop Vs Mobile App Design](https://99designs.com/blog/web-digital/desktop-vs-mobile-app-design/)
+- [Arcade's Hidden Component Utility](https://arcade.design/content/docs/utilities/stack#hiding-items)
+- [`react-media`: CSS media query component for React](https://github.com/ReactTraining/react-media)
+- [React Spectrum: Responsive Layout](https://react-spectrum.adobe.com/react-spectrum/layout.html#responsive-layout)
+- [GitHub Primer: Responsive Layout](https://primer.style/react/core-concepts#responsive-props)
+- [Twilio Paste: Responsive Layout](https://paste.twilio.design/components/avatar/#responsive-sizing)
