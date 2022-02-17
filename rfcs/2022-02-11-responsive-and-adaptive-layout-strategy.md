@@ -28,7 +28,7 @@ Blade Issue: (leave this empty if no issue yet)
     - [3. Components for Adaptive layout(rendering components conditionally)](#3-components-for-adaptive-layoutrendering-components-conditionally)
   - [How will we actually implement the approaches discussed above?](#how-will-we-actually-implement-the-approaches-discussed-above)
     - [On Blade Code Side](#on-blade-code-side)
-    - [On Consumer Developer Side](#on-consumer-developer-side)
+    - [On Consumer Code Side](#on-consumer-code-side)
     - [On Blade Design Side](#on-blade-design-side)
     - [On Consumer Design Side](#on-consumer-design-side)
 - [Adoption strategy](#adoption-strategy)
@@ -45,8 +45,6 @@ To render content on different device screen resolutions there are different str
 
 This RFC will focus on what approach and strategies we shall take in our Design System.
 
-Modern web design gives us three options to use: Responsive, Adaptive, and Standalone Design, although standalone has fallen into disuse.
-
 # Basic Example
 
 ### Responsive Modal
@@ -59,7 +57,7 @@ Modern web design gives us three options to use: Responsive, Adaptive, and Stand
 
 ### Adaptive Search Field
 
-👇🏻 An example of a adaptive design where we have two implementation of search field.
+👇🏻 An example of a adaptive design where we have two implementation of a search field.
 
 1. Larger Screen Size - Search Input with Autosuggestion
 2. Smaller Screen Size - Search Field when clicked opens up a full screen modal which basically gives an optimised search experience on smaller screen size.
@@ -72,7 +70,7 @@ Modern web design gives us three options to use: Responsive, Adaptive, and Stand
 
 As of today, we don't have any strategy or approach in place for designing layouts for different screen sizes. Ensuring that elements fit within a page is not enough. There are different experiences that works for different screen sizes.
 
-Just going Responsive(Fluid) Design blindly is not correct. Imagine for example, you have different experiences(styles, javascript) for mobile vs desktop but if you just go blindly with responsive we might be unnecessary download assets for all the screen sizes our application would run on. For example it doesn't makes sense to implement [this Search Field](#adaptive-search-field) as a responsive layout since it'll result in unnecessary download of the assets(modal for mobile) and hence hampering the experience and performance for the consumers.
+Just going Responsive(Fluid) Design blindly is not correct. Imagine for example, you have different experiences(styles, javascript) for mobile vs desktop but if you just go blindly with responsive we might unnecessary download assets for all the screen sizes our application would run on. For example it doesn't makes sense to implement [this Search Field](#adaptive-search-field) as a responsive layout since it'll result in unnecessary download of the assets(modal for mobile) and hence hampering the experience and performance for the consumers.
 
 Similarly, just going adaptive blindly is not correct too. We might unnecessary be creating redundant variant of the same component. For example, imagine that we are creating 2 variants of a modal - 1 for desktop(which has a width of `600px`) and 1 for mobile(which has `100%` width). Now we could have just made it responsive by setting the `maxWidth` property of the modal so it could have been `600px` in width on desktop and `100%` in width on mobile. For eg, it doesn't makes sense to create multiple variant of [this Modal](#responsive-modal) while we can achieve this through responsive layout by setting `maxWidth` for Modal's Dialog component.
 
@@ -92,17 +90,18 @@ We'll basically define the approach and strategy we'll be taking in Blade to bui
 
 ## Responsive Design
 
-- Responsive is fluid and adapts to the size of the screen no matter what the target device. Responsive uses [CSS media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to change styles based on the target device such as display type, width, height, etc., and only one of these is necessary for the site to adapt to different screens.
+- Responsive is fluid and adapts to the size of the screen no matter what the target device is.
+- Responsive uses [CSS media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to change styles based on the target device such as display type, width, height, etc., and only one of these is necessary for the site to adapt to different screens.
 - Ensuring that elements fit within a page is not enough. For a responsive design to be successful, the design must also be usable at all screen resolutions and sizes.
-- Since images and other high bandwidth features are simply scaled down rather than resized or eliminated outright(unless added some lines of JS which again degrades the performance and increases the mess in code), elements which may not be vital to user experience can cause poor performance.
 
 ### Pros and Cons of Responsive Design
 
-| Pros                          | Cons                                                                   |
-| ----------------------------- | ---------------------------------------------------------------------- |
-| Abundance of templates to use | Elements can move around fluidly                                       |
-| Often easier to implement     | Longer mobile download times.                                          |
-|                               | Tons of `@media` queries often leads to a maintenance overhead in code |
+| Pros                          | Cons                                                                                                                                                                                                                                                                                         |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Abundance of templates to use | Elements can move around fluidly                                                                                                                                                                                                                                                             |
+| Often easier to implement     | Longer mobile download times.                                                                                                                                                                                                                                                                |
+|                               | Tons of `@media` queries often leads to a maintenance overhead in code                                                                                                                                                                                                                       |
+|                               | Images and other high bandwidth features are simply scaled down rather than resized or eliminated outright(unless added some lines of JS which again degrades the performance and increases the mess in code), elements which may not be vital to user experience can cause poor performance |
 
 ## Adaptive Design
 
@@ -118,8 +117,6 @@ We'll basically define the approach and strategy we'll be taking in Blade to bui
 - There was a [case study by Catchpoint](https://www.catchpoint.com/blog/responsive-vs-adaptive) in which they selected 15 examples each of Adaptive and Responsive websites out of the Alexa Top 100 rankings (US), and tested the response times to see how the greater amount of data in responsive sites leads to higher latency. Unsurprisingly, the mobile response times showed a significant variance between Adaptive and Responsive sites.
 
 <img alt="Responsive Modal" src="./images/responsive-adaptive-layout/responsive-vs-adaptive-response-times.jpeg">
-
-<br/>
 
 ### Pros and Cons of Adaptive Design
 
@@ -156,9 +153,9 @@ After doing some research and aligning it with our uses cases at Razorpay, I pro
   - `padding`
   - `margin`
 
-- While a lot of [well known design systems gives flexibility](#approaches-taken-by-well-known-design-systems) on every component for above properties to accept responsive values, I can't think of a use case why would it make sense for us to give that flexibility. Majority of the cases that I could think of wouldn't be any different if the consumers define the values for them explicitly. So seems like we'll be adding unnecessary learning curve to the component's API.
+- While a lot of [well known design systems gives flexibility](#approaches-taken-by-well-known-design-systems) on every component for above properties to accept responsive values, I can't think of a use case where we'll have to provide similar functionality. Majority of the cases that I could think of wouldn't be any different even if the consumers define the values for them explicitly. So seems like we'll be adding unnecessary learning curve to the component's API.
 
-  - For eg: all the props(ones that are affected by responsive) for a component will then accept either single value or array/object of values for different screen sizes which is confusing and might lead to a lot of confusions on the API surface
+  - For eg: all the props(ones that are affected by responsive) for a component will then accept either single value or array/object of values for different screen sizes which is confusing and might lead to a lot of confusion at the API surface.
 
     ```jsx
     <Text fontSize="100" />
@@ -208,17 +205,17 @@ After doing some research and aligning it with our uses cases at Razorpay, I pro
 - The typography will scale in segments. Which means if `h1` at `1440px` is `40px`, then at `960px` it will become `32px` directly rather than going from `40px` ➡️ `38px` ➡️ `36px` ➡️ `34px` ➡️ `32px`. You can read more about it in our [Typography Scaling RFC](https://github.com/razorpay/blade/blob/master/rfcs/2021-01-05-typography-scaling.md)
 - The obvious question that might come to your mind is that what happens to the content after a breakpoint. For eg: after say `960px` the mobile typography scale would be picked up by the system but there are mobile devices who have resolutions ranging from `320px`, `480px`, `760px`, `960px` so won't the mobile typography scale look too small on say `760px` screen width device? Well, that's the reason we have kept the units of typography to be `rems` so it can adjust to these use cases based on resolutions, browsers font size, etc. This will also handle use cases for high resolution mobile screens for eg: iPhone 12. You can [read more about that in our RFC about units for layout and typography](https://github.com/razorpay/blade/blob/master/rfcs/2021-02-19-units-for-typography-and-layout.md#what-will-work-for-us)
 
-### On Consumer Developer Side
+### On Consumer Code Side
 
 Taking the [approaches discussed above](#what-would-work-for-us?)
 
-1.  Components that can handle Responsiveness Internally
+**1. Components that can handle Responsiveness Internally**
 
     For this to work, on the consumer side nothing has to be done explicitly, as far as the consumers have wrapped their app inside `<BladeProvider><ConsumerApp></BladeProvider>`, the components which will handle responsiveness internally will automatically listen to the screen size changes and scale automatically based on the available space
 
-2.  Components that can give some flexibility to handle Responsiveness to consumers
+**2. Components that can give some flexibility to handle Responsiveness to consumers**
 
-    Considering if we want to implement a layout similar to the below mockup
+    Consider, if we want to implement a layout similar to the below mockup
     <img alt="Adaptive Layout with flex direction" src="./images/responsive-adaptive-layout/adaptive-layout-with-flex-direction.png">
 
        <br/>
@@ -248,9 +245,9 @@ Taking the [approaches discussed above](#what-would-work-for-us?)
     export default Dashboard;
     ```
 
-3.  Components for Adaptive layout(rendering components conditionally)
+**3. Components for Adaptive layout(rendering components conditionally)**
 
-    - Considering if we want to implement a layout similar to the below mockup where we have 2 different search inputs for different screens of the same web app.
+    - Consider, if we want to implement a layout similar to the below mockup where we have 2 different search inputs for different screens of the same web app.
       <img alt="Responsive Modal" src="./images/responsive-adaptive-layout/adaptive-search-field.png">
 
       <br/>
@@ -345,7 +342,7 @@ Taking the [approaches discussed above](#what-would-work-for-us?)
       );
       ```
 
-      So here we have introduced a new utility component called `Hidden` which accepts responsive props and helps us to hide/show component based on different screen sizes
+      So here we have introduced a new utility component called `Hidden` which accepts responsive props and enables us to hide/show component based on different screen sizes
 
 ### On Blade Design Side
 
@@ -363,7 +360,7 @@ While building components on Figma we have to keep in mind following things:
 
 ### On Consumer Design Side
 
-When designing layouts and consuming components from Design System Library on Figma make sure to do following things
+When designing layouts and consuming components from Design System Library on Figma make sure to do following things:
 
 1. Design the mockups for all the different screen sizes.
 2. Pick the right version of the component for respective screen sizes.
