@@ -27,6 +27,10 @@ Blade Issue: (leave this empty if no issue yet)
     - [2. Components that can give some flexibility to handle Responsiveness to consumers](#2-components-that-can-give-some-flexibility-to-handle-responsiveness-to-consumers)
     - [3. Components for Adaptive layout(rendering components conditionally)](#3-components-for-adaptive-layoutrendering-components-conditionally)
   - [How will we actually implement the approaches discussed above?](#how-will-we-actually-implement-the-approaches-discussed-above)
+    - [On Blade Code Side](#on-blade-code-side)
+    - [On Consumer Code Side](#on-consumer-code-side)
+    - [On Blade Design Side](#on-blade-design-side)
+    - [On Consumer Design Side](#on-consumer-design-side)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
@@ -186,26 +190,186 @@ After doing some research and aligning it with our uses cases at Razorpay, I pro
 
 ## How will we actually implement the approaches discussed above?
 
-- talk about conditional rendering when we have different versions all together to render.
-  - talk about lazy loading in this case
+### On Blade Code Side
 
-To begin with, as a first step we will first need to setup different screen sizes that we'll support(this is agnostic of whether we go responsive vs adaptive).
+- To begin with, as a first step we will first need to setup different screen sizes that we'll support and store it in tokens. This will handle our layout changes
 
-- 320
-- 480
-- 760
-- 960
-- 1200
-- 1600
+  ```
+  // confirm with Saurav once
+  s: 320
+  m: 480
+  l: 760
+  xl: 960
+  2xl: 1200
+  3xl: 1600
+  ```
 
-- talk about token level scale for different screen sizes
-- talk about no Scale(up/down) in between a screen size. for eg: if mobile is the category then we won't change things after that so the content will be same for a lower screen resolution and high screen resolution for mobile devices.
-  - shed the light that we have things in `rems` so this won't be a problem and things will work fine.
-- define what approach will we take when
-- talk about responsive props
-- talk why would handling internally makes more sense in most cases except layout components.
+- We would then need to add a listener in the `BladeProvider` which will listen to screen size changes and trigger a layout change.
 
-- talk about React Media
+- For handling typography for different screen sizes we already have 2 scales one for smaller screens which are less than `960px` and the other for larger screens which are greater than `960px`. Now, once the screen size changes, the above listener would trigger a state change and then we can listen to it and swap the scales between small and large screens.
+- The typography will scale in segments. Which means if `h1` at `1440px` is `40px`, then at `960px` it will become `32px` directly rather than going from `40px` ➡️ `38px` ➡️ `36px` ➡️ `34px` ➡️ `32px`. You can read more about it in our [Typography Scaling RFC](https://github.com/razorpay/blade/blob/master/rfcs/2021-01-05-typography-scaling.md)
+- The obvious question that might come to your mind is that what happens to the content after a breakpoint. For eg: after say `960px` the mobile typography scale would be picked up by the system but there are mobile devices who have resolutions ranging from `320px`, `480px`, `760px`, `960px` so won't the mobile typography scale look too small on say `760px` screen width device? Well, that's the reason we have kept the units of typography to be `rems` so it can adjust to these use cases based on resolutions, browsers font size, etc. This will also handle use cases for high resolution mobile screens for eg: iPhone 12. You can [read more about that in our RFC about units for layout and typography](https://github.com/razorpay/blade/blob/master/rfcs/2021-02-19-units-for-typography-and-layout.md#what-will-work-for-us)
+
+### On Consumer Code Side
+
+Taking the [approaches discussed above](#what-would-work-for-us?)
+
+1.  Components that can handle Responsiveness Internally
+
+    For this to work, on the consumer side nothing has to be done explicitly, as far as the consumers have wrapped their app inside `<BladeProvider><ConsumerApp></BladeProvider>`, the components which will handle responsiveness internally will automatically listen to the screen size changes and scale automatically based on the available space
+
+2.  Components that can give some flexibility to handle Responsiveness to consumers
+
+    Considering if we want to implement a layout similar to the below mockup
+    <img alt="Adaptive Layout with flex direction" src="./images/responsive-adaptive-layout/adaptive-layout-with-flex-direction.png">
+
+       <br/>
+
+    Here's how the consumer will create a layout like this in code(_Note: the actual API might differ_)
+
+    ```jsx
+    import { Stack, Card, Title } from '@razorpay/blade/components';
+
+    const Dashboard = () => (
+      <Stack direction={{ s: 'column', l: 'row' }}>
+        <Card>
+          <Title>This is Card Title</Title>
+          <Content>This is Card Content</Content>
+        </Card>
+        <Card>
+          <Title>This is Card Title</Title>
+          <Content>This is Card Content</Content>
+        </Card>
+        <Card>
+          <Title>This is Card Title</Title>
+          <Content>This is Card Content</Content>
+        </Card>
+      </Stack>
+    );
+
+    export default Dashboard;
+    ```
+
+3.  Components for Adaptive layout(rendering components conditionally)
+
+    - Considering if we want to implement a layout similar to the below mockup where we have 2 different search inputs for different screens of the same web app.
+      <img alt="Responsive Modal" src="./images/responsive-adaptive-layout/adaptive-search-field.png">
+
+      <br/>
+
+      Here's how the consumer will create a layout like this in code(_Note: the actual API might differ_).
+
+      ```jsx
+      import { LargeSearchInput, SmallSearchInput } from '@razorpay/blade/components';
+
+      const SearchScreen = () => (isMobile ? <SmallSearchInput /> : <LargeSearchInput />);
+
+      export default SearchScreen;
+      ```
+
+      Now, there's an issue with this approach. If you look we are importing both the components(LargeSearchInput, SmallSearchInput) for both the screens(Desktop/Mobile) which will unnecessary increase the bundlesize and hamper the performance. So to solve this we shall use [`React.Lazy`](https://reactjs.org/docs/code-splitting.html#reactlazy) if you're doing client side rendering or [`@loadable/component`](https://loadable-components.com/docs/component-splitting/) if you're doing server side rendering. Let's see how we can load them lazily
+
+      ```jsx
+      // With React.Lazy
+      import { Suspense } from 'react';
+
+      const LargeSearchInput = React.lazy(() => import('@razorpay/blade/components'));
+      const SmallSearchInput = React.lazy(() => import('@razorpay/blade/components'));
+
+      const SearchScreen = () => (
+        <Suspense fallback={<div>Loading...</div>}>
+          {isMobile ? <SmallSearchInput /> : <LargeSearchInput />}
+        </Suspense>
+      );
+
+      export default SearchScreen;
+      ```
+
+      ```jsx
+      // With @loadable/components
+      import loadable from '@loadable/component';
+
+      const LargeSearchInput = loadable(() => import('@razorpay/blade/components'));
+      const SmallSearchInput = loadable(() => import('@razorpay/blade/components'));
+
+      const SearchScreen = () => (isMobile ? <SmallSearchInput /> : <LargeSearchInput />);
+
+      export default SearchScreen;
+      ```
+
+    - Considering another example where we want to show and hide bunch of components based on different screen sizes.
+      <img alt="Responsive Modal" src="./images/responsive-adaptive-layout/adaptive-layout-with-multiple-layouts.png">
+
+      <br/>
+
+      Here's how we'll implement the above mockup in code
+
+      ```jsx
+      import loadable from '@loadable/component';
+      import { Stack, Card, Title, Hidden, Avatar, Divider } from '@razorpay/blade/components';
+
+      const DesktopNavBar = loadable(() => import('@razorpay/blade/components'));
+      const MobileNavBar = loadable(() => import('@razorpay/blade/components'));
+      const BottomNavBar = loadable(() => import('@razorpay/blade/components'));
+
+      const Dashboard = () => (
+        <Stack direction={{ s: 'column', l: 'row' }}>
+          {isMobile ? <MobileNavBar /> : <DesktopNavbar />}
+          <Stack direction="column">
+            <Hidden hide={{ s: true, l: false }}>
+              <Stack direction="row" justifyContent="space-between">
+                <div>some profile information</div>
+                <Stack direction="row">
+                  <Avatar />
+                  <Avatar />
+                </Stack>
+              </Stack>
+            </Hidden>
+            <Stack direction={{ s: 'column', l: 'row' }}>
+              <Card>
+                <Title>This is Card Title</Title>
+                <Content>This is Card Content</Content>
+              </Card>
+              <Card>
+                <Title>This is Card Title</Title>
+                <Content>This is Card Content</Content>
+              </Card>
+              <Card>
+                <Title>This is Card Title</Title>
+                <Content>This is Card Content</Content>
+              </Card>
+            </Stack>
+          </Stack>
+          <Hidden hide={{ s: false, l: true }}>
+            <BottomNavBar />
+          </Hidden>
+        </Stack>
+      );
+      ```
+
+      So here we have introduced a new utility component called `Hidden` which accepts responsive props and helps us to hide/show component based on different screen sizes
+
+### On Blade Design Side
+
+While building components on Figma we have to keep in mind following things:
+
+1. If the component is responsive, then design it for all the screens and properly define/document the responsive properties.
+
+   - `width`
+   - `height`
+   - `font-size`
+   - `padding`
+   - `margin`
+
+2. If the component is adaptive, then design it for all the screens and explicitly mention about the multiple variations of a component for different screen sizes.
+
+### On Consumer Design Side
+
+When designing layouts and consuming components from Design System Library on Figma make sure to do following things
+
+1. Design the mockups for all the different screen sizes.
+2. Pick the right version of the component for respective screen sizes.
+3. If for different screen sizes you want to render entirely different components(adaptive) then make sure to highlight it properly so the developers can understand it properly
 
 # Drawbacks/Constraints
 
