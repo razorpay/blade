@@ -292,7 +292,7 @@ export default Dashboard;
   export default SearchScreen;
   ```
 
-- Considering another example where we want to show and hide bunch of components based on different screen sizes.
+- Consider, another example where we want to show and hide bunch of components based on different screen sizes.
   <img alt="Responsive Modal" src="./images/responsive-adaptive-layout/adaptive-layout-with-multiple-layouts.png">
 
   <br/>
