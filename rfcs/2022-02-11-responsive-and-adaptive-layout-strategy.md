@@ -211,138 +211,138 @@ Taking the [approaches discussed above](#what-would-work-for-us?)
 
 **1. Components that can handle Responsiveness Internally**
 
-    For this to work, on the consumer side nothing has to be done explicitly, as far as the consumers have wrapped their app inside `<BladeProvider><ConsumerApp></BladeProvider>`, the components which will handle responsiveness internally will automatically listen to the screen size changes and scale automatically based on the available space
+For this to work, on the consumer side nothing has to be done explicitly, as far as the consumers have wrapped their app inside `<BladeProvider><ConsumerApp></BladeProvider>`, the components which will handle responsiveness internally will automatically listen to the screen size changes and scale automatically based on the available space
 
 **2. Components that can give some flexibility to handle Responsiveness to consumers**
 
-    Consider, if we want to implement a layout similar to the below mockup
-    <img alt="Adaptive Layout with flex direction" src="./images/responsive-adaptive-layout/adaptive-layout-with-flex-direction.png">
+Consider, if we want to implement a layout similar to the below mockup
+<img alt="Adaptive Layout with flex direction" src="./images/responsive-adaptive-layout/adaptive-layout-with-flex-direction.png">
 
-       <br/>
+<br/>
 
-    Here's how the consumer will create a layout like this in code(_Note: the actual API might differ_)
+Here's how the consumer will create a layout like this in code(_Note: the actual API might differ_)
 
-    ```jsx
-    import { Stack, Card, Title } from '@razorpay/blade/components';
+```jsx
+import { Stack, Card, Title } from '@razorpay/blade/components';
 
-    const Dashboard = () => (
-      <Stack direction={{ s: 'column', l: 'row' }}>
-        <Card>
-          <Title>This is Card Title</Title>
-          <Content>This is Card Content</Content>
-        </Card>
-        <Card>
-          <Title>This is Card Title</Title>
-          <Content>This is Card Content</Content>
-        </Card>
-        <Card>
-          <Title>This is Card Title</Title>
-          <Content>This is Card Content</Content>
-        </Card>
-      </Stack>
-    );
+const Dashboard = () => (
+  <Stack direction={{ s: 'column', l: 'row' }}>
+    <Card>
+      <Title>This is Card Title</Title>
+      <Content>This is Card Content</Content>
+    </Card>
+    <Card>
+      <Title>This is Card Title</Title>
+      <Content>This is Card Content</Content>
+    </Card>
+    <Card>
+      <Title>This is Card Title</Title>
+      <Content>This is Card Content</Content>
+    </Card>
+  </Stack>
+);
 
-    export default Dashboard;
-    ```
+export default Dashboard;
+```
 
 **3. Components for Adaptive layout(rendering components conditionally)**
 
-    - Consider, if we want to implement a layout similar to the below mockup where we have 2 different search inputs for different screens of the same web app.
-      <img alt="Responsive Modal" src="./images/responsive-adaptive-layout/adaptive-search-field.png">
+- Consider, if we want to implement a layout similar to the below mockup where we have 2 different search inputs for different screens of the same web app.
+  <img alt="Responsive Modal" src="./images/responsive-adaptive-layout/adaptive-search-field.png">
 
-      <br/>
+  <br/>
 
-      Here's how the consumer will create a layout like this in code(_Note: the actual API might differ_).
+  Here's how the consumer will create a layout like this in code(_Note: the actual API might differ_).
 
-      ```jsx
-      import { LargeSearchInput, SmallSearchInput } from '@razorpay/blade/components';
+  ```jsx
+  import { LargeSearchInput, SmallSearchInput } from '@razorpay/blade/components';
 
-      const SearchScreen = () => (isMobile ? <SmallSearchInput /> : <LargeSearchInput />);
+  const SearchScreen = () => (isMobile ? <SmallSearchInput /> : <LargeSearchInput />);
 
-      export default SearchScreen;
-      ```
+  export default SearchScreen;
+  ```
 
-      Now, there's an issue with this approach. If you look we are importing both the components(LargeSearchInput, SmallSearchInput) for both the screens(Desktop/Mobile) which will unnecessary increase the bundlesize and hamper the performance. So to solve this we shall use [`React.Lazy`](https://reactjs.org/docs/code-splitting.html#reactlazy) if you're doing client side rendering or [`@loadable/component`](https://loadable-components.com/docs/component-splitting/) if you're doing server side rendering. Let's see how we can load them lazily
+  Now, there's an issue with this approach. If you look we are importing both the components(LargeSearchInput, SmallSearchInput) for both the screens(Desktop/Mobile) which will unnecessary increase the bundlesize and hamper the performance. So to solve this we shall use [`React.Lazy`](https://reactjs.org/docs/code-splitting.html#reactlazy) if you're doing client side rendering or [`@loadable/component`](https://loadable-components.com/docs/component-splitting/) if you're doing server side rendering. Let's see how we can load them lazily
 
-      ```jsx
-      // With React.Lazy
-      import { Suspense } from 'react';
+  ```jsx
+  // With React.Lazy
+  import { Suspense } from 'react';
 
-      const LargeSearchInput = React.lazy(() => import('@razorpay/blade/components'));
-      const SmallSearchInput = React.lazy(() => import('@razorpay/blade/components'));
+  const LargeSearchInput = React.lazy(() => import('@razorpay/blade/components'));
+  const SmallSearchInput = React.lazy(() => import('@razorpay/blade/components'));
 
-      const SearchScreen = () => (
-        <Suspense fallback={<div>Loading...</div>}>
-          {isMobile ? <SmallSearchInput /> : <LargeSearchInput />}
-        </Suspense>
-      );
+  const SearchScreen = () => (
+    <Suspense fallback={<div>Loading...</div>}>
+      {isMobile ? <SmallSearchInput /> : <LargeSearchInput />}
+    </Suspense>
+  );
 
-      export default SearchScreen;
-      ```
+  export default SearchScreen;
+  ```
 
-      ```jsx
-      // With @loadable/components
-      import loadable from '@loadable/component';
+  ```jsx
+  // With @loadable/components
+  import loadable from '@loadable/component';
 
-      const LargeSearchInput = loadable(() => import('@razorpay/blade/components'));
-      const SmallSearchInput = loadable(() => import('@razorpay/blade/components'));
+  const LargeSearchInput = loadable(() => import('@razorpay/blade/components'));
+  const SmallSearchInput = loadable(() => import('@razorpay/blade/components'));
 
-      const SearchScreen = () => (isMobile ? <SmallSearchInput /> : <LargeSearchInput />);
+  const SearchScreen = () => (isMobile ? <SmallSearchInput /> : <LargeSearchInput />);
 
-      export default SearchScreen;
-      ```
+  export default SearchScreen;
+  ```
 
-    - Considering another example where we want to show and hide bunch of components based on different screen sizes.
-      <img alt="Responsive Modal" src="./images/responsive-adaptive-layout/adaptive-layout-with-multiple-layouts.png">
+- Considering another example where we want to show and hide bunch of components based on different screen sizes.
+  <img alt="Responsive Modal" src="./images/responsive-adaptive-layout/adaptive-layout-with-multiple-layouts.png">
 
-      <br/>
+  <br/>
 
-      Here's how we'll implement the above mockup in code
+  Here's how we'll implement the above mockup in code
 
-      ```jsx
-      import loadable from '@loadable/component';
-      import { Stack, Card, Title, Hidden, Avatar, Divider } from '@razorpay/blade/components';
+  ```jsx
+  import loadable from '@loadable/component';
+  import { Stack, Card, Title, Hidden, Avatar, Divider } from '@razorpay/blade/components';
 
-      const DesktopNavBar = loadable(() => import('@razorpay/blade/components'));
-      const MobileNavBar = loadable(() => import('@razorpay/blade/components'));
-      const BottomNavBar = loadable(() => import('@razorpay/blade/components'));
+  const DesktopNavBar = loadable(() => import('@razorpay/blade/components'));
+  const MobileNavBar = loadable(() => import('@razorpay/blade/components'));
+  const BottomNavBar = loadable(() => import('@razorpay/blade/components'));
 
-      const Dashboard = () => (
-        <Stack direction={{ s: 'column', l: 'row' }}>
-          {isMobile ? <MobileNavBar /> : <DesktopNavbar />}
-          <Stack direction="column">
-            <Hidden hide={{ s: true, l: false }}>
-              <Stack direction="row" justifyContent="space-between">
-                <div>some profile information</div>
-                <Stack direction="row">
-                  <Avatar />
-                  <Avatar />
-                </Stack>
-              </Stack>
-            </Hidden>
-            <Stack direction={{ s: 'column', l: 'row' }}>
-              <Card>
-                <Title>This is Card Title</Title>
-                <Content>This is Card Content</Content>
-              </Card>
-              <Card>
-                <Title>This is Card Title</Title>
-                <Content>This is Card Content</Content>
-              </Card>
-              <Card>
-                <Title>This is Card Title</Title>
-                <Content>This is Card Content</Content>
-              </Card>
+  const Dashboard = () => (
+    <Stack direction={{ s: 'column', l: 'row' }}>
+      {isMobile ? <MobileNavBar /> : <DesktopNavbar />}
+      <Stack direction="column">
+        <Hidden hide={{ s: true, l: false }}>
+          <Stack direction="row" justifyContent="space-between">
+            <div>some profile information</div>
+            <Stack direction="row">
+              <Avatar />
+              <Avatar />
             </Stack>
           </Stack>
-          <Hidden hide={{ s: false, l: true }}>
-            <BottomNavBar />
-          </Hidden>
+        </Hidden>
+        <Stack direction={{ s: 'column', l: 'row' }}>
+          <Card>
+            <Title>This is Card Title</Title>
+            <Content>This is Card Content</Content>
+          </Card>
+          <Card>
+            <Title>This is Card Title</Title>
+            <Content>This is Card Content</Content>
+          </Card>
+          <Card>
+            <Title>This is Card Title</Title>
+            <Content>This is Card Content</Content>
+          </Card>
         </Stack>
-      );
-      ```
+      </Stack>
+      <Hidden hide={{ s: false, l: true }}>
+        <BottomNavBar />
+      </Hidden>
+    </Stack>
+  );
+  ```
 
-      So here we have introduced a new utility component called `Hidden` which accepts responsive props and enables us to hide/show component based on different screen sizes
+  So here we have introduced a new utility component called `Hidden` which accepts responsive props and enables us to hide/show component based on different screen sizes
 
 ### On Blade Design Side
 
