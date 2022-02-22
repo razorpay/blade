@@ -93,6 +93,8 @@ We'll basically define the approach and strategy we'll be taking in Blade to bui
 - Responsive is fluid and adapts to the size of the screen no matter what the target device is.
 - Responsive uses [CSS media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to change styles based on the target device such as display `type`, `width`, `height`, etc., and only one of these is necessary for the site to adapt to different screens.
 - Ensuring that elements fit within a page is not enough. For a responsive design to be successful, the design must also be usable at all screen resolutions and sizes.
+  - An example of fluid search field which shrinks/grows based on screen width but isn't usable enough.
+    <img alt="Responsive Modal" src="./images/responsive-adaptive-layout/responsive-search-field.png">
 
 ### Pros and Cons of Responsive Design
 
@@ -153,6 +155,10 @@ After doing some research and aligning it with our uses cases at Razorpay, I pro
   - `padding`
   - `margin`
   - `position`
+  - `top`
+  - `left`
+  - `right`
+  - `bottom`
 
 - While a lot of [well known design systems gives flexibility](#approaches-taken-by-well-known-design-systems) on every component for above properties to accept responsive values, I can't think of a use case where we'll have to provide similar functionality. Majority of the cases that I could think of wouldn't be any different even if the consumers define the values for them explicitly. So seems like we'll be adding unnecessary learning curve to the component's API.
 
@@ -356,7 +362,10 @@ While building components on Figma we have to keep in mind following things:
    - `font-size`
    - `padding`
    - `margin`
-   - `position`
+   - `top`
+   - `left`
+   - `right`
+   - `bottom`
 
 2. If the component is adaptive, then design it for all the screens and explicitly mention about the multiple variations of a component for different screen sizes.
 
