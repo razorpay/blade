@@ -70,7 +70,7 @@ This RFC will focus on what approach and strategies we shall take in our Design 
 
 As of today, we don't have any strategy or approach in place for designing layouts for different screen sizes. Ensuring that elements fit within a page is not enough. There are different experiences that works for different screen sizes.
 
-Just going Responsive(Fluid) Design blindly is not correct. Imagine for example, you have different experiences(styles, javascript) for mobile vs desktop but if you just go blindly with responsive we might unnecessary download assets for all the screen sizes our application would run on. For example it doesn't makes sense to implement [this Search Field](#adaptive-search-field) as a responsive layout since it'll result in unnecessary download of the assets(modal for mobile) and hence hampering the experience and performance for the consumers.
+Just going Responsive(fluid) design blindly is not correct. Imagine for example, you have different experiences(styles, javascript) for mobile vs desktop but if you just go blindly with responsive we might unnecessary download assets for all the screen sizes our application would run on. For example it doesn't makes sense to implement [this Search Field](#adaptive-search-field) as a responsive layout since it'll result in unnecessary download of the assets(modal for mobile) and hence hampering the experience and performance for the consumers.
 
 Similarly, just going adaptive blindly is not correct too. We might unnecessary be creating redundant variant of the same component. For example, imagine that we are creating 2 variants of a modal - 1 for desktop(which has a width of `600px`) and 1 for mobile(which has `100%` width). Now we could have just made it responsive by setting the `maxWidth` property of the modal so it could have been `600px` in width on desktop and `100%` in width on mobile. For eg, it doesn't makes sense to create multiple variant of [this Modal](#responsive-modal) while we can achieve this through responsive layout by setting `maxWidth` for Modal's Dialog component.
 
@@ -91,7 +91,7 @@ We'll basically define the approach and strategy we'll be taking in Blade to bui
 ## Responsive Design
 
 - Responsive is fluid and adapts to the size of the screen no matter what the target device is.
-- Responsive uses [CSS media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to change styles based on the target device such as display type, width, height, etc., and only one of these is necessary for the site to adapt to different screens.
+- Responsive uses [CSS media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to change styles based on the target device such as display `type`, `width`, `height`, etc., and only one of these is necessary for the site to adapt to different screens.
 - Ensuring that elements fit within a page is not enough. For a responsive design to be successful, the design must also be usable at all screen resolutions and sizes.
 
 ### Pros and Cons of Responsive Design
@@ -105,7 +105,7 @@ We'll basically define the approach and strategy we'll be taking in Blade to bui
 
 ## Adaptive Design
 
-- While responsive design relies on changing the design pattern to fit the real estate available to it, **adaptive design** has multiple fixed layout sizes. When the site _detects_ the available space, it _selects_ the layout most appropriate for the screen. So, when you open a browser on the desktop, the site chooses the best layout for that desktop screen, resizing the browser has no impact on the design.
+- While responsive design relies on changing the design pattern to fit the real estate available to it, **adaptive design** has multiple fixed layout sizes. When the site _detects_ the available space, it _selects_ the layout most appropriate for the screen. So, when you open a browser on the desktop, the site chooses the best layout for that screen, resizing the browser has no impact on the design(until it hit the breakpoint if we have mentioned it).
 - Adaptive works to detect the screen size and load the appropriate layout for it – generally you would design an adaptive site for six common screen widths(confirm with Saurav once on exact sizes we are doing and update):
   - 320
   - 480
@@ -152,6 +152,7 @@ After doing some research and aligning it with our uses cases at Razorpay, I pro
   - `font-size`
   - `padding`
   - `margin`
+  - `position`
 
 - While a lot of [well known design systems gives flexibility](#approaches-taken-by-well-known-design-systems) on every component for above properties to accept responsive values, I can't think of a use case where we'll have to provide similar functionality. Majority of the cases that I could think of wouldn't be any different even if the consumers define the values for them explicitly. So seems like we'll be adding unnecessary learning curve to the component's API.
 
@@ -355,6 +356,7 @@ While building components on Figma we have to keep in mind following things:
    - `font-size`
    - `padding`
    - `margin`
+   - `position`
 
 2. If the component is adaptive, then design it for all the screens and explicitly mention about the multiple variations of a component for different screen sizes.
 
@@ -363,6 +365,7 @@ While building components on Figma we have to keep in mind following things:
 When designing layouts and consuming components from Design System Library on Figma make sure to do following things:
 
 1. Design the mockups for all the different screen sizes.
+   1. You can follow this nice guide on [how to start defining content for multiple screen sizes](https://web.dev/responsive-web-design-basics/#breakpoints)
 2. Pick the right version of the component for respective screen sizes.
 3. If for different screen sizes you want to render entirely different components(adaptive) then make sure to highlight it properly so the developers can understand it properly
 
