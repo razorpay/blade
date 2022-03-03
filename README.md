@@ -24,7 +24,7 @@ This package is under active development. Documentation for this package can be 
 ### [`@razorpay/blade-old`](https://github.com/razorpay/blade/tree/master/packages/blade-old)
 This package is under **maintenance** and it won't have any major releases. It will be **deprecated** once the newer version (`@razorpay/blade`) is ready for a stable release. 
 - **Documentation** for this package can be found [here](https://github.com/razorpay/blade/blob/master/packages/blade-old/README.md)
-- **Storybook** for this package can be found [here](https://blade-ui.now.sh)
+- **Storybook** for this package can be found [here](https://blade-old.vercel.app)
 
 
 ## 📝 License
