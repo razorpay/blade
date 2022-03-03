@@ -37,7 +37,8 @@ Blade Issue: (leave this empty if no issue yet)
     - [On Consumer Design Side](#on-consumer-design-side)
 - [Adoption strategy](#adoption-strategy)
 - [How do we educate people?](#how-do-we-educate-people)
-- [Open Questions](#open-questions)
+- [FAQ](#faq)
+  - [Question: Our strategy consists of](#question-our-strategy-consists-of)
 - [References](#references)
 
 # Summary
@@ -85,8 +86,11 @@ But because we don't have these strategies in place we don't know how to approac
 ### What use cases does it support?
 
 - Components that can handle Responsiveness Internally.
+  > Components which which will just change their sizing based on different screen sizes.
 - Components that can give some flexibility to handle Responsiveness to consumers.
+  > Only components which are wrapper components(once which don't render anything but just enhance the children) eg: layout, spacer, etc.
 - Components that render different variants conditionally based on screen sizes, optimising for performance without bloating the bundlesize.
+  > Components which have two different variants all together for different screen sizes.
 
 ### What is the expected outcome?
 
@@ -362,6 +366,8 @@ export default Dashboard;
 
   So here we have introduced a new utility component called `Hidden` which accepts responsive props and enables us to hide/show component based on different screen sizes
 
+  > The `isMobile` logic can be be abstracted out withing Blade or left upto consumers, there are pros and cons to both the approaches hence we shall evaluate this case by case basis and it's out of scope of this document.
+
 ### On Blade Design Side
 
 While building components on Figma we have to keep in mind following things:
@@ -379,6 +385,7 @@ While building components on Figma we have to keep in mind following things:
    - `bottom`
 
 2. If the component is adaptive, then design it for all the screens and explicitly mention about the multiple variations of a component for different screen sizes.
+   > We'll have to follow some naming convention to explicitly highlight and communicate to the consumers that a particular component has different variant for mobile vs desktop.
 
 ### On Consumer Design Side
 
@@ -397,9 +404,75 @@ The adoption strategy for Consumer Designers [can be found in this section](#on-
 
 - Through extensive documentation.
 
-# Open Questions
+# FAQ
 
-- NA
+## Question: Our strategy consists of
+
+1. **_Automatic_ Responsive**: Components will change pre-defined properties based on pre-defined screen sizes automatically
+2. **_Configurable_ Responsive**: Components will change pre-defined properties based on pre-defined screen sizes as per a configuration passed by the consumer. Eg) `direction={{ s: 'column', l: 'row' }}`
+3. **_Configurable_ Adaptive?**: Components will change entirely based on the consumer's logic for screen sizes. Eg) `{isMobile ? <SmallSearchInput /> : <LargeSearchInput />}`
+
+**You might 2 broad questions,**
+
+1. Why is there no _Automatic_ Adaptive?
+
+   As per the example mentioned for `LargeSearchInput` & `SmallSearchInput`, we expect our consumers to import both of these(in a bundle optimized manner) and apply their own logic to render either of the two (this is why I am calling it "Configurable" since the control is on the consumer end)
+
+   Similarly, can there not be components that are **_Automatically_ Adaptive**? For example, a SearchInput that internally renders `LargeSearchInput` or `SmallSearchInput` based on the screen size.
+
+   A valid use-case here could be a `Dropdown` component where we _know_(\*assuming it here) that we always want the dropdown to be almost fullscreen on mobile but a relatively small pop-over menu on desktop. Consumers can just import `Dropdown` and blade can internally render the `MobileDropdown` or `DesktopDropdown` based on the current screen size and take away the complexity of adding any logical checks for the consumers.
+
+2. How do we communicate to consumers that a component they are using is Responsive or Adaptive?
+
+   As a consumer of blade, how would I know if a component **ComponentA** is automatically responsive or I need to pass it some props for it to become responsive or is it adaptive and I need to import another **SmallComponentA** and add `isMobile` check to be able to render it properly on a mobile device?
+
+Supporting multiple strategies can introduce a huge learning curve for the consumer. Something as simple as trying to use a prop like `direction={{ s: 'column', l: 'row' }}` on an Automatic Responsive component. Eg) Typography is automatically responsive but what if a consumer tries to pass `fontSize={{ small: 100, medium: 100, large: 100, xl: 400 }}` and expects it to work?
+
+We can throw warnings or show TS errors but in the end, our components behave differently from one another. Where a `Text` component automatically takes care of screen sizes on its own, we are expecting our consumers to still worry about screen sizes because the `SearchInput` component is not going to look different on different screen sizes until the consumer adds conditional rendering to it.
+
+The concern is not the fact that we're allowing all strategies but the added overhead for consumers to think and understand each component's behavior with screen sizes deeply before using them anywhere.
+
+**Answer:**
+
+> #### Why is there no _Automatic_ Adaptive?
+>
+> As per the example mentioned for `LargeSearchInput` & `SmallSearchInput`, we expect our consumers to import both of these(in a bundle optimized manner) and apply their own logic to render either of the two (this is why I am calling it "Configurable" since the control is on the consumer end)
+>
+> Similarly, can there not be components that are **_Automatically_ Adaptive**? For example, a SearchInput that internally renders `LargeSearchInput` or `SmallSearchInput` based on the screen size.
+>
+> A valid use-case here could be a `Dropdown` component where we _know_(\*assuming it here) that we always want the dropdown to be almost fullscreen on mobile but a relatively small pop-over menu on desktop. Consumers can just import `Dropdown` and blade can internally render the `MobileDropdown` or `DesktopDropdown` based on the current screen size and take away the complexity of adding any logical checks for the consumers.
+
+We can do this internally it's not a big deal but that's exactly a reason why it's adaptive and not responsive. if it was just scaling or little things to change we could have made it responsive but adaptive itself means the implementation(UX, interactions, etc) could be different for the mobile variant vs a desktop variant.
+
+for eg: I have a search field on for desktop which shows auto suggestions as a dropdown but its mobile variant is a full-screen modal that has filters in it, recent searches section(whose results can be fetched via some API) now I can't handle this use case internally else I've to create another wrapper which will expect all the things from consumers for supporting both the variants but it seems like messing our component API.
+
+Surely we can consider this approach where the APIs will be the same for both the variants but then it's just the matter of why can't it be then a responsive component if only the layout changes.
+
+Even if we go ahead with this approach we might have to consider the developer(on design system side) overhead where they'll be confused of when to handle `isMobile` internally vs leaving it to the end consumers because we can't avoid different APIs for different variants.
+
+Another point to consider is that every client might have a different way of lazy loading. for csr people might use `React.Lazy` but for SSR they might have to use loadable components. Now the moment we generalize this people will have concerns and differences of opinions plus unnecessary dependencies because I can just use `React.Lazy` for csr why shall someone install loadable. (yes it's arguable and as Design System owners we might have to take that hard call in favor of constraints vs flexibility).
+
+But we can surely keep this approach into consideration and while this RFC is mostly about an overview of how we'll handle different strategies for supporting these layouts the implementation details are still left out and we'll take it on case by case basis.
+
+> How do we communicate to consumers that a component they are using is Responsive or Adaptive?
+>
+> As a consumer of blade, how would I know if a component **ComponentA** is automatically responsive or I need to pass it some props for it to become responsive or is it adaptive and I need to import another **SmallComponentA** and add `isMobile` check to be able to render it properly on a mobile device?
+>
+> Supporting multiple strategies can introduce a huge learning curve for the consumer. Something as simple as trying to use a prop like `direction={{ s: 'column', l: 'row' }}` on an Automatic Responsive component. Eg) Typography is automatically responsive but what if a consumer tries to pass `fontSize={{ small: 100, medium: 100, large: 100, xl: 400 }}` and expects it to work?
+>
+> We can throw warnings or show TS errors but in the end, our components behave differently from one another. Where a `Text` component automatically takes care of screen sizes on its own, we are expecting our consumers to still worry about screen sizes because the `SearchInput` component is not going to look different on different screen sizes until the consumer adds conditional rendering to it.
+>
+> My concern is not the fact that we're allowing all strategies but the added overhead for consumers to think and understand each component's behavior with screen sizes deeply before using them anywhere.
+
+This is only for layout components. We aren't supporting multiple ways of achieving same things.
+
+So if you [read here](https://github.com/razorpay/blade/pull/416/files#diff-f4d103560de689c11de7f41e8dbd9106c41e45f89247d0d2508f9150040c463dR85)
+
+We say:
+
+- Components that can handle Responsiveness Internally. **Components affecting layouts and sizes**
+- Components that can give some flexibility to handle Responsiveness to consumers. **Only layout components, basically wrappers that helps you create layouts**
+- Components that render different variants conditionally based on screen sizes, optimising for performance without bloating the bundlesize. **Components which have two different variants all together**
 
 # References
 
