@@ -58,6 +58,7 @@ module.exports = {
         'react/jsx-filename-extension': [1, { extensions: ['.md', '.mdx'] }],
         'react/display-name': 'off',
         'react/prop-types': 'off',
+        'no-irregular-whitespace': 'off',
       },
     },
     {
