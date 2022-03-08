@@ -34,7 +34,9 @@ const BladeProvider = ({
   }
 
   const { colorScheme, setColorScheme } = useColorScheme(initialColorScheme);
-  const { deviceType } = useBreakpoint({ breakpoints: themeTokens.breakpoints });
+  const { deviceType } = useBreakpoint({
+    breakpoints: themeTokens.breakpoints,
+  });
 
   const colorMode = `on${toTitleCase(colorScheme)}` as ColorSchemeModes;
   const onDeviceType = `on${toTitleCase(deviceType)}` as TypographyPlatforms;

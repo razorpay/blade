@@ -1,22 +1,11 @@
-/**
- * What do we want to do?
- * 1. register an event listener on screen resize
- * 2. get the current matched media query
- * 3. set the appropriate typography scale based on the matched media
- * what to be set in state?
- *  - {
- * matchedBreakpoints:[]
- * deviceType:''
- * }
- */
-
 import { useEffect, useState, useCallback } from 'react';
 import type { Breakpoints } from '../../tokens/global';
 
 type DeviceType = 'desktop' | 'mobile';
+type MatchedBreakpoint = keyof Breakpoints | '';
 
 type BreakpointAndDevice = {
-  matchedBreakpoints: string[];
+  matchedBreakpoint: MatchedBreakpoint;
   deviceType: DeviceType;
 };
 
@@ -25,39 +14,43 @@ const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): Breakpoin
     typeof document !== 'undefined' && typeof window?.matchMedia === 'function';
 
   const getMatchedBreakpointsAndDevice = useCallback((): BreakpointAndDevice => {
-    const matchedBreakpoints = supportsMatchMedia
-      ? Object.entries(breakpoints)
-          .map(([key, value]) => {
-            if (window.matchMedia(`(min-width: ${value}px)`).matches) {
-              return key;
-            }
-            return '';
-          })
-          .filter(Boolean)
-      : [];
+    const breakpointsCollection = (supportsMatchMedia ? Object.entries(breakpoints) : []) as [
+      keyof Breakpoints,
+      number,
+    ][];
 
-    let deviceType: DeviceType;
+    const matchedBreakpoint =
+      breakpointsCollection.find(([_, value], index) => {
+        const mediaQuery = breakpointsCollection[index - 1]
+          ? `(min-width: ${breakpointsCollection[index - 1][1] + 1}px) and (max-width: ${value}px)`
+          : `(max-width: ${value}px)`;
+
+        if (window.matchMedia(mediaQuery).matches) {
+          return true;
+        }
+        return false;
+      })?.[0] ?? '';
+
+    let deviceType: DeviceType = 'desktop';
     if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
       // react-native
       deviceType = 'mobile';
     } else if (typeof document !== 'undefined') {
       // browser
-      if (
-        matchedBreakpoints.some((matchedBreakpoint) => ['xs', 's', 'm'].includes(matchedBreakpoint))
-      ) {
+      if (['xs', 's', 'm'].includes(matchedBreakpoint)) {
         // tablet is also categorised as mobile
         deviceType = 'mobile';
       } else {
         deviceType = 'desktop';
       }
-    } else {
+    } else if (typeof process !== 'undefined') {
       // node
       //@TODO: Check for useragent for node
       deviceType = 'desktop';
     }
 
     return {
-      matchedBreakpoints,
+      matchedBreakpoint,
       deviceType,
     };
   }, [breakpoints, supportsMatchMedia]);
