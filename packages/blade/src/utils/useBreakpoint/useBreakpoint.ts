@@ -1,79 +1,141 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import type { Breakpoints } from '../../tokens/global';
 
 type DeviceType = 'desktop' | 'mobile';
-type MatchedBreakpoint = keyof Breakpoints | '';
+type Breakpoint = keyof Breakpoints | undefined;
 
 type BreakpointAndDevice = {
-  matchedBreakpoint: MatchedBreakpoint;
-  deviceType: DeviceType;
+  matchedBreakpoint: Breakpoint;
+  matchedDeviceType: DeviceType;
 };
 
 const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): BreakpointAndDevice => {
   const supportsMatchMedia =
     typeof document !== 'undefined' && typeof window?.matchMedia === 'function';
 
-  const getMatchedBreakpointsAndDevice = useCallback((): BreakpointAndDevice => {
-    const breakpointsCollection = (supportsMatchMedia ? Object.entries(breakpoints) : []) as [
-      keyof Breakpoints,
-      number,
-    ][];
+  const breakpointsTokenAndQueryCollection = useMemo(
+    () =>
+      (supportsMatchMedia
+        ? Object.entries(breakpoints).map(
+            ([breakpointTokenName, breakpointSize], index, breakpointsArray) => {
+              let mediaQuery = '';
 
-    const matchedBreakpoint =
-      breakpointsCollection.find(([_, value], index) => {
-        const mediaQuery = breakpointsCollection[index - 1]
-          ? `screen and (min-width: ${
-              breakpointsCollection[index - 1][1] + 1
-            }px) and (max-width: ${value}px)`
-          : `screen and (max-width: ${value}px)`;
+              if (breakpointTokenName === 'max') {
+                mediaQuery = `screen and (min-width: ${breakpointSize}px)`;
+              } else if (breakpointsArray[index - 1]) {
+                mediaQuery = `screen and (min-width: ${
+                  breakpointsArray[index - 1][1] + 1
+                }px) and (max-width: ${breakpointSize}px)`;
+              } else {
+                mediaQuery = `screen and (max-width: ${breakpointSize}px)`;
+              }
 
-        if (window.matchMedia(mediaQuery).matches) {
-          return true;
-        }
-        return false;
-      })?.[0] ?? '';
+              return [breakpointTokenName, breakpointSize, mediaQuery];
+            },
+          )
+        : []) as [keyof Breakpoints, number, string][],
+    [breakpoints, supportsMatchMedia],
+  );
 
-    let deviceType: DeviceType = 'desktop';
+  const getMatchedDeviceType = useCallback((matchedBreakpoint: Breakpoint): DeviceType => {
+    let matchedDeviceType: DeviceType = 'mobile';
     if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
       // react-native
-      deviceType = 'mobile';
+      matchedDeviceType = 'mobile';
     } else if (typeof document !== 'undefined') {
       // browser
-      if (['xs', 's', 'm'].includes(matchedBreakpoint)) {
+      if (matchedBreakpoint && ['xs', 's', 'm'].includes(matchedBreakpoint)) {
         // tablet is also categorised as mobile
-        deviceType = 'mobile';
+        matchedDeviceType = 'mobile';
       } else {
-        deviceType = 'desktop';
+        matchedDeviceType = 'desktop';
       }
     } else if (typeof process !== 'undefined') {
       // node
       //@TODO: Check for useragent for node
-      deviceType = 'desktop';
+      matchedDeviceType = 'desktop';
     }
+    return matchedDeviceType;
+  }, []);
 
+  const getMatchedBreakpoint = useCallback(
+    (event?: MediaQueryListEvent): Breakpoint => {
+      const matchedBreakpoint =
+        breakpointsTokenAndQueryCollection.find(([_, __, mediaQuery]) => {
+          if (event?.media === mediaQuery) {
+            return true;
+          }
+          if (window.matchMedia(mediaQuery).matches) {
+            return true;
+          }
+          return false;
+        })?.[0] ?? undefined;
+
+      return matchedBreakpoint;
+    },
+    [breakpointsTokenAndQueryCollection],
+  );
+
+  const [breakpointAndDevice, setBreakpointAndDevice] = useState(() => {
+    const matchedBreakpoint = getMatchedBreakpoint();
+    const matchedDeviceType = getMatchedDeviceType(matchedBreakpoint);
     return {
       matchedBreakpoint,
-      deviceType,
+      matchedDeviceType,
     };
-  }, [breakpoints, supportsMatchMedia]);
-
-  const [breakpointAndDevice, setBreakpointAndDevice] = useState(getMatchedBreakpointsAndDevice);
+  });
 
   useEffect(() => {
     if (!supportsMatchMedia) {
       return undefined;
     }
 
-    const handleResize = (): void => {
-      setBreakpointAndDevice(getMatchedBreakpointsAndDevice);
+    const handleMediaQueryChange = (event: MediaQueryListEvent): void => {
+      setBreakpointAndDevice((prevBreakpointAndDevice) => {
+        const matchedBreakpoint = getMatchedBreakpoint(event);
+        const matchedDeviceType = getMatchedDeviceType(matchedBreakpoint);
+        if (
+          prevBreakpointAndDevice.matchedBreakpoint !== matchedBreakpoint ||
+          prevBreakpointAndDevice.matchedDeviceType !== matchedDeviceType
+        ) {
+          return { matchedBreakpoint, matchedDeviceType };
+        }
+        return prevBreakpointAndDevice;
+      });
     };
 
-    window.addEventListener('resize', handleResize);
+    const mediaQueryInstances = breakpointsTokenAndQueryCollection.map(([_, __, mediaQuery]) =>
+      window.matchMedia(mediaQuery),
+    );
+
+    mediaQueryInstances.forEach((mediaQueryInstance) => {
+      if (mediaQueryInstance.addEventListener) {
+        mediaQueryInstance.addEventListener('change', handleMediaQueryChange);
+      } else {
+        // In older browsers MediaQueryList do not yet inherit from EventTarget, So using addListener as fallback - https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener
+        mediaQueryInstance.addListener(handleMediaQueryChange);
+      }
+    });
+
+    // window.addEventListener('resize', handleMediaQueryChange);
 
     return (): void => {
-      window.removeEventListener('resize', handleResize);
+      // window.removeEventListener('resize', handleMediaQueryChange);
+      mediaQueryInstances.forEach((mediaQueryInstance) => {
+        if (mediaQueryInstance.removeEventListener) {
+          mediaQueryInstance.removeEventListener('change', handleMediaQueryChange);
+        } else {
+          // In older browsers MediaQueryList do not yet inherit from EventTarget, So using removeListener as fallback - https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/removeListener
+          mediaQueryInstance.removeListener(handleMediaQueryChange);
+        }
+      });
     };
-  }, [supportsMatchMedia, getMatchedBreakpointsAndDevice]);
+  }, [
+    breakpointsTokenAndQueryCollection,
+    getMatchedBreakpoint,
+    getMatchedDeviceType,
+    supportsMatchMedia,
+  ]);
 
   // @TODO: handle SSR scenarios
   return breakpointAndDevice;
