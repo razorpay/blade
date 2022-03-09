@@ -1,6 +1,5 @@
 export { default as cloneDeep } from './cloneDeep';
 export { default as getColorScheme } from './getColorScheme';
-export { default as getDeviceType } from './getDeviceType';
 export { default as isEqual } from './isEqual';
 export { default as isPartialMatchObjectKeys } from './isPartialMatchObjectKeys';
 export * from './isPartialMatchObjectKeys';
