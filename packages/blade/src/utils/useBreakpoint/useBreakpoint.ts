@@ -22,8 +22,10 @@ const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): Breakpoin
     const matchedBreakpoint =
       breakpointsCollection.find(([_, value], index) => {
         const mediaQuery = breakpointsCollection[index - 1]
-          ? `(min-width: ${breakpointsCollection[index - 1][1] + 1}px) and (max-width: ${value}px)`
-          : `(max-width: ${value}px)`;
+          ? `screen and (min-width: ${
+              breakpointsCollection[index - 1][1] + 1
+            }px) and (max-width: ${value}px)`
+          : `screen and (max-width: ${value}px)`;
 
         if (window.matchMedia(mediaQuery).matches) {
           return true;
@@ -73,6 +75,7 @@ const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): Breakpoin
     };
   }, [supportsMatchMedia, getMatchedBreakpointsAndDevice]);
 
+  // @TODO: handle SSR scenarios
   return breakpointAndDevice;
 };
 
