@@ -1,27 +1,15 @@
 import { renderHook, act, WrapperComponent } from '@testing-library/react-hooks';
 import { paymentTheme, colorSchemeNamesInput } from '../../../tokens/theme';
 import { BladeProvider, useTheme, BladeProviderProps } from '../../BladeProvider';
+import setupMatchMediaMock from '../../../utils/mocks/setupMatchMediaMock';
 import paymentLightTheme from './paymentLightTheme';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
-// mock matchMedia
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: jest.fn().mockImplementation((query) => ({
-    matches: true, // @TODO: check how to toggle this to check other variants of test
-    media: query,
-    onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
-});
-
 describe('<BladeProvider/>', () => {
+  // mock matchMedia
+  setupMatchMediaMock({ matches: true });
   const wrapper: WrapperComponent<BladeProviderProps> = ({
     themeTokens,
     colorScheme,

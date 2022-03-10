@@ -1,25 +1,9 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import breakpoints from '../../tokens/global/breakpoints';
+import setupMatchMediaMock from '../mocks/setupMatchMediaMock';
 import useBreakpoint from './';
 
 describe('useBreakpoint', () => {
-  const setupMatchMediaMock = (customArgs = {}): void => {
-    Object.defineProperty(window, 'matchMedia', {
-      writable: true,
-      value: jest.fn().mockImplementation((query) => ({
-        matches: false,
-        media: query,
-        onchange: jest.fn(),
-        addListener: jest.fn(), // deprecated
-        removeListener: jest.fn(), // deprecated
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn(),
-        ...customArgs,
-      })),
-    });
-  };
-
   it('should detect mobile and return smallest breakpoint of mobile devices', () => {
     setupMatchMediaMock({
       matches: true,
