@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon, { IconPropTypes } from '../../atoms/Icon';
 
-function ProductsFilled(props) {
+function GridOutlined(props) {
   return (
     <Icon viewBox="0 0 24 24" {...props}>
       <path
@@ -24,19 +24,15 @@ function ProductsFilled(props) {
         clipRule="evenodd"
         d="M3 13C2.44772 13 2 13.4477 2 14V21C2 21.5523 2.44772 22 3 22H10C10.5523 22 11 21.5523 11 21V14C11 13.4477 10.5523 13 10 13H3ZM4 20V15H9V20H4Z"
       />
-      <rect x="3" y="3" width="7" height="7" />
-      <rect x="14" y="3" width="7" height="7" />
-      <rect x="14" y="14" width="7" height="7" />
-      <rect x="3" y="14" width="7" height="7" />
     </Icon>
   );
 }
 
-ProductsFilled.propTypes = IconPropTypes;
+GridOutlined.propTypes = IconPropTypes;
 
-ProductsFilled.defaultProps = {
+GridOutlined.defaultProps = {
   size: 'medium',
   fill: 'sapphire.800',
 };
 
-export default ProductsFilled;
+export default GridOutlined;
