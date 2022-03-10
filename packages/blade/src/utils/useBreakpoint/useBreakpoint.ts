@@ -117,8 +117,6 @@ const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): Breakpoin
       }
     });
 
-    // window.addEventListener('resize', handleMediaQueryChange);
-
     return (): void => {
       // window.removeEventListener('resize', handleMediaQueryChange);
       mediaQueryInstances.forEach((mediaQueryInstance) => {
