@@ -1,5 +1,4 @@
 ---
-"@razorpay/blade": patch
 "@razorpay/blade-old": patch
 ---
 
