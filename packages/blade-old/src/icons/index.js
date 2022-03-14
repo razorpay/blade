@@ -37,6 +37,7 @@ export { default as Headphone } from './Headphone';
 export { default as HelpCircle } from './HelpCircle';
 export { default as Home } from './Home';
 export { default as HomeFilled } from './HomeFilled';
+export { default as HyperLink } from './HyperLink';
 export { default as Info } from './Info';
 export { default as Invoice } from './Invoice';
 export { default as LifeBuoy } from './LifeBuoy';
