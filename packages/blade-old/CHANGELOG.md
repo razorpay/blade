@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 2.2.0
+
+### Minor Changes
+
+- 802f31d: feat(hyperlink-icon): add hyperlink icon
+
 ## 2.1.0
 
 ### Minor Changes
