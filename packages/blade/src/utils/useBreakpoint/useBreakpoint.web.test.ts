@@ -17,7 +17,7 @@ describe('useBreakpoint', () => {
 
   it('should match a specific media query and return the device type accordingly', () => {
     const addEventListenerMock = jest
-      .fn()
+      .fn<void, ((arg: { media: string }) => void)[]>()
       .mockImplementation((_, callback: (arg: { media: string }) => void) => {
         callback({ media: 'screen and (min-width: 769px) and (max-width: 1024px)' });
       });
@@ -32,7 +32,6 @@ describe('useBreakpoint', () => {
     expect(result.current.matchedBreakpoint).toBe('l');
     expect(result.current.matchedDeviceType).toBe('desktop');
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     const addEventListenerMockCallback = addEventListenerMock.mock.calls[0][1] as (arg: {
       media: string;
     }) => void;
