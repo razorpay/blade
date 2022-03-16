@@ -1,7 +1,12 @@
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import type { Breakpoints } from '../../tokens/global';
 
-type DeviceType = 'desktop' | 'mobile';
+const deviceType = {
+  desktop: 'desktop',
+  mobile: 'mobile',
+} as const;
+
+type DeviceType = keyof typeof deviceType;
 type Breakpoint = keyof Breakpoints | undefined;
 
 type BreakpointAndDevice = {
@@ -38,22 +43,22 @@ const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): Breakpoin
   );
 
   const getMatchedDeviceType = useCallback((matchedBreakpoint: Breakpoint): DeviceType => {
-    let matchedDeviceType: DeviceType = 'mobile';
+    let matchedDeviceType: DeviceType = deviceType.mobile;
     if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
       // react-native
-      matchedDeviceType = 'mobile';
+      matchedDeviceType = deviceType.mobile;
     } else if (typeof document !== 'undefined') {
       // browser
       if (matchedBreakpoint && ['xs', 's', 'm'].includes(matchedBreakpoint)) {
         // tablet is also categorised as mobile
-        matchedDeviceType = 'mobile';
+        matchedDeviceType = deviceType.mobile;
       } else {
-        matchedDeviceType = 'desktop';
+        matchedDeviceType = deviceType.desktop;
       }
     } else if (typeof process !== 'undefined') {
       // node
       //@TODO: Check for useragent for node
-      matchedDeviceType = 'desktop';
+      matchedDeviceType = deviceType.desktop;
     }
     return matchedDeviceType;
   }, []);
@@ -104,21 +109,18 @@ const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): Breakpoin
       });
     };
 
-    const mediaQueryInstances = breakpointsTokenAndQueryCollection.map(([_, __, mediaQuery]) =>
-      window.matchMedia(mediaQuery),
-    );
-
-    mediaQueryInstances.forEach((mediaQueryInstance) => {
+    const mediaQueryInstances = breakpointsTokenAndQueryCollection.map(([_, __, mediaQuery]) => {
+      const mediaQueryInstance = window.matchMedia(mediaQuery);
       if (mediaQueryInstance.addEventListener) {
         mediaQueryInstance.addEventListener('change', handleMediaQueryChange);
       } else {
         // In older browsers MediaQueryList do not yet inherit from EventTarget, So using addListener as fallback - https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener
         mediaQueryInstance.addListener(handleMediaQueryChange);
       }
+      return mediaQueryInstance;
     });
 
     return (): void => {
-      // window.removeEventListener('resize', handleMediaQueryChange);
       mediaQueryInstances.forEach((mediaQueryInstance) => {
         if (mediaQueryInstance.removeEventListener) {
           mediaQueryInstance.removeEventListener('change', handleMediaQueryChange);
