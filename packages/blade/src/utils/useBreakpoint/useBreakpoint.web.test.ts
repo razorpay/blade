@@ -17,6 +17,7 @@ describe('useBreakpoint', () => {
 
   it('should match a specific media query and return the device type accordingly', () => {
     const addEventListenerMock = jest
+      // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
       .fn<void, ((arg: { media: string }) => void)[]>()
       .mockImplementation((_, callback: (arg: { media: string }) => void) => {
         callback({ media: 'screen and (min-width: 769px) and (max-width: 1024px)' });
