@@ -10,9 +10,6 @@
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
   },
-  "engines": {
-    "node": ">=12.x"
-  },
   "files": [
     "src",
     "public",
