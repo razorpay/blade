@@ -3,6 +3,9 @@
   "author": "kamleshchandnani",
   "version": "2.1.0",
   "license": "MIT",
+  "engines": {
+    "node": ">=14.19.0"
+  },
   "bin": {
     "migrate-icons": "./scripts/icon-migrate-codemod/cli.js"
   },
