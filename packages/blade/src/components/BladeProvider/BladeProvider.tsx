@@ -38,15 +38,15 @@ const BladeProvider = ({
     breakpoints: themeTokens.breakpoints,
   });
 
-  const colorMode = `on${toTitleCase(colorScheme)}` as ColorSchemeModes;
+  const onColorMode = `on${toTitleCase(colorScheme)}` as ColorSchemeModes;
   const onDeviceType = `on${toTitleCase(matchedDeviceType)}` as TypographyPlatforms;
 
   const theme: Theme = {
     ...themeTokens,
-    colors: themeTokens.colors[colorMode],
+    colors: themeTokens.colors[onColorMode],
     shadows: {
       ...themeTokens.shadows,
-      color: themeTokens.shadows.color[colorMode],
+      color: themeTokens.shadows.color[onColorMode],
     },
     typography: themeTokens.typography[onDeviceType],
   };
