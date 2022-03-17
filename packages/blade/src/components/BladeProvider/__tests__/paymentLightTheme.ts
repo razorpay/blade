@@ -1,5 +1,6 @@
 import globalColors from '../../../tokens/global/colors';
 import border from '../../../tokens/global/border';
+import breakpoints from '../../../tokens/global/breakpoints';
 import spacing from '../../../tokens/global/spacing';
 import typography from '../../../tokens/global/typography';
 import { Theme } from '../useTheme';
@@ -1021,6 +1022,7 @@ const paymentLightTheme: Theme = {
   },
   border,
   spacing,
+  breakpoints,
   shadows: {
     offsetX: {
       level: {

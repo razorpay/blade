@@ -3,15 +3,15 @@
   "author": "kamleshchandnani",
   "version": "2.2.0",
   "license": "MIT",
+  "engines": {
+    "node": ">=14.19.0"
+  },
   "bin": {
     "migrate-icons": "./scripts/icon-migrate-codemod/cli.js"
   },
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/razorpay/blade.git"
-  },
-  "engines": {
-    "node": ">=12.19.0"
   },
   "files": [
     "src",

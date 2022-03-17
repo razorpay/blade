@@ -1,14 +1,16 @@
 import { useContext, createContext } from 'react';
 import { Colors, Shadows, ShadowLevels } from '../../tokens/theme/theme.d';
-import type { Typography } from '../../tokens/global/typography';
 import type { Border } from '../../tokens/global/border';
+import type { Breakpoints } from '../../tokens/global/breakpoints';
 import type { Spacing } from '../../tokens/global/spacing';
+import type { Typography } from '../../tokens/global/typography';
 import type { UseColorScheme } from '../../utils/useColorScheme';
 import emptyTheme from './emptyTheme';
 
 export type Theme = {
-  colors: Colors;
   border: Border;
+  breakpoints: Breakpoints;
+  colors: Colors;
   spacing: Spacing;
   shadows: Omit<Shadows, 'color'> & {
     color: {

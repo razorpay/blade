@@ -12,7 +12,7 @@ export const parameters = {
         'Guides',
         ['Intro', 'Installation', 'Usage', 'Local Development'],
         'Tokens',
-        ['Colors', 'Border', 'Spacing', 'Shadows', 'Typography'],
+        ['Colors', 'Typography', 'Breakpoints', 'Border', 'Spacing', 'Shadows'],
       ],
     },
   },

@@ -1,9 +1,14 @@
 import { ReactNode, ReactElement } from 'react';
-import { useColorScheme, toTitleCase, getDeviceType } from '../../utils';
+import { useColorScheme, toTitleCase, useBreakpoint } from '../../utils';
 import { colorSchemeNamesInput } from '../../tokens/theme';
-import { TypographyPlatforms } from '../../tokens/global/typography';
-import { ColorSchemeModes, ThemeTokens, ColorSchemeNamesInput } from '../../tokens/theme/theme.d';
-import { Theme, ThemeContext } from './useTheme';
+import type { TypographyPlatforms } from '../../tokens/global/typography';
+import type {
+  ColorSchemeModes,
+  ThemeTokens,
+  ColorSchemeNamesInput,
+} from '../../tokens/theme/theme.d';
+import type { Theme } from './useTheme';
+import { ThemeContext } from './useTheme';
 
 export type BladeProviderProps = {
   themeTokens: ThemeTokens;
@@ -29,18 +34,21 @@ const BladeProvider = ({
   }
 
   const { colorScheme, setColorScheme } = useColorScheme(initialColorScheme);
+  const { matchedDeviceType } = useBreakpoint({
+    breakpoints: themeTokens.breakpoints,
+  });
 
-  const colorMode = `on${toTitleCase(colorScheme)}` as ColorSchemeModes;
-  const deviceType = `on${toTitleCase(getDeviceType())}` as TypographyPlatforms;
+  const onColorMode = `on${toTitleCase(colorScheme)}` as ColorSchemeModes;
+  const onDeviceType = `on${toTitleCase(matchedDeviceType)}` as TypographyPlatforms;
 
   const theme: Theme = {
     ...themeTokens,
-    colors: themeTokens.colors[colorMode],
+    colors: themeTokens.colors[onColorMode],
     shadows: {
       ...themeTokens.shadows,
-      color: themeTokens.shadows.color[colorMode],
+      color: themeTokens.shadows.color[onColorMode],
     },
-    typography: themeTokens.typography[deviceType],
+    typography: themeTokens.typography[onDeviceType],
   };
 
   const themeContextValue = {
