@@ -68,13 +68,13 @@ const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): Breakpoin
   const getMatchedBreakpoint = useCallback(
     (event?: MediaQueryListEvent): Breakpoint => {
       const matchedBreakpoint =
-        breakpointsTokenAndQueryCollection.find((breakpointTokenAndQuery) => {
+        breakpointsTokenAndQueryCollection.find(({ mediaQuery = '' }) => {
           // this will run whenever mediaQuery change event is triggered
-          if (event?.media === breakpointTokenAndQuery?.mediaQuery) {
+          if (event?.media === mediaQuery) {
             return true;
           }
           // this will run when the state is initialised for the first time and hence the event object will be empty so we'll fallback to browser's window object
-          if (window.matchMedia(breakpointTokenAndQuery?.mediaQuery).matches) {
+          if (window.matchMedia(mediaQuery).matches) {
             return true;
           }
           return false;
@@ -108,22 +108,20 @@ const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): Breakpoin
       });
     };
 
-    const mediaQueryInstances = breakpointsTokenAndQueryCollection.map(
-      (breakpointTokenAndQuery) => {
-        const mediaQueryInstance = window.matchMedia(breakpointTokenAndQuery?.mediaQuery);
-        /**
-         * the mediaquery event listener is available on mediaQuery instances and not `window`
-         * we iterate over all the breakpoints we have, register each instance and store them as `mediaQueryInstances` so we can later unregister all of them.
-         */
-        if (mediaQueryInstance.addEventListener) {
-          mediaQueryInstance.addEventListener('change', handleMediaQueryChange);
-        } else {
-          // In older browsers MediaQueryList do not yet inherit from EventTarget, So using addListener as fallback - https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener
-          mediaQueryInstance.addListener(handleMediaQueryChange);
-        }
-        return mediaQueryInstance;
-      },
-    );
+    const mediaQueryInstances = breakpointsTokenAndQueryCollection.map(({ mediaQuery = '' }) => {
+      const mediaQueryInstance = window.matchMedia(mediaQuery);
+      /**
+       * the mediaquery event listener is available on mediaQuery instances and not `window`
+       * we iterate over all the breakpoints we have, register each instance and store them as `mediaQueryInstances` so we can later unregister all of them.
+       */
+      if (mediaQueryInstance.addEventListener) {
+        mediaQueryInstance.addEventListener('change', handleMediaQueryChange);
+      } else {
+        // In older browsers MediaQueryList do not yet inherit from EventTarget, So using addListener as fallback - https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener
+        mediaQueryInstance.addListener(handleMediaQueryChange);
+      }
+      return mediaQueryInstance;
+    });
 
     return (): void => {
       mediaQueryInstances.forEach((mediaQueryInstance) => {
