@@ -13,7 +13,7 @@ packages/blade/tokens.js
 packages/blade/tokens.d.ts
 packages/blade/utils.js
 packages/blade/utils.d.ts
-packages/blade/.storybook
+packages/blade/.storybook/**
 
 # misc
 .DS_Store
