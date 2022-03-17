@@ -1,5 +1,6 @@
-import type { Spacing } from '../global/spacing';
 import type { Border } from '../global/border';
+import type { Breakpoints } from '../global/breakpoints';
+import type { Spacing } from '../global/spacing';
 import type { TypographyWithPlatforms } from '../global/typography';
 
 export type ColorSchemeNames = 'dark' | 'light';
@@ -113,8 +114,9 @@ export type Colors = {
 export type ColorsWithModes = Record<ColorSchemeModes, Colors>;
 
 export type ThemeTokens = {
-  colors: ColorsWithModes;
   border: Border;
+  breakpoints: Breakpoints;
+  colors: ColorsWithModes;
   spacing: Spacing;
   shadows: Shadows;
   typography: TypographyWithPlatforms;

@@ -21,4 +21,5 @@ module.exports = {
   transformIgnorePatterns: [
     'node_modules/(?!(react-native.*|@react-native.*|@?react-navigation.*|@?react-navigation-stack)/)',
   ],
+  setupFiles: ['./jest-setup.native.js'],
 };

@@ -1,4 +1,5 @@
 import border from '../global/border';
+import breakpoints from '../global/breakpoints';
 import spacing from '../global/spacing';
 import globalColors from '../global/colors';
 import typography from '../global/typography';
@@ -2097,8 +2098,9 @@ const shadows: Shadows = {
 };
 
 const bankingTheme: ThemeTokens = {
-  colors,
   border,
+  breakpoints,
+  colors,
   spacing,
   shadows,
   typography,
