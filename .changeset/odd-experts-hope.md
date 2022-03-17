@@ -6,9 +6,10 @@
 feat(blade): add listener for toggling breakpoints
 
 **Updates**
-* After upgrading to this version you'll get responsiveness out of the box in typography tokens.
-
-* This release adds support for following breakpoints
+* Add `breakpoints` token to the themes.
+* Out of the box responsiveness support for typography tokens.
+* Publish `useBreakpoint` hook.
+* Following breakpoints are supported as of today.
   ```
   /** max width: 320px  */
   xs: 320;
@@ -28,8 +29,9 @@ feat(blade): add listener for toggling breakpoints
   * `l, xl, xl` are considered as desktop
 * For react native we always default to mobile typography scale
 
-[Read more about our responsive and adaptive strategy in this RFC](https://github.com/razorpay/blade/blob/master/rfcs/2022-02-11-responsive-and-adaptive-layout-strategy.md)
+**What does it mean for me(as a developer)?**
+* If you’re already using Blade tokens then you can leverage this by just running `yarn upgrade @razorpay/blade@0.1.6` and that’s it you are set 🚀 
+  * You can use the typography tokens as you were doing previously. Refer the [usage guideline here](https://61c19ee8d3d282003ac1d81c-jukcfyruls.chromatic.com/?path=/story/guides-usage--page&globals=measureEnabled:false#tokens)
+* You can use these `breakpoints` as a base reference to build your next set of features by just following the [usage guidelines here](https://61c19ee8d3d282003ac1d81c-jukcfyruls.chromatic.com/?path=/story/guides-usage--page&globals=measureEnabled:false#tokens).
 
-**How to get this for your project?**
-* Run `yarn upgrade @razorpay/blade@0.1.6`
-* Use the typography tokens as you were doing previously. Refer the [usage guideline here](https://61c19ee8d3d282003ac1d81c-jukcfyruls.chromatic.com/?path=/story/tokens-typography--page&globals=measureEnabled:false)
+This is our first step towards building responsive and adaptive applications. We’ll be publishing Typography Components next which will be built on top of these tokens and you can use them directly for your projects. Meanwhile, [read more about our responsive and adaptive strategy in this RFC](https://github.com/razorpay/blade/blob/master/rfcs/2022-02-11-responsive-and-adaptive-layout-strategy.md)
