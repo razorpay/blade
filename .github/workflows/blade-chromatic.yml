@@ -7,7 +7,7 @@ env:
 jobs:
   chromatic-deployment:
     name: Chromatic Deployment
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v2
