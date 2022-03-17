@@ -13,7 +13,7 @@ feat(blade): add listener for toggling breakpoints
   /** max width: 320px  */
   xs: 320;
   /** min width: 321px and max width: 480px */
-  s: 480r;
+  s: 480;
   /** min width: 481px and max width: 768px */
   m: 768;
   /** min width: 769 and max width: 1024px */
