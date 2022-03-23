@@ -13,6 +13,13 @@ Blade Issue:
     - [What use cases does it support?](#what-use-cases-does-it-support)
     - [What is the expected outcome?](#what-is-the-expected-outcome)
 - [Detailed Design](#detailed-design)
+  - [Types of Motion](#types-of-motion)
+  - [Scope of Motion](#scope-of-motion)
+  - [Actions of Motion](#actions-of-motion)
+  - [Rules (Tokens) of Motion](#rules-tokens-of-motion)
+    - [Delay](#delay)
+    - [Duration](#duration)
+    - [Easing](#easing)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
@@ -42,7 +49,52 @@ The rules we establish for motion here can be applied for both Web (**React**) a
 
 
 # Detailed Design
-This is the bulk of the RFC. Explain the design in enough detail for somebody familiar with the Design System to understand, and for somebody familiar with the implementation to implement. This should get into specifics and corner-cases, and include examples of how the feature is used. Any new terminology should be defined here.
+## Types of Motion
+We can have 2 types of motion while building user interfaces
+1. **Realtime**: User is directly interacting with the objects of the UI. 
+    *Example: When a user drags a carousel, the carousel slides as per the user's drag.*
+    <img alt="Realtime Animation Example" src="./images/motion/realtime.gif" width="300px">
+
+2. **Non-Realtime**: Non-realtime means that the object's behavior is *post-interactive* i.e it occurs after a user action, and is transitional.
+    *Example: When a user taps on a carousel card, it flips over within a set timeframe*
+    <img alt="Realtime Animation Example" src="./images/motion/non-realtime.gif" width="300px">
+
+## Scope of Motion
+As of this RFC, we will be defining rules of motion only for **Non-Realtime** interactions. 
+
+Few examples of non-realtime motion are:
+1. Changing the size of a button on mouse hover for web
+2. Changing the opacity of a card on press mobile
+3. Fading out a modal when the user closes it
+
+
+## Actions of Motion
+These are the actions an object on our UI can perform:
+
+1. **Scale**: An object can change it's dimensions (size) in X and Y axis
+    <img alt="scale" src="./images/motion/scale.gif" width="100px">
+3. **Move**: An object can change it's position in X and Y axis
+    <img alt="move" src="./images/motion/move.gif" width="100px">
+4. **Fade**: An object can change it's opacity within the range of 0 to 1
+    <img alt="fade" src="./images/motion/fade.gif" width="100px">
+5. **Fill**: An object can change it's color
+    <img alt="fill" src="./images/motion/fill.gif" width="100px">
+6. **Morph**: An object can morph itself into another object
+    <img alt="morph" src="./images/motion/morph.gif" width="100px">
+7. **Rotation**: An object can rotate itself in a range of 0 to 360 degrees
+    <img alt="rotate" src="./images/motion/rotate.gif" width="100px">
+
+## Rules (Tokens) of Motion
+While defining motion for an object transitioning from one state to another, we need to consider the following:
+1. **Delay**: When should the motion start?
+2. **Duration**: How long should an object take to transition from one state to another?
+3. **Easing**: How should an object accelerate/decelerate while transitioning from one state to another?
+
+### Delay
+
+### Duration
+
+### Easing
 
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
@@ -73,5 +125,4 @@ If we implement this proposal, how will existing consumer projects adopt it?
 - Any dependencies on other teams(Design/Engineering) that needs to be resolved upfront?
 
 # References
-Any references that you can share for those who are curious to understand anything beyond the scope of this RFC in general but related to the topic of this RFC.
-
+- https://shengbanx.gitbooks.io/motion-system/content/chapter2.html
