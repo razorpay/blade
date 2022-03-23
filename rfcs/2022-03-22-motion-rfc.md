@@ -18,8 +18,11 @@ Blade Issue:
   - [Actions of Motion](#actions-of-motion)
   - [Rules (Tokens) of Motion](#rules-tokens-of-motion)
     - [Delay](#delay)
+      - [Tokens - Delay](#tokens---delay)
     - [Duration](#duration)
+      - [Tokens - Duration](#tokens---duration)
     - [Easing](#easing)
+      - [Tokens - Easing](#tokens---easing)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
@@ -87,10 +90,75 @@ While defining motion for an object transitioning from one state to another, we 
 3. **Easing**: How should an object accelerate/decelerate while transitioning from one state to another?
 
 ### Delay
+You can *start* or *stop* your motion with some delay. For example, in the image below, it becomes difficult to reach the sub-menu in the drop down since the exit animation for the sub-menu starts instantly after the mouse is out of the hover range. This can be fixed by adding a delay to the exit animation.
+> You can use `transition-delay` CSS property in the exit animation of the sub-menu to achieve this.
+
+<img alt="rotate" src="./images/motion/dropdown.gif" width="300px">
+
+#### Tokens - Delay
+> We will be storing these tokens in `blade/src/tokens/global/motion.ts`
+
+> *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
+
+Here is the list of tokens that we will store in Blade for `Delay`:
+```js
+delay: {
+  delay1: 70ms,
+  delay2: 120ms,
+  delay3: 180ms,
+  delay4: 3000ms,
+  delay5: 5000ms,
+}
+```
 
 ### Duration
 
+#### Tokens - Duration
+> We will be storing these tokens in `blade/src/tokens/global/motion.ts`
+
+> *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
+
+Here is the list of tokens that we will store in Blade for `Duration`:
+```js
+duration: {
+  duration1: 70ms,
+  duration2: 150ms,
+  duration3: 200ms,
+  duration4: 250ms,
+  duration5: 300ms,
+  duration6: 400ms,
+  duration7: 600ms,
+}
+```
+
 ### Easing
+
+#### Tokens - Easing
+> We will be storing these tokens in `blade/src/tokens/global/motion.ts`
+
+> *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
+
+Here is the list of tokens that we will store in Blade for `Easing`:
+```js
+easing: {
+  standard: {
+    effective: 'cubic-bezier(0.3, 0, 0.2, 1)',
+    revealing: 'cubic-bezier(0.5, 0, 0, 1)',
+    wary: 'cubic-bezier(1, 0.5, 0, 0.5)',
+    attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)',
+  },
+  entrance: {
+    effective: 'cubic-bezier(0, 0, 0.2, 1)',
+    revealing: 'cubic-bezier(0, 0, 0, 1)',
+    attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)',
+  },
+  exit: {
+    effective: 'cubic-bezier(0.17, 0, 1, 1)',
+    revealing: 'cubic-bezier(0.5, 0, 1, 1)',
+    attentive: 'cubic-bezier(0.7, 0, 0.5, 1)',
+  },
+}
+```
 
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
@@ -122,3 +190,4 @@ If we implement this proposal, how will existing consumer projects adopt it?
 
 # References
 - https://shengbanx.gitbooks.io/motion-system/content/chapter2.html
+- https://www.joshwcomeau.com/animation/css-transitions
