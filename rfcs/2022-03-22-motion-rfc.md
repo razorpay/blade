@@ -31,10 +31,6 @@ Blade Issue:
 
 
 # Motivation
-- Why are we doing this?
-- What use cases does it support?
-- What is the expected outcome?
-
 ### Why are we doing this?
 Motion brings your UI to life. It makes your UI feel closer to our physical reality. Just like we have **pre-defined physical** laws in the **real world** that dictate the reactions to our different actions (like throwing a ball high up and expecting it to fall back down in a predictable manner), we want to define similar **set of rules** for **motion** **within** our **Design System**. If two balls thrown up with the same force, come back down in the same manner then why should two buttons on a UI react differently when hovered over?
 
@@ -51,11 +47,11 @@ The rules we establish for motion here can be applied for both Web (**React**) a
 # Detailed Design
 ## Types of Motion
 We can have 2 types of motion while building user interfaces
-1. **Realtime**: User is directly interacting with the objects of the UI. 
+1. **Realtime**: User is directly interacting with an object on the UI. 
     *Example: When a user drags a carousel, the carousel slides as per the user's drag.*
     <img alt="Realtime Animation Example" src="./images/motion/realtime.gif" width="300px">
 
-2. **Non-Realtime**: Non-realtime means that the object's behavior is *post-interactive* i.e it occurs after a user action, and is transitional.
+2. **Non-Realtime**: The object's behavior is *post-interactive* i.e it occurs after a user's action, and is transitional.
     *Example: When a user taps on a carousel card, it flips over within a set timeframe*
     <img alt="Realtime Animation Example" src="./images/motion/non-realtime.gif" width="300px">
 
@@ -63,8 +59,8 @@ We can have 2 types of motion while building user interfaces
 As of this RFC, we will be defining rules of motion only for **Non-Realtime** interactions. 
 
 Few examples of non-realtime motion are:
-1. Changing the size of a button on mouse hover for web
-2. Changing the opacity of a card on press mobile
+1. Changing the size of a button on mouse hover
+2. Changing the opacity of a card on press
 3. Fading out a modal when the user closes it
 
 
