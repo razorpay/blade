@@ -159,7 +159,7 @@ If we move an object from one point to another with a linear motion where it's a
 We can represent this as a bezier function `cubic-bezier(0, 0, 1, 1)` and a bezier curve:
 <img alt="linear-curve" src="./images/motion/linear-curve.png" width="200px">
 
-**Rapid start - Slow end**
+**Rapid Start - Slow End**
 If we move an object from one point to another where it will start at a higher velocity and slow down as it approaches the destination, it would look like this:
 <img alt="fast-in-ease-out" src="./images/motion/rapid-start-easing.gif" width="300px">
 
@@ -168,7 +168,7 @@ We can represent this as a bezier function `cubic-bezier(0, 1, 1, 1)` and a bezi
 
 We can also represent this as a bezier function: `cubic-bezier(0, 1, 1, 1)`
 
-**Ease In Ease Out**
+**Ease In - Ease Out**
 If you're familiar with easing in CSS, you must have come across a transition timing property of `ease-in-out`. This is the same as linear but with a slower acceleration at the beginning and a slower deceleration at the end.
 
 <img alt="ease-in-out-easing" src="./images/motion/ease-in-out-easing.gif" width="300px">
