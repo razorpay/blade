@@ -176,6 +176,8 @@ If you're familiar with easing in CSS, you must have come across a transition ti
 We can represent this as a bezier function `cubic-bezier(0.42, 0, 0.58, 1)` and a bezier curve:
 <img alt="rapid-start-curve" src="./images/motion/ease-in-out-curve.png" width="200px">
 
+> You can experiment with different bezier curves to see how they look here: cubic-bezier.com
+
 #### Tokens - Easing
 We will be storing these tokens in `blade/src/tokens/global/motion.ts`
 
