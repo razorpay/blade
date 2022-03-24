@@ -20,6 +20,7 @@ Blade Issue:
     - [Delay](#delay)
       - [Tokens - Delay](#tokens---delay)
     - [Duration](#duration)
+      - [Perception of Duration](#perception-of-duration)
       - [Tokens - Duration](#tokens---duration)
     - [Easing](#easing)
       - [Tokens - Easing](#tokens---easing)
@@ -112,6 +113,16 @@ delay: {
 ```
 
 ### Duration
+Duration is the time taken to complete any transition, interaction and animation. Each animation can run for a duration of time depending on factors like size of the object, distance of travel, direction of travel, etc. 
+
+*Example: The card takes 300ms to open and 250ms to close*
+<img alt="rotate" src="./images/motion/card-duration.gif" width="300px">
+
+#### Perception of Duration
+Letting an animation run for different durations will have an impact on whether the users perceive the action to be instant, fast, normal or slow. 
+
+After thorough research & experimentation our design team has created a chart on how users would perceive different durations of animations. We will be using this as a reference while building out components and their animations.
+<img alt="rotate" src="./images/motion/duration-chart.png" width="700px">
 
 #### Tokens - Duration
 > We will be storing these tokens in `blade/src/tokens/global/motion.ts`
@@ -136,7 +147,7 @@ duration: {
 #### Tokens - Easing
 > We will be storing these tokens in `blade/src/tokens/global/motion.ts`
 
-> *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
+> Note: *The naming for these tokens is not finalized yet. We will be updating this in the future.*
 
 Here is the list of tokens that we will store in Blade for `Easing`:
 ```js
