@@ -97,7 +97,7 @@ You can *start* or *stop* your motion with some delay. For example, in the image
 <img alt="rotate" src="./images/motion/dropdown.gif" width="300px">
 
 #### Tokens - Delay
-> We will be storing these tokens in `blade/src/tokens/global/motion.ts`
+We will be storing these tokens in `blade/src/tokens/global/motion.ts`
 
 > *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
 
@@ -112,6 +112,8 @@ delay: {
 }
 ```
 
+> For React Native, we would need to store delay as `number` instead of `string`. Eg: `delay1: 70`
+
 ### Duration
 Duration is the time taken to complete any transition, interaction and animation. Each animation can run for a duration of time depending on factors like size of the object, distance of travel, direction of travel, etc. 
 
@@ -125,27 +127,28 @@ After thorough research & experimentation our design team has created a chart on
 <img alt="rotate" src="./images/motion/duration-chart.png" width="700px">
 
 #### Tokens - Duration
-> We will be storing these tokens in `blade/src/tokens/global/motion.ts`
+We will be storing these tokens in `blade/src/tokens/global/motion.ts`
 
 > *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
 
 Here is the list of tokens that we will store in Blade for `Duration`:
 ```js
 duration: {
-  duration1: 70ms,
-  duration2: 150ms,
-  duration3: 200ms,
-  duration4: 250ms,
-  duration5: 300ms,
-  duration6: 400ms,
-  duration7: 600ms,
+  duration1: '70ms',
+  duration2: '150ms',
+  duration3: '200ms',
+  duration4: '250ms',
+  duration5: '300ms',
+  duration6: '400ms',
+  duration7: '600ms',
 }
 ```
+> For React Native, we would need to store duration as `number` instead of `string`. Eg: `duration1: 70`
 
 ### Easing
 
 #### Tokens - Easing
-> We will be storing these tokens in `blade/src/tokens/global/motion.ts`
+We will be storing these tokens in `blade/src/tokens/global/motion.ts`
 
 > Note: *The naming for these tokens is not finalized yet. We will be updating this in the future.*
 
