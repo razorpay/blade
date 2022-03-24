@@ -23,6 +23,7 @@ Blade Issue:
       - [Perception of Duration](#perception-of-duration)
       - [Tokens - Duration](#tokens---duration)
     - [Easing](#easing)
+      - [Bezier Curve](#bezier-curve)
       - [Tokens - Easing](#tokens---easing)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
@@ -146,6 +147,34 @@ duration: {
 > For React Native, we would need to store duration as `number` instead of `string`. Eg: `duration1: 70`
 
 ### Easing
+Easing refers to the way in which a motion proceeds between two states. You can think of easing as acceleration or deceleration. 
+
+
+#### Bezier Curve
+A bezier curve allows us to mathematically represent how our easing should behave. Bezier curves can be represented on a graph where the x-axis represents **time** and the y-axis represents the **progression** of the motion. It can also be represented with a `cube-bezier` function which takes 4 arguments (`x1`,`y1`,`x2`,`y2`) within the range of 0 to 1.
+
+**Linear**
+If we move an object from one point to another with a linear motion where it's acceleration as well as deceleration is linear, it would look like this: 
+<img alt="linear-easing" src="./images/motion/linear-easing.gif" width="300px">
+We can represent this as a bezier function `cubic-bezier(0, 0, 1, 1)` and a bezier curve:
+<img alt="linear-curve" src="./images/motion/linear-curve.png" width="200px">
+
+**Rapid start - Slow end**
+If we move an object from one point to another where it will start at a higher velocity and slow down as it approaches the destination, it would look like this:
+<img alt="fast-in-ease-out" src="./images/motion/rapid-start-easing.gif" width="300px">
+
+We can represent this as a bezier function `cubic-bezier(0, 1, 1, 1)` and a bezier curve:
+<img alt="rapid-start-curve" src="./images/motion/rapid-start-curve.png" width="200px">
+
+We can also represent this as a bezier function: `cubic-bezier(0, 1, 1, 1)`
+
+**Ease In Ease Out**
+If you're familiar with easing in CSS, you must have come across a transition timing property of `ease-in-out`. This is the same as linear but with a slower acceleration at the beginning and a slower deceleration at the end.
+
+<img alt="ease-in-out-easing" src="./images/motion/ease-in-out-easing.gif" width="300px">
+
+We can represent this as a bezier function `cubic-bezier(0.42, 0, 0.58, 1)` and a bezier curve:
+<img alt="rapid-start-curve" src="./images/motion/ease-in-out-curve.png" width="200px">
 
 #### Tokens - Easing
 We will be storing these tokens in `blade/src/tokens/global/motion.ts`
