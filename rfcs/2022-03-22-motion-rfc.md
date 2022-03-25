@@ -118,11 +118,11 @@ We will be storing these tokens in `blade/src/tokens/global/motion.ts`
 Here is the list of tokens that we will store in Blade for `Delay`:
 ```js
 delay: {
-  delay1: 70ms,
-  delay2: 120ms,
-  delay3: 180ms,
-  delay4: 3000ms,
-  delay5: 5000ms,
+  delay1: '70ms',
+  delay2: '120ms',
+  delay3: '180ms',
+  delay4: '3000ms',
+  delay5: '5000ms',
 }
 ```
 
@@ -168,7 +168,13 @@ Easing refers to the way in which a motion proceeds between two states. You can 
 #### Bezier Curve
 A bezier curve allows us to mathematically represent how our easing should behave. Bezier curves can be represented on a graph where the x-axis represents **time** and the y-axis represents the **progression** of the motion. It can also be represented with a `cube-bezier` function which takes 4 arguments (`x1`,`y1`,`x2`,`y2`) within the range of 0 to 1.
 
-**Linear**
+We can use Bezier Curves with both **React** & **React Native** to define the easing of our animations.
+ 
+**CSS** natively understands `cubic-bezier` functions and allows you to define `transition-timing-function: cubic-bezier(0, 0, 1, 1)`. Other libraries like `framer-motion`, `react-spring` & `react-motion` also allow you to define your easing with a `cubic-bezier` function.
+
+React Native's **Animated API** understands `Easing` functions and allows you to define `easing: Easing.bezier(0, 0, 1, 1)`. Other libraries like `react-native-reanimated` also allow you to define your easing with their own `Easing.bezier` function.
+
+**Linear Easing**
 If we move an object from one point to another with a linear motion where it's acceleration as well as deceleration is linear, it would look like this: 
 
 <img alt="linear-easing" src="./images/motion/linear-easing.gif" width="300px">
@@ -177,7 +183,7 @@ We can represent this as a bezier function `cubic-bezier(0, 0, 1, 1)` and a bezi
 
 <img alt="linear-curve" src="./images/motion/linear-curve.png" width="200px">
 
-**Rapid Start - Slow End**
+**Rapid Start - Slow End Easing**
 If we move an object from one point to another where it will start at a higher velocity and slow down as it approaches the destination, it would look like this:
 
 <img alt="fast-in-ease-out" src="./images/motion/rapid-start-easing.gif" width="300px">
@@ -188,7 +194,7 @@ We can represent this as a bezier function `cubic-bezier(0, 1, 1, 1)` and a bezi
 
 We can also represent this as a bezier function: `cubic-bezier(0, 1, 1, 1)`
 
-**Ease In - Ease Out**
+**Ease In - Ease Out Easing**
 If you're familiar with easing in CSS, you must have come across a transition timing property of `ease-in-out`. This is the same as linear but with a slower acceleration at the beginning and a slower deceleration at the end.
 
 <img alt="ease-in-out-easing" src="./images/motion/ease-in-out-easing.gif" width="300px">
@@ -203,6 +209,10 @@ We can represent this as a bezier function `cubic-bezier(0.42, 0, 0.58, 1)` and 
 We will be storing these tokens in `blade/src/tokens/global/motion.ts`
 
 > Note: *The naming for these tokens is not finalized yet. We will be updating this in the future.*
+
+After thorough research & experimentation, our design team has created 3 broad intents of easing: `standard`, `entrance`, & `exit`. Each of these intents can have `effective`, `revealing`, `wary`, & `attentive` easing which we can use in our motion as per our use case.
+
+For example, if we want to have an easing on an object's entrance that needs to grab a user's attention, we can the `entrance.attentive` easing.
 
 Here is the list of tokens that we will store in Blade for `Easing`:
 ```js
@@ -222,6 +232,29 @@ easing: {
     effective: 'cubic-bezier(0.17, 0, 1, 1)',
     revealing: 'cubic-bezier(0.5, 0, 1, 1)',
     attentive: 'cubic-bezier(0.7, 0, 0.5, 1)',
+  },
+}
+```
+
+For React Native, we need to store easing as `Easing.bezier` where `Easing` can be imported from react-native's `Animated` or `react-native-reanimated` depending on the library you are using.
+
+```js
+easing: {
+  standard: {
+    effective: Easing.bezier(0.3, 0, 0.2, 1),
+    revealing: Easing.bezier(0.5, 0, 0, 1),
+    wary: Easing.bezier(1, 0.5, 0, 0.5),
+    attentive: Easing.bezier(0.5, 0, 0.3, 1.5),
+  },
+  entrance: {
+    effective: Easing.bezier(0, 0, 0.2, 1),
+    revealing: Easing.bezier(0, 0, 0, 1),
+    attentive: Easing.bezier(0.5, 0, 0.3, 1.5),
+  },
+  exit: {
+    effective: Easing.bezier(0.17, 0, 1, 1),
+    revealing: Easing.bezier(0.5, 0, 1, 1),
+    attentive: Easing.bezier(0.7, 0, 0.5, 1),
   },
 }
 ```
