@@ -221,7 +221,7 @@ We can represent this as a bezier function `cubic-bezier(0.42, 0, 0.58, 1)` and 
 
 - For example, if we want to have an easing on an object's entrance that needs to grab a user's attention, we can the `entrance.attentive` easing.
 
-- Examples of how these easings would loo like:
+- Examples of how these easings would look like with relevant use-cases:
   > All of the following easings are for the `standard` intent
   - **Effective**:
   
@@ -298,7 +298,7 @@ WIP
 - Spring animations make the most sense for animations that are dependent on user interactions like dragging chat bubbles, dragging bottom sheet to open and close, swiping cards to dismiss them, swiping to another tab
 - **We will dive deeper** into whether or not we want to use **spring animations** when we explore **realtime motion** **in the future**. As of the scope of this RFC which is only Non-realtime motion, we will continue using easing animations.
 - You can read more about spring based animations here:
-  - react-spring.io
+  - [react-spring.io](https://react-spring.io/)
   - [A friendly introduction to spring physics
 ](https://www.joshwcomeau.com/animation/a-friendly-introduction-to-spring-physics/)
   - [The physics behind spring animations
@@ -316,3 +316,4 @@ WIP
 # References
 - https://shengbanx.gitbooks.io/motion-system/content/chapter2.html
 - https://www.joshwcomeau.com/animation/css-transitions
+- [Razorpay Motion Design team's research](https://github.com/razorpay/blade/pull/325)
