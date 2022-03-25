@@ -121,7 +121,7 @@ We will be storing these tokens in `blade/src/tokens/global/motion.ts` as a `str
 
 > *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
 
-Here is the list of tokens that we will store in Blade for `Delay`:
+Here is the **list of tokens** that we will store in Blade for `Delay`:
 ```js
 delay: {
   delay1: '70ms',
@@ -153,7 +153,7 @@ We will be storing these tokens in `blade/src/tokens/global/motion.ts` as a `str
 
 > *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
 
-Here is the list of tokens that we will store in Blade for `Duration`:
+Here is the **list of tokens** that we will store in Blade for `Duration`:
 ```js
 duration: {
   duration1: '70ms',
@@ -194,13 +194,11 @@ We can represent this as a bezier function `cubic-bezier(0, 0, 1, 1)` and a bezi
 
 If we move an object from one point to another where it will start at a higher velocity and slow down as it approaches the destination, it would look like this:
 
-<img alt="fast-in-ease-out" src="./images/motion/rapid-start-easing.gif" width="300px">
+<img alt="rapid-start-easing" src="./images/motion/rapid-start-easing.gif" width="300px">
 
 We can represent this as a bezier function `cubic-bezier(0, 1, 1, 1)` and a bezier curve:
 
 <img alt="rapid-start-curve" src="./images/motion/rapid-start-curve.png" width="200px">
-
-We can also represent this as a bezier function: `cubic-bezier(0, 1, 1, 1)`
 
 ##### Ease In - Ease Out Easing
 
@@ -210,27 +208,38 @@ If you're familiar with easing in CSS, you must have come across a transition ti
 
 We can represent this as a bezier function `cubic-bezier(0.42, 0, 0.58, 1)` and a bezier curve:
 
-<img alt="rapid-start-curve" src="./images/motion/ease-in-out-curve.png" width="200px">
+<img alt="ease-in-out-curve" src="./images/motion/ease-in-out-curve.png" width="200px">
 
-> You can experiment with different bezier curves to see how they look here: cubic-bezier.com
+> You can experiment with different bezier curves to see how they look here: [cubic-bezier.com](https://cubic-bezier.com/)
 
 #### Tokens - Easing
-We will be storing these tokens in `blade/src/tokens/global/motion.ts` as a `cubic-bezier()` function.
-
 > Note: *The naming for these tokens is not finalized yet. We will be updating this in the future.*
 
-After thorough research & experimentation, our design team has created 3 broad intents of easing: `standard`, `entrance`, & `exit`. Each of these intents can have `effective`, `revealing`, `wary`, & `attentive` easing which we can use in our motion as per our use case.
+- We will be storing **Easing tokens** in `blade/src/tokens/global/motion.ts` as a `cubic-bezier()` function.
 
-For example, if we want to have an easing on an object's entrance that needs to grab a user's attention, we can the `entrance.attentive` easing.
+- After thorough research & experimentation, our design team has created 3 broad intents of easing: `standard`, `entrance`, & `exit`. Each of these intents can have `effective`, `revealing`, `wary`, & `attentive` easing which we can use in our motion as per our use case.
 
-Here is the list of tokens that we will store in Blade for `Easing`:
+- For example, if we want to have an easing on an object's entrance that needs to grab a user's attention, we can the `entrance.attentive` easing.
+
+- Examples of how these easings would loo like:
+  > All of the following easings are for the `standard` intent
+  - **Effective**:
+  <img alt="effective-easing" src="./images/motion/effective.gif" width="200px">
+  - **Revealing**:
+    <img alt="revealing-easing" src="./images/motion/revealing.gif" width="200px">
+  - **Attentive**:
+    <img alt="attentive-easing" src="./images/motion/attentive.gif" width="200px">
+  - **Wary**:
+    <img alt="wary-easing" src="./images/motion/wary.gif" width="200px">
+
+Here is the **list of tokens** that we will store in Blade for `Easing`:
 ```js
 easing: {
   standard: {
     effective: 'cubic-bezier(0.3, 0, 0.2, 1)',
     revealing: 'cubic-bezier(0.5, 0, 0, 1)',
-    wary: 'cubic-bezier(1, 0.5, 0, 0.5)',
     attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)',
+    wary: 'cubic-bezier(1, 0.5, 0, 0.5)',
   },
   entrance: {
     effective: 'cubic-bezier(0, 0, 0.2, 1)',
@@ -245,7 +254,7 @@ easing: {
 }
 ```
 
-For React Native, we need to store easing as `Easing.bezier` where `Easing` can be imported from react-native's `Animated` or `react-native-reanimated` depending on the library you are using.
+For **React Native**, we need to store easing as `Easing.bezier` where `Easing` can be imported from react-native's `Animated` or `react-native-reanimated` depending on the library you are using.
 
 ```js
 easing: {
