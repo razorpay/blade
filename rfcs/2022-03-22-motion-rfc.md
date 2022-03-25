@@ -224,13 +224,20 @@ We can represent this as a bezier function `cubic-bezier(0.42, 0, 0.58, 1)` and 
 - Examples of how these easings would loo like:
   > All of the following easings are for the `standard` intent
   - **Effective**:
-  <img alt="effective-easing" src="./images/motion/effective.gif" width="200px">
+  
+    <img alt="effective-easing" src="./images/motion/effective.gif" width="150px">
+  
   - **Revealing**:
-    <img alt="revealing-easing" src="./images/motion/revealing.gif" width="200px">
+
+    <img alt="revealing-easing" src="./images/motion/revealing.gif" width="80px">
+  
   - **Attentive**:
-    <img alt="attentive-easing" src="./images/motion/attentive.gif" width="200px">
+
+    <img alt="attentive-easing" src="./images/motion/attentive.gif" width="150px">
+  
   - **Wary**:
-    <img alt="wary-easing" src="./images/motion/wary.gif" width="200px">
+  
+    <img alt="wary-easing" src="./images/motion/wary.gif" width="150px">
 
 Here is the **list of tokens** that we will store in Blade for `Easing`:
 ```js
