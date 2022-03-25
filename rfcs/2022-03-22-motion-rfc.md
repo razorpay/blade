@@ -54,10 +54,12 @@ The rules we establish for motion here can be applied for both Web (**React**) a
 We can have 2 types of motion while building user interfaces
 1. **Realtime**: User is directly interacting with an object on the UI. 
     *Example: When a user drags a carousel, the carousel slides as per the user's drag.*
+    
     <img alt="Realtime Animation Example" src="./images/motion/realtime.gif" width="300px">
 
 2. **Non-Realtime**: The object's behavior is *post-interactive* i.e it occurs after a user's action, and is transitional.
     *Example: When a user taps on a carousel card, it flips over within a set timeframe*
+    
     <img alt="Realtime Animation Example" src="./images/motion/non-realtime.gif" width="300px">
 
 ## Scope of Motion
@@ -73,16 +75,27 @@ Few examples of non-realtime motion are:
 These are the actions an object on our UI can perform:
 
 1. **Scale**: An object can change it's dimensions (size) in X and Y axis
+
     <img alt="scale" src="./images/motion/scale.gif" width="100px">
+
 3. **Move**: An object can change it's position in X and Y axis
+
     <img alt="move" src="./images/motion/move.gif" width="100px">
+
 4. **Fade**: An object can change it's opacity within the range of 0 to 1
+
     <img alt="fade" src="./images/motion/fade.gif" width="100px">
+
 5. **Fill**: An object can change it's color
+
     <img alt="fill" src="./images/motion/fill.gif" width="100px">
+
 6. **Morph**: An object can morph itself into another object
+
     <img alt="morph" src="./images/motion/morph.gif" width="100px">
+
 7. **Rotation**: An object can rotate itself in a range of 0 to 360 degrees
+
     <img alt="rotate" src="./images/motion/rotate.gif" width="100px">
 
 ## Rules (Tokens) of Motion
@@ -119,12 +132,14 @@ delay: {
 Duration is the time taken to complete any transition, interaction and animation. Each animation can run for a duration of time depending on factors like size of the object, distance of travel, direction of travel, etc. 
 
 *Example: The card takes 300ms to open and 250ms to close*
+
 <img alt="rotate" src="./images/motion/card-duration.gif" width="300px">
 
 #### Perception of Duration
 Letting an animation run for different durations will have an impact on whether the users perceive the action to be instant, fast, normal or slow. 
 
 After thorough research & experimentation our design team has created a chart on how users would perceive different durations of animations. We will be using this as a reference while building out components and their animations.
+
 <img alt="rotate" src="./images/motion/duration-chart.png" width="700px">
 
 #### Tokens - Duration
@@ -155,15 +170,20 @@ A bezier curve allows us to mathematically represent how our easing should behav
 
 **Linear**
 If we move an object from one point to another with a linear motion where it's acceleration as well as deceleration is linear, it would look like this: 
+
 <img alt="linear-easing" src="./images/motion/linear-easing.gif" width="300px">
+
 We can represent this as a bezier function `cubic-bezier(0, 0, 1, 1)` and a bezier curve:
+
 <img alt="linear-curve" src="./images/motion/linear-curve.png" width="200px">
 
 **Rapid Start - Slow End**
 If we move an object from one point to another where it will start at a higher velocity and slow down as it approaches the destination, it would look like this:
+
 <img alt="fast-in-ease-out" src="./images/motion/rapid-start-easing.gif" width="300px">
 
 We can represent this as a bezier function `cubic-bezier(0, 1, 1, 1)` and a bezier curve:
+
 <img alt="rapid-start-curve" src="./images/motion/rapid-start-curve.png" width="200px">
 
 We can also represent this as a bezier function: `cubic-bezier(0, 1, 1, 1)`
@@ -174,6 +194,7 @@ If you're familiar with easing in CSS, you must have come across a transition ti
 <img alt="ease-in-out-easing" src="./images/motion/ease-in-out-easing.gif" width="300px">
 
 We can represent this as a bezier function `cubic-bezier(0.42, 0, 0.58, 1)` and a bezier curve:
+
 <img alt="rapid-start-curve" src="./images/motion/ease-in-out-curve.png" width="200px">
 
 > You can experiment with different bezier curves to see how they look here: cubic-bezier.com
