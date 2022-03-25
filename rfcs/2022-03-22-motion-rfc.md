@@ -176,6 +176,7 @@ We can use Bezier Curves with both **React** & **React Native** to define the ea
 React Native's **Animated API** understands `Easing` functions and allows you to define `easing: Easing.bezier(0, 0, 1, 1)`. Other libraries like `react-native-reanimated` also allow you to define your easing with their own `Easing.bezier` function.
 
 **Linear Easing**
+
 If we move an object from one point to another with a linear motion where it's acceleration as well as deceleration is linear, it would look like this: 
 
 <img alt="linear-easing" src="./images/motion/linear-easing.gif" width="300px">
@@ -185,6 +186,7 @@ We can represent this as a bezier function `cubic-bezier(0, 0, 1, 1)` and a bezi
 <img alt="linear-curve" src="./images/motion/linear-curve.png" width="200px">
 
 **Rapid Start - Slow End Easing**
+
 If we move an object from one point to another where it will start at a higher velocity and slow down as it approaches the destination, it would look like this:
 
 <img alt="fast-in-ease-out" src="./images/motion/rapid-start-easing.gif" width="300px">
@@ -196,6 +198,7 @@ We can represent this as a bezier function `cubic-bezier(0, 1, 1, 1)` and a bezi
 We can also represent this as a bezier function: `cubic-bezier(0, 1, 1, 1)`
 
 **Ease In - Ease Out Easing**
+
 If you're familiar with easing in CSS, you must have come across a transition timing property of `ease-in-out`. This is the same as linear but with a slower acceleration at the beginning and a slower deceleration at the end.
 
 <img alt="ease-in-out-easing" src="./images/motion/ease-in-out-easing.gif" width="300px">
