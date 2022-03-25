@@ -27,6 +27,7 @@ Blade Issue:
       - [Tokens - Easing](#tokens---easing)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
+    - [Spring Animations instead of Easing Animations](#spring-animations-instead-of-easing-animations)
 - [Adoption strategy](#adoption-strategy)
 - [How do we educate people?](#how-do-we-educate-people)
 - [Open Questions](#open-questions)
@@ -268,7 +269,21 @@ Why should we *not* do this? Maybe try to consider the following constraints
 There are tradeoffs to choosing any path. Attempt to identify them here.
 
 # Alternatives
-What other designs/patterns/strategies have been considered?
+### Spring Animations instead of Easing Animations
+- Instead of using Easing for our animations we can use spring-physics based animations. 
+- Spring animations *claim* to look more fluid and natural since the animations are based on the same physical rules as that of a spring. 
+- Spring animations can be controlled by defining the characteristics of a spring like `Mass`, `Tension` & `Friction`
+- To use spring animations, we need to use some 3rd party library like `framer-motion` or `react-spring` since it is not natively supported by CSS.
+- **Non-realtime** motion include a bunch of actions like scale, move, fade, fill, etc. All of which can be achieved using **spring animations as well as easing animations**.
+- **Realtime** motion is a lot more complex and we would **not be able to achieve** the same fluid animations **just** by **using easing** animations.
+- Spring animations make the most sense for animations that are dependent on user interactions like dragging chat bubbles, dragging bottom sheet to open and close, swiping cards to dismiss them, swiping to another tab
+- **We will dive deeper** into whether or not we want to use **spring animations** when we explore **realtime motion** **in the future**. As of the scope of this RFC which is only Non-realtime motion, we will continue using easing animations.
+- You can read more about spring based animations here:
+  - react-spring.io
+  - [A friendly introduction to spring physics
+](https://www.joshwcomeau.com/animation/a-friendly-introduction-to-spring-physics/)
+  - [The physics behind spring animations
+](https://blog.maximeheckel.com/posts/the-physics-behind-spring-animations/) 
 
 # Adoption strategy
 If we implement this proposal, how will existing consumer projects adopt it? 
