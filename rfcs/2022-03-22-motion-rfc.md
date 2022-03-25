@@ -261,12 +261,7 @@ easing: {
 ```
 
 # Drawbacks/Constraints
-Why should we *not* do this? Maybe try to consider the following constraints
-- Implementation cost, both in terms of code size and complexity.
-- The impact of it on new as well as existing consumer projects.
-- Cost of migration.
-
-There are tradeoffs to choosing any path. Attempt to identify them here.
+WIP
 
 # Alternatives
 ### Spring Animations instead of Easing Animations
@@ -286,21 +281,13 @@ There are tradeoffs to choosing any path. Attempt to identify them here.
 ](https://blog.maximeheckel.com/posts/the-physics-behind-spring-animations/) 
 
 # Adoption strategy
-If we implement this proposal, how will existing consumer projects adopt it? 
-- Is this a breaking change? 
-- Can we write a codemod?
-- How do we prioritise this with business and product folks?
-- How do we communicate with other teams? Will updating docs suffice or do we need a dedicated interaction with them?
+WIP
 
 # How do we educate people?
-- How should this be taught to other folks?
-- What names and terminology work best for these concepts and why? 
-- How is this idea best presented?
+WIP
 
 # Open Questions
-- Any open questions that you have?
-- Any undiscovered areas that you have encountered?
-- Any dependencies on other teams(Design/Engineering) that needs to be resolved upfront?
+WIP
 
 # References
 - https://shengbanx.gitbooks.io/motion-system/content/chapter2.html
