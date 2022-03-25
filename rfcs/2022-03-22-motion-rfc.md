@@ -24,6 +24,9 @@ Blade Issue:
       - [Tokens - Duration](#tokens---duration)
     - [Easing](#easing)
       - [Bezier Curve](#bezier-curve)
+        - [Linear Easing](#linear-easing)
+        - [Rapid Start - Slow End Easing](#rapid-start---slow-end-easing)
+        - [Ease In - Ease Out Easing](#ease-in---ease-out-easing)
       - [Tokens - Easing](#tokens---easing)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
@@ -38,7 +41,7 @@ Blade Issue:
 
 # Motivation
 ### Why are we doing this?
-Motion brings your UI to life. It makes your UI feel closer to our physical reality. Just like we have **pre-defined physical** laws in the **real world** that dictate the reactions to our different actions (like throwing a ball high up and expecting it to fall back down in a predictable manner), we want to define similar **set of rules** for **motion** **within** our **Design System**. If two balls thrown up with the same force, come back down in the same manner then why should two buttons on a UI react differently when hovered over?
+Motion brings your UI to life. It makes your UI feel closer to our physical reality. Just like we have **pre-defined physical laws** in the **real world** that dictate the reactions to our different actions (like throwing a ball high up and expecting it to fall back down in a predictable manner), we want to define similar **set of rules** for **motion** **within** our **Design System**. If two balls thrown up with the same force, come back down in the same manner then why should two buttons on a UI react differently when hovered over?
 
 With this RFC, we want to **establish** certain **rules** (*tokens*) through which we can build predictable motion for our components and **evaluate** **multiple ways** through which we can **use these rules** to build motion within Blade.
 
@@ -46,19 +49,21 @@ With this RFC, we want to **establish** certain **rules** (*tokens*) through whi
 The rules we establish for motion here can be applied for both Web (**React**) and Mobile (**React Native**) 
 
 ### What is the expected outcome?
-1. Have a set of tokens that can be consumed within our components for animating them
-2. Conclude on how we can consume these tokens to create animations
+1. Have a **set of tokens** that can be consumed within our components for animating them
+2. Conclude on **how we can consume** these **tokens** to create animations
 
 
 # Detailed Design
 ## Types of Motion
-We can have 2 types of motion while building user interfaces
-1. **Realtime**: User is directly interacting with an object on the UI. 
+We can have 2 types of motion while building user interfaces,
+1. **Realtime**: User is directly interacting with an object on the UI.
+
     *Example: When a user drags a carousel, the carousel slides as per the user's drag.*
     
     <img alt="Realtime Animation Example" src="./images/motion/realtime.gif" width="300px">
 
 2. **Non-Realtime**: The object's behavior is *post-interactive* i.e it occurs after a user's action, and is transitional.
+
     *Example: When a user taps on a carousel card, it flips over within a set timeframe*
     
     <img alt="Realtime Animation Example" src="./images/motion/non-realtime.gif" width="300px">
@@ -106,13 +111,13 @@ While defining motion for an object transitioning from one state to another, we 
 3. **Easing**: How should an object accelerate/decelerate while transitioning from one state to another?
 
 ### Delay
-You can *start* or *stop* your motion with some delay. For example, in the image below, it becomes difficult to reach the sub-menu in the drop down since the exit animation for the sub-menu starts instantly after the mouse is out of the hover range. This can be fixed by adding a delay to the exit animation.
+You can *start* or *stop* your motion with some delay. For example, in the image below, it becomes difficult to reach a sub-menu in the drop down since the exit animation for the sub-menu starts instantly after the mouse is out of hover range. This can be fixed by adding a delay to the exit animation.
 > You can use `transition-delay` CSS property in the exit animation of the sub-menu to achieve this.
 
 <img alt="rotate" src="./images/motion/dropdown.gif" width="300px">
 
 #### Tokens - Delay
-We will be storing these tokens in `blade/src/tokens/global/motion.ts`
+We will be storing these tokens in `blade/src/tokens/global/motion.ts` as a `string` of milliseconds.
 
 > *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
 
@@ -139,12 +144,12 @@ Duration is the time taken to complete any transition, interaction and animation
 #### Perception of Duration
 Letting an animation run for different durations will have an impact on whether the users perceive the action to be instant, fast, normal or slow. 
 
-After thorough research & experimentation our design team has created a chart on how users would perceive different durations of animations. We will be using this as a reference while building out components and their animations.
+After thorough research & experimentation on perception our design team has created a guideline on how users would perceive different durations of animations. We will be using this as a reference while building out components and their animations.
 
 <img alt="rotate" src="./images/motion/duration-chart.png" width="700px">
 
 #### Tokens - Duration
-We will be storing these tokens in `blade/src/tokens/global/motion.ts`
+We will be storing these tokens in `blade/src/tokens/global/motion.ts` as a `string` of milliseconds.
 
 > *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
 
@@ -163,19 +168,19 @@ duration: {
 > For React Native, we would need to store duration as `number` instead of `string`. Eg: `duration1: 70`
 
 ### Easing
-Easing refers to the way in which a motion proceeds between two states. You can think of easing as acceleration or deceleration. 
-
+Easing refers to the way in which a motion proceeds between two states. You can think of easing as acceleration or deceleration of an object's transition from one state to another. 
 
 #### Bezier Curve
-A bezier curve allows us to mathematically represent how our easing should behave. Bezier curves can be represented on a graph where the x-axis represents **time** and the y-axis represents the **progression** of the motion. It can also be represented with a `cube-bezier` function which takes 4 arguments (`x1`,`y1`,`x2`,`y2`) within the range of 0 to 1.
+- A bezier curve allows us to mathematically represent how our easing should behave. Bezier curves can be represented on a graph where the x-axis represents **time** and the y-axis represents the **progression** of the motion. It can also be represented with a `cubic-bezier()` function which takes 4 arguments (`x1`,`y1`,`x2`,`y2`) within the range of 0 to 1.
 
-We can use Bezier Curves with both **React** & **React Native** to define the easing of our animations.
+- We can use Bezier Curves with both **React** & **React Native** to define the easing of our animations.
  
-**CSS** natively understands `cubic-bezier` functions and allows you to define `transition-timing-function: cubic-bezier(0, 0, 1, 1)`. Other libraries like `framer-motion`, `react-spring` & `react-motion` also allow you to define your easing with a `cubic-bezier` function.
+- **CSS** natively understands `cubic-bezier` functions and allows you to define `transition-timing-function: cubic-bezier(0, 0, 1, 1)`. Other libraries like `framer-motion`, `react-spring` & `react-motion` also allow you to define your easing with a `cubic-bezier` function.
 
-React Native's **Animated API** understands `Easing` functions and allows you to define `easing: Easing.bezier(0, 0, 1, 1)`. Other libraries like `react-native-reanimated` also allow you to define your easing with their own `Easing.bezier` function.
+- React Native's **Animated API** understands `Easing` functions and allows you to define `easing: Easing.bezier(0, 0, 1, 1)`. Other libraries like `react-native-reanimated` also allow you to define your easing with their own `Easing.bezier` function.
+To understand easing better, lets take a look at a few different examples of easing
 
-**Linear Easing**
+##### Linear Easing
 
 If we move an object from one point to another with a linear motion where it's acceleration as well as deceleration is linear, it would look like this: 
 
@@ -185,7 +190,7 @@ We can represent this as a bezier function `cubic-bezier(0, 0, 1, 1)` and a bezi
 
 <img alt="linear-curve" src="./images/motion/linear-curve.png" width="200px">
 
-**Rapid Start - Slow End Easing**
+##### Rapid Start - Slow End Easing
 
 If we move an object from one point to another where it will start at a higher velocity and slow down as it approaches the destination, it would look like this:
 
@@ -197,7 +202,7 @@ We can represent this as a bezier function `cubic-bezier(0, 1, 1, 1)` and a bezi
 
 We can also represent this as a bezier function: `cubic-bezier(0, 1, 1, 1)`
 
-**Ease In - Ease Out Easing**
+##### Ease In - Ease Out Easing
 
 If you're familiar with easing in CSS, you must have come across a transition timing property of `ease-in-out`. This is the same as linear but with a slower acceleration at the beginning and a slower deceleration at the end.
 
@@ -210,7 +215,7 @@ We can represent this as a bezier function `cubic-bezier(0.42, 0, 0.58, 1)` and 
 > You can experiment with different bezier curves to see how they look here: cubic-bezier.com
 
 #### Tokens - Easing
-We will be storing these tokens in `blade/src/tokens/global/motion.ts`
+We will be storing these tokens in `blade/src/tokens/global/motion.ts` as a `cubic-bezier()` function.
 
 > Note: *The naming for these tokens is not finalized yet. We will be updating this in the future.*
 
