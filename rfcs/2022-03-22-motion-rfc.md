@@ -28,6 +28,9 @@ Blade Issue:
         - [Rapid Start - Slow End Easing](#rapid-start---slow-end-easing)
         - [Ease In - Ease Out Easing](#ease-in---ease-out-easing)
       - [Tokens - Easing](#tokens---easing)
+  - [Frameworks/Libraries for motion](#frameworkslibraries-for-motion)
+    - [Web (React)](#web-react)
+    - [Mobile (React Native)](#mobile-react-native)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
     - [Spring Animations instead of Easing Animations](#spring-animations-instead-of-easing-animations)
@@ -291,6 +294,104 @@ easing: {
   },
 }
 ```
+
+## Frameworks/Libraries for motion
+
+### Web (React)
+- For creating animations on web, we explored different libraries like [react-spring](https://react-spring.io/), [react-motion](https://github.com/chenglou/react-motion) & [framer-motion](https://framer.com/motion).
+- Here is an example of how we could create a shake animation on mouse hover with **Framer Motion vs CSS animations**
+
+**Framer Motion:**
+
+```jsx
+import { useAnimation } from 'framer-motion';
+
+function Example() {
+  const move = useAnimation(); // Create an animation control using `useAnimation`
+
+  return (
+    <motion.div
+        animate={move} // Create a motion div with motion and pass the move animation control to it
+        onHoverStart={() => // Start the `move` animation control inside `onHoverStart` that will translate the object in X axis
+          move.start(
+            {
+              translateX: [
+                "0px",   // 0%
+                "-10px", // 10%
+                "0px",   // 20%
+                "10px",  // 30%
+                "0px",   // 40%
+                "-10px", // 50%
+                "0px",   // 60%
+                "10px",  // 70%
+                "0px",   // 80%
+                "-10px", // 90%
+                "0px",   // 100%
+              ],
+            },
+            {
+              duration: motionToken.duration.duration3, // Set the duration of the animation using our motion tokens
+              ease: motionToken.easing.standard.effective, // Set the easing of the animation using our motion tokens
+            }
+          )
+        }
+      />
+    )
+}
+```
+
+**CSS Animation:**
+
+```jsx
+import styled from 'styled-components';
+
+const AnimatedBlock = styled.div` /* Create a styled div */
+  :hover {
+    animation: 
+      shake /* Set a custom keyframe animation */
+      ${motionToken.duration.duration3} /* Set the duration of the animation using our motion tokens */
+      ${motionToken.easing.standard.effective}; /* Set the easing of the animation using our motion tokens */
+  }
+
+  @keyframes shake { /* Define the custom keyframe animation */
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translateX(10px);
+    }
+`
+
+function Example() {
+
+  return(
+    <div>
+      <AnimatedBlock />
+    <div>
+)
+```
+
+- Different 3rd party libraries have **different approaches** for creating the **same animation**.
+- In our comparison between Framer Motion & native CSS Animations, we found that for **most non-realtime** animation use-cases where we want to create **simple transitions** & **keyframe** animations on **events** such as mouse **hover**, **CSS animations** are **sufficient** and easy to implement.
+- Implementation becomes a bit **complicated** when we want to **trigger** certain **animations** from **Javascript**. 
+- With **Framer Motion**, we can use it's **animation control** created with `useAnimation` to **trigger** the animation. Eg) `move.start()`
+- For **CSS**, we would either need to **manipulate** component **state** or **manipulate** **CSS** **classes** list with `document.getElementById().classList.add()` / `document.getElementById().classList.remove()` that can dynamically add and remove an animated class from an element to **trigger** an animation.
+- Since our **use case** right now is **only** for **non-realtime** animations, **we can use CSS animations and transitions.**
+- We would be able to use our `delay`, `duration` & `easing` tokens **without** adding any **additional libraries** that would have increased our bundle size.
+- We will **re-evaluate** 3rd party **libraries** in the depth when we start working on **realtime motion**.
+
+### Mobile (React Native)
 
 # Drawbacks/Constraints
 WIP
