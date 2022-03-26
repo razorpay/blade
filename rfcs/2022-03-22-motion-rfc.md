@@ -184,7 +184,7 @@ Easing refers to the way in which a motion proceeds between two states. You can 
 
 To understand easing better, lets take a look at a few different examples of easing:
 
-##### Linear Easing
+**Linear Easing:**
 
 If we move an object from one point to another with a linear motion where it's acceleration as well as deceleration is linear, it would look like this: 
 
@@ -194,7 +194,7 @@ We can represent this as a bezier function `cubic-bezier(0, 0, 1, 1)` and a bezi
 
 <img alt="linear-curve" src="./images/motion/linear-curve.png" width="200px">
 
-##### Rapid Start - Slow End Easing
+**Rapid Start - Slow End Easing:**
 
 If we move an object from one point to another where it will start at a higher velocity and slow down as it approaches the destination, it would look like this:
 
@@ -204,7 +204,7 @@ We can represent this as a bezier function `cubic-bezier(0, 1, 1, 1)` and a bezi
 
 <img alt="rapid-start-curve" src="./images/motion/rapid-start-curve.png" width="200px">
 
-##### Ease In - Ease Out Easing
+**Ease In - Ease Out Easing:**
 
 If you're familiar with easing in CSS, you must have come across a transition timing property of `ease-in-out`. This is the same as linear but with a slower acceleration at the beginning and a slower deceleration at the end.
 
