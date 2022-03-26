@@ -181,7 +181,8 @@ Easing refers to the way in which a motion proceeds between two states. You can 
 - **CSS** natively understands `cubic-bezier` functions and allows you to define `transition-timing-function: cubic-bezier(0, 0, 1, 1)`. Other libraries like `framer-motion`, `react-spring` & `react-motion` also allow you to define your easing with a `cubic-bezier` function.
 
 - React Native's **Animated API** understands `Easing` functions and allows you to define `easing: Easing.bezier(0, 0, 1, 1)`. Other libraries like `react-native-reanimated` also allow you to define your easing with their own `Easing.bezier` function.
-To understand easing better, lets take a look at a few different examples of easing
+
+To understand easing better, lets take a look at a few different examples of easing:
 
 ##### Linear Easing
 
