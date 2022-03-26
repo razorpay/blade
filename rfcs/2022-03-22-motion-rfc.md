@@ -217,7 +217,15 @@ We can represent this as a bezier function `cubic-bezier(0.42, 0, 0.58, 1)` and 
 
 - We will be storing **Easing tokens** in `blade/src/tokens/global/motion.ts` as a `cubic-bezier()` function.
 
-- After thorough research & experimentation, our design team has created 3 broad intents of easing: `standard`, `entrance`, & `exit`. Each of these intents can have `effective`, `revealing`, `wary`, & `attentive` easing which we can use in our motion as per our use case.
+- After thorough research & experimentation, our design team has created 3 broad **intents** of easing: 
+  - `standard`
+  -  `entrance`
+  -   `exit` 
+- Each of these intents can have easings which we can use in our motion as per our use case:
+  - `effective`
+  - `revealing`
+  - `wary` (only for standard intent)
+  - `attentive` 
 
 - For example, if we want to have an easing on an object's entrance that needs to grab a user's attention, we can the `entrance.attentive` easing.
 
