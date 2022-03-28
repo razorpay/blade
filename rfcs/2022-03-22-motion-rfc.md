@@ -513,3 +513,6 @@ WIP
 - https://shengbanx.gitbooks.io/motion-system/content/chapter2.html
 - https://www.joshwcomeau.com/animation/css-transitions
 - [Razorpay Motion Design team's research](https://github.com/razorpay/blade/pull/325)
+- https://formidable.com/blog/2021/reanimated-two/
+- https://blog.swmansion.com/introducing-reanimated-2-752b913af8b3
+- https://docs.swmansion.com/react-native-reanimated/docs
