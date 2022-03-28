@@ -29,6 +29,7 @@ Blade Issue:
     - [Web (React)](#web-react)
     - [Mobile (React Native)](#mobile-react-native)
 - [Drawbacks/Constraints](#drawbacksconstraints)
+    - [Library specific tokens](#library-specific-tokens)
     - [React Native `v0.62`](#react-native-v062)
     - [Multi-step keyframe animation with React Native](#multi-step-keyframe-animation-with-react-native)
 - [Alternatives](#alternatives)
@@ -482,6 +483,15 @@ function Example() {
 
 
 # Drawbacks/Constraints
+### Library specific tokens
+Consumers would need to be aware that certain tokens are library specific and would not work with other libraries
+- For web, we expose `duration` as a `string` of *milliseconds* which works well with CSS's `transition-duration` property but will not work with Framer motion since it requires a `number` in *seconds*
+- For web, we expose `easing` as a `string` of `cubic-bezier(..)` which works well with CSS's `transition-timing-function` property but will not work with Framer motion since it requires either,
+  - The name of an existing easing function.
+  - An array of four numbers to define a cubic bezier curve.
+  - An easing function, that accepts and returns a value 0-1.
+- For native, we expose `easing` as a function of `Easing.bezier(..)` imported from `react-native-reanimated` which won't work when used with React Native's `Animated` API.
+
 ### React Native `v0.62`
 React Native Reanimated is dependent on `TurboModules`, it restricts us to using React Native `v0.62+` that supports `TurboModules`.
 
@@ -582,13 +592,15 @@ Eg) Multi-step keyframe
 ](https://blog.maximeheckel.com/posts/the-physics-behind-spring-animations/) 
 
 # Adoption strategy
-WIP
+- Consumers can start using motion tokens as they would with other DS tokens.
+- Consumers would need to be aware of the drawback mentioned above at [Library specific tokens](#library-specific-tokens) before they start using them
+- Blade's developers can use this RFC as a guideline to add motion to their components
 
 # How do we educate people?
-WIP
+- Have a detailed guideline on our documentation site
 
 # Open Questions
-WIP
+- How do we solve for the [Library specific tokens](#library-specific-tokens) drawback and make our tokens framework agnostic? Do we need to make them framework agnostic?
 
 # References
 - https://shengbanx.gitbooks.io/motion-system/content/chapter2.html
