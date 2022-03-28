@@ -475,12 +475,13 @@ function Example() {
 - **React native reanimated** (v2) aims to provide ways of **offloading animation** and event handling logic off of the JavaScript thread and onto the **UI thread**.
 - This is achieved by defining **Reanimated worklets** – chunks of JavaScript code that can be moved to a **separate JavaScript VM** and executed synchronously on the UI thread. This makes it possible to respond to touch events immediately and update the UI within the same frame when the event happens **without worrying about** the load that is put on the **main JavaScript thread**. 
 - In the above example, we are using `useAnimatedStyle` to create a worklet that will be executed on the UI thread and has a **shared value** `translateXOffset` that is shared by JS as well as native realms.
-- React Native reanimated is able to achieve this using React Native's `TurboModules` which restricts us to using React Native `v0.62+` that supports `TurboModules`.
+- React Native reanimated is able to achieve this using React Native's `TurboModules` feature.
+- Since **we want to leverage these benefits** of **React Native Reanimated**, **we will be using it** for our native **animations on Blade**.
 
 
 # Drawbacks/Constraints
 - Multistep keyframe animation & replicating behaviour on react native
-- Support react native v0.62+
+- Since React Native Reanimated is dependent on `TurboModules`, it restricts us to using React Native `v0.62+` that supports `TurboModules`.
 
 # Alternatives
 ### Spring Animations instead of Easing Animations
