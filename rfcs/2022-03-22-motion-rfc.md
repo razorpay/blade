@@ -398,7 +398,7 @@ function Example() {
 import { Animated } from 'react-native';
 
 function Example() {
-  const shakeAnimationRef = React.useRef(new Animated.Value(0)).current;
+  const shakeAnimation = React.useRef(new Animated.Value(0)).current; // Create a ref to hold Animated.Value
 
   return (
     <View>
@@ -407,7 +407,7 @@ function Example() {
           {
             transform: [
               {
-                translateX: shakeAnimationRef.interpolate({
+                translateX: shakeAnimation.interpolate({ // Interpolate the animated value in the range of 0 to 100 to create a shake effect
                   inputRange: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
                   outputRange: [0, -50, 50, -50, 50, -50, 50, -50, 50, -50, 0]
                 }),
@@ -417,11 +417,11 @@ function Example() {
         ]}
       />
       <Button text="Shake" onPress={()=>
-        Animated.timing(shake, {
+        Animated.timing(shakeAnimation, { // Change the value of shakeAnimation to 100
           toValue: 100,
           useNativeDriver: true,
-          duration: motionToken.duration.duration3,
-          easing: motionToken.easing.standard.effective,
+          duration: motionToken.duration.duration3, // Define the duration it takes to change the value of shakeAnimation to 100
+          easing: motionToken.easing.standard.effective, // Define the easing of the animation
         }).start()}
       />
     </View>
@@ -439,14 +439,14 @@ import Animated, {
 } from 'react-native-reanimated';
 
 function Example() {
-  const translateXOffset = useSharedValue(0);
+  const shakeAnimation = useSharedValue(0); // Create a shared value to hold the value of shakeAnimation
 
-  const shakeAnimation = useAnimatedStyle(() => {
+  const shakeAnimationStyle = useAnimatedStyle(() => { // Define a worklet that is triggered whenever shakeAnimation changes
     return {
       transform: [
         {
-          translateX: interpolate(
-            translateXOffset.value,
+          translateX: interpolate( // Interpolate the animated value in the range of 0 to 100 to create a shake effect
+            shakeAnimation.value,
             [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
             [0, -50, 50, -50, 50, -50, 50, -50, 50, -50, 0],
           ),
@@ -457,11 +457,11 @@ function Example() {
 
   return (
     <View>
-      <Animated.View style={[styles.block,shakeAnimation]} />
+      <Animated.View style={[styles.block, shakeAnimationStyle]} />
       <Button text="Shake" onPress={() => {
-        translateXOffset.value = withTiming(100, {
-          duration: motionToken.duration.duration3,
-          easing: motionToken.easing.standard.effective,
+        shakeAnimation.value = withTiming(100, { // Change the value of shakeAnimation to 100
+          duration: motionToken.duration.duration3, // Define the duration it takes to change the value of shakeAnimation to 100
+          easing: motionToken.easing.standard.effective, // Define the easing of the animation
         });
       }}
       />
@@ -473,7 +473,7 @@ function Example() {
 - React Native's **Animated API** works on the **same principle as React Native**; you define your **animations** **in JS** and they **execute** on the **Native** **platforms**.
 - The **downside** of this approach is that it still needs to **communicate with** the Native realm using **the bridge** which can lead to **dropped frames** in complex animations in cases where the **bridge is already choked up**.
 - **React native reanimated** (v2) aims to provide ways of **offloading animation** and event handling logic off of the JavaScript thread and onto the **UI thread**.
-- This is achieved by defining **Reanimated worklets** – a tiny chunks of JavaScript code that can be moved to a **separate JavaScript VM** and executed synchronously on the UI thread.This makes it possible to respond to touch events immediately and update the UI within the same frame when the event happens **without worrying about** the load that is put on the **main JavaScript thread**. 
+- This is achieved by defining **Reanimated worklets** – chunks of JavaScript code that can be moved to a **separate JavaScript VM** and executed synchronously on the UI thread. This makes it possible to respond to touch events immediately and update the UI within the same frame when the event happens **without worrying about** the load that is put on the **main JavaScript thread**. 
 - In the above example, we are using `useAnimatedStyle` to create a worklet that will be executed on the UI thread and has a **shared value** `translateXOffset` that is shared by JS as well as native realms.
 - React Native reanimated is able to achieve this using React Native's `TurboModules` which restricts us to using React Native `v0.62+` that supports `TurboModules`.
 
