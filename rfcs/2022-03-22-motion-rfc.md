@@ -500,7 +500,7 @@ Multi-step animations on web are implemented by having more than 2 steps in an a
 
 Eg) 2-step keyframe
 ```css
-@keyframe move {
+@keyframes move {
     0% {
       transform: translateY(0px);
     }
@@ -511,7 +511,7 @@ Eg) 2-step keyframe
 ```
 Eg) Multi-step keyframe
 ```css
-@keyframe move {
+@keyframes move {
     0% {
       transform: translateY(0px);
     }
