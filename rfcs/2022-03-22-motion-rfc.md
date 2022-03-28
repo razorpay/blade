@@ -29,6 +29,8 @@ Blade Issue:
     - [Web (React)](#web-react)
     - [Mobile (React Native)](#mobile-react-native)
 - [Drawbacks/Constraints](#drawbacksconstraints)
+    - [React Native `v0.62`](#react-native-v062)
+    - [Multi-step keyframe animation with React Native](#multi-step-keyframe-animation-with-react-native)
 - [Alternatives](#alternatives)
     - [Spring Animations instead of Easing Animations](#spring-animations-instead-of-easing-animations)
 - [Adoption strategy](#adoption-strategy)
@@ -447,8 +449,8 @@ function Example() {
         {
           translateX: interpolate( // Interpolate the animated value in the range of 0 to 100 to create a shake effect
             shakeAnimation.value,
-            [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-            [0, -50, 50, -50, 50, -50, 50, -50, 50, -50, 0],
+            [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100], // Input range
+            [0, -50, 50, -50, 50, -50, 50, -50, 50, -50, 0], // Output range
           ),
         },
       ],
@@ -480,8 +482,87 @@ function Example() {
 
 
 # Drawbacks/Constraints
-- Multistep keyframe animation & replicating behaviour on react native
-- Since React Native Reanimated is dependent on `TurboModules`, it restricts us to using React Native `v0.62+` that supports `TurboModules`.
+### React Native `v0.62`
+React Native Reanimated is dependent on `TurboModules`, it restricts us to using React Native `v0.62+` that supports `TurboModules`.
+
+### Multi-step keyframe animation with React Native
+Multi-step animations on web are implemented by having more than 2 steps in an animation. Read more about [multi-step animations here](https://www.joshwcomeau.com/animation/keyframe-animations/#multi-step-animations)
+
+Eg) 2-step keyframe
+```css
+@keyframe move {
+    0% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(100px);
+    }
+}
+```
+Eg) Multi-step keyframe
+```css
+@keyframe move {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(50px);
+    }
+    100% {
+      transform: translateY(100px);
+    }
+}
+```
+
+- In the 2-step keyframe, easing is applied for the animation taking place from 0% to 100%.
+- In the multi-step keyframe, easing is applied for each step of the animation. That is, if we use `ease-in-out` easing, it would be applied to the animation happening from `0%` to `50%` and then again from `50%` to `100%`.
+- This is not supported in React Native Reanimated _directly_ since we apply easing to the `timing` function.
+
+  ```jsx
+    shakeAnimation.value = withTiming(100, { 
+      duration: motionToken.duration.duration3, 
+      easing: motionToken.easing.standard.effective, 
+    });
+  ```
+
+- We apply easing to the timing function as `shakeAnimation` value goes from 0 to 100. In this case if we apply an `ease-in-out` easing, it would be applied to the entire animation happening from `0%` to `100%` regardless of the fact that our interpolate's input & output range is more than 2 steps (array of more than 2 elements).
+- If we _really_ want to replicate the web's behaviour on react native, we would need to apply easing on the `interpolate` function. 
+- As of `v2.3.0` of `react-native-reanimated`, there is no support to add an easing to `interpolate`. 
+- To be able to achieve this, we would need to implement the animation using React native's `Animated` API since it supports applying easing to interpolation like this:
+
+  ```jsx
+  ...
+  function Example() {
+  ...
+    return (
+      <View>
+        <Animated.View
+          style={[styles.block, 
+            {
+              transform: [
+                {
+                  translateX: shakeAnimation.interpolate({ // Interpolate the animated value in the range of 0 to 100 to create a shake effect
+                    inputRange: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+                    outputRange: [0, -50, 50, -50, 50, -50, 50, -50, 50, -50, 0],
+                    easing: motionToken.easing.standard.effective, // Define easing inside the interpolate function
+                  }),
+                },
+              ],
+            },
+          ]}
+        />
+        <Button text="Shake" onPress={()=>
+          Animated.timing(shakeAnimation, {
+            toValue: 100,
+            useNativeDriver: false, // Set native driver usage to false
+            duration: motionToken.duration.duration3, // Define only duration here
+          }).start()}
+        />
+      </View>
+    );
+  }
+  ```
+- You will need to ensure that you set `useNativeDriver` to `false` since adding easing to `interpolation` is not supported with `useNativeDriver`
 
 # Alternatives
 ### Spring Animations instead of Easing Animations
