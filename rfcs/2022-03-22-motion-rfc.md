@@ -390,9 +390,97 @@ function Example() {
 - We will **re-evaluate** 3rd party **libraries** in the depth when we start working on **realtime motion**.
 
 ### Mobile (React Native)
+- For creating animations with React Native, we explored React Native's `Animated` API and `react-native-reanimated` library.
+- Here is an example of how we could create a shake animation on button press with **React Native Animated API vs React Native Reanimated**
+
+**React Native Animated API**
+```jsx
+import { Animated } from 'react-native';
+
+function Example() {
+  const shakeAnimationRef = React.useRef(new Animated.Value(0)).current;
+
+  return (
+    <View>
+      <Animated.View
+        style={[styles.block, 
+          {
+            transform: [
+              {
+                translateX: shakeAnimationRef.interpolate({
+                  inputRange: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+                  outputRange: [0, -50, 50, -50, 50, -50, 50, -50, 50, -50, 0]
+                }),
+              },
+            ],
+          },
+        ]}
+      />
+      <Button text="Shake" onPress={()=>
+        Animated.timing(shake, {
+          toValue: 100,
+          useNativeDriver: true,
+          duration: motionToken.duration.duration3,
+          easing: motionToken.easing.standard.effective,
+        }).start()}
+      />
+    </View>
+  );
+}
+```
+
+**React Native Reanimated (v2)**
+```jsx
+import Animated, {
+  useAnimatedStyle,
+  withTiming,
+  useSharedValue,
+  interpolate,
+} from 'react-native-reanimated';
+
+function Example() {
+  const translateXOffset = useSharedValue(0);
+
+  const shakeAnimation = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateX: interpolate(
+            translateXOffset.value,
+            [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+            [0, -50, 50, -50, 50, -50, 50, -50, 50, -50, 0],
+          ),
+        },
+      ],
+    };
+  });
+
+  return (
+    <View>
+      <Animated.View style={[styles.block,shakeAnimation]} />
+      <Button text="Shake" onPress={() => {
+        translateXOffset.value = withTiming(100, {
+          duration: motionToken.duration.duration3,
+          easing: motionToken.easing.standard.effective,
+        });
+      }}
+      />
+    </View>
+  );
+}
+```
+
+- React Native's **Animated API** works on the **same principle as React Native**; you define your **animations** **in JS** and they **execute** on the **Native** **platforms**.
+- The **downside** of this approach is that it still needs to **communicate with** the Native realm using **the bridge** which can lead to **dropped frames** in complex animations in cases where the **bridge is already choked up**.
+- **React native reanimated** (v2) aims to provide ways of **offloading animation** and event handling logic off of the JavaScript thread and onto the **UI thread**.
+- This is achieved by defining **Reanimated worklets** – a tiny chunks of JavaScript code that can be moved to a **separate JavaScript VM** and executed synchronously on the UI thread.This makes it possible to respond to touch events immediately and update the UI within the same frame when the event happens **without worrying about** the load that is put on the **main JavaScript thread**. 
+- In the above example, we are using `useAnimatedStyle` to create a worklet that will be executed on the UI thread and has a **shared value** `translateXOffset` that is shared by JS as well as native realms.
+- React Native reanimated is able to achieve this using React Native's `TurboModules` which restricts us to using React Native `v0.62+` that supports `TurboModules`.
+
 
 # Drawbacks/Constraints
-WIP
+- Multistep keyframe animation & replicating behaviour on react native
+- Support react native v0.62+
 
 # Alternatives
 ### Spring Animations instead of Easing Animations
