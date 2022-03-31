@@ -195,6 +195,8 @@ const TextInput = React.forwardRef(
       onSubmitEditing,
       onFocus,
       onBlur,
+      onKeyPress,
+      textAlign,
       _isMultiline,
     },
     ref,
@@ -410,6 +412,8 @@ const TextInput = React.forwardRef(
                                   returnKeyType={returnKeyType}
                                   autoCapitalize={autoCapitalize}
                                   onSubmitEditing={onSubmitEditing}
+                                  textAlign={textAlign}
+                                  onKeyPress={onKeyPress}
                                   {...automation(testID)}
                                 />
                               </Size>
