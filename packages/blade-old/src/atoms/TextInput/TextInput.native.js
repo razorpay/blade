@@ -501,6 +501,12 @@ TextInput.propTypes = {
   onSubmitEditing: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
+  onKeyPress:PropTypes.func,
+  textAlign:PropTypes.oneOf([
+    'left',
+    'center',
+    'right',
+  ]),
   _isMultiline: PropTypes.bool,
 };
 
