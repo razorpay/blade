@@ -522,6 +522,8 @@ TextInput.defaultProps = {
   type: 'text',
   onFocus: () => {},
   onBlur: () => {},
+  textAlign:'left',
+  onKeyPress: () => {},
 };
 
 export default TextInput;
