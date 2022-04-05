@@ -502,11 +502,7 @@ TextInput.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   onKeyPress:PropTypes.func,
-  textAlign:PropTypes.oneOf([
-    'left',
-    'center',
-    'right',
-  ]),
+  textAlign:PropTypes.oneOf(['left', 'center', 'right']),
   _isMultiline: PropTypes.bool,
 };
 
@@ -522,7 +518,7 @@ TextInput.defaultProps = {
   type: 'text',
   onFocus: () => {},
   onBlur: () => {},
-  textAlign:'left',
+  textAlign: 'left',
   onKeyPress: () => {},
 };
 
