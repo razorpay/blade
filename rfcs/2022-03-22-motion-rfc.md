@@ -82,6 +82,7 @@ Few examples of non-realtime motion are:
 
 ## Actions of Motion
 These are the actions an object on our UI can perform:
+> Motion for an object can be a combination of 2 actions as well
 
 1. **Scale**: An object can change it's dimensions (size) in X and Y axis
 
