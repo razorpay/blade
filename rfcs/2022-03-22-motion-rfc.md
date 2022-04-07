@@ -25,12 +25,14 @@ Blade Issue:
     - [Easing](#easing)
       - [Bezier Curve](#bezier-curve)
       - [Tokens - Easing](#tokens---easing)
-  - [Frameworks/Libraries for motion](#frameworkslibraries-for-motion)
+  - [Vanilla Animation APIs vs Frameworks/Libraries](#vanilla-animation-apis-vs-frameworkslibraries)
     - [Web (React)](#web-react)
+      - [Conclusion](#conclusion)
     - [Mobile (React Native)](#mobile-react-native)
+      - [Conclusion](#conclusion-1)
 - [Drawbacks/Constraints](#drawbacksconstraints)
     - [Library specific tokens](#library-specific-tokens)
-    - [React Native `v0.62`](#react-native-v062)
+    - [React Native `v0.62` and above](#react-native-v062-and-above)
     - [Multi-step keyframe animation with React Native](#multi-step-keyframe-animation-with-react-native)
 - [Alternatives](#alternatives)
     - [Spring Animations instead of Easing Animations](#spring-animations-instead-of-easing-animations)
@@ -113,6 +115,7 @@ While defining motion for an object transitioning from one state to another, we 
 1. **Delay**: When should the motion start?
 2. **Duration**: How long should an object take to transition from one state to another?
 3. **Easing**: How should an object accelerate/decelerate while transitioning from one state to another?
+> `Duration` and `Easing` are both necessary to define motion. `Delay` can be used as and when required depending on the use-case
 
 ### Delay
 You can *start* or *stop* your motion with some delay. For example, in the image below, it becomes difficult to reach a sub-menu in the drop down since the exit animation for the sub-menu starts instantly after the mouse is out of hover range. This can be fixed by adding a delay to the exit animation.
@@ -121,7 +124,7 @@ You can *start* or *stop* your motion with some delay. For example, in the image
 <img alt="rotate" src="./images/motion/dropdown.gif" width="300px">
 
 #### Tokens - Delay
-We will be storing these tokens in `blade/src/tokens/global/motion.ts` as a `string` of milliseconds.
+We will be storing these tokens in `blade/src/tokens/global/motion.ts` as a `number` of milliseconds.
 
 > *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
 
@@ -173,6 +176,12 @@ duration: {
 
 ### Easing
 Easing refers to the way in which a motion proceeds between two states. You can think of easing as acceleration or deceleration of an object's transition from one state to another. 
+
+We can define easing using 
+1. Predefined presets like `ease-in`, `ease-out`, `ease-in-out` for CSS or `ease()`, `bounce()`, `inOut()` for React Native
+2. Custom easing functions like `cubic-bezier()`, `steps()`, `step-start()` for CSS or `bezier()`, `step0`, `step1` for React Native
+
+We'll be using the `cubic-bezier()` function for defining our easing.
 
 #### Bezier Curve
 - A bezier curve allows us to mathematically represent how our easing should behave. Bezier curves can be represented on a graph where the x-axis represents **time** and the y-axis represents the **progression** of the motion. It can also be represented with a `cubic-bezier()` function which takes 4 arguments (`x1`,`y1`,`x2`,`y2`) within the range of 0 to 1.
@@ -274,7 +283,7 @@ easing: {
 }
 ```
 
-For **React Native**, we need to store easing as `Easing.bezier` where `Easing` can be imported from react-native's `Animated` or `react-native-reanimated` depending on the library you are using.
+For **React Native**, we need to store easing as `Easing.bezier` where `Easing` can be imported from react-native's `Animated` or `react-native-reanimated` depending on the library we are using (we'll conclude which library to use later in this RFC).
 
 ```js
 easing: {
@@ -297,7 +306,7 @@ easing: {
 }
 ```
 
-## Frameworks/Libraries for motion
+## Vanilla Animation APIs vs Frameworks/Libraries
 
 ### Web (React)
 - For creating animations on web, we explored different libraries like [react-spring](https://react-spring.io/), [react-motion](https://github.com/chenglou/react-motion) & [framer-motion](https://framer.com/motion).
@@ -389,7 +398,9 @@ function Example() {
 - Implementation becomes a bit **complicated** when we want to **trigger** certain **animations** from **Javascript**. 
 - With **Framer Motion**, we can use it's **animation control** created with `useAnimation` to **trigger** the animation. Eg) `move.start()`
 - For **CSS**, we would either need to **manipulate** component **state** or **manipulate** **CSS** **classes** list with `document.getElementById().classList.add()` / `document.getElementById().classList.remove()` that can dynamically add and remove an animated class from an element to **trigger** an animation.
-- Since our **use case** right now is **only** for **non-realtime** animations, **we can use CSS animations and transitions.**
+
+#### Conclusion
+- Since our **use case** right now is **only** for **non-realtime** animations, we can **use CSS animations** and **transitions.**
 - We would be able to use our `delay`, `duration` & `easing` tokens **without** adding any **additional libraries** that would have increased our bundle size.
 - We will **re-evaluate** 3rd party **libraries** in the depth when we start working on **realtime motion**.
 
@@ -480,7 +491,9 @@ function Example() {
 - This is achieved by defining **Reanimated worklets** – chunks of JavaScript code that can be moved to a **separate JavaScript VM** and executed synchronously on the UI thread. This makes it possible to respond to touch events immediately and update the UI within the same frame when the event happens **without worrying about** the load that is put on the **main JavaScript thread**. 
 - In the above example, we are using `useAnimatedStyle` to create a worklet that will be executed on the UI thread and has a **shared value** `translateXOffset` that is shared by JS as well as native realms.
 - React Native reanimated is able to achieve this using React Native's `TurboModules` feature.
-- Since **we want to leverage these benefits** of **React Native Reanimated**, **we will be using it** for our native **animations on Blade**.
+
+#### Conclusion
+- Since we want to leverage all the above mentioned benefits of **we will be using React Native Reanimated** for our animations on Blade.
 
 
 # Drawbacks/Constraints
@@ -493,8 +506,8 @@ Consumers would need to be aware that certain tokens are library specific and wo
   - An easing function, that accepts and returns a value 0-1.
 - For native, we expose `easing` as a function of `Easing.bezier(..)` imported from `react-native-reanimated` which won't work when used with React Native's `Animated` API.
 
-### React Native `v0.62`
-React Native Reanimated is dependent on `TurboModules`, it restricts us to using React Native `v0.62+` that supports `TurboModules`.
+### React Native `v0.62` and above
+Since React Native Reanimated is dependent on `TurboModules`, it restricts us to using React Native `v0.62` and above. This means we'd have to ensure that all our consumer projects are not below `v0.62` of react native
 
 ### Multi-step keyframe animation with React Native
 Multi-step animations on web are implemented by having more than 2 steps in an animation. Read more about [multi-step animations here](https://www.joshwcomeau.com/animation/keyframe-animations/#multi-step-animations)
@@ -601,7 +614,7 @@ Eg) Multi-step keyframe
 - Have a detailed guideline on our documentation site
 
 # Open Questions
-- How do we solve for the [Library specific tokens](#library-specific-tokens) drawback and make our tokens framework agnostic? Do we need to make them framework agnostic?
+- ~How do we solve for the [Library specific tokens](#library-specific-tokens) drawback and make our tokens framework agnostic? Do we need to make them framework agnostic?~  We will be enforcing our consumers to only use these tokens with the specific libraries. We can add support with helper functions if the need arises for consuming these tokens with other libraries in the future.
 
 # References
 - https://shengbanx.gitbooks.io/motion-system/content/chapter2.html
