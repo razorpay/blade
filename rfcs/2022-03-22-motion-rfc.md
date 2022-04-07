@@ -181,7 +181,7 @@ We can define easing using
 1. Predefined presets like `ease-in`, `ease-out`, `ease-in-out` for CSS or `ease()`, `bounce()`, `inOut()` for React Native
 2. Custom easing functions like `cubic-bezier()`, `steps()`, `step-start()` for CSS or `bezier()`, `step0`, `step1` for React Native
 
-We'll be using the `cubic-bezier()` function for defining our easing.
+We'll be using the Bezier Curve i.e `cubic-bezier()` for web & `bezier()` for mobile to define our easing.
 
 #### Bezier Curve
 - A bezier curve allows us to mathematically represent how our easing should behave. Bezier curves can be represented on a graph where the x-axis represents **time** and the y-axis represents the **progression** of the motion. It can also be represented with a `cubic-bezier()` function which takes 4 arguments (`x1`,`y1`,`x2`,`y2`) within the range of 0 to 1.
