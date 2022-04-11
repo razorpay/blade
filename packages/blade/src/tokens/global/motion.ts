@@ -1,6 +1,6 @@
 import makeBezier from '../../utils/makeBezier';
 
-type Motion = Readonly<{
+export type Motion = Readonly<{
   delay: {
     /** `70` milliseconds */
     delay1: number;

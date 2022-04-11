@@ -3,6 +3,7 @@ import breakpoints from '../global/breakpoints';
 import spacing from '../global/spacing';
 import globalColors from '../global/colors';
 import typography from '../global/typography';
+import motion from '../global/motion';
 import type { ThemeTokens, ColorsWithModes, Shadows } from './theme.d';
 
 const colors: ColorsWithModes = {
@@ -2101,6 +2102,7 @@ const bankingTheme: ThemeTokens = {
   border,
   breakpoints,
   colors,
+  motion,
   spacing,
   shadows,
   typography,
