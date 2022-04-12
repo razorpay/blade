@@ -11,6 +11,3 @@ We have added tokens for
 3. Easing
 
 You can find a detailed RFC for motion here: [View Formatted RFC](https://github.com/razorpay/blade/blob/rfc/2022-03-22-motion-rfc/rfcs/2022-03-22-motion-rfc.md)
-
-### Usage
-TODO
