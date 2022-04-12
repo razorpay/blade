@@ -1,6 +1,8 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
 import { useTheme, BladeProvider } from '@razorpay/blade/components';
 import { paymentTheme, bankingTheme } from '@razorpay/blade/tokens';
+import styled from 'styled-components';
+import MovingDiv from '../components/MovingDiv';
 
 <Meta
   title="Tokens/Motion"
@@ -68,6 +70,9 @@ export const Motion = () => {
             <tr key={key}>
               <td>{`theme.motion.easing.standard.${key}`}</td>
               <td>{value}</td>
+              <td style={{ width: '150px' }}>
+                <MovingDiv theme={theme} easing={theme.motion.easing.standard[key]}></MovingDiv>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -79,6 +84,9 @@ export const Motion = () => {
             <tr key={key}>
               <td>{`theme.motion.easing.entrance.${key}`}</td>
               <td>{value}</td>
+              <td style={{ width: '150px' }}>
+                <MovingDiv theme={theme} easing={theme.motion.easing.entrance[key]}></MovingDiv>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -90,6 +98,9 @@ export const Motion = () => {
             <tr key={key}>
               <td>{`theme.motion.easing.exit.${key}`}</td>
               <td>{value}</td>
+              <td style={{ width: '150px' }}>
+                <MovingDiv theme={theme} easing={theme.motion.easing.exit[key]}></MovingDiv>
+              </td>
             </tr>
           ))}
         </tbody>

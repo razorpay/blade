@@ -116,7 +116,8 @@
     "react-test-renderer": "17.0.2",
     "rollup": "2.61.1",
     "rollup-plugin-dts": "4.0.1",
-    "rollup-plugin-peer-deps-external": "2.2.4"
+    "rollup-plugin-peer-deps-external": "2.2.4",
+    "styled-components": "5.3.5"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.16.5",
