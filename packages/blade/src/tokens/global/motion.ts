@@ -3,31 +3,33 @@ import makeBezier from '../../utils/makeBezier';
 export type Motion = Readonly<{
   delay: {
     /** `70` milliseconds */
-    delay1: number;
+    '2xshort': number;
     /** `120` milliseconds */
-    delay2: number;
+    xshort: number;
     /** `180` milliseconds */
-    delay3: number;
+    short: number;
     /** `3000` milliseconds */
-    delay4: number;
+    long: number;
     /** `5000` milliseconds */
-    delay5: number;
+    xlong: number;
   };
   duration: {
     /** `70` milliseconds */
-    duration1: number;
+    quick1: number;
     /** `150` milliseconds */
-    duration2: number;
+    quick2: number;
     /** `200` milliseconds */
-    duration3: number;
+    quick3: number;
     /** `250` milliseconds */
-    duration4: number;
+    moderate1: number;
     /** `300` milliseconds */
-    duration5: number;
+    moderate2: number;
     /** `400` milliseconds */
-    duration6: number;
+    gentle1: number;
     /** `600` milliseconds */
-    duration7: number;
+    gentle2: number;
+    /** `900` milliseconds */
+    gentle3: number;
   };
   easing: {
     /** Easings for all standard animations*/
@@ -83,21 +85,22 @@ export type Motion = Readonly<{
 }>;
 
 const delay = {
-  delay1: 70,
-  delay2: 120,
-  delay3: 180,
-  delay4: 3000,
-  delay5: 5000,
+  '2xshort': 70,
+  xshort: 120,
+  short: 180,
+  long: 3000,
+  xlong: 5000,
 };
 
 const duration = {
-  duration1: 70,
-  duration2: 150,
-  duration3: 200,
-  duration4: 250,
-  duration5: 300,
-  duration6: 400,
-  duration7: 600,
+  quick1: 70,
+  quick2: 150,
+  quick3: 200,
+  moderate1: 250,
+  moderate2: 300,
+  gentle1: 400,
+  gentle2: 600,
+  gentle3: 900,
 };
 
 /* makeBezier returns a react-native-reanimated Easing Function of type `EasingFunctionFactory` */
