@@ -1,0 +1,101 @@
+import { Meta, DocsContainer } from '@storybook/addon-docs';
+import { useTheme, BladeProvider } from '@razorpay/blade/components';
+import { paymentTheme, bankingTheme } from '@razorpay/blade/tokens';
+
+<Meta
+  title="Tokens/Motion"
+  parameters={{
+    docs: {
+      container: ({ children, context }) => {
+        const getThemeTokens = () => {
+          if (context.globals.themeTokens === 'paymentTheme') {
+            return paymentTheme;
+          }
+          if (context.globals.themeTokens === 'bankingTheme') {
+            return bankingTheme;
+          }
+          return null;
+        };
+        return (
+          <DocsContainer context={context}>
+            <BladeProvider
+              key={`${context.globals.themeTokens}-${context.globals.colorScheme}`}
+              themeTokens={getThemeTokens()}
+              colorScheme={context.globals.colorScheme}
+            >
+              {children}
+            </BladeProvider>
+          </DocsContainer>
+        );
+      },
+    },
+  }}
+/>
+
+# 🎬 Motion
+
+export const Motion = () => {
+  const { theme } = useTheme();
+  return (
+    <>
+      <h3>Delay (in milliseconds)</h3>
+      <table>
+        <tbody>
+          {Object.entries(theme.motion.delay).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.motion.delay.${key}`}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h3>Duration (in milliseconds)</h3>
+      <table>
+        <tbody>
+          {Object.entries(theme.motion.duration).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.motion.duration.${key}`}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h3>Easing</h3>
+      <h4>standard</h4>
+      <table>
+        <tbody>
+          {Object.entries(theme.motion.easing.standard).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.motion.easing.standard.${key}`}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h4>entrance</h4>
+      <table>
+        <tbody>
+          {Object.entries(theme.motion.easing.entrance).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.motion.easing.entrance.${key}`}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h4>exit</h4>
+      <table>
+        <tbody>
+          {Object.entries(theme.motion.easing.exit).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.motion.easing.exit.${key}`}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+};
+
+<Motion />
