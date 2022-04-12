@@ -126,20 +126,16 @@ You can *start* or *stop* your motion with some delay. For example, in the image
 #### Tokens - Delay
 We will be storing these tokens in `blade/src/tokens/global/motion.ts` as a `number` of milliseconds.
 
-> *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
-
 Here is the **list of tokens** that we will store in Blade for `Delay`:
 ```js
 delay: {
-  delay1: '70ms',
-  delay2: '120ms',
-  delay3: '180ms',
-  delay4: '3000ms',
-  delay5: '5000ms',
+  '2xshort': 70,
+  xshort: 120,
+  short: 180,
+  long: 3000,
+  xlong: 5000,
 }
 ```
-
-> For React Native, we would need to store delay as `number` instead of `string`. Eg: `delay1: 70`
 
 ### Duration
 Duration is the time taken to complete any transition, interaction and animation. Each animation can run for a duration of time depending on factors like size of the object, distance of travel, direction of travel, etc. 
@@ -156,23 +152,21 @@ After thorough research & experimentation on perception our design team has crea
 <img alt="rotate" src="./images/motion/duration-chart.png" width="700px">
 
 #### Tokens - Duration
-We will be storing these tokens in `blade/src/tokens/global/motion.ts` as a `string` of milliseconds.
-
-> *Note: The naming for these tokens is not finalized yet. We will be updating this in the future.*
+We will be storing these tokens in `blade/src/tokens/global/motion.ts` as a `number` of milliseconds.
 
 Here is the **list of tokens** that we will store in Blade for `Duration`:
 ```js
 duration: {
-  duration1: '70ms',
-  duration2: '150ms',
-  duration3: '200ms',
-  duration4: '250ms',
-  duration5: '300ms',
-  duration6: '400ms',
-  duration7: '600ms',
+  quick1: 70,
+  quick2: 150,
+  quick3: 200,
+  moderate1: 250,
+  moderate2: 300,
+  gentle1: 400,
+  gentle2: 600,
+  gentle3: 900,
 }
 ```
-> For React Native, we would need to store duration as `number` instead of `string`. Eg: `duration1: 70`
 
 ### Easing
 Easing refers to the way in which a motion proceeds between two states. You can think of easing as acceleration or deceleration of an object's transition from one state to another. 
@@ -341,7 +335,7 @@ function Example() {
               ],
             },
             {
-              duration: motionToken.duration.duration3, // Set the duration of the animation using our motion tokens
+              duration: motionToken.duration.quick3, // Set the duration of the animation using our motion tokens
               ease: motionToken.easing.standard.effective, // Set the easing of the animation using our motion tokens
             }
           )
@@ -360,7 +354,7 @@ const AnimatedBlock = styled.div` /* Create a styled div */
   :hover {
     animation: 
       shake /* Set a custom keyframe animation */
-      ${motionToken.duration.duration3} /* Set the duration of the animation using our motion tokens */
+      ${motionToken.duration.quick3} /* Set the duration of the animation using our motion tokens */
       ${motionToken.easing.standard.effective}; /* Set the easing of the animation using our motion tokens */
   }
 
@@ -435,7 +429,7 @@ function Example() {
         Animated.timing(shakeAnimation, { // Change the value of shakeAnimation to 100
           toValue: 100,
           useNativeDriver: true,
-          duration: motionToken.duration.duration3, // Define the duration it takes to change the value of shakeAnimation to 100
+          duration: motionToken.duration.quick3, // Define the duration it takes to change the value of shakeAnimation to 100
           easing: motionToken.easing.standard.effective, // Define the easing of the animation
         }).start()}
       />
@@ -475,7 +469,7 @@ function Example() {
       <Animated.View style={[styles.block, shakeAnimationStyle]} />
       <Button text="Shake" onPress={() => {
         shakeAnimation.value = withTiming(100, { // Change the value of shakeAnimation to 100
-          duration: motionToken.duration.duration3, // Define the duration it takes to change the value of shakeAnimation to 100
+          duration: motionToken.duration.quick3, // Define the duration it takes to change the value of shakeAnimation to 100
           easing: motionToken.easing.standard.effective, // Define the easing of the animation
         });
       }}
@@ -544,7 +538,7 @@ Eg) Multi-step keyframe
 
   ```jsx
     shakeAnimation.value = withTiming(100, { 
-      duration: motionToken.duration.duration3, 
+      duration: motionToken.duration.quick3, 
       easing: motionToken.easing.standard.effective, 
     });
   ```
@@ -579,7 +573,7 @@ Eg) Multi-step keyframe
           Animated.timing(shakeAnimation, {
             toValue: 100,
             useNativeDriver: false, // Set native driver usage to false
-            duration: motionToken.duration.duration3, // Define only duration here
+            duration: motionToken.duration.quick3, // Define only duration here
           }).start()}
         />
       </View>
