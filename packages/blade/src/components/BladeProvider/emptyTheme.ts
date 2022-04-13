@@ -1,4 +1,4 @@
-import { Theme } from './useTheme';
+import type { Theme } from './';
 
 const emptyTheme: Theme = {
   colors: {

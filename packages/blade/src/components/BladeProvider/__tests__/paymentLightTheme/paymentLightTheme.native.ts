@@ -4,7 +4,7 @@ import border from '../../../../tokens/global/border';
 import breakpoints from '../../../../tokens/global/breakpoints';
 import spacing from '../../../../tokens/global/spacing';
 import typography from '../../../../tokens/global/typography';
-import { Theme } from '../../useTheme';
+import type { Theme } from '../../';
 
 const paymentLightTheme: Theme = {
   colors: {
