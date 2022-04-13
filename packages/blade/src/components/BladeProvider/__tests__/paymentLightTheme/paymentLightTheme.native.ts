@@ -1,9 +1,10 @@
-import globalColors from '../../../tokens/global/colors';
-import border from '../../../tokens/global/border';
-import breakpoints from '../../../tokens/global/breakpoints';
-import spacing from '../../../tokens/global/spacing';
-import typography from '../../../tokens/global/typography';
-import { Theme } from '../useTheme';
+import { Easing } from 'react-native-reanimated';
+import globalColors from '../../../../tokens/global/colors';
+import border from '../../../../tokens/global/border';
+import breakpoints from '../../../../tokens/global/breakpoints';
+import spacing from '../../../../tokens/global/spacing';
+import typography from '../../../../tokens/global/typography';
+import { Theme } from '../../useTheme';
 
 const paymentLightTheme: Theme = {
   colors: {
@@ -1041,20 +1042,30 @@ const paymentLightTheme: Theme = {
     },
     easing: {
       standard: {
-        attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)',
-        effective: 'cubic-bezier(0.3, 0, 0.2, 1)',
-        revealing: 'cubic-bezier(0.5, 0, 0, 1)',
-        wary: 'cubic-bezier(1, 0.5, 0, 0.5)',
+        //@ts-expect-error Need to figure out a way to have a different Theme type for native
+        attentive: Easing.bezier(0.5, 0, 0.3, 1.5),
+        //@ts-expect-error Need to figure out a way to have a different Theme type for native
+        effective: Easing.bezier(0.3, 0, 0.2, 1),
+        //@ts-expect-error Need to figure out a way to have a different Theme type for native
+        revealing: Easing.bezier(0.5, 0, 0, 1),
+        //@ts-expect-error Need to figure out a way to have a different Theme type for native
+        wary: Easing.bezier(1, 0.5, 0, 0.5),
       },
       entrance: {
-        attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)',
-        effective: 'cubic-bezier(0, 0, 0.2, 1)',
-        revealing: 'cubic-bezier(0, 0, 0, 1)',
+        //@ts-expect-error Need to figure out a way to have a different Theme type for native
+        attentive: Easing.bezier(0.5, 0, 0.3, 1.5),
+        //@ts-expect-error Need to figure out a way to have a different Theme type for native
+        effective: Easing.bezier(0, 0, 0.2, 1),
+        //@ts-expect-error Need to figure out a way to have a different Theme type for native
+        revealing: Easing.bezier(0, 0, 0, 1),
       },
       exit: {
-        attentive: 'cubic-bezier(0.7, 0, 0.5, 1)',
-        effective: 'cubic-bezier(0.17, 0, 1, 1)',
-        revealing: 'cubic-bezier(0.5, 0, 1, 1)',
+        //@ts-expect-error Need to figure out a way to have a different Theme type for native
+        attentive: Easing.bezier(0.7, 0, 0.5, 1),
+        //@ts-expect-error Need to figure out a way to have a different Theme type for native
+        effective: Easing.bezier(0.17, 0, 1, 1),
+        //@ts-expect-error Need to figure out a way to have a different Theme type for native
+        revealing: Easing.bezier(0.5, 0, 1, 1),
       },
     },
   },

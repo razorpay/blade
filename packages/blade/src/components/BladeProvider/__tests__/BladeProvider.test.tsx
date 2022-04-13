@@ -30,7 +30,15 @@ describe('<BladeProvider/>', () => {
       },
     });
 
+    console.log(
+      '🚀 ~ file: BladeProvider.test.tsx ~ line 34 ~ it ~ result.current.theme',
+      result.current.theme.motion.easing.standard.attentive,
+    );
     expect(result.current.theme).toEqual(paymentLightTheme);
+    console.log(
+      '🚀 ~ file: BladeProvider.test.tsx ~ line 38 ~ it ~ paymentLightTheme',
+      paymentLightTheme.motion.easing.standard.attentive,
+    );
     expect(result.current.colorScheme).toBe('light');
   });
 
