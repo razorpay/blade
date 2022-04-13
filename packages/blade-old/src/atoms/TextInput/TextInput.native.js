@@ -195,6 +195,8 @@ const TextInput = React.forwardRef(
       onSubmitEditing,
       onFocus,
       onBlur,
+      onKeyPress,
+      textAlign,
       _isMultiline,
     },
     ref,
@@ -410,6 +412,8 @@ const TextInput = React.forwardRef(
                                   returnKeyType={returnKeyType}
                                   autoCapitalize={autoCapitalize}
                                   onSubmitEditing={onSubmitEditing}
+                                  textAlign={textAlign}
+                                  onKeyPress={onKeyPress}
                                   {...automation(testID)}
                                 />
                               </Size>
@@ -497,6 +501,8 @@ TextInput.propTypes = {
   onSubmitEditing: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
+  onKeyPress: PropTypes.func,
+  textAlign: PropTypes.oneOf(['left', 'center', 'right']),
   _isMultiline: PropTypes.bool,
 };
 
@@ -512,6 +518,8 @@ TextInput.defaultProps = {
   type: 'text',
   onFocus: () => {},
   onBlur: () => {},
+  textAlign: 'left',
+  onKeyPress: () => {},
 };
 
 export default TextInput;
