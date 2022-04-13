@@ -20,10 +20,8 @@
   "scripts": {
     "lint": "eslint --ext js,jsx,ts,tsx packages",
     "release": "changeset publish",
-    "preinstall": "git config url.\"https://github.com/\".insteadOf git://github.com/",
-    "postinstall": "run-s build install-tokens-usage-dependencies",
-    "build": "lerna run --scope @razorpay/blade build",
-    "install-tokens-usage-dependencies": "cd packages/examples/tokens-usage && yarn"
+    "preinstall": "git config --global url.\"https://github.com/\".insteadOf git://github.com/",
+    "build": "lerna run --scope @razorpay/blade build"
   },
   "dependencies": {},
   "devDependencies": {
@@ -57,7 +55,7 @@
     "stylelint-config-recommended": "5.0.0",
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "1.10.0",
-    "typescript": "4.2.4"
+    "typescript": "4.6.3"
   },
   "husky": {
     "hooks": {

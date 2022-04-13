@@ -1,4 +1,5 @@
 import { ReactNode, ReactElement } from 'react';
+import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
 import { useColorScheme, toTitleCase, useBreakpoint } from '../../utils';
 import { colorSchemeNamesInput } from '../../tokens/theme';
 import type { TypographyPlatforms } from '../../tokens/global/typography';
@@ -7,8 +8,8 @@ import type {
   ThemeTokens,
   ColorSchemeNamesInput,
 } from '../../tokens/theme/theme.d';
-import type { Theme } from './useTheme';
 import { ThemeContext } from './useTheme';
+import type { Theme } from './';
 
 export type BladeProviderProps = {
   themeTokens: ThemeTokens;
@@ -57,7 +58,11 @@ const BladeProvider = ({
     setColorScheme,
   };
 
-  return <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={themeContextValue}>
+      <StyledComponentThemeProvider theme={theme}>{children}</StyledComponentThemeProvider>
+    </ThemeContext.Provider>
+  );
 };
 
 export default BladeProvider;

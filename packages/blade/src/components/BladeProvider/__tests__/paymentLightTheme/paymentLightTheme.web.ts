@@ -1,9 +1,9 @@
-import globalColors from '../../../tokens/global/colors';
-import border from '../../../tokens/global/border';
-import breakpoints from '../../../tokens/global/breakpoints';
-import spacing from '../../../tokens/global/spacing';
-import typography from '../../../tokens/global/typography';
-import { Theme } from '../useTheme';
+import globalColors from '../../../../tokens/global/colors';
+import border from '../../../../tokens/global/border';
+import breakpoints from '../../../../tokens/global/breakpoints';
+import spacing from '../../../../tokens/global/spacing';
+import typography from '../../../../tokens/global/typography';
+import type { Theme } from '../../';
 
 const paymentLightTheme: Theme = {
   colors: {
@@ -1021,6 +1021,43 @@ const paymentLightTheme: Theme = {
     },
   },
   border,
+  motion: {
+    delay: {
+      '2xshort': 70,
+      xshort: 120,
+      short: 180,
+      long: 3000,
+      xlong: 5000,
+    },
+    duration: {
+      quick1: 70,
+      quick2: 150,
+      quick3: 200,
+      moderate1: 250,
+      moderate2: 300,
+      gentle1: 400,
+      gentle2: 600,
+      gentle3: 900,
+    },
+    easing: {
+      standard: {
+        attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)',
+        effective: 'cubic-bezier(0.3, 0, 0.2, 1)',
+        revealing: 'cubic-bezier(0.5, 0, 0, 1)',
+        wary: 'cubic-bezier(1, 0.5, 0, 0.5)',
+      },
+      entrance: {
+        attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)',
+        effective: 'cubic-bezier(0, 0, 0.2, 1)',
+        revealing: 'cubic-bezier(0, 0, 0, 1)',
+      },
+      exit: {
+        attentive: 'cubic-bezier(0.7, 0, 0.5, 1)',
+        effective: 'cubic-bezier(0.17, 0, 1, 1)',
+        revealing: 'cubic-bezier(0.5, 0, 1, 1)',
+      },
+    },
+  },
   spacing,
   breakpoints,
   shadows: {

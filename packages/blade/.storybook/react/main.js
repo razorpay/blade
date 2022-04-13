@@ -18,6 +18,7 @@ module.exports = {
     config.resolve.extensions = [
       '.web.tsx',
       '.web.ts',
+      '.tsx',
       '.ts',
       '.web.js',
       '.mjs',
