@@ -1037,6 +1037,43 @@ const emptyTheme: Theme = {
     xl: 0,
     max: 0,
   },
+  motion: {
+    delay: {
+      '2xshort': 0,
+      xshort: 0,
+      short: 0,
+      long: 0,
+      xlong: 0,
+    },
+    duration: {
+      quick1: 0,
+      quick2: 0,
+      quick3: 0,
+      moderate1: 0,
+      moderate2: 0,
+      gentle1: 0,
+      gentle2: 0,
+      gentle3: 0,
+    },
+    easing: {
+      standard: {
+        attentive: '',
+        effective: '',
+        revealing: '',
+        wary: '',
+      },
+      entrance: {
+        attentive: '',
+        effective: '',
+        revealing: '',
+      },
+      exit: {
+        attentive: '',
+        effective: '',
+        revealing: '',
+      },
+    },
+  },
   spacing: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0 },
   shadows: {
     offsetX: {

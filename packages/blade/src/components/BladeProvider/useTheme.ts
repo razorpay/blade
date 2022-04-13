@@ -2,6 +2,7 @@ import { useContext, createContext } from 'react';
 import { Colors, Shadows, ShadowLevels } from '../../tokens/theme/theme.d';
 import type { Border } from '../../tokens/global/border';
 import type { Breakpoints } from '../../tokens/global/breakpoints';
+import type { Motion } from '../../tokens/global/motion';
 import type { Spacing } from '../../tokens/global/spacing';
 import type { Typography } from '../../tokens/global/typography';
 import type { UseColorScheme } from '../../utils/useColorScheme';
@@ -11,6 +12,7 @@ export type Theme = {
   border: Border;
   breakpoints: Breakpoints;
   colors: Colors;
+  motion: Motion;
   spacing: Spacing;
   shadows: Omit<Shadows, 'color'> & {
     color: {
