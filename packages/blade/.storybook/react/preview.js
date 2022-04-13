@@ -1,6 +1,6 @@
 import { theme } from './manager';
-import { BladeProvider } from '@razorpay/blade/components';
-import { paymentTheme, bankingTheme } from '@razorpay/blade/tokens';
+import { BladeProvider } from '../../src/components/BladeProvider';
+import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
 
 let selectedTheme = 'Payment';
 

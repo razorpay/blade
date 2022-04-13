@@ -19,6 +19,7 @@ module.exports = {
       '.web.tsx',
       '.web.ts',
       '.ts',
+      '.tsx',
       '.web.js',
       '.mjs',
       '.js',

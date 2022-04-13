@@ -57,7 +57,7 @@
     "stylelint-config-recommended": "5.0.0",
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "1.10.0",
-    "typescript": "4.2.4"
+    "typescript": "4.6.3"
   },
   "husky": {
     "hooks": {
