@@ -13,6 +13,8 @@ export const parameters = {
         ['Intro', 'Installation', 'Usage', 'Local Development'],
         'Tokens',
         ['Colors', 'Typography', 'Breakpoints', 'Border', 'Spacing', 'Shadows'],
+        'Recipes',
+        'Components',
       ],
     },
   },

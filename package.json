@@ -21,9 +21,7 @@
     "lint": "eslint --ext js,jsx,ts,tsx packages",
     "release": "changeset publish",
     "preinstall": "git config --global url.\"https://github.com/\".insteadOf git://github.com/",
-    "postinstall": "run-s build install-tokens-usage-dependencies",
-    "build": "lerna run --scope @razorpay/blade build",
-    "install-tokens-usage-dependencies": "cd packages/examples/tokens-usage && yarn"
+    "build": "lerna run --scope @razorpay/blade build"
   },
   "dependencies": {},
   "devDependencies": {
