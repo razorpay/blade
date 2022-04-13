@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 2.3.1
+
+### Patch Changes
+
+- 0361106: `onKeyPress` and `textAlign` props addition in `TextInput`. `textAlign` can take values `left`, `right`, and `center`. `onKeyPress` will take native event as argument. These props are optional
+
 ## 2.3.0
 
 ### Minor Changes

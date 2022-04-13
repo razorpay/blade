@@ -127,6 +127,7 @@ exports[`Renders <TextInput /> filled variant correctly autoCapitalize character
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -283,6 +284,7 @@ exports[`Renders <TextInput /> filled variant correctly autoCapitalize none 1`] 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -439,6 +441,7 @@ exports[`Renders <TextInput /> filled variant correctly autoCapitalize sentences
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -595,6 +598,7 @@ exports[`Renders <TextInput /> filled variant correctly autoCapitalize words 1`]
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -751,6 +755,7 @@ exports[`Renders <TextInput /> filled variant correctly keyboardType decimal-pad
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -907,6 +912,7 @@ exports[`Renders <TextInput /> filled variant correctly keyboardType email-addre
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -1063,6 +1069,7 @@ exports[`Renders <TextInput /> filled variant correctly keyboardType number-pad 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -1219,6 +1226,7 @@ exports[`Renders <TextInput /> filled variant correctly keyboardType numeric 1`]
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -1375,6 +1383,7 @@ exports[`Renders <TextInput /> filled variant correctly keyboardType phone-pad 1
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -1531,6 +1540,7 @@ exports[`Renders <TextInput /> filled variant correctly returnKeyType done 1`] =
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -1687,6 +1697,7 @@ exports[`Renders <TextInput /> filled variant correctly returnKeyType go 1`] = `
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -1843,6 +1854,7 @@ exports[`Renders <TextInput /> filled variant correctly returnKeyType next 1`] =
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -1999,6 +2011,7 @@ exports[`Renders <TextInput /> filled variant correctly returnKeyType search 1`]
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -2155,6 +2168,7 @@ exports[`Renders <TextInput /> filled variant correctly returnKeyType send 1`] =
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -2310,6 +2324,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 ]
               }
               testID="snap-test-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -2465,6 +2480,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot after focus (fi
                 ]
               }
               testID="snap-test-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -2620,6 +2636,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing (filled
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value="user@domain.com"
               variant="filled"
@@ -2778,6 +2795,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with au
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -2934,6 +2952,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ch
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -3129,6 +3148,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with di
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -3447,6 +3467,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with er
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -3726,6 +3747,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -3987,6 +4009,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with he
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -4260,6 +4283,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -4534,6 +4558,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -4689,6 +4714,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with ic
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -4906,6 +4932,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with la
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -5061,6 +5088,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -5296,6 +5324,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with pr
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -5451,6 +5480,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with sm
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -5606,6 +5636,7 @@ exports[`Renders <TextInput /> filled variant correctly snapshot testing with su
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="filled"
@@ -5801,6 +5832,7 @@ exports[`Renders <TextInput /> filled variant correctly type password 1`] = `
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value="Hello world"
               variant="outlined"
@@ -5956,6 +5988,7 @@ exports[`Renders <TextInput /> filled variant correctly type text 1`] = `
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value="Hello world"
               variant="outlined"
@@ -6111,6 +6144,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 1
                 ]
               }
               testID="snap-test-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -6266,6 +6300,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot after focus 2
                 ]
               }
               testID="snap-test-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -6424,6 +6459,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -6580,6 +6616,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -6775,6 +6812,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -7093,6 +7131,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -7371,6 +7410,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value="user@domain.com"
               variant="outlined"
@@ -7526,6 +7566,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -7743,6 +7784,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -8061,6 +8103,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -8273,6 +8316,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -8490,6 +8534,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -8707,6 +8752,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -8862,6 +8908,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -9097,6 +9144,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -9252,6 +9300,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
@@ -9407,6 +9456,7 @@ exports[`Renders <TextInput /> outlined variant correctly snapshot testing with 
                 ]
               }
               testID="ds-text-input"
+              textAlign="left"
               underlineColorAndroid="transparent"
               value=""
               variant="outlined"
