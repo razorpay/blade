@@ -2,4 +2,4 @@
 "@razorpay/blade-old": patch
 ---
 
-on keyboard press and text align props addition in TextInput. Text Align can take values left, right and center. On Keyboard Press will take native event as argument. These props are optional
+`onKeyPress` and `textAlign` props addition in `TextInput`. `textAlign` can take values `left`, `right`, and `center`. `onKeyPress` will take native event as argument. These props are optional
