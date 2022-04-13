@@ -16,12 +16,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: Fix git protocol
-        run: git config --global url."git@github.com:".insteadOf "https://github.com/"
-      - name: Setup Cache & Install Dependencies
-        uses: bahmutov/npm-install@v1
-        with:
-          install-command: yarn --frozen-lockfile
+      - name: Install Dependencies
+        run: yarn --frozen-lockfile
+#       - name: Setup Cache & Install Dependencies
+#         uses: bahmutov/npm-install@v1
+#         with:
+#           install-command: yarn --frozen-lockfile
       - name: Lint Source Code
         run: yarn lint
       - name: Run Web Tests
