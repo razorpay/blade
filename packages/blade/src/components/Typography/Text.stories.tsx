@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import BaseText from './BaseText';
 
 const TextMeta: ComponentMeta<typeof BaseText> = {
@@ -8,9 +8,11 @@ const TextMeta: ComponentMeta<typeof BaseText> = {
   args: {
     color: 'surface.text.normal.lowContrast',
     fontFamily: 'text',
-    fontSize: 1000,
+    // @todo: fontSize is not getting auto populated check it
+    fontSize: 700,
     fontWeight: 'regular',
     fontStyle: 'normal',
+    textAlign: 'left',
     textDecorationLine: 'none',
     lineHeight: 'm',
     // as: 'Text',
