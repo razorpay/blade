@@ -32,55 +32,57 @@ type Delay = {
   xlong: 5000;
 };
 
+type EasingFunctionFactory = { factory: () => (value: number) => number }; // similar to EasingFunctionFactory of `react-native-reanimated`
+
 type Easing = {
   /** Easings for all standard animations*/
   standard: {
     /** `cubic-bezier(0.5, 0, 0.3, 1.5)`
      *
      *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFunctionFactory` for native */
-    attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)' | { factory: () => (value: number) => number };
+    attentive: EasingFunctionFactory | 'cubic-bezier(0.5, 0, 0.3, 1.5)';
     /** `cubic-bezier(0.3, 0, 0.2, 1)`
      *
      *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFunctionFactory` for native */
-    effective: 'cubic-bezier(0.3, 0, 0.2, 1)' | { factory: () => (value: number) => number };
+    effective: EasingFunctionFactory | 'cubic-bezier(0.3, 0, 0.2, 1)';
     /** `cubic-bezier(0.5, 0, 0, 1)`
      *
      *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFunctionFactory` for native */
-    revealing: 'cubic-bezier(0.5, 0, 0, 1)' | { factory: () => (value: number) => number };
+    revealing: EasingFunctionFactory | 'cubic-bezier(0.5, 0, 0, 1)';
     /** `cubic-bezier(1, 0.5, 0, 0.5)`
      *
      *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFunctionFactory` for native */
-    wary: 'cubic-bezier(1, 0.5, 0, 0.5)' | { factory: () => (value: number) => number };
+    wary: EasingFunctionFactory | 'cubic-bezier(1, 0.5, 0, 0.5)';
   };
   /** Easings for all entrance animations*/
   entrance: {
     /** `cubic-bezier(0.5, 0, 0.3, 1.5)`
      *
      *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFunctionFactory` for native */
-    attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)' | { factory: () => (value: number) => number };
+    attentive: EasingFunctionFactory | 'cubic-bezier(0.5, 0, 0.3, 1.5)';
     /** `cubic-bezier(0, 0, 0.2, 1)`
      *
      *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFunctionFactory` for native */
-    effective: 'cubic-bezier(0, 0, 0.2, 1)' | { factory: () => (value: number) => number };
+    effective: EasingFunctionFactory | 'cubic-bezier(0, 0, 0.2, 1)';
     /** `cubic-bezier(0, 0, 0, 1)`
      *
      *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFunctionFactory` for native */
-    revealing: 'cubic-bezier(0, 0, 0, 1)' | { factory: () => (value: number) => number };
+    revealing: EasingFunctionFactory | 'cubic-bezier(0, 0, 0, 1)';
   };
   /** Easings for all exit animations*/
   exit: {
     /** `cubic-bezier(0.7, 0, 0.5, 1)`
      *
      *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFunctionFactory` for native */
-    attentive: 'cubic-bezier(0.7, 0, 0.5, 1)' | { factory: () => (value: number) => number };
+    attentive: EasingFunctionFactory | 'cubic-bezier(0.7, 0, 0.5, 1)';
     /** `cubic-bezier(0.17, 0, 1, 1)`
      *
      *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFunctionFactory` for native */
-    effective: 'cubic-bezier(0.17, 0, 1, 1)' | { factory: () => (value: number) => number };
+    effective: EasingFunctionFactory | 'cubic-bezier(0.17, 0, 1, 1)';
     /** `cubic-bezier(0.5, 0, 1, 1)`
      *
      *  Returns a `string` of `"cubic-bezier(...)"` for web & react-native-reanimated's Easing Function of type `EasingFunctionFactory` for native */
-    revealing: 'cubic-bezier(0.5, 0, 1, 1)' | { factory: () => (value: number) => number };
+    revealing: EasingFunctionFactory | 'cubic-bezier(0.5, 0, 1, 1)';
   };
 };
 
