@@ -1,4 +1,4 @@
-import { ReactNode, ReactElement } from 'react';
+import type { ReactNode, ReactElement } from 'react';
 import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
 import { useColorScheme, toTitleCase, useBreakpoint } from '../../utils';
 import { colorSchemeNamesInput } from '../../tokens/theme';
