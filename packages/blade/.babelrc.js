@@ -8,6 +8,7 @@ const configs = {
           {
             alias: {
               '@storybook/react': '@storybook/react-native',
+              '^styled-components$': 'styled-components/native'
             },
           },
         ],
@@ -27,6 +28,7 @@ const configs = {
           {
             alias: {
               '@storybook/react': '@storybook/react-native',
+              '^styled-components$': 'styled-components/native'
             },
           },
         ],
@@ -49,6 +51,7 @@ const configs = {
           {
             alias: {
               '@storybook/react': '@storybook/react-native',
+              '^styled-components$': 'styled-components/native'
             },
           },
         ],

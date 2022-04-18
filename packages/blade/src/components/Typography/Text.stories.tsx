@@ -3,22 +3,19 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import BaseText from './BaseText';
 
 const TextMeta: ComponentMeta<typeof BaseText> = {
-  title: 'Components/Text',
+  title: 'Components/Typography',
   component: BaseText,
-  // argTypes: {
-  //   onPress: { action: 'pressed the button' },
-  // },
   args: {
-    color: 'feedback.text.positive.lowContrast',
+    color: 'surface.text.normal.lowContrast',
     fontFamily: 'text',
-    fontSize: 100,
+    fontSize: 1000,
     fontWeight: 'regular',
     fontStyle: 'normal',
     textDecorationLine: 'none',
     lineHeight: 'm',
-    as: 'p',
+    // as: 'Text',
     name: 'Storybook',
-    children: 'Hello world',
+    children: 'Base Text',
   },
 };
 
@@ -29,4 +26,3 @@ const Text: ComponentStory<typeof BaseText> = (args) => {
 };
 
 export const BaseTextStory = Text.bind({});
-// Primary.args = { text: 'Button' };

@@ -1,6 +1,7 @@
 import { ReactNode, ReactElement } from 'react';
-import styled from 'styled-components';
-import { ColorContrast } from '../../tokens/theme/theme';
+// import { Text as NativeText } from 'react-native';
+import styled from 'styled-components/native';
+import type { ColorContrast } from '../../tokens/theme/theme';
 import getIn from '../../utils/getIn';
 import { useTheme } from '../BladeProvider';
 import type { Theme } from '../BladeProvider';
@@ -16,6 +17,8 @@ import isEmpty from '../../utils/isEmpty';
  * - write helper to resolve text - deferred
  * - Organise the storybook
  * - write text component for React native
+ *  'auto', 'left', 'right', 'center', 'justify'
+ *  left|right|center|justify|initial|inherit;
  */
 
 type DotNotationStringToken<TokenType> = {
@@ -41,12 +44,13 @@ export type BaseTextProps = {
   fontStyle: 'italic' | 'normal';
   textDecorationLine: 'line-through' | 'none';
   lineHeight: keyof Theme['typography']['lineHeights'];
-  as: 'code' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+  as?: 'code' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+  textAlign?: 'center' | 'justify' | 'left' | 'right';
   name?: string;
   children?: ReactNode;
 };
 
-const StyledBaseText = styled.div<BaseTextProps>(
+const StyledBaseText = styled.Text<BaseTextProps>(
   ({
     theme,
     color,
@@ -56,14 +60,16 @@ const StyledBaseText = styled.div<BaseTextProps>(
     fontStyle,
     textDecorationLine,
     lineHeight,
+    textAlign = '',
   }) => `
   color: ${color};
   font-family: ${theme.typography.fonts.family[fontFamily]};
-  font-size: ${theme.typography.fonts.size[fontSize]}rem;
+  font-size: ${theme.typography.fonts.size[fontSize]};
   font-weight: ${theme.typography.fonts.weight[fontWeight]};
   font-style: ${fontStyle};
   text-decoration-line: ${textDecorationLine};
   line-height: ${lineHeight};
+  text-align: ${textAlign}
 `,
 );
 
@@ -78,21 +84,22 @@ const BaseText = ({
   as,
   name,
   children,
+  textAlign,
 }: BaseTextProps): ReactElement => {
-  const { theme: bladeTheme } = useTheme();
-  const textColor = getIn(bladeTheme.colors, color);
+  const { theme } = useTheme();
+  const textColor = getIn(theme.colors, color);
 
   if (isEmpty(textColor)) {
     throw new Error(
       // @todo: generate the error message with valid values
-      `[Blade:BaseText]: Invalid color prop ${color} passed, expected value to be one of theme color value from surface.text, feedback.text or action.text`,
+      `[Blade:BaseText]: Invalid color value ${color} passed`,
     );
   }
 
   return (
     <StyledBaseText
       data-blade-component={name}
-      theme={bladeTheme}
+      theme={theme}
       color={textColor}
       fontFamily={fontFamily}
       fontSize={fontSize}
@@ -101,6 +108,7 @@ const BaseText = ({
       textDecorationLine={textDecorationLine}
       lineHeight={lineHeight}
       as={as}
+      textAlign={textAlign}
     >
       {children}
     </StyledBaseText>
