@@ -1,6 +1,7 @@
-import React, { ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { Button as ButtonProps } from './Button';
+import type { Button as ButtonProps } from './Button';
 
 const styles = StyleSheet.create({
   container: {
