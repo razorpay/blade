@@ -1,1 +1,1 @@
-export { default } from './Card.web'
+export { default } from './Card.web';
