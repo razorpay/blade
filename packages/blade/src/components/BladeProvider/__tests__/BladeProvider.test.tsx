@@ -1,6 +1,8 @@
-import { renderHook, act, WrapperComponent } from '@testing-library/react-hooks';
+import type { WrapperComponent } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import { paymentTheme, colorSchemeNamesInput } from '../../../tokens/theme';
-import { BladeProvider, useTheme, BladeProviderProps } from '../../BladeProvider';
+import type { BladeProviderProps } from '../../BladeProvider';
+import { BladeProvider, useTheme } from '../../BladeProvider';
 import setupMatchMediaMock from '../../../utils/mocks/setupMatchMediaMock';
 import paymentLightTheme from './paymentLightTheme';
 
