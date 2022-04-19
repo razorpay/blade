@@ -1,3 +1,4 @@
+import attachTypographyUnit from '../../../utils/attachTypographyUnit';
 import type { BaseTextProps } from './BaseText.d';
 
 const getBaseTextStyles = ({
@@ -13,11 +14,11 @@ const getBaseTextStyles = ({
 }: BaseTextProps): string => `
   color: ${color};
   font-family: ${theme.typography.fonts.family[fontFamily]};
-  font-size: ${theme.typography.fonts.size[fontSize]}px;
+  font-size: ${attachTypographyUnit(theme.typography.fonts.size[fontSize])};
   font-weight: ${theme.typography.fonts.weight[fontWeight]};
   font-style: ${fontStyle};
   text-decoration-line: ${textDecorationLine};
-  line-height: ${theme.typography.lineHeights[lineHeight]}px;
+  line-height: ${attachTypographyUnit(theme.typography.lineHeights[lineHeight])};
   ${textAlign ? `text-align: ${textAlign};` : ''}
 `;
 

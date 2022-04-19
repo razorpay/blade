@@ -11,12 +11,10 @@ import type { BaseTextProps } from './BaseText.d';
  * - make autocomplete work with TS - done
  * - write helper to resolve color - done
  * - filter unwanted dom attrs - done
+ * - write text component for React native- done
+ * - write helper to resolve text units - done
  * - create function to add data-* elements - deferred
- * - write helper to resolve text - deferred
  * - Organise the storybook
- * - write text component for React native
- *  'auto', 'left', 'right', 'center', 'justify'
- *  left|right|center|justify|initial|inherit;
  */
 
 const BaseText = ({
@@ -28,7 +26,6 @@ const BaseText = ({
   textDecorationLine,
   lineHeight,
   as,
-  name,
   children,
   textAlign,
 }: BaseTextProps): ReactElement => {
@@ -38,13 +35,12 @@ const BaseText = ({
   if (isEmpty(textColor)) {
     throw new Error(
       // @todo: generate the error message with valid values
-      `[Blade:BaseText]: Invalid color value ${color} passed`,
+      `[Blade:BaseText]: Invalid value ${color} for color prop passed`,
     );
   }
 
   return (
     <StyledBaseText
-      data-blade-component={name}
       theme={theme}
       color={textColor}
       fontFamily={fontFamily}
