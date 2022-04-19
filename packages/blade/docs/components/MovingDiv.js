@@ -5,6 +5,7 @@ const MovingDiv = styled.div`
   width: 40px;
   background-color: ${(props) => props.theme.colors.brand.primary[500]};
   animation: ${(props) => `move 3s ${props.easing || 'linear'}  infinite`};
+  will-change: transform;
   @keyframes move {
     0% {
       transform: translateX(0px);

@@ -109,4 +109,80 @@ export const Motion = () => {
   );
 };
 
+export const MotionExample = () => {
+  const { theme } = useTheme();
+  const ExampleDiv = styled.div`
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-color: ${(props) => props.theme.colors.brand.primary[500]};
+    will-change: transform;
+    animation: ${(props) =>
+      `resize ${props.theme.motion.duration.gentle3}ms ${props.theme.motion.easing.standard.effective} infinite`};
+    @keyframes resize {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  `;
+  return <ExampleDiv theme={theme} easing={theme.motion.easing.standard.effective}></ExampleDiv>;
+};
+
 <Motion />
+
+## Example Usage
+
+A circle that scales up and down with a **duration** of `gentle3` and an **easing** of `standard.effective`
+
+<MotionExample />
+
+1. Ensure you've followed all the steps under "Guides/Usage" to setup your theme with `<BladeProvider>`
+2. Your theme tokens will be automatically available to `styled-components` as a `theme` prop
+3. Create a component using `styled-components` that looks like this:
+
+```jsx
+import styled from 'styled-components';
+
+const ExampleDiv = styled.div`
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  background-color: ${(props) => props.theme.colors.brand.primary[500]};
+  will-change: transform;
+  animation: ${(props) =>
+    `resize ${props.theme.motion.duration.gentle3}ms ${props.theme.motion.easing.standard.effective} infinite`};
+  @keyframes resize {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+`;
+```
+
+4. You can also access your motion tokens using the `useTheme` hook
+
+```jsx
+import { useTheme } from '@razorpay/blade/components';
+
+const CustomComponent = () => {
+  const { theme } = useTheme();
+  const easing = theme.motion.easing.standard.effective;
+  const duration = theme.motion.duration.gentle3;
+
+  return (
+    ...
+  );
+};
+```
