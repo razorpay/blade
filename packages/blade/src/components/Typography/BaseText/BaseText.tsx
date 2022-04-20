@@ -5,18 +5,6 @@ import isEmpty from '../../../utils/isEmpty';
 import StyledBaseText from './StyledBaseText';
 import type { BaseTextProps } from './BaseText.d';
 
-/**
- * - type of typography text to be the value of text/code - done
- * - create types for BaseText - done
- * - make autocomplete work with TS - done
- * - write helper to resolve color - done
- * - filter unwanted dom attrs - done
- * - write text component for React native- done
- * - write helper to resolve text units - done
- * - create function to add data-* elements - deferred
- * - Organise the storybook
- */
-
 const BaseText = ({
   color,
   fontFamily,
@@ -33,10 +21,7 @@ const BaseText = ({
   const textColor = getIn(theme.colors, color);
 
   if (isEmpty(textColor)) {
-    throw new Error(
-      // @todo: generate the error message with valid values
-      `[Blade:BaseText]: Invalid value ${color} for color prop passed`,
-    );
+    throw new Error(`[Blade:BaseText]: Invalid value ${color} for color prop passed`);
   }
 
   return (
