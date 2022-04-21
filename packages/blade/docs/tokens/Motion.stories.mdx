@@ -148,6 +148,7 @@ If we want to create a circle that scales up and down with a **duration** of `ge
 
 ```jsx
 import styled from 'styled-components';
+import { makeMotionTime } from '@razorpay/blade/utils';
 
 const ExampleDiv = styled.div`
   height: 50px;
@@ -192,6 +193,7 @@ const CustomComponent = () => {
 
 > Note: `makeMotionTime` is a helper function that converts `duration` & `delay` to a platform specific unit for web & native. You should always use this helper function while consuming `duration` & `delay` tokens
 
-### Result:
+### Output:
 
+<br />
 <MotionExample />
