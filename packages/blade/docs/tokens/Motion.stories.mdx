@@ -1,7 +1,8 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
-import { useTheme, BladeProvider } from '../../src//components';
-import { paymentTheme, bankingTheme } from '../../src//tokens';
 import styled from 'styled-components';
+import { useTheme, BladeProvider } from '../../src/components';
+import { paymentTheme, bankingTheme } from '../../src/tokens';
+import makeMotionTime from '../../src/utils/makeMotionTime';
 import MovingDiv from '../components/MovingDiv';
 
 <Meta
@@ -117,7 +118,9 @@ export const MotionExample = () => {
     border-radius: 25px;
     background-color: ${(props) => props.theme.colors.brand.primary[500]};
     animation: ${(props) =>
-      `resize ${props.theme.motion.duration.gentle3}ms ${props.theme.motion.easing.standard.effective} infinite`};
+      `resize ${makeMotionTime(props.theme.motion.duration.gentle3)} ${
+        props.theme.motion.easing.standard.effective
+      } infinite`};
     @keyframes resize {
       0% {
         transform: scale(1);
@@ -137,9 +140,7 @@ export const MotionExample = () => {
 
 ## Example Usage
 
-A circle that scales up and down with a **duration** of `gentle3` and an **easing** of `standard.effective`
-
-<MotionExample />
+If we want to create a circle that scales up and down with a **duration** of `gentle3` and an **easing** of `standard.effective`
 
 1. Ensure you've followed all the steps under "Guides/Usage" to setup your theme with `<BladeProvider>`
 2. Your theme tokens will be automatically available to `styled-components` as a `theme` prop
@@ -154,7 +155,9 @@ const ExampleDiv = styled.div`
   border-radius: 25px;
   background-color: ${(props) => props.theme.colors.brand.primary[500]};
   animation: ${(props) =>
-    `resize ${props.theme.motion.duration.gentle3}ms ${props.theme.motion.easing.standard.effective} infinite`};
+    `resize ${makeMotionTime(props.theme.motion.duration.gentle3)} ${
+      props.theme.motion.easing.standard.effective
+    } infinite`};
   @keyframes resize {
     0% {
       transform: scale(1);
@@ -173,14 +176,22 @@ const ExampleDiv = styled.div`
 
 ```jsx
 import { useTheme } from '@razorpay/blade/components';
+import { makeMotionTime } from '@razorpay/blade/utils';
 
 const CustomComponent = () => {
   const { theme } = useTheme();
   const easing = theme.motion.easing.standard.effective;
-  const duration = theme.motion.duration.gentle3;
+  const duration = makeMotionTime(theme.motion.duration.gentle3);
+  const delay = makeMotionTime(theme.motion.delay.short);
 
   return (
     ...
   );
 };
 ```
+
+> Note: `makeMotionTime` is a helper function that converts `duration` & `delay` to a platform specific unit for web & native. You should always use this helper function while consuming `duration` & `delay` tokens
+
+### Result:
+
+<MotionExample />
