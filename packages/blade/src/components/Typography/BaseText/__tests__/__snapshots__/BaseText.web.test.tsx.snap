@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BaseText /> should render regular text 1`] = `
+<div>
+  <div
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 Zeusr"
+    color="hsla(0, 0%, 100%, 1)"
+    font-family="text"
+    font-size="25"
+    font-weight="regular"
+  >
+    Displaying some text
+  </div>
+</div>
+`;
+
+exports[`<BaseText /> should render text as paragraph element 1`] = `
+<div>
+  <p
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 cSPLKc"
+    color="hsla(0, 0%, 100%, 1)"
+    font-family="text"
+    font-size="25"
+    font-style="italic"
+    font-weight="regular"
+  >
+    Displaying some text
+  </p>
+</div>
+`;
+
+exports[`<BaseText /> should render text in italics style with line-through 1`] = `
+<div>
+  <div
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 cSPLKc"
+    color="hsla(0, 0%, 100%, 1)"
+    font-family="text"
+    font-size="25"
+    font-style="italic"
+    font-weight="regular"
+  >
+    Displaying some text
+  </div>
+</div>
+`;

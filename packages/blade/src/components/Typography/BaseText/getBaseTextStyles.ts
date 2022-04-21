@@ -1,4 +1,5 @@
 import makeTypography from '../../../utils/makeTypography';
+import type { Theme } from '../../BladeProvider';
 import type { BaseTextProps } from './BaseText.d';
 
 const getBaseTextStyles = ({
@@ -7,11 +8,11 @@ const getBaseTextStyles = ({
   fontFamily,
   fontSize,
   fontWeight,
-  fontStyle,
-  textDecorationLine,
+  fontStyle = 'normal',
+  textDecorationLine = 'none',
   lineHeight,
   textAlign,
-}: BaseTextProps): string => `
+}: BaseTextProps & { theme: Theme }): string => `
   color: ${color};
   font-family: ${theme.typography.fonts.family[fontFamily]};
   font-size: ${makeTypography(theme.typography.fonts.size[fontSize])};

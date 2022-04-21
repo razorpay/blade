@@ -1,5 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import BaseTextComponent from './BaseText';
+import BaseTextComponent from './';
 
 export default {
   title: 'Components/Typography',
