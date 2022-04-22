@@ -5,9 +5,9 @@ exports[`<BaseText /> should render regular text 1`] = `
   <div
     class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 Zeusr"
     color="hsla(0, 0%, 100%, 1)"
-    font-family="text"
-    font-size="25"
-    font-weight="regular"
+    font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+    font-size="0.625rem"
+    font-weight="400"
   >
     Displaying some text
   </div>
@@ -19,10 +19,10 @@ exports[`<BaseText /> should render text as paragraph element 1`] = `
   <p
     class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 cSPLKc"
     color="hsla(0, 0%, 100%, 1)"
-    font-family="text"
-    font-size="25"
+    font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+    font-size="0.625rem"
     font-style="italic"
-    font-weight="regular"
+    font-weight="400"
   >
     Displaying some text
   </p>
@@ -34,10 +34,10 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
   <div
     class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 cSPLKc"
     color="hsla(0, 0%, 100%, 1)"
-    font-family="text"
-    font-size="25"
+    font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+    font-size="0.625rem"
     font-style="italic"
-    font-weight="regular"
+    font-weight="400"
   >
     Displaying some text
   </div>

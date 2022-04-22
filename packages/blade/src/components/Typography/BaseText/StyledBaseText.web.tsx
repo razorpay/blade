@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import getBaseTextStyles from './getBaseTextStyles';
-import type { BaseTextProps } from './BaseText.d';
+import type { StyledBaseTextProps } from './StyledBaseText.d';
 
-const StyledBaseText = styled.div<BaseTextProps>(
+const StyledBaseText = styled.div<StyledBaseTextProps>(
   ({
-    theme,
     color,
     fontFamily,
     fontSize,
@@ -15,7 +14,6 @@ const StyledBaseText = styled.div<BaseTextProps>(
     textAlign,
   }) =>
     getBaseTextStyles({
-      theme,
       color,
       fontFamily,
       fontSize,

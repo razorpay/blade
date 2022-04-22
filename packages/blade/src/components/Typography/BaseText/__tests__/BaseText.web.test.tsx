@@ -1,6 +1,7 @@
 import React from 'react';
 import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.web';
 import BaseText from '../';
+import { getInvalidColorPropValueError } from '../BaseText';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -79,9 +80,7 @@ describe('<BaseText />', () => {
       );
     } catch (error: unknown) {
       if (error instanceof Error) {
-        expect(error.message).toEqual(
-          `[Blade:BaseText]: Invalid value ${color} for color prop passed`,
-        );
+        expect(error.message).toEqual(getInvalidColorPropValueError(color));
       }
     }
   });

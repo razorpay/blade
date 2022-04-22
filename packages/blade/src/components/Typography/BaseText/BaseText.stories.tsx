@@ -1,5 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import BaseTextComponent from './';
+import type { BaseTextProps } from './BaseText';
+import BaseTextComponent from './BaseText';
 
 export default {
   title: 'Components/Typography',
@@ -12,11 +13,12 @@ export default {
     fontStyle: 'normal',
     textAlign: 'left',
     textDecorationLine: 'none',
-    lineHeight: 'm',
+    lineHeight: '5xl',
     name: 'Storybook',
     children: 'Base Text',
+    myprop: 'p',
   },
-} as Meta;
+} as Meta<BaseTextProps>;
 
 const BaseTextTemplate: ComponentStory<typeof BaseTextComponent> = (args) => {
   return <BaseTextComponent {...args}>{args.children}</BaseTextComponent>;

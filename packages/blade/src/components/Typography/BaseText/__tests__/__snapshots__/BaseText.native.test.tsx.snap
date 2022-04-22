@@ -3,10 +3,10 @@
 exports[`<BaseText /> should render regular text 1`] = `
 <Text
   color="hsla(0, 0%, 100%, 1)"
-  fontFamily="text"
-  fontSize={25}
-  fontWeight="regular"
-  lineHeight="m"
+  fontFamily="Lato"
+  fontSize="11px"
+  fontWeight={400}
+  lineHeight="16px"
   style={
     Array [
       Object {
@@ -28,11 +28,11 @@ exports[`<BaseText /> should render regular text 1`] = `
 exports[`<BaseText /> should render text in italics style with line-through 1`] = `
 <Text
   color="hsla(0, 0%, 100%, 1)"
-  fontFamily="text"
-  fontSize={25}
+  fontFamily="Lato"
+  fontSize="11px"
   fontStyle="italic"
-  fontWeight="regular"
-  lineHeight="m"
+  fontWeight={400}
+  lineHeight="16px"
   style={
     Array [
       Object {
@@ -50,31 +50,4 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
 >
   Displaying some text
 </Text>
-`;
-
-exports[`<BaseText /> should throw error when "as" prop passed 1`] = `
-<p
-  color="hsla(0, 0%, 100%, 1)"
-  fontFamily="text"
-  fontSize={25}
-  fontStyle="italic"
-  fontWeight="regular"
-  lineHeight="m"
-  style={
-    Array [
-      Object {
-        "color": "hsla(0, 0%, 100%, 1)",
-        "fontFamily": "Lato",
-        "fontSize": 11,
-        "fontStyle": "italic",
-        "fontWeight": "400",
-        "lineHeight": 16,
-        "textDecorationLine": "line-through",
-      },
-    ]
-  }
-  textDecorationLine="line-through"
->
-  Displaying some text
-</p>
 `;
