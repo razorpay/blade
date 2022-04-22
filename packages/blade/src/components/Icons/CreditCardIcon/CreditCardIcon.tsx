@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Svg, Path } from '../../../components/Icon';
-import type { IconProps } from '../../../components/Icon';
+import { Svg, Path } from '../_Svg';
+import type { IconProps } from '../';
 import getIconDimensions from '../../../utils/getIconDimensions';
 
 const CreditCard = ({ size, fill = '#063855' }: IconProps): React.ReactElement => {

@@ -1,4 +1,4 @@
-import type { IconSize } from '../../components/Icon';
+import type { IconSize } from '../../components/Icons';
 
 type Dimension = 10 | 12 | 16 | 20 | 24 | 32;
 
