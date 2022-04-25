@@ -1,8 +1,8 @@
 export type SvgProps = {
   fill?: string;
-  height?: number;
+  height?: string;
   viewBox?: string;
-  width?: number;
+  width?: string;
   xmlns?: string;
 };
 

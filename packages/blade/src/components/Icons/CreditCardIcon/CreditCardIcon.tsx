@@ -1,16 +1,14 @@
 import * as React from 'react';
-import { get } from 'lodash';
 import { Svg, Path } from '../_Svg';
-import getIconDimensions from '../../../utils/getIconDimensions';
-import { useTheme } from '../../BladeProvider';
 import type { IconProps } from '..';
+import useIconProps from '../useIconProps/useIconProps';
 
 const CreditCard = ({ size, color }: IconProps): React.ReactElement => {
-  const { theme } = useTheme();
-  const iconColor = get(theme.colors, color, '');
+  const { height, iconColor, width } = useIconProps({ size, color });
   return (
     <Svg
-      {...getIconDimensions({ size })}
+      height={height}
+      width={width}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
