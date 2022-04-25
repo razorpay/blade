@@ -57,7 +57,7 @@ const BaseText = ({
   lineHeight,
   as,
   textAlign,
-  ...rest
+  children,
 }: BaseTextProps): ReactElement => {
   const { theme } = useTheme();
   const textColor = getIn(theme.colors, color, '');
@@ -120,7 +120,7 @@ const BaseText = ({
       as={as}
       textAlign={textAlign}
     >
-      {rest.children}
+      {children}
     </StyledBaseText>
   );
 };
