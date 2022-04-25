@@ -30,7 +30,7 @@
 - The API for each Icon component will look similar to this:
   ```jsx
   <CreditCardIcon
-    color='surface.text | feedback.text | button.text'
+    color='surface.icon | feedback.icon | action.icon'
     size='xxsmall | xsmall | small | medium | large | xlarge'
   >
   ```
