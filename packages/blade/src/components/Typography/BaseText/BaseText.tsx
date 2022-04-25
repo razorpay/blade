@@ -12,7 +12,7 @@ import StyledBaseText from './StyledBaseText';
  * @description Tokenises objects to dot notation strings, eg: `surface.text.normal.lowContrast`
  */
 type DotNotationStringToken<TokenType> = {
-  [K in keyof TokenType]: `${K & string}.${TokenType[K] extends Record<
+  [K in keyof TokenType]: `${Extract<K, number | string>}.${TokenType[K] extends Record<
     string,
     ColorContrast | string
   >
