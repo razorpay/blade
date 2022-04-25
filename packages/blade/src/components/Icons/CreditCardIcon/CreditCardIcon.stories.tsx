@@ -1,13 +1,18 @@
-import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import CreditCardIcon from './CreditCardIcon';
+import type { ComponentStory, Meta } from '@storybook/react';
+import type { IconProps } from '..';
+import CreditCardIconComponent from './CreditCardIcon';
 
-const CreditCardIconMeta: ComponentMeta<typeof CreditCardIcon> = {
-  title: 'Components/Icons/CreditCard',
-  component: CreditCardIcon,
+export default {
+  title: 'Components/Icons/CreditCardIcon',
+  component: CreditCardIconComponent,
+  args: {
+    color: 'feedback.icon.neutral.lowContrast',
+    size: 'medium',
+  },
+} as Meta<IconProps>;
+
+const CreditCardIconTemplate: ComponentStory<typeof CreditCardIconComponent> = (args) => {
+  return <CreditCardIconComponent {...args} />;
 };
-export default CreditCardIconMeta;
 
-const Basic: ComponentStory<typeof CreditCardIcon> = (args) => <CreditCardIcon {...args} />;
-
-export const Primary = Basic.bind({});
+export const CreditCardIcon = CreditCardIconTemplate.bind({});
