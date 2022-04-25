@@ -39,8 +39,13 @@ export type BaseTextProps = {
   children?: React.ReactNode | undefined;
 };
 
-export const getInvalidColorPropValueError = (color: string): string =>
-  `[Blade:BaseText]: Invalid value ${color} for color prop passed`;
+export const getInvalidPropValueError = ({
+  propName,
+  propValue,
+}: {
+  propName: string;
+  propValue: number | string;
+}): string => `[Blade:BaseText]: Invalid value ${propValue} passed for ${propName} prop`;
 
 const BaseText = ({
   color,
@@ -55,14 +60,52 @@ const BaseText = ({
   ...rest
 }: BaseTextProps): ReactElement => {
   const { theme } = useTheme();
-  const textColor: string = getIn(theme.colors, color, '');
-  const themeFontfamily = theme.typography.fonts.family[fontFamily];
-  const themeFontSize = makeTypographySize(theme.typography.fonts.size[fontSize]);
-  const themeFontWeight = theme.typography.fonts.weight[fontWeight];
-  const themeLineHeight = makeTypographySize(theme.typography.lineHeights[lineHeight]);
+  const textColor = getIn(theme.colors, color, '');
+  const themeFontfamily = theme.typography.fonts.family?.[fontFamily];
+  const themeFontSize = theme.typography.fonts.size[fontSize]
+    ? makeTypographySize(theme.typography.fonts.size[fontSize])
+    : '';
+  const themeFontWeight = theme.typography.fonts.weight?.[fontWeight];
+  const themeLineHeight = theme.typography.lineHeights[lineHeight]
+    ? makeTypographySize(theme.typography.lineHeights[lineHeight])
+    : '';
 
   if (isEmpty(textColor)) {
-    throw new Error(getInvalidColorPropValueError(color));
+    throw new Error(getInvalidPropValueError({ propName: 'color', propValue: color }));
+  }
+
+  if (isEmpty(themeFontfamily)) {
+    throw new Error(getInvalidPropValueError({ propName: 'fontFamily', propValue: fontFamily }));
+  }
+
+  if (isEmpty(themeFontSize)) {
+    throw new Error(getInvalidPropValueError({ propName: 'fontSize', propValue: fontSize }));
+  }
+
+  if (!themeFontWeight) {
+    throw new Error(getInvalidPropValueError({ propName: 'fontWeight', propValue: fontWeight }));
+  }
+
+  if (fontStyle && !['italic', 'normal'].includes(fontStyle)) {
+    throw new Error(getInvalidPropValueError({ propName: 'fontStyle', propValue: fontStyle }));
+  }
+
+  if (textDecorationLine && !['line-through', 'none'].includes(textDecorationLine)) {
+    throw new Error(
+      getInvalidPropValueError({ propName: 'textDecorationLine', propValue: textDecorationLine }),
+    );
+  }
+
+  if (isEmpty(themeLineHeight)) {
+    throw new Error(getInvalidPropValueError({ propName: 'lineHeight', propValue: lineHeight }));
+  }
+
+  if (as && !['code', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span'].includes(as)) {
+    throw new Error(getInvalidPropValueError({ propName: 'as', propValue: as }));
+  }
+
+  if (textAlign && !['center', 'justify', 'left', 'right'].includes(textAlign)) {
+    throw new Error(getInvalidPropValueError({ propName: 'textAlign', propValue: textAlign }));
   }
 
   return (
