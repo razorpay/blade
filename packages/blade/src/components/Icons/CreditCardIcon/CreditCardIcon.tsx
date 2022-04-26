@@ -4,16 +4,10 @@ import type { IconProps } from '..';
 import useIconProps from '../useIconProps';
 
 const CreditCard = ({ size, color }: IconProps): React.ReactElement => {
-  const { height, iconColor, width } = useIconProps({ size, color });
+  const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg
-      height={height}
-      width={width}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <Svg height={height} width={width} viewBox="0 0 24 24" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
