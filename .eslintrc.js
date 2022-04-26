@@ -86,6 +86,7 @@ module.exports = {
             extensions: ['.ts', '.tsx'],
           },
         ],
+        'babel/new-cap': ['error', { capIsNewExceptionPattern: '^styled.' }],
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unused-vars': ['error'],
         // '@typescript-eslint/no-unsafe-return': 'off',
