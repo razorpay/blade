@@ -1,4 +1,4 @@
-import { Colors, Shadows, ShadowLevels } from '../../tokens/theme/theme.d';
+import type { Colors, Shadows, ShadowLevels } from '../../tokens/theme/theme.d';
 import type { Border } from '../../tokens/global/border';
 import type { Breakpoints } from '../../tokens/global/breakpoints';
 import type { Motion } from '../../tokens/global/motion';
