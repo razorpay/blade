@@ -16,7 +16,6 @@ export default {
     lineHeight: '5xl',
     name: 'Storybook',
     children: 'Base Text',
-    myprop: 'p',
   },
 } as Meta<BaseTextProps>;
 

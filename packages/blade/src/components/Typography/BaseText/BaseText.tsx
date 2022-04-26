@@ -1,7 +1,6 @@
 import type { ReactElement } from 'react';
 import getIn from '../../../utils/getIn';
 import { useTheme } from '../../BladeProvider';
-import isEmpty from '../../../utils/isEmpty';
 import makeTypographySize from '../../../utils/makeTypographySize';
 import type { ColorContrast } from '../../../tokens/theme/theme';
 import type { Theme } from '../../BladeProvider';
@@ -39,9 +38,6 @@ export type BaseTextProps = {
   children?: React.ReactNode | undefined;
 };
 
-export const getInvalidColorPropValueError = (color: string): string =>
-  `[Blade:BaseText]: Invalid value ${color} for color prop passed`;
-
 const BaseText = ({
   color,
   fontFamily,
@@ -55,15 +51,11 @@ const BaseText = ({
   children,
 }: BaseTextProps): ReactElement => {
   const { theme } = useTheme();
-  const textColor: string = getIn(theme.colors, color, '');
+  const textColor = getIn(theme.colors, color);
   const themeFontfamily = theme.typography.fonts.family[fontFamily];
   const themeFontSize = makeTypographySize(theme.typography.fonts.size[fontSize]);
   const themeFontWeight = theme.typography.fonts.weight[fontWeight];
   const themeLineHeight = makeTypographySize(theme.typography.lineHeights[lineHeight]);
-
-  if (isEmpty(textColor)) {
-    throw new Error(getInvalidColorPropValueError(color));
-  }
 
   return (
     <StyledBaseText

@@ -2,7 +2,8 @@ import styled from 'styled-components/native';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { StyledBaseTextProps } from './StyledBaseText.d';
 
-export const ERROR_AS_PROP_NOT_SUPPORTED = `[Blade:BaseText]: "as" prop is not supported for BaseText for React Native platform`;
+export const ERROR_AS_PROP_NOT_SUPPORTED = `[Blade: BaseText]: "as" prop is not supported for BaseText on React Native`;
+
 const StyledBaseText = styled.Text<StyledBaseTextProps>(
   ({
     color,
