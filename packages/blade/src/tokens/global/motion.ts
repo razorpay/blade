@@ -2,21 +2,21 @@ import makeBezier from '../../utils/makeBezier';
 
 type Duration = {
   /** `70` milliseconds */
-  quick1: 70;
+  '2xquick': 70;
   /** `150` milliseconds */
-  quick2: 150;
+  xquick: 150;
   /** `200` milliseconds */
-  quick3: 200;
+  quick: 200;
   /** `250` milliseconds */
-  moderate1: 250;
+  moderate: 250;
   /** `300` milliseconds */
-  moderate2: 300;
+  xmoderate: 300;
   /** `400` milliseconds */
-  gentle1: 400;
+  gentle: 400;
   /** `600` milliseconds */
-  gentle2: 600;
+  xgentle: 600;
   /** `900` milliseconds */
-  gentle3: 900;
+  '2xgentle': 900;
 };
 
 type Delay = {
@@ -101,14 +101,14 @@ const delay: Delay = {
 };
 
 const duration: Duration = {
-  quick1: 70,
-  quick2: 150,
-  quick3: 200,
-  moderate1: 250,
-  moderate2: 300,
-  gentle1: 400,
-  gentle2: 600,
-  gentle3: 900,
+  '2xquick': 70,
+  xquick: 150,
+  quick: 200,
+  moderate: 250,
+  xmoderate: 300,
+  gentle: 400,
+  xgentle: 600,
+  '2xgentle': 900,
 };
 
 /* makeBezier returns a string of `cubic-bezier()` for web & a react-native-reanimated Easing Function of type `EasingFunctionFactory` for native */

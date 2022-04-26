@@ -1030,14 +1030,14 @@ const paymentLightTheme: Theme = {
       xlong: 5000,
     },
     duration: {
-      quick1: 70,
-      quick2: 150,
-      quick3: 200,
-      moderate1: 250,
-      moderate2: 300,
-      gentle1: 400,
-      gentle2: 600,
-      gentle3: 900,
+      '2xquick': 70,
+      xquick: 150,
+      quick: 200,
+      moderate: 250,
+      xmoderate: 300,
+      gentle: 400,
+      xgentle: 600,
+      '2xgentle': 900,
     },
     easing: {
       standard: {

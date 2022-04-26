@@ -3,7 +3,7 @@ import makeMotionTime from '.';
 
 describe('makeMotionTime', () => {
   it('should return the duration value in `number`', () => {
-    const duration = makeMotionTime(motion.duration.moderate1);
+    const duration = makeMotionTime(motion.duration.moderate);
     expect(duration).toEqual(250);
   });
 
