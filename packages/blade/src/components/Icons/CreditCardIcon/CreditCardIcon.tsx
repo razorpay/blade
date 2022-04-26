@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Svg, Path } from '../_Svg';
 import type { IconProps } from '..';
-import useIconProps from '../useIconProps/useIconProps';
+import useIconProps from '../useIconProps';
 
 const CreditCard = ({ size, color }: IconProps): React.ReactElement => {
   const { height, iconColor, width } = useIconProps({ size, color });
+
   return (
     <Svg
       height={height}
