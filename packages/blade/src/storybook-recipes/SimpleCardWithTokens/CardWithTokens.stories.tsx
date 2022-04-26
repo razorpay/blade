@@ -1,11 +1,10 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import Card from './Card';
+import type { ComponentStory } from '@storybook/react';
+import CardComponent from './Card';
 
-const CardMeta: ComponentMeta<typeof Card> = {
+export default {
   title: 'Recipes/CardWithTokens',
-  component: Card,
+  component: CardComponent,
 };
-export default CardMeta;
 
-export const CardStory: ComponentStory<typeof Card> = () => <Card />;
+export const Card: ComponentStory<typeof CardComponent> = () => <CardComponent />;
