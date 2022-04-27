@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<G /> should render html g component 1`] = `
+<div>
+  <svg
+    fill="none"
+    height="40px"
+    viewBox="0 0 6 6"
+    width="40px"
+  >
+    <g
+      clip-path="url(#prefix__clip0)"
+    >
+      <path
+        d="M2 2h2v2H2V2"
+        fill="#000"
+      />
+    </g>
+  </svg>
+</div>
+`;
