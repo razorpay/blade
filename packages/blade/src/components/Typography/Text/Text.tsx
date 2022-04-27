@@ -8,7 +8,7 @@ import type { BaseTextProps, SurfaceColors } from '../BaseText/BaseText';
 
 type TextCommonProps = {
   type: TextTypes;
-  truncateAfterLines: number;
+  truncateAfterLines?: number;
   children?: React.ReactNode;
 };
 

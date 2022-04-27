@@ -67,8 +67,7 @@ The APIs for all the above component will look something like below
     variant=" medium | large | caption"
     weight="regular | bold"
     type="normal | subtle | subdued | muted | placeholder"
-    shouldTruncate="true | false"
-    numberOfLines="" // not yet finalised but might need for truncating on react-native
+    truncateAfterLines={3}
   >
     Some Text
   </Text>
