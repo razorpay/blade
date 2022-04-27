@@ -1,16 +1,9 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import CreditCardIconComponent from './CreditCardIcon';
+import { IconNames, Icons } from './iconMap';
 import type { IconProps } from '.';
-
-const Icons: Record<string, React.FC<IconProps>> = {
-  CreditCardIcon: CreditCardIconComponent,
-};
-
-const IconNames = Object.keys(Icons);
 
 export default {
   title: 'Components/Icons',
-  component: CreditCardIconComponent,
   args: {
     color: 'feedback.icon.neutral.lowContrast',
     size: 'medium',
