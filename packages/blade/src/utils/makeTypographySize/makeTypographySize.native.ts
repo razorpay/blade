@@ -1,4 +1,4 @@
-const makeTypographySize = (size: number): `${number}px` => {
+const makeTypographySize = <T extends number>(size: T): `${T}px` => {
   return `${size}px`;
 };
 
