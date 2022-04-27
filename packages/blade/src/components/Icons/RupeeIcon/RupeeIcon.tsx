@@ -3,7 +3,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconProps } from '..';
 import useIconProps from '../useIconProps';
 
-const CreditCard = ({ size, color }: IconProps): React.ReactElement => {
+const RupeeIcon = ({ size, color }: IconProps): React.ReactElement => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -22,4 +22,4 @@ const CreditCard = ({ size, color }: IconProps): React.ReactElement => {
   );
 };
 
-export default CreditCard;
+export default RupeeIcon;
