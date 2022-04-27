@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Svg /> should render html svg component 1`] = `
+<div>
+  <svg
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
+  />
+</div>
+`;
