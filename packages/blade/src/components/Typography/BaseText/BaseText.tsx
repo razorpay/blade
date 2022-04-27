@@ -23,7 +23,9 @@ type DotNotationStringToken<TokenType> = {
 type FeedbackColors = `feedback.text.${DotNotationStringToken<
   Theme['colors']['feedback']['text']
 >}`;
-type SurfaceColors = `surface.text.${DotNotationStringToken<Theme['colors']['surface']['text']>}`;
+export type SurfaceColors = `surface.text.${DotNotationStringToken<
+  Theme['colors']['surface']['text']
+>}`;
 type ActionColors = `action.text.${DotNotationStringToken<Theme['colors']['action']['text']>}`;
 
 export type BaseTextProps = {
@@ -36,7 +38,9 @@ export type BaseTextProps = {
   lineHeight: keyof Theme['typography']['lineHeights'];
   as?: 'code' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   textAlign?: 'center' | 'justify' | 'left' | 'right';
-  children?: React.ReactNode | undefined;
+  truncateAfterLines?: number;
+  className?: string;
+  children?: React.ReactNode;
 };
 
 export const getInvalidPropValueError = ({
@@ -57,7 +61,9 @@ const BaseText = ({
   lineHeight,
   as,
   textAlign,
+  className,
   children,
+  truncateAfterLines,
 }: BaseTextProps): ReactElement => {
   const { theme } = useTheme();
   const textColor = getIn(theme.colors, color, '');
@@ -119,6 +125,8 @@ const BaseText = ({
       lineHeight={themeLineHeight}
       as={as}
       textAlign={textAlign}
+      numberOfLines={truncateAfterLines}
+      className={className}
     >
       {children}
     </StyledBaseText>
