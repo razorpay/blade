@@ -22,17 +22,25 @@ type TextCaptionVariant = TextCommonProps & {
   weight: keyof Pick<Theme['typography']['fonts']['weight'], 'regular'>;
 };
 
-export type TextProps = TextBodyVariant | TextCaptionVariant;
+export type TextProps<T> = T extends {
+  variant: infer Variant;
+}
+  ? Variant extends 'caption'
+    ? TextCaptionVariant
+    : Variant extends 'body'
+    ? TextBodyVariant
+    : T
+  : T;
 
 type TextForwardedAs = {
   forwardedAs?: BaseTextProps['as'];
 };
 
-const getProps = ({
+const getProps = <T extends { variant: 'body' | 'caption' }>({
   variant,
   type,
   weight,
-}: Pick<TextProps, 'type' | 'variant' | 'weight'>): BaseTextProps & TextForwardedAs => {
+}: Pick<TextProps<T>, 'type' | 'variant' | 'weight'>): BaseTextProps & TextForwardedAs => {
   const props: BaseTextProps & TextForwardedAs = {
     color: `surface.text.${type}.lowContrast`,
     fontSize: 25,
@@ -75,7 +83,13 @@ const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
   return {};
 });
 
-const Text = ({ variant, weight, type, truncateAfterLines, children }: TextProps): ReactElement => {
+const Text = <T extends { variant: 'body' | 'caption' }>({
+  variant,
+  weight,
+  type,
+  truncateAfterLines,
+  children,
+}: TextProps<T>): ReactElement => {
   const props = { truncateAfterLines, ...getProps({ variant, type, weight }) };
   return <StyledText {...props}>{children}</StyledText>;
 };
