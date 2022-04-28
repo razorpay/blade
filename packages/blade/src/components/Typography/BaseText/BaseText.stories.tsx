@@ -3,7 +3,7 @@ import type { BaseTextProps } from './BaseText';
 import BaseTextComponent from './BaseText';
 
 export default {
-  title: 'Components/Typography',
+  title: 'Components/Typography/BaseText',
   component: BaseTextComponent,
   args: {
     color: 'surface.text.normal.lowContrast',
@@ -24,3 +24,5 @@ const BaseTextTemplate: ComponentStory<typeof BaseTextComponent> = (args) => {
 };
 
 export const BaseText = BaseTextTemplate.bind({});
+// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
+BaseText.storyName = 'BaseText';

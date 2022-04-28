@@ -3,7 +3,7 @@ import type { TextProps } from './';
 import TextComponent from './';
 
 export default {
-  title: 'Components/Typography',
+  title: 'Components/Typography/Text',
   component: TextComponent,
   args: {
     variant: 'body',
