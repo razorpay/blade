@@ -17,18 +17,16 @@ const Path = ({
 }: PathProps): ReactElement => {
   return (
     <PathNative
-      {...{
-        d,
-        clipPath,
-        clipRule,
-        fill,
-        fillOpacity,
-        fillRule,
-        stroke,
-        strokeLinecap,
-        strokeLinejoin,
-        strokeWidth,
-      }}
+      d={d}
+      clipPath={clipPath}
+      clipRule={clipRule}
+      fill={fill}
+      fillOpacity={fillOpacity}
+      fillRule={fillRule}
+      stroke={stroke}
+      strokeLinecap={strokeLinecap}
+      strokeLinejoin={strokeLinejoin}
+      strokeWidth={strokeWidth}
     />
   );
 };

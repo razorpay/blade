@@ -4,7 +4,6 @@ export type SvgProps = {
   height: string;
   viewBox: string;
   width: string;
-  xmlns?: string;
 };
 
 const Svg: React.ComponentType<SvgProps>;
