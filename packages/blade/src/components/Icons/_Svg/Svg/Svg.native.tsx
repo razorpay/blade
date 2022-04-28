@@ -5,7 +5,9 @@ import type { SvgProps } from './Svg.d';
 
 const Svg = ({ children, height, viewBox, width, fill }: SvgProps): ReactElement => {
   return (
-    <SvgNative children={children} height={height} viewBox={viewBox} width={width} fill={fill} />
+    <SvgNative height={height} viewBox={viewBox} width={width} fill={fill}>
+      {children}
+    </SvgNative>
   );
 };
 
