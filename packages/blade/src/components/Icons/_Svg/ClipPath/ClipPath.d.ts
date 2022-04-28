@@ -1,4 +1,5 @@
 export type ClipPathProps = {
+  children: React.ReactElement | ReactElement[];
   id: string;
 };
 

@@ -2,8 +2,8 @@ import React from 'react';
 import type { ReactElement } from 'react';
 import type { GProps } from './G.d';
 
-const G = (props: GProps): ReactElement => {
-  return <g {...props} />;
+const G = ({ clipPath, fill, children }: GProps): ReactElement => {
+  return <g {...{ clipPath, fill, children }} />;
 };
 
 export default G;

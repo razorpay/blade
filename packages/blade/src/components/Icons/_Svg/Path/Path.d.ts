@@ -1,17 +1,17 @@
 export type PathProps = {
   clipPath?: string;
   clipRule?: 'evenodd' | 'nonzero';
-  d?: string;
+  d: string;
   fill?: string;
-  fillOpacity?: number | string;
+  fillOpacity?: number;
   fillRule?: 'evenodd' | 'nonzero';
-  height?: number;
+  height?: string;
   stroke?: string;
   strokeLinecap?: 'butt' | 'round' | 'square';
   strokeLinejoin?: 'bevel' | 'miter' | 'round';
-  strokeWidth?: number | string;
+  strokeWidth?: string;
   viewBox?: string;
-  width?: number;
+  width?: string;
 };
 
 const Path: React.ComponentType<PathProps>;
