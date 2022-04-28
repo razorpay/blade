@@ -22,9 +22,7 @@ type DotNotationStringToken<TokenType> = {
 type FeedbackColors = `feedback.text.${DotNotationStringToken<
   Theme['colors']['feedback']['text']
 >}`;
-export type SurfaceColors = `surface.text.${DotNotationStringToken<
-  Theme['colors']['surface']['text']
->}`;
+type SurfaceColors = `surface.text.${DotNotationStringToken<Theme['colors']['surface']['text']>}`;
 type ActionColors = `action.text.${DotNotationStringToken<Theme['colors']['action']['text']>}`;
 
 export type BaseTextProps = {

@@ -4,7 +4,7 @@ import type { TextTypes } from '../../../tokens/theme/theme';
 import getPlatform from '../../../utils/getPlatform';
 import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
-import type { BaseTextProps, SurfaceColors } from '../BaseText/BaseText';
+import type { BaseTextProps } from '../BaseText/BaseText';
 
 type TextCommonProps = {
   type: TextTypes;
@@ -24,13 +24,7 @@ type TextCaptionVariant = TextCommonProps & {
 
 export type TextProps = TextBodyVariant | TextCaptionVariant;
 
-type TextBaseTextProps = {
-  color: SurfaceColors;
-  fontSize: keyof Theme['typography']['fonts']['size'];
-  fontWeight: keyof Theme['typography']['fonts']['weight'];
-  fontFamily: keyof Theme['typography']['fonts']['family'];
-  fontStyle: BaseTextProps['fontStyle'];
-  lineHeight: keyof Theme['typography']['lineHeights'];
+type TextForwardedAs = {
   forwardedAs?: BaseTextProps['as'];
 };
 
@@ -38,8 +32,8 @@ const getProps = ({
   variant,
   type,
   weight,
-}: Pick<TextProps, 'type' | 'variant' | 'weight'>): TextBaseTextProps => {
-  const props: TextBaseTextProps = {
+}: Pick<TextProps, 'type' | 'variant' | 'weight'>): BaseTextProps & TextForwardedAs => {
+  const props: BaseTextProps & TextForwardedAs = {
     color: `surface.text.${type}.lowContrast`,
     fontSize: 25,
     fontWeight: weight,
@@ -69,7 +63,6 @@ const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
     if (getPlatform() === 'react-native') {
       return {
         numberOfLines: truncateAfterLines,
-        ellipsizeMode: 'tail',
       };
     }
     return {
