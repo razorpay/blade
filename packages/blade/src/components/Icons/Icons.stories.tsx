@@ -1,3 +1,4 @@
+import type { ComponentType } from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
 import { IconNames, Icons } from './iconMap';
 import type { IconProps } from '.';
@@ -18,10 +19,10 @@ export default {
   },
 } as Meta<IconProps>;
 
-const IconTemplate: ComponentStory<React.ComponentType<IconProps & { icon: string }>> = ({
+const IconTemplate: ComponentStory<ComponentType<IconProps & { icon: string }>> = ({
   icon,
   ...args
-}): React.ReactElement => {
+}) => {
   const IconComponent = Icons[icon];
   return <IconComponent {...args} />;
 };
