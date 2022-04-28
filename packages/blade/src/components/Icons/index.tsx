@@ -1,10 +1,6 @@
 import type { Theme } from '../BladeProvider';
 import type { ColorContrast } from '../../tokens/theme/theme';
 
-export { default as CreditCardIcon } from './CreditCardIcon';
-
-export type IconSize = 'large' | 'medium' | 'small' | 'xlarge' | 'xsmall' | 'xxsmall';
-
 type DotNotationStringToken<TokenType> = {
   [K in keyof TokenType]: `${Extract<K, number | string>}.${TokenType[K] extends Record<
     string,
@@ -22,7 +18,11 @@ type SurfaceColors = `surface.icon.${DotNotationStringToken<
 >}`;
 type ActionColors = `action.icon.${DotNotationStringToken<Theme['colors']['action']['icon']>}`;
 
+export type IconSize = 'large' | 'medium' | 'small' | 'xlarge' | 'xsmall' | 'xxsmall';
 export type IconProps = {
   color: ActionColors | FeedbackColors | SurfaceColors;
   size: IconSize;
 };
+
+export { default as CreditCardIcon } from './CreditCardIcon';
+export { default as RupeeIcon } from './RupeeIcon';
