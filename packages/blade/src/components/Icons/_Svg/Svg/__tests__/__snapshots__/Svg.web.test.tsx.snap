@@ -7,6 +7,11 @@ exports[`<Svg /> should render html svg component 1`] = `
     height="20px"
     viewBox="0 0 24 24"
     width="20px"
-  />
+  >
+    <path
+      d="M2 2h2v2H2V2"
+      fill="#000"
+    />
+  </svg>
 </div>
 `;

@@ -9,13 +9,10 @@ const Path = ({
   fill,
   fillOpacity,
   fillRule,
-  height,
   stroke,
   strokeLinecap,
   strokeLinejoin,
   strokeWidth,
-  viewBox,
-  width,
 }: PathProps): ReactElement => {
   return (
     <path
@@ -26,13 +23,10 @@ const Path = ({
         fill,
         fillOpacity,
         fillRule,
-        height,
         stroke,
         strokeLinecap,
         strokeLinejoin,
         strokeWidth,
-        viewBox,
-        width,
       }}
     />
   );

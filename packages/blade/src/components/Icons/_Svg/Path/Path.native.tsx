@@ -10,13 +10,10 @@ const Path = ({
   fill,
   fillOpacity,
   fillRule,
-  height,
   stroke,
   strokeLinecap,
   strokeLinejoin,
   strokeWidth,
-  viewBox,
-  width,
 }: PathProps): ReactElement => {
   return (
     <PathNative
@@ -27,13 +24,10 @@ const Path = ({
         fill,
         fillOpacity,
         fillRule,
-        height,
         stroke,
         strokeLinecap,
         strokeLinejoin,
         strokeWidth,
-        viewBox,
-        width,
       }}
     />
   );
