@@ -13,7 +13,6 @@ export default {
     icon: {
       name: 'icon',
       type: 'select',
-      defaultValue: 'CreditCardIcon',
       options: IconNames,
     },
   },
@@ -28,3 +27,6 @@ const IconTemplate: ComponentStory<ComponentType<IconProps & { icon: string }>> 
 };
 
 export const Icon = IconTemplate.bind({});
+Icon.args = {
+  icon: 'CreditCardIcon',
+};
