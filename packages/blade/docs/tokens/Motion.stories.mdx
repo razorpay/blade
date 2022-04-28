@@ -1,0 +1,199 @@
+import { Meta, DocsContainer } from '@storybook/addon-docs';
+import styled from 'styled-components';
+import { useTheme, BladeProvider } from '../../src/components';
+import { paymentTheme, bankingTheme } from '../../src/tokens';
+import makeMotionTime from '../../src/utils/makeMotionTime';
+import MovingDiv from '../components/MovingDiv';
+
+<Meta
+  title="Tokens/Motion"
+  parameters={{
+    docs: {
+      container: ({ children, context }) => {
+        const getThemeTokens = () => {
+          if (context.globals.themeTokens === 'paymentTheme') {
+            return paymentTheme;
+          }
+          if (context.globals.themeTokens === 'bankingTheme') {
+            return bankingTheme;
+          }
+          return null;
+        };
+        return (
+          <DocsContainer context={context}>
+            <BladeProvider
+              key={`${context.globals.themeTokens}-${context.globals.colorScheme}`}
+              themeTokens={getThemeTokens()}
+              colorScheme={context.globals.colorScheme}
+            >
+              {children}
+            </BladeProvider>
+          </DocsContainer>
+        );
+      },
+    },
+  }}
+/>
+
+# 🎬 Motion
+
+export const Motion = () => {
+  const { theme } = useTheme();
+  return (
+    <>
+      <h3>Delay (in milliseconds)</h3>
+      <table>
+        <tbody>
+          {Object.entries(theme.motion.delay).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.motion.delay.${key}`}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h3>Duration (in milliseconds)</h3>
+      <table>
+        <tbody>
+          {Object.entries(theme.motion.duration).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.motion.duration.${key}`}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h3>Easing</h3>
+      <h4>standard</h4>
+      <table>
+        <tbody>
+          {Object.entries(theme.motion.easing.standard).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.motion.easing.standard.${key}`}</td>
+              <td>{value}</td>
+              <td style={{ width: '150px' }}>
+                <MovingDiv theme={theme} easing={theme.motion.easing.standard[key]}></MovingDiv>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h4>entrance</h4>
+      <table>
+        <tbody>
+          {Object.entries(theme.motion.easing.entrance).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.motion.easing.entrance.${key}`}</td>
+              <td>{value}</td>
+              <td style={{ width: '150px' }}>
+                <MovingDiv theme={theme} easing={theme.motion.easing.entrance[key]}></MovingDiv>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h4>exit</h4>
+      <table>
+        <tbody>
+          {Object.entries(theme.motion.easing.exit).map(([key, value]) => (
+            <tr key={key}>
+              <td>{`theme.motion.easing.exit.${key}`}</td>
+              <td>{value}</td>
+              <td style={{ width: '150px' }}>
+                <MovingDiv theme={theme} easing={theme.motion.easing.exit[key]}></MovingDiv>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+};
+
+export const MotionExample = () => {
+  const { theme } = useTheme();
+  const ExampleDiv = styled.div`
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-color: ${(props) => props.theme.colors.brand.primary[500]};
+    animation: ${(props) =>
+      `resize ${makeMotionTime(props.theme.motion.duration.xgentle)} ${
+        props.theme.motion.easing.standard.effective
+      } infinite`};
+    @keyframes resize {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  `;
+  return <ExampleDiv theme={theme} easing={theme.motion.easing.standard.effective}></ExampleDiv>;
+};
+
+<Motion />
+
+## Example Usage
+
+If we want to create a circle that scales up and down with a **duration** of `xgentle` and an **easing** of `standard.effective`
+
+1. Ensure you've followed all the steps under ["Guides/Usage"](https://master--61c19ee8d3d282003ac1d81c.chromatic.com//?path=/story/guides-usage--page&globals=measureEnabled:false) to setup your theme with `<BladeProvider>`
+2. Your theme tokens will be automatically available to `styled-components` as a `theme` prop
+3. Create a component using `styled-components` that looks like this:
+
+```jsx
+import styled from 'styled-components';
+import { makeMotionTime } from '@razorpay/blade/utils';
+
+const ExampleDiv = styled.div`
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  background-color: ${(props) => props.theme.colors.brand.primary[500]};
+  animation: ${(props) =>
+    `resize ${makeMotionTime(props.theme.motion.duration.xgentle)} ${
+      props.theme.motion.easing.standard.effective
+    } infinite`};
+  @keyframes resize {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+`;
+```
+
+4. You can also access your motion tokens using the `useTheme` hook
+
+```jsx
+import { useTheme } from '@razorpay/blade/components';
+import { makeMotionTime } from '@razorpay/blade/utils';
+
+const CustomComponent = () => {
+  const { theme } = useTheme();
+  const easing = theme.motion.easing.standard.effective;
+  const duration = makeMotionTime(theme.motion.duration.xgentle);
+  const delay = makeMotionTime(theme.motion.delay.short);
+
+  return (
+    ...
+  );
+};
+```
+
+> Note: `makeMotionTime` is a helper function that converts `duration` & `delay` to a platform specific unit for web & native. You should always use this helper function while consuming `duration` & `delay` tokens
+
+### Output:
+
+<br />
+<MotionExample />
