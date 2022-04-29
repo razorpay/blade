@@ -1,8 +1,10 @@
+import type { ReactElement, ComponentType } from 'react';
+
 export type ClipPathProps = {
-  children: React.ReactElement | ReactElement[];
+  children: ReactElement | ReactElement[];
   id: string;
 };
 
-const ClipPath: React.ComponentType<ClipPathProps>;
+const ClipPath: ComponentType<ClipPathProps>;
 
 export default ClipPath;

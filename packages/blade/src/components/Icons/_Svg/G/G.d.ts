@@ -1,11 +1,11 @@
-import type { ReactElement } from 'react';
+import type { ReactElement, ComponentType } from 'react';
 
 export type GProps = {
-  children: React.ReactElement | ReactElement[];
+  children: ReactElement | ReactElement[];
   clipPath?: string;
   fill?: string;
 };
 
-const G: React.ComponentType<GProps>;
+const G: ComponentType<GProps>;
 
 export default G;

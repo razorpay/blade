@@ -1,3 +1,5 @@
+import type { ComponentType } from 'react';
+
 export type SvgProps = {
   children: React.ReactNode;
   fill?: string;
@@ -6,6 +8,6 @@ export type SvgProps = {
   width: string;
 };
 
-const Svg: React.ComponentType<SvgProps>;
+const Svg: ComponentType<SvgProps>;
 
 export default Svg;
