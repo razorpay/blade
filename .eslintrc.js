@@ -94,6 +94,7 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 'error',
         '@typescript-eslint/no-unnecessary-condition': 'off',
         '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
+        '@typescript-eslint/unbound-method': 'off',
       },
     },
   ],
