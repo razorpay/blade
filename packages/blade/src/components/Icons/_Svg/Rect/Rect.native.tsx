@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ReactElement } from 'react';
 import { Rect as RectNative } from 'react-native-svg';
 import type { RectProps } from './Rect';

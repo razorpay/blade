@@ -1,4 +1,3 @@
-import React from 'react';
 import G from '..';
 import renderWithTheme from '../../../../../_helpers/testing/renderWithTheme.native';
 import Path from '../../Path';

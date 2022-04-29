@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ReactElement } from 'react';
 import { Svg as SvgNative } from 'react-native-svg';
 import type { SvgProps } from './Svg.d';

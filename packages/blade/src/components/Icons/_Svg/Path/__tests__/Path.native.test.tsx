@@ -1,4 +1,3 @@
-import React from 'react';
 import Path from '..';
 import renderWithTheme from '../../../../../_helpers/testing/renderWithTheme.native';
 import Svg from '../../Svg';

@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ReactElement } from 'react';
 import { ClipPath as ClipPathNative } from 'react-native-svg';
 import type { ClipPathProps } from './ClipPath.d';
