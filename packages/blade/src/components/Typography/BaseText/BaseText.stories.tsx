@@ -1,4 +1,6 @@
+/* eslint-disable react/display-name */
 import type { ComponentStory, Meta } from '@storybook/react';
+import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { BaseTextProps } from './BaseText';
 import BaseTextComponent from './BaseText';
 
@@ -16,6 +18,26 @@ export default {
     lineHeight: '5xl',
     name: 'Storybook',
     children: 'Base Text',
+  },
+  parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle>
+            The BaseText component is a wrapper component based on Blade&apos;s token system and
+            should be used only in rarest exceptions where your Typography needs are not satisfied
+            by Title, Heading or Text typography components(eg: highlighting a word in the Title
+            with gradients in a landing page).
+          </Subtitle>
+          <Title>Example</Title>
+          <Primary />
+          <Title>Properties</Title>
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </>
+      ),
+    },
   },
 } as Meta<BaseTextProps>;
 
