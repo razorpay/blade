@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
-import { IconNames, Icons } from './iconMap';
+import iconMap from './iconMap';
 import type { IconProps } from '.';
 
 export default {
@@ -13,7 +13,7 @@ export default {
     icon: {
       name: 'icon',
       type: 'select',
-      options: IconNames,
+      options: Object.keys(iconMap),
     },
   },
 } as Meta<IconProps>;
@@ -22,7 +22,7 @@ const IconTemplate: ComponentStory<ComponentType<IconProps & { icon: string }>> 
   icon,
   ...args
 }) => {
-  const IconComponent = Icons[icon];
+  const IconComponent = iconMap[icon];
   return <IconComponent {...args} />;
 };
 
