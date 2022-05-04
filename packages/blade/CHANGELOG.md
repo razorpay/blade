@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.3.1
+
+### Patch Changes
+
+- 6866289: build: fix storybook native failing due to reanimated
+
 ## 0.3.0
 
 ### Minor Changes
