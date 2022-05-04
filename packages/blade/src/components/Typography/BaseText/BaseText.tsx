@@ -2,28 +2,17 @@ import type { ReactElement } from 'react';
 import getIn from '../../../utils/getIn';
 import { useTheme } from '../../BladeProvider';
 import makeTypographySize from '../../../utils/makeTypographySize';
-import type { ColorContrast } from '../../../tokens/theme/theme';
 import type { Theme } from '../../BladeProvider';
+import type { DotNotationColorStringToken } from '../../../@types/helpers';
 import StyledBaseText from './StyledBaseText';
 
-/**
- * @template TokenType token type generic
- * @description Tokenises objects to dot notation strings, eg: `surface.text.normal.lowContrast`
- */
-type DotNotationStringToken<TokenType> = {
-  [K in keyof TokenType]: `${Extract<K, number | string>}.${TokenType[K] extends Record<
-    string,
-    ColorContrast | string
-  >
-    ? Extract<keyof TokenType[K], number | string>
-    : DotNotationStringToken<TokenType[K]>}`;
-}[keyof TokenType];
-
-type FeedbackColors = `feedback.text.${DotNotationStringToken<
+type FeedbackColors = `feedback.text.${DotNotationColorStringToken<
   Theme['colors']['feedback']['text']
 >}`;
-type SurfaceColors = `surface.text.${DotNotationStringToken<Theme['colors']['surface']['text']>}`;
-type ActionColors = `action.text.${DotNotationStringToken<Theme['colors']['action']['text']>}`;
+type SurfaceColors = `surface.text.${DotNotationColorStringToken<
+  Theme['colors']['surface']['text']
+>}`;
+type ActionColors = `action.text.${DotNotationColorStringToken<Theme['colors']['action']['text']>}`;
 
 export type BaseTextProps = {
   color: ActionColors | FeedbackColors | SurfaceColors;

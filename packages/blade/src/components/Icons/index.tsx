@@ -1,22 +1,13 @@
 import type { Theme } from '../BladeProvider';
-import type { ColorContrast } from '../../tokens/theme/theme';
+import type { DotNotationColorStringToken } from '../../@types/helpers';
 
-type DotNotationStringToken<TokenType> = {
-  [K in keyof TokenType]: `${Extract<K, number | string>}.${TokenType[K] extends Record<
-    string,
-    ColorContrast | string
-  >
-    ? Extract<keyof TokenType[K], number | string>
-    : DotNotationStringToken<TokenType[K]>}`;
-}[keyof TokenType];
-
-type FeedbackColors = `feedback.icon.${DotNotationStringToken<
+type FeedbackColors = `feedback.icon.${DotNotationColorStringToken<
   Theme['colors']['feedback']['icon']
 >}`;
-type SurfaceColors = `surface.icon.${DotNotationStringToken<
+type SurfaceColors = `surface.icon.${DotNotationColorStringToken<
   Theme['colors']['surface']['action']['icon']
 >}`;
-type ActionColors = `action.icon.${DotNotationStringToken<Theme['colors']['action']['icon']>}`;
+type ActionColors = `action.icon.${DotNotationColorStringToken<Theme['colors']['action']['icon']>}`;
 
 export type IconSize = 'large' | 'medium' | 'small' | 'xlarge' | 'xsmall' | 'xxsmall';
 export type IconProps = {
