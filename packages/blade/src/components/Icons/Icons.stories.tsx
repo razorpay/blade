@@ -1,6 +1,14 @@
 import type { ComponentType } from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import {
+  Title,
+  Subtitle,
+  Primary,
+  Stories,
+  PRIMARY_STORY,
+  Description,
+  Props,
+} from '@storybook/addon-docs';
 import iconMap from './iconMap';
 import type { IconProps } from '.';
 
@@ -29,7 +37,13 @@ export default {
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
-          <ArgsTable story={PRIMARY_STORY} />
+          <Description markdown="You can check all the available icons in the `icon` control dropdown below." />
+          <Description
+            markdown="
+            >The prop `icon` is listed below only to demonstrate the available icons and will *not* be available in the actual Icon (`CreditCardIcon`, `RupeeIcon`, etc.) component.
+          "
+          />
+          <Props story={PRIMARY_STORY} />
           <Stories />
         </>
       ),
