@@ -18,6 +18,7 @@ const configs = {
             runtime: 'automatic',
           },
         ],
+        'react-native-reanimated/plugin',
       ],
     },
     development: {
@@ -38,6 +39,7 @@ const configs = {
             runtime: 'automatic',
           },
         ],
+        'react-native-reanimated/plugin',
       ],
     },
     production: {
@@ -61,6 +63,7 @@ const configs = {
             runtime: 'automatic',
           },
         ],
+        'react-native-reanimated/plugin',
       ],
     },
   },

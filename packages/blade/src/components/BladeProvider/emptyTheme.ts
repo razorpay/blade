@@ -1037,6 +1037,43 @@ const emptyTheme: Theme = {
     xl: 0,
     max: 0,
   },
+  motion: {
+    delay: {
+      '2xshort': 70,
+      xshort: 120,
+      short: 180,
+      long: 3000,
+      xlong: 5000,
+    },
+    duration: {
+      '2xquick': 70,
+      xquick: 150,
+      quick: 200,
+      moderate: 250,
+      xmoderate: 300,
+      gentle: 400,
+      xgentle: 600,
+      '2xgentle': 900,
+    },
+    easing: {
+      standard: {
+        attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)',
+        effective: 'cubic-bezier(0.3, 0, 0.2, 1)',
+        revealing: 'cubic-bezier(0.5, 0, 0, 1)',
+        wary: 'cubic-bezier(1, 0.5, 0, 0.5)',
+      },
+      entrance: {
+        attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)',
+        effective: 'cubic-bezier(0, 0, 0.2, 1)',
+        revealing: 'cubic-bezier(0, 0, 0, 1)',
+      },
+      exit: {
+        attentive: 'cubic-bezier(0.7, 0, 0.5, 1)',
+        effective: 'cubic-bezier(0.17, 0, 1, 1)',
+        revealing: 'cubic-bezier(0.5, 0, 1, 1)',
+      },
+    },
+  },
   spacing: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0 },
   shadows: {
     offsetX: {

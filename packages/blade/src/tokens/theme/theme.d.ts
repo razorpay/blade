@@ -1,5 +1,6 @@
 import type { Border } from '../global/border';
 import type { Breakpoints } from '../global/breakpoints';
+import type { Motion } from '../global/motion';
 import type { Spacing } from '../global/spacing';
 import type { TypographyWithPlatforms } from '../global/typography';
 
@@ -119,6 +120,7 @@ export type ThemeTokens = {
   border: Border;
   breakpoints: Breakpoints;
   colors: ColorsWithModes;
+  motion: Motion;
   spacing: Spacing;
   shadows: Shadows;
   typography: TypographyWithPlatforms;

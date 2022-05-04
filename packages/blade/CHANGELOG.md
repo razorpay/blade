@@ -1,5 +1,27 @@
 # @razorpay/blade
 
+## 0.3.0
+
+### Minor Changes
+
+- a20b608: feat(blade): add motion tokens
+
+  ### Motion tokens
+
+  We have added tokens for
+
+  1. Delay
+  2. Duration
+  3. Easing
+
+  You can find a detailed RFC for motion here: [View Formatted RFC](https://github.com/razorpay/blade/blob/rfc/2022-03-22-motion-rfc/rfcs/2022-03-22-motion-rfc.md)
+
+## 0.2.0
+
+### Minor Changes
+
+- 6885ac3: feat(blade): add BaseText component
+
 ## 0.1.6
 
 ### Patch Changes
