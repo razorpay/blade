@@ -96,5 +96,11 @@ module.exports = {
         '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
       },
     },
+    {
+      files: ['**/*.stories.{ts,tsx}'],
+      rules: {
+        'react/display-name': ['off'],
+      },
+    },
   ],
 };
