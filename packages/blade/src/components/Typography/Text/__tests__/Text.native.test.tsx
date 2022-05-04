@@ -29,7 +29,6 @@ describe('<Text />', () => {
   it('should throw error when variant is "caption" but weight "bold" is passed', () => {
     try {
       const displayText = 'Displaying some text';
-      // @todo: when variant is caption then weight should not even show bold
       renderWithTheme(
         // @ts-expect-error testing failure case when weight='bold' is passed with variant='caption'
         <Text type="normal" variant="caption" weight="bold">
