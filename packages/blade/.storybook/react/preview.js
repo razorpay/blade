@@ -5,6 +5,11 @@ import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
 let selectedTheme = 'Payment';
 
 export const parameters = {
+  previewTabs: {
+    'storybook/docs/panel': { index: 0 },
+    canvas: { title: 'Stories', index: 1 },
+  },
+  viewMode: 'docs',
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
