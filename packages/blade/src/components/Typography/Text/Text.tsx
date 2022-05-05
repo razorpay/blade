@@ -76,7 +76,7 @@ const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
     return {
       overflow: 'hidden',
       display: '-webkit-box',
-      '-line-clamp': `${truncateAfterLines}`,
+      'line-clamp': `${truncateAfterLines}`,
       '-webkit-line-clamp': `${truncateAfterLines}`,
       '-webkit-box-orient': 'vertical',
     };
