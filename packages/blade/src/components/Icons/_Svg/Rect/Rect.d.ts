@@ -1,5 +1,3 @@
-import type { ComponentType } from 'react';
-
 export type RectProps = {
   width: string;
   height: string;
@@ -9,6 +7,4 @@ export type RectProps = {
   y?: string;
 };
 
-const Rect: ComponentType<RectProps>;
-
-export default Rect;
+export { default } from './Rect.web';

@@ -1,5 +1,3 @@
-import type { ComponentType } from 'react';
-
 export type PathProps = {
   clipPath?: string;
   clipRule?: 'evenodd' | 'nonzero';
@@ -13,6 +11,4 @@ export type PathProps = {
   strokeWidth?: string;
 };
 
-const Path: ComponentType<PathProps>;
-
-export default Path;
+export { default } from './Path.web';

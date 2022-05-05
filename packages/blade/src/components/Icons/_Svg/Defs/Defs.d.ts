@@ -1,9 +1,7 @@
-import type { ReactElement, ComponentType } from 'react';
+import type { ReactElement } from 'react';
 
 export type DefsProps = {
   children: ReactElement | ReactElement[];
 };
 
-const Defs: ComponentType<DefsProps>;
-
-export default Defs;
+export { default } from './Defs.web';

@@ -1,4 +1,4 @@
-import type { ReactElement, ComponentType } from 'react';
+import type { ReactElement } from 'react';
 
 export type GProps = {
   children: ReactElement | ReactElement[];
@@ -6,6 +6,4 @@ export type GProps = {
   fill?: string;
 };
 
-const G: ComponentType<GProps>;
-
-export default G;
+export { default } from './G.web';
