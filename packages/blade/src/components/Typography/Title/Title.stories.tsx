@@ -17,7 +17,7 @@ const TitleStoryMeta: Meta<TitleProps> = {
   args: {
     variant: 'large',
     type: 'normal',
-    children: 'This is a Landing Page Title',
+    children: 'Power your finance, grow your business',
   },
   parameters: {
     docs: {
