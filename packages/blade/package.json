@@ -71,6 +71,7 @@
     "@rollup/plugin-node-resolve": "13.1.1",
     "@storybook/addon-actions": "6.3.0",
     "@storybook/addon-controls": "6.3",
+    "@storybook/addon-docs": "6.3.0",
     "@storybook/addon-essentials": "6.3.0",
     "@storybook/addon-links": "6.3.0",
     "@storybook/addon-ondevice-actions": "6.0.1-alpha.7",
@@ -113,6 +114,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.66.4",
+    "react-native-svg": "12.3.0",
     "react-native-reanimated": "2.6.0",
     "react-scripts": "4.0.3",
     "react-test-renderer": "17.0.2",
@@ -125,6 +127,7 @@
     "@babel/runtime": "^7.16.5",
     "react-dom": "^17.0.2",
     "react-native": "^0.66.4",
+    "react-native-svg": "^12.3.0",
     "react-native-reanimated": "^2.6.0",
     "react": "^17.0.2",
     "styled-components": "^5"
