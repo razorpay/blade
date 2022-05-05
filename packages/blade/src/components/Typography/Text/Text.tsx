@@ -22,6 +22,10 @@ type TextCaptionVariant = TextCommonProps & {
   weight: keyof Pick<Theme['typography']['fonts']['weight'], 'regular'>;
 };
 
+/**
+ * Conditionally changing props based on variant.
+ * Overloads or union gives wrong intellisense.
+ */
 export type TextProps<T> = T extends {
   variant: infer Variant;
 }
