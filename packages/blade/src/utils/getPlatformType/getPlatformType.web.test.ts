@@ -9,4 +9,10 @@ describe('getPlatformType', () => {
     Object.defineProperty(global, 'document', {});
     expect(getPlatformType()).toEqual('node');
   });
+
+  it(`should return 'unknown' when none of the platform matches`, () => {
+    Object.defineProperty(global, 'document', {});
+    Object.defineProperty(global, 'process', {});
+    expect(getPlatformType()).toEqual('unknown');
+  });
 });
