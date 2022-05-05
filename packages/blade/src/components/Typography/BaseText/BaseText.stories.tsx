@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title, Subtitle, Primary, Props, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { BaseTextProps } from './BaseText';
 import BaseTextComponent from './BaseText';
 
@@ -33,7 +33,7 @@ export default {
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
-          <ArgsTable story={PRIMARY_STORY} />
+          <Props story={PRIMARY_STORY} />
           <Stories />
         </>
       ),
