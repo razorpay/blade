@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Rect /> should render react-native-svg Rect component 1`] = `
+<RNSVGSvgView
+  align="xMidYMid"
+  bbHeight="110"
+  bbWidth="400"
+  focusable={false}
+  height="110"
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Object {
+        "flex": 0,
+        "height": 110,
+        "width": 400,
+      },
+    ]
+  }
+  vbHeight={100}
+  vbWidth={100}
+  width="400"
+>
+  <RNSVGGroup>
+    <RNSVGRect
+      height="100"
+      rx="4"
+      ry="4"
+      width="200"
+      x="10"
+      y="10"
+    />
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;

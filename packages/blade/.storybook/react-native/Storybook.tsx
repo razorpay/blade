@@ -28,6 +28,6 @@ const App = (): React.ReactElement => {
       <Storybook />
     </BladeProvider>
   );
-}
+};
 
 AppRegistry.registerComponent(appName, () => App);
