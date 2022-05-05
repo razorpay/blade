@@ -11,6 +11,8 @@ export type ColorSchemeModes = 'onDark' | 'onLight';
 
 export type ShadowLevels = 1 | 2 | 3 | 4 | 5;
 
+export type TextTypes = 'muted' | 'normal' | 'placeholder' | 'subdued' | 'subtle';
+
 export type Shadows = {
   offsetX: {
     level: Record<ShadowLevels, number>;
@@ -98,7 +100,7 @@ export type Colors = {
   surface: {
     background: Record<'level1' | 'level2' | 'level3', ColorContrast>;
     border: Record<'normal' | 'subtle', ColorContrast>;
-    text: Record<'muted' | 'normal' | 'placeholder' | 'subdued' | 'subtle', ColorContrast>;
+    text: Record<TextTypes, ColorContrast>;
     action: {
       icon: Pick<ActionVariants, 'link'>;
     };

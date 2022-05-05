@@ -6,7 +6,7 @@ type FontWeight = {
   bold: 700;
 };
 
-type FontSize = {
+export type FontSize = {
   /** desktop: 9(px/rem/pt)
    *
    * mobile: 10(px/rem/pt)

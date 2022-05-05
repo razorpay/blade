@@ -24,7 +24,9 @@ export type BaseTextProps = {
   lineHeight: keyof Theme['typography']['lineHeights'];
   as?: 'code' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   textAlign?: 'center' | 'justify' | 'left' | 'right';
-  children?: React.ReactNode | undefined;
+  truncateAfterLines?: number;
+  className?: string;
+  children?: React.ReactNode;
 };
 
 const BaseText = ({
@@ -38,6 +40,8 @@ const BaseText = ({
   as,
   textAlign,
   children,
+  truncateAfterLines,
+  className,
 }: BaseTextProps): ReactElement => {
   const { theme } = useTheme();
   const textColor = getIn(theme.colors, color);
@@ -57,6 +61,8 @@ const BaseText = ({
       lineHeight={themeLineHeight}
       as={as}
       textAlign={textAlign}
+      numberOfLines={truncateAfterLines}
+      className={className}
     >
       {children}
     </StyledBaseText>
