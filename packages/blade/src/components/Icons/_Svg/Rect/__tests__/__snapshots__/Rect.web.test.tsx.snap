@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Rect /> should render html rect component 1`] = `
+<div>
+  <svg
+    height="110"
+    viewBox="0 0 100 100"
+    width="400"
+  >
+    <rect
+      height="100"
+      rx="4"
+      ry="4"
+      width="200"
+      x="10"
+      y="10"
+    />
+  </svg>
+</div>
+`;

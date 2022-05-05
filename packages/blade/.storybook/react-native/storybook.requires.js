@@ -23,6 +23,8 @@ argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
 
 const getStories = () => {
   return [
+    require('../../src/components/Button/Button.stories.tsx'),
+    require('../../src/components/Icons/Icons.stories.tsx'),
     require('../../src/components/Typography/BaseText/BaseText.stories.tsx'),
     require('../../src/components/Typography/Text/Text.stories.tsx'),
     require('../../src/storybook-recipes/SimpleCardWithTokens/CardWithTokens.stories.tsx'),
