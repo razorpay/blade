@@ -1,5 +1,5 @@
 import type { Theme } from '../BladeProvider';
-import type { DotNotationColorStringToken } from '../../@types/helpers';
+import type { DotNotationColorStringToken } from '../../_helpers/types';
 
 type FeedbackColors = `feedback.icon.${DotNotationColorStringToken<
   Theme['colors']['feedback']['icon']

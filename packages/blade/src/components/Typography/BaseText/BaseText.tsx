@@ -3,7 +3,7 @@ import getIn from '../../../utils/getIn';
 import { useTheme } from '../../BladeProvider';
 import makeTypographySize from '../../../utils/makeTypographySize';
 import type { Theme } from '../../BladeProvider';
-import type { DotNotationColorStringToken } from '../../../@types/helpers';
+import type { DotNotationColorStringToken } from '../../../_helpers/types';
 import StyledBaseText from './StyledBaseText';
 
 type FeedbackColors = `feedback.text.${DotNotationColorStringToken<
