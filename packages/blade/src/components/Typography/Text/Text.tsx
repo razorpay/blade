@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import styled from 'styled-components';
 import type { TextTypes } from '../../../tokens/theme/theme';
-import getPlatform from '../../../utils/getPlatform';
+import getPlatformType from '../../../utils/getPlatformType';
 import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText/BaseText';
@@ -48,7 +48,7 @@ const getProps = <T extends { variant: 'body' | 'caption' }>({
     fontStyle: 'normal',
     lineHeight: 's',
     fontFamily: 'text',
-    forwardedAs: getPlatform() !== 'react-native' ? 'p' : undefined,
+    forwardedAs: getPlatformType() !== 'react-native' ? 'p' : undefined,
   };
   if (variant === 'body') {
     props.fontSize = 100;
@@ -68,7 +68,7 @@ const getProps = <T extends { variant: 'body' | 'caption' }>({
 
 const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
   if (truncateAfterLines) {
-    if (getPlatform() === 'react-native') {
+    if (getPlatformType() === 'react-native') {
       return {
         numberOfLines: truncateAfterLines,
       };
@@ -76,6 +76,7 @@ const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
     return {
       overflow: 'hidden',
       display: '-webkit-box',
+      '-line-clamp': `${truncateAfterLines}`,
       '-webkit-line-clamp': `${truncateAfterLines}`,
       '-webkit-box-orient': 'vertical',
     };
@@ -90,7 +91,10 @@ const Text = <T extends { variant: 'body' | 'caption' }>({
   truncateAfterLines,
   children,
 }: TextProps<T>): ReactElement => {
-  const props = { truncateAfterLines, ...getProps({ variant, type, weight }) };
+  const props: BaseTextProps & TextForwardedAs = {
+    truncateAfterLines,
+    ...getProps({ variant, type, weight }),
+  };
   return <StyledText {...props}>{children}</StyledText>;
 };
 
