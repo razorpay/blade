@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": patch
+"@razorpay/blade": minor
 ---
 
 - Add the following components that would act as building blocks for our icons:
