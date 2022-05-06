@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import type { TextTypes } from '../../../tokens/theme/theme';
-import getPlatform from '../../../utils/getPlatform';
+import getPlatformType from '../../../utils/getPlatformType';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText/BaseText';
 
@@ -23,15 +23,15 @@ const getProps = ({ variant, type }: TitleProps): BaseTextProps => {
   if (variant === 'small') {
     props.fontSize = 600;
     props.lineHeight = '4xl';
-    props.as = getPlatform() !== 'react-native' ? 'h3' : undefined;
+    props.as = getPlatformType() !== 'react-native' ? 'h3' : undefined;
   } else if (variant === 'medium') {
     props.fontSize = 700;
     props.lineHeight = '4xl';
-    props.as = getPlatform() !== 'react-native' ? 'h2' : undefined;
+    props.as = getPlatformType() !== 'react-native' ? 'h2' : undefined;
   } else if (variant === 'large') {
     props.fontSize = 1000;
     props.lineHeight = '6xl';
-    props.as = getPlatform() !== 'react-native' ? 'h1' : undefined;
+    props.as = getPlatformType() !== 'react-native' ? 'h1' : undefined;
   }
 
   return props;
