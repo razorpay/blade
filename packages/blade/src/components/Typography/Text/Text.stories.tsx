@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, Props, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { TextProps } from './';

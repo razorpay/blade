@@ -10,10 +10,6 @@ export type TitleProps = {
   children?: React.ReactNode;
 };
 
-// type TitleForwardedAs = {
-//   forwardedAs?: BaseTextProps['as'];
-// };
-
 const getProps = ({ variant, type }: TitleProps): BaseTextProps => {
   const props: BaseTextProps = {
     color: `surface.text.${type}.lowContrast`,

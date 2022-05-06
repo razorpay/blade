@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import type { ComponentStory, Meta } from '@storybook/react';
 import {
   Title as StorybookTitle,
