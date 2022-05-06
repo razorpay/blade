@@ -97,5 +97,11 @@ module.exports = {
         '@typescript-eslint/unbound-method': 'off',
       },
     },
+    {
+      files: ['**/*.stories.{ts,tsx}'],
+      rules: {
+        'react/display-name': ['off'],
+      },
+    },
   ],
 };

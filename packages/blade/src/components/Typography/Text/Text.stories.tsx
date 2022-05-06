@@ -1,9 +1,8 @@
 /* eslint-disable react/display-name */
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title, Subtitle, Primary, Props, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { TextProps } from './';
 import TextComponent from './';
-//The Text component is a wrapper component that will apply typography styles to the text inside.
 
 const TextStoryMeta: Meta<TextProps<{ variant: 'body' | 'caption' }>> = {
   title: 'Components/Typography/Text',
@@ -29,7 +28,7 @@ const TextStoryMeta: Meta<TextProps<{ variant: 'body' | 'caption' }>> = {
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
-          <ArgsTable story={PRIMARY_STORY} />
+          <Props story={PRIMARY_STORY} />
           <Stories />
         </>
       ),

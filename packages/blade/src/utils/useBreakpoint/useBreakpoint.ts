@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import type { Breakpoints } from '../../tokens/global';
-import getPlatform from '../getPlatform';
+import getPlatformType from '../getPlatformType';
 
 const deviceType = {
   desktop: 'desktop',
@@ -47,7 +47,7 @@ const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): Breakpoin
 
   const getMatchedDeviceType = useCallback((matchedBreakpoint: Breakpoint): DeviceType => {
     let matchedDeviceType: DeviceType = deviceType.mobile;
-    const platform = getPlatform();
+    const platform = getPlatformType();
     if (platform === 'react-native') {
       matchedDeviceType = deviceType.mobile;
     } else if (platform === 'browser') {

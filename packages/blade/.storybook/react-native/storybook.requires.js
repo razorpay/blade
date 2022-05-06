@@ -32,6 +32,7 @@ const getStories = () => {
     require("../../src/components/Typography/Text/Text.stories.tsx"),
     require("../../src/components/Typography/Title/Title.stories.tsx"),
     require("../../src/storybook-recipes/SimpleCardWithTokens/CardWithTokens.stories.tsx"),
+    require('../../src/components/Icons/Icons.stories.tsx'),
   ];
 };
 

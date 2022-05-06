@@ -578,7 +578,7 @@ I had tried other ways to form a reasonably simpler structure but all of them br
 * Since this is being built as an activity of re-architecture of our design system the migration of the old system to the new will be a breaking change which is out of the scope of this RFC and will be handled separately.
 
 # How do we educate people?
-* The best way to educate people is to put more and more visual representation of this staruture with contextual examples.
+* The best way to educate people is to put more and more visual representation of this structure with contextual examples.
 * All the examples written in this RFC along with hierarchical representational images can be pulled out and put it in our *future* documentation website
 * Until we have our documentation site in place, this RFC can serve the purpose of documentation.
 
