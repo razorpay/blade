@@ -1,5 +1,23 @@
 # @razorpay/blade
 
+## 0.4.0
+
+### Minor Changes
+
+- 294173e: - Add the following components that would act as building blocks for our icons:
+  1. `Svg`
+  2. `Path`
+  3. `Rect`
+  4. `Defs`
+  5. `ClipPath`
+  6. `G`
+  - Add `CreditCardIcon` component
+  - Add `RupeeIcon` component
+
+### Patch Changes
+
+- e76cd01: feat/add-text-component
+
 ## 0.3.0
 
 ### Minor Changes
