@@ -19,6 +19,7 @@ const getProps = ({ variant, type }: TitleProps): BaseTextProps => {
     lineHeight: 's',
     fontFamily: 'text',
   };
+
   if (variant === 'small') {
     props.fontSize = 600;
     props.lineHeight = '4xl';
