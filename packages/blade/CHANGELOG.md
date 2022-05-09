@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 0.5.0
+
+### Minor Changes
+
+- 75882a7: feat(Blade): add `Title`component
+
+  The API for `Title` component can be found under [Typography/Text/\_decisions](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md)
+
 ## 0.4.0
 
 ### Minor Changes
