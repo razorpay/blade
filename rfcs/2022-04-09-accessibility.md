@@ -165,4 +165,3 @@ If we implement this proposal, how will existing consumer projects adopt it?
 
 # References
 Any references that you can share for those who are curious to understand anything beyond the scope of this RFC in general but related to the topic of this RFC.
-
