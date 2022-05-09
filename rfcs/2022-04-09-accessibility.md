@@ -77,7 +77,7 @@ Other subcategories based on microsoft’s inclusive design:
   - Example: Using the web app in bright sunlight
   - Example: Using your phone one handedly in a crowded metro station
 
-<img src="./images/accessibility/ms-inclusive-design.png" alt="Microsoft Inclusive Design Shows Spectrum Of Disabilities" width="50%" />
+<img src="./images/accessibility/ms-inclusive-design.png" alt="Microsoft Inclusive Design Shows Spectrum Of Disabilities" width="25%" />
 
 # Motivation
 - Why are we doing this?
@@ -112,7 +112,9 @@ Here’s the screen reader accessibility of Razorpay mobile app
 - Unlabeled password toggle icon 
 - Wrongly focus on text input's placeholder text
 
-<video src="./images/accessibility/rzp-mobile-a11y.mp4"></video>
+
+https://user-images.githubusercontent.com/35374649/167380507-71e60b7f-d36e-42b3-b649-911400e2c66f.mp4
+
 
 Even though only a few of the teams are on boarded to blade, when more teams will migrate this will become a problem since every app/site will be inaccessible if we don’t implement accessibility in blade components. 
 
