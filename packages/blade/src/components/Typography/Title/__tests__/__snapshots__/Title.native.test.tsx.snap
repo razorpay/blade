@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Title /> should render Title with variant "large" 1`] = `
+<Text
+  color="hsla(217, 18%, 45%, 1)"
+  fontFamily="Lato"
+  fontSize="35px"
+  fontStyle="normal"
+  fontWeight={700}
+  lineHeight="38px"
+  style={
+    Array [
+      Object {
+        "color": "hsla(217, 18%, 45%, 1)",
+        "fontFamily": "Lato",
+        "fontSize": 35,
+        "fontStyle": "normal",
+        "fontWeight": "700",
+        "lineHeight": 38,
+        "textDecorationLine": "none",
+      },
+    ]
+  }
+>
+  Displaying Landing Screen Title
+</Text>
+`;
+
+exports[`<Title /> should render Title with variant "medium" 1`] = `
+<Text
+  color="hsla(216, 16%, 60%, 1)"
+  fontFamily="Lato"
+  fontSize="27px"
+  fontStyle="normal"
+  fontWeight={700}
+  lineHeight="30px"
+  style={
+    Array [
+      Object {
+        "color": "hsla(216, 16%, 60%, 1)",
+        "fontFamily": "Lato",
+        "fontSize": 27,
+        "fontStyle": "normal",
+        "fontWeight": "700",
+        "lineHeight": 30,
+        "textDecorationLine": "none",
+      },
+    ]
+  }
+>
+  Displaying Landing Screen Title
+</Text>
+`;
+
+exports[`<Title /> should render Title with variant "small" 1`] = `
+<Text
+  color="hsla(217, 56%, 17%, 1)"
+  fontFamily="Lato"
+  fontSize="24px"
+  fontStyle="normal"
+  fontWeight={700}
+  lineHeight="30px"
+  style={
+    Array [
+      Object {
+        "color": "hsla(217, 56%, 17%, 1)",
+        "fontFamily": "Lato",
+        "fontSize": 24,
+        "fontStyle": "normal",
+        "fontWeight": "700",
+        "lineHeight": 30,
+        "textDecorationLine": "none",
+      },
+    ]
+  }
+>
+  Displaying Landing Screen Title
+</Text>
+`;
