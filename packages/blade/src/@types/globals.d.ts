@@ -2,7 +2,7 @@
 import 'styled-components';
 import 'styled-components/native';
 import type { Theme } from '../components/BladeProvider';
-// and extend them!
+import '@testing-library/jest-dom';
 declare module 'styled-components' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   export interface DefaultTheme extends Theme {}
