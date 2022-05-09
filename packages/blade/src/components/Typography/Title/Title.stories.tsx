@@ -24,7 +24,7 @@ const TitleStoryMeta: Meta<TitleProps> = {
         <>
           <StorybookTitle />
           <Subtitle>
-            The Title Component make a bold visual statement. Use them to create impact when the
+            The Title Component makes a bold visual statement. Use them to create impact when the
             main goal is visual storytelling. For example, use Title as marketing content on landing
             pages or to capture attention during onboarding.
           </Subtitle>
