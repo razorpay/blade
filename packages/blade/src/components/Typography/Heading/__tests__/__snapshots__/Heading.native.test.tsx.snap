@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> should render Heading with variant "large" 1`] = `
+<Text
+  color="hsla(217, 18%, 45%, 1)"
+  fontFamily="Lato"
+  fontSize="20px"
+  fontStyle="normal"
+  fontWeight={400}
+  lineHeight="28px"
+  style={
+    Array [
+      Object {
+        "color": "hsla(217, 18%, 45%, 1)",
+        "fontFamily": "Lato",
+        "fontSize": 20,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "lineHeight": 28,
+        "textDecorationLine": "none",
+      },
+    ]
+  }
+>
+  Get Started With Payment Gateway
+</Text>
+`;
+
+exports[`<Heading /> should render Heading with variant "medium" 1`] = `
+<Text
+  color="hsla(216, 16%, 60%, 1)"
+  fontFamily="Lato"
+  fontSize="18px"
+  fontStyle="normal"
+  fontWeight={400}
+  lineHeight="28px"
+  style={
+    Array [
+      Object {
+        "color": "hsla(216, 16%, 60%, 1)",
+        "fontFamily": "Lato",
+        "fontSize": 18,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "lineHeight": 28,
+        "textDecorationLine": "none",
+      },
+    ]
+  }
+>
+  Get Started With Payment Gateway
+</Text>
+`;
+
+exports[`<Heading /> should render Heading with variant "small" 1`] = `
+<Text
+  color="hsla(217, 56%, 17%, 1)"
+  fontFamily="Lato"
+  fontSize="17px"
+  fontStyle="normal"
+  fontWeight={400}
+  lineHeight="24px"
+  style={
+    Array [
+      Object {
+        "color": "hsla(217, 56%, 17%, 1)",
+        "fontFamily": "Lato",
+        "fontSize": 17,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "lineHeight": 24,
+        "textDecorationLine": "none",
+      },
+    ]
+  }
+>
+  Get Started With Payment Gateway
+</Text>
+`;
