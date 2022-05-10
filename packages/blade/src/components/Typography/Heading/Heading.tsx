@@ -5,7 +5,7 @@ import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText/BaseText';
 
-export type HeadingCommonProps = {
+type HeadingCommonProps = {
   type: TextTypes;
   children?: React.ReactNode;
 };
