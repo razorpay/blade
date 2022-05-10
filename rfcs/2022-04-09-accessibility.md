@@ -90,18 +90,25 @@ Without proper accessibility, certain functionality used in web sites is not ava
 
 Making our products accessible is important for two reasons.  
 - it's the right thing to do. We believe that everyone deserves to be able to use our products, regardless of their abilities.
-- It's good for business & branding. By making our products accessible, we can expand our potential customer base and make our products more appealing to a wider range of people, plus it helps create a good faith between consumers and our product. 
+- It'll help build trust with our customers. By making our products accessible, we can expand our potential customer base and make our products more appealing to a wider range of people. 
 
 **Making customers happy & respecting human rights:**  
 
-In 2020, A 29 year old banker who is visually impaired opened petitions to make [zomato](https://www.change.org/p/zomato-make-zomato-accessible-with-screen-readers-for-visually-challenged-people) & [swiggy](https://www.change.org/p/swiggy-make-swiggy-accessible-with-screen-readers-in-android-for-visually-challenged-people) accessible because he couldn’t order food from it due to their inaccessible apps. 
-Over **15,000 & 27,000 people had signed the petition.**
-Later zomato, swiggy listened to the people and [improved their accessibility.](https://theprint.in/tech/why-the-visually-challenged-are-signing-petitions-addressed-to-apps-such-as-zomato-swiggy/507282/) 
+> In 2020, A 29 year old banker who is visually impaired opened petitions to make [zomato](https://www.change.org/p/zomato-make-zomato-accessible-with-screen-readers-for-visually-challenged-people) & [swiggy](https://www.change.org/p/swiggy-make-swiggy-accessible-with-screen-readers-in-android-for-visually-challenged-people) accessible because they couldn’t order food from it due to their inaccessible apps.  
+> Over **15,000 & 27,000 people had signed the petition.**  
+> Later zomato, swiggy listened to the people and [improved their accessibility.](https://theprint.in/tech/why-the-visually-challenged-are-signing-petitions-addressed-to-apps-such-as-zomato-swiggy/507282/) 
 
+**Accessibility laws & policies** 
+
+While in India, there's no mandatory law to building accessible web apps, 
+There's still [policies/laws](https://www.w3.org/WAI/policies/india/) which are passed to ensure rights of disabled people remains intact.
+
+- [Rights of Persons with Disabilities Act, 2016 (RPD)](https://legislative.gov.in/sites/default/files/A2016-49_1.pdf)
+- [**Mandatory** Guidelines for Indian Government Websites](https://guidelines.india.gov.in/)
 
 ## The current state  
 
-In current state, blade components are not very accessible out of the box, neither are some of our production grade mobile applications. 
+In the current state, blade components are not very accessible out of the box, and neither are our existing frontend products. 
 
 Here’s the screen reader accessibility of Razorpay mobile app
 
@@ -112,18 +119,16 @@ Here’s the screen reader accessibility of Razorpay mobile app
 - Unlabeled password toggle icon 
 - Wrongly focus on text input's placeholder text
 
-
 https://user-images.githubusercontent.com/35374649/167380507-71e60b7f-d36e-42b3-b649-911400e2c66f.mp4
-
 
 Even though only a few of the teams are on boarded to blade, when more teams will migrate this will become a problem since every app/site will be inaccessible if we don’t implement accessibility in blade components. 
 
-Adding accessible components to blade will iron out all these inconsistencies and teams can build more accessible apps without thinking about it. 
+Adding accessible components to blade will iron out all these inconsistencies and teams can build more accessible apps with minimal effort.
 
 ## What is the expected outcome? 
 
-The goal of this RFC is to lay the foundations for implementing accessibility right into blade, so that blade consumers don’t have to think about accessibility while building their products: 
- 
+The goal of this RFC is to lay the foundations so that we can ship blade components that are accessible out of the box such that consumers don't have to worry about every minute detail. Here are couple of areas that this RFC will touch upon: 
+
 - Research about cross platform accessibility between web and native.
 - Ensure components are accessible through assistive technologies.
 - Ensure components adhere to the [WAI-ARIA design patterns](https://www.w3.org/TR/wai-aria-practices-1.2/)
