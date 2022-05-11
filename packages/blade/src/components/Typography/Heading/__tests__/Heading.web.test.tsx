@@ -42,6 +42,18 @@ describe('<Heading />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render Heading with variant "subheading" and weight "bold"', () => {
+    const displayText = 'Get Started With Payment Gateway';
+    const { container, getByRole, getByText } = renderWithTheme(
+      <Heading type="subdued" variant="subheading" weight="bold">
+        {displayText}
+      </Heading>,
+    );
+    expect(getByRole('heading', { level: 6 })).toBeInTheDocument();
+    expect(getByText('Get Started With Payment Gateway')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
   it('should throw error when variant is "subheading" but weight "regular" is passed', () => {
     try {
       const displayText = 'Get Started With Payment Gateway';
