@@ -188,6 +188,82 @@ By baking in accessibility at the foundational level we will ensure our products
 - [Motion](https://github.com/razorpay/blade/blob/master/rfcs/2022-03-22-motion-rfc.md)  
   We will pick up motion accessibility at a later point, we are first prioritizing foundations.
 
+## Keyboard Accessibility
+
+**Target:** Everyone and especially people with motor disabilities who use a keyboard to navigate.  
+**Goal:** Ensure users who cannot use the mouse (blind, motor disabilities) can access the crucial parts of the app through keyboard.  
+
+For a web page to be accessible, all interactive elements must be operable via the keyboard, Not all users are able to use a mouse to navigate a web page, Keyboard-only and screen reader users rely on navigating and using a web page with only a keyboard. 
+
+### Areas to cover
+
+- [Using tabindex](https://html.spec.whatwg.org/multipage/interaction.html#the-tabindex-attribute)
+- [Composite widgets](https://www.w3.org/TR/wai-aria-1.2/#composite)
+  - [Roving tabindex pattern](https://www.w3.org/TR/wai-aria-practices/#kbd_roving_tabindex)
+  - [aria-activedescendant pattern (skipped in implementation)](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_focus_activedescendant)
+
+## Using tabindex
+
+`tabindex` attribute authors can make the element focusable and appear in [sequential focus order](https://html.spec.whatwg.org/multipage/interaction.html#sequential-focus-navigation)
+
+Setting tabindex to any non-negative integer makes elements focusable, allow or prevent them from being sequentially focusable, and determine their relative ordering
+
+When set to `0`, the element becomes focusable by keyboard and via programatic means with `focus()`. 
+When set to `-1`, the element becomes focusable programatically, but it does not become part of the keyboard focus order.
+
+The following table describes tabindex behavior in modern browsers:
+
+| tabindex attribute |	Focusable with mouse or programatically |	Tab navigable |
+| :--: | :--: | :--: |
+| not present	| The user agent will decide | The user agent will decide |
+| Negative (tabindex="-1")	| Yes | No, can only be focused programatically |
+| Zero (tabindex="0") | Yes | Yes, In tab order relative to element's position in document | 
+| Positive (tabindex="2") | Yes | Yes, tabindex value determines where this element is positioned in the tab order | 
+
+> Warning: avoid using positive values for tabindex. Using positive values means authors will have to set (and maintain) tabindex values for all focusable elements on the page whenever they use one or more positive values for tabindex.
+
+
+## Composite widgets
+
+*What are composite widgets?*
+
+A composite is a widget that may contain navigable descendants or childrens. Composite widgets should only have single navigation tab stop.
+Once the composite widget has focus, It's required to provide a separate navigation mechanism for users to navigate to elements that are descendants (generally with arrow keys).
+
+You can think of composite widgets as a way of grouping multiple elements into single navigatable element.
+
+Examples of composite widgets are: 
+
+- Radio Groups
+- Tabs
+- Listbox
+- Toolbars
+
+## Roving Tabindex
+
+> [Specification](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_roving_tabindex)
+
+One way to manage focus within `composite` widgets is roving tabindex pattern.  
+The element that is to be included in the tab sequence has tabindex of "0" and all other focusable elements contained in the composite have tabindex of "-1". 
+
+**Roving tabindex behaviour**: 
+
+- When the component loads, the element that will initially be included in the tab sequence will have `tabindex=0`, and all other focusable elements will have `tabindex=-1`.
+- At a time only one children will have `tabindex=0` set and all other focusable elements will have `tabindex=-1`. 
+- When the component contains focus and the user presses a navigation key that moves focus within the component (eg: arrow keys)
+  - set `tabindex=-1` on the element that has `tabindex=0`.
+  - Set `tabindex=0` on the element that will become focused as a result of the key event.
+  - Set focus with `element.focus()`, on the element that has `tabindex=0`.
+
+**Roving tabindex keyboard accessibility**
+
+- Pressing <kbd>↑</kbd> moves focus to the previous element if orientation is vertical or not defined.
+- Pressing <kbd>↓</kbd> moves focus to the next element if orientation is vertical or not defined.
+- Pressing <kbd>→</kbd> moves focus to the next element if orientation is horizontal or not defined.
+- Pressing <kbd>←</kbd> moves focus to the previous element if orientation is horizontal or not defined.
+- Pressing <kbd>Home</kbd> or <kbd>PageUp</kbd> moves focus to the first element.
+- Pressing <kbd>End</kbd> or <kbd>PageDown</kbd> moves focus to the last element.
+
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
 - Implementation cost, both in terms of code size and complexity.
