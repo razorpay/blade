@@ -1,5 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, Props, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Highlight } from '@storybook/design-system';
 import type { BaseTextProps } from './BaseText';
 import BaseTextComponent from './BaseText';
 
@@ -29,6 +30,8 @@ export default {
             by Title, Heading or Text typography components(eg: highlighting a word in the Title
             with gradients in a landing page).
           </Subtitle>
+          <Title>Usage</Title>
+          <Highlight language="tsx">{`import { BaseText } from '@razorpay/blade/components' \nimport type { BaseTextProps } from '@razorpay/blade/components'`}</Highlight>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>

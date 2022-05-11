@@ -1,5 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, Props, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Highlight, Link } from '@storybook/design-system';
 import type { TextProps } from './';
 import TextComponent from './';
 
@@ -24,6 +25,17 @@ const TextStoryMeta: Meta<TextProps<{ variant: 'body' | 'caption' }>> = {
             Title or Heading to display content in a hierarchical structure. It applies responsive
             styles automatically based on the device it is being rendered on.
           </Subtitle>
+          <Link
+            withArrow={true}
+            href="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139"
+            target="blank"
+          >
+            View in Figma
+          </Link>
+          <br />
+          <br />
+          <Title>Usage</Title>
+          <Highlight language="tsx">{`import { Text } from '@razorpay/blade/components' \nimport type { TextProps } from '@razorpay/blade/components'`}</Highlight>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>

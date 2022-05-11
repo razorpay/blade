@@ -7,6 +7,7 @@ import {
   Stories,
   PRIMARY_STORY,
 } from '@storybook/addon-docs';
+import { Highlight, Link } from '@storybook/design-system';
 import type { TitleProps } from './';
 import TitleComponent from './';
 
@@ -28,6 +29,17 @@ const TitleStoryMeta: Meta<TitleProps> = {
             main goal is visual storytelling. For example, use Title as marketing content on landing
             pages or to capture attention during onboarding.
           </Subtitle>
+          <Link
+            withArrow={true}
+            href="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147141"
+            target="blank"
+          >
+            View in Figma
+          </Link>
+          <br />
+          <br />
+          <StorybookTitle>Usage</StorybookTitle>
+          <Highlight language="tsx">{`import { Title } from '@razorpay/blade/components' \nimport type { TitleProps } from '@razorpay/blade/components'`}</Highlight>
           <StorybookTitle>Example</StorybookTitle>
           <Primary />
           <StorybookTitle>Properties</StorybookTitle>

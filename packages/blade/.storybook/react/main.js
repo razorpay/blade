@@ -1,4 +1,7 @@
 module.exports = {
+  refs: {
+    '@storybook/design-system': { disable: true },
+  },
   stories: [
     '../../docs/**/*.stories.mdx',
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',

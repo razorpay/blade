@@ -1,8 +1,10 @@
 import { theme } from './manager';
+import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components/BladeProvider';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
 
 let selectedTheme = 'Payment';
+const { GlobalStyle } = global;
 
 export const parameters = {
   previewTabs: {
@@ -40,13 +42,16 @@ export const decorators = [
     };
 
     return (
-      <BladeProvider
-        key={`${context.globals.themeTokens}-${context.globals.colorScheme}`}
-        themeTokens={getThemeTokens()}
-        colorScheme={context.globals.colorScheme}
-      >
-        <Story />
-      </BladeProvider>
+      <>
+        <GlobalStyle />
+        <BladeProvider
+          key={`${context.globals.themeTokens}-${context.globals.colorScheme}`}
+          themeTokens={getThemeTokens()}
+          colorScheme={context.globals.colorScheme}
+        >
+          <Story />
+        </BladeProvider>
+      </>
     );
   },
 ];
