@@ -52,7 +52,7 @@ For example:
 - **Auditory:**  
   Disabilities related to sound or audio.
 
-Other subcategories based on microsoft’s inclusive design:  
+Other subcategories based on [microsoft’s inclusive design](https://www.microsoft.com/design/inclusive):  
 
 - **Permanent or disability that does not go away:**:   
   - Example: Someone who is deaf
@@ -154,8 +154,39 @@ The goal of this RFC is to lay the foundations so that we can ship blade compone
 
 By baking in accessibility at the foundational level we will ensure our products are accessible to as many people as possible, and this includes people with disabilities.
 
-
 # Detailed Design
+
+## Scope 
+
+- Web
+  - Keyboard accessibility
+    - [General navigation](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_generalnav)
+    - [Navigation inside components](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_general_within)
+  - Focus management
+    - [Focus order](https://www.w3.org/WAI/WCAG21/Understanding/focus-order)
+    - [Focus trap](https://github.com/focus-trap/focus-trap)
+    - [Focus ring](https://react-spectrum.adobe.com/react-aria/FocusRing.html)
+    - [Focus zone / roving index](https://reakit.io/docs/composite/)
+  - Screen reader support
+    - Cross platform solution to aria attributes
+    - Implement WAI-ARIA [design patterns](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion)
+- Native
+  - Focus management
+    - [Focus trap](https://github.com/focus-trap/focus-trap)
+  - Screen reader support
+    - Cross platform solution to aria attributes
+    - Implement WAI-ARIA [design patterns](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion)
+- A11y testing
+    - Static analysis
+    - Jest unit tests
+    - Manual testing
+- Guidelines
+  - General web accessibility guidelines
+
+## Out of scope
+
+- [Motion](https://github.com/razorpay/blade/blob/master/rfcs/2022-03-22-motion-rfc.md)  
+  We will pick up motion accessibility at a later point, we are first prioritizing foundations.
 
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
