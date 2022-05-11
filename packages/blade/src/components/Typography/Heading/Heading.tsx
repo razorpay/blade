@@ -48,25 +48,27 @@ const getProps = <T extends { variant: 'small' | 'medium' | 'large' | 'subheadin
     fontFamily: 'text',
   };
 
+  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
+
   if (variant === 'small') {
     props.fontSize = 200;
     props.lineHeight = 'xl';
-    props.as = getPlatformType() === 'browser' || getPlatformType() === 'node' ? 'h6' : undefined;
+    props.as = isPlatformWeb ? 'h6' : undefined;
   } else if (variant === 'medium') {
     props.fontSize = 300;
     props.lineHeight = '2xl';
-    props.as = getPlatformType() === 'browser' || getPlatformType() === 'node' ? 'h5' : undefined;
+    props.as = isPlatformWeb ? 'h5' : undefined;
   } else if (variant === 'large') {
     props.fontSize = 400;
     props.lineHeight = '2xl';
-    props.as = getPlatformType() === 'browser' || getPlatformType() === 'node' ? 'h4' : undefined;
+    props.as = isPlatformWeb ? 'h4' : undefined;
   } else if (variant === 'subheading') {
     if (weight === 'regular') {
       throw new Error(`[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`);
     }
     props.fontSize = 75;
     props.lineHeight = 'm';
-    props.as = getPlatformType() === 'browser' || getPlatformType() === 'node' ? 'h6' : undefined;
+    props.as = isPlatformWeb ? 'h6' : undefined;
   }
 
   return props;
@@ -78,7 +80,7 @@ const Heading = <T extends { variant: 'small' | 'medium' | 'large' | 'subheading
   weight,
   children,
 }: HeadingProps<T>): ReactElement => {
-  const props = getProps<T>({ variant, type, weight });
+  const props = getProps({ variant, type, weight });
   return <BaseText {...props}>{children}</BaseText>;
 };
 
