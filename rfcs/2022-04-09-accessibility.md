@@ -25,6 +25,46 @@ Blade Issue: (leave this empty if no issue yet)
 Accessibility is the practice of making websites usable by people of all abilities and disabilities.   
 This includes people with visual, auditory, physical, and cognitive impairments, as well as those with temporary disabilities such as broken bones, color blindness, and temporary loss of vision, but the practice of making sites accessible also benefits other groups such as people using mobile phones, people with temporary disabilities, situational limitations.
 
+## Accessibility for who? 
+
+Accessibility is essential for some, useful for all.  
+It's not just for people with disabilities, accessible websites also improve the user experience of normal users. 
+
+For example:  
+
+- Prodiving captions for a video can benefit users who watch videos in loud environments or in a library. 
+- Sufficient color contrast is good for different lighting conditions and people with visual impairments.
+- Older people with changing abilities due to ageing can benefit from accessible experiences. 
+- Good layouts and design helps users with cognitive disabilities but also people who are unconfident with technology or old aged people.
+- Large buttons and links helps people with reduced dexterity but also improves user experience of mobile devices.
+- Ensuring keyboard accessibility helps people with temporary/permanent mobility but also improves experience for normal users by providing better user experience for components like Select or Modals. 
+
+> Check out this youtube [video about Web Accessibility Perspectives](https://www.youtube.com/watch?v=3f31oufqFSM) by W3C for more details about how accessibility can help wide range of people with or without disabilities.
+
+## Various types disabilities
+
+- **Visual:**  
+  Anything that deals with sight, eg: people who have different types of sight like color blindness.
+- **Cognitive:**  
+  Concentration, memory, judgment, problem solving, logic skills.
+- **Mobility:**  
+  Anything that affects movement in a body.
+- **Auditory:**  
+  Disabilities related to sound or audio.
+
+Other subcategories based on microsoft’s inclusive design:  
+
+- **Permanent or disability that does not go away:**:   
+  - Example: Someone who is deaf
+- **Temporary, disability that will go away in time:**: 
+  - Example: Someone who has an ear infection
+- **Situational, Context based disabilities:**: 
+  - Example: Someone who is at a loud sporting event
+  - Example: Using the web app in bright sunlight
+  - Example: Using your phone one handedly in a crowded metro station
+
+<img src="./images/accessibility/ms-inclusive-design.png" alt="Microsoft Inclusive Design Shows Spectrum Of Disabilities" width="25%" />
+
 ## Accessibility Principles
 
 According to [Web Content Accessibility Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/) or WCAG, Web contents should be: 
@@ -54,31 +94,6 @@ According to [Web Content Accessibility Guidelines](https://www.w3.org/WAI/stand
 
 - Maximize compatibility with current and future user tools.
 
-
-## Various types disabilities
-
-- **Visual:**  
-  Anything that deals with sight, eg: people who have different types of sight like color blindness.
-- **Cognitive:**  
-  Concentration, memory, judgment, problem solving, logic skills.
-- **Mobility:**  
-  Anything that affects movement in a body.
-- **Auditory:**  
-  Disabilities related to sound or audio.
-
-Other subcategories based on microsoft’s inclusive design:  
-
-- **Permanent or disability that does not go away:**:   
-  - Example: Someone who is deaf
-- **Temporary, disability that will go away in time:**: 
-  - Example: Someone who has an ear infection
-- **Situational, Context based disabilities:**: 
-  - Example: Someone who is at a loud sporting event
-  - Example: Using the web app in bright sunlight
-  - Example: Using your phone one handedly in a crowded metro station
-
-<img src="./images/accessibility/ms-inclusive-design.png" alt="Microsoft Inclusive Design Shows Spectrum Of Disabilities" width="25%" />
-
 # Motivation
 - Why are we doing this?
 - What use cases does it support?
@@ -91,6 +106,8 @@ Without proper accessibility, certain functionality used in web sites is not ava
 Making our products accessible is important for two reasons.  
 - it's the right thing to do. We believe that everyone deserves to be able to use our products, regardless of their abilities.
 - It'll help build trust with our customers. By making our products accessible, we can expand our potential customer base and make our products more appealing to a wider range of people. 
+
+> [The Business Case Study for Accessibility](https://www.w3.org/WAI/business-case/)
 
 **Making customers happy & respecting human rights:**  
 
