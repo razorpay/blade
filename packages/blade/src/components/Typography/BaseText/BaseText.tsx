@@ -26,7 +26,7 @@ export type BaseTextProps = {
   textAlign?: 'center' | 'justify' | 'left' | 'right';
   truncateAfterLines?: number;
   className?: string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
 const BaseText = ({
