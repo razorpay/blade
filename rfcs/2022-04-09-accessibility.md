@@ -205,6 +205,7 @@ For a web page to be accessible, all interactive elements must be operable via t
 - [Composite widgets](https://www.w3.org/TR/wai-aria-1.2/#composite)
   - [Roving tabindex pattern](https://www.w3.org/TR/wai-aria-practices/#kbd_roving_tabindex)
   - [aria-activedescendant pattern (skipped in implementation)](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_focus_activedescendant)
+- [Manual testing](#manual-testing)
 
 ## Keyboard tab order
 
@@ -322,6 +323,82 @@ The element that is to be included in the tab sequence has tabindex of "0" and a
 - Pressing <kbd>←</kbd> moves focus to the previous element if orientation is horizontal or not defined.
 - Pressing <kbd>Home</kbd> or <kbd>PageUp</kbd> moves focus to the first element.
 - Pressing <kbd>End</kbd> or <kbd>PageDown</kbd> moves focus to the last element.
+
+## Implementations
+
+There are various third party library implementations for roving tabindex pattern. 
+
+We tried out 3 of them to understand the pros and cons for each: 
+
+- [FluentUI](#fluentui)
+- React Aria
+- Ariakit
+
+### FluentUI
+
+[Demo](https://codesandbox.io/s/blade-comp-fluentui-focuszone-0sjyv1?file=/src/App.tsx) | [Doc](https://developer.microsoft.com/en-us/fluentui#/controls/web/focuszone)
+
+**Bundle size:** ~12kb
+
+**Pros:**
+- Easy to use
+- Handles roving index by default
+- Can handle nested focus zones 
+- Provides tabbable focus, means we can enable use of tab + arrow keys
+- Support layout grid behavior (we might not need this)
+
+**Cons:**
+- Not much flexibility to write our own logic, doesn’t provide any focus manager
+- Doesn’t provide any other utilities like focus trap, we need to install another package for it `@fluentui/react/lib/focusZoneTrap`
+- FluentUI’s architecture is very complex & confusing because of their need to be cross platform, If we pick this up we might not be able to use their other components to our advantage. Plus their components are not headless.
+
+### ReactAria
+
+[Demo](https://codesandbox.io/s/blade-comp-react-aria-focus-2v9wtp?file=/src/App.tsx) | [Doc](https://react-spectrum.adobe.com/react-aria/FocusScope.html)
+
+**Bundle size:** ~12kb
+
+ReactAria’s behavior is very different from fluentui, it’s FocusScope doesn’t provide roving index behavior instead it’s like a focus trap. Which is equivalent to FluentUI’s FocusTrapZone
+
+Although ReactAria does provides low level primitives to manage focus like `useFocusManager`
+
+**Pros:**  
+- Provides other helpful features with it’s focus package, which makes it worth the bundle size compared to other solutions, with other libs we will have to look for alternatives for focus ring
+  - [FocusScope](https://react-spectrum.adobe.com/react-aria/FocusRing.html)
+  - [FocusRing](https://react-spectrum.adobe.com/react-aria/FocusRing.html)
+  - [useFocusRing](https://react-spectrum.adobe.com/react-aria/useFocusRing.html)
+- Provides low level primitives for building roving index like behaviors, eg: useFocusManager, getFocusableTreeWalker, createFocusManager
+- Picking react aria will also encourage use of react-native-aria & the eco system of react aria. 
+
+**Cons:**  
+- Doesn’t provide roving index behavior by default
+- A lot of manual logic and code has to be written to implement a proper Roving index component which handles edge cases, 
+- The implementation in the codesandbox has various bugs & edge cases, for eg: initially the elements don't have tabIndex set, these kinds of edge cases we need to solve for.
+
+### Ariakit / Reakit
+
+[Demo](https://codesandbox.io/s/blade-comp-ariakit-composite-ewc9i4?file=/src/App.tsx) | [Doc](https://reakit.io/docs/composite/)
+
+Ariakit is the only out of the three which properly implements the composite widget specification. 
+It even supports virtual focus with aria-activedescendant. It’s the most complete implementation. 
+
+**Bundle size:** ~15kb tree shakable depending on which features we use
+
+**Pros:**  
+- Easy to use
+- Most spec compliant and holistic implementation
+- Very flexible with its hooks based architecture. Composition is ariakit’s best selling point
+- Lots of other features, like [composite groups, typeahead, input, hover, separator](https://github.com/ariakit/ariakit/tree/main/packages/ariakit/src/composite)
+- [Supports 2d navigation](https://reakit.io/docs/composite/#two-dimensional-navigation) same as FluentUI
+- Support virtual focus + roving index. ++respect! 
+- Ariakit also provides primitives and utilities like useFocusTrap & useFocusable, although they will increase the bundle size further
+
+**Cons:**  
+- The biggest issue with ariakit is that it’s not stable yet :(  
+  So ariakit is the successor to reakit, Haz has been developing it for over 4 years now.  
+  But as the doc says ariakit is better but still the API is not stable and can have breaking changes
+- The new version of ariakit lacks documentation
+- No separate package scope for their focus utilities, we will have to rely on treeshaking to be able to shave all other unnecessary components. 
 
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
