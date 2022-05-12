@@ -400,6 +400,23 @@ It even supports virtual focus with aria-activedescendant. It’s the most compl
 - The new version of ariakit lacks documentation
 - No separate package scope for their focus utilities, we will have to rely on treeshaking to be able to shave all other unnecessary components. 
 
+## Manual Testing
+
+To make sure all functionality can be operated through a keyboard or assistive technology we need to do manual testing, This can also be automated but generally it's better to do one round of manual testing.
+
+Checklist: 
+
+- Do all the interactive elements in the page are: 
+  - Navigatable through keyboard? ([Success Criterion](https://www.w3.org/WAI/WCAG21/Techniques/general/G202))
+  - Actions can be triggered by keyboard? ([Failure of Success Criterion](https://www.w3.org/WAI/WCAG21/Techniques/failures/F54.html))
+  - Remains focused until user moves it? ([Failure of Success Criterion](https://www.w3.org/WAI/WCAG21/Techniques/failures/F55.html))
+- Does the tab order match the logical reading order of the page? ([Failure of Success Criterion](https://www.w3.org/WAI/WCAG21/Techniques/failures/F44.html))
+- Focus visible ([Failure Of Success Criterion](https://www.w3.org/WAI/WCAG21/Techniques/failures/F78.html))
+  - Do all keyboard interactive elements display visual keyboard focus?
+  - Is the visual keyboard focus easy to identify?
+- During the navigation, are there any instances when you become trapped in an element? ([Failure of Success Criterion](https://www.w3.org/WAI/WCAG21/Techniques/failures/F10.html))
+- Make sure hidden popuops or titles are accessible through keyboard. 
+
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
 - Implementation cost, both in terms of code size and complexity.
