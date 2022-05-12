@@ -41,7 +41,7 @@ const Page = (): ReactElement => {
         We provide a bunch of icons out-of-the-box for Blade in 6 different sizes. You can choose
         which size & color fits the best for your use case using the color & size props.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="blank">
+      <Link withArrow={true} href={figmaURL} target="_blank">
         View in Figma
       </Link>
       <br />

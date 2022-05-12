@@ -39,7 +39,7 @@ const Page = (): ReactElement => {
         goal is visual storytelling. For example, use Title as marketing content on landing pages or
         to capture attention during onboarding.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="blank">
+      <Link withArrow={true} href={figmaURL} target="_blank">
         View in Figma
       </Link>
       <br />
