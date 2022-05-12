@@ -3,7 +3,7 @@ import type { TextTypes } from '../../../tokens/theme/theme';
 import getPlatformType from '../../../utils/getPlatformType';
 import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
-import type { BaseTextProps } from '../BaseText/BaseText';
+import type { BaseTextProps } from '../BaseText';
 
 type HeadingCommonProps = {
   type: TextTypes;

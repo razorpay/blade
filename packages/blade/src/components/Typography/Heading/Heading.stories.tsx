@@ -1,16 +1,9 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import {
-  Title as StorybookTitle,
-  Subtitle,
-  Primary,
-  Props,
-  Stories,
-  PRIMARY_STORY,
-} from '@storybook/addon-docs';
+import { Title, Subtitle, Primary, Props, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { HeadingProps } from './';
 import HeadingComponent from './';
 
-const TitleStoryMeta: Meta<
+const HeadingStoryMeta: Meta<
   HeadingProps<{ variant: 'small' | 'medium' | 'large' | 'subheading' }>
 > = {
   title: 'Components/Typography/Heading',
@@ -25,13 +18,13 @@ const TitleStoryMeta: Meta<
     docs: {
       page: () => (
         <>
-          <StorybookTitle />
+          <Title />
           <Subtitle>
-            The Heading Component is usually used as titles of each major section of a page.
+            The Heading Component is usually used for headings of each major section of a page.
           </Subtitle>
-          <StorybookTitle>Example</StorybookTitle>
+          <Title>Example</Title>
           <Primary />
-          <StorybookTitle>Properties</StorybookTitle>
+          <Title>Properties</Title>
           <Props story={PRIMARY_STORY} />
           <Stories />
         </>
@@ -40,9 +33,9 @@ const TitleStoryMeta: Meta<
   },
 };
 
-const TitleTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
+const HeadingTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
   return <HeadingComponent {...args}>{args.children}</HeadingComponent>;
 };
 
-export default TitleStoryMeta;
-export const Heading = TitleTemplate.bind({});
+export default HeadingStoryMeta;
+export const Heading = HeadingTemplate.bind({});
