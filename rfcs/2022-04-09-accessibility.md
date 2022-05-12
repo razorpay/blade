@@ -190,6 +190,8 @@ By baking in accessibility at the foundational level we will ensure our products
 
 ## Keyboard Accessibility
 
+> [Specification](https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html)
+
 **Target:** Everyone and especially people with motor disabilities who use a keyboard to navigate.  
 **Goal:** Ensure users who cannot use the mouse (blind, motor disabilities) can access the crucial parts of the app through keyboard.  
 
@@ -197,10 +199,25 @@ For a web page to be accessible, all interactive elements must be operable via t
 
 ### Areas to cover
 
+- [Keyboard tab order](https://html.spec.whatwg.org/multipage/interaction.html#sequential-focus-navigation-order)
 - [Using tabindex](https://html.spec.whatwg.org/multipage/interaction.html#the-tabindex-attribute)
+- [Skip navigation](https://html.spec.whatwg.org/multipage/interaction.html#the-tabindex-attribute)
 - [Composite widgets](https://www.w3.org/TR/wai-aria-1.2/#composite)
   - [Roving tabindex pattern](https://www.w3.org/TR/wai-aria-practices/#kbd_roving_tabindex)
   - [aria-activedescendant pattern (skipped in implementation)](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_focus_activedescendant)
+
+## Keyboard tab order
+
+> [Specification](https://www.w3.org/WAI/WCAG21/quickref/#focus-order)
+
+Tab order is important for proper navigation through a keyboard interface. 
+The tab order of the page must be logical and follow the visual order of elements on the page.
+
+**Best practices for logical tab order:**
+
+- Structure html so that the reading/navigation [order is correct](https://www.w3.org/WAI/WCAG21/Techniques/css/C27).
+- If necessary, use CSS to control the visual presentation of the elements on the page.
+- [Avoid using tabindex](https://www.w3.org/WAI/WCAG21/Techniques/failures/F44) values of 1 or greater to change the default keyboard navigation order.
 
 ## Using tabindex
 
@@ -214,14 +231,56 @@ When set to `-1`, the element becomes focusable programatically, but it does not
 The following table describes tabindex behavior in modern browsers:
 
 | tabindex attribute |	Focusable with mouse or programatically |	Tab navigable |
-| :--: | :--: | :--: |
+| :-- | :-- | :-- |
 | not present	| The user agent will decide | The user agent will decide |
 | Negative (tabindex="-1")	| Yes | No, can only be focused programatically |
 | Zero (tabindex="0") | Yes | Yes, In tab order relative to element's position in document | 
 | Positive (tabindex="2") | Yes | Yes, tabindex value determines where this element is positioned in the tab order | 
 
-> Warning: avoid using positive values for tabindex. Using positive values means authors will have to set (and maintain) tabindex values for all focusable elements on the page whenever they use one or more positive values for tabindex.
+> Warning: avoid using positive values for tabindex. Using positive values means authors will have to set (and maintain) tabindex values for all focusable elements on the page whenever they use one or more positive values for tabindex.  
 
+> *[Failure of Success Criterion 2.4.3](https://www.w3.org/WAI/WCAG21/Techniques/failures/F44) due to using tabindex to create a tab order that does not preserve meaning and operability*
+
+
+## Skip navigations
+
+> [Specification](https://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1)
+
+A skip navigation link provides a way for keyboard and screen reader users to skip to main content of a webpage.  
+Without skip links, keyboard and screen reader users must navigate a long list of navigation links and other elements before ever arriving at the main content, This can be particularly difficult for users with some forms of motor disabilities.
+
+**Temporarily hidden skip links**
+
+Most common type of skip links are which that is hidden until the user navigates to it with a keyboard.
+
+The link must be:
+
+- Hidden by default
+- Accessible to keyboard navigation
+- Visible when it is focused
+- Set focus to the main content area when activated
+
+### Implementations
+
+Skip nav implementations are fairly simple: 
+
+> [Live Demo](https://stackblitz.com/edit/react-ts-nnnymu?file=App.tsx)
+
+```html
+<body>
+  <a class='skip-link' href='#main-content'>
+    Skip Navigation or Skip to Content
+  </a>
+  <main id='main-content'>
+    Content here
+  </main>
+</body>
+```
+
+The `skip-link` class here is a screen reader only [visually hidden](https://webaim.org/techniques/css/invisiblecontent/) class, which is only accessible through screen readers. By using the `:focus` pesudo class it becomes visible when focused.
+
+- [ReachUI SkipNav](https://reach.tech/skip-nav/)
+- [ChakraUI SkipNav](https://chakra-ui.com/docs/components/navigation/skip-nav)
 
 ## Composite widgets
 
