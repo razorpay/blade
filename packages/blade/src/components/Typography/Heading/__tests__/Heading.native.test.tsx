@@ -28,7 +28,7 @@ describe('<Heading />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "subheading" and weight "bold"', () => {
+  it('should render Heading with variant "large"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
       <Heading type="subdued" variant="large" weight="regular">
@@ -39,10 +39,10 @@ describe('<Heading />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "large"', () => {
+  it('should render Heading with variant "subheading" and weight "bold"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading type="subdued" variant="large" weight="regular">
+      <Heading type="subdued" variant="subheading" weight="bold">
         {displayText}
       </Heading>,
     );

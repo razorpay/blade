@@ -1,12 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import {
-  Title as StorybookTitle,
-  Subtitle,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-} from '@storybook/addon-docs';
+import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import useMakeFigmaURL from '../../../_helpers/storybook/useMakeFigmaURL';
@@ -33,7 +26,7 @@ const Page = (): ReactElement => {
 
   return (
     <>
-      <StorybookTitle />
+      <Title />
       <Subtitle>
         The Heading Component is usually used as titles of each major section of a page.
       </Subtitle>
@@ -42,18 +35,18 @@ const Page = (): ReactElement => {
       </Link>
       <br />
       <br />
-      <StorybookTitle>Usage</StorybookTitle>
+      <Title>Usage</Title>
       <Highlight language="tsx">{`import { Heading } from '@razorpay/blade/components' \nimport type { HeadingProps } from '@razorpay/blade/components'`}</Highlight>
-      <StorybookTitle>Example</StorybookTitle>
+      <Title>Example</Title>
       <Primary />
-      <StorybookTitle>Properties</StorybookTitle>
+      <Title>Properties</Title>
       <ArgsTable story={PRIMARY_STORY} />
       <Stories />
     </>
   );
 };
 
-const TitleStoryMeta: Meta<
+const HeadingStoryMeta: Meta<
   HeadingProps<{ variant: 'small' | 'medium' | 'large' | 'subheading' }>
 > = {
   title: 'Components/Typography/Heading',
@@ -71,9 +64,9 @@ const TitleStoryMeta: Meta<
   },
 };
 
-const TitleTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
+const HeadingTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
   return <HeadingComponent {...args}>{args.children}</HeadingComponent>;
 };
 
-export default TitleStoryMeta;
-export const Heading = TitleTemplate.bind({});
+export default HeadingStoryMeta;
+export const Heading = HeadingTemplate.bind({});
