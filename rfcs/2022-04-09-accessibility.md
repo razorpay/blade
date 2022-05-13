@@ -162,11 +162,11 @@ By baking in accessibility at the foundational level we will ensure our products
   - Keyboard accessibility
     - [General navigation](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_generalnav)
     - [Navigation inside components](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_general_within)
+      - [Roving index](https://reakit.io/docs/composite/)
   - Focus management
     - [Focus order](https://www.w3.org/WAI/WCAG21/Understanding/focus-order)
     - [Focus trap](https://github.com/focus-trap/focus-trap)
     - [Focus ring](https://react-spectrum.adobe.com/react-aria/FocusRing.html)
-    - [Focus zone / roving index](https://reakit.io/docs/composite/)
   - Screen reader support
     - Cross platform solution to aria attributes
     - Implement WAI-ARIA [design patterns](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion)
@@ -188,7 +188,7 @@ By baking in accessibility at the foundational level we will ensure our products
 - [Motion](https://github.com/razorpay/blade/blob/master/rfcs/2022-03-22-motion-rfc.md)  
   We will pick up motion accessibility at a later point, we are first prioritizing foundations.
 
-## Keyboard Accessibility
+# Keyboard Accessibility
 
 > [Specification](https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html)
 
@@ -350,6 +350,75 @@ Checklist:
   - Is the visual keyboard focus easy to identify?
 - During the navigation, are there any instances when you become trapped in an element? ([Failure of Success Criterion](https://www.w3.org/WAI/WCAG21/Techniques/failures/F10.html))
 - Make sure hidden popuops or titles are accessible through keyboard. 
+
+# Focus management
+
+> Specification
+
+**Target:** Everyone and especially people with visual impairments or cognitive limitations, motor disabilities.  
+**Goal:** Setting guidelines for general focus behaviours & Providing screen reader & keyboard users a smooth experience by managing focus behavior for certain elements like Modals/Page transition etc. 
+
+Well-planned focus management is important to ensuring a comfortable user experience & to guide the user through the intended flow of the app.
+
+Focus management goes hand in hand with keyboard accessibility, so there will be interoperability between the two. 
+
+### Areas to cover
+
+- [Focus order](#keyboard-tab-order)
+- [Focus ring styling](#focus-ring-styling)
+- Focus traps
+- Focus restoration
+- Page transitions
+
+## Focus order
+
+Focus order or tab order we already covered in [keyboard tab order section](#keyboard-tab-order)
+
+## Focus ring styling
+
+The focus ring must be visible to all users, 
+By default, the browser uses the user agent specific focus styling. But this behaviour can be overriden with CSS. 
+
+Best practices for focus styling:
+
+- Provide focus styles that are highly visible.
+- Make sure that a visible element has focus at all times when using a keyboard.
+- Avoid using `*:focus { outline: none }` snippet to hide focus
+- Design focus rings such that it has proper contrast
+
+> Not providing visible focus ring is [Failure of Success Criterion 2.4.7](https://www.w3.org/WAI/WCAG21/Techniques/failures/F78)
+
+**Keyboard only focus rings**
+
+While focus indicators are neccesary,  
+Mouse clicks also changes the focus, for example clicking on a button also makes the focus ring visible.  
+
+This behavior can be undesirable from design perspective, preferring focus styling to only be present only if a keyboard is used can be a solution. 
+
+<img width="90%" src="./images/accessibility/focus-visible-demo.gif" alt="Demo of focus visible css pesudo class, showing two buttons and comparing the results" />
+
+**Implementations**
+
+- CSS
+- ReactAria
+
+**CSS:**  
+
+> [Demo](https://codesandbox.io/s/blade-a11y-css-focus-ring-051xff?file=/src/App.tsx)
+
+CSS provides us with a pesudo class called [`:focus-visible`](https://css-tricks.com/keyboard-only-focus-styles). Browser support for focus-visible is [good enough.](https://caniuse.com/?search=%3Afocus-visible).  
+And we can also use the [official pollyfill](https://github.com/WICG/focus-visible) for older browsers.
+
+
+**ReactAria:**  
+
+> [Demo](https://codesandbox.io/s/blade-a11y-reactaria-focus-ring-hc3cub?file=/src/App.tsx)
+
+ReactAria provides a [FocusRing](https://react-spectrum.adobe.com/react-aria/FocusRing.html) component which solves this. 
+
+While this works great, this solution can be a bit overkill since react aria does this all with javascript and have it's own event handling system.  
+I think it will be better and easier if we `use the platform™` 
+
 
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
