@@ -1,8 +1,9 @@
 import { theme } from './manager';
+import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components/BladeProvider';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
 
-let selectedTheme = 'Payment';
+const { GlobalStyle } = global;
 
 export const parameters = {
   previewTabs: {
@@ -31,28 +32,30 @@ export const parameters = {
 export const decorators = [
   (Story, context) => {
     const getThemeTokens = () => {
-      if (context.globals.themeTokens === 'paymentTheme') {
+      if (context.globals.themeTokenName === 'paymentTheme') {
         return paymentTheme;
       }
-      if (context.globals.themeTokens === 'bankingTheme') {
+      if (context.globals.themeTokenName === 'bankingTheme') {
         return bankingTheme;
       }
     };
-
     return (
-      <BladeProvider
-        key={`${context.globals.themeTokens}-${context.globals.colorScheme}`}
-        themeTokens={getThemeTokens()}
-        colorScheme={context.globals.colorScheme}
-      >
-        <Story />
-      </BladeProvider>
+      <>
+        <GlobalStyle />
+        <BladeProvider
+          key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
+          themeTokens={getThemeTokens()}
+          colorScheme={context.globals.colorScheme}
+        >
+          <Story />
+        </BladeProvider>
+      </>
     );
   },
 ];
 
 export const globalTypes = {
-  themeTokens: {
+  themeTokenName: {
     name: 'Theme Tokens',
     description: 'Theme Tokens for Blade',
     defaultValue: 'paymentTheme',
