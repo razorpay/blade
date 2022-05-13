@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> should render Heading with variant "large" 1`] = `
+<div>
+  <h4
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 egqXbC"
+    color="hsla(217, 18%, 45%, 1)"
+    font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+    font-size="1.25rem"
+    font-style="normal"
+    font-weight="400"
+  >
+    Get Started With Payment Gateway
+  </h4>
+</div>
+`;
+
+exports[`<Heading /> should render Heading with variant "medium" 1`] = `
+<div>
+  <h5
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 ibYlsH"
+    color="hsla(216, 16%, 60%, 1)"
+    font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+    font-size="1.125rem"
+    font-style="normal"
+    font-weight="400"
+  >
+    Get Started With Payment Gateway
+  </h5>
+</div>
+`;
+
+exports[`<Heading /> should render Heading with variant "small" 1`] = `
+<div>
+  <h6
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 dgLrQm"
+    color="hsla(217, 56%, 17%, 1)"
+    font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+    font-size="1rem"
+    font-style="normal"
+    font-weight="400"
+  >
+    Get Started With Payment Gateway
+  </h6>
+</div>
+`;
+
+exports[`<Heading /> should render Heading with variant "subheading" and weight "bold" 1`] = `
+<div>
+  <h6
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 kKEluK"
+    color="hsla(217, 18%, 45%, 1)"
+    font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+    font-size="0.75rem"
+    font-style="normal"
+    font-weight="700"
+  >
+    Get Started With Payment Gateway
+  </h6>
+</div>
+`;

@@ -56,6 +56,12 @@ The APIs for all the above component will look something like below
   </Heading>
   ```
 
+We decided to call the prop `variant` instead of `size` since `size` restricts you to a unit of "size" whereas variant is a free form prop that can be actually a variant of something so it conveys intent.
+
+We have other variants for other typography components like `caption`, `normal` for `Text`.
+
+Another option would be having a `size` prop that would lead us to have a "large subheading" which is a combination we never want to support. Even though `variant` doesn't seem very familiar when we see `small`, `medium`, `large` it allows us to add constraints to ensure "large subheading" never happens.
+
 - `Text`
 
   This component is the one that we'll use to render normal text on the screen(a.k.a as paragraphs or body text)
