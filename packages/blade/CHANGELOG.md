@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.6.0
+
+### Minor Changes
+
+- e352eef: fix(blade): add `Heading` component
+
 ## 0.5.0
 
 ### Minor Changes
