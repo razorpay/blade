@@ -9,7 +9,7 @@ import type { BaseTextProps } from '../BaseText/BaseText';
 type TextCommonProps = {
   type: TextTypes;
   truncateAfterLines?: number;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
 type TextBodyVariant = TextCommonProps & {
@@ -44,8 +44,9 @@ const getProps = <T extends { variant: 'body' | 'caption' }>({
   variant,
   type,
   weight,
-}: Pick<TextProps<T>, 'type' | 'variant' | 'weight'>): BaseTextProps & TextForwardedAs => {
-  const props: BaseTextProps & TextForwardedAs = {
+}: Pick<TextProps<T>, 'type' | 'variant' | 'weight'>): Omit<BaseTextProps, 'children'> &
+  TextForwardedAs => {
+  const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     color: `surface.text.${type}.lowContrast`,
     fontSize: 25,
     fontWeight: weight,
@@ -95,7 +96,7 @@ const Text = <T extends { variant: 'body' | 'caption' }>({
   truncateAfterLines,
   children,
 }: TextProps<T>): ReactElement => {
-  const props: BaseTextProps & TextForwardedAs = {
+  const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
     ...getProps({ variant, type, weight }),
   };

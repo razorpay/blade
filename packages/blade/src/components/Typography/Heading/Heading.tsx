@@ -7,7 +7,7 @@ import type { BaseTextProps } from '../BaseText';
 
 type HeadingCommonProps = {
   type: TextTypes;
-  children?: React.ReactNode;
+  children: string;
 };
 
 type HeadingNormalVariant = HeadingCommonProps & {
@@ -38,8 +38,8 @@ const getProps = <T extends { variant: 'small' | 'medium' | 'large' | 'subheadin
   variant,
   type,
   weight,
-}: Pick<HeadingProps<T>, 'variant' | 'type' | 'weight'>): BaseTextProps => {
-  const props: BaseTextProps = {
+}: Pick<HeadingProps<T>, 'variant' | 'type' | 'weight'>): Omit<BaseTextProps, 'children'> => {
+  const props: Omit<BaseTextProps, 'children'> = {
     color: `surface.text.${type}.lowContrast`,
     fontSize: 25,
     fontWeight: weight,

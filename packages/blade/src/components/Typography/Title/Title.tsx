@@ -7,11 +7,14 @@ import type { BaseTextProps } from '../BaseText/BaseText';
 export type TitleProps = {
   variant: 'large' | 'medium' | 'small';
   type: TextTypes;
-  children?: React.ReactNode;
+  children: string;
 };
 
-const getProps = ({ variant, type }: TitleProps): BaseTextProps => {
-  const props: BaseTextProps = {
+const getProps = ({
+  variant,
+  type,
+}: Pick<TitleProps, 'variant' | 'type'>): Omit<BaseTextProps, 'children'> => {
+  const props: Omit<BaseTextProps, 'children'> = {
     color: `surface.text.${type}.lowContrast`,
     fontSize: 25,
     fontWeight: 'bold',

@@ -9,14 +9,16 @@ export default {
   args: {
     color: 'surface.text.normal.lowContrast',
     fontFamily: 'text',
-    fontSize: 700,
+    fontSize: 200,
     fontWeight: 'regular',
     fontStyle: 'normal',
     textAlign: 'left',
     textDecorationLine: 'none',
-    lineHeight: '5xl',
+    lineHeight: 'l',
     name: 'Storybook',
-    children: 'Base Text',
+    as: 'span',
+    children:
+      'Current Accounts supercharged by RazorpayX come with integrated tools and integrations that make financial management and accounting simple',
   },
   parameters: {
     docs: {
