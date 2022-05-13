@@ -28,7 +28,7 @@ const Page = (): ReactElement => {
     <>
       <Title />
       <Subtitle>
-        The Heading Component is usually used as titles of each major section of a page.
+        The Heading Component is usually used for headings of each major section of a page.
       </Subtitle>
       <Link withArrow={true} href={figmaURL} target="_blank">
         View in Figma
