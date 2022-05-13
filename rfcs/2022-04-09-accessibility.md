@@ -395,7 +395,7 @@ Mouse clicks also changes the focus, for example clicking on a button also makes
 
 This behavior can be undesirable from design perspective, preferring focus styling to only be present only if a keyboard is used can be a solution. 
 
-<img width="90%" src="./images/accessibility/focus-visible-demo.gif" alt="Demo of focus visible css pesudo class, showing two buttons and comparing the results" />
+<img width="45%" src="./images/accessibility/focus-visible-demo.gif" alt="Demo of focus visible css pesudo class, showing two buttons and comparing the results" />
 
 **Implementations**
 
