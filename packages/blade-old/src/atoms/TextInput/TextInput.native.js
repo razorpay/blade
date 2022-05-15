@@ -203,7 +203,6 @@ const TextInput = React.forwardRef(
   ) => {
     const theme = useTheme();
     const [isFocused, setIsFocused] = useState(false);
-    const [input, setInput] = useState(value || '');
     // Used for storing layout value of TextInput
     const [layoutDimensions, setLayoutDimensions] = useState(null);
     // Used to hide placeholder while label is inside the TextInput
@@ -232,7 +231,7 @@ const TextInput = React.forwardRef(
       throw Error('Cannot have a left label on an outlined Text Input');
     }
 
-    const hasText = !!(input && input.length > 0);
+    const hasText = !!(value && value.length > 0);
     const onTextInputFocus = useCallback(() => {
       setIsFocused(true);
       onFocus();
@@ -254,18 +253,6 @@ const TextInput = React.forwardRef(
       [onBlur],
     );
 
-    const onChangeText = useCallback(
-      (text) => {
-        // Store entered value in state
-        setInput(text);
-        if (onChange) {
-          // Send entered value to the consumer
-          onChange(text);
-        }
-      },
-      [onChange, setInput],
-    );
-
     const onTextInputLayout = useCallback(
       ({ nativeEvent }) => {
         const { layout } = nativeEvent;
@@ -274,12 +261,6 @@ const TextInput = React.forwardRef(
       },
       [layoutDimensions, setLayoutDimensions],
     );
-
-    useEffect(() => {
-      if (isDefined(value)) {
-        setInput(value);
-      }
-    }, [value]);
 
     if (!isEmpty(prefix) && !isEmpty(iconLeft)) {
       throw Error('Cannot have prefix and left icon together');
@@ -395,7 +376,7 @@ const TextInput = React.forwardRef(
                                   placeholderTextColor={placeholderTextColor}
                                   onFocus={onTextInputFocus}
                                   onBlur={onTextInputBlur}
-                                  onChangeText={onChangeText}
+                                  onChangeText={onChange}
                                   hasText={hasText}
                                   selectionColor={theme.colors.shade[980]} // not able to change this for Android
                                   editable={!disabled}
@@ -405,7 +386,7 @@ const TextInput = React.forwardRef(
                                   hasLeftIcon={hasLeftIcon}
                                   maxLength={maxLength}
                                   onLayout={onTextInputLayout}
-                                  value={input}
+                                  value={value}
                                   multiline={_isMultiline}
                                   secureTextEntry={type === 'password'}
                                   keyboardType={keyboardType}
