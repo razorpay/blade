@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { TextInput as NativeTextInput, Platform, TouchableOpacity } from 'react-native';
 import styled, { useTheme } from 'styled-components/native';
 import PropTypes from 'prop-types';
@@ -9,7 +9,6 @@ import View from '../View';
 import isEmpty from '../../_helpers/isEmpty';
 import Size from '../Size';
 import Space from '../Space';
-import isDefined from '../../_helpers/isDefined';
 import Label from './Label';
 import CharacterCount from './CharacterCount';
 import AccessoryIcon from './AccessoryIcon';
@@ -434,7 +433,7 @@ const TextInput = React.forwardRef(
                           <CharacterCount
                             disabled={disabled}
                             maxLength={maxLength}
-                            currentLength={input.length}
+                            currentLength={value.length}
                           />
                         ) : null}
                       </View>
