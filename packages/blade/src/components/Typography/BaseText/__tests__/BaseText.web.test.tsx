@@ -6,6 +6,12 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<BaseText />', () => {
+  it('should render text with default properties', () => {
+    const displayText = 'Displaying some text';
+    const { container } = renderWithTheme(<BaseText>{displayText}</BaseText>);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render regular text', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(

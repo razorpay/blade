@@ -6,9 +6,16 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<BaseText />', () => {
+  it('should render text with default properties', () => {
+    const displayText = 'Displaying some text';
+    const { toJSON, getByText } = renderWithTheme(<BaseText>{displayText}</BaseText>);
+    expect(getByText('Displaying some text')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render regular text', () => {
     const displayText = 'Displaying some text';
-    const renderedTree = renderWithTheme(
+    const { toJSON, getByText } = renderWithTheme(
       <BaseText
         color="surface.text.normal.highContrast"
         fontFamily="text"
@@ -18,13 +25,14 @@ describe('<BaseText />', () => {
       >
         {displayText}
       </BaseText>,
-    ).toJSON();
-    expect(renderedTree).toMatchSnapshot();
+    );
+    expect(getByText('Displaying some text')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render text in italics style with line-through', () => {
     const displayText = 'Displaying some text';
-    const renderedTree = renderWithTheme(
+    const { toJSON, getByText } = renderWithTheme(
       <BaseText
         color="surface.text.normal.highContrast"
         fontFamily="text"
@@ -36,8 +44,9 @@ describe('<BaseText />', () => {
       >
         {displayText}
       </BaseText>,
-    ).toJSON();
-    expect(renderedTree).toMatchSnapshot();
+    );
+    expect(getByText('Displaying some text')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should throw error when "as" prop passed', () => {
