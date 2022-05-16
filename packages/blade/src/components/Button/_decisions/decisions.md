@@ -58,6 +58,9 @@
 - What about small/large screen?
 - Component-level Actions look mostly like primary except Focus, what do we do?
 - Link & Plain Buttons are the same?
+- Should Plain/Link behave as `<a>` tag?
+- Should we expose a `type` prop for `button`, `reset`, `submit`?
+- Do we need `leadingIcon`/`leftIcon` `trailingIcon`/`rightIcon` props?
 - Should we call it onClick or onPress?
 - Scope of A11y?
   - [WAI-ARI Button](https://www.w3.org/TR/wai-aria-practices-1.2/#button)
