@@ -1,4 +1,7 @@
-# Button Decisions
+# Button Decisions <!-- omit in toc -->
+- [Internal BaseButton Component](#internal-basebutton-component)
+- [Button Component](#button-component)
+- [Open Questions](#open-questions)
 
 ## Internal BaseButton Component
 -  Internal component that exposes certain extra props to enable creation of Component Level Action Buttons like `positive`, `negative`, `neutral`
@@ -50,7 +53,7 @@
 
 <img src="./component-breakdown.png"/>
 
-### Open Questions:
+## Open Questions
 - Should we have `variant+contrast` props or `variant+action+contrast` props?
 - What about small/large screen?
 - Component-level Actions look mostly like primary except Focus, what do we do?
