@@ -5,8 +5,8 @@ import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText/BaseText';
 
 export type TitleProps = {
-  variant: 'large' | 'medium' | 'small';
-  type: TextTypes;
+  variant?: 'small' | 'medium' | 'large';
+  type?: TextTypes;
   children: string;
 };
 
@@ -15,32 +15,33 @@ const getProps = ({
   type,
 }: Pick<TitleProps, 'variant' | 'type'>): Omit<BaseTextProps, 'children'> => {
   const props: Omit<BaseTextProps, 'children'> = {
-    color: `surface.text.${type}.lowContrast`,
-    fontSize: 25,
+    color: `surface.text.${type ?? 'normal'}.lowContrast`,
+    fontSize: 600,
     fontWeight: 'bold',
     fontStyle: 'normal',
-    lineHeight: 's',
+    lineHeight: '4xl',
     fontFamily: 'text',
   };
+  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
 
   if (variant === 'small') {
     props.fontSize = 600;
     props.lineHeight = '4xl';
-    props.as = getPlatformType() === 'browser' || getPlatformType() === 'node' ? 'h3' : undefined;
+    props.as = isPlatformWeb ? 'h3' : undefined;
   } else if (variant === 'medium') {
     props.fontSize = 700;
     props.lineHeight = '4xl';
-    props.as = getPlatformType() === 'browser' || getPlatformType() === 'node' ? 'h2' : undefined;
+    props.as = isPlatformWeb ? 'h2' : undefined;
   } else if (variant === 'large') {
     props.fontSize = 1000;
     props.lineHeight = '6xl';
-    props.as = getPlatformType() === 'browser' || getPlatformType() === 'node' ? 'h1' : undefined;
+    props.as = isPlatformWeb ? 'h1' : undefined;
   }
 
   return props;
 };
 
-const Title = ({ variant, type, children }: TitleProps): ReactElement => {
+const Title = ({ variant = 'small', type = 'normal', children }: TitleProps): ReactElement => {
   const props = getProps({ variant, type });
   return <BaseText {...props}>{children}</BaseText>;
 };
