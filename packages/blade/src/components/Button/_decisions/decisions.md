@@ -1,6 +1,7 @@
 # Button Decisions <!-- omit in toc -->
 - [Internal BaseButton Component](#internal-basebutton-component)
 - [Button Component](#button-component)
+- [Component Breakdown](#component-breakdown)
 - [Open Questions](#open-questions)
 
 ## Internal BaseButton Component
@@ -51,6 +52,8 @@
       -  Should we call this `fullWidth` instead?
    -  **`onClick`**: `Function`
       -  **default**: `undefined`
+
+## Component Breakdown
 
 <img src="./component-breakdown.png" width="300px"/>
 
