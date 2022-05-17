@@ -6,32 +6,30 @@
 ## Internal BaseButton Component
 -  Internal component that exposes certain extra props to enable creation of Component Level Action Buttons like `positive`, `negative`, `neutral`
 -  **BaseButton API**:
-   -  ***`variant`**: `primary` | `secondary` | `tertiary` | `plain` | `positive` | `negative` | `notice` | `info` | `neutral`
+   -  ***`variant`**: `primary` | `secondary` | `tertiary` | `link`
       -  **default**: `primary`
-   -  **`action`**: `positive` | `negative` | `notice` | `info` | `neutral`
-      -  **default**: `positive`
-        -  We could have an `action` prop that decides what kind of action the button is going to take. With this we could reduce the number of variants we have in the API
-      -  Having an `action` prop would cause us to create unintended variations of buttons with the combinations of `action` and `variant` props like `secondary-positive`
-      -  Even if we remove the `action` prop and have more `variants` instead, we would still have unintended variations with combinations of `variant` and `contrast` props like `secondary-high`
+      -  Link will look like an inline Link component but will have the role of a `button`
+   -  **`intent`**: `positive` | `negative` | `notice` | `info` | `neutral`
+      -  **default**: `undefined`
+      -  We will use this to set the `intent` for internal Blade components that have positive, negative, notice, info, or neutral buttons like an `Alert` component
    -  **`contrast`**: `high` | `low`
-      -  **default**: `high`
-      -  We need this for Component level buttons since `positive` would have a `high` as well as a `low` contrast button
-      
+      -  **default**: `low`
+      -  We need this for internal Blade components since a `positive` intent could have a `high` as well as a `low` contrast button
    -  **`size`**: `large` | `medium` | `small` | `xsmall`
       - **default**: `medium`
-      -  How would we control large/small screen size variations?
-   -  ***`children`**: `String`
+   -  **`children`**: `string`
    -  **`icon`**: `IconComponent`
       -  **default**: `undefined`
+   -  **`iconPosition`**: `left` | `right`
+      -  **default**: `right`
    -  **`isDisabled`**: `true` | `false`
       -  **default**: `false`
       -  Should we call this `disabled` instead?
    -  **`isFullWidth`**: `true` | `false`
       -  **default**: `false`
       -  Should we call this `fullWidth` instead?
-   -  **`onClick`**/**`onPress`**: `Function`
+   -  **`onClick`**: `Function`
       -  **default**: `undefined`
-      -  `onClick` doesn't seem right from a mobile point of view since you don't "click", you "press". `onPress` sounds okay from both mobile and desktop point of view.
 
 ## Button Component
 - This will be the Button component that is exposed to our consumers and will be a wrapper on top of `BaseButton` component
@@ -40,12 +38,17 @@
       - **default**: `primary`
    -  **`size`**: `large` | `medium` | `small` | `xsmall`
       -  **default**: `medium`
-   -  **`children`**: `String`
+   -  **`children`**: `string`
    -  **`icon`**: `IconComponent`
       -  **default**: `undefined`
+   -  **`iconPosition`**: `left` | `right`
+      -  **default**: `right`
    -  **`isDisabled`**: `true` | `false`
       -  **default**: `false`
       -  Should we call this `disabled` instead?
+   -  **`isFullWidth`**: `true` | `false`
+      -  **default**: `false`
+      -  Should we call this `fullWidth` instead?
    -  **`onClick`**: `Function`
       -  **default**: `undefined`
 
