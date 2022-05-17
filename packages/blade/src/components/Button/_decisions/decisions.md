@@ -36,32 +36,29 @@
 ## Button Component
 - This will be the Button component that is exposed to our consumers and will be a wrapper on top of `BaseButton` component
 -  **Button API**:
-   -  **`*variant`**: `primary` | `secondary` | `tertiary` | `plain` 
+   -  **`*variant`**: `primary` | `secondary` | `tertiary`
       - **default**: `primary`
    -  **`size`**: `large` | `medium` | `small` | `xsmall`
       -  **default**: `medium`
-      -  How would we control large/small screen size variations?
-   -  ***`children`**: `String`
+   -  **`children`**: `String`
    -  **`icon`**: `IconComponent`
       -  **default**: `undefined`
    -  **`isDisabled`**: `true` | `false`
       -  **default**: `false`
       -  Should we call this `disabled` instead?
-   -  **`onClick`**/**`onPress`**: `Function`
+   -  **`onClick`**: `Function`
       -  **default**: `undefined`
-      -  `onClick` doesn't seem right from a mobile point of view since you don't "click", you "press". `onPress` sounds okay from both mobile and desktop point of view.
 
 <img src="./component-breakdown.png"/>
 
 ## Open Questions
-- Should we have `variant+contrast` props or `variant+action+contrast` props?
-- What about small/large screen?
-- Component-level Actions look mostly like primary except Focus, what do we do?
-- Link & Plain Buttons are the same?
-- Should Plain/Link behave as `<a>` tag?
-- Should we expose a `type` prop for `button`, `reset`, `submit`?
-- Do we need `leadingIcon`/`leftIcon` `trailingIcon`/`rightIcon` props?
-- Should we call it onClick or onPress?
+- ~Should we have `variant+contrast` props or `variant+action+contrast` props?~ We will go ahead with `variant+intent+contrast` props for now.
+- ~What about small/large screen?~ This would be handled internally
+- ~Component-level Actions look mostly like primary except Focus, what do we do?~ This was a Figma issue, it is intended to look exactly like the `primary` variant
+- ~Should Plain/Link behave as `<a>` tag?~ We will have a `Link` variant but that would also be a `button`. We would have another `Link` component that will be an `<a>` tag. We do this to maintain the correct roles for button & link components.
+- ~Should we expose a `type` prop for `button`, `reset`, `submit`?~ Yes, we should.
+- ~Do we need `leadingIcon`/`leftIcon` `trailingIcon`/`rightIcon` props?~ Yes, we do. We'll control this with an `icon` & `iconPosition` prop.
+- ~Should we call it onClick or onPress?~ We will call it onClick for more developer familiarity.
 - Scope of A11y?
   - [WAI-ARI Button](https://www.w3.org/TR/wai-aria-practices-1.2/#button)
   - [WAI-ARI Link](https://www.w3.org/TR/wai-aria-practices-1.2/#link)
