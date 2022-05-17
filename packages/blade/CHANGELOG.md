@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 0.7.0
+
+### Minor Changes
+
+- 52efedb: fix(blade): set defaults for all typography components
+
+  Make all the props optional to have a better DX and add default values for all the important props
+
 ## 0.6.0
 
 ### Minor Changes
