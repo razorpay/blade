@@ -442,6 +442,7 @@ The idea is that if for part of the site we prevent clicks, we should also preve
 - The focus should loop When reaching the last or first element inside modal.
 - Convey the intent to screen reader users that there is a context switch, and they are now in a modal or in a focus trapped state. 
 
+<img src="./images/accessibility/focus-trap-demo.gif" alt="A gif showing the demo of a focus trapped modal" width="45%">
 
 **Implementations:**
 
