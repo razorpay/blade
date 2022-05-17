@@ -1,9 +1,9 @@
 {
   "name": "@razorpay/blade-icon-codemod",
   "devDependencies": {
-    "@types/jscodeshift": "^0.11.2",
-    "change-case": "^4.1.2",
-    "jscodeshift": "^0.13.0"
+    "@types/jscodeshift": "0.11.5",
+    "change-case": "4.1.2",
+    "jscodeshift": "0.13.1"
   },
   "scripts": {
     "jscodeshift": "jscodeshift",
