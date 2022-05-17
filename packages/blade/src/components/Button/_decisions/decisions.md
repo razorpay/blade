@@ -6,7 +6,7 @@
 ## Internal BaseButton Component
 -  Internal component that exposes certain extra props to enable creation of Component Level Action Buttons like `positive`, `negative`, `neutral`
 -  **BaseButton API**:
-   -  ***`variant`**: `primary` | `secondary` | `tertiary` | `link`
+   -  **`variant`**: `primary` | `secondary` | `tertiary` | `link`
       -  **default**: `primary`
       -  Link will look like an inline Link component but will have the role of a `button`
    -  **`intent`**: `positive` | `negative` | `notice` | `info` | `neutral`
@@ -34,7 +34,7 @@
 ## Button Component
 - This will be the Button component that is exposed to our consumers and will be a wrapper on top of `BaseButton` component
 -  **Button API**:
-   -  **`*variant`**: `primary` | `secondary` | `tertiary`
+   -  **`variant`**: `primary` | `secondary` | `tertiary`
       - **default**: `primary`
    -  **`size`**: `large` | `medium` | `small` | `xsmall`
       -  **default**: `medium`
