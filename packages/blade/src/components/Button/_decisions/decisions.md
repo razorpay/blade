@@ -52,7 +52,7 @@
    -  **`onClick`**: `Function`
       -  **default**: `undefined`
 
-<img src="./component-breakdown.png"/>
+<img src="./component-breakdown.png" width="300px"/>
 
 ## Open Questions
 - ~Should we have `variant+contrast` props or `variant+action+contrast` props?~ We will go ahead with `variant+intent+contrast` props for now.
