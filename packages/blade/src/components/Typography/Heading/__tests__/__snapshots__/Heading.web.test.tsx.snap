@@ -1,9 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Heading /> should render Heading with default properties 1`] = `
+<div>
+  <h6
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 jKHSfC"
+    color="hsla(217, 56%, 17%, 1)"
+    font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+    font-size="1rem"
+    font-style="normal"
+    font-weight="700"
+  >
+    Get Started With Payment Gateway
+  </h6>
+</div>
+`;
+
 exports[`<Heading /> should render Heading with variant "large" 1`] = `
 <div>
   <h4
-    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 egqXbC"
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 epJwXt"
     color="hsla(217, 18%, 45%, 1)"
     font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
     font-size="1.25rem"
@@ -18,7 +33,7 @@ exports[`<Heading /> should render Heading with variant "large" 1`] = `
 exports[`<Heading /> should render Heading with variant "medium" 1`] = `
 <div>
   <h5
-    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 ibYlsH"
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 jvcdhc"
     color="hsla(216, 16%, 60%, 1)"
     font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
     font-size="1.125rem"
@@ -33,7 +48,7 @@ exports[`<Heading /> should render Heading with variant "medium" 1`] = `
 exports[`<Heading /> should render Heading with variant "small" 1`] = `
 <div>
   <h6
-    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 dgLrQm"
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 kttkmZ"
     color="hsla(217, 56%, 17%, 1)"
     font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
     font-size="1rem"
@@ -48,7 +63,7 @@ exports[`<Heading /> should render Heading with variant "small" 1`] = `
 exports[`<Heading /> should render Heading with variant "subheading" and weight "bold" 1`] = `
 <div>
   <h6
-    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 kKEluK"
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 eMvxtx"
     color="hsla(217, 18%, 45%, 1)"
     font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
     font-size="0.75rem"
