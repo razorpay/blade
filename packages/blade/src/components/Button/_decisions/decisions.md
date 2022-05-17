@@ -31,6 +31,9 @@
       -  Should we call this `fullWidth` instead?
    -  **`onClick`**: `Function`
       -  **default**: `undefined`
+   -  **`type`**: `button` | `submit` | `reset`
+      -  **default**: `button`
+      -  This prop will be ignored for react-native
 
 ## Button Component
 - This will be the Button component that is exposed to our consumers and will be a wrapper on top of `BaseButton` component
@@ -52,6 +55,9 @@
       -  Should we call this `fullWidth` instead?
    -  **`onClick`**: `Function`
       -  **default**: `undefined`
+   -  **`type`**: `button` | `submit` | `reset`
+      -  **default**: `button`
+      -  This prop will be ignored for react-native
 
 ## Component Breakdown
 
