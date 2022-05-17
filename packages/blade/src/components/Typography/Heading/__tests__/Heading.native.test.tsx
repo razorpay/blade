@@ -6,6 +6,13 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<Heading />', () => {
+  it('should render Heading with default properties', () => {
+    const displayText = 'Get Started With Payment Gateway';
+    const { toJSON, getByText } = renderWithTheme(<Heading>{displayText}</Heading>);
+    expect(getByText('Get Started With Payment Gateway')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Heading with variant "small"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(

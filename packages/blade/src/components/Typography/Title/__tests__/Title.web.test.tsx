@@ -6,6 +6,14 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<Title />', () => {
+  it('should render Title with default properties', () => {
+    const displayText = 'Displaying Landing Page Title';
+    const { container, getByRole, getByText } = renderWithTheme(<Title>{displayText}</Title>);
+    expect(getByRole('heading', { level: 3 })).toBeInTheDocument();
+    expect(getByText('Displaying Landing Page Title')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render Title with variant "small"', () => {
     const displayText = 'Displaying Landing Page Title';
     const { container, getByRole, getByText } = renderWithTheme(

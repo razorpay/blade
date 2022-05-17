@@ -5,19 +5,21 @@ import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText';
 
+type HeadingVariant = 'small' | 'medium' | 'large' | 'subheading';
+
 type HeadingCommonProps = {
-  type: TextTypes;
+  type?: TextTypes;
   children: string;
 };
 
 type HeadingNormalVariant = HeadingCommonProps & {
-  variant: 'small' | 'medium' | 'large';
-  weight: keyof Theme['typography']['fonts']['weight'];
+  variant?: Exclude<HeadingVariant, 'subheading'>;
+  weight?: keyof Theme['typography']['fonts']['weight'];
 };
 
 type HeadingSubHeadingVariant = HeadingCommonProps & {
-  variant: 'subheading';
-  weight: keyof Pick<Theme['typography']['fonts']['weight'], 'bold'>;
+  variant?: Extract<HeadingVariant, 'subheading'>;
+  weight?: keyof Pick<Theme['typography']['fonts']['weight'], 'bold'>;
 };
 
 /**
@@ -27,27 +29,26 @@ type HeadingSubHeadingVariant = HeadingCommonProps & {
 export type HeadingProps<T> = T extends {
   variant: infer Variant;
 }
-  ? Variant extends 'small' | 'medium' | 'large'
+  ? Variant extends Exclude<HeadingVariant, 'subheading'>
     ? HeadingNormalVariant
     : Variant extends 'subheading'
     ? HeadingSubHeadingVariant
     : T
   : T;
 
-const getProps = <T extends { variant: 'small' | 'medium' | 'large' | 'subheading' }>({
+const getProps = <T extends { variant: HeadingVariant }>({
   variant,
   type,
   weight,
 }: Pick<HeadingProps<T>, 'variant' | 'type' | 'weight'>): Omit<BaseTextProps, 'children'> => {
   const props: Omit<BaseTextProps, 'children'> = {
-    color: `surface.text.${type}.lowContrast`,
-    fontSize: 25,
-    fontWeight: weight,
+    color: `surface.text.${type ?? 'normal'}.lowContrast`,
+    fontSize: 200,
+    fontWeight: weight ?? 'bold',
     fontStyle: 'normal',
-    lineHeight: 'm',
+    lineHeight: 'xl',
     fontFamily: 'text',
   };
-
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
 
   if (variant === 'small') {
@@ -74,10 +75,10 @@ const getProps = <T extends { variant: 'small' | 'medium' | 'large' | 'subheadin
   return props;
 };
 
-const Heading = <T extends { variant: 'small' | 'medium' | 'large' | 'subheading' }>({
-  variant,
-  type,
-  weight,
+const Heading = <T extends { variant: HeadingVariant }>({
+  variant = 'small',
+  type = 'normal',
+  weight = 'bold',
   children,
 }: HeadingProps<T>): ReactElement => {
   const props = getProps({ variant, type, weight });

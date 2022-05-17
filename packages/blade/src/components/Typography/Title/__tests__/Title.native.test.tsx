@@ -6,6 +6,13 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<Title />', () => {
+  it('should render Title with default properties', () => {
+    const displayText = 'Displaying Landing Screen Title';
+    const { toJSON, getByText } = renderWithTheme(<Title>{displayText}</Title>);
+    expect(getByText('Displaying Landing Screen Title')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Title with variant "small"', () => {
     const displayText = 'Displaying Landing Screen Title';
     const { toJSON, getByText } = renderWithTheme(

@@ -7,19 +7,21 @@ import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText/BaseText';
 
 type TextCommonProps = {
-  type: TextTypes;
+  type?: TextTypes;
   truncateAfterLines?: number;
   children: React.ReactNode;
 };
 
+type TextVariant = 'body' | 'caption';
+
 type TextBodyVariant = TextCommonProps & {
-  variant: 'body';
-  weight: keyof Theme['typography']['fonts']['weight'];
+  variant?: Extract<TextVariant, 'body'>;
+  weight?: keyof Theme['typography']['fonts']['weight'];
 };
 
 type TextCaptionVariant = TextCommonProps & {
-  variant: 'caption';
-  weight: keyof Pick<Theme['typography']['fonts']['weight'], 'regular'>;
+  variant?: Extract<TextVariant, 'caption'>;
+  weight?: keyof Pick<Theme['typography']['fonts']['weight'], 'regular'>;
 };
 
 /**
@@ -40,21 +42,23 @@ type TextForwardedAs = {
   forwardedAs?: BaseTextProps['as'];
 };
 
-const getProps = <T extends { variant: 'body' | 'caption' }>({
+const getProps = <T extends { variant: TextVariant }>({
   variant,
   type,
   weight,
 }: Pick<TextProps<T>, 'type' | 'variant' | 'weight'>): Omit<BaseTextProps, 'children'> &
   TextForwardedAs => {
+  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
-    color: `surface.text.${type}.lowContrast`,
-    fontSize: 25,
-    fontWeight: weight,
+    color: `surface.text.${type ?? 'normal'}.lowContrast`,
+    fontSize: 100,
+    fontWeight: weight ?? 'regular',
     fontStyle: 'normal',
-    lineHeight: 's',
+    lineHeight: 'l',
     fontFamily: 'text',
-    forwardedAs: getPlatformType() !== 'react-native' ? 'p' : undefined,
+    forwardedAs: isPlatformWeb ? 'p' : undefined,
   };
+
   if (variant === 'body') {
     props.fontSize = 100;
     props.fontStyle = 'normal';
@@ -89,10 +93,10 @@ const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
   return {};
 });
 
-const Text = <T extends { variant: 'body' | 'caption' }>({
-  variant,
-  weight,
-  type,
+const Text = <T extends { variant: TextVariant }>({
+  variant = 'body',
+  weight = 'regular',
+  type = 'normal',
   truncateAfterLines,
   children,
 }: TextProps<T>): ReactElement => {
