@@ -1,8 +1,12 @@
 # Button Decisions <!-- omit in toc -->
+- [Design](#design)
 - [Internal BaseButton Component](#internal-basebutton-component)
 - [Button Component](#button-component)
 - [Component Breakdown](#component-breakdown)
 - [Open Questions](#open-questions)
+
+## Design
+[Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0) to all variants of the Button component
 
 ## Internal BaseButton Component
 -  Internal component that exposes certain extra props to enable creation of Component Level Action Buttons like `positive`, `negative`, `neutral`
