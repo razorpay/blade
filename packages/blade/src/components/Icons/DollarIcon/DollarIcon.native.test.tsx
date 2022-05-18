@@ -1,10 +1,10 @@
 import renderWithTheme from '../../../_helpers/testing/renderWithTheme.native';
-import CreditCardIcon from '.';
+import DollarIcon from '.';
 
-describe('<CreditCardIcon />', () => {
-  it('should render CreditCardIcon', () => {
+describe('<DollarIcon />', () => {
+  it('should render DollarIcon', () => {
     const renderTree = renderWithTheme(
-      <CreditCardIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <DollarIcon color="feedback.icon.neutral.lowContrast" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });
