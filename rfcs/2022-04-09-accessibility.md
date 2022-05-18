@@ -453,7 +453,12 @@ The idea is that if for part of the site we prevent clicks, we should also preve
 
 In the [HTML spec](https://github.com/WICG/inert/blob/main/explainer.md) there's a new proposal/property `inert`, when present, makes the browser "ignore" user input events for the element, including focus events and events from assistive technologies. This can be used for focus trapping. 
 
+Downsides of inert: 
+
+- Browser [support is very bad](https://caniuse.com/?search=inert), only works on modern browsers under experimental flag
+- Polyfill is [expensive performance-wise](https://github.com/WICG/inert#performance-and-gotchas)
 Although the browser support for it is very bad, and we will need the [polyfill](https://github.com/WICG/inert).
+- Won't handle other edge cases like focus restoration.
 
 **ReactAria**
 
