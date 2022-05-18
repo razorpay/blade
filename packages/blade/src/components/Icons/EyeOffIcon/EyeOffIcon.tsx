@@ -19,7 +19,7 @@ const EyeOffIcon = ({ size, color }: IconProps): ReactElement => {
       </G>
       <Defs>
         <ClipPath id="clip0_60_186">
-          <Rect width="100%" height="100%" fill="white" />
+          <Rect width="100%" height="100%" fill="none" />
         </ClipPath>
       </Defs>
     </Svg>
