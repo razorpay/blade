@@ -42,7 +42,7 @@
 ## Button Component
 - This will be the Button component that is exposed to our consumers and will be a wrapper on top of `BaseButton` component
 -  **Button API**:
-   -  **`variant`**: `primary` | `secondary` | `tertiary`
+   -  **`variant`**: `primary` | `secondary` | `tertiary` | `link`
       - **default**: `primary`
    -  **`size`**: `large` | `medium` | `small` | `xsmall`
       -  **default**: `medium`
