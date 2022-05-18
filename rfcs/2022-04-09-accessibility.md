@@ -22,13 +22,11 @@ Blade Issue: (leave this empty if no issue yet)
 
 ## What is Accessibility?
 
-Accessibility is the practice of making websites usable by people of all abilities and disabilities.   
-This includes people with visual, auditory, physical, and cognitive impairments, as well as those with temporary disabilities such as broken bones, color blindness, and temporary loss of vision, but the practice of making sites accessible also benefits other groups such as people using mobile phones, people with temporary disabilities, situational limitations.
+Accessibility is the practice of making websites usable by people of all abilities and disabilities. This includes people with visual, auditory, physical, and cognitive impairments, as well as those with temporary disabilities such as broken bones, color blindness, and temporary loss of vision, but the practice of making sites accessible also benefits other groups such as people using mobile phones, people with temporary disabilities, situational limitations.
 
 ## Accessibility for who? 
 
-Accessibility is essential for some, useful for all.  
-It's not just for people with disabilities, accessible websites also improve the user experience of normal users. 
+Accessibility is essential for some, useful for all. It's not just for people with disabilities, accessible websites also improve the user experience of normal users. 
 
 For example:  
 
@@ -52,18 +50,17 @@ For example:
 - **Auditory:**  
   Disabilities related to sound or audio.
 
-Other subcategories based on [microsoft’s inclusive design](https://www.microsoft.com/design/inclusive):  
+Other subcategories based on [Microsoft’s inclusive design](https://www.microsoft.com/design/inclusive):  
 
-- **Permanent or disability that does not go away:**:   
+- **Permanent or disability that does not go away:**    
   - Example: Someone who is deaf
-- **Temporary, disability that will go away in time:**: 
+- **Temporary, disability that will go away in time:**  
   - Example: Someone who has an ear infection
-- **Situational, Context based disabilities:**: 
+- **Situational, Context based disabilities:**  
   - Example: Someone who is at a loud sporting event
   - Example: Using the web app in bright sunlight
   - Example: Using your phone one handedly in a crowded metro station
-
-<img src="./images/accessibility/ms-inclusive-design.png" alt="Microsoft Inclusive Design Shows Spectrum Of Disabilities" width="25%" />
+  <img src="./images/accessibility/ms-inclusive-design.png" alt="Microsoft Inclusive Design Shows Spectrum Of Disabilities" width="25%" />
 
 ## Accessibility Principles
 
@@ -95,30 +92,26 @@ According to [Web Content Accessibility Guidelines](https://www.w3.org/WAI/stand
 - Maximize compatibility with current and future user tools.
 
 # Motivation
-- Why are we doing this?
-- What use cases does it support?
-- What is the expected outcome?
 
 ## Why are we doing this? 
 
 Without proper accessibility, certain functionality used in web sites is not available to some users with disabilities, especially people who rely on screen readers and people who cannot use a mouse. 
 
 Making our products accessible is important for two reasons.  
-- it's the right thing to do. We believe that everyone deserves to be able to use our products, regardless of their abilities.
+- It's the right thing to do. We believe that everyone deserves to be able to use our products, regardless of their abilities.
 - It'll help build trust with our customers. By making our products accessible, we can expand our potential customer base and make our products more appealing to a wider range of people. 
 
 > [The Business Case Study for Accessibility](https://www.w3.org/WAI/business-case/)
 
 **Making customers happy & respecting human rights:**  
 
-> In 2020, A 29 year old banker who is visually impaired opened petitions to make [zomato](https://www.change.org/p/zomato-make-zomato-accessible-with-screen-readers-for-visually-challenged-people) & [swiggy](https://www.change.org/p/swiggy-make-swiggy-accessible-with-screen-readers-in-android-for-visually-challenged-people) accessible because they couldn’t order food from it due to their inaccessible apps.  
+> In 2020, A 29 year old banker who is visually impaired opened petitions to make [Zomato](https://www.change.org/p/zomato-make-zomato-accessible-with-screen-readers-for-visually-challenged-people) & [Swiggy](https://www.change.org/p/swiggy-make-swiggy-accessible-with-screen-readers-in-android-for-visually-challenged-people) accessible because they couldn’t order food from it due to their inaccessible apps.  
 > Over **15,000 & 27,000 people had signed the petition.**  
-> Later zomato, swiggy listened to the people and [improved their accessibility.](https://theprint.in/tech/why-the-visually-challenged-are-signing-petitions-addressed-to-apps-such-as-zomato-swiggy/507282/) 
+> Later Zomato, Swiggy listened to the people and [improved their accessibility.](https://theprint.in/tech/why-the-visually-challenged-are-signing-petitions-addressed-to-apps-such-as-zomato-swiggy/507282/) 
 
 **Accessibility laws & policies** 
 
-While in India, there's no mandatory law to building accessible web apps, 
-There's still [policies/laws](https://www.w3.org/WAI/policies/india/) which are passed to ensure rights of disabled people remains intact.
+While in India, there are no mandatory laws to build accessible web apps, there are still [policies/laws](https://www.w3.org/WAI/policies/india/) that are passed to ensure that the rights of disabled people remain intact.
 
 - [Rights of Persons with Disabilities Act, 2016 (RPD)](https://legislative.gov.in/sites/default/files/A2016-49_1.pdf)
 - [**Mandatory** Guidelines for Indian Government Websites](https://guidelines.india.gov.in/)
@@ -138,13 +131,13 @@ Here’s the screen reader accessibility of Razorpay mobile app
 
 https://user-images.githubusercontent.com/35374649/167380507-71e60b7f-d36e-42b3-b649-911400e2c66f.mp4
 
-Even though only a few of the teams are on boarded to blade, when more teams will migrate this will become a problem since every app/site will be inaccessible if we don’t implement accessibility in blade components. 
+Even though only a few teams are onboarded to blade, this could become a major problem when more teams migrate since every app/site won't be completely accessible if we don’t implement accessibility centrally in the core blade components.  
 
 Adding accessible components to blade will iron out all these inconsistencies and teams can build more accessible apps with minimal effort.
 
 ## What is the expected outcome? 
 
-The goal of this RFC is to lay the foundations so that we can ship blade components that are accessible out of the box such that consumers don't have to worry about every minute detail. Here are couple of areas that this RFC will touch upon: 
+The goal of this RFC is to lay the foundations so that we can ship accessible components out of the box so that consumers don't have to worry about every minute detail. Here are couple of areas that this RFC will touch upon:
 
 - Research about cross platform accessibility between web and native.
 - Ensure components are accessible through assistive technologies.
@@ -195,7 +188,7 @@ By baking in accessibility at the foundational level we will ensure our products
 **Target:** Everyone and especially people with motor disabilities who use a keyboard to navigate.  
 **Goal:** Ensure users who cannot use the mouse (blind, motor disabilities) can access the crucial parts of the app through keyboard.  
 
-For a web page to be accessible, all interactive elements must be operable via the keyboard, Not all users are able to use a mouse to navigate a web page, Keyboard-only and screen reader users rely on navigating and using a web page with only a keyboard. 
+For a web page to be accessible, all interactive elements must be operable via the keyboard. Not all users are able to use a mouse to navigate a web page, keyboard-only and screen reader users rely on navigating and using a web page with a physical or a virtual keyboard.
 
 ### Areas to cover
 
@@ -226,19 +219,19 @@ The tab order of the page must be logical and follow the visual order of element
 
 Setting tabindex to any non-negative integer makes elements focusable, allow or prevent them from being sequentially focusable, and determine their relative ordering
 
-When set to `0`, the element becomes focusable by keyboard and via programatic means with `focus()`. 
-When set to `-1`, the element becomes focusable programatically, but it does not become part of the keyboard focus order.
+When set to `0`, the element becomes focusable by keyboard and via programmatic means with `focus()`. 
+When set to `-1`, the element becomes focusable programmatically, but it does not become part of the keyboard focus order.
 
 The following table describes tabindex behavior in modern browsers:
 
-| tabindex attribute |	Focusable with mouse or programatically |	Tab navigable |
+| tabindex attribute |	Focusable with mouse or programmatically |	Tab navigable |
 | :-- | :-- | :-- |
 | not present	| The user agent will decide | The user agent will decide |
-| Negative (tabindex="-1")	| Yes | No, can only be focused programatically |
+| Negative (tabindex="-1")	| Yes | No, can only be focused programmatically |
 | Zero (tabindex="0") | Yes | Yes, In tab order relative to element's position in document | 
 | Positive (tabindex="2") | Yes | Yes, tabindex value determines where this element is positioned in the tab order | 
 
-> Warning: avoid using positive values for tabindex. Using positive values means authors will have to set (and maintain) tabindex values for all focusable elements on the page whenever they use one or more positive values for tabindex.  
+> Warning: Avoid using positive values for tabindex. Using positive values means authors will have to set (and maintain) tabindex values for all focusable elements on the page whenever they use one or more positive values for tabindex.  
 
 > *[Failure of Success Criterion 2.4.3](https://www.w3.org/WAI/WCAG21/Techniques/failures/F44) due to using tabindex to create a tab order that does not preserve meaning and operability*
 
@@ -248,11 +241,11 @@ The following table describes tabindex behavior in modern browsers:
 > [Specification](https://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1)
 
 A skip navigation link provides a way for keyboard and screen reader users to skip to main content of a webpage.  
-Without skip links, keyboard and screen reader users must navigate a long list of navigation links and other elements before ever arriving at the main content, This can be particularly difficult for users with some forms of motor disabilities.
+Without skip links, keyboard and screen reader users must navigate a long list of navigation links and other elements before ever arriving at the main content. This can be particularly difficult for users with some forms of motor disabilities.
 
 **Temporarily hidden skip links**
 
-Most common type of skip links are which that is hidden until the user navigates to it with a keyboard.
+Most common type of skip links are the ones that are hidden until the user navigates to it with a keyboard.
 
 The link must be:
 
@@ -285,10 +278,8 @@ The `skip-link` class here is a screen reader only [visually hidden](https://web
 
 ## Composite widgets
 
-*What are composite widgets?*
-
 A composite is a widget that may contain navigable descendants or childrens. Composite widgets should only have single navigation tab stop.
-Once the composite widget has focus, It's required to provide a separate navigation mechanism for users to navigate to elements that are descendants (generally with arrow keys).
+Once the composite widget has focus, it should provide for a separate navigation mechanism for users to navigate to elements that are descendants (generally with arrow keys).
 
 You can think of composite widgets as a way of grouping multiple elements into single navigatable element.
 
@@ -355,8 +346,8 @@ Checklist:
 
 > Specification
 
-**Target:** Everyone and especially people with visual impairments or cognitive limitations, motor disabilities.  
-**Goal:** Setting guidelines for general focus behaviours & Providing screen reader & keyboard users a smooth experience by managing focus behavior for certain elements like Modals/Page transition etc. 
+**Target:** Everyone, especially people with visual impairments or cognitive limitations & motor disabilities.  
+**Goal:** Setting guidelines for general focus behaviours & providing screen reader & keyboard users a smooth experience by managing focus behavior for certain elements like Modals/Page transition etc. 
 
 Well-planned focus management is important to ensuring a comfortable user experience & to guide the user through the intended flow of the app.
 
@@ -372,11 +363,11 @@ Focus management goes hand in hand with keyboard accessibility, so there will be
 
 ## Focus order
 
-Focus order or tab order we already covered in [keyboard tab order section](#keyboard-tab-order)
+We have already covered focus order or tab order in the [keyboard tab order section](#keyboard-tab-order)
 
 ## Focus ring styling
 
-The focus ring must be visible to all users, 
+The focus ring must be visible to all users.  
 By default, the browser uses the user agent specific focus styling. But this behaviour can be overriden with CSS. 
 
 Best practices for focus styling:
@@ -390,8 +381,7 @@ Best practices for focus styling:
 
 **Keyboard only focus rings**
 
-While focus indicators are neccesary,  
-Mouse clicks also changes the focus, for example clicking on a button also makes the focus ring visible.  
+While focus indicators are neccesary, mouse clicks also change the focus, for example clicking on a button also makes the focus ring visible.  
 
 This behavior can be undesirable from design perspective, preferring focus styling to only be present only if a keyboard is used can be a solution. 
 
@@ -406,7 +396,7 @@ This behavior can be undesirable from design perspective, preferring focus styli
 
 > [Demo](https://codesandbox.io/s/blade-a11y-css-focus-ring-051xff?file=/src/App.tsx)
 
-CSS provides us with a pesudo class called [`:focus-visible`](https://css-tricks.com/keyboard-only-focus-styles). Browser support for focus-visible is [good enough.](https://caniuse.com/?search=%3Afocus-visible).  
+CSS provides us with a pesudo class called [`:focus-visible`](https://css-tricks.com/keyboard-only-focus-styles). Browser support for focus-visible is [good enough](https://caniuse.com/?search=%3Afocus-visible).  
 And we can also use the [official pollyfill](https://github.com/WICG/focus-visible) for older browsers.
 
 **ReactAria:**  
@@ -415,8 +405,8 @@ And we can also use the [official pollyfill](https://github.com/WICG/focus-visib
 
 ReactAria provides a [FocusRing](https://react-spectrum.adobe.com/react-aria/FocusRing.html) component which solves this. 
 
-While this works great, this solution can be a bit overkill since react aria does this all with javascript and have it's own event handling system.  
-I think it will be better and easier if we `use the platform™` 
+While this works great, this solution can be a bit of an overkill since ReactAria does this all with JavaScript and has its own event handling system.  
+I think it will be better and easier if we stick to `:focus-visible` CSS property which is becoming standard in browser & a platform feature.
 
 ## Focus trap
 
@@ -426,18 +416,18 @@ Trapping focus is a behaviour we usually want when there is modality in a page.
 
 **Why focus traps?**
 
-Focus traps are essential to communicate a modal's bounds to groups of people who are visually impaired or have mobility issues, And helps inform what is and is not modal content.
+Focus traps are essential to communicate a modal's bounds to people who are visually impaired or have mobility issues, and it helps inform them what is and is not contained within a modal.
 
-The idea is that if for part of the site we prevent clicks, we should also prevent focus.
+The idea is that if for parts of the site where we prevent clicks, we should also prevent focus on the same elements.
 
 - People with low vision who rely on screen readers need to know when the modal opens.
-- People with low vision who cannot properly see the focus ring can get lost if focus isn't contained in the modal, This can be confusing and disorienting.
+- People with low vision who cannot properly see the focus ring can get lost if focus isn't contained in the modal, this can be confusing and disorienting.
 - People with mobility issues using keyboard could tab out of the modal and have a hard time getting back into the modal.
 
 **Best practices for focus traps**
 
 - Ensure users don't get permanently trapped in the focus trap, If the user can open the modal with keyboard, they should also have the ability to exit the modal with keyboard.
-- The focus should loop When reaching the last or first element inside modal.
+- The focus should loop when reaching the last or first element inside modal.
 - Convey the intent to screen reader users that there is a context switch, and they are now in a modal or in a focus trapped state. 
 
 <img src="./images/accessibility/focus-trap-demo.gif" alt="A gif showing the demo of a focus trapped modal" width="45%">
@@ -471,7 +461,7 @@ It also handles:
 - Focus restoration to trigger
 - Auto focusing to children elements
 
-Considering the `inert` attribute is not supported in major browsers & we will have to write custom logic to handle other edge cases. It's better to use the ReactAria's component in this case. 
+Considering the `inert` attribute is not supported in major browsers & we will have to write custom logic to handle other edge cases, it's better to use the ReactAria's component in this case. 
 
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
