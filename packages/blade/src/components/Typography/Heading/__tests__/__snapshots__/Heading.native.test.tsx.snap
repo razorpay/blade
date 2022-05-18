@@ -144,3 +144,32 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
   Get Started With Payment Gateway
 </Text>
 `;
+
+exports[`<Heading /> should render highContrast Heading with variant "small" 1`] = `
+<Text
+  color="hsla(0, 0%, 100%, 1)"
+  fontFamily="Lato"
+  fontSize="17px"
+  fontStyle="normal"
+  fontWeight={400}
+  lineHeight="24px"
+  style={
+    Array [
+      Object {
+        "color": "hsla(0, 0%, 100%, 1)",
+        "fontFamily": "Lato",
+        "fontSize": 17,
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "lineHeight": 24,
+        "textAlign": "left",
+        "textDecorationLine": "none",
+      },
+    ]
+  }
+  textAlign="left"
+  textDecorationLine="none"
+>
+  Get Started With Payment Gateway
+</Text>
+`;

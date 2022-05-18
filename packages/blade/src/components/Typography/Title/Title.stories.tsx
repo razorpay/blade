@@ -62,6 +62,7 @@ const TitleStoryMeta: Meta<TitleProps> = {
     variant: 'large',
     type: 'normal',
     children: 'Power your finance, grow your business',
+    contrast: 'low',
   },
   parameters: {
     docs: {

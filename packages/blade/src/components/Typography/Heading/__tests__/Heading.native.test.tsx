@@ -13,6 +13,17 @@ describe('<Heading />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render highContrast Heading with variant "small"', () => {
+    const displayText = 'Get Started With Payment Gateway';
+    const { toJSON, getByText } = renderWithTheme(
+      <Heading type="normal" variant="small" weight="regular" contrast="high">
+        {displayText}
+      </Heading>,
+    );
+    expect(getByText('Get Started With Payment Gateway')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Heading with variant "small"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(

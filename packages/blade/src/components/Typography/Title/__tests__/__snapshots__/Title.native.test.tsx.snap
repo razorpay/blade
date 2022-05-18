@@ -115,3 +115,32 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
   Displaying Landing Screen Title
 </Text>
 `;
+
+exports[`<Title /> should render highContrast Title with variant "small" 1`] = `
+<Text
+  color="hsla(0, 0%, 100%, 1)"
+  fontFamily="Lato"
+  fontSize="24px"
+  fontStyle="normal"
+  fontWeight={700}
+  lineHeight="30px"
+  style={
+    Array [
+      Object {
+        "color": "hsla(0, 0%, 100%, 1)",
+        "fontFamily": "Lato",
+        "fontSize": 24,
+        "fontStyle": "normal",
+        "fontWeight": "700",
+        "lineHeight": 30,
+        "textAlign": "left",
+        "textDecorationLine": "none",
+      },
+    ]
+  }
+  textAlign="left"
+  textDecorationLine="none"
+>
+  Displaying Landing Screen Title
+</Text>
+`;

@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import styled from 'styled-components';
-import type { TextTypes } from '../../../tokens/theme/theme';
+import type { ColorContrast, ColorContrastTypes, TextTypes } from '../../../tokens/theme/theme.d';
 import getPlatformType from '../../../utils/getPlatformType';
 import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
@@ -8,6 +8,7 @@ import type { BaseTextProps } from '../BaseText/BaseText';
 
 type TextCommonProps = {
   type?: TextTypes;
+  contrast?: ColorContrastTypes;
   truncateAfterLines?: number;
   children: React.ReactNode;
 };
@@ -46,11 +47,16 @@ const getProps = <T extends { variant: TextVariant }>({
   variant,
   type,
   weight,
-}: Pick<TextProps<T>, 'type' | 'variant' | 'weight'>): Omit<BaseTextProps, 'children'> &
+  contrast,
+}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'contrast'>): Omit<
+  BaseTextProps,
+  'children'
+> &
   TextForwardedAs => {
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
+  const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
-    color: `surface.text.${type ?? 'normal'}.lowContrast`,
+    color: `surface.text.${type ?? 'normal'}.${colorContrast}`,
     fontSize: 100,
     fontWeight: weight ?? 'regular',
     fontStyle: 'normal',
@@ -97,12 +103,13 @@ const Text = <T extends { variant: TextVariant }>({
   variant = 'body',
   weight = 'regular',
   type = 'normal',
+  contrast = 'low',
   truncateAfterLines,
   children,
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
-    ...getProps({ variant, type, weight }),
+    ...getProps({ variant, type, weight, contrast }),
   };
   return <StyledText {...props}>{children}</StyledText>;
 };

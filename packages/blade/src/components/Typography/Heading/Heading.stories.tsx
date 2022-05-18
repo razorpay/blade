@@ -56,6 +56,7 @@ const HeadingStoryMeta: Meta<
     type: 'normal',
     children: 'Get Started With Payment Gateway',
     weight: 'bold',
+    contrast: 'low',
   },
   parameters: {
     docs: {

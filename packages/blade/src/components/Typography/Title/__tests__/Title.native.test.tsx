@@ -13,6 +13,17 @@ describe('<Title />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render highContrast Title with variant "small"', () => {
+    const displayText = 'Displaying Landing Screen Title';
+    const { toJSON, getByText } = renderWithTheme(
+      <Title type="normal" variant="small" contrast="high">
+        {displayText}
+      </Title>,
+    );
+    expect(getByText('Displaying Landing Screen Title')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Title with variant "small"', () => {
     const displayText = 'Displaying Landing Screen Title';
     const { toJSON, getByText } = renderWithTheme(

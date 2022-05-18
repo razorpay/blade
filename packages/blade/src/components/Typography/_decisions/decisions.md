@@ -53,7 +53,11 @@ Type of `children: React.ReactNode`
   Title will internally use `BaseText` to render. We'll use native html heading tags to render title and native text element for react-native to render the Title.
 
   ```jsx
-  <Title variant="small | medium | large" type="normal | subtle | subdued | muted | placeholder">
+  <Title
+    variant="small | medium | large"
+    type="normal | subtle | subdued | muted | placeholder"
+    contrast="low | high"
+  >
     Some Title
   </Title>
   ```
@@ -74,6 +78,7 @@ Type of `children: string`
   <Heading
     variant="small | medium | large | subheading"
     type="normal | subtle | subdued | muted | placeholder"
+    contrast="low | high"
   >
     Some Heading
   </Heading>
@@ -104,6 +109,7 @@ Another option would be having a `size` prop that would lead us to have a "large
     variant=" medium | large | caption"
     weight="regular | bold"
     type="normal | subtle | subdued | muted | placeholder"
+    contrast="low | high"
     truncateAfterLines={3}
   >
     Some Text

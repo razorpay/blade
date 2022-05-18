@@ -96,6 +96,7 @@ module.exports = {
         '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
         '@typescript-eslint/unbound-method': 'off',
         '@typescript-eslint/sort-type-union-intersection-members': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
       },
     },
     {
