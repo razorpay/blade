@@ -367,7 +367,7 @@ Focus management goes hand in hand with keyboard accessibility, so there will be
 - [Focus order](#keyboard-tab-order)
 - [Focus ring styling](#focus-ring-styling)
 - [Focus traps](#focus-trap)
-- Focus restoration
+  - Focus restoration
 - Page transitions
 
 ## Focus order
@@ -409,7 +409,6 @@ This behavior can be undesirable from design perspective, preferring focus styli
 CSS provides us with a pesudo class called [`:focus-visible`](https://css-tricks.com/keyboard-only-focus-styles). Browser support for focus-visible is [good enough.](https://caniuse.com/?search=%3Afocus-visible).  
 And we can also use the [official pollyfill](https://github.com/WICG/focus-visible) for older browsers.
 
-
 **ReactAria:**  
 
 > [Demo](https://codesandbox.io/s/blade-a11y-reactaria-focus-ring-hc3cub?file=/src/App.tsx)
@@ -418,7 +417,6 @@ ReactAria provides a [FocusRing](https://react-spectrum.adobe.com/react-aria/Foc
 
 While this works great, this solution can be a bit overkill since react aria does this all with javascript and have it's own event handling system.  
 I think it will be better and easier if we `use the platform™` 
-
 
 ## Focus trap
 
@@ -433,8 +431,8 @@ Focus traps are essential to communicate a modal's bounds to groups of people wh
 The idea is that if for part of the site we prevent clicks, we should also prevent focus.
 
 - People with low vision who rely on screen readers need to know when the modal opens.
-- People with low vision who cannot properly see the focus ring can get lost if focus isn't contained in the modal. This can be confusing and disorienting.
-- People with mobility using keyboard only could tab out of the modal and have a hard time getting back into the modal.
+- People with low vision who cannot properly see the focus ring can get lost if focus isn't contained in the modal, This can be confusing and disorienting.
+- People with mobility issues using keyboard could tab out of the modal and have a hard time getting back into the modal.
 
 **Best practices for focus traps**
 
@@ -468,7 +466,7 @@ It also handles:
 - Focus restoration to trigger
 - Auto focusing to children elements
 
-Considering the state of `inert` is not very good & we will have to write custom logic to handle other edge cases. It's better to use the ReactAria's component in this case. 
+Considering the `inert` attribute is not supported in major browsers & we will have to write custom logic to handle other edge cases. It's better to use the ReactAria's component in this case. 
 
 # Drawbacks/Constraints
 Why should we *not* do this? Maybe try to consider the following constraints
