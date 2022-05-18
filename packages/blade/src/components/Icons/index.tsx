@@ -15,6 +15,7 @@ export type IconProps = {
   size: IconSize;
 };
 
+export { default as ChevronDownIcon } from './ChevronDownIcon';
 export { default as ChevronUpIcon } from './ChevronUpIcon';
 export { default as CreditCardIcon } from './CreditCardIcon';
 export { default as DollarIcon } from './DollarIcon';
