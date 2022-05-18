@@ -16,4 +16,5 @@ export type IconProps = {
 };
 
 export { default as CreditCardIcon } from './CreditCardIcon';
+export { default as DollarIcon } from './DollarIcon';
 export { default as RupeeIcon } from './RupeeIcon';
