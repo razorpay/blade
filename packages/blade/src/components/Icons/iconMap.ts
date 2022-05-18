@@ -4,6 +4,7 @@ import ChevronUpIconComponent from './ChevronUpIcon';
 import ChevronRightIconComponent from './ChevronRightIcon';
 import CreditCardIconComponent from './CreditCardIcon';
 import DollarIconComponent from './DollarIcon';
+import EyeIconComponent from './EyeIcon';
 import RupeeIconComponent from './RupeeIcon';
 import type { IconProps } from '.';
 
@@ -15,6 +16,7 @@ const iconMap: Record<string, React.ComponentType<IconProps>> = {
   ChevronRightIcon: ChevronRightIconComponent,
   CreditCardIcon: CreditCardIconComponent,
   DollarIcon: DollarIconComponent,
+  EyeIcon: EyeIconComponent,
   RupeeIcon: RupeeIconComponent,
 };
 
