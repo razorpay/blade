@@ -13,7 +13,7 @@ describe('<Heading />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render highContrast Heading with variant "small"', () => {
+  it('should render Heading with variant "small" and contrast "high"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
       <Heading type="normal" variant="small" weight="regular" contrast="high">

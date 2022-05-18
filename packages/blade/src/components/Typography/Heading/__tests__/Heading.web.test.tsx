@@ -14,7 +14,7 @@ describe('<Heading />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render highContrast Heading with variant "small"', () => {
+  it('should render Heading with variant "small" and contrast "high"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { container, getByRole, getByText } = renderWithTheme(
       <Heading type="normal" variant="small" weight="regular" contrast="high">

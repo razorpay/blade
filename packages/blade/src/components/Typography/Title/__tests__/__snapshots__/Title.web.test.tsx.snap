@@ -60,7 +60,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
 </div>
 `;
 
-exports[`<Title /> should render highContrast Title with variant "small" 1`] = `
+exports[`<Title /> should render Title with variant "small" and contrast "high" 1`] = `
 <div>
   <h3
     class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 chFtrP"

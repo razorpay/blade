@@ -13,7 +13,7 @@ describe('<Title />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render highContrast Title with variant "small"', () => {
+  it('should render Title with variant "small" and contrast "high"', () => {
     const displayText = 'Displaying Landing Screen Title';
     const { toJSON, getByText } = renderWithTheme(
       <Title type="normal" variant="small" contrast="high">

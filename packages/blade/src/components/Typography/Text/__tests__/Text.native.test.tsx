@@ -13,7 +13,7 @@ describe('<Text />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render highContrast Text with variant "body"', () => {
+  it('should render Text with variant "body" and contrast "high"', () => {
     const displayText = 'Displaying some text';
     const { toJSON, getByText } = renderWithTheme(
       <Text type="normal" variant="body" weight="bold" truncateAfterLines={3} contrast="high">

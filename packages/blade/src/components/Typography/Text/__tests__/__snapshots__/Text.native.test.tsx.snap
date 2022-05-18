@@ -59,18 +59,19 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 </Text>
 `;
 
-exports[`<Text /> should render Text with variant "caption" 1`] = `
+exports[`<Text /> should render Text with variant "body" and contrast "high" 1`] = `
 <Text
-  color="hsla(217, 56%, 17%, 1)"
+  color="hsla(0, 0%, 100%, 1)"
   fontFamily="Lato"
   fontSize="15px"
   fontStyle="normal"
   fontWeight={700}
   lineHeight="24px"
+  numberOfLines={3}
   style={
     Array [
       Object {
-        "color": "hsla(217, 56%, 17%, 1)",
+        "color": "hsla(0, 0%, 100%, 1)",
         "fontFamily": "Lato",
         "fontSize": 15,
         "fontStyle": "normal",
@@ -88,19 +89,18 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
 </Text>
 `;
 
-exports[`<Text /> should render highContrast Text with variant "body" 1`] = `
+exports[`<Text /> should render Text with variant "caption" 1`] = `
 <Text
-  color="hsla(0, 0%, 100%, 1)"
+  color="hsla(217, 56%, 17%, 1)"
   fontFamily="Lato"
   fontSize="15px"
   fontStyle="normal"
   fontWeight={700}
   lineHeight="24px"
-  numberOfLines={3}
   style={
     Array [
       Object {
-        "color": "hsla(0, 0%, 100%, 1)",
+        "color": "hsla(217, 56%, 17%, 1)",
         "fontFamily": "Lato",
         "fontSize": 15,
         "fontStyle": "normal",
