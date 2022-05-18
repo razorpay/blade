@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CreditCardIcon /> should render CreditCardIcon 1`] = `
+exports[`<DollarIcon /> should render DollarIcon 1`] = `
 <RNSVGSvgView
   align="xMidYMid"
   bbHeight="24px"
