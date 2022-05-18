@@ -16,6 +16,7 @@ export type IconProps = {
 };
 
 export { default as ChevronDownIcon } from './ChevronDownIcon';
+export { default as ChevronLeftIcon } from './ChevronLeftIcon';
 export { default as ChevronUpIcon } from './ChevronUpIcon';
 export { default as CreditCardIcon } from './CreditCardIcon';
 export { default as DollarIcon } from './DollarIcon';
