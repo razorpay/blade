@@ -13,7 +13,7 @@
 -  **BaseButton API**:
    -  **`variant`**: `primary` | `secondary` | `tertiary` | `link`
       -  **default**: `primary`
-      -  Link will look like an inline Link component but will have the role of a `button`
+      -  Link will look like an inline Link component but will be rendered as `button` element
    -  **`intent`**: `positive` | `negative` | `notice` | `info` | `neutral`
       -  **default**: `undefined`
       -  We will use this to set the `intent` for internal Blade components that have positive, negative, notice, info, or neutral buttons like an `Alert` component
