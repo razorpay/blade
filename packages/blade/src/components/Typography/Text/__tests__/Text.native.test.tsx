@@ -6,24 +6,33 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<Text />', () => {
+  it('should render Text with default properties', () => {
+    const displayText = 'Displaying some text';
+    const { toJSON, getByText } = renderWithTheme(<Text>{displayText}</Text>);
+    expect(getByText('Displaying some text')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render Text with variant "body"', () => {
     const displayText = 'Displaying some text';
-    const renderedTree = renderWithTheme(
+    const { toJSON, getByText } = renderWithTheme(
       <Text type="normal" variant="body" weight="bold" truncateAfterLines={3}>
         {displayText}
       </Text>,
-    ).toJSON();
-    expect(renderedTree).toMatchSnapshot();
+    );
+    expect(getByText('Displaying some text')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render Text with variant "caption"', () => {
     const displayText = 'Displaying some text';
-    const renderedTree = renderWithTheme(
+    const { toJSON, getByText } = renderWithTheme(
       <Text type="normal" variant="body" weight="bold">
         {displayText}
       </Text>,
-    ).toJSON();
-    expect(renderedTree).toMatchSnapshot();
+    );
+    expect(getByText('Displaying some text')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should throw error when variant is "caption" but weight "bold" is passed', () => {

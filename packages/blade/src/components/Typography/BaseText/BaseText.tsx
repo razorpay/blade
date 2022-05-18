@@ -15,13 +15,13 @@ type SurfaceColors = `surface.text.${DotNotationColorStringToken<
 type ActionColors = `action.text.${DotNotationColorStringToken<Theme['colors']['action']['text']>}`;
 
 export type BaseTextProps = {
-  color: ActionColors | FeedbackColors | SurfaceColors;
-  fontFamily: keyof Theme['typography']['fonts']['family'];
-  fontSize: keyof Theme['typography']['fonts']['size'];
-  fontWeight: keyof Theme['typography']['fonts']['weight'];
+  color?: ActionColors | FeedbackColors | SurfaceColors;
+  fontFamily?: keyof Theme['typography']['fonts']['family'];
+  fontSize?: keyof Theme['typography']['fonts']['size'];
+  fontWeight?: keyof Theme['typography']['fonts']['weight'];
   fontStyle?: 'italic' | 'normal';
   textDecorationLine?: 'line-through' | 'none';
-  lineHeight: keyof Theme['typography']['lineHeights'];
+  lineHeight?: keyof Theme['typography']['lineHeights'];
   as?: 'code' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   textAlign?: 'center' | 'justify' | 'left' | 'right';
   truncateAfterLines?: number;
@@ -30,15 +30,15 @@ export type BaseTextProps = {
 };
 
 const BaseText = ({
-  color,
-  fontFamily,
-  fontSize,
-  fontWeight,
-  fontStyle,
-  textDecorationLine,
-  lineHeight,
+  color = 'surface.text.normal.lowContrast',
+  fontFamily = 'text',
+  fontSize = 200,
+  fontWeight = 'regular',
+  fontStyle = 'normal',
+  textDecorationLine = 'none',
+  lineHeight = 'l',
   as,
-  textAlign,
+  textAlign = 'left',
   children,
   truncateAfterLines,
   className,
