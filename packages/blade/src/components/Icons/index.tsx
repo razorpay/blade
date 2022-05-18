@@ -22,4 +22,5 @@ export { default as ChevronUpIcon } from './ChevronUpIcon';
 export { default as CreditCardIcon } from './CreditCardIcon';
 export { default as DollarIcon } from './DollarIcon';
 export { default as EyeIcon } from './EyeIcon';
+export { default as EyeOffIcon } from './EyeOffIcon';
 export { default as RupeeIcon } from './RupeeIcon';
