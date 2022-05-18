@@ -1,6 +1,7 @@
 import ChevronDownIconComponent from './ChevronDownIcon';
 import ChevronLeftIconComponent from './ChevronLeftIcon';
 import ChevronUpIconComponent from './ChevronUpIcon';
+import ChevronRightIconComponent from './ChevronRightIcon';
 import CreditCardIconComponent from './CreditCardIcon';
 import DollarIconComponent from './DollarIcon';
 import RupeeIconComponent from './RupeeIcon';
@@ -11,6 +12,7 @@ const iconMap: Record<string, React.ComponentType<IconProps>> = {
   ChevronDownIcon: ChevronDownIconComponent,
   ChevronLeftIcon: ChevronLeftIconComponent,
   ChevronUpIcon: ChevronUpIconComponent,
+  ChevronRightIcon: ChevronRightIconComponent,
   CreditCardIcon: CreditCardIconComponent,
   DollarIcon: DollarIconComponent,
   RupeeIcon: RupeeIconComponent,
