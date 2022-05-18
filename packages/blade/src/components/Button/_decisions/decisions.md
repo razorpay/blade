@@ -74,3 +74,4 @@
 - Scope of A11y?
   - [WAI-ARI Button](https://www.w3.org/TR/wai-aria-practices-1.2/#button)
   - [WAI-ARI Link](https://www.w3.org/TR/wai-aria-practices-1.2/#link)
+  - To be discussed further depending on [A11y RFC](https://github.com/razorpay/blade/pull/463) which is in progress
