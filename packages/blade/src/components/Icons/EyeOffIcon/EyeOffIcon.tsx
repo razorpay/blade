@@ -5,7 +5,6 @@ import useIconProps from '../useIconProps';
 
 const EyeOffIcon = ({ size, color }: IconProps): ReactElement => {
   const { height, width, iconColor } = useIconProps({ size, color });
-  console.log('🚀 ~ file: EyeOffIcon.tsx ~ line 8 ~ EyeOffIcon ~ height, width', height, width);
 
   return (
     <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
