@@ -3,7 +3,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconProps } from '..';
 import useIconProps from '../useIconProps';
 
-const ChevronUpIcon = ({ size, color }: IconProps): ReactElement => {
+const ChevronDownIcon = ({ size, color }: IconProps): ReactElement => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -18,4 +18,4 @@ const ChevronUpIcon = ({ size, color }: IconProps): ReactElement => {
   );
 };
 
-export default ChevronUpIcon;
+export default ChevronDownIcon;
