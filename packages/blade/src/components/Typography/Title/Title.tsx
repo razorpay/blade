@@ -1,11 +1,12 @@
 import type { ReactElement } from 'react';
-import type { TextTypes } from '../../../tokens/theme/theme';
+import type { ColorContrast, ColorContrastTypes, TextTypes } from '../../../tokens/theme/theme.d';
 import getPlatformType from '../../../utils/getPlatformType';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText/BaseText';
 
 export type TitleProps = {
   variant?: 'small' | 'medium' | 'large';
+  contrast?: ColorContrastTypes;
   type?: TextTypes;
   children: string;
 };
@@ -13,9 +14,11 @@ export type TitleProps = {
 const getProps = ({
   variant,
   type,
-}: Pick<TitleProps, 'variant' | 'type'>): Omit<BaseTextProps, 'children'> => {
+  contrast,
+}: Pick<TitleProps, 'variant' | 'type' | 'contrast'>): Omit<BaseTextProps, 'children'> => {
+  const colorContrast: keyof ColorContrast = contrast ? `${contrast}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
-    color: `surface.text.${type ?? 'normal'}.lowContrast`,
+    color: `surface.text.${type ?? 'normal'}.${colorContrast}`,
     fontSize: 600,
     fontWeight: 'bold',
     fontStyle: 'normal',
@@ -41,8 +44,13 @@ const getProps = ({
   return props;
 };
 
-const Title = ({ variant = 'small', type = 'normal', children }: TitleProps): ReactElement => {
-  const props = getProps({ variant, type });
+const Title = ({
+  variant = 'small',
+  type = 'normal',
+  contrast = 'low',
+  children,
+}: TitleProps): ReactElement => {
+  const props = getProps({ variant, type, contrast });
   return <BaseText {...props}>{children}</BaseText>;
 };
 

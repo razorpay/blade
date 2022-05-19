@@ -13,6 +13,8 @@ export type ShadowLevels = 1 | 2 | 3 | 4 | 5;
 
 export type TextTypes = 'muted' | 'normal' | 'placeholder' | 'subdued' | 'subtle';
 
+export type ColorContrastTypes = 'low' | 'high';
+
 export type Shadows = {
   offsetX: {
     level: Record<ShadowLevels, number>;
@@ -37,8 +39,7 @@ export type Shadows = {
 export type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
 export type ColorContrast = {
-  highContrast: string;
-  lowContrast: string;
+  [K in ColorContrastTypes as `${Extract<K, string>}Contrast`]: string;
 };
 
 export type ActionStates = {

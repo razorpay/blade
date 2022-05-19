@@ -30,6 +30,21 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 </div>
 `;
 
+exports[`<Text /> should render Text with variant "body" and contrast "high" 1`] = `
+<div>
+  <p
+    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 dnntft Text__StyledText-wkh56f-0 cxeSYd"
+    color="hsla(0, 0%, 100%, 1)"
+    font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+    font-size="0.875rem"
+    font-style="normal"
+    font-weight="700"
+  >
+    Displaying some text
+  </p>
+</div>
+`;
+
 exports[`<Text /> should render Text with variant "caption" 1`] = `
 <div>
   <p
