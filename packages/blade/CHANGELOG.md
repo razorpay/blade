@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.7.2
+
+### Patch Changes
+
+- 9f0bb83: feat: add Dollar, ChevronUp, ChevronDown, ChevronLeft, ChevronRight, Eye, EyeOff, Close icons
+
 ## 0.7.1
 
 ### Patch Changes
