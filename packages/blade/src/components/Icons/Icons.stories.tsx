@@ -21,9 +21,9 @@ const Page = (): ReactElement => {
     {
       themeTokenName: 'paymentTheme',
       lightModeURL:
-        'ttps://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=59%3A177',
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=59%3A177',
       darkModeURL:
-        'ttps://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=59%3A177',
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=59%3A177',
     },
     {
       themeTokenName: 'bankingTheme',
@@ -41,6 +41,10 @@ const Page = (): ReactElement => {
         We provide a bunch of icons out-of-the-box for Blade in 6 different sizes. You can choose
         which size & color fits the best for your use case using the color & size props.
       </Subtitle>
+      <Description
+        markdown="> For now, we have added only a few icons but you can contribute to Blade by adding more icons
+        that are available on the Figma board as and when a use-case arises"
+      />
       <Link withArrow={true} href={figmaURL} target="_blank">
         View in Figma
       </Link>
