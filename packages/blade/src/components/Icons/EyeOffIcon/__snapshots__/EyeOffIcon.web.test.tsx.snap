@@ -23,7 +23,7 @@ exports[`<EyeOffIcon /> should render EyeOffIcon 1`] = `
         id="clip0_60_186"
       >
         <rect
-          fill="white"
+          fill="none"
           height="100%"
           width="100%"
         />
