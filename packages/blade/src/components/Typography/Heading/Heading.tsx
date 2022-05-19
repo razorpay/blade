@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import type { TextTypes } from '../../../tokens/theme/theme';
+import type { ColorContrast, ColorContrastTypes, TextTypes } from '../../../tokens/theme/theme.d';
 import getPlatformType from '../../../utils/getPlatformType';
 import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
@@ -9,6 +9,7 @@ type HeadingVariant = 'small' | 'medium' | 'large' | 'subheading';
 
 type HeadingCommonProps = {
   type?: TextTypes;
+  contrast?: ColorContrastTypes;
   children: string;
 };
 
@@ -40,9 +41,14 @@ const getProps = <T extends { variant: HeadingVariant }>({
   variant,
   type,
   weight,
-}: Pick<HeadingProps<T>, 'variant' | 'type' | 'weight'>): Omit<BaseTextProps, 'children'> => {
+  contrast,
+}: Pick<HeadingProps<T>, 'variant' | 'type' | 'weight' | 'contrast'>): Omit<
+  BaseTextProps,
+  'children'
+> => {
+  const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
-    color: `surface.text.${type ?? 'normal'}.lowContrast`,
+    color: `surface.text.${type ?? 'normal'}.${colorContrast}`,
     fontSize: 200,
     fontWeight: weight ?? 'bold',
     fontStyle: 'normal',
@@ -79,9 +85,10 @@ const Heading = <T extends { variant: HeadingVariant }>({
   variant = 'small',
   type = 'normal',
   weight = 'bold',
+  contrast = 'low',
   children,
 }: HeadingProps<T>): ReactElement => {
-  const props = getProps({ variant, type, weight });
+  const props = getProps({ variant, type, weight, contrast });
   return <BaseText {...props}>{children}</BaseText>;
 };
 
