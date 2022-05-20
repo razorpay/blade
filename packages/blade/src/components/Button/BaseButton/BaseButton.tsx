@@ -23,6 +23,7 @@ const BaseButton = ({ children, icon }: BaseButtonProps): ReactElement => {
   const { theme } = useTheme();
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
+  const activeColor = getIn(theme.colors, 'action.background.primary.active');
   const IconComponent = icon;
   return (
     <StyledBaseButton
@@ -31,6 +32,8 @@ const BaseButton = ({ children, icon }: BaseButtonProps): ReactElement => {
       onClick={(): void => {
         console.log('clicked');
       }}
+      disabled={true}
+      activeColor={activeColor}
     >
       {IconComponent ? <IconComponent size="small" color="action.icon.primary.default" /> : null}
       <BaseText

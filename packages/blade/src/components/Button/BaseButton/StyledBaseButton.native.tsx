@@ -3,18 +3,28 @@ import getBaseButtonStyles from './getBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
 const StyledPressable = styled.Pressable(
-  ({ color, hoverColor }: Omit<StyledBaseButtonProps, 'onClick'>) =>
-    getBaseButtonStyles({ color, hoverColor }),
+  ({ color, hoverColor, activeColor }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
+    getBaseButtonStyles({ color, hoverColor, activeColor }),
 );
 
 const StyledBaseButton = ({
   onClick,
   color,
   hoverColor,
+  activeColor,
   children,
 }: StyledBaseButtonProps): React.ReactElement => {
   return (
-    <StyledPressable onPress={onClick} color={color} hoverColor={hoverColor}>
+    <StyledPressable
+      onPress={onClick}
+      color={color}
+      hoverColor={hoverColor}
+      activeColor={activeColor}
+      style={({ pressed }): { backgroundColor: string; borderColor: string } => ({
+        backgroundColor: pressed ? activeColor : color,
+        borderColor: pressed ? activeColor : color,
+      })}
+    >
       {children}
     </StyledPressable>
   );

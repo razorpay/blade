@@ -3,6 +3,7 @@ export type StyledBaseButtonProps = {
   onClick: () => void;
   color: string;
   hoverColor: string;
+  activeColor: string;
 };
 
 export { default } from './StyledBaseButton.web';

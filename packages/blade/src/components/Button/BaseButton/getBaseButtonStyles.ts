@@ -3,10 +3,12 @@ import type { StyledBaseButtonProps } from './StyledBaseButton';
 const getBaseButtonStyles = ({
   color,
   hoverColor,
+  activeColor,
 }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>): string => `
   display:flex;
   flex-direction: row;
   height: 48px;
+  cursor: pointer;
   background-color: ${color};
   border: 2px solid ${color};
   color: white;
@@ -19,6 +21,10 @@ const getBaseButtonStyles = ({
   &:hover {
     background-color: ${hoverColor};
     border: 2px solid ${hoverColor};
+  }
+  &:active {
+    background-color: ${activeColor};
+    border: 2px solid ${activeColor};
   }
 `;
 
