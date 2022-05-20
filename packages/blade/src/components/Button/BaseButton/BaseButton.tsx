@@ -2,18 +2,28 @@ import type { ReactElement } from 'react';
 import getIn from '../../../utils/getIn';
 import BaseText from '../../Typography/BaseText';
 import { useTheme } from '../../BladeProvider';
+import type { IconProps } from '../../Icons';
 import StyledBaseButton from './StyledBaseButton';
 
 export type BaseButtonProps = {
-  children: string;
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
+  intent?: 'positive' | 'negative' | 'notice' | 'info' | 'neutral';
+  contrast?: 'low' | 'high';
+  size?: 'large' | 'medium' | 'small' | 'xsmall';
+  icon?: React.ComponentType<IconProps>;
+  iconPosition?: 'left' | 'right';
+  isDisabled?: boolean;
+  isFullWidth?: boolean;
+  onClick?: () => void;
+  type?: 'button' | 'reset' | 'submit';
+  children?: string;
 };
 
-const BaseButton = ({ children }: BaseButtonProps): ReactElement => {
+const BaseButton = ({ children, icon }: BaseButtonProps): ReactElement => {
   const { theme } = useTheme();
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
-  console.log('🚀 ~ file: BaseButton.tsx ~ line 14 ~ BaseButton ~ buttonColor', buttonColor);
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
-
+  const IconComponent = icon;
   return (
     <StyledBaseButton
       color={buttonColor}
@@ -22,6 +32,7 @@ const BaseButton = ({ children }: BaseButtonProps): ReactElement => {
         console.log('clicked');
       }}
     >
+      {IconComponent ? <IconComponent size="small" color="action.icon.primary.default" /> : null}
       <BaseText
         lineHeight="s"
         fontSize={100}

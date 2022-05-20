@@ -1,5 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import iconMap from '../../Icons/iconMap';
 import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
 
@@ -8,6 +9,13 @@ export default {
   component: BaseButtonComponent,
   args: {
     children: 'Pay Now',
+  },
+  argTypes: {
+    icon: {
+      name: 'icon',
+      type: 'select',
+      options: Object.keys(iconMap),
+    },
   },
   parameters: {
     docs: {
@@ -28,10 +36,25 @@ export default {
   },
 } as Meta<BaseButtonProps>;
 
-const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = (args) => {
-  return <BaseButtonComponent {...args}>{args.children}</BaseButtonComponent>;
+const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
+  icon,
+  children,
+  ...args
+}) => {
+  const IconComponent = iconMap[(icon as unknown) as string];
+
+  return (
+    <BaseButtonComponent icon={IconComponent} {...args}>
+      {children}
+    </BaseButtonComponent>
+  );
 };
 
 export const BaseButton = BaseButtonTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 BaseButton.storyName = 'BaseButton';
+BaseButton.args = {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  icon: 'CreditCardIcon',
+};

@@ -1,5 +1,5 @@
 export type StyledBaseButtonProps = {
-  children: React.ReactNode;
+  children: string;
   onClick: () => void;
   color: string;
   hoverColor: string;
