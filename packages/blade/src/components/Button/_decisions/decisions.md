@@ -1,7 +1,9 @@
 # Button Decisions <!-- omit in toc -->
 - [Design](#design)
 - [Internal BaseButton Component](#internal-basebutton-component)
+  - [BaseButton API](#basebutton-api)
 - [Button Component](#button-component)
+  - [Button API](#button-api)
 - [Component Breakdown](#component-breakdown)
 - [Open Questions](#open-questions)
 
@@ -9,59 +11,40 @@
 [Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0) to all variants of the Button component
 
 ## Internal BaseButton Component
--  Internal component that exposes certain extra props to enable creation of Component Level Action Buttons like `positive`, `negative`, `neutral`
--  **BaseButton API**:
-   -  **`variant`**: `primary` | `secondary` | `tertiary` | `link`
-      -  **default**: `primary`
-      -  Link will look like an inline Link component but will be rendered as `button` element
-   -  **`intent`**: `positive` | `negative` | `notice` | `info` | `neutral`
-      -  **default**: `undefined`
-      -  We will use this to set the `intent` for internal Blade components that have positive, negative, notice, info, or neutral buttons like an `Alert` component
-   -  **`contrast`**: `high` | `low`
-      -  **default**: `low`
-      -  We need this for internal Blade components since a `positive` intent could have a `high` as well as a `low` contrast button
-   -  **`size`**: `large` | `medium` | `small` | `xsmall`
-      - **default**: `medium`
-   -  **`children`**: `string`
-   -  **`icon`**: `IconComponent`
-      -  **default**: `undefined`
-   -  **`iconPosition`**: `left` | `right`
-      -  **default**: `right`
-   -  **`isDisabled`**: `true` | `false`
-      -  **default**: `false`
-      -  Should we call this `disabled` instead?
-   -  **`isFullWidth`**: `true` | `false`
-      -  **default**: `false`
-      -  Should we call this `fullWidth` instead?
-   -  **`onClick`**: `Function`
-      -  **default**: `undefined`
-   -  **`type`**: `button` | `submit` | `reset`
-      -  **default**: `button`
-      -  This prop will be ignored for react-native
+Internal component that exposes certain extra props to enable creation of Component Level Action Buttons like `positive`, `negative`, `neutral`
+
+### BaseButton API
+
+| Prop | Type | Required | Default | Description |
+|---|---|---|---|---|
+| variant | `primary`,  `secondary`,  `tertiary`,  `link` | No | `primary` | - The variant of the button to be rendered.<br><br>Note: `link` will look like an inline Link component but will be rendered as a `button` element |
+| intent | `positive`,`negative`, `notice`, `info`, `neutral` | No | undefined | The intent of the button to be rendered.<br><br>  Note: <br> - We will use this to set the intent for internal Blade components that have positive, negative, notice, info, or neutral buttons like an Alert component<br> - All the variants of the button will not be using any intent since it would only be required for internal components. |
+| contrast | `low`, `high` | No | `low` | The contrast of the button to be rendered.<br><br>  Note: We need this for internal Blade components since a `positive` intent could have a `high` as well as a `low` contrast button |
+| size | `large`, `medium`, `small`, `xsmall` | No | `medium` | The size of the button to be rendered. |
+| children | `string` | No | undefined | The text to be rendered within the button. |
+| icon | `Icon` | No | undefined | The Blade `Icon` component to be rendered within the button. |
+| iconPosition | `left`, `right` | No | `right` | The position of the rendered icon. |
+| isDisabled | `boolean` | No | `false` | Control whether the button is disabled or not. |
+| isFullWidth | `boolean` | No | `false` | Allows the button to take up the full width of its parent. |
+| onClick | `Function` | No | undefined | The function to be called when the button is clicked. |
+| type | `button`, `submit`, `reset` | No | `button` | Specifies the type of button to be rendered.<br><br>  Note:<br> - This prop will be ignored for React Native |
 
 ## Button Component
-- This will be the Button component that is exposed to our consumers and will be a wrapper on top of `BaseButton` component
--  **Button API**:
-   -  **`variant`**: `primary` | `secondary` | `tertiary` | `link`
-      - **default**: `primary`
-   -  **`size`**: `large` | `medium` | `small` | `xsmall`
-      -  **default**: `medium`
-   -  **`children`**: `string`
-   -  **`icon`**: `IconComponent`
-      -  **default**: `undefined`
-   -  **`iconPosition`**: `left` | `right`
-      -  **default**: `right`
-   -  **`isDisabled`**: `true` | `false`
-      -  **default**: `false`
-      -  Should we call this `disabled` instead?
-   -  **`isFullWidth`**: `true` | `false`
-      -  **default**: `false`
-      -  Should we call this `fullWidth` instead?
-   -  **`onClick`**: `Function`
-      -  **default**: `undefined`
-   -  **`type`**: `button` | `submit` | `reset`
-      -  **default**: `button`
-      -  This prop will be ignored for react-native
+This will be the Button component that is exposed to our consumers and will be a wrapper on top of `BaseButton` component
+
+### Button API
+
+| Prop | Type | Required | Default | Description |
+|---|---|---|---|---|
+| variant | `primary`,  `secondary`,  `tertiary`,  `link` | No | `primary` | - The variant of the button to be rendered.<br><br>Note: `link` will look like an inline Link component but will be rendered as a `button` element |
+| size | `large`, `medium`, `small`, `xsmall` | No | `medium` | The size of the button to be rendered. |
+| children | `string` | No | undefined | The text to be rendered within the button. |
+| icon | `Icon` | No | undefined | The Blade `Icon` component to be rendered within the button. |
+| iconPosition | `left`, `right` | No | `right` | The position of the rendered icon. |
+| isDisabled | `boolean` | No | `false` | Control whether the button is disabled or not. |
+| isFullWidth | `boolean` | No | `false` | Allows the button to take up the full width of its parent. |
+| onClick | `Function` | No | undefined | The function to be called when the button is clicked. |
+| type | `button`, `submit`, `reset` | No | `button` | Specifies the type of button to be rendered.<br><br>  Note:<br> - This prop will be ignored for React Native |
 
 ## Component Breakdown
 
