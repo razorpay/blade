@@ -27,7 +27,7 @@ Internal component that exposes certain extra props to enable creation of Compon
 | isDisabled | `boolean` | No | `false` | Control whether the button is disabled or not. |
 | isFullWidth | `boolean` | No | `false` | Allows the button to take up the full width of its parent. |
 | onClick | `Function` | No | undefined | The function to be called when the button is clicked. |
-| type | `button`, `submit`, `reset` | No | `button` | Specifies the type of button to be rendered.<br><br>  Note:<br> - This prop will be ignored for React Native |
+| type | `button`, `submit`, `reset` | No | `button` | Specifies the type of button to be rendered.<br><br>  Note: This prop will be ignored for React Native |
 
 ## Button Component
 This will be the Button component that is exposed to our consumers and will be a wrapper on top of `BaseButton` component
@@ -44,7 +44,7 @@ This will be the Button component that is exposed to our consumers and will be a
 | isDisabled | `boolean` | No | `false` | Control whether the button is disabled or not. |
 | isFullWidth | `boolean` | No | `false` | Allows the button to take up the full width of its parent. |
 | onClick | `Function` | No | undefined | The function to be called when the button is clicked. |
-| type | `button`, `submit`, `reset` | No | `button` | Specifies the type of button to be rendered.<br><br>  Note:<br> - This prop will be ignored for React Native |
+| type | `button`, `submit`, `reset` | No | `button` | Specifies the type of button to be rendered.<br><br>  Note: This prop will be ignored for React Native |
 
 ## Component Breakdown
 
