@@ -9,6 +9,7 @@ import Size from '../../atoms/Size';
 import View from '../../atoms/View';
 import Button from '../../atoms/Button';
 import { Close } from '../../icons';
+import automation from '../../_helpers/automation-attributes';
 import ModalHeader from './ModalHeader.native';
 import ModalContent from './ModalContent.native';
 import ModalFooter from './ModalFooter.native';
@@ -52,7 +53,7 @@ const BottomSheetDragBar = styled(View)`
   border-radius: 4px;
 `;
 
-const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
+const Modal = ({ children, variant, visible, onClose, onBackdropClick, testID }) => {
   const theme = useTheme();
 
   if (variant === 'centered') {
@@ -65,6 +66,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
           backdropColor={theme.colors.overlay[200]}
           propagateSwipe
           useNativeDriverForBackdrop
+          {...automation(testID)}
         >
           <ModalContainer variant="centered">
             {onClose ? (
@@ -97,7 +99,13 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
   if (variant === 'fullscreen') {
     return (
       <Space margin={[`${getStatusBarHeight(true)}px`, 0, 0, 0]}>
-        <RNModal isVisible={visible} hasBackdrop={false} onBackButtonPress={onClose} propagateSwipe>
+        <RNModal
+          isVisible={visible}
+          hasBackdrop={false}
+          onBackButtonPress={onClose}
+          propagateSwipe
+          {...automation(testID)}
+        >
           <Flex flex={1}>
             <ModalContainer variant="fullscreen">
               {React.Children.map(children, (child) => {
@@ -127,6 +135,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
             backdropColor={theme.colors.overlay[200]}
             propagateSwipe
             useNativeDriverForBackdrop
+            {...automation(testID)}
           >
             <ModalContainer variant="bottomsheet">
               <Flex alignItems="center">
@@ -163,9 +172,11 @@ Modal.propTypes = {
   visible: PropTypes.bool,
   onClose: PropTypes.func,
   onBackdropClick: PropTypes.func,
+  testID: PropTypes.string,
 };
 
 Modal.defaultProps = {
+  testID: 'ds-modal',
   variant: 'centered',
   visible: false,
 };
