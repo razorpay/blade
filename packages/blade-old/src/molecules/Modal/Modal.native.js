@@ -118,6 +118,7 @@ const Modal = ({ children, variant, visible, onClose, onBackdropClick }) => {
       <Space margin={[0]}>
         <Flex justifyContent="flex-end">
           <RNModal
+            testID="bottomsheet-modal"
             isVisible={visible}
             swipeDirection={['down']}
             onBackdropPress={onBackdropClick}
