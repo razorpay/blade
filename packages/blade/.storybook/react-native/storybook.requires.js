@@ -24,6 +24,7 @@ argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
 const getStories = () => {
   return [
     require('../../src/components/Icons/Icons.stories.tsx'),
+    require('../../src/components/NativeAria/NativeAria.stories.tsx'),
     require('../../src/components/Typography/BaseText/BaseText.stories.tsx'),
     require('../../src/components/Typography/Heading/Heading.stories.tsx'),
     require('../../src/components/Typography/Text/Text.stories.tsx'),

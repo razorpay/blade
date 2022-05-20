@@ -1613,6 +1613,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.6.2":
+  version "7.17.9"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.9.tgz#d19fbf802d01a8cb6cf053a64e472d42c434ba72"
+  integrity sha512-lSiBBvodq29uShpWGNbgFdKYNiFDo5/HIYsaCEY9ff4sb10x9jizo2+pRrSyF4jKZCXqgzuqBOQKbUm90gQwJg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.0.0", "@babel/template@^7.10.4", "@babel/template@^7.12.7", "@babel/template@^7.16.0", "@babel/template@^7.3.3", "@babel/template@^7.4.0", "@babel/template@^7.8.6":
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.16.0.tgz#d16a35ebf4cd74e202083356fab21dd89363ddd6"
@@ -3559,6 +3566,121 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
+"@react-aria/checkbox@^3.2.1":
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/@react-aria/checkbox/-/checkbox-3.3.4.tgz#f59a65bdc41894d47717ede7b31f49a29f539ba7"
+  integrity sha512-5IJff+hzNR0LJgNyNJPgu8ElTN8Df1GDHDySdD7gP2Sv5916x1eTx+hZlYq4FUyTsOlW6QuynQ0jrQUK4xAnRA==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-aria/label" "^3.2.5"
+    "@react-aria/toggle" "^3.2.4"
+    "@react-aria/utils" "^3.12.0"
+    "@react-stately/checkbox" "^3.0.7"
+    "@react-stately/toggle" "^3.2.7"
+    "@react-types/checkbox" "^3.2.7"
+
+"@react-aria/focus@^3.2.3", "@react-aria/focus@^3.5.5":
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/@react-aria/focus/-/focus-3.5.5.tgz#d5e3eb7af8612e8dafda214746084766e55c4b01"
+  integrity sha512-scv+jhbQ25JCh36gu8a++edvdEFdlRScdQdnkJOB4NbHbYYfY36APtI70hgQHdfq9dDl5fJ9LMsH9hoF7X3gLw==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-aria/interactions" "^3.8.4"
+    "@react-aria/utils" "^3.12.0"
+    "@react-types/shared" "^3.12.0"
+    clsx "^1.1.1"
+
+"@react-aria/interactions@^3.3.2", "@react-aria/interactions@^3.8.4":
+  version "3.8.4"
+  resolved "https://registry.yarnpkg.com/@react-aria/interactions/-/interactions-3.8.4.tgz#f3704470b70f150b753bba01a8714f97d6299906"
+  integrity sha512-6EHFKK8pmjSJSKcBbduijPETKqE669XZ1VaEY8ubr6VnlVhCszvKHoxpU384CkNiDNLJOVkK6HDzPXsn3lxhng==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-aria/utils" "^3.12.0"
+    "@react-types/shared" "^3.12.0"
+
+"@react-aria/label@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/@react-aria/label/-/label-3.2.5.tgz#f1aafc2531540e56df1221233bab343fcfb84dc2"
+  integrity sha512-MkcPa7Ps/BsWTctH7IgVWtYENwrByfYMPmYdZCgotI0MiI6wK4LWwRaUQmfc7mWwJ7ns2NPyBRwrzJT4+RRbew==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-aria/utils" "^3.12.0"
+    "@react-types/label" "^3.5.4"
+    "@react-types/shared" "^3.12.0"
+
+"@react-aria/ssr@^3.0.1", "@react-aria/ssr@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@react-aria/ssr/-/ssr-3.1.2.tgz#665a6fd56385068c7417922af2d0d71b0618e52d"
+  integrity sha512-amXY11ImpokvkTMeKRHjsSsG7v1yzzs6yeqArCyBIk60J3Yhgxwx9Cah+Uu/804ATFwqzN22AXIo7SdtIaMP+g==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+
+"@react-aria/toggle@^3.2.4":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@react-aria/toggle/-/toggle-3.2.4.tgz#b4cb71782c4f4bfbfa858a37c1fd71d6470e490f"
+  integrity sha512-q1NiUKkWt9trgVj/VvKrTpe/tvNcsM9ie5JJVxikF4moPCyIqxRWaDzi2/g/63c1I6LZDMVT4v6V5tk9xgfuiQ==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-aria/focus" "^3.5.5"
+    "@react-aria/interactions" "^3.8.4"
+    "@react-aria/utils" "^3.12.0"
+    "@react-stately/toggle" "^3.2.7"
+    "@react-types/checkbox" "^3.2.7"
+    "@react-types/shared" "^3.12.0"
+    "@react-types/switch" "^3.1.6"
+
+"@react-aria/utils@^3.12.0", "@react-aria/utils@^3.3.0", "@react-aria/utils@^3.6.0":
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/@react-aria/utils/-/utils-3.12.0.tgz#39d0f37525e050356c4de725c85d9b10e7a5c0d9"
+  integrity sha512-1TMrE7UpgTgQHgW3z0r6Zo4CTUDwNsZEwzg+mQVub8ZalonhuNs5OrulUn+lRIsGELNktGNkeh/29WsS1Od8eg==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-aria/ssr" "^3.1.2"
+    "@react-stately/utils" "^3.4.1"
+    "@react-types/shared" "^3.12.0"
+    clsx "^1.1.1"
+
+"@react-native-aria/checkbox@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@react-native-aria/checkbox/-/checkbox-0.2.3.tgz#b6c99c215677df872f1bb4e596b54573f1c7a5f0"
+  integrity sha512-YtWtXGg5tvOaV6v1CmbusXoOZvGRAVYygms9qNeUF7/B8/iDNGSKjlxHE5LVOLRtJO/B9ndZnr6RkL326ceyng==
+  dependencies:
+    "@react-aria/checkbox" "^3.2.1"
+    "@react-aria/utils" "^3.6.0"
+    "@react-native-aria/toggle" "^0.2.3"
+    "@react-native-aria/utils" "^0.2.6"
+    "@react-stately/toggle" "^3.2.1"
+
+"@react-native-aria/interactions@^0.2.3":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@react-native-aria/interactions/-/interactions-0.2.8.tgz#5ced4bd3391c647699fa79275472f784a44c2488"
+  integrity sha512-+LsLghBnp1fEVdLdIZGfE2izbZS0GPwc7eyiLHndnAXwXdLmyDRw71UCEjsUuNh7SO7BBR5QjHlk0cTHmyynQg==
+  dependencies:
+    "@react-aria/interactions" "^3.3.2"
+    "@react-aria/utils" "^3.6.0"
+    "@react-native-aria/utils" "^0.2.6"
+
+"@react-native-aria/toggle@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@react-native-aria/toggle/-/toggle-0.2.3.tgz#a387f03480aa0d97dc0191acbcae66122f7bcf7f"
+  integrity sha512-3aOlchMxpR0b2h3Z7V0aYZaQMVJD6uKOWKWJm82VsLrni4iDnDX/mLv30ujuuK3+LclUhVlJd2kRuCl+xnf3XQ==
+  dependencies:
+    "@react-aria/focus" "^3.2.3"
+    "@react-aria/utils" "^3.6.0"
+    "@react-native-aria/interactions" "^0.2.3"
+    "@react-native-aria/utils" "^0.2.6"
+    "@react-stately/toggle" "^3.2.1"
+    "@react-types/checkbox" "^3.2.1"
+
+"@react-native-aria/utils@^0.2.6":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@react-native-aria/utils/-/utils-0.2.8.tgz#da433606506125483080f18dbcd97b526ca46fd5"
+  integrity sha512-x375tG1itv3irLFRnURLsdK2djuvhFJHizSDUtLCo8skQwfjslED5t4sUkQ49di4G850gaVJz0fCcCx/pHX7CA==
+  dependencies:
+    "@react-aria/ssr" "^3.0.1"
+    "@react-aria/utils" "^3.3.0"
+
 "@react-native-async-storage/async-storage@1.15.14":
   version "1.15.14"
   resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.15.14.tgz#8165d3f78798b46e693169795b62e40142064273"
@@ -3825,6 +3947,60 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@react-native/polyfills/-/polyfills-2.0.0.tgz#4c40b74655c83982c8cf47530ee7dc13d957b6aa"
   integrity sha512-K0aGNn1TjalKj+65D7ycc1//H9roAQ51GJVk5ZJQFb2teECGmzd86bYDC0aYdbRf7gtovescq4Zt6FR0tgXiHQ==
+
+"@react-stately/checkbox@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@react-stately/checkbox/-/checkbox-3.0.7.tgz#c3c77832e90087d20a4facc66aae8a22ce59b447"
+  integrity sha512-dBY4x3qWoCO2IFeTVovnq6xkWa9ycqdNNws+gbYt79EwFdKSIfH1iTuFrv9DIwTU2N72quFCC/xQ23+a1/ZqSg==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-stately/toggle" "^3.2.7"
+    "@react-stately/utils" "^3.4.1"
+    "@react-types/checkbox" "^3.2.7"
+
+"@react-stately/toggle@^3.2.1", "@react-stately/toggle@^3.2.7":
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/@react-stately/toggle/-/toggle-3.2.7.tgz#4d15261b438f89ea78bf3c08c812e0f854e0373f"
+  integrity sha512-McKc2wIp1z7Dw6EqQgOgjr2QnKR+LWXppZjdx30K4hnCiP6cXZp66DmR2ngekPrtOYDN6Xdqbty/Ez7kiJxmnQ==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+    "@react-stately/utils" "^3.4.1"
+    "@react-types/checkbox" "^3.2.7"
+    "@react-types/shared" "^3.12.0"
+
+"@react-stately/utils@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@react-stately/utils/-/utils-3.4.1.tgz#56f049aa1704d338968b5973c796ee606e9c0c62"
+  integrity sha512-mjFbKklj/W8KRw1CQSpUJxHd7lhUge4i00NwJTwGxbzmiJgsTWlKKS/1rBf48ey9hUBopXT5x5vG/AxQfWTQug==
+  dependencies:
+    "@babel/runtime" "^7.6.2"
+
+"@react-types/checkbox@^3.2.1", "@react-types/checkbox@^3.2.7":
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/@react-types/checkbox/-/checkbox-3.2.7.tgz#fa65452931942bfccf804114b6ef4cd086b67226"
+  integrity sha512-c/hJwVRr7JoakyU39hUQstCc/0uPPvE+Eie8SspV2u9umSs7dYiUBc7F2wpboWIdNkQUEHG/Uq/Vs6/hk+yrkg==
+  dependencies:
+    "@react-types/shared" "^3.12.0"
+
+"@react-types/label@^3.5.4":
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/@react-types/label/-/label-3.5.4.tgz#56bf50332845a161761902876cc5e6034521b48b"
+  integrity sha512-LuShOdEYokzn58SKUIo7kQdN3CV5Rs+HCxmvix4+Uw6BAYG9/aqqoKKolTA9klbM8rvvEzDqFzNZZHeMTBoN6w==
+  dependencies:
+    "@react-types/shared" "^3.12.0"
+
+"@react-types/shared@^3.12.0":
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.12.0.tgz#31a53fcec5c3159fd0d5c67f7e3f3876c7d19908"
+  integrity sha512-faGr9xOjtMlkQPfA1i36iUmWS/hpPPtxIwdAtBi6p7rCejmShMLFZ2YN4DxzbJUCVubF2S1+rMMIKuXG17DkEw==
+
+"@react-types/switch@^3.1.6":
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/@react-types/switch/-/switch-3.1.6.tgz#75c59ae46f7289bc3b1a6a97e111f346d6ac3f4c"
+  integrity sha512-H9ECjBeEK82tGGiCNx2gQfrx5nJEviICAvUCfemLCS4zdUxs9NUYxIfI12v1Bl5NJ1dD0Cyc0hb4haiB+mX1ig==
+  dependencies:
+    "@react-types/checkbox" "^3.2.7"
+    "@react-types/shared" "^3.12.0"
 
 "@rollup/plugin-babel@5.3.0":
   version "5.3.0"

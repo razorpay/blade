@@ -54,7 +54,9 @@
     "chromatic": "npx chromatic"
   },
   "dependencies": {
-    "@babel/runtime": "7.16.5"
+    "@babel/runtime": "7.16.5",
+    "@react-native-aria/checkbox": "^0.2.3",
+    "@react-stately/toggle": "^3.2.7"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
