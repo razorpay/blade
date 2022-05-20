@@ -2,13 +2,23 @@ import React from 'react';
 import mapA11yProps from '../../utils/mapProps';
 import { CloseIcon, EyeIcon } from '../Icons';
 
-const Checkbox: React.FC<{ label: string; checked?: boolean }> = ({ label, checked }) => {
+const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean }> = ({
+  label,
+  checked,
+  disabled,
+}) => {
   const [isChecked, setChecked] = React.useState(checked);
 
+  const toggleChecked = (): void => {
+    if (disabled) return;
+    setChecked((prev) => !prev);
+  };
+
   const handleOnKeyDown = (event: React.KeyboardEvent): void => {
+    if (disabled) return;
     switch (event.key) {
       case ' ':
-        setChecked((prev) => !prev);
+        toggleChecked();
         break;
       default:
         break;
@@ -26,9 +36,10 @@ const Checkbox: React.FC<{ label: string; checked?: boolean }> = ({ label, check
       </span>
       <span
         onKeyDown={handleOnKeyDown}
-        onClick={(): void => setChecked((prev) => !prev)}
+        onClick={toggleChecked}
         {...mapA11yProps({
           accessibilityRole: 'checkbox',
+          accessibilityDisabled: disabled,
           accessibilityChecked: isChecked ? 'true' : 'false',
         })}
         tabIndex={0}
@@ -54,7 +65,7 @@ const NativeAria = (): React.ReactElement => {
             <Checkbox checked label="Mango" />
           </li>
           <li>
-            <Checkbox label="Apple" />
+            <Checkbox disabled label="Apple" />
           </li>
           <li>
             <Checkbox label="Banana" />

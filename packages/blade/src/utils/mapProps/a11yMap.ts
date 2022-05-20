@@ -1,18 +1,35 @@
+export const accessibilityValue = {
+  accessibilityValueMax: 'aria-valuemax',
+  accessibilityValueMin: 'aria-valuemin',
+  accessibilityValueNow: 'aria-valuenow',
+  accessibilityValueText: 'aria-valuetext',
+};
+
+export const accessibilityState = {
+  accessibilitySelected: 'aria-selected',
+  accessibilityDisabled: 'aria-disabled',
+  accessibilityExpanded: 'aria-expanded',
+  accessibilityBusy: 'aria-busy',
+  accessibilityChecked: 'aria-checked',
+};
+
+// TODO:
+// importantForAccessibility
+// accessibilityElementsHidden
+// accessibilityViewIsModal
 export const accessibilityMap = {
+  ...accessibilityState,
+  ...accessibilityValue,
   accessibilityActiveDescendant: 'aria-activedescendant',
   accessibilityAtomic: 'aria-atomic',
   accessibilityAutoComplete: 'aria-autocomplete',
-  accessibilityBusy: 'aria-busy',
-  accessibilityChecked: 'aria-checked',
   accessibilityColumnCount: 'aria-colcount',
   accessibilityColumnIndex: 'aria-colindex',
   accessibilityColumnSpan: 'aria-colspan',
   accessibilityControls: 'aria-controls',
   accessibilityDescribedBy: 'aria-describedby',
   accessibilityDetails: 'aria-details',
-  accessibilityDisabled: 'aria-disabled',
   accessibilityErrorMessage: 'aria-errormessage',
-  accessibilityExpanded: 'aria-expanded',
   accessibilityFlowTo: 'aria-flowto',
   accessibilityHasPopup: 'aria-haspopup',
   accessibilityHidden: 'aria-hidden',
@@ -36,13 +53,8 @@ export const accessibilityMap = {
   accessibilityRowCount: 'aria-rowcount',
   accessibilityRowIndex: 'aria-rowindex',
   accessibilityRowSpan: 'aria-rowspan',
-  accessibilitySelected: 'aria-selected',
   accessibilitySetSize: 'aria-setsize',
   accessibilitySort: 'aria-sort',
-  accessibilityValueMax: 'aria-valuemax',
-  accessibilityValueMin: 'aria-valuemin',
-  accessibilityValueNow: 'aria-valuenow',
-  accessibilityValueText: 'aria-valuetext',
 };
 
 export const supportedRolesInNative = [
@@ -76,4 +88,6 @@ export const supportedRolesInNative = [
   'toolbar',
 ];
 
-export type AccessibilityMap = Partial<typeof accessibilityMap>;
+export type AccessibilityMap = Partial<
+  Record<keyof typeof accessibilityMap, string | number | boolean>
+>;

@@ -11,7 +11,6 @@ const mapA11yProps = (props: AccessibilityMap): Record<string, unknown> => {
   // eslint-disable-next-line guard-for-in
   for (const key in props) {
     const propkey = key as keyof AccessibilityMap;
-    // Map aria to RN web accessibility equivalents
     if (accessibilityMap[propkey]) {
       newProps[accessibilityMap[propkey]] = props[propkey];
     } else {
