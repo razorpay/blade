@@ -4,14 +4,40 @@ import type { DotNotationColorStringToken } from '../../_helpers/types';
 type FeedbackColors = `feedback.icon.${DotNotationColorStringToken<
   Theme['colors']['feedback']['icon']
 >}`;
-type SurfaceColors = `surface.icon.${DotNotationColorStringToken<
-  Theme['colors']['surface']['action']['icon']
+
+// TODO: Figure out a better way to handle Feedback**Colors types without having to repeat them
+
+type FeedbackPositiveColors = `feedback.positive.action.icon.${DotNotationColorStringToken<
+  Theme['colors']['feedback']['positive']['action']['icon']
 >}`;
+
+type FeedbackNegativeColors = `feedback.negative.action.icon.${DotNotationColorStringToken<
+  Theme['colors']['feedback']['negative']['action']['icon']
+>}`;
+
+type FeedbackInformationColors = `feedback.information.action.icon.${DotNotationColorStringToken<
+  Theme['colors']['feedback']['information']['action']['icon']
+>}`;
+type FeedbackNoticeColors = `feedback.notice.action.icon.${DotNotationColorStringToken<
+  Theme['colors']['feedback']['notice']['action']['icon']
+>}`;
+
+type FeedbackNeutralColors = `feedback.neutral.action.icon.${DotNotationColorStringToken<
+  Theme['colors']['feedback']['neutral']['action']['icon']
+>}`;
+
 type ActionColors = `action.icon.${DotNotationColorStringToken<Theme['colors']['action']['icon']>}`;
 
 export type IconSize = 'large' | 'medium' | 'small' | 'xlarge' | 'xsmall' | 'xxsmall';
 export type IconProps = {
-  color: ActionColors | FeedbackColors | SurfaceColors;
+  color:
+    | ActionColors
+    | FeedbackColors
+    | FeedbackPositiveColors
+    | FeedbackNegativeColors
+    | FeedbackInformationColors
+    | FeedbackNoticeColors
+    | FeedbackNeutralColors;
   size: IconSize;
 };
 

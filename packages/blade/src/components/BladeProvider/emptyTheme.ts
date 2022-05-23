@@ -49,32 +49,32 @@ const emptyTheme: Theme = {
           highContrast: '',
         },
       },
-      action: {
-        icon: {
-          link: {
-            default: {
-              lowContrast: '',
-              highContrast: '',
-            },
-            hover: {
-              lowContrast: '',
-              highContrast: '',
-            },
-            focus: {
-              lowContrast: '',
-              highContrast: '',
-            },
-            active: {
-              lowContrast: '',
-              highContrast: '',
-            },
-            disabled: {
-              lowContrast: '',
-              highContrast: '',
-            },
-          },
-        },
-      },
+      // action: {
+      //   icon: {
+      //     link: {
+      //       default: {
+      //         lowContrast: '',
+      //         highContrast: '',
+      //       },
+      //       hover: {
+      //         lowContrast: '',
+      //         highContrast: '',
+      //       },
+      //       focus: {
+      //         lowContrast: '',
+      //         highContrast: '',
+      //       },
+      //       active: {
+      //         lowContrast: '',
+      //         highContrast: '',
+      //       },
+      //       disabled: {
+      //         lowContrast: '',
+      //         highContrast: '',
+      //       },
+      //     },
+      //   },
+      // },
     },
     overlay: {
       background: '',
