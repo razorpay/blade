@@ -19,12 +19,37 @@ export type BaseButtonProps = {
   children?: string;
 };
 
-const BaseButton = ({ children, icon }: BaseButtonProps): ReactElement => {
+const BaseButton = ({
+  variant = 'primary',
+  intent,
+  contrast = 'low',
+  size = 'medium',
+  icon,
+  iconPosition = 'left',
+  isDisabled = false,
+  isFullWidth = false,
+  onClick,
+  type = 'button',
+  children,
+}: BaseButtonProps): ReactElement => {
   const { theme } = useTheme();
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
   const activeColor = getIn(theme.colors, 'action.background.primary.active');
   const IconComponent = icon;
+  console.log('props', {
+    variant,
+    intent,
+    contrast,
+    size,
+    icon,
+    iconPosition,
+    isDisabled,
+    isFullWidth,
+    onClick,
+    type,
+    children,
+  });
   return (
     <StyledBaseButton
       color={buttonColor}
@@ -32,7 +57,7 @@ const BaseButton = ({ children, icon }: BaseButtonProps): ReactElement => {
       onClick={(): void => {
         console.log('clicked');
       }}
-      disabled={true}
+      disabled={isDisabled}
       activeColor={activeColor}
     >
       {IconComponent ? <IconComponent size="small" color="action.icon.primary.default" /> : null}
