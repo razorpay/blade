@@ -344,8 +344,6 @@ We tried out 3 of them to understand the pros and cons for each and decided on X
 
 </details>  
 
-<br />
-
 **React Aria** - [Demo](https://codesandbox.io/s/blade-comp-react-aria-focus-2v9wtp?file=/src/App.tsx) | [Doc](https://react-spectrum.adobe.com/react-aria/FocusScope.html)
 
 <details>
@@ -373,8 +371,6 @@ We tried out 3 of them to understand the pros and cons for each and decided on X
   - The implementation in the codesandbox has various bugs & edge cases, for eg: initially the elements don't have tabIndex set, these kinds of edge cases we need to solve for.
 
 </details>
-
-<br />
 
 **Ariakit** - [Demo](https://codesandbox.io/s/blade-comp-ariakit-composite-ewc9i4?file=/src/App.tsx) | [Doc](https://reakit.io/docs/composite/)
 
@@ -405,8 +401,6 @@ We tried out 3 of them to understand the pros and cons for each and decided on X
   - No separate package scope for their focus utilities, we will have to rely on treeshaking to be able to shave all other unnecessary components.
 
 </details>
-
-<br />
 
 -- ADD GIF --
 
