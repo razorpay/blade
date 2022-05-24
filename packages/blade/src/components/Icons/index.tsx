@@ -1,20 +1,22 @@
 import type { Theme } from '../BladeProvider';
 import type { DotNotationColorStringToken } from '../../_helpers/types';
+import type { Feedback } from '../../tokens/theme/theme.d';
 
-type FeedbackColors = `feedback.icon.${DotNotationColorStringToken<
+type FeedbackIconColors = `feedback.icon.${DotNotationColorStringToken<
   Theme['colors']['feedback']['icon']
 >}`;
 
-type FeedbackVariants = 'positive' | 'negative' | 'information' | 'notice' | 'neutral';
-type FeedbackVariantColors = `feedback.${FeedbackVariants}.action.icon.${DotNotationColorStringToken<
-  Theme['colors']['feedback'][FeedbackVariants]['action']['icon']
+type FeedbackActionIconColors = `feedback.${Feedback}.action.icon.${DotNotationColorStringToken<
+  Theme['colors']['feedback'][Feedback]['action']['icon']
 >}`;
 
-type ActionColors = `action.icon.${DotNotationColorStringToken<Theme['colors']['action']['icon']>}`;
+type ActionIconColors = `action.icon.${DotNotationColorStringToken<
+  Theme['colors']['action']['icon']
+>}`;
 
 export type IconSize = 'large' | 'medium' | 'small' | 'xlarge' | 'xsmall' | 'xxsmall';
 export type IconProps = {
-  color: ActionColors | FeedbackColors | FeedbackVariantColors;
+  color: ActionIconColors | FeedbackIconColors | FeedbackActionIconColors;
   size: IconSize;
 };
 
