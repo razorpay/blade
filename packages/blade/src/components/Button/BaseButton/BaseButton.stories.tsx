@@ -1,7 +1,15 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import {
+  Title,
+  Subtitle,
+  Primary,
+  ArgsTable,
+  Stories,
+  PRIMARY_STORY,
+  Description,
+} from '@storybook/addon-docs';
 import iconMap from '../../Icons/iconMap';
-import type { BaseButtonProps } from './BaseButton';
+import type { BaseButtonIcon, BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
 
 export default {
@@ -28,13 +36,18 @@ export default {
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
+          <Description
+            markdown="
+             >For demonstration purposes, we have created a dropdown of icons to choose from in the `icon` prop. The `icon` prop expects the actual Icon component of type `IconComponentType` to be passed. 
+             "
+          />
           <ArgsTable story={PRIMARY_STORY} />
           <Stories />
         </>
       ),
     },
   },
-} as Meta<BaseButtonProps>;
+} as Meta<BaseButtonProps<{ icon: BaseButtonIcon }>>;
 
 const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
   icon,
@@ -53,8 +66,3 @@ const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
 export const BaseButton = BaseButtonTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 BaseButton.storyName = 'BaseButton';
-BaseButton.args = {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
-  icon: 'CreditCardIcon',
-};

@@ -2,24 +2,44 @@ import type { ReactElement } from 'react';
 import getIn from '../../../utils/getIn';
 import BaseText from '../../Typography/BaseText';
 import { useTheme } from '../../BladeProvider';
-import type { IconProps } from '../../Icons';
+import type { IconComponentType } from '../../Icons';
 import StyledBaseButton from './StyledBaseButton';
 
-export type BaseButtonProps = {
+export type BaseButtonIcon = undefined | null | IconComponentType;
+
+type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
   intent?: 'positive' | 'negative' | 'notice' | 'info' | 'neutral';
   contrast?: 'low' | 'high';
   size?: 'large' | 'medium' | 'small' | 'xsmall';
-  icon?: React.ComponentType<IconProps>;
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
   onClick?: () => void;
   type?: 'button' | 'reset' | 'submit';
+};
+
+type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
+  icon?: undefined;
+  children: string;
+};
+
+type BaseButtonWithIconProps = BaseButtonCommonProps & {
+  icon: IconComponentType;
   children?: string;
 };
 
-const BaseButton = ({
+export type BaseButtonProps<T> = T extends {
+  icon?: infer Icon;
+}
+  ? Icon extends Extract<BaseButtonIcon, IconComponentType>
+    ? BaseButtonWithIconProps
+    : Icon extends Extract<BaseButtonIcon, undefined | null>
+    ? BaseButtonWithoutIconProps
+    : T
+  : T;
+
+const BaseButton = <T extends { icon: BaseButtonIcon }>({
   variant = 'primary',
   intent,
   contrast = 'low',
@@ -31,7 +51,7 @@ const BaseButton = ({
   onClick,
   type = 'button',
   children,
-}: BaseButtonProps): ReactElement => {
+}: BaseButtonProps<T>): ReactElement => {
   const { theme } = useTheme();
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
