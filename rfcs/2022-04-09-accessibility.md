@@ -22,37 +22,37 @@ Blade Issue: (leave this empty if no issue yet)
 
 ## What is Accessibility?
 
-Accessibility is the practice of making websites usable by people of all abilities and disabilities. This includes people with visual, auditory, physical, and cognitive impairments, as well as those with temporary disabilities such as broken bones, color blindness, and temporary loss of vision, but the practice of making sites accessible also benefits other groups such as people using mobile phones, people with temporary disabilities, situational limitations.
+Accessibility is the practice of making websites usable by people of all abilities and disabilities. This includes people with visual, auditory, physical, and cognitive impairments, as well as those with temporary disabilities such as broken bones, color blindness, and temporary loss of vision.
 
-## Accessibility for who? 
+## Accessibility for whom? 
 
 Accessibility is essential for some, useful for all. It's not just for people with disabilities, accessible websites also improve the user experience of normal users. 
 
 For example:  
 
-- Prodiving captions for a video can benefit users who watch videos in loud environments or in a library. 
+- Ensuring keyboard accessibility helps people with temporary/permanent mobility but also improves the experience for normal users by providing a better user experience for components like Select or Modals.
+- Large buttons and links helps people with reduced dexterity but also improve the user experience of mobile devices.
+- Providing captions for a video can benefit users who watch videos in loud environments or in a library. 
 - Sufficient color contrast is good for different lighting conditions and people with visual impairments.
-- Older people with changing abilities due to ageing can benefit from accessible experiences. 
-- Good layouts and design helps users with cognitive disabilities but also people who are unconfident with technology or old aged people.
-- Large buttons and links helps people with reduced dexterity but also improves user experience of mobile devices.
-- Ensuring keyboard accessibility helps people with temporary/permanent mobility but also improves experience for normal users by providing better user experience for components like Select or Modals. 
+- Older people with changing abilities due to aging can benefit from accessible experiences. 
+- Good layouts and design helps users with cognitive disabilities but also people who are unconfident with technology or old-aged people.(can remove this point, seems very confusing from intent perspective)
 
 > Check out this youtube [video about Web Accessibility Perspectives](https://www.youtube.com/watch?v=3f31oufqFSM) by W3C for more details about how accessibility can help wide range of people with or without disabilities.
 
-## Various types disabilities
+## Various types of disabilities
 
 - **Visual:**  
   Anything that deals with sight, eg: people who have different types of sight like color blindness.
 - **Cognitive:**  
   Concentration, memory, judgment, problem solving, logic skills.
 - **Mobility:**  
-  Anything that affects movement in a body.
+  Anything that affects physical movement, eg: broken/missing arm. 
 - **Auditory:**  
   Disabilities related to sound or audio.
 
 Other subcategories based on [Microsoft’s inclusive design](https://www.microsoft.com/design/inclusive):  
 
-- **Permanent or disability that does not go away:**    
+- **Permanent, disability that does not go away:**     
   - Example: Someone who is deaf
 - **Temporary, disability that will go away in time:**  
   - Example: Someone who has an ear infection
@@ -122,16 +122,14 @@ In the current state, blade components are not very accessible out of the box, a
 
 Here’s the screen reader accessibility of Razorpay mobile app
 
-- Missing accessibilityLabel in input box.
-- Missing accessibilityRole=button in buttons
-- Missing accessibilityRole=link in links
-- Grouping text together so they get announced at once.
-- Unlabeled password toggle icon 
+- Missing `accessibilityLabel` in input box.
+- Missing `accessibilityRole=button` in buttons
+- Missing `accessibilityRole=link` in links
+- Grouping text together so they get announced at once. eg: "Don't have an account? Sign Up"
+- Unlabeled show password toggle icon 
 - Wrongly focus on text input's placeholder text
 
 https://user-images.githubusercontent.com/35374649/167380507-71e60b7f-d36e-42b3-b649-911400e2c66f.mp4
-
-Even though only a few teams are onboarded to blade, this could become a major problem when more teams migrate since every app/site won't be completely accessible if we don’t implement accessibility centrally in the core blade components.  
 
 Adding accessible components to blade will iron out all these inconsistencies and teams can build more accessible apps with minimal effort.
 
@@ -217,7 +215,7 @@ The tab order of the page must be logical and follow the visual order of element
 
 `tabindex` attribute authors can make the element focusable and appear in [sequential focus order](https://html.spec.whatwg.org/multipage/interaction.html#sequential-focus-navigation)
 
-Setting tabindex to any non-negative integer makes elements focusable, allow or prevent them from being sequentially focusable, and determine their relative ordering
+Setting tabindex to any positive integer makes elements focusable, allow or prevent them from being sequentially focusable, and determine their relative ordering
 
 When set to `0`, the element becomes focusable by keyboard and via programmatic means with `focus()`. 
 When set to `-1`, the element becomes focusable programmatically, but it does not become part of the keyboard focus order.
@@ -235,6 +233,7 @@ The following table describes tabindex behavior in modern browsers:
 
 > *[Failure of Success Criterion 2.4.3](https://www.w3.org/WAI/WCAG21/Techniques/failures/F44) due to using tabindex to create a tab order that does not preserve meaning and operability*
 
+-- ADD GIF --
 
 ## Skip navigations
 
@@ -275,6 +274,8 @@ The `skip-link` class here is a screen reader only [visually hidden](https://web
 
 - [ReachUI SkipNav](https://reach.tech/skip-nav/)
 - [ChakraUI SkipNav](https://chakra-ui.com/docs/components/navigation/skip-nav)
+
+-- ADD GIF --
 
 ## Composite widgets
 
@@ -324,6 +325,8 @@ We tried out 3 of them to understand the pros and cons for each and decided on X
 - FluentUI - [Demo](https://codesandbox.io/s/blade-comp-fluentui-focuszone-0sjyv1?file=/src/App.tsx) | [Doc](https://developer.microsoft.com/en-us/fluentui#/controls/web/focuszone) | [Pros and cons](https://codesandbox.io/s/blade-comp-fluentui-focuszone-0sjyv1?file=/src/pros-and-cons.md)
 - React Aria - [Demo](https://codesandbox.io/s/blade-comp-react-aria-focus-2v9wtp?file=/src/App.tsx) | [Doc](https://react-spectrum.adobe.com/react-aria/FocusScope.html) | [Pros and cons](https://codesandbox.io/s/blade-comp-react-aria-focus-2v9wtp?file=/src/pros-and-cons.md)
 - Ariakit - [Demo](https://codesandbox.io/s/blade-comp-ariakit-composite-ewc9i4?file=/src/App.tsx) | [Doc](https://reakit.io/docs/composite/) | [Pros and cons](https://codesandbox.io/s/blade-comp-ariakit-composite-ewc9i4?file=/src/pros-and-cons.md)
+
+-- ADD GIF --
 
 ## Manual Testing
 
