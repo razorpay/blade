@@ -2,10 +2,10 @@ import type { ReactElement } from 'react';
 import getIn from '../../../utils/getIn';
 import BaseText from '../../Typography/BaseText';
 import { useTheme } from '../../BladeProvider';
-import type { IconComponentType } from '../../Icons';
+import type { IconComponent } from '../../Icons';
 import StyledBaseButton from './StyledBaseButton';
 
-export type BaseButtonIcon = undefined | null | IconComponentType;
+export type BaseButtonIcon = undefined | null | IconComponent;
 
 type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
@@ -25,14 +25,14 @@ type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
 };
 
 type BaseButtonWithIconProps = BaseButtonCommonProps & {
-  icon: IconComponentType;
+  icon: IconComponent;
   children?: string;
 };
 
 export type BaseButtonProps<T> = T extends {
   icon?: infer Icon;
 }
-  ? Icon extends Extract<BaseButtonIcon, IconComponentType>
+  ? Icon extends Extract<BaseButtonIcon, IconComponent>
     ? BaseButtonWithIconProps
     : Icon extends Extract<BaseButtonIcon, undefined | null>
     ? BaseButtonWithoutIconProps
@@ -44,7 +44,7 @@ const BaseButton = <T extends { icon: BaseButtonIcon }>({
   intent,
   contrast = 'low',
   size = 'medium',
-  icon,
+  icon: Icon,
   iconPosition = 'left',
   isDisabled = false,
   isFullWidth = false,
@@ -56,13 +56,12 @@ const BaseButton = <T extends { icon: BaseButtonIcon }>({
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
   const activeColor = getIn(theme.colors, 'action.background.primary.active');
-  const IconComponent = icon;
   console.log('props', {
     variant,
     intent,
     contrast,
     size,
-    icon,
+    Icon,
     iconPosition,
     isDisabled,
     isFullWidth,
@@ -80,7 +79,7 @@ const BaseButton = <T extends { icon: BaseButtonIcon }>({
       disabled={isDisabled}
       activeColor={activeColor}
     >
-      {IconComponent ? <IconComponent size="small" color="action.icon.primary.default" /> : null}
+      {Icon ? <Icon size="small" color="action.icon.primary.default" /> : null}
       <BaseText
         lineHeight="s"
         fontSize={100}

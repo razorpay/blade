@@ -1,8 +1,8 @@
 import { Svg, Path } from '../_Svg';
-import type { IconComponentType } from '..';
+import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const EyeIcon: IconComponentType = ({ size, color }) => {
+const EyeIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (

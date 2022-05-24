@@ -38,7 +38,7 @@ export default {
           <Title>Properties</Title>
           <Description
             markdown="
-             >For demonstration purposes, we have created a dropdown of icons to choose from in the `icon` prop. The `icon` prop expects the actual Icon component of type `IconComponentType` to be passed. 
+             >For demonstration purposes, we have created a dropdown of icons to choose from in the `icon` prop. The `icon` prop expects the actual Icon component of type `IconComponent` to be passed. 
              "
           />
           <ArgsTable story={PRIMARY_STORY} />

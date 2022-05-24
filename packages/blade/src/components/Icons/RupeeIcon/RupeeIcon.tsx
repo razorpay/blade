@@ -1,8 +1,8 @@
 import { Svg, Path } from '../_Svg';
-import type { IconComponentType } from '..';
+import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const RupeeIcon: IconComponentType = ({ size, color }) => {
+const RupeeIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
