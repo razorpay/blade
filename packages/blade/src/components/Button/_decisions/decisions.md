@@ -18,7 +18,7 @@ Internal component that exposes certain extra props to enable creation of Compon
 | Prop | Type | Required | Default | Description |
 |---|---|---|---|---|
 | variant | `primary`,  `secondary`,  `tertiary`,  `link` | No | `primary` | - The variant of the button to be rendered.<br><br>Note: `link` will look like an inline Link component but will be rendered as a `button` element |
-| intent | `none`, `positive`,`negative`, `notice`, `info`, `neutral` | No | `none` | The intent of the button to be rendered.<br><br>  Note: <br> - We will use this to set the intent for internal Blade components that have positive, negative, notice, info, or neutral buttons like an Alert component<br> - All variants of the button will be using the `none` intent which would indicate there is no effect added by the `intent` prop |
+| intent | `positive`,`negative`, `notice`, `info`, `neutral` | No | undefined | The intent of the button to be rendered.<br><br>  Note: <br> - We will use this to set the intent for internal Blade components that have positive, negative, notice, info, or neutral buttons like an Alert component<br> - All the variants of the button will not be using any intent since it would only be required for internal components. |
 | contrast | `low`, `high` | No | `low` | The contrast of the button to be rendered.<br><br>  Note: We need this for internal Blade components since a `positive` intent could have a `high` as well as a `low` contrast button |
 | size | `large`, `medium`, `small`, `xsmall` | No | `medium` | The size of the button to be rendered. |
 | children | `string` | No | undefined | The text to be rendered within the button. |
