@@ -29,17 +29,9 @@ type BaseButtonWithIconProps = BaseButtonCommonProps & {
   children?: string;
 };
 
-export type BaseButtonProps<T> = T extends {
-  icon?: infer Icon;
-}
-  ? Icon extends Extract<BaseButtonIcon, IconComponent>
-    ? BaseButtonWithIconProps
-    : Icon extends Extract<BaseButtonIcon, undefined | null>
-    ? BaseButtonWithoutIconProps
-    : T
-  : T;
+export type BaseButtonProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
 
-const BaseButton = <T extends { icon: BaseButtonIcon }>({
+const BaseButton = ({
   variant = 'primary',
   intent,
   contrast = 'low',
@@ -51,7 +43,7 @@ const BaseButton = <T extends { icon: BaseButtonIcon }>({
   onClick,
   type = 'button',
   children,
-}: BaseButtonProps<T>): ReactElement => {
+}: BaseButtonProps): ReactElement => {
   const { theme } = useTheme();
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');

@@ -9,7 +9,7 @@ import {
   Description,
 } from '@storybook/addon-docs';
 import iconMap from '../../Icons/iconMap';
-import type { BaseButtonIcon, BaseButtonProps } from './BaseButton';
+import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
 
 export default {
@@ -47,7 +47,7 @@ export default {
       ),
     },
   },
-} as Meta<BaseButtonProps<{ icon: BaseButtonIcon }>>;
+} as Meta<BaseButtonProps>;
 
 const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
   icon,
