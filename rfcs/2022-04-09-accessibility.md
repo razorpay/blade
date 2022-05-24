@@ -35,7 +35,6 @@ For example:
 - Providing captions for a video can benefit users who watch videos in loud environments or in a library. 
 - Sufficient color contrast is good for different lighting conditions and people with visual impairments.
 - Older people with changing abilities due to aging can benefit from accessible experiences. 
-- Good layouts and design helps users with cognitive disabilities but also people who are unconfident with technology or old-aged people.(can remove this point, seems very confusing from intent perspective)
 
 > Check out this youtube [video about Web Accessibility Perspectives](https://www.youtube.com/watch?v=3f31oufqFSM) by W3C for more details about how accessibility can help wide range of people with or without disabilities.
 
@@ -44,11 +43,11 @@ For example:
 - **Visual:**  
   Anything that deals with sight, eg: people who have different types of sight like color blindness.
 - **Cognitive:**  
-  Concentration, memory, judgment, problem solving, logic skills.
+  Difficulties with concentration, memory, judgment, problem solving, eg: older people with changing abilities.
 - **Mobility:**  
   Anything that affects physical movement, eg: broken/missing arm. 
 - **Auditory:**  
-  Disabilities related to sound or audio.
+  Disabilities related to sound or audio, eg: someone who is deaf.
 
 Other subcategories based on [Microsoft’s inclusive design](https://www.microsoft.com/design/inclusive):  
 
