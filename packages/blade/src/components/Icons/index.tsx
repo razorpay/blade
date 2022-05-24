@@ -14,6 +14,7 @@ export type IconProps = {
   color: ActionColors | FeedbackColors | SurfaceColors;
   size: IconSize;
 };
+export type IconComponentType = React.ComponentType<IconProps>;
 
 export { default as CloseIcon } from './CloseIcon';
 export { default as ChevronDownIcon } from './ChevronDownIcon';

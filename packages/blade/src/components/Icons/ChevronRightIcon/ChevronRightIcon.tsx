@@ -1,9 +1,8 @@
-import type { ReactElement } from 'react';
 import { Svg, Path } from '../_Svg';
-import type { IconProps } from '..';
+import type { IconComponentType } from '..';
 import useIconProps from '../useIconProps';
 
-const ChevronRightIcon = ({ size, color }: IconProps): ReactElement => {
+const ChevronRightIcon: IconComponentType = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
