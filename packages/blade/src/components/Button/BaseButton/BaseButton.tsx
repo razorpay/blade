@@ -56,6 +56,9 @@ const BaseButton = <T extends { icon: BaseButtonIcon }>({
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
   const activeColor = getIn(theme.colors, 'action.background.primary.active');
+  if (!Icon && !children) {
+    throw new Error(`[Blade: BaseButton]: Cannot render a BaseButton without an icon or text`);
+  }
   console.log('props', {
     variant,
     intent,

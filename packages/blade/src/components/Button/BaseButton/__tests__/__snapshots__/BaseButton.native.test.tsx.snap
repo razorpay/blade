@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BaseButton /> should render button with default properties 1`] = `
+<View
+  accessible={true}
+  activeColor="hsla(227, 100%, 45%, 1)"
+  collapsable={false}
+  color="hsla(213, 89%, 56%, 1)"
+  focusable={true}
+  hoverColor="hsla(218, 89%, 51%, 1)"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "backgroundColor": "hsla(213, 89%, 56%, 1)",
+        "borderColor": "hsla(213, 89%, 56%, 1)",
+        "borderRadius": 2,
+        "borderStyle": "solid",
+        "borderWidth": 2,
+        "color": "white",
+        "cursor": "pointer",
+        "display": "flex",
+        "flexDirection": "row",
+        "gap": 8,
+        "height": 48,
+        "justifyContent": "center",
+        "paddingBottom": 0,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 0,
+      },
+      Object {
+        "backgroundColor": "hsla(213, 89%, 56%, 1)",
+        "borderColor": "hsla(213, 89%, 56%, 1)",
+      },
+    ]
+  }
+>
+  <Text
+    color="hsla(0, 0%, 100%, 1)"
+    fontFamily="Lato"
+    fontSize="15px"
+    fontStyle="normal"
+    fontWeight={700}
+    lineHeight="16px"
+    style={
+      Array [
+        Object {
+          "color": "hsla(0, 0%, 100%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 15,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 16,
+          "textAlign": "center",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+    textAlign="center"
+    textDecorationLine="none"
+  >
+    Pay Now
+  </Text>
+</View>
+`;

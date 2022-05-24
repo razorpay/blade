@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BaseButton /> should render button with default properties 1`] = `
+<div>
+  <button
+    class="StyledBaseButtonweb__StyledBaseText-sc-26bt38-0 dKQwyW"
+    color="hsla(213, 89%, 56%, 1)"
+  >
+    <div
+      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 ehzsSo"
+      color="hsla(0, 0%, 100%, 1)"
+      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+      font-size="0.875rem"
+      font-style="normal"
+      font-weight="700"
+    >
+      Pay Now
+    </div>
+  </button>
+</div>
+`;
