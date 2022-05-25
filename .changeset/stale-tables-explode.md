@@ -4,7 +4,7 @@
 
 fix: icon & other dot-notation types
 
-## Breaking changes
+## Breaking Changes
 - Remove the following tokens from `paymentTheme` & `bankingTheme` theme of Blade:
   - `colors.surface.action.link.default.lowContrast`
   - `colors.surface.action.link.default.highContrast` 
