@@ -6,6 +6,7 @@ import BaseText from '../../Typography/BaseText';
 import type { Theme } from '../../BladeProvider';
 import { useTheme } from '../../BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '../../Icons';
+import makeSpacingSize from '../../../utils/makeSpacingSize';
 import StyledBaseButton from './StyledBaseButton';
 
 export type BaseButtonIcon = undefined | null | IconComponent;
@@ -38,32 +39,49 @@ const StyledBaseText = styled(BaseText)(
   ({
     hasIcon,
     iconPosition,
-  }: BaseTextProps & Pick<BaseButtonProps, 'iconPosition'> & { hasIcon: boolean }) => `
-    padding-left: ${hasIcon && iconPosition === 'left' ? '8px' : '0px'};
-    padding-right: ${hasIcon && iconPosition === 'right' ? '8px' : '0px'};
+    iconSpacing,
+  }: BaseTextProps &
+    Pick<BaseButtonProps, 'iconPosition'> & { hasIcon: boolean; iconSpacing: string }) => `
+    padding-left: ${hasIcon && iconPosition === 'left' ? iconSpacing : 0};
+    padding-right: ${hasIcon && iconPosition === 'right' ? iconSpacing : 0};
 `,
 );
 
 type ConfigProps = {
-  iconSize: IconSize;
-  fontSize: keyof Theme['typography']['fonts']['size'];
-  lineHeight: keyof Theme['typography']['lineHeights'];
-  buttonHeight: '48px' | '40px' | '32px' | '28px';
-  iconSpacing: keyof Theme['spacing'];
-  iconColor: IconProps['color'];
-  textColor: BaseTextProps['color'];
+  iconSize: IconSize; // prop
+  fontSize: keyof Theme['typography']['fonts']['size']; // prop
+  lineHeight: keyof Theme['typography']['lineHeights']; // prop
+  buttonHeight: '48px' | '40px' | '32px' | '28px'; // raw value
+  iconSpacing: string; // raw value
+  iconColor: IconProps['color']; // prop
+  textColor: BaseTextProps['color']; // prop
+  buttonSpacing: string; // raw value
+  text?: string;
 };
 
-const getProps = ({ size }: { size: BaseButtonCommonProps['size'] }): ConfigProps => {
+const getProps = ({
+  size,
+  theme,
+  children,
+}: {
+  size: BaseButtonCommonProps['size'];
+  children?: string;
+  theme: Theme;
+}): ConfigProps => {
   const props: ConfigProps = {
     iconSize: 'medium',
-    fontSize: 200,
-    lineHeight: 's',
-    buttonHeight: '48px',
-    iconSpacing: 1,
+    fontSize: 100,
+    lineHeight: 'l',
+    buttonHeight: '40px',
+    iconSpacing: makeSpacingSize(2),
     iconColor: 'action.icon.primary.default',
     textColor: 'action.text.primary.default',
+    buttonSpacing: `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
+      theme.spacing[5],
+    )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[5])}`,
+    text: children,
   };
+  console.log('🚀 ~ file: BaseButton.tsx ~ line 77 ~ buttonSpacing', props.buttonSpacing);
 
   switch (size) {
     case 'large':
@@ -71,8 +89,45 @@ const getProps = ({ size }: { size: BaseButtonCommonProps['size'] }): ConfigProp
       props.fontSize = 200;
       props.lineHeight = 's';
       props.buttonHeight = '48px';
-      props.iconSpacing = 1;
+      props.iconSpacing = makeSpacingSize(theme.spacing[2]);
       props.iconColor = 'action.icon.primary.default';
+      props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
+        theme.spacing[5],
+      )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[5])}`;
+      break;
+    case 'medium':
+      props.iconSize = 'medium';
+      props.fontSize = 100;
+      props.lineHeight = 'l';
+      props.buttonHeight = '40px';
+      props.iconSpacing = makeSpacingSize(theme.spacing[2]);
+      props.iconColor = 'action.icon.primary.default';
+      props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
+        theme.spacing[5],
+      )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[5])}`;
+      break;
+    case 'small':
+      props.iconSize = 'xsmall';
+      props.fontSize = 75;
+      props.lineHeight = 'l';
+      props.buttonHeight = '32px';
+      props.iconSpacing = makeSpacingSize(theme.spacing[1]);
+      props.iconColor = 'action.icon.primary.default';
+      props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
+        theme.spacing[3],
+      )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[3])}`;
+      break;
+    case 'xsmall':
+      props.iconSize = 'xsmall';
+      props.fontSize = 75;
+      props.lineHeight = 'l';
+      props.buttonHeight = '28px';
+      props.iconSpacing = makeSpacingSize(theme.spacing[1]);
+      props.iconColor = 'action.icon.primary.default';
+      props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
+        theme.spacing[2],
+      )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[2])}`;
+      props.text = children?.toUpperCase();
       break;
     default:
   }
@@ -100,7 +155,21 @@ const BaseButton = ({
   if (!Icon && !children) {
     throw new Error(`[Blade: BaseButton]: Cannot render a BaseButton without an icon or text`);
   }
-  const { iconSize, fontSize, lineHeight, buttonHeight, iconColor, textColor } = getProps({ size });
+  const {
+    iconSize,
+    fontSize,
+    lineHeight,
+    buttonHeight,
+    iconColor,
+    iconSpacing,
+    textColor,
+    buttonSpacing,
+    text,
+  } = getProps({
+    size,
+    theme,
+    children,
+  });
   console.log('props', {
     variant,
     intent,
@@ -124,6 +193,7 @@ const BaseButton = ({
       disabled={isDisabled}
       activeColor={activeColor}
       buttonHeight={buttonHeight}
+      buttonSpacing={buttonSpacing}
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
       <StyledBaseText
@@ -134,8 +204,9 @@ const BaseButton = ({
         color={textColor}
         iconPosition={iconPosition}
         hasIcon={!!Icon}
+        iconSpacing={iconSpacing}
       >
-        {children}
+        {text}
       </StyledBaseText>
       {Icon && iconPosition == 'right' ? <Icon size="small" color={iconColor} /> : null}
     </StyledBaseButton>

@@ -5,6 +5,7 @@ const getBaseButtonStyles = ({
   hoverColor,
   activeColor,
   buttonHeight,
+  buttonSpacing,
 }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>): string => `
   display: flex;  
   flex-direction: row;
@@ -16,7 +17,7 @@ const getBaseButtonStyles = ({
   border: 2px solid ${color};
   color: white;
   border-radius: 2px;
-  padding:0px;
+  padding: ${buttonSpacing};
   &:hover {
     background-color: ${hoverColor};
     border: 2px solid ${hoverColor};
