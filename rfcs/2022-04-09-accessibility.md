@@ -28,13 +28,13 @@ Blade Issue: (leave this empty if no issue yet)
     - [Focus order](#focus-order)
     - [Focus ring styling](#focus-ring-styling)
     - [Focus trap](#focus-trap)
+  - [Design Accessibility](#design-accessibility)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
 - [How do we educate people?](#how-do-we-educate-people)
 - [Open Questions](#open-questions)
 - [References](#references)
-
 
 # Summary
 
@@ -360,7 +360,7 @@ It even supports virtual focus with aria-activedescendant. It’s the most compl
 
 **Native:**
 
-For native we are scoping out keyboard accessibility, because it will only be effective in scenarios when using a hardware keyboard. We will revisit this once we have usecases for it.
+For native we are deferring keyboard accessibility because it will only be effective in scenarios when using a hardware keyboard and for us, that is a very rare use case. We will revisit this once we have more use cases for it.
 
 #### aria-activedescendant <!-- omit in toc -->
 
@@ -565,6 +565,32 @@ To simulate `inert` behaviour in react-native we have platform specific accessib
 
 - For android: [`importantForAccessibility`](https://reactnative.dev/docs/accessibility#importantforaccessibility-android)
 - For iOS: [`accessibilityViewIsModal`](https://reactnative.dev/docs/accessibility#accessibilityviewismodal-ios) & [`accessibilityElementsHidden`](https://reactnative.dev/docs/accessibility#accessibilityelementshidden-ios)
+
+## Design Accessibility
+
+Designing with accessibility in mind is an important part of the process, ensuring that our designs have proper color contrast, visual hierearchy & legible text is important. 
+
+**Best practices when using color styles and making them accessible**
+
+- Use colors which are dark enough and atleast pass the AA standards.
+- Don’t use color alone to make critical information understandable
+- Don’t use color as the only visual means of conveying information
+- Design [legible & usable focus states](#focus-ring-styling)
+  
+<img src="./images/accessibility/typography-contrast-ratio.png" alt="Typography color contrast ratio table" width="70%" />
+
+**Best practices when using typography**
+
+- Always use the primary font (Lato). It’ very readable if used in a hiererchy.
+- Make sure that the base font-size is used in the mojority of the page. We’ve kept the base-font-size to 14px which works well with our use case.
+- Use larger font sizes on titles, and make sure to establish a hiererchy if there are more than 2 sections on a page so that user can easily scan the page.
+- Don’t use underlines in any state if they are not links.
+- Limit the font-style variations. Try to keep things consistent. Do not overuse Bolds, All caps, etc.
+- Use markup wherever required. Do not use it for anything except code snippets.
+- Don’t make the content (block of text) width too long. Wrap,
+   - Titles: at max. of 70% of the page width.
+   - Subtitles & Paras: at max. of 50%-60% of the page width.
+- Make sure the text doesn’t overlap in between two different sections.
 
 # Drawbacks/Constraints
 
