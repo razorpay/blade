@@ -76,8 +76,9 @@ Other subcategories based on [Microsoft’s inclusive design](https://www.micros
 - **Situational, Context based disabilities:**
   - Example: Someone who is at a loud sporting event
   - Example: Using the web app in bright sunlight
-  - Example: Using your phone one handedly in a crowded metro station
-    <img src="./images/accessibility/ms-inclusive-design.png" alt="Microsoft Inclusive Design Shows Spectrum Of Disabilities" width="25%" />
+  - Example: Using your phone one handedly in a crowded metro station  
+
+<img src="./images/accessibility/ms-inclusive-design.png" alt="Microsoft Inclusive Design Shows Spectrum Of Disabilities" width="25%" />
 
 ## Accessibility Principles
 
