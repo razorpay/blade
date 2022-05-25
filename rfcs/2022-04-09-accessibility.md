@@ -169,7 +169,7 @@ By baking in accessibility at the foundational level we will ensure our products
 
 > [Specification](https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html)
 
-**Accessibility Principal:** Operability  
+**Accessibility Principal:** Operable  
 **Target:** Everyone and especially people with motor disabilities who use a keyboard to navigate.  
 **Goal:** Ensure users who cannot use the mouse (blind, motor disabilities) can access the crucial parts of the app through keyboard.
 
@@ -432,6 +432,7 @@ Checklist:
 
 > Specification
 
+**Accessibility Principal:** Perceivable, Operable
 **Target:** Everyone, especially people with visual impairments or cognitive limitations & motor disabilities.  
 **Goal:** Setting guidelines for general focus behaviours & providing screen reader & keyboard users a smooth experience by managing focus behavior for certain elements like Modals/Page transition etc.
 
