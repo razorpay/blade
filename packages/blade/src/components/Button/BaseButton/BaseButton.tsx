@@ -60,20 +60,20 @@ type ConfigProps = {
 };
 
 const getProps = ({
-  size,
   theme,
+  size,
   children,
 }: {
+  theme: Theme;
   size: BaseButtonCommonProps['size'];
   children?: string;
-  theme: Theme;
 }): ConfigProps => {
   const props: ConfigProps = {
     iconSize: 'medium',
     fontSize: 100,
     lineHeight: 'l',
     buttonHeight: '40px',
-    iconSpacing: makeSpacingSize(2),
+    iconSpacing: makeSpacingSize(theme.spacing[2]),
     iconColor: 'action.icon.primary.default',
     textColor: 'action.text.primary.default',
     buttonSpacing: `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
@@ -81,7 +81,6 @@ const getProps = ({
     )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[5])}`,
     text: children,
   };
-  console.log('🚀 ~ file: BaseButton.tsx ~ line 77 ~ buttonSpacing', props.buttonSpacing);
 
   switch (size) {
     case 'large':
@@ -166,22 +165,18 @@ const BaseButton = ({
     buttonSpacing,
     text,
   } = getProps({
-    size,
     theme,
+    size,
     children,
   });
-  console.log('props', {
+  console.log('unused props', {
     variant,
     intent,
     contrast,
-    size,
-    Icon,
-    iconPosition,
     isDisabled,
     isFullWidth,
     onClick,
     type,
-    children,
   });
   return (
     <StyledBaseButton
@@ -208,7 +203,7 @@ const BaseButton = ({
       >
         {text}
       </StyledBaseText>
-      {Icon && iconPosition == 'right' ? <Icon size="small" color={iconColor} /> : null}
+      {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
     </StyledBaseButton>
   );
 };
