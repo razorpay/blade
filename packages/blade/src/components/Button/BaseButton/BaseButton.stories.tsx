@@ -66,3 +66,8 @@ const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
 export const BaseButton = BaseButtonTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 BaseButton.storyName = 'BaseButton';
+BaseButton.args = {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-expect-error
+  icon: 'ChevronLeftIcon',
+};

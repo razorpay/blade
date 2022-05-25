@@ -3,8 +3,13 @@ import getBaseButtonStyles from './getBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
 const StyledPressable = styled.Pressable(
-  ({ color, hoverColor, activeColor }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
-    getBaseButtonStyles({ color, hoverColor, activeColor }),
+  ({
+    color,
+    hoverColor,
+    activeColor,
+    buttonHeight,
+  }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
+    getBaseButtonStyles({ color, hoverColor, activeColor, buttonHeight }),
 );
 
 const StyledBaseButton = ({
@@ -13,6 +18,7 @@ const StyledBaseButton = ({
   hoverColor,
   activeColor,
   children,
+  buttonHeight,
 }: StyledBaseButtonProps): React.ReactElement => {
   return (
     <StyledPressable
@@ -24,6 +30,7 @@ const StyledBaseButton = ({
         backgroundColor: pressed ? activeColor : color,
         borderColor: pressed ? activeColor : color,
       })}
+      buttonHeight={buttonHeight}
     >
       {children}
     </StyledPressable>
