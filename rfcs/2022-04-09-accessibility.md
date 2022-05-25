@@ -592,6 +592,8 @@ Designing with accessibility in mind is an important part of the process, ensuri
    - Subtitles & Paras: at max. of 50%-60% of the page width.
 - Make sure the text doesn’t overlap in between two different sections.
 
+> For more information on design accessibility you can check out component specific [design boards in figma](https://www.figma.com/file/LV9kjgzhkfsktvbRgTuGJ3/Blade---Base-DSL?node-id=557%3A14)
+
 # Drawbacks/Constraints
 
 Why should we _not_ do this? Maybe try to consider the following constraints
