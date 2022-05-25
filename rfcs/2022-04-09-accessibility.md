@@ -179,12 +179,12 @@ For a web page to be accessible, all interactive elements must be operable via t
 ### Areas to cover <!-- omit in toc -->
 
 - [Keyboard tab order](#keyboard-tab-order)
-  - [Platform Specific Implementation](#platform-specific-implementation----omit-in-toc)
+  - [Platform Specific Implementation](#platform-specific-implementation-)
 - [Composite widgets](#composite-widgets)
   - [Roving Tabindex](#roving-tabindex)
-    - [Platform Specific Implementation](#platform-specific-implementation----omit-in-toc-1)
+    - [Platform Specific Implementation](#platform-specific-implementation--1)
 - [Skip navigations](#skip-navigations)
-  - [Platform Specific Implementation](#platform-specific-implementation----omit-in-toc-2)
+  - [Platform Specific Implementation](#platform-specific-implementation--2)
 - [Manual Testing](#manual-testing)
 
 ### Keyboard tab order
@@ -445,9 +445,9 @@ Focus management goes hand in hand with keyboard accessibility, so there will be
 
 - [Focus order](#focus-order)
 - [Focus ring styling](#focus-ring-styling)
-  - [Platform Specific Implementation](#platform-specific-implementation----omit-in-toc-3)
+  - [Platform Specific Implementation](#platform-specific-implementation--3)
 - [Focus trap](#focus-trap)
-  - [Platform Specific Implementation](#platform-specific-implementation----omit-in-toc-4)
+  - [Platform Specific Implementation](#platform-specific-implementation--4)
 
 ### Focus order
 
