@@ -2,7 +2,7 @@
 "@razorpay/blade": minor
 ---
 
-fix: icon colors & remove `surface.action.icon.link.*` colors
+fix: icon colors & remove `surface.action.icon.link.*` colors from `theme`
 
 ## Breaking Changes
 - Remove the following tokens from `paymentTheme` & `bankingTheme` theme of Blade:
