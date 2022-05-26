@@ -89,7 +89,6 @@ const getProps = ({
       props.lineHeight = 's';
       props.buttonHeight = '48px';
       props.iconSpacing = makeSpacingSize(theme.spacing[2]);
-      props.iconColor = 'action.icon.primary.default';
       props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
         theme.spacing[5],
       )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[5])}`;
@@ -100,7 +99,6 @@ const getProps = ({
       props.lineHeight = 'l';
       props.buttonHeight = '40px';
       props.iconSpacing = makeSpacingSize(theme.spacing[2]);
-      props.iconColor = 'action.icon.primary.default';
       props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
         theme.spacing[5],
       )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[5])}`;
@@ -111,7 +109,6 @@ const getProps = ({
       props.lineHeight = 'l';
       props.buttonHeight = '32px';
       props.iconSpacing = makeSpacingSize(theme.spacing[1]);
-      props.iconColor = 'action.icon.primary.default';
       props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
         theme.spacing[3],
       )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[3])}`;
@@ -122,7 +119,6 @@ const getProps = ({
       props.lineHeight = 'l';
       props.buttonHeight = '28px';
       props.iconSpacing = makeSpacingSize(theme.spacing[1]);
-      props.iconColor = 'action.icon.primary.default';
       props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
         theme.spacing[2],
       )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[2])}`;
