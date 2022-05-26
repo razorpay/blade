@@ -82,7 +82,7 @@ const getProps = ({
     buttonSpacing: `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
       theme.spacing[5],
     )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[5])}`,
-    text: children,
+    text: children?.trim(),
   };
 
   switch (size) {
@@ -125,7 +125,7 @@ const getProps = ({
       props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
         theme.spacing[2],
       )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[2])}`;
-      props.text = children?.toUpperCase();
+      props.text = children?.trim().toUpperCase();
       break;
     default:
   }
@@ -151,7 +151,7 @@ const BaseButton = ({
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
   const activeColor = getIn(theme.colors, 'action.background.primary.active');
-  if (!Icon && !children) {
+  if (!Icon && !children.trim()) {
     throw new Error(`[Blade: BaseButton]: Cannot render a BaseButton without an icon or text`);
   }
   const {
@@ -192,18 +192,20 @@ const BaseButton = ({
       buttonSpacing={buttonSpacing}
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
-      <StyledBaseText
-        lineHeight={lineHeight}
-        fontSize={fontSize}
-        fontWeight="bold"
-        textAlign="center"
-        color={textColor}
-        iconPosition={iconPosition}
-        hasIcon={!!Icon}
-        iconSpacing={iconSpacing}
-      >
-        {text}
-      </StyledBaseText>
+      {text && (
+        <StyledBaseText
+          lineHeight={lineHeight}
+          fontSize={fontSize}
+          fontWeight="bold"
+          textAlign="center"
+          color={textColor}
+          iconPosition={iconPosition}
+          hasIcon={!!Icon}
+          iconSpacing={iconSpacing}
+        >
+          {text}
+        </StyledBaseText>
+      )}
       {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
     </StyledBaseButton>
   );
