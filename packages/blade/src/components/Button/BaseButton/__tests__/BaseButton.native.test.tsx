@@ -24,4 +24,24 @@ describe('<BaseButton />', () => {
       }
     }
   });
+  it('should render large size button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton size="large">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+  it('should render medium size button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton size="medium">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+  it('should render small size button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton size="small">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+  it('should render xsmall size button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton size="xsmall">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
 });

@@ -52,7 +52,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     fontSize="15px"
     fontStyle="normal"
     fontWeight={700}
-    lineHeight="24px"
+    lineHeight="16px"
     style={
       Array [
         Object {
@@ -61,7 +61,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
           "fontSize": 15,
           "fontStyle": "normal",
           "fontWeight": "700",
-          "lineHeight": 24,
+          "lineHeight": 16,
           "textAlign": "center",
           "textDecorationLine": "none",
         },
@@ -75,6 +75,322 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     textDecorationLine="none"
   >
     Pay Now
+  </Text>
+</View>
+`;
+
+exports[`<BaseButton /> should render large size button 1`] = `
+<View
+  accessible={true}
+  activeColor="hsla(227, 100%, 45%, 1)"
+  buttonHeight="48px"
+  buttonSpacing="0px 20px 0px 20px"
+  collapsable={false}
+  color="hsla(213, 89%, 56%, 1)"
+  focusable={true}
+  hoverColor="hsla(218, 89%, 51%, 1)"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "backgroundColor": "hsla(213, 89%, 56%, 1)",
+        "borderColor": "hsla(213, 89%, 56%, 1)",
+        "borderRadius": 2,
+        "borderStyle": "solid",
+        "borderWidth": 2,
+        "color": "white",
+        "cursor": "pointer",
+        "display": "flex",
+        "flexDirection": "row",
+        "height": 48,
+        "paddingBottom": 0,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 0,
+      },
+      Object {
+        "backgroundColor": "hsla(213, 89%, 56%, 1)",
+        "borderColor": "hsla(213, 89%, 56%, 1)",
+      },
+    ]
+  }
+>
+  <Text
+    color="hsla(0, 0%, 100%, 1)"
+    fontFamily="Lato"
+    fontSize="17px"
+    fontStyle="normal"
+    fontWeight={700}
+    lineHeight="16px"
+    style={
+      Array [
+        Object {
+          "color": "hsla(0, 0%, 100%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 17,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 16,
+          "textAlign": "center",
+          "textDecorationLine": "none",
+        },
+        Object {
+          "paddingLeft": 0,
+          "paddingRight": 0,
+        },
+      ]
+    }
+    textAlign="center"
+    textDecorationLine="none"
+  >
+    Pay Now
+  </Text>
+</View>
+`;
+
+exports[`<BaseButton /> should render medium size button 1`] = `
+<View
+  accessible={true}
+  activeColor="hsla(227, 100%, 45%, 1)"
+  buttonHeight="40px"
+  buttonSpacing="0px 20px 0px 20px"
+  collapsable={false}
+  color="hsla(213, 89%, 56%, 1)"
+  focusable={true}
+  hoverColor="hsla(218, 89%, 51%, 1)"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "backgroundColor": "hsla(213, 89%, 56%, 1)",
+        "borderColor": "hsla(213, 89%, 56%, 1)",
+        "borderRadius": 2,
+        "borderStyle": "solid",
+        "borderWidth": 2,
+        "color": "white",
+        "cursor": "pointer",
+        "display": "flex",
+        "flexDirection": "row",
+        "height": 40,
+        "paddingBottom": 0,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 0,
+      },
+      Object {
+        "backgroundColor": "hsla(213, 89%, 56%, 1)",
+        "borderColor": "hsla(213, 89%, 56%, 1)",
+      },
+    ]
+  }
+>
+  <Text
+    color="hsla(0, 0%, 100%, 1)"
+    fontFamily="Lato"
+    fontSize="15px"
+    fontStyle="normal"
+    fontWeight={700}
+    lineHeight="16px"
+    style={
+      Array [
+        Object {
+          "color": "hsla(0, 0%, 100%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 15,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 16,
+          "textAlign": "center",
+          "textDecorationLine": "none",
+        },
+        Object {
+          "paddingLeft": 0,
+          "paddingRight": 0,
+        },
+      ]
+    }
+    textAlign="center"
+    textDecorationLine="none"
+  >
+    Pay Now
+  </Text>
+</View>
+`;
+
+exports[`<BaseButton /> should render small size button 1`] = `
+<View
+  accessible={true}
+  activeColor="hsla(227, 100%, 45%, 1)"
+  buttonHeight="32px"
+  buttonSpacing="0px 12px 0px 12px"
+  collapsable={false}
+  color="hsla(213, 89%, 56%, 1)"
+  focusable={true}
+  hoverColor="hsla(218, 89%, 51%, 1)"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "backgroundColor": "hsla(213, 89%, 56%, 1)",
+        "borderColor": "hsla(213, 89%, 56%, 1)",
+        "borderRadius": 2,
+        "borderStyle": "solid",
+        "borderWidth": 2,
+        "color": "white",
+        "cursor": "pointer",
+        "display": "flex",
+        "flexDirection": "row",
+        "height": 32,
+        "paddingBottom": 0,
+        "paddingLeft": 12,
+        "paddingRight": 12,
+        "paddingTop": 0,
+      },
+      Object {
+        "backgroundColor": "hsla(213, 89%, 56%, 1)",
+        "borderColor": "hsla(213, 89%, 56%, 1)",
+      },
+    ]
+  }
+>
+  <Text
+    color="hsla(0, 0%, 100%, 1)"
+    fontFamily="Lato"
+    fontSize="12px"
+    fontStyle="normal"
+    fontWeight={700}
+    lineHeight="16px"
+    style={
+      Array [
+        Object {
+          "color": "hsla(0, 0%, 100%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 12,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 16,
+          "textAlign": "center",
+          "textDecorationLine": "none",
+        },
+        Object {
+          "paddingLeft": 0,
+          "paddingRight": 0,
+        },
+      ]
+    }
+    textAlign="center"
+    textDecorationLine="none"
+  >
+    Pay Now
+  </Text>
+</View>
+`;
+
+exports[`<BaseButton /> should render xsmall size button 1`] = `
+<View
+  accessible={true}
+  activeColor="hsla(227, 100%, 45%, 1)"
+  buttonHeight="28px"
+  buttonSpacing="0px 8px 0px 8px"
+  collapsable={false}
+  color="hsla(213, 89%, 56%, 1)"
+  focusable={true}
+  hoverColor="hsla(218, 89%, 51%, 1)"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "backgroundColor": "hsla(213, 89%, 56%, 1)",
+        "borderColor": "hsla(213, 89%, 56%, 1)",
+        "borderRadius": 2,
+        "borderStyle": "solid",
+        "borderWidth": 2,
+        "color": "white",
+        "cursor": "pointer",
+        "display": "flex",
+        "flexDirection": "row",
+        "height": 28,
+        "paddingBottom": 0,
+        "paddingLeft": 8,
+        "paddingRight": 8,
+        "paddingTop": 0,
+      },
+      Object {
+        "backgroundColor": "hsla(213, 89%, 56%, 1)",
+        "borderColor": "hsla(213, 89%, 56%, 1)",
+      },
+    ]
+  }
+>
+  <Text
+    color="hsla(0, 0%, 100%, 1)"
+    fontFamily="Lato"
+    fontSize="12px"
+    fontStyle="normal"
+    fontWeight={700}
+    lineHeight="16px"
+    style={
+      Array [
+        Object {
+          "color": "hsla(0, 0%, 100%, 1)",
+          "fontFamily": "Lato",
+          "fontSize": 12,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "lineHeight": 16,
+          "textAlign": "center",
+          "textDecorationLine": "none",
+        },
+        Object {
+          "paddingLeft": 0,
+          "paddingRight": 0,
+        },
+      ]
+    }
+    textAlign="center"
+    textDecorationLine="none"
+  >
+    PAY NOW
   </Text>
 </View>
 `;
