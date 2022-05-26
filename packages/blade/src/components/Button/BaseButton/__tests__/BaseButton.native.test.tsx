@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.native';
+import { CreditCardIcon } from '../../../Icons';
 import BaseButton from '../BaseButton';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -42,6 +43,33 @@ describe('<BaseButton />', () => {
   it('should render xsmall size button', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(<BaseButton size="xsmall">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+  it('should render button with icon without text', () => {
+    const { toJSON } = renderWithTheme(<BaseButton icon={CreditCardIcon} />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+  it('should render button with icon with default iconPosition', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton icon={CreditCardIcon}>{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+  it('should render button with icon with left iconPosition', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton iconPosition="left" icon={CreditCardIcon}>
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+  it('should render button with icon with right iconPosition', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton iconPosition="right" icon={CreditCardIcon}>
+        {buttonText}
+      </BaseButton>,
+    );
     expect(toJSON()).toMatchSnapshot();
   });
 });

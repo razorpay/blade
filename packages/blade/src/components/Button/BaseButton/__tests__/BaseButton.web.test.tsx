@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.web';
+import { CreditCardIcon } from '../../../Icons';
 import BaseButton from '../BaseButton';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -45,6 +46,35 @@ describe('<BaseButton />', () => {
   it('should render xsmall size button', () => {
     const buttonText = 'Pay Now';
     const { container } = renderWithTheme(<BaseButton size="xsmall">{buttonText}</BaseButton>);
+    expect(container).toMatchSnapshot();
+  });
+  it('should render button with icon without text', () => {
+    const { container } = renderWithTheme(<BaseButton icon={CreditCardIcon} />);
+    expect(container).toMatchSnapshot();
+  });
+  it('should render button with icon with default iconPosition', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton icon={CreditCardIcon}>{buttonText}</BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+  it('should render button with icon with left iconPosition', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton iconPosition="left" icon={CreditCardIcon}>
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+  it('should render button with icon with right iconPosition', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton iconPosition="right" icon={CreditCardIcon}>
+        {buttonText}
+      </BaseButton>,
+    );
     expect(container).toMatchSnapshot();
   });
 });
