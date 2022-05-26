@@ -582,7 +582,7 @@ Designing with accessibility in mind is an important part of the process, ensuri
 **Best practices when using typography**
 
 - Always use the primary font (Lato). It’ very readable if used in a hiererchy.
-- Make sure that the base font-size is used in the mojority of the page. We’ve kept the base-font-size to 14px which works well with our use case.
+- Make sure that the base font-size is used in the majority of the page. We’ve kept the base-font-size to 14px which works well with our use case.
 - Use larger font sizes on titles, and make sure to establish a hiererchy if there are more than 2 sections on a page so that user can easily scan the page.
 - Don’t use underlines in any state if they are not links.
 - Limit the font-style variations. Try to keep things consistent. Do not overuse Bolds, All caps, etc.
