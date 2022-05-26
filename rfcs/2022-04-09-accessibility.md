@@ -563,8 +563,15 @@ Considering the `inert` attribute is not supported in major browsers & we will h
 
 To simulate `inert` behaviour in react-native we have platform specific accessibility props:
 
-- For android: [`importantForAccessibility`](https://reactnative.dev/docs/accessibility#importantforaccessibility-android)
-- For iOS: [`accessibilityViewIsModal`](https://reactnative.dev/docs/accessibility#accessibilityviewismodal-ios) & [`accessibilityElementsHidden`](https://reactnative.dev/docs/accessibility#accessibilityelementshidden-ios)
+
+**iOS:**
+
+iOS has better accessibility support for modals than android, 
+In iOS we can set [`accessibilityViewIsModal`](https://reactnative.dev/docs/accessibility#accessibilityviewismodal-ios) which will cause voice overs to ignore any other elements outside the modal. 
+
+**Android:**
+
+But in android we do not have any platform specific accessibility prop to handle this.
 
 ## Design Accessibility
 
