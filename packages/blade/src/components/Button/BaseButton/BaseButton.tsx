@@ -8,6 +8,7 @@ import { useTheme } from '../../BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '../../Icons';
 import makeSpacingSize from '../../../utils/makeSpacingSize';
 import StyledBaseButton from './StyledBaseButton';
+import { typography } from './buttonTokens';
 
 export type BaseButtonIcon = undefined | null | IconComponent;
 
@@ -63,15 +64,17 @@ const getProps = ({
   theme,
   size,
   children,
+  buttonTypographyTokens,
 }: {
   theme: Theme;
   size: BaseButtonCommonProps['size'];
   children?: string;
+  buttonTypographyTokens: typeof typography.onDesktop | typeof typography.onMobile;
 }): ConfigProps => {
   const props: ConfigProps = {
     iconSize: 'medium',
-    fontSize: 100,
-    lineHeight: 'l',
+    fontSize: buttonTypographyTokens.fonts.size.medium,
+    lineHeight: buttonTypographyTokens.lineHeight.medium,
     buttonHeight: '40px',
     iconSpacing: makeSpacingSize(theme.spacing[2]),
     iconColor: 'action.icon.primary.default',
@@ -85,8 +88,8 @@ const getProps = ({
   switch (size) {
     case 'large':
       props.iconSize = 'medium';
-      props.fontSize = 200;
-      props.lineHeight = 's';
+      props.fontSize = buttonTypographyTokens.fonts.size.large;
+      props.lineHeight = buttonTypographyTokens.lineHeight.large;
       props.buttonHeight = '48px';
       props.iconSpacing = makeSpacingSize(theme.spacing[2]);
       props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
@@ -95,8 +98,8 @@ const getProps = ({
       break;
     case 'medium':
       props.iconSize = 'medium';
-      props.fontSize = 100;
-      props.lineHeight = 'l';
+      props.fontSize = buttonTypographyTokens.fonts.size.medium;
+      props.lineHeight = buttonTypographyTokens.lineHeight.medium;
       props.buttonHeight = '40px';
       props.iconSpacing = makeSpacingSize(theme.spacing[2]);
       props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
@@ -105,8 +108,8 @@ const getProps = ({
       break;
     case 'small':
       props.iconSize = 'xsmall';
-      props.fontSize = 75;
-      props.lineHeight = 'l';
+      props.fontSize = buttonTypographyTokens.fonts.size.small;
+      props.lineHeight = buttonTypographyTokens.lineHeight.small;
       props.buttonHeight = '32px';
       props.iconSpacing = makeSpacingSize(theme.spacing[1]);
       props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
@@ -115,8 +118,8 @@ const getProps = ({
       break;
     case 'xsmall':
       props.iconSize = 'xsmall';
-      props.fontSize = 75;
-      props.lineHeight = 'l';
+      props.fontSize = buttonTypographyTokens.fonts.size.xsmall;
+      props.lineHeight = buttonTypographyTokens.lineHeight.xsmall;
       props.buttonHeight = '28px';
       props.iconSpacing = makeSpacingSize(theme.spacing[1]);
       props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
@@ -143,7 +146,8 @@ const BaseButton = ({
   type = 'button',
   children,
 }: BaseButtonProps): ReactElement => {
-  const { theme } = useTheme();
+  const { theme, onDeviceType } = useTheme();
+  const buttonTypographyTokens = typography[onDeviceType];
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
   const activeColor = getIn(theme.colors, 'action.background.primary.active');
@@ -164,6 +168,7 @@ const BaseButton = ({
     theme,
     size,
     children,
+    buttonTypographyTokens,
   });
   console.log('unused props', {
     variant,
