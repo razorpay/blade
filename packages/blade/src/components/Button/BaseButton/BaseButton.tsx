@@ -151,7 +151,7 @@ const BaseButton = ({
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
   const activeColor = getIn(theme.colors, 'action.background.primary.active');
-  if (!Icon && !children.trim()) {
+  if (!Icon && !children?.trim()) {
     throw new Error(`[Blade: BaseButton]: Cannot render a BaseButton without an icon or text`);
   }
   const {

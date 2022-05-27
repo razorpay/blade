@@ -558,34 +558,6 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       />
     </RNSVGGroup>
   </RNSVGSvgView>
-  <Text
-    color="hsla(0, 0%, 100%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
-    style={
-      Array [
-        Object {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 8,
-          "paddingRight": 0,
-        },
-      ]
-    }
-    textAlign="center"
-    textDecorationLine="none"
-  />
 </View>
 `;
 
