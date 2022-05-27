@@ -573,6 +573,53 @@ In iOS we can set [`accessibilityViewIsModal`](https://reactnative.dev/docs/acce
 
 But in android we do not have any platform specific accessibility prop to handle this.
 
+## Screen readers
+
+> [Specification](https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html)
+
+**Accessibility Principal:** Operable, Perceivable  
+**Target:** Everyone, especially people with visual impairments.  
+**Goal:** Enable screen reader users to access and use the main features of the app.  
+
+Screen reader accessibility is crucial for users who are visually impaired (partially or fully) or have various visual disabilities like color blindness, since they might not be able to see or perceive what’s on the screen, relaying on screen readers is the only option. We need to make sure that the crucial parts of our app are accessible through screen readers.
+
+Making sure that users can use screen readers (VoiceOvers) and still able to use our components, thus we need to provide semantic markup, proper WAI-ARIA attributes/roles
+
+### Areas to cover <!-- omit in toc -->
+
+- [Semantic HTML](#semantic-html)
+- ARIA Attributes
+- Dynamic Content
+- Manual Testing
+
+### Semantic HTML
+
+Structuring HTML semantically allows for it to work well with assistive technologies & helps people with vision impairments to navigate the content with ease.  
+
+<img src="./images/accessibility/semantic-html.jpeg" alt="Comparision between two html layouts with semantic and non-semantic markup" width="60%">
+
+**Benefits of writing semantic markup:**  
+
+- Screen readers can use it as a signpost to help visually impaired users navigate a page.
+- Search engines will consider its contents as important keywords to influence the page's search rankings.
+- Finding blocks of meaningful code is significantly easier than searching through endless divs with or without semantic.
+
+**Best practices to using semantic HTML:**
+
+- Use HTML elements for their intended purposes.
+- Instead of writing `<div>` soups, Use semantically correct elements like: 
+  - `<nav>` for the navigation areas
+  - `<li>` for lists
+  - `<p>` for paragraphs
+  - `<table>` for tabular information
+- Use `<section>` & landmark elements in places you might be tempted to use an outer div.
+- Use a single `<main>` tag per page.
+- Use proper heading tags and ensure hiararchy.
+
+But sometimes It can be confusing to choose the most appropriate semantic tag to use for a particular section, to help with that [html5doctor has published a flowchart](http://html5doctor.com/lets-talk-about-semantics/) 
+
+<img src="./images/accessibility/html5-semantic-html-flowchart.jpg" alt="HTML 5 Element flowchart to help decide which semantic html tag to use" width="90%" />
+
 ## Design Accessibility
 
 Designing with accessibility in mind is an important part of the process, ensuring that our designs have proper color contrast, visual hierearchy & legible text is important. 
@@ -600,6 +647,10 @@ Designing with accessibility in mind is an important part of the process, ensuri
 - Make sure the text doesn’t overlap in between two different sections.
 
 > For more information on design accessibility you can check out component specific [design boards in figma](https://www.figma.com/file/LV9kjgzhkfsktvbRgTuGJ3/Blade---Base-DSL?node-id=557%3A14)
+
+**Tools:**
+
+- Material Design [Color Tool](https://material.io/resources/color/)
 
 # Drawbacks/Constraints
 
