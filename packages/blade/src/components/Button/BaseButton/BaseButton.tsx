@@ -176,16 +176,13 @@ const BaseButton = ({
     contrast,
     isDisabled,
     isFullWidth,
-    onClick,
     type,
   });
   return (
     <StyledBaseButton
       color={buttonColor}
       hoverColor={hoverColor}
-      onClick={(): void => {
-        console.log('clicked');
-      }}
+      onClick={onClick}
       disabled={isDisabled}
       activeColor={activeColor}
       buttonHeight={buttonHeight}

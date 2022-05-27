@@ -17,6 +17,9 @@ export default {
   component: BaseButtonComponent,
   args: {
     children: 'Pay Now',
+    onClick: (): void => {
+      console.log('clicked');
+    },
   },
   argTypes: {
     icon: {
