@@ -190,6 +190,7 @@ const BaseButton = ({
       activeColor={activeColor}
       buttonHeight={buttonHeight}
       buttonSpacing={buttonSpacing}
+      isFullWidth={isFullWidth}
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
       {text && (

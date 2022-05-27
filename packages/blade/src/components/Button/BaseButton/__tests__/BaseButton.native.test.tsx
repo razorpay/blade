@@ -72,4 +72,9 @@ describe('<BaseButton />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+  it('should render button with full width', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton isFullWidth={true}>{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
 });

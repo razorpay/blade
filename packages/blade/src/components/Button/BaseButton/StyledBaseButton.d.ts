@@ -8,6 +8,7 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   activeColor: string;
   buttonHeight: '48px' | '40px' | '32px' | '28px';
   buttonSpacing: string;
+  isFullWidth: boolean;
 };
 
 export { default } from './StyledBaseButton.web';

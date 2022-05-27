@@ -77,4 +77,9 @@ describe('<BaseButton />', () => {
     );
     expect(container).toMatchSnapshot();
   });
+  it('should render button with full width', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(<BaseButton isFullWidth={true}>{buttonText}</BaseButton>);
+    expect(container).toMatchSnapshot();
+  });
 });

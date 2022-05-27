@@ -9,8 +9,16 @@ const StyledPressable = styled.Pressable(
     activeColor,
     buttonHeight,
     buttonSpacing,
+    isFullWidth,
   }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
-    getBaseButtonStyles({ color, hoverColor, activeColor, buttonHeight, buttonSpacing }),
+    getBaseButtonStyles({
+      color,
+      hoverColor,
+      activeColor,
+      buttonHeight,
+      buttonSpacing,
+      isFullWidth,
+    }),
 );
 
 const StyledBaseButton = ({
@@ -21,6 +29,7 @@ const StyledBaseButton = ({
   children,
   buttonHeight,
   buttonSpacing,
+  isFullWidth,
 }: StyledBaseButtonProps): React.ReactElement => {
   return (
     <StyledPressable
@@ -34,6 +43,7 @@ const StyledBaseButton = ({
       })}
       buttonHeight={buttonHeight}
       buttonSpacing={buttonSpacing}
+      isFullWidth={isFullWidth}
     >
       {children}
     </StyledPressable>
