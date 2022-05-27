@@ -175,7 +175,6 @@ const BaseButton = ({
     intent,
     contrast,
     isDisabled,
-    isFullWidth,
     onClick,
     type,
   });
