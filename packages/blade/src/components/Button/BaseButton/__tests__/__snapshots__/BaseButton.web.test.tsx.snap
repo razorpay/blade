@@ -3,7 +3,7 @@
 exports[`<BaseButton /> should render button with default properties 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseText-sc-26bt38-0 dKQwyW"
+    class="StyledBaseButtonweb__StyledBaseText-sc-26bt38-0 hMwYfZ"
     color="hsla(213, 89%, 56%, 1)"
   >
     <div
