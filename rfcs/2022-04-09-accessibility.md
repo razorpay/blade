@@ -841,11 +841,14 @@ Here are few of the must have tools that we will be implementing:
 Automated accessibility tools only [pick up around 40% of errors automatically](https://alphagov.github.io/accessibility-tool-audit/) at best, to ensure blade components are accessible it's essential to do manual testing
 
 - Follow preliminary guide for ["A First Review of Web Accessibility"](https://www.w3.org/WAI/test-evaluate/preliminary/) by w3c
-- Follow [a checklist](https://www.a11yproject.com/checklist/) for general page wide accessibility testing
 - Follow [WAI-ARIA Authoring Practices Guidelines](https://www.w3.org/WAI/ARIA/apg/patterns/) for component specific accessibility testing
 - Do [manual keyboard testing](#manual-testing)
 - Do manual [screen reader testing](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
-
+- Follow a checklist for general page wide accessibility testing
+  - [18F checklist](https://accessibility.18f.gov/checklist/)
+  - [a11y project checklist](https://www.a11yproject.com/checklist/)
+  - [gov.uk](https://www.gov.uk/government/publications/doing-a-basic-accessibility-check-if-you-cant-do-a-detailed-one/doing-a-basic-accessibility-check-if-you-cant-do-a-detailed-one) basic accessibility tests
+  - or use WCAG [evaluation tool](https://www.w3.org/WAI/eval/report-tool/)
 # Actionable Items
 
 - Implement and decide upon which 3rd party library to use for [roving tabindex pattern.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--1)
