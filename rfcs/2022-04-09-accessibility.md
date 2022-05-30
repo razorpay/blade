@@ -28,6 +28,11 @@ Blade Issue: (leave this empty if no issue yet)
     - [Focus order](#focus-order)
     - [Focus ring styling](#focus-ring-styling)
     - [Focus trap](#focus-trap)
+  - [Screen readers](#screen-readers)
+    - [Semantic HTML](#semantic-html)
+    - [ARIA attributes](#aria-attributes)
+    - [ARIA Patterns](#aria-patterns)
+    - [Dynamic Content](#dynamic-content)
   - [Design Accessibility](#design-accessibility)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
@@ -76,7 +81,7 @@ Other subcategories based on [Microsoft’s inclusive design](https://www.micros
 - **Situational, Context based disabilities:**
   - Example: Someone who is at a loud sporting event
   - Example: Using the web app in bright sunlight
-  - Example: Using your phone one handedly in a crowded metro station  
+  - Example: Using your phone one handedly in a crowded metro station
 
 <img src="./images/accessibility/ms-inclusive-design.png" alt="Microsoft Inclusive Design Shows Spectrum Of Disabilities" width="25%" />
 
@@ -522,9 +527,7 @@ The idea is that if for parts of the site where we prevent clicks, we should als
 - The focus should loop when reaching the last or first element inside modal.
 - Convey the intent to screen reader users that there is a context switch, and they are now in a modal or in a focus trapped state.
 
-
 https://user-images.githubusercontent.com/35374649/170202482-b9af775d-4622-4b88-bda5-a4fa91395764.mov
-
 
 #### Platform Specific Implementation <!-- omit in toc -->
 
@@ -563,11 +566,10 @@ Considering the `inert` attribute is not supported in major browsers & we will h
 
 To simulate `inert` behaviour in react-native we have platform specific accessibility props:
 
-
 **iOS:**
 
-iOS has better accessibility support for modals than android, 
-In iOS we can set [`accessibilityViewIsModal`](https://reactnative.dev/docs/accessibility#accessibilityviewismodal-ios) which will cause voice overs to ignore any other elements outside the modal. 
+iOS has better accessibility support for modals than android,
+In iOS we can set [`accessibilityViewIsModal`](https://reactnative.dev/docs/accessibility#accessibilityviewismodal-ios) which will cause voice overs to ignore any other elements outside the modal.
 
 **Android:**
 
@@ -579,7 +581,7 @@ But in android we do not have any platform specific accessibility prop to handle
 
 **Accessibility Principal:** Operable, Perceivable  
 **Target:** Everyone, especially people with visual impairments.  
-**Goal:** Enable screen reader users to access and use the main features of the app.  
+**Goal:** Enable screen reader users to access and use the main features of the app.
 
 Screen reader accessibility is crucial for users who are visually impaired (partially or fully) or have various visual disabilities like color blindness, since they might not be able to see or perceive what’s on the screen, relaying on screen readers is the only option. We need to make sure that the crucial parts of our app are accessible through screen readers.
 
@@ -588,17 +590,19 @@ Making sure that users can use screen readers (VoiceOvers) and still able to use
 ### Areas to cover <!-- omit in toc -->
 
 - [Semantic HTML](#semantic-html)
-- ARIA Attributes
-- Dynamic Content
-- Manual Testing
+- [ARIA Attributes](#aria-attributes)
+  - [Platform Specific Implementation](#platform-specific-implementation--5)
+- [ARIA Patterns](#aria-patterns)
+- [Dynamic Content](#dynamic-content)
+  - [Platform Specific Implementation](#platform-specific-implementation--6)
 
 ### Semantic HTML
 
-Structuring HTML semantically allows for it to work well with assistive technologies & helps people with vision impairments to navigate the content with ease.  
+Structuring HTML semantically allows for it to work well with assistive technologies & helps people with vision impairments to navigate the content with ease.
 
 <img src="./images/accessibility/semantic-html.jpeg" alt="Comparision between two html layouts with semantic and non-semantic markup" width="60%">
 
-**Benefits of writing semantic markup:**  
+**Benefits of writing semantic markup:**
 
 - Screen readers can use it as a signpost to help visually impaired users navigate a page.
 - Search engines will consider its contents as important keywords to influence the page's search rankings.
@@ -607,22 +611,181 @@ Structuring HTML semantically allows for it to work well with assistive technolo
 **Best practices to using semantic HTML:**
 
 - Use HTML elements for their intended purposes.
-- Instead of writing `<div>` soups, Use semantically correct elements like: 
+- Instead of writing `<div>` soups, Use semantically correct elements like:
   - `<nav>` for the navigation areas
   - `<li>` for lists
   - `<p>` for paragraphs
   - `<table>` for tabular information
-- Use `<section>` & landmark elements in places you might be tempted to use an outer div.
+- Use `<section>` & [landmark elements](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/) in places you might be tempted to use an outer div.
 - Use a single `<main>` tag per page.
 - Use proper heading tags and ensure hiararchy.
 
-But sometimes It can be confusing to choose the most appropriate semantic tag to use for a particular section, to help with that [html5doctor has published a flowchart](http://html5doctor.com/lets-talk-about-semantics/) 
+But sometimes It can be confusing to choose the most appropriate semantic tag to use for a particular section, to help with that [html5doctor has published a flowchart](http://html5doctor.com/lets-talk-about-semantics/)
 
 <img src="./images/accessibility/html5-semantic-html-flowchart.jpg" alt="HTML 5 Element flowchart to help decide which semantic html tag to use" width="90%" />
 
+### ARIA attributes
+
+While building complex user interfaces & custom components it's neccessary that we provide proper aria roles, states & properties to the them, ensuring that the screen readers will be able to extract semantic information from it.
+
+That's why W3C created [WAI-ARIA specification](https://www.w3.org/WAI/standards-guidelines/aria/).
+
+**WAI-ARIA defines and documents the following:**
+
+- Roles to describe the type of widget presented, such as "menu", "treeitem", "slider" etc.
+- Roles to describe the structure of the Web page, such as headings, regions, and tables.
+- Properties to describe the state widgets are in, such as "checked" for a check box, or "haspopup" for a menu.
+- Properties to define live regions of a page that are likely to get updates (such as alerts and toasts)
+- A way to provide keyboard navigation for the Web objects and events.
+
+**There are various categorizations for each aria roles:**
+
+- [Abstract Roles](https://www.w3.org/TR/wai-aria-1.2/#abstract_roles)
+- [Widget Roles](https://www.w3.org/TR/wai-aria-1.2/#widget_roles)
+- [Document Structure Roles](https://www.w3.org/TR/wai-aria-1.2/#document_structure_roles)
+- [Landmark Roles](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
+- [Live Region Roles](https://www.w3.org/TR/wai-aria-1.2/#live_region_roles)
+- [And more..](https://www.w3.org/TR/wai-aria-1.2/#roles_categorization)
+
+A developer needs to carefully use these roles as per the [authoring practices guide](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/) & the specific component they are building.
+
+#### Platform Specific Implementation <!-- omit in toc -->
+
+**Native & Web:**
+
+To add aria attributes & accessibility props to components for both native & web we will be needing a compatibility layer to seemlessly work for both platforms, for that we are proposing a `mapA11yProps` function which will take standardized props & map those props to each platform specific props.
+
+For example:
+
+```ts
+// Conversion to react-native
+const props = mapProps({
+  accessibilityLabel: 'hello world',
+  accessibilityLabelledBy: 'id1',
+  accessibilityRole: 'button',
+  accessibilityChecked: false,
+  accessibilitySelected: false,
+  accessibilityDisabled: false,
+  accessibilityExpanded: false,
+  accessibilityBusy: false,
+});
+
+// In react native the above code will return:
+{
+  accessibilityLabel: 'hello world',
+  accessibilityLabelledBy: 'id1',
+  accessibilityRole: 'button',
+  accessibilityState: {
+    checked: false,
+    selected: false,
+    disabled: false,
+    expanded: false,
+    busy: false,
+  },
+}
+
+// In web the above code will return:
+{
+  'aria-labelledby': 'id1',
+  'aria-label': 'hello world',
+  'role': 'button',
+  'aria-checked': 'true',
+  'aria-selected': 'false',
+  'aria-disabled': 'true',
+  'aria-expanded': 'false',
+  'aria-busy': 'false',
+}
+```
+
+> See implementation [pull request for mapA11yProps](https://github.com/razorpay/blade/pull/481)
+
+### ARIA Patterns
+
+> [Specification](https://www.w3.org/WAI/ARIA/apg/patterns/)
+
+**First rule of ARIA:**
+
+<details>
+  <summary>No ARIA is better than Bad ARIA</summary>
+  
+  <br />
+
+> For more info read - [No ARIA is better than Bad ARIA](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/)
+
+Incorrect ARIA misrepresents visual experiences, Misrepresented aria roles and properties can introduce confusion while using assistive technologies, because a `role` is a promise, when you say `role="button"` It's a promise that the author will also implement the JavaScript associated with it to provide the expected behaviour for a `button`.  
+ Using a `role` without fulfilling the promise of that role is similar to making a "Place Order" button that abandons an order and empties the shopping cart.
+
+</details>
+
+[ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/), recommends approaches to help developers make widgets, navigation, and behaviors accessible using WAI-ARIA roles, states, and properties.
+
+In blade, the components that we are going to build should follow these patterns, And blade developers should implement proper aria roles, keyboard interaction following the documented patterns in APG
+
+All the common UI widgets are available with proper documentation about it's behaviour and interactions, for example:
+
+- [Accordion](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
+- [Dialog](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/)
+- [Checkbox](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/)
+- [And more..](https://www.w3.org/WAI/ARIA/apg/patterns/)
+
+While building each blade component we should read upon these patterns and ensure they behave as expected.
+
+### Dynamic Content
+
+> [Specification](https://www.w3.org/TR/WCAG20-TECHS/ARIA19.html)
+
+Using JavaScript, it is possible to dynamically change parts of a page without requiring the entire page to reload — for instance, to update a list of search results on the fly, or to display an alert or notification which does not require user interaction. While these changes are usually visually apparent to users who can see the page, they may not be obvious to users of assistive technologies.
+
+Not communicating dynamic content to users will cause:
+
+- [Failure of Success Criterion 4.1.3](https://www.w3.org/WAI/WCAG21/Techniques/failures/F103) due to providing status messages that cannot be programmatically determined through role or properties
+- Related to: [using ARIA role=alert or Live Regions to Identify Errors](https://www.w3.org/TR/WCAG20-TECHS/ARIA19.html)
+
+**Best practices for dynamic contents:**
+
+- Dynamic content which updates without a page reload should either be a live region or a widget.
+- Use `aria-live` or [roles with implicit live region attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions#roles_with_implicit_live_region_attributes) for dynamic content.
+- Make sure to use `POLITENESS_SETTING` for `aria-live` depending on the criticality of the content.
+
+**aria-live**
+
+`aria-live` attribute can be used to make a live region container. It accepts three values:
+
+| Value           | Description                                                                                                                                                                    |
+| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `assertive`     | Indicates that updates to the region have the highest priority and should be presented the user immediately.                                                                   |
+| `off (default)` | Indicates that updates to the region should not be presented to the user unless the user is currently focused on that region.                                                  |
+| `polite`        | Indicates that updates to the region should be presented at the next graceful opportunity, such as at the end of speaking the current sentence or when the user pauses typing. |
+
+#### Platform Specific Implementation <!-- omit in toc -->
+
+**Web:**
+
+In web we can simply add `aria-live` to any element or use [roles which have implicit live region attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions#roles_with_implicit_live_region_attributes)
+
+> [Demo](https://codesandbox.io/s/blade-a11y-rfc-arialive-demo-h53z61?file=/src/App.tsx)
+
+https://user-images.githubusercontent.com/35374649/170882365-47b9caa8-eff8-4572-a319-d0f63785f497.mov
+
+We can also use the [@react-aria/live-announcer](https://github.com/adobe/react-spectrum/tree/main/packages/%40react-aria/live-announcer) package which gives us programmatic way of triggering announcements with `announce()` function, by creating temporary live-regions.
+
+**Native:**
+
+In react-native we have a [announceForAccessibility](https://reactnative.dev/docs/accessibilityinfo#announceforaccessibility) API in AccessibilityInfo interface for announcing dynamic content:
+
+> [Demo](https://snack.expo.dev/K17t0cAtLj)
+
+```ts
+React.useEffect(() => {
+  AccessibilityInfo.announceForAccessibility('Some content to be announced');
+}, []);
+```
+
+https://user-images.githubusercontent.com/35374649/170883127-b81bc324-3d5c-4b9d-905f-14733fcc821d.mp4
+
 ## Design Accessibility
 
-Designing with accessibility in mind is an important part of the process, ensuring that our designs have proper color contrast, visual hierearchy & legible text is important. 
+Designing with accessibility in mind is an important part of the process, ensuring that our designs have proper color contrast, visual hierearchy & legible text is important.
 
 **Best practices when using color styles and making them accessible**
 
@@ -630,7 +793,7 @@ Designing with accessibility in mind is an important part of the process, ensuri
 - Don’t use color alone to make critical information understandable
 - Don’t use color as the only visual means of conveying information
 - Design [legible & usable focus states](#focus-ring-styling)
-  
+
 <img src="./images/accessibility/typography-contrast-ratio.png" alt="Typography color contrast ratio table" width="70%" />
 
 **Best practices when using typography**
@@ -642,8 +805,8 @@ Designing with accessibility in mind is an important part of the process, ensuri
 - Limit the font-style variations. Try to keep things consistent. Do not overuse Bolds, All caps, etc.
 - Use markup wherever required. Do not use it for anything except code snippets.
 - Don’t make the content (block of text) width too long. Wrap,
-   - Titles: at max. of 70% of the page width.
-   - Subtitles & Paras: at max. of 50%-60% of the page width.
+  - Titles: at max. of 70% of the page width.
+  - Subtitles & Paras: at max. of 50%-60% of the page width.
 - Make sure the text doesn’t overlap in between two different sections.
 
 > For more information on design accessibility you can check out component specific [design boards in figma](https://www.figma.com/file/LV9kjgzhkfsktvbRgTuGJ3/Blade---Base-DSL?node-id=557%3A14)
