@@ -3,7 +3,7 @@
 exports[`<BaseButton /> should render button of type "reset" 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cmQBah"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hhZqJb"
     color="hsla(213, 89%, 56%, 1)"
     type="reset"
   >
@@ -24,7 +24,7 @@ exports[`<BaseButton /> should render button of type "reset" 1`] = `
 exports[`<BaseButton /> should render button of type "submit" 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cmQBah"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hhZqJb"
     color="hsla(213, 89%, 56%, 1)"
     type="submit"
   >
@@ -45,7 +45,7 @@ exports[`<BaseButton /> should render button of type "submit" 1`] = `
 exports[`<BaseButton /> should render button with default properties 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cmQBah"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hhZqJb"
     color="hsla(213, 89%, 56%, 1)"
     type="button"
   >
@@ -66,7 +66,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 exports[`<BaseButton /> should render button with full width 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 MFWam"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fgUYTc"
     color="hsla(213, 89%, 56%, 1)"
     type="button"
   >
@@ -87,7 +87,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 exports[`<BaseButton /> should render button with icon with default iconPosition 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cmQBah"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hhZqJb"
     color="hsla(213, 89%, 56%, 1)"
     type="button"
   >
@@ -121,7 +121,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cmQBah"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hhZqJb"
     color="hsla(213, 89%, 56%, 1)"
     type="button"
   >
@@ -155,7 +155,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 exports[`<BaseButton /> should render button with icon with right iconPosition 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cmQBah"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hhZqJb"
     color="hsla(213, 89%, 56%, 1)"
     type="button"
   >
@@ -189,7 +189,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 exports[`<BaseButton /> should render button with icon without text 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cmQBah"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hhZqJb"
     color="hsla(213, 89%, 56%, 1)"
     type="button"
   >
@@ -213,7 +213,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 exports[`<BaseButton /> should render disabled button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dA-DKWm"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fmImOg"
     color="hsla(216, 19%, 89%, 1)"
     disabled=""
     type="button"
@@ -235,7 +235,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 exports[`<BaseButton /> should render large size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 ghZCJJ"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fQzULX"
     color="hsla(213, 89%, 56%, 1)"
     type="button"
   >
@@ -256,7 +256,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
 exports[`<BaseButton /> should render medium size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cmQBah"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hhZqJb"
     color="hsla(213, 89%, 56%, 1)"
     type="button"
   >
@@ -277,7 +277,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 exports[`<BaseButton /> should render small size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cxPgjE"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cVxHPu"
     color="hsla(213, 89%, 56%, 1)"
     type="button"
   >
@@ -298,7 +298,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
 exports[`<BaseButton /> should render xsmall size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 kccAgH"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jDZWHF"
     color="hsla(213, 89%, 56%, 1)"
     type="button"
   >
