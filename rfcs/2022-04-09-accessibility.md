@@ -608,7 +608,7 @@ Structuring HTML semantically allows for it to work well with assistive technolo
 - Search engines will consider its contents as important keywords to influence the page's search rankings.
 - Finding blocks of meaningful code is significantly easier than searching through endless divs with or without semantic.
 
-**Best practices to using semantic HTML:**
+#### Best practices to using semantic HTML:
 
 - Use HTML elements for their intended purposes.
 - Instead of writing `<div>` soups, Use semantically correct elements like:
@@ -787,7 +787,7 @@ While building each blade component we should read upon these patterns and ensur
 
 Designing with accessibility in mind is an important part of the process, ensuring that our designs have proper color contrast, visual hierearchy & legible text is important.
 
-**Best practices when using color styles and making them accessible**
+#### Best practices when using color styles and making them accessible
 
 - Use colors which are dark enough and atleast pass the AA standards.
 - Don’t use color alone to make critical information understandable
@@ -796,7 +796,7 @@ Designing with accessibility in mind is an important part of the process, ensuri
 
 <img src="./images/accessibility/typography-contrast-ratio.png" alt="Typography color contrast ratio table" width="70%" />
 
-**Best practices when using typography**
+#### Best practices when using typography**
 
 - Always use the primary font (Lato). It’ very readable if used in a hiererchy.
 - Make sure that the base font-size is used in the majority of the page. We’ve kept the base-font-size to 14px which works well with our use case.
@@ -814,6 +814,24 @@ Designing with accessibility in mind is an important part of the process, ensuri
 **Tools:**
 
 - Material Design [Color Tool](https://material.io/resources/color/)
+`
+# Actionable Items
+
+- Implement and decide upon which 3rd party library to use for [roving tabindex pattern.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--1)
+- Implement [`<SkipNavigation />` component.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--2)
+- Implement proper [focus rings & keyboard only focus rings.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--3)
+- Implement and decide upon [focus trapping methods.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--4)
+- Implement [`mapA11yProps` compatibility layer](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5) for aria attributes.
+- Implement [live regions & `announce()` utilties](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--6) for dynamic content announcements.
+- Do [manual testing](#manual-testing) for keyboard accesibility, focus management & screen readers. 
+- Ensure each component adhers to the [WAI-ARIA Authoring Pratices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) 
+- Ensure general accessibility guidelines are followed while building blade components, we discussed best practices for each category: 
+  - Keyboard accessibility [best practices](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#best-practices-for-logical-tab-order-)
+  - Focus ring [best practices](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#best-practices-for-focus-styling-)
+  - Focus trap [best practices](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#best-practices-for-focus-traps-)
+  - Semantic HTML best practices
+  - Dynamic content best practices
+  - Design best practices
 
 # Drawbacks/Constraints
 
