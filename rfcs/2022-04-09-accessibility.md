@@ -658,7 +658,6 @@ To add aria attributes & accessibility props to components for both native & web
 For example:
 
 ```ts
-// Conversion to react-native
 const props = mapProps({
   accessibilityLabel: 'hello world',
   accessibilityLabelledBy: 'id1',
