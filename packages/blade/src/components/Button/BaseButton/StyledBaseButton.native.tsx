@@ -37,7 +37,6 @@ const StyledPressable = styled.Pressable(
 
 const StyledBaseButton = ({
   onClick,
-
   children,
   buttonHeight,
   buttonSpacing,

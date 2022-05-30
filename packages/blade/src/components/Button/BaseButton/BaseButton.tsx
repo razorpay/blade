@@ -244,6 +244,7 @@ const BaseButton = ({
       hoverColor={hoverColor}
       isFullWidth={isFullWidth}
       onClick={onClick}
+      type={type}
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
       {text && (

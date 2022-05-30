@@ -26,6 +26,7 @@ export default {
     size: 'medium',
     iconPosition: 'left',
     isFullWidth: false,
+    type: 'button',
   },
   argTypes: {
     icon: {
