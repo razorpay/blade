@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { fireEvent } from '@testing-library/react-native';
 import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.native';
 import { CreditCardIcon } from '../../../Icons';
 import BaseButton from '../BaseButton';
@@ -76,5 +77,13 @@ describe('<BaseButton />', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(<BaseButton isFullWidth={true}>{buttonText}</BaseButton>);
     expect(toJSON()).toMatchSnapshot();
+  });
+  it('should call function on click', () => {
+    const buttonText = 'Pay Now';
+    const onClick = jest.fn();
+    const { getByText } = renderWithTheme(<BaseButton onClick={onClick}>{buttonText}</BaseButton>);
+    const button = getByText(buttonText);
+    fireEvent.press(button);
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });

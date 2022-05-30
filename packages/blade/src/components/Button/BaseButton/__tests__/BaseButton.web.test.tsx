@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { fireEvent } from '@testing-library/react';
 import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.web';
 import { CreditCardIcon } from '../../../Icons';
 import BaseButton from '../BaseButton';
@@ -81,5 +82,13 @@ describe('<BaseButton />', () => {
     const buttonText = 'Pay Now';
     const { container } = renderWithTheme(<BaseButton isFullWidth={true}>{buttonText}</BaseButton>);
     expect(container).toMatchSnapshot();
+  });
+  it('should call function on click', () => {
+    const buttonText = 'Pay Now';
+    const onClick = jest.fn();
+    const { getByRole } = renderWithTheme(<BaseButton onClick={onClick}>{buttonText}</BaseButton>);
+    const button = getByRole('button');
+    fireEvent.click(button);
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });
