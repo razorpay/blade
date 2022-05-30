@@ -226,7 +226,6 @@ const BaseButton = ({
     variant,
     intent,
     contrast,
-    type,
   });
   return (
     <StyledBaseButton
