@@ -16,11 +16,16 @@ export default {
   title: 'Components/Button/BaseButton (Internal)',
   component: BaseButtonComponent,
   args: {
+    variant: 'primary',
+    contrast: 'low',
     children: 'Pay Now',
     onClick: (): void => {
       console.log('clicked');
     },
-    isDisabled: true,
+    isDisabled: false,
+    size: 'medium',
+    iconPosition: 'left',
+    isFullWidth: false,
   },
   argTypes: {
     icon: {

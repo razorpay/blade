@@ -58,15 +58,15 @@ type ConfigProps = {
   textColor: BaseTextProps['color']; // prop
   buttonSpacing: string; // raw value
   text?: string;
-  buttonColor: string;
-  buttonBorderColor: string;
-  hoverColor: string;
-  hoverBorderColor: string;
-  activeColor: string;
-  activeBorderColor: string;
-  focusColor: string;
-  focusBorderColor: string;
-  focusRingColor: string;
+  buttonColor: string; // raw value
+  buttonBorderColor: string; // raw value
+  hoverColor: string; // raw value
+  hoverBorderColor: string; // raw value
+  activeColor: string; // raw value
+  activeBorderColor: string; // raw value
+  focusColor: string; // raw value
+  focusBorderColor: string; // raw value
+  focusRingColor: string; // raw value
 };
 
 const getProps = ({
