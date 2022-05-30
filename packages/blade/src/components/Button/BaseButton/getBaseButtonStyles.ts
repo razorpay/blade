@@ -12,7 +12,7 @@ const getBaseButtonStyles = ({
   flexDirection: 'row',
   alignItems: 'center',
   alignSelf: 'center',
-  height: buttonHeight,
+  minHeight: buttonHeight,
   cursor: 'pointer',
   backgroundColor: color,
   border: `2px solid ${color}`,
