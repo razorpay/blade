@@ -31,8 +31,8 @@ Blade Issue: (leave this empty if no issue yet)
   - [Screen readers](#screen-readers)
     - [Semantic HTML](#semantic-html)
     - [ARIA attributes](#aria-attributes)
-    - [ARIA Patterns](#aria-patterns)
     - [Dynamic Content](#dynamic-content)
+    - [ARIA Patterns](#aria-patterns)
   - [Design Accessibility](#design-accessibility)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
@@ -592,9 +592,9 @@ Making sure that users can use screen readers (VoiceOvers) and still able to use
 - [Semantic HTML](#semantic-html)
 - [ARIA Attributes](#aria-attributes)
   - [Platform Specific Implementation](#platform-specific-implementation--5)
-- [ARIA Patterns](#aria-patterns)
 - [Dynamic Content](#dynamic-content)
   - [Platform Specific Implementation](#platform-specific-implementation--6)
+- [ARIA Patterns](#aria-patterns)
 
 ### Semantic HTML
 
@@ -699,37 +699,6 @@ const props = mapProps({
 
 > See implementation [pull request for mapA11yProps](https://github.com/razorpay/blade/pull/481)
 
-### ARIA Patterns
-
-> [Specification](https://www.w3.org/WAI/ARIA/apg/patterns/)
-
-**First rule of ARIA:**
-
-<details>
-  <summary>No ARIA is better than Bad ARIA</summary>
-  
-  <br />
-
-> For more info read - [No ARIA is better than Bad ARIA](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/)
-
-Incorrect ARIA misrepresents visual experiences, Misrepresented aria roles and properties can introduce confusion while using assistive technologies, because a `role` is a promise, when you say `role="button"` It's a promise that the author will also implement the JavaScript associated with it to provide the expected behaviour for a `button`.  
- Using a `role` without fulfilling the promise of that role is similar to making a "Place Order" button that abandons an order and empties the shopping cart.
-
-</details>
-
-[ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/), recommends approaches to help developers make widgets, navigation, and behaviors accessible using WAI-ARIA roles, states, and properties.
-
-In blade, the components that we are going to build should follow these patterns, And blade developers should implement proper aria roles, keyboard interaction following the documented patterns in APG
-
-All the common UI widgets are available with proper documentation about it's behaviour and interactions, for example:
-
-- [Accordion](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
-- [Dialog](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/)
-- [Checkbox](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/)
-- [And more..](https://www.w3.org/WAI/ARIA/apg/patterns/)
-
-While building each blade component we should read upon these patterns and ensure they behave as expected.
-
 ### Dynamic Content
 
 > [Specification](https://www.w3.org/TR/WCAG20-TECHS/ARIA19.html)
@@ -782,6 +751,38 @@ React.useEffect(() => {
 ```
 
 https://user-images.githubusercontent.com/35374649/170883127-b81bc324-3d5c-4b9d-905f-14733fcc821d.mp4
+
+
+### ARIA Patterns
+
+> [Specification](https://www.w3.org/WAI/ARIA/apg/patterns/)
+
+**First rule of ARIA:**
+
+<details>
+  <summary>No ARIA is better than Bad ARIA</summary>
+  
+  <br />
+
+> For more info read - [No ARIA is better than Bad ARIA](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/)
+
+Incorrect ARIA misrepresents visual experiences, Misrepresented aria roles and properties can introduce confusion while using assistive technologies, because a `role` is a promise, when you say `role="button"` It's a promise that the author will also implement the JavaScript associated with it to provide the expected behaviour for a `button`.  
+ Using a `role` without fulfilling the promise of that role is similar to making a "Place Order" button that abandons an order and empties the shopping cart.
+
+</details>
+
+[ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/), recommends approaches to help developers make widgets, navigation, and behaviors accessible using WAI-ARIA roles, states, and properties.
+
+In blade, the components that we are going to build should follow these patterns, And blade developers should implement proper aria roles, keyboard interaction following the documented patterns in APG
+
+All the common UI widgets are available with proper documentation about it's behaviour and interactions, for example:
+
+- [Accordion](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
+- [Dialog](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/)
+- [Checkbox](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/)
+- [And more..](https://www.w3.org/WAI/ARIA/apg/patterns/)
+
+While building each blade component we should read upon these patterns and ensure they behave as expected.
 
 ## Design Accessibility
 
