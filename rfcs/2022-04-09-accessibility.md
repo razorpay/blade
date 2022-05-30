@@ -34,6 +34,7 @@ Blade Issue: (leave this empty if no issue yet)
     - [Dynamic Content](#dynamic-content)
     - [ARIA Patterns](#aria-patterns)
   - [Design Accessibility](#design-accessibility)
+- [Actionable Items](#actionable-items)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
@@ -232,6 +233,10 @@ The following table describes tabindex behavior in modern browsers:
 **Native: Using `accessible` prop**
 
 In react-native there is no `tabindex` like behaviour for components, instead we have access to the [`accessible`](https://reactnative.dev/docs/accessibility#accessible) prop, setting `accessible` to true elements get grouped into a single selectable component.
+
+> [Demo](https://snack.expo.dev/V5MQ8yne8)
+
+https://user-images.githubusercontent.com/35374649/170967381-c3d4923c-fb2f-4e9c-b5b4-dec1bc778f67.mp4
 
 ### Composite widgets
 
@@ -608,7 +613,7 @@ Structuring HTML semantically allows for it to work well with assistive technolo
 - Search engines will consider its contents as important keywords to influence the page's search rankings.
 - Finding blocks of meaningful code is significantly easier than searching through endless divs with or without semantic.
 
-#### Best practices to using semantic HTML:
+#### Best practices to using semantic HTML: <!-- omit in toc -->
 
 - Use HTML elements for their intended purposes.
 - Instead of writing `<div>` soups, Use semantically correct elements like:
@@ -709,7 +714,7 @@ Not communicating dynamic content to users will cause:
 - [Failure of Success Criterion 4.1.3](https://www.w3.org/WAI/WCAG21/Techniques/failures/F103) due to providing status messages that cannot be programmatically determined through role or properties
 - Related to: [using ARIA role=alert or Live Regions to Identify Errors](https://www.w3.org/TR/WCAG20-TECHS/ARIA19.html)
 
-**Best practices for dynamic contents:**
+#### Best practices for dynamic contents:  <!-- omit in toc -->
 
 - Dynamic content which updates without a page reload should either be a live region or a widget.
 - Use `aria-live` or [roles with implicit live region attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions#roles_with_implicit_live_region_attributes) for dynamic content.
@@ -787,7 +792,7 @@ While building each blade component we should read upon these patterns and ensur
 
 Designing with accessibility in mind is an important part of the process, ensuring that our designs have proper color contrast, visual hierearchy & legible text is important.
 
-#### Best practices when using color styles and making them accessible
+#### Best practices when using color styles and making them accessible: <!-- omit in toc -->
 
 - Use colors which are dark enough and atleast pass the AA standards.
 - Don’t use color alone to make critical information understandable
@@ -796,7 +801,7 @@ Designing with accessibility in mind is an important part of the process, ensuri
 
 <img src="./images/accessibility/typography-contrast-ratio.png" alt="Typography color contrast ratio table" width="70%" />
 
-#### Best practices when using typography**
+#### Best practices when using typography:  <!-- omit in toc -->
 
 - Always use the primary font (Lato). It’ very readable if used in a hiererchy.
 - Make sure that the base font-size is used in the majority of the page. We’ve kept the base-font-size to 14px which works well with our use case.
@@ -826,12 +831,12 @@ Designing with accessibility in mind is an important part of the process, ensuri
 - Do [manual testing](#manual-testing) for keyboard accesibility, focus management & screen readers. 
 - Ensure each component adhers to the [WAI-ARIA Authoring Pratices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) 
 - Ensure general accessibility guidelines are followed while building blade components, we discussed best practices for each category: 
-  - Keyboard accessibility [best practices](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#best-practices-for-logical-tab-order-)
-  - Focus ring [best practices](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#best-practices-for-focus-styling-)
-  - Focus trap [best practices](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#best-practices-for-focus-traps-)
-  - Semantic HTML best practices
-  - Dynamic content best practices
-  - Design best practices
+  - Keyboard accessibility [best practices](#best-practices-for-logical-tab-order)
+  - Focus ring [best practices](#best-practices-for-focus-styling)
+  - Focus trap [best practices](#best-practices-for-focus-traps)
+  - Semantic HTML [best practices](#best-practices-to-using-semantic-html)
+  - Dynamic content [best practices](#best-practices-for-dynamic-contents)
+  - Design [best practices](#best-practices-when-using-color-styles-and-making-them-accessible)
 
 # Drawbacks/Constraints
 
