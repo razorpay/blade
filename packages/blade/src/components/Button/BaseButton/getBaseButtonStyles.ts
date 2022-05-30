@@ -14,7 +14,7 @@ const getBaseButtonStyles = ({
   alignItems: 'center',
   justifyContent: 'center',
   alignSelf: 'center',
-  height: buttonHeight,
+  minHeight: buttonHeight,
   width: isFullWidth ? '100%' : 'auto',
   cursor: 'pointer',
   backgroundColor: color,
