@@ -83,6 +83,24 @@ describe('<BaseButton />', () => {
     const { container } = renderWithTheme(<BaseButton isFullWidth={true}>{buttonText}</BaseButton>);
     expect(container).toMatchSnapshot();
   });
+  it('should render disabled button', () => {
+    const buttonText = 'Pay Now';
+    const { container, getByRole } = renderWithTheme(
+      <BaseButton isDisabled={true}>{buttonText}</BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+    expect(getByRole('button')).toBeDisabled();
+  });
+  it('should render button of type "submit"', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(<BaseButton type="submit">{buttonText}</BaseButton>);
+    expect(container).toMatchSnapshot();
+  });
+  it('should render button of type "reset"', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(<BaseButton type="reset">{buttonText}</BaseButton>);
+    expect(container).toMatchSnapshot();
+  });
   it('should call function on click', () => {
     const buttonText = 'Pay Now';
     const onClick = jest.fn();
