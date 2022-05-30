@@ -819,7 +819,32 @@ Designing with accessibility in mind is an important part of the process, ensuri
 **Tools:**
 
 - Material Design [Color Tool](https://material.io/resources/color/)
-`
+
+# Tools & Infrastructure
+
+To ensure that blade components & apps built with blade are accessible it is essential that we make use of modern tooling and automated tests for accessibility testing. 
+
+Here are few of the must have tools that we will be implementing: 
+
+**Automated Testing:**
+
+- Automated unit [testing with jest-axe](https://github.com/nickcolley/jest-axe)
+- Static analysis with [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
+- Storybook addon a11y for component level [UI testing](https://storybook.js.org/addons/@storybook/addon-a11y)
+- Using getBy `role`, `labelText`, `altText`, `title` while testing which encourages [proper accessibility testing](https://testing-library.com/docs/dom-testing-library/api-accessibility/)
+- Using [WAVE](https://wave.webaim.org/) for manual full page checks & finding accessibility issues.
+- Using [Accessibility Insights for Web Chrome extension](https://chrome.google.com/webstore/detail/accessibility-insights-fo/pbjjkligggfmakdaogkfomddhfmpjeni) *This one is very good*
+
+**Manual Testing:**
+
+Automated accessibility tools only [pick up around 40% of errors automatically](https://alphagov.github.io/accessibility-tool-audit/) at best, to ensure blade components are accessible it's essential to do manual testing
+
+- Follow preliminary guide for ["A First Review of Web Accessibility"](https://www.w3.org/WAI/test-evaluate/preliminary/) by w3c
+- Follow [a checklist](https://www.a11yproject.com/checklist/) for general page wide accessibility testing
+- Follow [WAI-ARIA Authoring Practices Guidelines](https://www.w3.org/WAI/ARIA/apg/patterns/) for component specific accessibility testing
+- Do [manual keyboard testing](#manual-testing)
+- Do manual [screen reader testing](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
+
 # Actionable Items
 
 - Implement and decide upon which 3rd party library to use for [roving tabindex pattern.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--1)
@@ -828,7 +853,6 @@ Designing with accessibility in mind is an important part of the process, ensuri
 - Implement and decide upon [focus trapping methods.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--4)
 - Implement [`mapA11yProps` compatibility layer](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5) for aria attributes.
 - Implement [live regions & `announce()` utilties](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--6) for dynamic content announcements.
-- Do [manual testing](#manual-testing) for keyboard accesibility, focus management & screen readers. 
 - Ensure each component adhers to the [WAI-ARIA Authoring Pratices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) 
 - Ensure general accessibility guidelines are followed while building blade components, we discussed best practices for each category: 
   - Keyboard accessibility [best practices](#best-practices-for-logical-tab-order)
@@ -837,7 +861,9 @@ Designing with accessibility in mind is an important part of the process, ensuri
   - Semantic HTML [best practices](#best-practices-to-using-semantic-html)
   - Dynamic content [best practices](#best-practices-for-dynamic-contents)
   - Design [best practices](#best-practices-when-using-color-styles-and-making-them-accessible)
-
+- Implement [automated testing tools](#tools--infrastructure) which discussed
+- Do manual testing for [keyboard accesibility](#keyboard-accessibility), [focus management & screen readers.](#tools--infrastructure) 
+  
 # Drawbacks/Constraints
 
 Why should we _not_ do this? Maybe try to consider the following constraints
