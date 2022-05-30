@@ -19,7 +19,7 @@ describe('<BaseButton />', () => {
   });
   it('should throw an error when there is no icon or text passed to the button', () => {
     try {
-      // @ts-expect-error
+      // @ts-expect-error testing failure case when there is no icon or text passed
       renderWithTheme(<BaseButton />);
     } catch (error: unknown) {
       if (error instanceof Error) {
