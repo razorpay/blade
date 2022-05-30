@@ -20,6 +20,7 @@ export default {
     onClick: (): void => {
       console.log('clicked');
     },
+    isDisabled: true,
   },
   argTypes: {
     icon: {

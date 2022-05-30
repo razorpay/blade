@@ -58,18 +58,29 @@ type ConfigProps = {
   textColor: BaseTextProps['color']; // prop
   buttonSpacing: string; // raw value
   text?: string;
+  buttonColor: string;
+  buttonBorderColor: string;
+  hoverColor: string;
+  hoverBorderColor: string;
+  activeColor: string;
+  activeBorderColor: string;
+  focusColor: string;
+  focusBorderColor: string;
+  focusRingColor: string;
 };
 
 const getProps = ({
-  theme,
-  size,
-  children,
   buttonTypographyTokens,
+  children,
+  isDisabled,
+  size,
+  theme,
 }: {
+  buttonTypographyTokens: typeof typography.onDesktop | typeof typography.onMobile;
+  children?: string;
+  isDisabled: boolean;
   theme: Theme;
   size: BaseButtonCommonProps['size'];
-  children?: string;
-  buttonTypographyTokens: typeof typography.onDesktop | typeof typography.onMobile;
 }): ConfigProps => {
   const props: ConfigProps = {
     iconSize: 'medium',
@@ -77,12 +88,45 @@ const getProps = ({
     lineHeight: buttonTypographyTokens.lineHeight.medium,
     buttonHeight: '40px',
     iconSpacing: makeSpacingSize(theme.spacing[2]),
-    iconColor: 'action.icon.primary.default',
-    textColor: 'action.text.primary.default',
+    iconColor: isDisabled ? 'action.icon.primary.disabled' : 'action.icon.primary.default',
+    textColor: isDisabled ? 'action.text.primary.disabled' : 'action.text.primary.default',
     buttonSpacing: `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
       theme.spacing[5],
     )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[5])}`,
     text: children?.trim(),
+    buttonColor: getIn(
+      theme.colors,
+      isDisabled ? 'action.background.primary.disabled' : 'action.background.primary.default',
+    ),
+    buttonBorderColor: getIn(
+      theme.colors,
+      isDisabled ? 'action.border.primary.disabled' : 'action.border.primary.default',
+    ),
+    hoverColor: getIn(
+      theme.colors,
+      isDisabled ? 'action.background.primary.disabled' : 'action.background.primary.hover',
+    ),
+    hoverBorderColor: getIn(
+      theme.colors,
+      isDisabled ? 'action.border.primary.disabled' : 'action.border.primary.hover',
+    ),
+    activeColor: getIn(
+      theme.colors,
+      isDisabled ? 'action.background.primary.disabled' : 'action.background.primary.active',
+    ),
+    activeBorderColor: getIn(
+      theme.colors,
+      isDisabled ? 'action.border.primary.disabled' : 'action.border.primary.active',
+    ),
+    focusColor: getIn(
+      theme.colors,
+      isDisabled ? 'action.background.primary.disabled' : 'action.background.primary.focus',
+    ),
+    focusBorderColor: getIn(
+      theme.colors,
+      isDisabled ? 'action.border.primary.disabled' : 'action.border.primary.focus',
+    ),
+    focusRingColor: getIn(theme.colors, 'brand.primary.400'),
   };
 
   switch (size) {
@@ -148,46 +192,58 @@ const BaseButton = ({
 }: BaseButtonProps): ReactElement => {
   const { theme, onDeviceType } = useTheme();
   const buttonTypographyTokens = typography[onDeviceType];
-  const buttonColor = getIn(theme.colors, 'action.background.primary.default');
-  const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
-  const activeColor = getIn(theme.colors, 'action.background.primary.active');
+
   if (!Icon && !children?.trim()) {
     throw new Error(`[Blade: BaseButton]: Cannot render a BaseButton without an icon or text`);
   }
   const {
-    iconSize,
-    fontSize,
-    lineHeight,
+    activeBorderColor,
+    activeColor,
+    buttonBorderColor,
+    buttonColor,
     buttonHeight,
-    iconColor,
-    iconSpacing,
-    textColor,
     buttonSpacing,
+    focusBorderColor,
+    focusColor,
+    focusRingColor,
+    fontSize,
+    hoverBorderColor,
+    hoverColor,
+    iconColor,
+    iconSize,
+    iconSpacing,
+    lineHeight,
     text,
+    textColor,
   } = getProps({
-    theme,
-    size,
-    children,
     buttonTypographyTokens,
+    children,
+    isDisabled,
+    size,
+    theme,
   });
   console.log('unused props', {
     variant,
     intent,
     contrast,
-    isDisabled,
-    isFullWidth,
     type,
   });
   return (
     <StyledBaseButton
-      color={buttonColor}
-      hoverColor={hoverColor}
-      onClick={onClick}
-      disabled={isDisabled}
+      activeBorderColor={activeBorderColor}
       activeColor={activeColor}
+      borderColor={buttonBorderColor}
       buttonHeight={buttonHeight}
       buttonSpacing={buttonSpacing}
+      color={buttonColor}
+      disabled={isDisabled}
+      focusBorderColor={focusBorderColor}
+      focusColor={focusColor}
+      focusRingColor={focusRingColor}
+      hoverBorderColor={hoverBorderColor}
+      hoverColor={hoverColor}
       isFullWidth={isFullWidth}
+      onClick={onClick}
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
       {text && (
