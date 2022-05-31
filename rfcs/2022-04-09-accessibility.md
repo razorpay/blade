@@ -991,3 +991,6 @@ This document provides enough insights, guides & best practices to ensure that d
 - [WCAG 2 A and AA Checklist](https://usability.yale.edu/web-accessibility/articles/wcag2-checklist)
 - [How to Meet WCAG (Quick Reference)](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.1)
 - [Getting Comfortable with WCAG](https://sparkbox.com/foundry/getting_comfortable_with_wcag)
+- [WAI-ARIA: the dark art of accessibility?](https://diginclusion.com/industry-updates/wai-aria-dark-art-of-accessibility/)
+- [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
+- [Abinash's accessibility document](https://docs.google.com/document/d/1uPkfM3W-fiRap_Fnqd3nuZ-YACCqv4joPqS4h6nJuiI/edit)
