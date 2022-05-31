@@ -31,6 +31,7 @@ Blade Issue: (leave this empty if no issue yet)
   - [Screen readers](#screen-readers)
     - [Semantic HTML](#semantic-html)
     - [ARIA attributes](#aria-attributes)
+    - [Hidden Content](#hidden-content)
     - [Dynamic Content](#dynamic-content)
     - [ARIA Patterns](#aria-patterns)
   - [Design Accessibility](#design-accessibility)
@@ -598,6 +599,7 @@ Making sure that users can use screen readers (VoiceOvers) and still able to use
 - [Semantic HTML](#semantic-html)
 - [ARIA Attributes](#aria-attributes)
   - [Platform Specific Implementation](#platform-specific-implementation--5)
+- [Hidden Content](#hidden-content)
 - [Dynamic Content](#dynamic-content)
   - [Platform Specific Implementation](#platform-specific-implementation--6)
 - [ARIA Patterns](#aria-patterns)
@@ -703,6 +705,62 @@ const props = mapProps({
 ```
 
 > See implementation [pull request for mapA11yProps](https://github.com/razorpay/blade/pull/481)
+
+### Hidden Content
+
+In some cases we want to hide specific elements either from screen readers or only from sighted users, generally we have 3 categories of hidden content: 
+
+1. Completely Hidden.
+2. Visually Hidden.
+3. Content Only Hidden from Assistive Technology.
+
+#### Completely Hidden: <!-- omit in toc -->
+
+For usecases where we want to completely hide an element's presence from both sighted and screen reader user we need to hide the element with CSS `display: hidden` or the HTML5 attribute `hidden`.
+
+#### Visually Hidden: <!-- omit in toc -->
+
+In some cases, it may be useful to hide elements on the screen, but make sure they are still accessible by screen readers.
+
+Generally to hide elements in a web page, The conventional way is to use CSS with `display: none` or `visibility: hidden`. These properties hide elements not only for the sighted users, but also for screen reader users.
+
+To make sure content is still accessible to screen readers we can make use of CSS, this technique is also known as `.screen-reader-only` or `.sr-only`
+
+```css
+.sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+<button>
+  <span class="sr-only">Save</span>
+  <span class="save-icon"></span>
+</button>
+```
+
+In blade we can provide a out of the box `<VisuallyHidden />` component for doing this. 
+
+Implementations: 
+- [ReachUI VisuallyHidden](https://reach.tech/visually-hidden/)
+- [ChakraUI VisuallyHidden](https://chakra-ui.com/docs/components/disclosure/visually-hidden)
+
+#### Content Only Hidden From Assistive Technology <!-- omit in toc -->
+
+Finally, we may want to display elements on the screen but make sure they are not accessible through screen readers, for example you may have a decorative <Icon\/> component which don't need to be announced to the screen readers, 
+
+In such scenarios we can use the `aria-hidden` attribute: 
+
+```html
+<button>
+  <span class="twitter-icon" aria-hidden="true"></span>
+  <span>Tweet</span>
+</button>
+```
 
 ### Dynamic Content
 
@@ -849,6 +907,7 @@ Automated accessibility tools only [pick up around 40% of errors automatically](
   - [a11y project checklist](https://www.a11yproject.com/checklist/)
   - [gov.uk](https://www.gov.uk/government/publications/doing-a-basic-accessibility-check-if-you-cant-do-a-detailed-one/doing-a-basic-accessibility-check-if-you-cant-do-a-detailed-one) basic accessibility tests
   - or use WCAG [evaluation tool](https://www.w3.org/WAI/eval/report-tool/)
+
 # Actionable Items
 
 - Implement and decide upon which 3rd party library to use for [roving tabindex pattern.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--1)
@@ -857,6 +916,7 @@ Automated accessibility tools only [pick up around 40% of errors automatically](
 - Implement and decide upon [focus trapping methods.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--4)
 - Implement [`mapA11yProps` compatibility layer](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5) for aria attributes.
 - Implement [live regions & `announce()` utilties](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--6) for dynamic content announcements.
+- Implement `<VisuallyHidden />` component for [hidden content](#hidden-content)
 - Ensure each component adhers to the [WAI-ARIA Authoring Pratices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) 
 - Ensure general accessibility guidelines are followed while building blade components, we discussed best practices for each category: 
   - Keyboard accessibility [best practices](#best-practices-for-logical-tab-order)
