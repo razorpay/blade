@@ -54,6 +54,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
     fontStyle: 'normal',
     lineHeight: 'xl',
     fontFamily: 'text',
+    accessibilityRole: 'header',
   };
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
 

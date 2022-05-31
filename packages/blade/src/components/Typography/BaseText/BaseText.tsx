@@ -27,6 +27,10 @@ export type BaseTextProps = {
   truncateAfterLines?: number;
   className?: string;
   children: React.ReactNode;
+  /**
+   * @platform native
+   */
+  accessibilityRole?: string;
 };
 
 const BaseText = ({
@@ -42,6 +46,7 @@ const BaseText = ({
   children,
   truncateAfterLines,
   className,
+  accessibilityRole,
 }: BaseTextProps): ReactElement => {
   const { theme } = useTheme();
   const textColor = getIn(theme.colors, color);
@@ -63,6 +68,7 @@ const BaseText = ({
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
       className={className}
+      accessibilityRole={accessibilityRole}
     >
       {children}
     </StyledBaseText>

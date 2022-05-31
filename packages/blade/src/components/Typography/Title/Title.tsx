@@ -24,6 +24,7 @@ const getProps = ({
     fontStyle: 'normal',
     lineHeight: '4xl',
     fontFamily: 'text',
+    accessibilityRole: 'header',
   };
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
 
