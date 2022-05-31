@@ -190,8 +190,8 @@ const BaseButton = ({
   type = 'button',
   children,
 }: BaseButtonProps): ReactElement => {
-  const { theme, onDeviceType } = useTheme();
-  const buttonTypographyTokens = typography[onDeviceType];
+  const { theme, platform } = useTheme();
+  const buttonTypographyTokens = typography[platform];
 
   if (!Icon && !children?.trim()) {
     throw new Error(`[Blade: BaseButton]: Cannot render a BaseButton without an icon or text`);
