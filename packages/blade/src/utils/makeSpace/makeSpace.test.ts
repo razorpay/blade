@@ -1,9 +1,9 @@
 import spacing from '../../tokens/global/spacing';
-import makeSpacingSize from '.';
+import makeSpace from '.';
 
-describe('makeSpacingSize', () => {
+describe('makeSpace', () => {
   it('should return the spacing value in `px`', () => {
-    const space = makeSpacingSize(spacing[2]);
+    const space = makeSpace(spacing[2]);
     expect(space).toEqual('8px');
   });
 });
