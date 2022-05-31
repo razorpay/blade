@@ -56,7 +56,7 @@ const BladeProvider = ({
     theme,
     colorScheme,
     setColorScheme,
-    onDeviceType,
+    platform: onDeviceType,
   };
 
   return (

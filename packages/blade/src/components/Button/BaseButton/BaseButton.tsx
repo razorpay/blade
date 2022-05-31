@@ -147,7 +147,12 @@ const BaseButton = ({
   children,
 }: BaseButtonProps): ReactElement => {
   const { theme, platform } = useTheme();
+  console.log('🚀 ~ file: BaseButton.tsx ~ line 150 ~ )}${makeSpace ~ platform', platform);
   const buttonTypographyTokens = typography[platform];
+  console.log(
+    '🚀 ~ file: BaseButton.tsx ~ line 151 ~ )}${makeSpace ~ buttonTypographyTokens',
+    buttonTypographyTokens,
+  );
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
   const activeColor = getIn(theme.colors, 'action.background.primary.active');
