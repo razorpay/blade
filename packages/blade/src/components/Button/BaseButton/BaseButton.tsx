@@ -6,7 +6,7 @@ import BaseText from '../../Typography/BaseText';
 import type { Theme } from '../../BladeProvider';
 import { useTheme } from '../../BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '../../Icons';
-import makeSpacingSize from '../../../utils/makeSpacingSize';
+import makeSpace from '../../../utils/makeSpace';
 import StyledBaseButton from './StyledBaseButton';
 import { typography } from './buttonTokens';
 
@@ -76,12 +76,12 @@ const getProps = ({
     fontSize: buttonTypographyTokens.fonts.size.medium,
     lineHeight: buttonTypographyTokens.lineHeight.medium,
     buttonHeight: '40px',
-    iconSpacing: makeSpacingSize(theme.spacing[2]),
+    iconSpacing: makeSpace(theme.spacing[2]),
     iconColor: 'action.icon.primary.default',
     textColor: 'action.text.primary.default',
-    buttonSpacing: `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
-      theme.spacing[5],
-    )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[5])}`,
+    buttonSpacing: `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])} ${makeSpace(
+      theme.spacing[0],
+    )} ${makeSpace(theme.spacing[5])}`,
     text: children?.trim(),
   };
 
@@ -91,40 +91,40 @@ const getProps = ({
       props.fontSize = buttonTypographyTokens.fonts.size.large;
       props.lineHeight = buttonTypographyTokens.lineHeight.large;
       props.buttonHeight = '48px';
-      props.iconSpacing = makeSpacingSize(theme.spacing[2]);
-      props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
+      props.iconSpacing = makeSpace(theme.spacing[2]);
+      props.buttonSpacing = `${makeSpace(theme.spacing[0])} ${makeSpace(
         theme.spacing[5],
-      )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[5])}`;
+      )} ${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`;
       break;
     case 'medium':
       props.iconSize = 'medium';
       props.fontSize = buttonTypographyTokens.fonts.size.medium;
       props.lineHeight = buttonTypographyTokens.lineHeight.medium;
       props.buttonHeight = '40px';
-      props.iconSpacing = makeSpacingSize(theme.spacing[2]);
-      props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
+      props.iconSpacing = makeSpace(theme.spacing[2]);
+      props.buttonSpacing = `${makeSpace(theme.spacing[0])} ${makeSpace(
         theme.spacing[5],
-      )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[5])}`;
+      )} ${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`;
       break;
     case 'small':
       props.iconSize = 'xsmall';
       props.fontSize = buttonTypographyTokens.fonts.size.small;
       props.lineHeight = buttonTypographyTokens.lineHeight.small;
       props.buttonHeight = '32px';
-      props.iconSpacing = makeSpacingSize(theme.spacing[1]);
-      props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
+      props.iconSpacing = makeSpace(theme.spacing[1]);
+      props.buttonSpacing = `${makeSpace(theme.spacing[0])} ${makeSpace(
         theme.spacing[3],
-      )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[3])}`;
+      )} ${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[3])}`;
       break;
     case 'xsmall':
       props.iconSize = 'xsmall';
       props.fontSize = buttonTypographyTokens.fonts.size.xsmall;
       props.lineHeight = buttonTypographyTokens.lineHeight.xsmall;
       props.buttonHeight = '28px';
-      props.iconSpacing = makeSpacingSize(theme.spacing[1]);
-      props.buttonSpacing = `${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(
+      props.iconSpacing = makeSpace(theme.spacing[1]);
+      props.buttonSpacing = `${makeSpace(theme.spacing[0])} ${makeSpace(
         theme.spacing[2],
-      )} ${makeSpacingSize(theme.spacing[0])} ${makeSpacingSize(theme.spacing[2])}`;
+      )} ${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[2])}`;
       props.text = children?.trim().toUpperCase();
       break;
     default:
