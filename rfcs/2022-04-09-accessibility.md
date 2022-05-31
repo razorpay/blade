@@ -944,25 +944,50 @@ What other designs/patterns/strategies have been considered?
 
 # Adoption strategy
 
-If we implement this proposal, how will existing consumer projects adopt it?
+The implementation will be progressive & per component basis, first we will be completing the [Actionable items](#actionable-items) & then for each component we will progressively improve the accessibility.
 
-- Is this a breaking change?
-- Can we write a codemod?
-- How do we prioritise this with business and product folks?
-- How do we communicate with other teams? Will updating docs suffice or do we need a dedicated interaction with them?
+**Will there be breaking changes?**
+
+Yes there might be some breaking changes but it will depend on the component we are building, not every component will have publicly exposed accessibility props so those components wouldn't have any breaking changes, But we might need to expose few accessibility props like `accessibilityLabel` for certain components and that can cause breaking change.
+
+**How do we communicate with other teams? Will updating docs suffice or do we need a dedicated interaction with them?** 
+
+Making the blade components accessible out of the box should suffice although we need to communicate with other teams for new releases & improvements about accessibility so they get all the new benefits and features.
 
 # How do we educate people?
 
-- How should this be taught to other folks?
-- What names and terminology work best for these concepts and why?
-- How is this idea best presented?
+Ideally only two people needs to be educated: 
+
+- Blade design system designers
+- Blade design system developers
+
+This document provides enough insights, guides & best practices to ensure that designers & developers are well educated about the ins and out of building accessible components, although other teams also need to be proactive about certain things like providing proper accessibility label, alt text etc.
 
 # Open Questions
 
-- Any open questions that you have?
-- Any undiscovered areas that you have encountered?
-- Any dependencies on other teams(Design/Engineering) that needs to be resolved upfront?
+- Which third party library for roving tabindex pattern should we choose? 
 
 # References
 
-Any references that you can share for those who are curious to understand anything beyond the scope of this RFC in general but related to the topic of this RFC.
+- [Introduction to Web Accessibility](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
+- [Orange Web Accessibility Guidelines](https://a11y-guidelines.orange.com/en/web/)
+- [WebAIM articles](https://webaim.org/articles/)
+- [Web Accessibility Criteria - Keyboard Accessibility](https://www.csun.edu/universal-design-center/web-accessibility-criteria-keyboard-accessibility)
+- [WAI-ARIA | Developing a Keyboard Interface](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/)
+- [18F Accessibility Guide](https://accessibility.18f.gov/keyboard/)
+- [Native app accessibility checklist](https://www.magentaa11y.com/native/)
+- [iOS vs. Android Accessibility](https://pauljadam.com/iosvsandroida11y/)
+- [Let’s Talk about Semantics - html5doctor](http://html5doctor.com/lets-talk-about-semantics/)
+- [Using VoiceOver to Evaluate Web Accessibility](https://webaim.org/articles/voiceover/)
+- [Accessibility Principles | dequeuniversity](https://dequeuniversity.com/class/archive/basic-concepts1/principles/)
+- [How Situational Disabilities Impact Us All](https://userway.org/blog/how-situational-disabilities-impact-us-all/)
+- [Inclusive Web Design - Why Our Websites Should Be More Accessible](https://www.iweb.co.uk/2016/10/inclusive-design-why-our-websites-should-more-accessible/)
+- [Shopify Accessibility](https://polaris.shopify.com/foundations/accessibility)
+- [Creating Accessible React Native Apps](https://www.shopify.in/partners/blog/react-native-accessibility)
+- [Web Accessibility Guidelines v1.0](http://web-accessibility.carnegiemuseums.org/)
+- [WAI-ARIA Overview](https://www.w3.org/WAI/standards-guidelines/aria/)
+- [Understanding WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/)
+- [Techniques for WCAG 2.1](https://www.w3.org/WAI/WCAG21/Techniques/#techniques)
+- [WCAG 2 A and AA Checklist](https://usability.yale.edu/web-accessibility/articles/wcag2-checklist)
+- [How to Meet WCAG (Quick Reference)](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.1)
+- [Getting Comfortable with WCAG](https://sparkbox.com/foundry/getting_comfortable_with_wcag)
