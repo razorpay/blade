@@ -716,7 +716,7 @@ In some cases we want to hide specific elements either from screen readers or on
 
 #### Completely Hidden: <!-- omit in toc -->
 
-For usecases where we want to completely hide an element's presence from both sighted and screen reader user we need to hide the element with CSS `display: hidden` or the HTML5 attribute `hidden`.
+For usecases where we want to completely hide an element's presence from both sighted and screen reader user, We need to hide the element with CSS `display: hidden` or the HTML5 attribute `hidden`.
 
 #### Visually Hidden: <!-- omit in toc -->
 
@@ -743,7 +743,7 @@ To make sure content is still accessible to screen readers we can make use of CS
 </button>
 ```
 
-In blade we can provide a out of the box `<VisuallyHidden />` component for doing this. 
+In blade we can provide an out of the box `<VisuallyHidden />` component for doing this. 
 
 Implementations: 
 - [ReachUI VisuallyHidden](https://reach.tech/visually-hidden/)
@@ -751,7 +751,7 @@ Implementations:
 
 #### Content Only Hidden From Assistive Technology <!-- omit in toc -->
 
-Finally, we may want to display elements on the screen but make sure they are not accessible through screen readers, for example you may have a decorative <Icon\/> component which don't need to be announced to the screen readers, 
+Finally, we may want to display elements on the screen but make sure they are not accessible through screen readers, for example you may have a decorative `<Icon />` component which don't need to be announced to the screen readers.  
 
 In such scenarios we can use the `aria-hidden` attribute: 
 
