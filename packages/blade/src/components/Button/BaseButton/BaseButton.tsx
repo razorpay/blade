@@ -146,8 +146,8 @@ const BaseButton = ({
   type = 'button',
   children,
 }: BaseButtonProps): ReactElement => {
-  const { theme, onDeviceType } = useTheme();
-  const buttonTypographyTokens = typography[onDeviceType];
+  const { theme, platform } = useTheme();
+  const buttonTypographyTokens = typography[platform];
   const buttonColor = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
   const activeColor = getIn(theme.colors, 'action.background.primary.active');

@@ -6,13 +6,13 @@ import type { Theme } from './';
 
 export type ThemeContext = UseColorScheme & {
   theme: Theme;
-  onDeviceType: TypographyPlatforms;
+  platform: TypographyPlatforms;
 };
 
 export const ThemeContext = createContext<ThemeContext>({
   theme: emptyTheme,
   colorScheme: 'light',
-  onDeviceType: 'onDesktop',
+  platform: 'onDesktop',
   setColorScheme: () => null,
 });
 
