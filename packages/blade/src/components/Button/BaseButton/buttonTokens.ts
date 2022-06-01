@@ -1,7 +1,9 @@
 import type { ThemeTokens } from '../../../tokens/theme/theme.d';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
 
-type ButtonTypography = {
+export type ButtonMinHeight = '48px' | '40px' | '32px' | '28px';
+
+export type ButtonTypography = {
   [key in TypographyPlatforms]: {
     fonts: {
       size: Record<string, keyof ThemeTokens['typography'][key]['fonts']['size']>;

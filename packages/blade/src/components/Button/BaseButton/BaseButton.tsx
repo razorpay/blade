@@ -7,7 +7,9 @@ import type { Theme } from '../../BladeProvider';
 import { useTheme } from '../../BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '../../Icons';
 import makeSpace from '../../../utils/makeSpace';
+import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import StyledBaseButton from './StyledBaseButton';
+import type { ButtonMinHeight, ButtonTypography } from './buttonTokens';
 import { typography } from './buttonTokens';
 
 export type BaseButtonIcon = undefined | null | IconComponent;
@@ -52,7 +54,7 @@ type BaseButtonStyleProps = {
   iconSize: IconSize;
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
-  minHeight: '48px' | '40px' | '32px' | '28px';
+  minHeight: ButtonMinHeight;
   iconSpacing: string;
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
@@ -76,7 +78,7 @@ const getProps = ({
   size,
   theme,
 }: {
-  buttonTypographyTokens: typeof typography.onDesktop | typeof typography.onMobile;
+  buttonTypographyTokens: ButtonTypography[TypographyPlatforms];
   children?: string;
   isDisabled: boolean;
   theme: Theme;
