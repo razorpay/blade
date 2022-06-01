@@ -15988,6 +15988,13 @@ jest-specific-snapshot@^2.0.0:
   dependencies:
     jest-snapshot "^24.1.0"
 
+jest-styled-components@7.0.8:
+  version "7.0.8"
+  resolved "https://registry.yarnpkg.com/jest-styled-components/-/jest-styled-components-7.0.8.tgz#9ea3b43f002de060b4638fde3b422d14b3e3ec9f"
+  integrity sha512-0KE54d0yIzKcvtOv8eikyjG3rFRtKYUyQovaoha3nondtZzXYGB3bhsvYgEegU08Iry0ndWx2+g9f5ZzD4I+0Q==
+  dependencies:
+    css "^3.0.0"
+
 jest-useragent-mock@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jest-useragent-mock/-/jest-useragent-mock-0.1.1.tgz#e1ec69a78abd833712a6c0b8ca684b3a59d19c34"
