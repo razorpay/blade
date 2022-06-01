@@ -3,8 +3,9 @@
 exports[`<BaseButton /> should render button with default properties 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eRSCVN"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
     color="hsla(213, 89%, 56%, 1)"
+    spacing="0px 20px 0px 20px"
   >
     <div
       class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 cFreCU"
@@ -23,8 +24,9 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 exports[`<BaseButton /> should render button with icon with default iconPosition 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eRSCVN"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
     color="hsla(213, 89%, 56%, 1)"
+    spacing="0px 20px 0px 20px"
   >
     <svg
       fill="none"
@@ -40,7 +42,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       />
     </svg>
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 jixDqp"
+      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 jUWOHQ"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.875rem"
@@ -56,8 +58,9 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eRSCVN"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
     color="hsla(213, 89%, 56%, 1)"
+    spacing="0px 20px 0px 20px"
   >
     <svg
       fill="none"
@@ -73,7 +76,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       />
     </svg>
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 jixDqp"
+      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 jUWOHQ"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.875rem"
@@ -89,11 +92,12 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 exports[`<BaseButton /> should render button with icon with right iconPosition 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eRSCVN"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
     color="hsla(213, 89%, 56%, 1)"
+    spacing="0px 20px 0px 20px"
   >
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 kxSgep"
+      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 dwFBFI"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.875rem"
@@ -122,8 +126,9 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 exports[`<BaseButton /> should render button with icon without text 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eRSCVN"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
     color="hsla(213, 89%, 56%, 1)"
+    spacing="0px 20px 0px 20px"
   >
     <svg
       fill="none"
@@ -145,8 +150,9 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 exports[`<BaseButton /> should render large size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jwQlRp"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 kSCeoJ"
     color="hsla(213, 89%, 56%, 1)"
+    spacing="0px 20px 0px 20px"
   >
     <div
       class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 hvBMXx BaseButton__StyledBaseText-zf1huq-0 cFreCU"
@@ -165,8 +171,9 @@ exports[`<BaseButton /> should render large size button 1`] = `
 exports[`<BaseButton /> should render medium size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eRSCVN"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
     color="hsla(213, 89%, 56%, 1)"
+    spacing="0px 20px 0px 20px"
   >
     <div
       class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 cFreCU"
@@ -185,8 +192,9 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 exports[`<BaseButton /> should render small size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hJSlaM"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dipABA"
     color="hsla(213, 89%, 56%, 1)"
+    spacing="0px 12px 0px 12px"
   >
     <div
       class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 iFjPgh BaseButton__StyledBaseText-zf1huq-0 cFreCU"
@@ -205,8 +213,9 @@ exports[`<BaseButton /> should render small size button 1`] = `
 exports[`<BaseButton /> should render xsmall size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cYUBNH"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 acfz"
     color="hsla(213, 89%, 56%, 1)"
+    spacing="0px 8px 0px 8px"
   >
     <div
       class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 iFjPgh BaseButton__StyledBaseText-zf1huq-0 cFreCU"
