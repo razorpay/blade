@@ -4,8 +4,8 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   activeBorderColor: string;
   activeColor: string;
   borderColor: string;
-  buttonHeight: '48px' | '40px' | '32px' | '28px';
-  buttonSpacing: string;
+  minHeight: '48px' | '40px' | '32px' | '28px';
+  spacing: string;
   children: string;
   color: string;
   disabled: boolean;

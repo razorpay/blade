@@ -7,8 +7,8 @@ const StyledPressable = styled.Pressable(
     activeBorderColor,
     activeColor,
     borderColor,
-    buttonHeight,
-    buttonSpacing,
+    minHeight,
+    spacing,
     color,
     disabled,
     focusBorderColor,
@@ -22,8 +22,8 @@ const StyledPressable = styled.Pressable(
       activeBorderColor,
       activeColor,
       borderColor,
-      buttonHeight,
-      buttonSpacing,
+      minHeight,
+      spacing,
       color,
       disabled,
       focusBorderColor,
@@ -38,8 +38,8 @@ const StyledPressable = styled.Pressable(
 const StyledBaseButton = ({
   onClick,
   children,
-  buttonHeight,
-  buttonSpacing,
+  minHeight,
+  spacing,
   isFullWidth,
   disabled,
   color,
@@ -59,8 +59,8 @@ const StyledBaseButton = ({
         backgroundColor: pressed ? activeColor : color,
         borderColor: pressed ? activeColor : color,
       })}
-      buttonHeight={buttonHeight}
-      buttonSpacing={buttonSpacing}
+      minHeight={minHeight}
+      spacing={spacing}
       isFullWidth={isFullWidth}
       disabled={disabled}
       color={color}

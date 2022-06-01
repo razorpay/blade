@@ -48,15 +48,15 @@ const StyledBaseText = styled(BaseText)(
 `,
 );
 
-type ConfigProps = {
+type BaseButtonStyleProps = {
   iconSize: IconSize; // prop
   fontSize: keyof Theme['typography']['fonts']['size']; // prop
   lineHeight: keyof Theme['typography']['lineHeights']; // prop
-  buttonHeight: '48px' | '40px' | '32px' | '28px'; // raw value
+  minHeight: '48px' | '40px' | '32px' | '28px'; // raw value
   iconSpacing: string; // raw value
   iconColor: IconProps['color']; // prop
   textColor: BaseTextProps['color']; // prop
-  buttonSpacing: string; // raw value
+  spacing: string; // raw value
   text?: string;
   buttonColor: string; // raw value
   buttonBorderColor: string; // raw value
@@ -81,16 +81,16 @@ const getProps = ({
   isDisabled: boolean;
   theme: Theme;
   size: BaseButtonCommonProps['size'];
-}): ConfigProps => {
-  const props: ConfigProps = {
+}): BaseButtonStyleProps => {
+  const props: BaseButtonStyleProps = {
     iconSize: 'medium',
     fontSize: buttonTypographyTokens.fonts.size.medium,
     lineHeight: buttonTypographyTokens.lineHeight.medium,
-    buttonHeight: '40px',
+    minHeight: '40px',
     iconSpacing: makeSpace(theme.spacing[2]),
     iconColor: isDisabled ? 'action.icon.primary.disabled' : 'action.icon.primary.default',
     textColor: isDisabled ? 'action.text.primary.disabled' : 'action.text.primary.default',
-    buttonSpacing: `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])} ${makeSpace(
+    spacing: `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])} ${makeSpace(
       theme.spacing[0],
     )} ${makeSpace(theme.spacing[5])}`,
     text: children?.trim(),
@@ -134,41 +134,41 @@ const getProps = ({
       props.iconSize = 'medium';
       props.fontSize = buttonTypographyTokens.fonts.size.large;
       props.lineHeight = buttonTypographyTokens.lineHeight.large;
-      props.buttonHeight = '48px';
+      props.minHeight = '48px';
       props.iconSpacing = makeSpace(theme.spacing[2]);
-      props.buttonSpacing = `${makeSpace(theme.spacing[0])} ${makeSpace(
-        theme.spacing[5],
-      )} ${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`;
+      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])} ${makeSpace(
+        theme.spacing[0],
+      )} ${makeSpace(theme.spacing[5])}`;
       break;
     case 'medium':
       props.iconSize = 'medium';
       props.fontSize = buttonTypographyTokens.fonts.size.medium;
       props.lineHeight = buttonTypographyTokens.lineHeight.medium;
-      props.buttonHeight = '40px';
+      props.minHeight = '40px';
       props.iconSpacing = makeSpace(theme.spacing[2]);
-      props.buttonSpacing = `${makeSpace(theme.spacing[0])} ${makeSpace(
-        theme.spacing[5],
-      )} ${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`;
+      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])} ${makeSpace(
+        theme.spacing[0],
+      )} ${makeSpace(theme.spacing[5])}`;
       break;
     case 'small':
       props.iconSize = 'xsmall';
       props.fontSize = buttonTypographyTokens.fonts.size.small;
       props.lineHeight = buttonTypographyTokens.lineHeight.small;
-      props.buttonHeight = '32px';
+      props.minHeight = '32px';
       props.iconSpacing = makeSpace(theme.spacing[1]);
-      props.buttonSpacing = `${makeSpace(theme.spacing[0])} ${makeSpace(
-        theme.spacing[3],
-      )} ${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[3])}`;
+      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[3])} ${makeSpace(
+        theme.spacing[0],
+      )} ${makeSpace(theme.spacing[3])}`;
       break;
     case 'xsmall':
       props.iconSize = 'xsmall';
       props.fontSize = buttonTypographyTokens.fonts.size.xsmall;
       props.lineHeight = buttonTypographyTokens.lineHeight.xsmall;
-      props.buttonHeight = '28px';
+      props.minHeight = '28px';
       props.iconSpacing = makeSpace(theme.spacing[1]);
-      props.buttonSpacing = `${makeSpace(theme.spacing[0])} ${makeSpace(
-        theme.spacing[2],
-      )} ${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[2])}`;
+      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[2])} ${makeSpace(
+        theme.spacing[0],
+      )} ${makeSpace(theme.spacing[2])}`;
       props.text = children?.trim().toUpperCase();
       break;
     default:
@@ -201,8 +201,8 @@ const BaseButton = ({
     activeColor,
     buttonBorderColor,
     buttonColor,
-    buttonHeight,
-    buttonSpacing,
+    minHeight,
+    spacing,
     focusBorderColor,
     focusColor,
     focusRingColor,
@@ -232,8 +232,8 @@ const BaseButton = ({
       activeBorderColor={activeBorderColor}
       activeColor={activeColor}
       borderColor={buttonBorderColor}
-      buttonHeight={buttonHeight}
-      buttonSpacing={buttonSpacing}
+      minHeight={minHeight}
+      spacing={spacing}
       color={buttonColor}
       disabled={isDisabled}
       focusBorderColor={focusBorderColor}
