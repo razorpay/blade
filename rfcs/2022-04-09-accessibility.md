@@ -161,7 +161,7 @@ The goal of this RFC is to lay the foundations so that we can ship accessible co
 
 - Research about cross platform accessibility between web and native.
 - Ensure components are accessible through assistive technologies.
-- Ensure components adhere to the [WAI-ARIA design patterns](https://www.w3.org/TR/wai-aria-practices-1.2/)
+- Ensure components adhere to the [WAI-ARIA design patterns](https://www.w3.org/WAI/ARIA/apg/patterns/)
 - Set accessibility guidelines to make sure products built with blade are accessible by people with various disabilities.
 - Document the component development lifecycle for blade developers on building accessible components. (Similar to a checklist)
 
@@ -371,7 +371,7 @@ For native we are deferring keyboard accessibility because it will only be effec
 
 #### aria-activedescendant <!-- omit in toc -->
 
-> [Specification](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_focus_activedescendant)
+> [Specification](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_focus_activedescendant)
 
 Skipping implementation for now, since this pattern is useful only in very specific usecases like a Combobox component where the input needs to be focused and the list items needs virtual focus.
 
