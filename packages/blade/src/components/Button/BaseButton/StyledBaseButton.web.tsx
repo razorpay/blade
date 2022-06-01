@@ -7,18 +7,11 @@ const StyledBaseButton = styled.button(
     color,
     hoverColor,
     activeColor,
-    buttonHeight,
-    buttonSpacing,
+    minHeight,
+    spacing,
     isFullWidth,
   }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
-    getBaseButtonStyles({
-      color,
-      hoverColor,
-      activeColor,
-      buttonHeight,
-      buttonSpacing,
-      isFullWidth,
-    }),
+    getBaseButtonStyles({ color, hoverColor, activeColor, minHeight, spacing, isFullWidth }),
 );
 
 export default StyledBaseButton;
