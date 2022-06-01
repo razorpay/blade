@@ -65,25 +65,21 @@ For example:
 
 ## Various types of disabilities
 
-- **Visual:**  
-  Anything that deals with sight, eg: people who have different types of sight like color blindness.
-- **Cognitive:**  
-  Difficulties with concentration, memory, judgment, problem solving, eg: older people with changing abilities.
-- **Mobility:**  
-  Anything that affects physical movement, eg: broken/missing arm.
-- **Auditory:**  
-  Disabilities related to sound or audio, eg: someone who is deaf.
+| Type of disabilities | Description | Example |
+| :--- | :--- | :--- | 
+| Visual | Anything that deals with sight | people who have different types of sight like color blindness |
+| Cognitive | Difficulties with concentration, memory, judgment, problem solving | older people with changing abilities |
+| Mobility | Anything that affects physical movement | broken/missing arm |
+| Auditory | Disabilities related to sound or audio | someone who is deaf |
 
 Other subcategories based on [Microsoft’s inclusive design](https://www.microsoft.com/design/inclusive):
 
-- **Permanent, disability that does not go away:**
-  - Example: Someone who is deaf
-- **Temporary, disability that will go away in time:**
-  - Example: Someone who has an ear infection
-- **Situational, Context based disabilities:**
-  - Example: Someone who is at a loud sporting event
-  - Example: Using the web app in bright sunlight
-  - Example: Using your phone one handedly in a crowded metro station
+
+| Type of disabilities | Description | Example |
+| :--- | :--- | :--- | 
+| Permanent | disability that does not go away | Someone who is deaf |
+| Temporary | disability that will go away in time | Someone who has an ear infection |
+| Situational | Context based disabilities | <ul><li>Someone who is at a loud sporting event</li> <li>Using the web app in bright sunlight</li> <li>Using your phone one handedly in a crowded metro station</li></ul> |
 
 <img src="./images/accessibility/ms-inclusive-design.png" alt="Microsoft Inclusive Design Shows Spectrum Of Disabilities" width="25%" />
 
