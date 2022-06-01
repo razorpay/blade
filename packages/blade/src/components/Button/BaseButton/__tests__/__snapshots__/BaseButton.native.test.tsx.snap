@@ -19,7 +19,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px 0px 20px"
+  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -101,7 +101,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px 0px 20px"
+  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -183,7 +183,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px 0px 20px"
+  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -314,7 +314,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px 0px 20px"
+  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -445,7 +445,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px 0px 20px"
+  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -576,7 +576,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px 0px 20px"
+  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -677,7 +677,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px 0px 20px"
+  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -759,7 +759,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px 0px 20px"
+  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -841,7 +841,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 12px 0px 12px"
+  spacing="0px 12px"
   style={
     Array [
       Object {
@@ -923,7 +923,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 8px 0px 8px"
+  spacing="0px 8px"
   style={
     Array [
       Object {
