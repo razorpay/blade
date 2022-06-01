@@ -45,7 +45,7 @@ const BaseButton = ({
   children,
 }: BaseButtonProps): ReactElement => {
   const { theme } = useTheme();
-  const buttonColor = getIn(theme.colors, 'action.background.primary.default');
+  const color = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
   const activeColor = getIn(theme.colors, 'action.background.primary.active');
   if (!Icon && !children) {
@@ -66,7 +66,7 @@ const BaseButton = ({
   });
   return (
     <StyledBaseButton
-      color={buttonColor}
+      color={color}
       hoverColor={hoverColor}
       onClick={(): void => {
         console.log('clicked');
