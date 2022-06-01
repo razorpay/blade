@@ -40,7 +40,7 @@ const typography: ButtonTypography = {
       large: 'm', // this is 24px but we need 20px
       medium: 'm', // this is 24px but we need 20px
       small: 's',
-      xsmall: 'xl',
+      xsmall: 's',
     },
   },
 };
