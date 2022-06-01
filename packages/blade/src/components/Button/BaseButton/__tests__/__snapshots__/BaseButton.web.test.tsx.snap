@@ -3,9 +3,9 @@
 exports[`<BaseButton /> should render button with default properties 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hlPXwz"
     color="hsla(213, 89%, 56%, 1)"
-    spacing="0px 20px 0px 20px"
+    spacing="0px 20px"
   >
     <div
       class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
@@ -24,9 +24,9 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 exports[`<BaseButton /> should render button with icon with default iconPosition 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hlPXwz"
     color="hsla(213, 89%, 56%, 1)"
-    spacing="0px 20px 0px 20px"
+    spacing="0px 20px"
   >
     <svg
       fill="none"
@@ -58,9 +58,9 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hlPXwz"
     color="hsla(213, 89%, 56%, 1)"
-    spacing="0px 20px 0px 20px"
+    spacing="0px 20px"
   >
     <svg
       fill="none"
@@ -92,9 +92,9 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 exports[`<BaseButton /> should render button with icon with right iconPosition 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hlPXwz"
     color="hsla(213, 89%, 56%, 1)"
-    spacing="0px 20px 0px 20px"
+    spacing="0px 20px"
   >
     <div
       class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 ePmhIK"
@@ -126,9 +126,9 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 exports[`<BaseButton /> should render button with icon without text 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hlPXwz"
     color="hsla(213, 89%, 56%, 1)"
-    spacing="0px 20px 0px 20px"
+    spacing="0px 20px"
   >
     <svg
       fill="none"
@@ -150,9 +150,9 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 exports[`<BaseButton /> should render large size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 kSCeoJ"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 BrWTf"
     color="hsla(213, 89%, 56%, 1)"
-    spacing="0px 20px 0px 20px"
+    spacing="0px 20px"
   >
     <div
       class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 hvBMXx BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
@@ -171,9 +171,9 @@ exports[`<BaseButton /> should render large size button 1`] = `
 exports[`<BaseButton /> should render medium size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gnEvth"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hlPXwz"
     color="hsla(213, 89%, 56%, 1)"
-    spacing="0px 20px 0px 20px"
+    spacing="0px 20px"
   >
     <div
       class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
@@ -192,9 +192,9 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 exports[`<BaseButton /> should render small size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dipABA"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hxIoET"
     color="hsla(213, 89%, 56%, 1)"
-    spacing="0px 12px 0px 12px"
+    spacing="0px 12px"
   >
     <div
       class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 iFjPgh BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
@@ -213,9 +213,9 @@ exports[`<BaseButton /> should render small size button 1`] = `
 exports[`<BaseButton /> should render xsmall size button 1`] = `
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 acfz"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iboXTb"
     color="hsla(213, 89%, 56%, 1)"
-    spacing="0px 8px 0px 8px"
+    spacing="0px 8px"
   >
     <div
       class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 iFjPgh BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
