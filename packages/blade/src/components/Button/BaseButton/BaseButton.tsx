@@ -58,8 +58,8 @@ type BaseButtonStyleProps = {
   textColor: BaseTextProps['color']; // prop
   spacing: string; // raw value
   text?: string;
-  buttonColor: string; // raw value
-  buttonBorderColor: string; // raw value
+  color: string; // raw value
+  borderColor: string; // raw value
   hoverColor: string; // raw value
   hoverBorderColor: string; // raw value
   activeColor: string; // raw value
@@ -94,11 +94,11 @@ const getProps = ({
       theme.spacing[0],
     )} ${makeSpace(theme.spacing[5])}`,
     text: children?.trim(),
-    buttonColor: getIn(
+    color: getIn(
       theme.colors,
       isDisabled ? 'action.background.primary.disabled' : 'action.background.primary.default',
     ),
-    buttonBorderColor: getIn(
+    borderColor: getIn(
       theme.colors,
       isDisabled ? 'action.border.primary.disabled' : 'action.border.primary.default',
     ),
@@ -192,15 +192,14 @@ const BaseButton = ({
 }: BaseButtonProps): ReactElement => {
   const { theme, platform } = useTheme();
   const buttonTypographyTokens = typography[platform];
-
   if (!Icon && !children?.trim()) {
     throw new Error(`[Blade: BaseButton]: Cannot render a BaseButton without an icon or text`);
   }
   const {
     activeBorderColor,
     activeColor,
-    buttonBorderColor,
-    buttonColor,
+    borderColor,
+    color,
     minHeight,
     spacing,
     focusBorderColor,
@@ -231,10 +230,10 @@ const BaseButton = ({
     <StyledBaseButton
       activeBorderColor={activeBorderColor}
       activeColor={activeColor}
-      borderColor={buttonBorderColor}
+      borderColor={borderColor}
       minHeight={minHeight}
       spacing={spacing}
-      color={buttonColor}
+      color={color}
       disabled={isDisabled}
       focusBorderColor={focusBorderColor}
       focusColor={focusColor}
