@@ -1,49 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseButton /> should render button of type "reset" 1`] = `
-<div>
-  <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jRGoju"
-    color="hsla(213, 89%, 56%, 1)"
-    spacing="0px 20px"
-    type="reset"
-  >
-    <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
-      color="hsla(0, 0%, 100%, 1)"
-      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-      font-size="0.875rem"
-      font-style="normal"
-      font-weight="700"
-    >
-      Pay Now
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render button of type "submit" 1`] = `
-<div>
-  <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jRGoju"
-    color="hsla(213, 89%, 56%, 1)"
-    spacing="0px 20px"
-    type="submit"
-  >
-    <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
-      color="hsla(0, 0%, 100%, 1)"
-      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-      font-size="0.875rem"
-      font-style="normal"
-      font-weight="700"
-    >
-      Pay Now
-    </div>
-  </button>
-</div>
-`;
-
 exports[`<BaseButton /> should render button with default properties 1`] = `
 <div>
   <button
