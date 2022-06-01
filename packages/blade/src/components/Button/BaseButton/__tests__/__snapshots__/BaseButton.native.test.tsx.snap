@@ -4,12 +4,11 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 <View
   accessible={true}
   activeColor="hsla(227, 100%, 45%, 1)"
-  buttonHeight="40px"
-  buttonSpacing="0px 20px 0px 20px"
   collapsable={false}
   color="hsla(213, 89%, 56%, 1)"
   focusable={true}
   hoverColor="hsla(218, 89%, 51%, 1)"
+  minHeight="40px"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -19,6 +18,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  spacing="0px 20px 0px 20px"
   style={
     Array [
       Object {
@@ -83,12 +83,11 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 <View
   accessible={true}
   activeColor="hsla(227, 100%, 45%, 1)"
-  buttonHeight="40px"
-  buttonSpacing="0px 20px 0px 20px"
   collapsable={false}
   color="hsla(213, 89%, 56%, 1)"
   focusable={true}
   hoverColor="hsla(218, 89%, 51%, 1)"
+  minHeight="40px"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -98,6 +97,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  spacing="0px 20px 0px 20px"
   style={
     Array [
       Object {
@@ -211,12 +211,11 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 <View
   accessible={true}
   activeColor="hsla(227, 100%, 45%, 1)"
-  buttonHeight="40px"
-  buttonSpacing="0px 20px 0px 20px"
   collapsable={false}
   color="hsla(213, 89%, 56%, 1)"
   focusable={true}
   hoverColor="hsla(218, 89%, 51%, 1)"
+  minHeight="40px"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -226,6 +225,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  spacing="0px 20px 0px 20px"
   style={
     Array [
       Object {
@@ -339,12 +339,11 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 <View
   accessible={true}
   activeColor="hsla(227, 100%, 45%, 1)"
-  buttonHeight="40px"
-  buttonSpacing="0px 20px 0px 20px"
   collapsable={false}
   color="hsla(213, 89%, 56%, 1)"
   focusable={true}
   hoverColor="hsla(218, 89%, 51%, 1)"
+  minHeight="40px"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -354,6 +353,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  spacing="0px 20px 0px 20px"
   style={
     Array [
       Object {
@@ -467,12 +467,11 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 <View
   accessible={true}
   activeColor="hsla(227, 100%, 45%, 1)"
-  buttonHeight="40px"
-  buttonSpacing="0px 20px 0px 20px"
   collapsable={false}
   color="hsla(213, 89%, 56%, 1)"
   focusable={true}
   hoverColor="hsla(218, 89%, 51%, 1)"
+  minHeight="40px"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -482,6 +481,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  spacing="0px 20px 0px 20px"
   style={
     Array [
       Object {
@@ -565,12 +565,11 @@ exports[`<BaseButton /> should render large size button 1`] = `
 <View
   accessible={true}
   activeColor="hsla(227, 100%, 45%, 1)"
-  buttonHeight="48px"
-  buttonSpacing="0px 20px 0px 20px"
   collapsable={false}
   color="hsla(213, 89%, 56%, 1)"
   focusable={true}
   hoverColor="hsla(218, 89%, 51%, 1)"
+  minHeight="48px"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -580,6 +579,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  spacing="0px 20px 0px 20px"
   style={
     Array [
       Object {
@@ -644,12 +644,11 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 <View
   accessible={true}
   activeColor="hsla(227, 100%, 45%, 1)"
-  buttonHeight="40px"
-  buttonSpacing="0px 20px 0px 20px"
   collapsable={false}
   color="hsla(213, 89%, 56%, 1)"
   focusable={true}
   hoverColor="hsla(218, 89%, 51%, 1)"
+  minHeight="40px"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -659,6 +658,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  spacing="0px 20px 0px 20px"
   style={
     Array [
       Object {
@@ -723,12 +723,11 @@ exports[`<BaseButton /> should render small size button 1`] = `
 <View
   accessible={true}
   activeColor="hsla(227, 100%, 45%, 1)"
-  buttonHeight="32px"
-  buttonSpacing="0px 12px 0px 12px"
   collapsable={false}
   color="hsla(213, 89%, 56%, 1)"
   focusable={true}
   hoverColor="hsla(218, 89%, 51%, 1)"
+  minHeight="32px"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -738,6 +737,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  spacing="0px 12px 0px 12px"
   style={
     Array [
       Object {
@@ -802,12 +802,11 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
 <View
   accessible={true}
   activeColor="hsla(227, 100%, 45%, 1)"
-  buttonHeight="28px"
-  buttonSpacing="0px 8px 0px 8px"
   collapsable={false}
   color="hsla(213, 89%, 56%, 1)"
   focusable={true}
   hoverColor="hsla(218, 89%, 51%, 1)"
+  minHeight="28px"
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -817,6 +816,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
+  spacing="0px 8px 0px 8px"
   style={
     Array [
       Object {
