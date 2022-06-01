@@ -49,24 +49,24 @@ const StyledBaseText = styled(BaseText)(
 );
 
 type BaseButtonStyleProps = {
-  iconSize: IconSize; // prop
-  fontSize: keyof Theme['typography']['fonts']['size']; // prop
-  lineHeight: keyof Theme['typography']['lineHeights']; // prop
-  minHeight: '48px' | '40px' | '32px' | '28px'; // raw value
-  iconSpacing: string; // raw value
-  iconColor: IconProps['color']; // prop
-  textColor: BaseTextProps['color']; // prop
-  spacing: string; // raw value
+  iconSize: IconSize;
+  fontSize: keyof Theme['typography']['fonts']['size'];
+  lineHeight: keyof Theme['typography']['lineHeights'];
+  minHeight: '48px' | '40px' | '32px' | '28px';
+  iconSpacing: string;
+  iconColor: IconProps['color'];
+  textColor: BaseTextProps['color'];
+  spacing: string;
   text?: string;
-  color: string; // raw value
-  borderColor: string; // raw value
-  hoverColor: string; // raw value
-  hoverBorderColor: string; // raw value
-  activeColor: string; // raw value
-  activeBorderColor: string; // raw value
-  focusColor: string; // raw value
-  focusBorderColor: string; // raw value
-  focusRingColor: string; // raw value
+  color: string;
+  borderColor: string;
+  hoverColor: string;
+  hoverBorderColor: string;
+  activeColor: string;
+  activeBorderColor: string;
+  focusColor: string;
+  focusBorderColor: string;
+  focusRingColor: string;
 };
 
 const getProps = ({
@@ -88,44 +88,20 @@ const getProps = ({
     lineHeight: buttonTypographyTokens.lineHeights.medium,
     minHeight: '40px',
     iconSpacing: makeSpace(theme.spacing[2]),
-    iconColor: isDisabled ? 'action.icon.primary.disabled' : 'action.icon.primary.default',
-    textColor: isDisabled ? 'action.text.primary.disabled' : 'action.text.primary.default',
+    iconColor: 'action.icon.primary.default',
+    textColor: 'action.text.primary.default',
     spacing: `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])} ${makeSpace(
       theme.spacing[0],
     )} ${makeSpace(theme.spacing[5])}`,
     text: children?.trim(),
-    color: getIn(
-      theme.colors,
-      isDisabled ? 'action.background.primary.disabled' : 'action.background.primary.default',
-    ),
-    borderColor: getIn(
-      theme.colors,
-      isDisabled ? 'action.border.primary.disabled' : 'action.border.primary.default',
-    ),
-    hoverColor: getIn(
-      theme.colors,
-      isDisabled ? 'action.background.primary.disabled' : 'action.background.primary.hover',
-    ),
-    hoverBorderColor: getIn(
-      theme.colors,
-      isDisabled ? 'action.border.primary.disabled' : 'action.border.primary.hover',
-    ),
-    activeColor: getIn(
-      theme.colors,
-      isDisabled ? 'action.background.primary.disabled' : 'action.background.primary.active',
-    ),
-    activeBorderColor: getIn(
-      theme.colors,
-      isDisabled ? 'action.border.primary.disabled' : 'action.border.primary.active',
-    ),
-    focusColor: getIn(
-      theme.colors,
-      isDisabled ? 'action.background.primary.disabled' : 'action.background.primary.focus',
-    ),
-    focusBorderColor: getIn(
-      theme.colors,
-      isDisabled ? 'action.border.primary.disabled' : 'action.border.primary.focus',
-    ),
+    color: getIn(theme.colors, 'action.background.primary.default'),
+    borderColor: getIn(theme.colors, 'action.border.primary.default'),
+    hoverColor: getIn(theme.colors, 'action.background.primary.hover'),
+    hoverBorderColor: getIn(theme.colors, 'action.border.primary.hover'),
+    activeColor: getIn(theme.colors, 'action.background.primary.active'),
+    activeBorderColor: getIn(theme.colors, 'action.border.primary.active'),
+    focusColor: getIn(theme.colors, 'action.background.primary.focus'),
+    focusBorderColor: getIn(theme.colors, 'action.border.primary.focus'),
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
   };
 
@@ -172,6 +148,21 @@ const getProps = ({
       props.text = children?.trim().toUpperCase();
       break;
     default:
+  }
+
+  if (isDisabled) {
+    const disabledColor = getIn(theme.colors, 'action.background.primary.disabled');
+    const disabledBorderColor = getIn(theme.colors, 'action.border.primary.disabled');
+    props.iconColor = 'action.icon.primary.disabled';
+    props.textColor = 'action.text.primary.disabled';
+    props.color = disabledColor;
+    props.borderColor = disabledBorderColor;
+    props.hoverColor = disabledColor;
+    props.hoverBorderColor = disabledBorderColor;
+    props.activeColor = disabledColor;
+    props.activeBorderColor = disabledBorderColor;
+    props.focusColor = disabledColor;
+    props.focusBorderColor = disabledBorderColor;
   }
 
   return props;
