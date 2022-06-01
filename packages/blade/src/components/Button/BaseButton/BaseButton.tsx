@@ -42,10 +42,10 @@ const StyledBaseText = styled(BaseText)(
     iconPosition,
     iconSpacing,
   }: BaseTextProps &
-    Pick<BaseButtonProps, 'iconPosition'> & { hasIcon: boolean; iconSpacing: string }) => `
-    padding-left: ${hasIcon && iconPosition === 'left' ? iconSpacing : 0};
-    padding-right: ${hasIcon && iconPosition === 'right' ? iconSpacing : 0};
-`,
+    Pick<BaseButtonProps, 'iconPosition'> & { hasIcon: boolean; iconSpacing: string }) => ({
+    paddingLeft: hasIcon && iconPosition === 'left' ? iconSpacing : '0px',
+    paddingRight: hasIcon && iconPosition === 'right' ? iconSpacing : '0px',
+  }),
 );
 
 type BaseButtonStyleProps = {
