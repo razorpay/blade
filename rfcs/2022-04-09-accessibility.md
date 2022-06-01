@@ -38,7 +38,6 @@ Blade Issue: (leave this empty if no issue yet)
 - [Tools & Infrastructure](#tools--infrastructure)
 - [Actionable Items](#actionable-items)
 - [Drawbacks/Constraints](#drawbacksconstraints)
-- [Alternatives](#alternatives)
 - [Adoption strategy](#adoption-strategy)
 - [How do we educate people?](#how-do-we-educate-people)
 - [Open Questions](#open-questions)
@@ -57,7 +56,7 @@ Accessibility is essential for some, useful for all. It's not just for people wi
 For example:
 
 - Ensuring keyboard accessibility helps people with temporary/permanent mobility but also improves the experience for normal users by providing a better user experience for components like Select or Modals.
-- Large buttons and links helps people with reduced dexterity but also improve the user experience of mobile devices.
+- Large buttons and links helps people with reduced dexterity but also improve the user experience of mobile devices. For example - closing the modal or select menu on pressing <kbd>Esc</kbd> key.
 - Providing captions for a video can benefit users who watch videos in loud environments or in a library.
 - Sufficient color contrast is good for different lighting conditions and people with visual impairments.
 - Older people with changing abilities due to aging can benefit from accessible experiences.
@@ -178,7 +177,7 @@ By baking in accessibility at the foundational level we will ensure our products
 
 > [Specification](https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html)
 
-**Accessibility Principal:** Operable  
+**Accessibility Principle:** Operable  
 **Target:** Everyone and especially people with motor disabilities who use a keyboard to navigate.  
 **Goal:** Ensure users who cannot use the mouse (blind, motor disabilities) can access the crucial parts of the app through keyboard.
 
@@ -199,7 +198,7 @@ For a web page to be accessible, all interactive elements must be operable via t
 
 > [Specification](https://www.w3.org/WAI/WCAG21/quickref/#focus-order)
 
-Tab order is important for proper navigation through a keyboard interface.
+Tab order is important for proper navigation through a keyboard interface, for example - using the <kbd>Tab</kbd> key to cycle through actionable UI elements on the screen.  
 The tab order of the page must be logical and follow the visual order of elements on the page.
 
 #### Best practices for logical tab order: <!-- omit in toc -->
@@ -256,7 +255,7 @@ Examples of composite widgets are:
 
 #### Roving Tabindex
 
-> [Specification](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_roving_tabindex)
+> [Specification](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex)
 
 One way to manage focus within `composite` widgets is roving tabindex pattern.  
 The element that is to be included in the tab sequence has tabindex of "0" and all other focusable elements contained in the composite have tabindex of "-1".
@@ -445,7 +444,7 @@ Checklist:
 
 > Specification
 
-**Accessibility Principal:** Perceivable, Operable  
+**Accessibility Principle:** Perceivable, Operable  
 **Target:** Everyone, especially people with visual impairments or cognitive limitations & motor disabilities.  
 **Goal:** Setting guidelines for general focus behaviours & providing screen reader & keyboard users a smooth experience by managing focus behavior for certain elements like Modals/Page transition etc.
 
@@ -586,7 +585,7 @@ But in android we do not have any platform specific accessibility prop to handle
 
 > [Specification](https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html)
 
-**Accessibility Principal:** Operable, Perceivable  
+**Accessibility Principle:** Operable, Perceivable  
 **Target:** Everyone, especially people with visual impairments.  
 **Goal:** Enable screen reader users to access and use the main features of the app.
 
@@ -666,7 +665,7 @@ To add aria attributes & accessibility props to components for both native & web
 For example:
 
 ```ts
-const props = mapProps({
+const props = mapA11yProps({
   accessibilityLabel: 'hello world',
   accessibilityLabelledBy: 'id1',
   accessibilityRole: 'button',
@@ -930,17 +929,8 @@ Automated accessibility tools only [pick up around 40% of errors automatically](
   
 # Drawbacks/Constraints
 
-Why should we _not_ do this? Maybe try to consider the following constraints
-
 - Implementation cost, both in terms of code size and complexity.
-- The impact of it on new as well as existing consumer projects.
 - Cost of migration.
-
-There are tradeoffs to choosing any path. Attempt to identify them here.
-
-# Alternatives
-
-What other designs/patterns/strategies have been considered?
 
 # Adoption strategy
 
