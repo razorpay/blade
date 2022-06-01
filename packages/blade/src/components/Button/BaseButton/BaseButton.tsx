@@ -148,7 +148,7 @@ const BaseButton = ({
 }: BaseButtonProps): ReactElement => {
   const { theme, platform } = useTheme();
   const buttonTypographyTokens = typography[platform];
-  const buttonColor = getIn(theme.colors, 'action.background.primary.default');
+  const color = getIn(theme.colors, 'action.background.primary.default');
   const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
   const activeColor = getIn(theme.colors, 'action.background.primary.active');
   if (!Icon && !children?.trim()) {
@@ -180,7 +180,7 @@ const BaseButton = ({
   });
   return (
     <StyledBaseButton
-      color={buttonColor}
+      color={color}
       hoverColor={hoverColor}
       onClick={(): void => {
         console.log('clicked');
