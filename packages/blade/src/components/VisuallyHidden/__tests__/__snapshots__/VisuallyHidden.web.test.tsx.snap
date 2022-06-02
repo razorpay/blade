@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VisuallyHidden /> should render VisuallyHidden content 1`] = `
+<div>
+  <span
+    class="StyledVisuallyHiddenweb__StyledVisuallyHidden-sc-1hccida-0 fgdWQF"
+  >
+    Text only visible to screen readers
+  </span>
+</div>
+`;
