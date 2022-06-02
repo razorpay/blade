@@ -308,7 +308,7 @@ We tried out 3 of them to understand the pros and cons for each and decided on X
 
 **Cons:**
 
-- Not much flexibility to write our own logic, doesn’t provide any focus manager
+- Not much flexibility to write our own logic, doesn’t provide any focus manager. Having a focus manager can help use build components which needs special focus management like building a PIN Input component by composing our InputField component.
 - Doesn’t provide any other utilities like focus trap, we need to install another package for it `@fluentui/react/lib/focusZoneTrap`
 - FluentUI’s architecture is very complex & confusing because of their need to be cross platform, If we pick this up we might not be able to use their other components to our advantage. Plus their components are not headless.
 
@@ -855,6 +855,8 @@ Designing with accessibility in mind is an important part of the process, ensuri
 
 #### Best practices when using color styles and making them accessible: <!-- omit in toc -->
 
+> For more information about colors and standards check out https://usecontrast.com/guide
+
 - Use colors which are dark enough and atleast pass the AA standards.
 - Don’t use color alone to make critical information understandable
 - Don’t use color as the only visual means of conveying information
@@ -864,7 +866,7 @@ Designing with accessibility in mind is an important part of the process, ensuri
 
 #### Best practices when using typography:  <!-- omit in toc -->
 
-- Always use the primary font (Lato). It’ very readable if used in a hiererchy.
+- Always use the primary font. It’ very readable if used in a hiererchy.
 - Make sure that the base font-size is used in the majority of the page. We’ve kept the base-font-size to 14px which works well with our use case.
 - Use larger font sizes on titles, and make sure to establish a hiererchy if there are more than 2 sections on a page so that user can easily scan the page.
 - Don’t use underlines in any state if they are not links.
