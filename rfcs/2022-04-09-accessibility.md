@@ -249,6 +249,13 @@ Examples of composite widgets are:
 - Listbox
 - Toolbars
 
+There are two ways to manage focus within composite widgets
+
+- [Roving TabIndex Pattern](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex)
+- [aria-activedescendant Pattern](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_focus_activedescendant)
+
+We will only be covering Roving tabindex pattern because the aria-activedescendant pattern has very narrow usecases mostly in Comboboxes where the real focus should remain on the input and a virtual focus will be on the combobox items.
+
 #### Roving Tabindex
 
 > [Specification](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex)
@@ -922,11 +929,6 @@ Automated accessibility tools only [pick up around 40% of errors automatically](
   - Design [best practices](#best-practices-when-using-color-styles-and-making-them-accessible)
 - Implement [automated testing tools](#tools--infrastructure) which discussed
 - Do manual testing for [keyboard accesibility](#keyboard-accessibility), [focus management & screen readers.](#tools--infrastructure) 
-  
-# Drawbacks/Constraints
-
-- Implementation cost, both in terms of code size and complexity.
-- Cost of migration.
 
 # Adoption strategy
 
