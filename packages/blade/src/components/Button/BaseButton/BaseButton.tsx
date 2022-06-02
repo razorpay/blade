@@ -8,6 +8,7 @@ import { useTheme } from '../../BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '../../Icons';
 import makeSpace from '../../../utils/makeSpace';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
+import makeBorderSize from '../../../utils/makeBorderSize';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonMinHeight, ButtonTypography } from './buttonTokens';
 import { typography } from './buttonTokens';
@@ -69,6 +70,8 @@ type BaseButtonStyleProps = {
   focusColor: string;
   focusBorderColor: string;
   focusRingColor: string;
+  borderWidth: string;
+  borderRadius: string;
 };
 
 const getProps = ({
@@ -103,6 +106,8 @@ const getProps = ({
     focusColor: getIn(theme.colors, 'action.background.primary.focus'),
     focusBorderColor: getIn(theme.colors, 'action.border.primary.focus'),
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
+    borderWidth: makeBorderSize(theme.border.width.thin),
+    borderRadius: makeBorderSize(theme.border.radius.small),
   };
 
   switch (size) {
@@ -197,6 +202,8 @@ const BaseButton = ({
     lineHeight,
     text,
     textColor,
+    borderWidth,
+    borderRadius,
   } = getProps({
     buttonTypographyTokens,
     children,
@@ -226,6 +233,8 @@ const BaseButton = ({
       isFullWidth={isFullWidth}
       onClick={onClick}
       type={type}
+      borderWidth={borderWidth}
+      borderRadius={borderRadius}
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
       {text && (
