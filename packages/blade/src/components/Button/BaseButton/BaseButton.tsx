@@ -80,12 +80,14 @@ const getProps = ({
   isDisabled,
   size,
   theme,
+  variant,
 }: {
   buttonTypographyTokens: ButtonTypography[TypographyPlatforms];
   children?: string;
   isDisabled: boolean;
   theme: Theme;
   size: BaseButtonCommonProps['size'];
+  variant: Exclude<BaseButtonCommonProps['variant'], undefined>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
     iconSize: 'medium',
@@ -93,18 +95,18 @@ const getProps = ({
     lineHeight: buttonTypographyTokens.lineHeights.medium,
     minHeight: '40px',
     iconSpacing: makeSpace(theme.spacing[2]),
-    iconColor: 'action.icon.primary.default',
-    textColor: 'action.text.primary.default',
+    iconColor: `action.icon.${variant}.default`,
+    textColor: `action.text.${variant}.default`,
     spacing: `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`,
     text: children?.trim(),
-    color: getIn(theme.colors, 'action.background.primary.default'),
-    borderColor: getIn(theme.colors, 'action.border.primary.default'),
-    hoverColor: getIn(theme.colors, 'action.background.primary.hover'),
-    hoverBorderColor: getIn(theme.colors, 'action.border.primary.hover'),
-    activeColor: getIn(theme.colors, 'action.background.primary.active'),
-    activeBorderColor: getIn(theme.colors, 'action.border.primary.active'),
-    focusColor: getIn(theme.colors, 'action.background.primary.focus'),
-    focusBorderColor: getIn(theme.colors, 'action.border.primary.focus'),
+    color: getIn(theme.colors, `action.background.${variant}.default`),
+    borderColor: getIn(theme.colors, `action.border.${variant}.default`),
+    hoverColor: getIn(theme.colors, `action.background.${variant}.hover`),
+    hoverBorderColor: getIn(theme.colors, `action.border.${variant}.hover`),
+    activeColor: getIn(theme.colors, `action.background.${variant}.active`),
+    activeBorderColor: getIn(theme.colors, `action.border.${variant}.active`),
+    focusColor: getIn(theme.colors, `action.background.${variant}.focus`),
+    focusBorderColor: getIn(theme.colors, `action.border.${variant}.focus`),
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderRadius: makeBorderSize(theme.border.radius.small),
@@ -148,10 +150,10 @@ const getProps = ({
   }
 
   if (isDisabled) {
-    const disabledColor = getIn(theme.colors, 'action.background.primary.disabled');
-    const disabledBorderColor = getIn(theme.colors, 'action.border.primary.disabled');
-    props.iconColor = 'action.icon.primary.disabled';
-    props.textColor = 'action.text.primary.disabled';
+    const disabledColor = getIn(theme.colors, `action.background.${variant}.disabled`);
+    const disabledBorderColor = getIn(theme.colors, `action.border.${variant}.disabled`);
+    props.iconColor = `action.icon.${variant}.disabled`;
+    props.textColor = `action.text.${variant}.disabled`;
     props.color = disabledColor;
     props.borderColor = disabledBorderColor;
     props.hoverColor = disabledColor;
@@ -209,10 +211,10 @@ const BaseButton = ({
     children,
     isDisabled,
     size,
+    variant,
     theme,
   });
   console.log('unused props', {
-    variant,
     intent,
     contrast,
   });
