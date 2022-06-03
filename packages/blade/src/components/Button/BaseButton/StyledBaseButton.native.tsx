@@ -3,39 +3,9 @@ import getBaseButtonStyles from './getBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
 const StyledPressable = styled.Pressable(
-  ({
-    activeBorderColor,
-    activeColor,
-    borderColor,
-    minHeight,
-    spacing,
-    color,
-    disabled,
-    focusBorderColor,
-    focusColor,
-    focusRingColor,
-    hoverBorderColor,
-    hoverColor,
-    isFullWidth,
-    borderWidth,
-    borderRadius,
-  }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
+  ({ ...props }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
     getBaseButtonStyles({
-      activeBorderColor,
-      activeColor,
-      borderColor,
-      minHeight,
-      spacing,
-      color,
-      disabled,
-      focusBorderColor,
-      focusColor,
-      focusRingColor,
-      hoverBorderColor,
-      hoverColor,
-      isFullWidth,
-      borderWidth,
-      borderRadius,
+      ...props,
     }),
 );
 
@@ -57,6 +27,8 @@ const StyledBaseButton = ({
   focusBorderColor,
   borderWidth,
   borderRadius,
+  motionDuration,
+  motionEasing,
 }: StyledBaseButtonProps): React.ReactElement => {
   return (
     <StyledPressable
@@ -80,6 +52,8 @@ const StyledBaseButton = ({
       focusBorderColor={focusBorderColor}
       borderWidth={borderWidth}
       borderRadius={borderRadius}
+      motionDuration={motionDuration}
+      motionEasing={motionEasing}
     >
       {children}
     </StyledPressable>

@@ -9,6 +9,7 @@ import type { IconComponent, IconProps, IconSize } from '../../Icons';
 import makeSpace from '../../../utils/makeSpace';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import makeBorderSize from '../../../utils/makeBorderSize';
+import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonMinHeight, ButtonTypography } from './buttonTokens';
 import { typography } from './buttonTokens';
@@ -72,6 +73,8 @@ type BaseButtonStyleProps = {
   focusRingColor: string;
   borderWidth: string;
   borderRadius: string;
+  motionDuration: DurationStringTokens;
+  motionEasing: EasingStringTokens;
 };
 
 const getProps = ({
@@ -110,6 +113,8 @@ const getProps = ({
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderRadius: makeBorderSize(theme.border.radius.small),
+    motionDuration: 'duration.xquick',
+    motionEasing: 'easing.standard.effective',
   };
 
   switch (size) {
@@ -206,6 +211,8 @@ const BaseButton = ({
     textColor,
     borderWidth,
     borderRadius,
+    motionDuration,
+    motionEasing,
   } = getProps({
     buttonTypographyTokens,
     children,
@@ -237,6 +244,8 @@ const BaseButton = ({
       type={type}
       borderWidth={borderWidth}
       borderRadius={borderRadius}
+      motionDuration={motionDuration}
+      motionEasing={motionEasing}
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
       {text && (
