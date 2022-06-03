@@ -12,8 +12,8 @@ const StyledBaseButton = styled.button(
     transitionProperty: 'background-color, border-color, box-shadow',
     transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
     transitionDuration: makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
-    div: {
-      transitionProperty: 'color',
+    '*': {
+      transitionProperty: 'color, fill',
       transitionDuration: makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
       transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
     },
