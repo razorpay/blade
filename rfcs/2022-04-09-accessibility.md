@@ -382,7 +382,7 @@ After careful considerations and team discussions. **We are going ahead with [Ar
     - Most of the components we will be using from ariakit will be internal and won't have public APIs for blade, thus there will be less chance of any breaking changes to blade consumers.
     - [Reakit](https://reakit.io/) (v1 of Ariakit) is already being used in production applications like [Codesandbox](https://github.com/codesandbox/codesandbox-client/blob/389073613e06eee944231f4aeef9dfa746c1b947/packages/app/package.json#L221), [WordPress](https://github.com/WordPress/gutenberg/blob/4857ad58c1241b3d63d21a6880c989b85746c3dc/packages/components/src/toolbar/toolbar-container.js#L4), [Twilio](https://github.com/twilio-labs/paste/blob/9adf3edd88598aa3e8de3f6dd027371a2e54d368/packages/paste-libraries/reakit/src/index.tsx) which proves that it can scale to support most usecase.
 - **What about support?**  
-  - Haz and the ariakit community is very active, in fact has works fulltime on ariakit now. He is also very [active on twitter](https://twitter.com/diegohaz)
+  - Haz and the ariakit community is very active, in fact Haz works fulltime on ariakit now. He is also very [active on twitter](https://twitter.com/diegohaz)
   - For any support we can ask in the ariakit [github discussions](https://github.com/ariakit/ariakit/discussions) or even reach him out directly on twitter DMs.   
   > "I've discussed a lot of stuff about reakit with Haz via twitter while I was working on my previous company, he is superfast and helpful" - Anurag
 
