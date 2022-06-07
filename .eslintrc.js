@@ -1,11 +1,18 @@
 module.exports = {
-  extends: ['kentcdodds', 'kentcdodds/react', 'plugin:prettier/recommended'],
+  extends: [
+    'kentcdodds',
+    'kentcdodds/react',
+    'plugin:prettier/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react-native-a11y/all',
+  ],
   rules: {
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
     'max-lines': 'off',
     'no-console': 'off',
     'import/no-cycle': 'error',
+    'react-native-a11y/has-accessibility-hint': 'off',
     complexity: ['off'],
     'import/order': [
       'error',
@@ -73,7 +80,7 @@ module.exports = {
       parserOptions: {
         project: './tsconfig.json',
       },
-      plugins: ['@typescript-eslint/eslint-plugin'],
+      plugins: ['@typescript-eslint/eslint-plugin', 'jsx-a11y'],
       rules: {
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
