@@ -7,8 +7,9 @@ import {
   Stories,
   PRIMARY_STORY,
 } from '@storybook/addon-docs';
-import { Highlight } from '@storybook/design-system';
+import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
+import { Text } from '../Typography';
 import type { VisuallyHiddenProps } from './VisuallyHidden';
 import VisuallyHiddenComponent from './VisuallyHidden';
 
@@ -18,8 +19,15 @@ const Page = (): ReactElement => {
       <StorybookTitle />
       <Subtitle>
         The VisuallyHidden component makes content hidden from sighted users but available for
-        screen reader users
+        screen reader users,
       </Subtitle>
+      <Link
+        withArrow={true}
+        href="https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#hidden-content"
+        target="_blank"
+      >
+        See Hidden Content RFC
+      </Link>
       <br />
       <br />
       <StorybookTitle>Usage</StorybookTitle>
@@ -47,6 +55,10 @@ const VisuallyHiddenStoryMeta: Meta<VisuallyHiddenProps> = {
 const VisuallyHiddenTemplate: ComponentStory<typeof VisuallyHiddenComponent> = () => {
   return (
     <>
+      <Text>
+        This is an example for VisuallyHidden component, enable voiceover and focus on the checkbox
+        to hear it's invisible label.
+      </Text>
       <VisuallyHiddenComponent>
         <label htmlFor="darkmode">Toggle dark mode</label>
       </VisuallyHiddenComponent>
