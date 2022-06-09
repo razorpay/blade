@@ -21,7 +21,7 @@ const screenReaderStyles: CSSObject = {
 
 type SkipNavLinkProps = {
   id?: string;
-  children: string;
+  children?: string;
 };
 
 const StyledLink = styled.a(({ theme }) => ({
@@ -57,7 +57,7 @@ type SkipNavContentProps = {
 };
 
 const SkipNavContent = ({ id = fallbackId }: SkipNavContentProps): JSX.Element => {
-  return <div tabIndex={-1} id={id} style={{ outline: 0 }} />;
+  return <div tabIndex={-1} id={id} style={{ outline: 0 }} data-testid="skipnav-content" />;
 };
 
 export { SkipNavLink, SkipNavContent };
