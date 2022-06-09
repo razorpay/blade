@@ -3,7 +3,7 @@ import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import BaseText from '../Typography/BaseText';
 
-export const fallbackId = 'blade-skip-nav';
+const fallbackId = 'blade-skip-nav';
 // remove once VisuallyHidden is merged
 const screenReaderStyles: CSSObject = {
   border: 0,
@@ -24,6 +24,7 @@ type SkipNavLinkProps = {
   children?: string;
 };
 
+// TODO: Replace with Link component
 const StyledLink = styled.a(({ theme }) => ({
   ...screenReaderStyles,
   background: theme.colors.action.background.tertiary.default,

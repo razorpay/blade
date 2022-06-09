@@ -17,8 +17,9 @@ const Page = (): ReactElement => {
     <>
       <StorybookTitle />
       <Subtitle>
-        The SkipNav component lets users skip the navigation and jump to main content of the page,
-        because the main content is not always the first section that the user encounters on a page.
+        The SkipNav component lets users skip the navigation and jump to the main content of the
+        page. Useful when you have navbars at the top and the user wants to jump directly to the
+        main content.
       </Subtitle>
       <br />
       <br />
