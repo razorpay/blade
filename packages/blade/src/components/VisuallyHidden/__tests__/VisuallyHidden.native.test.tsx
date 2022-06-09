@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import renderWithTheme from '../../../_helpers/testing/renderWithTheme.native';
-import VisuallyHidden from '../VisuallyHidden';
+import VisuallyHidden from '../VisuallyHidden.native';
 
 describe('<VisuallyHidden />', () => {
   // TODO: Enable css testing

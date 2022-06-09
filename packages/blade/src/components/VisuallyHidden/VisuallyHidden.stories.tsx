@@ -9,10 +9,8 @@ import {
 } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
 import type { ReactElement } from 'react';
-import { EyeIcon } from '../Icons';
-import BaseText from '../Typography/BaseText';
 import type { VisuallyHiddenProps } from './VisuallyHidden';
-import VisuallyHiddenComponent from './';
+import VisuallyHiddenComponent from './VisuallyHidden';
 
 const Page = (): ReactElement => {
   return (
@@ -48,12 +46,12 @@ const VisuallyHiddenStoryMeta: Meta<VisuallyHiddenProps> = {
 
 const VisuallyHiddenTemplate: ComponentStory<typeof VisuallyHiddenComponent> = () => {
   return (
-    <button>
-      <EyeIcon color="action.icon.link.active" size="large" />
+    <>
       <VisuallyHiddenComponent>
-        <BaseText>Show magic</BaseText>
+        <label htmlFor="darkmode">Toggle dark mode</label>
       </VisuallyHiddenComponent>
-    </button>
+      <input id="darkmode" type="checkbox" />
+    </>
   );
 };
 
