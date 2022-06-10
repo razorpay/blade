@@ -4,14 +4,39 @@ import type { StyledBaseButtonProps } from './StyledBaseButton.d';
 
 const StyledBaseButton = styled.button(
   ({
-    color,
-    hoverColor,
+    activeBorderColor,
     activeColor,
+    borderColor,
     minHeight,
     spacing,
+    color,
+    disabled,
+    focusBorderColor,
+    focusColor,
+    focusRingColor,
+    hoverBorderColor,
+    hoverColor,
     isFullWidth,
+    borderWidth,
+    borderRadius,
   }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
-    getBaseButtonStyles({ color, hoverColor, activeColor, minHeight, spacing, isFullWidth }),
+    getBaseButtonStyles({
+      activeBorderColor,
+      activeColor,
+      borderColor,
+      minHeight,
+      spacing,
+      color,
+      disabled,
+      focusBorderColor,
+      focusColor,
+      focusRingColor,
+      hoverBorderColor,
+      hoverColor,
+      isFullWidth,
+      borderWidth,
+      borderRadius,
+    }),
 );
 
 export default StyledBaseButton;

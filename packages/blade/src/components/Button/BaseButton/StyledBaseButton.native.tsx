@@ -4,32 +4,63 @@ import type { StyledBaseButtonProps } from './StyledBaseButton';
 
 const StyledPressable = styled.Pressable(
   ({
-    color,
-    hoverColor,
+    activeBorderColor,
     activeColor,
+    borderColor,
     minHeight,
     spacing,
+    color,
+    disabled,
+    focusBorderColor,
+    focusColor,
+    focusRingColor,
+    hoverBorderColor,
+    hoverColor,
     isFullWidth,
+    borderWidth,
+    borderRadius,
   }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
-    getBaseButtonStyles({ color, hoverColor, activeColor, minHeight, spacing, isFullWidth }),
+    getBaseButtonStyles({
+      activeBorderColor,
+      activeColor,
+      borderColor,
+      minHeight,
+      spacing,
+      color,
+      disabled,
+      focusBorderColor,
+      focusColor,
+      focusRingColor,
+      hoverBorderColor,
+      hoverColor,
+      isFullWidth,
+      borderWidth,
+      borderRadius,
+    }),
 );
 
 const StyledBaseButton = ({
   onClick,
-  color,
-  hoverColor,
-  activeColor,
   children,
   minHeight,
   spacing,
   isFullWidth,
+  disabled,
+  color,
+  borderColor,
+  hoverColor,
+  activeColor,
+  focusColor,
+  focusRingColor,
+  hoverBorderColor,
+  activeBorderColor,
+  focusBorderColor,
+  borderWidth,
+  borderRadius,
 }: StyledBaseButtonProps): React.ReactElement => {
   return (
     <StyledPressable
       onPress={onClick}
-      color={color}
-      hoverColor={hoverColor}
-      activeColor={activeColor}
       style={({ pressed }): { backgroundColor: string; borderColor: string } => ({
         backgroundColor: pressed ? activeColor : color,
         borderColor: pressed ? activeColor : color,
@@ -37,6 +68,18 @@ const StyledBaseButton = ({
       minHeight={minHeight}
       spacing={spacing}
       isFullWidth={isFullWidth}
+      disabled={disabled}
+      color={color}
+      borderColor={borderColor}
+      hoverColor={hoverColor}
+      activeColor={activeColor}
+      focusColor={focusColor}
+      focusRingColor={focusRingColor}
+      hoverBorderColor={hoverBorderColor}
+      activeBorderColor={activeBorderColor}
+      focusBorderColor={focusBorderColor}
+      borderWidth={borderWidth}
+      borderRadius={borderRadius}
     >
       {children}
     </StyledPressable>

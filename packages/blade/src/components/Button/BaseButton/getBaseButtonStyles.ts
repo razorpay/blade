@@ -2,12 +2,21 @@ import type { CSSObject } from 'styled-components';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
 const getBaseButtonStyles = ({
-  color,
-  hoverColor,
+  activeBorderColor,
   activeColor,
+  borderColor,
   minHeight,
   spacing,
+  color,
+  disabled,
+  focusBorderColor,
+  focusColor,
+  focusRingColor,
+  hoverBorderColor,
+  hoverColor,
   isFullWidth,
+  borderWidth,
+  borderRadius,
 }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>): CSSObject => ({
   display: 'flex',
   flexDirection: 'row',
@@ -16,19 +25,26 @@ const getBaseButtonStyles = ({
   alignSelf: 'center',
   minHeight,
   width: isFullWidth ? '100%' : 'auto',
-  cursor: 'pointer',
+  cursor: disabled ? 'not-allowed' : 'pointer',
   backgroundColor: color,
-  border: `2px solid ${color}`,
-  color: 'white',
-  borderRadius: '2px',
+  borderColor,
+  borderWidth,
+  borderRadius,
+  borderStyle: 'solid',
   padding: spacing,
   '&:hover': {
     backgroundColor: hoverColor,
-    border: `2px solid ${hoverColor}`,
+    borderColor: hoverBorderColor,
   },
   '&:active': {
     backgroundColor: activeColor,
-    border: `2px solid ${activeColor}`,
+    borderColor: activeBorderColor,
+  },
+  '&:focus': {
+    backgroundColor: focusColor,
+    borderColor: focusBorderColor,
+    boxShadow: `0px 0px 0px 4px ${focusRingColor}`,
+    outline: 'none',
   },
 });
 
