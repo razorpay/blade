@@ -100,7 +100,7 @@ module.exports = {
       },
     },
     {
-      files: ['**/*.stories.{ts,tsx}'],
+      files: ['**/*.stories.{ts,tsx}', '**/*.stories.internal.{ts,tsx}'],
       rules: {
         'react/display-name': ['off'],
       },
