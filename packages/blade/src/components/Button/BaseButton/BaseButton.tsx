@@ -7,7 +7,10 @@ import type { Theme } from '../../BladeProvider';
 import { useTheme } from '../../BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '../../Icons';
 import makeSpace from '../../../utils/makeSpace';
+import type { TypographyPlatforms } from '../../../tokens/global/typography';
+import makeBorderSize from '../../../utils/makeBorderSize';
 import StyledBaseButton from './StyledBaseButton';
+import type { ButtonMinHeight, ButtonTypography } from './buttonTokens';
 import { typography } from './buttonTokens';
 
 export type BaseButtonIcon = undefined | null | IconComponent;
@@ -49,45 +52,69 @@ const StyledBaseText = styled(BaseText)(
 );
 
 type BaseButtonStyleProps = {
-  iconSize: IconSize; // prop
-  fontSize: keyof Theme['typography']['fonts']['size']; // prop
-  lineHeight: keyof Theme['typography']['lineHeights']; // prop
-  minHeight: '48px' | '40px' | '32px' | '28px'; // raw value
-  iconSpacing: string; // raw value
-  iconColor: IconProps['color']; // prop
-  textColor: BaseTextProps['color']; // prop
-  spacing: string; // raw value
+  iconSize: IconSize;
+  fontSize: keyof Theme['typography']['fonts']['size'];
+  lineHeight: keyof Theme['typography']['lineHeights'];
+  minHeight: ButtonMinHeight;
+  iconSpacing: string;
+  iconColor: IconProps['color'];
+  textColor: BaseTextProps['color'];
+  spacing: string;
   text?: string;
+  color: string;
+  borderColor: string;
+  hoverColor: string;
+  hoverBorderColor: string;
+  activeColor: string;
+  activeBorderColor: string;
+  focusColor: string;
+  focusBorderColor: string;
+  focusRingColor: string;
+  borderWidth: string;
+  borderRadius: string;
 };
 
 const getProps = ({
-  theme,
-  size,
-  children,
   buttonTypographyTokens,
+  children,
+  isDisabled,
+  size,
+  theme,
 }: {
+  buttonTypographyTokens: ButtonTypography[TypographyPlatforms];
+  children?: string;
+  isDisabled: boolean;
   theme: Theme;
   size: BaseButtonCommonProps['size'];
-  children?: string;
-  buttonTypographyTokens: typeof typography.onDesktop | typeof typography.onMobile;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
     iconSize: 'medium',
     fontSize: buttonTypographyTokens.fonts.size.medium,
-    lineHeight: buttonTypographyTokens.lineHeight.medium,
+    lineHeight: buttonTypographyTokens.lineHeights.medium,
     minHeight: '40px',
     iconSpacing: makeSpace(theme.spacing[2]),
     iconColor: 'action.icon.primary.default',
     textColor: 'action.text.primary.default',
     spacing: `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`,
     text: children?.trim(),
+    color: getIn(theme.colors, 'action.background.primary.default'),
+    borderColor: getIn(theme.colors, 'action.border.primary.default'),
+    hoverColor: getIn(theme.colors, 'action.background.primary.hover'),
+    hoverBorderColor: getIn(theme.colors, 'action.border.primary.hover'),
+    activeColor: getIn(theme.colors, 'action.background.primary.active'),
+    activeBorderColor: getIn(theme.colors, 'action.border.primary.active'),
+    focusColor: getIn(theme.colors, 'action.background.primary.focus'),
+    focusBorderColor: getIn(theme.colors, 'action.border.primary.focus'),
+    focusRingColor: getIn(theme.colors, 'brand.primary.400'),
+    borderWidth: makeBorderSize(theme.border.width.thin),
+    borderRadius: makeBorderSize(theme.border.radius.small),
   };
 
   switch (size) {
     case 'large':
       props.iconSize = 'medium';
       props.fontSize = buttonTypographyTokens.fonts.size.large;
-      props.lineHeight = buttonTypographyTokens.lineHeight.large;
+      props.lineHeight = buttonTypographyTokens.lineHeights.large;
       props.minHeight = '48px';
       props.iconSpacing = makeSpace(theme.spacing[2]);
       props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`;
@@ -95,7 +122,7 @@ const getProps = ({
     case 'medium':
       props.iconSize = 'medium';
       props.fontSize = buttonTypographyTokens.fonts.size.medium;
-      props.lineHeight = buttonTypographyTokens.lineHeight.medium;
+      props.lineHeight = buttonTypographyTokens.lineHeights.medium;
       props.minHeight = '40px';
       props.iconSpacing = makeSpace(theme.spacing[2]);
       props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`;
@@ -103,7 +130,7 @@ const getProps = ({
     case 'small':
       props.iconSize = 'xsmall';
       props.fontSize = buttonTypographyTokens.fonts.size.small;
-      props.lineHeight = buttonTypographyTokens.lineHeight.small;
+      props.lineHeight = buttonTypographyTokens.lineHeights.small;
       props.minHeight = '32px';
       props.iconSpacing = makeSpace(theme.spacing[1]);
       props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[3])}`;
@@ -111,13 +138,28 @@ const getProps = ({
     case 'xsmall':
       props.iconSize = 'xsmall';
       props.fontSize = buttonTypographyTokens.fonts.size.xsmall;
-      props.lineHeight = buttonTypographyTokens.lineHeight.xsmall;
+      props.lineHeight = buttonTypographyTokens.lineHeights.xsmall;
       props.minHeight = '28px';
       props.iconSpacing = makeSpace(theme.spacing[1]);
       props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[2])}`;
       props.text = children?.trim().toUpperCase();
       break;
     default:
+  }
+
+  if (isDisabled) {
+    const disabledColor = getIn(theme.colors, 'action.background.primary.disabled');
+    const disabledBorderColor = getIn(theme.colors, 'action.border.primary.disabled');
+    props.iconColor = 'action.icon.primary.disabled';
+    props.textColor = 'action.text.primary.disabled';
+    props.color = disabledColor;
+    props.borderColor = disabledBorderColor;
+    props.hoverColor = disabledColor;
+    props.hoverBorderColor = disabledBorderColor;
+    props.activeColor = disabledColor;
+    props.activeBorderColor = disabledBorderColor;
+    props.focusColor = disabledColor;
+    props.focusBorderColor = disabledBorderColor;
   }
 
   return props;
@@ -138,48 +180,61 @@ const BaseButton = ({
 }: BaseButtonProps): ReactElement => {
   const { theme, platform } = useTheme();
   const buttonTypographyTokens = typography[platform];
-  const color = getIn(theme.colors, 'action.background.primary.default');
-  const hoverColor = getIn(theme.colors, 'action.background.primary.hover');
-  const activeColor = getIn(theme.colors, 'action.background.primary.active');
   if (!Icon && !children?.trim()) {
     throw new Error(`[Blade: BaseButton]: Cannot render a BaseButton without an icon or text`);
   }
   const {
-    iconSize,
-    fontSize,
-    lineHeight,
+    activeBorderColor,
+    activeColor,
+    borderColor,
+    color,
     minHeight,
-    iconColor,
-    iconSpacing,
-    textColor,
     spacing,
+    focusBorderColor,
+    focusColor,
+    focusRingColor,
+    fontSize,
+    hoverBorderColor,
+    hoverColor,
+    iconColor,
+    iconSize,
+    iconSpacing,
+    lineHeight,
     text,
+    textColor,
+    borderWidth,
+    borderRadius,
   } = getProps({
-    theme,
-    size,
-    children,
     buttonTypographyTokens,
+    children,
+    isDisabled,
+    size,
+    theme,
   });
   console.log('unused props', {
     variant,
     intent,
     contrast,
-    isDisabled,
-    isFullWidth,
-    onClick,
-    type,
   });
   return (
     <StyledBaseButton
-      color={color}
-      hoverColor={hoverColor}
-      onClick={(): void => {
-        console.log('clicked');
-      }}
-      disabled={isDisabled}
+      activeBorderColor={activeBorderColor}
       activeColor={activeColor}
+      borderColor={borderColor}
       minHeight={minHeight}
       spacing={spacing}
+      color={color}
+      disabled={isDisabled}
+      focusBorderColor={focusBorderColor}
+      focusColor={focusColor}
+      focusRingColor={focusRingColor}
+      hoverBorderColor={hoverBorderColor}
+      hoverColor={hoverColor}
+      isFullWidth={isFullWidth}
+      onClick={onClick}
+      type={type}
+      borderWidth={borderWidth}
+      borderRadius={borderRadius}
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
       {text && (
