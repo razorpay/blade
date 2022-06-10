@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 2.3.2
+
+### Patch Changes
+
+- 3fb6d3c: chore(modal): add testID to modal
+
 ## 2.3.1
 
 ### Patch Changes
