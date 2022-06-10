@@ -1,15 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BaseButton /> should render button with default properties 1`] = `
+.c1 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 40px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bBfdWw"
+    class="c0"
     color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
+      class="c1 c2"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.875rem"
@@ -23,15 +87,79 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 `;
 
 exports[`<BaseButton /> should render button with full width 1`] = `
+.c1 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 40px;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 idqchr"
+    class="c0"
     color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
+      class="c1 c2"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.875rem"
@@ -45,9 +173,73 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 `;
 
 exports[`<BaseButton /> should render button with icon with default iconPosition 1`] = `
+.c1 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 40px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c2 {
+  padding-left: 8px;
+  padding-right: 0px;
+}
+
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bBfdWw"
+    class="c0"
     color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
@@ -66,7 +258,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       />
     </svg>
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 clyHi"
+      class="c1 c2"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.875rem"
@@ -80,9 +272,73 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 `;
 
 exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `
+.c1 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 40px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c2 {
+  padding-left: 8px;
+  padding-right: 0px;
+}
+
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bBfdWw"
+    class="c0"
     color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
@@ -101,7 +357,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       />
     </svg>
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 clyHi"
+      class="c1 c2"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.875rem"
@@ -115,15 +371,79 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 `;
 
 exports[`<BaseButton /> should render button with icon with right iconPosition 1`] = `
+.c1 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 40px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 8px;
+}
+
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bBfdWw"
+    class="c0"
     color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 ePmhIK"
+      class="c1 c2"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.875rem"
@@ -150,9 +470,56 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 `;
 
 exports[`<BaseButton /> should render button with icon without text 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 40px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bBfdWw"
+    class="c0"
     color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
@@ -175,16 +542,80 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 `;
 
 exports[`<BaseButton /> should render disabled button 1`] = `
+.c1 {
+  color: hsla(216,16%,60%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 40px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+}
+
+.c0:hover {
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
+}
+
+.c0:active {
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
+}
+
+.c0:focus {
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gEBxGT"
+    class="c0"
     color="hsla(216, 19%, 89%, 1)"
     disabled=""
     spacing="0px 20px"
     type="button"
   >
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 ewrIpg BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
+      class="c1 c2"
       color="hsla(216, 16%, 60%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.875rem"
@@ -198,15 +629,79 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 `;
 
 exports[`<BaseButton /> should render large size button 1`] = `
+.c1 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 48px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fsMyMw"
+    class="c0"
     color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 hvBMXx BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
+      class="c1 c2"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="1rem"
@@ -220,15 +715,79 @@ exports[`<BaseButton /> should render large size button 1`] = `
 `;
 
 exports[`<BaseButton /> should render medium size button 1`] = `
+.c1 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 40px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bBfdWw"
+    class="c0"
     color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 faquWx BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
+      class="c1 c2"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.875rem"
@@ -242,15 +801,79 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 `;
 
 exports[`<BaseButton /> should render small size button 1`] = `
+.c1 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 32px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 12px;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jFcOAA"
+    class="c0"
     color="hsla(213, 89%, 56%, 1)"
     spacing="0px 12px"
     type="button"
   >
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 iFjPgh BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
+      class="c1 c2"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.75rem"
@@ -264,15 +887,79 @@ exports[`<BaseButton /> should render small size button 1`] = `
 `;
 
 exports[`<BaseButton /> should render xsmall size button 1`] = `
+.c1 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 28px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(213,89%,56%,1);
+  border-color: hsla(213,89%,56%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 8px;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+}
+
+.c0:focus {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 <div>
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fOnlOc"
+    class="c0"
     color="hsla(213, 89%, 56%, 1)"
     spacing="0px 8px"
     type="button"
   >
     <div
-      class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 iFjPgh BaseButton__StyledBaseText-zf1huq-0 jcIeJy"
+      class="c1 c2"
       color="hsla(0, 0%, 100%, 1)"
       font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
       font-size="0.75rem"
