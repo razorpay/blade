@@ -1,8 +1,11 @@
+import { Pressable } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';
+import getIn from '../../../utils/getIn';
 import getBaseButtonStyles from './getBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
-const StyledPressable = styled.Pressable(
+const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))(
   ({ ...props }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
     getBaseButtonStyles({
       ...props,
@@ -29,14 +32,28 @@ const StyledBaseButton = ({
   borderRadius,
   motionDuration,
   motionEasing,
+  theme,
 }: StyledBaseButtonProps): React.ReactElement => {
+  const isPressed = useSharedValue(0);
+  const duration = getIn(theme.motion, motionDuration);
+  const easing = getIn(theme.motion, motionEasing);
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      backgroundColor: withTiming(isPressed.value === 1 ? activeColor : color, {
+        duration,
+        easing,
+      }),
+      borderColor: withTiming(isPressed.value === 1 ? activeColor : color, {
+        duration,
+        easing,
+      }),
+    };
+  });
+
   return (
     <StyledPressable
       onPress={onClick}
-      style={({ pressed }): { backgroundColor: string; borderColor: string } => ({
-        backgroundColor: pressed ? activeColor : color,
-        borderColor: pressed ? activeColor : color,
-      })}
+      style={animatedStyles}
       minHeight={minHeight}
       spacing={spacing}
       isFullWidth={isFullWidth}
@@ -55,7 +72,10 @@ const StyledBaseButton = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
     >
-      {children}
+      {({ pressed }): React.ReactNode => {
+        isPressed.value = pressed ? 1 : 0;
+        return children;
+      }}
     </StyledPressable>
   );
 };

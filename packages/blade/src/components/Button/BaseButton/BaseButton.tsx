@@ -246,6 +246,7 @@ const BaseButton = ({
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
+      theme={theme}
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
       {text && (
