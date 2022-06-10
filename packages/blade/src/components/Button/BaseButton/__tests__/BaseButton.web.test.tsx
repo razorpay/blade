@@ -94,13 +94,13 @@ describe('<BaseButton />', () => {
   });
   it('should render button of type "submit"', () => {
     const buttonText = 'Pay Now';
-    const { container } = renderWithTheme(<BaseButton type="submit">{buttonText}</BaseButton>);
-    expect(container).toMatchSnapshot();
+    const { getByRole } = renderWithTheme(<BaseButton type="submit">{buttonText}</BaseButton>);
+    expect(getByRole('button')).toHaveAttribute('type', 'submit');
   });
   it('should render button of type "reset"', () => {
     const buttonText = 'Pay Now';
-    const { container } = renderWithTheme(<BaseButton type="reset">{buttonText}</BaseButton>);
-    expect(container).toMatchSnapshot();
+    const { getByRole } = renderWithTheme(<BaseButton type="reset">{buttonText}</BaseButton>);
+    expect(getByRole('button')).toHaveAttribute('type', 'reset');
   });
   it('should call function on click', () => {
     const buttonText = 'Pay Now';

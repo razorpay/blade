@@ -17,6 +17,8 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   hoverColor: string;
   isFullWidth: boolean;
   onClick: () => void;
+  borderWidth: string;
+  borderRadius: string;
 };
 
 export { default } from './StyledBaseButton.web';

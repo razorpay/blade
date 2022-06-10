@@ -17,6 +17,8 @@ const StyledBaseButton = styled.button(
     hoverBorderColor,
     hoverColor,
     isFullWidth,
+    borderWidth,
+    borderRadius,
   }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
     getBaseButtonStyles({
       activeBorderColor,
@@ -32,6 +34,8 @@ const StyledBaseButton = styled.button(
       hoverBorderColor,
       hoverColor,
       isFullWidth,
+      borderWidth,
+      borderRadius,
     }),
 );
 
