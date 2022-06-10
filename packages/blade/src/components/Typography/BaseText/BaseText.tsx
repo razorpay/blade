@@ -26,6 +26,7 @@ export type BaseTextProps = {
   textAlign?: 'center' | 'justify' | 'left' | 'right';
   truncateAfterLines?: number;
   className?: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 };
 
@@ -42,6 +43,7 @@ const BaseText = ({
   children,
   truncateAfterLines,
   className,
+  style,
 }: BaseTextProps): ReactElement => {
   const { theme } = useTheme();
   const textColor = getIn(theme.colors, color);
@@ -63,6 +65,7 @@ const BaseText = ({
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
       className={className}
+      style={style}
     >
       {children}
     </StyledBaseText>
