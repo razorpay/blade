@@ -16,6 +16,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/preset-create-react-app',
     '@storybook/addon-docs',
+    '@storybook/addon-a11y',
   ],
   staticDirs: ['../../public/storybook-site'],
   webpackFinal: async (config, { configType }) => {

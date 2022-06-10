@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "license": "MIT",
   "engines": {
     "node": ">=14.19.0"
@@ -69,6 +69,7 @@
     "@rollup/plugin-babel": "5.3.0",
     "@rollup/plugin-commonjs": "21.0.1",
     "@rollup/plugin-node-resolve": "13.1.1",
+    "@storybook/addon-a11y": "6.3.0",
     "@storybook/addon-actions": "6.3.0",
     "@storybook/addon-controls": "6.3",
     "@storybook/addon-docs": "6.3.0",
@@ -108,6 +109,7 @@
     "jest": "26.6.3",
     "jest-matchmedia-mock": "1.1.0",
     "jest-useragent-mock": "0.1.1",
+    "jest-styled-components": "7.0.8",
     "lodash": "4.17.21",
     "metro-react-native-babel-preset": "0.66.2",
     "moniker": "0.1.2",
