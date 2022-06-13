@@ -34,16 +34,16 @@ const StyledBaseButton = ({
   motionEasing,
   theme,
 }: StyledBaseButtonProps): React.ReactElement => {
-  const isPressed = useSharedValue(0);
+  const isPressed = useSharedValue(true);
   const duration = getIn(theme.motion, motionDuration);
   const easing = getIn(theme.motion, motionEasing);
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      backgroundColor: withTiming(isPressed.value === 1 ? activeColor : color, {
+      backgroundColor: withTiming(isPressed.value ? activeColor : color, {
         duration,
         easing,
       }),
-      borderColor: withTiming(isPressed.value === 1 ? activeColor : color, {
+      borderColor: withTiming(isPressed.value ? activeColor : color, {
         duration,
         easing,
       }),
@@ -73,7 +73,7 @@ const StyledBaseButton = ({
       motionEasing={motionEasing}
     >
       {({ pressed }): React.ReactNode => {
-        isPressed.value = pressed ? 1 : 0;
+        isPressed.value = pressed;
         return children;
       }}
     </StyledPressable>
