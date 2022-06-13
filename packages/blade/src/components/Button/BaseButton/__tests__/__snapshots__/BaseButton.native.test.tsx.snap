@@ -22,7 +22,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
-  minHeight="40px"
+  minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
   onBlur={[Function]}
@@ -49,7 +49,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
         "display": "flex",
         "flexDirection": "row",
         "justifyContent": "center",
-        "minHeight": 40,
+        "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
         "paddingRight": 20,
@@ -118,7 +118,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={true}
-  minHeight="40px"
+  minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
   onBlur={[Function]}
@@ -145,7 +145,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
         "display": "flex",
         "flexDirection": "row",
         "justifyContent": "center",
-        "minHeight": 40,
+        "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
         "paddingRight": 20,
@@ -214,7 +214,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
-  minHeight="40px"
+  minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
   onBlur={[Function]}
@@ -241,7 +241,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
         "display": "flex",
         "flexDirection": "row",
         "justifyContent": "center",
-        "minHeight": 40,
+        "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
         "paddingRight": 20,
@@ -359,7 +359,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
-  minHeight="40px"
+  minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
   onBlur={[Function]}
@@ -386,7 +386,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
         "display": "flex",
         "flexDirection": "row",
         "justifyContent": "center",
-        "minHeight": 40,
+        "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
         "paddingRight": 20,
@@ -504,7 +504,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
-  minHeight="40px"
+  minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
   onBlur={[Function]}
@@ -531,7 +531,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
         "display": "flex",
         "flexDirection": "row",
         "justifyContent": "center",
-        "minHeight": 40,
+        "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
         "paddingRight": 20,
@@ -649,7 +649,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
-  minHeight="40px"
+  minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
   onBlur={[Function]}
@@ -676,7 +676,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
         "display": "flex",
         "flexDirection": "row",
         "justifyContent": "center",
-        "minHeight": 40,
+        "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
         "paddingRight": 20,
@@ -764,7 +764,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   hoverBorderColor="hsla(216, 19%, 89%, 1)"
   hoverColor="hsla(216, 19%, 89%, 1)"
   isFullWidth={false}
-  minHeight="40px"
+  minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
   onBlur={[Function]}
@@ -791,7 +791,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
         "display": "flex",
         "flexDirection": "row",
         "justifyContent": "center",
-        "minHeight": 40,
+        "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
         "paddingRight": 20,
@@ -956,7 +956,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
-  minHeight="40px"
+  minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
   onBlur={[Function]}
@@ -983,7 +983,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
         "display": "flex",
         "flexDirection": "row",
         "justifyContent": "center",
-        "minHeight": 40,
+        "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
         "paddingRight": 20,

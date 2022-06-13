@@ -96,7 +96,7 @@ const getProps = ({
     iconSize: 'medium',
     fontSize: buttonTypographyTokens.fonts.size.medium,
     lineHeight: buttonTypographyTokens.lineHeights.medium,
-    minHeight: '40px',
+    minHeight: '36px',
     iconSpacing: makeSpace(theme.spacing[2]),
     iconColor: `action.icon.${variant}.default`,
     textColor: `action.text.${variant}.default`,
@@ -130,7 +130,7 @@ const getProps = ({
       props.iconSize = 'medium';
       props.fontSize = buttonTypographyTokens.fonts.size.medium;
       props.lineHeight = buttonTypographyTokens.lineHeights.medium;
-      props.minHeight = '40px';
+      props.minHeight = '36px';
       props.iconSpacing = makeSpace(theme.spacing[2]);
       props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`;
       break;

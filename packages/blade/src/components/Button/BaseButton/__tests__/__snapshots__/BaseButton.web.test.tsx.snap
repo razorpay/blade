@@ -32,7 +32,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  min-height: 40px;
+  min-height: 36px;
   width: auto;
   cursor: pointer;
   background-color: hsla(213,89%,56%,1);
@@ -133,7 +133,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  min-height: 40px;
+  min-height: 36px;
   width: 100%;
   cursor: pointer;
   background-color: hsla(213,89%,56%,1);
@@ -234,7 +234,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  min-height: 40px;
+  min-height: 36px;
   width: auto;
   cursor: pointer;
   background-color: hsla(213,89%,56%,1);
@@ -348,7 +348,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  min-height: 40px;
+  min-height: 36px;
   width: auto;
   cursor: pointer;
   background-color: hsla(213,89%,56%,1);
@@ -462,7 +462,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  min-height: 40px;
+  min-height: 36px;
   width: auto;
   cursor: pointer;
   background-color: hsla(213,89%,56%,1);
@@ -564,7 +564,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  min-height: 40px;
+  min-height: 36px;
   width: auto;
   cursor: pointer;
   background-color: hsla(213,89%,56%,1);
@@ -663,7 +663,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  min-height: 40px;
+  min-height: 36px;
   width: auto;
   cursor: not-allowed;
   background-color: hsla(216,19%,89%,1);
@@ -866,7 +866,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  min-height: 40px;
+  min-height: 36px;
   width: auto;
   cursor: pointer;
   background-color: hsla(213,89%,56%,1);
