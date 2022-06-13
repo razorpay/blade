@@ -1,45 +1,56 @@
+/* eslint-disable guard-for-in */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { AccessibilityMap } from './a11yMap';
-import { accessibilityValue, accessibilityState, supportedRolesInNative } from './a11yMap';
+import {
+  accessibilityMap,
+  accessibilityStateKeys,
+  accessibilityValueKeys,
+  supportedRolesInNative,
+} from './a11yMap.native';
+import type { AccessibilityMap } from './a11yMap.native';
+
+function isAccessibilityStateProp(prop: string): boolean {
+  return accessibilityStateKeys.includes(prop);
+}
+
+function isAccessibilityValueProp(prop: string): boolean {
+  return accessibilityValueKeys.includes(prop);
+}
 
 const mapA11yProps = (props: AccessibilityMap): Record<string, unknown> => {
   const newProps: Record<string, any> = {};
 
-  // eslint-disable-next-line guard-for-in
+  // loop through all the incoming props and map them
   for (const key in props) {
     const propKey = key as keyof AccessibilityMap;
+    const propValue = props[propKey];
+    const a11yKey = accessibilityMap[propKey];
 
-    // Group accessibilityState props
-    if (Object.keys(accessibilityState).includes(propKey)) {
-      const groupKey = accessibilityState[propKey as keyof typeof accessibilityState].replace(
-        'aria-',
-        '',
-      );
+    // group accesibilityState prop for native
+    if (isAccessibilityStateProp(propKey)) {
       newProps.accessibilityState = {
         ...newProps.accessibilityState,
-        [groupKey]: props[propKey],
+        [a11yKey]: propValue,
       };
       continue;
     }
 
-    // group accessibilityValue props
-    if (Object.keys(accessibilityValue).includes(propKey)) {
-      const groupKey = accessibilityValue[propKey as keyof typeof accessibilityValue].replace(
-        'aria-value',
-        '',
-      );
+    // group accesibilityValue prop for native
+    if (isAccessibilityValueProp(propKey)) {
       newProps.accessibilityValue = {
         ...newProps.accessibilityValue,
-        [groupKey]: props[propKey],
+        [a11yKey]: propValue,
       };
       continue;
     }
 
-    newProps[propKey] = props[propKey];
+    if (a11yKey) {
+      newProps[a11yKey] = propValue;
+    } else {
+      console.warn('No mapping found for', propKey);
+    }
   }
-  // console.log(newProps, supportedRolesInNative.includes(newProps.accessibilityRole as string))
 
-  // filter out unsupported roles
+  // ignore unsupported roles in native
   if (
     newProps.accessibilityRole &&
     !supportedRolesInNative.includes(newProps.accessibilityRole as string)
