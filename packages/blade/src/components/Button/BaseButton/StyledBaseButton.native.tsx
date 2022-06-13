@@ -34,7 +34,7 @@ const StyledBaseButton = ({
   motionEasing,
   theme,
 }: StyledBaseButtonProps): React.ReactElement => {
-  const isPressed = useSharedValue(true);
+  const isPressed = useSharedValue(false);
   const duration = getIn(theme.motion, motionDuration);
   const easing = getIn(theme.motion, motionEasing);
   const animatedStyles = useAnimatedStyle(() => {
