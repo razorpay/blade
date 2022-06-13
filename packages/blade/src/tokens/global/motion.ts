@@ -32,7 +32,7 @@ type Delay = {
   xlong: 5000;
 };
 
-export type EasingFunctionFactory = { factory: () => (value: number) => number }; // similar to EasingFunctionFactory of `react-native-reanimated`
+type EasingFunctionFactory = { factory: () => (value: number) => number }; // similar to EasingFunctionFactory of `react-native-reanimated`
 
 type Easing = {
   /** Easings for all standard animations*/
