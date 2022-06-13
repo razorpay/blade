@@ -929,23 +929,23 @@ Automated accessibility tools only [pick up around 40% of errors automatically](
 
 # Actionable Items
 
-- Implement and decide upon which 3rd party library to use for [roving tabindex pattern.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--1)
-- Implement [`<SkipNavigation />` component.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--2)
-- Implement proper [focus rings & keyboard only focus rings.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--3)
-- Implement and decide upon [focus trapping methods.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--4)
-- Implement [`mapA11yProps` compatibility layer](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5) for aria attributes.
-- Implement [live regions & `announce()` utilties](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--6) for dynamic content announcements.
-- Implement `<VisuallyHidden />` component for [hidden content](#hidden-content)
-- Ensure each component adhers to the [WAI-ARIA Authoring Pratices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) 
-- Ensure general accessibility guidelines are followed while building blade components, we discussed best practices for each category: 
+- [x] Implement and decide upon which 3rd party library to use for [roving tabindex pattern.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--1)
+- [x] Implement [`<SkipNavigation />` component.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--2)
+- [ ] Implement proper [focus rings & keyboard only focus rings.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--3)
+- [x] Implement and decide upon [focus trapping methods.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--4)
+- [ ] Implement [`mapA11yProps` compatibility layer](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5) for aria attributes.
+- [ ] Implement [live regions & `announce()` utilties](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--6) for dynamic content announcements.
+- [x] Implement `<VisuallyHidden />` component for [hidden content](#hidden-content)
+- [ ] Ensure each component adhers to the [WAI-ARIA Authoring Pratices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) 
+- [ ] Ensure general accessibility guidelines are followed while building blade components, we discussed best practices for each category: 
   - Keyboard accessibility [best practices](#best-practices-for-logical-tab-order)
   - Focus ring [best practices](#best-practices-for-focus-styling)
   - Focus trap [best practices](#best-practices-for-focus-traps)
   - Semantic HTML [best practices](#best-practices-to-using-semantic-html)
   - Dynamic content [best practices](#best-practices-for-dynamic-contents)
   - Design [best practices](#best-practices-when-using-color-styles-and-making-them-accessible)
-- Implement [automated testing tools](#tools--infrastructure) which discussed
-- Do manual testing for [keyboard accesibility](#keyboard-accessibility), [focus management & screen readers.](#tools--infrastructure) 
+- [x] Implement [automated testing tools](#tools--infrastructure) which discussed
+- [ ] Do manual testing for [keyboard accesibility](#keyboard-accessibility), [focus management & screen readers.](#tools--infrastructure) 
 
 # Adoption strategy
 
@@ -967,10 +967,6 @@ Ideally only two people needs to be educated:
 - Blade design system developers
 
 This document provides enough insights, guides & best practices to ensure that designers & developers are well educated about the ins and out of building accessible components, although other teams also need to be proactive about certain things like providing proper accessibility label, alt text etc.
-
-# Open Questions
-
-- Which third party library for roving tabindex pattern should we choose? 
 
 # References
 
