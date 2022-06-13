@@ -40,7 +40,6 @@ Blade Issue: (leave this empty if no issue yet)
 - [Drawbacks/Constraints](#drawbacksconstraints)
 - [Adoption strategy](#adoption-strategy)
 - [How do we educate people?](#how-do-we-educate-people)
-- [Open Questions](#open-questions)
 - [References](#references)
 
 # Summary
@@ -459,7 +458,7 @@ Checklist:
 
 ## Focus management
 
-> Specification
+> [Specification](https://html.spec.whatwg.org/multipage/interaction.html#focus)
 
 **Accessibility Principle:** Perceivable, Operable  
 **Target:** Everyone, especially people with visual impairments or cognitive limitations & motor disabilities.  
@@ -933,7 +932,7 @@ Automated accessibility tools only [pick up around 40% of errors automatically](
 - [x] Implement [`<SkipNavigation />` component.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--2)
 - [ ] Implement proper [focus rings & keyboard only focus rings.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--3)
 - [x] Implement and decide upon [focus trapping methods.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--4)
-- [ ] Implement [`mapA11yProps` compatibility layer](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5) for aria attributes.
+- [x] Implement [`mapA11yProps` compatibility layer](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5) for aria attributes.
 - [ ] Implement [live regions & `announce()` utilties](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--6) for dynamic content announcements.
 - [x] Implement `<VisuallyHidden />` component for [hidden content](#hidden-content)
 - [ ] Ensure each component adhers to the [WAI-ARIA Authoring Pratices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) 
