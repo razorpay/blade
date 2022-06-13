@@ -46,7 +46,7 @@ describe('useIconProps', () => {
     );
     expect(result.current.height).toEqual('12px');
     expect(result.current.width).toEqual('12px');
-    expect(result.current.iconColor).toEqual('hsla(218, 89%, 51%, 1)');
+    expect(result.current.iconColor).toEqual('hsla(213, 89%, 56%, 1)');
   });
   it('should return a xxsmall icon with the correct color', () => {
     const { result } = renderHook(
