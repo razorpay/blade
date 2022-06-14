@@ -39,8 +39,6 @@ describe('<SkipNav />', () => {
       </div>,
     );
 
-    // TODO: move to ariakit-utils after this is fixed:
-    // https://github.com/ariakit/ariakit/issues/1483
     await user.tab();
     expect(getByRole('link')).toHaveFocus();
 
@@ -56,5 +54,43 @@ describe('<SkipNav />', () => {
     // Can't test for focus because jsdom doesn't move focus to fragment anchor elements
     // expect(getByTestId('skipnav-content')).toHaveFocus();
     expect(getByTestId('skipnav-content')).toHaveAttribute('id', 'custom-id');
+  });
+
+  it('should correctly work with two skip navs', async () => {
+    jest.useRealTimers();
+    const user = userEvents.setup();
+    const link1 = 'SkipNav 1';
+    const link2 = 'SkipNav 2';
+    const { getByRole } = renderWithTheme(
+      <div>
+        <nav>
+          <SkipNavLink>{link1}</SkipNavLink>
+          <SkipNavLink id="second-skipnav">{link2}</SkipNavLink>
+          <button>one</button>
+          <button>two</button>
+        </nav>
+        <main>
+          <SkipNavContent />
+          <button>main content</button>
+          <SkipNavContent id="second-skipnav" />
+          <button>main content</button>
+        </main>
+      </div>,
+    );
+
+    await user.tab();
+    expect(getByRole('link', { name: link1 })).toHaveFocus();
+
+    await user.tab();
+    expect(getByRole('link', { name: link2 })).toHaveFocus();
+
+    await user.tab();
+    expect(getByRole('button', { name: 'one' })).toHaveFocus();
+
+    await user.click(getByRole('link', { name: link1 }));
+    expect(window.location.hash).toBe('#blade-skip-nav');
+
+    await user.click(getByRole('link', { name: link2 }));
+    expect(window.location.hash).toBe('#second-skipnav');
   });
 });

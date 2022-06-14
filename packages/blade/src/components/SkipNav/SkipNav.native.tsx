@@ -1,5 +1,5 @@
 const SkipNavLink = (): never => {
-  throw new Error('[Blade: SkipNav]: SkipNavContent is not available on React Native');
+  throw new Error('[Blade: SkipNav]: SkipNavLink is not available on React Native');
 };
 
 const SkipNavContent = (): never => {
