@@ -2,7 +2,7 @@ import mapA11yProps from '../../utils/mapProps';
 
 type CheckboxA11yProps = { isDisabled?: boolean; isChecked?: boolean };
 
-export const useCheckboxA11yProps = ({
+export const getCheckboxA11yProps = ({
   isDisabled,
   isChecked,
 }: CheckboxA11yProps): Record<string, unknown> => {

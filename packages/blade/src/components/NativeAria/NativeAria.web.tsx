@@ -1,7 +1,7 @@
 import React from 'react';
 import mapA11yProps from '../../utils/mapProps';
 import { CloseIcon, EyeIcon } from '../Icons';
-import { useCheckboxA11yProps } from './useCheckboxA11yProps';
+import { getCheckboxA11yProps } from './getCheckboxA11yProps';
 
 const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean }> = ({
   label,
@@ -9,7 +9,7 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
   disabled,
 }) => {
   const [isChecked, setChecked] = React.useState(checked);
-  const checkboxA11yProps = useCheckboxA11yProps({ isDisabled: disabled, isChecked });
+  const checkboxA11yProps = getCheckboxA11yProps({ isDisabled: disabled, isChecked });
 
   const toggleChecked = (): void => {
     if (disabled) return;
@@ -44,7 +44,7 @@ const NativeAria = (): React.ReactElement => {
 
   return (
     <>
-      <h3 id="id-group-label">Fruites</h3>
+      <h3 id="id-group-label">Fruits</h3>
       <div {...checkboxGroupA11y}>
         <ul>
           <li>

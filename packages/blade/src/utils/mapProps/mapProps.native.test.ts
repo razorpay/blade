@@ -1,9 +1,9 @@
-import mapProps from './mapProps';
+import mapAccessibilityProps from './mapProps';
 
-describe('mapProps', () => {
-  it('should work', () => {
+describe('mapAccessibilityprops', () => {
+  it('should return correct accessibility attributes for flat accessibility keys', () => {
     expect(
-      mapProps({
+      mapAccessibilityProps({
         accessibilityLabel: 'hello world',
         accessibilityLabelledBy: 'id1',
         accessibilityRole: 'button',
@@ -13,15 +13,21 @@ describe('mapProps', () => {
       accessibilityLabelledBy: 'id1',
       accessibilityRole: 'button',
     });
+  });
 
-    expect(mapProps({ accessibilityLiveRegion: 'polite' })).toStrictEqual({
+  it('should return correct accessibility attributes for live region', () => {
+    expect(mapAccessibilityProps({ accessibilityLiveRegion: 'polite' })).toStrictEqual({
       accessibilityLiveRegion: 'polite',
     });
+  });
 
-    expect(mapProps({ accessibilityRole: 'invalid' })).toStrictEqual({});
+  it('should ignore invalid roles in native', () => {
+    expect(mapAccessibilityProps({ accessibilityRole: 'invalid' })).toStrictEqual({});
+  });
 
+  it('should return correct attributes for accessibilityState', () => {
     expect(
-      mapProps({
+      mapAccessibilityProps({
         accessibilityChecked: false,
         accessibilitySelected: false,
         accessibilityDisabled: false,
@@ -37,9 +43,11 @@ describe('mapProps', () => {
         busy: false,
       },
     });
+  });
 
+  it('should return correct attributes for accessibilityValue', () => {
     expect(
-      mapProps({
+      mapAccessibilityProps({
         accessibilityValueMax: 10,
         accessibilityValueMin: 11,
         accessibilityValueNow: 2,

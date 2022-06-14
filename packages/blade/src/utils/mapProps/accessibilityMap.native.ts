@@ -60,7 +60,7 @@ export const accessibilityMap = {
   accessibilitySort: 'accessibilitySort',
 };
 
-export const supportedRolesInNative = [
+export const supportedAccessibilityRoles = [
   'adjustable',
   'alert',
   'button',
