@@ -1,5 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import NativeAria from './';
+import NativeAria from './NativeAria.web';
 
 export default {
   title: 'Components/NativeAria',

@@ -1,6 +1,7 @@
 import React from 'react';
 import mapA11yProps from '../../utils/mapProps';
 import { CloseIcon, EyeIcon } from '../Icons';
+import { useCheckboxA11yProps } from './useCheckboxA11yProps';
 
 const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean }> = ({
   label,
@@ -8,6 +9,7 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
   disabled,
 }) => {
   const [isChecked, setChecked] = React.useState(checked);
+  const checkboxA11yProps = useCheckboxA11yProps({ isDisabled: disabled, isChecked });
 
   const toggleChecked = (): void => {
     if (disabled) return;
@@ -15,14 +17,7 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
   };
 
   const handleOnKeyDown = (event: React.KeyboardEvent): void => {
-    if (disabled) return;
-    switch (event.key) {
-      case ' ':
-        toggleChecked();
-        break;
-      default:
-        break;
-    }
+    if (event.key === ' ') toggleChecked();
   };
 
   return (
@@ -34,16 +29,7 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
           <CloseIcon color="action.icon.link.active" size="small" />
         )}
       </span>
-      <span
-        onKeyDown={handleOnKeyDown}
-        onClick={toggleChecked}
-        {...mapA11yProps({
-          accessibilityRole: 'checkbox',
-          accessibilityDisabled: disabled,
-          accessibilityChecked: isChecked ? 'true' : 'false',
-        })}
-        tabIndex={0}
-      >
+      <span onKeyDown={handleOnKeyDown} onClick={toggleChecked} {...checkboxA11yProps} tabIndex={0}>
         {label}
       </span>
     </>
