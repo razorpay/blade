@@ -57,6 +57,7 @@ const uploadColorTokens = async () => {
 
     // 7. Commit all changes
     execa.commandSync('yarn prettier --write src/tokens/theme/*.ts');
+    execa.commandSync('git status');
     execa.commandSync('git add -A');
     execa.commandSync(`git commit -m feat(tokens):\\ add\\ new\\ tokens`, {
       env: { HUSKY_SKIP_HOOKS: 1 },
