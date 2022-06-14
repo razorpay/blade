@@ -53,5 +53,14 @@ describe('mapProps', () => {
         text: 'text',
       },
     });
+
+    expect(
+      mapProps({
+        accessibilityHidden: true,
+      }),
+    ).toStrictEqual({
+      accessibilityElementsHidden: true,
+      importantForAccessibility: 'no-hide-descendants',
+    });
   });
 });

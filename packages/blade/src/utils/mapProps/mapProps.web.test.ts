@@ -47,5 +47,13 @@ describe('mapProps', () => {
       'aria-valuenow': 2,
       'aria-valuetext': 'text',
     });
+
+    expect(
+      mapProps({
+        accessibilityHidden: true,
+      }),
+    ).toStrictEqual({
+      'aria-hidden': true,
+    });
   });
 });

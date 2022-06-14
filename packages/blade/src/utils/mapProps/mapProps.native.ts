@@ -43,6 +43,18 @@ const mapA11yProps = (props: AccessibilityMap): Record<string, unknown> => {
       continue;
     }
 
+    // handle accessibilityHidden
+    // in react-native we have to platform specific values for it.
+    if (propKey === 'accessibilityHidden') {
+      if (propValue === true) {
+        newProps.accessibilityElementsHidden = true;
+        newProps.importantForAccessibility = 'no-hide-descendants';
+      }
+
+      delete newProps.accessibilityHidden;
+      continue;
+    }
+
     if (a11yKey) {
       newProps[a11yKey] = propValue;
     } else {
