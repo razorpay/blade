@@ -37,15 +37,15 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
 };
 
 const NativeAria = (): React.ReactElement => {
+  const checkboxGroupA11y = mapA11yProps({
+    accessibilityRole: 'group',
+    accessibilityLabelledBy: 'id-group-label',
+  });
+
   return (
     <>
       <h3 id="id-group-label">Fruites</h3>
-      <div
-        {...mapA11yProps({
-          accessibilityRole: 'group',
-          accessibilityLabelledBy: 'id-group-label',
-        })}
-      >
+      <div {...checkboxGroupA11y}>
         <ul>
           <li>
             <Checkbox checked label="Mango" />
