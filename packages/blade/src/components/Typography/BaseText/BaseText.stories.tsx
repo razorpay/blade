@@ -1,6 +1,6 @@
-/* eslint-disable react/display-name */
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, Props, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Highlight } from '@storybook/design-system';
 import type { BaseTextProps } from './BaseText';
 import BaseTextComponent from './BaseText';
 
@@ -10,14 +10,15 @@ export default {
   args: {
     color: 'surface.text.normal.lowContrast',
     fontFamily: 'text',
-    fontSize: 700,
+    fontSize: 200,
     fontWeight: 'regular',
     fontStyle: 'normal',
     textAlign: 'left',
     textDecorationLine: 'none',
-    lineHeight: '5xl',
+    lineHeight: 'l',
     name: 'Storybook',
-    children: 'Base Text',
+    children:
+      'Current Accounts supercharged by RazorpayX come with integrated tools and integrations that make financial management and accounting simple',
   },
   parameters: {
     docs: {
@@ -30,10 +31,12 @@ export default {
             by Title, Heading or Text typography components(eg: highlighting a word in the Title
             with gradients in a landing page).
           </Subtitle>
+          <Title>Usage</Title>
+          <Highlight language="tsx">{`import { BaseText } from '@razorpay/blade/components' \nimport type { BaseTextProps } from '@razorpay/blade/components'`}</Highlight>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
-          <Props story={PRIMARY_STORY} />
+          <ArgsTable story={PRIMARY_STORY} />
           <Stories />
         </>
       ),

@@ -1,5 +1,68 @@
 # @razorpay/blade
 
+## 0.8.0
+
+### Minor Changes
+
+- 002fce2: fix: icon colors & remove `surface.action.icon.link.*` colors from `theme`
+
+  ## Breaking Changes
+
+  - Remove the following tokens from `paymentTheme` & `bankingTheme` theme of Blade:
+
+    - `colors.surface.action.icon.link.default.lowContrast`
+    - `colors.surface.action.icon.link.default.highContrast`
+    - `colors.surface.action.icon.link.hover.lowContrast`
+    - `colors.surface.action.icon.link.hover.highContrast`
+    - `colors.surface.action.icon.link.focus.lowContrast`
+    - `colors.surface.action.icon.link.focus.highContrast`
+    - `colors.surface.action.icon.link.active.lowContrast`
+    - `colors.surface.action.icon.link.active.highContrast`
+    - `colors.surface.action.icon.link.disabled.lowContrast`
+    - `colors.surface.action.icon.link.disabled.highContrast`
+
+    If you are using any of these tokens, they will no longer be available in your `theme`. Make sure you remove usage of these tokens from your codebase.
+
+  ## Fixes
+
+  1. Fix incorrect Icon colors that were supported & suggested by TypeScript
+
+## 0.7.2
+
+### Patch Changes
+
+- 9f0bb83: feat: add Dollar, ChevronUp, ChevronDown, ChevronLeft, ChevronRight, Eye, EyeOff, Close icons
+
+## 0.7.1
+
+### Patch Changes
+
+- 25a7b89: fix(blade): add contrast prop to Typography components
+
+  Add `contrast` prop to all the Typography components so that consumers can change the intent to grab the attention towards the text. The possible values for `contrast` are `high` or `low` and accordingly the color token will be used to set the color of the Typography components
+
+## 0.7.0
+
+### Minor Changes
+
+- 52efedb: fix(blade): set defaults for all typography components
+
+  Make all the props optional to have a better DX and add default values for all the important props
+
+## 0.6.0
+
+### Minor Changes
+
+- e352eef: fix(blade): add `Heading` component
+
+## 0.5.0
+
+### Minor Changes
+
+- 75882a7: feat(Blade): add `Title`component
+
+  The API for `Title` component can be found under [Typography/Text/\_decisions](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md)
+
 ## 0.4.0
 
 ### Minor Changes

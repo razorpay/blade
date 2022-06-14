@@ -1,4 +1,7 @@
 module.exports = {
+  refs: {
+    '@storybook/design-system': { disable: true },
+  },
   stories: [
     '../../docs/**/*.stories.mdx',
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
@@ -10,6 +13,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/preset-create-react-app',
     '@storybook/addon-docs',
+    '@storybook/addon-a11y',
   ],
   staticDirs: ['../../public/storybook-site'],
   webpackFinal: async (config, { configType }) => {

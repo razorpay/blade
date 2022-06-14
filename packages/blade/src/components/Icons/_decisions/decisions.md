@@ -1,6 +1,7 @@
 # Icon Decisions
 
 ## Internal Svg Components
+
 - All the icons on blade will be rendered as SVG.
 - Web will use the native `svg` elements to render the icons.
 - Native will use `react-native-svg` to render the icons.
@@ -17,13 +18,14 @@
   - Rect
   - Defs
   - ClipPath
-  
+
 <img src="./component-breakdown.png" />
 
 ## Icon Components
-- We will store all our icons within `components/Icons/*` directory and make them available to our consumers like this: 
-  ```jsx 
-  import { CreditCardIcon } from '@razorpay/blade/components'
+
+- We will store all our icons within `components/Icons/*` directory and make them available to our consumers like this:
+  ```jsx
+  import { CreditCardIcon } from '@razorpay/blade/components';
   ```
 - All icons will be built using the internal `_Svg` components
 - Each Icon component will follow the naming convention of having `Icon` as a suffix. For example, `CreditCardIcon`, `ProfileIcon`, etc.
@@ -34,7 +36,6 @@
     size='xxsmall | xsmall | small | medium | large | xlarge'
   >
   ```
-  
 - Each icon will have the same `height` & `width` which would be derived from its `size` prop. Here's what each size corresponds to
   - xxsmall: `width='10px'`, `height='10px'`
   - xsmall: `width='12px'`, `height='12px'`
