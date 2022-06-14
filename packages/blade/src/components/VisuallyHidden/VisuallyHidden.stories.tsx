@@ -19,7 +19,7 @@ const Page = (): ReactElement => {
       <StorybookTitle />
       <Subtitle>
         The VisuallyHidden component makes content hidden from sighted users but available for
-        screen reader users,
+        screen reader users.
       </Subtitle>
       <Link
         withArrow={true}
