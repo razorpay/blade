@@ -1,41 +1,65 @@
-import mapProps from './mapProps';
+import mapAccessibilityProps from './mapProps';
 
-describe('mapProps', () => {
-  it('should work', () => {
+describe('mapAccessibilityprops', () => {
+  it('should return correct accessibility attributes for flat accessibility keys', () => {
     expect(
-      mapProps({
+      mapAccessibilityProps({
         accessibilityLabel: 'hello world',
         accessibilityLabelledBy: 'id1',
         accessibilityRole: 'button',
       }),
     ).toStrictEqual({
-      'aria-labelledby': 'id1',
       'aria-label': 'hello world',
+      'aria-labelledby': 'id1',
       role: 'button',
     });
+  });
 
-    expect(mapProps({ accessibilityLiveRegion: 'polite' })).toStrictEqual({
-      'aria-live': 'polite',
-    });
-
+  it('should return correct accessibility roles', () => {
     expect(
-      mapProps({
-        accessibilityChecked: 'true',
-        accessibilitySelected: 'false',
-        accessibilityDisabled: 'true',
-        accessibilityExpanded: 'false',
-        accessibilityBusy: 'false',
+      mapAccessibilityProps({
+        accessibilityRole: 'slider',
       }),
     ).toStrictEqual({
-      'aria-checked': 'true',
-      'aria-selected': 'false',
-      'aria-disabled': 'true',
-      'aria-expanded': 'false',
-      'aria-busy': 'false',
+      role: 'slider',
     });
+  });
 
+  it('should return correct accessibility attributes for live region', () => {
+    expect(mapAccessibilityProps({ accessibilityLiveRegion: 'polite' })).toStrictEqual({
+      'aria-live': 'polite',
+    });
+  });
+
+  it('should ignore invalid roles in native', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    expect(mapAccessibilityProps({ accessibilityRole: 'invalid' })).toStrictEqual({
+      role: 'invalid',
+    });
+  });
+
+  it('should return correct attributes for accessibilityState', () => {
     expect(
-      mapProps({
+      mapAccessibilityProps({
+        accessibilityChecked: false,
+        accessibilitySelected: false,
+        accessibilityDisabled: false,
+        accessibilityExpanded: false,
+        accessibilityBusy: false,
+      }),
+    ).toStrictEqual({
+      'aria-checked': false,
+      'aria-selected': false,
+      'aria-disabled': false,
+      'aria-expanded': false,
+      'aria-busy': false,
+    });
+  });
+
+  it('should return correct attributes for accessibilityValue', () => {
+    expect(
+      mapAccessibilityProps({
         accessibilityValueMax: 10,
         accessibilityValueMin: 11,
         accessibilityValueNow: 2,
@@ -49,7 +73,7 @@ describe('mapProps', () => {
     });
 
     expect(
-      mapProps({
+      mapAccessibilityProps({
         accessibilityHidden: true,
       }),
     ).toStrictEqual({

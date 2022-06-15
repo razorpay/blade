@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import mapA11yProps from '../../utils/mapProps';
 import { CloseIcon, EyeIcon } from '../Icons';
-import { useCheckboxA11yProps } from './useCheckboxA11yProps';
+import { getCheckboxA11yProps } from './getCheckboxA11yProps';
 
 const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: boolean }> = ({
   label,
@@ -10,7 +10,7 @@ const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: bool
   disabled,
 }) => {
   const [isChecked, setChecked] = React.useState(checked);
-  const checkboxA11yProps = useCheckboxA11yProps({ isDisabled: disabled, isChecked });
+  const checkboxA11yProps = getCheckboxA11yProps({ isDisabled: disabled, isChecked });
 
   const toggleChecked = (): void => {
     if (disabled) return;
@@ -39,7 +39,7 @@ const NativeAria = (): React.ReactElement => {
 
   return (
     <>
-      <Text nativeID="id-group-label">Fruites</Text>
+      <Text nativeID="id-group-label">Fruits</Text>
       <View {...checkboxGroupA11y}>
         <View {...mapA11yProps({ accessibilityRole: 'list' })}>
           <View>

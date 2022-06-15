@@ -1,12 +1,14 @@
 /* eslint-disable guard-for-in */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   accessibilityMap,
   accessibilityStateKeys,
   accessibilityValueKeys,
-  supportedRolesInNative,
-} from './a11yMap.native';
-import type { AccessibilityMap } from './a11yMap.native';
+  supportedAccessibilityRoles,
+} from './accessibilityMap.native';
+import type { AccessibilityProps, AccessibilityMap } from './accessibilityMap.native';
+import webToAccessibilityRole from './webToNativeRole';
 
 function isAccessibilityStateProp(prop: string): boolean {
   return accessibilityStateKeys.includes(prop);
@@ -16,20 +18,20 @@ function isAccessibilityValueProp(prop: string): boolean {
   return accessibilityValueKeys.includes(prop);
 }
 
-const mapA11yProps = (props: AccessibilityMap): Record<string, unknown> => {
+const mapAccessibilityProps = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, any> = {};
 
   // loop through all the incoming props and map them
   for (const key in props) {
     const propKey = key as keyof AccessibilityMap;
     const propValue = props[propKey];
-    const a11yKey = accessibilityMap[propKey];
+    const accessibilityAttribute = accessibilityMap[propKey];
 
     // group accesibilityState prop for native
     if (isAccessibilityStateProp(propKey)) {
       newProps.accessibilityState = {
         ...newProps.accessibilityState,
-        [a11yKey]: propValue,
+        [accessibilityAttribute]: propValue,
       };
       continue;
     }
@@ -38,7 +40,7 @@ const mapA11yProps = (props: AccessibilityMap): Record<string, unknown> => {
     if (isAccessibilityValueProp(propKey)) {
       newProps.accessibilityValue = {
         ...newProps.accessibilityValue,
-        [a11yKey]: propValue,
+        [accessibilityAttribute]: propValue,
       };
       continue;
     }
@@ -55,22 +57,32 @@ const mapA11yProps = (props: AccessibilityMap): Record<string, unknown> => {
       continue;
     }
 
-    if (a11yKey) {
-      newProps[a11yKey] = propValue;
+    if (accessibilityAttribute) {
+      newProps[accessibilityAttribute] = propValue;
     } else {
-      console.warn('No mapping found for', propKey);
+      console.warn(
+        `[Blade: mapAccessibilityProps]: No mapping found for ${propKey}. Make sure you have entered valid key`,
+      );
     }
   }
 
-  // ignore unsupported roles in native
-  if (
-    newProps.accessibilityRole &&
-    !supportedRolesInNative.includes(newProps.accessibilityRole as string)
-  ) {
-    delete newProps.accessibilityRole;
+  if (newProps.accessibilityRole) {
+    // map web to native overlapping roles
+    const role = webToAccessibilityRole(newProps.accessibilityRole);
+    newProps.accessibilityRole = role;
+
+    // ignore unsupported roles
+    if (role && !supportedAccessibilityRoles.includes(role)) {
+      console.warn(
+        `[Blade: mapAccessibilityProps]: Unsupported accessibilityRole ${
+          newProps.accessibilityRole as string
+        } for native, For more info see: https://reactnative.dev/docs/accessibility#accessibilityrole`,
+      );
+      delete newProps.accessibilityRole;
+    }
   }
 
   return newProps;
 };
 
-export default mapA11yProps;
+export default mapAccessibilityProps;
