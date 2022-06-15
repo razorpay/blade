@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '../../../tokens/theme/theme.d';
 import getPlatformType from '../../../utils/getPlatformType';
+import mapAccessibilityProps from '../../../utils/mapProps';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText/BaseText';
 
@@ -24,6 +25,8 @@ const getProps = ({
     fontStyle: 'normal',
     lineHeight: '4xl',
     fontFamily: 'text',
+    accessibilityRole: mapAccessibilityProps({ accessibilityRole: 'heading' })
+      .accessibilityRole as string,
   };
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
 

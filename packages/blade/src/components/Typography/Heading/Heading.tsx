@@ -4,6 +4,7 @@ import getPlatformType from '../../../utils/getPlatformType';
 import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText';
+import mapAccessibilityProps from '../../../utils/mapProps';
 
 type HeadingVariant = 'small' | 'medium' | 'large' | 'subheading';
 
@@ -54,6 +55,8 @@ const getProps = <T extends { variant: HeadingVariant }>({
     fontStyle: 'normal',
     lineHeight: 'xl',
     fontFamily: 'text',
+    accessibilityRole: mapAccessibilityProps({ accessibilityRole: 'heading' })
+      .accessibilityRole as string,
   };
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
 
@@ -89,6 +92,7 @@ const Heading = <T extends { variant: HeadingVariant }>({
   children,
 }: HeadingProps<T>): ReactElement => {
   const props = getProps({ variant, type, weight, contrast });
+  console.log(props);
   return <BaseText {...props}>{children}</BaseText>;
 };
 

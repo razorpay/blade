@@ -1,8 +1,8 @@
 import type { AccessibilityRole } from 'react-native';
 
 // All the WAI-ARIA 1.1 role attribute values from https://www.w3.org/TR/wai-aria-1.1/#role_definitions
-type AriaRoles =
-  | AccessibilityRole
+export type AccessibilityRoles =
+  | Exclude<AccessibilityRole, 'header' | 'adjustable' | 'image' | 'none' | 'summary'>
   | 'alert'
   | 'alertdialog'
   | 'application'
@@ -72,11 +72,11 @@ type AriaRoles =
   | 'tree'
   | 'treegrid'
   | 'treeitem'
-  | (string & Record<string, unknown>);
+  | (string & Record<never, never>);
 
 export type CommonAccessibilityKeys = keyof CommonAccessibilityProps;
 export type CommonAccessibilityProps = {
-  accessibilityRole: AriaRoles;
+  accessibilityRole: AccessibilityRoles;
   /** Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application. */
   accessibilityActiveDescendant?: string;
   /** Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute. */
