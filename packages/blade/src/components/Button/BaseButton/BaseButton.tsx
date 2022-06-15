@@ -16,7 +16,7 @@ import type { ButtonMinHeight, ButtonTypography } from './buttonTokens';
 import { typography as buttonTypography } from './buttonTokens';
 
 type BaseButtonCommonProps = {
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
+  variant?: 'primary' | 'secondary' | 'tertiary';
   intent?: 'positive' | 'negative' | 'notice' | 'info' | 'neutral';
   contrast?: 'low' | 'high';
   size?: 'large' | 'medium' | 'small' | 'xsmall';
