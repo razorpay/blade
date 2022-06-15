@@ -9,6 +9,6 @@ export const getCheckboxA11yProps = ({
   return mapA11yProps({
     accessibilityDisabled: isDisabled,
     accessibilityRole: 'checkbox',
-    accessibilityChecked: isChecked ? 'true' : 'false',
+    accessibilityChecked: isChecked,
   });
 };
