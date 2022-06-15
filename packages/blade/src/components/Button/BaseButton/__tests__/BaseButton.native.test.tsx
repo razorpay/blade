@@ -111,4 +111,16 @@ describe('<BaseButton />', () => {
     fireEvent.press(button);
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+
+  it('should render secondary variant button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton variant="secondary">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render tertiary variant button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton variant="tertiary">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
 });
