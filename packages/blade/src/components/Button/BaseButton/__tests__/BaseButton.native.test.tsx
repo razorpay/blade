@@ -14,47 +14,55 @@ describe('<BaseButton />', () => {
     expect(toJSON()).toMatchSnapshot();
     expect(getByText('Pay Now')).toBeTruthy();
   });
+
   it('should throw an error when there is no icon or text passed to the button', () => {
     try {
-      // @ts-expect-error
+      // @ts-expect-error testing failure case when there is no icon or text passed
       renderWithTheme(<BaseButton />);
     } catch (error: unknown) {
       if (error instanceof Error) {
         expect(error.message).toEqual(
-          `[Blade: BaseButton]: Cannot render a BaseButton without an icon or text`,
+          `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
         );
       }
     }
   });
-  it('should render large size button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<BaseButton size="large">{buttonText}</BaseButton>);
-    expect(toJSON()).toMatchSnapshot();
-  });
-  it('should render medium size button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<BaseButton size="medium">{buttonText}</BaseButton>);
-    expect(toJSON()).toMatchSnapshot();
-  });
-  it('should render small size button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<BaseButton size="small">{buttonText}</BaseButton>);
-    expect(toJSON()).toMatchSnapshot();
-  });
+
   it('should render xsmall size button', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(<BaseButton size="xsmall">{buttonText}</BaseButton>);
     expect(toJSON()).toMatchSnapshot();
   });
+
+  it('should render small size button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton size="small">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render medium size button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton size="medium">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render large size button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton size="large">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render button with icon without text', () => {
     const { toJSON } = renderWithTheme(<BaseButton icon={CreditCardIcon} />);
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render button with icon with default iconPosition', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(<BaseButton icon={CreditCardIcon}>{buttonText}</BaseButton>);
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render button with icon with left iconPosition', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(
@@ -64,6 +72,7 @@ describe('<BaseButton />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render button with icon with right iconPosition', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(
@@ -73,11 +82,13 @@ describe('<BaseButton />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render button with full width', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(<BaseButton isFullWidth={true}>{buttonText}</BaseButton>);
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render disabled button', () => {
     const buttonText = 'Pay Now';
     const onClick = jest.fn();
@@ -91,6 +102,7 @@ describe('<BaseButton />', () => {
     expect(onClick).toHaveBeenCalledTimes(0);
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should call function on click', () => {
     const buttonText = 'Pay Now';
     const onClick = jest.fn();

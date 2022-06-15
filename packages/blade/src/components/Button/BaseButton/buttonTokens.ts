@@ -1,14 +1,22 @@
 import type { ThemeTokens } from '../../../tokens/theme/theme.d';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
+import type { Required } from '../../../_helpers/types';
+import type { BaseButtonProps } from './BaseButton';
 
 export type ButtonMinHeight = '48px' | '36px' | '32px' | '28px';
 
 export type ButtonTypography = {
   [Key in TypographyPlatforms]: {
     fonts: {
-      size: Record<string, keyof ThemeTokens['typography'][Key]['fonts']['size']>;
+      size: Record<
+        Required<BaseButtonProps['size']>,
+        keyof ThemeTokens['typography'][Key]['fonts']['size']
+      >;
     };
-    lineHeights: Record<string, keyof ThemeTokens['typography'][Key]['lineHeights']>;
+    lineHeights: Record<
+      Required<BaseButtonProps['size']>,
+      keyof ThemeTokens['typography'][Key]['lineHeights']
+    >;
   };
 };
 
@@ -45,6 +53,6 @@ const typography: ButtonTypography = {
       xsmall: 's',
     },
   },
-};
+} as const;
 
 export { typography };

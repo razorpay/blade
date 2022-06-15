@@ -83,7 +83,6 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 <div>
   <button
     class="c0"
-    color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
@@ -184,7 +183,6 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 <div>
   <button
     class="c0"
-    color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
@@ -285,7 +283,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 <div>
   <button
     class="c0"
-    color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
@@ -399,7 +396,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 <div>
   <button
     class="c0"
-    color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
@@ -513,7 +509,6 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 <div>
   <button
     class="c0"
-    color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
@@ -610,7 +605,6 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 <div>
   <button
     class="c0"
-    color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
@@ -714,7 +708,6 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 <div>
   <button
     class="c0"
-    color="hsla(216, 19%, 89%, 1)"
     disabled=""
     spacing="0px 20px"
     type="button"
@@ -816,7 +809,6 @@ exports[`<BaseButton /> should render large size button 1`] = `
 <div>
   <button
     class="c0"
-    color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
@@ -917,7 +909,6 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 <div>
   <button
     class="c0"
-    color="hsla(213, 89%, 56%, 1)"
     spacing="0px 20px"
     type="button"
   >
@@ -1018,7 +1009,6 @@ exports[`<BaseButton /> should render small size button 1`] = `
 <div>
   <button
     class="c0"
-    color="hsla(213, 89%, 56%, 1)"
     spacing="0px 12px"
     type="button"
   >
@@ -1119,7 +1109,6 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
 <div>
   <button
     class="c0"
-    color="hsla(213, 89%, 56%, 1)"
     spacing="0px 8px"
     type="button"
   >

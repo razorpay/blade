@@ -2,10 +2,10 @@ import type { CSSObject } from 'styled-components';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
 const getBaseButtonStyles = ({
-  borderColor,
+  defaultBorderColor,
   minHeight,
   spacing,
-  color,
+  defaultColor,
   disabled,
   isFullWidth,
   borderWidth,
@@ -19,8 +19,8 @@ const getBaseButtonStyles = ({
   minHeight,
   width: isFullWidth ? '100%' : 'auto',
   cursor: disabled ? 'not-allowed' : 'pointer',
-  backgroundColor: color,
-  borderColor,
+  backgroundColor: defaultColor,
+  borderColor: defaultBorderColor,
   borderWidth,
   borderRadius,
   borderStyle: 'solid',

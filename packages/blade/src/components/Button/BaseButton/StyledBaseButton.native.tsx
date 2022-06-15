@@ -5,12 +5,9 @@ import getIn from '../../../utils/getIn';
 import getBaseButtonStyles from './getBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
-const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))(
-  ({ ...props }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
-    getBaseButtonStyles({
-      ...props,
-    }),
-);
+const StyledPressable = styled(
+  Animated.createAnimatedComponent(Pressable),
+)((props: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) => getBaseButtonStyles(props));
 
 const StyledBaseButton = ({
   onClick,
@@ -19,8 +16,8 @@ const StyledBaseButton = ({
   spacing,
   isFullWidth,
   disabled,
-  color,
-  borderColor,
+  defaultColor,
+  defaultBorderColor,
   hoverColor,
   activeColor,
   focusColor,
@@ -39,11 +36,11 @@ const StyledBaseButton = ({
   const easing = getIn(theme.motion, motionEasing);
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      backgroundColor: withTiming(isPressed.value ? activeColor : color, {
+      backgroundColor: withTiming(isPressed.value ? activeColor : defaultColor, {
         duration,
         easing,
       }),
-      borderColor: withTiming(isPressed.value ? activeColor : color, {
+      borderColor: withTiming(isPressed.value ? activeColor : defaultColor, {
         duration,
         easing,
       }),
@@ -58,8 +55,8 @@ const StyledBaseButton = ({
       spacing={spacing}
       isFullWidth={isFullWidth}
       disabled={disabled}
-      color={color}
-      borderColor={borderColor}
+      defaultColor={defaultColor}
+      defaultBorderColor={defaultBorderColor}
       hoverColor={hoverColor}
       activeColor={activeColor}
       focusColor={focusColor}
