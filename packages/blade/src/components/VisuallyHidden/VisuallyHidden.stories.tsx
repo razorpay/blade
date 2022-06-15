@@ -52,15 +52,15 @@ const VisuallyHiddenStoryMeta: Meta<VisuallyHiddenProps> = {
   },
 };
 
-const VisuallyHiddenTemplate: ComponentStory<typeof VisuallyHiddenComponent> = () => {
+const VisuallyHiddenTemplate: ComponentStory<typeof VisuallyHiddenComponent> = (args) => {
   return (
     <>
       <Text>
-        This is an example for VisuallyHidden component, enable voiceover and focus on the checkbox
-        to hear it's invisible label.
+        Enable voiceover and focus on the checkbox to hear its invisible label. You should be able
+        to hear "Toggle dark mode" when focused on the checkbox.
       </Text>
       <VisuallyHiddenComponent>
-        <label htmlFor="darkmode">Toggle dark mode</label>
+        <label htmlFor="darkmode">{args.children}</label>
       </VisuallyHiddenComponent>
       <input id="darkmode" type="checkbox" />
     </>
