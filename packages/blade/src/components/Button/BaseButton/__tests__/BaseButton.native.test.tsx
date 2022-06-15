@@ -28,15 +28,9 @@ describe('<BaseButton />', () => {
     }
   });
 
-  it('should render large size button', () => {
+  it('should render xsmall size button', () => {
     const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<BaseButton size="large">{buttonText}</BaseButton>);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render medium size button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<BaseButton size="medium">{buttonText}</BaseButton>);
+    const { toJSON } = renderWithTheme(<BaseButton size="xsmall">{buttonText}</BaseButton>);
     expect(toJSON()).toMatchSnapshot();
   });
 
@@ -46,9 +40,15 @@ describe('<BaseButton />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render xsmall size button', () => {
+  it('should render medium size button', () => {
     const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<BaseButton size="xsmall">{buttonText}</BaseButton>);
+    const { toJSON } = renderWithTheme(<BaseButton size="medium">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render large size button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(<BaseButton size="large">{buttonText}</BaseButton>);
     expect(toJSON()).toMatchSnapshot();
   });
 
