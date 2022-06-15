@@ -11,4 +11,6 @@ type DotNotationColorStringToken<TokenType> = {
     : DotNotationColorStringToken<TokenType[K]>}`;
 }[keyof TokenType];
 
-export { DotNotationColorStringToken };
+type Required<T> = Exclude<T, undefined | null>;
+
+export { DotNotationColorStringToken, Required };
