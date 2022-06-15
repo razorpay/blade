@@ -40,7 +40,7 @@ const StyledBaseButton = ({
         duration,
         easing,
       }),
-      borderColor: withTiming(isPressed.value ? activeColor : defaultColor, {
+      borderColor: withTiming(isPressed.value ? activeBorderColor : defaultBorderColor, {
         duration,
         easing,
       }),
