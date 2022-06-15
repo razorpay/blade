@@ -53,6 +53,6 @@ const typography: ButtonTypography = {
       xsmall: 's',
     },
   },
-} as const;
+};
 
 export { typography };
