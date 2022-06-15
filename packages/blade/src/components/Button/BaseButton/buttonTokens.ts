@@ -47,8 +47,8 @@ const typography: ButtonTypography = {
       },
     },
     lineHeights: {
-      large: 'm', // this is 24px but we need 20px
-      medium: 'm', // this is 24px but we need 20px
+      large: 'm',
+      medium: 'm',
       small: 's',
       xsmall: 's',
     },
