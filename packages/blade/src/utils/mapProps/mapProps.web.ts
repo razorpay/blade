@@ -1,7 +1,7 @@
 import { accessibilityMap } from './accessibilityMap.web';
-import type { AccessibilityMap } from './accessibilityMap.web';
+import type { AccessibilityMap, AccessibilityProps } from './accessibilityMap.web';
 
-const mapAccessibilityProps = (props: AccessibilityMap): Record<string, unknown> => {
+const mapAccessibilityProps = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, unknown> = {};
 
   // eslint-disable-next-line guard-for-in

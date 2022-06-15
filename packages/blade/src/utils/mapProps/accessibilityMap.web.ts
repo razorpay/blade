@@ -1,3 +1,5 @@
+import type { CommonAccessibilityKeys, CommonAccessibilityProps } from './types';
+
 export const accessibilityValue = {
   accessibilityValueMax: 'aria-valuemax',
   accessibilityValueMin: 'aria-valuemin',
@@ -17,15 +19,15 @@ export const accessibilityState = {
 // importantForAccessibility
 // accessibilityElementsHidden
 // accessibilityViewIsModal
-export const accessibilityMap = {
+export const accessibilityMap: AccessibilityMap = {
   ...accessibilityState,
   ...accessibilityValue,
   accessibilityActiveDescendant: 'aria-activedescendant',
   accessibilityAtomic: 'aria-atomic',
   accessibilityAutoComplete: 'aria-autocomplete',
-  accessibilityColumnCount: 'aria-colcount',
-  accessibilityColumnIndex: 'aria-colindex',
-  accessibilityColumnSpan: 'aria-colspan',
+  accessibilityColCount: 'aria-colcount',
+  accessibilityColIndex: 'aria-colindex',
+  accessibilityColSpan: 'aria-colspan',
   accessibilityControls: 'aria-controls',
   accessibilityDescribedBy: 'aria-describedby',
   accessibilityDetails: 'aria-details',
@@ -55,8 +57,12 @@ export const accessibilityMap = {
   accessibilityRowSpan: 'aria-rowspan',
   accessibilitySetSize: 'aria-setsize',
   accessibilitySort: 'aria-sort',
+  accessibilityCurrent: 'aria-current',
+  accessibilityDropEffect: 'aria-dropeffect',
+  accessibilityGrabbed: 'aria-grabbed',
+  accessibilityLevel: 'aria-level',
+  accessibilityRelevant: 'aria-relevant',
 };
 
-export type AccessibilityMap = Partial<
-  Record<keyof typeof accessibilityMap, string | number | boolean>
->;
+export type AccessibilityMap = Record<CommonAccessibilityKeys, string>;
+export type AccessibilityProps = CommonAccessibilityProps;

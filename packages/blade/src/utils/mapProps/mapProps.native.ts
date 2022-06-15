@@ -1,4 +1,5 @@
 /* eslint-disable guard-for-in */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   accessibilityMap,
@@ -6,7 +7,8 @@ import {
   accessibilityValueKeys,
   supportedAccessibilityRoles,
 } from './accessibilityMap.native';
-import type { AccessibilityMap } from './accessibilityMap.native';
+import type { AccessibilityProps, AccessibilityMap } from './accessibilityMap.native';
+import webToAccessibilityRole from './webToNativeRole';
 
 function isAccessibilityStateProp(prop: string): boolean {
   return accessibilityStateKeys.includes(prop);
@@ -16,7 +18,7 @@ function isAccessibilityValueProp(prop: string): boolean {
   return accessibilityValueKeys.includes(prop);
 }
 
-const mapAccessibilityProps = (props: AccessibilityMap): Record<string, unknown> => {
+const mapAccessibilityProps = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, any> = {};
 
   // loop through all the incoming props and map them
@@ -52,17 +54,20 @@ const mapAccessibilityProps = (props: AccessibilityMap): Record<string, unknown>
     }
   }
 
-  // ignore unsupported roles in native
-  if (
-    newProps.accessibilityRole &&
-    !supportedAccessibilityRoles.includes(newProps.accessibilityRole as string)
-  ) {
-    console.warn(
-      `[Blade: mapAccessibilityProps]: Unsupported accessibilityRole ${
-        newProps.accessibilityRole as string
-      } for native, For more info see: https://reactnative.dev/docs/accessibility#accessibilityrole`,
-    );
-    delete newProps.accessibilityRole;
+  if (newProps.accessibilityRole) {
+    // map web to native overlapping roles
+    const role = webToAccessibilityRole(newProps.accessibilityRole);
+    newProps.accessibilityRole = role;
+
+    // ignore unsupported roles
+    if (role && !supportedAccessibilityRoles.includes(role)) {
+      console.warn(
+        `[Blade: mapAccessibilityProps]: Unsupported accessibilityRole ${
+          newProps.accessibilityRole as string
+        } for native, For more info see: https://reactnative.dev/docs/accessibility#accessibilityrole`,
+      );
+      delete newProps.accessibilityRole;
+    }
   }
 
   return newProps;

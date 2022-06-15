@@ -15,6 +15,25 @@ describe('mapAccessibilityprops', () => {
     });
   });
 
+  it('should return map correctly to native accessibility roles', () => {
+    expect(
+      mapAccessibilityProps({
+        accessibilityRole: 'slider',
+      }),
+    ).toStrictEqual({
+      accessibilityRole: 'adjustable',
+    });
+
+    // native specific roles
+    expect(
+      mapAccessibilityProps({
+        accessibilityRole: 'text',
+      }),
+    ).toStrictEqual({
+      accessibilityRole: 'text',
+    });
+  });
+
   it('should return correct accessibility attributes for live region', () => {
     expect(mapAccessibilityProps({ accessibilityLiveRegion: 'polite' })).toStrictEqual({
       accessibilityLiveRegion: 'polite',
@@ -22,6 +41,8 @@ describe('mapAccessibilityprops', () => {
   });
 
   it('should ignore invalid roles in native', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     expect(mapAccessibilityProps({ accessibilityRole: 'invalid' })).toStrictEqual({});
   });
 

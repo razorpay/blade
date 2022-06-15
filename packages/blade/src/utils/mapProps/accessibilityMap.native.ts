@@ -1,3 +1,5 @@
+import type { CommonAccessibilityProps } from './types';
+
 export const accessibilityValue = {
   accessibilityValueMax: 'max',
   accessibilityValueMin: 'min',
@@ -20,15 +22,15 @@ export const accessibilityStateKeys = Object.keys(accessibilityState);
 // importantForAccessibility
 // accessibilityElementsHidden
 // accessibilityViewIsModal
-export const accessibilityMap = {
+export const accessibilityMap: AccessibilityMap = {
   ...accessibilityState,
   ...accessibilityValue,
   accessibilityActiveDescendant: 'accessibilityActiveDescendant',
   accessibilityAtomic: 'accessibilityAtomic',
   accessibilityAutoComplete: 'accessibilityAutoComplete',
-  accessibilityColumnCount: 'accessibilityColumnCount',
-  accessibilityColumnIndex: 'accessibilityColumnIndex',
-  accessibilityColumnSpan: 'accessibilityColumnSpan',
+  accessibilityColCount: 'accessibilityColCount',
+  accessibilityColIndex: 'accessibilityColIndex',
+  accessibilityColSpan: 'accessibilityColSpan',
   accessibilityControls: 'accessibilityControls',
   accessibilityDescribedBy: 'accessibilityDescribedBy',
   accessibilityDetails: 'accessibilityDetails',
@@ -58,6 +60,11 @@ export const accessibilityMap = {
   accessibilityRowSpan: 'accessibilityRowSpan',
   accessibilitySetSize: 'accessibilitySetSize',
   accessibilitySort: 'accessibilitySort',
+  accessibilityCurrent: 'accessibilityCurrent',
+  accessibilityDropEffect: 'accessibilityDropEffect',
+  accessibilityGrabbed: 'accessibilityGrabbed',
+  accessibilityLevel: 'accessibilityLevel',
+  accessibilityRelevant: 'accessibilityRelevant',
 };
 
 export const supportedAccessibilityRoles = [
@@ -91,6 +98,5 @@ export const supportedAccessibilityRoles = [
   'toolbar',
 ];
 
-export type AccessibilityMap = Partial<
-  Record<keyof typeof accessibilityMap, string | number | boolean>
->;
+export type AccessibilityMap = Record<keyof CommonAccessibilityProps, string>;
+export type AccessibilityProps = CommonAccessibilityProps;
