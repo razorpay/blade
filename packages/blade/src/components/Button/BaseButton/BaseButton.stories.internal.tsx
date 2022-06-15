@@ -1,13 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import {
-  Title,
-  Subtitle,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-  Description,
-} from '@storybook/addon-docs';
+import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import iconMap from '../../Icons/iconMap';
 import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
@@ -46,11 +38,6 @@ export default {
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
-          <Description
-            markdown="
-             >For demonstration purposes, we have created a dropdown of icons to choose from in the `icon` prop. The `icon` prop expects the actual Icon component of type `IconComponent` to be passed. 
-             "
-          />
           <ArgsTable story={PRIMARY_STORY} />
           <Stories />
         </>

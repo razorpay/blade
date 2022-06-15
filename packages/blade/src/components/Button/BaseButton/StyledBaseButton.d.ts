@@ -4,11 +4,11 @@ import type { ButtonMinHeight } from './buttonTokens';
 export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> & {
   activeBorderColor: string;
   activeColor: string;
-  borderColor: string;
+  defaultBorderColor: string;
   minHeight: ButtonMinHeight;
   spacing: string;
   children: string;
-  color: string;
+  defaultColor: string;
   disabled: boolean;
   focusBorderColor: string;
   focusColor: string;

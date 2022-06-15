@@ -3,40 +3,7 @@ import getBaseButtonStyles from './getBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
 const StyledPressable = styled.Pressable(
-  ({
-    activeBorderColor,
-    activeColor,
-    borderColor,
-    minHeight,
-    spacing,
-    color,
-    disabled,
-    focusBorderColor,
-    focusColor,
-    focusRingColor,
-    hoverBorderColor,
-    hoverColor,
-    isFullWidth,
-    borderWidth,
-    borderRadius,
-  }: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) =>
-    getBaseButtonStyles({
-      activeBorderColor,
-      activeColor,
-      borderColor,
-      minHeight,
-      spacing,
-      color,
-      disabled,
-      focusBorderColor,
-      focusColor,
-      focusRingColor,
-      hoverBorderColor,
-      hoverColor,
-      isFullWidth,
-      borderWidth,
-      borderRadius,
-    }),
+  (props: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) => getBaseButtonStyles(props),
 );
 
 const StyledBaseButton = ({
@@ -46,8 +13,8 @@ const StyledBaseButton = ({
   spacing,
   isFullWidth,
   disabled,
-  color,
-  borderColor,
+  defaultColor,
+  defaultBorderColor,
   hoverColor,
   activeColor,
   focusColor,
@@ -62,15 +29,15 @@ const StyledBaseButton = ({
     <StyledPressable
       onPress={onClick}
       style={({ pressed }): { backgroundColor: string; borderColor: string } => ({
-        backgroundColor: pressed ? activeColor : color,
-        borderColor: pressed ? activeColor : color,
+        backgroundColor: pressed ? activeColor : defaultColor,
+        borderColor: pressed ? activeColor : defaultColor,
       })}
       minHeight={minHeight}
       spacing={spacing}
       isFullWidth={isFullWidth}
       disabled={disabled}
-      color={color}
-      borderColor={borderColor}
+      defaultColor={defaultColor}
+      defaultBorderColor={defaultBorderColor}
       hoverColor={hoverColor}
       activeColor={activeColor}
       focusColor={focusColor}

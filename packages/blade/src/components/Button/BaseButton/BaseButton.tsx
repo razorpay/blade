@@ -11,9 +11,7 @@ import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import makeBorderSize from '../../../utils/makeBorderSize';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonMinHeight, ButtonTypography } from './buttonTokens';
-import { typography } from './buttonTokens';
-
-export type BaseButtonIcon = undefined | null | IconComponent;
+import { typography as buttonTypography } from './buttonTokens';
 
 type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
@@ -39,13 +37,12 @@ type BaseButtonWithIconProps = BaseButtonCommonProps & {
 
 export type BaseButtonProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
 
-const StyledBaseText = styled(BaseText)(
+const ButtonText = styled(BaseText)(
   ({
     hasIcon,
     iconPosition,
     iconSpacing,
-  }: BaseTextProps &
-    Pick<BaseButtonProps, 'iconPosition'> & { hasIcon: boolean; iconSpacing: string }) => ({
+  }: Pick<BaseButtonProps, 'iconPosition'> & { hasIcon: boolean; iconSpacing: string }) => ({
     paddingLeft: hasIcon && iconPosition === 'left' ? iconSpacing : '0px',
     paddingRight: hasIcon && iconPosition === 'right' ? iconSpacing : '0px',
   }),
@@ -61,8 +58,8 @@ type BaseButtonStyleProps = {
   textColor: BaseTextProps['color'];
   spacing: string;
   text?: string;
-  color: string;
-  borderColor: string;
+  defaultColor: string;
+  defaultBorderColor: string;
   hoverColor: string;
   hoverBorderColor: string;
   activeColor: string;
@@ -97,8 +94,8 @@ const getProps = ({
     textColor: 'action.text.primary.default',
     spacing: `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`,
     text: children?.trim(),
-    color: getIn(theme.colors, 'action.background.primary.default'),
-    borderColor: getIn(theme.colors, 'action.border.primary.default'),
+    defaultColor: getIn(theme.colors, 'action.background.primary.default'),
+    defaultBorderColor: getIn(theme.colors, 'action.border.primary.default'),
     hoverColor: getIn(theme.colors, 'action.background.primary.hover'),
     hoverBorderColor: getIn(theme.colors, 'action.border.primary.hover'),
     activeColor: getIn(theme.colors, 'action.background.primary.active'),
@@ -152,8 +149,8 @@ const getProps = ({
     const disabledBorderColor = getIn(theme.colors, 'action.border.primary.disabled');
     props.iconColor = 'action.icon.primary.disabled';
     props.textColor = 'action.text.primary.disabled';
-    props.color = disabledColor;
-    props.borderColor = disabledBorderColor;
+    props.defaultColor = disabledColor;
+    props.defaultBorderColor = disabledBorderColor;
     props.hoverColor = disabledColor;
     props.hoverBorderColor = disabledBorderColor;
     props.activeColor = disabledColor;
@@ -179,15 +176,17 @@ const BaseButton = ({
   children,
 }: BaseButtonProps): ReactElement => {
   const { theme, platform } = useTheme();
-  const buttonTypographyTokens = typography[platform];
+  const buttonTypographyTokens = buttonTypography[platform];
   if (!Icon && !children?.trim()) {
-    throw new Error(`[Blade: BaseButton]: Cannot render a BaseButton without an icon or text`);
+    throw new Error(
+      `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
+    );
   }
   const {
     activeBorderColor,
     activeColor,
-    borderColor,
-    color,
+    defaultBorderColor,
+    defaultColor,
     minHeight,
     spacing,
     focusBorderColor,
@@ -220,10 +219,10 @@ const BaseButton = ({
     <StyledBaseButton
       activeBorderColor={activeBorderColor}
       activeColor={activeColor}
-      borderColor={borderColor}
+      defaultBorderColor={defaultBorderColor}
       minHeight={minHeight}
       spacing={spacing}
-      color={color}
+      defaultColor={defaultColor}
       disabled={isDisabled}
       focusBorderColor={focusBorderColor}
       focusColor={focusColor}
@@ -238,7 +237,7 @@ const BaseButton = ({
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
       {text && (
-        <StyledBaseText
+        <ButtonText
           lineHeight={lineHeight}
           fontSize={fontSize}
           fontWeight="bold"
@@ -249,7 +248,7 @@ const BaseButton = ({
           iconSpacing={iconSpacing}
         >
           {text}
-        </StyledBaseText>
+        </ButtonText>
       )}
       {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
     </StyledBaseButton>
