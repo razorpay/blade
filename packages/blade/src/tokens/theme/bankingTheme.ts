@@ -55,6 +55,32 @@ const colors: ColorsWithModes = {
           highContrast: globalColors.neutral.navyGrayLight[700],
         },
       },
+      // action: {
+      //   icon: {
+      //     link: {
+      //       default: {
+      //         lowContrast: globalColors.neutral.navyGrayLight[500],
+      //         highContrast: globalColors.neutral.navyGrayLight[300],
+      //       },
+      //       hover: {
+      //         lowContrast: globalColors.neutral.navyGrayLight[800],
+      //         highContrast: globalColors.neutral.navyGrayLight[0],
+      //       },
+      //       focus: {
+      //         lowContrast: globalColors.neutral.navyGrayLight[800],
+      //         highContrast: globalColors.neutral.navyGrayLight[0],
+      //       },
+      //       active: {
+      //         lowContrast: globalColors.neutral.navyGrayLight[800],
+      //         highContrast: globalColors.neutral.navyGrayLight[0],
+      //       },
+      //       disabled: {
+      //         lowContrast: globalColors.neutral.navyGrayLight[300],
+      //         highContrast: globalColors.neutral.navyGrayLight.a200,
+      //       },
+      //     },
+      //   },
+      // },
     },
     overlay: { background: globalColors.neutral.navyGrayLight.a200 },
     brand: {
