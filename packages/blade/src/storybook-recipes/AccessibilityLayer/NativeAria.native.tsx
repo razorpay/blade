@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import mapA11yProps from '../../utils/mapProps';
-import { CloseIcon, EyeIcon } from '../Icons';
+import { CloseIcon, EyeIcon } from '../../components/Icons';
 import { getCheckboxA11yProps } from './getCheckboxA11yProps';
 
 const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: boolean }> = ({
