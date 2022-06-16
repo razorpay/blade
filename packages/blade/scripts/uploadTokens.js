@@ -27,7 +27,7 @@ const uploadColorTokens = async () => {
         colorRegex,
         `const colors: ColorsWithModes = ${updatedPaymentThemeColors};`,
       );
-      console.log({ updatedPaymentTheme });
+
       fs.writeFileSync(paymentThemePath, updatedPaymentTheme);
     }
 
@@ -57,7 +57,7 @@ const uploadColorTokens = async () => {
     execa.commandSync(`git config user.name ${GITHUB_BOT_USERNAME}`);
 
     // 7. Commit all changes
-    execa.commandSync('yarn prettier --write src/tokens/theme/*.ts');
+    // execa.commandSync('yarn prettier --write src/tokens/theme/*.ts');
     execa.commandSync('git status');
     execa.commandSync('git add -A');
     execa.commandSync(`git commit -m feat(tokens):\\ add\\ new\\ tokens`, {

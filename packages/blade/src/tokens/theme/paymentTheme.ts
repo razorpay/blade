@@ -6,11 +6,7 @@ import typography from '../global/typography';
 import motion from '../global/motion';
 import type { ThemeTokens, ColorsWithModes, Shadows } from './theme.d';
 
-const colors: ColorsWithModes = {
-  onLight: {
-    surface: { background: { level1: { lowContrast: globalColors.neutral.blueGrayLight[100] } } },
-  },
-};
+const colors: ColorsWithModes = {onLight:{surface:{background:{level1:{lowContrast:globalColors.neutral.blueGrayLight[100]}}}}};
 
 const shadows: Shadows = {
   offsetX: {
