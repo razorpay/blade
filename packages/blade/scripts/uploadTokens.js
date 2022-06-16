@@ -11,7 +11,7 @@ const uploadColorTokens = async () => {
     // 1. read the tokens object
     const tokens = JSON.parse(process.argv[2]);
 
-    const colorRegex = /const colors: Colors = {(.|\n)+?};/gm;
+    const colorRegex = /const colors: ColorsWithModes = {(.|\n)+?};/gm;
 
     if (tokens.paymentThemeColors) {
       // 2. read the paymentTheme File
@@ -25,7 +25,7 @@ const uploadColorTokens = async () => {
       );
       const updatedPaymentTheme = paymentTheme.replace(
         colorRegex,
-        `const colors: Colors = ${updatedPaymentThemeColors};`,
+        `const colors: ColorsWithModes = ${updatedPaymentThemeColors};`,
       );
       fs.writeFileSync(paymentThemePath, updatedPaymentTheme);
     }
@@ -42,7 +42,7 @@ const uploadColorTokens = async () => {
       );
       const updatedBankingTheme = bankingTheme.replace(
         colorRegex,
-        `const colors: Colors = ${updatedBankingThemeColors};`,
+        `const colors: ColorsWithModes = ${updatedBankingThemeColors};`,
       );
       fs.writeFileSync(bankingThemePath, updatedBankingTheme);
     }
