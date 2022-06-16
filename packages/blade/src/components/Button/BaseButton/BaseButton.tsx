@@ -17,7 +17,7 @@ import { typography as buttonTypography } from './buttonTokens';
 
 type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
-  intent?: 'positive' | 'negative' | 'notice' | 'info' | 'neutral';
+  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
   contrast?: 'low' | 'high';
   size?: 'large' | 'medium' | 'small' | 'xsmall';
   iconPosition?: 'left' | 'right';
@@ -82,6 +82,8 @@ const getProps = ({
   size,
   theme,
   variant,
+  intent,
+  contrast,
 }: {
   buttonTypographyTokens: ButtonTypography[TypographyPlatforms];
   children?: string;
@@ -89,6 +91,8 @@ const getProps = ({
   theme: Theme;
   size: Required<BaseButtonCommonProps['size']>;
   variant: Required<BaseButtonCommonProps['variant']>;
+  intent: BaseButtonCommonProps['intent'];
+  contrast: Required<BaseButtonCommonProps['contrast']>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
     iconSize: 'medium',
@@ -96,25 +100,68 @@ const getProps = ({
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: '36px',
     iconSpacing: makeSpace(theme.spacing[2]),
-    iconColor: `action.icon.${variant}.default`,
-    textColor: `action.text.${variant}.default`,
+    iconColor: intent
+      ? `feedback.icon.${intent}.${contrast}Contrast`
+      : `action.icon.${variant}.default`,
+    textColor: intent
+      ? `feedback.text.${intent}.${contrast}Contrast`
+      : `action.text.${variant}.default`,
     spacing: `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`,
     text: children?.trim(),
-    defaultColor: getIn(theme.colors, `action.background.${variant}.default`),
-    defaultBorderColor: getIn(theme.colors, `action.border.${variant}.default`),
-    hoverColor: getIn(theme.colors, `action.background.${variant}.hover`),
-    hoverBorderColor: getIn(theme.colors, `action.border.${variant}.hover`),
-    activeColor: getIn(theme.colors, `action.background.${variant}.active`),
-    activeBorderColor: getIn(theme.colors, `action.border.${variant}.active`),
-    focusColor: getIn(theme.colors, `action.background.${variant}.focus`),
-    focusBorderColor: getIn(theme.colors, `action.border.${variant}.focus`),
+    defaultColor: getIn(
+      theme.colors,
+      intent
+        ? `feedback.${intent}.action.background.primary.default.${contrast}Contrast`
+        : `action.background.${variant}.default`,
+    ),
+    defaultBorderColor: getIn(
+      theme.colors,
+      intent
+        ? `feedback.${intent}.action.border.primary.default.${contrast}Contrast`
+        : `action.border.${variant}.default`,
+    ),
+    hoverColor: getIn(
+      theme.colors,
+      intent
+        ? `feedback.${intent}.action.background.primary.hover.${contrast}Contrast`
+        : `action.background.${variant}.hover`,
+    ),
+    hoverBorderColor: getIn(
+      theme.colors,
+      intent
+        ? `feedback.${intent}.action.border.primary.hover.${contrast}Contrast`
+        : `action.border.${variant}.hover`,
+    ),
+    activeColor: getIn(
+      theme.colors,
+      intent
+        ? `feedback.${intent}.action.background.primary.active.${contrast}Contrast`
+        : `action.background.${variant}.active`,
+    ),
+    activeBorderColor: getIn(
+      theme.colors,
+      intent
+        ? `feedback.${intent}.action.border.primary.active.${contrast}Contrast`
+        : `action.border.${variant}.active`,
+    ),
+    focusColor: getIn(
+      theme.colors,
+      intent
+        ? `feedback.${intent}.action.background.primary.focus.${contrast}Contrast`
+        : `action.background.${variant}.focus`,
+    ),
+    focusBorderColor: getIn(
+      theme.colors,
+      intent
+        ? `feedback.${intent}.action.border.primary.focus.${contrast}Contrast`
+        : `action.border.${variant}.focus`,
+    ),
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderRadius: makeBorderSize(theme.border.radius.small),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard.effective',
   };
-
   switch (size) {
     case 'xsmall':
       props.iconSize = 'xsmall';
@@ -145,10 +192,24 @@ const getProps = ({
   }
 
   if (isDisabled) {
-    const disabledColor = getIn(theme.colors, `action.background.${variant}.disabled`);
-    const disabledBorderColor = getIn(theme.colors, `action.border.${variant}.disabled`);
-    props.iconColor = `action.icon.${variant}.disabled`;
-    props.textColor = `action.text.${variant}.disabled`;
+    const disabledColor = getIn(
+      theme.colors,
+      intent
+        ? `feedback.${intent}.action.background.primary.disabled.${contrast}Contrast`
+        : `action.background.${variant}.disabled`,
+    );
+    const disabledBorderColor = getIn(
+      theme.colors,
+      intent
+        ? `feedback.${intent}.action.border.primary.disabled.${contrast}Contrast`
+        : `action.border.${variant}.disabled`,
+    );
+    props.iconColor = intent
+      ? `feedback.${intent}.action.icon.primary.disabled.${contrast}Contrast`
+      : `action.icon.${variant}.disabled`;
+    props.textColor = intent
+      ? `feedback.${intent}.action.text.primary.disabled.${contrast}Contrast`
+      : `action.text.${variant}.disabled`;
     props.defaultColor = disabledColor;
     props.defaultBorderColor = disabledBorderColor;
     props.hoverColor = disabledColor;
@@ -212,11 +273,10 @@ const BaseButton = ({
     size,
     variant,
     theme,
-  });
-  console.log('unused props', {
     intent,
     contrast,
   });
+
   return (
     <StyledBaseButton
       activeBorderColor={activeBorderColor}
