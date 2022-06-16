@@ -2030,28 +2030,6 @@ const colors: ColorsWithModes = {
           active: globalColors.chromatic.azure[500],
           disabled: globalColors.neutral.navyGrayDark[400],
         },
-        surfaceAction: {
-          default: {
-            lowContrast: globalColors.neutral.navyGrayDark[400],
-            highContrast: globalColors.neutral.navyGrayDark[100],
-          },
-          hover: {
-            lowContrast: globalColors.neutral.navyGrayDark[200],
-            highContrast: globalColors.neutral.navyGrayDark[0],
-          },
-          focus: {
-            lowContrast: globalColors.neutral.navyGrayDark[200],
-            highContrast: globalColors.neutral.navyGrayDark[0],
-          },
-          active: {
-            lowContrast: globalColors.neutral.navyGrayDark[200],
-            highContrast: globalColors.neutral.navyGrayDark[0],
-          },
-          disabled: {
-            lowContrast: globalColors.neutral.navyGrayDark[600],
-            highContrast: globalColors.neutral.navyGrayDark.a200,
-          },
-        },
       },
     },
   },
