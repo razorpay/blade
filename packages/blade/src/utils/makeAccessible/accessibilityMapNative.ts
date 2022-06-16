@@ -1,4 +1,4 @@
-import type { CommonAccessibilityProps } from './types';
+import type { AccessibilityMap } from './makeAccessible.d';
 
 export const accessibilityValue = {
   accessibilityValueMax: 'max',
@@ -97,6 +97,3 @@ export const supportedAccessibilityRoles = [
   'togglebutton',
   'toolbar',
 ];
-
-export type AccessibilityMap = Record<keyof CommonAccessibilityProps, string>;
-export type AccessibilityProps = CommonAccessibilityProps;

@@ -1,4 +1,5 @@
 import type { AccessibilityRole } from 'react-native';
+export { default } from './makeAccessible.web';
 
 // All the WAI-ARIA 1.1 role attribute values from https://www.w3.org/TR/wai-aria-1.1/#role_definitions
 type AriaRoles =
@@ -74,7 +75,10 @@ type AriaRoles =
   | 'treeitem'
   | (string & Record<string, unknown>);
 
+export type AccessibilityProps = CommonAccessibilityProps;
 export type CommonAccessibilityKeys = keyof CommonAccessibilityProps;
+export type AccessibilityMap = Record<CommonAccessibilityKeys, string>;
+
 export type CommonAccessibilityProps = {
   accessibilityRole: AriaRoles;
   /** Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application. */

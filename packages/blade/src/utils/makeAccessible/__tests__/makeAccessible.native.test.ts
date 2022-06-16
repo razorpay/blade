@@ -1,4 +1,4 @@
-import mapAccessibilityProps from '../mapA11yProps';
+import mapAccessibilityProps from '../makeAccessible';
 
 describe('mapAccessibilityprops', () => {
   it('should return correct accessibility attributes for flat accessibility keys', () => {

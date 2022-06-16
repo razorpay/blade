@@ -1,4 +1,4 @@
-import type { CommonAccessibilityKeys, CommonAccessibilityProps } from './types';
+import type { AccessibilityMap } from './makeAccessible.d';
 
 export const accessibilityValue = {
   accessibilityValueMax: 'aria-valuemax',
@@ -63,6 +63,3 @@ export const accessibilityMap: AccessibilityMap = {
   accessibilityLevel: 'aria-level',
   accessibilityRelevant: 'aria-relevant',
 };
-
-export type AccessibilityMap = Record<CommonAccessibilityKeys, string>;
-export type AccessibilityProps = CommonAccessibilityProps;

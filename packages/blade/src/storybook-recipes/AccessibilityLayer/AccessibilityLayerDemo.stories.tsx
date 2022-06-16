@@ -1,5 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import NativeAria from './NativeAria';
+import NativeAria from './AccessibilityLayer';
 
 export default {
   title: 'Recipes/AccessibilityLayerDemo',

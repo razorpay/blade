@@ -6,8 +6,8 @@ import {
   accessibilityStateKeys,
   accessibilityValueKeys,
   supportedAccessibilityRoles,
-} from './accessibilityMap.native';
-import type { AccessibilityProps, AccessibilityMap } from './accessibilityMap.native';
+} from './accessibilityMapNative';
+import type { AccessibilityMap, AccessibilityProps } from './makeAccessible.d';
 import webToAccessibilityRole from './webToNativeRole';
 
 function isAccessibilityStateProp(prop: string): boolean {
@@ -18,7 +18,7 @@ function isAccessibilityValueProp(prop: string): boolean {
   return accessibilityValueKeys.includes(prop);
 }
 
-const mapAccessibilityProps = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
+const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, any> = {};
 
   // loop through all the incoming props and map them
@@ -49,7 +49,7 @@ const mapAccessibilityProps = (props: Partial<AccessibilityProps>): Record<strin
       newProps[accessibilityAttribute] = propValue;
     } else {
       console.warn(
-        `[Blade: mapAccessibilityProps]: No mapping found for ${propKey}. Make sure you have entered valid key`,
+        `[Blade: makeAccessible]: No mapping found for ${propKey}. Make sure you have entered valid key`,
       );
     }
   }
@@ -62,7 +62,7 @@ const mapAccessibilityProps = (props: Partial<AccessibilityProps>): Record<strin
     // ignore unsupported roles
     if (role && !supportedAccessibilityRoles.includes(role)) {
       console.warn(
-        `[Blade: mapAccessibilityProps]: Unsupported accessibilityRole ${
+        `[Blade: makeAccessible]: Unsupported accessibilityRole ${
           newProps.accessibilityRole as string
         } for native, For more info see: https://reactnative.dev/docs/accessibility#accessibilityrole`,
       );
@@ -73,4 +73,4 @@ const mapAccessibilityProps = (props: Partial<AccessibilityProps>): Record<strin
   return newProps;
 };
 
-export default mapAccessibilityProps;
+export default makeAccessible;
