@@ -943,7 +943,7 @@ Automated accessibility tools only [pick up around 40% of errors automatically](
   - Semantic HTML [best practices](#best-practices-to-using-semantic-html)
   - Dynamic content [best practices](#best-practices-for-dynamic-contents)
   - Design [best practices](#best-practices-when-using-color-styles-and-making-them-accessible)
-- [x] Implement [automated testing tools](#tools--infrastructure) which discussed
+- [x] Implement [automated testing tools](#tools--infrastructure) which we discussed
 - [ ] Do manual testing for [keyboard accesibility](#keyboard-accessibility), [focus management & screen readers.](#tools--infrastructure) 
 
 # Adoption strategy
