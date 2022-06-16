@@ -13,6 +13,8 @@ export type ShadowLevels = 1 | 2 | 3 | 4 | 5;
 
 export type TextTypes = 'muted' | 'normal' | 'placeholder' | 'subdued' | 'subtle';
 
+export type ColorContrastTypes = 'low' | 'high';
+
 export type Shadows = {
   offsetX: {
     level: Record<ShadowLevels, number>;
@@ -37,23 +39,45 @@ export type Shadows = {
 export type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
 export type ColorContrast = {
-  highContrast: string;
-  lowContrast: string;
+  [K in ColorContrastTypes as `${Extract<K, string>}Contrast`]: string;
 };
 
 export type ActionStates = {
-  default: ColorContrast | string;
-  hover: ColorContrast | string;
-  focus: ColorContrast | string;
-  active: ColorContrast | string;
-  disabled: ColorContrast | string;
+  default: string;
+  hover: string;
+  focus: string;
+  active: string;
+  disabled: string;
 };
+
+export type ActionStatesWithContrast = {
+  default: ColorContrast;
+  hover: ColorContrast;
+  focus: ColorContrast;
+  active: ColorContrast;
+  disabled: ColorContrast;
+};
+
+// export type ActionStates = {
+//   default: ColorContrast;
+//   hover: ColorContrast;
+//   focus: ColorContrast;
+//   active: ColorContrast;
+//   disabled: ColorContrast;
+// };
 
 export type ActionVariants = {
   primary: ActionStates;
   secondary: ActionStates;
   tertiary: ActionStates;
   link: ActionStates;
+};
+
+export type ActionVariantsWithContrast = {
+  primary: ActionStatesWithContrast;
+  secondary: ActionStatesWithContrast;
+  tertiary: ActionStatesWithContrast;
+  link: ActionStatesWithContrast;
 };
 
 // export type ActionProperties = {
@@ -64,17 +88,17 @@ export type ActionVariants = {
 // };
 
 export type FeedbackActions = {
-  background: Pick<ActionVariants, 'primary'>;
-  border: Pick<ActionVariants, 'primary'>;
-  text: Pick<ActionVariants, 'link' | 'primary'>;
-  icon: Pick<ActionVariants, 'link' | 'primary'>;
+  background: Pick<ActionVariantsWithContrast, 'primary'>;
+  border: Pick<ActionVariantsWithContrast, 'primary'>;
+  text: Pick<ActionVariantsWithContrast, 'link' | 'primary'>;
+  icon: Pick<ActionVariantsWithContrast, 'link' | 'primary'>;
 };
 
 export type Colors = {
   brand: {
     primary: Record<300 | 400 | 500 | 600 | 700, string>;
     secondary: Record<500, string>;
-    gray: Record<300 | 400 | 500 | 600 | 700, string>;
+    gray: Record<200, 300 | 400 | 500 | 600 | 700, string>;
   };
   feedback: {
     background: Record<Feedback, ColorContrast>;
@@ -101,9 +125,9 @@ export type Colors = {
     background: Record<'level1' | 'level2' | 'level3', ColorContrast>;
     border: Record<'normal' | 'subtle', ColorContrast>;
     text: Record<TextTypes, ColorContrast>;
-    action: {
-      icon: Pick<ActionVariants, 'link'>;
-    };
+    // action: {
+    //   icon: Pick<ActionStates, 'link'>;
+    // };
   };
   overlay: Record<'background', string>;
   action: {

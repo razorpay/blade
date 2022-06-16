@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade",
-  "version": "0.4.0",
+  "version": "0.8.0",
   "license": "MIT",
   "engines": {
     "node": ">=14.19.0"
@@ -69,6 +69,7 @@
     "@rollup/plugin-babel": "5.3.0",
     "@rollup/plugin-commonjs": "21.0.1",
     "@rollup/plugin-node-resolve": "13.1.1",
+    "@storybook/addon-a11y": "6.3.0",
     "@storybook/addon-actions": "6.3.0",
     "@storybook/addon-controls": "6.3",
     "@storybook/addon-docs": "6.3.0",
@@ -78,6 +79,7 @@
     "@storybook/addon-ondevice-backgrounds": "6.0.1-alpha.7",
     "@storybook/addon-ondevice-controls": "6.0.1-alpha.7",
     "@storybook/addon-ondevice-notes": "6.0.1-alpha.7",
+    "@storybook/design-system": "7.3.4",
     "@storybook/node-logger": "6.3.0",
     "@storybook/preset-create-react-app": "3.2.0",
     "@storybook/react": "6.3.0",
@@ -107,6 +109,7 @@
     "jest": "26.6.3",
     "jest-matchmedia-mock": "1.1.0",
     "jest-useragent-mock": "0.1.1",
+    "jest-styled-components": "7.0.8",
     "lodash": "4.17.21",
     "metro-react-native-babel-preset": "0.66.2",
     "moniker": "0.1.2",
@@ -114,8 +117,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.66.4",
-    "react-native-svg": "12.3.0",
     "react-native-reanimated": "2.6.0",
+    "react-native-svg": "12.3.0",
     "react-scripts": "4.0.3",
     "react-test-renderer": "17.0.2",
     "rollup": "2.61.1",
@@ -128,8 +131,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-native": "^0.66.4",
-    "react-native-svg": "^12.3.0",
     "react-native-reanimated": "^2.6.0",
+    "react-native-svg": "^12.3.0",
     "styled-components": "^5"
   },
   "resolutions": {

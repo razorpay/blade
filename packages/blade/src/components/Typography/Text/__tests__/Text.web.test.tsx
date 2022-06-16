@@ -6,6 +6,22 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 describe('<Text />', () => {
+  it('should render Text with default properties', () => {
+    const displayText = 'Displaying some text';
+    const { container } = renderWithTheme(<Text>{displayText}</Text>);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render Text with variant "body" and contrast "high"', () => {
+    const displayText = 'Displaying some text';
+    const { container } = renderWithTheme(
+      <Text type="normal" variant="body" weight="bold" truncateAfterLines={3} contrast="high">
+        {displayText}
+      </Text>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render Text with variant "body"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(

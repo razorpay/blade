@@ -1,25 +1,28 @@
 import type { ReactElement } from 'react';
 import styled from 'styled-components';
-import type { TextTypes } from '../../../tokens/theme/theme';
+import type { ColorContrast, ColorContrastTypes, TextTypes } from '../../../tokens/theme/theme.d';
 import getPlatformType from '../../../utils/getPlatformType';
 import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText/BaseText';
 
 type TextCommonProps = {
-  type: TextTypes;
+  type?: TextTypes;
+  contrast?: ColorContrastTypes;
   truncateAfterLines?: number;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
+type TextVariant = 'body' | 'caption';
+
 type TextBodyVariant = TextCommonProps & {
-  variant: 'body';
-  weight: keyof Theme['typography']['fonts']['weight'];
+  variant?: Extract<TextVariant, 'body'>;
+  weight?: keyof Theme['typography']['fonts']['weight'];
 };
 
 type TextCaptionVariant = TextCommonProps & {
-  variant: 'caption';
-  weight: keyof Pick<Theme['typography']['fonts']['weight'], 'regular'>;
+  variant?: Extract<TextVariant, 'caption'>;
+  weight?: keyof Pick<Theme['typography']['fonts']['weight'], 'regular'>;
 };
 
 /**
@@ -40,20 +43,28 @@ type TextForwardedAs = {
   forwardedAs?: BaseTextProps['as'];
 };
 
-const getProps = <T extends { variant: 'body' | 'caption' }>({
+const getProps = <T extends { variant: TextVariant }>({
   variant,
   type,
   weight,
-}: Pick<TextProps<T>, 'type' | 'variant' | 'weight'>): BaseTextProps & TextForwardedAs => {
-  const props: BaseTextProps & TextForwardedAs = {
-    color: `surface.text.${type}.lowContrast`,
-    fontSize: 25,
-    fontWeight: weight,
+  contrast,
+}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'contrast'>): Omit<
+  BaseTextProps,
+  'children'
+> &
+  TextForwardedAs => {
+  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
+  const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
+  const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
+    color: `surface.text.${type ?? 'normal'}.${colorContrast}`,
+    fontSize: 100,
+    fontWeight: weight ?? 'regular',
     fontStyle: 'normal',
-    lineHeight: 's',
+    lineHeight: 'l',
     fontFamily: 'text',
-    forwardedAs: getPlatformType() !== 'react-native' ? 'p' : undefined,
+    forwardedAs: isPlatformWeb ? 'p' : undefined,
   };
+
   if (variant === 'body') {
     props.fontSize = 100;
     props.fontStyle = 'normal';
@@ -88,16 +99,17 @@ const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
   return {};
 });
 
-const Text = <T extends { variant: 'body' | 'caption' }>({
-  variant,
-  weight,
-  type,
+const Text = <T extends { variant: TextVariant }>({
+  variant = 'body',
+  weight = 'regular',
+  type = 'normal',
+  contrast = 'low',
   truncateAfterLines,
   children,
 }: TextProps<T>): ReactElement => {
-  const props: BaseTextProps & TextForwardedAs = {
+  const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
-    ...getProps({ variant, type, weight }),
+    ...getProps({ variant, type, weight, contrast }),
   };
   return <StyledText {...props}>{children}</StyledText>;
 };
