@@ -12,7 +12,7 @@ const uploadColorTokens = async () => {
     const tokens = JSON.parse(process.argv[2]);
 
     const colorRegex = /const colors: ColorsWithModes = {(.|\n)+?};/gm;
-
+    console.log('####ehre', tokens.paymentThemeColors);
     if (tokens.paymentThemeColors) {
       // 2. read the paymentTheme File
       const paymentThemePath = path.resolve(__dirname, '../src/tokens/theme/paymentTheme.ts');
