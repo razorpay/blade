@@ -33,15 +33,15 @@ const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: bool
 
 const NativeAria = (): React.ReactElement => {
   const checkboxGroupA11y = makeAccessible({
-    accessibilityRole: 'group',
-    accessibilityLabelledBy: 'id-group-label',
+    role: 'group',
+    labelledBy: 'id-group-label',
   });
 
   return (
     <>
       <Text nativeID="id-group-label">Fruits</Text>
       <View {...checkboxGroupA11y}>
-        <View {...makeAccessible({ accessibilityRole: 'list' })}>
+        <View {...makeAccessible({ role: 'list' })}>
           <View>
             <CheckboxItem checked label="Mango" />
           </View>

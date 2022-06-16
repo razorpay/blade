@@ -38,8 +38,8 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
 
 const NativeAria = (): React.ReactElement => {
   const checkboxGroupA11y = makeAccessible({
-    accessibilityRole: 'group',
-    accessibilityLabelledBy: 'id-group-label',
+    role: 'group',
+    labelledBy: 'id-group-label',
   });
 
   return (

@@ -7,8 +7,8 @@ export const getCheckboxA11yProps = ({
   isChecked,
 }: CheckboxA11yProps): Record<string, unknown> => {
   return makeAccessible({
-    accessibilityDisabled: isDisabled,
-    accessibilityRole: 'checkbox',
-    accessibilityChecked: isChecked,
+    disabled: isDisabled,
+    role: 'checkbox',
+    checked: isChecked,
   });
 };
