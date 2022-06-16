@@ -1,7 +1,7 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
-import testId from '../../utils/testId';
+import testID from '../../utils/testId';
 import BaseText from '../Typography/BaseText';
 
 const fallbackId = 'blade-skip-nav';
@@ -59,7 +59,7 @@ type SkipNavContentProps = {
 };
 
 const SkipNavContent = ({ id = fallbackId }: SkipNavContentProps): JSX.Element => {
-  return <div tabIndex={-1} id={id} style={{ outline: 0 }} {...testId('skipnav-content')} />;
+  return <div tabIndex={-1} id={id} style={{ outline: 0 }} {...testID('skipnav-content')} />;
 };
 
 export { SkipNavLink, SkipNavContent };

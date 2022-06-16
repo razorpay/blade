@@ -21,12 +21,7 @@
     "lint": "eslint --ext js,jsx,ts,tsx packages",
     "release": "changeset publish",
     "preinstall": "git config --global url.\"https://github.com/\".insteadOf git://github.com/",
-    "build": "lerna run --scope @razorpay/blade build",
-    "test:web": "yarn workspace @razorpay/blade test:react",
-    "test:native": "yarn workspace @razorpay/blade test:react-native",
-    "start:web": "yarn workspace @razorpay/blade react:storybook",
-    "start:ios": "yarn workspace @razorpay/blade react-native:storybook:ios",
-    "start:android": "yarn workspace @razorpay/blade react-native:storybook:android"
+    "build": "lerna run --scope @razorpay/blade build"
   },
   "dependencies": {},
   "devDependencies": {

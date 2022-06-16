@@ -11,7 +11,7 @@ describe('<SkipNav />', () => {
   });
 
   it('<SkipNavLink /> should render correctly with children', () => {
-    const { getByRole } = renderWithTheme(<SkipNavLink children="Skip" />);
+    const { getByRole } = renderWithTheme(<SkipNavLink>Skip</SkipNavLink>);
 
     expect(getByRole('link')).toHaveTextContent('Skip');
   });
@@ -23,7 +23,6 @@ describe('<SkipNav />', () => {
   });
 
   it('should skip to main navigation', async () => {
-    jest.useRealTimers();
     const user = userEvents.setup();
     const { getByRole, getByTestId } = renderWithTheme(
       <div>
@@ -57,7 +56,6 @@ describe('<SkipNav />', () => {
   });
 
   it('should correctly work with two skip navs', async () => {
-    jest.useRealTimers();
     const user = userEvents.setup();
     const link1 = 'SkipNav 1';
     const link2 = 'SkipNav 2';

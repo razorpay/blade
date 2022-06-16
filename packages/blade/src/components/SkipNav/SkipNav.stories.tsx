@@ -6,6 +6,7 @@ import {
   ArgsTable,
   Stories,
   PRIMARY_STORY,
+  Description,
 } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
 import type { ReactElement } from 'react';
@@ -16,6 +17,7 @@ const Page = (): ReactElement => {
   return (
     <>
       <StorybookTitle />
+      <Description>SkipNav component is only available on web.</Description>
       <Subtitle>
         The SkipNav component lets users skip the navigation and jump to the main content of the
         page. Useful when you have navbars at the top and the user wants to jump directly to the
