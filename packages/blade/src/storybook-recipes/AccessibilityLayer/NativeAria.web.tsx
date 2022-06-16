@@ -1,5 +1,5 @@
 import React from 'react';
-import mapA11yProps from '../../utils/mapProps';
+import mapA11yProps from '../../utils/mapA11yProps';
 import { CloseIcon, EyeIcon } from '../../components/Icons';
 import { getCheckboxA11yProps } from './getCheckboxA11yProps';
 

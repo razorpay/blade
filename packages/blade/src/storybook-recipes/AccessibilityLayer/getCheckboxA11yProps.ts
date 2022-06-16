@@ -1,4 +1,4 @@
-import mapA11yProps from '../../utils/mapProps';
+import mapA11yProps from '../../utils/mapA11yProps';
 
 type CheckboxA11yProps = { isDisabled?: boolean; isChecked?: boolean };
 
