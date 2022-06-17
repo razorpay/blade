@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
-import mapA11yProps from '../../utils/mapProps';
-import { CloseIcon, EyeIcon } from '../Icons';
+import makeAccessible from '../../utils/makeAccessible';
+import { CloseIcon, EyeIcon } from '../../components/Icons';
 import { getCheckboxA11yProps } from './getCheckboxA11yProps';
 
 const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: boolean }> = ({
@@ -32,16 +32,16 @@ const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: bool
 };
 
 const NativeAria = (): React.ReactElement => {
-  const checkboxGroupA11y = mapA11yProps({
-    accessibilityRole: 'group',
-    accessibilityLabelledBy: 'id-group-label',
+  const checkboxGroupA11y = makeAccessible({
+    role: 'group',
+    labelledBy: 'id-group-label',
   });
 
   return (
     <>
       <Text nativeID="id-group-label">Fruits</Text>
       <View {...checkboxGroupA11y}>
-        <View {...mapA11yProps({ accessibilityRole: 'list' })}>
+        <View {...makeAccessible({ role: 'list' })}>
           <View>
             <CheckboxItem checked label="Mango" />
           </View>

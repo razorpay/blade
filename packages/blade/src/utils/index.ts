@@ -7,3 +7,4 @@ export { default as merge } from './merge';
 export { default as toTitleCase } from './toTitleCase';
 export { default as useBreakpoint } from './useBreakpoint';
 export { default as useColorScheme } from './useColorScheme';
+export { default as mapA11yProps } from './makeAccessible';
