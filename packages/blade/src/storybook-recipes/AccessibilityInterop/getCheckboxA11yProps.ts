@@ -1,11 +1,11 @@
 import makeAccessible from '../../utils/makeAccessible';
 
-type CheckboxA11yProps = { isDisabled?: boolean; isChecked?: boolean };
+type CheckboxAccessibilityProps = { isDisabled?: boolean; isChecked?: boolean };
 
-export const getCheckboxA11yProps = ({
+export const getCheckboxAccessibilityProps = ({
   isDisabled,
   isChecked,
-}: CheckboxA11yProps): Record<string, unknown> => {
+}: CheckboxAccessibilityProps): Record<string, unknown> => {
   return makeAccessible({
     disabled: isDisabled,
     role: 'checkbox',

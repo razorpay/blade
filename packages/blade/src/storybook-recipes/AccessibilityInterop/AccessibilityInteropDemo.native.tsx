@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import makeAccessible from '../../utils/makeAccessible';
 import { CloseIcon, EyeIcon } from '../../components/Icons';
-import { getCheckboxA11yProps } from './getCheckboxA11yProps';
+import { getCheckboxAccessibilityProps } from './getCheckboxA11yProps';
 
 const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: boolean }> = ({
   label,
@@ -10,7 +10,10 @@ const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: bool
   disabled,
 }) => {
   const [isChecked, setChecked] = React.useState(checked);
-  const checkboxA11yProps = getCheckboxA11yProps({ isDisabled: disabled, isChecked });
+  const checkboxAccessibilityProps = getCheckboxAccessibilityProps({
+    isDisabled: disabled,
+    isChecked,
+  });
 
   const toggleChecked = (): void => {
     if (disabled) return;
@@ -24,14 +27,14 @@ const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: bool
       ) : (
         <CloseIcon color="action.icon.link.active" size="small" />
       )}
-      <Pressable onPress={toggleChecked} {...checkboxA11yProps} focusable>
+      <Pressable onPress={toggleChecked} {...checkboxAccessibilityProps} focusable>
         <Text>{label}</Text>
       </Pressable>
     </View>
   );
 };
 
-const NativeAria = (): React.ReactElement => {
+const AccessibilityInteropDemo = (): React.ReactElement => {
   const checkboxGroupA11y = makeAccessible({
     role: 'group',
     labelledBy: 'id-group-label',
@@ -57,4 +60,4 @@ const NativeAria = (): React.ReactElement => {
   );
 };
 
-export default NativeAria;
+export default AccessibilityInteropDemo;

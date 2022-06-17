@@ -1,11 +1,8 @@
 const webToAccessibilityRole = {
   slider: 'adjustable',
-  button: 'button',
   heading: 'header',
   img: 'image',
-  link: 'link',
   presentation: 'none',
-  search: 'search',
   region: 'summary',
   imagebutton: null,
   keyboardkey: null,
