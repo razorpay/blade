@@ -136,4 +136,104 @@ describe('<BaseButton />', () => {
     const { container } = renderWithTheme(<BaseButton variant="tertiary">{buttonText}</BaseButton>);
     expect(container).toMatchSnapshot();
   });
+
+  it('should render positive intent low contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton intent="positive" contrast="low">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render negative intent low contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton intent="negative" contrast="low">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render neutral intent low contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton intent="neutral" contrast="low">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render notice intent low contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton intent="notice" contrast="low">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render information intent low contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton intent="information" contrast="low">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render positive intent high contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton intent="positive" contrast="high">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render negative intent high contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton intent="negative" contrast="high">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render neutral intent high contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton intent="neutral" contrast="high">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render notice intent high contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton intent="notice" contrast="high">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render information intent high contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton intent="information" contrast="high">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

@@ -123,4 +123,104 @@ describe('<BaseButton />', () => {
     const { toJSON } = renderWithTheme(<BaseButton variant="tertiary">{buttonText}</BaseButton>);
     expect(toJSON()).toMatchSnapshot();
   });
+
+  it('should render positive intent low contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton intent="positive" contrast="low">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render negative intent low contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton intent="negative" contrast="low">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render neutral intent low contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton intent="neutral" contrast="low">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render notice intent low contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton intent="notice" contrast="low">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render information intent low contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton intent="information" contrast="low">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render positive intent high contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton intent="positive" contrast="high">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render negative intent high contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton intent="negative" contrast="high">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render neutral intent high contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton intent="neutral" contrast="high">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render notice intent high contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton intent="notice" contrast="high">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render information intent high contrast button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton intent="information" contrast="high">
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
 });
