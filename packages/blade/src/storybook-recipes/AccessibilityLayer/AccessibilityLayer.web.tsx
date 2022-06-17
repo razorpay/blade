@@ -1,6 +1,6 @@
 import React from 'react';
-import mapA11yProps from '../../utils/mapProps';
-import { CloseIcon, EyeIcon } from '../Icons';
+import makeAccessible from '../../utils/makeAccessible';
+import { CloseIcon, EyeIcon } from '../../components/Icons';
 import { getCheckboxA11yProps } from './getCheckboxA11yProps';
 
 const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean }> = ({
@@ -37,9 +37,9 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
 };
 
 const NativeAria = (): React.ReactElement => {
-  const checkboxGroupA11y = mapA11yProps({
-    accessibilityRole: 'group',
-    accessibilityLabelledBy: 'id-group-label',
+  const checkboxGroupA11y = makeAccessible({
+    role: 'group',
+    labelledBy: 'id-group-label',
   });
 
   return (

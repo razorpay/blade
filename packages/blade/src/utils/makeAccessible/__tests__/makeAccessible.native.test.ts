@@ -1,12 +1,12 @@
-import mapAccessibilityProps from './mapProps';
+import makeAccessible from '../makeAccessible';
 
-describe('mapAccessibilityprops', () => {
+describe('makeAccessible', () => {
   it('should return correct accessibility attributes for flat accessibility keys', () => {
     expect(
-      mapAccessibilityProps({
-        accessibilityLabel: 'hello world',
-        accessibilityLabelledBy: 'id1',
-        accessibilityRole: 'button',
+      makeAccessible({
+        label: 'hello world',
+        labelledBy: 'id1',
+        role: 'button',
       }),
     ).toStrictEqual({
       accessibilityLabel: 'hello world',
@@ -17,8 +17,8 @@ describe('mapAccessibilityprops', () => {
 
   it('should return map correctly to native accessibility roles', () => {
     expect(
-      mapAccessibilityProps({
-        accessibilityRole: 'slider',
+      makeAccessible({
+        role: 'slider',
       }),
     ).toStrictEqual({
       accessibilityRole: 'adjustable',
@@ -26,8 +26,8 @@ describe('mapAccessibilityprops', () => {
 
     // native specific roles
     expect(
-      mapAccessibilityProps({
-        accessibilityRole: 'text',
+      makeAccessible({
+        role: 'text',
       }),
     ).toStrictEqual({
       accessibilityRole: 'text',
@@ -35,7 +35,7 @@ describe('mapAccessibilityprops', () => {
   });
 
   it('should return correct accessibility attributes for live region', () => {
-    expect(mapAccessibilityProps({ accessibilityLiveRegion: 'polite' })).toStrictEqual({
+    expect(makeAccessible({ liveRegion: 'polite' })).toStrictEqual({
       accessibilityLiveRegion: 'polite',
     });
   });
@@ -43,17 +43,17 @@ describe('mapAccessibilityprops', () => {
   it('should ignore invalid roles in native', () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
-    expect(mapAccessibilityProps({ accessibilityRole: 'invalid' })).toStrictEqual({});
+    expect(makeAccessible({ role: 'invalid' })).toStrictEqual({});
   });
 
   it('should return correct attributes for accessibilityState', () => {
     expect(
-      mapAccessibilityProps({
-        accessibilityChecked: false,
-        accessibilitySelected: false,
-        accessibilityDisabled: false,
-        accessibilityExpanded: false,
-        accessibilityBusy: false,
+      makeAccessible({
+        checked: false,
+        selected: false,
+        disabled: false,
+        expanded: false,
+        busy: false,
       }),
     ).toStrictEqual({
       accessibilityState: {
@@ -68,11 +68,11 @@ describe('mapAccessibilityprops', () => {
 
   it('should return correct attributes for accessibilityValue', () => {
     expect(
-      mapAccessibilityProps({
-        accessibilityValueMax: 10,
-        accessibilityValueMin: 11,
-        accessibilityValueNow: 2,
-        accessibilityValueText: 'text',
+      makeAccessible({
+        valueMax: 10,
+        valueMin: 11,
+        valueNow: 2,
+        valueText: 'text',
       }),
     ).toStrictEqual({
       accessibilityValue: {

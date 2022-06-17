@@ -1,7 +1,7 @@
-import { accessibilityMap } from './accessibilityMap.web';
-import type { AccessibilityMap, AccessibilityProps } from './accessibilityMap.web';
+import { accessibilityMap } from './accessibilityMapWeb';
+import type { AccessibilityMap, AccessibilityProps } from './makeAccessible.d';
 
-const mapAccessibilityProps = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
+const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, unknown> = {};
 
   // eslint-disable-next-line guard-for-in
@@ -14,7 +14,7 @@ const mapAccessibilityProps = (props: Partial<AccessibilityProps>): Record<strin
       newProps[accessibilityAttribute] = propValue;
     } else {
       console.warn(
-        `[Blade: mapAccessibilityProps]: No mapping found for ${propKey}. Make sure you have entered valid key`,
+        `[Blade: makeAccessible]: No mapping found for ${propKey}. Make sure you have entered valid key`,
       );
     }
   }
@@ -22,4 +22,4 @@ const mapAccessibilityProps = (props: Partial<AccessibilityProps>): Record<strin
   return newProps;
 };
 
-export default mapAccessibilityProps;
+export default makeAccessible;
