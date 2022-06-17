@@ -6,6 +6,8 @@ export default {
   component: AccessibilityInteropDemo,
 } as Meta;
 
-export const MapAccessibilityProps: ComponentStory<typeof AccessibilityInteropDemo> = () => {
+export const AccessibilityInteropDemoTemplate: ComponentStory<
+  typeof AccessibilityInteropDemo
+> = () => {
   return <AccessibilityInteropDemo />;
 };
