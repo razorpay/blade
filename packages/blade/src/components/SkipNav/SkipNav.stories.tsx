@@ -55,16 +55,16 @@ const SkipNavTemplate: ComponentStory<typeof SkipNavLink> = () => {
       <nav style={{ display: 'flex' }}>
         <ul style={{ marginLeft: 'auto', display: 'flex', listStyle: 'none', gap: '10px' }}>
           <li>
-            <a href="#">Home</a>
+            <a href="#1">Home</a>
           </li>
           <li>
-            <a href="#">Pricing</a>
+            <a href="#2">Pricing</a>
           </li>
           <li>
-            <a href="#">Login</a>
+            <a href="#3">Login</a>
           </li>
           <li>
-            <a href="#">SignUp</a>
+            <a href="#4">SignUp</a>
           </li>
         </ul>
       </nav>

@@ -4,10 +4,14 @@ import { SkipNavContent, SkipNavLink } from '../SkipNav';
 
 describe('<SkipNav />', () => {
   it('<SkipNavLink /> should throw error on native', () => {
-    expect(() => renderWithTheme(<SkipNavLink />)).toThrow();
+    expect(() => renderWithTheme(<SkipNavLink />)).toThrow(
+      '[Blade: SkipNav]: SkipNavLink is not available on React Native',
+    );
   });
 
   it('<SkipNavContent /> should throw error on native', () => {
-    expect(() => renderWithTheme(<SkipNavContent />)).toThrow();
+    expect(() => renderWithTheme(<SkipNavContent />)).toThrow(
+      '[Blade: SkipNav]: SkipNavContent is not available on React Native',
+    );
   });
 });
