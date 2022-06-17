@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { accessibilityMap } from './accessibilityMapWeb';
 import type { AccessibilityMap, AccessibilityProps } from './makeAccessible.d';
 
 const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
-  const newProps: Record<string, unknown> = {};
+  const newProps: Record<string, any> = {};
 
   // eslint-disable-next-line guard-for-in
   for (const key in props) {

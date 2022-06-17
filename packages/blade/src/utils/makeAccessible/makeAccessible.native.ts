@@ -10,14 +10,6 @@ import {
 import type { AccessibilityMap, AccessibilityProps } from './makeAccessible.d';
 import webToAccessibilityRole from './webToNativeRole';
 
-function isAccessibilityStateProp(prop: string): boolean {
-  return accessibilityStateKeys.includes(prop);
-}
-
-function isAccessibilityValueProp(prop: string): boolean {
-  return accessibilityValueKeys.includes(prop);
-}
-
 const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, any> = {};
 
@@ -28,7 +20,7 @@ const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unkn
     const accessibilityAttribute = accessibilityMap[propKey];
 
     // group accesibilityState prop for native
-    if (isAccessibilityStateProp(propKey)) {
+    if (accessibilityStateKeys.includes(propKey)) {
       newProps.accessibilityState = {
         ...newProps.accessibilityState,
         [accessibilityAttribute]: propValue,
@@ -37,7 +29,7 @@ const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unkn
     }
 
     // group accesibilityValue prop for native
-    if (isAccessibilityValueProp(propKey)) {
+    if (accessibilityValueKeys.includes(propKey)) {
       newProps.accessibilityValue = {
         ...newProps.accessibilityValue,
         [accessibilityAttribute]: propValue,
