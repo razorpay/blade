@@ -73,8 +73,8 @@ describe('makeAccessible', () => {
     });
 
     expect(
-      mapAccessibilityProps({
-        accessibilityHidden: true,
+      makeAccessible({
+        hidden: true,
       }),
     ).toStrictEqual({
       'aria-hidden': true,

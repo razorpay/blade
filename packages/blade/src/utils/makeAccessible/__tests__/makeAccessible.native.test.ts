@@ -84,8 +84,8 @@ describe('makeAccessible', () => {
     });
 
     expect(
-      mapAccessibilityProps({
-        accessibilityHidden: true,
+      makeAccessible({
+        hidden: true,
       }),
     ).toStrictEqual({
       accessibilityElementsHidden: true,

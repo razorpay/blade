@@ -1,11 +1,11 @@
 import type { ReactElement } from 'react';
-import mapA11yProps from '../../../../utils/mapProps';
+import makeAccessible from '../../../../utils/makeAccessible';
 import type { SvgProps } from './Svg.d';
 
 const Svg = ({ children, height, viewBox, width, fill }: SvgProps): ReactElement => {
   return (
     <svg
-      {...mapA11yProps({ accessibilityHidden: true })}
+      {...makeAccessible({ hidden: true })}
       height={height}
       viewBox={viewBox}
       width={width}
