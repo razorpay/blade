@@ -33,11 +33,10 @@ Blade Issue: (leave this empty if no issue yet)
     - [ARIA attributes](#aria-attributes)
     - [Hidden Content](#hidden-content)
     - [Dynamic Content](#dynamic-content)
-    - [ARIA Patterns](#aria-patterns)
+  - [ARIA Patterns](#aria-patterns)
   - [Design Accessibility](#design-accessibility)
 - [Tools & Infrastructure](#tools--infrastructure)
 - [Actionable Items](#actionable-items)
-- [Drawbacks/Constraints](#drawbacksconstraints)
 - [Adoption strategy](#adoption-strategy)
 - [How do we educate people?](#how-do-we-educate-people)
 - [References](#references)
@@ -676,20 +675,20 @@ A developer needs to carefully use these roles as per the [authoring practices g
 
 **Native & Web:**
 
-To add aria attributes & accessibility props to components for both native & web we will be needing a compatibility layer to seemlessly work for both platforms, for that we are proposing a `mapA11yProps` function which will take standardized props & map those props to each platform specific props.
+To add aria attributes & accessibility props to components for both native & web we will be needing a compatibility layer to seemlessly work for both platforms, for that we are proposing a `makeAccessible` function which will take standardized props & map those props to each platform specific props.
 
 For example:
 
 ```ts
-const props = mapA11yProps({
-  accessibilityLabel: 'hello world',
-  accessibilityLabelledBy: 'id1',
-  accessibilityRole: 'button',
-  accessibilityChecked: false,
-  accessibilitySelected: false,
-  accessibilityDisabled: false,
-  accessibilityExpanded: false,
-  accessibilityBusy: false,
+const props = makeAccessible({
+  label: 'hello world',
+  labelledBy: 'id1',
+  role: 'button',
+  checked: false,
+  selected: false,
+  disabled: false,
+  expanded: false,
+  busy: false,
 });
 
 // In react native the above code will return:
@@ -719,7 +718,7 @@ const props = mapA11yProps({
 }
 ```
 
-> See implementation [pull request for mapA11yProps](https://github.com/razorpay/blade/pull/481)
+> See implementation [pull request for makeAccessible](https://github.com/razorpay/blade/pull/481)
 
 ### Hidden Content
 
@@ -831,7 +830,7 @@ React.useEffect(() => {
 https://user-images.githubusercontent.com/35374649/170883127-b81bc324-3d5c-4b9d-905f-14733fcc821d.mp4
 
 
-### ARIA Patterns
+## ARIA Patterns
 
 > [Specification](https://www.w3.org/WAI/ARIA/apg/patterns/)
 
@@ -932,7 +931,7 @@ Automated accessibility tools only [pick up around 40% of errors automatically](
 - [x] Implement [`<SkipNavigation />` component.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--2)
 - [ ] Implement proper [focus rings & keyboard only focus rings.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--3)
 - [x] Implement and decide upon [focus trapping methods.](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--4)
-- [x] Implement [`mapA11yProps` compatibility layer](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5) for aria attributes.
+- [x] Implement [`makeAccessible` compatibility layer](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5) for aria attributes.
 - [ ] Implement [live regions & `announce()` utilties](https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--6) for dynamic content announcements.
 - [x] Implement `<VisuallyHidden />` component for [hidden content](#hidden-content)
 - [ ] Ensure each component adhers to the [WAI-ARIA Authoring Pratices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/) 
