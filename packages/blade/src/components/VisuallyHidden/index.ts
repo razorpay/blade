@@ -1,3 +1,3 @@
 export * from './VisuallyHidden';
 export * from './VisuallyHidden.d';
-export { default } from './VisuallyHidden';
+export { default as VisuallyHidden } from './VisuallyHidden';
