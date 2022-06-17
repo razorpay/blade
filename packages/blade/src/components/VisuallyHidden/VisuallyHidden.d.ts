@@ -1,5 +1,5 @@
 export { default } from './VisuallyHidden.web';
-export * from './ScreenReaderStyles';
+export { default as screenReaderStyles } from './ScreenReaderStyles';
 
 export type VisuallyHiddenProps = {
   children: React.ReactNode;
