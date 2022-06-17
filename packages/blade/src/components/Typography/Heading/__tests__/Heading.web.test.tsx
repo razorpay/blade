@@ -1,6 +1,7 @@
 import React from 'react';
 import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.web';
 import Heading from '../';
+import assertAccessible from '../../../../_helpers/testing/assertAccessibe.web';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -90,5 +91,10 @@ describe('<Heading />', () => {
         );
       }
     }
+  });
+
+  it('should be accessible', async () => {
+    const { container } = renderWithTheme(<Heading>Text content</Heading>);
+    await assertAccessible(container);
   });
 });
