@@ -483,23 +483,23 @@ const colors: ColorsWithModes = {
           background: {
             primary: {
               default: {
-                lowContrast: globalColors.chromatic.emerald.a50,
+                lowContrast: globalColors.chromatic.crimson.a50,
                 highContrast: globalColors.chromatic.crimson[700],
               },
               hover: {
-                lowContrast: globalColors.chromatic.emerald.a100,
+                lowContrast: globalColors.chromatic.crimson.a100,
                 highContrast: globalColors.chromatic.crimson[800],
               },
               focus: {
-                lowContrast: globalColors.chromatic.emerald.a200,
+                lowContrast: globalColors.chromatic.crimson.a200,
                 highContrast: globalColors.chromatic.crimson[900],
               },
               active: {
-                lowContrast: globalColors.chromatic.emerald.a200,
+                lowContrast: globalColors.chromatic.crimson.a200,
                 highContrast: globalColors.chromatic.crimson[900],
               },
               disabled: {
-                lowContrast: globalColors.chromatic.emerald.a50,
+                lowContrast: globalColors.chromatic.crimson.a50,
                 highContrast: globalColors.chromatic.crimson[700],
               },
             },

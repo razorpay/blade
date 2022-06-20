@@ -2,7 +2,7 @@ import type { AccessibilityRole } from 'react-native';
 export { default } from './makeAccessible.web';
 
 // All the WAI-ARIA 1.1 role attribute values from https://www.w3.org/TR/wai-aria-1.1/#role_definitions
-export type AccessibilityRoles =
+export type AriaRoles =
   | Exclude<AccessibilityRole, 'header' | 'adjustable' | 'image' | 'none' | 'summary'>
   | 'alert'
   | 'alertdialog'
@@ -72,25 +72,29 @@ export type AccessibilityRoles =
   | 'tooltip'
   | 'tree'
   | 'treegrid'
-  | 'treeitem'
-  | (string & Record<never, never>);
+  | 'treeitem';
 
-export type AccessibilityProps = CommonAccessibilityProps;
-export type CommonAccessibilityKeys = keyof CommonAccessibilityProps;
-export type AccessibilityMap = Record<CommonAccessibilityKeys, string>;
+export type AccessibilityKeys = keyof AriaAttributes;
+export type AccessibilityProps = AriaAttributes;
+export type AccessibilityMap = Record<AccessibilityKeys, string>;
 
-export type CommonAccessibilityProps = {
-  role: AccessibilityRoles;
-  /** Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application. */
+export type AriaAttributes = {
+  role: AriaRoles;
+  /**
+   * Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application.
+   */
   activeDescendant?: string;
-  /** Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute. */
+  /**
+   * Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute.
+   */
   atomic?: boolean;
   /**
-   * Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
-   * presented if they are made.
+   * Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be presented if they are made.
    */
   autoComplete?: 'none' | 'inline' | 'list' | 'both';
-  /** Indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user. */
+  /**
+   * Indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user.
+   */
   busy?: boolean;
   /**
    * Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
@@ -117,7 +121,9 @@ export type CommonAccessibilityProps = {
    * @see aria-owns.
    */
   controls?: string;
-  /** Indicates the element that represents the current item within a container or set of related elements. */
+  /**
+   * Indicates the element that represents the current item within a container or set of related elements.
+   */
   current?: boolean | 'page' | 'step' | 'location' | 'date' | 'time';
   /**
    * Identifies the element (or elements) that describes the object.
@@ -144,7 +150,9 @@ export type CommonAccessibilityProps = {
    * @see aria-invalid @see aria-describedby.
    */
   errorMessage?: string;
-  /** Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed. */
+  /**
+   * Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed.
+   */
   expanded?: boolean;
   /**
    * Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion,
@@ -156,7 +164,9 @@ export type CommonAccessibilityProps = {
    * @deprecated in ARIA 1.1
    */
   grabbed?: boolean;
-  /** Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element. */
+  /**
+   * Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
+   */
   hasPopup?: boolean | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
   /**
    * Indicates whether the element is exposed to an accessibility API.
@@ -168,7 +178,9 @@ export type CommonAccessibilityProps = {
    * @see aria-errormessage.
    */
   invalid?: boolean | 'grammar' | 'spelling';
-  /** Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element. */
+  /**
+   * Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element.
+   */
   keyShortcuts?: string;
   /**
    * Defines a string value that labels the current element.
@@ -180,17 +192,29 @@ export type CommonAccessibilityProps = {
    * @see aria-describedby.
    */
   labelledBy?: string;
-  /** Defines the hierarchical level of an element within a structure. */
+  /**
+   * Defines the hierarchical level of an element within a structure.
+   */
   level?: number;
-  /** Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region. */
+  /**
+   * Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
+   */
   liveRegion?: 'off' | 'assertive' | 'polite';
-  /** Indicates whether an element is modal when displayed. */
+  /**
+   * Indicates whether an element is modal when displayed.
+   */
   modal?: boolean;
-  /** Indicates whether a text box accepts multiple lines of input or only a single line. */
+  /**
+   * Indicates whether a text box accepts multiple lines of input or only a single line.
+   */
   multiline?: boolean;
-  /** Indicates that the user may select more than one item from the current selectable descendants. */
+  /**
+   * Indicates that the user may select more than one item from the current selectable descendants.
+   */
   multiSelectable?: boolean;
-  /** Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous. */
+  /**
+   * Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
+   */
   orientation?: 'horizontal' | 'vertical';
   /**
    * Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship
@@ -233,9 +257,13 @@ export type CommonAccessibilityProps = {
     | 'text'
     | 'text additions'
     | 'text removals';
-  /** Indicates that user input is required on the element before a form may be submitted. */
+  /**
+   * Indicates that user input is required on the element before a form may be submitted.
+   */
   required?: boolean;
-  /** Defines a human-readable, author-localized description for the role of an element. */
+  /**
+   * Defines a human-readable, author-localized description for the role of an element.
+   */
   roleDescription?: string;
   /**
    * Defines the total number of rows in a table, grid, or treegrid.
@@ -262,17 +290,25 @@ export type CommonAccessibilityProps = {
    * @see aria-posinset.
    */
   setSize?: number;
-  /** Indicates if items in a table or grid are sorted in ascending or descending order. */
+  /**
+   * Indicates if items in a table or grid are sorted in ascending or descending order.
+   */
   sort?: 'none' | 'ascending' | 'descending' | 'other';
-  /** Defines the maximum allowed value for a range widget. */
+  /**
+   * Defines the maximum allowed value for a range widget.
+   */
   valueMax?: number;
-  /** Defines the minimum allowed value for a range widget. */
+  /**
+   * Defines the minimum allowed value for a range widget.
+   */
   valueMin?: number;
   /**
    * Defines the current value for a range widget.
    * @see aria-valuetext.
    */
   valueNow?: number;
-  /** Defines the human readable text alternative of aria-valuenow for a range widget. */
+  /**
+   * Defines the human readable text alternative of aria-valuenow for a range widget.
+   */
   valueText?: string;
 };

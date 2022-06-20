@@ -32,6 +32,12 @@ describe('makeAccessible', () => {
     ).toStrictEqual({
       accessibilityRole: 'text',
     });
+
+    expect(
+      makeAccessible({
+        role: 'feed',
+      }),
+    ).toStrictEqual({});
   });
 
   it('should return correct accessibility attributes for live region', () => {
@@ -81,6 +87,15 @@ describe('makeAccessible', () => {
         now: 2,
         text: 'text',
       },
+    });
+
+    expect(
+      makeAccessible({
+        hidden: true,
+      }),
+    ).toStrictEqual({
+      accessibilityElementsHidden: true,
+      importantForAccessibility: 'no-hide-descendants',
     });
   });
 });

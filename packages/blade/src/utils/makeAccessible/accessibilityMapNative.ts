@@ -19,8 +19,6 @@ export const accessibilityValueKeys = Object.keys(accessibilityValue);
 export const accessibilityStateKeys = Object.keys(accessibilityState);
 
 // TODO:
-// importantForAccessibility
-// accessibilityElementsHidden
 // accessibilityViewIsModal
 export const accessibilityMap: AccessibilityMap = {
   ...accessibilityState,
@@ -67,33 +65,36 @@ export const accessibilityMap: AccessibilityMap = {
   relevant: 'accessibilityRelevant',
 };
 
-export const supportedAccessibilityRoles = [
-  'adjustable',
-  'alert',
-  'button',
-  'checkbox',
-  'combobox',
-  'header',
-  'image',
-  'imagebutton',
-  'keyboardkey',
-  'link',
-  'menu',
-  'menubar',
-  'menuitem',
-  'none',
-  'progressbar',
-  'radio',
-  'radiogroup',
-  'scrollbar',
-  'search',
-  'spinbutton',
-  'summary',
-  'switch',
-  'tab',
-  'tablist',
-  'text',
-  'timer',
-  'togglebutton',
-  'toolbar',
-];
+export const accessibilityRoleMap = {
+  alert: 'alert',
+  button: 'button',
+  checkbox: 'checkbox',
+  combobox: 'combobox',
+  image: 'image',
+  link: 'link',
+  menu: 'menu',
+  menubar: 'menubar',
+  menuitem: 'menuitem',
+  progressbar: 'progressbar',
+  radio: 'radio',
+  radiogroup: 'radiogroup',
+  scrollbar: 'scrollbar',
+  search: 'search',
+  spinbutton: 'spinbutton',
+  switch: 'switch',
+  tab: 'tab',
+  tablist: 'tablist',
+  timer: 'timer',
+  togglebutton: 'togglebutton',
+  toolbar: 'toolbar',
+  heading: 'header',
+  // mapped from web to native
+  slider: 'adjustable',
+  img: 'image',
+  presentation: 'none',
+  region: 'summary',
+  imagebutton: 'imagebutton',
+  keyboardkey: 'keyboardkey',
+  label: 'label',
+  text: 'text',
+};

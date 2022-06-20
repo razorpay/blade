@@ -16,8 +16,6 @@ export const accessibilityState = {
 };
 
 // TODO:
-// importantForAccessibility
-// accessibilityElementsHidden
 // accessibilityViewIsModal
 export const accessibilityMap: AccessibilityMap = {
   ...accessibilityState,

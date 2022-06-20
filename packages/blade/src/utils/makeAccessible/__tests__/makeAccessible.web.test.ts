@@ -71,5 +71,13 @@ describe('makeAccessible', () => {
       'aria-valuenow': 2,
       'aria-valuetext': 'text',
     });
+
+    expect(
+      makeAccessible({
+        hidden: true,
+      }),
+    ).toStrictEqual({
+      'aria-hidden': true,
+    });
   });
 });
