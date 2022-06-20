@@ -11,9 +11,16 @@ import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import makeBorderSize from '../../../utils/makeBorderSize';
 import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
 import type { Required } from '../../../_helpers/types';
+import makeSize from '../../../utils/makeSize';
 import StyledBaseButton from './StyledBaseButton';
-import type { ButtonMinHeight, ButtonTypography } from './buttonTokens';
-import { typography as buttonTypography } from './buttonTokens';
+import type { ButtonTypography } from './buttonTokens';
+import {
+  typography as buttonTypography,
+  minHeight as buttonMinHeight,
+  iconSize as buttonIconSize,
+  iconSpacing as buttonIconSpacing,
+  spacing as buttonSpacing,
+} from './buttonTokens';
 
 type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -54,7 +61,7 @@ type BaseButtonStyleProps = {
   iconSize: IconSize;
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
-  minHeight: ButtonMinHeight;
+  minHeight: string;
   iconSpacing: string;
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
@@ -91,15 +98,17 @@ const getProps = ({
   variant: Required<BaseButtonCommonProps['variant']>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
-    iconSize: 'medium',
+    iconSize: buttonIconSize[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
-    minHeight: '36px',
-    iconSpacing: makeSpace(theme.spacing[2]),
+    minHeight: makeSize(buttonMinHeight[size]),
+    iconSpacing: makeSpace(theme.spacing[buttonIconSpacing[size]]),
     iconColor: `action.icon.${variant}.default`,
     textColor: `action.text.${variant}.default`,
-    spacing: `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`,
-    text: children?.trim(),
+    spacing: `${makeSpace(theme.spacing[buttonSpacing[size].topBottom])} ${makeSpace(
+      theme.spacing[buttonSpacing[size].rightLeft],
+    )}`,
+    text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultColor: getIn(theme.colors, `action.background.${variant}.default`),
     defaultBorderColor: getIn(theme.colors, `action.border.${variant}.default`),
     hoverColor: getIn(theme.colors, `action.background.${variant}.hover`),
