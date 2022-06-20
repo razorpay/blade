@@ -4,8 +4,9 @@ import { useTheme } from '../../BladeProvider';
 import makeTypographySize from '../../../utils/makeTypographySize';
 import type { Theme } from '../../BladeProvider';
 import type { DotNotationColorStringToken } from '../../../_helpers/types';
-import type { AccessibilityRoles } from '../../../utils/makeAccessible';
 import StyledBaseText from './StyledBaseText';
+import { AccessibilityProps } from '../../../utils/makeAccessible';
+import makeAccessible from '../../../utils/makeAccessible';
 
 type FeedbackColors = `feedback.text.${DotNotationColorStringToken<
   Theme['colors']['feedback']['text']
@@ -28,7 +29,7 @@ export type BaseTextProps = {
   truncateAfterLines?: number;
   className?: string;
   children: React.ReactNode;
-  accessibilityRole?: AccessibilityRoles;
+  accessibilityProps?: Partial<AccessibilityProps>;
 };
 
 const BaseText = ({
@@ -44,7 +45,7 @@ const BaseText = ({
   children,
   truncateAfterLines,
   className,
-  accessibilityRole,
+  accessibilityProps = {},
 }: BaseTextProps): ReactElement => {
   const { theme } = useTheme();
   const textColor = getIn(theme.colors, color);
@@ -66,7 +67,7 @@ const BaseText = ({
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
       className={className}
-      accessibilityRole={accessibilityRole}
+      {...makeAccessible(accessibilityProps)}
     >
       {children}
     </StyledBaseText>

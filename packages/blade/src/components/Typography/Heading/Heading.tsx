@@ -4,7 +4,6 @@ import getPlatformType from '../../../utils/getPlatformType';
 import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText';
-import makeAccessible from '../../../utils/makeAccessible';
 
 type HeadingVariant = 'small' | 'medium' | 'large' | 'subheading';
 
@@ -47,6 +46,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
   BaseTextProps,
   'children'
 > => {
+  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
     color: `surface.text.${type ?? 'normal'}.${colorContrast}`,
@@ -55,9 +55,8 @@ const getProps = <T extends { variant: HeadingVariant }>({
     fontStyle: 'normal',
     lineHeight: 'xl',
     fontFamily: 'text',
-    accessibilityRole: makeAccessible({ role: 'heading' }).accessibilityRole as string,
+    accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
   };
-  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
 
   if (variant === 'small') {
     props.fontSize = 200;
