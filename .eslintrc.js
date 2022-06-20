@@ -13,6 +13,10 @@ module.exports = {
     'no-console': 'off',
     'import/no-cycle': 'error',
     'react-native-a11y/has-accessibility-hint': 'off',
+    // we need to disable these rules because with makeAccessible function
+    // eslint is not smart enough to statically detect that we set the role
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/no-noninteractive-tabindex': 'off',
     complexity: ['off'],
     'import/order': [
       'error',
