@@ -90,7 +90,6 @@ const Heading = <T extends { variant: HeadingVariant }>({
   children,
 }: HeadingProps<T>): ReactElement => {
   const props = getProps({ variant, type, weight, contrast });
-  console.log(props);
   return <BaseText {...props}>{children}</BaseText>;
 };
 
