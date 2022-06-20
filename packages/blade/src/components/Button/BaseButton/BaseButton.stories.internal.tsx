@@ -9,7 +9,6 @@ export default {
   component: BaseButtonComponent,
   args: {
     variant: 'primary',
-    contrast: 'low',
     children: 'Pay Now',
     onClick: (): void => {
       console.log('clicked');
