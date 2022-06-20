@@ -59,7 +59,7 @@ const typography: ButtonTypography = {
 const minHeight: Record<Required<BaseButtonProps['size']>, ButtonMinHeight> = {
   xsmall: 28,
   small: 32,
-  medium: 40,
+  medium: 36,
   large: 48,
 };
 
