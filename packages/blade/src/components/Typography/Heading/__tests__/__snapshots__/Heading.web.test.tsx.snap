@@ -1,9 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Heading /> should render Heading with default properties 1`] = `
+.c0 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
 <div>
   <h6
-    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 jKHSfC"
+    class="c0"
     color="hsla(217, 56%, 17%, 1)"
     font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
     font-size="1rem"
@@ -16,9 +28,21 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
 `;
 
 exports[`<Heading /> should render Heading with variant "large" 1`] = `
+.c0 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
 <div>
   <h4
-    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 epJwXt"
+    class="c0"
     color="hsla(217, 18%, 45%, 1)"
     font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
     font-size="1.25rem"
@@ -31,9 +55,21 @@ exports[`<Heading /> should render Heading with variant "large" 1`] = `
 `;
 
 exports[`<Heading /> should render Heading with variant "medium" 1`] = `
+.c0 {
+  color: hsla(216,16%,60%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
 <div>
   <h5
-    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 jvcdhc"
+    class="c0"
     color="hsla(216, 16%, 60%, 1)"
     font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
     font-size="1.125rem"
@@ -46,9 +82,21 @@ exports[`<Heading /> should render Heading with variant "medium" 1`] = `
 `;
 
 exports[`<Heading /> should render Heading with variant "small" 1`] = `
+.c0 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
 <div>
   <h6
-    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 kttkmZ"
+    class="c0"
     color="hsla(217, 56%, 17%, 1)"
     font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
     font-size="1rem"
@@ -61,9 +109,21 @@ exports[`<Heading /> should render Heading with variant "small" 1`] = `
 `;
 
 exports[`<Heading /> should render Heading with variant "small" and contrast "high" 1`] = `
+.c0 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
 <div>
   <h6
-    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 iaiTqt"
+    class="c0"
     color="hsla(0, 0%, 100%, 1)"
     font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
     font-size="1rem"
@@ -76,9 +136,21 @@ exports[`<Heading /> should render Heading with variant "small" and contrast "hi
 `;
 
 exports[`<Heading /> should render Heading with variant "subheading" and weight "bold" 1`] = `
+.c0 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  text-align: left;
+}
+
 <div>
   <h6
-    class="StyledBaseTextweb__StyledBaseText-sc-1t5p7u8-0 eMvxtx"
+    class="c0"
     color="hsla(217, 18%, 45%, 1)"
     font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
     font-size="0.75rem"

@@ -1,11 +1,22 @@
 module.exports = {
-  extends: ['kentcdodds', 'kentcdodds/react', 'plugin:prettier/recommended'],
+  extends: [
+    'kentcdodds',
+    'kentcdodds/react',
+    'plugin:prettier/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react-native-a11y/all',
+  ],
   rules: {
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
     'max-lines': 'off',
     'no-console': 'off',
     'import/no-cycle': 'error',
+    'react-native-a11y/has-accessibility-hint': 'off',
+    // we need to disable these rules because with makeAccessible function
+    // eslint is not smart enough to statically detect that we set the role
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/no-noninteractive-tabindex': 'off',
     complexity: ['off'],
     'import/order': [
       'error',
@@ -73,7 +84,7 @@ module.exports = {
       parserOptions: {
         project: './tsconfig.json',
       },
-      plugins: ['@typescript-eslint/eslint-plugin'],
+      plugins: ['@typescript-eslint/eslint-plugin', 'jsx-a11y'],
       rules: {
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',

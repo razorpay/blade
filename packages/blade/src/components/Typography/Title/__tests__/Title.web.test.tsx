@@ -1,6 +1,7 @@
 import React from 'react';
 import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.web';
 import Title from '../';
+import assertAccessible from '../../../../_helpers/testing/assertAccessibe.web';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -60,5 +61,10 @@ describe('<Title />', () => {
     expect(getByRole('heading', { level: 1 })).toBeInTheDocument();
     expect(getByText('Displaying Landing Page Title')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
+  });
+
+  it('should be accessible', async () => {
+    const { container } = renderWithTheme(<Title>Text content</Title>);
+    await assertAccessible(container);
   });
 });
