@@ -66,7 +66,9 @@ const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unkn
     if (!role) {
       const validRoles = Object.keys(accessibilityRoleMap).join(', ');
       console.log(
-        `[Blade: makeAccessible]: Unsupported accessibility role for react-native. Expected one of ${validRoles} but found ${newProps.accessibilityRole}`,
+        `[Blade: makeAccessible]: Unsupported accessibility role for react-native. Expected one of ${validRoles} but found ${
+          newProps.accessibilityRole as string
+        }`,
       );
       delete newProps.accessibilityRole;
     }
