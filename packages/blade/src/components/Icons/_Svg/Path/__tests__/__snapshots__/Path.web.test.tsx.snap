@@ -3,6 +3,7 @@
 exports[`<Path /> should render html path component 1`] = `
 <div>
   <svg
+    aria-hidden="true"
     fill="none"
     height="40px"
     viewBox="0 0 6 6"
