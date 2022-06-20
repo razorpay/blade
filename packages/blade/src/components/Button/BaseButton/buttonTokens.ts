@@ -1,9 +1,10 @@
 import type { ThemeTokens } from '../../../tokens/theme/theme.d';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import type { Required } from '../../../_helpers/types';
+import type { IconProps } from '../../Icons';
 import type { BaseButtonProps } from './BaseButton';
 
-export type ButtonMinHeight = '48px' | '36px' | '32px' | '28px';
+export type ButtonMinHeight = 48 | 36 | 32 | 28;
 
 export type ButtonTypography = {
   [Key in TypographyPlatforms]: {
@@ -55,4 +56,47 @@ const typography: ButtonTypography = {
   },
 };
 
-export { typography };
+const minHeight: Record<Required<BaseButtonProps['size']>, ButtonMinHeight> = {
+  xsmall: 28,
+  small: 32,
+  medium: 36,
+  large: 48,
+};
+
+const spacing: Record<
+  Required<BaseButtonProps['size']>,
+  Record<'topBottom' | 'rightLeft', keyof ThemeTokens['spacing']>
+> = {
+  xsmall: {
+    topBottom: 0,
+    rightLeft: 2,
+  },
+  small: {
+    topBottom: 0,
+    rightLeft: 3,
+  },
+  medium: {
+    topBottom: 0,
+    rightLeft: 5,
+  },
+  large: {
+    topBottom: 0,
+    rightLeft: 5,
+  },
+};
+
+const iconSize: Record<Required<BaseButtonProps['size']>, IconProps['size']> = {
+  xsmall: 'xsmall',
+  small: 'xsmall',
+  medium: 'medium',
+  large: 'medium',
+};
+
+const iconSpacing: Record<Required<BaseButtonProps['size']>, keyof ThemeTokens['spacing']> = {
+  xsmall: 1,
+  small: 1,
+  medium: 2,
+  large: 2,
+};
+
+export { typography, minHeight, iconSize, iconSpacing, spacing };
