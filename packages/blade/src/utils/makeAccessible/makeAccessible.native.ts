@@ -1,14 +1,12 @@
 /* eslint-disable guard-for-in */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   accessibilityMap,
+  accessibilityRoleMap,
   accessibilityStateKeys,
   accessibilityValueKeys,
-  supportedAccessibilityRoles,
 } from './accessibilityMapNative';
 import type { AccessibilityMap, AccessibilityProps } from './makeAccessible.d';
-import webToAccessibilityRole from './webToNativeRole';
 
 const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, any> = {};
@@ -60,15 +58,15 @@ const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unkn
 
   if (newProps.accessibilityRole) {
     // map web to native overlapping roles
-    const role = webToAccessibilityRole(newProps.accessibilityRole);
+    type Roles = keyof typeof accessibilityRoleMap;
+    const role = accessibilityRoleMap[newProps.accessibilityRole as Roles];
     newProps.accessibilityRole = role;
 
     // ignore unsupported roles
-    if (role && !supportedAccessibilityRoles.includes(role)) {
-      console.warn(
-        `[Blade: makeAccessible]: Unsupported accessibilityRole ${
-          newProps.accessibilityRole as string
-        } for native, For more info see: https://reactnative.dev/docs/accessibility#accessibilityrole`,
+    if (!role) {
+      const validRoles = Object.keys(accessibilityRoleMap).join(', ');
+      console.log(
+        `[Blade: makeAccessible]: Unsupported accessibilityRole for native, Valid roles are: ${validRoles}`,
       );
       delete newProps.accessibilityRole;
     }

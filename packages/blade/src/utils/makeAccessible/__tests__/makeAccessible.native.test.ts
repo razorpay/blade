@@ -32,6 +32,12 @@ describe('makeAccessible', () => {
     ).toStrictEqual({
       accessibilityRole: 'text',
     });
+
+    expect(
+      makeAccessible({
+        role: 'feed',
+      }),
+    ).toStrictEqual({});
   });
 
   it('should return correct accessibility attributes for live region', () => {
