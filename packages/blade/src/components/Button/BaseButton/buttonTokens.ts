@@ -56,7 +56,7 @@ const typography: ButtonTypography = {
   },
 };
 
-const minHeight: Record<Required<BaseButtonProps['size']>, number> = {
+const minHeight: Record<Required<BaseButtonProps['size']>, ButtonMinHeight> = {
   xsmall: 28,
   small: 32,
   medium: 40,
