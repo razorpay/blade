@@ -38,7 +38,7 @@ const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unkn
     }
 
     // handle accessibilityHidden
-    // in react-native we have to platform specific values for it.
+    // in react-native we have 2 platform-specific values for it.
     if (propKey === 'hidden') {
       if (propValue === true) {
         newProps.accessibilityElementsHidden = true;
