@@ -6,6 +6,7 @@ on:
     branches: ["master"]
 jobs:
   semgrep:
+    if: (github.actor != 'dependabot[bot]')
     name: Semgrep Scan
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
