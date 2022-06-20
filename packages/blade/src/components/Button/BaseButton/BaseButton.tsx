@@ -24,36 +24,49 @@ type BaseButtonCommonProps = {
   type?: 'button' | 'reset' | 'submit';
 };
 
-// Mandatory children prop when icon is not provided
+/*
+Mandatory children prop when icon is not provided
+*/
 type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
   icon?: undefined;
   children: string;
 };
 
-// Optional children prop when icon is provided
+/*
+ Optional children prop when icon is provided
+*/
 type BaseButtonWithIconProps = BaseButtonCommonProps & {
   icon: IconComponent;
   children?: string;
 };
 
-// With or without icon prop. We need at least an icon or a children prop present.
+/*
+ With or without icon prop. We need at least an icon or a children prop present.
+*/
 type BaseButtonPropsWithOrWithoutIconProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
 
-// With a variant prop along with or without an icon prop.
+/*
+ With a variant prop along with or without an icon prop.
+*/
 type BaseButtonWithVariantProps = BaseButtonPropsWithOrWithoutIconProps & {
   variant?: 'primary' | 'secondary' | 'tertiary';
   intent?: undefined;
   contrast?: undefined;
 };
 
-// With an intent & contrast prop along with or without an icon prop.
+/*
+ With an intent & contrast prop along with or without an icon prop.
+*/
 type BaseButtonWithIntentProps = BaseButtonPropsWithOrWithoutIconProps & {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
   contrast?: 'low' | 'high';
   variant?: undefined;
 };
 
-// We restrict using variant when intent or contrast is provided and we restrict using intent & contrast when variant is provided.
+/* 
+ We restrict using variant when intent or contrast is provided and 
+ we restrict using intent & contrast when variant is provided.
+*/
 export type BaseButtonProps = BaseButtonWithVariantProps | BaseButtonWithIntentProps;
 
 const ButtonText = styled(BaseText)(
