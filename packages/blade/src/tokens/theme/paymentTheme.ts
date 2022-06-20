@@ -82,9 +82,7 @@ const colors: ColorsWithModes = {
       //   },
       // },
     },
-    overlay: {
-      background: globalColors.neutral.blueGrayLight.a200,
-    },
+    overlay: { background: globalColors.neutral.blueGrayLight.a200 },
     brand: {
       primary: {
         300: globalColors.chromatic.azure.a50,
@@ -94,7 +92,8 @@ const colors: ColorsWithModes = {
         700: globalColors.chromatic.azure[700],
       },
       gray: {
-        300: globalColors.neutral.blueGrayLight[50],
+        200: globalColors.neutral.blueGrayLight[50],
+        300: globalColors.neutral.blueGrayLight[100],
         400: globalColors.neutral.blueGrayLight[300],
         500: globalColors.neutral.blueGrayLight[500],
         600: globalColors.neutral.blueGrayLight[600],
@@ -484,23 +483,23 @@ const colors: ColorsWithModes = {
           background: {
             primary: {
               default: {
-                lowContrast: globalColors.chromatic.emerald.a50,
+                lowContrast: globalColors.chromatic.crimson.a50,
                 highContrast: globalColors.chromatic.crimson[700],
               },
               hover: {
-                lowContrast: globalColors.chromatic.emerald.a100,
+                lowContrast: globalColors.chromatic.crimson.a100,
                 highContrast: globalColors.chromatic.crimson[800],
               },
               focus: {
-                lowContrast: globalColors.chromatic.emerald.a200,
+                lowContrast: globalColors.chromatic.crimson.a200,
                 highContrast: globalColors.chromatic.crimson[900],
               },
               active: {
-                lowContrast: globalColors.chromatic.emerald.a200,
+                lowContrast: globalColors.chromatic.crimson.a200,
                 highContrast: globalColors.chromatic.crimson[900],
               },
               disabled: {
-                lowContrast: globalColors.chromatic.emerald.a50,
+                lowContrast: globalColors.chromatic.crimson.a50,
                 highContrast: globalColors.chromatic.crimson[700],
               },
             },
@@ -949,14 +948,14 @@ const colors: ColorsWithModes = {
           hover: globalColors.chromatic.azure[500],
           focus: globalColors.chromatic.azure[500],
           active: globalColors.chromatic.azure[500],
-          disabled: globalColors.neutral.blueGrayLight[600],
+          disabled: globalColors.neutral.blueGrayLight[400],
         },
         tertiary: {
-          default: globalColors.neutral.blueGrayLight[400],
-          hover: globalColors.neutral.blueGrayLight[400],
-          focus: globalColors.neutral.blueGrayLight[400],
-          active: globalColors.neutral.blueGrayLight[400],
-          disabled: globalColors.neutral.blueGrayLight[400],
+          default: globalColors.neutral.blueGrayLight[300],
+          hover: globalColors.neutral.blueGrayLight[300],
+          focus: globalColors.neutral.blueGrayLight[300],
+          active: globalColors.neutral.blueGrayLight[300],
+          disabled: globalColors.neutral.blueGrayLight[300],
         },
       },
       text: {
@@ -968,18 +967,18 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayLight[600],
         },
         secondary: {
-          default: globalColors.chromatic.azure[600],
-          hover: globalColors.chromatic.azure[600],
-          focus: globalColors.chromatic.azure[600],
-          active: globalColors.chromatic.azure[600],
-          disabled: globalColors.neutral.blueGrayLight[600],
+          default: globalColors.chromatic.azure[500],
+          hover: globalColors.chromatic.azure[500],
+          focus: globalColors.chromatic.azure[500],
+          active: globalColors.chromatic.azure[500],
+          disabled: globalColors.neutral.blueGrayLight[400],
         },
         tertiary: {
           default: globalColors.neutral.blueGrayLight[1000],
           hover: globalColors.neutral.blueGrayLight[1000],
           focus: globalColors.neutral.blueGrayLight[1000],
           active: globalColors.neutral.blueGrayLight[1000],
-          disabled: globalColors.neutral.blueGrayLight[500],
+          disabled: globalColors.neutral.blueGrayLight[400],
         },
         link: {
           default: globalColors.chromatic.azure[500],
@@ -998,18 +997,18 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayLight[600],
         },
         secondary: {
-          default: globalColors.chromatic.azure[600],
-          hover: globalColors.chromatic.azure[600],
-          focus: globalColors.chromatic.azure[600],
-          active: globalColors.chromatic.azure[600],
-          disabled: globalColors.neutral.blueGrayLight[600],
+          default: globalColors.chromatic.azure[500],
+          hover: globalColors.chromatic.azure[500],
+          focus: globalColors.chromatic.azure[500],
+          active: globalColors.chromatic.azure[500],
+          disabled: globalColors.neutral.blueGrayLight[400],
         },
         tertiary: {
           default: globalColors.neutral.blueGrayLight[1000],
           hover: globalColors.neutral.blueGrayLight[1000],
           focus: globalColors.neutral.blueGrayLight[1000],
           active: globalColors.neutral.blueGrayLight[1000],
-          disabled: globalColors.neutral.blueGrayLight[500],
+          disabled: globalColors.neutral.blueGrayLight[400],
         },
         link: {
           default: globalColors.chromatic.azure[500],
@@ -1096,9 +1095,7 @@ const colors: ColorsWithModes = {
       //   },
       // },
     },
-    overlay: {
-      background: globalColors.neutral.blueGrayDark[600],
-    },
+    overlay: { background: globalColors.neutral.blueGrayDark[600] },
     brand: {
       primary: {
         300: globalColors.chromatic.azure.a100,
@@ -1108,7 +1105,8 @@ const colors: ColorsWithModes = {
         700: globalColors.chromatic.azure[600],
       },
       gray: {
-        300: globalColors.neutral.blueGrayDark[1000],
+        200: globalColors.neutral.blueGrayDark[1000],
+        300: globalColors.neutral.blueGrayDark[900],
         400: globalColors.neutral.blueGrayDark[800],
         500: globalColors.neutral.blueGrayDark[600],
         600: globalColors.neutral.blueGrayDark[400],
@@ -1943,7 +1941,7 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayDark.a00,
         },
         tertiary: {
-          default: globalColors.neutral.blueGrayDark[800],
+          default: globalColors.neutral.blueGrayDark[900],
           hover: globalColors.neutral.blueGrayDark[900],
           focus: globalColors.neutral.blueGrayDark[1000],
           active: globalColors.neutral.blueGrayLight[1100],
@@ -1959,11 +1957,11 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayDark[600],
         },
         secondary: {
-          default: globalColors.chromatic.azure[500],
-          hover: globalColors.chromatic.azure[500],
-          focus: globalColors.chromatic.azure[500],
-          active: globalColors.chromatic.azure[500],
-          disabled: globalColors.neutral.blueGrayDark[300],
+          default: globalColors.chromatic.azure[400],
+          hover: globalColors.chromatic.azure[400],
+          focus: globalColors.chromatic.azure[400],
+          active: globalColors.chromatic.azure[400],
+          disabled: globalColors.neutral.blueGrayDark[500],
         },
         tertiary: {
           default: globalColors.neutral.blueGrayDark[400],
@@ -1982,11 +1980,11 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayDark[300],
         },
         secondary: {
-          default: globalColors.chromatic.azure[600],
-          hover: globalColors.chromatic.azure[600],
-          focus: globalColors.chromatic.azure[600],
-          active: globalColors.chromatic.azure[600],
-          disabled: globalColors.neutral.blueGrayDark[300],
+          default: globalColors.chromatic.azure[400],
+          hover: globalColors.chromatic.azure[400],
+          focus: globalColors.chromatic.azure[400],
+          active: globalColors.chromatic.azure[400],
+          disabled: globalColors.neutral.blueGrayDark[500],
         },
         tertiary: {
           default: globalColors.neutral.blueGrayDark[100],
@@ -2012,11 +2010,11 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.blueGrayDark[300],
         },
         secondary: {
-          default: globalColors.chromatic.azure[600],
-          hover: globalColors.chromatic.azure[600],
-          focus: globalColors.chromatic.azure[600],
-          active: globalColors.chromatic.azure[600],
-          disabled: globalColors.neutral.blueGrayDark[300],
+          default: globalColors.chromatic.azure[400],
+          hover: globalColors.chromatic.azure[400],
+          focus: globalColors.chromatic.azure[400],
+          active: globalColors.chromatic.azure[400],
+          disabled: globalColors.neutral.blueGrayDark[500],
         },
         tertiary: {
           default: globalColors.neutral.blueGrayDark[100],
