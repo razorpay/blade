@@ -82,5 +82,14 @@ describe('makeAccessible', () => {
         text: 'text',
       },
     });
+
+    expect(
+      makeAccessible({
+        hidden: true,
+      }),
+    ).toStrictEqual({
+      accessibilityElementsHidden: true,
+      importantForAccessibility: 'no-hide-descendants',
+    });
   });
 });

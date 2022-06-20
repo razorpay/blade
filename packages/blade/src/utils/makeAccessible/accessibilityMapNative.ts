@@ -19,8 +19,6 @@ export const accessibilityValueKeys = Object.keys(accessibilityValue);
 export const accessibilityStateKeys = Object.keys(accessibilityState);
 
 // TODO:
-// importantForAccessibility
-// accessibilityElementsHidden
 // accessibilityViewIsModal
 export const accessibilityMap: AccessibilityMap = {
   ...accessibilityState,
