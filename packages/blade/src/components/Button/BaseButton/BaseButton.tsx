@@ -10,9 +10,16 @@ import makeSpace from '../../../utils/makeSpace';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import makeBorderSize from '../../../utils/makeBorderSize';
 import type { Required } from '../../../_helpers/types';
+import makeSize from '../../../utils/makeSize';
 import StyledBaseButton from './StyledBaseButton';
-import type { ButtonMinHeight, ButtonTypography } from './buttonTokens';
-import { typography as buttonTypography } from './buttonTokens';
+import type { ButtonTypography } from './buttonTokens';
+import {
+  typography as buttonTypography,
+  minHeight as buttonMinHeight,
+  iconSize as buttonIconSize,
+  iconSpacing as buttonIconSpacing,
+  spacing as buttonSpacing,
+} from './buttonTokens';
 
 type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
@@ -53,7 +60,7 @@ type BaseButtonStyleProps = {
   iconSize: IconSize;
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
-  minHeight: ButtonMinHeight;
+  minHeight: string;
   iconSpacing: string;
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
@@ -86,15 +93,17 @@ const getProps = ({
   size: Required<BaseButtonCommonProps['size']>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
-    iconSize: 'medium',
+    iconSize: buttonIconSize[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
-    minHeight: '40px',
-    iconSpacing: makeSpace(theme.spacing[2]),
+    minHeight: makeSize(buttonMinHeight[size]),
+    iconSpacing: makeSpace(theme.spacing[buttonIconSpacing[size]]),
     iconColor: 'action.icon.primary.default',
     textColor: 'action.text.primary.default',
-    spacing: `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`,
-    text: children?.trim(),
+    spacing: `${makeSpace(theme.spacing[buttonSpacing[size].topBottom])} ${makeSpace(
+      theme.spacing[buttonSpacing[size].rightLeft],
+    )}`,
+    text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultColor: getIn(theme.colors, 'action.background.primary.default'),
     defaultBorderColor: getIn(theme.colors, 'action.border.primary.default'),
     hoverColor: getIn(theme.colors, 'action.background.primary.hover'),
@@ -107,35 +116,6 @@ const getProps = ({
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderRadius: makeBorderSize(theme.border.radius.small),
   };
-
-  switch (size) {
-    case 'xsmall':
-      props.iconSize = 'xsmall';
-      props.minHeight = '28px';
-      props.iconSpacing = makeSpace(theme.spacing[1]);
-      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[2])}`;
-      props.text = children?.trim().toUpperCase();
-      break;
-    case 'small':
-      props.iconSize = 'xsmall';
-      props.minHeight = '32px';
-      props.iconSpacing = makeSpace(theme.spacing[1]);
-      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[3])}`;
-      break;
-    case 'medium':
-      props.iconSize = 'medium';
-      props.minHeight = '40px';
-      props.iconSpacing = makeSpace(theme.spacing[2]);
-      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`;
-      break;
-    case 'large':
-      props.iconSize = 'medium';
-      props.minHeight = '48px';
-      props.iconSpacing = makeSpace(theme.spacing[2]);
-      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`;
-      break;
-    default:
-  }
 
   if (isDisabled) {
     const disabledColor = getIn(theme.colors, 'action.background.primary.disabled');
