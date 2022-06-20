@@ -4,9 +4,9 @@ import { useTheme } from '../../BladeProvider';
 import makeTypographySize from '../../../utils/makeTypographySize';
 import type { Theme } from '../../BladeProvider';
 import type { DotNotationColorStringToken } from '../../../_helpers/types';
-import StyledBaseText from './StyledBaseText';
-import { AccessibilityProps } from '../../../utils/makeAccessible';
+import type { AccessibilityProps } from '../../../utils/makeAccessible';
 import makeAccessible from '../../../utils/makeAccessible';
+import StyledBaseText from './StyledBaseText';
 
 type FeedbackColors = `feedback.text.${DotNotationColorStringToken<
   Theme['colors']['feedback']['text']
