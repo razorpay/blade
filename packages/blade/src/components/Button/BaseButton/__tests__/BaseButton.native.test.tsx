@@ -118,9 +118,29 @@ describe('<BaseButton />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render disabled secondary variant button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton variant="secondary" isDisabled={true}>
+        {buttonText}
+      </BaseButton>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render tertiary variant button', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(<BaseButton variant="tertiary">{buttonText}</BaseButton>);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render disabled tertiary variant button', () => {
+    const buttonText = 'Pay Now';
+    const { toJSON } = renderWithTheme(
+      <BaseButton variant="tertiary" isDisabled={true}>
+        {buttonText}
+      </BaseButton>,
+    );
     expect(toJSON()).toMatchSnapshot();
   });
 });
