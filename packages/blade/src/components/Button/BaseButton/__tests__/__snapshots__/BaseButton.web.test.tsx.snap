@@ -726,6 +726,1016 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 </div>
 `;
 
+exports[`<BaseButton /> should render disabled information intent high contrast button 1`] = `
+.c1 {
+  color: hsla(187,68%,52%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(193,100%,35%,1);
+  border-color: hsla(187,68%,52%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.c0:hover {
+  background-color: hsla(193,100%,35%,1);
+  border-color: hsla(187,68%,52%,1);
+}
+
+.c0:active {
+  background-color: hsla(193,100%,35%,1);
+  border-color: hsla(187,68%,52%,1);
+}
+
+.c0:focus {
+  background-color: hsla(193,100%,35%,1);
+  border-color: hsla(187,68%,52%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    spacing="0px 20px"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      color="hsla(187, 68%, 52%, 1)"
+      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+      font-size="0.875rem"
+      font-style="normal"
+      font-weight="700"
+    >
+      Pay Now
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled information intent low contrast button 1`] = `
+.c1 {
+  color: hsla(193,100%,35%,0.32);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(193,100%,35%,0.09);
+  border-color: hsla(193,100%,35%,0.32);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.c0:hover {
+  background-color: hsla(193,100%,35%,0.09);
+  border-color: hsla(193,100%,35%,0.32);
+}
+
+.c0:active {
+  background-color: hsla(193,100%,35%,0.09);
+  border-color: hsla(193,100%,35%,0.32);
+}
+
+.c0:focus {
+  background-color: hsla(193,100%,35%,0.09);
+  border-color: hsla(193,100%,35%,0.32);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    spacing="0px 20px"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      color="hsla(193, 100%, 35%, 0.32)"
+      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+      font-size="0.875rem"
+      font-style="normal"
+      font-weight="700"
+    >
+      Pay Now
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled negative intent high contrast button 1`] = `
+.c1 {
+  color: hsla(8,99%,65%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(8,73%,47%,1);
+  border-color: hsla(8,99%,65%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.c0:hover {
+  background-color: hsla(8,73%,47%,1);
+  border-color: hsla(8,99%,65%,1);
+}
+
+.c0:active {
+  background-color: hsla(8,73%,47%,1);
+  border-color: hsla(8,99%,65%,1);
+}
+
+.c0:focus {
+  background-color: hsla(8,73%,47%,1);
+  border-color: hsla(8,99%,65%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    spacing="0px 20px"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      color="hsla(8, 99%, 65%, 1)"
+      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+      font-size="0.875rem"
+      font-style="normal"
+      font-weight="700"
+    >
+      Pay Now
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled negative intent low contrast button 1`] = `
+.c1 {
+  color: hsla(9,91%,56%,0.32);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(9,91%,56%,0.09);
+  border-color: hsla(9,91%,56%,0.32);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.c0:hover {
+  background-color: hsla(9,91%,56%,0.09);
+  border-color: hsla(9,91%,56%,0.32);
+}
+
+.c0:active {
+  background-color: hsla(9,91%,56%,0.09);
+  border-color: hsla(9,91%,56%,0.32);
+}
+
+.c0:focus {
+  background-color: hsla(9,91%,56%,0.09);
+  border-color: hsla(9,91%,56%,0.32);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    spacing="0px 20px"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      color="hsla(9, 91%, 56%, 0.32)"
+      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+      font-size="0.875rem"
+      font-style="normal"
+      font-weight="700"
+    >
+      Pay Now
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled neutral intent high contrast button 1`] = `
+.c1 {
+  color: hsla(216,15%,54%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(216,33%,29%,1);
+  border-color: hsla(216,15%,54%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.c0:hover {
+  background-color: hsla(216,33%,29%,1);
+  border-color: hsla(216,15%,54%,1);
+}
+
+.c0:active {
+  background-color: hsla(216,33%,29%,1);
+  border-color: hsla(216,15%,54%,1);
+}
+
+.c0:focus {
+  background-color: hsla(216,33%,29%,1);
+  border-color: hsla(216,15%,54%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    spacing="0px 20px"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      color="hsla(216, 15%, 54%, 1)"
+      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+      font-size="0.875rem"
+      font-style="normal"
+      font-weight="700"
+    >
+      Pay Now
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled neutral intent low contrast button 1`] = `
+.c1 {
+  color: hsla(216,44%,23%,0.32);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(216,44%,23%,0.09);
+  border-color: hsla(216,44%,23%,0.32);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.c0:hover {
+  background-color: hsla(216,44%,23%,0.09);
+  border-color: hsla(216,44%,23%,0.32);
+}
+
+.c0:active {
+  background-color: hsla(216,44%,23%,0.09);
+  border-color: hsla(216,44%,23%,0.32);
+}
+
+.c0:focus {
+  background-color: hsla(216,44%,23%,0.09);
+  border-color: hsla(216,44%,23%,0.32);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    spacing="0px 20px"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      color="hsla(216, 44%, 23%, 0.32)"
+      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+      font-size="0.875rem"
+      font-style="normal"
+      font-weight="700"
+    >
+      Pay Now
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled notice intent high contrast button 1`] = `
+.c1 {
+  color: hsla(35,84%,54%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(38,97%,38%,1);
+  border-color: hsla(35,84%,54%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.c0:hover {
+  background-color: hsla(38,97%,38%,1);
+  border-color: hsla(35,84%,54%,1);
+}
+
+.c0:active {
+  background-color: hsla(38,97%,38%,1);
+  border-color: hsla(35,84%,54%,1);
+}
+
+.c0:focus {
+  background-color: hsla(38,97%,38%,1);
+  border-color: hsla(35,84%,54%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    spacing="0px 20px"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      color="hsla(35, 84%, 54%, 1)"
+      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+      font-size="0.875rem"
+      font-style="normal"
+      font-weight="700"
+    >
+      Pay Now
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled notice intent low contrast button 1`] = `
+.c1 {
+  color: hsla(36,100%,44%,0.32);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(36,100%,44%,0.09);
+  border-color: hsla(36,100%,44%,0.32);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.c0:hover {
+  background-color: hsla(36,100%,44%,0.09);
+  border-color: hsla(36,100%,44%,0.32);
+}
+
+.c0:active {
+  background-color: hsla(36,100%,44%,0.09);
+  border-color: hsla(36,100%,44%,0.32);
+}
+
+.c0:focus {
+  background-color: hsla(36,100%,44%,0.09);
+  border-color: hsla(36,100%,44%,0.32);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    spacing="0px 20px"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      color="hsla(36, 100%, 44%, 0.32)"
+      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+      font-size="0.875rem"
+      font-style="normal"
+      font-weight="700"
+    >
+      Pay Now
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled positive intent high contrast button 1`] = `
+.c1 {
+  color: hsla(149,99%,35%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(160,100%,26%,1);
+  border-color: hsla(149,99%,35%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.c0:hover {
+  background-color: hsla(160,100%,26%,1);
+  border-color: hsla(149,99%,35%,1);
+}
+
+.c0:active {
+  background-color: hsla(160,100%,26%,1);
+  border-color: hsla(149,99%,35%,1);
+}
+
+.c0:focus {
+  background-color: hsla(160,100%,26%,1);
+  border-color: hsla(149,99%,35%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    spacing="0px 20px"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      color="hsla(149, 99%, 35%, 1)"
+      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+      font-size="0.875rem"
+      font-style="normal"
+      font-weight="700"
+    >
+      Pay Now
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled positive intent low contrast button 1`] = `
+.c1 {
+  color: hsla(155,100%,31%,0.32);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(155,100%,31%,0.09);
+  border-color: hsla(155,100%,31%,0.32);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 0px 20px;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.c0:hover {
+  background-color: hsla(155,100%,31%,0.09);
+  border-color: hsla(155,100%,31%,0.32);
+}
+
+.c0:active {
+  background-color: hsla(155,100%,31%,0.09);
+  border-color: hsla(155,100%,31%,0.32);
+}
+
+.c0:focus {
+  background-color: hsla(155,100%,31%,0.09);
+  border-color: hsla(155,100%,31%,0.32);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    spacing="0px 20px"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      color="hsla(155, 100%, 31%, 0.32)"
+      font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+      font-size="0.875rem"
+      font-style="normal"
+      font-weight="700"
+    >
+      Pay Now
+    </div>
+  </button>
+</div>
+`;
+
 exports[`<BaseButton /> should render information intent high contrast button 1`] = `
 .c1 {
   color: hsla(193,100%,35%,1);
