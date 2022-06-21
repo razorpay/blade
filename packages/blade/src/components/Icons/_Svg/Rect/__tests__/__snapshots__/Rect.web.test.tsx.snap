@@ -3,6 +3,7 @@
 exports[`<Rect /> should render html rect component 1`] = `
 <div>
   <svg
+    aria-hidden="true"
     height="110"
     viewBox="0 0 100 100"
     width="400"

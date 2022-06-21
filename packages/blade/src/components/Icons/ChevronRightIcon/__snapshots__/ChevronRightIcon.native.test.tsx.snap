@@ -2,12 +2,14 @@
 
 exports[`<ChevronRightIcon /> should render ChevronRightIcon 1`] = `
 <RNSVGSvgView
+  accessibilityElementsHidden={true}
   align="xMidYMid"
   bbHeight="24px"
   bbWidth="24px"
   fill="none"
   focusable={false}
   height="24px"
+  importantForAccessibility="no-hide-descendants"
   meetOrSlice={0}
   minX={0}
   minY={0}
