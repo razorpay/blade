@@ -69,6 +69,7 @@ const BaseText = ({
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
       className={className}
+      style={style}
       {...makeAccessible(accessibilityProps)}
     >
       {children}
