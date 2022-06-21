@@ -8,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import getIn from '../../../utils/getIn';
 import { useTheme } from '../../BladeProvider';
-import { LoaderIcon } from '../../Icons';
+import BaseLoader from './BaseLoader';
 import type { BaseSpinnerProps } from './BaseSpinner.d';
 
 type WithStyle = {
@@ -57,7 +57,7 @@ const BaseSpinner = ({
 }: BaseSpinnerProps & WithStyle): React.ReactElement => {
   return (
     <AnimatedBaseSpinner {...props}>
-      <LoaderIcon color={color} size={size} />
+      <BaseLoader color={color} size={size} />
     </AnimatedBaseSpinner>
   );
 };

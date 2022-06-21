@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import useIconProps from '../../Icons/useIconProps';
 import BaseSpinner from '../../Spinner/BaseSpinner';
 import type { ButtonSpinnerProps } from './ButtonSpinner.d';
 import buttonSpinnerStyles from './buttonSpinnerStyles';
@@ -12,9 +13,11 @@ const ButtonSpinner = ({
   color,
   size,
 }: ButtonSpinnerProps): React.ReactElement => {
+  const { width, iconColor } = useIconProps({ size, color });
+
   return (
     <>
-      {isLoading ? <ButtonBaseSpinner color={color} size={size} /> : null}
+      {isLoading ? <ButtonBaseSpinner color={iconColor} size={width} /> : null}
       <div style={{ opacity: isLoading ? 0 : 1 }}>{children}</div>
     </>
   );

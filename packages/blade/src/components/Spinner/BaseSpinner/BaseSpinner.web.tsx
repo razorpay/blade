@@ -3,7 +3,7 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import makeMotionTime from '../../../utils/makeMotionTime';
-import { LoaderIcon } from '../../Icons';
+import BaseLoader from './BaseLoader';
 import type { BaseSpinnerProps } from './BaseSpinner.d';
 
 const rotate = keyframes`
@@ -26,7 +26,7 @@ const AnimatedBaseSpinner = styled.div(
 const BaseSpinner = ({ color, size, ...props }: BaseSpinnerProps): React.ReactElement => {
   return (
     <AnimatedBaseSpinner {...props}>
-      <LoaderIcon color={color} size={size} />
+      <BaseLoader color={color} size={size} />
     </AnimatedBaseSpinner>
   );
 };

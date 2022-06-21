@@ -14,7 +14,7 @@ export default {
       console.log('clicked');
     },
     isDisabled: false,
-    isLoading: false,
+    isLoading: true,
     size: 'medium',
     iconPosition: 'left',
     isFullWidth: false,
