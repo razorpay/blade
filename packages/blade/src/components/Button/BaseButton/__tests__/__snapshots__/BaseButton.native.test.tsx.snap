@@ -2062,7 +2062,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   }
 >
   <Text
-    color="hsla(193, 100%, 35%, 1)"
+    color="hsla(180, 100%, 97%, 1)"
     fontFamily="Lato"
     fontSize="15px"
     fontStyle="normal"
@@ -2071,7 +2071,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
     style={
       Array [
         Object {
-          "color": "hsla(193, 100%, 35%, 1)",
+          "color": "hsla(180, 100%, 97%, 1)",
           "fontFamily": "Lato",
           "fontSize": 15,
           "fontStyle": "normal",
