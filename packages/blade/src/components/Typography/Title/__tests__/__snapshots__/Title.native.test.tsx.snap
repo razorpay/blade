@@ -2,6 +2,7 @@
 
 exports[`<Title /> should render Title with default properties 1`] = `
 <Text
+  accessibilityRole="header"
   color="hsla(217, 56%, 17%, 1)"
   fontFamily="Lato"
   fontSize="24px"
@@ -31,6 +32,7 @@ exports[`<Title /> should render Title with default properties 1`] = `
 
 exports[`<Title /> should render Title with variant "large" 1`] = `
 <Text
+  accessibilityRole="header"
   color="hsla(217, 18%, 45%, 1)"
   fontFamily="Lato"
   fontSize="35px"
@@ -60,6 +62,7 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
 
 exports[`<Title /> should render Title with variant "medium" 1`] = `
 <Text
+  accessibilityRole="header"
   color="hsla(216, 16%, 60%, 1)"
   fontFamily="Lato"
   fontSize="27px"
@@ -89,6 +92,7 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
 
 exports[`<Title /> should render Title with variant "small" 1`] = `
 <Text
+  accessibilityRole="header"
   color="hsla(217, 56%, 17%, 1)"
   fontFamily="Lato"
   fontSize="24px"
@@ -118,6 +122,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
 
 exports[`<Title /> should render Title with variant "small" and contrast "high" 1`] = `
 <Text
+  accessibilityRole="header"
   color="hsla(0, 0%, 100%, 1)"
   fontFamily="Lato"
   fontSize="24px"
