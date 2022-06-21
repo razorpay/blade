@@ -242,6 +242,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     type="button"
   >
     <svg
+      aria-hidden="true"
       fill="none"
       height="20px"
       viewBox="0 0 24 24"
@@ -340,6 +341,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     type="button"
   >
     <svg
+      aria-hidden="true"
       fill="none"
       height="20px"
       viewBox="0 0 24 24"
@@ -448,6 +450,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       Pay Now
     </div>
     <svg
+      aria-hidden="true"
       fill="none"
       height="20px"
       viewBox="0 0 24 24"
@@ -519,6 +522,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     type="button"
   >
     <svg
+      aria-hidden="true"
       fill="none"
       height="20px"
       viewBox="0 0 24 24"
