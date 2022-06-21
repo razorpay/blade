@@ -1,8 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
-import { LoaderIcon } from '../../Icons';
+import styled from 'styled-components/native';
+import BaseSpinner from '../../Spinner/BaseSpinner';
 import type { ButtonSpinnerProps } from './ButtonSpinner.d';
-import StyledButtonSpinner from './StyledButtonSpinner';
+import buttonSpinnerStyles from './buttonSpinnerStyles';
+
+const ButtonBaseSpinner = styled(BaseSpinner)(buttonSpinnerStyles);
 
 const ButtonSpinner = ({
   isLoading,
@@ -12,11 +15,7 @@ const ButtonSpinner = ({
 }: ButtonSpinnerProps): React.ReactElement => {
   return (
     <>
-      {isLoading ? (
-        <StyledButtonSpinner>
-          <LoaderIcon color={color} size={size} />
-        </StyledButtonSpinner>
-      ) : null}
+      {isLoading ? <ButtonBaseSpinner color={color} size={size} /> : null}
       <View style={{ opacity: isLoading ? 0 : 1 }}>{children}</View>
     </>
   );

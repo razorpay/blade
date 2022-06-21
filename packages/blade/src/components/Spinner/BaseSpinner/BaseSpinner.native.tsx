@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { View } from 'react-native';
+import React from 'react';
 import Animated, {
   cancelAnimation,
   useAnimatedStyle,
@@ -7,19 +6,19 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
-import styled from 'styled-components/native';
 import getIn from '../../../utils/getIn';
 import { useTheme } from '../../BladeProvider';
-import getButtonSpinnerStyles from './getButtonSpinnerStyles';
+import { LoaderIcon } from '../../Icons';
+import type { BaseSpinnerProps } from './BaseSpinner.d';
 
-const AnimatedButtonSpinner = styled(Animated.createAnimatedComponent(View))(({ theme }) =>
-  getButtonSpinnerStyles(theme),
-);
-
-type StyledButtonSpinnerProps = {
-  children: React.ReactNode;
+type WithStyle = {
+  style: Record<string, unknown>;
 };
-const StyledButtonSpinner = (props: StyledButtonSpinnerProps): React.ReactElement => {
+type AnimatedBaseSpinnerProps = {
+  children: React.ReactNode;
+} & WithStyle;
+
+const AnimatedBaseSpinner = (props: AnimatedBaseSpinnerProps): React.ReactElement => {
   const { theme } = useTheme();
   const duration = getIn(theme.motion, 'duration.2xgentle');
   const easing = getIn(theme.motion, 'easing.standard.effective');
@@ -34,7 +33,7 @@ const StyledButtonSpinner = (props: StyledButtonSpinnerProps): React.ReactElemen
     };
   }, [rotation.value]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     rotation.value = withRepeat(
       withTiming(360, {
         duration,
@@ -48,7 +47,19 @@ const StyledButtonSpinner = (props: StyledButtonSpinnerProps): React.ReactElemen
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <AnimatedButtonSpinner {...props} style={animatedStyles} />;
+  return <Animated.View {...props} style={[animatedStyles, props.style]} />;
 };
 
-export default StyledButtonSpinner;
+const BaseSpinner = ({
+  color,
+  size,
+  ...props
+}: BaseSpinnerProps & WithStyle): React.ReactElement => {
+  return (
+    <AnimatedBaseSpinner {...props}>
+      <LoaderIcon color={color} size={size} />
+    </AnimatedBaseSpinner>
+  );
+};
+
+export default BaseSpinner;
