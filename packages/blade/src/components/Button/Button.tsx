@@ -41,10 +41,8 @@ const Button = ({
   variant = 'primary',
 }: ButtonProps): React.ReactElement => {
   return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-expect-error temporarily ignore this error
     <BaseButton
-      icon={icon}
+      {...(icon ? { icon, children } : { icon, children })}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
       isFullWidth={isFullWidth}
@@ -52,9 +50,7 @@ const Button = ({
       size={size}
       type={type}
       variant={variant}
-    >
-      {children}
-    </BaseButton>
+    />
   );
 };
 
