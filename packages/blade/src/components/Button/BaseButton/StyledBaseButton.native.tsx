@@ -30,6 +30,7 @@ const StyledBaseButton = ({
   motionDuration,
   motionEasing,
   theme,
+  isLoading,
 }: StyledBaseButtonProps): React.ReactElement => {
   const isPressed = useSharedValue(false);
   const duration = getIn(theme.motion, motionDuration);
@@ -49,6 +50,7 @@ const StyledBaseButton = ({
 
   return (
     <StyledPressable
+      isLoading={isLoading}
       onPress={onClick}
       style={animatedStyles}
       minHeight={minHeight}

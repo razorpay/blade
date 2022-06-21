@@ -22,6 +22,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -63,36 +64,44 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(0, 0%, 100%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(0, 0%, 100%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -118,6 +127,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={true}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -159,36 +169,44 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(0, 0%, 100%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(0, 0%, 100%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -214,6 +232,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -255,85 +274,93 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     ]
   }
 >
-  <RNSVGSvgView
-    align="xMidYMid"
-    bbHeight="20px"
-    bbWidth="20px"
-    fill="none"
-    focusable={false}
-    height="20px"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
+  <View
     style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Object {
-          "flex": 0,
-          "height": 20,
-          "width": 20,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    vbHeight={24}
-    vbWidth={24}
-    width="20px"
   >
-    <RNSVGGroup
-      fill={null}
-      propList={
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight="20px"
+      bbWidth="20px"
+      fill="none"
+      focusable={false}
+      height="20px"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
         Array [
-          "fill",
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          Object {
+            "flex": 0,
+            "height": 20,
+            "width": 20,
+          },
         ]
       }
+      vbHeight={24}
+      vbWidth={24}
+      width="20px"
     >
-      <RNSVGPath
-        clipRule={0}
-        d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-        fill={4294967295}
-        fillRule={0}
+      <RNSVGGroup
+        fill={null}
         propList={
           Array [
             "fill",
-            "fillRule",
           ]
         }
-      />
-    </RNSVGGroup>
-  </RNSVGSvgView>
-  <Text
-    color="hsla(0, 0%, 100%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
-    style={
-      Array [
-        Object {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 8,
-          "paddingRight": 0,
-        },
-      ]
-    }
-    textAlign="center"
-    textDecorationLine="none"
-  >
-    Pay Now
-  </Text>
+      >
+        <RNSVGPath
+          clipRule={0}
+          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+          fill={4294967295}
+          fillRule={0}
+          propList={
+            Array [
+              "fill",
+              "fillRule",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <Text
+      color="hsla(0, 0%, 100%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 8,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -359,6 +386,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -400,85 +428,93 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     ]
   }
 >
-  <RNSVGSvgView
-    align="xMidYMid"
-    bbHeight="20px"
-    bbWidth="20px"
-    fill="none"
-    focusable={false}
-    height="20px"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
+  <View
     style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Object {
-          "flex": 0,
-          "height": 20,
-          "width": 20,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    vbHeight={24}
-    vbWidth={24}
-    width="20px"
   >
-    <RNSVGGroup
-      fill={null}
-      propList={
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight="20px"
+      bbWidth="20px"
+      fill="none"
+      focusable={false}
+      height="20px"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
         Array [
-          "fill",
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          Object {
+            "flex": 0,
+            "height": 20,
+            "width": 20,
+          },
         ]
       }
+      vbHeight={24}
+      vbWidth={24}
+      width="20px"
     >
-      <RNSVGPath
-        clipRule={0}
-        d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-        fill={4294967295}
-        fillRule={0}
+      <RNSVGGroup
+        fill={null}
         propList={
           Array [
             "fill",
-            "fillRule",
           ]
         }
-      />
-    </RNSVGGroup>
-  </RNSVGSvgView>
-  <Text
-    color="hsla(0, 0%, 100%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
-    style={
-      Array [
-        Object {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 8,
-          "paddingRight": 0,
-        },
-      ]
-    }
-    textAlign="center"
-    textDecorationLine="none"
-  >
-    Pay Now
-  </Text>
+      >
+        <RNSVGPath
+          clipRule={0}
+          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+          fill={4294967295}
+          fillRule={0}
+          propList={
+            Array [
+              "fill",
+              "fillRule",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <Text
+      color="hsla(0, 0%, 100%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 8,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -504,6 +540,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -545,85 +582,93 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     ]
   }
 >
-  <Text
-    color="hsla(0, 0%, 100%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 8,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
-  <RNSVGSvgView
-    align="xMidYMid"
-    bbHeight="20px"
-    bbWidth="20px"
-    fill="none"
-    focusable={false}
-    height="20px"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
-    style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Object {
-          "flex": 0,
-          "height": 20,
-          "width": 20,
-        },
-      ]
-    }
-    vbHeight={24}
-    vbWidth={24}
-    width="20px"
-  >
-    <RNSVGGroup
-      fill={null}
-      propList={
+    <Text
+      color="hsla(0, 0%, 100%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
         Array [
-          "fill",
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 8,
+          },
         ]
       }
+      textAlign="center"
+      textDecorationLine="none"
     >
-      <RNSVGPath
-        clipRule={0}
-        d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-        fill={4294967295}
-        fillRule={0}
+      Pay Now
+    </Text>
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight="20px"
+      bbWidth="20px"
+      fill="none"
+      focusable={false}
+      height="20px"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          Object {
+            "flex": 0,
+            "height": 20,
+            "width": 20,
+          },
+        ]
+      }
+      vbHeight={24}
+      vbWidth={24}
+      width="20px"
+    >
+      <RNSVGGroup
+        fill={null}
         propList={
           Array [
             "fill",
-            "fillRule",
           ]
         }
-      />
-    </RNSVGGroup>
-  </RNSVGSvgView>
+      >
+        <RNSVGPath
+          clipRule={0}
+          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+          fill={4294967295}
+          fillRule={0}
+          propList={
+            Array [
+              "fill",
+              "fillRule",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
 </View>
 `;
 
@@ -649,6 +694,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -690,55 +736,63 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     ]
   }
 >
-  <RNSVGSvgView
-    align="xMidYMid"
-    bbHeight="20px"
-    bbWidth="20px"
-    fill="none"
-    focusable={false}
-    height="20px"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
+  <View
     style={
-      Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderWidth": 0,
-        },
-        Object {
-          "flex": 0,
-          "height": 20,
-          "width": 20,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    vbHeight={24}
-    vbWidth={24}
-    width="20px"
   >
-    <RNSVGGroup
-      fill={null}
-      propList={
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight="20px"
+      bbWidth="20px"
+      fill="none"
+      focusable={false}
+      height="20px"
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      style={
         Array [
-          "fill",
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          Object {
+            "flex": 0,
+            "height": 20,
+            "width": 20,
+          },
         ]
       }
+      vbHeight={24}
+      vbWidth={24}
+      width="20px"
     >
-      <RNSVGPath
-        clipRule={0}
-        d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-        fill={4294967295}
-        fillRule={0}
+      <RNSVGGroup
+        fill={null}
         propList={
           Array [
             "fill",
-            "fillRule",
           ]
         }
-      />
-    </RNSVGGroup>
-  </RNSVGSvgView>
+      >
+        <RNSVGPath
+          clipRule={0}
+          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+          fill={4294967295}
+          fillRule={0}
+          propList={
+            Array [
+              "fill",
+              "fillRule",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
 </View>
 `;
 
@@ -764,6 +818,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   hoverBorderColor="hsla(216, 19%, 89%, 1)"
   hoverColor="hsla(216, 19%, 89%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -805,36 +860,44 @@ exports[`<BaseButton /> should render disabled button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(216, 16%, 60%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(216, 16%, 60%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 16%, 60%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -860,6 +923,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   hoverBorderColor="hsla(187, 68%, 52%, 1)"
   hoverColor="hsla(193, 100%, 35%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -901,36 +965,44 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
     ]
   }
 >
-  <Text
-    color="hsla(187, 68%, 52%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(187, 68%, 52%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(187, 68%, 52%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(187, 68%, 52%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -956,6 +1028,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   hoverBorderColor="hsla(193, 100%, 35%, 0.32)"
   hoverColor="hsla(193, 100%, 35%, 0.09)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -997,36 +1070,44 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
     ]
   }
 >
-  <Text
-    color="hsla(193, 100%, 35%, 0.32)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(193, 100%, 35%, 0.32)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(193, 100%, 35%, 0.32)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(193, 100%, 35%, 0.32)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -1052,6 +1133,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   hoverBorderColor="hsla(8, 99%, 65%, 1)"
   hoverColor="hsla(8, 73%, 47%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -1093,36 +1175,44 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
     ]
   }
 >
-  <Text
-    color="hsla(8, 99%, 65%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(8, 99%, 65%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(8, 99%, 65%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(8, 99%, 65%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -1148,6 +1238,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   hoverBorderColor="hsla(9, 91%, 56%, 0.32)"
   hoverColor="hsla(9, 91%, 56%, 0.09)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -1189,36 +1280,44 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
     ]
   }
 >
-  <Text
-    color="hsla(9, 91%, 56%, 0.32)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(9, 91%, 56%, 0.32)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(9, 91%, 56%, 0.32)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(9, 91%, 56%, 0.32)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -1244,6 +1343,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   hoverBorderColor="hsla(216, 15%, 54%, 1)"
   hoverColor="hsla(216, 33%, 29%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -1285,36 +1385,44 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
     ]
   }
 >
-  <Text
-    color="hsla(216, 15%, 54%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(216, 15%, 54%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(216, 15%, 54%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 15%, 54%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -1340,6 +1448,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   hoverBorderColor="hsla(216, 44%, 23%, 0.32)"
   hoverColor="hsla(216, 44%, 23%, 0.09)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -1381,36 +1490,44 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
     ]
   }
 >
-  <Text
-    color="hsla(216, 44%, 23%, 0.32)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(216, 44%, 23%, 0.32)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(216, 44%, 23%, 0.32)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 44%, 23%, 0.32)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -1436,6 +1553,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   hoverBorderColor="hsla(35, 84%, 54%, 1)"
   hoverColor="hsla(38, 97%, 38%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -1477,36 +1595,44 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
     ]
   }
 >
-  <Text
-    color="hsla(35, 84%, 54%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(35, 84%, 54%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(35, 84%, 54%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(35, 84%, 54%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -1532,6 +1658,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   hoverBorderColor="hsla(36, 100%, 44%, 0.32)"
   hoverColor="hsla(36, 100%, 44%, 0.09)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -1573,36 +1700,44 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
     ]
   }
 >
-  <Text
-    color="hsla(36, 100%, 44%, 0.32)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(36, 100%, 44%, 0.32)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(36, 100%, 44%, 0.32)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(36, 100%, 44%, 0.32)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -1628,6 +1763,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   hoverBorderColor="hsla(149, 99%, 35%, 1)"
   hoverColor="hsla(160, 100%, 26%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -1669,36 +1805,44 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
     ]
   }
 >
-  <Text
-    color="hsla(149, 99%, 35%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(149, 99%, 35%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(149, 99%, 35%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(149, 99%, 35%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -1724,6 +1868,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   hoverBorderColor="hsla(155, 100%, 31%, 0.32)"
   hoverColor="hsla(155, 100%, 31%, 0.09)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -1765,36 +1910,44 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
     ]
   }
 >
-  <Text
-    color="hsla(155, 100%, 31%, 0.32)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(155, 100%, 31%, 0.32)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(155, 100%, 31%, 0.32)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(155, 100%, 31%, 0.32)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -1820,6 +1973,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   hoverBorderColor="hsla(218, 19%, 81%, 1)"
   hoverColor="hsla(216, 44%, 23%, 0)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -1861,36 +2015,44 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(218, 19%, 81%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(218, 19%, 81%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(218, 19%, 81%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(218, 19%, 81%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -1916,6 +2078,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   hoverBorderColor="hsla(216, 19%, 89%, 1)"
   hoverColor="hsla(0, 0%, 100%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -1957,36 +2120,44 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(218, 19%, 81%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(218, 19%, 81%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(218, 19%, 81%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(218, 19%, 81%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -2012,6 +2183,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   hoverBorderColor="hsla(180, 100%, 97%, 1)"
   hoverColor="hsla(195, 100%, 31%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -2053,36 +2225,44 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
     ]
   }
 >
-  <Text
-    color="hsla(193, 100%, 35%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(193, 100%, 35%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(193, 100%, 35%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(193, 100%, 35%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -2108,6 +2288,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   hoverBorderColor="hsla(193, 100%, 35%, 0.32)"
   hoverColor="hsla(193, 100%, 35%, 0.18)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -2149,36 +2330,44 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
     ]
   }
 >
-  <Text
-    color="hsla(195, 100%, 31%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(195, 100%, 31%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(195, 100%, 31%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(195, 100%, 31%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -2204,6 +2393,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="48px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -2245,36 +2435,44 @@ exports[`<BaseButton /> should render large size button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(0, 0%, 100%, 1)"
-    fontFamily="Lato"
-    fontSize="17px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 17,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(0, 0%, 100%, 1)"
+      fontFamily="Lato"
+      fontSize="17px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 17,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -2300,6 +2498,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -2341,36 +2540,44 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(0, 0%, 100%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(0, 0%, 100%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -2396,6 +2603,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   hoverBorderColor="hsla(0, 100%, 97%, 1)"
   hoverColor="hsla(7, 72%, 40%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -2437,36 +2645,44 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
     ]
   }
 >
-  <Text
-    color="hsla(0, 100%, 97%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(0, 100%, 97%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(0, 100%, 97%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 100%, 97%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -2492,6 +2708,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   hoverBorderColor="hsla(9, 91%, 56%, 0.32)"
   hoverColor="hsla(9, 91%, 56%, 0.18)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -2533,36 +2750,44 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
     ]
   }
 >
-  <Text
-    color="hsla(8, 73%, 47%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(8, 73%, 47%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(8, 73%, 47%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(8, 73%, 47%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -2588,6 +2813,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   hoverBorderColor="hsla(214, 18%, 69%, 1)"
   hoverColor="hsla(216, 44%, 23%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -2629,36 +2855,44 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
     ]
   }
 >
-  <Text
-    color="hsla(220, 27%, 98%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(220, 27%, 98%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(220, 27%, 98%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(220, 27%, 98%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -2684,6 +2918,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   hoverBorderColor="hsla(216, 44%, 23%, 0.32)"
   hoverColor="hsla(216, 44%, 23%, 0.18)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -2725,36 +2960,44 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(216, 27%, 36%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(216, 27%, 36%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(216, 27%, 36%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 27%, 36%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -2780,6 +3023,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   hoverBorderColor="hsla(32, 100%, 94%, 1)"
   hoverColor="hsla(40, 90%, 32%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -2821,36 +3065,44 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(32, 100%, 94%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(32, 100%, 94%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(32, 100%, 94%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(32, 100%, 94%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -2876,6 +3128,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   hoverBorderColor="hsla(36, 100%, 44%, 0.32)"
   hoverColor="hsla(36, 100%, 44%, 0.18)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -2917,36 +3170,44 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(38, 97%, 38%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(38, 97%, 38%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(38, 97%, 38%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(38, 97%, 38%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -2972,6 +3233,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   hoverBorderColor="hsla(107, 100%, 96%, 1)"
   hoverColor="hsla(163, 100%, 22%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -3013,36 +3275,44 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
     ]
   }
 >
-  <Text
-    color="hsla(107, 100%, 96%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(107, 100%, 96%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(107, 100%, 96%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(107, 100%, 96%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -3068,6 +3338,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   hoverBorderColor="hsla(155, 100%, 31%, 0.32)"
   hoverColor="hsla(155, 100%, 31%, 0.18)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -3109,36 +3380,44 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
     ]
   }
 >
-  <Text
-    color="hsla(160, 100%, 26%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(160, 100%, 26%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(160, 100%, 26%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(160, 100%, 26%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -3164,6 +3443,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   hoverBorderColor="hsla(213, 89%, 56%, 1)"
   hoverColor="hsla(218, 89%, 51%, 0.09)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -3205,36 +3485,44 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(213, 89%, 56%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(213, 89%, 56%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(213, 89%, 56%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(213, 89%, 56%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -3260,6 +3548,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="32px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -3301,36 +3590,44 @@ exports[`<BaseButton /> should render small size button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(0, 0%, 100%, 1)"
-    fontFamily="Lato"
-    fontSize="12px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(0, 0%, 100%, 1)"
+      fontFamily="Lato"
+      fontSize="12px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -3356,6 +3653,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   hoverBorderColor="hsla(216, 19%, 89%, 1)"
   hoverColor="hsla(220, 27%, 98%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="36px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -3397,36 +3695,44 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(216, 33%, 29%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(216, 33%, 29%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    Pay Now
-  </Text>
+    <Text
+      color="hsla(216, 33%, 29%, 1)"
+      fontFamily="Lato"
+      fontSize="15px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(216, 33%, 29%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 15,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      Pay Now
+    </Text>
+  </View>
 </View>
 `;
 
@@ -3452,6 +3758,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   hoverBorderColor="hsla(218, 89%, 51%, 1)"
   hoverColor="hsla(218, 89%, 51%, 1)"
   isFullWidth={false}
+  isLoading={false}
   minHeight="28px"
   motionDuration="duration.xquick"
   motionEasing="easing.standard.effective"
@@ -3493,35 +3800,43 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     ]
   }
 >
-  <Text
-    color="hsla(0, 0%, 100%, 1)"
-    fontFamily="Lato"
-    fontSize="12px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
     style={
-      Array [
-        Object {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
-    PAY NOW
-  </Text>
+    <Text
+      color="hsla(0, 0%, 100%, 1)"
+      fontFamily="Lato"
+      fontSize="12px"
+      fontStyle="normal"
+      fontWeight={700}
+      lineHeight="16px"
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "lineHeight": 16,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+        ]
+      }
+      textAlign="center"
+      textDecorationLine="none"
+    >
+      PAY NOW
+    </Text>
+  </View>
 </View>
 `;

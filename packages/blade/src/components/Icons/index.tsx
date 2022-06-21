@@ -31,3 +31,4 @@ export { default as DollarIcon } from './DollarIcon';
 export { default as EyeIcon } from './EyeIcon';
 export { default as EyeOffIcon } from './EyeOffIcon';
 export { default as RupeeIcon } from './RupeeIcon';
+export { default as LoaderIcon } from './LoaderIcon';

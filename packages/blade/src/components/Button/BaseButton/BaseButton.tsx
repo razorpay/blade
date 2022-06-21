@@ -11,6 +11,7 @@ import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import makeBorderSize from '../../../utils/makeBorderSize';
 import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
 import type { Required } from '../../../_helpers/types';
+import ButtonSpinner from '../ButtonSpinner';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonMinHeight, ButtonTypography } from './buttonTokens';
 import { typography as buttonTypography } from './buttonTokens';
@@ -22,6 +23,7 @@ type BaseButtonCommonProps = {
   isFullWidth?: boolean;
   onClick?: () => void;
   type?: 'button' | 'reset' | 'submit';
+  isLoading?: boolean;
 };
 
 /*
@@ -285,10 +287,12 @@ const BaseButton = ({
   iconPosition = 'left',
   isDisabled = false,
   isFullWidth = false,
+  isLoading = false,
   onClick,
   type = 'button',
   children,
 }: BaseButtonProps): ReactElement => {
+  const disabled = isLoading || isDisabled;
   const { theme, platform } = useTheme();
   const buttonTypographyTokens = buttonTypography[platform];
   if (!Icon && !children?.trim()) {
@@ -296,6 +300,7 @@ const BaseButton = ({
       `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
     );
   }
+
   const {
     activeBorderColor,
     activeColor,
@@ -322,7 +327,7 @@ const BaseButton = ({
   } = getProps({
     buttonTypographyTokens,
     children,
-    isDisabled,
+    isDisabled: disabled,
     size,
     variant,
     theme,
@@ -332,13 +337,14 @@ const BaseButton = ({
 
   return (
     <StyledBaseButton
+      isLoading={isLoading}
       activeBorderColor={activeBorderColor}
       activeColor={activeColor}
       defaultBorderColor={defaultBorderColor}
       minHeight={minHeight}
       spacing={spacing}
       defaultColor={defaultColor}
-      disabled={isDisabled}
+      disabled={disabled}
       focusBorderColor={focusBorderColor}
       focusColor={focusColor}
       focusRingColor={focusRingColor}
@@ -353,22 +359,24 @@ const BaseButton = ({
       motionEasing={motionEasing}
       theme={theme}
     >
-      {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
-      {text && (
-        <ButtonText
-          lineHeight={lineHeight}
-          fontSize={fontSize}
-          fontWeight="bold"
-          textAlign="center"
-          color={textColor}
-          iconPosition={iconPosition}
-          hasIcon={!!Icon}
-          iconSpacing={iconSpacing}
-        >
-          {text}
-        </ButtonText>
-      )}
-      {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
+      <ButtonSpinner isLoading={isLoading} color={iconColor} size={iconSize}>
+        {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
+        {text && (
+          <ButtonText
+            lineHeight={lineHeight}
+            fontSize={fontSize}
+            fontWeight="bold"
+            textAlign="center"
+            color={textColor}
+            iconPosition={iconPosition}
+            hasIcon={!!Icon}
+            iconSpacing={iconSpacing}
+          >
+            {text}
+          </ButtonText>
+        )}
+        {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
+      </ButtonSpinner>
     </StyledBaseButton>
   );
 };
