@@ -1,6 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import iconMap from '../Icons/iconMap';
+import iconMap from '../../Icons/iconMap';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
 

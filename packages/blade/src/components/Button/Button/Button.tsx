@@ -1,5 +1,5 @@
-import type { IconComponent } from '../Icons';
-import BaseButton from './BaseButton';
+import type { IconComponent } from '../../Icons';
+import BaseButton from '../BaseButton';
 
 type ButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -32,9 +32,9 @@ export type ButtonProps = ButtonWithoutIconProps | ButtonWithIconProps;
 const Button = ({
   children,
   icon,
-  iconPosition,
-  isDisabled,
-  isFullWidth,
+  iconPosition = 'left',
+  isDisabled = false,
+  isFullWidth = false,
   onClick,
   size = 'medium',
   type = 'button',
