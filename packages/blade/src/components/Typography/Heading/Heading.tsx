@@ -46,6 +46,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
   BaseTextProps,
   'children'
 > => {
+  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
     color: `surface.text.${type ?? 'normal'}.${colorContrast}`,
@@ -54,8 +55,8 @@ const getProps = <T extends { variant: HeadingVariant }>({
     fontStyle: 'normal',
     lineHeight: 'xl',
     fontFamily: 'text',
+    accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
   };
-  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
 
   if (variant === 'small') {
     props.fontSize = 200;

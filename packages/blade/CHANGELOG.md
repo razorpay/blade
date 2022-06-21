@@ -1,5 +1,32 @@
 # @razorpay/blade
 
+## 0.10.0
+
+### Minor Changes
+
+- a800a96: feat(blade): added makeAccessible function
+
+  makeAccessible function is a compatibility layer between web & native for accessibility props
+  More [info in RFC](https://github.com/razorpay/blade/blob/master/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5)
+
+### Patch Changes
+
+- a800a96: fix(blade): added aria hidden in icons
+
+## 0.9.0
+
+### Minor Changes
+
+- 0c3a951: feat(blade): Added SkipNav component
+
+  Learn more about [Skip Navigations in Accessibility RFC](https://github.com/razorpay/blade/blob/master/rfcs/2022-04-09-accessibility.md#skip-navigations)
+
+- 5c750bb: feat(blade): add VisuallyHidden component
+
+  This component is used specifically when you want to hide certain things visually for people who are not visually impaired but also want to make your content is accessible to visually impaired people via assistive technologies.
+
+  You can play around with it on [Storybook](https://master--61c19ee8d3d282003ac1d81c.chromatic.com/?path=/docs/components-accessibility-visuallyhidden--visually-hidden)
+
 ## 0.8.0
 
 ### Minor Changes
