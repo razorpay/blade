@@ -960,7 +960,6 @@ const colors: ColorsWithModes = {
           focus: globalColors.chromatic.azure[700],
           active: globalColors.chromatic.azure[700],
           disabled: globalColors.neutral.blueGrayLight[400],
-          visited: globalColors.chromatic.orchid[400],
         },
       },
       icon: {
@@ -991,7 +990,6 @@ const colors: ColorsWithModes = {
           focus: globalColors.chromatic.azure[700],
           active: globalColors.chromatic.azure[700],
           disabled: globalColors.neutral.blueGrayLight[400],
-          visited: globalColors.chromatic.orchid[400],
         },
       },
     },
@@ -1949,7 +1947,6 @@ const colors: ColorsWithModes = {
           focus: globalColors.chromatic.azure[500],
           active: globalColors.chromatic.azure[500],
           disabled: globalColors.neutral.blueGrayDark[400],
-          visited: globalColors.chromatic.orchid[300],
         },
       },
       icon: {
@@ -1980,7 +1977,6 @@ const colors: ColorsWithModes = {
           focus: globalColors.chromatic.azure[500],
           active: globalColors.chromatic.azure[500],
           disabled: globalColors.neutral.blueGrayDark[400],
-          visited: globalColors.chromatic.orchid[300],
         },
       },
     },
