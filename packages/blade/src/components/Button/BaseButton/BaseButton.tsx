@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import getIn from '../../../utils/getIn';
 import type { BaseTextProps } from '../../Typography/BaseText';
@@ -12,6 +13,7 @@ import makeBorderSize from '../../../utils/makeBorderSize';
 import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
 import type { Required } from '../../../_helpers/types';
 import ButtonSpinner from '../ButtonSpinner';
+import usePrevious from '../../../utils/usePrevious';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonMinHeight, ButtonTypography } from './buttonTokens';
 import { typography as buttonTypography } from './buttonTokens';
@@ -300,6 +302,14 @@ const BaseButton = ({
       `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
     );
   }
+
+  const prevLoading = usePrevious(isLoading);
+
+  useEffect(() => {
+    if (isLoading) console.log('Started loading');
+
+    if (!isLoading && prevLoading) console.log('Stopped loading');
+  }, [isLoading, prevLoading]);
 
   const {
     activeBorderColor,

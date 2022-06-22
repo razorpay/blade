@@ -1,5 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import { useState } from 'react';
 import iconMap from '../../Icons/iconMap';
 import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
@@ -52,11 +53,15 @@ const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
   ...args
 }) => {
   const IconComponent = iconMap[(icon as unknown) as string];
+  const [loading, setLoading] = useState(false);
 
   return (
-    <BaseButtonComponent icon={IconComponent} {...args}>
-      {children}
-    </BaseButtonComponent>
+    <>
+      <button onClick={(): void => setLoading(!loading)}>load</button>
+      <BaseButtonComponent icon={IconComponent} {...args} isLoading={loading}>
+        {children}
+      </BaseButtonComponent>
+    </>
   );
 };
 
