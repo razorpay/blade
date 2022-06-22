@@ -30,7 +30,7 @@ const Page = (): ReactElement => {
       <Subtitle>
         The Heading Component is usually used for headings of each major section of a page.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank">
+      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
         View in Figma
       </Link>
       <br />
