@@ -15,6 +15,7 @@ import ButtonSpinner from '../ButtonSpinner';
 import usePrevious from '../../../utils/usePrevious';
 import type { Required, ValueOf } from '../../../_helpers/types';
 import makeSize from '../../../utils/makeSize';
+import LiveMessage from '../../LiveAnnouncer/LiveMessage';
 import StyledBaseButton from './StyledBaseButton';
 import {
   typography as buttonTypography,
@@ -368,6 +369,7 @@ const BaseButton = ({
         ) : null}
         {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
       </ButtonSpinner>
+      <LiveMessage message={isLoading ? 'Loading' : 'Stopped loading'} assertiveness="assertive" />
     </StyledBaseButton>
   );
 };

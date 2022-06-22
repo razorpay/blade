@@ -56,12 +56,14 @@ const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
   const [loading, setLoading] = useState(false);
 
   return (
-    <>
-      <button onClick={(): void => setLoading(!loading)}>load</button>
-      <BaseButtonComponent icon={IconComponent} {...args} isLoading={loading}>
-        {children}
-      </BaseButtonComponent>
-    </>
+    <BaseButtonComponent
+      onClick={(): void => setLoading(!loading)}
+      icon={IconComponent}
+      {...args}
+      isLoading={loading}
+    >
+      {children}
+    </BaseButtonComponent>
   );
 };
 
