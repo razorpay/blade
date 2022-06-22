@@ -209,7 +209,7 @@ const BaseButton = ({
       borderRadius={borderRadius}
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
-      {text && (
+      {text ? (
         <ButtonText
           lineHeight={lineHeight}
           fontSize={fontSize}
@@ -222,7 +222,7 @@ const BaseButton = ({
         >
           {text}
         </ButtonText>
-      )}
+      ) : null}
       {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
     </StyledBaseButton>
   );
