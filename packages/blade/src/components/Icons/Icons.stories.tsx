@@ -45,7 +45,7 @@ const Page = (): ReactElement => {
         markdown="> For now, we have added only a few icons but you can contribute to Blade by adding more icons
         that are available on the Figma board as and when a use-case arises"
       />
-      <Link withArrow={true} href={figmaURL} target="_blank">
+      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
         View in Figma
       </Link>
       <br />
