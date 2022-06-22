@@ -16,11 +16,11 @@ const StyledBaseButton = ({
   spacing,
   isFullWidth,
   disabled,
-  defaultColor,
+  defaultBackgroundColor,
   defaultBorderColor,
-  hoverColor,
-  activeColor,
-  focusColor,
+  hoverBackgroundColor,
+  activeBackgroundColor,
+  focusBackgroundColor,
   focusRingColor,
   hoverBorderColor,
   activeBorderColor,
@@ -37,10 +37,13 @@ const StyledBaseButton = ({
   const easing = getIn(theme.motion, motionEasing);
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      backgroundColor: withTiming(isPressed.value ? activeColor : defaultColor, {
-        duration,
-        easing,
-      }),
+      backgroundColor: withTiming(
+        isPressed.value ? activeBackgroundColor : defaultBackgroundColor,
+        {
+          duration,
+          easing,
+        },
+      ),
       borderColor: withTiming(isPressed.value ? activeBorderColor : defaultBorderColor, {
         duration,
         easing,
@@ -57,11 +60,11 @@ const StyledBaseButton = ({
       spacing={spacing}
       isFullWidth={isFullWidth}
       disabled={disabled}
-      defaultColor={defaultColor}
+      defaultBackgroundColor={defaultBackgroundColor}
       defaultBorderColor={defaultBorderColor}
-      hoverColor={hoverColor}
-      activeColor={activeColor}
-      focusColor={focusColor}
+      hoverBackgroundColor={hoverBackgroundColor}
+      activeBackgroundColor={activeBackgroundColor}
+      focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}
       hoverBorderColor={hoverBorderColor}
       activeBorderColor={activeBorderColor}
