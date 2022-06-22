@@ -220,34 +220,6 @@ const getProps = ({
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard.effective',
   };
-  switch (size) {
-    case 'xsmall':
-      props.iconSize = 'xsmall';
-      props.minHeight = '28px';
-      props.iconSpacing = makeSpace(theme.spacing[1]);
-      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[2])}`;
-      props.text = children?.trim().toUpperCase();
-      break;
-    case 'small':
-      props.iconSize = 'xsmall';
-      props.minHeight = '32px';
-      props.iconSpacing = makeSpace(theme.spacing[1]);
-      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[3])}`;
-      break;
-    case 'medium':
-      props.iconSize = 'medium';
-      props.minHeight = '36px';
-      props.iconSpacing = makeSpace(theme.spacing[2]);
-      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`;
-      break;
-    case 'large':
-      props.iconSize = 'medium';
-      props.minHeight = '48px';
-      props.iconSpacing = makeSpace(theme.spacing[2]);
-      props.spacing = `${makeSpace(theme.spacing[0])} ${makeSpace(theme.spacing[5])}`;
-      break;
-    default:
-  }
 
   if (isDisabled) {
     const disabledColor = getIn(
