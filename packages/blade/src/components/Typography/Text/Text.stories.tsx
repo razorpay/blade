@@ -32,7 +32,7 @@ const Page = (): ReactElement => {
         Title or Heading to display content in a hierarchical structure. It applies responsive
         styles automatically based on the device it is being rendered on.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank">
+      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
         View in Figma
       </Link>
       <br />

@@ -25,6 +25,7 @@ const Page = (): ReactElement => {
         withArrow={true}
         href="https://github.com/razorpay/blade/blob/anu/a11y-rfc/rfcs/2022-04-09-accessibility.md#hidden-content"
         target="_blank"
+        rel="noreferrer noopener"
       >
         See Hidden Content RFC
       </Link>
