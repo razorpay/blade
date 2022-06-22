@@ -1,11 +1,13 @@
+import type { Theme } from '../../BladeProvider';
 import type { BaseButtonProps } from './BaseButton';
+import type { ButtonMinHeight } from './buttonTokens';
 
 export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> & {
   activeBorderColor: string;
   activeColor: string;
   defaultBorderColor: string;
-  minHeight: string;
-  spacing: string;
+  minHeight: `${ButtonMinHeight}px`;
+  spacing: `${ValueOf<Theme['spacing']>}px ${ValueOf<Theme['spacing']>}px`;
   children: string;
   defaultColor: string;
   disabled: boolean;
@@ -16,8 +18,8 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   hoverColor: string;
   isFullWidth: boolean;
   onClick: () => void;
-  borderWidth: string;
-  borderRadius: string;
+  borderWidth: `${ValueOf<Theme['border']['width']>}px`;
+  borderRadius: `${ValueOf<Theme['border']['radius'], 'round'>}px`;
 };
 
 export { default } from './StyledBaseButton.web';
