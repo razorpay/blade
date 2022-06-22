@@ -13,15 +13,15 @@ const StyledBaseButton = styled.button(
     transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
     transitionDuration: makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
     '&:hover': {
-      backgroundColor: props.hoverColor,
+      backgroundColor: props.hoverBackgroundColor,
       borderColor: props.hoverBorderColor,
     },
     '&:active': {
-      backgroundColor: props.activeColor,
+      backgroundColor: props.activeBackgroundColor,
       borderColor: props.activeBorderColor,
     },
     '&:focus': {
-      backgroundColor: props.focusColor,
+      backgroundColor: props.focusBackgroundColor,
       borderColor: props.focusBorderColor,
       boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
       outline: 'none',

@@ -10,10 +10,9 @@ import makeSpace from '../../../utils/makeSpace';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import makeBorderSize from '../../../utils/makeBorderSize';
 import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
-import type { Required } from '../../../_helpers/types';
+import type { Required, ValueOf } from '../../../_helpers/types';
 import makeSize from '../../../utils/makeSize';
 import StyledBaseButton from './StyledBaseButton';
-import type { ButtonTypography } from './buttonTokens';
 import {
   typography as buttonTypography,
   minHeight as buttonMinHeight,
@@ -21,6 +20,7 @@ import {
   iconSpacing as buttonIconSpacing,
   spacing as buttonSpacing,
 } from './buttonTokens';
+import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 
 type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -52,8 +52,8 @@ const ButtonText = styled(BaseText)(
     iconPosition,
     iconSpacing,
   }: Pick<BaseButtonProps, 'iconPosition'> & { hasIcon: boolean; iconSpacing: string }) => ({
-    paddingLeft: hasIcon && iconPosition === 'left' ? iconSpacing : '0px',
-    paddingRight: hasIcon && iconPosition === 'right' ? iconSpacing : '0px',
+    paddingLeft: hasIcon && iconPosition === 'left' ? iconSpacing : makeSpace(0),
+    paddingRight: hasIcon && iconPosition === 'right' ? iconSpacing : makeSpace(0),
   }),
 );
 
@@ -61,25 +61,25 @@ type BaseButtonStyleProps = {
   iconSize: IconSize;
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
-  minHeight: string;
-  iconSpacing: string;
+  minHeight: `${ButtonMinHeight}px`;
+  iconSpacing: `${ValueOf<Theme['spacing']>}px`;
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
-  spacing: string;
+  spacing: `${ValueOf<Theme['spacing']>}px ${ValueOf<Theme['spacing']>}px`;
   text?: string;
-  defaultColor: string;
+  defaultBackgroundColor: string;
   defaultBorderColor: string;
-  hoverColor: string;
+  hoverBackgroundColor: string;
   hoverBorderColor: string;
-  activeColor: string;
+  activeBackgroundColor: string;
   activeBorderColor: string;
-  focusColor: string;
+  focusBackgroundColor: string;
   focusBorderColor: string;
   focusRingColor: string;
-  borderWidth: string;
-  borderRadius: string;
   motionDuration: DurationStringTokens;
   motionEasing: EasingStringTokens;
+  borderWidth: `${ValueOf<Theme['border']['width']>}px`;
+  borderRadius: `${ValueOf<Theme['border']['radius'], 'round'>}px`;
 };
 
 const getProps = ({
@@ -109,13 +109,13 @@ const getProps = ({
       theme.spacing[buttonSpacing[size].rightLeft],
     )}`,
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
-    defaultColor: getIn(theme.colors, `action.background.${variant}.default`),
+    defaultBackgroundColor: getIn(theme.colors, `action.background.${variant}.default`),
     defaultBorderColor: getIn(theme.colors, `action.border.${variant}.default`),
-    hoverColor: getIn(theme.colors, `action.background.${variant}.hover`),
+    hoverBackgroundColor: getIn(theme.colors, `action.background.${variant}.hover`),
     hoverBorderColor: getIn(theme.colors, `action.border.${variant}.hover`),
-    activeColor: getIn(theme.colors, `action.background.${variant}.active`),
+    activeBackgroundColor: getIn(theme.colors, `action.background.${variant}.active`),
     activeBorderColor: getIn(theme.colors, `action.border.${variant}.active`),
-    focusColor: getIn(theme.colors, `action.background.${variant}.focus`),
+    focusBackgroundColor: getIn(theme.colors, `action.background.${variant}.focus`),
     focusBorderColor: getIn(theme.colors, `action.border.${variant}.focus`),
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     borderWidth: makeBorderSize(theme.border.width.thin),
@@ -129,13 +129,13 @@ const getProps = ({
     const disabledBorderColor = getIn(theme.colors, `action.border.${variant}.disabled`);
     props.iconColor = `action.icon.${variant}.disabled`;
     props.textColor = `action.text.${variant}.disabled`;
-    props.defaultColor = disabledColor;
+    props.defaultBackgroundColor = disabledColor;
     props.defaultBorderColor = disabledBorderColor;
-    props.hoverColor = disabledColor;
+    props.hoverBackgroundColor = disabledColor;
     props.hoverBorderColor = disabledBorderColor;
-    props.activeColor = disabledColor;
+    props.activeBackgroundColor = disabledColor;
     props.activeBorderColor = disabledBorderColor;
-    props.focusColor = disabledColor;
+    props.focusBackgroundColor = disabledColor;
     props.focusBorderColor = disabledBorderColor;
   }
 
@@ -164,17 +164,17 @@ const BaseButton = ({
   }
   const {
     activeBorderColor,
-    activeColor,
+    activeBackgroundColor,
     defaultBorderColor,
-    defaultColor,
+    defaultBackgroundColor,
     minHeight,
     spacing,
     focusBorderColor,
-    focusColor,
+    focusBackgroundColor,
     focusRingColor,
     fontSize,
     hoverBorderColor,
-    hoverColor,
+    hoverBackgroundColor,
     iconColor,
     iconSize,
     iconSpacing,
@@ -200,17 +200,17 @@ const BaseButton = ({
   return (
     <StyledBaseButton
       activeBorderColor={activeBorderColor}
-      activeColor={activeColor}
+      activeBackgroundColor={activeBackgroundColor}
       defaultBorderColor={defaultBorderColor}
       minHeight={minHeight}
       spacing={spacing}
-      defaultColor={defaultColor}
+      defaultBackgroundColor={defaultBackgroundColor}
       disabled={isDisabled}
       focusBorderColor={focusBorderColor}
-      focusColor={focusColor}
+      focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}
       hoverBorderColor={hoverBorderColor}
-      hoverColor={hoverColor}
+      hoverBackgroundColor={hoverBackgroundColor}
       isFullWidth={isFullWidth}
       onClick={onClick}
       type={type}
@@ -221,7 +221,7 @@ const BaseButton = ({
       theme={theme}
     >
       {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
-      {text && (
+      {text ? (
         <ButtonText
           lineHeight={lineHeight}
           fontSize={fontSize}
@@ -234,7 +234,7 @@ const BaseButton = ({
         >
           {text}
         </ButtonText>
-      )}
+      ) : null}
       {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
     </StyledBaseButton>
   );
