@@ -16,6 +16,7 @@ const getProps = ({
   type,
   contrast,
 }: Pick<TitleProps, 'variant' | 'type' | 'contrast'>): Omit<BaseTextProps, 'children'> => {
+  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
     color: `surface.text.${type ?? 'normal'}.${colorContrast}`,
@@ -24,8 +25,8 @@ const getProps = ({
     fontStyle: 'normal',
     lineHeight: '4xl',
     fontFamily: 'text',
+    accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
   };
-  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
 
   if (variant === 'small') {
     props.fontSize = 600;

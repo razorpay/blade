@@ -256,12 +256,14 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   }
 >
   <RNSVGSvgView
+    accessibilityElementsHidden={true}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"
     fill="none"
     focusable={false}
     height="20px"
+    importantForAccessibility="no-hide-descendants"
     meetOrSlice={0}
     minX={0}
     minY={0}
@@ -401,12 +403,14 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   }
 >
   <RNSVGSvgView
+    accessibilityElementsHidden={true}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"
     fill="none"
     focusable={false}
     height="20px"
+    importantForAccessibility="no-hide-descendants"
     meetOrSlice={0}
     minX={0}
     minY={0}
@@ -576,12 +580,14 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     Pay Now
   </Text>
   <RNSVGSvgView
+    accessibilityElementsHidden={true}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"
     fill="none"
     focusable={false}
     height="20px"
+    importantForAccessibility="no-hide-descendants"
     meetOrSlice={0}
     minX={0}
     minY={0}
@@ -691,12 +697,14 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   }
 >
   <RNSVGSvgView
+    accessibilityElementsHidden={true}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"
     fill="none"
     focusable={false}
     height="20px"
+    importantForAccessibility="no-hide-descendants"
     meetOrSlice={0}
     minX={0}
     minY={0}
@@ -2054,7 +2062,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   }
 >
   <Text
-    color="hsla(193, 100%, 35%, 1)"
+    color="hsla(180, 100%, 97%, 1)"
     fontFamily="Lato"
     fontSize="15px"
     fontStyle="normal"
@@ -2063,7 +2071,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
     style={
       Array [
         Object {
-          "color": "hsla(193, 100%, 35%, 1)",
+          "color": "hsla(180, 100%, 97%, 1)",
           "fontFamily": "Lato",
           "fontSize": 15,
           "fontStyle": "normal",

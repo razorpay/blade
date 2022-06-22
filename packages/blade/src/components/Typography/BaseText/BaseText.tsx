@@ -5,6 +5,8 @@ import makeTypographySize from '../../../utils/makeTypographySize';
 import type { Theme } from '../../BladeProvider';
 import type { DotNotationColorStringToken } from '../../../_helpers/types';
 import type { Feedback } from '../../../tokens/theme/theme.d';
+import type { AccessibilityProps } from '../../../utils/makeAccessible';
+import makeAccessible from '../../../utils/makeAccessible';
 import StyledBaseText from './StyledBaseText';
 
 type FeedbackColors = `feedback.text.${DotNotationColorStringToken<
@@ -32,6 +34,7 @@ export type BaseTextProps = {
   className?: string;
   style?: React.CSSProperties;
   children: React.ReactNode;
+  accessibilityProps?: Partial<AccessibilityProps>;
 };
 
 const BaseText = ({
@@ -48,6 +51,7 @@ const BaseText = ({
   truncateAfterLines,
   className,
   style,
+  accessibilityProps = {},
 }: BaseTextProps): ReactElement => {
   const { theme } = useTheme();
   const textColor = getIn(theme.colors, color);
@@ -70,6 +74,7 @@ const BaseText = ({
       numberOfLines={truncateAfterLines}
       className={className}
       style={style}
+      {...makeAccessible(accessibilityProps)}
     >
       {children}
     </StyledBaseText>
