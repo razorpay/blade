@@ -73,10 +73,11 @@ describe('<Link />', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(
         <Link
-         size="large"
-         href="https://www.razorpay.com"
-         target="_blank"
-         rel="noreferrer noopener">
+          size="large"
+          href="https://www.razorpay.com"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           {displayText}
         </Link>,
       );
