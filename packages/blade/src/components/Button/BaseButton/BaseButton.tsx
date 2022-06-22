@@ -9,10 +9,9 @@ import type { IconComponent, IconProps, IconSize } from '../../Icons';
 import makeSpace from '../../../utils/makeSpace';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import makeBorderSize from '../../../utils/makeBorderSize';
-import type { Required } from '../../../_helpers/types';
+import type { Required, ValueOf } from '../../../_helpers/types';
 import makeSize from '../../../utils/makeSize';
 import StyledBaseButton from './StyledBaseButton';
-import type { ButtonTypography } from './buttonTokens';
 import {
   typography as buttonTypography,
   minHeight as buttonMinHeight,
@@ -20,6 +19,7 @@ import {
   iconSpacing as buttonIconSpacing,
   spacing as buttonSpacing,
 } from './buttonTokens';
+import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 
 type BaseButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
@@ -60,11 +60,11 @@ type BaseButtonStyleProps = {
   iconSize: IconSize;
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
-  minHeight: string;
-  iconSpacing: string;
+  minHeight: `${ButtonMinHeight}px`;
+  iconSpacing: `${ValueOf<Theme['spacing']>}px`;
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
-  spacing: string;
+  spacing: `${ValueOf<Theme['spacing']>}px ${ValueOf<Theme['spacing']>}px`;
   text?: string;
   defaultColor: string;
   defaultBorderColor: string;
@@ -75,8 +75,8 @@ type BaseButtonStyleProps = {
   focusColor: string;
   focusBorderColor: string;
   focusRingColor: string;
-  borderWidth: string;
-  borderRadius: string;
+  borderWidth: `${ValueOf<Theme['border']['width']>}px`;
+  borderRadius: `${ValueOf<Theme['border']['radius'], 'round'>}px`;
 };
 
 const getProps = ({
