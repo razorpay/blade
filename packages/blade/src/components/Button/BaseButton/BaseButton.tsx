@@ -66,13 +66,13 @@ type BaseButtonStyleProps = {
   textColor: BaseTextProps['color'];
   spacing: `${ValueOf<Theme['spacing']>}px ${ValueOf<Theme['spacing']>}px`;
   text?: string;
-  defaultColor: string;
+  defaultBackgroundColor: string;
   defaultBorderColor: string;
-  hoverColor: string;
+  hoverBackgroundColor: string;
   hoverBorderColor: string;
-  activeColor: string;
+  activeBackgroundColor: string;
   activeBorderColor: string;
-  focusColor: string;
+  focusBackgroundColor: string;
   focusBorderColor: string;
   focusRingColor: string;
   borderWidth: `${ValueOf<Theme['border']['width']>}px`;
@@ -104,13 +104,13 @@ const getProps = ({
       theme.spacing[buttonSpacing[size].rightLeft],
     )}`,
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
-    defaultColor: getIn(theme.colors, 'action.background.primary.default'),
+    defaultBackgroundColor: getIn(theme.colors, 'action.background.primary.default'),
     defaultBorderColor: getIn(theme.colors, 'action.border.primary.default'),
-    hoverColor: getIn(theme.colors, 'action.background.primary.hover'),
+    hoverBackgroundColor: getIn(theme.colors, 'action.background.primary.hover'),
     hoverBorderColor: getIn(theme.colors, 'action.border.primary.hover'),
-    activeColor: getIn(theme.colors, 'action.background.primary.active'),
+    activeBackgroundColor: getIn(theme.colors, 'action.background.primary.active'),
     activeBorderColor: getIn(theme.colors, 'action.border.primary.active'),
-    focusColor: getIn(theme.colors, 'action.background.primary.focus'),
+    focusBackgroundColor: getIn(theme.colors, 'action.background.primary.focus'),
     focusBorderColor: getIn(theme.colors, 'action.border.primary.focus'),
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     borderWidth: makeBorderSize(theme.border.width.thin),
@@ -122,13 +122,13 @@ const getProps = ({
     const disabledBorderColor = getIn(theme.colors, 'action.border.primary.disabled');
     props.iconColor = 'action.icon.primary.disabled';
     props.textColor = 'action.text.primary.disabled';
-    props.defaultColor = disabledColor;
+    props.defaultBackgroundColor = disabledColor;
     props.defaultBorderColor = disabledBorderColor;
-    props.hoverColor = disabledColor;
+    props.hoverBackgroundColor = disabledColor;
     props.hoverBorderColor = disabledBorderColor;
-    props.activeColor = disabledColor;
+    props.activeBackgroundColor = disabledColor;
     props.activeBorderColor = disabledBorderColor;
-    props.focusColor = disabledColor;
+    props.focusBackgroundColor = disabledColor;
     props.focusBorderColor = disabledBorderColor;
   }
 
@@ -157,17 +157,17 @@ const BaseButton = ({
   }
   const {
     activeBorderColor,
-    activeColor,
+    activeBackgroundColor,
     defaultBorderColor,
-    defaultColor,
+    defaultBackgroundColor,
     minHeight,
     spacing,
     focusBorderColor,
-    focusColor,
+    focusBackgroundColor,
     focusRingColor,
     fontSize,
     hoverBorderColor,
-    hoverColor,
+    hoverBackgroundColor,
     iconColor,
     iconSize,
     iconSpacing,
@@ -191,17 +191,17 @@ const BaseButton = ({
   return (
     <StyledBaseButton
       activeBorderColor={activeBorderColor}
-      activeColor={activeColor}
+      activeBackgroundColor={activeBackgroundColor}
       defaultBorderColor={defaultBorderColor}
       minHeight={minHeight}
       spacing={spacing}
-      defaultColor={defaultColor}
+      defaultBackgroundColor={defaultBackgroundColor}
       disabled={isDisabled}
       focusBorderColor={focusBorderColor}
-      focusColor={focusColor}
+      focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}
       hoverBorderColor={hoverBorderColor}
-      hoverColor={hoverColor}
+      hoverBackgroundColor={hoverBackgroundColor}
       isFullWidth={isFullWidth}
       onClick={onClick}
       type={type}
