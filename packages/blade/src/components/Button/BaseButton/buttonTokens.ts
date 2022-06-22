@@ -4,6 +4,8 @@ import type { Required } from '../../../_helpers/types';
 import type { IconProps } from '../../Icons';
 import type { BaseButtonProps } from './BaseButton';
 
+//TODO: Sort keys in all objects
+
 export type ButtonMinHeight = 48 | 36 | 32 | 28;
 
 export type ButtonTypography = {
