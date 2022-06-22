@@ -51,8 +51,8 @@ const ButtonText = styled(BaseText)(
     iconPosition,
     iconSpacing,
   }: Pick<BaseButtonProps, 'iconPosition'> & { hasIcon: boolean; iconSpacing: string }) => ({
-    paddingLeft: hasIcon && iconPosition === 'left' ? iconSpacing : '0px',
-    paddingRight: hasIcon && iconPosition === 'right' ? iconSpacing : '0px',
+    paddingLeft: hasIcon && iconPosition === 'left' ? iconSpacing : makeSpace(0),
+    paddingRight: hasIcon && iconPosition === 'right' ? iconSpacing : makeSpace(0),
   }),
 );
 
