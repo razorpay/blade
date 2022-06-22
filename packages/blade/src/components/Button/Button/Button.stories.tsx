@@ -31,7 +31,7 @@ export default {
       page: () => (
         <>
           <Title />
-          <Subtitle>This is the Button component. It is only for internal Blade usage.</Subtitle>
+          <Subtitle>This is the Button component which comes in 3 variants.</Subtitle>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
