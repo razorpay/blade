@@ -5,8 +5,6 @@ import type { VisuallyHiddenProps } from './VisuallyHidden.d';
 
 const StyledVisuallyHidden = styled.div(screenReaderStyles);
 
-const VisuallyHidden = ({ children, ...props }: VisuallyHiddenProps): JSX.Element => {
+export const VisuallyHidden = ({ children, ...props }: VisuallyHiddenProps): JSX.Element => {
   return <StyledVisuallyHidden {...props}>{children}</StyledVisuallyHidden>;
 };
-
-export default VisuallyHidden;

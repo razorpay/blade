@@ -15,7 +15,8 @@ import ButtonSpinner from '../ButtonSpinner';
 import usePrevious from '../../../utils/usePrevious';
 import type { Required, ValueOf } from '../../../_helpers/types';
 import makeSize from '../../../utils/makeSize';
-import LiveMessage from '../../LiveAnnouncer/LiveMessage';
+import { announce } from '../../LiveAnnouncer';
+import { makeAccessible } from '../../../utils';
 import StyledBaseButton from './StyledBaseButton';
 import {
   typography as buttonTypography,
@@ -288,9 +289,9 @@ const BaseButton = ({
   const prevLoading = usePrevious(isLoading);
 
   useEffect(() => {
-    if (isLoading) console.log('Started loading');
+    if (isLoading) announce('Started loading');
 
-    if (!isLoading && prevLoading) console.log('Stopped loading');
+    if (!isLoading && prevLoading) announce('Stopped loading');
   }, [isLoading, prevLoading]);
 
   const {
@@ -329,6 +330,7 @@ const BaseButton = ({
 
   return (
     <StyledBaseButton
+      {...makeAccessible({ role: 'button' })}
       isLoading={isLoading}
       activeBorderColor={activeBorderColor}
       activeBackgroundColor={activeBackgroundColor}
@@ -369,7 +371,6 @@ const BaseButton = ({
         ) : null}
         {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
       </ButtonSpinner>
-      <LiveMessage message={isLoading ? 'Loading' : 'Stopped loading'} assertiveness="assertive" />
     </StyledBaseButton>
   );
 };
