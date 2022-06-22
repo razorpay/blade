@@ -72,12 +72,7 @@ describe('<Link />', () => {
     it('should reender a Link with target attr', () => {
       const displayText = 'Displaying some link';
       const { container } = renderWithTheme(
-        <Link 
-         size="large" 
-         href="https://www.razorpay.com" 
-         target="_blank" 
-         rel="noreferrer noopener"
-        >
+        <Link size="large" href="https://www.razorpay.com" target="_blank" rel="noreferrer noopener">
           {displayText}
         </Link>,
       );
