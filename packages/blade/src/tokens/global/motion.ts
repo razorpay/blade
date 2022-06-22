@@ -101,8 +101,8 @@ type DotNotationMotionStringToken<TokenType> = {
     : DotNotationMotionStringToken<TokenType[K]>}`;
 }[keyof TokenType];
 
-export type EasingStringTokens = `easing.${DotNotationMotionStringToken<Easing>}`;
-export type DurationStringTokens = `duration.${keyof Duration}`;
+export type EasingString = `easing.${DotNotationMotionStringToken<Easing>}`;
+export type DurationString = `duration.${keyof Duration}`;
 
 const delay: Delay = {
   '2xshort': 70,
