@@ -3,9 +3,14 @@ import styled from 'styled-components';
 import useIconProps from '../../Icons/useIconProps';
 import BaseSpinner from '../../Spinner/BaseSpinner';
 import type { ButtonSpinnerProps } from './ButtonSpinner.d';
-import buttonSpinnerStyles from './buttonSpinnerStyles';
+import { buttonSpinnerStyles, buttonSpinnerContainerStyles } from './buttonSpinnerStyles';
 
 const ButtonBaseSpinner = styled(BaseSpinner)(buttonSpinnerStyles);
+
+const ButtonSpinnerContainer = styled('div')<{ isHidden: boolean }>(({ isHidden }) => ({
+  opacity: isHidden ? 0 : 1,
+  ...buttonSpinnerContainerStyles,
+}));
 
 const ButtonSpinner = ({
   isLoading,
@@ -18,7 +23,7 @@ const ButtonSpinner = ({
   return (
     <>
       {isLoading ? <ButtonBaseSpinner color={iconColor} size={width} /> : null}
-      <div style={{ opacity: isLoading ? 0 : 1 }}>{children}</div>
+      <ButtonSpinnerContainer isHidden={isLoading}>{children}</ButtonSpinnerContainer>
     </>
   );
 };

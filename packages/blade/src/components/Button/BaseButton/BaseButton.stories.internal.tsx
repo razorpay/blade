@@ -55,7 +55,7 @@ const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
 }) => {
   const IconComponent = iconMap[(icon as unknown) as string];
   return (
-    <BaseButtonComponent icon={IconComponent} {...args} isLoading={false}>
+    <BaseButtonComponent icon={IconComponent} {...args}>
       {children}
     </BaseButtonComponent>
   );
