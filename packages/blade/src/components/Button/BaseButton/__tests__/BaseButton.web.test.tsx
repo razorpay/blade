@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react';
+import userEvents from '@testing-library/user-event';
+import React from 'react';
+import assertAccessible from '../../../../_helpers/testing/assertAccessibe.web';
 import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.web';
-import { CreditCardIcon } from '../../../Icons';
+import { CloseIcon, CreditCardIcon } from '../../../Icons';
 import BaseButton from '../BaseButton';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -345,5 +348,48 @@ describe('<BaseButton />', () => {
       </BaseButton>,
     );
     expect(container).toMatchSnapshot();
+  });
+
+  it('should have accessibilityLabel', () => {
+    const buttonText = 'Pay Now';
+    const { getByRole } = renderWithTheme(
+      <BaseButton accessibilityLabel="Close" icon={CloseIcon}>
+        {buttonText}
+      </BaseButton>,
+    );
+
+    expect(getByRole('button')).toHaveAccessibleName('Close');
+  });
+
+  it('should announce button loading accessibilityLabel', async () => {
+    const user = userEvents.setup();
+
+    const ButtonLoading = (): React.ReactElement => {
+      const [loading, setLoading] = React.useState(false);
+      return (
+        <>
+          <BaseButton onClick={(): void => setLoading(!loading)}>Toggle loading</BaseButton>
+          <BaseButton isLoading={loading}>Pay Now</BaseButton>
+        </>
+      );
+    };
+
+    const { getByText } = renderWithTheme(<ButtonLoading />);
+    const loadingButton = getByText(/toggle loading/i);
+
+    await user.click(loadingButton);
+    expect(getByText(/Started loading/i)).toBeInTheDocument();
+    await user.click(loadingButton);
+    expect(getByText(/Stopped loading/i)).toBeInTheDocument();
+  });
+
+  it('should not have accessibility violations', async () => {
+    const buttonText = 'Pay Now';
+    const { container } = renderWithTheme(
+      <BaseButton intent="information" contrast="high" isDisabled={true}>
+        {buttonText}
+      </BaseButton>,
+    );
+    await assertAccessible(container);
   });
 });

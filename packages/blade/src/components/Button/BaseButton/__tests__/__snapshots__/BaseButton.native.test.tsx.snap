@@ -2,6 +2,7 @@
 
 exports[`<BaseButton /> should render button with default properties 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -63,12 +64,21 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -107,6 +117,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 
 exports[`<BaseButton /> should render button with full width 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -168,12 +179,21 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -212,6 +232,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 
 exports[`<BaseButton /> should render button with icon with default iconPosition 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -273,32 +294,32 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       },
     ]
   }
+  type="button"
 >
-  <RNSVGSvgView
-    accessibilityElementsHidden={true}
-    align="xMidYMid"
-    bbHeight="20px"
-    bbWidth="20px"
-    fill="none"
-    focusable={false}
-    height="20px"
-    importantForAccessibility="no-hide-descendants"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
+  <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <RNSVGSvgView
+      accessibilityElementsHidden={true}
       align="xMidYMid"
       bbHeight="20px"
       bbWidth="20px"
       fill="none"
       focusable={false}
       height="20px"
+      importantForAccessibility="no-hide-descendants"
       meetOrSlice={0}
       minX={0}
       minY={0}
@@ -377,6 +398,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 
 exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -438,32 +460,32 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       },
     ]
   }
+  type="button"
 >
-  <RNSVGSvgView
-    accessibilityElementsHidden={true}
-    align="xMidYMid"
-    bbHeight="20px"
-    bbWidth="20px"
-    fill="none"
-    focusable={false}
-    height="20px"
-    importantForAccessibility="no-hide-descendants"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
+  <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <RNSVGSvgView
+      accessibilityElementsHidden={true}
       align="xMidYMid"
       bbHeight="20px"
       bbWidth="20px"
       fill="none"
       focusable={false}
       height="20px"
+      importantForAccessibility="no-hide-descendants"
       meetOrSlice={0}
       minX={0}
       minY={0}
@@ -542,6 +564,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 
 exports[`<BaseButton /> should render button with icon with right iconPosition 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -603,53 +626,21 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       },
     ]
   }
+  type="button"
 >
-  <Text
-    color="hsla(0, 0%, 100%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
+    isHidden={false}
     style={
       Array [
         Object {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 8,
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
         },
       ]
-    }
-    textAlign="center"
-    textDecorationLine="none"
-  >
-    Pay Now
-  </Text>
-  <RNSVGSvgView
-    accessibilityElementsHidden={true}
-    align="xMidYMid"
-    bbHeight="20px"
-    bbWidth="20px"
-    fill="none"
-    focusable={false}
-    height="20px"
-    importantForAccessibility="no-hide-descendants"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
-    style={
-      Object {
-        "opacity": 1,
-      }
     }
   >
     <Text
@@ -683,12 +674,14 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       Pay Now
     </Text>
     <RNSVGSvgView
+      accessibilityElementsHidden={true}
       align="xMidYMid"
       bbHeight="20px"
       bbWidth="20px"
       fill="none"
       focusable={false}
       height="20px"
+      importantForAccessibility="no-hide-descendants"
       meetOrSlice={0}
       minX={0}
       minY={0}
@@ -737,6 +730,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 
 exports[`<BaseButton /> should render button with icon without text 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -798,32 +792,32 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       },
     ]
   }
+  type="button"
 >
-  <RNSVGSvgView
-    accessibilityElementsHidden={true}
-    align="xMidYMid"
-    bbHeight="20px"
-    bbWidth="20px"
-    fill="none"
-    focusable={false}
-    height="20px"
-    importantForAccessibility="no-hide-descendants"
-    meetOrSlice={0}
-    minX={0}
-    minY={0}
+  <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <RNSVGSvgView
+      accessibilityElementsHidden={true}
       align="xMidYMid"
       bbHeight="20px"
       bbWidth="20px"
       fill="none"
       focusable={false}
       height="20px"
+      importantForAccessibility="no-hide-descendants"
       meetOrSlice={0}
       minX={0}
       minY={0}
@@ -872,6 +866,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 
 exports[`<BaseButton /> should render disabled button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -933,12 +928,21 @@ exports[`<BaseButton /> should render disabled button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -977,6 +981,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 
 exports[`<BaseButton /> should render disabled information intent high contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -1038,12 +1043,21 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -1082,6 +1096,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
 
 exports[`<BaseButton /> should render disabled information intent low contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -1143,12 +1158,21 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -1187,6 +1211,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
 
 exports[`<BaseButton /> should render disabled negative intent high contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -1248,12 +1273,21 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -1292,6 +1326,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
 
 exports[`<BaseButton /> should render disabled negative intent low contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -1353,12 +1388,21 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -1397,6 +1441,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
 
 exports[`<BaseButton /> should render disabled neutral intent high contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -1458,12 +1503,21 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -1502,6 +1556,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
 
 exports[`<BaseButton /> should render disabled neutral intent low contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -1563,12 +1618,21 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -1607,6 +1671,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
 
 exports[`<BaseButton /> should render disabled notice intent high contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -1668,12 +1733,21 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -1712,6 +1786,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
 
 exports[`<BaseButton /> should render disabled notice intent low contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -1773,12 +1848,21 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -1817,6 +1901,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
 
 exports[`<BaseButton /> should render disabled positive intent high contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -1878,12 +1963,21 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -1922,6 +2016,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
 
 exports[`<BaseButton /> should render disabled positive intent low contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -1983,12 +2078,21 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -2027,6 +2131,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
 
 exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -2088,12 +2193,21 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -2132,6 +2246,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
 
 exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": true,
@@ -2193,12 +2308,21 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -2237,6 +2361,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
 
 exports[`<BaseButton /> should render information intent high contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -2298,37 +2423,25 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
       },
     ]
   }
+  type="button"
 >
-  <Text
-    color="hsla(180, 100%, 97%, 1)"
-    fontFamily="Lato"
-    fontSize="15px"
-    fontStyle="normal"
-    fontWeight={700}
-    lineHeight="16px"
+  <View
+    isHidden={false}
     style={
       Array [
         Object {
-          "color": "hsla(180, 100%, 97%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 15,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
-          "textAlign": "center",
-          "textDecorationLine": "none",
-        },
-        Object {
-          "paddingLeft": 0,
-          "paddingRight": 0,
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
         },
       ]
     }
-    textAlign="center"
-    textDecorationLine="none"
   >
     <Text
-      color="hsla(193, 100%, 35%, 1)"
+      color="hsla(180, 100%, 97%, 1)"
       fontFamily="Lato"
       fontSize="15px"
       fontStyle="normal"
@@ -2337,7 +2450,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
       style={
         Array [
           Object {
-            "color": "hsla(193, 100%, 35%, 1)",
+            "color": "hsla(180, 100%, 97%, 1)",
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
@@ -2363,6 +2476,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
 
 exports[`<BaseButton /> should render information intent low contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -2424,12 +2538,21 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -2468,6 +2591,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
 
 exports[`<BaseButton /> should render large size button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -2529,12 +2653,21 @@ exports[`<BaseButton /> should render large size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -2573,6 +2706,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
 
 exports[`<BaseButton /> should render medium size button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -2634,12 +2768,21 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -2678,6 +2821,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 
 exports[`<BaseButton /> should render negative intent high contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -2739,12 +2883,21 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -2783,6 +2936,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
 
 exports[`<BaseButton /> should render negative intent low contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -2844,12 +2998,21 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -2888,6 +3051,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
 
 exports[`<BaseButton /> should render neutral intent high contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -2949,12 +3113,21 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -2993,6 +3166,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
 
 exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -3054,12 +3228,21 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -3098,6 +3281,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 
 exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -3159,12 +3343,21 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -3203,6 +3396,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 
 exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -3264,12 +3458,21 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -3308,6 +3511,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 
 exports[`<BaseButton /> should render positive intent high contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -3369,12 +3573,21 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -3413,6 +3626,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
 
 exports[`<BaseButton /> should render positive intent low contrast button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -3474,12 +3688,21 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -3518,6 +3741,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
 
 exports[`<BaseButton /> should render secondary variant button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -3579,12 +3803,21 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -3623,6 +3856,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
 
 exports[`<BaseButton /> should render small size button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -3684,12 +3918,21 @@ exports[`<BaseButton /> should render small size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -3728,6 +3971,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
 
 exports[`<BaseButton /> should render tertiary variant button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -3789,12 +4033,21 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
@@ -3833,6 +4086,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
 
 exports[`<BaseButton /> should render xsmall size button 1`] = `
 <View
+  accessibilityRole="button"
   accessibilityState={
     Object {
       "disabled": false,
@@ -3894,12 +4148,21 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       },
     ]
   }
+  type="button"
 >
   <View
+    isHidden={false}
     style={
-      Object {
-        "opacity": 1,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text
