@@ -1,8 +1,52 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import type { ReactElement } from 'react';
+import { Highlight, Link } from '@storybook/design-system';
 import iconMap from '../../Icons/iconMap';
+import useMakeFigmaURL from '../../../_helpers/storybook/useMakeFigmaURL';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
+
+const Page = (): ReactElement => {
+  const figmaURL = useMakeFigmaURL([
+    {
+      themeTokenName: 'paymentTheme',
+      lightModeURL:
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0',
+      darkModeURL:
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0',
+    },
+    {
+      themeTokenName: 'bankingTheme',
+      lightModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9611%3A78487',
+      darkModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9611%3A78487',
+    },
+  ]);
+
+  return (
+    <>
+      <Title />
+      <Subtitle>
+        This is the Button component which can be used for various CTAs. It is available in 3
+        different variants.
+      </Subtitle>
+      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
+        View in Figma
+      </Link>
+      <br />
+      <br />
+      <Title>Usage</Title>
+      <Highlight language="tsx">{`import { Button } from '@razorpay/blade/components' \nimport type { ButtonProps } from '@razorpay/blade/components'`}</Highlight>
+      <Title>Example</Title>
+      <Primary />
+      <Title>Properties</Title>
+      <ArgsTable story={PRIMARY_STORY} />
+      <Stories />
+    </>
+  );
+};
 
 export default {
   title: 'Components/Button/Button',
@@ -28,17 +72,7 @@ export default {
   },
   parameters: {
     docs: {
-      page: () => (
-        <>
-          <Title />
-          <Subtitle>This is the Button component which comes in 3 variants.</Subtitle>
-          <Title>Example</Title>
-          <Primary />
-          <Title>Properties</Title>
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </>
-      ),
+      page: Page,
     },
   },
 } as Meta<ButtonProps>;
