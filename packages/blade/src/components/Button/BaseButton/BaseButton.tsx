@@ -35,6 +35,7 @@ type BaseButtonCommonProps = {
   onClick?: () => void;
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
+  accessibilityLabel?: string;
 };
 
 /*
@@ -276,6 +277,7 @@ const BaseButton = ({
   onClick,
   type = 'button',
   children,
+  accessibilityLabel,
 }: BaseButtonProps): ReactElement => {
   const disabled = isLoading || isDisabled;
   const { theme, platform } = useTheme();
@@ -330,7 +332,7 @@ const BaseButton = ({
 
   return (
     <StyledBaseButton
-      {...makeAccessible({ role: 'button' })}
+      {...makeAccessible({ role: 'button', label: accessibilityLabel })}
       isLoading={isLoading}
       activeBorderColor={activeBorderColor}
       activeBackgroundColor={activeBackgroundColor}

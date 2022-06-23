@@ -3,6 +3,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import { useState } from 'react';
 import iconMap from '../../Icons/iconMap';
+import { Text } from '../../Typography';
 import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
 
@@ -16,7 +17,7 @@ export default {
       console.log('clicked');
     },
     isDisabled: false,
-    isLoading: true,
+    isLoading: false,
     size: 'medium',
     iconPosition: 'left',
     isFullWidth: false,
@@ -67,8 +68,9 @@ const ButtonLoadingExample = (args: any): React.ReactElement => {
   return (
     <>
       <BaseButtonComponent onClick={(): void => setLoading(!loading)}>
-        toggle loading
+        Toggle loading
       </BaseButtonComponent>
+      <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
       <BaseButtonComponent
         {...args}
         onClick={(): void => setLoading(!loading)}
@@ -85,13 +87,19 @@ const BaseButtonLoadingTemplate: ComponentStory<typeof BaseButtonComponent> = ({
 }) => {
   const IconComponent = iconMap[(icon as unknown) as string];
   return (
-    <ButtonLoadingExample icon={IconComponent} {...args} isLoading={false}>
+    <ButtonLoadingExample icon={IconComponent} {...args}>
       {children}
     </ButtonLoadingExample>
   );
 };
 
 export const BaseButton = BaseButtonTemplate.bind({});
+export const BaseButtonAccessibleIcon = BaseButtonTemplate.bind({});
+BaseButtonAccessibleIcon.args = {
+  icon: 'CloseIcon' as any,
+  children: undefined,
+  accessibilityLabel: 'Close',
+};
 export const BaseButtonLoading = BaseButtonLoadingTemplate.bind({});
 
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
