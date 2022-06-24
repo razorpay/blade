@@ -3,6 +3,11 @@
 This document will contain information and guidance on how to ensure accessibility of components,
 And how we can incorporate it in the component development life cycle.
 
+**5 Minute Guide for ensuring accessibility in blade components:**
+
+https://user-images.githubusercontent.com/35374649/175487966-9ba5f782-3aaf-4b07-84f9-9ea7deb2adbf.mp4
+
+
 ## Component Decisions
 
 While writing `decision.md` file for component make sure to include `Accessibility` section and link to the appropriate [WAI ARIA component pattern](https://www.w3.org/WAI/ARIA/apg/patterns/) 
