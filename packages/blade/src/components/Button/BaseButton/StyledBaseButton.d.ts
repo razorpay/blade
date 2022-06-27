@@ -22,7 +22,6 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   onClick: () => void;
   motionDuration: DurationStringTokens;
   motionEasing: EasingStringTokens;
-  theme: Theme;
   borderWidth: `${ValueOf<Theme['border']['width']>}px`;
   borderRadius: `${ValueOf<Theme['border']['radius'], 'round'>}px`;
 };

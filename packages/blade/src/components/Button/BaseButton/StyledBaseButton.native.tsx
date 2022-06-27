@@ -2,12 +2,13 @@ import { Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import getIn from '../../../utils/getIn';
+import { useTheme } from '../../BladeProvider';
 import getBaseButtonStyles from './getBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
-const StyledPressable = styled(
-  Animated.createAnimatedComponent(Pressable),
-)((props: Omit<StyledBaseButtonProps, 'children' | 'onClick'>) => getBaseButtonStyles(props));
+const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
+  Omit<StyledBaseButtonProps, 'children' | 'onClick'>
+>((props) => getBaseButtonStyles(props));
 
 const StyledBaseButton = ({
   onClick,
@@ -29,8 +30,8 @@ const StyledBaseButton = ({
   borderRadius,
   motionDuration,
   motionEasing,
-  theme,
 }: StyledBaseButtonProps): React.ReactElement => {
+  const { theme } = useTheme();
   const isPressed = useSharedValue(false);
   const duration = getIn(theme.motion, motionDuration);
   const easing = getIn(theme.motion, motionEasing);
