@@ -11,7 +11,7 @@ import {
 import { Highlight } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import { Text } from '../Typography';
-import { SkipNavContent, SkipNavLink } from '.';
+import { SkipNavContent, SkipNavLink } from './SkipNav';
 
 const Page = (): ReactElement => {
   return (
