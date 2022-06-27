@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.10.1
+
+### Patch Changes
+
+- 7b9baf7: fix(blade): broken gray color types in theme.d.ts file
+
 ## 0.10.0
 
 ### Minor Changes
