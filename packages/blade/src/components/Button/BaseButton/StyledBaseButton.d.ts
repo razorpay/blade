@@ -1,3 +1,4 @@
+import type { ValueOf } from '../../../_helpers/types';
 import type { Theme } from '../../BladeProvider';
 import type { BaseButtonProps } from './BaseButton';
 import type { ButtonMinHeight } from './buttonTokens';

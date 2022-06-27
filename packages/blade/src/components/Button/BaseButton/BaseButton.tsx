@@ -118,17 +118,17 @@ const getProps = ({
   };
 
   if (isDisabled) {
-    const disabledColor = getIn(theme.colors, 'action.background.primary.disabled');
+    const disabledBackgroundColor = getIn(theme.colors, 'action.background.primary.disabled');
     const disabledBorderColor = getIn(theme.colors, 'action.border.primary.disabled');
     props.iconColor = 'action.icon.primary.disabled';
     props.textColor = 'action.text.primary.disabled';
-    props.defaultBackgroundColor = disabledColor;
+    props.defaultBackgroundColor = disabledBackgroundColor;
     props.defaultBorderColor = disabledBorderColor;
-    props.hoverBackgroundColor = disabledColor;
+    props.hoverBackgroundColor = disabledBackgroundColor;
     props.hoverBorderColor = disabledBorderColor;
-    props.activeBackgroundColor = disabledColor;
+    props.activeBackgroundColor = disabledBackgroundColor;
     props.activeBorderColor = disabledBorderColor;
-    props.focusBackgroundColor = disabledColor;
+    props.focusBackgroundColor = disabledBackgroundColor;
     props.focusBorderColor = disabledBorderColor;
   }
 
