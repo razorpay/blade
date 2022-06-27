@@ -98,7 +98,7 @@ export type Colors = {
   brand: {
     primary: Record<300 | 400 | 500 | 600 | 700, string>;
     secondary: Record<500, string>;
-    gray: Record<200, 300 | 400 | 500 | 600 | 700, string>;
+    gray: Record<200 | 300 | 400 | 500 | 600 | 700, string>;
   };
   feedback: {
     background: Record<Feedback, ColorContrast>;
