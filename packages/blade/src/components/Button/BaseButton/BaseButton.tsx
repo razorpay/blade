@@ -9,7 +9,7 @@ import type { IconComponent, IconProps, IconSize } from '../../Icons';
 import makeSpace from '../../../utils/makeSpace';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import makeBorderSize from '../../../utils/makeBorderSize';
-import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
+import type { DurationString, EasingString } from '../../../tokens/global/motion';
 import type { Required, ValueOf } from '../../../_helpers/types';
 import makeSize from '../../../utils/makeSize';
 import StyledBaseButton from './StyledBaseButton';
@@ -133,8 +133,8 @@ type BaseButtonStyleProps = {
   focusBackgroundColor: string;
   focusBorderColor: string;
   focusRingColor: string;
-  motionDuration: DurationStringTokens;
-  motionEasing: EasingStringTokens;
+  motionDuration: DurationString;
+  motionEasing: EasingString;
   borderWidth: `${ValueOf<Theme['border']['width']>}px`;
   borderRadius: `${ValueOf<Theme['border']['radius'], 'round'>}px`;
 };
@@ -222,7 +222,7 @@ const getProps = ({
   };
 
   if (isDisabled) {
-    const disabledColor = getIn(
+    const disabledBackgroundColor = getIn(
       theme.colors,
       getColorToken({ property: 'background', variant, contrast, intent, state: 'disabled' }),
     );
@@ -244,13 +244,13 @@ const getProps = ({
       intent,
       state: 'disabled',
     }) as BaseTextProps['color'];
-    props.defaultBackgroundColor = disabledColor;
+    props.defaultBackgroundColor = disabledBackgroundColor;
     props.defaultBorderColor = disabledBorderColor;
-    props.hoverBackgroundColor = disabledColor;
+    props.hoverBackgroundColor = disabledBackgroundColor;
     props.hoverBorderColor = disabledBorderColor;
-    props.activeBackgroundColor = disabledColor;
+    props.activeBackgroundColor = disabledBackgroundColor;
     props.activeBorderColor = disabledBorderColor;
-    props.focusBackgroundColor = disabledColor;
+    props.focusBackgroundColor = disabledBackgroundColor;
     props.focusBorderColor = disabledBorderColor;
   }
 

@@ -1,4 +1,5 @@
 import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
+import type { ValueOf } from '../../../_helpers/types';
 import type { Theme } from '../../BladeProvider';
 import type { BaseButtonProps } from './BaseButton';
 import type { ButtonMinHeight } from './buttonTokens';
@@ -21,7 +22,6 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   onClick: () => void;
   motionDuration: DurationStringTokens;
   motionEasing: EasingStringTokens;
-  theme: Theme;
   borderWidth: `${ValueOf<Theme['border']['width']>}px`;
   borderRadius: `${ValueOf<Theme['border']['radius'], 'round'>}px`;
 };
