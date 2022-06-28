@@ -10,8 +10,12 @@ import makeSpace from '../../../utils/makeSpace';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import makeBorderSize from '../../../utils/makeBorderSize';
 import type { DurationString, EasingString } from '../../../tokens/global/motion';
-import type { Required, ValueOf } from '../../../_helpers/types';
 import makeSize from '../../../utils/makeSize';
+import type {
+  BorderRadiusValues,
+  BorderWidthValues,
+  SpacingValues,
+} from '../../../tokens/theme/theme.d';
 import StyledBaseButton from './StyledBaseButton';
 import {
   typography as buttonTypography,
@@ -89,7 +93,7 @@ const ButtonText = styled(BaseText)(
 
 type ColorTokenConfig = {
   property: 'background' | 'border' | 'text' | 'icon';
-  variant: Required<BaseButtonProps['variant']>;
+  variant: NonNullable<BaseButtonProps['variant']>;
   state: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
   intent: BaseButtonProps['intent'];
   contrast: BaseButtonProps['contrast'];
@@ -103,9 +107,9 @@ const getColorToken = ({
   intent,
 }: ColorTokenConfig):
   | `action.${ColorTokenConfig['property']}.${ColorTokenConfig['variant']}.${ColorTokenConfig['state']}`
-  | `feedback.${Required<
+  | `feedback.${NonNullable<
       ColorTokenConfig['intent']
-    >}.action.${ColorTokenConfig['property']}.primary.${ColorTokenConfig['state']}.${Required<
+    >}.action.${ColorTokenConfig['property']}.primary.${ColorTokenConfig['state']}.${NonNullable<
       ColorTokenConfig['contrast']
     >}Contrast` => {
   if (intent && contrast) {
@@ -119,10 +123,10 @@ type BaseButtonStyleProps = {
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
   minHeight: `${ButtonMinHeight}px`;
-  iconSpacing: `${ValueOf<Theme['spacing']>}px`;
+  iconSpacing: SpacingValues;
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
-  spacing: `${ValueOf<Theme['spacing']>}px ${ValueOf<Theme['spacing']>}px`;
+  spacing: `${SpacingValues} ${SpacingValues}`;
   text?: string;
   defaultBackgroundColor: string;
   defaultBorderColor: string;
@@ -135,8 +139,8 @@ type BaseButtonStyleProps = {
   focusRingColor: string;
   motionDuration: DurationString;
   motionEasing: EasingString;
-  borderWidth: `${ValueOf<Theme['border']['width']>}px`;
-  borderRadius: `${ValueOf<Theme['border']['radius'], 'round'>}px`;
+  borderWidth: BorderWidthValues;
+  borderRadius: BorderRadiusValues;
 };
 
 const getProps = ({
@@ -153,10 +157,10 @@ const getProps = ({
   children?: string;
   isDisabled: boolean;
   theme: Theme;
-  size: Required<BaseButtonProps['size']>;
-  variant: Required<BaseButtonProps['variant']>;
+  size: NonNullable<BaseButtonProps['size']>;
+  variant: NonNullable<BaseButtonProps['variant']>;
   intent: BaseButtonProps['intent'];
-  contrast: Required<BaseButtonProps['contrast']>;
+  contrast: NonNullable<BaseButtonProps['contrast']>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
     iconSize: buttonIconSize[size],

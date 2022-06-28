@@ -11,11 +11,4 @@ type DotNotationColorStringToken<TokenType> = {
     : DotNotationColorStringToken<TokenType[K]>}`;
 }[keyof TokenType];
 
-type Required<T> = Exclude<T, undefined | null>;
-
-type ValueOf<
-  Obj extends ArrayLike<unknown> | Record<string, unknown>,
-  Excludes = undefined
-> = Obj[Exclude<keyof Obj, Excludes>];
-
-export { DotNotationColorStringToken, Required, ValueOf };
+export { DotNotationColorStringToken };
