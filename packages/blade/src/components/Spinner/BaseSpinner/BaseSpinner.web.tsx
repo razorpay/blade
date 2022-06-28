@@ -19,7 +19,7 @@ const AnimatedBaseSpinner = styled.div(
   ({ theme }) => css`
     line-height: 0;
     animation: ${rotate} ${makeMotionTime(theme.motion.duration['2xgentle'])}
-      ${theme.motion.easing.standard.effective as string} infinite;
+      ${theme.motion.easing.standard.attentive as string} infinite;
   `,
 );
 
