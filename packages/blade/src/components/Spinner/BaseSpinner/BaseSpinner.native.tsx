@@ -1,5 +1,4 @@
 import React from 'react';
-import type { EasingFunctionFactory } from 'react-native-reanimated';
 import Animated, {
   cancelAnimation,
   useAnimatedStyle,
@@ -7,6 +6,7 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
+import type { EasingFunctionFactory } from '../../../tokens/global/motion';
 import BaseLoader from './BaseLoader';
 import type { BaseSpinnerProps } from './BaseSpinner.d';
 import { motion } from './spinnerTokens';
