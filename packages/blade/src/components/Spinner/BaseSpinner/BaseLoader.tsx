@@ -5,9 +5,9 @@ type BaseLoaderProps = {
   color: string;
 };
 
-const BaseLoader = ({ size, color, ...props }: BaseLoaderProps): React.ReactElement => {
+const BaseLoader = ({ size, color }: BaseLoaderProps): React.ReactElement => {
   return (
-    <Svg {...props} height={size} width={size} viewBox="0 0 24 24" fill="none">
+    <Svg height={size} width={size} viewBox="0 0 24 24" fill="none">
       <Path
         d="M13 2C13 1.44772 12.5523 1 12 1C11.4477 1 11 1.44772 11 2V6C11 6.55228 11.4477 7 12 7C12.5523 7 13 6.55228 13 6V2Z"
         fill={color}
