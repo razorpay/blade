@@ -4,7 +4,10 @@ import type { StyledBaseButtonProps } from './StyledBaseButton';
 const getBaseButtonStyles = ({
   defaultBorderColor,
   minHeight,
-  spacing,
+  buttonPaddingTop,
+  buttonPaddingBottom,
+  buttonPaddingLeft,
+  buttonPaddingRight,
   defaultBackgroundColor,
   disabled,
   isFullWidth,
@@ -24,7 +27,10 @@ const getBaseButtonStyles = ({
   borderWidth,
   borderRadius,
   borderStyle: 'solid',
-  padding: spacing,
+  paddingTop: buttonPaddingTop,
+  paddingBottom: buttonPaddingBottom,
+  paddingLeft: buttonPaddingLeft,
+  paddingRight: buttonPaddingRight,
 });
 
 export default getBaseButtonStyles;

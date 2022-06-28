@@ -40,7 +40,10 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -83,7 +86,6 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -140,7 +142,10 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -183,7 +188,6 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -240,7 +244,10 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -283,7 +290,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <svg
@@ -354,7 +360,10 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -397,7 +406,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <svg
@@ -468,7 +476,10 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -511,7 +522,6 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -570,7 +580,10 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -608,7 +621,6 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <svg
@@ -669,7 +681,10 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -713,7 +728,6 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -770,7 +784,10 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -814,7 +831,6 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -871,7 +887,10 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -915,7 +934,6 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -972,7 +990,10 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1016,7 +1037,6 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1073,7 +1093,10 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1117,7 +1140,6 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1174,7 +1196,10 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1218,7 +1243,6 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1275,7 +1299,10 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1319,7 +1346,6 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1376,7 +1402,10 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1420,7 +1449,6 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1477,7 +1505,10 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1521,7 +1552,6 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1578,7 +1608,10 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1622,7 +1655,6 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1679,7 +1711,10 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1723,7 +1758,6 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1780,7 +1814,10 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1824,7 +1861,6 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1881,7 +1917,10 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1925,7 +1964,6 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1982,7 +2020,10 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2025,7 +2066,6 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -2082,7 +2122,10 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2125,7 +2168,6 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -2182,7 +2224,10 @@ exports[`<BaseButton /> should render large size button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2225,7 +2270,6 @@ exports[`<BaseButton /> should render large size button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -2282,7 +2326,10 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2325,7 +2372,6 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -2382,7 +2428,10 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2425,7 +2474,6 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -2482,7 +2530,10 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2525,7 +2576,6 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -2582,7 +2632,10 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2625,7 +2678,6 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -2682,7 +2734,10 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2725,7 +2780,6 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -2782,7 +2836,10 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2825,7 +2882,6 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -2882,7 +2938,10 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2925,7 +2984,6 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -2982,7 +3040,10 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -3025,7 +3086,6 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -3082,7 +3142,10 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -3125,7 +3188,6 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -3182,7 +3244,10 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -3225,7 +3290,6 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -3282,7 +3346,10 @@ exports[`<BaseButton /> should render small size button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 12px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -3325,7 +3392,6 @@ exports[`<BaseButton /> should render small size button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 12px"
     type="button"
   >
     <div
@@ -3382,7 +3448,10 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -3425,7 +3494,6 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -3482,7 +3550,10 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 8px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 8px;
+  padding-right: 8px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -3525,7 +3596,6 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 8px"
     type="button"
   >
     <div

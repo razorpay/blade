@@ -40,7 +40,10 @@ exports[`<Button /> should render button with default properties 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -83,7 +86,6 @@ exports[`<Button /> should render button with default properties 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -140,7 +142,10 @@ exports[`<Button /> should render button with full width 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -183,7 +188,6 @@ exports[`<Button /> should render button with full width 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -240,7 +244,10 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -283,7 +290,6 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <svg
@@ -354,7 +360,10 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -397,7 +406,6 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -468,7 +476,10 @@ exports[`<Button /> should render disabled button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -512,7 +523,6 @@ exports[`<Button /> should render disabled button 1`] = `
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -569,7 +579,10 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -613,7 +626,6 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -670,7 +682,10 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -714,7 +729,6 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   <button
     class="c0"
     disabled=""
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -771,7 +785,10 @@ exports[`<Button /> should render large size button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -814,7 +831,6 @@ exports[`<Button /> should render large size button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -871,7 +887,10 @@ exports[`<Button /> should render medium size button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -914,7 +933,6 @@ exports[`<Button /> should render medium size button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -971,7 +989,10 @@ exports[`<Button /> should render secondary variant button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1014,7 +1035,6 @@ exports[`<Button /> should render secondary variant button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1071,7 +1091,10 @@ exports[`<Button /> should render small size button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 12px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1114,7 +1137,6 @@ exports[`<Button /> should render small size button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 12px"
     type="button"
   >
     <div
@@ -1171,7 +1193,10 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1214,7 +1239,6 @@ exports[`<Button /> should render tertiary variant button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 20px"
     type="button"
   >
     <div
@@ -1271,7 +1295,10 @@ exports[`<Button /> should render xsmall size button 1`] = `
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
-  padding: 0px 8px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 8px;
+  padding-right: 8px;
   -webkit-transition-property: background-color,border-color,box-shadow;
   transition-property: background-color,border-color,box-shadow;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1314,7 +1341,6 @@ exports[`<Button /> should render xsmall size button 1`] = `
 <div>
   <button
     class="c0"
-    spacing="0px 8px"
     type="button"
   >
     <div

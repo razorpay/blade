@@ -12,7 +12,10 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   activeBackgroundColor: string;
   defaultBorderColor: string;
   minHeight: `${ButtonMinHeight}px`;
-  spacing: `${SpacingValues} ${SpacingValues}`;
+  buttonPaddingTop: SpacingValues;
+  buttonPaddingBottom: SpacingValues;
+  buttonPaddingLeft: SpacingValues;
+  buttonPaddingRight: SpacingValues;
   children: string;
   defaultBackgroundColor: string;
   disabled: boolean;

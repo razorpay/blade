@@ -21,8 +21,8 @@ import {
   typography as buttonTypography,
   minHeight as buttonMinHeight,
   iconSize as buttonIconSize,
-  iconSpacing as buttonIconSpacing,
-  spacing as buttonSpacing,
+  iconPadding,
+  buttonPadding,
 } from './buttonTokens';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 
@@ -80,16 +80,13 @@ type BaseButtonWithIntentProps = BaseButtonPropsWithOrWithoutIconProps & {
 */
 export type BaseButtonProps = BaseButtonWithVariantProps | BaseButtonWithIntentProps;
 
-const ButtonText = styled(BaseText)(
-  ({
-    hasIcon,
-    iconPosition,
-    iconSpacing,
-  }: Pick<BaseButtonProps, 'iconPosition'> & { hasIcon: boolean; iconSpacing: string }) => ({
-    paddingLeft: hasIcon && iconPosition === 'left' ? iconSpacing : makeSpace(0),
-    paddingRight: hasIcon && iconPosition === 'right' ? iconSpacing : makeSpace(0),
-  }),
-);
+const ButtonText = styled(BaseText)<{
+  iconPaddingLeft: SpacingValues;
+  iconPaddingRight: SpacingValues;
+}>(({ iconPaddingLeft, iconPaddingRight }) => ({
+  paddingLeft: iconPaddingLeft,
+  paddingRight: iconPaddingRight,
+}));
 
 type ColorTokenConfig = {
   property: 'background' | 'border' | 'text' | 'icon';
@@ -123,10 +120,14 @@ type BaseButtonStyleProps = {
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
   minHeight: `${ButtonMinHeight}px`;
-  iconSpacing: SpacingValues;
+  iconPaddingLeft: SpacingValues;
+  iconPaddingRight: SpacingValues;
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
-  spacing: `${SpacingValues} ${SpacingValues}`;
+  buttonPaddingTop: SpacingValues;
+  buttonPaddingBottom: SpacingValues;
+  buttonPaddingLeft: SpacingValues;
+  buttonPaddingRight: SpacingValues;
   text?: string;
   defaultBackgroundColor: string;
   defaultBorderColor: string;
@@ -152,22 +153,31 @@ const getProps = ({
   variant,
   intent,
   contrast,
+  hasIcon,
+  iconPosition,
 }: {
   buttonTypographyTokens: ButtonTypography[TypographyPlatforms];
   children?: string;
   isDisabled: boolean;
+  hasIcon: boolean;
   theme: Theme;
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
   intent: BaseButtonProps['intent'];
   contrast: NonNullable<BaseButtonProps['contrast']>;
+  iconPosition: NonNullable<BaseButtonProps['iconPosition']>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
     iconSize: buttonIconSize[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
-    iconSpacing: makeSpace(theme.spacing[buttonIconSpacing[size]]),
+    iconPaddingLeft: makeSpace(
+      hasIcon && iconPosition === 'left' ? theme.spacing[iconPadding[size]] : 0,
+    ),
+    iconPaddingRight: makeSpace(
+      hasIcon && iconPosition === 'right' ? theme.spacing[iconPadding[size]] : 0,
+    ),
     iconColor: getColorToken({
       property: 'icon',
       variant,
@@ -182,9 +192,10 @@ const getProps = ({
       intent,
       state: 'default',
     }) as BaseTextProps['color'],
-    spacing: `${makeSpace(theme.spacing[buttonSpacing[size].topBottom])} ${makeSpace(
-      theme.spacing[buttonSpacing[size].rightLeft],
-    )}`,
+    buttonPaddingTop: makeSpace(theme.spacing[buttonPadding[size].top]),
+    buttonPaddingBottom: makeSpace(theme.spacing[buttonPadding[size].bottom]),
+    buttonPaddingLeft: makeSpace(theme.spacing[buttonPadding[size].left]),
+    buttonPaddingRight: makeSpace(theme.spacing[buttonPadding[size].right]),
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultBackgroundColor: getIn(
       theme.colors,
@@ -287,7 +298,10 @@ const BaseButton = ({
     defaultBorderColor,
     defaultBackgroundColor,
     minHeight,
-    spacing,
+    buttonPaddingTop,
+    buttonPaddingBottom,
+    buttonPaddingLeft,
+    buttonPaddingRight,
     focusBorderColor,
     focusBackgroundColor,
     focusRingColor,
@@ -296,7 +310,8 @@ const BaseButton = ({
     hoverBackgroundColor,
     iconColor,
     iconSize,
-    iconSpacing,
+    iconPaddingLeft,
+    iconPaddingRight,
     lineHeight,
     text,
     textColor,
@@ -313,6 +328,8 @@ const BaseButton = ({
     theme,
     intent,
     contrast,
+    iconPosition,
+    hasIcon: !!Icon,
   });
 
   return (
@@ -321,7 +338,10 @@ const BaseButton = ({
       activeBackgroundColor={activeBackgroundColor}
       defaultBorderColor={defaultBorderColor}
       minHeight={minHeight}
-      spacing={spacing}
+      buttonPaddingTop={buttonPaddingTop}
+      buttonPaddingBottom={buttonPaddingBottom}
+      buttonPaddingLeft={buttonPaddingLeft}
+      buttonPaddingRight={buttonPaddingRight}
       defaultBackgroundColor={defaultBackgroundColor}
       disabled={isDisabled}
       focusBorderColor={focusBorderColor}
@@ -345,9 +365,8 @@ const BaseButton = ({
           fontWeight="bold"
           textAlign="center"
           color={textColor}
-          iconPosition={iconPosition}
-          hasIcon={!!Icon}
-          iconSpacing={iconSpacing}
+          iconPaddingLeft={iconPaddingLeft}
+          iconPaddingRight={iconPaddingRight}
         >
           {text}
         </ButtonText>

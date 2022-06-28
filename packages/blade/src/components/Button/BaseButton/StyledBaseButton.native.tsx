@@ -14,7 +14,10 @@ const StyledBaseButton = ({
   onClick,
   children,
   minHeight,
-  spacing,
+  buttonPaddingTop,
+  buttonPaddingBottom,
+  buttonPaddingLeft,
+  buttonPaddingRight,
   isFullWidth,
   disabled,
   defaultBackgroundColor,
@@ -56,7 +59,10 @@ const StyledBaseButton = ({
       onPress={onClick}
       style={animatedStyles}
       minHeight={minHeight}
-      spacing={spacing}
+      buttonPaddingTop={buttonPaddingTop}
+      buttonPaddingBottom={buttonPaddingBottom}
+      buttonPaddingLeft={buttonPaddingLeft}
+      buttonPaddingRight={buttonPaddingRight}
       isFullWidth={isFullWidth}
       disabled={disabled}
       defaultBackgroundColor={defaultBackgroundColor}

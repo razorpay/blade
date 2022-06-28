@@ -64,25 +64,33 @@ const minHeight: Record<NonNullable<BaseButtonProps['size']>, ButtonMinHeight> =
   large: 48,
 };
 
-const spacing: Record<
+const buttonPadding: Record<
   NonNullable<BaseButtonProps['size']>,
-  Record<'topBottom' | 'rightLeft', keyof ThemeTokens['spacing']>
+  Record<'top' | 'bottom' | 'left' | 'right', keyof ThemeTokens['spacing']>
 > = {
   xsmall: {
-    topBottom: 0,
-    rightLeft: 2,
+    top: 0,
+    bottom: 0,
+    left: 2,
+    right: 2,
   },
   small: {
-    topBottom: 0,
-    rightLeft: 3,
+    top: 0,
+    bottom: 0,
+    left: 3,
+    right: 3,
   },
   medium: {
-    topBottom: 0,
-    rightLeft: 5,
+    top: 0,
+    bottom: 0,
+    left: 5,
+    right: 5,
   },
   large: {
-    topBottom: 0,
-    rightLeft: 5,
+    top: 0,
+    bottom: 0,
+    left: 5,
+    right: 5,
   },
 };
 
@@ -93,11 +101,11 @@ const iconSize: Record<NonNullable<BaseButtonProps['size']>, IconProps['size']> 
   large: 'medium',
 };
 
-const iconSpacing: Record<NonNullable<BaseButtonProps['size']>, keyof ThemeTokens['spacing']> = {
+const iconPadding: Record<NonNullable<BaseButtonProps['size']>, keyof ThemeTokens['spacing']> = {
   xsmall: 1,
   small: 1,
   medium: 2,
   large: 2,
 };
 
-export { typography, minHeight, iconSize, iconSpacing, spacing };
+export { typography, minHeight, iconSize, iconPadding, buttonPadding };
