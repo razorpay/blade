@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-
 import { AccessibilityInfo } from 'react-native';
 import type { Assertiveness } from './LiveAnnouncer.d';
 

@@ -62,20 +62,16 @@ const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
   );
 };
 
-const ButtonLoadingExample = (args: any): React.ReactElement => {
+const ButtonLoadingExample = (args: BaseButtonProps): React.ReactElement => {
   const [loading, setLoading] = useState(false);
+
+  const toggle = (): void => setLoading((prev) => !prev);
 
   return (
     <>
-      <BaseButtonComponent onClick={(): void => setLoading(!loading)}>
-        Toggle loading
-      </BaseButtonComponent>
+      <BaseButtonComponent onClick={toggle}>Toggle loading</BaseButtonComponent>
       <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
-      <BaseButtonComponent
-        {...args}
-        onClick={(): void => setLoading(!loading)}
-        isLoading={loading}
-      />
+      <BaseButtonComponent {...args} isLoading={loading} />
     </>
   );
 };
@@ -94,12 +90,6 @@ const BaseButtonLoadingTemplate: ComponentStory<typeof BaseButtonComponent> = ({
 };
 
 export const BaseButton = BaseButtonTemplate.bind({});
-export const BaseButtonAccessibleIcon = BaseButtonTemplate.bind({});
-BaseButtonAccessibleIcon.args = {
-  icon: 'CloseIcon' as any,
-  children: undefined,
-  accessibilityLabel: 'Close',
-};
 export const BaseButtonLoading = BaseButtonLoadingTemplate.bind({});
 
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
