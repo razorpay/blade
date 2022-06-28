@@ -5,6 +5,7 @@ import styled, { css, keyframes } from 'styled-components';
 import makeMotionTime from '../../../utils/makeMotionTime';
 import BaseLoader from './BaseLoader';
 import type { BaseSpinnerProps } from './BaseSpinner.d';
+import { motion } from './spinnerTokens';
 
 const rotate = keyframes`
   from {
@@ -16,10 +17,9 @@ const rotate = keyframes`
 `;
 
 const AnimatedBaseSpinner = styled.div(
-  ({ theme }) => css`
+  () => css`
     line-height: 0;
-    animation: ${rotate} ${makeMotionTime(theme.motion.duration['2xgentle'])}
-      ${theme.motion.easing.standard.attentive as string} infinite;
+    animation: ${rotate} ${makeMotionTime(motion.duration)} ${motion.easing as string} infinite;
   `,
 );
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import type { EasingFunctionFactory } from 'react-native-reanimated';
 import Animated, {
   cancelAnimation,
   useAnimatedStyle,
@@ -6,10 +7,9 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
-import getIn from '../../../utils/getIn';
-import { useTheme } from '../../BladeProvider';
 import BaseLoader from './BaseLoader';
 import type { BaseSpinnerProps } from './BaseSpinner.d';
+import { motion } from './spinnerTokens';
 
 type WithStyle = {
   style: Record<string, unknown>;
@@ -19,9 +19,7 @@ type AnimatedBaseSpinnerProps = {
 } & WithStyle;
 
 const AnimatedBaseSpinner = (props: AnimatedBaseSpinnerProps): React.ReactElement => {
-  const { theme } = useTheme();
-  const duration = getIn(theme.motion, 'duration.2xgentle');
-  const easing = getIn(theme.motion, 'easing.standard.effective');
+  const { duration, easing } = motion;
   const rotation = useSharedValue(0);
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -37,7 +35,7 @@ const AnimatedBaseSpinner = (props: AnimatedBaseSpinnerProps): React.ReactElemen
     rotation.value = withRepeat(
       withTiming(360, {
         duration,
-        easing,
+        easing: easing as EasingFunctionFactory,
       }),
       -1,
     );
