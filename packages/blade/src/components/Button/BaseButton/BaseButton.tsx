@@ -110,6 +110,7 @@ const getColorToken = ({
       BaseButtonColorTokenModifiers['contrast']
     >}Contrast` => {
   if (intent && contrast) {
+    // TODO: Add support for secondary & tertiary variants for feedback buttons here when a use-case is identified
     return `feedback.${intent}.action.${property}.primary.${state}.${contrast}Contrast`;
   }
   return `action.${property}.${variant}.${state}`;
