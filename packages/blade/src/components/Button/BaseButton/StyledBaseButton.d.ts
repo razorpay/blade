@@ -1,3 +1,4 @@
+import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
 import type { ValueOf } from '../../../_helpers/types';
 import type { Theme } from '../../BladeProvider';
 import type { BaseButtonProps } from './BaseButton';
@@ -19,6 +20,8 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   hoverBackgroundColor: string;
   isFullWidth: boolean;
   onClick: () => void;
+  motionDuration: DurationStringTokens;
+  motionEasing: EasingStringTokens;
   borderWidth: `${ValueOf<Theme['border']['width']>}px`;
   borderRadius: `${ValueOf<Theme['border']['radius'], 'round'>}px`;
 };

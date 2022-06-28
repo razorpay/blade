@@ -92,6 +92,18 @@ export type Motion = Readonly<{
   easing: Easing;
 }>;
 
+type DotNotationMotionStringToken<TokenType> = {
+  [K in keyof TokenType]: `${Extract<K, string>}.${TokenType[K] extends Record<
+    string,
+    string | EasingFunctionFactory
+  >
+    ? Extract<keyof TokenType[K], string | EasingFunctionFactory>
+    : DotNotationMotionStringToken<TokenType[K]>}`;
+}[keyof TokenType];
+
+export type EasingString = `easing.${DotNotationMotionStringToken<Easing>}`;
+export type DurationString = `duration.${keyof Duration}`;
+
 const delay: Delay = {
   '2xshort': 70,
   xshort: 120,

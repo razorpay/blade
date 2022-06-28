@@ -6,19 +6,19 @@ import type { BaseButtonProps } from './BaseButton';
 
 //TODO: Sort keys in all objects
 
-export type ButtonMinHeight = 48 | 40 | 32 | 28;
+export type ButtonMinHeight = 48 | 36 | 32 | 28;
 
 export type ButtonTypography = {
-  [key in TypographyPlatforms]: {
+  [Key in TypographyPlatforms]: {
     fonts: {
       size: Record<
         Required<BaseButtonProps['size']>,
-        keyof ThemeTokens['typography'][key]['fonts']['size']
+        keyof ThemeTokens['typography'][Key]['fonts']['size']
       >;
     };
     lineHeights: Record<
       Required<BaseButtonProps['size']>,
-      keyof ThemeTokens['typography'][key]['lineHeights']
+      keyof ThemeTokens['typography'][Key]['lineHeights']
     >;
   };
 };
@@ -61,7 +61,7 @@ const typography: ButtonTypography = {
 const minHeight: Record<Required<BaseButtonProps['size']>, ButtonMinHeight> = {
   xsmall: 28,
   small: 32,
-  medium: 40,
+  medium: 36,
   large: 48,
 };
 
