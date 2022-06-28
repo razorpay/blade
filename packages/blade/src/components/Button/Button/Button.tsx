@@ -42,7 +42,7 @@ const Button = ({
 }: ButtonProps): React.ReactElement => {
   return (
     <BaseButton
-      {...(icon ? { icon, children } : { icon, children })}
+      {...(icon ? { icon, children } : { children })}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
       isFullWidth={isFullWidth}
