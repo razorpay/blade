@@ -1,4 +1,5 @@
 import makeBezier from '../../utils/makeBezier';
+import type { DotNotationMotionStringToken } from '../../_helpers/types';
 
 type Duration = {
   /** `70` milliseconds */
@@ -32,7 +33,7 @@ type Delay = {
   xlong: 5000;
 };
 
-type EasingFunctionFactory = { factory: () => (value: number) => number }; // similar to EasingFunctionFactory of `react-native-reanimated`
+export type EasingFunctionFactory = { factory: () => (value: number) => number }; // similar to EasingFunctionFactory of `react-native-reanimated`
 
 type Easing = {
   /** Easings for all standard animations*/
@@ -92,17 +93,8 @@ export type Motion = Readonly<{
   easing: Easing;
 }>;
 
-type DotNotationMotionStringToken<TokenType> = {
-  [K in keyof TokenType]: `${Extract<K, string>}.${TokenType[K] extends Record<
-    string,
-    string | EasingFunctionFactory
-  >
-    ? Extract<keyof TokenType[K], string | EasingFunctionFactory>
-    : DotNotationMotionStringToken<TokenType[K]>}`;
-}[keyof TokenType];
-
-export type EasingStringTokens = `easing.${DotNotationMotionStringToken<Easing>}`;
-export type DurationStringTokens = `duration.${keyof Duration}`;
+export type EasingString = `easing.${DotNotationMotionStringToken<Easing>}`;
+export type DurationString = `duration.${keyof Duration}`;
 
 const delay: Delay = {
   '2xshort': 70,

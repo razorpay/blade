@@ -13,6 +13,10 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   activeBorderColor="hsla(227, 100%, 45%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
   defaultBorderColor="hsla(213, 89%, 56%, 1)"
@@ -36,7 +40,6 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -128,6 +131,10 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   activeBorderColor="hsla(227, 100%, 45%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
   defaultBorderColor="hsla(213, 89%, 56%, 1)"
@@ -151,7 +158,6 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -243,6 +249,10 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   activeBorderColor="hsla(227, 100%, 45%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
   defaultBorderColor="hsla(213, 89%, 56%, 1)"
@@ -266,7 +276,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -409,6 +418,10 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   activeBorderColor="hsla(227, 100%, 45%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
   defaultBorderColor="hsla(213, 89%, 56%, 1)"
@@ -432,7 +445,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -575,6 +587,10 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   activeBorderColor="hsla(227, 100%, 45%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
   defaultBorderColor="hsla(213, 89%, 56%, 1)"
@@ -598,7 +614,6 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -741,6 +756,10 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   activeBorderColor="hsla(227, 100%, 45%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
   defaultBorderColor="hsla(213, 89%, 56%, 1)"
@@ -764,7 +783,6 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -877,6 +895,10 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   activeBorderColor="hsla(216, 19%, 89%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(216, 19%, 89%, 1)"
   defaultBorderColor="hsla(216, 19%, 89%, 1)"
@@ -900,7 +922,6 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -992,6 +1013,10 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   activeBorderColor="hsla(187, 68%, 52%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(193, 100%, 35%, 1)"
   defaultBorderColor="hsla(187, 68%, 52%, 1)"
@@ -1015,7 +1040,6 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -1107,6 +1131,10 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   activeBorderColor="hsla(193, 100%, 35%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(193, 100%, 35%, 0.09)"
   defaultBorderColor="hsla(193, 100%, 35%, 0.32)"
@@ -1130,7 +1158,6 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -1222,6 +1249,10 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   activeBorderColor="hsla(8, 99%, 65%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(8, 73%, 47%, 1)"
   defaultBorderColor="hsla(8, 99%, 65%, 1)"
@@ -1245,7 +1276,6 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -1337,6 +1367,10 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   activeBorderColor="hsla(9, 91%, 56%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(9, 91%, 56%, 0.09)"
   defaultBorderColor="hsla(9, 91%, 56%, 0.32)"
@@ -1360,7 +1394,6 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -1452,6 +1485,10 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   activeBorderColor="hsla(216, 15%, 54%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(216, 33%, 29%, 1)"
   defaultBorderColor="hsla(216, 15%, 54%, 1)"
@@ -1475,7 +1512,6 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -1567,6 +1603,10 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   activeBorderColor="hsla(216, 44%, 23%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(216, 44%, 23%, 0.09)"
   defaultBorderColor="hsla(216, 44%, 23%, 0.32)"
@@ -1590,7 +1630,6 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -1682,6 +1721,10 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   activeBorderColor="hsla(35, 84%, 54%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(38, 97%, 38%, 1)"
   defaultBorderColor="hsla(35, 84%, 54%, 1)"
@@ -1705,7 +1748,6 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -1797,6 +1839,10 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   activeBorderColor="hsla(36, 100%, 44%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(36, 100%, 44%, 0.09)"
   defaultBorderColor="hsla(36, 100%, 44%, 0.32)"
@@ -1820,7 +1866,6 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -1912,6 +1957,10 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   activeBorderColor="hsla(149, 99%, 35%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(160, 100%, 26%, 1)"
   defaultBorderColor="hsla(149, 99%, 35%, 1)"
@@ -1935,7 +1984,6 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -2027,6 +2075,10 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   activeBorderColor="hsla(155, 100%, 31%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(155, 100%, 31%, 0.09)"
   defaultBorderColor="hsla(155, 100%, 31%, 0.32)"
@@ -2050,7 +2102,6 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -2142,6 +2193,10 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   activeBorderColor="hsla(218, 19%, 81%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(216, 44%, 23%, 0)"
   defaultBorderColor="hsla(218, 19%, 81%, 1)"
@@ -2165,7 +2220,6 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -2257,6 +2311,10 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   activeBorderColor="hsla(216, 19%, 89%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
   defaultBorderColor="hsla(216, 19%, 89%, 1)"
@@ -2280,7 +2338,6 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -2372,6 +2429,10 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   activeBorderColor="hsla(180, 100%, 97%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(193, 100%, 35%, 1)"
   defaultBorderColor="hsla(180, 100%, 97%, 1)"
@@ -2395,7 +2456,6 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -2487,6 +2547,10 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   activeBorderColor="hsla(193, 100%, 35%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(193, 100%, 35%, 0.09)"
   defaultBorderColor="hsla(193, 100%, 35%, 0.32)"
@@ -2510,7 +2574,6 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -2602,6 +2665,10 @@ exports[`<BaseButton /> should render large size button 1`] = `
   activeBorderColor="hsla(227, 100%, 45%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
   defaultBorderColor="hsla(213, 89%, 56%, 1)"
@@ -2625,7 +2692,6 @@ exports[`<BaseButton /> should render large size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -2717,6 +2783,10 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   activeBorderColor="hsla(227, 100%, 45%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
   defaultBorderColor="hsla(213, 89%, 56%, 1)"
@@ -2740,7 +2810,6 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -2832,6 +2901,10 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   activeBorderColor="hsla(0, 100%, 97%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(8, 73%, 47%, 1)"
   defaultBorderColor="hsla(0, 100%, 97%, 1)"
@@ -2855,7 +2928,6 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -2947,6 +3019,10 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   activeBorderColor="hsla(9, 91%, 56%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(9, 91%, 56%, 0.09)"
   defaultBorderColor="hsla(9, 91%, 56%, 0.32)"
@@ -2970,7 +3046,6 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -3062,6 +3137,10 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   activeBorderColor="hsla(214, 18%, 69%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(216, 33%, 29%, 1)"
   defaultBorderColor="hsla(214, 18%, 69%, 1)"
@@ -3085,7 +3164,6 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -3177,6 +3255,10 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   activeBorderColor="hsla(216, 44%, 23%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(216, 44%, 23%, 0.09)"
   defaultBorderColor="hsla(216, 44%, 23%, 0.32)"
@@ -3200,7 +3282,6 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -3292,6 +3373,10 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   activeBorderColor="hsla(32, 100%, 94%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(38, 97%, 38%, 1)"
   defaultBorderColor="hsla(32, 100%, 94%, 1)"
@@ -3315,7 +3400,6 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -3407,6 +3491,10 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   activeBorderColor="hsla(36, 100%, 44%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(36, 100%, 44%, 0.09)"
   defaultBorderColor="hsla(36, 100%, 44%, 0.32)"
@@ -3430,7 +3518,6 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -3522,6 +3609,10 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   activeBorderColor="hsla(107, 100%, 96%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(160, 100%, 26%, 1)"
   defaultBorderColor="hsla(107, 100%, 96%, 1)"
@@ -3545,7 +3636,6 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -3637,6 +3727,10 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   activeBorderColor="hsla(155, 100%, 31%, 0.32)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(155, 100%, 31%, 0.09)"
   defaultBorderColor="hsla(155, 100%, 31%, 0.32)"
@@ -3660,7 +3754,6 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -3752,6 +3845,10 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   activeBorderColor="hsla(213, 89%, 56%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
   defaultBorderColor="hsla(213, 89%, 56%, 1)"
@@ -3775,7 +3872,6 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -3867,6 +3963,10 @@ exports[`<BaseButton /> should render small size button 1`] = `
   activeBorderColor="hsla(227, 100%, 45%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="12px"
+  buttonPaddingRight="12px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
   defaultBorderColor="hsla(213, 89%, 56%, 1)"
@@ -3890,7 +3990,6 @@ exports[`<BaseButton /> should render small size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 12px"
   style={
     Array [
       Object {
@@ -3982,6 +4081,10 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   activeBorderColor="hsla(216, 19%, 89%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="20px"
+  buttonPaddingRight="20px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
   defaultBorderColor="hsla(216, 19%, 89%, 1)"
@@ -4005,7 +4108,6 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 20px"
   style={
     Array [
       Object {
@@ -4097,6 +4199,10 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   activeBorderColor="hsla(227, 100%, 45%, 1)"
   borderRadius="2px"
   borderWidth="1px"
+  buttonPaddingBottom="0px"
+  buttonPaddingLeft="8px"
+  buttonPaddingRight="8px"
+  buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
   defaultBorderColor="hsla(213, 89%, 56%, 1)"
@@ -4120,7 +4226,6 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   onResponderTerminate={[Function]}
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
-  spacing="0px 8px"
   style={
     Array [
       Object {

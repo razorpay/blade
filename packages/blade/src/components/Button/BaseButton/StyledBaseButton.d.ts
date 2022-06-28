@@ -1,5 +1,9 @@
 import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
-import type { Theme } from '../../BladeProvider';
+import type {
+  BorderRadiusValues,
+  BorderWidthValues,
+  SpacingValues,
+} from '../../../tokens/theme/theme.d';
 import type { BaseButtonProps } from './BaseButton';
 import type { ButtonMinHeight } from './buttonTokens';
 
@@ -8,7 +12,10 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   activeBackgroundColor: string;
   defaultBorderColor: string;
   minHeight: `${ButtonMinHeight}px`;
-  spacing: `${ValueOf<Theme['spacing']>}px ${ValueOf<Theme['spacing']>}px`;
+  buttonPaddingTop: SpacingValues;
+  buttonPaddingBottom: SpacingValues;
+  buttonPaddingLeft: SpacingValues;
+  buttonPaddingRight: SpacingValues;
   children: string;
   defaultBackgroundColor: string;
   disabled: boolean;
@@ -21,9 +28,8 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   onClick: () => void;
   motionDuration: DurationStringTokens;
   motionEasing: EasingStringTokens;
-  theme: Theme;
-  borderWidth: `${ValueOf<Theme['border']['width']>}px`;
-  borderRadius: `${ValueOf<Theme['border']['radius'], 'round'>}px`;
+  borderWidth: BorderWidthValues;
+  borderRadius: BorderRadiusValues;
 };
 
 export { default } from './StyledBaseButton.web';

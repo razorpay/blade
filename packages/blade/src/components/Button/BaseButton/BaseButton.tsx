@@ -10,22 +10,26 @@ import type { IconComponent, IconProps, IconSize } from '../../Icons';
 import makeSpace from '../../../utils/makeSpace';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import makeBorderSize from '../../../utils/makeBorderSize';
-import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
-import ButtonSpinner from '../ButtonSpinner';
-import usePrevious from '../../../utils/usePrevious';
-import type { Required, ValueOf } from '../../../_helpers/types';
+import type { DurationString, EasingString } from '../../../tokens/global/motion';
 import makeSize from '../../../utils/makeSize';
-import { announce } from '../../LiveAnnouncer';
+import type {
+  BorderRadiusValues,
+  BorderWidthValues,
+  SpacingValues,
+} from '../../../tokens/theme/theme.d';
+import ButtonSpinner from '../ButtonSpinner';
 import { makeAccessible } from '../../../utils';
-import StyledBaseButton from './StyledBaseButton';
+import { announce } from '../../LiveAnnouncer';
+import usePrevious from '../../../utils/usePrevious';
+import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
   typography as buttonTypography,
   minHeight as buttonMinHeight,
   iconSize as buttonIconSize,
-  iconSpacing as buttonIconSpacing,
-  spacing as buttonSpacing,
+  iconPadding,
+  buttonPadding,
 } from './buttonTokens';
-import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
+import StyledBaseButton from './StyledBaseButton';
 
 type BaseButtonCommonProps = {
   size?: 'large' | 'medium' | 'small' | 'xsmall';
@@ -83,20 +87,17 @@ type BaseButtonWithIntentProps = BaseButtonPropsWithOrWithoutIconProps & {
 */
 export type BaseButtonProps = BaseButtonWithVariantProps | BaseButtonWithIntentProps;
 
-const ButtonText = styled(BaseText)(
-  ({
-    hasIcon,
-    iconPosition,
-    iconSpacing,
-  }: Pick<BaseButtonProps, 'iconPosition'> & { hasIcon: boolean; iconSpacing: string }) => ({
-    paddingLeft: hasIcon && iconPosition === 'left' ? iconSpacing : makeSpace(0),
-    paddingRight: hasIcon && iconPosition === 'right' ? iconSpacing : makeSpace(0),
-  }),
-);
+const ButtonText = styled(BaseText)<{
+  iconPaddingLeft: SpacingValues;
+  iconPaddingRight: SpacingValues;
+}>(({ iconPaddingLeft, iconPaddingRight }) => ({
+  paddingLeft: iconPaddingLeft,
+  paddingRight: iconPaddingRight,
+}));
 
-type ColorTokenConfig = {
+type BaseButtonColorTokenModifiers = {
   property: 'background' | 'border' | 'text' | 'icon';
-  variant: Required<BaseButtonProps['variant']>;
+  variant: NonNullable<BaseButtonProps['variant']>;
   state: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
   intent: BaseButtonProps['intent'];
   contrast: BaseButtonProps['contrast'];
@@ -108,14 +109,15 @@ const getColorToken = ({
   state,
   contrast,
   intent,
-}: ColorTokenConfig):
-  | `action.${ColorTokenConfig['property']}.${ColorTokenConfig['variant']}.${ColorTokenConfig['state']}`
-  | `feedback.${Required<
-      ColorTokenConfig['intent']
-    >}.action.${ColorTokenConfig['property']}.primary.${ColorTokenConfig['state']}.${Required<
-      ColorTokenConfig['contrast']
+}: BaseButtonColorTokenModifiers):
+  | `action.${BaseButtonColorTokenModifiers['property']}.${BaseButtonColorTokenModifiers['variant']}.${BaseButtonColorTokenModifiers['state']}`
+  | `feedback.${NonNullable<
+      BaseButtonColorTokenModifiers['intent']
+    >}.action.${BaseButtonColorTokenModifiers['property']}.primary.${BaseButtonColorTokenModifiers['state']}.${NonNullable<
+      BaseButtonColorTokenModifiers['contrast']
     >}Contrast` => {
   if (intent && contrast) {
+    // TODO: Add support for secondary & tertiary variants for feedback buttons here when a use-case is identified
     return `feedback.${intent}.action.${property}.primary.${state}.${contrast}Contrast`;
   }
   return `action.${property}.${variant}.${state}`;
@@ -126,10 +128,14 @@ type BaseButtonStyleProps = {
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
   minHeight: `${ButtonMinHeight}px`;
-  iconSpacing: `${ValueOf<Theme['spacing']>}px`;
+  iconPaddingLeft: SpacingValues;
+  iconPaddingRight: SpacingValues;
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
-  spacing: `${ValueOf<Theme['spacing']>}px ${ValueOf<Theme['spacing']>}px`;
+  buttonPaddingTop: SpacingValues;
+  buttonPaddingBottom: SpacingValues;
+  buttonPaddingLeft: SpacingValues;
+  buttonPaddingRight: SpacingValues;
   text?: string;
   defaultBackgroundColor: string;
   defaultBorderColor: string;
@@ -140,10 +146,10 @@ type BaseButtonStyleProps = {
   focusBackgroundColor: string;
   focusBorderColor: string;
   focusRingColor: string;
-  motionDuration: DurationStringTokens;
-  motionEasing: EasingStringTokens;
-  borderWidth: `${ValueOf<Theme['border']['width']>}px`;
-  borderRadius: `${ValueOf<Theme['border']['radius'], 'round'>}px`;
+  motionDuration: DurationString;
+  motionEasing: EasingString;
+  borderWidth: BorderWidthValues;
+  borderRadius: BorderRadiusValues;
 };
 
 const getProps = ({
@@ -155,22 +161,31 @@ const getProps = ({
   variant,
   intent,
   contrast,
+  hasIcon,
+  iconPosition,
 }: {
   buttonTypographyTokens: ButtonTypography[TypographyPlatforms];
   children?: string;
   isDisabled: boolean;
+  hasIcon: boolean;
   theme: Theme;
-  size: Required<BaseButtonProps['size']>;
-  variant: Required<BaseButtonProps['variant']>;
+  size: NonNullable<BaseButtonProps['size']>;
+  variant: NonNullable<BaseButtonProps['variant']>;
   intent: BaseButtonProps['intent'];
-  contrast: Required<BaseButtonProps['contrast']>;
+  contrast: NonNullable<BaseButtonProps['contrast']>;
+  iconPosition: NonNullable<BaseButtonProps['iconPosition']>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
     iconSize: buttonIconSize[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
-    iconSpacing: makeSpace(theme.spacing[buttonIconSpacing[size]]),
+    iconPaddingLeft: makeSpace(
+      hasIcon && iconPosition === 'left' ? theme.spacing[iconPadding[size]] : 0,
+    ),
+    iconPaddingRight: makeSpace(
+      hasIcon && iconPosition === 'right' ? theme.spacing[iconPadding[size]] : 0,
+    ),
     iconColor: getColorToken({
       property: 'icon',
       variant,
@@ -185,9 +200,10 @@ const getProps = ({
       intent,
       state: 'default',
     }) as BaseTextProps['color'],
-    spacing: `${makeSpace(theme.spacing[buttonSpacing[size].topBottom])} ${makeSpace(
-      theme.spacing[buttonSpacing[size].rightLeft],
-    )}`,
+    buttonPaddingTop: makeSpace(theme.spacing[buttonPadding[size].top]),
+    buttonPaddingBottom: makeSpace(theme.spacing[buttonPadding[size].bottom]),
+    buttonPaddingLeft: makeSpace(theme.spacing[buttonPadding[size].left]),
+    buttonPaddingRight: makeSpace(theme.spacing[buttonPadding[size].right]),
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultBackgroundColor: getIn(
       theme.colors,
@@ -229,7 +245,7 @@ const getProps = ({
   };
 
   if (isDisabled) {
-    const disabledColor = getIn(
+    const disabledBackgroundColor = getIn(
       theme.colors,
       getColorToken({ property: 'background', variant, contrast, intent, state: 'disabled' }),
     );
@@ -251,13 +267,13 @@ const getProps = ({
       intent,
       state: 'disabled',
     }) as BaseTextProps['color'];
-    props.defaultBackgroundColor = disabledColor;
+    props.defaultBackgroundColor = disabledBackgroundColor;
     props.defaultBorderColor = disabledBorderColor;
-    props.hoverBackgroundColor = disabledColor;
+    props.hoverBackgroundColor = disabledBackgroundColor;
     props.hoverBorderColor = disabledBorderColor;
-    props.activeBackgroundColor = disabledColor;
+    props.activeBackgroundColor = disabledBackgroundColor;
     props.activeBorderColor = disabledBorderColor;
-    props.focusBackgroundColor = disabledColor;
+    props.focusBackgroundColor = disabledBackgroundColor;
     props.focusBorderColor = disabledBorderColor;
   }
 
@@ -302,7 +318,10 @@ const BaseButton = ({
     defaultBorderColor,
     defaultBackgroundColor,
     minHeight,
-    spacing,
+    buttonPaddingTop,
+    buttonPaddingBottom,
+    buttonPaddingLeft,
+    buttonPaddingRight,
     focusBorderColor,
     focusBackgroundColor,
     focusRingColor,
@@ -311,7 +330,8 @@ const BaseButton = ({
     hoverBackgroundColor,
     iconColor,
     iconSize,
-    iconSpacing,
+    iconPaddingLeft,
+    iconPaddingRight,
     lineHeight,
     text,
     textColor,
@@ -328,18 +348,23 @@ const BaseButton = ({
     theme,
     intent,
     contrast,
+    iconPosition,
+    hasIcon: !!Icon,
   });
 
   return (
     <StyledBaseButton
       {...makeAccessible({ role: 'button', label: accessibilityLabel })}
       isLoading={isLoading}
+      disabled={disabled}
       activeBorderColor={activeBorderColor}
       activeBackgroundColor={activeBackgroundColor}
       defaultBorderColor={defaultBorderColor}
       minHeight={minHeight}
-      spacing={spacing}
-      disabled={disabled}
+      buttonPaddingTop={buttonPaddingTop}
+      buttonPaddingBottom={buttonPaddingBottom}
+      buttonPaddingLeft={buttonPaddingLeft}
+      buttonPaddingRight={buttonPaddingRight}
       defaultBackgroundColor={defaultBackgroundColor}
       focusBorderColor={focusBorderColor}
       focusBackgroundColor={focusBackgroundColor}
@@ -353,7 +378,6 @@ const BaseButton = ({
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
-      theme={theme}
     >
       <ButtonSpinner isLoading={isLoading} color={iconColor} size={iconSize}>
         {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
@@ -364,9 +388,8 @@ const BaseButton = ({
             fontWeight="bold"
             textAlign="center"
             color={textColor}
-            iconPosition={iconPosition}
-            hasIcon={!!Icon}
-            iconSpacing={iconSpacing}
+            iconPaddingLeft={iconPaddingLeft}
+            iconPaddingRight={iconPaddingRight}
           >
             {text}
           </ButtonText>

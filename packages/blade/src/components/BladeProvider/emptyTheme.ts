@@ -1020,15 +1020,15 @@ const emptyTheme: Theme = {
   border: {
     radius: {
       none: 0,
-      small: 0,
-      medium: 0,
-      large: 0,
-      max: 0,
-      round: '0%', // this needs to be in % but need to figure out how will we store unitless things
+      small: 2,
+      medium: 4,
+      large: 8,
+      max: 9999,
+      round: '50%', // this needs to be in % but need to figure out how will we store unitless things
     },
     width: {
       none: 0,
-      thin: 0,
+      thin: 1,
     },
   },
   breakpoints: {
@@ -1076,7 +1076,19 @@ const emptyTheme: Theme = {
       },
     },
   },
-  spacing: { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0 },
+  spacing: {
+    0: 0,
+    1: 4,
+    2: 8,
+    3: 12,
+    4: 16,
+    5: 20,
+    6: 24,
+    7: 32,
+    8: 40,
+    9: 48,
+    10: 56,
+  },
   shadows: {
     offsetX: {
       level: {

@@ -1,6 +1,5 @@
 import type { ThemeTokens } from '../../../tokens/theme/theme.d';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
-import type { Required } from '../../../_helpers/types';
 import type { IconProps } from '../../Icons';
 import type { BaseButtonProps } from './BaseButton';
 
@@ -12,12 +11,12 @@ export type ButtonTypography = {
   [Key in TypographyPlatforms]: {
     fonts: {
       size: Record<
-        Required<BaseButtonProps['size']>,
+        NonNullable<BaseButtonProps['size']>,
         keyof ThemeTokens['typography'][Key]['fonts']['size']
       >;
     };
     lineHeights: Record<
-      Required<BaseButtonProps['size']>,
+      NonNullable<BaseButtonProps['size']>,
       keyof ThemeTokens['typography'][Key]['lineHeights']
     >;
   };
@@ -58,47 +57,55 @@ const typography: ButtonTypography = {
   },
 };
 
-const minHeight: Record<Required<BaseButtonProps['size']>, ButtonMinHeight> = {
+const minHeight: Record<NonNullable<BaseButtonProps['size']>, ButtonMinHeight> = {
   xsmall: 28,
   small: 32,
   medium: 36,
   large: 48,
 };
 
-const spacing: Record<
-  Required<BaseButtonProps['size']>,
-  Record<'topBottom' | 'rightLeft', keyof ThemeTokens['spacing']>
+const buttonPadding: Record<
+  NonNullable<BaseButtonProps['size']>,
+  Record<'top' | 'bottom' | 'left' | 'right', keyof ThemeTokens['spacing']>
 > = {
   xsmall: {
-    topBottom: 0,
-    rightLeft: 2,
+    top: 0,
+    bottom: 0,
+    left: 2,
+    right: 2,
   },
   small: {
-    topBottom: 0,
-    rightLeft: 3,
+    top: 0,
+    bottom: 0,
+    left: 3,
+    right: 3,
   },
   medium: {
-    topBottom: 0,
-    rightLeft: 5,
+    top: 0,
+    bottom: 0,
+    left: 5,
+    right: 5,
   },
   large: {
-    topBottom: 0,
-    rightLeft: 5,
+    top: 0,
+    bottom: 0,
+    left: 5,
+    right: 5,
   },
 };
 
-const iconSize: Record<Required<BaseButtonProps['size']>, IconProps['size']> = {
+const iconSize: Record<NonNullable<BaseButtonProps['size']>, IconProps['size']> = {
   xsmall: 'xsmall',
   small: 'xsmall',
   medium: 'medium',
   large: 'medium',
 };
 
-const iconSpacing: Record<Required<BaseButtonProps['size']>, keyof ThemeTokens['spacing']> = {
+const iconPadding: Record<NonNullable<BaseButtonProps['size']>, keyof ThemeTokens['spacing']> = {
   xsmall: 1,
   small: 1,
   medium: 2,
   large: 2,
 };
 
-export { typography, minHeight, iconSize, iconSpacing, spacing };
+export { typography, minHeight, iconSize, iconPadding, buttonPadding };
