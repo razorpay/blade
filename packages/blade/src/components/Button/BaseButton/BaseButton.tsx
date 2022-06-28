@@ -88,7 +88,7 @@ const ButtonText = styled(BaseText)<{
   paddingRight: iconPaddingRight,
 }));
 
-type ColorTokenConfig = {
+type BaseButtonColorTokenModifiers = {
   property: 'background' | 'border' | 'text' | 'icon';
   variant: NonNullable<BaseButtonProps['variant']>;
   state: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
@@ -102,12 +102,12 @@ const getColorToken = ({
   state,
   contrast,
   intent,
-}: ColorTokenConfig):
-  | `action.${ColorTokenConfig['property']}.${ColorTokenConfig['variant']}.${ColorTokenConfig['state']}`
+}: BaseButtonColorTokenModifiers):
+  | `action.${BaseButtonColorTokenModifiers['property']}.${BaseButtonColorTokenModifiers['variant']}.${BaseButtonColorTokenModifiers['state']}`
   | `feedback.${NonNullable<
-      ColorTokenConfig['intent']
-    >}.action.${ColorTokenConfig['property']}.primary.${ColorTokenConfig['state']}.${NonNullable<
-      ColorTokenConfig['contrast']
+      BaseButtonColorTokenModifiers['intent']
+    >}.action.${BaseButtonColorTokenModifiers['property']}.primary.${BaseButtonColorTokenModifiers['state']}.${NonNullable<
+      BaseButtonColorTokenModifiers['contrast']
     >}Contrast` => {
   if (intent && contrast) {
     return `feedback.${intent}.action.${property}.primary.${state}.${contrast}Contrast`;
