@@ -64,11 +64,17 @@ describe('<Button />', () => {
 
   it('should render disabled button', () => {
     const buttonText = 'Pay Now';
+    const onClick = jest.fn();
     const { container, getByRole } = renderWithTheme(
-      <Button isDisabled={true}>{buttonText}</Button>,
+      <Button isDisabled={true} onClick={onClick}>
+        {buttonText}
+      </Button>,
     );
     expect(container).toMatchSnapshot();
-    expect(getByRole('button')).toBeDisabled();
+    const button = getByRole('button');
+    fireEvent.click(button);
+    expect(onClick).toHaveBeenCalledTimes(0);
+    expect(button).toBeDisabled();
   });
 
   it('should render secondary variant button', () => {
