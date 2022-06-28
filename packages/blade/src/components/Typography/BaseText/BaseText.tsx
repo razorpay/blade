@@ -4,6 +4,7 @@ import { useTheme } from '../../BladeProvider';
 import makeTypographySize from '../../../utils/makeTypographySize';
 import type { Theme } from '../../BladeProvider';
 import type { DotNotationColorStringToken } from '../../../_helpers/types';
+import type { Feedback } from '../../../tokens/theme/theme.d';
 import type { AccessibilityProps } from '../../../utils/makeAccessible';
 import makeAccessible from '../../../utils/makeAccessible';
 import StyledBaseText from './StyledBaseText';
@@ -11,13 +12,16 @@ import StyledBaseText from './StyledBaseText';
 type FeedbackColors = `feedback.text.${DotNotationColorStringToken<
   Theme['colors']['feedback']['text']
 >}`;
+type FeedbackActionColors = `feedback.${Feedback}.action.text.${DotNotationColorStringToken<
+  Theme['colors']['feedback'][Feedback]['action']['text']
+>}`;
 type SurfaceColors = `surface.text.${DotNotationColorStringToken<
   Theme['colors']['surface']['text']
 >}`;
 type ActionColors = `action.text.${DotNotationColorStringToken<Theme['colors']['action']['text']>}`;
 
 export type BaseTextProps = {
-  color?: ActionColors | FeedbackColors | SurfaceColors;
+  color?: ActionColors | FeedbackColors | SurfaceColors | FeedbackActionColors;
   fontFamily?: keyof Theme['typography']['fonts']['family'];
   fontSize?: keyof Theme['typography']['fonts']['size'];
   fontWeight?: keyof Theme['typography']['fonts']['weight'];

@@ -23,9 +23,6 @@ import {
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 
 type BaseButtonCommonProps = {
-  variant?: 'primary' | 'secondary' | 'tertiary';
-  intent?: 'positive' | 'negative' | 'notice' | 'info' | 'neutral';
-  contrast?: 'low' | 'high';
   size?: 'large' | 'medium' | 'small' | 'xsmall';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
@@ -34,17 +31,50 @@ type BaseButtonCommonProps = {
   type?: 'button' | 'reset' | 'submit';
 };
 
+/*
+Mandatory children prop when icon is not provided
+*/
 type BaseButtonWithoutIconProps = BaseButtonCommonProps & {
   icon?: undefined;
   children: string;
 };
 
+/*
+ Optional children prop when icon is provided
+*/
 type BaseButtonWithIconProps = BaseButtonCommonProps & {
   icon: IconComponent;
   children?: string;
 };
 
-export type BaseButtonProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
+/*
+ With or without icon prop. We need at least an icon or a children prop present.
+*/
+type BaseButtonPropsWithOrWithoutIconProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
+
+/*
+ With a variant prop along with or without an icon prop.
+*/
+type BaseButtonWithVariantProps = BaseButtonPropsWithOrWithoutIconProps & {
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  intent?: undefined;
+  contrast?: undefined;
+};
+
+/*
+ With an intent & contrast prop along with or without an icon prop.
+*/
+type BaseButtonWithIntentProps = BaseButtonPropsWithOrWithoutIconProps & {
+  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  contrast?: 'low' | 'high';
+  variant?: undefined;
+};
+
+/* 
+ We restrict using variant when intent or contrast is provided and 
+ we restrict using intent & contrast when variant is provided.
+*/
+export type BaseButtonProps = BaseButtonWithVariantProps | BaseButtonWithIntentProps;
 
 const ButtonText = styled(BaseText)(
   ({
@@ -56,6 +86,33 @@ const ButtonText = styled(BaseText)(
     paddingRight: hasIcon && iconPosition === 'right' ? iconSpacing : makeSpace(0),
   }),
 );
+
+type ColorTokenConfig = {
+  property: 'background' | 'border' | 'text' | 'icon';
+  variant: Required<BaseButtonProps['variant']>;
+  state: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
+  intent: BaseButtonProps['intent'];
+  contrast: BaseButtonProps['contrast'];
+};
+
+const getColorToken = ({
+  property,
+  variant,
+  state,
+  contrast,
+  intent,
+}: ColorTokenConfig):
+  | `action.${ColorTokenConfig['property']}.${ColorTokenConfig['variant']}.${ColorTokenConfig['state']}`
+  | `feedback.${Required<
+      ColorTokenConfig['intent']
+    >}.action.${ColorTokenConfig['property']}.primary.${ColorTokenConfig['state']}.${Required<
+      ColorTokenConfig['contrast']
+    >}Contrast` => {
+  if (intent && contrast) {
+    return `feedback.${intent}.action.${property}.primary.${state}.${contrast}Contrast`;
+  }
+  return `action.${property}.${variant}.${state}`;
+};
 
 type BaseButtonStyleProps = {
   iconSize: IconSize;
@@ -89,13 +146,17 @@ const getProps = ({
   size,
   theme,
   variant,
+  intent,
+  contrast,
 }: {
   buttonTypographyTokens: ButtonTypography[TypographyPlatforms];
   children?: string;
   isDisabled: boolean;
   theme: Theme;
-  size: Required<BaseButtonCommonProps['size']>;
-  variant: Required<BaseButtonCommonProps['variant']>;
+  size: Required<BaseButtonProps['size']>;
+  variant: Required<BaseButtonProps['variant']>;
+  intent: BaseButtonProps['intent'];
+  contrast: Required<BaseButtonProps['contrast']>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
     iconSize: buttonIconSize[size],
@@ -103,20 +164,56 @@ const getProps = ({
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
     iconSpacing: makeSpace(theme.spacing[buttonIconSpacing[size]]),
-    iconColor: `action.icon.${variant}.default`,
-    textColor: `action.text.${variant}.default`,
+    iconColor: getColorToken({
+      property: 'icon',
+      variant,
+      contrast,
+      intent,
+      state: 'default',
+    }) as IconProps['color'],
+    textColor: getColorToken({
+      property: 'text',
+      variant,
+      contrast,
+      intent,
+      state: 'default',
+    }) as BaseTextProps['color'],
     spacing: `${makeSpace(theme.spacing[buttonSpacing[size].topBottom])} ${makeSpace(
       theme.spacing[buttonSpacing[size].rightLeft],
     )}`,
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
-    defaultBackgroundColor: getIn(theme.colors, `action.background.${variant}.default`),
-    defaultBorderColor: getIn(theme.colors, `action.border.${variant}.default`),
-    hoverBackgroundColor: getIn(theme.colors, `action.background.${variant}.hover`),
-    hoverBorderColor: getIn(theme.colors, `action.border.${variant}.hover`),
-    activeBackgroundColor: getIn(theme.colors, `action.background.${variant}.active`),
-    activeBorderColor: getIn(theme.colors, `action.border.${variant}.active`),
-    focusBackgroundColor: getIn(theme.colors, `action.background.${variant}.focus`),
-    focusBorderColor: getIn(theme.colors, `action.border.${variant}.focus`),
+    defaultBackgroundColor: getIn(
+      theme.colors,
+      getColorToken({ property: 'background', variant, contrast, intent, state: 'default' }),
+    ),
+    defaultBorderColor: getIn(
+      theme.colors,
+      getColorToken({ property: 'border', variant, contrast, intent, state: 'default' }),
+    ),
+    hoverBackgroundColor: getIn(
+      theme.colors,
+      getColorToken({ property: 'background', variant, contrast, intent, state: 'hover' }),
+    ),
+    hoverBorderColor: getIn(
+      theme.colors,
+      getColorToken({ property: 'border', variant, contrast, intent, state: 'hover' }),
+    ),
+    activeBackgroundColor: getIn(
+      theme.colors,
+      getColorToken({ property: 'background', variant, contrast, intent, state: 'active' }),
+    ),
+    activeBorderColor: getIn(
+      theme.colors,
+      getColorToken({ property: 'border', variant, contrast, intent, state: 'active' }),
+    ),
+    focusBackgroundColor: getIn(
+      theme.colors,
+      getColorToken({ property: 'background', variant, contrast, intent, state: 'focus' }),
+    ),
+    focusBorderColor: getIn(
+      theme.colors,
+      getColorToken({ property: 'border', variant, contrast, intent, state: 'focus' }),
+    ),
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderRadius: makeBorderSize(theme.border.radius.small),
@@ -125,10 +222,28 @@ const getProps = ({
   };
 
   if (isDisabled) {
-    const disabledBackgroundColor = getIn(theme.colors, `action.background.${variant}.disabled`);
-    const disabledBorderColor = getIn(theme.colors, `action.border.${variant}.disabled`);
-    props.iconColor = `action.icon.${variant}.disabled`;
-    props.textColor = `action.text.${variant}.disabled`;
+    const disabledBackgroundColor = getIn(
+      theme.colors,
+      getColorToken({ property: 'background', variant, contrast, intent, state: 'disabled' }),
+    );
+    const disabledBorderColor = getIn(
+      theme.colors,
+      getColorToken({ property: 'border', variant, contrast, intent, state: 'disabled' }),
+    );
+    props.iconColor = getColorToken({
+      property: 'icon',
+      variant,
+      contrast,
+      intent,
+      state: 'disabled',
+    }) as IconProps['color'];
+    props.textColor = getColorToken({
+      property: 'text',
+      variant,
+      contrast,
+      intent,
+      state: 'disabled',
+    }) as BaseTextProps['color'];
     props.defaultBackgroundColor = disabledBackgroundColor;
     props.defaultBorderColor = disabledBorderColor;
     props.hoverBackgroundColor = disabledBackgroundColor;
@@ -192,11 +307,10 @@ const BaseButton = ({
     size,
     variant,
     theme,
-  });
-  console.log('unused props', {
     intent,
     contrast,
   });
+
   return (
     <StyledBaseButton
       activeBorderColor={activeBorderColor}
