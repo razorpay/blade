@@ -7,7 +7,7 @@ import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
-  Omit<StyledBaseButtonProps, 'onClick'>
+  Omit<StyledBaseButtonProps, 'onClick' | 'accessibilityProps' | 'accessibilityLabel'>
 >((props) => getStyledBaseButtonStyles(props));
 
 const StyledBaseButton = ({
@@ -34,7 +34,7 @@ const StyledBaseButton = ({
   motionDuration,
   motionEasing,
   isLoading,
-  ...props
+  accessibilityProps,
 }: StyledBaseButtonProps): React.ReactElement => {
   const { theme } = useTheme();
   const isPressed = useSharedValue(false);
@@ -58,7 +58,7 @@ const StyledBaseButton = ({
 
   return (
     <StyledPressable
-      {...props}
+      {...accessibilityProps}
       isLoading={isLoading}
       onPress={onClick}
       style={animatedStyles}

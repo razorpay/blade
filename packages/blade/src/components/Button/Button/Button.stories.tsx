@@ -1,12 +1,14 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
+import { useState } from 'react';
 import { Highlight, Link } from '@storybook/design-system';
 import styled from 'styled-components';
 import iconMap from '../../Icons/iconMap';
 import useMakeFigmaURL from '../../../_helpers/storybook/useMakeFigmaURL';
 import BaseText from '../../Typography/BaseText';
 import { CreditCardIcon } from '../../Icons';
+import { Text } from '../../Typography';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
 
@@ -147,6 +149,37 @@ const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
     </>
   );
 };
+
+const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
+  const [loading, setLoading] = useState(false);
+
+  const toggle = (): void => setLoading((prev) => !prev);
+
+  return (
+    <>
+      <ButtonComponent {...args} isLoading={loading} />
+      <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
+      <ButtonComponent variant="secondary" onClick={toggle}>
+        Toggle loading
+      </ButtonComponent>
+    </>
+  );
+};
+
+const ButtonLoadingTemplate: ComponentStory<typeof ButtonComponent> = ({
+  icon,
+  children,
+  ...args
+}) => {
+  const IconComponent = iconMap[(icon as unknown) as string];
+  return (
+    <ButtonLoadingExample icon={IconComponent} {...args}>
+      {children}
+    </ButtonLoadingExample>
+  );
+};
+
+export const ButtonLoading = ButtonLoadingTemplate.bind({});
 
 export const Default = ButtonTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting

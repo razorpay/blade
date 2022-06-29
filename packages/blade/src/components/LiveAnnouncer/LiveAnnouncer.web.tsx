@@ -93,16 +93,12 @@ class LiveAnnouncer {
 /**
  * Announces the message using screen reader technology.
  */
-export function announce(
-  message: string,
-  assertiveness: Assertiveness = 'assertive',
-  timeout = LIVEREGION_TIMEOUT_DELAY,
-): void {
+export function announce(message: string, assertiveness: Assertiveness = 'assertive'): void {
   if (!liveAnnouncer) {
     liveAnnouncer = new LiveAnnouncer();
   }
 
-  liveAnnouncer.announce(message, assertiveness, timeout);
+  liveAnnouncer.announce(message, assertiveness, LIVEREGION_TIMEOUT_DELAY);
 }
 
 /**

@@ -7,7 +7,7 @@ import { buttonSpinnerStyles, buttonSpinnerContainerStyles } from './buttonSpinn
 
 const ButtonBaseSpinner = styled(BaseSpinner)(buttonSpinnerStyles);
 
-const ButtonSpinnerContainer = styled('div')<{ isHidden: boolean }>(({ isHidden }) => ({
+const ButtonSpinnerContainer = styled.div<{ isHidden: boolean }>(({ isHidden }) => ({
   opacity: isHidden ? 0 : 1,
   ...buttonSpinnerContainerStyles,
 }));

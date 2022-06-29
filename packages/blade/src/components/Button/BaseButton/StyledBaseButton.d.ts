@@ -31,6 +31,7 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   motionEasing: EasingStringTokens;
   borderWidth: BorderWidthValues;
   borderRadius: BorderRadiusValues;
+  accessibilityProps: Record<string, unknown>;
 };
 
 export { default } from './StyledBaseButton.web';

@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import styled from 'styled-components/native';
 import useIconProps from '../../Icons/useIconProps';
 import BaseSpinner from '../../Spinner/BaseSpinner';
@@ -8,7 +7,7 @@ import { buttonSpinnerStyles, buttonSpinnerContainerStyles } from './buttonSpinn
 
 const ButtonBaseSpinner = styled(BaseSpinner)(buttonSpinnerStyles);
 
-const ButtonSpinnerContainer = styled(View)<{ isHidden: boolean }>(({ isHidden }) => ({
+const ButtonSpinnerContainer = styled.View<{ isHidden: boolean }>(({ isHidden }) => ({
   opacity: isHidden ? 0 : 1,
   ...buttonSpinnerContainerStyles,
 }));

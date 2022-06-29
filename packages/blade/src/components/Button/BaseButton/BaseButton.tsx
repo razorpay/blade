@@ -333,7 +333,7 @@ const BaseButton = ({
 
   return (
     <StyledBaseButton
-      {...makeAccessible({ role: 'button', label: accessibilityLabel })}
+      accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
       isLoading={isLoading}
       disabled={disabled}
       activeBorderColor={activeBorderColor}
