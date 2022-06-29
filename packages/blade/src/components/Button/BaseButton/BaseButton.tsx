@@ -33,6 +33,9 @@ type BaseButtonCommonProps = {
   isFullWidth?: boolean;
   onClick?: () => void;
   type?: 'button' | 'reset' | 'submit';
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  contrast?: 'low' | 'high';
+  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 };
 
 /*
@@ -54,31 +57,7 @@ type BaseButtonWithIconProps = BaseButtonCommonProps & {
 /*
  With or without icon prop. We need at least an icon or a children prop present.
 */
-type BaseButtonPropsWithOrWithoutIconProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
-
-/*
- With a variant prop along with or without an icon prop.
-*/
-type BaseButtonWithVariantProps = BaseButtonPropsWithOrWithoutIconProps & {
-  variant?: 'primary' | 'secondary' | 'tertiary';
-  intent?: undefined;
-  contrast?: undefined;
-};
-
-/*
- With an intent & contrast prop along with or without an icon prop.
-*/
-type BaseButtonWithIntentProps = BaseButtonPropsWithOrWithoutIconProps & {
-  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-  contrast?: 'low' | 'high';
-  variant?: undefined;
-};
-
-/* 
- We restrict using variant when intent or contrast is provided and 
- we restrict using intent & contrast when variant is provided.
-*/
-export type BaseButtonProps = BaseButtonWithVariantProps | BaseButtonWithIntentProps;
+export type BaseButtonProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
 
 const ButtonText = styled(BaseText)<{
   iconPaddingLeft: SpacingValues;
