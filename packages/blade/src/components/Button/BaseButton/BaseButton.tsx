@@ -309,7 +309,7 @@ const BaseButton = ({
     intent,
     contrast,
     iconPosition,
-    hasIcon: !!Icon,
+    hasIcon: Boolean(Icon),
   });
 
   return (
