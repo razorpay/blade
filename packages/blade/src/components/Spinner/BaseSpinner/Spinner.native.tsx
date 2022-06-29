@@ -21,7 +21,10 @@ type AnimatedSpinnerProps = {
 } & WithStyle;
 
 const AnimatedSpinner = (props: AnimatedSpinnerProps): React.ReactElement => {
-  const { duration, easing } = motion;
+  const { theme } = useTheme();
+  const duration = getIn(theme.motion, motion.duration);
+  const easing = getIn(theme.motion, motion.easing);
+
   const rotation = useSharedValue(0);
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -50,13 +53,13 @@ const AnimatedSpinner = (props: AnimatedSpinnerProps): React.ReactElement => {
   return <Animated.View {...props} style={[animatedStyles, props.style]} />;
 };
 
-const Spinner = ({ color, size, ...props }: SpinnerProps & WithStyle): React.ReactElement => {
+const Spinner = ({ color, size, style }: SpinnerProps & WithStyle): React.ReactElement => {
   const { theme } = useTheme();
   const spinnerSize = getSpinnerSize(size);
   const spinnerColor = getIn(theme.colors, color);
 
   return (
-    <AnimatedSpinner {...props}>
+    <AnimatedSpinner style={style}>
       <SpinnerIcon color={spinnerColor} size={spinnerSize} />
     </AnimatedSpinner>
   );

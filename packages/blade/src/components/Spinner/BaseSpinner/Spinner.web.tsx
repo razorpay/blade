@@ -18,20 +18,22 @@ const rotate = keyframes`
   }
 `;
 
-const AnimatedSpinner = styled.div(
-  () => css`
+const AnimatedSpinner = styled.div(({ theme }) => {
+  return css`
     line-height: 0;
-    animation: ${rotate} ${makeMotionTime(motion.duration)} ${motion.easing as string} infinite;
-  `,
-);
+    animation: ${rotate} ${makeMotionTime(getIn(theme.motion, motion.duration))}
+      ${getIn(theme.motion, motion.easing) as string} infinite;
+  `;
+});
 
-const Spinner = ({ color, size, ...props }: SpinnerProps): React.ReactElement => {
+type WithClassName = { className?: string };
+const Spinner = ({ color, size, className }: SpinnerProps & WithClassName): React.ReactElement => {
   const { theme } = useTheme();
   const spinnerSize = getSpinnerSize(size);
   const spinnerColor = getIn(theme.colors, color);
 
   return (
-    <AnimatedSpinner {...props}>
+    <AnimatedSpinner className={className}>
       <SpinnerIcon color={spinnerColor} size={spinnerSize} />
     </AnimatedSpinner>
   );

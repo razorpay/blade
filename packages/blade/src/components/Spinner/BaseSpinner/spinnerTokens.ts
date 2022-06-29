@@ -1,17 +1,16 @@
 import type { Motion } from '../../../tokens';
-import globalMotion from '../../../tokens/global/motion';
 import type { MakeSize } from '../../../utils/makeSize';
 import makeSize from '../../../utils/makeSize';
+import type { DotNotationMotionStringToken } from '../../../_helpers/types';
 
-// TODO: use ValueOf<>
 export type SpinnerMotion = {
-  easing: Motion['easing']['standard'][keyof Motion['easing']['standard']];
-  duration: Motion['duration'][keyof Motion['duration']];
+  easing: `easing.${DotNotationMotionStringToken<Motion['easing']>}`;
+  duration: `duration.${keyof Motion['duration']}`;
 };
 
 const motion: SpinnerMotion = {
-  easing: globalMotion.easing.standard.attentive,
-  duration: globalMotion.duration['2xgentle'],
+  easing: 'easing.standard.attentive',
+  duration: `duration.2xgentle`,
 };
 
 export type SpinnerSize = 'large' | 'xsmall' | 'xsmall' | 'small' | 'medium';
