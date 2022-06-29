@@ -1,5 +1,7 @@
 import type { Motion } from '../../../tokens';
 import globalMotion from '../../../tokens/global/motion';
+import type { MakeSize } from '../../../utils/makeSize';
+import makeSize from '../../../utils/makeSize';
 
 // TODO: use ValueOf<>
 export type SpinnerMotion = {
@@ -12,29 +14,19 @@ const motion: SpinnerMotion = {
   duration: globalMotion.duration['2xgentle'],
 };
 
-const sizes = {
-  xxsmall: 'xxsmall',
-  xsmall: 'xsmall',
-  small: 'small',
-  medium: 'medium',
-  large: 'medium',
-  xlarge: 'xlarge',
-} as const;
+export type SpinnerSize = 'large' | 'xsmall' | 'xsmall' | 'small' | 'medium';
 
-export type SpinnerSizes = typeof sizes;
-
-type Sizes = '10px' | '12px' | '16px' | '20px' | '24px' | '32px';
-export const getSpinnerSize = (size: keyof SpinnerSizes): Sizes => {
+type Sizes = 10 | 12 | 16 | 20 | 24 | 32;
+export const getSpinnerSize = (size: SpinnerSize): MakeSize<Sizes> => {
   const sizeMap = {
-    xlarge: '32px',
-    large: '24px',
-    medium: '20px',
-    small: '16px',
-    xsmall: '12px',
-    xxsmall: '10px',
+    large: 24,
+    medium: 20,
+    small: 16,
+    xsmall: 12,
+    xxsmall: 10,
   } as const;
 
-  return sizeMap[size];
+  return makeSize(sizeMap[size]);
 };
 
-export { motion, sizes };
+export { motion };

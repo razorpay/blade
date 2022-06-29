@@ -7,7 +7,7 @@ import makeMotionTime from '../../../utils/makeMotionTime';
 import { useTheme } from '../../BladeProvider';
 import BaseLoader from './Loader';
 import type { SpinnerProps } from './Spinner.d';
-import { getSpinnerSize, motion, sizes } from './spinnerTokens';
+import { getSpinnerSize, motion } from './spinnerTokens';
 
 const rotate = keyframes`
   from {
@@ -27,7 +27,7 @@ const AnimatedSpinner = styled.div(
 
 const Spinner = ({ color, size, ...props }: SpinnerProps): React.ReactElement => {
   const { theme } = useTheme();
-  const spinnerSize = getSpinnerSize(sizes[size]);
+  const spinnerSize = getSpinnerSize(size);
   const spinnerColor = getIn(theme.colors, color);
 
   return (

@@ -21,11 +21,13 @@ import { ButtonSpinner } from '../ButtonSpinner';
 import { makeAccessible } from '../../../utils';
 import { announce } from '../../LiveAnnouncer';
 import usePrevious from '../../../utils/usePrevious';
+import type { SpinnerSize } from '../../Spinner/BaseSpinner/spinnerTokens';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
   typography as buttonTypography,
   minHeight as buttonMinHeight,
   iconSize as buttonIconSize,
+  spinnerSize as buttonSpinnerSize,
   textPadding,
   buttonPadding,
 } from './buttonTokens';
@@ -104,6 +106,7 @@ const getColorToken = ({
 
 type BaseButtonStyleProps = {
   iconSize: IconSize;
+  spinnerSize: SpinnerSize;
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
   minHeight: `${ButtonMinHeight}px`;
@@ -156,6 +159,7 @@ const getProps = ({
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
     iconSize: buttonIconSize[size],
+    spinnerSize: buttonSpinnerSize[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
@@ -309,6 +313,7 @@ const BaseButton = ({
     hoverBackgroundColor,
     iconColor,
     iconSize,
+    spinnerSize,
     textPaddingLeft,
     textPaddingRight,
     lineHeight,
@@ -358,7 +363,7 @@ const BaseButton = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
     >
-      <ButtonSpinner isLoading={isLoading} color={iconColor} size={iconSize}>
+      <ButtonSpinner isLoading={isLoading} color={iconColor} size={spinnerSize}>
         {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
         {text ? (
           <ButtonText

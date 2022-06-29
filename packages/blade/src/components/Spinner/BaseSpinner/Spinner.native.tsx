@@ -11,7 +11,7 @@ import getIn from '../../../utils/getIn';
 import { useTheme } from '../../BladeProvider';
 import BaseLoader from './Loader';
 import type { SpinnerProps } from './Spinner';
-import { getSpinnerSize, motion, sizes } from './spinnerTokens';
+import { getSpinnerSize, motion } from './spinnerTokens';
 
 type WithStyle = {
   style: Record<string, unknown>;
@@ -52,7 +52,7 @@ const AnimatedSpinner = (props: AnimatedSpinnerProps): React.ReactElement => {
 
 const Spinner = ({ color, size, ...props }: SpinnerProps & WithStyle): React.ReactElement => {
   const { theme } = useTheme();
-  const spinnerSize = getSpinnerSize(sizes[size]);
+  const spinnerSize = getSpinnerSize(size);
   const spinnerColor = getIn(theme.colors, color);
 
   return (
