@@ -21,7 +21,7 @@ import {
   typography as buttonTypography,
   minHeight as buttonMinHeight,
   iconSize as buttonIconSize,
-  iconPadding,
+  textPadding,
   buttonPadding,
 } from './buttonTokens';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
@@ -60,11 +60,11 @@ type BaseButtonWithIconProps = BaseButtonCommonProps & {
 export type BaseButtonProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
 
 const ButtonText = styled(BaseText)<{
-  iconPaddingLeft: SpacingValues;
-  iconPaddingRight: SpacingValues;
-}>(({ iconPaddingLeft, iconPaddingRight }) => ({
-  paddingLeft: iconPaddingLeft,
-  paddingRight: iconPaddingRight,
+  paddingLeft: SpacingValues;
+  paddingRight: SpacingValues;
+}>(({ paddingLeft, paddingRight }) => ({
+  paddingLeft,
+  paddingRight,
 }));
 
 type BaseButtonColorTokenModifiers = {
@@ -100,8 +100,8 @@ type BaseButtonStyleProps = {
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
   minHeight: `${ButtonMinHeight}px`;
-  iconPaddingLeft: SpacingValues;
-  iconPaddingRight: SpacingValues;
+  textPaddingLeft: SpacingValues;
+  textPaddingRight: SpacingValues;
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
   buttonPaddingTop: SpacingValues;
@@ -152,11 +152,11 @@ const getProps = ({
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
-    iconPaddingLeft: makeSpace(
-      hasIcon && iconPosition === 'left' ? theme.spacing[iconPadding[size]] : 0,
+    textPaddingLeft: makeSpace(
+      hasIcon && iconPosition === 'left' ? theme.spacing[textPadding[size]] : 0,
     ),
-    iconPaddingRight: makeSpace(
-      hasIcon && iconPosition === 'right' ? theme.spacing[iconPadding[size]] : 0,
+    textPaddingRight: makeSpace(
+      hasIcon && iconPosition === 'right' ? theme.spacing[textPadding[size]] : 0,
     ),
     iconColor: getColorToken({
       property: 'icon',
@@ -290,8 +290,8 @@ const BaseButton = ({
     hoverBackgroundColor,
     iconColor,
     iconSize,
-    iconPaddingLeft,
-    iconPaddingRight,
+    textPaddingLeft,
+    textPaddingRight,
     lineHeight,
     text,
     textColor,
@@ -345,8 +345,8 @@ const BaseButton = ({
           fontWeight="bold"
           textAlign="center"
           color={textColor}
-          iconPaddingLeft={iconPaddingLeft}
-          iconPaddingRight={iconPaddingRight}
+          paddingLeft={textPaddingLeft}
+          paddingRight={textPaddingRight}
         >
           {text}
         </ButtonText>
