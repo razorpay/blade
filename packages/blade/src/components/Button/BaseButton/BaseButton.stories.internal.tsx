@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import { useState } from 'react';
 import iconMap from '../../Icons/iconMap';
-import { Text } from '../../Typography';
 import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
 
@@ -63,35 +61,6 @@ const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
   );
 };
 
-const ButtonLoadingExample = (args: BaseButtonProps): React.ReactElement => {
-  const [loading, setLoading] = useState(false);
-
-  const toggle = (): void => setLoading((prev) => !prev);
-
-  return (
-    <>
-      <BaseButtonComponent onClick={toggle}>Toggle loading</BaseButtonComponent>
-      <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
-      <BaseButtonComponent {...args} isLoading={loading} />
-    </>
-  );
-};
-
-const BaseButtonLoadingTemplate: ComponentStory<typeof BaseButtonComponent> = ({
-  icon,
-  children,
-  ...args
-}) => {
-  const IconComponent = iconMap[(icon as unknown) as string];
-  return (
-    <ButtonLoadingExample icon={IconComponent} {...args}>
-      {children}
-    </ButtonLoadingExample>
-  );
-};
-
 export const BaseButton = BaseButtonTemplate.bind({});
-export const BaseButtonLoading = BaseButtonLoadingTemplate.bind({});
-
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 BaseButton.storyName = 'BaseButton';
