@@ -3,12 +3,12 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-na
 import styled from 'styled-components/native';
 import getIn from '../../../utils/getIn';
 import { useTheme } from '../../BladeProvider';
-import getBaseButtonStyles from './getBaseButtonStyles';
+import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
-  Omit<StyledBaseButtonProps, 'children' | 'onClick'>
->((props) => getBaseButtonStyles(props));
+  Omit<StyledBaseButtonProps, 'onClick'>
+>((props) => getStyledBaseButtonStyles(props));
 
 const StyledBaseButton = ({
   onClick,

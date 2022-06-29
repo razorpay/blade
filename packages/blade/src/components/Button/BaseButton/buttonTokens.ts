@@ -101,11 +101,11 @@ const iconSize: Record<NonNullable<BaseButtonProps['size']>, IconProps['size']> 
   large: 'medium',
 };
 
-const iconPadding: Record<NonNullable<BaseButtonProps['size']>, keyof ThemeTokens['spacing']> = {
+const textPadding: Record<NonNullable<BaseButtonProps['size']>, keyof ThemeTokens['spacing']> = {
   xsmall: 1,
   small: 1,
   medium: 2,
   large: 2,
 };
 
-export { typography, minHeight, iconSize, iconPadding, buttonPadding };
+export { typography, minHeight, iconSize, textPadding, buttonPadding };

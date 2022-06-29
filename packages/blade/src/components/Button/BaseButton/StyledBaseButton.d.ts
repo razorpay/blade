@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
 import type {
   BorderRadiusValues,
@@ -16,7 +17,7 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   buttonPaddingBottom: SpacingValues;
   buttonPaddingLeft: SpacingValues;
   buttonPaddingRight: SpacingValues;
-  children: string;
+  children: ReactNode;
   defaultBackgroundColor: string;
   disabled: boolean;
   focusBorderColor: string;

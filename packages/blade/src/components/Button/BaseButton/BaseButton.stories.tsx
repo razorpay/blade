@@ -13,6 +13,7 @@ export default {
   args: {
     variant: 'primary',
     children: 'Pay Now',
+    contrast: 'low',
     onClick: (): void => {
       console.log('clicked');
     },
