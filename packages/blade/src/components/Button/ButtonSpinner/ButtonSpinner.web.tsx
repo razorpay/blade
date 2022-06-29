@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import BaseSpinner from '../../Spinner/BaseSpinner';
+import Spinner from '../../Spinner/BaseSpinner';
 import type { ButtonSpinnerProps } from './ButtonSpinner.d';
 import { buttonSpinnerStyles, buttonSpinnerContainerStyles } from './buttonSpinnerStyles';
 
-const ButtonBaseSpinner = styled(BaseSpinner)(buttonSpinnerStyles);
+const ButtonBaseSpinner = styled(Spinner)(buttonSpinnerStyles);
 
 const ButtonSpinnerContainer = styled.div<{ isHidden: boolean }>(({ isHidden }) => ({
   opacity: isHidden ? 0 : 1,
   ...buttonSpinnerContainerStyles,
 }));
 
-const ButtonSpinner = ({
+export const ButtonSpinner = ({
   isLoading,
   children,
   color,

@@ -17,7 +17,7 @@ import type {
   BorderWidthValues,
   SpacingValues,
 } from '../../../tokens/theme/theme.d';
-import ButtonSpinner from '../ButtonSpinner';
+import { ButtonSpinner } from '../ButtonSpinner';
 import { makeAccessible } from '../../../utils';
 import { announce } from '../../LiveAnnouncer';
 import usePrevious from '../../../utils/usePrevious';
