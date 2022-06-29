@@ -7,18 +7,20 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import type { EasingFunctionFactory } from '../../../tokens/global/motion';
-import BaseLoader from './BaseLoader';
-import type { BaseSpinnerProps } from './BaseSpinner.d';
-import { motion } from './spinnerTokens';
+import getIn from '../../../utils/getIn';
+import { useTheme } from '../../BladeProvider';
+import BaseLoader from './Loader';
+import type { SpinnerProps } from './Spinner';
+import { getSpinnerSize, motion, sizes } from './spinnerTokens';
 
 type WithStyle = {
   style: Record<string, unknown>;
 };
-type AnimatedBaseSpinnerProps = {
+type AnimatedSpinnerProps = {
   children: React.ReactNode;
 } & WithStyle;
 
-const AnimatedBaseSpinner = (props: AnimatedBaseSpinnerProps): React.ReactElement => {
+const AnimatedSpinner = (props: AnimatedSpinnerProps): React.ReactElement => {
   const { duration, easing } = motion;
   const rotation = useSharedValue(0);
   const animatedStyles = useAnimatedStyle(() => {
@@ -48,16 +50,16 @@ const AnimatedBaseSpinner = (props: AnimatedBaseSpinnerProps): React.ReactElemen
   return <Animated.View {...props} style={[animatedStyles, props.style]} />;
 };
 
-const BaseSpinner = ({
-  color,
-  size,
-  ...props
-}: BaseSpinnerProps & WithStyle): React.ReactElement => {
+const Spinner = ({ color, size, ...props }: SpinnerProps & WithStyle): React.ReactElement => {
+  const { theme } = useTheme();
+  const spinnerSize = getSpinnerSize(sizes[size]);
+  const spinnerColor = getIn(theme.colors, color);
+
   return (
-    <AnimatedBaseSpinner {...props}>
-      <BaseLoader color={color} size={size} />
-    </AnimatedBaseSpinner>
+    <AnimatedSpinner {...props}>
+      <BaseLoader color={spinnerColor} size={spinnerSize} />
+    </AnimatedSpinner>
   );
 };
 
-export default BaseSpinner;
+export default Spinner;

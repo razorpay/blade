@@ -1,11 +1,11 @@
 import { Svg, Path } from '../../Icons/_Svg';
 
-type BaseLoaderProps = {
+type LoaderProps = {
   size: string;
   color: string;
 };
 
-const BaseLoader = ({ size, color }: BaseLoaderProps): React.ReactElement => {
+const Loader = ({ size, color }: LoaderProps): React.ReactElement => {
   return (
     <Svg height={size} width={size} viewBox="0 0 24 24" fill="none">
       <Path
@@ -44,4 +44,4 @@ const BaseLoader = ({ size, color }: BaseLoaderProps): React.ReactElement => {
   );
 };
 
-export default BaseLoader;
+export default Loader;
