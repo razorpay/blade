@@ -10,8 +10,8 @@ https://user-images.githubusercontent.com/35374649/175493627-4c5f29e9-0625-44fe-
 ## Checklist
 - [ ] Add `Accessibility` section to component's `decision.md`. [More Details](#component-decisions)
 - [ ] Use `makeAccessible` utility to make components accessible across platforms. [More Details](#implementations)
-- [ ] Adhere to the aria states & roles for the component
-- [ ] Adhere to the keyboard accessibility requirements for the component
+- [ ] Adhere to the aria states & roles for the component ([Example](https://www.w3.org/WAI/ARIA/apg/example-index/checkbox/checkbox.html#rps_label))
+- [ ] Adhere to the keyboard accessibility requirements for the component ([Example](https://www.w3.org/WAI/ARIA/apg/example-index/checkbox/checkbox.html#kbd_label))
 - [ ] Manual Testing and Self Review - [More Details](#manual-testing--review)
     - [ ] Use only keyboard to check for keyboard accessibility
     - [ ] Use voice-over to check for assistive technologies can announce the component states
@@ -33,7 +33,7 @@ Let's say you are building a `Checkbox` component.
 Following these patterns & examples we can make our components accessible.  
 General rule of thumb is to visit the component patterns page, read about the component's accessibility requirements and learn from the examples.
 
-## Implementations
+## Implementation
 
 To implement the proper aria attributes make use of our `makeAccessible` utility which we proposed [in the RFC](https://github.com/razorpay/blade/blob/master/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5) - See usage [example](https://github.com/razorpay/blade/blob/master/packages/blade/src/storybook-recipes/AccessibilityInterop/AccessibilityInteropDemo.web.tsx). 
 
