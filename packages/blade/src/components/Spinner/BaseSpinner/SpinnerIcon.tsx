@@ -1,11 +1,11 @@
 import { Svg, Path } from '../../Icons/_Svg';
 
-type LoaderProps = {
+type SpinnerIconProps = {
   size: string;
   color: string;
 };
 
-const Loader = ({ size, color }: LoaderProps): React.ReactElement => {
+const SpinnerIcon = ({ size, color }: SpinnerIconProps): React.ReactElement => {
   return (
     <Svg height={size} width={size} viewBox="0 0 24 24" fill="none">
       <Path
@@ -44,4 +44,4 @@ const Loader = ({ size, color }: LoaderProps): React.ReactElement => {
   );
 };
 
-export default Loader;
+export default SpinnerIcon;

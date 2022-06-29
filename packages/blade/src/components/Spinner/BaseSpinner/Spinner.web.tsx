@@ -5,7 +5,7 @@ import styled, { css, keyframes } from 'styled-components';
 import getIn from '../../../utils/getIn';
 import makeMotionTime from '../../../utils/makeMotionTime';
 import { useTheme } from '../../BladeProvider';
-import BaseLoader from './Loader';
+import SpinnerIcon from './SpinnerIcon';
 import type { SpinnerProps } from './Spinner.d';
 import { getSpinnerSize, motion } from './spinnerTokens';
 
@@ -32,7 +32,7 @@ const Spinner = ({ color, size, ...props }: SpinnerProps): React.ReactElement =>
 
   return (
     <AnimatedSpinner {...props}>
-      <BaseLoader color={spinnerColor} size={spinnerSize} />
+      <SpinnerIcon color={spinnerColor} size={spinnerSize} />
     </AnimatedSpinner>
   );
 };
