@@ -11,7 +11,7 @@ import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import { Text } from '../Typography';
 import type { VisuallyHiddenProps } from './VisuallyHidden';
-import VisuallyHiddenComponent from './VisuallyHidden';
+import { VisuallyHidden as VisuallyHiddenComponent } from './VisuallyHidden';
 
 const Page = (): ReactElement => {
   return (
