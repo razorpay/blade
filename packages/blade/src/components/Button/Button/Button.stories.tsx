@@ -257,7 +257,7 @@ const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
     <>
       <ButtonComponent {...args} isLoading={loading} />
       <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
-      <ButtonComponent variant="secondary" onClick={toggle}>
+      <ButtonComponent size="small" variant="secondary" onClick={toggle}>
         Toggle loading
       </ButtonComponent>
     </>
@@ -278,6 +278,13 @@ const ButtonLoadingTemplate: ComponentStory<typeof ButtonComponent> = ({
 };
 
 export const ButtonLoading = ButtonLoadingTemplate.bind({});
+ButtonLoading.parameters = {
+  docs: {
+    description: {
+      story: 'Loading state for the button with live announce accessibility support',
+    },
+  },
+};
 
 export const FullWidthButton = ButtonWithVariantTemplate.bind({});
 FullWidthButton.storyName = 'Full Width';
