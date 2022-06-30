@@ -1,4 +1,4 @@
-export { default } from './VisuallyHidden.web';
+export * from './VisuallyHidden.web';
 
 export type VisuallyHiddenProps = {
   children: React.ReactNode;
