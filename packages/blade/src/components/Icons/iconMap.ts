@@ -8,6 +8,13 @@ import DollarIconComponent from './DollarIcon';
 import EyeIconComponent from './EyeIcon';
 import EyeOffIconComponent from './EyeOffIcon';
 import RupeeIconComponent from './RupeeIcon';
+import TrashIconComponent from './TrashIcon';
+import PauseIconComponent from './PauseIcon';
+import EditIconComponent from './EditIcon';
+import DownloadIconComponent from './DownloadIcon';
+import PlusIconComponent from './PlusIcon';
+import HistoryIconComponent from './HistoryIcon';
+
 import type { IconProps } from '.';
 
 // add new icons here to make them visible in storybook
@@ -22,6 +29,12 @@ const iconMap: Record<string, React.ComponentType<IconProps>> = {
   EyeIcon: EyeIconComponent,
   EyeOffIcon: EyeOffIconComponent,
   RupeeIcon: RupeeIconComponent,
+  TrashIcon: TrashIconComponent,
+  PauseIcon: PauseIconComponent,
+  EditIcon: EditIconComponent,
+  DownloadIcon: DownloadIconComponent,
+  PlusIcon: PlusIconComponent,
+  HistoryIcon: HistoryIconComponent,
 };
 
 export default iconMap;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlusIcon /> should render PlusIcon 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    fill="none"
+    height="24px"
+    viewBox="0 0 24 24"
+    width="24px"
+  >
+    <path
+      d="M9 1C9 0.447715 8.55229 0 8 0C7.44772 0 7 0.447715 7 1V7H1C0.447715 7 0 7.44772 0 8C0 8.55229 0.447715 9 1 9H7V15C7 15.5523 7.44772 16 8 16C8.55229 16 9 15.5523 9 15V9H15C15.5523 9 16 8.55229 16 8C16 7.44772 15.5523 7 15 7H9V1Z"
+      fill="hsla(216, 27%, 36%, 1)"
+    />
+  </svg>
+</div>
+`;
