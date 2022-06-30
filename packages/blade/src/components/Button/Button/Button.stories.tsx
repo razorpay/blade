@@ -150,37 +150,6 @@ const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
   );
 };
 
-const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
-  const [loading, setLoading] = useState(false);
-
-  const toggle = (): void => setLoading((prev) => !prev);
-
-  return (
-    <>
-      <ButtonComponent {...args} isLoading={loading} />
-      <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
-      <ButtonComponent variant="secondary" onClick={toggle}>
-        Toggle loading
-      </ButtonComponent>
-    </>
-  );
-};
-
-const ButtonLoadingTemplate: ComponentStory<typeof ButtonComponent> = ({
-  icon,
-  children,
-  ...args
-}) => {
-  const IconComponent = iconMap[(icon as unknown) as string];
-  return (
-    <ButtonLoadingExample icon={IconComponent} {...args}>
-      {children}
-    </ButtonLoadingExample>
-  );
-};
-
-export const ButtonLoading = ButtonLoadingTemplate.bind({});
-
 export const Default = ButtonTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
@@ -278,6 +247,37 @@ IconOnlyButton.parameters = {
     },
   },
 };
+
+const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
+  const [loading, setLoading] = useState(false);
+
+  const toggle = (): void => setLoading((prev) => !prev);
+
+  return (
+    <>
+      <ButtonComponent {...args} isLoading={loading} />
+      <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
+      <ButtonComponent variant="secondary" onClick={toggle}>
+        Toggle loading
+      </ButtonComponent>
+    </>
+  );
+};
+
+const ButtonLoadingTemplate: ComponentStory<typeof ButtonComponent> = ({
+  icon,
+  children,
+  ...args
+}) => {
+  const IconComponent = iconMap[(icon as unknown) as string];
+  return (
+    <ButtonLoadingExample icon={IconComponent} {...args}>
+      {children}
+    </ButtonLoadingExample>
+  );
+};
+
+export const ButtonLoading = ButtonLoadingTemplate.bind({});
 
 export const FullWidthButton = ButtonWithVariantTemplate.bind({});
 FullWidthButton.storyName = 'Full Width';

@@ -54,7 +54,7 @@ class LiveAnnouncer {
     this.node = null;
   }
 
-  announce(message: string, assertiveness = 'assertive', timeout = LIVEREGION_TIMEOUT_DELAY): void {
+  announce(message: string, assertiveness = 'assertive'): void {
     if (!this.node) {
       return;
     }
@@ -71,7 +71,7 @@ class LiveAnnouncer {
     if (message !== '') {
       setTimeout(() => {
         node.remove();
-      }, timeout);
+      }, LIVEREGION_TIMEOUT_DELAY);
     }
   }
 
@@ -98,7 +98,7 @@ export function announce(message: string, assertiveness: Assertiveness = 'assert
     liveAnnouncer = new LiveAnnouncer();
   }
 
-  liveAnnouncer.announce(message, assertiveness, LIVEREGION_TIMEOUT_DELAY);
+  liveAnnouncer.announce(message, assertiveness);
 }
 
 /**

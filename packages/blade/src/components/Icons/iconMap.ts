@@ -8,7 +8,6 @@ import DollarIconComponent from './DollarIcon';
 import EyeIconComponent from './EyeIcon';
 import EyeOffIconComponent from './EyeOffIcon';
 import RupeeIconComponent from './RupeeIcon';
-import LoaderIconComponent from './LoaderIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -23,7 +22,6 @@ const iconMap: Record<string, IconComponent> = {
   EyeIcon: EyeIconComponent,
   EyeOffIcon: EyeOffIconComponent,
   RupeeIcon: RupeeIconComponent,
-  LoaderIcon: LoaderIconComponent,
 };
 
 export default iconMap;
