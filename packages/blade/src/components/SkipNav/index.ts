@@ -1,1 +1,1 @@
-export * from './SkipNav.web';
+export * from './SkipNav';
