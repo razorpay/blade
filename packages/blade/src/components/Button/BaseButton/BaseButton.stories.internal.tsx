@@ -15,6 +15,7 @@ export default {
       console.log('clicked');
     },
     isDisabled: false,
+    isLoading: false,
     size: 'medium',
     iconPosition: 'left',
     isFullWidth: false,
@@ -52,7 +53,6 @@ const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
   ...args
 }) => {
   const IconComponent = iconMap[(icon as unknown) as string];
-
   return (
     <BaseButtonComponent icon={IconComponent} {...args}>
       {children}

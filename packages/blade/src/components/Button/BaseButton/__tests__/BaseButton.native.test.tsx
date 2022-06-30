@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
 import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.native';
-import { CreditCardIcon } from '../../../Icons';
+import { CloseIcon, CreditCardIcon } from '../../../Icons';
 import BaseButton from '../BaseButton';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -92,12 +92,13 @@ describe('<BaseButton />', () => {
   it('should render disabled button', () => {
     const buttonText = 'Pay Now';
     const onClick = jest.fn();
-    const { toJSON, getByText } = renderWithTheme(
+    const { toJSON, getByA11yState } = renderWithTheme(
       <BaseButton isDisabled={true} onClick={onClick}>
         {buttonText}
       </BaseButton>,
     );
-    const button = getByText(buttonText);
+    const button = getByA11yState({ disabled: true });
+    expect(button.findByProps({ accessibilityRole: 'button' })).toBeTruthy();
     fireEvent.press(button);
     expect(onClick).toHaveBeenCalledTimes(0);
     expect(toJSON()).toMatchSnapshot();
@@ -248,6 +249,7 @@ describe('<BaseButton />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render disabled positive intent high contrast button', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(
@@ -267,6 +269,7 @@ describe('<BaseButton />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render disabled negative intent high contrast button', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(
@@ -286,6 +289,7 @@ describe('<BaseButton />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render disabled neutral intent high contrast button', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(
@@ -305,6 +309,7 @@ describe('<BaseButton />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render disabled notice intent high contrast button', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(
@@ -324,6 +329,7 @@ describe('<BaseButton />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render disabled information intent high contrast button', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(
@@ -332,5 +338,15 @@ describe('<BaseButton />', () => {
       </BaseButton>,
     );
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should have accessibilityLabel', () => {
+    const { getByRole } = renderWithTheme(
+      <BaseButton accessibilityLabel="Close" icon={CloseIcon}>
+        Pay Now
+      </BaseButton>,
+    );
+    const button = getByRole('button');
+    expect(button.findByProps({ accessibilityLabel: 'Close' })).toBeTruthy();
   });
 });

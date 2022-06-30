@@ -8,7 +8,10 @@ import type {
 import type { BaseButtonProps } from './BaseButton';
 import type { ButtonMinHeight } from './buttonTokens';
 
-export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> & {
+export type StyledBaseButtonProps = Omit<
+  BaseButtonProps,
+  'icon' | 'children' | 'accessibilityLabel'
+> & {
   activeBorderColor: string;
   activeBackgroundColor: string;
   defaultBorderColor: string;
@@ -31,6 +34,7 @@ export type StyledBaseButtonProps = Omit<BaseButtonProps, 'icon' | 'children'> &
   motionEasing: EasingStringTokens;
   borderWidth: BorderWidthValues;
   borderRadius: BorderRadiusValues;
+  accessibilityProps: Record<string, unknown>;
 };
 
 export { default } from './StyledBaseButton.web';

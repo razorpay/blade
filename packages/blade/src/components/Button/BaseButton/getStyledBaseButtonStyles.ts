@@ -13,7 +13,10 @@ const getBaseButtonStyles = ({
   isFullWidth,
   borderWidth,
   borderRadius,
-}: Omit<StyledBaseButtonProps, 'children' | 'onClick'>): CSSObject => ({
+}: Omit<
+  StyledBaseButtonProps,
+  'children' | 'onClick' | 'accessibilityProps' | 'accessibilityLabel'
+>): CSSObject => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',

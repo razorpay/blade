@@ -7,6 +7,8 @@ type ButtonCommonProps = {
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
+  isLoading?: boolean;
+  accessibilityLabel?: string;
   onClick?: () => void;
   type?: 'button' | 'reset' | 'submit';
 };
@@ -35,14 +37,17 @@ const Button = ({
   iconPosition = 'left',
   isDisabled = false,
   isFullWidth = false,
+  isLoading = false,
   onClick,
   size = 'medium',
   type = 'button',
   variant = 'primary',
+  accessibilityLabel,
 }: ButtonProps): React.ReactElement => {
   return (
     <BaseButton
       {...(icon ? { icon, children } : { children })}
+      accessibilityLabel={accessibilityLabel}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
       isFullWidth={isFullWidth}
@@ -50,6 +55,7 @@ const Button = ({
       size={size}
       type={type}
       variant={variant}
+      isLoading={isLoading}
     />
   );
 };

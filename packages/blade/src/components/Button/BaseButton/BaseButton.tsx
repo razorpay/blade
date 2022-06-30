@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import getIn from '../../../utils/getIn';
 import type { BaseTextProps } from '../../Typography/BaseText';
@@ -16,15 +17,21 @@ import type {
   BorderWidthValues,
   SpacingValues,
 } from '../../../tokens/theme/theme.d';
-import StyledBaseButton from './StyledBaseButton';
+import { ButtonSpinner } from '../ButtonSpinner';
+import { makeAccessible } from '../../../utils';
+import { announce } from '../../LiveAnnouncer';
+import usePrevious from '../../../utils/usePrevious';
+import type { SpinnerSize } from '../../Spinner/spinnerTokens';
+import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
   typography as buttonTypography,
   minHeight as buttonMinHeight,
-  iconSize as buttonIconSize,
+  buttonSizeToIconSizeMap,
+  buttonSizeToSpinnerSizeMap,
   textPadding,
   buttonPadding,
 } from './buttonTokens';
-import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
+import StyledBaseButton from './StyledBaseButton';
 
 type BaseButtonCommonProps = {
   size?: 'large' | 'medium' | 'small' | 'xsmall';
@@ -33,6 +40,8 @@ type BaseButtonCommonProps = {
   isFullWidth?: boolean;
   onClick?: () => void;
   type?: 'button' | 'reset' | 'submit';
+  isLoading?: boolean;
+  accessibilityLabel?: string;
   variant?: 'primary' | 'secondary' | 'tertiary';
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -97,6 +106,7 @@ const getColorToken = ({
 
 type BaseButtonStyleProps = {
   iconSize: IconSize;
+  spinnerSize: SpinnerSize;
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
   minHeight: `${ButtonMinHeight}px`;
@@ -148,7 +158,8 @@ const getProps = ({
   iconPosition: NonNullable<BaseButtonProps['iconPosition']>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
-    iconSize: buttonIconSize[size],
+    iconSize: buttonSizeToIconSizeMap[size],
+    spinnerSize: buttonSizeToSpinnerSizeMap[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
@@ -261,10 +272,13 @@ const BaseButton = ({
   iconPosition = 'left',
   isDisabled = false,
   isFullWidth = false,
+  isLoading = false,
   onClick,
   type = 'button',
   children,
+  accessibilityLabel,
 }: BaseButtonProps): ReactElement => {
+  const disabled = isLoading || isDisabled;
   const { theme, platform } = useTheme();
   const buttonTypographyTokens = buttonTypography[platform];
   if (!Icon && !children?.trim()) {
@@ -272,6 +286,15 @@ const BaseButton = ({
       `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
     );
   }
+
+  const prevLoading = usePrevious(isLoading);
+
+  useEffect(() => {
+    if (isLoading) announce('Started loading');
+
+    if (!isLoading && prevLoading) announce('Stopped loading');
+  }, [isLoading, prevLoading]);
+
   const {
     activeBorderColor,
     activeBackgroundColor,
@@ -290,6 +313,7 @@ const BaseButton = ({
     hoverBackgroundColor,
     iconColor,
     iconSize,
+    spinnerSize,
     textPaddingLeft,
     textPaddingRight,
     lineHeight,
@@ -302,7 +326,7 @@ const BaseButton = ({
   } = getProps({
     buttonTypographyTokens,
     children,
-    isDisabled,
+    isDisabled: disabled,
     size,
     variant,
     theme,
@@ -314,6 +338,9 @@ const BaseButton = ({
 
   return (
     <StyledBaseButton
+      accessibilityProps={{ ...makeAccessible({ role: 'button', label: accessibilityLabel }) }}
+      isLoading={isLoading}
+      disabled={disabled}
       activeBorderColor={activeBorderColor}
       activeBackgroundColor={activeBackgroundColor}
       defaultBorderColor={defaultBorderColor}
@@ -323,7 +350,6 @@ const BaseButton = ({
       buttonPaddingLeft={buttonPaddingLeft}
       buttonPaddingRight={buttonPaddingRight}
       defaultBackgroundColor={defaultBackgroundColor}
-      disabled={isDisabled}
       focusBorderColor={focusBorderColor}
       focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}
@@ -337,21 +363,23 @@ const BaseButton = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
     >
-      {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
-      {text ? (
-        <ButtonText
-          lineHeight={lineHeight}
-          fontSize={fontSize}
-          fontWeight="bold"
-          textAlign="center"
-          color={textColor}
-          paddingLeft={textPaddingLeft}
-          paddingRight={textPaddingRight}
-        >
-          {text}
-        </ButtonText>
-      ) : null}
-      {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
+      <ButtonSpinner isLoading={isLoading} color={iconColor} size={spinnerSize}>
+        {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
+        {text ? (
+          <ButtonText
+            lineHeight={lineHeight}
+            fontSize={fontSize}
+            fontWeight="bold"
+            textAlign="center"
+            color={textColor}
+            paddingLeft={textPaddingLeft}
+            paddingRight={textPaddingRight}
+          >
+            {text}
+          </ButtonText>
+        ) : null}
+        {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
+      </ButtonSpinner>
     </StyledBaseButton>
   );
 };

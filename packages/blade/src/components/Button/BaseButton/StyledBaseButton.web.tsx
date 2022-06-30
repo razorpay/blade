@@ -4,7 +4,9 @@ import makeMotionTime from '../../../utils/makeMotionTime';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton.d';
 
-const StyledBaseButton = styled.button<Omit<StyledBaseButtonProps, 'onClick'>>((props) => ({
+const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => ({
+  ...props.accessibilityProps,
+}))<Omit<StyledBaseButtonProps, 'onClick'>>((props) => ({
   ...getStyledBaseButtonStyles(props),
   transitionProperty: 'background-color, border-color, box-shadow',
   transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
