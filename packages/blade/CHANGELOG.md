@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 0.11.0
+
+### Minor Changes
+
+- 5d022f4: feat: add `Button` component
+
+### Patch Changes
+
+- cddd298: chore: update currency icons
+
 ## 0.10.1
 
 ### Patch Changes
