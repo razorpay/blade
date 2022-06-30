@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.11.1
+
+### Patch Changes
+
+- 873676f: fix: button export to components
+
 ## 0.11.0
 
 ### Minor Changes
