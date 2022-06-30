@@ -21,13 +21,13 @@ import { ButtonSpinner } from '../ButtonSpinner';
 import { makeAccessible } from '../../../utils';
 import { announce } from '../../LiveAnnouncer';
 import usePrevious from '../../../utils/usePrevious';
-import type { SpinnerSize } from '../../Spinner/BaseSpinner/spinnerTokens';
+import type { SpinnerSize } from '../../Spinner/spinnerTokens';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
   typography as buttonTypography,
   minHeight as buttonMinHeight,
-  iconSize as buttonIconSize,
-  spinnerSize as buttonSpinnerSize,
+  buttonSizeToIconSizeMap,
+  buttonSizeToSpinnerSizeMap,
   textPadding,
   buttonPadding,
 } from './buttonTokens';
@@ -158,8 +158,8 @@ const getProps = ({
   iconPosition: NonNullable<BaseButtonProps['iconPosition']>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
-    iconSize: buttonIconSize[size],
-    spinnerSize: buttonSpinnerSize[size],
+    iconSize: buttonSizeToIconSizeMap[size],
+    spinnerSize: buttonSizeToSpinnerSizeMap[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),

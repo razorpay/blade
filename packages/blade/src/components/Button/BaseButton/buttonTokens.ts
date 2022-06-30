@@ -1,7 +1,7 @@
 import type { ThemeTokens } from '../../../tokens/theme/theme.d';
 import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import type { IconProps } from '../../Icons';
-import type { SpinnerProps } from '../../Spinner/BaseSpinner/Spinner';
+import type { SpinnerProps } from '../../Spinner/Spinner';
 import type { BaseButtonProps } from './BaseButton';
 
 //TODO: Sort keys in all objects
@@ -95,14 +95,17 @@ const buttonPadding: Record<
   },
 };
 
-const iconSize: Record<NonNullable<BaseButtonProps['size']>, IconProps['size']> = {
+const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconProps['size']> = {
   xsmall: 'xsmall',
   small: 'xsmall',
   medium: 'medium',
   large: 'medium',
 };
 
-const spinnerSize: Record<NonNullable<BaseButtonProps['size']>, SpinnerProps['size']> = {
+const buttonSizeToSpinnerSizeMap: Record<
+  NonNullable<BaseButtonProps['size']>,
+  SpinnerProps['size']
+> = {
   xsmall: 'xsmall',
   small: 'xsmall',
   medium: 'medium',
@@ -116,4 +119,11 @@ const textPadding: Record<NonNullable<BaseButtonProps['size']>, keyof ThemeToken
   large: 2,
 };
 
-export { typography, minHeight, iconSize, spinnerSize, textPadding, buttonPadding };
+export {
+  typography,
+  minHeight,
+  buttonSizeToIconSizeMap,
+  buttonSizeToSpinnerSizeMap,
+  textPadding,
+  buttonPadding,
+};

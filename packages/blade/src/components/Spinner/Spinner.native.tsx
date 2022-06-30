@@ -6,9 +6,9 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
-import type { EasingFunctionFactory } from '../../../tokens/global/motion';
-import getIn from '../../../utils/getIn';
-import { useTheme } from '../../BladeProvider';
+import type { EasingFunctionFactory } from '../../tokens/global/motion';
+import getIn from '../../utils/getIn';
+import { useTheme } from '../BladeProvider';
 import SpinnerIcon from './SpinnerIcon';
 import type { SpinnerProps } from './Spinner';
 import { getSpinnerSize, motion } from './spinnerTokens';

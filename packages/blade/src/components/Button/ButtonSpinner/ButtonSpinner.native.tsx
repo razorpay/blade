@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import Spinner from '../../Spinner/BaseSpinner';
+import Spinner from '../../Spinner';
 import type { ButtonSpinnerProps } from './ButtonSpinner.d';
 import { buttonSpinnerStyles, buttonSpinnerContainerStyles } from './buttonSpinnerStyles';
 

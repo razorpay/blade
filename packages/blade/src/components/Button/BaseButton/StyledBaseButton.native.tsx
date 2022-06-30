@@ -7,7 +7,7 @@ import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
-  Omit<StyledBaseButtonProps, 'onClick' | 'accessibilityProps' | 'accessibilityLabel'>
+  Omit<StyledBaseButtonProps, 'onClick' | 'accessibilityProps'>
 >((props) => getStyledBaseButtonStyles(props));
 
 const StyledBaseButton = ({
