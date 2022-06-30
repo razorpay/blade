@@ -1,4 +1,4 @@
-import type { Motion } from '../../../tokens';
+import type { Motion } from '../../tokens';
 import type { MakeSize } from '../../utils/makeSize';
 import makeSize from '../../utils/makeSize';
 import type { DotNotationMotionStringToken } from '../../_helpers/types';
