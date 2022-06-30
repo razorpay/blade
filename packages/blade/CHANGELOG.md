@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.11.2
+
+### Patch Changes
+
+- b2b86b4: fix: SkipNav export
+
 ## 0.11.1
 
 ### Patch Changes
