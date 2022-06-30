@@ -34,7 +34,7 @@ import {
 import StyledBaseButton from './StyledBaseButton';
 
 type BaseButtonCommonProps = {
-  size?: 'large' | 'medium' | 'small' | 'xsmall';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;

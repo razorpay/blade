@@ -6,7 +6,7 @@ import type { BaseButtonProps } from './BaseButton';
 
 //TODO: Sort keys in all objects
 
-export type ButtonMinHeight = 48 | 36 | 32 | 28;
+export type ButtonMinHeight = 28 | 32 | 36 | 48;
 
 export type ButtonTypography = {
   [Key in TypographyPlatforms]: {
@@ -27,33 +27,33 @@ const typography: ButtonTypography = {
   onDesktop: {
     fonts: {
       size: {
-        large: 200,
-        medium: 100,
-        small: 75,
         xsmall: 75,
+        small: 75,
+        medium: 100,
+        large: 200,
       },
     },
     lineHeights: {
-      large: 's',
-      medium: 'l',
-      small: 'l',
       xsmall: 'l',
+      small: 'l',
+      medium: 'l',
+      large: 's',
     },
   },
   onMobile: {
     fonts: {
       size: {
-        large: 200,
-        medium: 100,
-        small: 50,
         xsmall: 50,
+        small: 50,
+        medium: 100,
+        large: 200,
       },
     },
     lineHeights: {
-      large: 'm',
-      medium: 'm',
-      small: 's',
       xsmall: 's',
+      small: 's',
+      medium: 'm',
+      large: 'm',
     },
   },
 };
