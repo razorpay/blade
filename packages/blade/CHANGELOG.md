@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.11.3
+
+### Patch Changes
+
+- e0a2631: feat: add Download, Edit, History, Plus, Pause, & Trash icons
+
 ## 0.11.2
 
 ### Patch Changes
