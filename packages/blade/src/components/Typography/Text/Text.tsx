@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import type { ReactElement } from 'react';
 import styled from 'styled-components';
-import type { ColorContrast, ColorContrastTypes, TextTypes } from '../../../tokens/theme/theme.d';
-import getPlatformType from '../../../utils/getPlatformType';
-import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText/BaseText';
+import type { Theme } from '~components/BladeProvider';
+import { getPlatformType } from '~utils';
+import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 
 type TextCommonProps = {
   type?: TextTypes;

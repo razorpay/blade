@@ -9,9 +9,9 @@ import {
 } from '@storybook/addon-docs';
 import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
-import useMakeFigmaURL from '../../../_helpers/storybook/useMakeFigmaURL';
 import type { TitleProps } from './';
 import TitleComponent from './';
+import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([

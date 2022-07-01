@@ -9,9 +9,9 @@ import {
 } from '@storybook/addon-docs';
 import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
-import { Text } from '../Typography';
 import type { VisuallyHiddenProps } from './VisuallyHidden';
 import { VisuallyHidden as VisuallyHiddenComponent } from './VisuallyHidden';
+import { Text } from '~components/Typography';
 
 const Page = (): ReactElement => {
   return (

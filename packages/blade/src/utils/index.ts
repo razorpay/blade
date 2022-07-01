@@ -10,6 +10,7 @@ export { default as useBreakpoint } from './useBreakpoint';
 export { default as useColorScheme } from './useColorScheme';
 export { default as getPlatformType } from './getPlatformType';
 export { default as makeAccessible } from './makeAccessible';
+export * from './makeAccessible';
 export { default as usePrevious } from './usePrevious';
 export { default as getIn } from './getIn';
 export { default as makeSize } from './makeSize';
