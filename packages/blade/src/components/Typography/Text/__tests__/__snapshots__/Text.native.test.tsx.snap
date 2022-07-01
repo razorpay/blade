@@ -20,6 +20,7 @@ exports[`<Text /> should render Text with default properties 1`] = `
         "textAlign": "left",
         "textDecorationLine": "none",
       },
+      Object {},
     ]
   }
   textAlign="left"
@@ -49,6 +50,9 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
         "lineHeight": 24,
         "textAlign": "left",
         "textDecorationLine": "none",
+      },
+      Object {
+        "numberOfLines": 3,
       },
     ]
   }
@@ -80,6 +84,9 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
         "textAlign": "left",
         "textDecorationLine": "none",
       },
+      Object {
+        "numberOfLines": 3,
+      },
     ]
   }
   textAlign="left"
@@ -109,6 +116,7 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
         "textAlign": "left",
         "textDecorationLine": "none",
       },
+      Object {},
     ]
   }
   textAlign="left"

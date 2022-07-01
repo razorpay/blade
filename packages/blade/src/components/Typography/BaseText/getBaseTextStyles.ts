@@ -17,7 +17,7 @@ const getBaseTextStyles = ({
   font-style: ${fontStyle};
   text-decoration-line: ${textDecorationLine};
   line-height: ${lineHeight};
-  ${textAlign ? `text-align: ${textAlign};` : ''}
+  ${textAlign ? `text-align: ${textAlign};` : ''};
 `;
 
 export default getBaseTextStyles;

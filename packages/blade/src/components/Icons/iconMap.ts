@@ -14,11 +14,10 @@ import PauseIconComponent from './PauseIcon';
 import PlusIconComponent from './PlusIcon';
 import RupeeIconComponent from './RupeeIcon';
 import TrashIconComponent from './TrashIcon';
-
-import type { IconProps } from '.';
+import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
-const iconMap: Record<string, React.ComponentType<IconProps>> = {
+const iconMap: Record<string, IconComponent> = {
   CloseIcon: CloseIconComponent,
   ChevronDownIcon: ChevronDownIconComponent,
   ChevronLeftIcon: ChevronLeftIconComponent,

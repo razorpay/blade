@@ -1,3 +1,5 @@
+import type { EasingFunctionFactory } from '../tokens/global/motion';
+
 /**
  * @template TokenType token type generic
  * @description Tokenises objects to dot notation strings, eg: `surface.text.normal.lowContrast`
@@ -11,4 +13,13 @@ type DotNotationColorStringToken<TokenType> = {
     : DotNotationColorStringToken<TokenType[K]>}`;
 }[keyof TokenType];
 
-export { DotNotationColorStringToken };
+type DotNotationMotionStringToken<TokenType> = {
+  [K in keyof TokenType]: `${Extract<K, string>}.${TokenType[K] extends Record<
+    string,
+    string | EasingFunctionFactory
+  >
+    ? Extract<keyof TokenType[K], string | EasingFunctionFactory>
+    : DotNotationMotionStringToken<TokenType[K]>}`;
+}[keyof TokenType];
+
+export { DotNotationColorStringToken, DotNotationMotionStringToken };

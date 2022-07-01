@@ -1,5 +1,27 @@
 # @razorpay/blade
 
+## 0.11.2
+
+### Patch Changes
+
+- b2b86b4: fix: SkipNav export
+
+## 0.11.1
+
+### Patch Changes
+
+- 873676f: fix: button export to components
+
+## 0.11.0
+
+### Minor Changes
+
+- 5d022f4: feat: add `Button` component
+
+### Patch Changes
+
+- cddd298: chore: update currency icons
+
 ## 0.10.1
 
 ### Patch Changes
