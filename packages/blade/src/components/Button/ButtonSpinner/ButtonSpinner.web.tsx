@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Spinner from '../../Spinner';
-import type { ButtonSpinnerProps } from './ButtonSpinner.d';
 import { buttonSpinnerStyles, buttonSpinnerContainerStyles } from './buttonSpinnerStyles';
+import type { ButtonSpinnerProps } from './ButtonSpinner.d';
+import Spinner from '~components/Spinner';
 
 const StyledSpinner = styled(Spinner)(buttonSpinnerStyles);
 

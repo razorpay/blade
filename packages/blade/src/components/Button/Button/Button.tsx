@@ -1,5 +1,5 @@
-import type { IconComponent } from '../../Icons';
 import BaseButton from '../BaseButton';
+import type { IconComponent } from '~components/Icons';
 
 type ButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';

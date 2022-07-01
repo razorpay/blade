@@ -3,6 +3,7 @@ import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pluginResolve from '@rollup/plugin-node-resolve';
 import pluginCommonjs from '@rollup/plugin-commonjs';
 import pluginDeclarations from 'rollup-plugin-dts';
+import pluginAlias from '@rollup/plugin-alias';
 
 const webExtensions = [
   '.web.js',
@@ -61,6 +62,14 @@ const getWebConfig = ({ exportCategory }) => ({
       babelHelpers: 'runtime',
       envName: 'production',
       extensions: webExtensions,
+    }),
+    pluginAlias({
+      entries: [
+        { find: '~src', replacement: `${__dirname}/${inputRootDirectory}` },
+        { find: '~components', replacement: `${__dirname}/${inputRootDirectory}/components` },
+        { find: '~utils', replacement: `${__dirname}/${inputRootDirectory}/utils` },
+        { find: '~tokens', replacement: `${__dirname}/${inputRootDirectory}/tokens` },
+      ],
     }),
   ],
 });

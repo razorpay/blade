@@ -39,6 +39,7 @@
     "eslint": "7.25.0",
     "eslint-config-kentcdodds": "18.0.0",
     "eslint-config-prettier": "8.3.0",
+    "eslint-import-resolver-typescript": "3.1.3",
     "eslint-plugin-babel": "5.3.1",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.5.1",

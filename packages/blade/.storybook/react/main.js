@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   refs: {
     '@storybook/design-system': { disable: true },
@@ -35,6 +37,15 @@ module.exports = {
       '.jsx',
       '.json',
     ];
+
+    const root = path.resolve(__dirname, '..', '..');
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '~src': path.resolve(root, 'src'),
+      '~components': path.resolve(root, 'src', 'components'),
+      '~utils': path.resolve(root, 'src', 'utils'),
+      '~tokens': path.resolve(root, 'src', 'tokens'),
+    };
 
     // Return the altered config
     return config;
