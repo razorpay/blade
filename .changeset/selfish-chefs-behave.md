@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-feat: add Edit, History, Plus, Pause, & Trash icons
+feat: add Download, Edit, History, Plus, Pause, & Trash icons
