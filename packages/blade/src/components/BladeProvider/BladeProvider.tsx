@@ -1,15 +1,12 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import type { ReactNode, ReactElement } from 'react';
 import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
-import { useColorScheme, toTitleCase, useBreakpoint } from '../../utils';
-import { colorSchemeNamesInput } from '../../tokens/theme';
-import type { TypographyPlatforms } from '../../tokens/global/typography';
-import type {
-  ColorSchemeModes,
-  ThemeTokens,
-  ColorSchemeNamesInput,
-} from '../../tokens/theme/theme.d';
 import { ThemeContext } from './useTheme';
 import type { Theme } from './';
+import { useColorScheme, toTitleCase, useBreakpoint } from '~utils';
+import { colorSchemeNamesInput } from '~tokens/theme';
+import type { TypographyPlatforms } from '~tokens/global/typography';
+import type { ColorSchemeModes, ThemeTokens, ColorSchemeNamesInput } from '~tokens/theme/theme';
 
 export type BladeProviderProps = {
   themeTokens: ThemeTokens;

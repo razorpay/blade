@@ -1,5 +1,5 @@
-import makeBezier from '../../utils/makeBezier';
-import type { DotNotationMotionStringToken } from '../../_helpers/types';
+import { makeBezier } from '~utils';
+import type { DotNotationMotionStringToken } from '~src/_helpers/types';
 
 type Duration = {
   /** `70` milliseconds */

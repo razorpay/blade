@@ -1,4 +1,4 @@
-import type { EasingFunctionFactory } from '../tokens/global/motion';
+import type { EasingFunctionFactory } from '~tokens/global/motion';
 
 /**
  * @template TokenType token type generic
