@@ -16,7 +16,7 @@ A Link component that can act as a `<button>` as well as an `<anchor>` element
 
 | Prop | Type | Required | Default | Description |
 |---|---|---|---|---|
-| variant | `anchor`, `button` | No | `anchor` | - The variant of the Link to be rendered.<br><br>Note: `button` will look like an inline Link component but will be rendered as a `button` element |
+| variant | `anchor`, `button` | No | `anchor` | The variant of the Link to be rendered.<br><br>Note: `button` will look like an inline Link component(no spacing; can be rendered alongside other text) but will be rendered as a `button` element |
 | children | `string` | No | undefined | The text to be rendered within the link. |
 | icon | `Icon` | No | undefined | The Blade `Icon` component to be rendered within the link. |
 | iconPosition | `left`, `right` | No | `right` | The position of the rendered icon. |
