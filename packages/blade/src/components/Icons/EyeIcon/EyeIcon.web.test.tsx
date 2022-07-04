@@ -1,5 +1,5 @@
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import EyeIcon from '.';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('<EyeIcon />', () => {
   it('should render EyeIcon', () => {

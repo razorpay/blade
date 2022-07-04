@@ -1,6 +1,6 @@
 import React from 'react';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { VisuallyHidden } from '..';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('<VisuallyHidden />', () => {
   it('should render VisuallyHidden content', () => {
