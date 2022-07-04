@@ -1,4 +1,4 @@
-import type { AriaRoles } from '~utils/makeAccessible';
+import type { AriaRoles } from '~utils';
 
 export { default } from './StyledBaseText.web';
 

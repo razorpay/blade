@@ -128,7 +128,8 @@
     "rollup": "2.61.1",
     "rollup-plugin-dts": "4.0.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
-    "styled-components": "5.3.5"
+    "styled-components": "5.3.5",
+    "tsconfig-paths-webpack-plugin": "3.5.2"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.16.5",

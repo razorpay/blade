@@ -1,4 +1,4 @@
-const path = require('path');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
   refs: {
@@ -38,16 +38,13 @@ module.exports = {
       '.json',
     ];
 
-    const root = path.resolve(__dirname, '..', '..');
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '~src': path.resolve(root, 'src'),
-      '~components': path.resolve(root, 'src', 'components'),
-      '~utils': path.resolve(root, 'src', 'utils'),
-      '~tokens': path.resolve(root, 'src', 'tokens'),
-    };
-
-    // Return the altered config
+    config.resolve.plugins = [
+      ...(config.resolve.plugins || []),
+      new TsconfigPathsPlugin({
+        extensions: config.resolve.extensions,
+      }),
+    ];
+  
     return config;
   },
 };

@@ -30,6 +30,11 @@ const configs = {
             alias: {
               '@storybook/react': '@storybook/react-native',
               '^styled-components$': 'styled-components/native',
+              // react-native path resolution
+              '~src': './src',
+              '~components': './src/components',
+              '~utils': './src/utils',
+              '~tokens': './src/tokens',
             },
           },
         ],
@@ -54,6 +59,11 @@ const configs = {
             alias: {
               '@storybook/react': '@storybook/react-native',
               '^styled-components$': 'styled-components/native',
+              // react-native path resolution
+              '~src': './src',
+              '~components': './src/components',
+              '~utils': './src/utils',
+              '~tokens': './src/tokens',
             },
           },
         ],
