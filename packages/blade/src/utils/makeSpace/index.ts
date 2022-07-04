@@ -1,1 +1,1 @@
-export { default } from './makeSpace';
+export * from './makeSpace';

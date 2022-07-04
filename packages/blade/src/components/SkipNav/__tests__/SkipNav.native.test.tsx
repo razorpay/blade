@@ -1,5 +1,5 @@
 import React from 'react';
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { SkipNavContent, SkipNavLink } from '../SkipNav';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());

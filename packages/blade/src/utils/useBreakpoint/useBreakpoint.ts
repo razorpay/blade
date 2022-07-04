@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { useEffect, useState, useCallback, useMemo } from 'react';
-import type { Breakpoints } from '../../tokens/global';
-import getPlatformType from '../getPlatformType';
+import { getPlatformType } from '../getPlatformType';
+import type { Breakpoints } from '~tokens/global';
 
 const deviceType = {
   desktop: 'desktop',
@@ -15,7 +17,11 @@ type BreakpointAndDevice = {
   matchedDeviceType: DeviceType;
 };
 
-const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): BreakpointAndDevice => {
+export const useBreakpoint = ({
+  breakpoints,
+}: {
+  breakpoints: Breakpoints;
+}): BreakpointAndDevice => {
   const supportsMatchMedia =
     typeof document !== 'undefined' && typeof window?.matchMedia === 'function';
 
@@ -142,5 +148,3 @@ const useBreakpoint = ({ breakpoints }: { breakpoints: Breakpoints }): Breakpoin
   // @TODO: handle SSR scenarios
   return breakpointAndDevice;
 };
-
-export default useBreakpoint;

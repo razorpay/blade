@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 
 import type { ReactElement } from 'react';
-import { ButtonSpinner } from '../ButtonSpinner';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
@@ -14,6 +13,7 @@ import {
   textPadding,
   buttonPadding,
 } from './buttonTokens';
+import { ButtonSpinner } from '~components/Button/ButtonSpinner';
 import type { Theme } from '~components/BladeProvider';
 import type { SpinnerSize } from '~components/Spinner/spinnerTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText';

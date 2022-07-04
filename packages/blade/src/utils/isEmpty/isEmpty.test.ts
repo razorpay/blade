@@ -1,4 +1,4 @@
-import isEmpty from './isEmpty';
+import { isEmpty } from './isEmpty';
 
 describe('isEmpty', () => {
   it(`should return true for 'null'`, () => {

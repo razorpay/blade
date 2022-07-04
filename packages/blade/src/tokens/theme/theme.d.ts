@@ -1,8 +1,8 @@
-import type { Border } from '../global/border';
-import type { Breakpoints } from '../global/breakpoints';
-import type { Motion } from '../global/motion';
-import type { Spacing } from '../global/spacing';
-import type { TypographyWithPlatforms } from '../global/typography';
+import type { Border } from '~tokens/global/border';
+import type { Breakpoints } from '~tokens/global/breakpoints';
+import type { Motion } from '~tokens/global/motion';
+import type { Spacing } from '~tokens/global/spacing';
+import type { TypographyWithPlatforms } from '~tokens/global/typography';
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';

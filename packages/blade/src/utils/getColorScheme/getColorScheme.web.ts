@@ -1,6 +1,6 @@
-import type { ColorSchemeNames, ColorSchemeNamesInput } from '../../tokens/theme';
+import type { ColorSchemeNames, ColorSchemeNamesInput } from '~tokens/theme';
 
-const getColorScheme = (colorScheme: ColorSchemeNamesInput = 'light'): ColorSchemeNames => {
+export const getColorScheme = (colorScheme: ColorSchemeNamesInput = 'light'): ColorSchemeNames => {
   // @TODO: create a useMediaQuery hook with an event listener which will subscribe to changes and move all this logic there
   const colorSchemeMediaQueryMap = {
     light: '(prefers-color-scheme: light)',
@@ -24,5 +24,3 @@ const getColorScheme = (colorScheme: ColorSchemeNamesInput = 'light'): ColorSche
 
   return 'light';
 };
-
-export default getColorScheme;

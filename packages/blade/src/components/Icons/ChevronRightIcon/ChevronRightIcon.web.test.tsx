@@ -1,4 +1,4 @@
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import ChevronRightIcon from '.';
 
 describe('<ChevronRightIcon />', () => {

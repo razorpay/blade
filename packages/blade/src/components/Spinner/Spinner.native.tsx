@@ -6,10 +6,10 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
-import { useTheme } from '../BladeProvider';
 import SpinnerIcon from './SpinnerIcon';
 import type { SpinnerProps } from './Spinner';
 import { getSpinnerSize, motion } from './spinnerTokens';
+import { useTheme } from '~components/BladeProvider';
 import { getIn } from '~utils';
 import type { EasingFunctionFactory } from '~tokens/global/motion';
 

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { useState, useCallback } from 'react';
-import getColorScheme from '../getColorScheme';
+import { getColorScheme } from '../getColorScheme';
 import { colorSchemeNamesInput } from '~tokens/theme';
 import type { ColorSchemeNames, ColorSchemeNamesInput } from '~tokens/theme';
 
@@ -9,7 +9,9 @@ export type UseColorScheme = {
   setColorScheme: (colorScheme: ColorSchemeNamesInput) => void;
 };
 
-const useColorScheme = (initialColorScheme: ColorSchemeNamesInput = 'light'): UseColorScheme => {
+export const useColorScheme = (
+  initialColorScheme: ColorSchemeNamesInput = 'light',
+): UseColorScheme => {
   // if colorScheme defined use that else fallback to 'light'
   const [colorSchemeState, setColorSchemeState] = useState<ColorSchemeNames>(() =>
     getColorScheme(initialColorScheme),
@@ -29,5 +31,3 @@ const useColorScheme = (initialColorScheme: ColorSchemeNamesInput = 'light'): Us
     setColorScheme,
   };
 };
-
-export default useColorScheme;
