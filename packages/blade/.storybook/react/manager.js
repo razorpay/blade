@@ -1,7 +1,8 @@
 // .storybook/manager.js
-
-import { addons } from '@storybook/addons';
-import { themes } from '@storybook/theming';
+import React from 'react';
+import { addons, types } from '@storybook/addons';
+import { useGlobals } from '@storybook/api';
+import { Icons, IconButton } from '@storybook/components';
 
 export const theme = {
   base: 'light',
@@ -40,6 +41,47 @@ export const theme = {
   brandUrl: 'https://github.com/razorpay/blade',
   // brandImage: 'https://place-hold.it/350x150',
 };
+
+const ADDON_ID = 'internal-components-addon';
+const TOOL_ID = 'internal-components-tool';
+const hiddenStoryStyle = document.createElement('style');
+hiddenStoryStyle.textContent = `
+  [id*='internal'] {
+    display: none !important;
+  }
+`;
+document.head.append(hiddenStoryStyle);
+
+const InternalStoryAddon = () => {
+  const [{ showInternalComponents }, updateGlobals] = useGlobals();
+
+  const toggleVisibility = React.useCallback(() => {
+    updateGlobals({
+      showInternalComponents: !showInternalComponents,
+    });
+    hiddenStoryStyle.disabled = showInternalComponents ? undefined : 'disabled';
+  }, [showInternalComponents]);
+
+  return (
+    <IconButton
+      key={TOOL_ID}
+      active={showInternalComponents}
+      title="Show internal components"
+      onClick={toggleVisibility}
+    >
+      <Icons icon="lock" />
+    </IconButton>
+  );
+};
+
+addons.register(ADDON_ID, () => {
+  addons.add(TOOL_ID, {
+    type: types.TOOL,
+    title: 'Toggle Visibility Of Internal Components',
+    match: ({ viewMode }) => !!(viewMode && viewMode.match(/^(story|docs)$/)),
+    render: InternalStoryAddon,
+  });
+});
 
 addons.setConfig({
   theme,
