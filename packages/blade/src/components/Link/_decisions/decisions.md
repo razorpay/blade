@@ -3,6 +3,7 @@
 - [Link Component](#link-component)
   - [Link API](#link-api)
 - [Component Breakdown](#component-breakdown)
+- [Accessibility](#accessibility)
 - [Open Questions](#open-questions)
 
 ## Design
@@ -29,6 +30,9 @@ A Link component that can act as a `<button>` as well as an `<anchor>` element
 ## Component Breakdown
 
 <img src="./component-breakdown.png" width="300px"/>
+
+## Accessibility
+WIP
 
 ## Open Questions
 NA
