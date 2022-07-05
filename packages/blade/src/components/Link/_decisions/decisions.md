@@ -25,6 +25,7 @@ A Link component that can act as a `<button>` as well as an `<anchor>` element
 | onClick | `Function` | No | undefined | The function to be called when the link is clicked. |
 | href | `string` | No | undefined | The href for the link component.<br><br>Note: This prop is only valid for `anchor` variant. |
 | target | `string` | No | undefined | The target for the link component.<br><br>Note: This prop is only valid for `anchor` variant. |
+| accessibilityLabel | `string` | No | undefined | The `aria-label` (web) & `accessibilityLabel` (native) of the link component. |
 
      
 ## Component Breakdown
@@ -32,7 +33,9 @@ A Link component that can act as a `<button>` as well as an `<anchor>` element
 <img src="./component-breakdown.png" width="300px"/>
 
 ## Accessibility
-WIP
+- `role` will be `link` when variant is `anchor`
+- `role` will be `button` when variant is `button`
+- Accept `accessibilityLabel` from the consumer and set `aria-label` for web & `accessibilityLabel` for native
 
 ## Open Questions
 NA
