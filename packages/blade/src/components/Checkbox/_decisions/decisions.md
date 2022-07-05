@@ -173,7 +173,7 @@ We can't pass `isRequired` & `isInvalid`
 
 Because we don't know that: 
 - Does user require that at least one checkbox is checked?
-- Does user require that all checkboxs are to be checked?
+- Does user require that all checkboxes are to be checked?
 
 When we say a checkbox group is required we generally mean that any of the checkboxes in a group has to be checked but if we pass down `isRequired` to all the checkboxes it would make the behaiour as all the checkboxes needs to be ticked. On the other hand there could be cases where we want all the checkboxes to be required not just one.  
 
@@ -193,7 +193,7 @@ function AnyOneHasToBeSelected() {
 
   return (
     <CheckboxGroup
-      label="Do you love any of fruites?"
+      label="Do you love any of the fruites?"
       helperText="You can select multiple"
       value={selected}
       onChange={setSelected}
@@ -209,7 +209,7 @@ function AnyOneHasToBeSelected() {
 }
 ```
 
-Example of only every checkboxes needs to be checked: 
+Example of every checkboxes needs to be checked: 
 
 ```tsx
 function AllOfThemHasToBeSelected() {
