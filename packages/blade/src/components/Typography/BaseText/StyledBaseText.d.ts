@@ -8,7 +8,7 @@ export type StyledBaseTextProps = {
   fontSize: string;
   fontWeight: number;
   fontStyle?: 'italic' | 'normal';
-  textDecorationLine?: 'line-through' | 'none';
+  textDecorationLine?: 'line-through' | 'none' | 'underline';
   lineHeight: string;
   as?: 'code' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   textAlign?: 'center' | 'justify' | 'left' | 'right';
