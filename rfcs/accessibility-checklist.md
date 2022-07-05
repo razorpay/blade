@@ -27,7 +27,7 @@ Let's say you are building a `Checkbox` component.
 
 - Step 1: Write the core logic for checkbox behaviour 
 - Step 2: Find the appropriate [WAI-ARIA Pattern for checkbox](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/)
-- Step 3: Accordion to the pattern implement [proper keyboard accessibility](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/#keyboard-interaction-5), like in checkbox we have to make sure to pressing <kbd>Space</kbd> should toggle the state. 
+- Step 3: According to the pattern implement [proper keyboard accessibility](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/#keyboard-interaction-5), like in checkbox we have to make sure to pressing <kbd>Space</kbd> should toggle the state. 
 - Step 4: Each pattern will have [an example section](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/#examples-1) which you can check for implementation and detailed information about [Accessibility Features](https://www.w3.org/WAI/ARIA/apg/example-index/checkbox/checkbox.html#accessibilityfeatures), [Keyboard Support](https://www.w3.org/WAI/ARIA/apg/example-index/checkbox/checkbox.html#kbd_label) and what various [aria attributes](https://www.w3.org/WAI/ARIA/apg/example-index/checkbox/checkbox.html#rps_label) the component needs to be accessible. 
   
 Following these patterns & examples we can make our components accessible.  
