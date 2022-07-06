@@ -1,7 +1,19 @@
 # Checkbox Decisions <!-- omit in toc -->
 
 - [Design](#design)
-- API
+- [Anatomy](#anatomy)
+- [`Checkbox` API](#checkbox-api)
+  - [Examples:](#examples)
+    - [Basic](#basic)
+    - [Validations](#validations)
+- [`CheckboxGroup` API](#checkboxgroup-api)
+  - [Examples:](#examples-1)
+    - [Basic](#basic-1)
+    - [Controlled, Uncontrolled](#controlled-uncontrolled)
+  - [Note on CheckboxGroup](#note-on-checkboxgroup)
+- [Component Architecture](#component-architecture)
+- [Accessibility](#accessibility)
+- [Open Questions](#open-questions)
 
 ## Design
 
@@ -85,7 +97,7 @@ const CheckboxGrop = () => {
 <Checkbox isChecked={true | false} onChange={isChecked => {}}>is blade awesome?</Checkbox>
 ```
 
-### Validations
+#### Validations
 
 with `isInvalid` & `isRequired` will pass down `required` and `aria-invalid` attributes accordingly
 
