@@ -1,3 +1,4 @@
+import type { Spacing } from '../tokens';
 import type { EasingFunctionFactory } from '../tokens/global/motion';
 
 /**
@@ -22,4 +23,6 @@ type DotNotationMotionStringToken<TokenType> = {
     : DotNotationMotionStringToken<TokenType[K]>}`;
 }[keyof TokenType];
 
-export { DotNotationColorStringToken, DotNotationMotionStringToken };
+type DotNotationSpacingStringToken = `spacing.${keyof Spacing}`;
+
+export { DotNotationColorStringToken, DotNotationMotionStringToken, DotNotationSpacingStringToken };
