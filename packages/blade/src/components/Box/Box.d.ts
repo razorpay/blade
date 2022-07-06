@@ -7,6 +7,7 @@ export type BoxProps = {
   flexDirection?: CSSObject['flexDirection'];
   alignItems?: CSSObject['alignItems'];
   justifyContent?: CSSObject['justifyContent'];
+  alignSelf?: CSSObject['alignSelf'];
   paddingTop?: DotNotationSpacingStringToken;
   paddingBottom?: DotNotationSpacingStringToken;
   paddingLeft?: DotNotationSpacingStringToken;
