@@ -11,6 +11,7 @@
 
 - **Checkbox**
   - **CheckboxInput** - Hidden native <input \/> element
+  - **CheckboxIcon** - Checked/Unchecked & indeterminate icon
   - **CheckboxLabel** - The Checkbox's <label \/> element
   - **CheckboxLabelText** - The cross-platform Text component
   - **CheckboxHelperText** - The helper text component
@@ -26,6 +27,7 @@ const Checkbox = () => {
   return (
     <>
       <CheckboxLabel>
+        <CheckboxIcon />
         <VisuallyHidden>
           <CheckboxInput />
         </VisuallyHidden>
@@ -92,15 +94,13 @@ with `isInvalid` & `isRequired` will pass down `required` and `aria-invalid` att
 <Checkbox isInvalid={true | false}>is blade awesome?</Checkbox>
 ```
 
-
 ## `CheckboxGroup` API
-
 
 | Prop          | Type                        | Required | Default     | Description                                                                                                                        |
 | ------------- | --------------------------- | -------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | children      | React.ReactNode             | No       | `undefined` | Accepts multiple Checkboxes                                                                                                        |
 | label         | `string`                    | No       | `undefined` | The label of the group                                                                                                             |
-| labelPosition | `top                        | left`    | No          | `top`                                                                                                                              | The position of the rendered label |
+| labelPosition | `top, left`                 | No       | `top`       | The position of the rendered label                                                                                                 |
 | helperText    | `string`                    | No       | `undefined` | The helper text to be rendered                                                                                                     |
 | defaultValue  | `string[]`                  | No       | `[]`        | The initial value of the checkbox group                                                                                            |
 | name          | `string`                    | No       | `undefined` | The name of the checkbox group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) |
@@ -110,8 +110,6 @@ with `isInvalid` & `isRequired` will pass down `required` and `aria-invalid` att
 | isReadOnly    | `boolean`                   | No       | `false`     | Control whether the checkbox group is readonly or not.                                                                             |
 | isInvalid     | `boolean`                   | No       | `false`     | Control whether the checkbox group is invalid or not.                                                                              |
 | isRequired    | `boolean`                   | No       | `false`     | Control whether the checkbox group is required or not.                                                                             |
-
-
 
 ### Examples:
 
@@ -133,20 +131,20 @@ with `isInvalid` & `isRequired` will pass down `required` and `aria-invalid` att
 
 ```tsx
 const Controlled = () => {
-  const [selected, setSelected] = React.useState(['anurag', 'kamlesh'])
+  const [selected, setSelected] = React.useState(['anurag', 'kamlesh']);
 
   return (
-    <CheckboxGroup
-      label="Developers (controlled)"
-      value={selected}
+    <CheckboxGroup 
+      label="Developers (controlled)" 
+      value={selected} 
       onChange={setSelected}
     >
-    <Checkbox value="anurag">Anurag</Checkbox>
-    <Checkbox value="kamlesh">Kamlesh</Checkbox>
-    <Checkbox value="chaitanya">Chaitanya</Checkbox>
-  </CheckboxGroup>
-  )
-}
+      <Checkbox value="anurag">Anurag</Checkbox>
+      <Checkbox value="kamlesh">Kamlesh</Checkbox>
+      <Checkbox value="chaitanya">Chaitanya</Checkbox>
+    </CheckboxGroup>
+  );
+};
 
 const Uncontrolled = () => {
   return (
@@ -158,34 +156,34 @@ const Uncontrolled = () => {
       <Checkbox value="kamlesh">Kamlesh</Checkbox>
       <Checkbox value="chaitanya">Chaitanya</Checkbox>
     </CheckboxGroup>
-  )
-}
+  );
+};
 ```
-
 
 ### Note on CheckboxGroup
 
-For properties `isDisabled`, `isReadOnly`, `isInvalid`, `isRequired` we want the CheckboxGroup to pass down these props to all the Checkboxes inside of it, but there is a gotcha. 
+For properties `isDisabled`, `isReadOnly`, `isInvalid`, `isRequired` we want the CheckboxGroup to pass down these props to all the Checkboxes inside of it, but there is a gotcha.
 
-We will only be passing down `isDisabled`, `isReadOnly` props to the underlying Checkbox components. 
+We will only be passing down `isDisabled`, `isReadOnly` props to the underlying Checkbox components.
 
 We can't pass `isRequired` & `isInvalid`
 
-Because we don't know that: 
+Because we don't know that:
+
 - Does user require that at least one checkbox is checked?
 - Does user require that all checkboxes are to be checked?
 
-When we say a checkbox group is required we generally mean that any of the checkboxes in a group has to be checked but if we pass down `isRequired` to all the checkboxes it would make the behaiour as all the checkboxes needs to be ticked. On the other hand there could be cases where we want all the checkboxes to be required not just one.  
+When we say a checkbox group is required we generally mean that any of the checkboxes in a group has to be checked but if we pass down `isRequired` to all the checkboxes it would make the behaiour as all the checkboxes needs to be ticked. On the other hand there could be cases where we want all the checkboxes to be required not just one.
 
 Similarly with `isInvalid` each checkbox should be independent of it's validation state. We don't know if the consumer wants `some` checkboxes or `all` checkboxes to be required.
 
-Ultimately IMO the validation logic should be handled by the consumer side depending on their requirements, and they should provide proper `helperText` to communicate the intent. 
+Ultimately IMO the validation logic should be handled by the consumer side depending on their requirements, and they should provide proper `helperText` to communicate the intent.
 
 Although we will still have the `isRequired` `isInvalid` prop to show visual changes like showing the `necessity indication` or `negative error text`
 
 **Example of user managed validation**
 
-Example of only one checkbox needs to be checked: 
+Example of only one checkbox needs to be checked:
 
 ```tsx
 function AnyOneHasToBeSelected() {
@@ -209,7 +207,7 @@ function AnyOneHasToBeSelected() {
 }
 ```
 
-Example of every checkboxes needs to be checked: 
+Example of every checkboxes needs to be checked:
 
 ```tsx
 function AllOfThemHasToBeSelected() {
@@ -232,30 +230,104 @@ function AllOfThemHasToBeSelected() {
 }
 ```
 
-And lastly users can also individually set `isRequired`, `isInvalid` props on the <Checkbbox \/> components instead of the parent CheckboxGroup for greater fine control. 
+And lastly users can also individually set `isRequired`, `isInvalid` props on the <Checkbbox \/> components instead of the parent CheckboxGroup for greater fine control.
 
 ```tsx
 function IndividualCheckboxValidation() {
   return (
-    <CheckboxGroup
-      label="Do you agree to all the terms?"
-      helperText="Select all"
-    >
-      <Checkbox value="use-ts" isRequired>I will use TS</Checkbox>
+    <CheckboxGroup label="Do you agree to all the terms?" helperText="Select all">
+      <Checkbox value="use-ts" isRequired>
+        I will use TS
+      </Checkbox>
       <Checkbox value="no-any">I won't use any (you can use it)</Checkbox>
-      <Checkbox value="use-js" isRequired>I won't use JS</Checkbox>
+      <Checkbox value="use-js" isRequired>
+        I won't use JS
+      </Checkbox>
     </CheckboxGroup>
   );
 }
 ```
 
-## Component Breakdown
+## Component Architecture
 
-- TBD
+- components/Checkbox
+  - useCheckbox.ts
+  - Checkbox.tsx
+  - CheckboxInput.tsx
+  - CheckboxLabel.tsx
+  - CheckboxLabelText.tsx
+  - CheckboxIcon.tsx
+  - useCheckboxGroup.ts
+  - CheckboxGroupContext.tsx
+  - CheckboxGroupFieldset.tsx
+  - CheckboxGroupLegend.tsx
+  - CheckboxGroupHelperText.tsx
+
+We can use a hook based architecture to abstract out state management, accessibility & props to separate hooks like `useCheckbox` & `useCheckboxGroup` which will work cross platform.
+
+**Benefits Of Hooks based architecture:**
+
+- Easier to abstract out the component logic to reusable pieces.
+- Flexible & Works well with our corss-platform needs.
+- We can expose it to consumers which enables them build their own checkbox like component without much hassle.
+
+<img src="./checkbox-api.png" alt="Checkbox API" width="70%">
+
+**useCheckbox:**
+
+useCheckbox will handle the checkbox's toggle state & return props; 
+
+Here's the signature: 
+
+```ts
+const useCheckbox = (props: CheckboxProps) => {
+  // this useControllable state will abstract out the logic for
+  // controlled & uncontrolled state management
+  const [checked, setChecked] = useControllableState()
+  
+  return {
+    checkboxProps: {
+      onMouseDown, 
+      onClick
+    },
+    inputProps: {
+      accessibilityProps: makeAcccessible(...),
+      ...otherProps
+    },
+    labelProps: {
+      ...otherLabelProps
+    }
+  }
+}
+```
+
+**useCheckboxGroup:**
+
+useCheckboxGroup will return label props, group props & handle all the ID generation for the accessible labels, errors & helper texts.
+
+```ts
+const useCheckboxGroup = (props: CheckboxGroupProps) => {
+  return {
+    labelProps: {
+      ...otherProps
+    },
+    groupProps: {
+      isDisabled, 
+      isReadOnly,
+      ...otherGroupProps
+    }
+  }
+}
+```
+
+**CheckboxGroupContext:**
+
+CheckboxGroupContext will pass down the <CheckboxGroup \/> properties like `isDisabled`, `isReadOnly` to the Checkboxes.
 
 ## Accessibility
 
-https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
+Checkbox - https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
+CheckboxGroup - The group's accessibility is bit tricky to get right, thus I'll implement and refine it and then document it here. 
 
 ## Open Questions
 
