@@ -331,4 +331,31 @@ CheckboxGroup - The group's accessibility is bit tricky to get right, thus I'll 
 
 ## Open Questions
 
-- ??
+1. Currently we only have `helperText` in Checkbox & CheckboxGroup and when we set `isInvalid` it becomes the `negative` variant. The problem is the content of the `helperText` should also change in certain scenarios to convey the exact error. 
+
+With this approach users will have to handle the logic
+
+```tsx
+const [isInvalid, setInvalid] = React.useState(false);
+
+<Checkbox 
+  isInvalid={isInvalid}
+  helperText={
+    isInvalid
+    ? 'Invalid username provided, contains special chars' 
+    : 'Enter valid username'
+  }
+/>
+```
+
+Will it be better to have a `errorText` prop instead which will automatically be switched internally is `isInvalid` is true? 
+
+```tsx
+const [isInvalid, setInvalid] = React.useState(false);
+
+<Checkbox 
+  isInvalid={isInvalid}
+  helperText={'Enter valid username'}
+  errorText={'Invalid username provided, contains special chars'}
+/>
+```
