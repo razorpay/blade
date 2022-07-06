@@ -110,14 +110,14 @@ with `isInvalid` & `isRequired` will pass down `required` and `aria-invalid` att
 
 | Prop          | Type                        | Required | Default     | Description                                                                                                                        |
 | ------------- | --------------------------- | -------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| children      | React.ReactNode             | No       | `undefined` | Accepts multiple Checkboxes                                                                                                        |
-| label         | `string`                    | No       | `undefined` | The label of the group                                                                                                             |
+| children      | `React.ReactNode`             | Yes       | `undefined` | Accepts multiple Checkboxes                                                                                                        |
+| label         | `string`                    | Yes       | `undefined` | The label of the group                                                                                                             |
 | labelPosition | `top, left`                 | No       | `top`       | The position of the rendered label                                                                                                 |
 | helperText    | `string`                    | No       | `undefined` | The helper text to be rendered                                                                                                     |
 | defaultValue  | `string[]`                  | No       | `[]`        | The initial value of the checkbox group                                                                                            |
-| name          | `string`                    | No       | `undefined` | The name of the checkbox group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) |
 | value         | `string[]`                  | No       | `[]`        | The value of the checkbox, if present will act as controlled component                                                             |
 | onChange      | `(value: string[]) => void` | No       | `undefined` | The function to be called when any checkbox's state changes                                                                        |
+| name          | `string`                    | No       | `undefined` | The name of the checkbox group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) |
 | isDisabled    | `boolean`                   | No       | `false`     | Control whether the checkbox group is disabled or not.                                                                             |
 | isReadOnly    | `boolean`                   | No       | `false`     | Control whether the checkbox group is readonly or not.                                                                             |
 | isInvalid     | `boolean`                   | No       | `false`     | Control whether the checkbox group is invalid or not.                                                                              |
