@@ -338,8 +338,8 @@ CheckboxGroupContext will pass down the <CheckboxGroup \/> properties like `isDi
 
 ## Accessibility
 
-Checkbox - https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
-CheckboxGroup - The group's accessibility is bit tricky to get right, thus I'll implement and refine it and then document it here. 
+- Checkbox - https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
+- CheckboxGroup - The group's accessibility is bit tricky to get right, thus I'll implement and refine it and then document it here. 
 
 ## Open Questions
 
