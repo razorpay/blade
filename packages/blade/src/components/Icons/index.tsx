@@ -21,11 +21,11 @@ export type IconProps = {
 };
 export type IconComponent = React.ComponentType<IconProps>;
 
-export { default as CloseIcon } from './CloseIcon';
 export { default as ChevronDownIcon } from './ChevronDownIcon';
 export { default as ChevronLeftIcon } from './ChevronLeftIcon';
 export { default as ChevronRightIcon } from './ChevronRightIcon';
 export { default as ChevronUpIcon } from './ChevronUpIcon';
+export { default as CloseIcon } from './CloseIcon';
 export { default as CreditCardIcon } from './CreditCardIcon';
 export { default as DollarIcon } from './DollarIcon';
 export { default as DownloadIcon } from './DownloadIcon';
@@ -33,6 +33,7 @@ export { default as EditIcon } from './EditIcon';
 export { default as EyeIcon } from './EyeIcon';
 export { default as EyeOffIcon } from './EyeOffIcon';
 export { default as HistoryIcon } from './HistoryIcon';
+export { default as InfoIcon } from './InfoIcon';
 export { default as PauseIcon } from './PauseIcon';
 export { default as PlusIcon } from './PlusIcon';
 export { default as RupeeIcon } from './RupeeIcon';
