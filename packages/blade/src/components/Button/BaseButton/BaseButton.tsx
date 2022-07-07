@@ -251,9 +251,6 @@ const getProps = ({
 
 const StyledSpinner = styled(Spinner)({
   position: 'absolute',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
 });
 
 const ButtonContent = styled(Box)<{ isHidden: boolean }>(({ isHidden }) => ({
