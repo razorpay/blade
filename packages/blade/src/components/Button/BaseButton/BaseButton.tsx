@@ -17,11 +17,13 @@ import type {
   BorderWidthValues,
   SpacingValues,
 } from '../../../tokens/theme/theme.d';
-import { ButtonSpinner } from '../ButtonSpinner';
 import { makeAccessible } from '../../../utils';
 import { announce } from '../../LiveAnnouncer';
 import usePrevious from '../../../utils/usePrevious';
 import type { SpinnerSize } from '../../Spinner/spinnerTokens';
+import Box from '../../Box';
+import type { DotNotationSpacingStringToken } from '../../../_helpers/types';
+import Spinner from '../../Spinner';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
   typography as buttonTypography,
@@ -68,14 +70,6 @@ type BaseButtonWithIconProps = BaseButtonCommonProps & {
 */
 export type BaseButtonProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
 
-const ButtonText = styled(BaseText)<{
-  paddingLeft: SpacingValues;
-  paddingRight: SpacingValues;
-}>(({ paddingLeft, paddingRight }) => ({
-  paddingLeft,
-  paddingRight,
-}));
-
 type BaseButtonColorTokenModifiers = {
   property: 'background' | 'border' | 'text' | 'icon';
   variant: NonNullable<BaseButtonProps['variant']>;
@@ -110,8 +104,7 @@ type BaseButtonStyleProps = {
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
   minHeight: `${ButtonMinHeight}px`;
-  textPaddingLeft: SpacingValues;
-  textPaddingRight: SpacingValues;
+  iconPadding?: DotNotationSpacingStringToken;
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
   buttonPaddingTop: SpacingValues;
@@ -144,7 +137,6 @@ const getProps = ({
   intent,
   contrast,
   hasIcon,
-  iconPosition,
 }: {
   buttonTypographyTokens: ButtonTypography[TypographyPlatforms];
   children?: string;
@@ -155,7 +147,6 @@ const getProps = ({
   variant: NonNullable<BaseButtonProps['variant']>;
   intent: BaseButtonProps['intent'];
   contrast: NonNullable<BaseButtonProps['contrast']>;
-  iconPosition: NonNullable<BaseButtonProps['iconPosition']>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
     iconSize: buttonSizeToIconSizeMap[size],
@@ -163,12 +154,7 @@ const getProps = ({
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
-    textPaddingLeft: makeSpace(
-      hasIcon && iconPosition === 'left' ? theme.spacing[textPadding[size]] : 0,
-    ),
-    textPaddingRight: makeSpace(
-      hasIcon && iconPosition === 'right' ? theme.spacing[textPadding[size]] : 0,
-    ),
+    iconPadding: hasIcon ? `spacing.${textPadding[size]}` : undefined,
     iconColor: getColorToken({
       property: 'icon',
       variant,
@@ -263,6 +249,17 @@ const getProps = ({
   return props;
 };
 
+const StyledSpinner = styled(Spinner)({
+  position: 'absolute',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
+const ButtonContent = styled(Box)<{ isHidden: boolean }>(({ isHidden }) => ({
+  opacity: isHidden ? 0 : 1,
+}));
+
 const BaseButton = ({
   variant = 'primary',
   intent,
@@ -313,9 +310,8 @@ const BaseButton = ({
     hoverBackgroundColor,
     iconColor,
     iconSize,
+    iconPadding,
     spinnerSize,
-    textPaddingLeft,
-    textPaddingRight,
     lineHeight,
     text,
     textColor,
@@ -332,7 +328,6 @@ const BaseButton = ({
     theme,
     intent,
     contrast,
-    iconPosition,
     hasIcon: Boolean(Icon),
   });
 
@@ -363,23 +358,46 @@ const BaseButton = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
     >
-      <ButtonSpinner isLoading={isLoading} color={iconColor} size={spinnerSize}>
-        {Icon && iconPosition == 'left' ? <Icon size={iconSize} color={iconColor} /> : null}
+      {isLoading ? (
+        <Box display="flex" justifyContent="center">
+          <StyledSpinner color={iconColor} size={spinnerSize} />
+        </Box>
+      ) : null}
+      <ButtonContent
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center"
+        alignSelf="center"
+        isHidden={isLoading}
+      >
+        {Icon && iconPosition == 'left' ? (
+          <Box
+            paddingRight={iconPadding}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Icon size={iconSize} color={iconColor} />
+          </Box>
+        ) : null}
         {text ? (
-          <ButtonText
+          <BaseText
             lineHeight={lineHeight}
             fontSize={fontSize}
             fontWeight="bold"
             textAlign="center"
             color={textColor}
-            paddingLeft={textPaddingLeft}
-            paddingRight={textPaddingRight}
           >
             {text}
-          </ButtonText>
+          </BaseText>
         ) : null}
-        {Icon && iconPosition == 'right' ? <Icon size={iconSize} color={iconColor} /> : null}
-      </ButtonSpinner>
+        {Icon && iconPosition == 'right' ? (
+          <Box paddingLeft={iconPadding}>
+            <Icon size={iconSize} color={iconColor} />
+          </Box>
+        ) : null}
+      </ButtonContent>
     </StyledBaseButton>
   );
 };
