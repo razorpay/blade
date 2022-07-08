@@ -13,8 +13,8 @@ export default {
       console.log('clicked');
     },
     isDisabled: false,
-    iconPosition: 'left',
-    variant: 'anchor',
+    href: 'https://calendar.google.com/',
+    target: '_blank',
   },
   argTypes: {
     icon: {

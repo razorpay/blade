@@ -4,8 +4,9 @@ const getStyledLinkStyles = (): CSSObject => ({
   padding: 0,
   cursor: 'pointer',
   backgroundColor: 'rgba(0,0,0,0)',
+  outline: 'none',
+  textDecoration: 'none',
   borderColor: 'rgba(0,0,0,0)',
-  borderRadius: '2px',
 });
 
 export default getStyledLinkStyles;
