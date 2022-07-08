@@ -108,6 +108,9 @@ const Link = ({
   console.log('unused props', isDisabled);
   const { currentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
+  if (!Icon && !children?.trim()) {
+    throw new Error(`[Blade: Link]: At least one of icon or text is required to render a link.`);
+  }
   const {
     as,
     textDecoration,
