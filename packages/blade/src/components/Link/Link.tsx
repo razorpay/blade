@@ -10,7 +10,6 @@ import type { Theme } from '../BladeProvider';
 import { useTheme } from '../BladeProvider';
 import Box from '../Box';
 import type { IconComponent, IconProps } from '../Icons';
-
 import type { BaseTextProps } from '../Typography/BaseText';
 import BaseText from '../Typography/BaseText';
 import StyledLink from './StyledLink.web';
@@ -56,16 +55,18 @@ const getProps = ({
   theme,
   variant,
   currentInteraction,
+  children,
 }: {
   theme: Theme;
   variant: NonNullable<LinkCommonProps['variant']>;
   currentInteraction: keyof ActionStates;
+  children?: string;
 }): LinkStyleProps => {
   const props: LinkStyleProps = {
     as: variant === 'anchor' ? 'a' : 'button',
     textDecoration: variant === 'anchor' && currentInteraction !== 'default' ? 'underline' : 'none',
     iconColor: `action.icon.link.${currentInteraction}`,
-    iconPadding: 'spacing.1',
+    iconPadding: !children?.trim() ? 'spacing.0' : 'spacing.1',
     textColor: `action.text.link.${currentInteraction}`,
     focusRingColor:
       currentInteraction == 'focus' || currentInteraction == 'active'
@@ -120,6 +121,7 @@ const Link = ({
     theme,
     variant,
     currentInteraction,
+    children,
   });
 
   return (
@@ -135,7 +137,7 @@ const Link = ({
         motionEasing={motionEasing}
       >
         {Icon && iconPosition == 'left' ? (
-          <Box paddingRight={iconPadding}>
+          <Box paddingRight={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size="xsmall" />
           </Box>
         ) : null}
@@ -143,7 +145,7 @@ const Link = ({
           {children}
         </BaseText>
         {Icon && iconPosition == 'right' ? (
-          <Box paddingLeft={iconPadding} display="flex" alignSelf="center">
+          <Box paddingLeft={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size="xsmall" />
           </Box>
         ) : null}
