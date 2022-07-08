@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import type { DurationString, EasingString } from '../../tokens/global/motion';
 import type { ActionStates } from '../../tokens/theme/theme.d';
@@ -49,6 +50,7 @@ type LinkStyleProps = {
   focusRingColor: string;
   motionDuration: DurationString;
   motionEasing: EasingString;
+  cursor: CSSObject['cursor'];
 };
 
 const getProps = ({
@@ -56,15 +58,18 @@ const getProps = ({
   variant,
   currentInteraction,
   children,
+  isDisabled,
 }: {
   theme: Theme;
   variant: NonNullable<LinkCommonProps['variant']>;
   currentInteraction: keyof ActionStates;
   children?: string;
+  isDisabled: boolean;
 }): LinkStyleProps => {
+  const isButton = variant === 'button';
   const props: LinkStyleProps = {
-    as: variant === 'anchor' ? 'a' : 'button',
-    textDecoration: variant === 'anchor' && currentInteraction !== 'default' ? 'underline' : 'none',
+    as: isButton ? 'button' : 'a',
+    textDecoration: !isButton && currentInteraction !== 'default' ? 'underline' : 'none',
     iconColor: `action.icon.link.${currentInteraction}`,
     iconPadding: !children?.trim() ? 'spacing.0' : 'spacing.1',
     textColor: `action.text.link.${currentInteraction}`,
@@ -74,7 +79,14 @@ const getProps = ({
         : 'none',
     motionDuration: 'duration.2xquick',
     motionEasing: 'easing.standard.effective',
+    cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
   };
+
+  if (isDisabled && variant == 'button') {
+    props.textColor = 'action.text.link.disabled';
+    props.iconColor = 'action.icon.link.disabled';
+  }
+
   return props;
 };
 
@@ -120,15 +132,25 @@ const Link = ({
     focusRingColor,
     motionDuration,
     motionEasing,
+    cursor,
   } = getProps({
     theme,
     variant,
     currentInteraction,
     children,
+    isDisabled,
   });
 
   return (
-    <StyledLink {...syntheticEvents} as={as} href={href} target={target} onClick={onClick}>
+    <StyledLink
+      {...syntheticEvents}
+      as={as}
+      href={href}
+      target={target}
+      onClick={onClick}
+      disabled={isDisabled}
+      cursor={cursor}
+    >
       <StyledBox
         display="flex"
         flexDirection="row"

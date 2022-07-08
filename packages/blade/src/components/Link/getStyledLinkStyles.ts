@@ -1,11 +1,11 @@
 import type { CSSObject } from 'styled-components';
 
-const getStyledLinkStyles = (): CSSObject => ({
+const getStyledLinkStyles = ({ cursor }: { cursor?: CSSObject['cursor'] }): CSSObject => ({
   padding: 0,
-  cursor: 'pointer',
   backgroundColor: 'rgba(0,0,0,0)',
   outline: 'none',
   textDecoration: 'none',
+  cursor,
   borderColor: 'rgba(0,0,0,0)',
 });
 

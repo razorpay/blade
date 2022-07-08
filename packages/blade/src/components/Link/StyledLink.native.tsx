@@ -5,7 +5,7 @@ const StyledLink = styled.Pressable<{ as: unknown }>(({ as }) => {
   if (as) {
     throw Error('');
   }
-  return { ...getStyledLinkStyles() };
+  return { ...getStyledLinkStyles({}) };
 });
 
 export default StyledLink;
