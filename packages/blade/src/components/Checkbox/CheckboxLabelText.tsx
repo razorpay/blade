@@ -1,0 +1,16 @@
+import BaseText from '../Typography/BaseText';
+
+const CheckboxLabelText = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+  return (
+    <BaseText
+      lineHeight="s"
+      fontFamily="text"
+      color="surface.text.subtle.lowContrast"
+      fontSize={100}
+    >
+      {children}
+    </BaseText>
+  );
+};
+
+export { CheckboxLabelText };

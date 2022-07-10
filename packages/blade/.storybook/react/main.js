@@ -37,6 +37,14 @@ module.exports = {
     ];
 
     // Return the altered config
-    return config;
+    return {
+      ...config,
+      plugins: config.plugins.filter((plugin) => {
+        if (plugin.constructor.name === 'ESLintWebpackPlugin') {
+          return false;
+        }
+        return true;
+      }),
+    };
   },
 };
