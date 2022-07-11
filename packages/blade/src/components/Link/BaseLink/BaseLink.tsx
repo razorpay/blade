@@ -15,6 +15,8 @@ import useInteraction from './useInteraction';
 
 type BaseLinkCommonProps = {
   variant?: 'anchor' | 'button';
+  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  contrast?: 'low' | 'high';
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
@@ -51,42 +53,77 @@ type BaseLinkStyleProps = {
   disabled: boolean;
 };
 
+const getColorToken = ({
+  variant,
+  intent,
+  contrast,
+  element,
+  currentInteraction,
+  isDisabled,
+}: {
+  variant: BaseLinkProps['variant'];
+  intent: BaseLinkProps['intent'];
+  contrast: BaseLinkProps['contrast'];
+  element: 'icon' | 'text';
+  currentInteraction: keyof ActionStates;
+  isDisabled: boolean;
+}): IconProps['color'] | BaseTextProps['color'] => {
+  const state = isDisabled && variant == 'button' ? 'disabled' : currentInteraction;
+  if (intent && contrast) {
+    return `feedback.${intent}.action.${element}.link.${state}.${contrast}Contrast`;
+  }
+  return `action.${element}.link.${state}`;
+};
+
 const getProps = ({
   theme,
   variant,
   currentInteraction,
   children,
   isDisabled,
+  intent,
+  contrast,
 }: {
   theme: Theme;
-  variant: NonNullable<BaseLinkCommonProps['variant']>;
+  variant: NonNullable<BaseLinkProps['variant']>;
   currentInteraction: keyof ActionStates;
   children?: string;
   isDisabled: boolean;
+  intent: BaseLinkProps['intent'];
+  contrast: BaseLinkProps['contrast'];
 }): BaseLinkStyleProps => {
   const isButton = variant === 'button';
   const props: BaseLinkStyleProps = {
     as: isButton ? 'button' : 'a',
     textDecoration: !isButton && currentInteraction !== 'default' ? 'underline' : 'none',
-    iconColor: `action.icon.link.${currentInteraction}`,
+    iconColor: getColorToken({
+      variant,
+      intent,
+      contrast,
+      element: 'icon',
+      currentInteraction,
+      isDisabled,
+    }) as IconProps['color'],
     iconPadding: !children?.trim() ? 'spacing.0' : 'spacing.1',
-    textColor: `action.text.link.${currentInteraction}`,
+    textColor: getColorToken({
+      variant,
+      intent,
+      contrast,
+      element: 'text',
+      currentInteraction,
+      isDisabled,
+    }) as BaseTextProps['color'],
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     motionDuration: 'duration.2xquick',
     motionEasing: 'easing.standard.effective',
     cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
-    disabled: variant === 'button' && isDisabled,
+    disabled: isButton && isDisabled,
   };
-
-  if (isDisabled && variant == 'button') {
-    props.textColor = 'action.text.link.disabled';
-    props.iconColor = 'action.icon.link.disabled';
-  }
 
   return props;
 };
 
-const Link = ({
+const BaseLink = ({
   children,
   icon: Icon,
   iconPosition = 'left',
@@ -95,6 +132,8 @@ const Link = ({
   variant = 'anchor',
   href,
   target,
+  intent,
+  contrast = 'low',
 }: BaseLinkProps): ReactElement => {
   console.log('unused props', isDisabled);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
@@ -121,6 +160,8 @@ const Link = ({
     currentInteraction,
     children,
     isDisabled,
+    intent,
+    contrast,
   });
 
   return (
@@ -161,4 +202,4 @@ const Link = ({
   );
 };
 
-export default Link;
+export default BaseLink;

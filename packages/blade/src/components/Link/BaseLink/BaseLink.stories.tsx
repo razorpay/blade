@@ -15,6 +15,7 @@ export default {
     isDisabled: false,
     href: 'https://calendar.google.com/',
     target: '_blank',
+    contrast: 'low',
   },
   argTypes: {
     icon: {
@@ -56,4 +57,4 @@ const BaseLinkTemplate: ComponentStory<typeof BaseLinkComponent> = ({
 
 export const BaseLink = BaseLinkTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-BaseLink.storyName = 'BaseLink (internal)';
+BaseLink.storyName = 'BaseLink';
