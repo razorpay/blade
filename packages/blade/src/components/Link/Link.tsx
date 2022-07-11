@@ -1,11 +1,8 @@
 import type { ReactElement } from 'react';
 import type { CSSObject } from 'styled-components';
-import styled from 'styled-components';
 import type { DurationString, EasingString } from '../../tokens/global/motion';
 import type { ActionStates } from '../../tokens/theme/theme.d';
 import getIn from '../../utils/getIn';
-import makeBorderSize from '../../utils/makeBorderSize';
-import makeMotionTime from '../../utils/makeMotionTime';
 import type { DotNotationSpacingStringToken } from '../../_helpers/types';
 import type { Theme } from '../BladeProvider';
 import { useTheme } from '../BladeProvider';
@@ -13,7 +10,7 @@ import Box from '../Box';
 import type { IconComponent, IconProps } from '../Icons';
 import type { BaseTextProps } from '../Typography/BaseText';
 import BaseText from '../Typography/BaseText';
-import StyledLink from './StyledLink.web';
+import StyledLink from './StyledLink';
 import useInteraction from './useInteraction';
 
 type LinkCommonProps = {
@@ -73,10 +70,7 @@ const getProps = ({
     iconColor: `action.icon.link.${currentInteraction}`,
     iconPadding: !children?.trim() ? 'spacing.0' : 'spacing.1',
     textColor: `action.text.link.${currentInteraction}`,
-    focusRingColor:
-      currentInteraction == 'focus' || currentInteraction == 'active'
-        ? getIn(theme.colors, 'brand.primary.400')
-        : 'none',
+    focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     motionDuration: 'duration.2xquick',
     motionEasing: 'easing.standard.effective',
     cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
@@ -89,23 +83,6 @@ const getProps = ({
 
   return props;
 };
-
-const StyledBox = styled(Box)<{
-  focusRingColor: string;
-  motionDuration: DurationString;
-  motionEasing: EasingString;
-}>(({ theme, focusRingColor, motionEasing, motionDuration }) => ({
-  boxShadow: `0px 0px 0px 4px ${focusRingColor}`,
-  borderRadius: makeBorderSize(theme.border.radius.small),
-  transitionProperty: 'box-shadow',
-  transitionTimingFunction: getIn(theme.motion, motionEasing),
-  transitionDuration: makeMotionTime(getIn(theme.motion, motionDuration)),
-  '*': {
-    transitionProperty: 'color, fill',
-    transitionTimingFunction: getIn(theme.motion, motionEasing),
-    transitionDuration: makeMotionTime(getIn(theme.motion, motionDuration)),
-  },
-}));
 
 const Link = ({
   children,
@@ -150,23 +127,22 @@ const Link = ({
       onClick={onClick}
       disabled={isDisabled}
       cursor={cursor}
+      focusRingColor={focusRingColor}
+      motionDuration={motionDuration}
+      motionEasing={motionEasing}
     >
-      <StyledBox
-        display="flex"
-        flexDirection="row"
-        width="fit-content"
-        justifyContent="center"
-        alignItems="center"
-        focusRingColor={focusRingColor}
-        motionDuration={motionDuration}
-        motionEasing={motionEasing}
-      >
+      <Box display="flex" flexDirection="row" className="content-container">
         {Icon && iconPosition == 'left' ? (
           <Box paddingRight={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size="xsmall" />
           </Box>
         ) : null}
-        <BaseText textDecorationLine={textDecoration} color={textColor} fontSize={100}>
+        <BaseText
+          textDecorationLine={textDecoration}
+          color={textColor}
+          fontSize={100}
+          textAlign="center"
+        >
           {children}
         </BaseText>
         {Icon && iconPosition == 'right' ? (
@@ -174,7 +150,7 @@ const Link = ({
             <Icon color={iconColor} size="xsmall" />
           </Box>
         ) : null}
-      </StyledBox>
+      </Box>
     </StyledLink>
   );
 };
