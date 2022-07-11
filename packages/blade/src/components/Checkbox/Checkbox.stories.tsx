@@ -5,6 +5,7 @@ import React from 'react';
 import { Text } from '../Typography';
 import type { CheckboxProps } from './Checkbox';
 import { Checkbox as CheckboxComponent } from './Checkbox';
+import { CheckboxGroup as CheckboxGroupComponent } from './CheckboxGroup';
 
 export default {
   title: 'Components/Checkbox',
@@ -69,19 +70,19 @@ const Comp = () => {
   return (
     <>
       <CheckboxComponent>Remember Login</CheckboxComponent>
-      <Text>{''}</Text>
+      <Text>&nbsp;</Text>
       <CheckboxComponent isDisabled>Remember Login</CheckboxComponent>
-      <Text>{''}</Text>
+      <Text>&nbsp;</Text>
       <CheckboxComponent isDisabled defaultChecked>
         Remember Login
       </CheckboxComponent>
-      <Text>{''}</Text>
+      <Text>&nbsp;</Text>
       <CheckboxComponent hasError>Remember Login</CheckboxComponent>
-      <Text>{''}</Text>
+      <Text>&nbsp;</Text>
       <CheckboxComponent hasError defaultChecked>
         Remember Login
       </CheckboxComponent>
-      <Text>{''}</Text>
+      <Text>&nbsp;</Text>
       <CheckboxComponent helpText="Please check this box">Remember Login</CheckboxComponent>
     </>
   );
@@ -91,4 +92,33 @@ const CheckboxTemplate: ComponentStory<typeof CheckboxComponent> = () => {
   return <Comp />;
 };
 export const Default = CheckboxTemplate.bind({});
+
+const GroupExample = () => {
+  return (
+    <>
+      <CheckboxGroupComponent helpText="Select atleast one" label="Select your fruit">
+        <CheckboxComponent>Apple</CheckboxComponent>
+        <CheckboxComponent>Mango</CheckboxComponent>
+        <CheckboxComponent>Orange</CheckboxComponent>
+      </CheckboxGroupComponent>
+      <Text>&nbsp;</Text>
+      <CheckboxGroupComponent
+        isOptional
+        hasError
+        errorText="This is invalid"
+        helpText="Select atleast one"
+        label="Select your fruit"
+      >
+        <CheckboxComponent>Apple</CheckboxComponent>
+        <CheckboxComponent>Mango</CheckboxComponent>
+        <CheckboxComponent>Orange</CheckboxComponent>
+      </CheckboxGroupComponent>
+    </>
+  );
+};
+
+const CheckboxGroupTemplate: ComponentStory<typeof CheckboxComponent> = () => {
+  return <GroupExample />;
+};
+export const CheckboxGroup = CheckboxGroupTemplate.bind({});
 Default.storyName = 'Default';

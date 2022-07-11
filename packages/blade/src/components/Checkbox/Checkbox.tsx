@@ -18,7 +18,7 @@ type CheckboxProps = {
   name?: string;
   value?: string;
   isDisabled?: boolean;
-  isRequired?: boolean;
+  isOptional?: boolean;
   hasError?: boolean;
 };
 
@@ -28,7 +28,7 @@ const Checkbox = ({
   isChecked,
   isDisabled,
   isIndeterminate,
-  isRequired,
+  isOptional,
   name,
   onChange,
   value,
@@ -41,7 +41,7 @@ const Checkbox = ({
     isChecked,
     isDisabled,
     isIndeterminate,
-    isRequired,
+    isOptional,
     name,
     onChange,
     value,

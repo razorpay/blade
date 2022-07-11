@@ -3,7 +3,7 @@ import BaseText from '../Typography/BaseText';
 const CheckboxLabelText = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
     <BaseText
-      lineHeight="s"
+      lineHeight="l"
       fontFamily="text"
       color="surface.text.subtle.lowContrast"
       fontSize={100}

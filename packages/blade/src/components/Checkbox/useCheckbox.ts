@@ -14,7 +14,7 @@ type UseCheckboxProps = Pick<
   | 'hasError'
   | 'isDisabled'
   | 'isIndeterminate'
-  | 'isRequired'
+  | 'isOptional'
   | 'onChange'
   | 'name'
   | 'value'
@@ -25,7 +25,7 @@ const useCheckbox = ({
   defaultChecked,
   isIndeterminate,
   isDisabled,
-  isRequired,
+  isOptional,
   hasError,
   onChange,
   name,
@@ -55,10 +55,10 @@ const useCheckbox = ({
 
   const accessibilityProps = makeAccessible({
     role: 'checkbox',
-    required: isRequired,
+    required: !isOptional,
     hidden: !isReactNative,
-    invalid: hasError,
-    disabled: isDisabled,
+    invalid: !!hasError,
+    disabled: !!isDisabled,
     checked: isIndeterminate ? 'mixed' : checkboxState,
   });
 
@@ -88,7 +88,7 @@ const useCheckbox = ({
       value,
       checked: checkboxState,
       disabled: isDisabled,
-      required: isRequired,
+      required: !isOptional,
       ...accessibilityProps,
     },
   };
