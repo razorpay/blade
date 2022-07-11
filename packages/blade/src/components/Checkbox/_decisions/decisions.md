@@ -79,7 +79,7 @@ const CheckboxGrop = () => {
 | value (html native) | `string`   | No       | undefined | The value of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) |
 | isDisabled          | `boolean`  | No       | `false`   | Control whether the checkbox is disabled or not.                                                                                                         |
 | hasError           | `boolean`  | No       | `false`   | Control whether the checkbox is invalid or not.                                                                                                          |
-| isRequired          | `boolean`  | No       | `false`   | Control whether the checkbox is required or not.                                                                                                         |
+| isOptional          | `boolean`  | No       | `false`   | Control whether the checkbox is optional or not.                                                                                                         |
 
 ### Examples:
 
@@ -98,7 +98,9 @@ const CheckboxGrop = () => {
 
 #### Validations
 
-with `hasError` & `isRequired` will pass down `required` and `aria-invalid` attributes accordingly
+By default checkboxes will have `required` prop but if users want the checkbox to be optional they can pass `isOptional` prop. 
+
+And `hasError` will pass `aria-invalid` attributes to indicate invalid state.
 
 ```tsx
 <Checkbox isRequired>is blade awesome?</Checkbox>
@@ -119,9 +121,8 @@ with `hasError` & `isRequired` will pass down `required` and `aria-invalid` attr
 | onChange      | `(value: string[]) => void` | No       | `undefined` | The function to be called when any checkbox's state changes                                                                        |
 | name          | `string`                    | No       | `undefined` | The name of the checkbox group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) |
 | isDisabled    | `boolean`                   | No       | `false`     | Control whether the checkbox group is disabled or not.                                                                             |
-| isReadOnly    | `boolean`                   | No       | `false`     | Control whether the checkbox group is readonly or not.                                                                             |
 | hasError     | `boolean`                   | No       | `false`     | Control whether the checkbox group is invalid or not.                                                                              |
-| isRequired    | `boolean`                   | No       | `false`     | Control whether the checkbox group is required or not.                                                                             |
+| isOptional    | `boolean`                   | No       | `false`     | Control whether the checkbox group is optional or not.                                                                             |
 
 ### Examples:
 
@@ -174,24 +175,50 @@ const Uncontrolled = () => {
 
 ### Note on CheckboxGroup
 
-For properties `isDisabled`, `hasError`, `isRequired` we want the CheckboxGroup to pass down these props to all the Checkboxes inside of it, but there is a gotcha.
+For properties `isDisabled`, `hasError`, `isOptional` we want the CheckboxGroup to pass down these props to all the Checkboxes inside of it, but there is a gotcha.
 
-We will only be passing down `isDisabled`, `hasError` props to the underlying Checkbox components.
+#### Case 1: Atleast one checkbox should be checked 
 
-We can't pass `isRequired`
+We will pass isOptional to all the childrens.
+Note that we can't pass `isOptional` in the CheckboxGroup itself because it will cause it to render `(optional)` tag.
 
-Because we don't know that:
+```tsx
+// Atleast one checkbox should be checked
+<CheckboxGroup hasError={checked.length < 1}>
+   <Checkbox isOptional />
+   <Checkbox isOptional />
+   <Checkbox isOptional />
+</CheckboxGroup
+```
 
-- Does user require that at least one checkbox is checked?
-- Does user require that all checkboxes are to be checked?
 
-When we say a checkbox group is required we generally mean that any of the checkboxes in a group has to be checked but if we pass down `isRequired` to all the checkboxes it would make the behaiour as all the checkboxes needs to be ticked. On the other hand there could be cases where we want all the checkboxes to be required not just one.
+#### Case 2: All checkboxes should be checked
 
-Similarly with `hasError` each checkbox should be independent of it's validation state. We don't know if the consumer wants `some` checkboxes or `all` checkboxes to be required.
+Since all checkboxes by default will be `required` we can just set `hasError` to control the error state of the group
 
-Ultimately IMO the validation logic should be handled by the consumer side depending on their requirements, and they should provide proper `helpText` to communicate the intent.
+```tsx
+// All checkboxes should be checked
+<CheckboxGroup hasError={checked.length < 2}>
+   <Checkbox />
+   <Checkbox />
+   <Checkbox />
+</CheckboxGroup
+```
 
-Although we will still have the `isRequired` `hasError` prop to show visual changes like showing the `necessity indication` or `negative error text`
+#### Case 3: The whole group is optional
+
+For this case the `CheckboxGroup` will pass down `isOptional` prop and render the `(optional)` tag.
+
+```tsx
+// The whole group is optional
+<CheckboxGroup isOptional> // <-- will pass down this prop
+   <Checkbox />
+   <Checkbox />
+   <Checkbox />
+</CheckboxGroup
+```
+
+The consumer will provide proper validation logic and depending on their use case and requirements they will pass `hasError` in conjunction with `isOptional` and they should also use `helpText` to convey the correct intent and extra information to the user.
 
 **Example of user managed validation**
 
