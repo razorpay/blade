@@ -167,6 +167,7 @@ const BaseLink = ({
   return (
     <StyledBaseLink
       {...syntheticEvents}
+      variant={variant}
       as={as}
       href={href}
       target={target}
