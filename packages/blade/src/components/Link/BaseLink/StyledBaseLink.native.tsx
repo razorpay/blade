@@ -30,6 +30,7 @@ const StyledLink = ({
   onClick,
   children,
   setCurrentInteraction,
+  accessibilityProps,
 }: StyledBaseLinkProps & { children: React.ReactNode }): ReactElement => {
   const handleOnPress = (): void => {
     if (href && variant === 'anchor') {
@@ -43,6 +44,7 @@ const StyledLink = ({
 
   return (
     <StyledNativeLink
+      {...accessibilityProps}
       disabled={disabled}
       onPress={handleOnPress}
       onPressIn={(): void => setCurrentInteraction('active')}

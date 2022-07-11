@@ -2,7 +2,7 @@
 import { fireEvent } from '@testing-library/react';
 import userEvents from '@testing-library/user-event';
 import React from 'react';
-import assertAccessible from '../../../../_helpers/testing/assertAccessibe.web';
+import assertAccessible from '../../../../_helpers/testing/assertAccessible.web';
 import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.web';
 import { CloseIcon, CreditCardIcon } from '../../../Icons';
 import BaseButton from '../BaseButton';

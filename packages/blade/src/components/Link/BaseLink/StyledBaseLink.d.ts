@@ -17,6 +17,7 @@ export type StyledBaseLinkProps = {
   motionDuration: DurationString;
   motionEasing: EasingString;
   setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
+  accessibilityProps: Record<string, unknown>;
 };
 
 export { default } from './StyledBaseLink.web';

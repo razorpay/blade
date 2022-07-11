@@ -1,7 +1,7 @@
 import React from 'react';
 import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.web';
 import Heading from '../';
-import assertAccessible from '../../../../_helpers/testing/assertAccessibe.web';
+import assertAccessible from '../../../../_helpers/testing/assertAccessible.web';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

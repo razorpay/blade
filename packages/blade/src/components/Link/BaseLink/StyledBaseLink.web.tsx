@@ -5,7 +5,9 @@ import makeMotionTime from '../../../utils/makeMotionTime';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './StyledBaseLink.d';
 
-const StyledLink = styled.button<StyledBaseLinkProps>((props) => ({
+const StyledLink = styled.button.attrs((props: StyledBaseLinkProps) => ({
+  ...props.accessibilityProps,
+}))<StyledBaseLinkProps>((props) => ({
   ...getStyledLinkStyles(props),
   borderRadius: makeBorderSize(props.theme.border.radius.small),
   transitionProperty: 'box-shadow',

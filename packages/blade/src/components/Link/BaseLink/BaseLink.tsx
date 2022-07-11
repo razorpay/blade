@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import type { CSSObject } from 'styled-components';
 import type { DurationString, EasingString } from '../../../tokens/global/motion';
 import type { ActionStates } from '../../../tokens/theme/theme';
+import { makeAccessible } from '../../../utils';
 import getIn from '../../../utils/getIn';
 import type { DotNotationSpacingStringToken } from '../../../_helpers/types';
 import type { Theme } from '../../BladeProvider';
@@ -23,6 +24,7 @@ type BaseLinkCommonProps = {
   onClick?: () => void;
   href?: string;
   target?: string;
+  accessibilityLabel?: string;
 };
 
 type BaseLinkWithoutIconProps = BaseLinkCommonProps & {
@@ -51,6 +53,7 @@ type BaseLinkStyleProps = {
   motionEasing: EasingString;
   cursor: CSSObject['cursor'];
   disabled: boolean;
+  role: 'button' | 'link';
 };
 
 const getColorToken = ({
@@ -118,6 +121,7 @@ const getProps = ({
     motionEasing: 'easing.standard.effective',
     cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
     disabled: isButton && isDisabled,
+    role: isButton ? 'button' : 'link',
   };
 
   return props;
@@ -134,8 +138,8 @@ const BaseLink = ({
   target,
   intent,
   contrast = 'low',
+  accessibilityLabel,
 }: BaseLinkProps): ReactElement => {
-  console.log('unused props', isDisabled);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
   if (!Icon && !children?.trim()) {
@@ -154,6 +158,7 @@ const BaseLink = ({
     motionEasing,
     cursor,
     disabled,
+    role,
   } = getProps({
     theme,
     variant,
@@ -167,6 +172,7 @@ const BaseLink = ({
   return (
     <StyledBaseLink
       {...syntheticEvents}
+      accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel }) }}
       variant={variant}
       as={as}
       href={href}
