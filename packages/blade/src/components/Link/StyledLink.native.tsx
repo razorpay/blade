@@ -14,9 +14,20 @@ const StyledLink = ({
   onClick,
   target,
   children,
+  setCurrentInteraction,
 }: StyledLinkProps & { children: React.ReactNode }): ReactElement => {
   console.log('unused props', href, target);
-  return <StyledNativeLink disabled={disabled} onPress={onClick} children={children} />;
+
+  return (
+    <StyledNativeLink
+      disabled={disabled}
+      onPress={onClick}
+      onPressIn={(): void => setCurrentInteraction('active')}
+      onPressOut={(): void => setCurrentInteraction('default')}
+    >
+      {children}
+    </StyledNativeLink>
+  );
 };
 
 export default StyledLink;

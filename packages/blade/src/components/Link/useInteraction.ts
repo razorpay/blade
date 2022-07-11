@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from 'react';
 import { useState } from 'react';
 import type { ActionStates } from '../../tokens/theme/theme';
 
@@ -7,6 +8,7 @@ const useInteraction = (): {
   onFocus: () => void;
   onBlur: () => void;
   currentInteraction: keyof ActionStates;
+  setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
 } => {
   const [currentInteraction, setCurrentInteraction] = useState<keyof ActionStates>('default');
 
@@ -23,7 +25,7 @@ const useInteraction = (): {
     setCurrentInteraction('default');
   };
 
-  return { onMouseEnter, onMouseLeave, onFocus, onBlur, currentInteraction };
+  return { onMouseEnter, onMouseLeave, onFocus, onBlur, currentInteraction, setCurrentInteraction };
 };
 
 export default useInteraction;

@@ -48,6 +48,7 @@ type LinkStyleProps = {
   motionDuration: DurationString;
   motionEasing: EasingString;
   cursor: CSSObject['cursor'];
+  disabled: boolean;
 };
 
 const getProps = ({
@@ -74,6 +75,7 @@ const getProps = ({
     motionDuration: 'duration.2xquick',
     motionEasing: 'easing.standard.effective',
     cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
+    disabled: variant === 'button' && isDisabled,
   };
 
   if (isDisabled && variant == 'button') {
@@ -95,7 +97,7 @@ const Link = ({
   target,
 }: LinkProps): ReactElement => {
   console.log('unused props', isDisabled);
-  const { currentInteraction, ...syntheticEvents } = useInteraction();
+  const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
   if (!Icon && !children?.trim()) {
     throw new Error(`[Blade: Link]: At least one of icon or text is required to render a link.`);
@@ -110,6 +112,7 @@ const Link = ({
     motionDuration,
     motionEasing,
     cursor,
+    disabled,
   } = getProps({
     theme,
     variant,
@@ -125,13 +128,14 @@ const Link = ({
       href={href}
       target={target}
       onClick={onClick}
-      disabled={isDisabled}
+      disabled={disabled}
       cursor={cursor}
       focusRingColor={focusRingColor}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
+      setCurrentInteraction={setCurrentInteraction}
     >
-      <Box display="flex" flexDirection="row" className="content-container">
+      <Box display="flex" flexDirection="row" className="content-container" alignItems="center">
         {Icon && iconPosition == 'left' ? (
           <Box paddingRight={iconPadding} display="flex" alignItems="center">
             <Icon color={iconColor} size="xsmall" />

@@ -1,5 +1,7 @@
+import type { Dispatch, SetStateAction } from 'react';
 import type { CSSObject } from 'styled-components';
 import type { DurationString, EasingString } from '../../tokens/global/motion';
+import type { ActionStates } from '../../tokens/theme/theme';
 
 export type StyledLinkProps = {
   as: 'a' | 'button';
@@ -12,6 +14,7 @@ export type StyledLinkProps = {
   cursor: CSSObject['cursor'];
   motionDuration: DurationString;
   motionEasing: EasingString;
+  setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
 };
 
 export { default } from './StyledLink.web';
