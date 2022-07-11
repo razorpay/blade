@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import getIn from '../../utils/getIn';
-import makeBorderSize from '../../utils/makeBorderSize';
-import makeMotionTime from '../../utils/makeMotionTime';
+import getIn from '../../../utils/getIn';
+import makeBorderSize from '../../../utils/makeBorderSize';
+import makeMotionTime from '../../../utils/makeMotionTime';
 import getStyledLinkStyles from './getStyledLinkStyles';
-import type { StyledLinkProps } from './StyledLink.d';
+import type { StyledBaseLinkProps } from './StyledBaseLink.d';
 
-const StyledLink = styled.button<StyledLinkProps>((props) => ({
+const StyledLink = styled.button<StyledBaseLinkProps>((props) => ({
   ...getStyledLinkStyles(props),
   borderRadius: makeBorderSize(props.theme.border.radius.small),
   transitionProperty: 'box-shadow',

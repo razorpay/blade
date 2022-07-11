@@ -1,12 +1,12 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import iconMap from '../Icons/iconMap';
-import type { LinkProps } from './Link';
-import LinkComponent from './Link';
+import iconMap from '../../Icons/iconMap';
+import type { BaseLinkProps } from './BaseLink';
+import BaseLinkComponent from './BaseLink';
 
 export default {
-  title: 'Components/Link',
-  component: LinkComponent,
+  title: 'Components/Link/BaseLink',
+  component: BaseLinkComponent,
   args: {
     children: 'Pay Now',
     onClick: (): void => {
@@ -28,7 +28,7 @@ export default {
       page: (): unknown => (
         <>
           <Title />
-          <Subtitle>This is the Link component.</Subtitle>
+          <Subtitle>This is the internal BaseLink component.</Subtitle>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
@@ -38,18 +38,22 @@ export default {
       ),
     },
   },
-} as Meta<LinkProps>;
+} as Meta<BaseLinkProps>;
 
-const LinkTemplate: ComponentStory<typeof LinkComponent> = ({ icon, children, ...args }) => {
+const BaseLinkTemplate: ComponentStory<typeof BaseLinkComponent> = ({
+  icon,
+  children,
+  ...args
+}) => {
   const IconComponent = iconMap[(icon as unknown) as string];
 
   return (
-    <LinkComponent icon={IconComponent} {...args}>
+    <BaseLinkComponent icon={IconComponent} {...args}>
       {children}
-    </LinkComponent>
+    </BaseLinkComponent>
   );
 };
 
-export const Link = LinkTemplate.bind({});
+export const BaseLink = BaseLinkTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Link.storyName = 'Link';
+BaseLink.storyName = 'BaseLink (internal)';

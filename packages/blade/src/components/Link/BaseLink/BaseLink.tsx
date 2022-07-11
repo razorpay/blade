@@ -1,19 +1,19 @@
 import type { ReactElement } from 'react';
 import type { CSSObject } from 'styled-components';
-import type { DurationString, EasingString } from '../../tokens/global/motion';
-import type { ActionStates } from '../../tokens/theme/theme.d';
-import getIn from '../../utils/getIn';
-import type { DotNotationSpacingStringToken } from '../../_helpers/types';
-import type { Theme } from '../BladeProvider';
-import { useTheme } from '../BladeProvider';
-import Box from '../Box';
-import type { IconComponent, IconProps } from '../Icons';
-import type { BaseTextProps } from '../Typography/BaseText';
-import BaseText from '../Typography/BaseText';
-import StyledLink from './StyledLink';
+import type { DurationString, EasingString } from '../../../tokens/global/motion';
+import type { ActionStates } from '../../../tokens/theme/theme';
+import getIn from '../../../utils/getIn';
+import type { DotNotationSpacingStringToken } from '../../../_helpers/types';
+import type { Theme } from '../../BladeProvider';
+import { useTheme } from '../../BladeProvider';
+import Box from '../../Box';
+import type { IconComponent, IconProps } from '../../Icons';
+import type { BaseTextProps } from '../../Typography/BaseText';
+import BaseText from '../../Typography/BaseText';
+import StyledBaseLink from './StyledBaseLink';
 import useInteraction from './useInteraction';
 
-type LinkCommonProps = {
+type BaseLinkCommonProps = {
   variant?: 'anchor' | 'button';
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';
@@ -23,7 +23,7 @@ type LinkCommonProps = {
   target?: string;
 };
 
-type LinkWithoutIconProps = LinkCommonProps & {
+type BaseLinkWithoutIconProps = BaseLinkCommonProps & {
   icon?: undefined;
   children: string;
 };
@@ -31,14 +31,14 @@ type LinkWithoutIconProps = LinkCommonProps & {
 /*
    Optional children prop when icon is provided
   */
-type LinkWithIconProps = LinkCommonProps & {
+type BaseLinkWithIconProps = BaseLinkCommonProps & {
   icon: IconComponent;
   children?: string;
 };
 
-export type LinkProps = LinkWithIconProps | LinkWithoutIconProps;
+export type BaseLinkProps = BaseLinkWithIconProps | BaseLinkWithoutIconProps;
 
-type LinkStyleProps = {
+type BaseLinkStyleProps = {
   as: 'a' | 'button';
   textDecoration: 'underline' | 'none';
   iconColor: IconProps['color'];
@@ -59,13 +59,13 @@ const getProps = ({
   isDisabled,
 }: {
   theme: Theme;
-  variant: NonNullable<LinkCommonProps['variant']>;
+  variant: NonNullable<BaseLinkCommonProps['variant']>;
   currentInteraction: keyof ActionStates;
   children?: string;
   isDisabled: boolean;
-}): LinkStyleProps => {
+}): BaseLinkStyleProps => {
   const isButton = variant === 'button';
-  const props: LinkStyleProps = {
+  const props: BaseLinkStyleProps = {
     as: isButton ? 'button' : 'a',
     textDecoration: !isButton && currentInteraction !== 'default' ? 'underline' : 'none',
     iconColor: `action.icon.link.${currentInteraction}`,
@@ -95,12 +95,14 @@ const Link = ({
   variant = 'anchor',
   href,
   target,
-}: LinkProps): ReactElement => {
+}: BaseLinkProps): ReactElement => {
   console.log('unused props', isDisabled);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
   if (!Icon && !children?.trim()) {
-    throw new Error(`[Blade: Link]: At least one of icon or text is required to render a link.`);
+    throw new Error(
+      `[Blade: BaseLink]: At least one of icon or text is required to render a link.`,
+    );
   }
   const {
     as,
@@ -122,7 +124,7 @@ const Link = ({
   });
 
   return (
-    <StyledLink
+    <StyledBaseLink
       {...syntheticEvents}
       as={as}
       href={href}
@@ -155,7 +157,7 @@ const Link = ({
           </Box>
         ) : null}
       </Box>
-    </StyledLink>
+    </StyledBaseLink>
   );
 };
 

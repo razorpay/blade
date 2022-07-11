@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import styled from 'styled-components/native';
 import getStyledLinkStyles from './getStyledLinkStyles';
-import type { StyledLinkProps } from './StyledLink';
+import type { StyledBaseLinkProps } from './StyledBaseLink.d';
 
 const StyledNativeLink = styled.Pressable({
   ...getStyledLinkStyles({}),
@@ -15,7 +15,7 @@ const StyledLink = ({
   target,
   children,
   setCurrentInteraction,
-}: StyledLinkProps & { children: React.ReactNode }): ReactElement => {
+}: StyledBaseLinkProps & { children: React.ReactNode }): ReactElement => {
   console.log('unused props', href, target);
 
   return (
