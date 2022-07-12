@@ -277,7 +277,7 @@ Checkbox.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   helpText: (props, propName, componentName) => {
-    if (props.size === 'small') {
+    if (props.size === 'small' && props.errorText !== '') {
       return new Error(
         `[${propName}]. ${propName} is ignored as it is not supported when size is small in ${componentName}`,
       );
@@ -292,7 +292,7 @@ Checkbox.propTypes = {
     return null;
   },
   errorText: (props, propName, componentName) => {
-    if (props.size === 'small') {
+    if (props.size === 'small' && props.errorText !== '') {
       return new Error(
         `[${propName}]. ${propName} is ignored as it is not supported when size is small in ${componentName}`,
       );
