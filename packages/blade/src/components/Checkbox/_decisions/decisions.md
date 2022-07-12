@@ -19,52 +19,6 @@
 
 [Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026) to all variants of the Checkbox component
 
-## Anatomy
-
-- **Checkbox**
-  - **CheckboxInput** - Hidden native <input \/> element
-  - **CheckboxIcon** - Checked/Unchecked & indeterminate icon
-  - **CheckboxLabel** - The Checkbox's <label \/> element
-  - **CheckboxLabelText** - The cross-platform Text component
-  - **CheckboxHelpText** - The helper text component
-- **CheckboxGroup**
-  - **CheckboxGroupFieldset** - Would render a native <fieldset \/>
-  - **CheckboxGroupLegend** - Would render a native <legend \/>
-  - **CheckboxGroupHintText** - The helper/error text component
-
-Checkbox Component's Internal Anatomy:
-
-```tsx
-const Checkbox = () => {
-  return (
-    <>
-      <CheckboxLabel>
-        <CheckboxIcon />
-        <VisuallyHidden>
-          <CheckboxInput />
-        </VisuallyHidden>
-        <CheckboxLabelText />
-      </CheckboxLabel>
-      <CheckboxHelpText />
-    </>
-  );
-};
-```
-
-CheckboxGroup Component's Internal Anatomy:
-
-```tsx
-const CheckboxGroup = () => {
-  return (
-    <CheckboxGroupFieldset>
-      <CheckboxGroupLegend>title</CheckboxGroupLegend>
-      {children}
-      <CheckboxGroupHintText variant="help | error" />
-    </CheckboxGroupFieldset>
-  );
-};
-```
-
 ## `Checkbox` API
 
 | Prop                | Type       | Required | Default   | Description                                                                                                                                              |
