@@ -76,7 +76,7 @@ const getCheckboxIconWrapperStyles = ({
     borderWidth: '1px',
     borderStyle: 'solid',
     margin: '0px',
-    marginTop: '2px',
+    marginTop: '3px',
     borderRadius: makeSize(theme.border.radius.small),
     marginRight: makeSpace(theme.spacing[2]),
     ...(isFocused && { boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]!}` }),
