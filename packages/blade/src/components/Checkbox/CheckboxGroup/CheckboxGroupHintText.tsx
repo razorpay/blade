@@ -1,4 +1,5 @@
 import React from 'react';
+import getPlatformType from '../../../utils/getPlatformType';
 import BaseText from '../../Typography/BaseText';
 
 type CheckboxGroupHintTextProps = {
@@ -10,9 +11,11 @@ const CheckboxGroupHintText = ({
   children,
   variant,
 }: CheckboxGroupHintTextProps): React.ReactElement => {
+  const isReactNative = getPlatformType() === 'react-native';
+
   return (
     <BaseText
-      as="span"
+      as={isReactNative ? undefined : 'span'}
       color={
         variant === 'error'
           ? 'feedback.text.negative.lowContrast'

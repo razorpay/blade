@@ -1,22 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import { makeAccessible } from '../../../utils';
-import type { CheckboxGroupProps } from './CheckboxGroup';
 import { useCheckboxGroupContext } from './CheckboxGroupContext';
+import { StyledCheckboxGroupField } from './StyledElements';
 
 type CheckboxGroupFieldProps = {
   children: React.ReactNode;
   labelledBy: string;
 };
-
-const StyledCheckboxGroupField = styled.div<Pick<CheckboxGroupProps, 'labelPosition'>>(
-  ({ labelPosition }) => {
-    return {
-      display: 'flex',
-      flexDirection: labelPosition === 'top' ? 'column' : 'row',
-    };
-  },
-);
 
 const CheckboxGroupField = ({
   children,

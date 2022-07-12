@@ -20,6 +20,19 @@ const CheckedIcon = ({ color }: { color: string }) => {
   );
 };
 
+const IndeterminateIcon = ({ color }: { color: string }) => {
+  return (
+    <Svg width="16px" height="16px" viewBox="0 0 16 16" fill="none">
+      <Path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+        fill={color}
+      />
+    </Svg>
+  );
+};
+
 export type CheckboxIconProps = {
   isFocused?: boolean;
   isDisabled?: boolean;
@@ -37,10 +50,12 @@ const CheckboxIcon = ({
   isFocused,
 }: CheckboxIconProps) => {
   const { theme } = useTheme();
-  const iconColor = getIn(theme, 'colors.brand.gray.200');
+  const defaultIconColor = getIn(theme, 'colors.brand.gray.200');
   const disabledIconColor = getIn(theme, 'colors.brand.gray.500');
+  const iconColor = isDisabled ? disabledIconColor : defaultIconColor;
 
   const isChecked = state;
+
   return (
     <CheckboxIconWrapper
       isIndeterminate={isIndeterminate}
@@ -50,9 +65,9 @@ const CheckboxIcon = ({
       isChecked={!!(isChecked || isIndeterminate)}
     >
       {isIndeterminate ? (
-        '-'
+        <IndeterminateIcon color={iconColor} />
       ) : isChecked ? (
-        <CheckedIcon color={isDisabled ? disabledIconColor : iconColor} />
+        <CheckedIcon color={iconColor} />
       ) : null}
     </CheckboxIconWrapper>
   );

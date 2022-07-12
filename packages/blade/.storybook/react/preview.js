@@ -10,7 +10,7 @@ export const parameters = {
     'storybook/docs/panel': { index: 0 },
     canvas: { title: 'Stories', index: 1 },
   },
-  viewMode: 'docs',
+  viewMode: process.env.NODE_ENV === 'development' ? 'story' : 'docs',
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {

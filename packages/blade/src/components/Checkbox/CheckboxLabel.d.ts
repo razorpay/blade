@@ -7,5 +7,5 @@ export type CheckboxLabelProps = {
   /**
    * Pass only on react-native
    */
-  inputProps: Partial<InputProps>;
+  inputProps: Partial<Extract<InputProps, { onPress: any }>>;
 };

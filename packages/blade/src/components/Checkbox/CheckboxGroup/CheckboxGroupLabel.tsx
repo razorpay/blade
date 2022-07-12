@@ -1,4 +1,5 @@
 import React from 'react';
+import getPlatformType from '../../../utils/getPlatformType';
 import BaseText from '../../Typography/BaseText';
 import { useCheckboxGroupContext } from './CheckboxGroupContext';
 
@@ -9,18 +10,28 @@ type CheckboxGroupLabelProps = {
 
 const CheckboxGroupLabel = ({ children, id }: CheckboxGroupLabelProps): React.ReactElement => {
   const { labelPosition } = useCheckboxGroupContext();
+  const isReactNative = getPlatformType() === 'react-native';
+
+  const textNode = (
+    <BaseText
+      lineHeight="s"
+      fontFamily="text"
+      fontWeight="bold"
+      color="surface.text.subtle.lowContrast"
+      fontSize={75}
+    >
+      {children}
+    </BaseText>
+  );
+
+  // What harm can it do?
+  if (isReactNative) {
+    return textNode;
+  }
 
   return (
     <span style={{ width: labelPosition === 'left' ? '120px' : 'auto' }} id={id}>
-      <BaseText
-        lineHeight="s"
-        fontFamily="text"
-        fontWeight="bold"
-        color="surface.text.subtle.lowContrast"
-        fontSize={75}
-      >
-        {children}
-      </BaseText>
+      {textNode}
     </span>
   );
 };
