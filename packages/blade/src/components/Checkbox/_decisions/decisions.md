@@ -54,7 +54,7 @@ const Checkbox = () => {
 CheckboxGroup Component's Internal Anatomy:
 
 ```tsx
-const CheckboxGrop = () => {
+const CheckboxGroup = () => {
   return (
     <CheckboxGroupFieldset>
       <CheckboxGroupLegend>title</CheckboxGroupLegend>
