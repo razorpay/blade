@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import testID from '../../utils/testId';
 import BaseText from '../Typography/BaseText';
-import screenReaderStyles from '../VisuallyHidden/ScreenReaderStyles';
+import { screenReaderStyles } from '../VisuallyHidden';
 
 const fallbackId = 'blade-skip-nav';
 type SkipNavLinkProps = {
