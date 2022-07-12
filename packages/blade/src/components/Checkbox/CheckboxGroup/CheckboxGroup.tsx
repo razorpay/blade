@@ -1,5 +1,7 @@
 import React from 'react';
 import { Wrapper } from '../Wrapper';
+import { VisuallyHidden } from '../../VisuallyHidden';
+import { Text } from '../../Typography';
 import { CheckboxGroupContent } from './CheckboxGroupContent';
 import { CheckboxGroupField } from './CheckboxGroupField';
 import { CheckboxGroupHintText } from './CheckboxGroupHintText';
@@ -58,6 +60,12 @@ const CheckboxGroup = ({
           {showOptionalLabel && (
             <CheckboxGroupHintText variant="help"> (optional)</CheckboxGroupHintText>
           )}
+          <VisuallyHidden>
+            <Text>
+              ,{showError && errorText}
+              {showHelpText && showHelpText}
+            </Text>
+          </VisuallyHidden>
         </CheckboxGroupLabel>
         <Wrapper>
           <CheckboxGroupContent>{children}</CheckboxGroupContent>
