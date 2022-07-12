@@ -30,7 +30,7 @@
 - **CheckboxGroup**
   - **CheckboxGroupFieldset** - Would render a native <fieldset \/>
   - **CheckboxGroupLegend** - Would render a native <legend \/>
-  - **CheckboxGroupHelpeText** - The helper text component
+  - **CheckboxGroupHintText** - The helper/error text component
 
 Checkbox Component's Internal Anatomy:
 
@@ -59,7 +59,7 @@ const CheckboxGrop = () => {
     <CheckboxGroupFieldset>
       <CheckboxGroupLegend>title</CheckboxGroupLegend>
       {children}
-      <CheckboxGroupHelpeText type="default | negative" />
+      <CheckboxGroupHintText variant="help | error" />
     </CheckboxGroupFieldset>
   );
 };
@@ -79,7 +79,7 @@ const CheckboxGrop = () => {
 | value (html native) | `string`   | No       | undefined | The value of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) |
 | isDisabled          | `boolean`  | No       | `false`   | Control whether the checkbox is disabled or not.                                                                                                         |
 | hasError           | `boolean`  | No       | `false`   | Control whether the checkbox is invalid or not.                                                                                                          |
-| isOptional          | `boolean`  | No       | `false`   | Control whether the checkbox is optional or not.                                                                                                         |
+| isRequired          | `boolean`  | No       | `false`   | Control whether the checkbox is required or not.                                                                                                         |
 
 ### Examples:
 
@@ -98,12 +98,9 @@ const CheckboxGrop = () => {
 
 #### Validations
 
-By default checkboxes will have `required` prop but if users want the checkbox to be optional they can pass `isOptional` prop. 
-
 And `hasError` will pass `aria-invalid` attributes to indicate invalid state.
 
 ```tsx
-<Checkbox isRequired>is blade awesome?</Checkbox>
 <Checkbox hasError={true | false}>is blade awesome?</Checkbox>
 ```
 
@@ -122,7 +119,7 @@ And `hasError` will pass `aria-invalid` attributes to indicate invalid state.
 | name          | `string`                    | No       | `undefined` | The name of the checkbox group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) |
 | isDisabled    | `boolean`                   | No       | `false`     | Control whether the checkbox group is disabled or not.                                                                             |
 | hasError     | `boolean`                   | No       | `false`     | Control whether the checkbox group is invalid or not.                                                                              |
-| isOptional    | `boolean`                   | No       | `false`     | Control whether the checkbox group is optional or not.                                                                             |
+| showOptionalLabel    | `boolean`                   | No       | `false`     | Shows optional label in checkbox group header |
 
 ### Examples:
 
@@ -175,50 +172,10 @@ const Uncontrolled = () => {
 
 ### Note on CheckboxGroup
 
-For properties `isDisabled`, `hasError`, `isOptional` we want the CheckboxGroup to pass down these props to all the Checkboxes inside of it, but there is a gotcha.
+For properties `isDisabled`, `hasError` we want the CheckboxGroup to pass down these props to all the Checkboxes inside of it.
 
-#### Case 1: Atleast one checkbox should be checked 
-
-We will pass isOptional to all the childrens.
-Note that we can't pass `isOptional` in the CheckboxGroup itself because it will cause it to render `(optional)` tag.
-
-```tsx
-// Atleast one checkbox should be checked
-<CheckboxGroup hasError={checked.length < 1}>
-   <Checkbox isOptional />
-   <Checkbox isOptional />
-   <Checkbox isOptional />
-</CheckboxGroup
-```
-
-
-#### Case 2: All checkboxes should be checked
-
-Since all checkboxes by default will be `required` we can just set `hasError` to control the error state of the group
-
-```tsx
-// All checkboxes should be checked
-<CheckboxGroup hasError={checked.length < 2}>
-   <Checkbox />
-   <Checkbox />
-   <Checkbox />
-</CheckboxGroup
-```
-
-#### Case 3: The whole group is optional
-
-For this case the `CheckboxGroup` will pass down `isOptional` prop and render the `(optional)` tag.
-
-```tsx
-// The whole group is optional
-<CheckboxGroup isOptional> // <-- will pass down this prop
-   <Checkbox />
-   <Checkbox />
-   <Checkbox />
-</CheckboxGroup
-```
-
-The consumer will provide proper validation logic and depending on their use case and requirements they will pass `hasError` in conjunction with `isOptional` and they should also use `helpText` to convey the correct intent and extra information to the user.
+For showing optional label in `CheckboxGroup` we will introduce a prop `showOptionalLabel` which will only render a `(optional)` tag in the CheckboxGroupLabel,
+And the consumer will provide proper validation logic and depending on their use case and requirements they will pass `hasError` in conjunction with `showOptionalLabel` and they should also use `helpText` to convey the correct intent and extra information to the user.
 
 **Example of user managed validation**
 
@@ -234,8 +191,7 @@ function AnyOneHasToBeSelected() {
       helpText="You can select multiple"
       value={selected}
       onChange={setSelected}
-      isRequired
-      hasError={selected.length === 0 ? true : false}
+      hasError={selected.length === 0}
     >
       <Checkbox value="apple">apple</Checkbox>
       <Checkbox value="mango">mango</Checkbox>
@@ -258,30 +214,11 @@ function AllOfThemHasToBeSelected() {
       helpText="Select all"
       value={selected}
       onChange={setSelected}
-      isRequired
-      hasError={selected.length === 3 ? true : false}
+      hasError={selected.length < 2}
     >
       <Checkbox value="use-ts">I will use TS</Checkbox>
       <Checkbox value="no-any">I won't use any</Checkbox>
       <Checkbox value="use-js">I won't use JS</Checkbox>
-    </CheckboxGroup>
-  );
-}
-```
-
-And lastly users can also individually set `isRequired`, `hasError` props on the <Checkbbox \/> components instead of the parent CheckboxGroup for greater fine control.
-
-```tsx
-function IndividualCheckboxValidation() {
-  return (
-    <CheckboxGroup label="Do you agree to all the terms?" helpText="Select all">
-      <Checkbox value="use-ts" isRequired>
-        I will use TS
-      </Checkbox>
-      <Checkbox value="no-any">I won't use any (you can use it)</Checkbox>
-      <Checkbox value="use-js" isRequired>
-        I won't use JS
-      </Checkbox>
     </CheckboxGroup>
   );
 }
@@ -323,4 +260,4 @@ const [hasError, setInvalid] = React.useState(false);
 />
 ```
 
-**Conclusion:** No errorText on the `Checkbox` itself, we will only have it on `CheckboxGroup`.
+**Conclusion:** No `errorText` on the `Checkbox` itself, we will only have it on `CheckboxGroup`.
