@@ -22,7 +22,7 @@ type CheckboxProps = {
   name?: string;
   value?: string;
   isDisabled?: boolean;
-  isOptional?: boolean;
+  isRequired?: boolean;
   hasError?: boolean;
 };
 
@@ -32,7 +32,7 @@ const Checkbox = ({
   isChecked,
   isDisabled,
   isIndeterminate,
-  isOptional,
+  isRequired,
   name,
   onChange,
   value,
@@ -59,7 +59,6 @@ const Checkbox = ({
 
   const _hasError = hasError ?? groupProps.hasError;
   const _isDisabled = isDisabled ?? groupProps.isDisabled;
-  const _isOptional = isOptional ?? groupProps.isOptional;
   const _name = name ?? groupProps.name;
   const _isChecked = isChecked ?? groupProps.state?.isChecked(value!);
 
@@ -79,7 +78,7 @@ const Checkbox = ({
     isIndeterminate,
     hasError: _hasError,
     isDisabled: _isDisabled,
-    isOptional: _isOptional,
+    isRequired,
     name: _name,
     value,
     onChange: handleChange,

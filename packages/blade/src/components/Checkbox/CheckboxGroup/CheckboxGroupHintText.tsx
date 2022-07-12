@@ -12,6 +12,7 @@ const CheckboxGroupHintText = ({
 }: CheckboxGroupHintTextProps): React.ReactElement => {
   return (
     <BaseText
+      as="span"
       color={
         variant === 'error'
           ? 'feedback.text.negative.lowContrast'

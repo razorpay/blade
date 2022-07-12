@@ -12,7 +12,7 @@ export type CheckboxGroupProps = {
   helpText?: string;
   errorText?: string;
   hasError?: boolean;
-  isOptional?: boolean;
+  showOptionalLabel?: boolean;
   isDisabled?: boolean;
   label: string;
   labelPosition?: 'top' | 'left';
@@ -27,7 +27,7 @@ const CheckboxGroup = ({
   label,
   helpText,
   isDisabled,
-  isOptional,
+  showOptionalLabel,
   labelPosition = 'top',
   hasError,
   errorText,
@@ -44,7 +44,7 @@ const CheckboxGroup = ({
     name,
     labelPosition,
     hasError,
-    isOptional,
+    showOptionalLabel,
   });
 
   const showError = hasError && errorText;
@@ -54,7 +54,10 @@ const CheckboxGroup = ({
     <CheckboxGroupProvider value={contextValue}>
       <CheckboxGroupField labelledBy={labelId}>
         <CheckboxGroupLabel id={labelId}>
-          {label} {isOptional ? <span style={{ color: 'gray' }}>(optional)</span> : ''}
+          {label}
+          {showOptionalLabel && (
+            <CheckboxGroupHintText variant="help"> (optional)</CheckboxGroupHintText>
+          )}
         </CheckboxGroupLabel>
         <Wrapper>
           <CheckboxGroupContent>{children}</CheckboxGroupContent>

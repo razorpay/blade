@@ -11,7 +11,7 @@ import type { CheckboxGroupProps } from './CheckboxGroup';
 
 type UseCheckboxGroupProps = Pick<
   CheckboxGroupProps,
-  'isDisabled' | 'labelPosition' | 'hasError' | 'isOptional' | 'name'
+  'isDisabled' | 'labelPosition' | 'hasError' | 'showOptionalLabel' | 'name'
 > & {
   value?: string[];
   defaultValue?: string[];
@@ -24,7 +24,7 @@ const useCheckboxGroup = ({
   isDisabled,
   labelPosition,
   onChange,
-  isOptional,
+  showOptionalLabel,
   hasError,
   name,
 }: UseCheckboxGroupProps) => {
@@ -72,13 +72,13 @@ const useCheckboxGroup = ({
   const contextValue = React.useMemo(() => {
     return {
       hasError,
-      isOptional,
+      showOptionalLabel,
       isDisabled,
       labelPosition: platform === 'onMobile' ? 'top' : labelPosition,
       name,
       state,
     };
-  }, [hasError, isOptional, isDisabled, platform, labelPosition, name, state]);
+  }, [hasError, showOptionalLabel, isDisabled, platform, labelPosition, name, state]);
 
   return { state, contextValue, labelId };
 };

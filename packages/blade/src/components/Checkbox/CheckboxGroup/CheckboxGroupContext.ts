@@ -8,7 +8,7 @@ type CheckboxGroupContextType = Pick<
   CheckboxGroupProps,
   | 'hasError'
   | 'isDisabled'
-  | 'isOptional'
+  | 'showOptionalLabel'
   | 'labelPosition'
   | 'name'
   | 'defaultValue'

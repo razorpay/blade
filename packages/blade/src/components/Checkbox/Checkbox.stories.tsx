@@ -132,6 +132,7 @@ const GroupExample = () => {
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
         hasError
+        showOptionalLabel
         errorText="Atleast one has to be selected"
         helpText="Select atleast one"
         label="Select your fruit"
@@ -143,7 +144,7 @@ const GroupExample = () => {
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
         labelPosition="left"
-        isOptional
+        showOptionalLabel
         hasError
         errorText="This is invalid"
         helpText="Select atleast one"
