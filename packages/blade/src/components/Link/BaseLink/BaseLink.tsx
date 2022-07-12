@@ -172,7 +172,7 @@ const BaseLink = ({
   return (
     <StyledBaseLink
       {...syntheticEvents}
-      accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel }) }}
+      accessibilityProps={{ ...makeAccessible({ role, label: accessibilityLabel, disabled }) }}
       variant={variant}
       as={as}
       href={href}
