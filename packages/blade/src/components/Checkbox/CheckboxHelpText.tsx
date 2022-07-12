@@ -1,11 +1,17 @@
 import React from 'react';
-import { Text } from '../Typography';
+import BaseText from '../Typography/BaseText';
 
 const CheckboxHelpText = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <Text contrast="low" type="muted" variant="caption">
+    <BaseText
+      color="surface.text.subtle.lowContrast"
+      fontSize={50}
+      lineHeight="s"
+      fontStyle="italic"
+      fontFamily="text"
+    >
       {children}
-    </Text>
+    </BaseText>
   );
 };
 

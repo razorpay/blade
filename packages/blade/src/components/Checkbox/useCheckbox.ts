@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import type React from 'react';
+import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { useControllableState } from '../../hooks/useControllable';
 import { makeAccessible } from '../../utils';
@@ -20,6 +20,14 @@ type UseCheckboxProps = Pick<
   | 'value'
 >;
 
+function setMixed(element: HTMLInputElement, mixed?: boolean) {
+  if (mixed) {
+    element.indeterminate = true;
+  } else if (element.indeterminate) {
+    element.indeterminate = false;
+  }
+}
+
 const useCheckbox = ({
   isChecked,
   defaultChecked,
@@ -31,6 +39,8 @@ const useCheckbox = ({
   name,
   value,
 }: UseCheckboxProps) => {
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
   const isReactNative = getPlatformType() === 'react-native';
   if (isChecked && defaultChecked) {
     throw new Error(
@@ -59,8 +69,15 @@ const useCheckbox = ({
     hidden: !isReactNative,
     invalid: !!hasError,
     disabled: !!isDisabled,
-    checked: isIndeterminate ? 'mixed' : checkboxState,
+    checked: checkboxState,
   });
+
+  React.useEffect(() => {
+    const element = inputRef.current;
+    if (!element) return;
+    setMixed(element, isIndeterminate);
+    // element.checked = isChecked;
+  }, [isIndeterminate, checkboxState]);
 
   const state = {
     isReactNative,
@@ -82,6 +99,7 @@ const useCheckbox = ({
   return {
     state,
     inputProps: {
+      ref: inputRef,
       onChange: handleOnChange,
       type: 'checkbox',
       name,

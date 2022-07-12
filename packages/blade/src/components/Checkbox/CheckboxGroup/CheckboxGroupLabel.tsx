@@ -1,5 +1,6 @@
 import React from 'react';
 import BaseText from '../../Typography/BaseText';
+import { useCheckboxGroupContext } from './CheckboxGroupContext';
 
 type CheckboxGroupLabelProps = {
   children: React.ReactNode;
@@ -7,14 +8,16 @@ type CheckboxGroupLabelProps = {
 };
 
 const CheckboxGroupLabel = ({ children, id }: CheckboxGroupLabelProps): React.ReactElement => {
+  const { labelPosition } = useCheckboxGroupContext();
+
   return (
-    <span id={id}>
+    <span style={{ width: labelPosition === 'left' ? '120px' : 'auto' }} id={id}>
       <BaseText
         lineHeight="s"
         fontFamily="text"
         fontWeight="bold"
         color="surface.text.subtle.lowContrast"
-        fontSize={50}
+        fontSize={75}
       >
         {children}
       </BaseText>

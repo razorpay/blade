@@ -94,24 +94,64 @@ const CheckboxTemplate: ComponentStory<typeof CheckboxComponent> = () => {
 export const Default = CheckboxTemplate.bind({});
 
 const GroupExample = () => {
+  const [selected, setSelected] = React.useState(['mango', 'apple']);
+
   return (
     <>
       <CheckboxGroupComponent helpText="Select atleast one" label="Select your fruit">
-        <CheckboxComponent>Apple</CheckboxComponent>
-        <CheckboxComponent>Mango</CheckboxComponent>
-        <CheckboxComponent>Orange</CheckboxComponent>
+        <CheckboxComponent value="apple" helpText="An apple a day keeps the doctor away">
+          Apple
+        </CheckboxComponent>
+        <CheckboxComponent value="mango">Mango</CheckboxComponent>
+        <CheckboxComponent value="orange">Orange</CheckboxComponent>
       </CheckboxGroupComponent>
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
+        helpText="Select atleast one"
+        label="Uncontrolled"
+        defaultValue={['apple', 'orange']}
+        onChange={(e) => console.log(e)}
+      >
+        <CheckboxComponent value="apple">Apple</CheckboxComponent>
+        <CheckboxComponent value="mango">Mango</CheckboxComponent>
+        <CheckboxComponent value="orange">Orange</CheckboxComponent>
+      </CheckboxGroupComponent>
+      <Text>&nbsp;</Text>
+      <CheckboxGroupComponent
+        hasError={selected.length < 1}
+        errorText="Selected atleast one item"
+        helpText={`You selected ${selected.join(', ')}`}
+        label="Controlled"
+        value={selected}
+        onChange={(values) => setSelected(values)}
+      >
+        <CheckboxComponent value="apple">Apple</CheckboxComponent>
+        <CheckboxComponent value="mango">Mango</CheckboxComponent>
+        <CheckboxComponent value="orange">Orange</CheckboxComponent>
+      </CheckboxGroupComponent>
+      <Text>&nbsp;</Text>
+      <CheckboxGroupComponent
+        hasError
+        errorText="Atleast one has to be selected"
+        helpText="Select atleast one"
+        label="Select your fruit"
+      >
+        <CheckboxComponent value="apple">Apple</CheckboxComponent>
+        <CheckboxComponent value="mango">Mango</CheckboxComponent>
+        <CheckboxComponent value="orange">Orange</CheckboxComponent>
+      </CheckboxGroupComponent>
+      <Text>&nbsp;</Text>
+      <CheckboxGroupComponent
+        labelPosition="left"
         isOptional
         hasError
         errorText="This is invalid"
         helpText="Select atleast one"
         label="Select your fruit"
       >
-        <CheckboxComponent>Apple</CheckboxComponent>
-        <CheckboxComponent>Mango</CheckboxComponent>
-        <CheckboxComponent>Orange</CheckboxComponent>
+        <CheckboxComponent value="apple">Apple</CheckboxComponent>
+        <CheckboxComponent value="mango">Mango</CheckboxComponent>
+        <CheckboxComponent value="orange">Orange</CheckboxComponent>
       </CheckboxGroupComponent>
     </>
   );
@@ -121,4 +161,49 @@ const CheckboxGroupTemplate: ComponentStory<typeof CheckboxComponent> = () => {
   return <GroupExample />;
 };
 export const CheckboxGroup = CheckboxGroupTemplate.bind({});
+
+const IndeterminateExample = () => {
+  const fields = ['mango', 'apple', 'orange'];
+  const [selected, setSelected] = React.useState(['mango', 'apple']);
+  const allChecked = selected.length === 3;
+  const isIndeterminate = selected.length > 0 && !allChecked;
+
+  return (
+    <>
+      <CheckboxComponent
+        isChecked={allChecked}
+        onChange={(value) => {
+          if (value) {
+            setSelected(fields);
+            return;
+          }
+          setSelected([]);
+        }}
+        isIndeterminate={isIndeterminate}
+      >
+        Select all
+      </CheckboxComponent>
+      <Text>&nbsp;</Text>
+      <CheckboxGroupComponent
+        helpText="Select atleast one"
+        label="Select fruits"
+        value={selected}
+        onChange={(e) => setSelected(e)}
+      >
+        {fields.map((field) => {
+          return (
+            <CheckboxComponent key={field} value={field}>
+              {field}
+            </CheckboxComponent>
+          );
+        })}
+      </CheckboxGroupComponent>
+    </>
+  );
+};
+
+const IndeterminateTemplate: ComponentStory<typeof CheckboxComponent> = () => {
+  return <IndeterminateExample />;
+};
+export const IndeterminateCheckbox = IndeterminateTemplate.bind({});
 Default.storyName = 'Default';

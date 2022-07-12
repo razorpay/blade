@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
@@ -23,26 +24,34 @@ export type CheckboxIconProps = {
   isFocused?: boolean;
   isDisabled?: boolean;
   isNegative?: boolean;
-  state: boolean | 'mixed';
+  state?: boolean;
+  isIndeterminate?: boolean;
 };
 
 // TODO: Indeterminate Icon
-const CheckboxIcon = ({ state, isDisabled, isNegative, isFocused }: CheckboxIconProps) => {
+const CheckboxIcon = ({
+  state,
+  isIndeterminate,
+  isDisabled,
+  isNegative,
+  isFocused,
+}: CheckboxIconProps) => {
   const { theme } = useTheme();
   const iconColor = getIn(theme, 'colors.brand.gray.200');
   const disabledIconColor = getIn(theme, 'colors.brand.gray.500');
 
-  const isChecked = state === true;
-  const isIndeterminate = state === 'mixed';
-
+  const isChecked = state;
   return (
     <CheckboxIconWrapper
+      isIndeterminate={isIndeterminate}
       isFocused={isFocused}
       isDisabled={isDisabled}
       isNegative={isNegative}
-      isChecked={isChecked || isIndeterminate}
+      isChecked={!!(isChecked || isIndeterminate)}
     >
-      {isIndeterminate ? null : isChecked ? (
+      {isIndeterminate ? (
+        '-'
+      ) : isChecked ? (
         <CheckedIcon color={isDisabled ? disabledIconColor : iconColor} />
       ) : null}
     </CheckboxIconWrapper>
