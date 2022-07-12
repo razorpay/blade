@@ -131,6 +131,9 @@ For properties `isDisabled`, `hasError` we want the CheckboxGroup to pass down t
 For showing optional label in `CheckboxGroup` we will introduce a prop `showOptionalLabel` which will only render a `(optional)` tag in the CheckboxGroupLabel,
 And the consumer will provide proper validation logic and depending on their use case and requirements they will pass `hasError` in conjunction with `showOptionalLabel` and they should also use `helpText` to convey the correct intent and extra information to the user.
 
+<img width="578" alt="Screenshot of checkbox with optional tag" src="https://user-images.githubusercontent.com/35374649/178486036-9371917f-b599-4f8b-b455-92d2c5f91c4b.png">
+
+
 **Example of user managed validation**
 
 Example of only one checkbox needs to be checked:
