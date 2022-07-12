@@ -57,11 +57,11 @@ const Checkbox = ({
     );
   }
 
-  const _hasError = hasError || groupProps.hasError;
-  const _isDisabled = isDisabled || groupProps.isDisabled;
-  const _isOptional = isOptional || groupProps.isOptional;
-  const _name = name || groupProps.name;
-  const _isChecked = isChecked || groupProps.state?.isChecked(value!);
+  const _hasError = hasError ?? groupProps.hasError;
+  const _isDisabled = isDisabled ?? groupProps.isDisabled;
+  const _isOptional = isOptional ?? groupProps.isOptional;
+  const _name = name ?? groupProps.name;
+  const _isChecked = isChecked ?? groupProps.state?.isChecked(value!);
 
   const handleChange = (checked: boolean) => {
     if (checked) {
@@ -70,12 +70,9 @@ const Checkbox = ({
       groupProps?.state?.removeValue(value!);
     }
 
-    if (onChange) {
-      onChange(checked);
-    }
+    onChange?.(checked);
   };
 
-  // fix indetemrinate checkbox isChecked _isChecked ambiguity
   const { state, inputProps } = useCheckbox({
     defaultChecked,
     isChecked: _isChecked,
@@ -86,11 +83,6 @@ const Checkbox = ({
     name: _name,
     value,
     onChange: handleChange,
-  });
-
-  console.log(value, {
-    state: state.isChecked,
-    _isChecked,
   });
 
   return (

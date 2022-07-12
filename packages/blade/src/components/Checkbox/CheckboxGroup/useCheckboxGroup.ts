@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { useControllableState } from '../../../hooks/useControllable';
+import { useId } from '../../../hooks/useId';
 import { useTheme } from '../../BladeProvider';
 import type { CheckboxGroupProps } from './CheckboxGroup';
 
@@ -28,6 +29,8 @@ const useCheckboxGroup = ({
   name,
 }: UseCheckboxGroupProps) => {
   const { platform } = useTheme();
+  const uuid = useId('checkbox-group');
+  const labelId = `${uuid}-label`;
   const [checkedValues, setValue] = useControllableState({
     value,
     defaultValue: defaultValue || [],
@@ -77,7 +80,7 @@ const useCheckboxGroup = ({
     };
   }, [hasError, isOptional, isDisabled, platform, labelPosition, name, state]);
 
-  return { state, contextValue };
+  return { state, contextValue, labelId };
 };
 
 export { useCheckboxGroup };

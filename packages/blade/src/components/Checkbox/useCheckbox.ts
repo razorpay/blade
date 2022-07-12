@@ -50,7 +50,7 @@ const useCheckbox = ({
 
   const [checkboxState, setCheckboxStateChange] = useControllableState({
     value: isChecked,
-    defaultValue: !!defaultChecked,
+    defaultValue: defaultChecked ?? false,
     onChange,
   });
 
@@ -63,6 +63,19 @@ const useCheckbox = ({
     setCheckboxStateChange(!checkboxState);
   };
 
+  // set indeterminate to input
+  React.useEffect(() => {
+    const element = inputRef.current;
+    if (!element) return;
+    setMixed(element, isIndeterminate);
+  }, [isIndeterminate]);
+
+  const state = {
+    isReactNative,
+    isChecked: checkboxState,
+    setChecked: setCheckboxStateChange,
+  };
+
   const accessibilityProps = makeAccessible({
     role: 'checkbox',
     required: !isOptional,
@@ -72,18 +85,6 @@ const useCheckbox = ({
     checked: checkboxState,
   });
 
-  React.useEffect(() => {
-    const element = inputRef.current;
-    if (!element) return;
-    setMixed(element, isIndeterminate);
-    // element.checked = isChecked;
-  }, [isIndeterminate, checkboxState]);
-
-  const state = {
-    isReactNative,
-    isChecked: checkboxState,
-    setChecked: setCheckboxStateChange,
-  };
   if (isReactNative) {
     return {
       state,

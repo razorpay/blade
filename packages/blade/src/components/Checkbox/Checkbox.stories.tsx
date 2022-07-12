@@ -98,14 +98,14 @@ const GroupExample = () => {
 
   return (
     <>
-      <CheckboxGroupComponent helpText="Select atleast one" label="Select your fruit">
+      {/* <CheckboxGroupComponent helpText="Select atleast one" label="Select your fruit">
         <CheckboxComponent value="apple" helpText="An apple a day keeps the doctor away">
           Apple
         </CheckboxComponent>
         <CheckboxComponent value="mango">Mango</CheckboxComponent>
         <CheckboxComponent value="orange">Orange</CheckboxComponent>
       </CheckboxGroupComponent>
-      <Text>&nbsp;</Text>
+      <Text>&nbsp;</Text> */}
       <CheckboxGroupComponent
         helpText="Select atleast one"
         label="Uncontrolled"

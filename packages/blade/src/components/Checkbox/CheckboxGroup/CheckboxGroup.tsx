@@ -1,5 +1,4 @@
 import React from 'react';
-import { useId } from '../../../hooks/useId';
 import { Wrapper } from '../Wrapper';
 import { CheckboxGroupContent } from './CheckboxGroupContent';
 import { CheckboxGroupField } from './CheckboxGroupField';
@@ -37,9 +36,7 @@ const CheckboxGroup = ({
   onChange,
   value,
 }: CheckboxGroupProps): React.ReactElement => {
-  const uuid = useId('checkbox-group');
-  const labelId = `${uuid}-label`;
-  const { contextValue } = useCheckboxGroup({
+  const { contextValue, labelId } = useCheckboxGroup({
     defaultValue,
     onChange,
     value,
