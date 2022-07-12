@@ -52,7 +52,7 @@
 
 #### Validations
 
-And `hasError` will pass `aria-invalid` attributes to indicate invalid state.
+`hasError` will pass `aria-invalid` attributes to indicate invalid state.
 
 ```tsx
 <Checkbox hasError={true | false}>is blade awesome?</Checkbox>
