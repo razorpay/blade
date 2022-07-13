@@ -13,8 +13,9 @@ export default {
     onClick: (): void => {
       console.log('clicked');
     },
-    href: 'https://calendar.google.com/',
+    href: 'https://github.com/razorpay/blade',
     target: '_blank',
+    rel: 'noreferrer noopener',
     contrast: 'low',
   },
   argTypes: {

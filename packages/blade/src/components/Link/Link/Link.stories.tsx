@@ -9,7 +9,7 @@ import {
   Description,
 } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { Highlight, Link } from '@storybook/design-system';
+import { Highlight, Link as StorybookLink } from '@storybook/design-system';
 import iconMap from '../../Icons/iconMap';
 import useMakeFigmaURL from '../../../_helpers/storybook/useMakeFigmaURL';
 import { InfoIcon } from '../../Icons';
@@ -44,9 +44,9 @@ const Page = (): ReactElement => {
         user. The Link component can also be used as an inline button in certain cases with the
         `button` variant
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
+      <StorybookLink withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
         View in Figma
-      </Link>
+      </StorybookLink>
       <br />
       <br />
       <Title>Usage</Title>
@@ -74,7 +74,9 @@ export default {
     onClick: (): void => {
       console.log('clicked');
     },
-    iconPosition: 'left',
+    href: 'https://github.com/razorpay/blade',
+    target: '_blank',
+    rel: 'noreferrer noopener',
   },
   argTypes: {
     icon: {
@@ -147,6 +149,7 @@ const LinkWithVariantTemplate: ComponentStory<typeof LinkComponent> = ({
         variant="anchor"
         href="https://github.com/razorpay/blade"
         target="_blank"
+        rel="noreferrer noopener"
       >
         {children}
       </LinkComponent>

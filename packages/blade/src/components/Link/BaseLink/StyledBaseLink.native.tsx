@@ -12,7 +12,6 @@ const StyledNativeLink = styled.Pressable({
 const openURL = (href: string): void => {
   Linking.canOpenURL(href)
     .then((canOpen) => {
-      console.log('🚀 ~ file: StyledBaseLink.native.tsx ~ line 15 ~ .then ~ canOpen', canOpen);
       if (canOpen) {
         Linking.openURL(href).catch(() => {
           console.warn(`[Blade: BaseLink]: Could not open the link "href=${href}"`);

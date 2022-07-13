@@ -16,15 +16,16 @@ describe('<BaseLink />', () => {
     expect(getByText('Learn More')).toBeInTheDocument();
   });
 
-  it('should render link with an href and target', () => {
+  it('should render link with an href, target and rel', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
-      <BaseLink href="https://www.google.com/" target="_blank">
+      <BaseLink href="https://www.google.com/" target="_blank" rel="noreferrer noopener">
         {linkText}
       </BaseLink>,
     );
     expect(getByRole('link')).toHaveAttribute('href', 'https://www.google.com/');
     expect(getByRole('link')).toHaveAttribute('target', '_blank');
+    expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer noopener');
   });
 
   it('should throw an error when there is no icon or text passed to the link', () => {

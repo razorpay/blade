@@ -10,6 +10,7 @@ export type StyledBaseLinkProps = {
   cursor?: CSSObject['cursor'];
   href?: string;
   target?: string;
+  rel?: string;
   onClick?: () => void;
   focusRingColor: string;
   disabled: boolean;

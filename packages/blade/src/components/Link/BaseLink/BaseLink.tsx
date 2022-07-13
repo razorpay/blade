@@ -51,6 +51,7 @@ type BaseLinkAnchorVariantProps = BaseLinkPropsWithOrWithoutIcon & {
   variant?: 'anchor';
   href?: string;
   target?: string;
+  rel?: string;
   isDisabled?: undefined;
 };
 
@@ -62,6 +63,7 @@ type BaseLinkButtonVariantProps = BaseLinkPropsWithOrWithoutIcon & {
   isDisabled?: boolean;
   href?: undefined;
   target?: undefined;
+  rel?: undefined;
 };
 
 /*
@@ -163,6 +165,7 @@ const BaseLink = ({
   variant = 'anchor',
   href,
   target,
+  rel,
   intent,
   contrast = 'low',
   accessibilityLabel,
@@ -204,6 +207,7 @@ const BaseLink = ({
       as={as}
       href={href}
       target={target}
+      rel={rel}
       onClick={onClick}
       disabled={disabled}
       cursor={cursor}
