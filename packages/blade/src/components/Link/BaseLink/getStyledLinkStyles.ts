@@ -5,8 +5,8 @@ const getStyledLinkStyles = ({ cursor }: { cursor?: CSSObject['cursor'] }): CSSO
   backgroundColor: 'transparent',
   outline: 'none',
   textDecoration: 'none',
+  border: 'none',
   cursor,
-  borderColor: 'transparent',
 });
 
 export default getStyledLinkStyles;
