@@ -12,7 +12,6 @@ export type BoxProps = {
   paddingBottom?: DotNotationSpacingStringToken;
   paddingLeft?: DotNotationSpacingStringToken;
   paddingRight?: DotNotationSpacingStringToken;
-  width?: number | 'fit-content' | 'auto';
   minHeight?: number;
   minWidth?: number;
   maxHeight?: number;
