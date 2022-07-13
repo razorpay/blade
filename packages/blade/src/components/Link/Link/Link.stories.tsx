@@ -74,7 +74,6 @@ export default {
     onClick: (): void => {
       console.log('clicked');
     },
-    isDisabled: false,
     iconPosition: 'left',
   },
   argTypes: {
@@ -134,7 +133,8 @@ DisabledLinkButton.parameters = {
 
 const LinkWithVariantTemplate: ComponentStory<typeof LinkComponent> = ({
   children = 'Link',
-  ...args
+  icon,
+  iconPosition,
 }) => {
   return (
     <>
@@ -142,7 +142,8 @@ const LinkWithVariantTemplate: ComponentStory<typeof LinkComponent> = ({
         <BaseText fontWeight="bold">Anchor</BaseText>
       </Box>
       <LinkComponent
-        {...args}
+        icon={icon}
+        iconPosition={iconPosition}
         variant="anchor"
         href="https://github.com/razorpay/blade"
         target="_blank"
@@ -152,7 +153,7 @@ const LinkWithVariantTemplate: ComponentStory<typeof LinkComponent> = ({
       <Box paddingTop="spacing.3" paddingBottom="spacing.2">
         <BaseText fontWeight="bold">Button</BaseText>
       </Box>
-      <LinkComponent {...args} variant="button">
+      <LinkComponent icon={icon} iconPosition={iconPosition} variant="button">
         {children}
       </LinkComponent>
     </>

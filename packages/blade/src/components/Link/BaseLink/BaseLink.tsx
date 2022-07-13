@@ -15,32 +15,59 @@ import StyledBaseLink from './StyledBaseLink';
 import useInteraction from './useInteraction';
 
 type BaseLinkCommonProps = {
-  variant?: 'anchor' | 'button';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
   contrast?: 'low' | 'high';
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';
-  isDisabled?: boolean;
   onClick?: () => void;
-  href?: string;
-  target?: string;
   accessibilityLabel?: string;
 };
 
+/*
+  Mandatory children prop when icon is not provided
+*/
 type BaseLinkWithoutIconProps = BaseLinkCommonProps & {
   icon?: undefined;
   children: string;
 };
 
 /*
-   Optional children prop when icon is provided
-  */
+  Optional children prop when icon is provided
+*/
 type BaseLinkWithIconProps = BaseLinkCommonProps & {
   icon: IconComponent;
   children?: string;
 };
 
-export type BaseLinkProps = BaseLinkWithIconProps | BaseLinkWithoutIconProps;
+/*
+  BaseLink Props with or without an icon
+*/
+type BaseLinkPropsWithOrWithoutIcon = BaseLinkWithIconProps | BaseLinkWithoutIconProps;
+
+/*
+  BaseLink Props when variant is anchor
+*/
+type BaseLinkAnchorVariantProps = BaseLinkPropsWithOrWithoutIcon & {
+  variant?: 'anchor';
+  href?: string;
+  target?: string;
+  isDisabled?: undefined;
+};
+
+/*
+  BaseLink Props when variant is button
+*/
+type BaseLinkButtonVariantProps = BaseLinkPropsWithOrWithoutIcon & {
+  variant?: 'button';
+  isDisabled?: boolean;
+  href?: undefined;
+  target?: undefined;
+};
+
+/*
+  BaseLink Props when variant is anchor or button
+*/
+export type BaseLinkProps = BaseLinkAnchorVariantProps | BaseLinkButtonVariantProps;
 
 type BaseLinkStyleProps = {
   as: 'a' | 'button';

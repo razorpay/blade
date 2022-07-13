@@ -13,6 +13,9 @@ type LinkCommonProps = {
   accessibilityLabel?: string;
 };
 
+/*
+  Mandatory children prop when icon is not provided
+*/
 type LinkWithoutIconProps = LinkCommonProps & {
   icon?: undefined;
   children: string;
@@ -26,7 +29,35 @@ type LinkWithIconProps = LinkCommonProps & {
   children?: string;
 };
 
-export type LinkProps = LinkWithIconProps | LinkWithoutIconProps;
+/*
+  Link Props with or without an icon
+*/
+type LinkPropsWithOrWithoutIcon = LinkWithIconProps | LinkWithoutIconProps;
+
+/*
+  Link Props when variant is anchor
+*/
+type LinkAnchorVariantProps = LinkPropsWithOrWithoutIcon & {
+  variant?: 'anchor';
+  href?: string;
+  target?: string;
+  isDisabled?: undefined;
+};
+
+/*
+  Link Props when variant is button
+*/
+type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
+  variant?: 'button';
+  isDisabled?: boolean;
+  href?: undefined;
+  target?: undefined;
+};
+
+/*
+  Link Props when variant is anchor or button
+*/
+export type LinkProps = LinkAnchorVariantProps | LinkButtonVariantProps;
 
 const Link = ({
   children,
@@ -42,12 +73,9 @@ const Link = ({
   return (
     <BaseLink
       {...(icon ? { icon, children } : { children })}
+      {...(variant === 'anchor' ? { variant, href, target } : { variant, isDisabled })}
       iconPosition={iconPosition}
-      isDisabled={isDisabled}
       onClick={onClick}
-      variant={variant}
-      href={href}
-      target={target}
       accessibilityLabel={accessibilityLabel}
     />
   );

@@ -6,13 +6,13 @@ import BaseLinkComponent from './BaseLink';
 
 export default {
   title: 'Components/Link/BaseLink',
+  variant: 'anchor',
   component: BaseLinkComponent,
   args: {
     children: 'Pay Now',
     onClick: (): void => {
       console.log('clicked');
     },
-    isDisabled: false,
     href: 'https://calendar.google.com/',
     target: '_blank',
     contrast: 'low',
