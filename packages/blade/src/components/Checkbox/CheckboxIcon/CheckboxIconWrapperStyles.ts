@@ -28,8 +28,8 @@ const variants = {
   },
   negative: {
     border: {
-      checked: 'colors.feedback.background.negative.highContrast',
-      unchecked: 'colors.feedback.background.negative.highContrast',
+      checked: 'colors.feedback.border.negative.highContrast',
+      unchecked: 'colors.feedback.border.negative.highContrast',
     },
     background: {
       checked: 'colors.feedback.background.negative.highContrast',
@@ -65,7 +65,6 @@ const getCheckboxIconWrapperStyles = ({
   isChecked,
   isDisabled,
   isNegative,
-  isFocused,
 }: CheckboxRectProps & { theme: Theme }): CSSObject => {
   return {
     display: 'flex',
@@ -79,7 +78,6 @@ const getCheckboxIconWrapperStyles = ({
     marginTop: '3px',
     borderRadius: makeSize(theme.border.radius.small),
     marginRight: makeSpace(theme.spacing[2]),
-    ...(isFocused && { boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]!}` }),
     ...getBackgroundAndBorder({ theme, isChecked, isDisabled, isNegative }),
   };
 };
