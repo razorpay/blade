@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { useState, useEffect } from 'react';
+import './styles.css';
 
 type FadeProps = {
   show: boolean;

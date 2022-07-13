@@ -8,7 +8,6 @@ import { useTheme } from '../../BladeProvider';
 import { Svg, Path } from '../../Icons/_Svg';
 import { CheckboxIconWrapper } from './CheckboxIconWrapper';
 import { Fade } from './Fade';
-import './styles.css';
 
 const CheckedIcon = ({ color, hidden }: { color: string; hidden?: boolean }) => {
   return (
@@ -63,7 +62,7 @@ const CheckboxIcon = ({
   }`;
 
   const fadeOut = `fadeOut ${makeMotionTime(theme.motion.duration.xquick)} ${
-    theme.motion.easing.entrance.effective as string
+    theme.motion.easing.exit.effective as string
   }`;
 
   return (
