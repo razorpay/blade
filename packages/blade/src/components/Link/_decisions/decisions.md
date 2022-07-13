@@ -28,6 +28,7 @@ Internal component that exposes certain extra props to enable creation of Compon
 | onClick | `Function` | No | undefined | The function to be called when the link is clicked. |
 | href | `string` | No | undefined | The href for the link component.<br><br>Note: This prop is only valid for `anchor` variant. |
 | target | `string` | No | undefined | The target for the link component.<br><br>Note: This prop is only valid for `anchor` variant. |
+| rel | `string` | No | undefined | The rel for the link component.<br><br>Note: This prop is only valid for `anchor` variant. |
 | accessibilityLabel | `string` | No | undefined | The `aria-label` (web) & `accessibilityLabel` (native) of the link component. |
 
 
@@ -46,6 +47,7 @@ A Link component that can act as a `<button>` as well as an `<anchor>` element. 
 | onClick | `Function` | No | undefined | The function to be called when the link is clicked. |
 | href | `string` | No | undefined | The href for the link component.<br><br>Note: This prop is only valid for `anchor` variant. |
 | target | `string` | No | undefined | The target for the link component.<br><br>Note: This prop is only valid for `anchor` variant. |
+| rel | `string` | No | undefined | The rel for the link component.<br><br>Note: This prop is only valid for `anchor` variant. |
 | accessibilityLabel | `string` | No | undefined | The `aria-label` (web) & `accessibilityLabel` (native) of the link component. |
 
      
