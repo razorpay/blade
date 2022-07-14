@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import type { ReactElement, SyntheticEvent } from 'react';
 import { useState } from 'react';
 import type { CSSObject } from 'styled-components';
 import type { DurationString, EasingString } from '../../../tokens/global/motion';
@@ -20,7 +20,7 @@ type BaseLinkCommonProps = {
   contrast?: 'low' | 'high';
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';
-  onClick?: () => void;
+  onClick?: (event: SyntheticEvent) => void;
   accessibilityLabel?: string;
 };
 
@@ -216,14 +216,14 @@ const BaseLink = ({
     isVisited,
   });
 
-  const handleOnClick = (): void => {
+  const handleOnClick = (event: SyntheticEvent): void => {
     if (!isVisited && !intent && variant === 'anchor') {
       // visited state is only valid for anchor variant without any intent
       setIsVisited(true);
     }
 
     if (onClick) {
-      onClick();
+      onClick(event);
     }
   };
 

@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import type { ReactElement, SyntheticEvent } from 'react';
 import type { IconComponent } from '../../Icons';
 import { BaseLink } from '../BaseLink';
 
@@ -7,7 +7,7 @@ type LinkCommonProps = {
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
-  onClick?: () => void;
+  onClick?: (event: SyntheticEvent) => void;
   href?: string;
   target?: string;
   accessibilityLabel?: string;

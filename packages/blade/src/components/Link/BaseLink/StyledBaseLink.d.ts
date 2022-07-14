@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction, SyntheticEvent } from 'react';
 import type { CSSObject } from 'styled-components';
 import type { DurationString, EasingString } from '../../tokens/global/motion';
 import type { ActionStates } from '../../../tokens/theme/theme';
@@ -11,7 +11,7 @@ export type StyledBaseLinkProps = {
   href?: string;
   target?: string;
   rel?: string;
-  onClick?: () => void;
+  onClick?: (e: SyntheticEvent) => void;
   focusRingColor: string;
   disabled: boolean;
   cursor: CSSObject['cursor'];

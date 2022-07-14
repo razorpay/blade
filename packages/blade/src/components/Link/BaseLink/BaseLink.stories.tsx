@@ -10,8 +10,8 @@ export default {
   component: BaseLinkComponent,
   args: {
     children: 'Pay Now',
-    onClick: (): void => {
-      console.log('clicked');
+    onClick: (event): void => {
+      console.log('clicked', event);
     },
     href: 'https://github.com/razorpay/blade',
     target: '_blank',

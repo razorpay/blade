@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import { Linking } from 'react-native';
 import styled from 'styled-components/native';
 import getStyledLinkStyles from './getStyledLinkStyles';
@@ -32,13 +33,19 @@ const StyledLink = ({
   setCurrentInteraction,
   accessibilityProps,
 }: StyledBaseLinkProps & { children: React.ReactNode }): ReactElement => {
-  const handleOnPress = (): void => {
+  const handleOnPress = (event: GestureResponderEvent): void => {
     if (href && variant === 'anchor') {
       openURL(href);
     }
 
     if (onClick) {
-      onClick();
+      /*
+      React Native's Pressable's onClick returns a GestureResponderEvent but our types expect a SyntheticEvent.
+      Until we have a way to handle platform specific types, we will have to ignore this TS error.
+      */
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-expect-error
+      onClick(event);
     }
   };
 

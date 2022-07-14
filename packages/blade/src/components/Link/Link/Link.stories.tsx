@@ -71,8 +71,8 @@ export default {
   args: {
     variant: 'anchor',
     children: 'Learn More',
-    onClick: (): void => {
-      console.log('clicked');
+    onClick: (event): void => {
+      console.log('clicked', event);
     },
     href: 'https://github.com/razorpay/blade',
     target: '_blank',
