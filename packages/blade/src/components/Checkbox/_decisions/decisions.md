@@ -144,7 +144,7 @@ function AnyOneHasToBeSelected() {
 
   return (
     <CheckboxGroup
-      label="Do you love any of the fruites?"
+      label="Do you love any of the fruits?"
       helpText="You can select multiple"
       value={selected}
       onChange={setSelected}
