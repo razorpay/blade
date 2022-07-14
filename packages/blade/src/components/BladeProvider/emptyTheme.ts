@@ -86,6 +86,7 @@ const emptyTheme: Theme = {
         500: '',
         600: '',
         700: '',
+        800: '',
       },
       gray: {
         200: '',
@@ -982,6 +983,7 @@ const emptyTheme: Theme = {
           focus: '',
           active: '',
           disabled: '',
+          visited: '',
         },
       },
       icon: {
@@ -1012,6 +1014,7 @@ const emptyTheme: Theme = {
           focus: '',
           active: '',
           disabled: '',
+          visited: '',
         },
       },
     },
