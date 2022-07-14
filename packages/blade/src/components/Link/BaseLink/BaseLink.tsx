@@ -1,7 +1,8 @@
 import type { ReactElement } from 'react';
+import { useState } from 'react';
 import type { CSSObject } from 'styled-components';
 import type { DurationString, EasingString } from '../../../tokens/global/motion';
-import type { ActionStates } from '../../../tokens/theme/theme';
+import type { LinkActionStates } from '../../../tokens/theme/theme';
 import { makeAccessible } from '../../../utils';
 import getIn from '../../../utils/getIn';
 import type { DotNotationSpacingStringToken } from '../../../_helpers/types';
@@ -92,16 +93,26 @@ const getColorToken = ({
   element,
   currentInteraction,
   isDisabled,
+  isVisited,
 }: {
   variant: BaseLinkProps['variant'];
   intent: BaseLinkProps['intent'];
   contrast: BaseLinkProps['contrast'];
   element: 'icon' | 'text';
-  currentInteraction: keyof ActionStates;
+  currentInteraction: keyof LinkActionStates;
   isDisabled: boolean;
+  isVisited: boolean;
 }): IconProps['color'] | BaseTextProps['color'] => {
-  const state = isDisabled && variant == 'button' ? 'disabled' : currentInteraction;
-  if (intent && contrast) {
+  let state = currentInteraction;
+  if (isDisabled && variant == 'button') {
+    state = 'disabled';
+  }
+  if (isVisited && variant == 'anchor' && !intent) {
+    // visited state is only valid for anchor variant without any intent
+    state = 'visited';
+  }
+
+  if (intent && contrast && state !== 'visited') {
     return `feedback.${intent}.action.${element}.link.${state}.${contrast}Contrast`;
   }
   return `action.${element}.link.${state}`;
@@ -115,14 +126,16 @@ const getProps = ({
   isDisabled,
   intent,
   contrast,
+  isVisited,
 }: {
   theme: Theme;
   variant: NonNullable<BaseLinkProps['variant']>;
-  currentInteraction: keyof ActionStates;
+  currentInteraction: keyof LinkActionStates;
   children?: string;
   isDisabled: boolean;
   intent: BaseLinkProps['intent'];
   contrast: BaseLinkProps['contrast'];
+  isVisited: boolean;
 }): BaseLinkStyleProps => {
   const isButton = variant === 'button';
   const props: BaseLinkStyleProps = {
@@ -135,6 +148,7 @@ const getProps = ({
       element: 'icon',
       currentInteraction,
       isDisabled,
+      isVisited,
     }) as IconProps['color'],
     iconPadding: !children?.trim() ? 'spacing.0' : 'spacing.1',
     textColor: getColorToken({
@@ -144,6 +158,7 @@ const getProps = ({
       element: 'text',
       currentInteraction,
       isDisabled,
+      isVisited,
     }) as BaseTextProps['color'],
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     motionDuration: 'duration.2xquick',
@@ -170,6 +185,7 @@ const BaseLink = ({
   contrast = 'low',
   accessibilityLabel,
 }: BaseLinkProps): ReactElement => {
+  const [isVisited, setIsVisited] = useState(false);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
   if (!Icon && !children?.trim()) {
@@ -197,7 +213,19 @@ const BaseLink = ({
     isDisabled,
     intent,
     contrast,
+    isVisited,
   });
+
+  const handleOnClick = (): void => {
+    if (!isVisited && !intent && variant === 'anchor') {
+      // visited state is only valid for anchor variant without any intent
+      setIsVisited(true);
+    }
+
+    if (onClick) {
+      onClick();
+    }
+  };
 
   return (
     <StyledBaseLink
@@ -208,7 +236,7 @@ const BaseLink = ({
       href={href}
       target={target}
       rel={rel}
-      onClick={onClick}
+      onClick={handleOnClick}
       disabled={disabled}
       cursor={cursor}
       focusRingColor={focusRingColor}

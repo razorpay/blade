@@ -104,6 +104,36 @@ describe('<BaseLink />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
+  it('should change the link to a visited state after click', () => {
+    const linkText = 'Learn More';
+    const { container, getByRole } = renderWithTheme(
+      <BaseLink
+        variant="anchor"
+        href="https://github.com/razorpay/blade"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        {linkText}
+      </BaseLink>,
+    );
+    const link = getByRole('link');
+    fireEvent.click(link);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should not change the button to a visited state after click', () => {
+    const linkText = 'Learn More';
+    const onClick = jest.fn();
+    const { container, getByRole } = renderWithTheme(
+      <BaseLink variant="button" onClick={onClick}>
+        {linkText}
+      </BaseLink>,
+    );
+    const button = getByRole('button');
+    fireEvent.click(button);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render positive intent low contrast link', () => {
     const linkText = 'Learn More';
     const { container } = renderWithTheme(
