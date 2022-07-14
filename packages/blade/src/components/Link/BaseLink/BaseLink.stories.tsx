@@ -5,7 +5,7 @@ import type { BaseLinkProps } from './BaseLink';
 import BaseLinkComponent from './BaseLink';
 
 export default {
-  title: 'Components/Link/BaseLink',
+  title: 'Components/Link/BaseLink (Internal)',
   variant: 'anchor',
   component: BaseLinkComponent,
   args: {
