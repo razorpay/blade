@@ -26,7 +26,7 @@ Internal component that exposes certain extra props to enable creation of Compon
 | iconPosition | `left`, `right` | No | `right` | The position of the rendered icon. |
 | isDisabled | `boolean` | No | `false` | Control whether the button is disabled or not. |
 | isFullWidth | `boolean` | No | `false` | Allows the button to take up the full width of its parent. |
-| onClick | `Function` | No | undefined | The function to be called when the button is clicked. |
+| onClick | `(event: SyntheticEvent) => void` | No | undefined | The function to be called when the button is clicked. `onClick` will receive `SyntheticEvent` as a callback. |
 | type | `button`, `submit`, `reset` | No | `button` | Specifies the type of button to be rendered.<br><br>  Note: This prop will be ignored for React Native |
 
 ## Button Component
@@ -43,7 +43,7 @@ This will be the Button component that is exposed to our consumers and will be a
 | iconPosition | `left`, `right` | No | `right` | The position of the rendered icon. |
 | isDisabled | `boolean` | No | `false` | Control whether the button is disabled or not. |
 | isFullWidth | `boolean` | No | `false` | Allows the button to take up the full width of its parent. |
-| onClick | `Function` | No | undefined | The function to be called when the button is clicked. |
+| onClick | `(event: SyntheticEvent) => void` | No | undefined | The function to be called when the button is clicked. `onClick` will receive `SyntheticEvent` as a callback. |
 | type | `button`, `submit`, `reset` | No | `button` | Specifies the type of button to be rendered.<br><br>  Note: This prop will be ignored for React Native |
 
 - **Why are we not exposing `contrast` prop for the `Button` Component?** 
