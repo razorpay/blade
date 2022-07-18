@@ -91,7 +91,7 @@ describe('<BaseLink />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should call function on click of button variant of link', () => {
+  it('should call function on click of button variant of link with event callback', () => {
     const linkText = 'Learn More';
     const onClick = jest.fn();
     const { getByRole } = renderWithTheme(
@@ -100,8 +100,53 @@ describe('<BaseLink />', () => {
       </BaseLink>,
     );
     const button = getByRole('button');
-    fireEvent.click(button);
+    fireEvent(
+      button,
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        screenX: 20,
+        screenY: 20,
+      }),
+    );
     expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toBeCalledWith(
+      expect.objectContaining({
+        bubbles: true,
+        cancelable: true,
+        screenX: 20,
+        screenY: 20,
+      }),
+    );
+  });
+
+  it('should call function on click of anchor variant of link with event callback', () => {
+    const linkText = 'Learn More';
+    const onClick = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <BaseLink variant="anchor" onClick={onClick}>
+        {linkText}
+      </BaseLink>,
+    );
+    const link = getByRole('link');
+    fireEvent(
+      link,
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        screenX: 20,
+        screenY: 20,
+      }),
+    );
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toBeCalledWith(
+      expect.objectContaining({
+        bubbles: true,
+        cancelable: true,
+        screenX: 20,
+        screenY: 20,
+      }),
+    );
   });
 
   it('should change the link to a visited state after click', () => {

@@ -91,7 +91,7 @@ describe('<BaseLink />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should call function on click of button variant of link', () => {
+  it('should call function on click of button variant of link with event callback ', () => {
     const linkText = 'Learn More';
     const onClick = jest.fn();
     const { getByRole } = renderWithTheme(
@@ -100,8 +100,41 @@ describe('<BaseLink />', () => {
       </BaseLink>,
     );
     const button = getByRole('button');
-    fireEvent.press(button);
+    const eventData = {
+      nativeEvent: {
+        locationX: 8,
+        locationY: 4.5,
+        pageX: 24,
+        pageY: 49.5,
+      },
+    };
+
+    fireEvent.press(button, eventData);
     expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledWith(eventData);
+  });
+
+  it('should call function on click of anchor variant of link with event callback ', () => {
+    const linkText = 'Learn More';
+    const onClick = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <BaseLink variant="anchor" onClick={onClick}>
+        {linkText}
+      </BaseLink>,
+    );
+    const link = getByRole('link');
+    const eventData = {
+      nativeEvent: {
+        locationX: 8,
+        locationY: 4.5,
+        pageX: 24,
+        pageY: 49.5,
+      },
+    };
+
+    fireEvent.press(link, eventData);
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledWith(eventData);
   });
 
   it('should change the link to a visited state after click', () => {
