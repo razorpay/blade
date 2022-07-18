@@ -3,7 +3,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconProps } from '..';
 import useIconProps from '../useIconProps';
 
-const TrashIcon = ({ size, color }: IconProps): ReactElement => {
+const InfoIcon = ({ size, color }: IconProps): ReactElement => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -26,4 +26,4 @@ const TrashIcon = ({ size, color }: IconProps): ReactElement => {
   );
 };
 
-export default TrashIcon;
+export default InfoIcon;

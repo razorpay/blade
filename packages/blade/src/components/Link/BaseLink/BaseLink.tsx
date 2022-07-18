@@ -74,7 +74,7 @@ export type BaseLinkProps = BaseLinkAnchorVariantProps | BaseLinkButtonVariantPr
 
 type BaseLinkStyleProps = {
   as: 'a' | 'button';
-  textDecoration: 'underline' | 'none';
+  textDecorationLine: 'underline' | 'none';
   iconColor: IconProps['color'];
   iconPadding: DotNotationSpacingStringToken;
   textColor: BaseTextProps['color'];
@@ -140,7 +140,7 @@ const getProps = ({
   const isButton = variant === 'button';
   const props: BaseLinkStyleProps = {
     as: isButton ? 'button' : 'a',
-    textDecoration: !isButton && currentInteraction !== 'default' ? 'underline' : 'none',
+    textDecorationLine: !isButton && currentInteraction !== 'default' ? 'underline' : 'none',
     iconColor: getColorToken({
       variant,
       intent,
@@ -195,7 +195,7 @@ const BaseLink = ({
   }
   const {
     as,
-    textDecoration,
+    textDecorationLine,
     iconColor,
     iconPadding,
     textColor,
@@ -251,7 +251,7 @@ const BaseLink = ({
           </Box>
         ) : null}
         <BaseText
-          textDecorationLine={textDecoration}
+          textDecorationLine={textDecorationLine}
           color={textColor}
           fontSize={100}
           textAlign="center"
