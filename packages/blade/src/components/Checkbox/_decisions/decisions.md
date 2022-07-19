@@ -73,7 +73,7 @@ And `validationState` will pass `aria-invalid` attributes to indicate invalid st
 | name          | `string`                    | No       | `undefined` | The name of the checkbox group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) |
 | isDisabled    | `boolean`                   | No       | `false`     | Control whether the checkbox group is disabled or not.                                                                             |
 | validationState     | `undefined | 'error'`                   | No       | `undefined`     | Control whether the checkbox group is invalid or not.                                                                              |
-| showOptionalLabel    | `boolean`                   | No       | `false`     | Shows optional label in checkbox group header |
+| necessityIndicator    | `'optional' | 'required' | undefined`                   | No       | `undefined`     | Renders optional or required indicators in the group, if set to undefined renders nothing |
 
 ### Examples:
 
@@ -128,8 +128,8 @@ const Uncontrolled = () => {
 
 For properties `isDisabled`, `validationState` we want the CheckboxGroup to pass down these props to all the Checkboxes inside of it.
 
-For showing optional label in `CheckboxGroup` we will introduce a prop `showOptionalLabel` which will only render a `(optional)` tag in the CheckboxGroupLabel,
-And the consumer will provide proper validation logic and depending on their use case and requirements they will pass `validationState` in conjunction with `showOptionalLabel` and they should also use `helpText` to convey the correct intent and extra information to the user.
+For showing optional/required label in `CheckboxGroup` we will introduce a prop `necessityIndicator` which will only render a `(optional)/(required)` tag in the CheckboxGroupLabel,
+And the consumer will provide proper validation logic and depending on their use case and requirements they will pass `validationState` in conjunction with `necessityIndicator` and they should also use `helpText` to convey the correct intent and extra information to the user.
 
 <img width="578" alt="Screenshot of checkbox with optional tag" src="https://user-images.githubusercontent.com/35374649/178486036-9371917f-b599-4f8b-b455-92d2c5f91c4b.png">
 
