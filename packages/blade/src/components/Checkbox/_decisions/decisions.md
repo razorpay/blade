@@ -25,14 +25,14 @@
 | ------------------- | ---------- | -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | children            | `string`   | No       | undefined | The text to be rendered as CheckboxLabel                                                                                                                 |
 | helpText          | `string`   | No       | undefined | The helper text to be rendered                                                                                                                           |
-| isChecked           | `boolean`  | No       | false     | state of the checkbox, if explicitly set the checkbox will be controlled                                                                                 |
-| defaultChecked      | `boolean`  | No       | false     | default state of the checkbox, if isChecked is not provided the checkbox will be uncontrolled                                                            |
+| isChecked           | `boolean`  | No       | false     | state of the checkbox, if explicitly set the checkbox will become [controlled component](https://reactjs.org/docs/forms.html#controlled-components)                                                                                 |
+| defaultChecked      | `boolean`  | No       | false     | default state of the checkbox, if isChecked is not provided the checkbox will become [uncontrolled component](https://reactjs.org/docs/uncontrolled-components.html)                                                            |
 | onChange            | `Function` | No       | undefined | The function to be called when the checkbox state changes.                                                                                               |
 | isIndeterminate     | `boolean`  | No       | false     | mixed state of the checkbox                                                                                                                              |
 | name (html native)  | `string`   | No       | undefined | The name of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)            |
 | value (html native) | `string`   | No       | undefined | The value of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) |
 | isDisabled          | `boolean`  | No       | `false`   | Control whether the checkbox is disabled or not.                                                                                                         |
-| hasError           | `boolean`  | No       | `false`   | Control whether the checkbox is invalid or not.                                                                                                          |
+| validationState           | `undefined | 'error'`  | No       | `undefined`   | Control whether the checkbox is invalid or not.                                                                                                          |
 | isRequired          | `boolean`  | No       | `false`   | Control whether the checkbox is required or not.                                                                                                         |
 
 ### Examples:
@@ -52,10 +52,10 @@
 
 #### Validations
 
-And `hasError` will pass `aria-invalid` attributes to indicate invalid state.
+And `validationState` will pass `aria-invalid` attributes to indicate invalid state.
 
 ```tsx
-<Checkbox hasError={true | false}>is blade awesome?</Checkbox>
+<Checkbox validationState={'error' | undefined}>is blade awesome?</Checkbox>
 ```
 
 ## `CheckboxGroup` API
@@ -68,11 +68,11 @@ And `hasError` will pass `aria-invalid` attributes to indicate invalid state.
 | helpText    | `string`                    | No       | `undefined` | The helper text to be rendered                                                                                                     |
 | errorText    | `string`                    | No       | `undefined` | The error text to be rendered                                                                                                     |
 | defaultValue  | `string[]`                  | No       | `[]`        | The initial value of the checkbox group                                                                                            |
-| value         | `string[]`                  | No       | `[]`        | The value of the checkbox, if present will act as controlled component                                                             |
+| value         | `string[]`                  | No       | `[]`        | The value of the checkbox, if present will act as [controlled component](https://reactjs.org/docs/forms.html#controlled-components)                                                             |
 | onChange      | `(value: string[]) => void` | No       | `undefined` | The function to be called when any checkbox's state changes                                                                        |
 | name          | `string`                    | No       | `undefined` | The name of the checkbox group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) |
 | isDisabled    | `boolean`                   | No       | `false`     | Control whether the checkbox group is disabled or not.                                                                             |
-| hasError     | `boolean`                   | No       | `false`     | Control whether the checkbox group is invalid or not.                                                                              |
+| validationState     | `undefined | 'error'`                   | No       | `undefined`     | Control whether the checkbox group is invalid or not.                                                                              |
 | showOptionalLabel    | `boolean`                   | No       | `false`     | Shows optional label in checkbox group header |
 
 ### Examples:
@@ -126,10 +126,10 @@ const Uncontrolled = () => {
 
 ### Note on CheckboxGroup
 
-For properties `isDisabled`, `hasError` we want the CheckboxGroup to pass down these props to all the Checkboxes inside of it.
+For properties `isDisabled`, `validationState` we want the CheckboxGroup to pass down these props to all the Checkboxes inside of it.
 
 For showing optional label in `CheckboxGroup` we will introduce a prop `showOptionalLabel` which will only render a `(optional)` tag in the CheckboxGroupLabel,
-And the consumer will provide proper validation logic and depending on their use case and requirements they will pass `hasError` in conjunction with `showOptionalLabel` and they should also use `helpText` to convey the correct intent and extra information to the user.
+And the consumer will provide proper validation logic and depending on their use case and requirements they will pass `validationState` in conjunction with `showOptionalLabel` and they should also use `helpText` to convey the correct intent and extra information to the user.
 
 **Example of user managed validation**
 
@@ -145,7 +145,7 @@ function AnyOneHasToBeSelected() {
       helpText="You can select multiple"
       value={selected}
       onChange={setSelected}
-      hasError={selected.length === 0}
+      validationState={selected.length === 0 ? 'error' : undefined}
     >
       <Checkbox value="apple">apple</Checkbox>
       <Checkbox value="mango">mango</Checkbox>
@@ -168,7 +168,7 @@ function AllOfThemHasToBeSelected() {
       helpText="Select all"
       value={selected}
       onChange={setSelected}
-      hasError={selected.length < 2}
+      hasError={selected.length < 3 ? 'error' : undefined}
     >
       <Checkbox value="use-ts">I will use TS</Checkbox>
       <Checkbox value="no-any">I won't use any</Checkbox>
