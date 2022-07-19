@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-implicit-any-catch */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -169,5 +172,60 @@ describe('<CheckboxGroup />', () => {
     await user.keyboard('[Space]');
     expect(fn).toBeCalledWith(['mango', 'orange']);
     expect(getByTestId('values')).toHaveTextContent('mango,orange');
+  });
+});
+
+describe('<CheckboxGroup /> runtime errors', () => {
+  it('should throw error if defaultChecked,isChecked,onChange is passed to checkboxes', () => {
+    const labelText = 'Select fruit';
+    expect(() => {
+      renderWithTheme(
+        <CheckboxGroup label={labelText}>
+          <Checkbox onChange={() => null} defaultChecked isChecked value="apple">
+            Apple
+          </Checkbox>
+          <Checkbox value="mango">Mango</Checkbox>
+          <Checkbox value="orange">Orange</Checkbox>
+        </CheckboxGroup>,
+      );
+    }).toThrow(
+      "[Blade Checkbox]: Cannot set `defaultChecked,isChecked,onChange` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself",
+    );
+  });
+
+  it('should throw error if value is not present on Checkboxes', () => {
+    const labelText = 'Select fruit';
+    const errorMsg = `<CheckboxGroup /> requires that you pass unique "value" prop`;
+
+    try {
+      renderWithTheme(
+        <CheckboxGroup label={labelText}>
+          <Checkbox>Apple</Checkbox>
+          <Checkbox>Mango</Checkbox>
+          <Checkbox>Orange</Checkbox>
+        </CheckboxGroup>,
+      );
+    } catch (err: any) {
+      expect(err.message).toMatch(errorMsg);
+    }
+  });
+
+  it('should throw error if validationState is used in Checkboxes', () => {
+    const labelText = 'Select fruit';
+    const errorMsg = `Can't use validationState of individual Checkboxes inside <CheckboxGroup />`;
+
+    try {
+      renderWithTheme(
+        <CheckboxGroup label={labelText}>
+          <Checkbox value="apple" validationState="error">
+            Apple
+          </Checkbox>
+          <Checkbox value="mango">Mango</Checkbox>
+          <Checkbox value="orange">Orange</Checkbox>
+        </CheckboxGroup>,
+      );
+    } catch (err: any) {
+      expect(err.message).toMatch(errorMsg);
+    }
   });
 });

@@ -32,7 +32,7 @@ describe('<Checkbox />', () => {
     expect(getByText(helpText)).toBeInTheDocument();
   });
 
-  it('should set error state with hasError', () => {
+  it('should set error state with validationState', () => {
     const labelText = 'Remember password';
     const { container, getByRole } = renderWithTheme(
       <Checkbox validationState="error">{labelText}</Checkbox>,
