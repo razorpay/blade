@@ -11,7 +11,7 @@ import type { CheckboxGroupProps } from './CheckboxGroup';
 
 type UseCheckboxGroupProps = Pick<
   CheckboxGroupProps,
-  'isDisabled' | 'labelPosition' | 'hasError' | 'showOptionalLabel' | 'name'
+  'isDisabled' | 'labelPosition' | 'validationState' | 'neccessityIndicator' | 'name'
 > & {
   value?: string[];
   defaultValue?: string[];
@@ -24,8 +24,8 @@ const useCheckboxGroup = ({
   isDisabled,
   labelPosition,
   onChange,
-  showOptionalLabel,
-  hasError,
+  neccessityIndicator,
+  validationState,
   name,
 }: UseCheckboxGroupProps) => {
   const { platform } = useTheme();
@@ -71,14 +71,14 @@ const useCheckboxGroup = ({
 
   const contextValue = React.useMemo(() => {
     return {
-      hasError,
-      showOptionalLabel,
+      validationState,
+      neccessityIndicator,
       isDisabled,
       labelPosition: platform === 'onMobile' ? 'top' : labelPosition,
       name,
       state,
     };
-  }, [hasError, showOptionalLabel, isDisabled, platform, labelPosition, name, state]);
+  }, [validationState, neccessityIndicator, isDisabled, platform, labelPosition, name, state]);
 
   return { state, contextValue, labelId };
 };

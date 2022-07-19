@@ -11,16 +11,30 @@ import { useCheckboxGroup } from './useCheckboxGroup';
 
 export type CheckboxGroupProps = {
   children: React.ReactNode;
+  /**
+   * Help text of the checkbox group
+   */
   helpText?: string;
+  /**
+   * Error text of the checkbox group
+   * Renders when validationState is set to 'error'
+   *
+   * Overrides helpText
+   */
   errorText?: string;
   /**
    * Sets the error state of the CheckboxGroup
-   * If set to `true` it will render the `errorText` of the group
+   * If set to `error` it will render the `errorText` of the group
    *
-   * @default false
+   * @default undefined
    */
-  hasError?: boolean;
-  showOptionalLabel?: boolean;
+  validationState?: 'error' | undefined;
+  /**
+   * Renders a neccessity indicator after CheckboxGroup label
+   *
+   * If set to `undefined` it renders nothing.
+   */
+  neccessityIndicator?: 'required' | 'optional';
   /**
    * Sets the disabled state of the CheckboxGroup
    * If set to `true` it propagate down to all the checkboxes
@@ -41,9 +55,9 @@ const CheckboxGroup = ({
   label,
   helpText,
   isDisabled,
-  showOptionalLabel,
+  neccessityIndicator,
   labelPosition = 'top',
-  hasError,
+  validationState,
   errorText,
   name,
   defaultValue,
@@ -57,11 +71,11 @@ const CheckboxGroup = ({
     isDisabled,
     name,
     labelPosition,
-    hasError,
-    showOptionalLabel,
+    validationState,
+    neccessityIndicator,
   });
 
-  const showError = hasError && errorText;
+  const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
 
   return (
@@ -69,9 +83,11 @@ const CheckboxGroup = ({
       <CheckboxGroupField labelledBy={labelId}>
         <CheckboxGroupLabel id={labelId}>
           {label}
-          {showOptionalLabel && (
+          {neccessityIndicator === 'optional' ? (
             <CheckboxGroupHintText variant="help"> (optional)</CheckboxGroupHintText>
-          )}
+          ) : neccessityIndicator === 'required' ? (
+            <CheckboxGroupHintText variant="help"> (required)</CheckboxGroupHintText>
+          ) : null}
           <VisuallyHidden>
             <Text>
               ,{showError && errorText}

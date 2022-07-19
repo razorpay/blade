@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { isUndefined } from 'lodash';
 import React from 'react';
 import { isEmpty } from '../../utils';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
-import { CheckboxHelpText } from './CheckboxHelpText';
+import { CheckboxHintText } from './CheckboxHintText';
 import { CheckboxIcon } from './CheckboxIcon';
 import { CheckboxInput } from './CheckboxInput';
 import { CheckboxLabel } from './CheckboxLabel';
@@ -17,18 +19,28 @@ type CheckboxProps = {
   defaultChecked?: boolean;
   onChange?: (isChecked: boolean) => void;
   children: string;
+  /**
+   * Help text of the checkbox group
+   */
   helpText?: string;
+  /**
+   * Error text of the checkbox group
+   * Renders when validationState is set to 'error'
+   *
+   * Overrides helpText
+   */
+  errorText?: string;
   isIndeterminate?: boolean;
   name?: string;
   value?: string;
   isDisabled?: boolean;
   isRequired?: boolean;
-  hasError?: boolean;
+  validationState?: 'error' | undefined;
 };
 
 const Checkbox = ({
   defaultChecked,
-  hasError,
+  validationState,
   isChecked,
   isDisabled,
   isIndeterminate,
@@ -38,14 +50,28 @@ const Checkbox = ({
   value,
   children,
   helpText,
+  errorText,
 }: CheckboxProps): React.ReactElement => {
   const groupProps = useCheckboxGroupContext();
 
-  if ((defaultChecked || isChecked) && !isEmpty(groupProps)) {
+  // ban controlling checkbox manually while inside group
+  const hasDefaultChecked = !isUndefined(defaultChecked);
+  const hasIsChecked = !isUndefined(isChecked);
+  const hasOnChange = !isUndefined(onChange);
+  if ((hasDefaultChecked || hasIsChecked || hasOnChange) && !isEmpty(groupProps)) {
+    const props = [
+      hasDefaultChecked ? 'defaultChecked' : undefined,
+      hasIsChecked ? 'isChecked' : undefined,
+      hasOnChange ? 'onChange' : undefined,
+    ].filter(Boolean);
+
     throw new Error(
-      "[Blade Checkbox]: Cannot control checkbox component when it's inside CheckboxGroup",
+      `[Blade Checkbox]: Cannot set \`${props.join(
+        ',',
+      )}\` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself`,
     );
   }
+  // mandate value prop when using inside group
   if (!value && !isEmpty(groupProps)) {
     throw new Error(
       `[Blade Checkbox]: <CheckboxGroup /> requires that you pass unique "value" prop to each <Checkbox />
@@ -56,11 +82,21 @@ const Checkbox = ({
       `,
     );
   }
+  // If validationState is used while inside group
+  if (validationState && !isEmpty(groupProps)) {
+    throw new Error(
+      "[Blade Checkbox]: Can't use validationState of individual Checkboxes inside <CheckboxGroup />, please set validtionState on the <CheckboxGroup /> itself.",
+    );
+  }
 
-  const _hasError = hasError ?? groupProps.hasError;
+  const _validationState = validationState ?? groupProps.validationState;
+  const _hasError = _validationState === 'error';
   const _isDisabled = isDisabled ?? groupProps.isDisabled;
   const _name = name ?? groupProps.name;
   const _isChecked = isChecked ?? groupProps.state?.isChecked(value!);
+
+  const showError = validationState === 'error' && errorText;
+  const showHelpText = !showError && helpText;
 
   const handleChange = (checked: boolean) => {
     if (checked) {
@@ -101,7 +137,8 @@ const Checkbox = ({
       {/* TODO: Replace Wrapper with Box */}
       <Wrapper>
         <CheckboxLabelText>{children}</CheckboxLabelText>
-        {helpText ? <CheckboxHelpText>{helpText}</CheckboxHelpText> : null}
+        {showError && <CheckboxHintText variant="error">{errorText}</CheckboxHintText>}
+        {showHelpText && <CheckboxHintText variant="help">{helpText}</CheckboxHintText>}
       </Wrapper>
     </CheckboxLabel>
   );

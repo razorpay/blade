@@ -34,7 +34,9 @@ describe('<Checkbox />', () => {
 
   it('should set error state with hasError', () => {
     const labelText = 'Remember password';
-    const { container, getByRole } = renderWithTheme(<Checkbox hasError>{labelText}</Checkbox>);
+    const { container, getByRole } = renderWithTheme(
+      <Checkbox validationState="error">{labelText}</Checkbox>,
+    );
     expect(container).toMatchSnapshot();
     expect(getByRole('checkbox', { hidden: true })).toBeInvalid();
   });

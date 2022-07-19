@@ -75,7 +75,12 @@ describe('<CheckboxGroup />', () => {
     const errorText = 'Invalid selection';
 
     const { getAllByRole, queryByText } = renderWithTheme(
-      <CheckboxGroup helpText={helpText} errorText={errorText} label={labelText} hasError>
+      <CheckboxGroup
+        helpText={helpText}
+        errorText={errorText}
+        label={labelText}
+        validationState="error"
+      >
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
         <Checkbox value="orange">Orange</Checkbox>

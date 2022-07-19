@@ -11,14 +11,13 @@ type UseCheckboxProps = Pick<
   CheckboxProps,
   | 'isChecked'
   | 'defaultChecked'
-  | 'hasError'
   | 'isDisabled'
   | 'isIndeterminate'
   | 'isRequired'
   | 'onChange'
   | 'name'
   | 'value'
->;
+> & { hasError?: boolean };
 
 function setMixed(element: HTMLInputElement, mixed?: boolean) {
   if (mixed) {

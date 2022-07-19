@@ -27,9 +27,11 @@ const DefaultExample = () => {
         Remember Login
       </CheckboxComponent>
       <Text>&nbsp;</Text>
-      <CheckboxComponent hasError>Remember Login</CheckboxComponent>
+      <CheckboxComponent validationState="error" errorText="Can you really remember?">
+        Remember Login
+      </CheckboxComponent>
       <Text>&nbsp;</Text>
-      <CheckboxComponent hasError defaultChecked>
+      <CheckboxComponent validationState="error" defaultChecked>
         Remember Login
       </CheckboxComponent>
       <Text>&nbsp;</Text>
@@ -65,15 +67,14 @@ const _ControlledAndUncontrolled: ComponentStory<typeof CheckboxComponent> = () 
 export const ControlledAndUncontrolled = _ControlledAndUncontrolled.bind({});
 
 const GroupExample = () => {
-  // const [selected, setSelected] = React.useState(['mango', 'apple']);
+  const [selected, setSelected] = React.useState(['mango', 'apple']);
 
   return (
     <>
       <CheckboxComponent defaultChecked isIndeterminate>
         Hello
       </CheckboxComponent>
-      ,
-      {/* <CheckboxGroupComponent
+      <CheckboxGroupComponent
         helpText="Select atleast one"
         label="Uncontrolled"
         defaultValue={['apple', 'orange']}
@@ -85,7 +86,7 @@ const GroupExample = () => {
       </CheckboxGroupComponent>
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
-        hasError={selected.length < 1}
+        validationState={selected.length < 1 ? 'error' : undefined}
         errorText="Selected atleast one item"
         helpText={`You selected ${selected.join(', ')}`}
         label="Controlled"
@@ -98,8 +99,8 @@ const GroupExample = () => {
       </CheckboxGroupComponent>
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
-        hasError
-        showOptionalLabel
+        validationState="error"
+        neccessityIndicator="optional"
         errorText="Atleast one has to be selected"
         helpText="Select atleast one"
         label="Select your fruit"
@@ -111,8 +112,8 @@ const GroupExample = () => {
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
         labelPosition="left"
-        showOptionalLabel
-        hasError
+        neccessityIndicator="optional"
+        validationState="error"
         errorText="This is invalid"
         helpText="Select atleast one"
         label="Select your fruit"
@@ -120,7 +121,7 @@ const GroupExample = () => {
         <CheckboxComponent value="apple">Apple</CheckboxComponent>
         <CheckboxComponent value="mango">Mango</CheckboxComponent>
         <CheckboxComponent value="orange">Orange</CheckboxComponent>
-      </CheckboxGroupComponent> */}
+      </CheckboxGroupComponent>
     </>
   );
 };

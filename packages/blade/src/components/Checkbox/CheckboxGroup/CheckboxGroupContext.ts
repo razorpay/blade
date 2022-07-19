@@ -6,9 +6,9 @@ import type { useCheckboxGroup } from './useCheckboxGroup';
 
 type CheckboxGroupContextType = Pick<
   CheckboxGroupProps,
-  | 'hasError'
+  | 'validationState'
   | 'isDisabled'
-  | 'showOptionalLabel'
+  | 'neccessityIndicator'
   | 'labelPosition'
   | 'name'
   | 'defaultValue'
