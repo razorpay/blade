@@ -11,6 +11,8 @@ exports[`<Text /> should render Text with default properties 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: left;
+  margin: 0;
+  padding: 0;
 }
 
 <div>
@@ -38,6 +40,8 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: left;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -73,6 +77,8 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: left;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -108,6 +114,8 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: left;
+  margin: 0;
+  padding: 0;
 }
 
 <div>

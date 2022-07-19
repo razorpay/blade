@@ -13,8 +13,20 @@ export type CheckboxGroupProps = {
   children: React.ReactNode;
   helpText?: string;
   errorText?: string;
+  /**
+   * Sets the error state of the CheckboxGroup
+   * If set to `true` it will render the `errorText` of the group
+   *
+   * @default false
+   */
   hasError?: boolean;
   showOptionalLabel?: boolean;
+  /**
+   * Sets the disabled state of the CheckboxGroup
+   * If set to `true` it propagate down to all the checkboxes
+   *
+   * @default false
+   */
   isDisabled?: boolean;
   label: string;
   labelPosition?: 'top' | 'left';

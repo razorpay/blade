@@ -11,6 +11,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -140,6 +142,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -269,6 +273,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -412,6 +418,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -555,6 +563,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -814,6 +824,8 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -944,6 +956,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -1074,6 +1088,8 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -1204,6 +1220,8 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -1334,6 +1352,8 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -1464,6 +1484,8 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -1594,6 +1616,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -1724,6 +1748,8 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -1854,6 +1880,8 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -1984,6 +2012,8 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -2114,6 +2144,8 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -2244,6 +2276,8 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -2374,6 +2408,8 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -2504,6 +2540,8 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -2633,6 +2671,8 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -2762,6 +2802,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
   text-decoration-line: none;
   line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -2891,6 +2933,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -3020,6 +3064,8 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -3149,6 +3195,8 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -3278,6 +3326,8 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -3407,6 +3457,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -3536,6 +3588,8 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -3665,6 +3719,8 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -3794,6 +3850,8 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -3923,6 +3981,8 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -4052,6 +4112,8 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -4181,6 +4243,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -4310,6 +4374,8 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -4439,6 +4505,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {

@@ -22,4 +22,7 @@ module.exports = {
     'jest-useragent-mock',
     './jest-setup.web.js',
   ],
+  moduleNameMapper: {
+    '\\.(css|less|sass|scss)$': '<rootDir>/src/_helpers/testing/styleMock.js',
+  },
 };

@@ -84,7 +84,7 @@ const CheckboxIcon = ({
       <Fade
         enter={fadeIn}
         leave={fadeOut}
-        show={!!isChecked}
+        show={!!isChecked && !isIndeterminate}
         styles={{ position: 'absolute', display: 'flex' }}
       >
         <CheckedIcon hidden={!isChecked} color={iconColor} />

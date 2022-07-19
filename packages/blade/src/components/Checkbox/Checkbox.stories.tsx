@@ -65,11 +65,15 @@ const _ControlledAndUncontrolled: ComponentStory<typeof CheckboxComponent> = () 
 export const ControlledAndUncontrolled = _ControlledAndUncontrolled.bind({});
 
 const GroupExample = () => {
-  const [selected, setSelected] = React.useState(['mango', 'apple']);
+  // const [selected, setSelected] = React.useState(['mango', 'apple']);
 
   return (
     <>
-      <CheckboxGroupComponent
+      <CheckboxComponent defaultChecked isIndeterminate>
+        Hello
+      </CheckboxComponent>
+      ,
+      {/* <CheckboxGroupComponent
         helpText="Select atleast one"
         label="Uncontrolled"
         defaultValue={['apple', 'orange']}
@@ -116,7 +120,7 @@ const GroupExample = () => {
         <CheckboxComponent value="apple">Apple</CheckboxComponent>
         <CheckboxComponent value="mango">Mango</CheckboxComponent>
         <CheckboxComponent value="orange">Orange</CheckboxComponent>
-      </CheckboxGroupComponent>
+      </CheckboxGroupComponent> */}
     </>
   );
 };
