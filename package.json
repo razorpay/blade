@@ -18,6 +18,7 @@
     ]
   },
   "scripts": {
+    "tsc:blade": "yarn workspace @razorpay/blade typecheck",
     "lint": "eslint --ext js,jsx,ts,tsx packages",
     "release": "changeset publish",
     "preinstall": "git config --global url.\"https://github.com/\".insteadOf git://github.com/",
@@ -64,7 +65,7 @@
   "husky": {
     "hooks": {
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
-      "pre-commit": "lint-staged && yarn run tsc"
+      "pre-commit": "lint-staged && yarn tsc:blade"
     }
   },
   "lint-staged": {

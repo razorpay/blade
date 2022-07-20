@@ -33,6 +33,7 @@
     }
   },
   "scripts": {
+    "typecheck": "tsc",
     "prepublish": "yarn build",
     "build": "run-s build:*",
     "build:clean": "rm -rf build",
