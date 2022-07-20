@@ -11,12 +11,15 @@ import type { CheckboxGroupProps } from './CheckboxGroup';
 
 type UseCheckboxGroupProps = Pick<
   CheckboxGroupProps,
-  'isDisabled' | 'labelPosition' | 'validationState' | 'neccessityIndicator' | 'name'
-> & {
-  value?: string[];
-  defaultValue?: string[];
-  onChange?: (value: string[]) => void;
-};
+  | 'isDisabled'
+  | 'labelPosition'
+  | 'validationState'
+  | 'neccessityIndicator'
+  | 'name'
+  | 'value'
+  | 'defaultValue'
+  | 'onChange'
+>;
 
 const useCheckboxGroup = ({
   value,
