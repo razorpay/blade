@@ -195,7 +195,8 @@ Reusable components candidate
     - [Blog diff keyboard types and autosuggestion](https://css-tricks.com/better-form-inputs-for-better-mobile-user-experiences/)
     - [Demo of diff keyboard types and autosuggestion](https://better-mobile-inputs.netlify.app/)
     - [`autocomplete`](https://polaris.shopify.com/components/text-field)
-    - [`enterkeyhint` demo](https://mixable.blog/ux-improvements-enterkeyhint-to-define-action-label-for-the-keyboard-of-mobile-devices/)
+    - [`enterkeyhint` demo-1](https://mixable.blog/ux-improvements-enterkeyhint-to-define-action-label-for-the-keyboard-of-mobile-devices/)
+    - [`enterkeyhint` demo-2](https://dtapuska.github.io/enterkeyhint/)
     - [`enterkeyhint` ref](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint)
   - native
     - [`keyboardType`](https://reactnative.dev/docs/textinput#keyboardtype)
