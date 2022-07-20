@@ -1,12 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import userEvents from '@testing-library/user-event';
+import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.web';
+import { Text } from 'react-native';
+import renderWithTheme from '../../../_helpers/testing/renderWithTheme.native';
 import { Checkbox } from '../Checkbox';
 import { CheckboxGroup } from '../CheckboxGroup';
 
@@ -16,50 +19,50 @@ afterAll(() => jest.restoreAllMocks());
 describe('<CheckboxGroup />', () => {
   it('should render with label', () => {
     const labelText = 'Select fruits';
-    const { container, getByRole } = renderWithTheme(
+    const { toJSON, queryByText } = renderWithTheme(
       <CheckboxGroup label={labelText}>
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
         <Checkbox value="orange">Orange</Checkbox>
       </CheckboxGroup>,
     );
-    expect(container).toMatchSnapshot();
-    expect(getByRole('group')).toHaveTextContent(labelText);
+    expect(toJSON()).toMatchSnapshot();
+    expect(queryByText(labelText)).toBeTruthy();
   });
 
   it('should render with label', () => {
     const labelText = 'Select fruits';
     const helpText = 'Select one';
-    const { container, getByRole, getByText } = renderWithTheme(
+    const { toJSON, queryByText } = renderWithTheme(
       <CheckboxGroup helpText={helpText} label={labelText}>
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
         <Checkbox value="orange">Orange</Checkbox>
       </CheckboxGroup>,
     );
-    expect(container).toMatchSnapshot();
-    expect(getByRole('group')).toHaveTextContent(labelText);
-    expect(getByText(helpText)).toBeInTheDocument();
+    expect(toJSON()).toMatchSnapshot();
+    expect(queryByText(labelText)).toBeTruthy();
+    expect(queryByText(helpText)).toBeTruthy();
   });
 
   it('should propagate isDisabled prop to child checkboxes', () => {
     const labelText = 'Select fruits';
-    const { getAllByRole } = renderWithTheme(
+    const { getAllByA11yRole } = renderWithTheme(
       <CheckboxGroup isDisabled label={labelText}>
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
         <Checkbox value="orange">Orange</Checkbox>
       </CheckboxGroup>,
     );
-
-    getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
-      expect(checkbox).toBeDisabled();
+    const checkboxes = getAllByA11yRole('checkbox');
+    checkboxes.forEach((checkbox) => {
+      expect(checkbox.props.accessibilityState.disabled).toBeTruthy();
     });
   });
 
   it('should propagate name prop to child checkboxes', () => {
     const labelText = 'Select fruits';
-    const { getAllByRole } = renderWithTheme(
+    const { getAllByA11yRole } = renderWithTheme(
       <CheckboxGroup isDisabled label={labelText} name="fruits">
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
@@ -67,8 +70,9 @@ describe('<CheckboxGroup />', () => {
       </CheckboxGroup>,
     );
 
-    getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
-      expect(checkbox).toHaveAttribute('name', 'fruits');
+    const checkboxes = getAllByA11yRole('checkbox');
+    checkboxes.forEach((checkbox) => {
+      expect(checkbox.props.name).toBe('fruits');
     });
   });
 
@@ -77,7 +81,7 @@ describe('<CheckboxGroup />', () => {
     const helpText = 'Select one';
     const errorText = 'Invalid selection';
 
-    const { getAllByRole, queryByText } = renderWithTheme(
+    const { getAllByA11yRole, queryByText } = renderWithTheme(
       <CheckboxGroup
         helpText={helpText}
         errorText={errorText}
@@ -90,18 +94,19 @@ describe('<CheckboxGroup />', () => {
       </CheckboxGroup>,
     );
 
-    expect(queryByText(helpText)).not.toBeInTheDocument();
-    expect(queryByText(errorText)).toBeInTheDocument();
-    getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
-      expect(checkbox).toBeInvalid();
+    expect(queryByText(helpText)).toBeFalsy();
+    expect(queryByText(errorText)).toBeTruthy();
+
+    const checkboxes = getAllByA11yRole('checkbox');
+    checkboxes.forEach((checkbox) => {
+      expect(checkbox.props.accessibilityInvalid).toBeTruthy();
     });
   });
 
-  it('should work in uncontrolled mode', async () => {
-    const user = userEvents.setup();
+  it('should work in uncontrolled mode', () => {
     const labelText = 'Select fruits';
     const fn = jest.fn();
-    const { getByLabelText, getByRole } = renderWithTheme(
+    const { getAllByA11yRole, getByA11yState } = renderWithTheme(
       <CheckboxGroup label={labelText} defaultValue={['apple']} onChange={(values) => fn(values)}>
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
@@ -109,27 +114,28 @@ describe('<CheckboxGroup />', () => {
       </CheckboxGroup>,
     );
 
-    expect(getByRole('checkbox', { hidden: true, checked: true })).toHaveAttribute(
-      'value',
-      'apple',
-    );
+    const checkbox = getByA11yState({ checked: true });
+    expect(checkbox.props.value).toBe('apple');
 
-    await user.tab();
-    expect(getByLabelText('Apple')).toHaveFocus();
-    await user.keyboard('[Space]');
-    expect(fn).toBeCalledWith([]);
-    await user.tab();
-    expect(getByLabelText('Mango')).toHaveFocus();
-    await user.keyboard('[Space]');
-    expect(fn).toBeCalledWith(['mango']);
-    await user.tab();
-    expect(getByLabelText('Orange')).toHaveFocus();
-    await user.keyboard('[Space]');
+    const checkboxes = getAllByA11yRole('checkbox');
+    const apple = checkboxes.find((checkbox) => checkbox.props.value === 'apple');
+    const mango = checkboxes.find((checkbox) => checkbox.props.value === 'mango');
+    const orange = checkboxes.find((checkbox) => checkbox.props.value === 'orange');
+
+    expect(apple?.props.accessibilityState.checked).toBeTruthy();
+    expect(fn).not.toBeCalled();
+    fireEvent.press(mango!);
+    expect(mango?.props.accessibilityState.checked).toBeTruthy();
+    expect(fn).toBeCalledWith(['apple', 'mango']);
+    fireEvent.press(orange!);
+    expect(orange?.props.accessibilityState.checked).toBeTruthy();
+    expect(fn).toBeCalledWith(['apple', 'mango', 'orange']);
+    fireEvent.press(apple!);
+    expect(apple?.props.accessibilityState.checked).toBeFalsy();
     expect(fn).toBeCalledWith(['mango', 'orange']);
   });
 
-  it('should work in controlled mode', async () => {
-    const user = userEvents.setup();
+  it('should work in controlled mode', () => {
     const labelText = 'Select fruits';
     const fn = jest.fn();
     const Example = () => {
@@ -148,30 +154,32 @@ describe('<CheckboxGroup />', () => {
             <Checkbox value="mango">Mango</Checkbox>
             <Checkbox value="orange">Orange</Checkbox>
           </CheckboxGroup>
-          <p data-testid="values">{values.join(',')}</p>
+          <Text testID="values">{values.join(',')}</Text>
         </>
       );
     };
-    const { getByLabelText, getByRole, getByTestId } = renderWithTheme(<Example />);
+    const { getAllByA11yRole, getByA11yState, getByTestId } = renderWithTheme(<Example />);
 
-    expect(getByRole('checkbox', { hidden: true, checked: true })).toHaveAttribute(
-      'value',
-      'apple',
-    );
+    const checkbox = getByA11yState({ checked: true });
+    expect(checkbox.props.value).toBe('apple');
 
-    await user.tab();
-    expect(getByLabelText('Apple')).toHaveFocus();
-    await user.keyboard('[Space]');
-    expect(fn).toBeCalledWith([]);
-    await user.tab();
-    expect(getByLabelText('Mango')).toHaveFocus();
-    await user.keyboard('[Space]');
-    expect(fn).toBeCalledWith(['mango']);
-    await user.tab();
-    expect(getByLabelText('Orange')).toHaveFocus();
-    await user.keyboard('[Space]');
+    const checkboxes = getAllByA11yRole('checkbox');
+    const apple = checkboxes.find((checkbox) => checkbox.props.value === 'apple');
+    const mango = checkboxes.find((checkbox) => checkbox.props.value === 'mango');
+    const orange = checkboxes.find((checkbox) => checkbox.props.value === 'orange');
+
+    expect(apple?.props.accessibilityState.checked).toBeTruthy();
+    expect(fn).not.toBeCalled();
+    fireEvent.press(mango!);
+    expect(mango?.props.accessibilityState.checked).toBeTruthy();
+    expect(fn).toBeCalledWith(['apple', 'mango']);
+    fireEvent.press(orange!);
+    expect(orange?.props.accessibilityState.checked).toBeTruthy();
+    expect(fn).toBeCalledWith(['apple', 'mango', 'orange']);
+    fireEvent.press(apple!);
+    expect(apple?.props.accessibilityState.checked).toBeFalsy();
     expect(fn).toBeCalledWith(['mango', 'orange']);
-    expect(getByTestId('values')).toHaveTextContent('mango,orange');
+    expect(getByTestId('values').children[0]).toBe('mango,orange');
   });
 });
 
