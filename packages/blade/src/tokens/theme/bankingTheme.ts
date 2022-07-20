@@ -39,7 +39,7 @@ const colors: ColorsWithModes = {
           highContrast: globalColors.neutral.navyGrayLight[0],
         },
         subtle: {
-          lowContrast: globalColors.neutral.navyGrayLight[1000],
+          lowContrast: globalColors.neutral.navyGrayLight[900],
           highContrast: globalColors.neutral.navyGrayLight[100],
         },
         subdued: {
@@ -64,6 +64,7 @@ const colors: ColorsWithModes = {
         500: globalColors.chromatic.azure[500],
         600: globalColors.chromatic.azure[600],
         700: globalColors.chromatic.azure[700],
+        800: globalColors.chromatic.azure[950],
       },
       gray: {
         200: globalColors.neutral.navyGrayLight[50],
@@ -960,6 +961,7 @@ const colors: ColorsWithModes = {
           focus: globalColors.chromatic.azure[700],
           active: globalColors.chromatic.azure[700],
           disabled: globalColors.neutral.navyGrayLight[400],
+          visited: globalColors.chromatic.orchid[400],
         },
       },
       icon: {
@@ -990,6 +992,7 @@ const colors: ColorsWithModes = {
           focus: globalColors.chromatic.azure[700],
           active: globalColors.chromatic.azure[700],
           disabled: globalColors.neutral.navyGrayLight[400],
+          visited: globalColors.chromatic.orchid[400],
         },
       },
     },
@@ -1051,6 +1054,7 @@ const colors: ColorsWithModes = {
         500: globalColors.chromatic.azure[400],
         600: globalColors.chromatic.azure[500],
         700: globalColors.chromatic.azure[600],
+        800: globalColors.chromatic.azure[900],
       },
       gray: {
         200: globalColors.neutral.navyGrayDark[1000],
@@ -1947,6 +1951,7 @@ const colors: ColorsWithModes = {
           focus: globalColors.chromatic.azure[500],
           active: globalColors.chromatic.azure[500],
           disabled: globalColors.neutral.navyGrayDark[400],
+          visited: globalColors.chromatic.orchid[300],
         },
       },
       icon: {
@@ -1977,6 +1982,7 @@ const colors: ColorsWithModes = {
           focus: globalColors.chromatic.azure[500],
           active: globalColors.chromatic.azure[500],
           disabled: globalColors.neutral.navyGrayDark[400],
+          visited: globalColors.chromatic.orchid[300],
         },
       },
     },

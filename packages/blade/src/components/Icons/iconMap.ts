@@ -5,9 +5,15 @@ import ChevronUpIconComponent from './ChevronUpIcon';
 import ChevronRightIconComponent from './ChevronRightIcon';
 import CreditCardIconComponent from './CreditCardIcon';
 import DollarIconComponent from './DollarIcon';
+import DownloadIconComponent from './DownloadIcon';
+import EditIconComponent from './EditIcon';
 import EyeIconComponent from './EyeIcon';
 import EyeOffIconComponent from './EyeOffIcon';
+import HistoryIconComponent from './HistoryIcon';
+import PauseIconComponent from './PauseIcon';
+import PlusIconComponent from './PlusIcon';
 import RupeeIconComponent from './RupeeIcon';
+import TrashIconComponent from './TrashIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -19,9 +25,15 @@ const iconMap: Record<string, IconComponent> = {
   ChevronRightIcon: ChevronRightIconComponent,
   CreditCardIcon: CreditCardIconComponent,
   DollarIcon: DollarIconComponent,
+  DownloadIcon: DownloadIconComponent,
+  EditIcon: EditIconComponent,
   EyeIcon: EyeIconComponent,
   EyeOffIcon: EyeOffIconComponent,
+  HistoryIcon: HistoryIconComponent,
+  PauseIcon: PauseIconComponent,
+  PlusIcon: PlusIconComponent,
   RupeeIcon: RupeeIconComponent,
+  TrashIcon: TrashIconComponent,
 };
 
 export default iconMap;
