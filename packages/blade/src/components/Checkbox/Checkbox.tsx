@@ -15,26 +15,75 @@ import { useCheckbox } from './useCheckbox';
 import { Wrapper } from './Wrapper';
 
 type CheckboxProps = {
+  /**
+   * If `true`, sets the checkbox will be checked.
+   * Use `onChange` to update its value
+   *
+   * @default false
+   */
   isChecked?: boolean;
+  /**
+   * If `true`, the checkbox will be initially checked.
+   *
+   * @default false
+   */
   defaultChecked?: boolean;
+  /**
+   * The callback invoked when the checked state of the `Checkbox` changes.
+   */
   onChange?: (isChecked: boolean) => void;
+  /**
+   * Sets the label text of the checkbox
+   */
   children: string;
   /**
-   * Help text of the checkbox group
+   * Help text of the checkbox
    */
   helpText?: string;
   /**
-   * Error text of the checkbox group
-   * Renders when validationState is set to 'error'
+   * Error text of the checkbox
+   *
+   * Renders when `validationState` is set to 'error'
    *
    * Overrides helpText
    */
   errorText?: string;
+  /**
+   * If `true`, the checkbox will be indeterminate.
+   * This does not modify the isChecked property.
+   *
+   * @default false
+   */
   isIndeterminate?: boolean;
+  /**
+   * The name of the input field in a checkbox
+   * (Useful for form submission).
+   */
   name?: string;
+  /**
+   * The value to be used in the checkbox input.
+   * This is the value that will be returned on form submission.
+   */
   value?: string;
+  /**
+   * If `true`, the checkbox will be disabled
+   *
+   * @default false
+   */
   isDisabled?: boolean;
+  /**
+   * If `true`, the checkbox input is marked as required,
+   * and `required` attribute will be added
+   *
+   * @default false
+   */
   isRequired?: boolean;
+  /**
+   * If `error`, the checkbox input is marked as invalid,
+   * and `invalid` attribute will be added
+   *
+   * @default undefined
+   */
   validationState?: 'error' | undefined;
 };
 

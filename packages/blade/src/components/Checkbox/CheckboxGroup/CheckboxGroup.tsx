@@ -10,6 +10,9 @@ import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
 
 export type CheckboxGroupProps = {
+  /**
+   * Accepts multiple checkboxes as children
+   */
   children: React.ReactNode;
   /**
    * Help text of the checkbox group
@@ -17,14 +20,15 @@ export type CheckboxGroupProps = {
   helpText?: string;
   /**
    * Error text of the checkbox group
-   * Renders when validationState is set to 'error'
+   * Renders when `validationState` is set to 'error'
    *
    * Overrides helpText
    */
   errorText?: string;
   /**
    * Sets the error state of the CheckboxGroup
-   * If set to `error` it will render the `errorText` of the group
+   * If set to `error` it will render the `errorText` of the group,
+   * and propagate `invalid` prop to every checkbox
    *
    * @default undefined
    */
@@ -42,11 +46,34 @@ export type CheckboxGroupProps = {
    * @default false
    */
   isDisabled?: boolean;
+  /**
+   * Renders the label of the checkbox group
+   */
   label: string;
+  /**
+   * Sets the position of the label
+   *
+   * @default 'top'
+   */
   labelPosition?: 'top' | 'left';
+  /**
+   * Initial value of the checkbox group
+   */
   defaultValue?: string[];
+  /**
+   * value of the checkbox group
+   *
+   * Use `onChange` to update its value
+   */
   value?: string[];
+  /**
+   * The callback invoked when the any of the checkbox's state changes
+   */
   onChange?: (values: string[]) => void;
+  /**
+   * The name of the input field in a checkbox
+   * (Useful for form submission).
+   */
   name?: string;
 };
 
