@@ -5,7 +5,7 @@ import type { BaseTextProps } from './BaseText';
 import BaseTextComponent from './BaseText';
 
 export default {
-  title: 'Components/Typography/BaseText',
+  title: 'Components/Typography/BaseText (Internal)',
   component: BaseTextComponent,
   args: {
     color: 'surface.text.normal.lowContrast',
