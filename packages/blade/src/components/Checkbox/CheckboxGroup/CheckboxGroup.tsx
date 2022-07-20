@@ -91,7 +91,7 @@ const CheckboxGroup = ({
   onChange,
   value,
 }: CheckboxGroupProps): React.ReactElement => {
-  const { contextValue, labelId } = useCheckboxGroup({
+  const { contextValue, ids } = useCheckboxGroup({
     defaultValue,
     onChange,
     value,
@@ -107,8 +107,8 @@ const CheckboxGroup = ({
 
   return (
     <CheckboxGroupProvider value={contextValue}>
-      <CheckboxGroupField labelledBy={labelId}>
-        <CheckboxGroupLabel id={labelId}>
+      <CheckboxGroupField labelledBy={ids.labelId}>
+        <CheckboxGroupLabel id={ids.labelId}>
           {label}
           {neccessityIndicator === 'optional' ? (
             <CheckboxGroupHintText variant="help"> (optional)</CheckboxGroupHintText>

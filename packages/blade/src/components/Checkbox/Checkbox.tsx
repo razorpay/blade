@@ -157,7 +157,7 @@ const Checkbox = ({
     onChange?.(checked);
   };
 
-  const { state, inputProps } = useCheckbox({
+  const { state, ids, inputProps } = useCheckbox({
     defaultChecked,
     isChecked: _isChecked,
     isIndeterminate,
@@ -186,8 +186,16 @@ const Checkbox = ({
       {/* TODO: Replace Wrapper with Box */}
       <Wrapper>
         <CheckboxLabelText>{children}</CheckboxLabelText>
-        {showError && <CheckboxHintText variant="error">{errorText}</CheckboxHintText>}
-        {showHelpText && <CheckboxHintText variant="help">{helpText}</CheckboxHintText>}
+        {showError && (
+          <CheckboxHintText id={ids?.errorTextId} variant="error">
+            {errorText}
+          </CheckboxHintText>
+        )}
+        {showHelpText && (
+          <CheckboxHintText id={ids?.helpTextId} variant="help">
+            {helpText}
+          </CheckboxHintText>
+        )}
       </Wrapper>
     </CheckboxLabel>
   );

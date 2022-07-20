@@ -32,8 +32,8 @@ const useCheckboxGroup = ({
   name,
 }: UseCheckboxGroupProps) => {
   const { platform } = useTheme();
-  const uuid = useId('checkbox-group');
-  const labelId = `${uuid}-label`;
+  const idBase = useId('checkbox-group');
+  const labelId = `${idBase}-label`;
   const [checkedValues, setValue] = useControllableState({
     value,
     defaultValue: defaultValue || [],
@@ -83,7 +83,7 @@ const useCheckboxGroup = ({
     };
   }, [validationState, neccessityIndicator, isDisabled, platform, labelPosition, name, state]);
 
-  return { state, contextValue, labelId };
+  return { state, contextValue, ids: { labelId } };
 };
 
 export { useCheckboxGroup };

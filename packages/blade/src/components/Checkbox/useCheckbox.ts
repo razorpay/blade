@@ -3,6 +3,7 @@
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { useControllableState } from '../../hooks/useControllable';
+import { useId } from '../../hooks/useId';
 import { makeAccessible } from '../../utils';
 import getPlatformType from '../../utils/getPlatformType';
 import type { CheckboxProps } from './Checkbox';
@@ -75,6 +76,10 @@ const useCheckbox = ({
     setChecked: setCheckboxStateChange,
   };
 
+  const idBase = useId('checkbox');
+  const errorTextId = useId(`${idBase}-errortext`);
+  const helpTextId = useId(`${idBase}-helptext`);
+
   const accessibilityProps = makeAccessible({
     role: 'checkbox',
     required: !!isRequired,
@@ -82,6 +87,8 @@ const useCheckbox = ({
     invalid: !!hasError,
     disabled: !!isDisabled,
     checked: checkboxState,
+    errorMessage: errorTextId,
+    describedBy: helpTextId,
   });
 
   if (isReactNative) {
@@ -98,6 +105,7 @@ const useCheckbox = ({
 
   return {
     state,
+    ids: { errorTextId, helpTextId },
     inputProps: {
       ref: inputRef,
       onChange: handleOnChange,
