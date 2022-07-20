@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { InputProps } from './useCheckbox';
 
 export * from './CheckboxLabel.web';

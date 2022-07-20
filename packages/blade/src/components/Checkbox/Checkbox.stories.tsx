@@ -8,42 +8,92 @@ import { Checkbox as CheckboxComponent } from './Checkbox';
 import { CheckboxGroup as CheckboxGroupComponent } from './CheckboxGroup';
 
 export default {
-  title: 'Components/Checkbox',
+  title: 'Components/Checkbox/Checkbox',
   component: CheckboxComponent,
   args: {
+    defaultChecked: undefined,
+    validationState: undefined,
+    isChecked: undefined,
+    isDisabled: undefined,
+    isIndeterminate: undefined,
+    isRequired: undefined,
+    name: undefined,
+    onChange: undefined,
+    value: undefined,
+    helpText: undefined,
+    errorText: undefined,
+    labelPosition: 'top',
     children: 'Toggle checkbox',
   },
   argTypes: {},
 } as Meta<CheckboxProps>;
 
-const DefaultExample = () => {
-  return (
-    <>
-      <CheckboxComponent>Remember Login</CheckboxComponent>
-      <Text>&nbsp;</Text>
-      <CheckboxComponent isDisabled>Remember Login</CheckboxComponent>
-      <Text>&nbsp;</Text>
-      <CheckboxComponent isDisabled defaultChecked>
-        Remember Login
-      </CheckboxComponent>
-      <Text>&nbsp;</Text>
-      <CheckboxComponent validationState="error" errorText="Can you really remember?">
-        Remember Login
-      </CheckboxComponent>
-      <Text>&nbsp;</Text>
-      <CheckboxComponent validationState="error" defaultChecked>
-        Remember Login
-      </CheckboxComponent>
-      <Text>&nbsp;</Text>
-      <CheckboxComponent helpText="Please check this box">Remember Login</CheckboxComponent>
-    </>
-  );
+const CheckboxTemplate: ComponentStory<typeof CheckboxComponent> = ({ children, ...args }) => {
+  return <CheckboxComponent {...args}>{children}</CheckboxComponent>;
 };
 
-const CheckboxTemplate: ComponentStory<typeof CheckboxComponent> = () => {
-  return <DefaultExample />;
-};
 export const Default = CheckboxTemplate.bind({});
+Default.storyName = 'Default';
+
+export const Checked = CheckboxTemplate.bind({});
+Checked.storyName = 'Checked';
+Checked.args = {
+  isChecked: true,
+};
+
+export const DefaultChecked = CheckboxTemplate.bind({});
+DefaultChecked.storyName = 'DefaultChecked';
+DefaultChecked.args = {
+  defaultChecked: true,
+};
+
+export const HelpText = CheckboxTemplate.bind({});
+HelpText.storyName = 'HelpText';
+HelpText.args = {
+  helpText: 'Checkbox help text',
+};
+
+export const ErrorText = CheckboxTemplate.bind({});
+ErrorText.storyName = 'ErrorText';
+ErrorText.args = {
+  validationState: 'error',
+  errorText: 'Checkbox error text',
+};
+
+export const Indeterminate = CheckboxTemplate.bind({});
+Indeterminate.storyName = 'Indeterminate';
+Indeterminate.args = {
+  isIndeterminate: true,
+};
+
+// const DefaultExample = () => {
+//   return (
+//     <>
+//       <CheckboxComponent>Remember Login</CheckboxComponent>
+//       <Text>&nbsp;</Text>
+//       <CheckboxComponent isDisabled>Remember Login</CheckboxComponent>
+//       <Text>&nbsp;</Text>
+//       <CheckboxComponent isDisabled defaultChecked>
+//         Remember Login
+//       </CheckboxComponent>
+//       <Text>&nbsp;</Text>
+//       <CheckboxComponent validationState="error" errorText="Can you really remember?">
+//         Remember Login
+//       </CheckboxComponent>
+//       <Text>&nbsp;</Text>
+//       <CheckboxComponent validationState="error" defaultChecked>
+//         Remember Login
+//       </CheckboxComponent>
+//       <Text>&nbsp;</Text>
+//       <CheckboxComponent helpText="Please check this box">Remember Login</CheckboxComponent>
+//     </>
+//   );
+// };
+
+// const CheckboxTemplate: ComponentStory<typeof CheckboxComponent> = () => {
+//   return <DefaultExample />;
+// };
+// export const Default = CheckboxTemplate.bind({});
 
 const ControlledAndUncontrolledComp = () => {
   const [checked, setChecked] = React.useState(false);
@@ -53,7 +103,7 @@ const ControlledAndUncontrolledComp = () => {
       <CheckboxComponent defaultChecked onChange={(e) => console.log(e)}>
         Uncontrolled
       </CheckboxComponent>
-      <Text>{''}</Text>
+      <Text>&nbsp;</Text>
       <CheckboxComponent isChecked={checked} onChange={(e) => setChecked(e)}>
         Controlled
       </CheckboxComponent>
@@ -71,9 +121,6 @@ const GroupExample = () => {
 
   return (
     <>
-      <CheckboxComponent defaultChecked isIndeterminate>
-        Hello
-      </CheckboxComponent>
       <CheckboxGroupComponent
         helpText="Select atleast one"
         label="Uncontrolled"
@@ -175,4 +222,4 @@ const IndeterminateTemplate: ComponentStory<typeof CheckboxComponent> = () => {
   return <IndeterminateExample />;
 };
 export const IndeterminateCheckbox = IndeterminateTemplate.bind({});
-Default.storyName = 'Default';
+// Default.storyName = 'Default';
