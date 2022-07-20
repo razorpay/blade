@@ -1,5 +1,5 @@
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.native';
 import EyeOffIcon from '.';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<EyeOffIcon />', () => {
   it('should render EyeOffIcon', () => {

@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
-import themeWrapper from '../../../_helpers/testing/themeWrapper';
 import useIconProps from './useIconProps';
+import themeWrapper from '~src/_helpers/testing/themeWrapper';
 
 describe('useIconProps', () => {
   it('should return a xlarge icon with the correct color', () => {
