@@ -4004,7 +4004,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
     <Text
       color="hsla(0, 0%, 100%, 1)"
       fontFamily="Lato"
-      fontSize="12px"
+      fontSize="11px"
       fontStyle="normal"
       fontWeight={700}
       lineHeight="16px"
@@ -4013,7 +4013,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 12,
+            "fontSize": 11,
             "fontStyle": "normal",
             "fontWeight": "700",
             "lineHeight": 16,
@@ -4238,7 +4238,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     <Text
       color="hsla(0, 0%, 100%, 1)"
       fontFamily="Lato"
-      fontSize="12px"
+      fontSize="11px"
       fontStyle="normal"
       fontWeight={700}
       lineHeight="16px"
@@ -4247,7 +4247,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
           Object {
             "color": "hsla(0, 0%, 100%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 12,
+            "fontSize": 11,
             "fontStyle": "normal",
             "fontWeight": "700",
             "lineHeight": 16,

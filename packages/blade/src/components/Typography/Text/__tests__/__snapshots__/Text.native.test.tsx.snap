@@ -100,7 +100,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
 <Text
   color="hsla(217, 56%, 17%, 1)"
   fontFamily="Lato"
-  fontSize="14px"
+  fontSize="12px"
   fontStyle="normal"
   fontWeight={700}
   lineHeight="24px"
@@ -110,7 +110,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
       Object {
         "color": "hsla(217, 56%, 17%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 14,
+        "fontSize": 12,
         "fontStyle": "normal",
         "fontWeight": "700",
         "lineHeight": 24,
