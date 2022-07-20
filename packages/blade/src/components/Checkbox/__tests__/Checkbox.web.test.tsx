@@ -6,9 +6,6 @@ import React from 'react';
 import renderWithTheme from '../../../_helpers/testing/renderWithTheme.web';
 import { Checkbox } from '../Checkbox';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 describe('<Checkbox />', () => {
   it('should render checkbox with label', () => {
     const labelText = 'Remember password';
@@ -16,13 +13,6 @@ describe('<Checkbox />', () => {
     expect(container).toMatchSnapshot();
     expect(getByRole('checkbox', { hidden: true })).toBeInTheDocument();
     expect(getByText(labelText)).toBeInTheDocument();
-  });
-
-  it('should render helpText', () => {
-    const labelText = 'Remember password';
-    const helpText = 'This has to be checked';
-    const { getByText } = renderWithTheme(<Checkbox helpText={helpText}>{labelText}</Checkbox>);
-    expect(getByText(helpText)).toBeInTheDocument();
   });
 
   it('should render helpText', () => {
@@ -74,7 +64,7 @@ describe('<Checkbox />', () => {
     expect(getByRole('checkbox', { hidden: true })).not.toBeChecked();
   });
 
-  it('should be able checked by default when using defaultChecked', () => {
+  it('should set defaultChecked', () => {
     const labelText = 'Remember password';
     const { getByRole } = renderWithTheme(<Checkbox defaultChecked>{labelText}</Checkbox>);
 
