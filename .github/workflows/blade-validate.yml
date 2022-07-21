@@ -28,6 +28,6 @@ jobs:
       - name: Run Native Tests
         run: yarn test:react-native
         working-directory: packages/blade
-      - name: Run TypeScript Checks Blade
+      - name: Run TypeScript Checks
         run: yarn typecheck
         working-directory: packages/blade
