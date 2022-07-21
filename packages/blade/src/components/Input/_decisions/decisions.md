@@ -69,6 +69,8 @@ The BaseInput is the underlying input field that will in turn be used to render 
 
 ### The blueprint layout of icons, prefix, suffix and loader
 
+![Base InputField Layout](base-inputfield-layout.png)
+
 ## TextInput API
 
 **Sample Usage**
