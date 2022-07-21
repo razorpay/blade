@@ -2,7 +2,7 @@
 
 exports[`<CheckboxGroup /> should render with label 1`] = `
 <View
-  accessibilityLabelledBy="checkbox-group-1-label"
+  accessibilityLabelledBy="checkbox-group-10-label"
   labelPosition="top"
   style={
     Array [
@@ -14,7 +14,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   }
 >
   <Text
-    color="hsla(216, 33%, 29%, 1)"
+    color="hsla(216, 27%, 36%, 1)"
     fontFamily="Lato"
     fontSize="14px"
     fontStyle="normal"
@@ -23,7 +23,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
     style={
       Array [
         Object {
-          "color": "hsla(216, 33%, 29%, 1)",
+          "color": "hsla(216, 27%, 36%, 1)",
           "fontFamily": "Lato",
           "fontSize": 14,
           "fontStyle": "normal",
@@ -126,6 +126,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       }
     >
       <View
+        accessibilityDescribedBy="checkbox-1-helptext-3"
+        accessibilityErrorMessage="checkbox-1-errortext-2"
         accessibilityInvalid={false}
         accessibilityRequired={false}
         accessibilityRole="checkbox"
@@ -183,7 +185,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         />
         <View>
           <Text
-            color="hsla(216, 33%, 29%, 1)"
+            color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
             fontSize="15px"
             fontStyle="normal"
@@ -192,7 +194,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 33%, 29%, 1)",
+                  "color": "hsla(216, 27%, 36%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 15,
                   "fontStyle": "normal",
@@ -219,6 +221,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         </View>
       </View>
       <View
+        accessibilityDescribedBy="checkbox-4-helptext-6"
+        accessibilityErrorMessage="checkbox-4-errortext-5"
         accessibilityInvalid={false}
         accessibilityRequired={false}
         accessibilityRole="checkbox"
@@ -276,7 +280,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         />
         <View>
           <Text
-            color="hsla(216, 33%, 29%, 1)"
+            color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
             fontSize="15px"
             fontStyle="normal"
@@ -285,7 +289,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 33%, 29%, 1)",
+                  "color": "hsla(216, 27%, 36%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 15,
                   "fontStyle": "normal",
@@ -312,6 +316,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         </View>
       </View>
       <View
+        accessibilityDescribedBy="checkbox-7-helptext-9"
+        accessibilityErrorMessage="checkbox-7-errortext-8"
         accessibilityInvalid={false}
         accessibilityRequired={false}
         accessibilityRole="checkbox"
@@ -369,7 +375,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         />
         <View>
           <Text
-            color="hsla(216, 33%, 29%, 1)"
+            color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
             fontSize="15px"
             fontStyle="normal"
@@ -378,7 +384,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 33%, 29%, 1)",
+                  "color": "hsla(216, 27%, 36%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 15,
                   "fontStyle": "normal",
@@ -411,7 +417,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 
 exports[`<CheckboxGroup /> should render with label 2`] = `
 <View
-  accessibilityLabelledBy="checkbox-group-3-label"
+  accessibilityLabelledBy="checkbox-group-21-label"
   labelPosition="top"
   style={
     Array [
@@ -423,7 +429,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
   }
 >
   <Text
-    color="hsla(216, 33%, 29%, 1)"
+    color="hsla(216, 27%, 36%, 1)"
     fontFamily="Lato"
     fontSize="14px"
     fontStyle="normal"
@@ -432,7 +438,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
     style={
       Array [
         Object {
-          "color": "hsla(216, 33%, 29%, 1)",
+          "color": "hsla(216, 27%, 36%, 1)",
           "fontFamily": "Lato",
           "fontSize": 14,
           "fontStyle": "normal",
@@ -536,6 +542,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       }
     >
       <View
+        accessibilityDescribedBy="checkbox-22-helptext-24"
+        accessibilityErrorMessage="checkbox-22-errortext-23"
         accessibilityInvalid={false}
         accessibilityRequired={false}
         accessibilityRole="checkbox"
@@ -593,7 +601,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         />
         <View>
           <Text
-            color="hsla(216, 33%, 29%, 1)"
+            color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
             fontSize="15px"
             fontStyle="normal"
@@ -602,7 +610,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 33%, 29%, 1)",
+                  "color": "hsla(216, 27%, 36%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 15,
                   "fontStyle": "normal",
@@ -629,6 +637,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         </View>
       </View>
       <View
+        accessibilityDescribedBy="checkbox-25-helptext-27"
+        accessibilityErrorMessage="checkbox-25-errortext-26"
         accessibilityInvalid={false}
         accessibilityRequired={false}
         accessibilityRole="checkbox"
@@ -686,7 +696,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         />
         <View>
           <Text
-            color="hsla(216, 33%, 29%, 1)"
+            color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
             fontSize="15px"
             fontStyle="normal"
@@ -695,7 +705,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 33%, 29%, 1)",
+                  "color": "hsla(216, 27%, 36%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 15,
                   "fontStyle": "normal",
@@ -722,6 +732,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         </View>
       </View>
       <View
+        accessibilityDescribedBy="checkbox-28-helptext-30"
+        accessibilityErrorMessage="checkbox-28-errortext-29"
         accessibilityInvalid={false}
         accessibilityRequired={false}
         accessibilityRole="checkbox"
@@ -779,7 +791,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         />
         <View>
           <Text
-            color="hsla(216, 33%, 29%, 1)"
+            color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
             fontSize="15px"
             fontStyle="normal"
@@ -788,7 +800,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 33%, 29%, 1)",
+                  "color": "hsla(216, 27%, 36%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 15,
                   "fontStyle": "normal",
@@ -816,7 +828,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       </View>
     </View>
     <Text
-      color="hsla(216, 33%, 29%, 1)"
+      color="hsla(216, 27%, 36%, 1)"
       fontFamily="Lato"
       fontSize="12px"
       fontStyle="italic"
@@ -825,7 +837,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       style={
         Array [
           Object {
-            "color": "hsla(216, 33%, 29%, 1)",
+            "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
             "fontSize": 12,
             "fontStyle": "italic",

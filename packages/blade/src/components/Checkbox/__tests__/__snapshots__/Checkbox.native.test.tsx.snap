@@ -60,7 +60,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   />
   <View>
     <Text
-      color="hsla(216, 33%, 29%, 1)"
+      color="hsla(216, 27%, 36%, 1)"
       fontFamily="Lato"
       fontSize="15px"
       fontStyle="normal"
@@ -69,7 +69,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
       style={
         Array [
           Object {
-            "color": "hsla(216, 33%, 29%, 1)",
+            "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
@@ -158,7 +158,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   />
   <View>
     <Text
-      color="hsla(216, 33%, 29%, 1)"
+      color="hsla(216, 27%, 36%, 1)"
       fontFamily="Lato"
       fontSize="15px"
       fontStyle="normal"
@@ -167,7 +167,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
       style={
         Array [
           Object {
-            "color": "hsla(216, 33%, 29%, 1)",
+            "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
@@ -255,7 +255,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   />
   <View>
     <Text
-      color="hsla(216, 33%, 29%, 1)"
+      color="hsla(216, 27%, 36%, 1)"
       fontFamily="Lato"
       fontSize="15px"
       fontStyle="normal"
@@ -264,7 +264,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       style={
         Array [
           Object {
-            "color": "hsla(216, 33%, 29%, 1)",
+            "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
