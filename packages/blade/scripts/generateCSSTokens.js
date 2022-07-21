@@ -22,7 +22,7 @@ function getStyledDictionaryConfig({ outputFileName, tokens }) {
     platforms: {
       css: {
         transformGroup: 'css',
-        buildPath: 'generated/css/',
+        buildPath: 'build/css/',
         files: [
           {
             destination: `${outputFileName}.css`,

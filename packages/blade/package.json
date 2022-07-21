@@ -37,11 +37,13 @@
     "build": "run-s build:*",
     "build:clean": "rm -rf build",
     "build:generate-types": "tsc -p ./tsconfig-generate-types.json",
+    "build:generate-css-tokens": "FRAMEWORK=REACT rollup -c ./rollup-themes.config.js && node ./scripts/generateCSSTokens.js",
     "build:copy-declarations": "copyfiles -u 1 \"src/**/*.d.ts\" build/types",
     "build:react": "FRAMEWORK=REACT rollup -c && node ./scripts/generateRootImports.js",
     "build:react-native": "FRAMEWORK=REACT_NATIVE rollup -c && node ./scripts/generateRootImports.js",
     "build:declarations": "rollup -c && node ./scripts/generateRootImports.js",
     "build:clean-declarations": "rm -rf build/types",
+    "build:clean-theme-bundle": "rm -rf generated",
     "test:react": "FRAMEWORK=REACT jest -c ./jest.web.config.js",
     "test:react-native": "FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native",
@@ -51,8 +53,7 @@
     "react": "yarn run react:storybook",
     "react:storybook": "FRAMEWORK=REACT start-storybook -c ./.storybook/react -p 9009",
     "react:storybook:build": "FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site",
-    "chromatic": "npx chromatic",
-    "generateCSSTokens": "FRAMEWORK=REACT rollup -c ./rollup-themes.config.js && node ./scripts/generateCSSTokens.js"
+    "chromatic": "npx chromatic"
   },
   "dependencies": {
     "@babel/runtime": "7.16.5"
