@@ -24,9 +24,7 @@ export default {
   input: 'src/tokens/index.ts',
   output: {
     file: 'generated/themeBundle.js',
-    // dir: 'generated',
     format: 'cjs',
-    // preserveModules: true,
   },
   plugins: [
     pluginPeerDepsExternal(),
