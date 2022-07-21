@@ -24,16 +24,17 @@
 | Prop                | Type       | Required | Default   | Description                                                                                                                                              |
 | ------------------- | ---------- | -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | children            | `string`   | No       | undefined | The text to be rendered as CheckboxLabel                                                                                                                 |
-| helpText          | `string`   | No       | undefined | The helper text to be rendered                                                                                                                           |
 | isChecked           | `boolean`  | No       | false     | state of the checkbox, if explicitly set the checkbox will become [controlled component](https://reactjs.org/docs/forms.html#controlled-components)                                                                                 |
 | defaultChecked      | `boolean`  | No       | false     | default state of the checkbox, if isChecked is not provided the checkbox will become [uncontrolled component](https://reactjs.org/docs/uncontrolled-components.html)                                                            |
-| onChange            | `(isChecked: boolean) => void` | No       | undefined | The function to be called when the checkbox state changes.                                                                                               |
+| onChange            | `({ event, isChecked, value }) => void` | No       | undefined | The function to be called when the checkbox state changes.                                                                                               |
 | isIndeterminate     | `boolean`  | No       | false     | mixed state of the checkbox                                                                                                                              |
+| isDisabled          | `boolean`  | No       | `false`   | Control whether the checkbox is disabled or not.                                                                                                         |
+| isRequired          | `boolean`  | No       | `false`   | Control whether the checkbox is required or not.                                                                                                         |
+| helpText          | `string`   | No       | undefined | The helper text to be rendered                                                                                                                           |
+| errorText          | `string`   | No       | undefined | The error text to be rendered                                                                                                                           |
+| validationState           | `undefined \| 'error'`  | No       | `undefined`   | Control whether the checkbox is invalid or not.                                                                                                          |
 | name (html native)  | `string`   | No       | undefined | The name of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)            |
 | value (html native) | `string`   | No       | undefined | The value of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) |
-| isDisabled          | `boolean`  | No       | `false`   | Control whether the checkbox is disabled or not.                                                                                                         |
-| validationState           | `undefined | 'error'`  | No       | `undefined`   | Control whether the checkbox is invalid or not.                                                                                                          |
-| isRequired          | `boolean`  | No       | `false`   | Control whether the checkbox is required or not.                                                                                                         |
 
 ### Examples:
 
@@ -47,7 +48,7 @@
 // uncontrolled
 <Checkbox defaultChecked={true}>is blade awesome?</Checkbox>
 // controlled
-<Checkbox isChecked={true | false} onChange={isChecked => {}}>is blade awesome?</Checkbox>
+<Checkbox isChecked={true | false} onChange={({ isChecked }) => {}}>is blade awesome?</Checkbox>
 ```
 
 #### Validations
@@ -64,16 +65,16 @@ And `validationState` will pass `aria-invalid` attributes to indicate invalid st
 | ------------- | --------------------------- | -------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | children      | `React.ReactNode`             | Yes       | `undefined` | Accepts multiple Checkboxes                                                                                                        |
 | label         | `string`                    | Yes       | `undefined` | The label of the group                                                                                                             |
-| labelPosition | `top, left`                 | No       | `top`       | The position of the rendered label                                                                                                 |
-| helpText    | `string`                    | No       | `undefined` | The helper text to be rendered                                                                                                     |
-| errorText    | `string`                    | No       | `undefined` | The error text to be rendered                                                                                                     |
+| labelPosition | `top \| left`                 | No       | `top`       | The position of the rendered label                                                                                                 |
 | defaultValue  | `string[]`                  | No       | `[]`        | The initial value of the checkbox group                                                                                            |
 | value         | `string[]`                  | No       | `[]`        | The value of the checkbox, if present will act as [controlled component](https://reactjs.org/docs/forms.html#controlled-components)                                                             |
 | onChange      | `(value: string[]) => void` | No       | `undefined` | The function to be called when any checkbox's state changes                                                                        |
 | name          | `string`                    | No       | `undefined` | The name of the checkbox group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) |
 | isDisabled    | `boolean`                   | No       | `false`     | Control whether the checkbox group is disabled or not.                                                                             |
-| validationState     | `undefined | 'error'`                   | No       | `undefined`     | Control whether the checkbox group is invalid or not.                                                                              |
-| necessityIndicator    | `'optional' | 'required' | undefined`                   | No       | `undefined`     | Renders optional or required indicators in the group, if set to undefined renders nothing |
+| helpText    | `string`                    | No       | `undefined` | The helper text to be rendered                                                                                                     |
+| errorText    | `string`                    | No       | `undefined` | The error text to be rendered                                                                                                     |
+| validationState     | `undefined \| 'error'`                   | No       | `undefined`     | Control whether the checkbox group is invalid or not.                                                                              |
+| necessityIndicator    | `'optional' \| 'required' \| undefined`                   | No       | `undefined`     | Renders optional or required indicators in the group, if set to undefined renders nothing |
 
 ### Examples:
 
@@ -145,7 +146,8 @@ function AnyOneHasToBeSelected() {
   return (
     <CheckboxGroup
       label="Do you love any of the fruits?"
-      helpText="You can select multiple"
+      helpText="Select atleast one"
+      errorText="You must select atleast one"
       value={selected}
       onChange={setSelected}
       validationState={selected.length === 0 ? 'error' : undefined}
@@ -169,9 +171,10 @@ function AllOfThemHasToBeSelected() {
     <CheckboxGroup
       label="Do you agree to all the terms?"
       helpText="Select all"
+      errorText="You must tick all of the items"
       value={selected}
       onChange={setSelected}
-      hasError={selected.length < 3 ? 'error' : undefined}
+      validationState={selected.length < 3 ? 'error' : undefined}
     >
       <Checkbox value="use-ts">I will use TS</Checkbox>
       <Checkbox value="no-any">I won't use any</Checkbox>
@@ -188,33 +191,34 @@ function AllOfThemHasToBeSelected() {
 
 ## Open Questions
 
-1. Currently we only have `helpText` in Checkbox & CheckboxGroup and when we set `hasError` it becomes the `negative` variant. The problem is the content of the `helpText` should also change in certain scenarios to convey the exact error. 
+1. Currently we only have `helpText` in Checkbox & CheckboxGroup and when we set `validationState=error` it becomes the `negative` variant. The problem is the content of the `helpText` should also change in certain scenarios to convey the exact error. 
 
 With this approach users will have to handle the logic
 
 ```tsx
-const [hasError, setInvalid] = React.useState(false);
+const [validationState, setValidationState] = React.useState(undefined);
 
 <Checkbox 
-  hasError={hasError}
+  validationState={validationState}
   helpText={
-    hasError
+    validationState === 'error'
     ? 'Invalid username provided, contains special chars' 
     : 'Enter valid username'
   }
 />
 ```
 
-Will it be better to have a `errorText` prop instead which will automatically be switched internally is `hasError` is true? 
+Will it be better to have a `errorText` prop instead which will automatically be switched internally when `validationState` is `error`? 
 
 ```tsx
-const [hasError, setInvalid] = React.useState(false);
+const [validationState, setValidationState] = React.useState(undefined);
 
 <Checkbox 
-  hasError={hasError}
+  validationState={validationState}
   helpText={'Enter valid username'}
   errorText={'Invalid username provided, contains special chars'}
 />
 ```
 
-**Conclusion:** No `errorText` on the `Checkbox` itself, we will only have it on `CheckboxGroup`.
+**Conclusion:**  
+Individual Checkboxes will have `errorText`, and if user sets `validationState` on the individual Checkbox when inside the CheckboxGroup we will throw a runtime error.
