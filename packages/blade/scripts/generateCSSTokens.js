@@ -52,116 +52,106 @@ const getThemeFromTokensCSSTokens = () => {
   });
 
   // Payment Light Desktop
-  const paymentThemeLightDesktop = getThemeFromTokens({
-    onColorMode: 'onLight',
-    onDeviceType: 'onDesktop',
-    themeTokens: { ...styledDictionaryPaymentTheme },
-  });
 
   StyleDictionary.extend(
     getStyledDictionaryConfig({
       outputFileName: 'paymentThemeLightDesktop',
-      tokens: paymentThemeLightDesktop,
+      tokens: getThemeFromTokens({
+        onColorMode: 'onLight',
+        onDeviceType: 'onDesktop',
+        themeTokens: styledDictionaryPaymentTheme,
+      }),
     }),
   ).buildAllPlatforms();
 
   // Payment Dark Desktop
-  const paymentThemeDarkDesktop = getThemeFromTokens({
-    onColorMode: 'onDark',
-    onDeviceType: 'onDesktop',
-    themeTokens: { ...styledDictionaryPaymentTheme },
-  });
 
   StyleDictionary.extend(
     getStyledDictionaryConfig({
       outputFileName: 'paymentThemeDarkDesktop',
-      tokens: paymentThemeDarkDesktop,
+      tokens: getThemeFromTokens({
+        onColorMode: 'onDark',
+        onDeviceType: 'onDesktop',
+        themeTokens: styledDictionaryPaymentTheme,
+      }),
     }),
   ).buildAllPlatforms();
 
   // Payment Light Mobile
-  const paymentThemeLightMobile = getThemeFromTokens({
-    onColorMode: 'onLight',
-    onDeviceType: 'onMobile',
-    themeTokens: { ...styledDictionaryPaymentTheme },
-  });
 
   StyleDictionary.extend(
     getStyledDictionaryConfig({
       outputFileName: 'paymentThemeLightMobile',
-      tokens: paymentThemeLightMobile,
+      tokens: getThemeFromTokens({
+        onColorMode: 'onLight',
+        onDeviceType: 'onMobile',
+        themeTokens: styledDictionaryPaymentTheme,
+      }),
     }),
   ).buildAllPlatforms();
 
   // Payment Dark Mobile
-  const paymentThemeDarkMobile = getThemeFromTokens({
-    onColorMode: 'onDark',
-    onDeviceType: 'onMobile',
-    themeTokens: { ...styledDictionaryPaymentTheme },
-  });
 
   StyleDictionary.extend(
     getStyledDictionaryConfig({
       outputFileName: 'paymentThemeDarkMobile',
-      tokens: paymentThemeDarkMobile,
+      tokens: getThemeFromTokens({
+        onColorMode: 'onDark',
+        onDeviceType: 'onMobile',
+        themeTokens: styledDictionaryPaymentTheme,
+      }),
     }),
   ).buildAllPlatforms();
 
-  // Banking
-
   // Banking Light Desktop
-  const bankingThemeLightDesktop = getThemeFromTokens({
-    onColorMode: 'onLight',
-    onDeviceType: 'onDesktop',
-    themeTokens: { ...styledDictionaryBankingTheme },
-  });
 
   StyleDictionary.extend(
     getStyledDictionaryConfig({
       outputFileName: 'bankingThemeLightDesktop',
-      tokens: bankingThemeLightDesktop,
+      tokens: getThemeFromTokens({
+        onColorMode: 'onLight',
+        onDeviceType: 'onDesktop',
+        themeTokens: styledDictionaryBankingTheme,
+      }),
     }),
   ).buildAllPlatforms();
 
   // Banking Dark Desktop
-  const bankingThemeDarkDesktop = getThemeFromTokens({
-    onColorMode: 'onDark',
-    onDeviceType: 'onDesktop',
-    themeTokens: { ...styledDictionaryBankingTheme },
-  });
 
   StyleDictionary.extend(
     getStyledDictionaryConfig({
       outputFileName: 'bankingThemeDarkDesktop',
-      tokens: bankingThemeDarkDesktop,
+      tokens: getThemeFromTokens({
+        onColorMode: 'onDark',
+        onDeviceType: 'onDesktop',
+        themeTokens: styledDictionaryBankingTheme,
+      }),
     }),
   ).buildAllPlatforms();
 
   // Banking Light Mobile
-  const bankingThemeLightMobile = getThemeFromTokens({
-    onColorMode: 'onLight',
-    onDeviceType: 'onMobile',
-    themeTokens: { ...styledDictionaryBankingTheme },
-  });
 
   StyleDictionary.extend(
     getStyledDictionaryConfig({
       outputFileName: 'bankingThemeLightMobile',
-      tokens: bankingThemeLightMobile,
+      tokens: getThemeFromTokens({
+        onColorMode: 'onLight',
+        onDeviceType: 'onMobile',
+        themeTokens: styledDictionaryBankingTheme,
+      }),
     }),
   ).buildAllPlatforms();
 
   // Banking Dark Mobile
-  const bankingThemeDarkMobile = getThemeFromTokens({
-    onColorMode: 'onDark',
-    onDeviceType: 'onMobile',
-    themeTokens: { ...styledDictionaryBankingTheme },
-  });
 
   StyleDictionary.extend(
     getStyledDictionaryConfig({
       outputFileName: 'bankingThemeDarkMobile',
-      tokens: bankingThemeDarkMobile,
+      tokens: getThemeFromTokens({
+        onColorMode: 'onDark',
+        onDeviceType: 'onMobile',
+        themeTokens: styledDictionaryBankingTheme,
+      }),
     }),
   ).buildAllPlatforms();
 };
