@@ -23,7 +23,7 @@ const useCheckboxGroupContext = () => {
   const context = React.useContext(CheckboxGroupContext);
   if (!context) {
     throw new Error(
-      '[Blade useCheckboxGroupContext]: Unable to resolve CheckboxGroupContext, make sure you setup the CheckboxGroupContext.Provider',
+      '[Blade useCheckboxGroupContext]: Seems like you forgot to wrap the component with `CheckboxGroupProvider`',
     );
   }
 

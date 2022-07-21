@@ -9,7 +9,7 @@ import { Svg, Path } from '../../Icons/_Svg';
 import { CheckboxIconWrapper } from './CheckboxIconWrapper';
 import { Fade } from './Fade';
 
-const CheckedIcon = ({ color }: { color: string; hidden?: boolean }) => {
+const CheckedIcon = ({ color }: { color: string }) => {
   return (
     <Svg width="16px" height="16px" viewBox="0 0 16 16" fill="none">
       <Path
