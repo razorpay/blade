@@ -87,7 +87,9 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   >
     <input
       aria-checked="false"
+      aria-describedby="checkbox-1-helptext-3"
       aria-disabled="false"
+      aria-errormessage="checkbox-1-errortext-2"
       aria-hidden="true"
       aria-invalid="false"
       aria-required="false"
@@ -213,7 +215,9 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   >
     <input
       aria-checked="false"
+      aria-describedby="checkbox-13-helptext-15"
       aria-disabled="true"
+      aria-errormessage="checkbox-13-errortext-14"
       aria-hidden="true"
       aria-invalid="false"
       aria-required="false"
@@ -340,7 +344,9 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   >
     <input
       aria-checked="false"
+      aria-describedby="checkbox-10-helptext-12"
       aria-disabled="false"
+      aria-errormessage="checkbox-10-errortext-11"
       aria-hidden="true"
       aria-invalid="true"
       aria-required="false"
@@ -475,7 +481,9 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   >
     <input
       aria-checked="true"
+      aria-describedby="checkbox-58-helptext-60"
       aria-disabled="false"
+      aria-errormessage="checkbox-58-errortext-59"
       aria-hidden="true"
       aria-invalid="false"
       aria-required="false"

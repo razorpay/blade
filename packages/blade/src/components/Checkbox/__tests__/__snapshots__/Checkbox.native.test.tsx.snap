@@ -2,6 +2,8 @@
 
 exports[`<Checkbox /> should render checkbox with label 1`] = `
 <View
+  accessibilityDescribedBy="checkbox-1-helptext-3"
+  accessibilityErrorMessage="checkbox-1-errortext-2"
   accessibilityInvalid={false}
   accessibilityRequired={false}
   accessibilityRole="checkbox"
@@ -97,6 +99,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 
 exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 <View
+  accessibilityDescribedBy="checkbox-13-helptext-15"
+  accessibilityErrorMessage="checkbox-13-errortext-14"
   accessibilityInvalid={false}
   accessibilityRequired={false}
   accessibilityRole="checkbox"
@@ -193,6 +197,8 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 
 exports[`<Checkbox /> should set error state with validationState 1`] = `
 <View
+  accessibilityDescribedBy="checkbox-10-helptext-12"
+  accessibilityErrorMessage="checkbox-10-errortext-11"
   accessibilityInvalid={true}
   accessibilityRequired={false}
   accessibilityRole="checkbox"

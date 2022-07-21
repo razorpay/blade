@@ -150,12 +150,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 
 <div>
   <div
-    aria-labelledby="checkbox-group-1-label"
+    aria-labelledby="checkbox-group-10-label"
     class="c0"
     role="group"
   >
     <span
-      id="checkbox-group-1-label"
+      id="checkbox-group-10-label"
       style="width: auto;"
     >
       <div
@@ -192,7 +192,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         >
           <input
             aria-checked="false"
+            aria-describedby="checkbox-1-helptext-3"
             aria-disabled="false"
+            aria-errormessage="checkbox-1-errortext-2"
             aria-hidden="true"
             aria-invalid="false"
             aria-required="false"
@@ -242,7 +244,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         >
           <input
             aria-checked="false"
+            aria-describedby="checkbox-4-helptext-6"
             aria-disabled="false"
+            aria-errormessage="checkbox-4-errortext-5"
             aria-hidden="true"
             aria-invalid="false"
             aria-required="false"
@@ -292,7 +296,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         >
           <input
             aria-checked="false"
+            aria-describedby="checkbox-7-helptext-9"
             aria-disabled="false"
+            aria-errormessage="checkbox-7-errortext-8"
             aria-hidden="true"
             aria-invalid="false"
             aria-required="false"
@@ -507,12 +513,12 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
 
 <div>
   <div
-    aria-labelledby="checkbox-group-3-label"
+    aria-labelledby="checkbox-group-21-label"
     class="c0"
     role="group"
   >
     <span
-      id="checkbox-group-3-label"
+      id="checkbox-group-21-label"
       style="width: auto;"
     >
       <div
@@ -550,7 +556,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         >
           <input
             aria-checked="false"
+            aria-describedby="checkbox-22-helptext-24"
             aria-disabled="false"
+            aria-errormessage="checkbox-22-errortext-23"
             aria-hidden="true"
             aria-invalid="false"
             aria-required="false"
@@ -600,7 +608,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         >
           <input
             aria-checked="false"
+            aria-describedby="checkbox-25-helptext-27"
             aria-disabled="false"
+            aria-errormessage="checkbox-25-errortext-26"
             aria-hidden="true"
             aria-invalid="false"
             aria-required="false"
@@ -650,7 +660,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         >
           <input
             aria-checked="false"
+            aria-describedby="checkbox-28-helptext-30"
             aria-disabled="false"
+            aria-errormessage="checkbox-28-errortext-29"
             aria-hidden="true"
             aria-invalid="false"
             aria-required="false"
