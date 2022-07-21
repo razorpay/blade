@@ -7,9 +7,8 @@ module.exports = {
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/**/*.stories.mdx',
     '../../src/**/*.stories.@(ts|tsx|js|jsx)',
-    ...(process.env.NODE_ENV == 'development'
-      ? ['../../src/**/*.stories.internal.mdx', '../../src/**/*.stories.internal.@(ts|tsx|js|jsx)']
-      : []),
+    '../../src/**/*.stories.internal.mdx',
+    '../../src/**/*.stories.internal.@(ts|tsx|js|jsx)',
   ],
   addons: [
     '@storybook/addon-links',
