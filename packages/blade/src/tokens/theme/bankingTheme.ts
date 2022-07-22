@@ -1,10 +1,10 @@
-import border from '../global/border';
-import breakpoints from '../global/breakpoints';
-import spacing from '../global/spacing';
-import globalColors from '../global/colors';
-import typography from '../global/typography';
-import motion from '../global/motion';
 import type { ThemeTokens, ColorsWithModes, Shadows } from './theme.d';
+import border from '~tokens/global/border';
+import breakpoints from '~tokens/global/breakpoints';
+import spacing from '~tokens/global/spacing';
+import globalColors from '~tokens/global/colors';
+import typography from '~tokens/global/typography';
+import motion from '~tokens/global/motion';
 
 const colors: ColorsWithModes = {
   onLight: {

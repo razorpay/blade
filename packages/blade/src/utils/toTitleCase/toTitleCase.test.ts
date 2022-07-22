@@ -1,4 +1,4 @@
-import toTitleCase from './toTitleCase';
+import { toTitleCase } from './toTitleCase';
 
 describe('toTitleCase', () => {
   it('should convert "all small case" to title case', () => {

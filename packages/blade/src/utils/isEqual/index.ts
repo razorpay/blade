@@ -1,1 +1,1 @@
-export { default } from './isEqual';
+export * from './isEqual';

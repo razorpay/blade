@@ -1,5 +1,5 @@
-import type { IconProps } from '../../Icons';
-import type { BaseButtonProps } from '../BaseButton/BaseButton';
+import type { IconProps } from '~components/Icons';
+import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 export * from './ButtonSpinner.web';
 
 export type ButtonSpinnerProps = {

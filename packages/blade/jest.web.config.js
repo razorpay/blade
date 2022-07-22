@@ -22,4 +22,10 @@ module.exports = {
     'jest-useragent-mock',
     './jest-setup.web.js',
   ],
+  moduleNameMapper: {
+    '^\\~src/(.*)': '<rootDir>/src/$1',
+    '^\\~components/(.*)': '<rootDir>/src/components/$1',
+    '^\\~utils': '<rootDir>/src/utils',
+    '^\\~tokens/(.*)': '<rootDir>/src/tokens/$1',
+  },
 };

@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-base-to-string */
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import getIn from '../../utils/getIn';
-import makeMotionTime from '../../utils/makeMotionTime';
-import { useTheme } from '../BladeProvider';
 import SpinnerIcon from './SpinnerIcon';
 import type { SpinnerProps } from './Spinner.d';
 import { getSpinnerSize, motion } from './spinnerTokens';
+import { useTheme } from '~components/BladeProvider';
+import { getIn, makeMotionTime } from '~utils';
 
 const rotate = keyframes`
   from {

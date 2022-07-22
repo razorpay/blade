@@ -1,5 +1,5 @@
 import { Svg, Path } from '../_Svg';
-import type { IconComponent } from '..';
+import type { IconComponent } from '../';
 import useIconProps from '../useIconProps';
 
 const ChevronUpIcon: IconComponent = ({ size, color }) => {

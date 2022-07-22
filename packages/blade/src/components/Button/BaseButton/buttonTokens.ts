@@ -1,10 +1,8 @@
-import type { ThemeTokens } from '../../../tokens/theme/theme.d';
-import type { TypographyPlatforms } from '../../../tokens/global/typography';
-import type { IconProps } from '../../Icons';
-import type { SpinnerProps } from '../../Spinner/Spinner';
 import type { BaseButtonProps } from './BaseButton';
-
-//TODO: Sort keys in all objects
+import type { ThemeTokens } from '~tokens/theme/theme';
+import type { TypographyPlatforms } from '~tokens/global/typography';
+import type { IconProps } from '~components/Icons';
+import type { SpinnerProps } from '~components/Spinner/Spinner';
 
 export type ButtonMinHeight = 28 | 32 | 36 | 48;
 

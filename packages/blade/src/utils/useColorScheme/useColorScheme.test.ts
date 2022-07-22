@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useColorScheme from './';
+import { useColorScheme } from './';
 
 describe('useColorScheme', () => {
   it('should change color scheme', () => {

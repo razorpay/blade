@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import testID from '../../utils/testId';
-import BaseText from '../Typography/BaseText';
-import screenReaderStyles from '../VisuallyHidden/ScreenReaderStyles';
+import { testID } from '~utils';
+import BaseText from '~components/Typography/BaseText';
+import screenReaderStyles from '~components/VisuallyHidden/ScreenReaderStyles';
 
 const fallbackId = 'blade-skip-nav';
 type SkipNavLinkProps = {

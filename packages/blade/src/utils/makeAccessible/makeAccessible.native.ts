@@ -8,7 +8,7 @@ import {
 } from './accessibilityMapNative';
 import type { AccessibilityMap, AccessibilityProps } from './makeAccessible.d';
 
-const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
+export const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, any> = {};
 
   // loop through all the incoming props and map them
@@ -76,5 +76,3 @@ const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unkn
 
   return newProps;
 };
-
-export default makeAccessible;

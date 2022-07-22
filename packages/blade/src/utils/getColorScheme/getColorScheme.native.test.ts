@@ -1,4 +1,4 @@
-import getColorScheme from './';
+import { getColorScheme } from './getColorScheme';
 
 jest.mock('react-native/Libraries/Utilities/Appearance', () => ({
   ...jest.requireActual('react-native/Libraries/Utilities/Appearance'),

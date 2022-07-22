@@ -1,4 +1,13 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src"]
+  "include": ["src"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~utils": ["src/utils"],
+      "~components/*": ["src/components/*"],
+      "~tokens/*": ["src/tokens/*"],
+      "~src/*": ["src/*"],
+    }
+  }
 }

@@ -1,5 +1,5 @@
-import type { Spacing } from '../tokens';
-import type { EasingFunctionFactory } from '../tokens/global/motion';
+import type { Spacing } from '~tokens/global';
+import type { EasingFunctionFactory } from '~tokens/global/motion';
 
 /**
  * @template TokenType token type generic
