@@ -12,7 +12,7 @@ const {
   makeTypographySize,
 } = require('../generated/utilsBundle');
 
-function getThemeFromTokens({ onColorMode, onDeviceType, themeTokens }) {
+const getThemeFromTokens = ({ onColorMode, onDeviceType, themeTokens }) => {
   return {
     ...themeTokens,
     colors: themeTokens.colors[onColorMode],
@@ -22,9 +22,9 @@ function getThemeFromTokens({ onColorMode, onDeviceType, themeTokens }) {
     },
     typography: themeTokens.typography[onDeviceType],
   };
-}
+};
 
-function getStyledDictionaryConfig({ outputFileName, tokens }) {
+const getStyledDictionaryConfig = ({ outputFileName, tokens }) => {
   return {
     tokens,
     platforms: {
@@ -40,7 +40,7 @@ function getStyledDictionaryConfig({ outputFileName, tokens }) {
       },
     },
   };
-}
+};
 
 const makeValue = ({ path, value }) => {
   if (path.includes('border')) {
@@ -55,7 +55,7 @@ const makeValue = ({ path, value }) => {
   return value;
 };
 
-function convertToStyledDictionarySchema({ themeTokens }) {
+const convertToStyledDictionarySchema = ({ themeTokens }) => {
   const leafNodes = getLeaves(themeTokens);
 
   leafNodes.forEach(({ path, value }) => {
@@ -63,7 +63,7 @@ function convertToStyledDictionarySchema({ themeTokens }) {
     themeTokens = set(path, { value }, themeTokens);
   });
   return themeTokens;
-}
+};
 
 const getThemeFromTokensCSSTokens = () => {
   try {
