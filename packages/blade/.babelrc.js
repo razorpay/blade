@@ -1,3 +1,13 @@
+const alias = {
+  '@storybook/react': '@storybook/react-native',
+  '^styled-components$': 'styled-components/native',
+  // react-native path resolution
+  '~src': './src',
+  '~components': './src/components',
+  '~utils': './src/utils',
+  '~tokens': './src/tokens',
+};
+
 const configs = {
   reactNative: {
     test: {
@@ -27,15 +37,7 @@ const configs = {
         [
           'module-resolver',
           {
-            alias: {
-              '@storybook/react': '@storybook/react-native',
-              '^styled-components$': 'styled-components/native',
-              // react-native path resolution
-              '~src': './src',
-              '~components': './src/components',
-              '~utils': './src/utils',
-              '~tokens': './src/tokens',
-            },
+            alias,
           },
         ],
         [
@@ -56,15 +58,7 @@ const configs = {
         [
           'module-resolver',
           {
-            alias: {
-              '@storybook/react': '@storybook/react-native',
-              '^styled-components$': 'styled-components/native',
-              // react-native path resolution
-              '~src': './src',
-              '~components': './src/components',
-              '~utils': './src/utils',
-              '~tokens': './src/tokens',
-            },
+            alias,
           },
         ],
         [
