@@ -140,6 +140,7 @@ const getCSSVariablesConfig = ({ exportCategory }) => ({
       envName: 'production',
       extensions: webExtensions,
     }),
+    aliases,
   ],
 });
 
