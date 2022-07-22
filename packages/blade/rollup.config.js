@@ -41,7 +41,7 @@ const nativeExtensions = [
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
 const exportCategories = ['components', 'tokens', 'utils'];
-const themeExportCategories = ['components', 'tokens', 'utils'];
+const themeExportCategories = ['tokens', 'utils'];
 
 const getWebConfig = ({ exportCategory }) => ({
   input: `${inputRootDirectory}/${exportCategory}/index.ts`,
