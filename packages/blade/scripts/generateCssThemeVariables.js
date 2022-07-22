@@ -4,13 +4,13 @@ const set = require('lodash/fp/set');
 const chalk = require('chalk');
 const figures = require('figures');
 
-const { paymentTheme, bankingTheme } = require('../generated/tokensBundle');
+const { paymentTheme, bankingTheme } = require('../build/js-bundle-for-css/tokensBundle');
 const {
   makeBorderSize,
   makeMotionTime,
   makeSpace,
   makeTypographySize,
-} = require('../generated/utilsBundle');
+} = require('../build/js-bundle-for-css/utilsBundle');
 
 const getThemeFromTokens = ({ onColorMode, onDeviceType, themeTokens }) => {
   return {

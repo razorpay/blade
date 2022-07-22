@@ -43,7 +43,7 @@
     "build:react-native": "FRAMEWORK=REACT_NATIVE rollup -c && node ./scripts/generateRootImports.js",
     "build:declarations": "rollup -c && node ./scripts/generateRootImports.js",
     "build:clean-declarations": "rm -rf build/types",
-    "build:clean-theme-bundle": "rm -rf generated",
+    "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
     "test:react": "FRAMEWORK=REACT jest -c ./jest.web.config.js",
     "test:react-native": "FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native",
