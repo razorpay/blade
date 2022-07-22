@@ -32,7 +32,7 @@
 | isRequired          | `boolean`  | No       | `false`   | Control whether the checkbox is required or not.                                                                                                         |
 | helpText          | `string`   | No       | `undefined` | The helper text to be rendered                                                                                                                           |
 | errorText          | `string`   | No       | `undefined` | The error text to be rendered                                                                                                                           |
-| validationState           | `undefined \| 'error'`  | No       | `undefined`   | Control whether the checkbox is invalid or not.                                                                                                          |
+| validationState           | `none' \| 'error'`  | No       | `none`   | Control whether the checkbox is invalid or not.                                                                                                          |
 | name (html native)  | `string`   | No       | `undefined` | The name of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)            |
 | value (html native) | `string`   | No       | `undefined` | The value of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) |
 
@@ -56,7 +56,7 @@
 And `validationState` will pass `aria-invalid` attributes to indicate invalid state.
 
 ```tsx
-<Checkbox validationState={'error' | undefined}>is blade awesome?</Checkbox>
+<Checkbox validationState={'error' | 'none'}>is blade awesome?</Checkbox>
 ```
 
 ## `CheckboxGroup` API
@@ -73,7 +73,7 @@ And `validationState` will pass `aria-invalid` attributes to indicate invalid st
 | isDisabled    | `boolean`                   | No       | `false`     | Control whether the checkbox group is disabled or not.                                                                             |
 | helpText    | `string`                    | No       | `undefined` | The helper text to be rendered                                                                                                     |
 | errorText    | `string`                    | No       | `undefined` | The error text to be rendered                                                                                                     |
-| validationState     | `undefined \| 'error'`                   | No       | `undefined`     | Control whether the checkbox group is invalid or not.                                                                              |
+| validationState     | `'none' \| 'error'`                   | No       | `undefined`     | Control whether the checkbox group is invalid or not.                                                                              |
 | necessityIndicator    | `'optional' \| 'required' \| undefined`                   | No       | `undefined`     | Renders `${label} (optional)` for `optional` and `${label} *` for `required`. if set to undefined renders nothing |
 
 ### Examples:
@@ -150,7 +150,7 @@ function AnyOneHasToBeSelected() {
       errorText="You must select atleast one"
       value={selected}
       onChange={setSelected}
-      validationState={selected.length === 0 ? 'error' : undefined}
+      validationState={selected.length === 0 ? 'error' : 'none'}
     >
       <Checkbox value="apple">apple</Checkbox>
       <Checkbox value="mango">mango</Checkbox>
@@ -174,7 +174,7 @@ function AllOfThemHasToBeSelected() {
       errorText="You must tick all of the items"
       value={selected}
       onChange={setSelected}
-      validationState={selected.length < 3 ? 'error' : undefined}
+      validationState={selected.length < 3 ? 'error' : 'none'}
     >
       <Checkbox value="use-ts">I will use TS</Checkbox>
       <Checkbox value="no-any">I won't use any</Checkbox>
@@ -196,7 +196,7 @@ function AllOfThemHasToBeSelected() {
 With this approach users will have to handle the logic
 
 ```tsx
-const [validationState, setValidationState] = React.useState(undefined);
+const [validationState, setValidationState] = React.useState('none');
 
 <Checkbox 
   validationState={validationState}
@@ -211,7 +211,7 @@ const [validationState, setValidationState] = React.useState(undefined);
 Will it be better to have a `errorText` prop instead which will automatically be switched internally when `validationState` is `error`? 
 
 ```tsx
-const [validationState, setValidationState] = React.useState(undefined);
+const [validationState, setValidationState] = React.useState('none');
 
 <Checkbox 
   validationState={validationState}
