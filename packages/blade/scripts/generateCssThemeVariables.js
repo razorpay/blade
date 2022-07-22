@@ -1,6 +1,7 @@
 const { getLeaves } = require('any-leaf');
 const StyleDictionary = require('style-dictionary');
-const set = require('lodash/fp/set');
+const set = require('lodash/set');
+const cloneDeep = require('lodash/cloneDeep');
 const chalk = require('chalk');
 const figures = require('figures');
 
@@ -59,13 +60,14 @@ const makeValue = ({ path, value }) => {
 };
 
 const convertToStyledDictionarySchema = ({ themeTokens }) => {
-  const leafNodes = getLeaves(themeTokens);
+  const newTokens = cloneDeep(themeTokens);
+  const leafNodes = getLeaves(newTokens);
 
   leafNodes.forEach(({ path, value }) => {
     value = makeValue({ path, value });
-    themeTokens = set(path, { value }, themeTokens);
+    set(newTokens, path, { value });
   });
-  return themeTokens;
+  return newTokens;
 };
 
 const getThemeFromTokensCSSTokens = () => {
