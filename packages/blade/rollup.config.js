@@ -99,9 +99,32 @@ const getDeclarationsConfig = ({ exportCategory }) => ({
   plugins: [pluginDeclarations()],
 });
 
+const getCSSVariablesConfig = () => ({
+  input: 'src/tokens/index.ts',
+  output: {
+    file: 'generated/themeBundle.js',
+    format: 'cjs',
+  },
+  plugins: [
+    pluginPeerDepsExternal(),
+    pluginResolve({ extensions: webExtensions }),
+    pluginCommonjs(),
+    pluginBabel({
+      exclude: 'node_modules/**',
+      babelHelpers: 'runtime',
+      envName: 'production',
+      extensions: webExtensions,
+    }),
+  ],
+});
+
 const config = () => {
   const framework = process.env.FRAMEWORK;
+  const generateCSSVariables = process.env.GENERATE_CSS_VARIABLES;
 
+  if (generateCSSVariables == 'true' && framework === 'REACT') {
+    return getCSSVariablesConfig();
+  }
   if (framework === 'REACT') {
     return exportCategories.map((exportCategory) => [getWebConfig({ exportCategory })]).flat();
   }
