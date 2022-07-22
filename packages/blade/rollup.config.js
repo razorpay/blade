@@ -41,7 +41,7 @@ const nativeExtensions = [
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
 const exportCategories = ['components', 'tokens', 'utils'];
-const themeExportCategories = ['tokens', 'utils'];
+const themeBundleCategories = ['tokens', 'utils'];
 
 const getWebConfig = ({ exportCategory }) => ({
   input: `${inputRootDirectory}/${exportCategory}/index.ts`,
@@ -124,7 +124,7 @@ const config = () => {
   const generateCSSVariables = process.env.GENERATE_CSS_VARIABLES;
 
   if (generateCSSVariables == 'true' && framework === 'REACT') {
-    return themeExportCategories
+    return themeBundleCategories
       .map((exportCategory) => [getCSSVariablesConfig({ exportCategory })])
       .flat();
   }
