@@ -77,7 +77,7 @@ And `validationState` will pass `aria-invalid` attributes to indicate invalid st
 | isDisabled    | `boolean`                   | No       | `false`     | Control whether the checkbox group is disabled or not.                                                                             |
 | helpText    | `string`                    | No       | `undefined` | The helper text to be rendered                                                                                                     |
 | errorText    | `string`                    | No       | `undefined` | The error text to be rendered                                                                                                     |
-| validationState     | `'none' \| 'error'`                   | No       | `undefined`     | Control whether the checkbox group is invalid or not.                                                                              |
+| validationState     | `'none' \| 'error'`                   | No       | `none`     | Control whether the checkbox group is invalid or not.                                                                              |
 | necessityIndicator    | `'optional' \| 'required' \| undefined`                   | No       | `undefined`     | Renders `${label} (optional)` for `optional` and `${label} *` for `required`. if set to undefined renders nothing |
 
 ### Examples:
