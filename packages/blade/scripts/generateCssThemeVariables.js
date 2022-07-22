@@ -10,6 +10,7 @@ const {
   makeMotionTime,
   makeSpace,
   makeTypographySize,
+  makeSize,
 } = require('../build/js-bundle-for-css/utilsBundle');
 
 const getThemeFromTokens = ({ onColorMode, onDeviceType, themeTokens }) => {
@@ -47,6 +48,8 @@ const makeValue = ({ path, value }) => {
     value = makeBorderSize(value);
   } else if (path.includes('motion.duration') || path.includes('motion.delay')) {
     value = makeMotionTime(value);
+  } else if (path.includes('breakpoints')) {
+    value = makeSize(value);
   } else if (path.includes('spacing')) {
     value = makeSpace(value);
   } else if (path.includes('fonts.size') || path.includes('lineHeights')) {
