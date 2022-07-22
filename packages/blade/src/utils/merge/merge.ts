@@ -1,1 +1,1 @@
-export { default } from 'lodash/merge';
+export { default as merge } from 'lodash/merge';

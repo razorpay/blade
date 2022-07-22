@@ -1,1 +1,1 @@
-export { default } from './makeBorderSize';
+export * from './makeBorderSize';

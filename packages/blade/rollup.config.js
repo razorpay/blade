@@ -1,8 +1,13 @@
+/* eslint-disable import/extensions */
+import fs from 'fs';
 import { babel as pluginBabel } from '@rollup/plugin-babel';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pluginResolve from '@rollup/plugin-node-resolve';
 import pluginCommonjs from '@rollup/plugin-commonjs';
 import pluginDeclarations from 'rollup-plugin-dts';
+import pluginAlias from '@rollup/plugin-alias';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import ts from 'typescript';
 
 const webExtensions = [
   '.web.js',
@@ -42,6 +47,15 @@ const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
 const exportCategories = ['components', 'tokens', 'utils'];
 
+const aliases = pluginAlias({
+  entries: [
+    { find: '~src', replacement: `${__dirname}/${inputRootDirectory}` },
+    { find: '~components', replacement: `${__dirname}/${inputRootDirectory}/components` },
+    { find: '~utils', replacement: `${__dirname}/${inputRootDirectory}/utils` },
+    { find: '~tokens', replacement: `${__dirname}/${inputRootDirectory}/tokens` },
+  ],
+});
+
 const getWebConfig = ({ exportCategory }) => ({
   input: `${inputRootDirectory}/${exportCategory}/index.ts`,
   output: [
@@ -62,6 +76,7 @@ const getWebConfig = ({ exportCategory }) => ({
       envName: 'production',
       extensions: webExtensions,
     }),
+    aliases,
   ],
 });
 
@@ -85,6 +100,7 @@ const getNativeConfig = ({ exportCategory }) => ({
       envName: 'production',
       extensions: nativeExtensions,
     }),
+    aliases,
   ],
 });
 
@@ -96,7 +112,15 @@ const getDeclarationsConfig = ({ exportCategory }) => ({
       format: 'esm',
     },
   ],
-  plugins: [pluginDeclarations()],
+  plugins: [
+    pluginDeclarations({
+      // Need to resolve paths in d.ts files
+      // https://github.com/Swatinem/rollup-plugin-dts/issues/169
+      compilerOptions: ts.readConfigFile(`${__dirname}/tsconfig.json`, (p) =>
+        fs.readFileSync(p, 'utf8'),
+      ).config.compilerOptions,
+    }),
+  ],
 });
 
 const config = () => {

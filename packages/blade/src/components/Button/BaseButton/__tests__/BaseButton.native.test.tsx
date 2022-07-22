@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
-import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.native';
-import { CloseIcon, CreditCardIcon } from '../../../Icons';
 import BaseButton from '../BaseButton';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import { CloseIcon, CreditCardIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

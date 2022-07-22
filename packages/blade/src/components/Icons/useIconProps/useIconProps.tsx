@@ -1,6 +1,6 @@
 import { get } from 'lodash';
 import type { IconProps, IconSize } from '..';
-import { useTheme } from '../../BladeProvider';
+import { useTheme } from '~components/BladeProvider';
 
 type Dimension = '10px' | '12px' | '16px' | '20px' | '24px' | '32px';
 
