@@ -26,15 +26,15 @@
 | children            | `string`   | No       | undefined | The text to be rendered as CheckboxLabel                                                                                                                 |
 | isChecked           | `boolean`  | No       | false     | state of the checkbox, if explicitly set the checkbox will become [controlled component](https://reactjs.org/docs/forms.html#controlled-components)                                                                                 |
 | defaultChecked      | `boolean`  | No       | false     | default state of the checkbox, if isChecked is not provided the checkbox will become [uncontrolled component](https://reactjs.org/docs/uncontrolled-components.html)                                                            |
-| onChange            | `({ event, isChecked, value }) => void` | No       | undefined | The function to be called when the checkbox state changes.                                                                                               |
-| isIndeterminate     | `boolean`  | No       | false     | mixed state of the checkbox                                                                                                                              |
+| onChange            | `({ event, isChecked, value }) => void` | No       | `undefined` | The function to be called when the checkbox state changes.                                                                                               |
+| isIndeterminate     | `boolean`  | No       | `false`     | mixed state of the checkbox                                                                                                                              |
 | isDisabled          | `boolean`  | No       | `false`   | Control whether the checkbox is disabled or not.                                                                                                         |
 | isRequired          | `boolean`  | No       | `false`   | Control whether the checkbox is required or not.                                                                                                         |
-| helpText          | `string`   | No       | undefined | The helper text to be rendered                                                                                                                           |
-| errorText          | `string`   | No       | undefined | The error text to be rendered                                                                                                                           |
+| helpText          | `string`   | No       | `undefined` | The helper text to be rendered                                                                                                                           |
+| errorText          | `string`   | No       | `undefined` | The error text to be rendered                                                                                                                           |
 | validationState           | `undefined \| 'error'`  | No       | `undefined`   | Control whether the checkbox is invalid or not.                                                                                                          |
-| name (html native)  | `string`   | No       | undefined | The name of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)            |
-| value (html native) | `string`   | No       | undefined | The value of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) |
+| name (html native)  | `string`   | No       | `undefined` | The name of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)            |
+| value (html native) | `string`   | No       | `undefined` | The value of the input field in a checkbox, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) |
 
 ### Examples:
 
