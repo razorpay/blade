@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { useState, useCallback } from 'react';
 import { getColorScheme } from '../getColorScheme';
 import { colorSchemeNamesInput } from '~tokens/theme';

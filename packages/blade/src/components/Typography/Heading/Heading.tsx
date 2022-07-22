@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import type { ReactElement } from 'react';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText';

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import type { WrapperComponent } from '@testing-library/react-hooks';
 import { renderHook, act } from '@testing-library/react-hooks';
 import paymentLightTheme from './paymentLightTheme';

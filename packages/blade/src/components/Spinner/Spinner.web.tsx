@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-base-to-string */
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';

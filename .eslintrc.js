@@ -128,6 +128,7 @@ module.exports = {
           },
         ],
         'babel/new-cap': ['error', { capIsNewExceptionPattern: '^styled.' }],
+        '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unused-vars': ['error'],
         '@typescript-eslint/no-unsafe-member-access': 'off',

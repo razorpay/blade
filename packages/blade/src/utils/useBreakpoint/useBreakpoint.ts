@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { getPlatformType } from '../getPlatformType';
 import type { Breakpoints } from '~tokens/global';

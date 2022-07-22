@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import type { ReactNode, ReactElement } from 'react';
 import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
 import { ThemeContext } from './useTheme';
