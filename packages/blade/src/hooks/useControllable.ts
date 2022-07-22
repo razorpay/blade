@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
-import { runIfFn } from '../utils';
+import { runIfFn } from '~utils';
 
 /**
  * React hook for detecting controlled props

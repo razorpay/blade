@@ -1,7 +1,7 @@
 import React from 'react';
-import getPlatformType from '../../../utils/getPlatformType';
-import BaseText from '../../Typography/BaseText';
 import { useCheckboxGroupContext } from './CheckboxGroupContext';
+import { getPlatformType } from '~utils';
+import BaseText from '~components/Typography/BaseText';
 
 type CheckboxGroupLabelProps = {
   children: React.ReactNode;

@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
-import getIn from '../../utils/getIn';
-import makeMotionTime from '../../utils/makeMotionTime';
 import type { Theme } from '../BladeProvider';
 import { screenReaderStyles } from '../VisuallyHidden';
 import type { CheckboxIconProps } from './CheckboxIcon';
 import type { InputProps } from './useCheckbox';
+import { getIn, makeMotionTime } from '~utils';
 
 type HoverProps = Pick<CheckboxIconProps, 'isNegative' | 'isDisabled'> & {
   isChecked: boolean;

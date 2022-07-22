@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeAccessible } from '../../../utils';
 import { useCheckboxGroupContext } from './CheckboxGroupContext';
 import { StyledCheckboxGroupField } from './StyledElements';
+import { makeAccessible } from '~utils';
 
 type CheckboxGroupFieldProps = {
   children: React.ReactNode;

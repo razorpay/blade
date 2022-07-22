@@ -4,8 +4,7 @@ import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { useControllableState } from '../../hooks/useControllable';
 import { useId } from '../../hooks/useId';
-import { makeAccessible } from '../../utils';
-import getPlatformType from '../../utils/getPlatformType';
+import { getPlatformType, makeAccessible } from '../../utils';
 import type { CheckboxProps } from './Checkbox';
 
 type UseCheckboxProps = Pick<

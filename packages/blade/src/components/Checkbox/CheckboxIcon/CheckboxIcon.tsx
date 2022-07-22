@@ -2,12 +2,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
-import getIn from '../../../utils/getIn';
-import makeMotionTime from '../../../utils/makeMotionTime';
-import { useTheme } from '../../BladeProvider';
-import { Svg, Path } from '../../Icons/_Svg';
 import { CheckboxIconWrapper } from './CheckboxIconWrapper';
 import { Fade } from './Fade';
+import { useTheme } from '~components/BladeProvider';
+import Svg, { Path } from '~components/Icons/_Svg';
+import { getIn, makeMotionTime } from '~utils';
 
 const CheckedIcon = ({ color }: { color: string }) => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
-import getPlatformType from '../../utils/getPlatformType';
 import BaseText from '../Typography/BaseText';
+import { getPlatformType } from '~utils';
 
 type CheckboxHintText = {
   id?: string;

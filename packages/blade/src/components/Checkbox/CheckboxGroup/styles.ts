@@ -1,7 +1,7 @@
 import type { CSSObject } from 'styled-components';
-import makeSpace from '../../../utils/makeSpace';
 import type { Theme } from '../../BladeProvider';
 import type { CheckboxGroupProps } from './CheckboxGroup';
+import { makeSpace } from '~utils';
 
 type WithTheme = {
   theme: Theme;

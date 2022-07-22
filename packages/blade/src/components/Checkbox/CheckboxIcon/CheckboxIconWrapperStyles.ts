@@ -1,9 +1,7 @@
 import type { CSSObject } from 'styled-components';
-import getIn from '../../../utils/getIn';
-import makeSize from '../../../utils/makeSize';
-import makeSpace from '../../../utils/makeSpace';
-import type { Theme } from '../../BladeProvider';
 import type { CheckboxIconProps } from './CheckboxIcon';
+import type { Theme } from '~components/BladeProvider';
+import { getIn, makeSize, makeSpace } from '~utils';
 
 const variants = {
   default: {
