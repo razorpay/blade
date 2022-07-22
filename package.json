@@ -27,7 +27,7 @@
   "dependencies": {},
   "devDependencies": {
     "@changesets/cli": "2.18.1",
-    "@types/jest": "26.0.23",
+    "@types/jest": "28.1.6",
     "@types/react": "17.0.4",
     "@types/react-native": "0.64.4",
     "@types/styled-components": "5.1.25",
@@ -56,7 +56,7 @@
     "npm-run-all": "4.1.5",
     "prettier": "2.2.1",
     "shelljs": "0.8.5",
-    "stylelint": "13.13.0",
+    "stylelint": "13.13.1",
     "stylelint-config-recommended": "5.0.0",
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "1.10.0",
