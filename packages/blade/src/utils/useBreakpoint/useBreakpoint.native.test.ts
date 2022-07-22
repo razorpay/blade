@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import breakpoints from '../../tokens/global/breakpoints';
-import useBreakpoint from './';
+import { useBreakpoint } from './';
 
 describe('useBreakpoint', () => {
   it('should detect mobile and return breakpoint as undefined', () => {

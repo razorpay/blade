@@ -1,1 +1,1 @@
-export { default } from './toTitleCase';
+export * from './toTitleCase';

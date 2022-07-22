@@ -1,9 +1,9 @@
-import type { Colors, Shadows, ShadowLevels } from '../../tokens/theme/theme.d';
-import type { Border } from '../../tokens/global/border';
-import type { Breakpoints } from '../../tokens/global/breakpoints';
-import type { Motion } from '../../tokens/global/motion';
-import type { Spacing } from '../../tokens/global/spacing';
-import type { Typography } from '../../tokens/global/typography';
+import type { Colors, Shadows, ShadowLevels } from '~tokens/theme/theme';
+import type { Border } from '~tokens/global/border';
+import type { Breakpoints } from '~tokens/global/breakpoints';
+import type { Motion } from '~tokens/global/motion';
+import type { Spacing } from '~tokens/global/spacing';
+import type { Typography } from '~tokens/global/typography';
 export { default as BladeProvider } from './BladeProvider';
 export * from './BladeProvider';
 export { default as useTheme } from './useTheme';

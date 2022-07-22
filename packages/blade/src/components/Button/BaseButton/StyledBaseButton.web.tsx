@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import getIn from '../../../utils/getIn';
-import makeMotionTime from '../../../utils/makeMotionTime';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton.d';
+import { getIn, makeMotionTime } from '~utils';
 
 const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => ({
   ...props.accessibilityProps,

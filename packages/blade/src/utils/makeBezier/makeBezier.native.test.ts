@@ -1,5 +1,5 @@
 import { Easing } from 'react-native-reanimated';
-import makeBezier from './';
+import { makeBezier } from './';
 
 describe('makeBezier', () => {
   it.only(`should call the Easing Function from react-native-reanimated with the right parameters`, () => {

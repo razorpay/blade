@@ -1,5 +1,3 @@
-const testID = (defaultKey: string): { 'data-testid': string } => ({
+export const testID = (defaultKey: string): { 'data-testid': string } => ({
   'data-testid': defaultKey,
 });
-
-export default testID;

@@ -1,5 +1,5 @@
 import typography from '../../tokens/global/typography';
-import makeTypographySize from './';
+import { makeTypographySize } from './';
 
 describe('makeTypographySize', () => {
   it('should return the font-size value in `rem`', () => {

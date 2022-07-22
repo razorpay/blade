@@ -10,10 +10,10 @@ import {
   ArgsTable,
 } from '@storybook/addon-docs';
 import { Highlight, Link } from '@storybook/design-system';
-import useMakeFigmaURL from '../../_helpers/storybook/useMakeFigmaURL';
 import iconMap from './iconMap';
 import type { IconProps } from '.';
 import { CreditCardIcon } from '.';
+import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
