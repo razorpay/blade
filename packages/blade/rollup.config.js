@@ -41,6 +41,7 @@ const nativeExtensions = [
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
 const exportCategories = ['components', 'tokens', 'utils'];
+const themeExportCategories = ['components', 'tokens', 'utils'];
 
 const getWebConfig = ({ exportCategory }) => ({
   input: `${inputRootDirectory}/${exportCategory}/index.ts`,
@@ -99,10 +100,10 @@ const getDeclarationsConfig = ({ exportCategory }) => ({
   plugins: [pluginDeclarations()],
 });
 
-const getCSSVariablesConfig = () => ({
-  input: 'src/tokens/index.ts',
+const getCSSVariablesConfig = ({ exportCategory }) => ({
+  input: `src/${exportCategory}/index.ts`,
   output: {
-    file: 'generated/themeBundle.js',
+    file: `generated/${exportCategory}Bundle.js`,
     format: 'cjs',
   },
   plugins: [
@@ -123,7 +124,9 @@ const config = () => {
   const generateCSSVariables = process.env.GENERATE_CSS_VARIABLES;
 
   if (generateCSSVariables == 'true' && framework === 'REACT') {
-    return getCSSVariablesConfig();
+    return themeExportCategories
+      .map((exportCategory) => [getCSSVariablesConfig({ exportCategory })])
+      .flat();
   }
   if (framework === 'REACT') {
     return exportCategories.map((exportCategory) => [getWebConfig({ exportCategory })]).flat();

@@ -4,7 +4,13 @@ const set = require('lodash/fp/set');
 const chalk = require('chalk');
 const figures = require('figures');
 
-const { paymentTheme, bankingTheme } = require('../generated/themeBundle');
+const { paymentTheme, bankingTheme } = require('../generated/tokensBundle');
+const {
+  makeBorderSize,
+  makeMotionTime,
+  makeSpace,
+  makeTypographySize,
+} = require('../generated/utilsBundle');
 
 function getThemeFromTokens({ onColorMode, onDeviceType, themeTokens }) {
   return {
@@ -36,10 +42,24 @@ function getStyledDictionaryConfig({ outputFileName, tokens }) {
   };
 }
 
+const makeValue = ({ path, value }) => {
+  if (path.includes('border')) {
+    value = makeBorderSize(value);
+  } else if (path.includes('motion.duration') || path.includes('motion.delay')) {
+    value = makeMotionTime(value);
+  } else if (path.includes('spacing')) {
+    value = makeSpace(value);
+  } else if (path.includes('fonts.size') || path.includes('lineHeights')) {
+    value = makeTypographySize(value);
+  }
+  return value;
+};
+
 function convertToStyledDictionarySchema({ themeTokens }) {
   const leafNodes = getLeaves(themeTokens);
 
   leafNodes.forEach(({ path, value }) => {
+    value = makeValue({ path, value });
     themeTokens = set(path, { value }, themeTokens);
   });
   return themeTokens;
