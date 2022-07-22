@@ -106,7 +106,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   text-align: left;
 }
 

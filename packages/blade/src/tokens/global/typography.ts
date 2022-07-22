@@ -96,9 +96,9 @@ export type Typography = {
      * mobile: 16(px/rem/pt)
      */
     s: number;
-    /** desktop: 18(px/rem/pt)
+    /** desktop: 16(px/rem/pt)
      *
-     * mobile: 16(px/rem/pt)
+     * mobile: 18(px/rem/pt)
      */
     m: number;
     /** desktop: 20(px/rem/pt)
@@ -108,12 +108,12 @@ export type Typography = {
     l: number;
     /** desktop: 24(px/rem/pt)
      *
-     * mobile: 24(px/rem/pt)
+     * mobile: 28(px/rem/pt)
      */
     xl: number;
     /** desktop: 24(px/rem/pt)
      *
-     * mobile: 28(px/rem/pt)
+     * mobile: 24(px/rem/pt)
      */
     '2xl': number;
     /** desktop: 28(px/rem/pt)
@@ -121,9 +121,9 @@ export type Typography = {
      * mobile: 28(px/rem/pt)
      */
     '3xl': number;
-    /** desktop: 38(px/rem/pt)
+    /** desktop: 40(px/rem/pt)
      *
-     * mobile: 30(px/rem/pt)
+     * mobile: 32(px/rem/pt)
      */
     '4xl': number;
     /** desktop: 42(px/rem/pt)
@@ -133,7 +133,7 @@ export type Typography = {
     '5xl': number;
     /** desktop: 60(px/rem/pt)
      *
-     * mobile: 38(px/rem/pt)
+     * mobile: 40(px/rem/pt)
      */
     '6xl': number;
   };
@@ -172,12 +172,12 @@ const typography: TypographyWithPlatforms = {
     },
     lineHeights: {
       s: 16,
-      m: 18,
+      m: 16,
       l: 20,
       xl: 24,
       '2xl': 24,
       '3xl': 28,
-      '4xl': 38,
+      '4xl': 40,
       '5xl': 42,
       '6xl': 60,
     },
@@ -210,14 +210,14 @@ const typography: TypographyWithPlatforms = {
     },
     lineHeights: {
       s: 16,
-      m: 16,
+      m: 18,
       l: 24,
-      xl: 24,
-      '2xl': 28,
+      xl: 28,
+      '2xl': 24,
       '3xl': 28,
-      '4xl': 30,
+      '4xl': 32,
       '5xl': 30,
-      '6xl': 38,
+      '6xl': 40,
     },
     // letterSpacings: {},
   },

@@ -103,7 +103,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
   fontSize="12px"
   fontStyle="normal"
   fontWeight={700}
-  lineHeight="24px"
+  lineHeight="16px"
   numberOfLines={3}
   style={
     Array [
@@ -113,7 +113,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
         "fontSize": 12,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 24,
+        "lineHeight": 16,
         "textAlign": "left",
         "textDecorationLine": "none",
       },

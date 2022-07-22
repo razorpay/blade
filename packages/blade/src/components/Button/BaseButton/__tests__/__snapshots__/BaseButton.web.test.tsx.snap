@@ -4179,7 +4179,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   text-align: center;
 }
 
@@ -4437,7 +4437,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   text-align: center;
 }
 

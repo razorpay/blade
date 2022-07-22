@@ -71,6 +71,7 @@ const getProps = <T extends { variant: TextVariant }>({
   if (variant === 'body') {
     if (size === 'small') {
       props.fontSize = 75;
+      props.lineHeight = 's';
     }
   } else if (variant === 'caption') {
     if (weight === 'bold') {
@@ -80,8 +81,8 @@ const getProps = <T extends { variant: TextVariant }>({
       throw new Error(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
     }
     props.fontSize = 50;
-    props.fontStyle = 'italic';
     props.lineHeight = 's';
+    props.fontStyle = 'italic';
   }
 
   return props;

@@ -8,7 +8,6 @@ import type { Theme } from '../../BladeProvider';
 import { useTheme } from '../../BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '../../Icons';
 import makeSpace from '../../../utils/makeSpace';
-import type { TypographyPlatforms } from '../../../tokens/global/typography';
 import makeBorderSize from '../../../utils/makeBorderSize';
 import type { DurationString, EasingString } from '../../../tokens/global/motion';
 import makeSize from '../../../utils/makeSize';
@@ -146,7 +145,7 @@ const getProps = ({
   hasIcon,
   iconPosition,
 }: {
-  buttonTypographyTokens: ButtonTypography[TypographyPlatforms];
+  buttonTypographyTokens: ButtonTypography;
   children?: string;
   isDisabled: boolean;
   hasIcon: boolean;
@@ -279,8 +278,7 @@ const BaseButton = ({
   accessibilityLabel,
 }: BaseButtonProps): ReactElement => {
   const disabled = isLoading || isDisabled;
-  const { theme, platform } = useTheme();
-  const buttonTypographyTokens = buttonTypography[platform];
+  const { theme } = useTheme();
   if (!Icon && !children?.trim()) {
     throw new Error(
       `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
@@ -324,7 +322,7 @@ const BaseButton = ({
     motionDuration,
     motionEasing,
   } = getProps({
-    buttonTypographyTokens,
+    buttonTypographyTokens: buttonTypography,
     children,
     isDisabled: disabled,
     size,
