@@ -5,7 +5,7 @@ export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Record<number | string, unknown> ? DeepPartial<T[P]> : T[P];
 };
 
-const isPartialMatchObjectKeys = <ActualObject>({
+export const isPartialMatchObjectKeys = <ActualObject>({
   objectToMatch,
   objectToInspect,
 }: {
@@ -72,5 +72,3 @@ const isPartialMatchObjectKeys = <ActualObject>({
 
   return matchResponses.every(Boolean);
 };
-
-export default isPartialMatchObjectKeys;

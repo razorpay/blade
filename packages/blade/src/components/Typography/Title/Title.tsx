@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react';
-import type { ColorContrast, ColorContrastTypes, TextTypes } from '../../../tokens/theme/theme.d';
-import getPlatformType from '../../../utils/getPlatformType';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText/BaseText';
+import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
+import { getPlatformType } from '~utils';
 
 export type TitleProps = {
   variant?: 'small' | 'medium' | 'large';

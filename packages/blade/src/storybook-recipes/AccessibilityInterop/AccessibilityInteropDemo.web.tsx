@@ -1,7 +1,7 @@
 import React from 'react';
-import makeAccessible from '../../utils/makeAccessible';
-import { CloseIcon, EyeIcon } from '../../components/Icons';
 import { getCheckboxAccessibilityProps } from './getCheckboxA11yProps';
+import { makeAccessible } from '~utils';
+import { CloseIcon, EyeIcon } from '~components/Icons';
 
 const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean }> = ({
   label,

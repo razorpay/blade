@@ -1,6 +1,6 @@
 import Svg from '..';
-import renderWithTheme from '../../../../../_helpers/testing/renderWithTheme.web';
 import Path from '../../Path';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('<Svg />', () => {
   it('should render html svg component', () => {

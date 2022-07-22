@@ -1,4 +1,4 @@
-import getIn from './getIn';
+import { getIn } from './getIn';
 
 const testObject = {
   a: [

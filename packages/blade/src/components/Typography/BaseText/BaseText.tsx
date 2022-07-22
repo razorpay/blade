@@ -1,13 +1,11 @@
 import type { ReactElement } from 'react';
-import getIn from '../../../utils/getIn';
-import { useTheme } from '../../BladeProvider';
-import makeTypographySize from '../../../utils/makeTypographySize';
-import type { Theme } from '../../BladeProvider';
-import type { DotNotationColorStringToken } from '../../../_helpers/types';
-import type { Feedback } from '../../../tokens/theme/theme.d';
-import type { AccessibilityProps } from '../../../utils/makeAccessible';
-import makeAccessible from '../../../utils/makeAccessible';
 import StyledBaseText from './StyledBaseText';
+import { useTheme } from '~components/BladeProvider';
+import type { Theme } from '~components/BladeProvider';
+import type { DotNotationColorStringToken } from '~src/_helpers/types';
+import type { Feedback } from '~tokens/theme/theme';
+import type { AccessibilityProps } from '~utils';
+import { makeAccessible, makeTypographySize, getIn } from '~utils';
 
 type FeedbackColors = `feedback.text.${DotNotationColorStringToken<
   Theme['colors']['feedback']['text']

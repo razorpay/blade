@@ -1,4 +1,4 @@
-import isPartialMatchObjectKeys from './isPartialMatchObjectKeys';
+import { isPartialMatchObjectKeys } from './isPartialMatchObjectKeys';
 
 const baseTheme = {
   colors: {

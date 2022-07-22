@@ -1,5 +1,5 @@
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.web';
-import CreditCardIcon from '.';
+import CreditCardIcon from './CreditCardIcon';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('<CreditCardIcon />', () => {
   it('should render CreditCardIcon', () => {

@@ -1,3 +1,5 @@
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
 module.exports = {
   refs: {
     '@storybook/design-system': { disable: true },
@@ -33,6 +35,13 @@ module.exports = {
       '.js',
       '.jsx',
       '.json',
+    ];
+
+    config.resolve.plugins = [
+      ...(config.resolve.plugins || []),
+      new TsconfigPathsPlugin({
+        extensions: config.resolve.extensions,
+      }),
     ];
 
     // Return the altered config

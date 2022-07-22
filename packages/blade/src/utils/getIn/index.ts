@@ -1,1 +1,1 @@
-export { default } from './getIn';
+export * from './getIn';

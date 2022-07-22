@@ -1,4 +1,4 @@
-import makeBezier from './';
+import { makeBezier } from './';
 
 describe('makeBezier', () => {
   it(`should return a string of cubic-bezier with the right parameters`, () => {

@@ -2,7 +2,7 @@
 import { accessibilityMap } from './accessibilityMapWeb';
 import type { AccessibilityMap, AccessibilityProps } from './makeAccessible.d';
 
-const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
+export const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, any> = {};
 
   // eslint-disable-next-line guard-for-in
@@ -22,5 +22,3 @@ const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unkn
 
   return newProps;
 };
-
-export default makeAccessible;
