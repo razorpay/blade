@@ -74,7 +74,7 @@ And `validationState` will pass `aria-invalid` attributes to indicate invalid st
 | helpText    | `string`                    | No       | `undefined` | The helper text to be rendered                                                                                                     |
 | errorText    | `string`                    | No       | `undefined` | The error text to be rendered                                                                                                     |
 | validationState     | `undefined \| 'error'`                   | No       | `undefined`     | Control whether the checkbox group is invalid or not.                                                                              |
-| necessityIndicator    | `'optional' \| 'required' \| undefined`                   | No       | `undefined`     | Renders optional or required indicators in the group, if set to undefined renders nothing |
+| necessityIndicator    | `'optional' \| 'required' \| undefined`                   | No       | `undefined`     | Renders `${label} (optional)` for `optional` and `${label} *` for `required`. if set to undefined renders nothing |
 
 ### Examples:
 
@@ -221,4 +221,4 @@ const [validationState, setValidationState] = React.useState(undefined);
 ```
 
 **Conclusion:**  
-Individual Checkboxes will have `errorText`, and if user sets `validationState` on the individual Checkbox when inside the CheckboxGroup we will throw a runtime error.
+Individual Checkboxes will have `errorText`, and if user sets `validationState` on the individual Checkbox when inside the CheckboxGroup we will throw at runtime error.
