@@ -19,6 +19,10 @@
 
 [Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026) to all variants of the Checkbox component
 
+## Blueprint of Checkbox
+
+<img width="70%" src="./checkbox-api-architecture.png" alt="Architecture of Checkbox">
+
 ## `Checkbox` API
 
 | Prop                | Type       | Required | Default   | Description                                                                                                                                              |
