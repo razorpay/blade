@@ -95,23 +95,29 @@ const Checkbox = ({
 }: CheckboxProps): React.ReactElement => {
   const groupProps = useCheckboxGroupContext();
 
-  // ban controlling checkbox manually while inside group
+  // ban certain props in checkbox while inside group
+  const hasValidationState = !isUndefined(validationState);
   const hasDefaultChecked = !isUndefined(defaultChecked);
   const hasIsChecked = !isUndefined(isChecked);
   const hasOnChange = !isUndefined(onChange);
-  if ((hasDefaultChecked || hasIsChecked || hasOnChange) && !isEmpty(groupProps)) {
+  if (
+    (hasValidationState || hasDefaultChecked || hasIsChecked || hasOnChange) &&
+    !isEmpty(groupProps)
+  ) {
     const props = [
+      hasValidationState ? 'validationState' : undefined,
       hasDefaultChecked ? 'defaultChecked' : undefined,
       hasIsChecked ? 'isChecked' : undefined,
       hasOnChange ? 'onChange' : undefined,
-    ].filter(Boolean);
+    ]
+      .filter(Boolean)
+      .join(',');
 
     throw new Error(
-      `[Blade Checkbox]: Cannot set \`${props.join(
-        ',',
-      )}\` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself`,
+      `[Blade Checkbox]: Cannot set \`${props}\` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself`,
     );
   }
+
   // mandate value prop when using inside group
   if (!value && !isEmpty(groupProps)) {
     throw new Error(
@@ -121,12 +127,6 @@ const Checkbox = ({
         <Checkbox value="mango">Mango</Checkbox>
       </CheckboxGroup>
       `,
-    );
-  }
-  // If validationState is used while inside group
-  if (validationState && !isEmpty(groupProps)) {
-    throw new Error(
-      "[Blade Checkbox]: Can't use validationState of individual Checkboxes inside <CheckboxGroup />, please set validtionState on the <CheckboxGroup /> itself.",
     );
   }
 

@@ -63,7 +63,7 @@ export type CheckboxGroupProps = {
    */
   value?: string[];
   /**
-   * The callback invoked when the any of the checkbox's state changes
+   * The callback invoked when any of the checkbox's state changes
    */
   onChange?: (values: string[]) => void;
   /**
@@ -100,7 +100,7 @@ const CheckboxGroup = ({
 
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
-  const accessibillityText = `${showError ? errorText : ''} ${showHelpText ? showHelpText : ''}`;
+  const accessibillityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
 
   return (
     <CheckboxGroupProvider value={contextValue}>

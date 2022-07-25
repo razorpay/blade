@@ -27,7 +27,6 @@ const useCheckboxGroup = ({
   isDisabled,
   labelPosition,
   onChange,
-  neccessityIndicator,
   validationState,
   name,
 }: UseCheckboxGroupProps) => {
@@ -75,13 +74,11 @@ const useCheckboxGroup = ({
   const contextValue = React.useMemo(() => {
     return {
       validationState,
-      neccessityIndicator,
       isDisabled,
       labelPosition: platform === 'onMobile' ? 'top' : labelPosition,
       name,
-      state,
     };
-  }, [validationState, neccessityIndicator, isDisabled, platform, labelPosition, name, state]);
+  }, [validationState, isDisabled, platform, labelPosition, name]);
 
   return { state, contextValue, ids: { labelId } };
 };

@@ -5,7 +5,7 @@ import React from 'react';
 import { Text } from '../Typography';
 import { Checkbox as CheckboxComponent } from './Checkbox';
 import { CheckboxGroup as CheckboxGroupComponent } from './CheckboxGroup';
-import type { CheckboxGroupProps } from './CheckboxGroup/CheckboxGroup';
+import type { CheckboxGroupProps } from './CheckboxGroup';
 
 export default {
   title: 'Components/Checkbox/CheckboxGroup',
@@ -113,6 +113,7 @@ const IndeterminateExample = () => {
         helpText="Select atleast one"
         label="Select fruits"
         value={selected}
+        validationState="error"
         onChange={(e) => setSelected(e)}
       >
         {fields.map((field) => {

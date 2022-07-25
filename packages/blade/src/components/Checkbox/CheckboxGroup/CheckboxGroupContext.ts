@@ -8,7 +8,6 @@ type CheckboxGroupContextType = Pick<
   CheckboxGroupProps,
   | 'validationState'
   | 'isDisabled'
-  | 'neccessityIndicator'
   | 'labelPosition'
   | 'name'
   | 'defaultValue'
