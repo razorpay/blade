@@ -6,13 +6,13 @@ import { isUndefined } from 'lodash';
 import React from 'react';
 import { isEmpty } from '../../utils';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
-import { CheckboxHintText } from './CheckboxHintText';
 import { CheckboxIcon } from './CheckboxIcon';
 import { CheckboxInput } from './CheckboxInput';
 import { CheckboxLabel } from './CheckboxLabel';
 import { CheckboxLabelText } from './CheckboxLabelText';
 import { useCheckbox } from './useCheckbox';
 import { Wrapper } from './Wrapper';
+import { FormHintText } from '~components/FormField/FormHintText';
 
 type CheckboxProps = {
   /**
@@ -187,14 +187,14 @@ const Checkbox = ({
       <Wrapper>
         <CheckboxLabelText>{children}</CheckboxLabelText>
         {showError && (
-          <CheckboxHintText id={ids?.errorTextId} variant="error">
+          <FormHintText id={ids?.errorTextId} variant="error">
             {errorText}
-          </CheckboxHintText>
+          </FormHintText>
         )}
         {showHelpText && (
-          <CheckboxHintText id={ids?.helpTextId} variant="help">
+          <FormHintText id={ids?.helpTextId} variant="help">
             {helpText}
-          </CheckboxHintText>
+          </FormHintText>
         )}
       </Wrapper>
     </CheckboxLabel>

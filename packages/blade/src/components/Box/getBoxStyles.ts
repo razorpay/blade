@@ -7,6 +7,7 @@ const getBoxStyles = ({
   theme,
   display,
   flex,
+  flexWrap,
   flexDirection,
   alignItems,
   justifyContent,
@@ -22,6 +23,7 @@ const getBoxStyles = ({
 }: BoxProps & { theme: Theme }): CSSObject => ({
   display,
   flex,
+  flexWrap,
   flexDirection,
   alignItems,
   justifyContent,

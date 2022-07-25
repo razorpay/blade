@@ -4,6 +4,7 @@ import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 export type BoxProps = {
   display?: CSSObject['display'];
   flex?: CSSObject['flex'];
+  flexWrap?: CSSObject['flexWrap'];
   flexDirection?: CSSObject['flexDirection'];
   alignItems?: CSSObject['alignItems'];
   justifyContent?: CSSObject['justifyContent'];

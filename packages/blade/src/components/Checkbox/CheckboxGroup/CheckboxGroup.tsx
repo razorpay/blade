@@ -1,13 +1,11 @@
 import React from 'react';
 import { Wrapper } from '../Wrapper';
-import { VisuallyHidden } from '../../VisuallyHidden';
-import { Text } from '../../Typography';
 import { CheckboxGroupContent } from './CheckboxGroupContent';
 import { CheckboxGroupField } from './CheckboxGroupField';
-import { CheckboxGroupHintText } from './CheckboxGroupHintText';
-import { CheckboxGroupLabel } from './CheckboxGroupLabel';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
+import { FormLabelText } from '~components/FormField/FormLabelText';
+import { FormHintText } from '~components/FormField/FormHintText';
 
 export type CheckboxGroupProps = {
   /**
@@ -104,28 +102,23 @@ const CheckboxGroup = ({
 
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
+  const accessibillityText = `${showError ? errorText : ''} ${showHelpText ? showHelpText : ''}`;
 
   return (
     <CheckboxGroupProvider value={contextValue}>
       <CheckboxGroupField labelledBy={ids.labelId}>
-        <CheckboxGroupLabel id={ids.labelId}>
+        <FormLabelText
+          neccessityIndicator={neccessityIndicator}
+          position={labelPosition}
+          id={ids.labelId}
+          accessibillityText={accessibillityText}
+        >
           {label}
-          {neccessityIndicator === 'optional' ? (
-            <CheckboxGroupHintText variant="help"> (optional)</CheckboxGroupHintText>
-          ) : neccessityIndicator === 'required' ? (
-            <CheckboxGroupHintText variant="help"> (required)</CheckboxGroupHintText>
-          ) : null}
-          <VisuallyHidden>
-            <Text>
-              ,{showError && errorText}
-              {showHelpText && showHelpText}
-            </Text>
-          </VisuallyHidden>
-        </CheckboxGroupLabel>
+        </FormLabelText>
         <Wrapper>
           <CheckboxGroupContent>{children}</CheckboxGroupContent>
-          {showError && <CheckboxGroupHintText variant="error">{errorText}</CheckboxGroupHintText>}
-          {showHelpText && <CheckboxGroupHintText variant="help">{helpText}</CheckboxGroupHintText>}
+          {showError && <FormHintText variant="error">{errorText}</FormHintText>}
+          {showHelpText && <FormHintText variant="help">{helpText}</FormHintText>}
         </Wrapper>
       </CheckboxGroupField>
     </CheckboxGroupProvider>

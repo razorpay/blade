@@ -14,6 +14,8 @@ import PauseIconComponent from './PauseIcon';
 import PlusIconComponent from './PlusIcon';
 import RupeeIconComponent from './RupeeIcon';
 import TrashIconComponent from './TrashIcon';
+import InfoIconComponent from './InfoIcon';
+import CheckIconComponent from './CheckIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -34,6 +36,8 @@ const iconMap: Record<string, IconComponent> = {
   PlusIcon: PlusIconComponent,
   RupeeIcon: RupeeIconComponent,
   TrashIcon: TrashIconComponent,
+  InfoIcon: InfoIconComponent,
+  CheckIcon: CheckIconComponent,
 };
 
 export default iconMap;

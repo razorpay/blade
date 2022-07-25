@@ -27,10 +27,10 @@ describe('<CheckboxGroup />', () => {
     expect(getByRole('group')).toHaveTextContent(labelText);
   });
 
-  it('should render with label', () => {
+  it('should render with help text', () => {
     const labelText = 'Select fruits';
     const helpText = 'Select one';
-    const { container, getByRole, getByText } = renderWithTheme(
+    const { container, getByRole, queryAllByText } = renderWithTheme(
       <CheckboxGroup helpText={helpText} label={labelText}>
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
@@ -39,7 +39,7 @@ describe('<CheckboxGroup />', () => {
     );
     expect(container).toMatchSnapshot();
     expect(getByRole('group')).toHaveTextContent(labelText);
-    expect(getByText(helpText)).toBeInTheDocument();
+    expect(queryAllByText(helpText).length).toBe(2);
   });
 
   it('should propagate isDisabled prop to child checkboxes', () => {
@@ -77,7 +77,7 @@ describe('<CheckboxGroup />', () => {
     const helpText = 'Select one';
     const errorText = 'Invalid selection';
 
-    const { getAllByRole, queryByText } = renderWithTheme(
+    const { getAllByRole, queryByText, queryAllByText } = renderWithTheme(
       <CheckboxGroup
         helpText={helpText}
         errorText={errorText}
@@ -91,7 +91,7 @@ describe('<CheckboxGroup />', () => {
     );
 
     expect(queryByText(helpText)).not.toBeInTheDocument();
-    expect(queryByText(errorText)).toBeInTheDocument();
+    expect(queryAllByText(errorText).length).toBe(2);
     getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
       expect(checkbox).toBeInvalid();
     });
