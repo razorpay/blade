@@ -26,7 +26,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@changesets/cli": "2.18.1",
+    "@changesets/cli": "2.24.1",
     "@types/jest": "26.0.23",
     "@types/react": "17.0.4",
     "@types/react-native": "0.64.4",
