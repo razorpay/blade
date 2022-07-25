@@ -31,13 +31,6 @@ export default {
         options: ['optional', 'required', undefined],
       },
     },
-    validationState: {
-      defaultValue: undefined,
-      control: {
-        type: 'select',
-        options: ['error', undefined],
-      },
-    },
   },
 } as Meta<CheckboxGroupProps>;
 
@@ -139,7 +132,7 @@ const IndeterminateTemplate: ComponentStory<typeof CheckboxComponent> = () => {
 };
 export const Indeterminate = IndeterminateTemplate.bind({});
 
-export const KitchenSink = () => {
+export const KitchenSink = (): React.ReactElement => {
   const [selected, setSelected] = React.useState(['mango', 'apple']);
 
   return (
@@ -156,7 +149,6 @@ export const KitchenSink = () => {
       </CheckboxGroupComponent>
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
-        validationState={selected.length < 1 ? 'error' : undefined}
         errorText="Selected atleast one item"
         helpText={`You selected ${selected.join(', ')}`}
         label="Controlled"

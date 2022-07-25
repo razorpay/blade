@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-shadow */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Text } from '../Typography';
@@ -66,35 +65,6 @@ Indeterminate.args = {
   isIndeterminate: true,
 };
 
-// const DefaultExample = () => {
-//   return (
-//     <>
-//       <CheckboxComponent>Remember Login</CheckboxComponent>
-//       <Text>&nbsp;</Text>
-//       <CheckboxComponent isDisabled>Remember Login</CheckboxComponent>
-//       <Text>&nbsp;</Text>
-//       <CheckboxComponent isDisabled defaultChecked>
-//         Remember Login
-//       </CheckboxComponent>
-//       <Text>&nbsp;</Text>
-//       <CheckboxComponent validationState="error" errorText="Can you really remember?">
-//         Remember Login
-//       </CheckboxComponent>
-//       <Text>&nbsp;</Text>
-//       <CheckboxComponent validationState="error" defaultChecked>
-//         Remember Login
-//       </CheckboxComponent>
-//       <Text>&nbsp;</Text>
-//       <CheckboxComponent helpText="Please check this box">Remember Login</CheckboxComponent>
-//     </>
-//   );
-// };
-
-// const CheckboxTemplate: ComponentStory<typeof CheckboxComponent> = () => {
-//   return <DefaultExample />;
-// };
-// export const Default = CheckboxTemplate.bind({});
-
 const ControlledAndUncontrolledComp = () => {
   const [checked, setChecked] = React.useState(false);
 
@@ -115,68 +85,6 @@ const _ControlledAndUncontrolled: ComponentStory<typeof CheckboxComponent> = () 
   return <ControlledAndUncontrolledComp />;
 };
 export const ControlledAndUncontrolled = _ControlledAndUncontrolled.bind({});
-
-const GroupExample = () => {
-  const [selected, setSelected] = React.useState(['mango', 'apple']);
-
-  return (
-    <>
-      <CheckboxGroupComponent
-        helpText="Select atleast one"
-        label="Uncontrolled"
-        defaultValue={['apple', 'orange']}
-        onChange={(e) => console.log(e)}
-      >
-        <CheckboxComponent value="apple">Apple</CheckboxComponent>
-        <CheckboxComponent value="mango">Mango</CheckboxComponent>
-        <CheckboxComponent value="orange">Orange</CheckboxComponent>
-      </CheckboxGroupComponent>
-      <Text>&nbsp;</Text>
-      <CheckboxGroupComponent
-        validationState={selected.length < 1 ? 'error' : undefined}
-        errorText="Selected atleast one item"
-        helpText={`You selected ${selected.join(', ')}`}
-        label="Controlled"
-        value={selected}
-        onChange={(values) => setSelected(values)}
-      >
-        <CheckboxComponent value="apple">Apple</CheckboxComponent>
-        <CheckboxComponent value="mango">Mango</CheckboxComponent>
-        <CheckboxComponent value="orange">Orange</CheckboxComponent>
-      </CheckboxGroupComponent>
-      <Text>&nbsp;</Text>
-      <CheckboxGroupComponent
-        validationState="error"
-        neccessityIndicator="optional"
-        errorText="Atleast one has to be selected"
-        helpText="Select atleast one"
-        label="Select your fruit"
-      >
-        <CheckboxComponent value="apple">Apple</CheckboxComponent>
-        <CheckboxComponent value="mango">Mango</CheckboxComponent>
-        <CheckboxComponent value="orange">Orange</CheckboxComponent>
-      </CheckboxGroupComponent>
-      <Text>&nbsp;</Text>
-      <CheckboxGroupComponent
-        labelPosition="left"
-        neccessityIndicator="optional"
-        validationState="error"
-        errorText="This is invalid"
-        helpText="Select atleast one"
-        label="Select your fruit"
-      >
-        <CheckboxComponent value="apple">Apple</CheckboxComponent>
-        <CheckboxComponent value="mango">Mango</CheckboxComponent>
-        <CheckboxComponent value="orange">Orange</CheckboxComponent>
-      </CheckboxGroupComponent>
-    </>
-  );
-};
-
-const CheckboxGroupTemplate: ComponentStory<typeof CheckboxComponent> = () => {
-  return <GroupExample />;
-};
-export const CheckboxGroup = CheckboxGroupTemplate.bind({});
 
 const IndeterminateExample = () => {
   const fields = ['mango', 'apple', 'orange'];
@@ -222,4 +130,3 @@ const IndeterminateTemplate: ComponentStory<typeof CheckboxComponent> = () => {
   return <IndeterminateExample />;
 };
 export const IndeterminateCheckbox = IndeterminateTemplate.bind({});
-// Default.storyName = 'Default';

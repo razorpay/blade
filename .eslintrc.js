@@ -20,7 +20,6 @@ module.exports = {
     // eslint is not smart enough to statically detect that we set the role
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/no-noninteractive-tabindex': 'off',
-    'react/no-unused-prop-types': 'off',
     complexity: ['off'],
     'import/order': [
       'error',

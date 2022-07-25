@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { isUndefined } from 'lodash';
 import React from 'react';
 import { isEmpty } from '../../utils';
@@ -16,14 +12,14 @@ import { FormHintText } from '~components/FormField/FormHintText';
 
 type CheckboxProps = {
   /**
-   * If `true`, sets the checkbox will be checked.
+   * If `true`, The checkbox will be checked. This also makes the checkbox controlled
    * Use `onChange` to update its value
    *
    * @default false
    */
   isChecked?: boolean;
   /**
-   * If `true`, the checkbox will be initially checked.
+   * If `true`, the checkbox will be initially checked. This also makes the checkbox uncontrolled
    *
    * @default false
    */
@@ -37,15 +33,13 @@ type CheckboxProps = {
    */
   children: string;
   /**
-   * Help text of the checkbox
+   * Help text for the checkbox
    */
   helpText?: string;
   /**
-   * Error text of the checkbox
+   * Error text for the checkbox
    *
    * Renders when `validationState` is set to 'error'
-   *
-   * Overrides helpText
    */
   errorText?: string;
   /**
@@ -81,10 +75,8 @@ type CheckboxProps = {
   /**
    * If `error`, the checkbox input is marked as invalid,
    * and `invalid` attribute will be added
-   *
-   * @default undefined
    */
-  validationState?: 'error' | undefined;
+  validationState?: 'error' | 'none';
 };
 
 const Checkbox = ({
@@ -147,7 +139,7 @@ const Checkbox = ({
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
 
-  const handleChange = (checked: boolean) => {
+  const handleChange = (checked: boolean): void => {
     if (checked) {
       groupProps?.state?.addValue(value!);
     } else {

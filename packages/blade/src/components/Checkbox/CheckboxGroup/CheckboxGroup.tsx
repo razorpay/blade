@@ -27,10 +27,8 @@ export type CheckboxGroupProps = {
    * Sets the error state of the CheckboxGroup
    * If set to `error` it will render the `errorText` of the group,
    * and propagate `invalid` prop to every checkbox
-   *
-   * @default undefined
    */
-  validationState?: 'error' | undefined;
+  validationState?: 'error' | 'none';
   /**
    * Renders a neccessity indicator after CheckboxGroup label
    *
@@ -82,7 +80,7 @@ const CheckboxGroup = ({
   isDisabled,
   neccessityIndicator,
   labelPosition = 'top',
-  validationState,
+  validationState = 'none',
   errorText,
   name,
   defaultValue,
