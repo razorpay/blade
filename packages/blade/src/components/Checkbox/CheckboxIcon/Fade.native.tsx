@@ -6,12 +6,7 @@ import Animated, { Keyframe } from 'react-native-reanimated';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components/native';
 import { useTheme } from '../../BladeProvider';
-
-type FadeProps = {
-  children: React.ReactNode;
-  show?: boolean;
-  styles: CSSObject;
-};
+import type { FadeProps } from './Fade';
 
 const StyledFade = styled(Animated.View)<{ styles: CSSObject }>(({ styles }) => {
   return {
@@ -51,7 +46,7 @@ const Fade = ({ children, show, styles }: FadeProps) => {
   }).duration(theme.motion.duration.quick);
 
   return show ? (
-    <StyledFade styles={styles} entering={fadeIn} exiting={fadeOut}>
+    <StyledFade styles={styles as CSSObject} entering={fadeIn} exiting={fadeOut}>
       {children}
     </StyledFade>
   ) : null;

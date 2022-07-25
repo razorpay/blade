@@ -36,11 +36,9 @@ const variants = {
   },
 };
 
-type WithChecked = {
+export type CheckboxRectProps = Omit<CheckboxIconProps, 'state'> & {
   isChecked: boolean;
 };
-
-export type CheckboxRectProps = Omit<CheckboxIconProps, 'state'> & WithChecked;
 
 const getBackgroundAndBorder = ({
   theme,
@@ -48,7 +46,9 @@ const getBackgroundAndBorder = ({
   isNegative,
   isChecked,
 }: { theme: Theme } & CheckboxRectProps): CSSObject => {
-  const variant = isDisabled ? 'disabled' : isNegative ? 'negative' : 'default';
+  let variant: 'default' | 'disabled' | 'negative' = 'default';
+  if (isDisabled) variant = 'disabled';
+  if (isNegative) variant = 'negative';
   const checked = isChecked ? 'checked' : 'unchecked';
   const backgroundColor = variants[variant].background[checked];
   const borderColor = variants[variant].border[checked];

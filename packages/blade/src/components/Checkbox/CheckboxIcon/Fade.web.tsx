@@ -2,15 +2,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import React from 'react';
+import type { FadeProps } from './Fade.d';
 import './styles.css';
-
-type FadeProps = {
-  show?: boolean;
-  children: React.ReactNode;
-  enter: string;
-  leave: string;
-  styles?: React.CSSProperties;
-};
 
 const Fade = ({ show, children, enter, leave, styles }: FadeProps) => {
   // if show is undefined do not initialize the animation to prevent flash of animation
