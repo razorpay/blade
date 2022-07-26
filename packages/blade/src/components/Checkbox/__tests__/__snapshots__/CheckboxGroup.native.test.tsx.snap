@@ -3,7 +3,8 @@
 exports[`<CheckboxGroup /> should render with label 1`] = `
 <View
   accessibilityLabelledBy="checkbox-group-10-label"
-  labelPosition="top"
+  display="flex"
+  flexDirection="column"
   style={
     Array [
       Object {
@@ -160,19 +161,29 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       </View>
     </Text>
     <View
-      paddingRight="spacing.1"
+      marginRight="spacing.0"
       style={
         Array [
           Object {
-            "paddingRight": 4,
+            "marginRight": 0,
           },
         ]
       }
     />
   </View>
-  <View>
+  <View
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
     <View
-      labelPosition="top"
+      display="flex"
+      flexDirection="column"
+      gap="spacing.1"
+      marginBottom="spacing.1"
+      marginTop="spacing.1"
       style={
         Array [
           Object {
@@ -243,7 +254,13 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             ]
           }
         />
-        <View>
+        <View
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
           <Text
             color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
@@ -338,7 +355,13 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             ]
           }
         />
-        <View>
+        <View
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
           <Text
             color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
@@ -433,7 +456,13 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             ]
           }
         />
-        <View>
+        <View
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
           <Text
             color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
@@ -478,7 +507,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 exports[`<CheckboxGroup /> should render with label 2`] = `
 <View
   accessibilityLabelledBy="checkbox-group-21-label"
-  labelPosition="top"
+  display="flex"
+  flexDirection="column"
   style={
     Array [
       Object {
@@ -635,19 +665,29 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       </View>
     </Text>
     <View
-      paddingRight="spacing.1"
+      marginRight="spacing.0"
       style={
         Array [
           Object {
-            "paddingRight": 4,
+            "marginRight": 0,
           },
         ]
       }
     />
   </View>
-  <View>
+  <View
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
     <View
-      labelPosition="top"
+      display="flex"
+      flexDirection="column"
+      gap="spacing.1"
+      marginBottom="spacing.1"
+      marginTop="spacing.1"
       style={
         Array [
           Object {
@@ -718,7 +758,13 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             ]
           }
         />
-        <View>
+        <View
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
           <Text
             color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
@@ -813,7 +859,13 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             ]
           }
         />
-        <View>
+        <View
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
           <Text
             color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
@@ -908,7 +960,13 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             ]
           }
         />
-        <View>
+        <View
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
           <Text
             color="hsla(216, 27%, 36%, 1)"
             fontFamily="Lato"
