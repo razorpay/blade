@@ -1,5 +1,5 @@
-import spacing from '../../tokens/global/spacing';
-import makeSpace from '.';
+import { makeSpace } from '.';
+import spacing from '~tokens/global/spacing';
 
 describe('makeSpace', () => {
   it('should return the spacing value in `px`', () => {

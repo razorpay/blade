@@ -1,5 +1,5 @@
-import type { Theme } from '../../';
-import paymentTheme from '../../../../tokens/theme/paymentTheme';
+import type { Theme } from '~components/BladeProvider';
+import { paymentTheme } from '~tokens/theme';
 
 const paymentLightTheme: Theme = {
   colors: { ...paymentTheme.colors.onLight },

@@ -1,4 +1,4 @@
-const setupMatchMediaMock = (customArgs = {}): void => {
+export const setupMatchMediaMock = (customArgs = {}): void => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation((query) => ({
@@ -10,5 +10,3 @@ const setupMatchMediaMock = (customArgs = {}): void => {
     })),
   });
 };
-
-export default setupMatchMediaMock;

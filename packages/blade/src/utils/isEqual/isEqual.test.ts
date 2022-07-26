@@ -1,4 +1,4 @@
-import isEqual from './isEqual';
+import { isEqual } from './isEqual';
 
 describe('isEqual', () => {
   it('should return "true" when object keys and value are equal', () => {

@@ -1,9 +1,7 @@
-import type { Theme } from '../../../components/BladeProvider';
-import type { IconProps } from '../../Icons';
-import type { SpinnerProps } from '../../Spinner/Spinner';
 import type { BaseButtonProps } from './BaseButton';
-
-//TODO: Sort keys in all objects
+import type { Theme } from '~components/BladeProvider';
+import type { IconProps } from '~components/Icons';
+import type { SpinnerProps } from '~components/Spinner/Spinner';
 
 export type ButtonMinHeight = 28 | 32 | 36 | 48;
 

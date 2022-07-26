@@ -1,8 +1,8 @@
-import type { Border } from '../global/border';
-import type { Breakpoints } from '../global/breakpoints';
-import type { Motion } from '../global/motion';
-import type { Spacing } from '../global/spacing';
-import type { TypographyWithPlatforms } from '../global/typography';
+import type { Border } from '~tokens/global/border';
+import type { Breakpoints } from '~tokens/global/breakpoints';
+import type { Motion } from '~tokens/global/motion';
+import type { Spacing } from '~tokens/global/spacing';
+import type { TypographyWithPlatforms } from '~tokens/global/typography';
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
@@ -50,6 +50,10 @@ export type ActionStates = {
   disabled: string;
 };
 
+export type LinkActionStates = ActionStates & {
+  visited: string;
+};
+
 export type ActionStatesWithContrast = {
   default: ColorContrast;
   hover: ColorContrast;
@@ -58,19 +62,15 @@ export type ActionStatesWithContrast = {
   disabled: ColorContrast;
 };
 
-// export type ActionStates = {
-//   default: ColorContrast;
-//   hover: ColorContrast;
-//   focus: ColorContrast;
-//   active: ColorContrast;
-//   disabled: ColorContrast;
-// };
+export type LinkActionStatesWithContrast = ActionStatesWithContrast & {
+  visited: ColorContrast;
+};
 
 export type ActionVariants = {
   primary: ActionStates;
   secondary: ActionStates;
   tertiary: ActionStates;
-  link: ActionStates;
+  link: LinkActionStates;
 };
 
 export type ActionVariantsWithContrast = {
@@ -96,7 +96,7 @@ export type FeedbackActions = {
 
 export type Colors = {
   brand: {
-    primary: Record<300 | 400 | 500 | 600 | 700, string>;
+    primary: Record<300 | 400 | 500 | 600 | 700 | 800, string>;
     secondary: Record<500, string>;
     gray: Record<200 | 300 | 400 | 500 | 600 | 700, string>;
   };

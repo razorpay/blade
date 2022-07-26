@@ -1,1 +1,1 @@
-export { default } from './makeTypographySize';
+export * from './makeTypographySize';
