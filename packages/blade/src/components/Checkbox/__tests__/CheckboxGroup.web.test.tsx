@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import userEvents from '@testing-library/user-event';
 import React from 'react';
 import renderWithTheme from '../../../_helpers/testing/renderWithTheme.web';
@@ -30,7 +27,7 @@ describe('<CheckboxGroup />', () => {
   it('should render with help text', () => {
     const labelText = 'Select fruits';
     const helpText = 'Select one';
-    const { container, getByRole, queryAllByText } = renderWithTheme(
+    const { container, getByRole, queryByText } = renderWithTheme(
       <CheckboxGroup helpText={helpText} label={labelText}>
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
@@ -39,7 +36,7 @@ describe('<CheckboxGroup />', () => {
     );
     expect(container).toMatchSnapshot();
     expect(getByRole('group')).toHaveTextContent(labelText);
-    expect(queryAllByText(helpText).length).toBe(2);
+    expect(queryByText(helpText)).toBeInTheDocument();
   });
 
   it('should propagate isDisabled prop to child checkboxes', () => {
@@ -77,7 +74,7 @@ describe('<CheckboxGroup />', () => {
     const helpText = 'Select one';
     const errorText = 'Invalid selection';
 
-    const { getAllByRole, queryByText, queryAllByText } = renderWithTheme(
+    const { getAllByRole, queryByText } = renderWithTheme(
       <CheckboxGroup
         helpText={helpText}
         errorText={errorText}
@@ -91,7 +88,7 @@ describe('<CheckboxGroup />', () => {
     );
 
     expect(queryByText(helpText)).not.toBeInTheDocument();
-    expect(queryAllByText(errorText).length).toBe(2);
+    expect(queryByText(errorText)).toBeInTheDocument();
     getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
       expect(checkbox).toBeInvalid();
     });
@@ -214,7 +211,8 @@ describe('<CheckboxGroup /> runtime errors', () => {
 
   it('should throw error if validationState is used in Checkboxes', () => {
     const labelText = 'Select fruit';
-    const errorMsg = `Can't use validationState of individual Checkboxes inside <CheckboxGroup />`;
+    const errorMsg =
+      "[Blade Checkbox]: Cannot set `validationState` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself";
 
     try {
       renderWithTheme(

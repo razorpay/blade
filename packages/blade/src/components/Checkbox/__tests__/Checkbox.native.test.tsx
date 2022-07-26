@@ -1,13 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.native';
 import { Checkbox } from '../Checkbox';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<Checkbox />', () => {
   it('should render checkbox with label', () => {

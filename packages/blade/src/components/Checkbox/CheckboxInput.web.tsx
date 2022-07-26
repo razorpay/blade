@@ -2,10 +2,10 @@
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import type { Theme } from '../BladeProvider';
-import { screenReaderStyles } from '../VisuallyHidden';
 import type { CheckboxIconProps } from './CheckboxIcon';
 import type { InputProps } from './useCheckbox';
 import { getIn, makeMotionTime } from '~utils';
+import { screenReaderStyles } from '~components/VisuallyHidden';
 
 type HoverProps = Pick<CheckboxIconProps, 'isNegative' | 'isDisabled'> & {
   isChecked: boolean;

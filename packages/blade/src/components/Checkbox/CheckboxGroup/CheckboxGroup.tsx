@@ -80,7 +80,7 @@ const CheckboxGroup = ({
   isDisabled,
   neccessityIndicator,
   labelPosition = 'top',
-  validationState = 'none',
+  validationState,
   errorText,
   name,
   defaultValue,

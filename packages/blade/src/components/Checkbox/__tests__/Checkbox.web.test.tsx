@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import userEvents from '@testing-library/user-event';
 import React from 'react';
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.web';
 import { Checkbox } from '../Checkbox';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('<Checkbox />', () => {
   it('should render checkbox with label', () => {

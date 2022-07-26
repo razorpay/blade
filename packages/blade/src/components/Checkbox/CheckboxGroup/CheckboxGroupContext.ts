@@ -4,7 +4,7 @@ import React from 'react';
 import type { CheckboxGroupProps } from './CheckboxGroup';
 import type { useCheckboxGroup } from './useCheckboxGroup';
 
-type CheckboxGroupContextType = Pick<
+export type CheckboxGroupContextType = Pick<
   CheckboxGroupProps,
   | 'validationState'
   | 'isDisabled'

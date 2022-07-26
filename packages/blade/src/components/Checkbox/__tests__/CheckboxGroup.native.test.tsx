@@ -1,17 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.native';
 import { Checkbox } from '../Checkbox';
 import { CheckboxGroup } from '../CheckboxGroup';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -222,7 +219,8 @@ describe('<CheckboxGroup /> runtime errors', () => {
 
   it('should throw error if validationState is used in Checkboxes', () => {
     const labelText = 'Select fruit';
-    const errorMsg = `Can't use validationState of individual Checkboxes inside <CheckboxGroup />`;
+    const errorMsg =
+      "[Blade Checkbox]: Cannot set `validationState` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself";
 
     try {
       renderWithTheme(

@@ -225,7 +225,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               font-style="normal"
               font-weight="400"
             >
-               Select one
+              , Select one
             </p>
           </div>
         </div>
@@ -625,7 +625,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               font-style="normal"
               font-weight="400"
             >
-               
+              , 
             </p>
           </div>
         </div>

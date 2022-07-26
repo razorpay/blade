@@ -8,6 +8,7 @@ import { useControllableState } from '../../../hooks/useControllable';
 import { useId } from '../../../hooks/useId';
 import { useTheme } from '../../BladeProvider';
 import type { CheckboxGroupProps } from './CheckboxGroup';
+import type { CheckboxGroupContextType } from './CheckboxGroupContext';
 
 type UseCheckboxGroupProps = Pick<
   CheckboxGroupProps,
@@ -71,14 +72,15 @@ const useCheckboxGroup = ({
     };
   }, [checkedValues, isDisabled, setValue]);
 
-  const contextValue = React.useMemo(() => {
+  const contextValue = React.useMemo((): CheckboxGroupContextType => {
     return {
       validationState,
       isDisabled,
       labelPosition: platform === 'onMobile' ? 'top' : labelPosition,
       name,
+      state,
     };
-  }, [validationState, isDisabled, platform, labelPosition, name]);
+  }, [validationState, isDisabled, platform, labelPosition, name, state]);
 
   return { state, contextValue, ids: { labelId } };
 };
