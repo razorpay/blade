@@ -4255,10 +4255,10 @@
   resolved "https://registry.yarnpkg.com/@storybook/addon-measure/-/addon-measure-1.3.1.tgz#a85b35a73ce9587d54d35e18307eeeb82f509534"
   integrity sha512-OTTbVOs/85zP5MzAMAAs/IyS3MNegSMvvGOzBRsX/7GBxhtjkrryamDkVr9py3JqPwRSndwwB7y0ZwWmf/9KJw==
 
-"@storybook/addon-ondevice-actions@6.0.1-alpha.7":
-  version "6.0.1-alpha.7"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-ondevice-actions/-/addon-ondevice-actions-6.0.1-alpha.7.tgz#703735e95613ea6bc95ff66e38662e1994aef6a7"
-  integrity sha512-AtVisxO1eyU4EEk5aKprObhdJ+JVnecNy0SP2El59lNxHuPVQgjAlybx8edcDSchbxUx2QiCh31BMnGWmZf+Hg==
+"@storybook/addon-ondevice-actions@6.0.1-beta.7":
+  version "6.0.1-beta.7"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-ondevice-actions/-/addon-ondevice-actions-6.0.1-beta.7.tgz#18a0adbecae328261f252090a1edf590531e4d28"
+  integrity sha512-XlRm8sVPnszbVlN8YUC6LnvPEpQOYSWRo17TtkpGTYc85hLD3i6o/exdaWUxLPCIy0yR/ucL0W5ByFTqUbA9WA==
   dependencies:
     "@storybook/addons" "~6.3"
     "@storybook/core-events" "~6.3"
