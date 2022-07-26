@@ -2,8 +2,9 @@ import React from 'react';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import BaseText from '~components/Typography/BaseText';
-import { getPlatformType } from '~utils';
+import { getPlatformType, useBreakpoint } from '~utils';
 import Box from '~components/Box';
+import { useTheme } from '~components/BladeProvider';
 
 type FormLabelPropsText = {
   position?: 'top' | 'left';
@@ -20,8 +21,12 @@ const FormLabelText = ({
   children,
   id,
 }: FormLabelPropsText): React.ReactElement => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isDesktop = matchedDeviceType === 'desktop';
   const isReactNative = getPlatformType() === 'react-native';
 
+  // TODO: replace with <Text /> when #548 merges
   const neccessityLabel =
     neccessityIndicator === 'optional' ? (
       <BaseText
@@ -76,8 +81,10 @@ const FormLabelText = ({
     return textNode;
   }
 
+  // only set 120px label when device is desktop
+  const width = position === 'left' && isDesktop ? '120px' : 'auto';
   return (
-    <span style={{ width: position === 'left' ? '120px' : 'auto' }} id={id}>
+    <span style={{ width }} id={id}>
       {textNode}
     </span>
   );
