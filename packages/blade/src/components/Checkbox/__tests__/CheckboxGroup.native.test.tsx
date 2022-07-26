@@ -73,7 +73,27 @@ describe('<CheckboxGroup />', () => {
     });
   });
 
-  it('should render errorText when hasError is set to true', () => {
+  it('should render helpText of individual checkboxes when inside group', () => {
+    const labelText = 'Select fruits';
+    const helpText = 'Select one';
+
+    const { queryByText } = renderWithTheme(
+      <CheckboxGroup helpText={helpText} label={labelText}>
+        <Checkbox helpText="Apple help" value="apple">
+          Apple
+        </Checkbox>
+        <Checkbox helpText="Mango help" value="mango">
+          Mango
+        </Checkbox>
+      </CheckboxGroup>,
+    );
+
+    expect(queryByText(helpText)).toBeTruthy();
+    expect(queryByText('Apple help')).toBeTruthy();
+    expect(queryByText('Mango help')).toBeTruthy();
+  });
+
+  it('should render errorText when validationState is set to error', () => {
     const labelText = 'Select fruits';
     const helpText = 'Select one';
     const errorText = 'Invalid selection';
@@ -98,6 +118,26 @@ describe('<CheckboxGroup />', () => {
     checkboxes.forEach((checkbox) => {
       expect(checkbox.props.accessibilityInvalid).toBeTruthy();
     });
+  });
+
+  it('should not render errorText of individual checkboxes when validationState is set to error', () => {
+    const labelText = 'Select fruits';
+    const errorText = 'Invalid selection';
+
+    const { queryByText } = renderWithTheme(
+      <CheckboxGroup errorText={errorText} label={labelText} validationState="error">
+        <Checkbox errorText="Apple error" value="apple">
+          Apple
+        </Checkbox>
+        <Checkbox errorText="Mango error" value="mango">
+          Mango
+        </Checkbox>
+      </CheckboxGroup>,
+    );
+
+    expect(queryByText(errorText)).toBeTruthy();
+    expect(queryByText('Apple error')).toBeFalsy();
+    expect(queryByText('Mango error')).toBeFalsy();
   });
 
   it('should work in uncontrolled mode', () => {

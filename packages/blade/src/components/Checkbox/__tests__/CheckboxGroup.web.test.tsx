@@ -69,7 +69,27 @@ describe('<CheckboxGroup />', () => {
     });
   });
 
-  it('should render errorText when hasError is set to true', () => {
+  it('should render helpText of individual checkboxes when inside group', () => {
+    const labelText = 'Select fruits';
+    const helpText = 'Select one';
+
+    const { queryByText } = renderWithTheme(
+      <CheckboxGroup helpText={helpText} label={labelText}>
+        <Checkbox helpText="Apple help" value="apple">
+          Apple
+        </Checkbox>
+        <Checkbox helpText="Mango help" value="mango">
+          Mango
+        </Checkbox>
+      </CheckboxGroup>,
+    );
+
+    expect(queryByText(helpText)).toBeInTheDocument();
+    expect(queryByText('Apple help')).toBeInTheDocument();
+    expect(queryByText('Mango help')).toBeInTheDocument();
+  });
+
+  it('should render errorText when validationState is set to error', () => {
     const labelText = 'Select fruits';
     const helpText = 'Select one';
     const errorText = 'Invalid selection';
@@ -92,6 +112,26 @@ describe('<CheckboxGroup />', () => {
     getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
       expect(checkbox).toBeInvalid();
     });
+  });
+
+  it('should not render errorText of individual checkboxes when validationState is set to error', () => {
+    const labelText = 'Select fruits';
+    const errorText = 'Invalid selection';
+
+    const { queryByText } = renderWithTheme(
+      <CheckboxGroup errorText={errorText} label={labelText} validationState="error">
+        <Checkbox errorText="Apple error" value="apple">
+          Apple
+        </Checkbox>
+        <Checkbox errorText="Mango error" value="mango">
+          Mango
+        </Checkbox>
+      </CheckboxGroup>,
+    );
+
+    expect(queryByText(errorText)).toBeInTheDocument();
+    expect(queryByText('Apple error')).not.toBeInTheDocument();
+    expect(queryByText('Mango error')).not.toBeInTheDocument();
   });
 
   it('should work in uncontrolled mode', async () => {
@@ -227,5 +267,84 @@ describe('<CheckboxGroup /> runtime errors', () => {
     } catch (err: any) {
       expect(err.message).toMatch(errorMsg);
     }
+  });
+});
+
+describe('<CheckboxGroup /> integration tests', () => {
+  test('Indeterminate checkbox toggling validationState', async () => {
+    const user = userEvents.setup();
+    const Example = () => {
+      const fields = ['apple', 'mango', 'orange'];
+      const [selected, setSelected] = React.useState(['apple', 'mango']);
+      const allChecked = selected.length === 3;
+      const isIndeterminate = selected.length > 0 && !allChecked;
+
+      return (
+        <>
+          <Checkbox
+            isChecked={allChecked}
+            onChange={(value) => {
+              if (value) {
+                setSelected(fields);
+                return;
+              }
+              setSelected([]);
+            }}
+            isIndeterminate={isIndeterminate}
+          >
+            Select all
+          </Checkbox>
+          <CheckboxGroup
+            helpText="Select atleast one"
+            label="Select fruits"
+            value={selected}
+            validationState={isIndeterminate ? 'error' : 'none'}
+            onChange={(e) => setSelected(e)}
+          >
+            {fields.map((field) => {
+              return (
+                <Checkbox key={field} value={field}>
+                  {field}
+                </Checkbox>
+              );
+            })}
+          </CheckboxGroup>
+        </>
+      );
+    };
+
+    const { getByLabelText } = renderWithTheme(<Example />);
+    expect(getByLabelText('apple')).toBeChecked();
+    expect(getByLabelText('mango')).toBeChecked();
+    expect(getByLabelText('orange')).not.toBeChecked();
+    expect(getByLabelText('Select all')).not.toBeChecked();
+    expect((getByLabelText('Select all') as HTMLInputElement).indeterminate).toBe(true);
+
+    await user.tab();
+    expect(getByLabelText('Select all')).toHaveFocus();
+    expect(getByLabelText('apple')).toBeChecked();
+    expect(getByLabelText('mango')).toBeChecked();
+    expect(getByLabelText('orange')).not.toBeChecked();
+    expect((getByLabelText('Select all') as HTMLInputElement).indeterminate).toBe(true);
+    await user.keyboard('[Space]');
+    expect(getByLabelText('apple')).toBeChecked();
+    expect(getByLabelText('mango')).toBeChecked();
+    expect(getByLabelText('orange')).toBeChecked();
+    expect(getByLabelText('Select all')).toBeChecked();
+    await user.tab();
+    expect(getByLabelText('apple')).toHaveFocus();
+    await user.keyboard('[Space]');
+    expect(getByLabelText('apple')).not.toBeChecked();
+    expect(getByLabelText('mango')).toBeChecked();
+    expect(getByLabelText('orange')).toBeChecked();
+    expect(getByLabelText('apple')).toBeInvalid();
+    expect(getByLabelText('mango')).toBeInvalid();
+    expect(getByLabelText('orange')).toBeInvalid();
+    expect(getByLabelText('Select all')).not.toBeChecked();
+    expect((getByLabelText('Select all') as HTMLInputElement).indeterminate).toBe(true);
+    await user.tab();
+    await user.tab();
+    expect(getByLabelText('orange')).toHaveFocus();
+    expect(getByLabelText('orange')).toBeChecked();
   });
 });

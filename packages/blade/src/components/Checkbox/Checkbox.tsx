@@ -1,6 +1,5 @@
-import { isUndefined } from 'lodash';
 import React from 'react';
-import { isEmpty } from '../../utils';
+import { isUndefined } from 'lodash';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { CheckboxInput } from './CheckboxInput';
@@ -8,6 +7,7 @@ import { CheckboxLabel } from './CheckboxLabel';
 import { CheckboxLabelText } from './CheckboxLabelText';
 import { useCheckbox } from './useCheckbox';
 import { Wrapper } from './Wrapper';
+import { isEmpty } from '~utils';
 import { FormHintText } from '~components/FormField/FormHintText';
 
 type CheckboxProps = {
@@ -130,12 +130,14 @@ const Checkbox = ({
     );
   }
 
-  const _validationState = validationState ?? groupProps.validationState;
+  const _validationState = validationState ?? groupProps?.validationState;
   const _hasError = _validationState === 'error';
-  const _isDisabled = isDisabled ?? groupProps.isDisabled;
-  const _name = name ?? groupProps.name;
-  const _isChecked = isChecked ?? groupProps.state?.isChecked(value!);
+  const _isDisabled = isDisabled ?? groupProps?.isDisabled;
+  const _name = name ?? groupProps?.name;
+  const _isChecked = isChecked ?? groupProps?.state?.isChecked(value!);
 
+  // only show error when the self validation is set to error
+  // Since we don't want to show errorText inside the group
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
 

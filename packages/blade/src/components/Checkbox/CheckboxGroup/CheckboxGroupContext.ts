@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import type { CheckboxGroupProps } from './CheckboxGroup';
-import type { useCheckboxGroup } from './useCheckboxGroup';
+import type { State } from './useCheckboxGroup';
 
 export type CheckboxGroupContextType = Pick<
   CheckboxGroupProps,
@@ -13,19 +13,13 @@ export type CheckboxGroupContextType = Pick<
   | 'defaultValue'
   | 'value'
   | 'onChange'
-> & { state?: ReturnType<typeof useCheckboxGroup>['state'] };
+> & { state?: State };
 
 const CheckboxGroupContext = React.createContext<CheckboxGroupContextType>({});
 const CheckboxGroupProvider = CheckboxGroupContext.Provider;
 
-const useCheckboxGroupContext = () => {
+const useCheckboxGroupContext = (): CheckboxGroupContextType => {
   const context = React.useContext(CheckboxGroupContext);
-  if (!context) {
-    throw new Error(
-      '[Blade useCheckboxGroupContext]: Seems like you forgot to wrap the component with `CheckboxGroupProvider`',
-    );
-  }
-
   return context;
 };
 

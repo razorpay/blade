@@ -88,11 +88,11 @@ LabelPositionLeft.args = {
 };
 
 const IndeterminateExample = () => {
-  const fields = ['mango', 'apple', 'orange'];
-  const [selected, setSelected] = React.useState(['mango', 'apple']);
+  const fields = ['apple', 'mango', 'orange'];
+  const [selected, setSelected] = React.useState(['apple', 'mango']);
   const allChecked = selected.length === 3;
   const isIndeterminate = selected.length > 0 && !allChecked;
-
+  const noneSelected = selected.length < 1;
   return (
     <>
       <CheckboxComponent
@@ -104,16 +104,18 @@ const IndeterminateExample = () => {
           }
           setSelected([]);
         }}
+        validationState={noneSelected ? 'error' : 'none'}
         isIndeterminate={isIndeterminate}
       >
         Select all
       </CheckboxComponent>
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
-        helpText="Select atleast one"
+        helpText="Select your favourite fruits"
+        errorText="Select atleast one"
         label="Select fruits"
         value={selected}
-        validationState="error"
+        validationState={noneSelected ? 'error' : 'none'}
         onChange={(e) => setSelected(e)}
       >
         {fields.map((field) => {

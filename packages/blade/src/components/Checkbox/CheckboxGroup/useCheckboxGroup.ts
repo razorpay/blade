@@ -22,6 +22,14 @@ type UseCheckboxGroupProps = Pick<
   | 'onChange'
 >;
 
+export type State = {
+  value: string[];
+  setValue(value: string[]): void;
+  isChecked(value: string): boolean;
+  addValue(value: string): void;
+  removeValue(value: string): void;
+};
+
 const useCheckboxGroup = ({
   value,
   defaultValue,
@@ -40,7 +48,7 @@ const useCheckboxGroup = ({
     onChange,
   });
 
-  const state = React.useMemo(() => {
+  const state = React.useMemo<State>(() => {
     return {
       value: checkedValues,
       setValue(value: string[]) {
@@ -72,7 +80,7 @@ const useCheckboxGroup = ({
     };
   }, [checkedValues, isDisabled, setValue]);
 
-  const contextValue = React.useMemo((): CheckboxGroupContextType => {
+  const contextValue = React.useMemo<CheckboxGroupContextType>(() => {
     return {
       validationState,
       isDisabled,
