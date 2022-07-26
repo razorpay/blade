@@ -6,9 +6,9 @@ import { CheckboxInput } from './CheckboxInput';
 import { CheckboxLabel } from './CheckboxLabel';
 import { CheckboxLabelText } from './CheckboxLabelText';
 import { useCheckbox } from './useCheckbox';
-import { Wrapper } from './Wrapper';
 import { isEmpty } from '~utils';
 import { FormHintText } from '~components/FormField/FormHintText';
+import Box from '~components/Box';
 
 type CheckboxProps = {
   /**
@@ -177,8 +177,7 @@ const Checkbox = ({
         isDisabled={_isDisabled}
         isNegative={_hasError}
       />
-      {/* TODO: Replace Wrapper with Box */}
-      <Wrapper>
+      <Box>
         <CheckboxLabelText>{children}</CheckboxLabelText>
         {showError && (
           <FormHintText id={ids?.errorTextId} variant="error">
@@ -190,7 +189,7 @@ const Checkbox = ({
             {helpText}
           </FormHintText>
         )}
-      </Wrapper>
+      </Box>
     </CheckboxLabel>
   );
 };

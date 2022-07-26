@@ -70,7 +70,7 @@ const FormLabelText = ({
         {children}
         {computedAccessibilityNode}
       </BaseText>
-      <Box paddingRight={neccessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'} />
+      <Box marginRight={neccessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'} />
       {/* TODO: Hide from screen readers to prevent double announcement */}
       {neccessityLabel}
     </Box>

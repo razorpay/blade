@@ -32,13 +32,13 @@ const FormHintText = ({
     error: () => (
       <>
         <InfoIcon color="feedback.icon.negative.lowContrast" size="xsmall" />
-        <Box paddingRight="spacing.1" />
+        <Box marginRight="spacing.1" />
       </>
     ),
     success: () => (
       <>
         <CheckIcon color="feedback.icon.positive.lowContrast" size="xsmall" />
-        <Box paddingRight="spacing.1" />
+        <Box marginRight="spacing.1" />
       </>
     ),
   };

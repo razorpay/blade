@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCheckboxGroupContext } from './CheckboxGroupContext';
-import { StyledCheckboxGroupContent } from './StyledElements';
+import Box from '~components/Box';
 
 type CheckboxGroupContentProps = {
   children: React.ReactNode;
@@ -10,9 +10,15 @@ const CheckboxGroupContent = ({ children }: CheckboxGroupContentProps): React.Re
   const { labelPosition } = useCheckboxGroupContext();
 
   return (
-    <StyledCheckboxGroupContent labelPosition={labelPosition}>
+    <Box
+      display="flex"
+      flexDirection="column"
+      marginTop={labelPosition === 'top' ? 'spacing.1' : 'auto'}
+      marginBottom="spacing.1"
+      gap="spacing.1"
+    >
       {children}
-    </StyledCheckboxGroupContent>
+    </Box>
   );
 };
 

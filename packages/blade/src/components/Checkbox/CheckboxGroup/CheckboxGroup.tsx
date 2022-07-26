@@ -1,11 +1,11 @@
 import React from 'react';
-import { Wrapper } from '../Wrapper';
 import { CheckboxGroupContent } from './CheckboxGroupContent';
 import { CheckboxGroupField } from './CheckboxGroupField';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
 import { FormLabelText } from '~components/FormField/FormLabelText';
 import { FormHintText } from '~components/FormField/FormHintText';
+import Box from '~components/Box';
 
 export type CheckboxGroupProps = {
   /**
@@ -113,11 +113,11 @@ const CheckboxGroup = ({
         >
           {label}
         </FormLabelText>
-        <Wrapper>
+        <Box>
           <CheckboxGroupContent>{children}</CheckboxGroupContent>
           {showError && <FormHintText variant="error">{errorText}</FormHintText>}
           {showHelpText && <FormHintText variant="help">{helpText}</FormHintText>}
-        </Wrapper>
+        </Box>
       </CheckboxGroupField>
     </CheckboxGroupProvider>
   );
