@@ -1,5 +1,4 @@
 import React from 'react';
-import { FormHintText } from './FormHintText';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import BaseText from '~components/Typography/BaseText';
@@ -25,9 +24,26 @@ const FormLabelText = ({
 
   const neccessityLabel =
     neccessityIndicator === 'optional' ? (
-      <FormHintText variant="help">(optional)</FormHintText>
+      <BaseText
+        lineHeight="s"
+        fontFamily="text"
+        fontStyle="italic"
+        fontSize={50}
+        color="surface.text.placeholder.lowContrast"
+      >
+        (optional)
+      </BaseText>
     ) : neccessityIndicator === 'required' ? (
-      <FormHintText variant="help">(required)</FormHintText>
+      <BaseText
+        lineHeight="s"
+        fontFamily="text"
+        fontStyle="normal"
+        fontSize={75}
+        fontWeight="bold"
+        color="surface.text.placeholder.lowContrast"
+      >
+        *
+      </BaseText>
     ) : null;
 
   const computedAccessibilityNode = (
@@ -49,7 +65,7 @@ const FormLabelText = ({
         {children}
         {computedAccessibilityNode}
       </BaseText>
-      <Box paddingRight="spacing.1" />
+      <Box paddingRight={neccessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'} />
       {/* TODO: Hide from screen readers to prevent double announcement */}
       {neccessityLabel}
     </Box>

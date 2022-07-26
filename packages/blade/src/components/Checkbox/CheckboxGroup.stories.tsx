@@ -164,6 +164,17 @@ export const KitchenSink = (): React.ReactElement => {
       </CheckboxGroupComponent>
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
+        neccessityIndicator="required"
+        errorText="Atleast one has to be selected"
+        helpText="Select atleast one"
+        label="Select your fruit"
+      >
+        <CheckboxComponent value="apple">Apple</CheckboxComponent>
+        <CheckboxComponent value="mango">Mango</CheckboxComponent>
+        <CheckboxComponent value="orange">Orange</CheckboxComponent>
+      </CheckboxGroupComponent>
+      <Text>&nbsp;</Text>
+      <CheckboxGroupComponent
         validationState="error"
         neccessityIndicator="optional"
         errorText="Atleast one has to be selected"
