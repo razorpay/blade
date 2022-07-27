@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 0.12.0
+
+### Minor Changes
+
+- 381e9c7: fix(Blade): add `size` prop to Text component and update tokens
+
+  This PR updates the typography tokens scale for mobile devices to create better visual hierarchy which we received as feedback from other teams as well.
+
+  It also adds a new `size` prop to `Text` component for `variant='body'`
+
 ## 0.11.4
 
 ### Patch Changes
