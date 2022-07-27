@@ -6,7 +6,7 @@ import { CheckboxIconWrapper } from './CheckboxIconWrapper';
 import { Fade } from './Fade';
 import { useTheme } from '~components/BladeProvider';
 import Svg, { Path } from '~components/Icons/_Svg';
-import { getIn, makeMotionTime } from '~utils';
+import { getIn } from '~utils';
 
 const CheckedIcon = ({ color }: { color: string }) => {
   return (
@@ -54,14 +54,6 @@ const CheckboxIcon = ({
   const disabledIconColor = getIn(theme, 'colors.brand.gray.500');
   const iconColor = isDisabled ? disabledIconColor : defaultIconColor;
 
-  const fadeIn = `fadeIn ${makeMotionTime(theme.motion.duration.xquick)} ${
-    theme.motion.easing.entrance.effective as string
-  }`;
-
-  const fadeOut = `fadeOut ${makeMotionTime(theme.motion.duration.xquick)} ${
-    theme.motion.easing.exit.effective as string
-  }`;
-
   return (
     <CheckboxIconWrapper
       isIndeterminate={isIndeterminate}
@@ -70,17 +62,10 @@ const CheckboxIcon = ({
       isNegative={isNegative}
       isChecked={!!(isChecked || isIndeterminate)}
     >
-      <Fade
-        enter={fadeIn}
-        leave={fadeOut}
-        show={isIndeterminate}
-        styles={{ position: 'absolute', display: 'flex' }}
-      >
+      <Fade show={isIndeterminate} styles={{ position: 'absolute', display: 'flex' }}>
         <IndeterminateIcon color={iconColor} />
       </Fade>
       <Fade
-        enter={fadeIn}
-        leave={fadeOut}
         show={Boolean(isChecked) && !isIndeterminate}
         styles={{ position: 'absolute', display: 'flex' }}
       >
