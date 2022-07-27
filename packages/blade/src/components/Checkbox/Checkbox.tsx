@@ -8,7 +8,7 @@ import { CheckboxLabel } from './CheckboxLabel';
 import { CheckboxLabelText } from './CheckboxLabelText';
 import { useCheckbox } from './useCheckbox';
 import { isEmpty } from '~utils';
-import { FormHintText } from '~components/FormField/FormHintText';
+import { FormHintText } from '~components/Form/FormHintText';
 import Box from '~components/Box';
 
 type OnChange = ({
