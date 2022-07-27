@@ -74,6 +74,12 @@ describe('<Checkbox />', () => {
 
   it('should support uncontrolled state', () => {
     const checkFn = jest.fn();
+    const eventData = {
+      nativeEvent: {
+        pageX: 20,
+        pageY: 30,
+      },
+    };
     const labelText = 'Remember password';
     const { getByRole } = renderWithTheme(
       <Checkbox defaultChecked={true} onChange={checkFn}>
@@ -84,12 +90,24 @@ describe('<Checkbox />', () => {
 
     expect(checkbox.props.accessibilityState.checked).toBeTruthy();
     expect(checkFn).not.toBeCalled();
-    fireEvent.press(checkbox);
+    fireEvent.press(checkbox, eventData);
     expect(checkbox.props.accessibilityState.checked).toBeFalsy();
-    expect(checkFn).toBeCalledWith(false);
-    fireEvent.press(checkbox);
+    expect(checkFn).toBeCalledWith(
+      expect.objectContaining({
+        isChecked: false,
+        value: undefined,
+        event: eventData,
+      }),
+    );
+    fireEvent.press(checkbox, eventData);
     expect(checkbox.props.accessibilityState.checked).toBeTruthy();
-    expect(checkFn).toBeCalledWith(true);
+    expect(checkFn).toBeCalledWith(
+      expect.objectContaining({
+        isChecked: true,
+        value: undefined,
+        event: eventData,
+      }),
+    );
   });
 
   it('should support controlled state', () => {
@@ -98,7 +116,7 @@ describe('<Checkbox />', () => {
       const [checked, setChecked] = React.useState(false);
       return (
         <>
-          <Checkbox isChecked={checked} onChange={setChecked}>
+          <Checkbox isChecked={checked} onChange={({ isChecked }) => setChecked(isChecked)}>
             {labelText}
           </Checkbox>
           <Text testID="state">{checked ? 'checked' : 'unchecked'}</Text>

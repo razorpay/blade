@@ -74,7 +74,7 @@ const ControlledAndUncontrolledComp = () => {
         Uncontrolled
       </CheckboxComponent>
       <Text>&nbsp;</Text>
-      <CheckboxComponent isChecked={checked} onChange={(e) => setChecked(e)}>
+      <CheckboxComponent isChecked={checked} onChange={(e) => setChecked(e.isChecked)}>
         Controlled
       </CheckboxComponent>
       <Text>Checked: {checked ? 'True' : 'False'}</Text>

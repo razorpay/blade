@@ -97,10 +97,22 @@ describe('<Checkbox />', () => {
     expect(checkFn).not.toBeCalled();
     await user.click(getByLabelText(labelText));
     expect(getByRole('checkbox', { hidden: true })).not.toBeChecked();
-    expect(checkFn).toBeCalledWith(false);
+    expect(checkFn).toBeCalledWith(
+      expect.objectContaining({
+        isChecked: false,
+        value: undefined,
+      }),
+    );
+    expect(checkFn.mock.calls[0][0].event).not.toBeUndefined();
     await user.click(getByLabelText(labelText));
     expect(getByRole('checkbox', { hidden: true })).toBeChecked();
-    expect(checkFn).toBeCalledWith(true);
+    expect(checkFn).toBeCalledWith(
+      expect.objectContaining({
+        isChecked: true,
+        value: undefined,
+      }),
+    );
+    expect(checkFn.mock.calls[1][0].event).not.toBeUndefined();
   });
 
   it('should support controlled state', async () => {
@@ -110,7 +122,7 @@ describe('<Checkbox />', () => {
       const [checked, setChecked] = React.useState(false);
       return (
         <>
-          <Checkbox isChecked={checked} onChange={setChecked}>
+          <Checkbox isChecked={checked} onChange={({ isChecked }) => setChecked(isChecked)}>
             {labelText}
           </Checkbox>
           <p data-testid="state">{checked ? 'checked' : 'unchecked'}</p>

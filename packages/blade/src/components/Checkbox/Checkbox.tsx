@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
 import { isUndefined } from 'lodash';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
@@ -9,6 +10,16 @@ import { useCheckbox } from './useCheckbox';
 import { isEmpty } from '~utils';
 import { FormHintText } from '~components/FormField/FormHintText';
 import Box from '~components/Box';
+
+type OnChange = ({
+  isChecked,
+  event,
+  value,
+}: {
+  isChecked: boolean;
+  event?: React.ChangeEvent;
+  value?: string;
+}) => void;
 
 type CheckboxProps = {
   /**
@@ -27,7 +38,7 @@ type CheckboxProps = {
   /**
    * The callback invoked when the checked state of the `Checkbox` changes.
    */
-  onChange?: (isChecked: boolean) => void;
+  onChange?: OnChange;
   /**
    * Sets the label text of the checkbox
    */
@@ -141,14 +152,14 @@ const Checkbox = ({
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
 
-  const handleChange = (checked: boolean): void => {
-    if (checked) {
+  const handleChange: OnChange = ({ isChecked, event, value }) => {
+    if (isChecked) {
       groupProps?.state?.addValue(value!);
     } else {
       groupProps?.state?.removeValue(value!);
     }
 
-    onChange?.(checked);
+    onChange?.({ isChecked, event, value });
   };
 
   const { state, ids, inputProps } = useCheckbox({

@@ -97,8 +97,8 @@ const IndeterminateExample = () => {
     <>
       <CheckboxComponent
         isChecked={allChecked}
-        onChange={(value) => {
-          if (value) {
+        onChange={({ isChecked }) => {
+          if (isChecked) {
             setSelected(fields);
             return;
           }

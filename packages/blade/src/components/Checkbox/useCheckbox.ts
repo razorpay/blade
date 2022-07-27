@@ -50,7 +50,6 @@ const useCheckbox = ({
   const [checkboxState, setCheckboxStateChange] = useControllableState({
     value: isChecked,
     defaultValue: defaultChecked ?? false,
-    onChange,
   });
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement> | GestureResponderEvent) => {
@@ -59,7 +58,14 @@ const useCheckbox = ({
       event.preventDefault();
       return;
     }
-    setCheckboxStateChange(!checkboxState);
+    setCheckboxStateChange((checked) => {
+      onChange?.({
+        isChecked: !checked,
+        event: event as React.ChangeEvent,
+        value,
+      });
+      return !checked;
+    });
   };
 
   // set indeterminate to input
