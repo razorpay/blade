@@ -179,7 +179,7 @@ const Checkbox = ({
   return (
     <CheckboxLabel inputProps={state.isReactNative ? inputProps : {}}>
       <CheckboxInput
-        isChecked={state.isChecked || !!isIndeterminate}
+        isChecked={state.isChecked || Boolean(isIndeterminate)}
         isDisabled={_isDisabled}
         isNegative={_hasError}
         inputProps={inputProps}
