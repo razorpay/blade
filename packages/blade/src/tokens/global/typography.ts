@@ -64,12 +64,12 @@ export type FontSize = {
   700: number;
   /** desktop: 32(px/rem/pt)
    *
-   * mobile: 26(px/rem/pt)
+   * mobile: 28(px/rem/pt)
    */
   800: number;
   /** desktop: 36(px/rem/pt)
    *
-   * mobile: 28(px/rem/pt)
+   * mobile: 29(px/rem/pt)
    */
   900: number;
   /** desktop: 40(px/rem/pt)
@@ -200,8 +200,8 @@ const typography: TypographyWithPlatforms = {
         500: 22,
         600: 22,
         700: 24,
-        800: 26,
-        900: 28,
+        800: 28,
+        900: 29,
         1000: 29,
       },
       weight: {
