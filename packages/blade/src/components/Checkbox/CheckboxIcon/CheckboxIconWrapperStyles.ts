@@ -40,30 +40,19 @@ export type CheckboxRectProps = Omit<CheckboxIconProps, 'state'> & {
   isChecked: boolean;
 };
 
-const getBackgroundAndBorder = ({
-  theme,
-  isDisabled,
-  isNegative,
-  isChecked,
-}: { theme: Theme } & CheckboxRectProps): CSSObject => {
-  let variant: 'default' | 'disabled' | 'negative' = 'default';
-  if (isDisabled) variant = 'disabled';
-  if (isNegative) variant = 'negative';
-  const checked = isChecked ? 'checked' : 'unchecked';
-  const backgroundColor = variants[variant].background[checked];
-  const borderColor = variants[variant].border[checked];
-  return {
-    backgroundColor: getIn(theme, backgroundColor),
-    borderColor: getIn(theme, borderColor),
-  };
-};
-
 const getCheckboxIconWrapperStyles = ({
   theme,
   isChecked,
   isDisabled,
   isNegative,
 }: CheckboxRectProps & { theme: Theme }): CSSObject => {
+  let variant: 'default' | 'disabled' | 'negative' = 'default';
+  if (isDisabled) variant = 'disabled';
+  if (isNegative) variant = 'negative';
+  const checked = isChecked ? 'checked' : 'unchecked';
+  const backgroundColor = variants[variant].background[checked];
+  const borderColor = variants[variant].border[checked];
+
   return {
     display: 'flex',
     alignItems: 'center',
@@ -76,7 +65,8 @@ const getCheckboxIconWrapperStyles = ({
     marginTop: '3px',
     borderRadius: makeSize(theme.border.radius.small),
     marginRight: makeSpace(theme.spacing[2]),
-    ...getBackgroundAndBorder({ theme, isChecked, isDisabled, isNegative }),
+    backgroundColor: getIn(theme, backgroundColor),
+    borderColor: getIn(theme, borderColor),
   };
 };
 
