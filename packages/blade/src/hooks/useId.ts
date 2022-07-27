@@ -6,7 +6,7 @@ import * as React from 'react';
 import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 /**
- * Credit: https://github.com/reach/reach-ui/blob/develop/packages/auto-id/src/index.tsx
+ * Credit: https://github.com/reach/reach-ui/blob/dev/packages/auto-id/src/auto-id.ts
  */
 let handoffComplete = false;
 let id = 0;
@@ -24,6 +24,10 @@ const useId = (prefix?: string, idProp?: string) => {
   const [uid, setUid] = React.useState(initialId);
 
   useIsomorphicLayoutEffect(() => {
+    // Patch the ID after render. We do this in `useLayoutEffect` to avoid any
+    // rendering flicker, though it'll make the first render slower (unlikely
+    // to matter, but you're welcome to measure your app and let us know if
+    // it's a problem).
     if (uid === null) setUid(genId());
   }, []);
 

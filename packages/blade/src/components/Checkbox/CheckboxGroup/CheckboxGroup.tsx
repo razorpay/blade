@@ -95,7 +95,6 @@ const CheckboxGroup = ({
     name,
     labelPosition,
     validationState,
-    neccessityIndicator,
   });
 
   const showError = validationState === 'error' && errorText;

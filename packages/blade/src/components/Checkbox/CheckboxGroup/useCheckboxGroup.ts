@@ -15,7 +15,6 @@ type UseCheckboxGroupProps = Pick<
   | 'isDisabled'
   | 'labelPosition'
   | 'validationState'
-  | 'neccessityIndicator'
   | 'name'
   | 'value'
   | 'defaultValue'
