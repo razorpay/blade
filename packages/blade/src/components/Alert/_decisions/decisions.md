@@ -104,6 +104,17 @@ There'll also be an internal `BaseAlert` component that handles rendering web or
 
 ## a11y
 
+Web:
+
+- `notice` and `negative` variants will have an [`alert` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role), this is to communicate important and time sensitive message. Additionally for `notice` variant we'll set [`aria-live="polite"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) to not interrupt the user
+- Other variants will have a [`status` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) which is for non critical changes
+- The dismiss button will have [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) as "Dismiss alert"
+
+Native:
+
+- Will set [`accessibilityRole`](https://reactnative.dev/docs/accessibility#accessibilityrole) as `alert`
+- The dismiss button will have `accessibilityLabel` as "Dismiss alert"
+
 ## Usage
 
 Some example usage patterns of `Alert`.
@@ -149,12 +160,16 @@ This full bleed layout works for all desktop, mobile and native when the `isBord
 
 **A2.** TBD
 
-## Pending
+**Q3.** Should we make alerts focussable so they're discoverable by tabbing? It would mean also showing a visible keyboard focus indicator. Not doing this currently because I can't think of possible usecases right now, maybe we can revisit this later if / when needed.
 
-- Document a11y related things above
-- Update breakdown image
+**A3.** TBD
 
 ## References
+
+Further reading:
+
+- [React Native a11y guide](https://reactnative.dev/docs/accessibility)
+- [ARIA authoring guide for alerts](https://www.w3.org/WAI/ARIA/apg/example-index/alert/alert.html)
 
 Prior art:
 
