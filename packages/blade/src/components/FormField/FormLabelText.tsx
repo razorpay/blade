@@ -6,7 +6,7 @@ import { getPlatformType, useBreakpoint } from '~utils';
 import Box from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 
-type FormLabelPropsText = {
+type FormLabelTextProps = {
   position?: 'top' | 'left';
   neccessityIndicator?: 'required' | 'optional' | 'none';
   accessibillityText?: string;
@@ -20,7 +20,7 @@ const FormLabelText = ({
   accessibillityText,
   children,
   id,
-}: FormLabelPropsText): React.ReactElement => {
+}: FormLabelTextProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isDesktop = matchedDeviceType === 'desktop';
@@ -59,7 +59,13 @@ const FormLabelText = ({
   );
 
   const textNode = (
-    <Box display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
+    <Box
+      gap={neccessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'}
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+      flexWrap="wrap"
+    >
       <BaseText
         lineHeight="s"
         fontFamily="text"
@@ -70,7 +76,6 @@ const FormLabelText = ({
         {children}
         {computedAccessibilityNode}
       </BaseText>
-      <Box marginRight={neccessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'} />
       {/* TODO: Hide from screen readers to prevent double announcement */}
       {neccessityLabel}
     </Box>
