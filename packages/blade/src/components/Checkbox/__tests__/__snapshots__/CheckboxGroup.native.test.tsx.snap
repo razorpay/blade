@@ -19,6 +19,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
     display="flex"
     flexDirection="row"
     flexWrap="wrap"
+    gap="spacing.0"
     style={
       Array [
         Object {
@@ -26,6 +27,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           "display": "flex",
           "flexDirection": "row",
           "flexWrap": "wrap",
+          "gap": 0,
         },
       ]
     }
@@ -127,16 +129,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         </Text>
       </View>
     </Text>
-    <View
-      marginRight="spacing.0"
-      style={
-        Array [
-          Object {
-            "marginRight": 0,
-          },
-        ]
-      }
-    />
   </View>
   <View
     style={
@@ -490,6 +482,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
     display="flex"
     flexDirection="row"
     flexWrap="wrap"
+    gap="spacing.0"
     style={
       Array [
         Object {
@@ -497,6 +490,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           "display": "flex",
           "flexDirection": "row",
           "flexWrap": "wrap",
+          "gap": 0,
         },
       ]
     }
@@ -598,16 +592,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         </Text>
       </View>
     </Text>
-    <View
-      marginRight="spacing.0"
-      style={
-        Array [
-          Object {
-            "marginRight": 0,
-          },
-        ]
-      }
-    />
   </View>
   <View
     style={
