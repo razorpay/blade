@@ -65,7 +65,7 @@ export type CheckboxGroupProps = {
   /**
    * The callback invoked when any of the checkbox's state changes
    */
-  onChange?: (values: string[]) => void;
+  onChange?: ({ name, values }: { name: string; values: string[] }) => void;
   /**
    * The name of the input field in a checkbox
    * (Useful for form submission).

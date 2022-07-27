@@ -107,7 +107,7 @@ const IndeterminateExample = () => {
         label="Select fruits"
         value={selected}
         validationState={noneSelected ? 'error' : 'none'}
-        onChange={(e) => setSelected(e)}
+        onChange={({ values }) => setSelected(values)}
       >
         {fields.map((field) => {
           return (
@@ -147,7 +147,7 @@ export const KitchenSink = (): React.ReactElement => {
         helpText={`You selected ${selected.join(', ')}`}
         label="Controlled"
         value={selected}
-        onChange={(values) => setSelected(values)}
+        onChange={({ values }) => setSelected(values)}
       >
         <CheckboxComponent value="apple">Apple</CheckboxComponent>
         <CheckboxComponent value="mango">Mango</CheckboxComponent>

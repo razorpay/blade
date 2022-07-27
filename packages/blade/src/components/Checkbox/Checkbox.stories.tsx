@@ -112,7 +112,7 @@ const IndeterminateExample = () => {
         helpText="Select atleast one"
         label="Select fruits"
         value={selected}
-        onChange={(e) => setSelected(e)}
+        onChange={({ values }) => setSelected(values)}
       >
         {fields.map((field) => {
           return (

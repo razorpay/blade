@@ -4,11 +4,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 import React from 'react';
-import { useControllableState } from '../../../hooks/useControllable';
-import { useId } from '../../../hooks/useId';
-import { useTheme } from '../../BladeProvider';
 import type { CheckboxGroupProps } from './CheckboxGroup';
 import type { CheckboxGroupContextType } from './CheckboxGroupContext';
+import { useControllableState } from '~src/hooks/useControllable';
+import { useTheme } from '~components/BladeProvider';
+import { useId } from '~src/hooks/useId';
 
 type UseCheckboxGroupProps = Pick<
   CheckboxGroupProps,
@@ -44,7 +44,7 @@ const useCheckboxGroup = ({
   const [checkedValues, setValue] = useControllableState({
     value,
     defaultValue: defaultValue || [],
-    onChange,
+    onChange: (values: string[]) => onChange?.({ values, name: name! }),
   });
 
   const state = React.useMemo<State>(() => {
@@ -58,6 +58,7 @@ const useCheckboxGroup = ({
         setValue(value);
       },
       isChecked(value: string) {
+        console.log(checkedValues);
         return checkedValues.includes(value);
       },
       addValue(value: string) {

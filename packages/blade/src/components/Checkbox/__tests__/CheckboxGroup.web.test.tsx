@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
@@ -139,7 +140,11 @@ describe('<CheckboxGroup />', () => {
     const labelText = 'Select fruits';
     const fn = jest.fn();
     const { getByLabelText, getByRole } = renderWithTheme(
-      <CheckboxGroup label={labelText} defaultValue={['apple']} onChange={(values) => fn(values)}>
+      <CheckboxGroup
+        label={labelText}
+        defaultValue={['apple']}
+        onChange={({ values }) => fn(values)}
+      >
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
         <Checkbox value="orange">Orange</Checkbox>
@@ -176,9 +181,9 @@ describe('<CheckboxGroup />', () => {
           <CheckboxGroup
             label={labelText}
             value={values}
-            onChange={(vals) => {
-              setValues(vals);
-              fn(vals);
+            onChange={({ values }) => {
+              setValues(values);
+              fn(values);
             }}
           >
             <Checkbox value="apple">Apple</Checkbox>
@@ -299,7 +304,7 @@ describe('<CheckboxGroup /> integration tests', () => {
             label="Select fruits"
             value={selected}
             validationState={isIndeterminate ? 'error' : 'none'}
-            onChange={(e) => setSelected(e)}
+            onChange={({ values }) => setSelected(values)}
           >
             {fields.map((field) => {
               return (

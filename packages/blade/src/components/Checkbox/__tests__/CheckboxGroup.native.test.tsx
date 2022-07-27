@@ -10,7 +10,10 @@ import { Checkbox } from '../Checkbox';
 import { CheckboxGroup } from '../CheckboxGroup';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+beforeAll(() => {
+  jest.spyOn(console, 'error').mockImplementation();
+  jest.spyOn(console, 'log').mockImplementation();
+});
 afterAll(() => jest.restoreAllMocks());
 
 describe('<CheckboxGroup />', () => {
@@ -144,7 +147,11 @@ describe('<CheckboxGroup />', () => {
     const labelText = 'Select fruits';
     const fn = jest.fn();
     const { getAllByA11yRole, getByA11yState } = renderWithTheme(
-      <CheckboxGroup label={labelText} defaultValue={['apple']} onChange={(values) => fn(values)}>
+      <CheckboxGroup
+        label={labelText}
+        defaultValue={['apple']}
+        onChange={({ values }) => fn(values)}
+      >
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
         <Checkbox value="orange">Orange</Checkbox>
@@ -182,9 +189,9 @@ describe('<CheckboxGroup />', () => {
           <CheckboxGroup
             label={labelText}
             value={values}
-            onChange={(vals) => {
-              setValues(vals);
-              fn(vals);
+            onChange={({ values }) => {
+              setValues(values);
+              fn(values);
             }}
           >
             <Checkbox value="apple">Apple</Checkbox>
