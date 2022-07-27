@@ -19,11 +19,13 @@ type TextVariant = 'body' | 'caption';
 type TextBodyVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'body'>;
   weight?: keyof Theme['typography']['fonts']['weight'];
+  size?: 'small' | 'medium';
 };
 
 type TextCaptionVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'caption'>;
   weight?: keyof Pick<Theme['typography']['fonts']['weight'], 'regular'>;
+  size?: 'medium';
 };
 
 /**
@@ -48,8 +50,9 @@ const getProps = <T extends { variant: TextVariant }>({
   variant,
   type,
   weight,
+  size,
   contrast,
-}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'contrast'>): Omit<
+}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'size' | 'contrast'>): Omit<
   BaseTextProps,
   'children'
 > &
@@ -67,16 +70,20 @@ const getProps = <T extends { variant: TextVariant }>({
   };
 
   if (variant === 'body') {
-    props.fontSize = 100;
-    props.fontStyle = 'normal';
-    props.lineHeight = 'l';
+    if (size === 'small') {
+      props.fontSize = 75;
+      props.lineHeight = 's';
+    }
   } else if (variant === 'caption') {
     if (weight === 'bold') {
       throw new Error(`[Blade: Text]: weight cannot be 'bold' when variant is 'caption'`);
     }
-    props.fontSize = 25;
-    props.fontStyle = 'italic';
+    if (size === 'small') {
+      throw new Error(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
+    }
+    props.fontSize = 50;
     props.lineHeight = 's';
+    props.fontStyle = 'italic';
   }
 
   return props;
@@ -103,6 +110,7 @@ const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
 const Text = <T extends { variant: TextVariant }>({
   variant = 'body',
   weight = 'regular',
+  size = 'medium',
   type = 'normal',
   contrast = 'low',
   truncateAfterLines,
@@ -110,7 +118,7 @@ const Text = <T extends { variant: TextVariant }>({
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
-    ...getProps({ variant, type, weight, contrast }),
+    ...getProps({ variant, type, weight, size, contrast }),
   };
   return <StyledText {...props}>{children}</StyledText>;
 };

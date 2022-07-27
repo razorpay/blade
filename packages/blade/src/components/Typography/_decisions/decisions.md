@@ -108,6 +108,7 @@ Another option would be having a `size` prop that would lead us to have a "large
   <Text
     variant=" medium | large | caption"
     weight="regular | bold"
+    size="small | medium"
     type="normal | subtle | subdued | muted | placeholder"
     contrast="low | high"
     truncateAfterLines={3}
