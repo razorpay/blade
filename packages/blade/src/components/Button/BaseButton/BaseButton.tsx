@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-
 import type { ReactElement } from 'react';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
@@ -17,7 +16,6 @@ import type { Theme } from '~components/BladeProvider';
 import type { SpinnerSize } from '~components/Spinner/spinnerTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText';
 import type { IconComponent, IconProps, IconSize } from '~components/Icons';
-import type { TypographyPlatforms } from '~tokens/global/typography';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import { makeAccessible, usePrevious, makeSize, makeSpace, makeBorderSize, getIn } from '~utils';
@@ -138,7 +136,7 @@ const getProps = ({
   hasIcon,
   iconPosition,
 }: {
-  buttonTypographyTokens: ButtonTypography[TypographyPlatforms];
+  buttonTypographyTokens: ButtonTypography;
   children?: string;
   isDisabled: boolean;
   hasIcon: boolean;
@@ -271,8 +269,7 @@ const BaseButton = ({
   accessibilityLabel,
 }: BaseButtonProps): ReactElement => {
   const disabled = isLoading || isDisabled;
-  const { theme, platform } = useTheme();
-  const buttonTypographyTokens = buttonTypography[platform];
+  const { theme } = useTheme();
   if (!Icon && !children?.trim()) {
     throw new Error(
       `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
@@ -316,7 +313,7 @@ const BaseButton = ({
     motionDuration,
     motionEasing,
   } = getProps({
-    buttonTypographyTokens,
+    buttonTypographyTokens: buttonTypography,
     children,
     isDisabled: disabled,
     size,

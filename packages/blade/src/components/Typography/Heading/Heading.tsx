@@ -61,22 +61,22 @@ const getProps = <T extends { variant: HeadingVariant }>({
 
   if (variant === 'small') {
     props.fontSize = 200;
-    props.lineHeight = 'xl';
+    props.lineHeight = '2xl';
     props.as = isPlatformWeb ? 'h6' : undefined;
   } else if (variant === 'medium') {
     props.fontSize = 300;
-    props.lineHeight = '2xl';
+    props.lineHeight = '3xl';
     props.as = isPlatformWeb ? 'h5' : undefined;
   } else if (variant === 'large') {
     props.fontSize = 400;
-    props.lineHeight = '2xl';
+    props.lineHeight = '3xl';
     props.as = isPlatformWeb ? 'h4' : undefined;
   } else if (variant === 'subheading') {
     if (weight === 'regular') {
       throw new Error(`[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`);
     }
     props.fontSize = 75;
-    props.lineHeight = 'm';
+    props.lineHeight = 's';
     props.as = isPlatformWeb ? 'h6' : undefined;
   }
 

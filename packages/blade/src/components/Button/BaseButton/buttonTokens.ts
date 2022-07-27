@@ -1,58 +1,34 @@
 import type { BaseButtonProps } from './BaseButton';
-import type { ThemeTokens } from '~tokens/theme/theme';
-import type { TypographyPlatforms } from '~tokens/global/typography';
+import type { Theme } from '~components/BladeProvider';
 import type { IconProps } from '~components/Icons';
 import type { SpinnerProps } from '~components/Spinner/Spinner';
 
 export type ButtonMinHeight = 28 | 32 | 36 | 48;
 
 export type ButtonTypography = {
-  [Key in TypographyPlatforms]: {
-    fonts: {
-      size: Record<
-        NonNullable<BaseButtonProps['size']>,
-        keyof ThemeTokens['typography'][Key]['fonts']['size']
-      >;
-    };
-    lineHeights: Record<
-      NonNullable<BaseButtonProps['size']>,
-      keyof ThemeTokens['typography'][Key]['lineHeights']
-    >;
+  fonts: {
+    size: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['typography']['fonts']['size']>;
   };
+  lineHeights: Record<
+    NonNullable<BaseButtonProps['size']>,
+    keyof Theme['typography']['lineHeights']
+  >;
 };
 
 const typography: ButtonTypography = {
-  onDesktop: {
-    fonts: {
-      size: {
-        xsmall: 75,
-        small: 75,
-        medium: 100,
-        large: 200,
-      },
-    },
-    lineHeights: {
-      xsmall: 'l',
-      small: 'l',
-      medium: 'l',
-      large: 's',
+  fonts: {
+    size: {
+      xsmall: 75,
+      small: 75,
+      medium: 100,
+      large: 200,
     },
   },
-  onMobile: {
-    fonts: {
-      size: {
-        xsmall: 50,
-        small: 50,
-        medium: 100,
-        large: 200,
-      },
-    },
-    lineHeights: {
-      xsmall: 's',
-      small: 's',
-      medium: 'm',
-      large: 'm',
-    },
+  lineHeights: {
+    xsmall: 's',
+    small: 's',
+    medium: 'l',
+    large: 'm',
   },
 };
 
@@ -65,7 +41,7 @@ const minHeight: Record<NonNullable<BaseButtonProps['size']>, ButtonMinHeight> =
 
 const buttonPadding: Record<
   NonNullable<BaseButtonProps['size']>,
-  Record<'top' | 'bottom' | 'left' | 'right', keyof ThemeTokens['spacing']>
+  Record<'top' | 'bottom' | 'left' | 'right', keyof Theme['spacing']>
 > = {
   xsmall: {
     top: 0,
@@ -110,7 +86,7 @@ const buttonSizeToSpinnerSizeMap: Record<
   large: 'medium',
 };
 
-const textPadding: Record<NonNullable<BaseButtonProps['size']>, keyof ThemeTokens['spacing']> = {
+const textPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['spacing']> = {
   xsmall: 1,
   small: 1,
   medium: 2,

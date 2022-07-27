@@ -9,6 +9,6 @@ describe('makeTypographySize', () => {
 
   it('should return the line-height value in `rem`', () => {
     const lineHeight = makeTypographySize(typography.onDesktop.lineHeights.m);
-    expect(lineHeight).toEqual('1.125rem');
+    expect(lineHeight).toEqual('1rem');
   });
 });
