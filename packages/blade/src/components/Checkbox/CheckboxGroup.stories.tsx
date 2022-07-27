@@ -13,8 +13,8 @@ export default {
   args: {
     label: 'Checkbox Group',
     helpText: undefined,
-    isDisabled: undefined,
-    neccessityIndicator: undefined,
+    isDisabled: false,
+    neccessityIndicator: 'none',
     labelPosition: undefined,
     validationState: undefined,
     errorText: undefined,
@@ -22,15 +22,6 @@ export default {
     defaultValue: undefined,
     onChange: undefined,
     value: undefined,
-  },
-  argTypes: {
-    neccessityIndicator: {
-      defaultValue: undefined,
-      control: {
-        type: 'select',
-        options: ['optional', 'required', undefined],
-      },
-    },
   },
 } as Meta<CheckboxGroupProps>;
 

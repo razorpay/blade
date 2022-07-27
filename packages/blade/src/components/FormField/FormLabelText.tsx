@@ -8,7 +8,7 @@ import { useTheme } from '~components/BladeProvider';
 
 type FormLabelPropsText = {
   position?: 'top' | 'left';
-  neccessityIndicator?: 'required' | 'optional' | undefined;
+  neccessityIndicator?: 'required' | 'optional' | 'none';
   accessibillityText?: string;
   children: React.ReactNode;
   id: string;
@@ -16,7 +16,7 @@ type FormLabelPropsText = {
 
 const FormLabelText = ({
   position = 'top',
-  neccessityIndicator,
+  neccessityIndicator = 'none',
   accessibillityText,
   children,
   id,
@@ -53,7 +53,7 @@ const FormLabelText = ({
 
   const computedAccessibilityNode = (
     <VisuallyHidden>
-      <Text>{neccessityIndicator}</Text>
+      {neccessityIndicator !== 'none' && <Text>{neccessityIndicator}</Text>}
       <Text>{accessibillityText}</Text>
     </VisuallyHidden>
   );

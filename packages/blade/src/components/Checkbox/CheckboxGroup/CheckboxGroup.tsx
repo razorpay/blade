@@ -34,7 +34,7 @@ export type CheckboxGroupProps = {
    *
    * If set to `undefined` it renders nothing.
    */
-  neccessityIndicator?: 'required' | 'optional';
+  neccessityIndicator?: 'required' | 'optional' | 'none';
   /**
    * Sets the disabled state of the CheckboxGroup
    * If set to `true` it propagate down to all the checkboxes
@@ -78,7 +78,7 @@ const CheckboxGroup = ({
   label,
   helpText,
   isDisabled,
-  neccessityIndicator,
+  neccessityIndicator = 'none',
   labelPosition = 'top',
   validationState,
   errorText,

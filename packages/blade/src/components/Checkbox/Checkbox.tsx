@@ -108,15 +108,17 @@ const Checkbox = ({
 
   // ban certain props in checkbox while inside group
   const hasValidationState = !isUndefined(validationState);
+  const hasName = !isUndefined(name);
   const hasDefaultChecked = !isUndefined(defaultChecked);
   const hasIsChecked = !isUndefined(isChecked);
   const hasOnChange = !isUndefined(onChange);
   if (
-    (hasValidationState || hasDefaultChecked || hasIsChecked || hasOnChange) &&
+    (hasValidationState || hasName || hasDefaultChecked || hasIsChecked || hasOnChange) &&
     !isEmpty(groupProps)
   ) {
     const props = [
       hasValidationState ? 'validationState' : undefined,
+      hasName ? 'name' : undefined,
       hasDefaultChecked ? 'defaultChecked' : undefined,
       hasIsChecked ? 'isChecked' : undefined,
       hasOnChange ? 'onChange' : undefined,
