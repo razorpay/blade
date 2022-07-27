@@ -200,8 +200,8 @@ const typography: TypographyWithPlatforms = {
         500: 22,
         600: 22,
         700: 24,
-        800: 29,
-        900: 32,
+        800: 26,
+        900: 28,
         1000: 29,
       },
       weight: {
