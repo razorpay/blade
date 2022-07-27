@@ -6,6 +6,13 @@ type FontWeight = {
   bold: 700;
 };
 
+/**
+ * For font size and line-heights we can’t say from xl to 2xl the value will necessary increase.
+ * it might decrease or remain same because these are alias tokens and we need aliases for cross platform.
+ * so for example xl on mobile can be 32px and on desktop xl can be 34px,
+ * similarly 2xl on mobile can be 34px but on desktop doesn’t necessarily mean 2xl will be more than xl(34px) it can be 32 as well since visually they make better hierarchy.
+ */
+
 export type FontSize = {
   /** desktop: 9(px/rem/pt)
    *
