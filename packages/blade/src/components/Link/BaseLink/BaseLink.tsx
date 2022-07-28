@@ -96,7 +96,7 @@ const getColorToken = ({
 }: {
   variant: BaseLinkProps['variant'];
   intent: BaseLinkProps['intent'];
-  contrast: BaseLinkProps['contrast'];
+  contrast: NonNullable<BaseLinkProps['contrast']>;
   element: 'icon' | 'text';
   currentInteraction: keyof LinkActionStates;
   isDisabled: boolean;
@@ -111,7 +111,7 @@ const getColorToken = ({
     state = 'visited';
   }
 
-  if (intent && contrast && state !== 'visited') {
+  if (intent && state !== 'visited') {
     return `feedback.${intent}.action.${element}.link.${state}.${contrast}Contrast`;
   }
   return `action.${element}.link.${state}`;
@@ -133,7 +133,7 @@ const getProps = ({
   children?: string;
   isDisabled: boolean;
   intent: BaseLinkProps['intent'];
-  contrast: BaseLinkProps['contrast'];
+  contrast: NonNullable<BaseLinkProps['contrast']>;
   isVisited: boolean;
 }): BaseLinkStyleProps => {
   const isButton = variant === 'button';
@@ -149,7 +149,7 @@ const getProps = ({
       isDisabled,
       isVisited,
     }) as IconProps['color'],
-    iconPadding: !children?.trim() ? 'spacing.0' : 'spacing.1',
+    iconPadding: children?.trim() ? 'spacing.1' : 'spacing.0',
     textColor: getColorToken({
       variant,
       intent,

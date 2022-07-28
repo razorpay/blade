@@ -70,14 +70,7 @@ export default {
   title: 'Components/Link',
   component: LinkComponent,
   args: {
-    variant: 'anchor',
     children: 'Learn More',
-    onClick: (event): void => {
-      console.log('clicked', event);
-    },
-    href: 'https://github.com/razorpay/blade',
-    target: '_blank',
-    rel: 'noreferrer noopener',
   },
   argTypes: {
     icon: {
@@ -106,6 +99,16 @@ const LinkTemplate: ComponentStory<typeof LinkComponent> = ({ icon, children, ..
 export const Default = LinkTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
+Default.args = {
+  variant: 'anchor',
+  children: 'Learn More',
+  onClick: (event): void => {
+    console.log('clicked', event);
+  },
+  href: 'https://github.com/razorpay/blade',
+  target: '_blank',
+  rel: 'noreferrer noopener',
+};
 
 const LinkInlineTemplate: ComponentStory<typeof LinkComponent> = ({
   icon,
