@@ -45,7 +45,7 @@ const getStyledDictionaryConfig = ({ outputFileName, tokens }) => {
 };
 
 const makeValue = ({ path, value }) => {
-  if (path.includes('border')) {
+  if (path.includes('border.radius') || path.includes('border.width')) {
     value = makeBorderSize(value);
   } else if (path.includes('motion.duration') || path.includes('motion.delay')) {
     value = makeMotionTime(value);
