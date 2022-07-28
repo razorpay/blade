@@ -38,7 +38,7 @@ exports[`<Heading /> should render Heading with variant "large" 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.75rem;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -67,7 +67,7 @@ exports[`<Heading /> should render Heading with variant "medium" 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.5rem;
+  line-height: 1.75rem;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -154,7 +154,7 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.125rem;
+  line-height: 1rem;
   text-align: left;
   margin: 0;
   padding: 0;

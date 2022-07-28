@@ -47,7 +47,7 @@
     "react-native-modal": "13.0.0",
     "react-native-modalize": "2.0.12",
     "react-native-reanimated": "1.9.0",
-    "react-native-status-bar-height": "2.5.0",
+    "react-native-status-bar-height": "2.6.0",
     "react-native-svg": "12.1.0",
     "react-native-tab-view": "2.15.1"
   },
@@ -63,7 +63,7 @@
     "@babel/preset-typescript": "7.13.0",
     "@babel/runtime": "7.9.2",
     "@react-native-community/cli-platform-android": "3.1.4",
-    "@rollup/plugin-commonjs": "11.0.2",
+    "@rollup/plugin-commonjs": "21.1.0",
     "@rollup/plugin-json": "4.0.2",
     "@rollup/plugin-node-resolve": "7.1.1",
     "@storybook/addon-actions": "5.3.9",

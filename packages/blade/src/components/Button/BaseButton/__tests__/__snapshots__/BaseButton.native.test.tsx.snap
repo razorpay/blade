@@ -89,7 +89,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -98,15 +98,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -214,7 +206,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -223,15 +215,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -390,7 +374,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -399,15 +383,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -566,7 +542,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -575,15 +551,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -691,7 +659,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -700,15 +668,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1005,7 +965,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -1014,15 +974,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1130,7 +1082,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -1139,15 +1091,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1255,7 +1199,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -1264,15 +1208,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1380,7 +1316,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -1389,15 +1325,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1505,7 +1433,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -1514,15 +1442,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1630,7 +1550,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -1639,15 +1559,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1755,7 +1667,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -1764,15 +1676,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1880,7 +1784,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -1889,15 +1793,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -2005,7 +1901,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -2014,15 +1910,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -2130,7 +2018,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -2139,15 +2027,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -2255,7 +2135,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -2264,15 +2144,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -2380,7 +2252,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -2389,15 +2261,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -2505,7 +2369,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -2514,15 +2378,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -2630,7 +2486,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -2639,15 +2495,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -2755,7 +2603,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -2764,15 +2612,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -2880,7 +2720,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
       fontSize="17px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="18px"
       style={
         Array [
           Object {
@@ -2889,15 +2729,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
             "fontSize": 17,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 18,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -3005,7 +2837,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -3014,15 +2846,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -3130,7 +2954,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -3139,15 +2963,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -3255,7 +3071,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -3264,15 +3080,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -3380,7 +3188,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -3389,15 +3197,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -3505,7 +3305,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -3514,15 +3314,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -3630,7 +3422,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -3639,15 +3431,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -3755,7 +3539,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -3764,15 +3548,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -3880,7 +3656,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -3889,15 +3665,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -4005,7 +3773,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -4014,15 +3782,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -4130,7 +3890,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -4139,15 +3899,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -4380,7 +4132,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -4389,15 +4141,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },

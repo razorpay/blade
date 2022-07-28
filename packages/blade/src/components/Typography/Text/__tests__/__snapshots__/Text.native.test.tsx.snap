@@ -120,6 +120,39 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
 </Text>
 `;
 
+exports[`<Text /> should render Text with variant "body" and size "small" 1`] = `
+<Text
+  color="hsla(217, 56%, 17%, 1)"
+  fontFamily="Lato"
+  fontSize="12px"
+  fontStyle="normal"
+  fontWeight={700}
+  lineHeight="16px"
+  numberOfLines={3}
+  style={
+    Array [
+      Object {
+        "color": "hsla(217, 56%, 17%, 1)",
+        "fontFamily": "Lato",
+        "fontSize": 12,
+        "fontStyle": "normal",
+        "fontWeight": "700",
+        "lineHeight": 16,
+        "textAlign": "left",
+        "textDecorationLine": "none",
+      },
+      Object {
+        "numberOfLines": 3,
+      },
+    ]
+  }
+  textAlign="left"
+  textDecorationLine="none"
+>
+  Displaying some text
+</Text>
+`;
+
 exports[`<Text /> should render Text with variant "caption" 1`] = `
 <Text
   color="hsla(217, 56%, 17%, 1)"

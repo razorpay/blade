@@ -1437,7 +1437,7 @@ exports[`<Button /> should render small size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1699,7 +1699,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.25rem;
+  line-height: 1rem;
   text-align: center;
   margin: 0;
   padding: 0;
