@@ -4,7 +4,6 @@ import React from 'react';
 import { Text } from '../Typography';
 import type { CheckboxProps } from './Checkbox';
 import { Checkbox as CheckboxComponent } from './Checkbox';
-import { CheckboxGroup as CheckboxGroupComponent } from './CheckboxGroup';
 
 export default {
   title: 'Components/Checkbox/Checkbox',
@@ -85,48 +84,3 @@ const _ControlledAndUncontrolled: ComponentStory<typeof CheckboxComponent> = () 
   return <ControlledAndUncontrolledComp />;
 };
 export const ControlledAndUncontrolled = _ControlledAndUncontrolled.bind({});
-
-const IndeterminateExample = () => {
-  const fields = ['mango', 'apple', 'orange'];
-  const [selected, setSelected] = React.useState(['mango', 'apple']);
-  const allChecked = selected.length === 3;
-  const isIndeterminate = selected.length > 0 && !allChecked;
-
-  return (
-    <>
-      <CheckboxComponent
-        isChecked={allChecked}
-        onChange={(value) => {
-          if (value) {
-            setSelected(fields);
-            return;
-          }
-          setSelected([]);
-        }}
-        isIndeterminate={isIndeterminate}
-      >
-        Select all
-      </CheckboxComponent>
-      <Text>&nbsp;</Text>
-      <CheckboxGroupComponent
-        helpText="Select atleast one"
-        label="Select fruits"
-        value={selected}
-        onChange={({ values }) => setSelected(values)}
-      >
-        {fields.map((field) => {
-          return (
-            <CheckboxComponent key={field} value={field}>
-              {field}
-            </CheckboxComponent>
-          );
-        })}
-      </CheckboxGroupComponent>
-    </>
-  );
-};
-
-const IndeterminateTemplate: ComponentStory<typeof CheckboxComponent> = () => {
-  return <IndeterminateExample />;
-};
-export const IndeterminateCheckbox = IndeterminateTemplate.bind({});
