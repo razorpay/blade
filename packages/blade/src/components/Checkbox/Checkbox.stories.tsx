@@ -1,9 +1,50 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { ArgsTable, Primary, PRIMARY_STORY, Stories, Subtitle, Title } from '@storybook/addon-docs';
+import { Highlight, Link } from '@storybook/design-system';
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Text } from '../Typography';
 import type { CheckboxProps } from './Checkbox';
 import { Checkbox as CheckboxComponent } from './Checkbox';
+import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+
+const Page = (): React.ReactElement => {
+  const figmaURL = useMakeFigmaURL([
+    {
+      themeTokenName: 'paymentTheme',
+      lightModeURL:
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
+      darkModeURL:
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
+    },
+  ]);
+
+  return (
+    <>
+      <Title />
+      <Subtitle>
+        Checkbox can be used in forms when a user needs to select multiple values from several
+        options.
+      </Subtitle>
+      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
+        View in Figma
+      </Link>
+      <br />
+      <br />
+      <Title>Usage</Title>
+      <Highlight language="tsx">{`import { Checkbox } from '@razorpay/blade/components' \nimport type { CheckboxProps } from '@razorpay/blade/components'`}</Highlight>
+      <Title>Example</Title>
+      <Subtitle>
+        This is the default checkbox. You can change the properties of this button using the
+        controls in the table below.
+      </Subtitle>
+      <Primary />
+      <Title>Properties</Title>
+      <ArgsTable story={PRIMARY_STORY} />
+      <Stories />
+    </>
+  );
+};
 
 export default {
   title: 'Components/Checkbox/Checkbox',
@@ -24,6 +65,11 @@ export default {
     children: 'Toggle checkbox',
   },
   argTypes: {},
+  parameters: {
+    docs: {
+      page: Page,
+    },
+  },
 } as Meta<CheckboxProps>;
 
 const CheckboxTemplate: ComponentStory<typeof CheckboxComponent> = ({ children, ...args }) => {

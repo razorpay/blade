@@ -1,11 +1,51 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-shadow */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
+import { Title, Subtitle, Primary, ArgsTable, PRIMARY_STORY, Stories } from '@storybook/addon-docs';
+import { Link, Highlight } from '@storybook/design-system';
 import { Text } from '../Typography';
 import { Checkbox as CheckboxComponent } from './Checkbox';
 import { CheckboxGroup as CheckboxGroupComponent } from './CheckboxGroup';
 import type { CheckboxGroupProps } from './CheckboxGroup';
+import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+
+const Page = (): React.ReactElement => {
+  const figmaURL = useMakeFigmaURL([
+    {
+      themeTokenName: 'paymentTheme',
+      lightModeURL:
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
+      darkModeURL:
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
+    },
+  ]);
+
+  return (
+    <>
+      <Title />
+      <Subtitle>
+        CheckboxGroup can be used to group together multiple checkboxes in a forms which provides
+        out of the box state management for the multi-checkboxes and other features.
+      </Subtitle>
+      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
+        View in Figma
+      </Link>
+      <br />
+      <br />
+      <Title>Usage</Title>
+      <Highlight language="tsx">{`import { CheckboxGroup } from '@razorpay/blade/components' \nimport type { CheckboxGroupProps } from '@razorpay/blade/components'`}</Highlight>
+      <Title>Example</Title>
+      <Subtitle>
+        This is the default CheckboxGroup. You can change the properties of this button using the
+        controls in the table below.
+      </Subtitle>
+      <Primary />
+      <Title>Properties</Title>
+      <ArgsTable story={PRIMARY_STORY} />
+      <Stories />
+    </>
+  );
+};
 
 export default {
   title: 'Components/Checkbox/CheckboxGroup',
@@ -22,6 +62,11 @@ export default {
     defaultValue: undefined,
     onChange: undefined,
     value: undefined,
+  },
+  parameters: {
+    docs: {
+      page: Page,
+    },
   },
 } as Meta<CheckboxGroupProps>;
 
