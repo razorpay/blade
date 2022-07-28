@@ -17,8 +17,8 @@ Internal component that exposes certain extra props to enable creation of Compon
 
 | Prop | Type | Required | Default | Description |
 |---|---|---|---|---|
-| variant | `primary`,  `secondary`,  `tertiary`,  `link` | No | `primary` | - The variant of the button to be rendered.<br><br>Note: `link` will look like an inline Link component but will be rendered as a `button` element |
-| intent | `positive`,`negative`, `notice`, `info`, `neutral` | No | undefined | The intent of the button to be rendered.<br><br>  Note: <br> - We will use this to set the intent for internal Blade components that have positive, negative, notice, info, or neutral buttons like an Alert component<br> - All the variants of the button will not be using any intent since it would only be required for internal components. |
+| variant | `primary`,  `secondary`,  `tertiary` | No | `primary` | - The variant of the button to be rendered. |
+| intent | `positive`,`negative`, `notice`, `information`, `neutral` | No | undefined | The intent of the button to be rendered.<br><br>  Note: <br> - We will use this to set the intent for internal Blade components that have positive, negative, notice, info, or neutral buttons like an Alert component<br> - All the variants of the button will not be using any intent since it would only be required for internal components. |
 | contrast | `low`, `high` | No | `low` | The contrast of the button to be rendered.<br><br>  Note: We need this for internal Blade components since a `positive` intent could have a `high` as well as a `low` contrast button |
 | size | `large`, `medium`, `small`, `xsmall` | No | `medium` | The size of the button to be rendered. |
 | children | `string` | No | undefined | The text to be rendered within the button. |
@@ -26,7 +26,7 @@ Internal component that exposes certain extra props to enable creation of Compon
 | iconPosition | `left`, `right` | No | `right` | The position of the rendered icon. |
 | isDisabled | `boolean` | No | `false` | Control whether the button is disabled or not. |
 | isFullWidth | `boolean` | No | `false` | Allows the button to take up the full width of its parent. |
-| onClick | `Function` | No | undefined | The function to be called when the button is clicked. |
+| onClick | `(event: SyntheticEvent) => void` | No | undefined | The function to be called when the button is clicked. `onClick` will receive `SyntheticEvent` as a callback. |
 | type | `button`, `submit`, `reset` | No | `button` | Specifies the type of button to be rendered.<br><br>  Note: This prop will be ignored for React Native |
 
 ## Button Component
@@ -36,14 +36,14 @@ This will be the Button component that is exposed to our consumers and will be a
 
 | Prop | Type | Required | Default | Description |
 |---|---|---|---|---|
-| variant | `primary`,  `secondary`,  `tertiary`,  `link` | No | `primary` | - The variant of the button to be rendered.<br><br>Note: `link` will look like an inline Link component but will be rendered as a `button` element |
+| variant | `primary`,  `secondary`,  `tertiary` | No | `primary` | - The variant of the button to be rendered.|
 | size | `large`, `medium`, `small`, `xsmall` | No | `medium` | The size of the button to be rendered. |
 | children | `string` | No | undefined | The text to be rendered within the button. |
 | icon | `Icon` | No | undefined | The Blade `Icon` component to be rendered within the button. |
 | iconPosition | `left`, `right` | No | `right` | The position of the rendered icon. |
 | isDisabled | `boolean` | No | `false` | Control whether the button is disabled or not. |
 | isFullWidth | `boolean` | No | `false` | Allows the button to take up the full width of its parent. |
-| onClick | `Function` | No | undefined | The function to be called when the button is clicked. |
+| onClick | `(event: SyntheticEvent) => void` | No | undefined | The function to be called when the button is clicked. `onClick` will receive `SyntheticEvent` as a callback. |
 | type | `button`, `submit`, `reset` | No | `button` | Specifies the type of button to be rendered.<br><br>  Note: This prop will be ignored for React Native |
 
 - **Why are we not exposing `contrast` prop for the `Button` Component?** 
