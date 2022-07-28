@@ -7,6 +7,7 @@ const StyledLink = styled.button.attrs((props: StyledBaseLinkProps) => ({
   ...props.accessibilityProps,
 }))<StyledBaseLinkProps>((props) => ({
   ...getStyledLinkStyles(props),
+  display: 'inline-block',
   borderRadius: makeBorderSize(props.theme.border.radius.small),
   transitionProperty: 'box-shadow',
   transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),

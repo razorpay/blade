@@ -17,6 +17,7 @@ import BaseText from '../../Typography/BaseText';
 import Box from '../../Box';
 import type { LinkProps } from './Link';
 import LinkComponent from './Link';
+import { Text } from '~components/Typography';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -106,6 +107,35 @@ export const Default = LinkTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
 
+const LinkInlineTemplate: ComponentStory<typeof LinkComponent> = ({
+  icon,
+  children = '',
+  ...args
+}) => {
+  return (
+    <Text>
+      Find more details at the <LinkComponent {...args}>{children}</LinkComponent>.
+    </Text>
+  );
+};
+
+export const LinkInline = LinkInlineTemplate.bind({});
+LinkInline.storyName = 'Link - Inline';
+LinkInline.args = {
+  variant: 'anchor',
+  href: 'https://github.com/razorpay/blade/',
+  target: '_blank',
+  rel: 'noreferrer noopener',
+  children: `Blade's Github`,
+};
+LinkInline.parameters = {
+  docs: {
+    description: {
+      story: 'Inline Link within a Text component',
+    },
+  },
+};
+
 export const LinkButton = LinkTemplate.bind({});
 LinkButton.storyName = 'Link Button';
 LinkButton.args = {
@@ -115,6 +145,32 @@ LinkButton.parameters = {
   docs: {
     description: {
       story: 'Link as an inline button',
+    },
+  },
+};
+
+const LinkButtonInlineTemplate: ComponentStory<typeof LinkComponent> = ({
+  icon,
+  children = '',
+  ...args
+}) => {
+  return (
+    <Text>
+      Forgot Password? <LinkComponent {...args}>{children}</LinkComponent>
+    </Text>
+  );
+};
+
+export const LinkButtonInline = LinkButtonInlineTemplate.bind({});
+LinkButtonInline.storyName = 'Link Button - Inline';
+LinkButtonInline.args = {
+  variant: 'button',
+  children: 'Reset Password',
+};
+LinkButtonInline.parameters = {
+  docs: {
+    description: {
+      story: 'Inline Link Button within a Text component',
     },
   },
 };
