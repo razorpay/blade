@@ -19,5 +19,4 @@ export * from './toTitleCase';
 export * from './useBreakpoint';
 export * from './useColorScheme';
 export * from './usePrevious';
-export * from './runIfFn';
 export * from './isEmpty';

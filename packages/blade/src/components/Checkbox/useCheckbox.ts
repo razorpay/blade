@@ -19,6 +19,10 @@ type UseCheckboxProps = Pick<
   | 'value'
 > & { hasError?: boolean };
 
+/**
+ * indeterminate is not a HTML input element prop,
+ * it's an IDL prop thus we need to set it on the underlying HTMLInputElement
+ */
 function setMixed(element: HTMLInputElement, mixed?: boolean) {
   if (mixed) {
     element.indeterminate = true;

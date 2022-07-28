@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react-hooks/exhaustive-deps */
+import { isFunction } from 'lodash';
 import * as React from 'react';
-import { runIfFn } from '~utils';
 
 /**
  * React hook for detecting controlled props
@@ -30,6 +30,13 @@ type UseControllableStateProps<T> = {
 
 /**
  * React hook for using controlling component state.
+ *
+ * It automatically handles controlled and uncontrolled state,
+ * while internally giving us the state value so that we can react to the changes.
+ *
+ * @example
+ * In checkbox we want to internally track the checked state to be able to render the correct Icon
+ * but also want to provide controlled and uncontrolled behavior to user
  */
 export function useControllableState<T>(props: UseControllableStateProps<T>) {
   const { value: valueProp, defaultValue, onChange } = props;
@@ -39,7 +46,7 @@ export function useControllableState<T>(props: UseControllableStateProps<T>) {
 
   const updateValue = React.useCallback(
     (next: React.SetStateAction<T>) => {
-      const nextValue = runIfFn(next, value);
+      const nextValue = isFunction(next) ? next(value) : next;
       if (!isControlled) setValue(nextValue);
       onChange?.(nextValue);
     },

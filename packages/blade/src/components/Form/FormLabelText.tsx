@@ -27,8 +27,10 @@ const FormLabelText = ({
   const isReactNative = getPlatformType() === 'react-native';
 
   // TODO: replace with <Text /> when #548 merges
-  const neccessityLabel =
-    neccessityIndicator === 'optional' ? (
+  let neccessityLabel: React.ReactNode = null;
+
+  if (neccessityIndicator === 'optional') {
+    neccessityLabel = (
       <BaseText
         lineHeight="s"
         fontFamily="text"
@@ -38,7 +40,10 @@ const FormLabelText = ({
       >
         (optional)
       </BaseText>
-    ) : neccessityIndicator === 'required' ? (
+    );
+  }
+  if (neccessityIndicator === 'required') {
+    neccessityLabel = (
       <BaseText
         lineHeight="s"
         fontFamily="text"
@@ -49,7 +54,8 @@ const FormLabelText = ({
       >
         *
       </BaseText>
-    ) : null;
+    );
+  }
 
   const computedAccessibilityNode = (
     <VisuallyHidden>
