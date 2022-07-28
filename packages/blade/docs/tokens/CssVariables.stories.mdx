@@ -1,0 +1,813 @@
+import { Meta, DocsContainer } from '@storybook/addon-docs';
+import { useTheme, BladeProvider } from '../../src//components';
+import { paymentTheme, bankingTheme } from '../../src//tokens';
+
+<Meta
+  title="Tokens/CSS Variables"
+  parameters={{
+    docs: {
+      container: ({ children, context }) => {
+        const getThemeTokens = () => {
+          if (context.globals.themeTokenName === 'paymentTheme') {
+            return paymentTheme;
+          }
+          if (context.globals.themeTokenName === 'bankingTheme') {
+            return bankingTheme;
+          }
+          return null;
+        };
+        return (
+          <DocsContainer context={context}>
+            <BladeProvider
+              key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
+              themeTokens={getThemeTokens()}
+              colorScheme={context.globals.colorScheme}
+            >
+              {children}
+            </BladeProvider>
+          </DocsContainer>
+        );
+      },
+    },
+  }}
+/>
+
+# ✨ CSS Variables
+
+All of the Blade tokens are also available as CSS Variables and can be used by projects that do not want to/cannot handle styling with JS
+
+## Available Themes
+
+- Blade supports 2 themes: **Payment** and **Banking**
+- Each of these 2 themes have a `Light` and a `Dark` mode
+- Depending on screen breakpoints, you can also have different tokens for `Mobile` and `Desktop`
+
+Considering these permutations, we have exposed the following CSS files which you can directly import into your projects:
+
+- **paymentThemeLightDesktop**
+- **paymentThemeLightMobile**
+- **paymentThemeDarkDesktop**
+- **paymentThemeDarkMobile**
+- **bankingThemeLightDesktop**
+- **bankingThemeLightMobile**
+- **bankingThemeDarkDesktop**
+- **bankingThemeDarkMobile**
+
+## Usage
+
+1. Import the CSS file inside your project
+
+```jsx
+import '@razorpay/blade/css/paymentThemeLightDesktop.css';
+```
+
+2. Use the tokens in your css
+
+```css
+.text {
+  color: var(--colors-action-text-primary-default);
+  padding: var(--spacing-1);
+  font-size: var(--typography-fonts-size-75);
+}
+```
+
+> **Note:** Since we depend on CSS variables for our tokens, please ensure that you check for the minimum supported browser versions for CSS variables and handle that approriately.
+> Refer: [caniuse.com/css-variables](https://caniuse.com/css-variables)
+
+## Example
+
+This is an example CSS file for `paymentThemeLightDesktop.css`
+
+> **Note**: This is not the actual `paymentThemeLightDesktop.css` but just a dummy version of it. The actual values of these variables can change over time as we evolve our themes & tokens.
+
+```css
+:root {
+  --border-radius-none: 0px;
+  --border-radius-small: 2px;
+  --border-radius-medium: 4px;
+  --border-radius-large: 8px;
+  --border-radius-max: 9999px;
+  --border-radius-round: 50%;
+  --border-width-none: 0px;
+  --border-width-thin: 1px;
+  --breakpoints-xs: 320px;
+  --breakpoints-s: 480px;
+  --breakpoints-m: 768px;
+  --breakpoints-l: 1024px;
+  --breakpoints-xl: 1200px;
+  --breakpoints-max: 1201px;
+  --colors-surface-background-level1-low-contrast: hsla(220, 30%, 96%, 1);
+  --colors-surface-background-level1-high-contrast: hsla(216, 44%, 23%, 1);
+  --colors-surface-background-level2-low-contrast: hsla(0, 0%, 100%, 1);
+  --colors-surface-background-level2-high-contrast: hsla(216, 27%, 36%, 1);
+  --colors-surface-background-level3-low-contrast: hsla(220, 27%, 98%, 1);
+  --colors-surface-background-level3-high-contrast: hsla(215, 70%, 13%, 1);
+  --colors-surface-border-normal-low-contrast: hsla(217, 18%, 45%, 1);
+  --colors-surface-border-normal-high-contrast: hsla(218, 19%, 81%, 1);
+  --colors-surface-border-subtle-low-contrast: hsla(218, 19%, 81%, 1);
+  --colors-surface-border-subtle-high-contrast: hsla(217, 18%, 45%, 1);
+  --colors-surface-text-normal-low-contrast: hsla(217, 56%, 17%, 1);
+  --colors-surface-text-normal-high-contrast: hsla(0, 0%, 100%, 1);
+  --colors-surface-text-subtle-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-surface-text-subtle-high-contrast: hsla(220, 30%, 96%, 1);
+  --colors-surface-text-subdued-low-contrast: hsla(217, 18%, 45%, 1);
+  --colors-surface-text-subdued-high-contrast: hsla(216, 19%, 89%, 1);
+  --colors-surface-text-muted-low-contrast: hsla(216, 16%, 60%, 1);
+  --colors-surface-text-muted-high-contrast: hsla(218, 19%, 81%, 1);
+  --colors-surface-text-placeholder-low-contrast: hsla(214, 18%, 69%, 1);
+  --colors-surface-text-placeholder-high-contrast: hsla(216, 15%, 54%, 1);
+  --colors-overlay-background: hsla(216, 44%, 23%, 0.32);
+  --colors-brand-primary-300: hsla(218, 89%, 51%, 0.09);
+  --colors-brand-primary-400: hsla(218, 89%, 51%, 0.18);
+  --colors-brand-primary-500: hsla(213, 89%, 56%, 1);
+  --colors-brand-primary-600: hsla(218, 89%, 51%, 1);
+  --colors-brand-primary-700: hsla(223, 95%, 48%, 1);
+  --colors-brand-primary-800: hsla(234, 100%, 34%, 1);
+  --colors-brand-gray-200: hsla(220, 27%, 98%, 1);
+  --colors-brand-gray-300: hsla(220, 30%, 96%, 1);
+  --colors-brand-gray-400: hsla(216, 19%, 89%, 1);
+  --colors-brand-gray-500: hsla(214, 18%, 69%, 1);
+  --colors-brand-gray-600: hsla(216, 16%, 60%, 1);
+  --colors-brand-gray-700: hsla(217, 18%, 45%, 1);
+  --colors-brand-secondary-500: hsla(149, 99%, 35%, 1);
+  --colors-feedback-background-neutral-low-contrast: hsla(216, 44%, 23%, 0.09);
+  --colors-feedback-background-neutral-high-contrast: hsla(216, 33%, 29%, 1);
+  --colors-feedback-background-positive-low-contrast: hsla(155, 100%, 31%, 0.09);
+  --colors-feedback-background-positive-high-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-background-negative-low-contrast: hsla(9, 91%, 56%, 0.09);
+  --colors-feedback-background-negative-high-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-background-notice-low-contrast: hsla(36, 100%, 44%, 0.09);
+  --colors-feedback-background-notice-high-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-background-information-low-contrast: hsla(193, 100%, 35%, 0.09);
+  --colors-feedback-background-information-high-contrast: hsla(193, 100%, 35%, 1);
+  --colors-feedback-border-neutral-low-contrast: hsla(216, 44%, 23%, 0.32);
+  --colors-feedback-border-neutral-high-contrast: hsla(216, 33%, 29%, 1);
+  --colors-feedback-border-positive-low-contrast: hsla(155, 100%, 31%, 0.32);
+  --colors-feedback-border-positive-high-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-border-negative-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-border-negative-high-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-border-notice-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-border-notice-high-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-border-information-low-contrast: hsla(193, 100%, 35%, 0.32);
+  --colors-feedback-border-information-high-contrast: hsla(193, 100%, 35%, 1);
+  --colors-feedback-text-neutral-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-text-neutral-high-contrast: hsla(0, 0%, 100%, 1);
+  --colors-feedback-text-positive-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-text-positive-high-contrast: hsla(0, 0%, 100%, 1);
+  --colors-feedback-text-negative-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-text-negative-high-contrast: hsla(0, 0%, 100%, 1);
+  --colors-feedback-text-notice-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-text-notice-high-contrast: hsla(0, 0%, 100%, 1);
+  --colors-feedback-text-information-low-contrast: hsla(193, 100%, 35%, 1);
+  --colors-feedback-text-information-high-contrast: hsla(0, 0%, 100%, 1);
+  --colors-feedback-icon-neutral-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-icon-neutral-high-contrast: hsla(0, 0%, 100%, 1);
+  --colors-feedback-icon-positive-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-icon-positive-high-contrast: hsla(0, 0%, 100%, 1);
+  --colors-feedback-icon-negative-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-icon-negative-high-contrast: hsla(0, 0%, 100%, 1);
+  --colors-feedback-icon-notice-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-icon-notice-high-contrast: hsla(0, 0%, 100%, 1);
+  --colors-feedback-icon-information-low-contrast: hsla(193, 100%, 35%, 1);
+  --colors-feedback-icon-information-high-contrast: hsla(0, 0%, 100%, 1);
+  --colors-feedback-neutral-action-background-primary-default-low-contrast: hsla(
+    216,
+    44%,
+    23%,
+    0.09
+  );
+  --colors-feedback-neutral-action-background-primary-default-high-contrast: hsla(216, 33%, 29%, 1);
+  --colors-feedback-neutral-action-background-primary-hover-low-contrast: hsla(216, 44%, 23%, 0.18);
+  --colors-feedback-neutral-action-background-primary-hover-high-contrast: hsla(216, 44%, 23%, 1);
+  --colors-feedback-neutral-action-background-primary-focus-low-contrast: hsla(216, 44%, 23%, 0.32);
+  --colors-feedback-neutral-action-background-primary-focus-high-contrast: hsla(217, 56%, 17%, 1);
+  --colors-feedback-neutral-action-background-primary-active-low-contrast: hsla(
+    216,
+    44%,
+    23%,
+    0.32
+  );
+  --colors-feedback-neutral-action-background-primary-active-high-contrast: hsla(217, 56%, 17%, 1);
+  --colors-feedback-neutral-action-background-primary-disabled-low-contrast: hsla(
+    216,
+    44%,
+    23%,
+    0.09
+  );
+  --colors-feedback-neutral-action-background-primary-disabled-high-contrast: hsla(
+    216,
+    33%,
+    29%,
+    1
+  );
+  --colors-feedback-neutral-action-border-primary-default-low-contrast: hsla(216, 44%, 23%, 0.32);
+  --colors-feedback-neutral-action-border-primary-default-high-contrast: hsla(214, 18%, 69%, 1);
+  --colors-feedback-neutral-action-border-primary-hover-low-contrast: hsla(216, 44%, 23%, 0.32);
+  --colors-feedback-neutral-action-border-primary-hover-high-contrast: hsla(214, 18%, 69%, 1);
+  --colors-feedback-neutral-action-border-primary-focus-low-contrast: hsla(216, 44%, 23%, 0.32);
+  --colors-feedback-neutral-action-border-primary-focus-high-contrast: hsla(214, 18%, 69%, 1);
+  --colors-feedback-neutral-action-border-primary-active-low-contrast: hsla(216, 44%, 23%, 0.32);
+  --colors-feedback-neutral-action-border-primary-active-high-contrast: hsla(214, 18%, 69%, 1);
+  --colors-feedback-neutral-action-border-primary-disabled-low-contrast: hsla(216, 44%, 23%, 0.32);
+  --colors-feedback-neutral-action-border-primary-disabled-high-contrast: hsla(216, 15%, 54%, 1);
+  --colors-feedback-neutral-action-text-primary-default-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-neutral-action-text-primary-default-high-contrast: hsla(220, 27%, 98%, 1);
+  --colors-feedback-neutral-action-text-primary-hover-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-neutral-action-text-primary-hover-high-contrast: hsla(220, 27%, 98%, 1);
+  --colors-feedback-neutral-action-text-primary-focus-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-neutral-action-text-primary-focus-high-contrast: hsla(220, 27%, 98%, 1);
+  --colors-feedback-neutral-action-text-primary-active-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-neutral-action-text-primary-active-high-contrast: hsla(220, 27%, 98%, 1);
+  --colors-feedback-neutral-action-text-primary-disabled-low-contrast: hsla(216, 44%, 23%, 0.32);
+  --colors-feedback-neutral-action-text-primary-disabled-high-contrast: hsla(216, 15%, 54%, 1);
+  --colors-feedback-neutral-action-text-link-default-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-neutral-action-text-link-default-high-contrast: hsla(220, 27%, 98%, 1);
+  --colors-feedback-neutral-action-text-link-hover-low-contrast: hsla(217, 18%, 45%, 1);
+  --colors-feedback-neutral-action-text-link-hover-high-contrast: hsla(214, 21%, 94%, 1);
+  --colors-feedback-neutral-action-text-link-focus-low-contrast: hsla(216, 33%, 29%, 1);
+  --colors-feedback-neutral-action-text-link-focus-high-contrast: hsla(218, 19%, 81%, 1);
+  --colors-feedback-neutral-action-text-link-active-low-contrast: hsla(216, 33%, 29%, 1);
+  --colors-feedback-neutral-action-text-link-active-high-contrast: hsla(218, 19%, 81%, 1);
+  --colors-feedback-neutral-action-text-link-disabled-low-contrast: hsla(216, 44%, 23%, 0.32);
+  --colors-feedback-neutral-action-text-link-disabled-high-contrast: hsla(216, 15%, 54%, 1);
+  --colors-feedback-neutral-action-icon-primary-default-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-neutral-action-icon-primary-default-high-contrast: hsla(220, 27%, 98%, 1);
+  --colors-feedback-neutral-action-icon-primary-hover-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-neutral-action-icon-primary-hover-high-contrast: hsla(220, 27%, 98%, 1);
+  --colors-feedback-neutral-action-icon-primary-focus-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-neutral-action-icon-primary-focus-high-contrast: hsla(220, 27%, 98%, 1);
+  --colors-feedback-neutral-action-icon-primary-active-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-neutral-action-icon-primary-active-high-contrast: hsla(220, 27%, 98%, 1);
+  --colors-feedback-neutral-action-icon-primary-disabled-low-contrast: hsla(216, 44%, 23%, 0.32);
+  --colors-feedback-neutral-action-icon-primary-disabled-high-contrast: hsla(216, 15%, 54%, 1);
+  --colors-feedback-neutral-action-icon-link-default-low-contrast: hsla(216, 27%, 36%, 1);
+  --colors-feedback-neutral-action-icon-link-default-high-contrast: hsla(220, 27%, 98%, 1);
+  --colors-feedback-neutral-action-icon-link-hover-low-contrast: hsla(217, 18%, 45%, 1);
+  --colors-feedback-neutral-action-icon-link-hover-high-contrast: hsla(214, 21%, 94%, 1);
+  --colors-feedback-neutral-action-icon-link-focus-low-contrast: hsla(216, 33%, 29%, 1);
+  --colors-feedback-neutral-action-icon-link-focus-high-contrast: hsla(218, 19%, 81%, 1);
+  --colors-feedback-neutral-action-icon-link-active-low-contrast: hsla(216, 33%, 29%, 1);
+  --colors-feedback-neutral-action-icon-link-active-high-contrast: hsla(218, 19%, 81%, 1);
+  --colors-feedback-neutral-action-icon-link-disabled-low-contrast: hsla(216, 44%, 23%, 0.32);
+  --colors-feedback-neutral-action-icon-link-disabled-high-contrast: hsla(216, 15%, 54%, 1);
+  --colors-feedback-positive-action-background-primary-default-low-contrast: hsla(
+    155,
+    100%,
+    31%,
+    0.09
+  );
+  --colors-feedback-positive-action-background-primary-default-high-contrast: hsla(
+    160,
+    100%,
+    26%,
+    1
+  );
+  --colors-feedback-positive-action-background-primary-hover-low-contrast: hsla(
+    155,
+    100%,
+    31%,
+    0.18
+  );
+  --colors-feedback-positive-action-background-primary-hover-high-contrast: hsla(163, 100%, 22%, 1);
+  --colors-feedback-positive-action-background-primary-focus-low-contrast: hsla(
+    155,
+    100%,
+    31%,
+    0.32
+  );
+  --colors-feedback-positive-action-background-primary-focus-high-contrast: hsla(164, 100%, 17%, 1);
+  --colors-feedback-positive-action-background-primary-active-low-contrast: hsla(
+    155,
+    100%,
+    31%,
+    0.32
+  );
+  --colors-feedback-positive-action-background-primary-active-high-contrast: hsla(
+    164,
+    100%,
+    17%,
+    1
+  );
+  --colors-feedback-positive-action-background-primary-disabled-low-contrast: hsla(
+    155,
+    100%,
+    31%,
+    0.09
+  );
+  --colors-feedback-positive-action-background-primary-disabled-high-contrast: hsla(
+    160,
+    100%,
+    26%,
+    1
+  );
+  --colors-feedback-positive-action-border-primary-default-low-contrast: hsla(155, 100%, 31%, 0.32);
+  --colors-feedback-positive-action-border-primary-default-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-border-primary-hover-low-contrast: hsla(155, 100%, 31%, 0.32);
+  --colors-feedback-positive-action-border-primary-hover-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-border-primary-focus-low-contrast: hsla(155, 100%, 31%, 0.32);
+  --colors-feedback-positive-action-border-primary-focus-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-border-primary-active-low-contrast: hsla(155, 100%, 31%, 0.32);
+  --colors-feedback-positive-action-border-primary-active-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-border-primary-disabled-low-contrast: hsla(
+    155,
+    100%,
+    31%,
+    0.32
+  );
+  --colors-feedback-positive-action-border-primary-disabled-high-contrast: hsla(149, 99%, 35%, 1);
+  --colors-feedback-positive-action-text-primary-default-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-positive-action-text-primary-default-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-text-primary-hover-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-positive-action-text-primary-hover-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-text-primary-focus-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-positive-action-text-primary-focus-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-text-primary-active-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-positive-action-text-primary-active-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-text-primary-disabled-low-contrast: hsla(155, 100%, 31%, 0.32);
+  --colors-feedback-positive-action-text-primary-disabled-high-contrast: hsla(149, 99%, 35%, 1);
+  --colors-feedback-positive-action-text-link-default-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-positive-action-text-link-default-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-text-link-hover-low-contrast: hsla(155, 100%, 31%, 1);
+  --colors-feedback-positive-action-text-link-hover-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-text-link-focus-low-contrast: hsla(163, 100%, 22%, 1);
+  --colors-feedback-positive-action-text-link-focus-high-contrast: hsla(113, 69%, 83%, 1);
+  --colors-feedback-positive-action-text-link-active-low-contrast: hsla(163, 100%, 22%, 1);
+  --colors-feedback-positive-action-text-link-active-high-contrast: hsla(113, 69%, 83%, 1);
+  --colors-feedback-positive-action-text-link-disabled-low-contrast: hsla(121, 65%, 71%, 1);
+  --colors-feedback-positive-action-text-link-disabled-high-contrast: hsla(113, 69%, 83%, 1);
+  --colors-feedback-positive-action-icon-primary-default-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-positive-action-icon-primary-default-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-icon-primary-hover-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-positive-action-icon-primary-hover-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-icon-primary-focus-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-positive-action-icon-primary-focus-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-icon-primary-active-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-positive-action-icon-primary-active-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-icon-primary-disabled-low-contrast: hsla(155, 100%, 31%, 0.32);
+  --colors-feedback-positive-action-icon-primary-disabled-high-contrast: hsla(149, 99%, 35%, 1);
+  --colors-feedback-positive-action-icon-link-default-low-contrast: hsla(160, 100%, 26%, 1);
+  --colors-feedback-positive-action-icon-link-default-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-icon-link-hover-low-contrast: hsla(155, 100%, 31%, 1);
+  --colors-feedback-positive-action-icon-link-hover-high-contrast: hsla(107, 100%, 96%, 1);
+  --colors-feedback-positive-action-icon-link-focus-low-contrast: hsla(163, 100%, 22%, 1);
+  --colors-feedback-positive-action-icon-link-focus-high-contrast: hsla(113, 69%, 83%, 1);
+  --colors-feedback-positive-action-icon-link-active-low-contrast: hsla(163, 100%, 22%, 1);
+  --colors-feedback-positive-action-icon-link-active-high-contrast: hsla(113, 69%, 83%, 1);
+  --colors-feedback-positive-action-icon-link-disabled-low-contrast: hsla(121, 65%, 71%, 1);
+  --colors-feedback-positive-action-icon-link-disabled-high-contrast: hsla(113, 69%, 83%, 1);
+  --colors-feedback-negative-action-background-primary-default-low-contrast: hsla(
+    9,
+    91%,
+    56%,
+    0.09
+  );
+  --colors-feedback-negative-action-background-primary-default-high-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-background-primary-hover-low-contrast: hsla(9, 91%, 56%, 0.18);
+  --colors-feedback-negative-action-background-primary-hover-high-contrast: hsla(7, 72%, 40%, 1);
+  --colors-feedback-negative-action-background-primary-focus-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-negative-action-background-primary-focus-high-contrast: hsla(5, 69%, 32%, 1);
+  --colors-feedback-negative-action-background-primary-active-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-negative-action-background-primary-active-high-contrast: hsla(5, 69%, 32%, 1);
+  --colors-feedback-negative-action-background-primary-disabled-low-contrast: hsla(
+    9,
+    91%,
+    56%,
+    0.09
+  );
+  --colors-feedback-negative-action-background-primary-disabled-high-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-border-primary-default-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-negative-action-border-primary-default-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-border-primary-hover-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-negative-action-border-primary-hover-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-border-primary-focus-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-negative-action-border-primary-focus-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-border-primary-active-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-negative-action-border-primary-active-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-border-primary-disabled-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-negative-action-border-primary-disabled-high-contrast: hsla(8, 99%, 65%, 1);
+  --colors-feedback-negative-action-text-primary-default-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-text-primary-default-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-text-primary-hover-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-text-primary-hover-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-text-primary-focus-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-text-primary-focus-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-text-primary-active-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-text-primary-active-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-text-primary-disabled-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-negative-action-text-primary-disabled-high-contrast: hsla(8, 99%, 65%, 1);
+  --colors-feedback-negative-action-text-link-default-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-text-link-default-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-text-link-hover-low-contrast: hsla(9, 91%, 56%, 1);
+  --colors-feedback-negative-action-text-link-hover-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-text-link-focus-low-contrast: hsla(7, 72%, 40%, 1);
+  --colors-feedback-negative-action-text-link-focus-high-contrast: hsla(0, 100%, 92%, 1);
+  --colors-feedback-negative-action-text-link-active-low-contrast: hsla(7, 72%, 40%, 1);
+  --colors-feedback-negative-action-text-link-active-high-contrast: hsla(0, 100%, 92%, 1);
+  --colors-feedback-negative-action-text-link-disabled-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-negative-action-text-link-disabled-high-contrast: hsla(8, 99%, 65%, 1);
+  --colors-feedback-negative-action-icon-primary-default-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-icon-primary-default-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-icon-primary-hover-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-icon-primary-hover-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-icon-primary-focus-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-icon-primary-focus-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-icon-primary-active-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-icon-primary-active-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-icon-primary-disabled-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-negative-action-icon-primary-disabled-high-contrast: hsla(8, 99%, 65%, 1);
+  --colors-feedback-negative-action-icon-link-default-low-contrast: hsla(8, 73%, 47%, 1);
+  --colors-feedback-negative-action-icon-link-default-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-icon-link-hover-low-contrast: hsla(9, 91%, 56%, 1);
+  --colors-feedback-negative-action-icon-link-hover-high-contrast: hsla(0, 100%, 97%, 1);
+  --colors-feedback-negative-action-icon-link-focus-low-contrast: hsla(7, 72%, 40%, 1);
+  --colors-feedback-negative-action-icon-link-focus-high-contrast: hsla(0, 100%, 92%, 1);
+  --colors-feedback-negative-action-icon-link-active-low-contrast: hsla(7, 72%, 40%, 1);
+  --colors-feedback-negative-action-icon-link-active-high-contrast: hsla(0, 100%, 92%, 1);
+  --colors-feedback-negative-action-icon-link-disabled-low-contrast: hsla(9, 91%, 56%, 0.32);
+  --colors-feedback-negative-action-icon-link-disabled-high-contrast: hsla(8, 99%, 65%, 1);
+  --colors-feedback-notice-action-background-primary-default-low-contrast: hsla(
+    36,
+    100%,
+    44%,
+    0.09
+  );
+  --colors-feedback-notice-action-background-primary-default-high-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-background-primary-hover-low-contrast: hsla(36, 100%, 44%, 0.18);
+  --colors-feedback-notice-action-background-primary-hover-high-contrast: hsla(40, 90%, 32%, 1);
+  --colors-feedback-notice-action-background-primary-focus-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-notice-action-background-primary-focus-high-contrast: hsla(41, 82%, 26%, 1);
+  --colors-feedback-notice-action-background-primary-active-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-notice-action-background-primary-active-high-contrast: hsla(41, 82%, 26%, 1);
+  --colors-feedback-notice-action-background-primary-disabled-low-contrast: hsla(
+    36,
+    100%,
+    44%,
+    0.09
+  );
+  --colors-feedback-notice-action-background-primary-disabled-high-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-border-primary-default-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-notice-action-border-primary-default-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-border-primary-hover-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-notice-action-border-primary-hover-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-border-primary-focus-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-notice-action-border-primary-focus-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-border-primary-active-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-notice-action-border-primary-active-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-border-primary-disabled-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-notice-action-border-primary-disabled-high-contrast: hsla(35, 84%, 54%, 1);
+  --colors-feedback-notice-action-text-primary-default-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-text-primary-default-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-text-primary-hover-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-text-primary-hover-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-text-primary-focus-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-text-primary-focus-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-text-primary-active-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-text-primary-active-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-text-primary-disabled-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-notice-action-text-primary-disabled-high-contrast: hsla(35, 84%, 54%, 1);
+  --colors-feedback-notice-action-text-link-default-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-text-link-default-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-text-link-hover-low-contrast: hsla(36, 100%, 44%, 1);
+  --colors-feedback-notice-action-text-link-hover-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-text-link-focus-low-contrast: hsla(40, 90%, 32%, 1);
+  --colors-feedback-notice-action-text-link-focus-high-contrast: hsla(32, 97%, 86%, 1);
+  --colors-feedback-notice-action-text-link-active-low-contrast: hsla(40, 90%, 32%, 1);
+  --colors-feedback-notice-action-text-link-active-high-contrast: hsla(32, 97%, 86%, 1);
+  --colors-feedback-notice-action-text-link-disabled-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-notice-action-text-link-disabled-high-contrast: hsla(35, 84%, 54%, 1);
+  --colors-feedback-notice-action-icon-primary-default-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-icon-primary-default-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-icon-primary-hover-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-icon-primary-hover-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-icon-primary-focus-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-icon-primary-focus-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-icon-primary-active-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-icon-primary-active-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-icon-primary-disabled-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-notice-action-icon-primary-disabled-high-contrast: hsla(35, 84%, 54%, 1);
+  --colors-feedback-notice-action-icon-link-default-low-contrast: hsla(38, 97%, 38%, 1);
+  --colors-feedback-notice-action-icon-link-default-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-icon-link-hover-low-contrast: hsla(36, 100%, 44%, 1);
+  --colors-feedback-notice-action-icon-link-hover-high-contrast: hsla(32, 100%, 94%, 1);
+  --colors-feedback-notice-action-icon-link-focus-low-contrast: hsla(40, 90%, 32%, 1);
+  --colors-feedback-notice-action-icon-link-focus-high-contrast: hsla(32, 97%, 86%, 1);
+  --colors-feedback-notice-action-icon-link-active-low-contrast: hsla(40, 90%, 32%, 1);
+  --colors-feedback-notice-action-icon-link-active-high-contrast: hsla(32, 97%, 86%, 1);
+  --colors-feedback-notice-action-icon-link-disabled-low-contrast: hsla(36, 100%, 44%, 0.32);
+  --colors-feedback-notice-action-icon-link-disabled-high-contrast: hsla(35, 84%, 54%, 1);
+  --colors-feedback-information-action-background-primary-default-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.09
+  );
+  --colors-feedback-information-action-background-primary-default-high-contrast: hsla(
+    193,
+    100%,
+    35%,
+    1
+  );
+  --colors-feedback-information-action-background-primary-hover-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.18
+  );
+  --colors-feedback-information-action-background-primary-hover-high-contrast: hsla(
+    195,
+    100%,
+    31%,
+    1
+  );
+  --colors-feedback-information-action-background-primary-focus-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.32
+  );
+  --colors-feedback-information-action-background-primary-focus-high-contrast: hsla(
+    196,
+    100%,
+    27%,
+    1
+  );
+  --colors-feedback-information-action-background-primary-active-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.32
+  );
+  --colors-feedback-information-action-background-primary-active-high-contrast: hsla(
+    196,
+    100%,
+    27%,
+    1
+  );
+  --colors-feedback-information-action-background-primary-disabled-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.09
+  );
+  --colors-feedback-information-action-background-primary-disabled-high-contrast: hsla(
+    193,
+    100%,
+    35%,
+    1
+  );
+  --colors-feedback-information-action-border-primary-default-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.32
+  );
+  --colors-feedback-information-action-border-primary-default-high-contrast: hsla(
+    180,
+    100%,
+    97%,
+    1
+  );
+  --colors-feedback-information-action-border-primary-hover-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.32
+  );
+  --colors-feedback-information-action-border-primary-hover-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-border-primary-focus-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.32
+  );
+  --colors-feedback-information-action-border-primary-focus-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-border-primary-active-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.32
+  );
+  --colors-feedback-information-action-border-primary-active-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-border-primary-disabled-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.32
+  );
+  --colors-feedback-information-action-border-primary-disabled-high-contrast: hsla(
+    187,
+    68%,
+    52%,
+    1
+  );
+  --colors-feedback-information-action-text-primary-default-low-contrast: hsla(195, 100%, 31%, 1);
+  --colors-feedback-information-action-text-primary-default-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-text-primary-hover-low-contrast: hsla(195, 100%, 31%, 1);
+  --colors-feedback-information-action-text-primary-hover-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-text-primary-focus-low-contrast: hsla(195, 100%, 31%, 1);
+  --colors-feedback-information-action-text-primary-focus-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-text-primary-active-low-contrast: hsla(195, 100%, 31%, 1);
+  --colors-feedback-information-action-text-primary-active-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-text-primary-disabled-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.32
+  );
+  --colors-feedback-information-action-text-primary-disabled-high-contrast: hsla(187, 68%, 52%, 1);
+  --colors-feedback-information-action-text-link-default-low-contrast: hsla(195, 100%, 31%, 1);
+  --colors-feedback-information-action-text-link-default-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-text-link-hover-low-contrast: hsla(193, 100%, 35%, 1);
+  --colors-feedback-information-action-text-link-hover-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-text-link-focus-low-contrast: hsla(196, 100%, 27%, 1);
+  --colors-feedback-information-action-text-link-focus-high-contrast: hsla(181, 75%, 85%, 1);
+  --colors-feedback-information-action-text-link-active-low-contrast: hsla(196, 100%, 27%, 1);
+  --colors-feedback-information-action-text-link-active-high-contrast: hsla(181, 75%, 85%, 1);
+  --colors-feedback-information-action-text-link-disabled-low-contrast: hsla(193, 100%, 35%, 0.32);
+  --colors-feedback-information-action-text-link-disabled-high-contrast: hsla(187, 68%, 52%, 1);
+  --colors-feedback-information-action-icon-primary-default-low-contrast: hsla(195, 100%, 31%, 1);
+  --colors-feedback-information-action-icon-primary-default-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-icon-primary-hover-low-contrast: hsla(195, 100%, 31%, 1);
+  --colors-feedback-information-action-icon-primary-hover-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-icon-primary-focus-low-contrast: hsla(195, 100%, 31%, 1);
+  --colors-feedback-information-action-icon-primary-focus-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-icon-primary-active-low-contrast: hsla(195, 100%, 31%, 1);
+  --colors-feedback-information-action-icon-primary-active-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-icon-primary-disabled-low-contrast: hsla(
+    193,
+    100%,
+    35%,
+    0.32
+  );
+  --colors-feedback-information-action-icon-primary-disabled-high-contrast: hsla(187, 68%, 52%, 1);
+  --colors-feedback-information-action-icon-link-default-low-contrast: hsla(195, 100%, 31%, 1);
+  --colors-feedback-information-action-icon-link-default-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-icon-link-hover-low-contrast: hsla(193, 100%, 35%, 1);
+  --colors-feedback-information-action-icon-link-hover-high-contrast: hsla(180, 100%, 97%, 1);
+  --colors-feedback-information-action-icon-link-focus-low-contrast: hsla(196, 100%, 27%, 1);
+  --colors-feedback-information-action-icon-link-focus-high-contrast: hsla(181, 75%, 85%, 1);
+  --colors-feedback-information-action-icon-link-active-low-contrast: hsla(196, 100%, 27%, 1);
+  --colors-feedback-information-action-icon-link-active-high-contrast: hsla(181, 75%, 85%, 1);
+  --colors-feedback-information-action-icon-link-disabled-low-contrast: hsla(193, 100%, 35%, 0.32);
+  --colors-feedback-information-action-icon-link-disabled-high-contrast: hsla(187, 68%, 52%, 1);
+  --colors-action-background-primary-default: hsla(213, 89%, 56%, 1);
+  --colors-action-background-primary-hover: hsla(218, 89%, 51%, 1);
+  --colors-action-background-primary-focus: hsla(223, 95%, 48%, 1);
+  --colors-action-background-primary-active: hsla(227, 100%, 45%, 1);
+  --colors-action-background-primary-disabled: hsla(216, 19%, 89%, 1);
+  --colors-action-background-secondary-default: hsla(218, 89%, 51%, 0);
+  --colors-action-background-secondary-hover: hsla(218, 89%, 51%, 0.09);
+  --colors-action-background-secondary-focus: hsla(218, 89%, 51%, 0.18);
+  --colors-action-background-secondary-active: hsla(218, 89%, 51%, 0.32);
+  --colors-action-background-secondary-disabled: hsla(216, 44%, 23%, 0);
+  --colors-action-background-tertiary-default: hsla(0, 0%, 100%, 1);
+  --colors-action-background-tertiary-hover: hsla(220, 27%, 98%, 1);
+  --colors-action-background-tertiary-focus: hsla(220, 30%, 96%, 1);
+  --colors-action-background-tertiary-active: hsla(214, 21%, 94%, 1);
+  --colors-action-background-tertiary-disabled: hsla(0, 0%, 100%, 1);
+  --colors-action-border-primary-default: hsla(213, 89%, 56%, 1);
+  --colors-action-border-primary-hover: hsla(218, 89%, 51%, 1);
+  --colors-action-border-primary-focus: hsla(223, 95%, 48%, 1);
+  --colors-action-border-primary-active: hsla(227, 100%, 45%, 1);
+  --colors-action-border-primary-disabled: hsla(216, 19%, 89%, 1);
+  --colors-action-border-secondary-default: hsla(213, 89%, 56%, 1);
+  --colors-action-border-secondary-hover: hsla(213, 89%, 56%, 1);
+  --colors-action-border-secondary-focus: hsla(213, 89%, 56%, 1);
+  --colors-action-border-secondary-active: hsla(213, 89%, 56%, 1);
+  --colors-action-border-secondary-disabled: hsla(218, 19%, 81%, 1);
+  --colors-action-border-tertiary-default: hsla(216, 19%, 89%, 1);
+  --colors-action-border-tertiary-hover: hsla(216, 19%, 89%, 1);
+  --colors-action-border-tertiary-focus: hsla(216, 19%, 89%, 1);
+  --colors-action-border-tertiary-active: hsla(216, 19%, 89%, 1);
+  --colors-action-border-tertiary-disabled: hsla(216, 19%, 89%, 1);
+  --colors-action-text-primary-default: hsla(0, 0%, 100%, 1);
+  --colors-action-text-primary-hover: hsla(0, 0%, 100%, 1);
+  --colors-action-text-primary-focus: hsla(0, 0%, 100%, 1);
+  --colors-action-text-primary-active: hsla(0, 0%, 100%, 1);
+  --colors-action-text-primary-disabled: hsla(216, 16%, 60%, 1);
+  --colors-action-text-secondary-default: hsla(213, 89%, 56%, 1);
+  --colors-action-text-secondary-hover: hsla(213, 89%, 56%, 1);
+  --colors-action-text-secondary-focus: hsla(213, 89%, 56%, 1);
+  --colors-action-text-secondary-active: hsla(213, 89%, 56%, 1);
+  --colors-action-text-secondary-disabled: hsla(218, 19%, 81%, 1);
+  --colors-action-text-tertiary-default: hsla(216, 33%, 29%, 1);
+  --colors-action-text-tertiary-hover: hsla(216, 33%, 29%, 1);
+  --colors-action-text-tertiary-focus: hsla(216, 33%, 29%, 1);
+  --colors-action-text-tertiary-active: hsla(216, 33%, 29%, 1);
+  --colors-action-text-tertiary-disabled: hsla(218, 19%, 81%, 1);
+  --colors-action-text-link-default: hsla(213, 89%, 56%, 1);
+  --colors-action-text-link-hover: hsla(218, 89%, 51%, 1);
+  --colors-action-text-link-focus: hsla(223, 95%, 48%, 1);
+  --colors-action-text-link-active: hsla(223, 95%, 48%, 1);
+  --colors-action-text-link-disabled: hsla(218, 19%, 81%, 1);
+  --colors-action-text-link-visited: hsla(268, 100%, 79%, 1);
+  --colors-action-icon-primary-default: hsla(0, 0%, 100%, 1);
+  --colors-action-icon-primary-hover: hsla(0, 0%, 100%, 1);
+  --colors-action-icon-primary-focus: hsla(0, 0%, 100%, 1);
+  --colors-action-icon-primary-active: hsla(0, 0%, 100%, 1);
+  --colors-action-icon-primary-disabled: hsla(216, 16%, 60%, 1);
+  --colors-action-icon-secondary-default: hsla(213, 89%, 56%, 1);
+  --colors-action-icon-secondary-hover: hsla(213, 89%, 56%, 1);
+  --colors-action-icon-secondary-focus: hsla(213, 89%, 56%, 1);
+  --colors-action-icon-secondary-active: hsla(213, 89%, 56%, 1);
+  --colors-action-icon-secondary-disabled: hsla(218, 19%, 81%, 1);
+  --colors-action-icon-tertiary-default: hsla(216, 33%, 29%, 1);
+  --colors-action-icon-tertiary-hover: hsla(216, 33%, 29%, 1);
+  --colors-action-icon-tertiary-focus: hsla(216, 33%, 29%, 1);
+  --colors-action-icon-tertiary-active: hsla(216, 33%, 29%, 1);
+  --colors-action-icon-tertiary-disabled: hsla(218, 19%, 81%, 1);
+  --colors-action-icon-link-default: hsla(213, 89%, 56%, 1);
+  --colors-action-icon-link-hover: hsla(218, 89%, 51%, 1);
+  --colors-action-icon-link-focus: hsla(223, 95%, 48%, 1);
+  --colors-action-icon-link-active: hsla(223, 95%, 48%, 1);
+  --colors-action-icon-link-disabled: hsla(218, 19%, 81%, 1);
+  --colors-action-icon-link-visited: hsla(268, 100%, 79%, 1);
+  --motion-delay-2xshort: 70ms;
+  --motion-delay-xshort: 120ms;
+  --motion-delay-short: 180ms;
+  --motion-delay-long: 3000ms;
+  --motion-delay-xlong: 5000ms;
+  --motion-duration-2xquick: 70ms;
+  --motion-duration-xquick: 150ms;
+  --motion-duration-quick: 200ms;
+  --motion-duration-moderate: 250ms;
+  --motion-duration-xmoderate: 300ms;
+  --motion-duration-gentle: 400ms;
+  --motion-duration-xgentle: 600ms;
+  --motion-duration-2xgentle: 900ms;
+  --motion-easing-standard-attentive: cubic-bezier(0.5, 0, 0.3, 1.5);
+  --motion-easing-standard-effective: cubic-bezier(0.3, 0, 0.2, 1);
+  --motion-easing-standard-revealing: cubic-bezier(0.5, 0, 0, 1);
+  --motion-easing-standard-wary: cubic-bezier(1, 0.5, 0, 0.5);
+  --motion-easing-entrance-attentive: cubic-bezier(0.5, 0, 0.3, 1.5);
+  --motion-easing-entrance-effective: cubic-bezier(0, 0, 0.2, 1);
+  --motion-easing-entrance-revealing: cubic-bezier(0, 0, 0, 1);
+  --motion-easing-exit-attentive: cubic-bezier(0.7, 0, 0.5, 1);
+  --motion-easing-exit-effective: cubic-bezier(0.17, 0, 1, 1);
+  --motion-easing-exit-revealing: cubic-bezier(0.5, 0, 1, 1);
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 32px;
+  --spacing-8: 40px;
+  --spacing-9: 48px;
+  --spacing-10: 56px;
+  --shadows-offset-x-level-1: 0;
+  --shadows-offset-x-level-2: 0;
+  --shadows-offset-x-level-3: 0;
+  --shadows-offset-x-level-4: 0;
+  --shadows-offset-x-level-5: 0;
+  --shadows-offset-y-level-1: 1;
+  --shadows-offset-y-level-2: 3;
+  --shadows-offset-y-level-3: 8;
+  --shadows-offset-y-level-4: 10;
+  --shadows-offset-y-level-5: 18;
+  --shadows-blur-radius-level-1: 2;
+  --shadows-blur-radius-level-2: 8;
+  --shadows-blur-radius-level-3: 12;
+  --shadows-blur-radius-level-4: 18;
+  --shadows-blur-radius-level-5: 28;
+  --shadows-color-level-1: hsla(216, 44%, 23%, 0.18);
+  --shadows-color-level-2: hsla(216, 44%, 23%, 0.18);
+  --shadows-color-level-3: hsla(216, 44%, 23%, 0.18);
+  --shadows-color-level-4: hsla(216, 44%, 23%, 0.18);
+  --shadows-color-level-5: hsla(216, 44%, 23%, 0.18);
+  --shadows-android-elevation-level-1: 5;
+  --shadows-android-elevation-level-2: 5;
+  --shadows-android-elevation-level-3: 5;
+  --shadows-android-elevation-level-4: 5;
+  --shadows-android-elevation-level-5: 5;
+  --typography-fonts-family-text: Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --typography-fonts-family-code: monospace;
+  --typography-fonts-size-10: 0.5625rem;
+  --typography-fonts-size-25: 0.625rem;
+  --typography-fonts-size-50: 0.6875rem;
+  --typography-fonts-size-75: 0.75rem;
+  --typography-fonts-size-100: 0.875rem;
+  --typography-fonts-size-200: 1rem;
+  --typography-fonts-size-300: 1.125rem;
+  --typography-fonts-size-400: 1.25rem;
+  --typography-fonts-size-500: 1.375rem;
+  --typography-fonts-size-600: 1.5625rem;
+  --typography-fonts-size-700: 1.75rem;
+  --typography-fonts-size-800: 2rem;
+  --typography-fonts-size-900: 2.25rem;
+  --typography-fonts-size-1000: 2.5rem;
+  --typography-fonts-weight-regular: 400;
+  --typography-fonts-weight-bold: 700;
+  --typography-line-heights-s: 1rem;
+  --typography-line-heights-m: 1.125rem;
+  --typography-line-heights-l: 1.25rem;
+  --typography-line-heights-xl: 1.5rem;
+  --typography-line-heights-2xl: 1.5rem;
+  --typography-line-heights-3xl: 1.75rem;
+  --typography-line-heights-4xl: 2.375rem;
+  --typography-line-heights-5xl: 2.625rem;
+  --typography-line-heights-6xl: 3.75rem;
+}
+```
