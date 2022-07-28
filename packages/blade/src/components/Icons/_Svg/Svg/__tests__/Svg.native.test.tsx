@@ -1,6 +1,6 @@
 import Svg from '..';
-import renderWithTheme from '../../../../../_helpers/testing/renderWithTheme.native';
 import Path from '../../Path';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<Svg />', () => {
   it('should render react-native-svg Svg component', () => {

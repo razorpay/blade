@@ -10,8 +10,8 @@ import {
 } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
 import type { ReactElement } from 'react';
-import { Text } from '../Typography';
 import { SkipNavContent, SkipNavLink } from './SkipNav';
+import { Text } from '~components/Typography';
 
 const Page = (): ReactElement => {
   return (

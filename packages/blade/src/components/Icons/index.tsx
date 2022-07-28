@@ -1,6 +1,6 @@
-import type { Theme } from '../BladeProvider';
-import type { DotNotationColorStringToken } from '../../_helpers/types';
-import type { Feedback } from '../../tokens/theme/theme.d';
+import type { Theme } from '~components/BladeProvider';
+import type { DotNotationColorStringToken } from '~src/_helpers/types';
+import type { Feedback } from '~tokens/theme/theme';
 
 type FeedbackIconColors = `feedback.icon.${DotNotationColorStringToken<
   Theme['colors']['feedback']['icon']

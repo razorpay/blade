@@ -1,4 +1,4 @@
-import cloneDeep from './cloneDeep';
+import { cloneDeep } from './cloneDeep';
 
 describe('cloneDeep', () => {
   it('should return "false" when comparing the cloned object with the original object', () => {

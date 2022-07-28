@@ -1,9 +1,7 @@
 import type { CSSObject } from 'styled-components';
-import getIn from '../../utils/getIn';
-import makeSize from '../../utils/makeSize';
-import makeSpace from '../../utils/makeSpace';
-import type { Theme } from '../BladeProvider';
+import type { Theme } from '..';
 import type { BoxProps } from './Box';
+import { getIn, makeSize, makeSpace } from '~utils';
 
 const getBoxStyles = ({
   theme,

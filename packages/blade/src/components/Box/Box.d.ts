@@ -1,5 +1,5 @@
 import type { CSSObject } from 'styled-components';
-import type { DotNotationSpacingStringToken } from '../../_helpers/types';
+import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 export type BoxProps = {
   display?: CSSObject['display'];

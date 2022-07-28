@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import getIn from '../../../utils/getIn';
-import makeBorderSize from '../../../utils/makeBorderSize';
-import makeMotionTime from '../../../utils/makeMotionTime';
+import { getIn, makeBorderSize, makeMotionTime } from '../../../utils';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './StyledBaseLink.d';
 

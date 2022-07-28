@@ -1,8 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import iconMap from '../../Icons/iconMap';
 import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
+import iconMap from '~components/Icons/iconMap';
 
 export default {
   title: 'Components/Button/BaseButton (Internal)',

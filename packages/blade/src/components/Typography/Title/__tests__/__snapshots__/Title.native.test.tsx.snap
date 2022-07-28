@@ -5,19 +5,19 @@ exports[`<Title /> should render Title with default properties 1`] = `
   accessibilityRole="header"
   color="hsla(217, 56%, 17%, 1)"
   fontFamily="Lato"
-  fontSize="24px"
+  fontSize="22px"
   fontStyle="normal"
   fontWeight={700}
-  lineHeight="30px"
+  lineHeight="32px"
   style={
     Array [
       Object {
         "color": "hsla(217, 56%, 17%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 24,
+        "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 30,
+        "lineHeight": 32,
         "textAlign": "left",
         "textDecorationLine": "none",
       },
@@ -35,19 +35,19 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
   accessibilityRole="header"
   color="hsla(217, 18%, 45%, 1)"
   fontFamily="Lato"
-  fontSize="35px"
+  fontSize="29px"
   fontStyle="normal"
   fontWeight={700}
-  lineHeight="38px"
+  lineHeight="40px"
   style={
     Array [
       Object {
         "color": "hsla(217, 18%, 45%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 35,
+        "fontSize": 29,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 38,
+        "lineHeight": 40,
         "textAlign": "left",
         "textDecorationLine": "none",
       },
@@ -65,19 +65,19 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
   accessibilityRole="header"
   color="hsla(216, 16%, 60%, 1)"
   fontFamily="Lato"
-  fontSize="27px"
+  fontSize="24px"
   fontStyle="normal"
   fontWeight={700}
-  lineHeight="30px"
+  lineHeight="32px"
   style={
     Array [
       Object {
         "color": "hsla(216, 16%, 60%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 27,
+        "fontSize": 24,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 30,
+        "lineHeight": 32,
         "textAlign": "left",
         "textDecorationLine": "none",
       },
@@ -95,19 +95,19 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
   accessibilityRole="header"
   color="hsla(217, 56%, 17%, 1)"
   fontFamily="Lato"
-  fontSize="24px"
+  fontSize="22px"
   fontStyle="normal"
   fontWeight={700}
-  lineHeight="30px"
+  lineHeight="32px"
   style={
     Array [
       Object {
         "color": "hsla(217, 56%, 17%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 24,
+        "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 30,
+        "lineHeight": 32,
         "textAlign": "left",
         "textDecorationLine": "none",
       },
@@ -125,19 +125,19 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
   accessibilityRole="header"
   color="hsla(0, 0%, 100%, 1)"
   fontFamily="Lato"
-  fontSize="24px"
+  fontSize="22px"
   fontStyle="normal"
   fontWeight={700}
-  lineHeight="30px"
+  lineHeight="32px"
   style={
     Array [
       Object {
         "color": "hsla(0, 0%, 100%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 24,
+        "fontSize": 22,
         "fontStyle": "normal",
         "fontWeight": "700",
-        "lineHeight": 30,
+        "lineHeight": 32,
         "textAlign": "left",
         "textDecorationLine": "none",
       },

@@ -1,5 +1,5 @@
 import typography from '../../tokens/global/typography';
-import makeTypographySize from './';
+import { makeTypographySize } from './';
 
 describe('makeTypographySize', () => {
   it('should return the font-size value in `px`', () => {
@@ -9,6 +9,6 @@ describe('makeTypographySize', () => {
 
   it('should return the line-height value in `px`', () => {
     const lineHeight = makeTypographySize(typography.onMobile.lineHeights.m);
-    expect(lineHeight).toEqual('16px');
+    expect(lineHeight).toEqual('18px');
   });
 });
