@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { isFunction } from 'lodash';
+import isFunction from 'lodash/isFunction';
 import * as React from 'react';
 
 /**

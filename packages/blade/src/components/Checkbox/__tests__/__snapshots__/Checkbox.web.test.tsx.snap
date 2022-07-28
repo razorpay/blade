@@ -66,10 +66,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .c4 {
@@ -203,10 +199,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .c4 {
@@ -341,10 +333,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .c4 {
@@ -492,10 +480,6 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .c5 {

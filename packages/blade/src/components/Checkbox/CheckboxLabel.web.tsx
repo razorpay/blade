@@ -4,7 +4,6 @@ import type { CheckboxLabelProps } from './CheckboxLabel.d';
 
 const StyledCheckboxLabel = styled.label({
   display: 'flex',
-  userSelect: 'none',
 });
 
 const CheckboxLabel = ({ children }: CheckboxLabelProps): React.ReactElement => {
