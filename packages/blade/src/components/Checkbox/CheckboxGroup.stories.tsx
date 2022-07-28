@@ -63,6 +63,20 @@ export default {
     onChange: undefined,
     value: undefined,
   },
+  argTypes: {
+    value: {
+      options: ['apple', 'mango', 'orange'],
+      control: {
+        type: 'multi-select',
+      },
+    },
+    defaultValue: {
+      options: ['apple', 'mango', 'orange'],
+      control: {
+        type: 'multi-select',
+      },
+    },
+  },
   parameters: {
     docs: {
       page: Page,
