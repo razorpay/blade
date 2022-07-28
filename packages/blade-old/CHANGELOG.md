@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 2.3.3
+
+### Patch Changes
+
+- 576793f: fix(checkbox): remove unnecessary warning for checkbox props
+
 ## 2.3.2
 
 ### Patch Changes

@@ -1,12 +1,8 @@
 import type { ReactNode } from 'react';
-import type { DurationStringTokens, EasingStringTokens } from '../../../tokens/global/motion';
-import type {
-  BorderRadiusValues,
-  BorderWidthValues,
-  SpacingValues,
-} from '../../../tokens/theme/theme.d';
 import type { BaseButtonProps } from './BaseButton';
 import type { ButtonMinHeight } from './buttonTokens';
+import type { DurationStringTokens, EasingStringTokens } from '~tokens/global/motion';
+import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme.d';
 
 export type StyledBaseButtonProps = Omit<
   BaseButtonProps,

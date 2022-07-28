@@ -155,7 +155,7 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
   accessibilityRole="header"
   color="hsla(217, 18%, 45%, 1)"
   fontFamily="Lato"
-  fontSize="14px"
+  fontSize="12px"
   fontStyle="normal"
   fontWeight={700}
   lineHeight="16px"
@@ -164,7 +164,7 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
       Object {
         "color": "hsla(217, 18%, 45%, 1)",
         "fontFamily": "Lato",
-        "fontSize": 14,
+        "fontSize": 12,
         "fontStyle": "normal",
         "fontWeight": "700",
         "lineHeight": 16,

@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { ReactElement } from 'react';
-import type { ColorContrast, ColorContrastTypes, TextTypes } from '../../../tokens/theme/theme.d';
-import getPlatformType from '../../../utils/getPlatformType';
-import type { Theme } from '../../BladeProvider';
 import BaseText from '../BaseText';
 import type { BaseTextProps } from '../BaseText';
+import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
+import { getPlatformType } from '~utils';
+import type { Theme } from '~components/BladeProvider';
 
 type HeadingVariant = 'small' | 'medium' | 'large' | 'subheading';
 
@@ -60,22 +61,22 @@ const getProps = <T extends { variant: HeadingVariant }>({
 
   if (variant === 'small') {
     props.fontSize = 200;
-    props.lineHeight = 'xl';
+    props.lineHeight = '2xl';
     props.as = isPlatformWeb ? 'h6' : undefined;
   } else if (variant === 'medium') {
     props.fontSize = 300;
-    props.lineHeight = '2xl';
+    props.lineHeight = '3xl';
     props.as = isPlatformWeb ? 'h5' : undefined;
   } else if (variant === 'large') {
     props.fontSize = 400;
-    props.lineHeight = '2xl';
+    props.lineHeight = '3xl';
     props.as = isPlatformWeb ? 'h4' : undefined;
   } else if (variant === 'subheading') {
     if (weight === 'regular') {
       throw new Error(`[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`);
     }
     props.fontSize = 75;
-    props.lineHeight = 'm';
+    props.lineHeight = 's';
     props.as = isPlatformWeb ? 'h6' : undefined;
   }
 

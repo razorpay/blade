@@ -1,29 +1,7 @@
-import type { ReactElement } from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import getIn from '../../../utils/getIn';
-import type { BaseTextProps } from '../../Typography/BaseText';
-import BaseText from '../../Typography/BaseText';
-import type { Theme } from '../../BladeProvider';
-import { useTheme } from '../../BladeProvider';
-import type { IconComponent, IconProps, IconSize } from '../../Icons';
-import makeSpace from '../../../utils/makeSpace';
-import type { TypographyPlatforms } from '../../../tokens/global/typography';
-import makeBorderSize from '../../../utils/makeBorderSize';
-import type { DurationString, EasingString } from '../../../tokens/global/motion';
-import makeSize from '../../../utils/makeSize';
-import type {
-  BorderRadiusValues,
-  BorderWidthValues,
-  SpacingValues,
-} from '../../../tokens/theme/theme.d';
-import { makeAccessible } from '../../../utils';
-import { announce } from '../../LiveAnnouncer';
-import usePrevious from '../../../utils/usePrevious';
-import type { SpinnerSize } from '../../Spinner/spinnerTokens';
-import Box from '../../Box';
-import type { DotNotationSpacingStringToken } from '../../../_helpers/types';
-import Spinner from '../../Spinner';
+import type { ReactElement } from 'react';
+import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
   typography as buttonTypography,
@@ -33,7 +11,19 @@ import {
   textPadding,
   buttonPadding,
 } from './buttonTokens';
-import StyledBaseButton from './StyledBaseButton';
+import type { Theme } from '~components/BladeProvider';
+import type { SpinnerSize } from '~components/Spinner/spinnerTokens';
+import type { BaseTextProps } from '~components/Typography/BaseText';
+import type { IconComponent, IconProps, IconSize } from '~components/Icons';
+import type { DurationString, EasingString } from '~tokens/global/motion';
+import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
+import { makeAccessible, usePrevious, makeSize, makeSpace, makeBorderSize, getIn } from '~utils';
+import BaseText from '~components/Typography/BaseText';
+import { useTheme } from '~components/BladeProvider';
+import { announce } from '~components/LiveAnnouncer';
+import Spinner from '~components/Spinner';
+import Box from '~components/Box';
+import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -138,7 +128,7 @@ const getProps = ({
   contrast,
   hasIcon,
 }: {
-  buttonTypographyTokens: ButtonTypography[TypographyPlatforms];
+  buttonTypographyTokens: ButtonTypography;
   children?: string;
   isDisabled: boolean;
   hasIcon: boolean;
@@ -273,8 +263,7 @@ const BaseButton = ({
   accessibilityLabel,
 }: BaseButtonProps): ReactElement => {
   const disabled = isLoading || isDisabled;
-  const { theme, platform } = useTheme();
-  const buttonTypographyTokens = buttonTypography[platform];
+  const { theme } = useTheme();
   if (!Icon && !children?.trim()) {
     throw new Error(
       `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
@@ -317,7 +306,7 @@ const BaseButton = ({
     motionDuration,
     motionEasing,
   } = getProps({
-    buttonTypographyTokens,
+    buttonTypographyTokens: buttonTypography,
     children,
     isDisabled: disabled,
     size,

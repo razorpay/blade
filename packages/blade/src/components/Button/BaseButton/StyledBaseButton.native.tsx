@@ -1,10 +1,10 @@
 import { Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';
-import getIn from '../../../utils/getIn';
-import { useTheme } from '../../BladeProvider';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './StyledBaseButton';
+import { getIn } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'onClick' | 'accessibilityProps'>

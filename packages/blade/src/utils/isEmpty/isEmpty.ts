@@ -1,1 +1,1 @@
-export { default } from 'lodash/isEmpty';
+export { default as isEmpty } from 'lodash/isEmpty';

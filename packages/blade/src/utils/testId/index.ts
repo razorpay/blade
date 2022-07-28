@@ -1,1 +1,1 @@
-export { default } from './testId.web';
+export * from './testId.web';

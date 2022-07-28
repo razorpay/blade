@@ -4,13 +4,13 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { Highlight, Link } from '@storybook/design-system';
 import styled from 'styled-components';
-import iconMap from '../../Icons/iconMap';
-import useMakeFigmaURL from '../../../_helpers/storybook/useMakeFigmaURL';
-import BaseText from '../../Typography/BaseText';
-import { CreditCardIcon } from '../../Icons';
-import { Text } from '../../Typography';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
+import BaseText from '~components/Typography/BaseText';
+import { CreditCardIcon } from '~components/Icons';
+import { Text } from '~components/Typography';
+import iconMap from '~components/Icons/iconMap';
+import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([

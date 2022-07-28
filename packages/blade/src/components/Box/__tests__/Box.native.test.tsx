@@ -1,5 +1,5 @@
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.native';
 import Box from '../Box';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<Box />', () => {
   it('should render Box component with the correct styles', () => {

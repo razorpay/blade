@@ -89,7 +89,7 @@ exports[`<Button /> should render button with default properties 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -98,7 +98,7 @@ exports[`<Button /> should render button with default properties 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -202,7 +202,7 @@ exports[`<Button /> should render button with full width 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -211,7 +211,7 @@ exports[`<Button /> should render button with full width 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -383,7 +383,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -392,7 +392,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -496,7 +496,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -505,7 +505,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -671,7 +671,7 @@ exports[`<Button /> should render disabled button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -680,7 +680,7 @@ exports[`<Button /> should render disabled button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -784,7 +784,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -793,7 +793,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -897,7 +897,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -906,7 +906,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1010,7 +1010,7 @@ exports[`<Button /> should render large size button 1`] = `
       fontSize="17px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="18px"
       style={
         Array [
           Object {
@@ -1019,7 +1019,7 @@ exports[`<Button /> should render large size button 1`] = `
             "fontSize": 17,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
+            "lineHeight": 18,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1123,7 +1123,7 @@ exports[`<Button /> should render medium size button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -1132,7 +1132,7 @@ exports[`<Button /> should render medium size button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1236,7 +1236,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -1245,7 +1245,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },
@@ -1462,7 +1462,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
       fontSize="15px"
       fontStyle="normal"
       fontWeight={700}
-      lineHeight="16px"
+      lineHeight="24px"
       style={
         Array [
           Object {
@@ -1471,7 +1471,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
             "fontSize": 15,
             "fontStyle": "normal",
             "fontWeight": "700",
-            "lineHeight": 16,
+            "lineHeight": 24,
             "textAlign": "center",
             "textDecorationLine": "none",
           },

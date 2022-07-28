@@ -1,4 +1,4 @@
-import { Svg, Path } from '../Icons/_Svg';
+import { Svg, Path } from '~components/Icons/_Svg';
 
 type SpinnerIconProps = {
   size: string;

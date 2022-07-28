@@ -1,4 +1,4 @@
-import makeSize from '.';
+import { makeSize } from '.';
 
 describe('makeSize', () => {
   it('should return the size value in `px`', () => {

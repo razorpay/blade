@@ -1,6 +1,6 @@
 export type PlatformTypes = 'browser' | 'node' | 'react-native' | 'unknown';
 
-const getPlatformType = (): PlatformTypes => {
+export const getPlatformType = (): PlatformTypes => {
   if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
     return 'react-native';
   }
@@ -15,5 +15,3 @@ const getPlatformType = (): PlatformTypes => {
 
   return 'unknown';
 };
-
-export default getPlatformType;
