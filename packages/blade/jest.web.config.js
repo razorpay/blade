@@ -23,7 +23,6 @@ module.exports = {
     './jest-setup.web.js',
   ],
   moduleNameMapper: {
-    '\\.(css|less|sass|scss)$': '<rootDir>/src/_helpers/testing/styleMock.js',
     '^\\~src/(.*)': '<rootDir>/src/$1',
     '^\\~components/(.*)': '<rootDir>/src/components/$1',
     '^\\~utils': '<rootDir>/src/utils',
