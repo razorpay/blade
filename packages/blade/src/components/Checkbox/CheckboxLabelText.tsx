@@ -5,6 +5,7 @@ const CheckboxLabelText = ({ children }: { children: React.ReactNode }): React.R
     <BaseText
       lineHeight="l"
       fontFamily="text"
+      fontWeight="regular"
       color="surface.text.subtle.lowContrast"
       fontSize={100}
     >

@@ -22,7 +22,7 @@ const FormHintText = ({
   const isReactNative = getPlatformType() === 'react-native';
 
   const colors = {
-    help: 'surface.text.subtle.lowContrast',
+    help: 'surface.text.muted.lowContrast',
     error: 'feedback.text.negative.lowContrast',
     success: 'feedback.text.positive.lowContrast',
   } as const;
