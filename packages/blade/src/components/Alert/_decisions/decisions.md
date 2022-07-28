@@ -29,76 +29,57 @@ Sample usage:
 ```jsx
 import { Alert, Link } from '@razorpay/blade';
 
-<Alert title="International Payments Only">
-  <Alert.Description>
-    Currently you can only accept payments in international currencies using PayPal. You cannot
-    accept payments in INR (₹) using PayPal. <Link href="https://razorpay.com">Know More</Link>
-  </Alert.Description>
-  <Alert.PrimaryAction
-    onClick={() => {
-      // do something
-    }}
-  >
-    Primary Action
-  </Alert.PrimaryAction>
-  <Alert.SecondaryAction
-    onClick={() => {
-      // do something
-    }}
-    href="https://razorpay.com"
-  >
-    Link
-  </Alert.SecondaryAction>
-</Alert>;
+<Alert
+  title="International Payments Only"
+  description={
+    <>
+      Currently you can only accept payments in international currencies using PayPal. You cannot
+      accept payments in INR (₹) using PayPal. <Link href="https://razorpay.com">Know More</Link>
+    </>
+  }
+  actions={{
+    primary: { text: 'Primary Action', onClick: {() => { /* do something */ }} },
+    secondary: { text: 'Link', onClick: {() => { /* do something */ }}, href: 'https://razorpay.com'},
+  }}
+/>;
 ```
 
 ### Alert
 
 We'll expose an `Alert` component with the following API:
 
-| Prop          | Type                                     | Default     | Description                                                                                | Required |
-| ------------- | ---------------------------------------- | ----------- | ------------------------------------------------------------------------------------------ | -------- |
-| `children`    | `string`, Alert sub components           | `undefined` | Body content                                                                               | ✅       |
-| title         | `string`                                 | `undefined` | A brief heading                                                                            |          |
-| isDismissable | `boolean`                                | `true`      | Shows a dismiss button                                                                     |          |
-| onDismiss     | `function`                               | `undefined` | Callback when the dismiss button is pressed                                                |          |
-| contrast      | `high`, `low`                            | `low`       | Can be set to `high` for more prominent look _(not related to a11y)_                       |          |
-| isFullWidth   | `boolean`                                | `false`     | Spans the entire width of container, otherwise max width is restricted to 584px by default |          |
-| variant       | `info`, `positive`, `notice`, `negative` | `info`      | Sets the color tone of entire alert. Icon is set automatically based on variant \*         |          |
-| isBorderless  | `boolean`                                | `false`     | Removes borders and border radii, useful for creating a full bleed layout                  |          |
+| Prop          | Type                                                        | Default     | Description                                                                                | Required |
+| ------------- | ----------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------ | -------- |
+| description   | `string`, `JSX`                                             | `undefined` | Body content                                                                               | ✅       |
+| title         | `string`                                                    | `undefined` | A brief heading                                                                            |          |
+| isDismissable | `boolean`                                                   | `true`      | Shows a dismiss button                                                                     |          |
+| onDismiss     | `function`                                                  | `undefined` | Callback when the dismiss button is pressed                                                |          |
+| contrast      | `high`, `low`                                               | `low`       | Can be set to `high` for more prominent look _(not related to a11y)_                       |          |
+| isFullWidth   | `boolean`                                                   | `false`     | Spans the entire width of container, otherwise max width is restricted to 584px by default |          |
+| variant       | `info`, `positive`, `notice`, `negative`                    | `info`      | Sets the color tone of entire alert. Icon is set automatically based on variant            |          |
+| isBorderless  | `boolean`                                                   | `false`     | Removes borders and border radii, useful for creating a full bleed layout                  |          |
+| actions       | `{ primary: PrimaryAction, secondary: SecondaryAction }` \* | `{}`        | Renders a primary action button and a secondary action link button                         |          |
 
-We'll also expose the following sub components on `Alert` which can be passed as children to `Alert`. The order of passing these as children doesn't matter:
+`PrimaryAction` and `SecondaryAction` will accept objects with the following keys:
 
-| Sub component           | Description                                                          | Required |
-| ----------------------- | -------------------------------------------------------------------- | -------- |
-| `Alert.Description`     | For setting body content                                             | ✅       |
-| `Alert.PrimaryAction`   | Renders a primary `Button`                                           |          |
-| `Alert.SecondaryAction` | Renders a button `Link`, requires `Alert.PrimaryAction` alongside \* |          |
+### PrimaryAction
 
-### Alert.Description
+Renders and accepts a subset of `Button` props as keys:
 
-| Prop       | Type            | Default     | Description | Required |
-| ---------- | --------------- | ----------- | ----------- | -------- |
-| `children` | `string`, `JSX` | `undefined` | Content \*  | ✅       |
+| Key       | Type       | Default     | Description | Required |
+| --------- | ---------- | ----------- | ----------- | -------- |
+| `text`    | `string`   | `undefined` | Content     | ✅       |
+| `onClick` | `function` | `undefined` | Callback    |          |
 
-### Alert.PrimaryAction
+### SecondaryAction
 
-`Alert.PrimaryAction` renders and accepts a subset of `Button` (primary) props:
+Renders and accepts a subset of `Link` (button) props as keys:
 
-| Prop       | Type       | Default     | Description                            | Required |
-| ---------- | ---------- | ----------- | -------------------------------------- | -------- |
-| `children` | `string`   | `undefined` | Content, required here unlike `Button` | ✅       |
-| `onClick`  | `function` | `undefined` | Callback                               | ✅       |
-
-### Alert.SecondaryAction
-
-`Alert.SecondaryAction` renders and accepts a subset of `Link` (button) props:
-
-| Prop       | Type       | Default     | Description | Required |
-| ---------- | ---------- | ----------- | ----------- | -------- |
-| `children` | `string`   | `undefined` | Content     | ✅       |
-| `href`     | `string`   | `undefined` | Hyperlink   |          |
-| `onClick`  | `function` | `undefined` | Callback    |          |
+| Key       | Type       | Default     | Description | Required |
+| --------- | ---------- | ----------- | ----------- | -------- |
+| `text`    | `string`   | `undefined` | Content     | ✅       |
+| `href`    | `string`   | `undefined` | Hyperlink   |          |
+| `onClick` | `function` | `undefined` | Callback    |          |
 
 There'll also be an internal `BaseAlert` component that handles rendering web or native version similar to other Blade components. API would be similar to `Alert`.
 
@@ -124,11 +105,10 @@ Some example usage patterns of `Alert`.
 <img src="./alert-without-title.png" alt="" width="520">
 
 ```jsx
-<Alert variant="notice">
-  <Alert.Description>
-    The payment was made 6 months ago, therefore you can’t issue refund to this merchant.
-  </Alert.Description>
-</Alert>
+<Alert
+  variant="notice"
+  description="The payment was made 6 months ago, therefore you can’t issue refund to this merchant."
+/>
 ```
 
 ### Full bleed
@@ -142,12 +122,16 @@ This full bleed layout works for all desktop, mobile and native when the `isBord
 <img src="./alert-mobile-full-bleed.png" alt="" width="520">
 
 ```jsx
-<Alert title="International Payments Only" isBorderless>
-  <Alert.Description>
-    Use vendor payouts to quickly generate invoices.{' '}
-    <Link href="https://razorpay.com">Know More</Link>
-  </Alert.Description>
-</Alert>
+<Alert
+  title="International Payments Only"
+  isBorderless
+  description={
+    <>
+      Use vendor payouts to quickly generate invoices.{' '}
+      <Link href="https://razorpay.com">Know More</Link>
+    </>
+  }
+/>
 ```
 
 ## Open questions
@@ -156,13 +140,52 @@ This full bleed layout works for all desktop, mobile and native when the `isBord
 
 **A1.** It makes more sense to keep the terminologies similar in both design and code (because designs are what gets translated into code). [Related discussion](https://github.com/razorpay/blade/pull/573#discussion_r929998203).
 
-**Q2.** It's possible to pass any JSX as content but ideally we want to restrict it to few components (like `Link`, `string`, `List`). Doing these on code side would mean lot of checks. Similarly, restriction on `Alert.SecondaryAction` which should always be used with `Alert.PrimaryAction`. How do we do these - TS / runtime checks, etc.? One simpler alternative is to rely on design side restrictions for these but it makes the API more flexible should someone want to try things different from design.
+**Q2.** It's possible to pass any JSX as content but ideally we want to restrict it to few components (like `Link`, `string`, `List`). Doing these on code side would mean lot of checks. Similarly, restriction on `SecondaryAction` which should always be used with `PrimaryAction`. How do we do these - TS / runtime checks, etc.? One simpler alternative is to rely on design side restrictions for these but it makes the API more flexible should someone want to try things different from design.
 
-**A2.** TBD
+**A2.** We can do some static checks with TypeScript where feasible, for example enforcing `SecondaryAction` to be used only with `PrimaryAction` but some checks are outside scope of TypeScript and in the realm of runtime checks which at the moment seems like an overkill, for example restricting the content type for `description` prop.
 
 **Q3.** Should we make alerts focussable so they're discoverable by tabbing? It would mean also showing a visible keyboard focus indicator. Not doing this currently because I can't think of possible usecases right now, maybe we can revisit this later if / when needed.
 
 **A3.** TBD
+
+## Alternatives
+
+An alternate API with compound components pattern was considered:
+
+![Alert breakdown](./alert-breakdown-alt-compound.png)
+
+Sample usage:
+
+```jsx
+<Alert title="International Payments Only">
+  <Alert.Description>
+    Currently you can only accept payments in international currencies using PayPal. You cannot
+    accept payments in INR (₹) using PayPal. <Link href="https://razorpay.com">Know More</Link>
+  </Alert.Description>
+  <Alert.PrimaryAction
+    onClick={() => {
+      // do something
+    }}
+  >
+    Primary Action
+  </Alert.PrimaryAction>
+  <Alert.SecondaryAction
+    onClick={() => {
+      // do something
+    }}
+    href="https://razorpay.com"
+  >
+    Link
+  </Alert.SecondaryAction>
+</Alert>
+```
+
+However there are certain issues with this API:
+
+- Discoverability is low (in order to discover what can be passed user needs to type `Alert.`)
+- The order of passing compound components doesn't has any impact on final rendering order
+- More error prone, users can pass unexpected wrappers in children or in between compound components
+- It's harder to define constraints for example - secondary action should only exist in the presence of a primary action
 
 ## References
 
