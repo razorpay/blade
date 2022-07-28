@@ -932,7 +932,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       }
     >
       <Text
-        color="hsla(216, 27%, 36%, 1)"
+        color="hsla(216, 16%, 60%, 1)"
         fontFamily="Lato"
         fontSize="11px"
         fontStyle="italic"
@@ -941,7 +941,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 11,
               "fontStyle": "italic",
