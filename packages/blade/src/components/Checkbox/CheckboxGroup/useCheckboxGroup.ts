@@ -58,7 +58,6 @@ const useCheckboxGroup = ({
         setValue(value);
       },
       isChecked(value: string) {
-        console.log(checkedValues);
         return checkedValues.includes(value);
       },
       addValue(value: string) {
