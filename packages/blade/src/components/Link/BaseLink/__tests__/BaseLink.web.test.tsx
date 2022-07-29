@@ -19,7 +19,19 @@ describe('<BaseLink />', () => {
   it('should render link with an href, target and rel', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
-      <BaseLink href="https://www.google.com/" target="_blank" rel="noreferrer noopener">
+      <BaseLink href="https://www.google.com/" target="_blank" rel="noreferrer">
+        {linkText}
+      </BaseLink>,
+    );
+    expect(getByRole('link')).toHaveAttribute('href', 'https://www.google.com/');
+    expect(getByRole('link')).toHaveAttribute('target', '_blank');
+    expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer');
+  });
+
+  it('should render link with a default rel set when target is _blank', () => {
+    const linkText = 'Learn More';
+    const { getByRole } = renderWithTheme(
+      <BaseLink href="https://www.google.com/" target="_blank">
         {linkText}
       </BaseLink>,
     );

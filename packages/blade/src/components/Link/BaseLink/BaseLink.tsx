@@ -83,6 +83,7 @@ type BaseLinkStyleProps = {
   cursor: CSSObject['cursor'];
   disabled: boolean;
   role: 'button' | 'link';
+  defaultRel: BaseLinkProps['rel'];
 };
 
 const getColorToken = ({
@@ -126,6 +127,7 @@ const getProps = ({
   intent,
   contrast,
   isVisited,
+  target,
 }: {
   theme: Theme;
   variant: NonNullable<BaseLinkProps['variant']>;
@@ -135,6 +137,7 @@ const getProps = ({
   intent: BaseLinkProps['intent'];
   contrast: NonNullable<BaseLinkProps['contrast']>;
   isVisited: boolean;
+  target: BaseLinkProps['target'];
 }): BaseLinkStyleProps => {
   const isButton = variant === 'button';
   const props: BaseLinkStyleProps = {
@@ -165,6 +168,7 @@ const getProps = ({
     cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
     disabled: isButton && isDisabled,
     role: isButton ? 'button' : 'link',
+    defaultRel: target && target === '_blank' ? 'noreferrer noopener' : undefined,
   };
 
   return props;
@@ -204,6 +208,7 @@ const BaseLink = ({
     cursor,
     disabled,
     role,
+    defaultRel,
   } = getProps({
     theme,
     variant,
@@ -213,6 +218,7 @@ const BaseLink = ({
     intent,
     contrast,
     isVisited,
+    target,
   });
 
   const handleOnClick = (event: SyntheticEvent): void => {
@@ -234,7 +240,7 @@ const BaseLink = ({
       as={as}
       href={href}
       target={target}
-      rel={rel}
+      rel={rel ?? defaultRel}
       onClick={handleOnClick}
       disabled={disabled}
       cursor={cursor}
