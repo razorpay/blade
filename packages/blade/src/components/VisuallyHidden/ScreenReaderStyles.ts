@@ -14,4 +14,4 @@ const screenReaderStyles: CSSObject = {
   wordWrap: 'normal',
 };
 
-export default screenReaderStyles;
+export { screenReaderStyles };
