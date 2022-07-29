@@ -98,6 +98,8 @@ exports[`<Button /> should render button with default properties 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -227,6 +229,8 @@ exports[`<Button /> should render button with full width 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -356,6 +360,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -499,6 +505,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -642,6 +650,8 @@ exports[`<Button /> should render disabled button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -772,6 +782,8 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -902,6 +914,8 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -1032,6 +1046,8 @@ exports[`<Button /> should render large size button 1`] = `
   text-decoration-line: none;
   line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -1161,6 +1177,8 @@ exports[`<Button /> should render medium size button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -1290,6 +1308,8 @@ exports[`<Button /> should render secondary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -1419,6 +1439,8 @@ exports[`<Button /> should render small size button 1`] = `
   text-decoration-line: none;
   line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -1548,6 +1570,8 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {
@@ -1677,6 +1701,8 @@ exports[`<Button /> should render xsmall size button 1`] = `
   text-decoration-line: none;
   line-height: 1rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c3 {

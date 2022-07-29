@@ -25,6 +25,8 @@ exports[`<Link /> should render button variant of link 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c0 {
@@ -116,6 +118,8 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c0 {
@@ -208,6 +212,8 @@ exports[`<Link /> should render link with default properties 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c0 {
@@ -311,6 +317,8 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c0 {
@@ -441,6 +449,8 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c0 {
@@ -571,6 +581,8 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c0 {
@@ -701,6 +713,8 @@ exports[`<Link /> should render link with icon without text 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .c0 {

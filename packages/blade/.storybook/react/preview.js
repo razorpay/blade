@@ -10,7 +10,10 @@ export const parameters = {
     'storybook/docs/panel': { index: 0 },
     canvas: { title: 'Stories', index: 1 },
   },
-  viewMode: 'docs',
+  // setting default view mode to story when development
+  // otherwise while changing component code storybook resets view to story mode
+  // which hampers productivity
+  viewMode: process.env.NODE_ENV === 'development' ? 'story' : 'docs',
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
@@ -18,7 +21,16 @@ export const parameters = {
         'Guides',
         ['Intro', 'Installation', 'Usage', 'Local Development'],
         'Tokens',
-        ['Colors', 'Typography', 'Breakpoints', 'Border', 'Spacing', 'Shadows'],
+        [
+          'Colors',
+          'Typography',
+          'Breakpoints',
+          'Border',
+          'Spacing',
+          'Shadows',
+          'Motion',
+          'CSS Variables',
+        ],
         'Recipes',
         'Components',
       ],

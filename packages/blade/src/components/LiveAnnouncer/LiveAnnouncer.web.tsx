@@ -12,7 +12,7 @@
 //    React hook `useImperativeHandle` to give users imperative access.
 
 import type { Assertiveness } from './LiveAnnouncer.d';
-import screenReaderStyles from '~components/VisuallyHidden/ScreenReaderStyles';
+import { screenReaderStyles } from '~components/VisuallyHidden/ScreenReaderStyles';
 
 const LIVEREGION_TIMEOUT_DELAY = 1000;
 let liveAnnouncer: LiveAnnouncer | null = null;

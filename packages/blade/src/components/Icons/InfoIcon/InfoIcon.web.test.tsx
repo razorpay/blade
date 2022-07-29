@@ -1,5 +1,5 @@
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.web';
 import InfoIcon from '.';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('<InfoIcon />', () => {
   it('should render InfoIcon', () => {
