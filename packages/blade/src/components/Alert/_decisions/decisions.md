@@ -78,10 +78,17 @@ Renders and accepts a subset of `Link` (button) props as keys:
 | Key       | Type       | Default     | Description | Required |
 | --------- | ---------- | ----------- | ----------- | -------- |
 | `text`    | `string`   | `undefined` | Content     | ✅       |
-| `href`    | `string`   | `undefined` | Hyperlink   |          |
+| `href` \* | `string`   | `undefined` | Hyperlink   |          |
 | `onClick` | `function` | `undefined` | Callback    |          |
 
-There'll also be an internal `BaseAlert` component that handles rendering web or native version similar to other Blade components. API would be similar to `Alert`.
+> **Note**
+>
+> On web, a couple of additional keys are available when `href` is provided, similar to `Link` component:
+
+| Key      | Type       | Default     | Description                                                                                                                                                                | Required |
+| -------- | ---------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `target` | `string`   | `undefined` | [`target`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-target) attribute                                                                              |          |
+| `rel`    | `function` | `undefined` | [`rel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-rel) attribute, when target is set to `_blank` this is automatically set to `noopener noreferrer` |          |
 
 ## a11y
 
