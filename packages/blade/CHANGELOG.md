@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 0.13.0
+
+### Minor Changes
+
+- b8cc7df: feat: add checkbox component
+- eb65c30: feat: add support for css theme variables
+- f61675e: feat: add `Link` & `BaseLink` components
+
 ## 0.12.0
 
 ### Minor Changes
