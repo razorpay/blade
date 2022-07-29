@@ -19,6 +19,7 @@ describe('<BaseLink />', () => {
   it('should render link with an href, target and rel', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
+      // nosemgrep
       <BaseLink href="https://www.google.com/" target="_blank" rel="noreferrer">
         {linkText}
       </BaseLink>,
@@ -31,6 +32,7 @@ describe('<BaseLink />', () => {
   it('should render link with a default rel set when target is _blank', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
+      // nosemgrep
       <BaseLink href="https://www.google.com/" target="_blank">
         {linkText}
       </BaseLink>,
