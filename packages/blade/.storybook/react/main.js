@@ -44,6 +44,18 @@ module.exports = {
       }),
     ];
 
-    return config;
+    // Return the altered config
+    return {
+      ...config,
+      // While developing components storybook throws error
+      // if there are eslint errors which is annoying
+      // thus disabled it.
+      plugins: config.plugins.filter((plugin) => {
+        if (plugin.constructor.name === 'ESLintWebpackPlugin') {
+          return false;
+        }
+        return true;
+      }),
+    };
   },
 };
