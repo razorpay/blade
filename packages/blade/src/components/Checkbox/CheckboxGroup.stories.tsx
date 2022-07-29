@@ -4,9 +4,8 @@ import React from 'react';
 import { Title, Subtitle, Primary, ArgsTable, PRIMARY_STORY, Stories } from '@storybook/addon-docs';
 import { Link, Highlight } from '@storybook/design-system';
 import { Text } from '../Typography';
-import { Checkbox as CheckboxComponent } from './Checkbox';
-import { CheckboxGroup as CheckboxGroupComponent } from './CheckboxGroup';
-import type { CheckboxGroupProps } from './CheckboxGroup';
+import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent } from './';
+import type { CheckboxGroupProps } from './';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): React.ReactElement => {

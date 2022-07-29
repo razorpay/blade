@@ -7,7 +7,7 @@ import { FormLabelText } from '~components/Form/FormLabelText';
 import { FormHintText } from '~components/Form/FormHintText';
 import Box from '~components/Box';
 
-export type CheckboxGroupProps = {
+type CheckboxGroupProps = {
   /**
    * Accepts multiple checkboxes as children
    */
@@ -122,4 +122,4 @@ const CheckboxGroup = ({
   );
 };
 
-export { CheckboxGroup };
+export { CheckboxGroup, CheckboxGroupProps };

@@ -4,8 +4,8 @@ import { Highlight, Link } from '@storybook/design-system';
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Text } from '../Typography';
-import type { CheckboxProps } from './Checkbox';
-import { Checkbox as CheckboxComponent } from './Checkbox';
+import type { CheckboxProps } from './';
+import { Checkbox as CheckboxComponent } from './';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): React.ReactElement => {
