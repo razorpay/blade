@@ -25,7 +25,7 @@ export type BaseTextProps = {
   fontSize?: keyof Theme['typography']['fonts']['size'];
   fontWeight?: keyof Theme['typography']['fonts']['weight'];
   fontStyle?: 'italic' | 'normal';
-  textDecorationLine?: 'line-through' | 'none';
+  textDecorationLine?: 'line-through' | 'none' | 'underline';
   lineHeight?: keyof Theme['typography']['lineHeights'];
   as?: 'code' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   textAlign?: 'center' | 'justify' | 'left' | 'right';

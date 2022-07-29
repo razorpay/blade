@@ -1,4 +1,3 @@
-import CheckIconComponent from './CheckIcon';
 import ChevronDownIconComponent from './ChevronDownIcon';
 import ChevronLeftIconComponent from './ChevronLeftIcon';
 import ChevronRightIconComponent from './ChevronRightIcon';
@@ -20,7 +19,6 @@ import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
 const iconMap: Record<string, IconComponent> = {
-  CheckIcon: CheckIconComponent,
   ChevronDownIcon: ChevronDownIconComponent,
   ChevronLeftIcon: ChevronLeftIconComponent,
   ChevronRightIcon: ChevronRightIconComponent,
