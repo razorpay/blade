@@ -5,3 +5,4 @@ export * from './SkipNav';
 export * from './VisuallyHidden';
 export * from './Button';
 export * from './LiveAnnouncer';
+export * from './Link';
