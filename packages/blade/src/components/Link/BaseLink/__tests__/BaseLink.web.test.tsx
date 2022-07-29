@@ -41,7 +41,7 @@ describe('<BaseLink />', () => {
     }
   });
 
-  it('should render link with icon without text', () => {
+  it('should render icon only link', () => {
     const { container } = renderWithTheme(<BaseLink icon={InfoIcon} />);
     expect(container).toMatchSnapshot();
   });
@@ -83,54 +83,22 @@ describe('<BaseLink />', () => {
 
   it('should render disabled button variant of link', () => {
     const linkText = 'Learn More';
-    const { container } = renderWithTheme(
+    const { container, getByRole } = renderWithTheme(
       <BaseLink variant="button" isDisabled={true}>
         {linkText}
       </BaseLink>,
     );
     expect(container).toMatchSnapshot();
+    expect(getByRole('button')).toBeDisabled();
   });
 
-  it('should call function on click of button variant of link with event callback', () => {
+  it('should call function on click of link with event callback', () => {
     const linkText = 'Learn More';
     const onClick = jest.fn();
-    const { getByRole } = renderWithTheme(
-      <BaseLink variant="button" onClick={onClick}>
-        {linkText}
-      </BaseLink>,
-    );
-    const button = getByRole('button');
+    const { getByRole } = renderWithTheme(<BaseLink onClick={onClick}>{linkText}</BaseLink>);
+    const button = getByRole('link');
     fireEvent(
       button,
-      new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-        screenX: 20,
-        screenY: 20,
-      }),
-    );
-    expect(onClick).toHaveBeenCalledTimes(1);
-    expect(onClick).toBeCalledWith(
-      expect.objectContaining({
-        bubbles: true,
-        cancelable: true,
-        screenX: 20,
-        screenY: 20,
-      }),
-    );
-  });
-
-  it('should call function on click of anchor variant of link with event callback', () => {
-    const linkText = 'Learn More';
-    const onClick = jest.fn();
-    const { getByRole } = renderWithTheme(
-      <BaseLink variant="anchor" onClick={onClick}>
-        {linkText}
-      </BaseLink>,
-    );
-    const link = getByRole('link');
-    fireEvent(
-      link,
       new MouseEvent('click', {
         bubbles: true,
         cancelable: true,

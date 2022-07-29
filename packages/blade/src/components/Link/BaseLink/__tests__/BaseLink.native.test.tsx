@@ -43,7 +43,7 @@ describe('<BaseLink />', () => {
     }
   });
 
-  it('should render link with icon without text', () => {
+  it('should render icon only link', () => {
     const { toJSON } = renderWithTheme(<BaseLink icon={InfoIcon} />);
     expect(toJSON()).toMatchSnapshot();
   });

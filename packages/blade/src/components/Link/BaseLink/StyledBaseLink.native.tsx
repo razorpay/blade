@@ -10,18 +10,15 @@ const StyledNativeLink = styled.Pressable({
   alignSelf: 'flex-start',
 });
 
-const openURL = (href: string): void => {
-  Linking.canOpenURL(href)
-    .then((canOpen) => {
-      if (canOpen) {
-        Linking.openURL(href).catch(() => {
-          console.warn(`[Blade: BaseLink]: Could not open the link "href=${href}"`);
-        });
-      }
-    })
-    .catch(() => {
-      console.warn(`[Blade: BaseLink]: Invalid link passed to "href=${href}"`);
-    });
+const openURL = async (href: string): Promise<void> => {
+  try {
+    const canOpen = await Linking.canOpenURL(href);
+    if (canOpen) {
+      await Linking.openURL(href);
+    }
+  } catch {
+    console.warn(`[Blade: BaseLink]: Could not open the link "href=${href}"`);
+  }
 };
 
 const StyledLink = ({
@@ -35,7 +32,7 @@ const StyledLink = ({
 }: StyledBaseLinkProps & { children: React.ReactNode }): ReactElement => {
   const handleOnPress = (event: GestureResponderEvent): void => {
     if (href && variant === 'anchor') {
-      openURL(href);
+      void openURL(href);
     }
 
     if (onClick) {
