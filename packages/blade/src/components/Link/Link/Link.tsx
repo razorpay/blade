@@ -1,6 +1,6 @@
 import type { ReactElement, SyntheticEvent } from 'react';
-import type { IconComponent } from '../../Icons';
 import { BaseLink } from '../BaseLink';
+import type { IconComponent } from '~components/Icons';
 
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';

@@ -10,13 +10,13 @@ import {
 } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Highlight, Link as StorybookLink } from '@storybook/design-system';
-import iconMap from '../../Icons/iconMap';
-import useMakeFigmaURL from '../../../_helpers/storybook/useMakeFigmaURL';
-import { InfoIcon } from '../../Icons';
-import BaseText from '../../Typography/BaseText';
-import Box from '../../Box';
 import type { LinkProps } from './Link';
 import LinkComponent from './Link';
+import iconMap from '~components/Icons/iconMap';
+import { InfoIcon } from '~components/Icons';
+import BaseText from '~components/Typography/BaseText';
+import Box from '~components/Box';
+import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import { Text } from '~components/Typography';
 
 const Page = (): ReactElement => {

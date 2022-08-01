@@ -1,8 +1,9 @@
 import { fireEvent, waitFor } from '@testing-library/react-native';
 import { Linking } from 'react-native';
-import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.native';
-import { InfoIcon } from '../../../Icons';
 import Link from '../Link';
+import { InfoIcon } from '~components/Icons';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+
 jest.mock('react-native/Libraries/Linking/Linking', () => ({
   openURL: jest.fn(() => Promise.resolve()),
   canOpenURL: jest.fn(() => Promise.resolve(true)),
