@@ -1,8 +1,9 @@
+/* eslint-disable babel/new-cap */
 import React from 'react';
 import styled from 'styled-components';
 import * as styles from './styles';
 
-const StyledCard = styled.div(styles.StyledCard);
+const StyledCard = styled.div(({ theme }) => styles.StyledCard({ theme, isNative: false }));
 const LeadBold = styled.span(styles.LeadBold);
 const DisplayLarge = styled.span(styles.DisplayLarge);
 const DisplayMedium = styled.span(styles.DisplayMedium);

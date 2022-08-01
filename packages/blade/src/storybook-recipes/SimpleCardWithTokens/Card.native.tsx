@@ -1,8 +1,9 @@
+/* eslint-disable babel/new-cap */
 import React from 'react';
 import styled from 'styled-components/native';
 import * as styles from './styles';
 
-const StyledCard = styled.View(styles.StyledCard);
+const StyledCard = styled.View(({ theme }) => styles.StyledCard({ theme, isNative: true }));
 const LeadBold = styled.Text(styles.LeadBold);
 const DisplayLarge = styled.Text(styles.DisplayLarge);
 const DisplayMedium = styled.Text(styles.DisplayMedium);
@@ -26,13 +27,11 @@ const Card = (): React.ReactElement => {
           <CaptionBold>{`₹450.67`}</CaptionBold>
         </FlexRow>
         <AlertInformation>
-          {`The interest charged will be deposited back into your bank account within a day of
-          repayment.`}
+          {`The interest charged will be deposited back into your bank account within a day of repayment.`}
         </AlertInformation>
         <Divider />
         <CaptionRegular>
-          {`This amount will be deducted in 3 instalments from your settlement balance between Feb
-          18-20 on a daily basis.`}
+          {`This amount will be deducted in 3 instalments from your settlement balance between Feb 18-20 on a daily basis.`}
         </CaptionRegular>
       </StyledCard>
     </React.Fragment>

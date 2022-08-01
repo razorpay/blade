@@ -6,8 +6,7 @@ type WithTheme = {
   theme: Theme;
 };
 
-// box-shadow: ${theme.shadows.offsetX.level[1]}px ${theme.shadows.offsetY.level[1]}px ${theme.shadows.blurRadius.level[1]}px ${theme.shadows.color.level[1]}, ${theme.shadows.offsetX.level[1]}px ${theme.shadows.offsetY.level[1]}px ${theme.shadows.blurRadius.level[1]}px ${theme.shadows.color.level[1]};
-const StyledCard = ({ theme }: WithTheme) => `
+const StyledCard = ({ theme, isNative }: WithTheme & { isNative: boolean }) => `
   width: 368px;
   font-family: ${theme.typography.fonts.family.text};
   background-color: ${theme.colors.surface.background.level2.lowContrast};
@@ -15,6 +14,17 @@ const StyledCard = ({ theme }: WithTheme) => `
   padding: ${theme.spacing[5]}px;
   display: flex;
   flex-direction: column;
+  ${
+    isNative
+      ? `
+        shadow-color: black;
+        shadow-offset: ${theme.shadows.offsetX.level[1]}px ${theme.shadows.offsetY.level[1]}px;
+        shadow-opacity: 1;
+        shadow-radius: ${theme.shadows.blurRadius.level[1]}px;
+        elevation: ${theme.shadows.androidElevation.level[4]};
+      `
+      : `box-shadow: ${theme.shadows.offsetX.level[1]}px ${theme.shadows.offsetY.level[1]}px ${theme.shadows.blurRadius.level[1]}px ${theme.shadows.color.level[1]}, ${theme.shadows.offsetX.level[1]}px ${theme.shadows.offsetY.level[1]}px ${theme.shadows.blurRadius.level[1]}px ${theme.shadows.color.level[1]};`
+  }
 `;
 
 const LeadBold = ({ theme }: WithTheme) => `
