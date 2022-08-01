@@ -10,8 +10,11 @@ import {
 } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
 import type { ReactElement } from 'react';
-import { SkipNavContent, SkipNavLink } from './SkipNav';
+import { Button } from '~components/Button';
+import { Link } from '~components/Link';
+import { SkipNavContent, SkipNavLink } from '~components/SkipNav';
 import { Text } from '~components/Typography';
+import Box from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -55,29 +58,36 @@ const SkipNavTemplate: ComponentStory<typeof SkipNavLink> = () => {
       <nav style={{ display: 'flex' }}>
         <ul style={{ marginLeft: 'auto', display: 'flex', listStyle: 'none', gap: '10px' }}>
           <li>
-            <a href="#1">Home</a>
+            <Link href="#1">Home</Link>
           </li>
           <li>
-            <a href="#2">Pricing</a>
+            <Link href="#2">Pricing</Link>
           </li>
           <li>
-            <a href="#3">Login</a>
+            <Link href="#3">Login</Link>
           </li>
           <li>
-            <a href="#4">SignUp</a>
+            <Link href="#4">SignUp</Link>
           </li>
         </ul>
       </nav>
-      <main>
+      <Box>
         <SkipNavContent />
         <Text>Main content of the page</Text>
-        <button>Button 1</button>
-        <button>Button 2</button>
+        <Box marginTop="spacing.1" />
+        <Box gap="spacing.1" display="flex">
+          <Button size="small">Button 1</Button>
+          <Button size="small">Button 2</Button>
+        </Box>
         <SkipNavContent id="second" />
+        <Box marginTop="spacing.1" />
         <Text>Second Main content of the page</Text>
-        <button>Button 3</button>
-        <button>Button 4</button>
-      </main>
+        <Box marginTop="spacing.1" />
+        <Box gap="spacing.1" display="flex">
+          <Button size="small">Button 3</Button>
+          <Button size="small">Button 4</Button>
+        </Box>
+      </Box>
     </>
   );
 };
