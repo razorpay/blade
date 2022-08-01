@@ -10,7 +10,6 @@ type SkipNavLinkProps = {
   children?: string;
 };
 
-// TODO: Replace with Link comonent
 const StyledLink = styled(BaseLink)(({ theme }) => ({
   ...screenReaderStyles,
   top: theme.spacing[4],
