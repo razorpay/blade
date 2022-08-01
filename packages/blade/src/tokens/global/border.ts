@@ -1,23 +1,23 @@
 type BorderRadius = Readonly<{
   /** none: 0(px/rem/pt) */
-  none: number;
+  none: 0;
   /** small: 2(px/rem/pt) */
-  small: number;
+  small: 2;
   /** medium: 4(px/rem/pt) */
-  medium: number;
+  medium: 4;
   /** large: 8(px/rem/pt) */
-  large: number;
+  large: 8;
   /** max: 9999(px/rem/pt). This will round the left and right side of the box element */
-  max: number;
-  /** round: 9999(px/rem/pt). This will turn the box element into a circle */
-  round: string;
+  max: 9999;
+  /** round: 50%(pt). This will turn the box element into a circle */
+  round: '50%';
 }>;
 
 type BorderWidth = Readonly<{
   /** none: 0(px/rem/pt) */
-  none: number;
+  none: 0;
   /** thin: 1(px/rem/pt) */
-  thin: number;
+  thin: 1;
 }>;
 
 export type Border = Readonly<{

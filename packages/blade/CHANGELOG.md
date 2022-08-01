@@ -1,5 +1,90 @@
 # @razorpay/blade
 
+## 0.13.0
+
+### Minor Changes
+
+- b8cc7df: feat: add checkbox component
+- eb65c30: feat: add support for css theme variables
+- f61675e: feat: add `Link` & `BaseLink` components
+
+## 0.12.0
+
+### Minor Changes
+
+- 381e9c7: fix(Blade): add `size` prop to Text component and update tokens
+
+  This PR updates the typography tokens scale for mobile devices to create better visual hierarchy which we received as feedback from other teams as well.
+
+  It also adds a new `size` prop to `Text` component for `variant='body'`
+
+## 0.11.4
+
+### Patch Changes
+
+- 66f9b24: feat(tokens): add new tokens
+
+## 0.11.3
+
+### Patch Changes
+
+- e0a2631: feat: add Download, Edit, History, Plus, Pause, & Trash icons
+
+## 0.11.2
+
+### Patch Changes
+
+- b2b86b4: fix: SkipNav export
+
+## 0.11.1
+
+### Patch Changes
+
+- 873676f: fix: button export to components
+
+## 0.11.0
+
+### Minor Changes
+
+- 5d022f4: feat: add `Button` component
+
+### Patch Changes
+
+- cddd298: chore: update currency icons
+
+## 0.10.1
+
+### Patch Changes
+
+- 7b9baf7: fix(blade): broken gray color types in theme.d.ts file
+
+## 0.10.0
+
+### Minor Changes
+
+- a800a96: feat(blade): added makeAccessible function
+
+  makeAccessible function is a compatibility layer between web & native for accessibility props
+  More [info in RFC](https://github.com/razorpay/blade/blob/master/rfcs/2022-04-09-accessibility.md#platform-specific-implementation--5)
+
+### Patch Changes
+
+- a800a96: fix(blade): added aria hidden in icons
+
+## 0.9.0
+
+### Minor Changes
+
+- 0c3a951: feat(blade): Added SkipNav component
+
+  Learn more about [Skip Navigations in Accessibility RFC](https://github.com/razorpay/blade/blob/master/rfcs/2022-04-09-accessibility.md#skip-navigations)
+
+- 5c750bb: feat(blade): add VisuallyHidden component
+
+  This component is used specifically when you want to hide certain things visually for people who are not visually impaired but also want to make your content is accessible to visually impaired people via assistive technologies.
+
+  You can play around with it on [Storybook](https://master--61c19ee8d3d282003ac1d81c.chromatic.com/?path=/docs/components-accessibility-visuallyhidden--visually-hidden)
+
 ## 0.8.0
 
 ### Minor Changes

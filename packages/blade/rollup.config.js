@@ -1,8 +1,13 @@
+/* eslint-disable import/extensions */
+import fs from 'fs';
 import { babel as pluginBabel } from '@rollup/plugin-babel';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pluginResolve from '@rollup/plugin-node-resolve';
 import pluginCommonjs from '@rollup/plugin-commonjs';
 import pluginDeclarations from 'rollup-plugin-dts';
+import pluginAlias from '@rollup/plugin-alias';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import ts from 'typescript';
 
 const webExtensions = [
   '.web.js',
@@ -41,6 +46,16 @@ const nativeExtensions = [
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
 const exportCategories = ['components', 'tokens', 'utils'];
+const themeBundleCategories = ['tokens', 'utils'];
+
+const aliases = pluginAlias({
+  entries: [
+    { find: '~src', replacement: `${__dirname}/${inputRootDirectory}` },
+    { find: '~components', replacement: `${__dirname}/${inputRootDirectory}/components` },
+    { find: '~utils', replacement: `${__dirname}/${inputRootDirectory}/utils` },
+    { find: '~tokens', replacement: `${__dirname}/${inputRootDirectory}/tokens` },
+  ],
+});
 
 const getWebConfig = ({ exportCategory }) => ({
   input: `${inputRootDirectory}/${exportCategory}/index.ts`,
@@ -62,6 +77,7 @@ const getWebConfig = ({ exportCategory }) => ({
       envName: 'production',
       extensions: webExtensions,
     }),
+    aliases,
   ],
 });
 
@@ -85,6 +101,7 @@ const getNativeConfig = ({ exportCategory }) => ({
       envName: 'production',
       extensions: nativeExtensions,
     }),
+    aliases,
   ],
 });
 
@@ -96,12 +113,46 @@ const getDeclarationsConfig = ({ exportCategory }) => ({
       format: 'esm',
     },
   ],
-  plugins: [pluginDeclarations()],
+  plugins: [
+    pluginDeclarations({
+      // Need to resolve paths in d.ts files
+      // https://github.com/Swatinem/rollup-plugin-dts/issues/169
+      compilerOptions: ts.readConfigFile(`${__dirname}/tsconfig.json`, (p) =>
+        fs.readFileSync(p, 'utf8'),
+      ).config.compilerOptions,
+    }),
+  ],
+});
+
+const getCSSVariablesConfig = ({ exportCategory }) => ({
+  input: `src/${exportCategory}/index.ts`,
+  output: {
+    file: `${outputRootDirectory}/js-bundle-for-css/${exportCategory}Bundle.js`,
+    format: 'cjs',
+  },
+  plugins: [
+    pluginPeerDepsExternal(),
+    pluginResolve({ extensions: webExtensions }),
+    pluginCommonjs(),
+    pluginBabel({
+      exclude: 'node_modules/**',
+      babelHelpers: 'runtime',
+      envName: 'production',
+      extensions: webExtensions,
+    }),
+    aliases,
+  ],
 });
 
 const config = () => {
   const framework = process.env.FRAMEWORK;
+  const generateCSSVariables = process.env.GENERATE_CSS_VARIABLES;
 
+  if (generateCSSVariables == 'true' && framework === 'REACT') {
+    return themeBundleCategories
+      .map((exportCategory) => [getCSSVariablesConfig({ exportCategory })])
+      .flat();
+  }
   if (framework === 'REACT') {
     return exportCategories.map((exportCategory) => [getWebConfig({ exportCategory })]).flat();
   }

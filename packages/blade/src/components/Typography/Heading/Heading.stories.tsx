@@ -2,9 +2,9 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
-import useMakeFigmaURL from '../../../_helpers/storybook/useMakeFigmaURL';
 import type { HeadingProps } from './';
 import HeadingComponent from './';
+import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -30,7 +30,7 @@ const Page = (): ReactElement => {
       <Subtitle>
         The Heading Component is usually used for headings of each major section of a page.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank">
+      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
         View in Figma
       </Link>
       <br />

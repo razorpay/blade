@@ -1,4 +1,4 @@
-import getPlatformType from './getPlatformType';
+import { getPlatformType } from './getPlatformType';
 
 describe('getPlatformType', () => {
   it(`should return 'browser'`, () => {

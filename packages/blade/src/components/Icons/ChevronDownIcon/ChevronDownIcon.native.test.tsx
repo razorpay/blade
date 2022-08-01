@@ -1,5 +1,5 @@
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.native';
 import ChevronDownIcon from '.';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<ChevronDownIcon />', () => {
   it('should render ChevronDownIcon', () => {

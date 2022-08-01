@@ -1,11 +1,25 @@
+/**
+ * @type {import("eslint").Linter.Config}
+ */
 module.exports = {
-  extends: ['kentcdodds', 'kentcdodds/react', 'plugin:prettier/recommended'],
+  extends: [
+    'kentcdodds',
+    'kentcdodds/react',
+    'plugin:prettier/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react-native-a11y/all',
+  ],
   rules: {
     'no-negated-condition': 'off',
     'max-lines-per-function': 'off',
     'max-lines': 'off',
     'no-console': 'off',
     'import/no-cycle': 'error',
+    'react-native-a11y/has-accessibility-hint': 'off',
+    // we need to disable these rules because with makeAccessible function
+    // eslint is not smart enough to statically detect that we set the role
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/no-noninteractive-tabindex': 'off',
     complexity: ['off'],
     'import/order': [
       'error',
@@ -21,6 +35,29 @@ module.exports = {
     jest: true,
   },
   settings: {
+    'import/order': [
+      'error',
+      {
+        pathGroups: [
+          {
+            pattern: '~/**',
+            group: 'external',
+            position: 'after',
+          },
+        ],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'unknown',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
+      },
+    ],
     'import/resolver': {
       node: {
         extensions: [
@@ -47,6 +84,9 @@ module.exports = {
           '.android.tsx',
         ],
       },
+      typescript: {
+        project: 'packages/*/tsconfig.json',
+      },
     },
   },
   overrides: [
@@ -63,17 +103,18 @@ module.exports = {
     },
     {
       files: ['**/*.{ts,tsx}'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+      },
       extends: [
         'plugin:@typescript-eslint/recommended',
         // 'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:prettier/recommended',
       ],
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        project: './tsconfig.json',
-      },
-      plugins: ['@typescript-eslint/eslint-plugin'],
+      plugins: ['@typescript-eslint', 'jsx-a11y'],
       rules: {
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
@@ -87,9 +128,13 @@ module.exports = {
           },
         ],
         'babel/new-cap': ['error', { capIsNewExceptionPattern: '^styled.' }],
+        '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unused-vars': ['error'],
-        // '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-argument': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/explicit-function-return-type': 'error',
         '@typescript-eslint/no-unnecessary-condition': 'off',
@@ -100,7 +145,7 @@ module.exports = {
       },
     },
     {
-      files: ['**/*.stories.{ts,tsx}'],
+      files: ['**/*.stories.{ts,tsx}', '**/*.stories.internal.{ts,tsx}'],
       rules: {
         'react/display-name': ['off'],
       },

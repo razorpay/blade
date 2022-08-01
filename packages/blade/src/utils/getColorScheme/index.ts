@@ -1,1 +1,1 @@
-export { default } from './getColorScheme';
+export * from './getColorScheme';

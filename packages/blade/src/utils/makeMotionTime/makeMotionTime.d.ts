@@ -1,1 +1,1 @@
-export { default } from './makeMotionTime.web';
+export * from './makeMotionTime.web';

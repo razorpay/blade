@@ -9,9 +9,9 @@ import {
 } from '@storybook/addon-docs';
 import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
-import useMakeFigmaURL from '../../../_helpers/storybook/useMakeFigmaURL';
 import type { TitleProps } from './';
 import TitleComponent from './';
+import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -39,7 +39,7 @@ const Page = (): ReactElement => {
         goal is visual storytelling. For example, use Title as marketing content on landing pages or
         to capture attention during onboarding.
       </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank">
+      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
         View in Figma
       </Link>
       <br />

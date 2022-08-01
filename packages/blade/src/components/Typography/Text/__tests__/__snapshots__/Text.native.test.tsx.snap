@@ -17,9 +17,18 @@ exports[`<Text /> should render Text with default properties 1`] = `
         "fontStyle": "normal",
         "fontWeight": "400",
         "lineHeight": 24,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
         "textAlign": "left",
         "textDecorationLine": "none",
       },
+      Object {},
     ]
   }
   textAlign="left"
@@ -47,8 +56,19 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
         "fontStyle": "normal",
         "fontWeight": "700",
         "lineHeight": 24,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
         "textAlign": "left",
         "textDecorationLine": "none",
+      },
+      Object {
+        "numberOfLines": 3,
       },
     ]
   }
@@ -77,8 +97,60 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
         "fontStyle": "normal",
         "fontWeight": "700",
         "lineHeight": 24,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
         "textAlign": "left",
         "textDecorationLine": "none",
+      },
+      Object {
+        "numberOfLines": 3,
+      },
+    ]
+  }
+  textAlign="left"
+  textDecorationLine="none"
+>
+  Displaying some text
+</Text>
+`;
+
+exports[`<Text /> should render Text with variant "body" and size "small" 1`] = `
+<Text
+  color="hsla(217, 56%, 17%, 1)"
+  fontFamily="Lato"
+  fontSize="12px"
+  fontStyle="normal"
+  fontWeight={700}
+  lineHeight="16px"
+  numberOfLines={3}
+  style={
+    Array [
+      Object {
+        "color": "hsla(217, 56%, 17%, 1)",
+        "fontFamily": "Lato",
+        "fontSize": 12,
+        "fontStyle": "normal",
+        "fontWeight": "700",
+        "lineHeight": 16,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
+        "textAlign": "left",
+        "textDecorationLine": "none",
+      },
+      Object {
+        "numberOfLines": 3,
       },
     ]
   }
@@ -106,9 +178,18 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
         "fontStyle": "normal",
         "fontWeight": "700",
         "lineHeight": 24,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
         "textAlign": "left",
         "textDecorationLine": "none",
       },
+      Object {},
     ]
   }
   textAlign="left"

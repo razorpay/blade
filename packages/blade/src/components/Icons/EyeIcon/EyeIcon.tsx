@@ -1,9 +1,8 @@
-import type { ReactElement } from 'react';
 import { Svg, Path } from '../_Svg';
-import type { IconProps } from '..';
+import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const EyeIcon = ({ size, color }: IconProps): ReactElement => {
+const EyeIcon: IconComponent = ({ size, color }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (

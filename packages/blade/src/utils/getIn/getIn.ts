@@ -1,1 +1,1 @@
-export { default } from 'lodash/get';
+export { default as getIn } from 'lodash/get';

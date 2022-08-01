@@ -1,7 +1,6 @@
 import { Easing } from 'react-native-reanimated';
-
-import type { Theme } from '../../';
 import paymentLightThemeWeb from './paymentLightTheme.web';
+import type { Theme } from '~components/BladeProvider';
 
 const paymentLightTheme: Theme = {
   ...paymentLightThemeWeb,

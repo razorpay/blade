@@ -7,7 +7,7 @@ exports[`<BaseText /> should render regular text 1`] = `
   fontSize="11px"
   fontStyle="normal"
   fontWeight={400}
-  lineHeight="16px"
+  lineHeight="18px"
   style={
     Array [
       Object {
@@ -16,7 +16,15 @@ exports[`<BaseText /> should render regular text 1`] = `
         "fontSize": 11,
         "fontStyle": "normal",
         "fontWeight": "400",
-        "lineHeight": 16,
+        "lineHeight": 18,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
         "textAlign": "left",
         "textDecorationLine": "none",
       },
@@ -36,7 +44,7 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
   fontSize="11px"
   fontStyle="italic"
   fontWeight={400}
-  lineHeight="16px"
+  lineHeight="18px"
   style={
     Array [
       Object {
@@ -45,7 +53,15 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
         "fontSize": 11,
         "fontStyle": "italic",
         "fontWeight": "400",
-        "lineHeight": 16,
+        "lineHeight": 18,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
         "textAlign": "left",
         "textDecorationLine": "line-through",
       },
@@ -75,6 +91,14 @@ exports[`<BaseText /> should render text with default properties 1`] = `
         "fontStyle": "normal",
         "fontWeight": "400",
         "lineHeight": 24,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 0,
+        "paddingBottom": 0,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
         "textAlign": "left",
         "textDecorationLine": "none",
       },

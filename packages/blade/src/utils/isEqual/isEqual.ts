@@ -1,1 +1,1 @@
-export { default } from 'lodash/isEqual';
+export { default as isEqual } from 'lodash/isEqual';

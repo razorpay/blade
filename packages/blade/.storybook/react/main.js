@@ -1,3 +1,5 @@
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
 module.exports = {
   refs: {
     '@storybook/design-system': { disable: true },
@@ -7,6 +9,8 @@ module.exports = {
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/**/*.stories.mdx',
     '../../src/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/**/*.stories.internal.mdx',
+    '../../src/**/*.stories.internal.@(ts|tsx|js|jsx)',
   ],
   addons: [
     '@storybook/addon-links',
@@ -33,7 +37,25 @@ module.exports = {
       '.json',
     ];
 
+    config.resolve.plugins = [
+      ...(config.resolve.plugins || []),
+      new TsconfigPathsPlugin({
+        extensions: config.resolve.extensions,
+      }),
+    ];
+
     // Return the altered config
-    return config;
+    return {
+      ...config,
+      // While developing components storybook throws error
+      // if there are eslint errors which is annoying
+      // thus disabled it.
+      plugins: config.plugins.filter((plugin) => {
+        if (plugin.constructor.name === 'ESLintWebpackPlugin') {
+          return false;
+        }
+        return true;
+      }),
+    };
   },
 };
