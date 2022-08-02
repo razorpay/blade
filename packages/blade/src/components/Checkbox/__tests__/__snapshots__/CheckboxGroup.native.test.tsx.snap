@@ -33,12 +33,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
     }
   >
     <Text
-      color="hsla(216, 27%, 36%, 1)"
-      fontFamily="Lato"
-      fontSize="12px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="16px"
+      color="surface.text.subtle.lowContrast"
+      fontFamily="text"
+      fontSize={75}
+      fontWeight="bold"
+      lineHeight="s"
       style={
         Array [
           Object {
@@ -61,8 +60,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           },
         ]
       }
-      textAlign="left"
-      textDecorationLine="none"
     >
       Select fruits
       <View
@@ -93,12 +90,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         }
       >
         <Text
-          color="hsla(217, 56%, 17%, 1)"
-          fontFamily="Lato"
-          fontSize="15px"
+          color="surface.text.normal.lowContrast"
+          fontFamily="text"
+          fontSize={100}
           fontStyle="normal"
-          fontWeight={400}
-          lineHeight="24px"
+          fontWeight="regular"
+          lineHeight="l"
           style={
             Array [
               Object {
@@ -122,8 +119,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               Object {},
             ]
           }
-          textAlign="left"
-          textDecorationLine="none"
         >
           , 
         </Text>
@@ -221,12 +216,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
         >
           <Text
-            color="hsla(216, 27%, 36%, 1)"
-            fontFamily="Lato"
-            fontSize="15px"
-            fontStyle="normal"
-            fontWeight={400}
-            lineHeight="24px"
+            color="surface.text.subtle.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontWeight="regular"
+            lineHeight="l"
             style={
               Array [
                 Object {
@@ -249,8 +243,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 },
               ]
             }
-            textAlign="left"
-            textDecorationLine="none"
           >
             Apple
           </Text>
@@ -322,12 +314,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
         >
           <Text
-            color="hsla(216, 27%, 36%, 1)"
-            fontFamily="Lato"
-            fontSize="15px"
-            fontStyle="normal"
-            fontWeight={400}
-            lineHeight="24px"
+            color="surface.text.subtle.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontWeight="regular"
+            lineHeight="l"
             style={
               Array [
                 Object {
@@ -350,8 +341,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 },
               ]
             }
-            textAlign="left"
-            textDecorationLine="none"
           >
             Mango
           </Text>
@@ -423,12 +412,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
         >
           <Text
-            color="hsla(216, 27%, 36%, 1)"
-            fontFamily="Lato"
-            fontSize="15px"
-            fontStyle="normal"
-            fontWeight={400}
-            lineHeight="24px"
+            color="surface.text.subtle.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontWeight="regular"
+            lineHeight="l"
             style={
               Array [
                 Object {
@@ -451,8 +439,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 },
               ]
             }
-            textAlign="left"
-            textDecorationLine="none"
           >
             Orange
           </Text>
@@ -496,12 +482,11 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
     }
   >
     <Text
-      color="hsla(216, 27%, 36%, 1)"
-      fontFamily="Lato"
-      fontSize="12px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="16px"
+      color="surface.text.subtle.lowContrast"
+      fontFamily="text"
+      fontSize={75}
+      fontWeight="bold"
+      lineHeight="s"
       style={
         Array [
           Object {
@@ -524,8 +509,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           },
         ]
       }
-      textAlign="left"
-      textDecorationLine="none"
     >
       Select fruits
       <View
@@ -556,12 +539,12 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         }
       >
         <Text
-          color="hsla(217, 56%, 17%, 1)"
-          fontFamily="Lato"
-          fontSize="15px"
+          color="surface.text.normal.lowContrast"
+          fontFamily="text"
+          fontSize={100}
           fontStyle="normal"
-          fontWeight={400}
-          lineHeight="24px"
+          fontWeight="regular"
+          lineHeight="l"
           style={
             Array [
               Object {
@@ -585,8 +568,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               Object {},
             ]
           }
-          textAlign="left"
-          textDecorationLine="none"
         >
           , Select one
         </Text>
@@ -684,12 +665,11 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
         >
           <Text
-            color="hsla(216, 27%, 36%, 1)"
-            fontFamily="Lato"
-            fontSize="15px"
-            fontStyle="normal"
-            fontWeight={400}
-            lineHeight="24px"
+            color="surface.text.subtle.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontWeight="regular"
+            lineHeight="l"
             style={
               Array [
                 Object {
@@ -712,8 +692,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 },
               ]
             }
-            textAlign="left"
-            textDecorationLine="none"
           >
             Apple
           </Text>
@@ -785,12 +763,11 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
         >
           <Text
-            color="hsla(216, 27%, 36%, 1)"
-            fontFamily="Lato"
-            fontSize="15px"
-            fontStyle="normal"
-            fontWeight={400}
-            lineHeight="24px"
+            color="surface.text.subtle.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontWeight="regular"
+            lineHeight="l"
             style={
               Array [
                 Object {
@@ -813,8 +790,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 },
               ]
             }
-            textAlign="left"
-            textDecorationLine="none"
           >
             Mango
           </Text>
@@ -886,12 +861,11 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
         >
           <Text
-            color="hsla(216, 27%, 36%, 1)"
-            fontFamily="Lato"
-            fontSize="15px"
-            fontStyle="normal"
-            fontWeight={400}
-            lineHeight="24px"
+            color="surface.text.subtle.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontWeight="regular"
+            lineHeight="l"
             style={
               Array [
                 Object {
@@ -914,8 +888,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 },
               ]
             }
-            textAlign="left"
-            textDecorationLine="none"
           >
             Orange
           </Text>
@@ -932,12 +904,11 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       }
     >
       <Text
-        color="hsla(216, 16%, 60%, 1)"
-        fontFamily="Lato"
-        fontSize="11px"
+        color="surface.text.muted.lowContrast"
+        fontFamily="text"
+        fontSize={50}
         fontStyle="italic"
-        fontWeight={400}
-        lineHeight="16px"
+        lineHeight="s"
         style={
           Array [
             Object {
@@ -960,8 +931,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             },
           ]
         }
-        textAlign="left"
-        textDecorationLine="none"
       >
         Select one
       </Text>

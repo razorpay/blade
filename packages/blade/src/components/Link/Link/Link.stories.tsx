@@ -14,7 +14,7 @@ import type { LinkProps } from './Link';
 import LinkComponent from './Link';
 import iconMap from '~components/Icons/iconMap';
 import { InfoIcon } from '~components/Icons';
-import BaseText from '~components/Typography/BaseText';
+import { BaseText } from '~components/Typography/BaseText';
 import Box from '~components/Box';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import { Text } from '~components/Typography';

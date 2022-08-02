@@ -4,7 +4,7 @@
 import React from 'react';
 import { CheckIcon, InfoIcon } from '..';
 import { FormHintTextWrapper } from './FormHintTextWrapper';
-import BaseText from '~components/Typography/BaseText';
+import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 

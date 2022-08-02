@@ -3,7 +3,7 @@ import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@st
 import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import type { TextProps } from './';
-import TextComponent from './';
+import { Text as TextComponent } from './';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): ReactElement => {

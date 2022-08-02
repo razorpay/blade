@@ -118,11 +118,9 @@ exports[`<Button /> should render button with default properties 1`] = `
     >
       <div
         class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -249,11 +247,9 @@ exports[`<Button /> should render button with full width 1`] = `
     >
       <div
         class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -394,11 +390,9 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       </svg>
       <div
         class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -525,11 +519,9 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     >
       <div
         class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -671,11 +663,9 @@ exports[`<Button /> should render disabled button 1`] = `
     >
       <div
         class="c2 c3"
-        color="hsla(216, 16%, 60%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.disabled"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -803,11 +793,9 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
     >
       <div
         class="c2 c3"
-        color="hsla(218, 19%, 81%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.secondary.disabled"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -935,11 +923,9 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
     >
       <div
         class="c2 c3"
-        color="hsla(218, 19%, 81%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.tertiary.disabled"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1066,11 +1052,9 @@ exports[`<Button /> should render large size button 1`] = `
     >
       <div
         class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="1rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="200"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1197,11 +1181,9 @@ exports[`<Button /> should render medium size button 1`] = `
     >
       <div
         class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1328,11 +1310,9 @@ exports[`<Button /> should render secondary variant button 1`] = `
     >
       <div
         class="c2 c3"
-        color="hsla(213, 89%, 56%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.secondary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1459,11 +1439,9 @@ exports[`<Button /> should render small size button 1`] = `
     >
       <div
         class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.75rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="75"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1590,11 +1568,9 @@ exports[`<Button /> should render tertiary variant button 1`] = `
     >
       <div
         class="c2 c3"
-        color="hsla(216, 33%, 29%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.tertiary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1721,11 +1697,9 @@ exports[`<Button /> should render xsmall size button 1`] = `
     >
       <div
         class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.75rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="75"
+        font-weight="bold"
       >
         PAY NOW
       </div>
