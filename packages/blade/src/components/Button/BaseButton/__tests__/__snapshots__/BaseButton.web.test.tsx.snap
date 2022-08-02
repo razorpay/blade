@@ -2,24 +2,6 @@
 
 exports[`<BaseButton /> should render button with default properties 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -66,8 +48,21 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -89,22 +84,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 }
 
 .c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -114,7 +94,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -131,24 +112,6 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 
 exports[`<BaseButton /> should render button with full width 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -195,8 +158,21 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -218,22 +194,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 }
 
 .c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -243,7 +204,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -260,24 +222,6 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 
 exports[`<BaseButton /> should render button with icon with default iconPosition 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -324,8 +268,21 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -346,23 +303,24 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   align-self: center;
 }
 
-.c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 8px;
 }
 
-.c3 {
-  padding-left: 8px;
-  padding-right: 0px;
+.c2 {
+  opacity: 1;
 }
 
 <div>
@@ -372,22 +330,28 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
-      <svg
-        aria-hidden="true"
-        fill="none"
-        height="20px"
-        viewBox="0 0 24 24"
-        width="20px"
+      <div
+        class="c3"
+        display="flex"
       >
-        <path
-          clip-rule="evenodd"
-          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-          fill="hsla(0, 0%, 100%, 1)"
-          fill-rule="evenodd"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="20px"
+          viewBox="0 0 24 24"
+          width="20px"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            fill="hsla(0, 0%, 100%, 1)"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
       <div
         class="c2 c3"
         color="action.text.primary.default"
@@ -403,24 +367,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 
 exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -467,8 +413,21 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -489,23 +448,24 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   align-self: center;
 }
 
-.c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 8px;
 }
 
-.c3 {
-  padding-left: 8px;
-  padding-right: 0px;
+.c2 {
+  opacity: 1;
 }
 
 <div>
@@ -515,22 +475,28 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
-      <svg
-        aria-hidden="true"
-        fill="none"
-        height="20px"
-        viewBox="0 0 24 24"
-        width="20px"
+      <div
+        class="c3"
+        display="flex"
       >
-        <path
-          clip-rule="evenodd"
-          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-          fill="hsla(0, 0%, 100%, 1)"
-          fill-rule="evenodd"
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="20px"
+          viewBox="0 0 24 24"
+          width="20px"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            fill="hsla(0, 0%, 100%, 1)"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
       <div
         class="c2 c3"
         color="action.text.primary.default"
@@ -546,24 +512,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 
 exports[`<BaseButton /> should render button with icon with right iconPosition 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -610,29 +558,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -646,49 +572,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 8px;
-}
-
-<div>
-  <button
-    class="c0"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-        color="action.text.primary.default"
-        font-size="100"
-        font-weight="bold"
-      >
-        Pay Now
-      </div>
-      <svg
-        aria-hidden="true"
-        fill="none"
-        height="20px"
-        viewBox="0 0 24 24"
-        width="20px"
-      >
-        <path
-          clip-rule="evenodd"
-          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-          fill="hsla(0, 0%, 100%, 1)"
-          fill-rule="evenodd"
-        />
-      </svg>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render button with icon without text 1`] = `
-.c0 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -707,6 +591,59 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
+}
+
+.c4 {
+  padding-left: 8px;
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c2 c3"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
+      >
+        Pay Now
+      </div>
+      <div
+        class="c4"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="20px"
+          viewBox="0 0 24 24"
+          width="20px"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            fill="hsla(0, 0%, 100%, 1)"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render button with icon without text 1`] = `
+.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -754,7 +691,6 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 }
 
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -775,43 +711,11 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   align-self: center;
 }
 
-<div>
-  <button
-    class="c0"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1"
-    >
-      <svg
-        aria-hidden="true"
-        fill="none"
-        height="20px"
-        viewBox="0 0 24 24"
-        width="20px"
-      >
-        <path
-          clip-rule="evenodd"
-          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-          fill="hsla(0, 0%, 100%, 1)"
-          fill-rule="evenodd"
-        />
-      </svg>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render disabled button 1`] = `
-.c0 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -820,9 +724,49 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+  padding-right: 8px;
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c3"
+        display="flex"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="20px"
+          viewBox="0 0 24 24"
+          width="20px"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            fill="hsla(0, 0%, 100%, 1)"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled button 1`] = `
+.c0 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -869,8 +813,21 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(216,16%,60%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -892,22 +849,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 }
 
 .c2 {
-  color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -918,7 +860,8 @@ exports[`<BaseButton /> should render disabled button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -935,24 +878,6 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 
 exports[`<BaseButton /> should render disabled information intent high contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -999,8 +924,21 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(187,68%,52%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1022,22 +960,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
 }
 
 .c2 {
-  color: hsla(187,68%,52%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -1048,7 +971,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -1065,24 +989,6 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
 
 exports[`<BaseButton /> should render disabled information intent low contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1129,8 +1035,21 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(193,100%,35%,0.32);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1152,22 +1071,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
 }
 
 .c2 {
-  color: hsla(193,100%,35%,0.32);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -1178,7 +1082,8 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -1259,8 +1164,21 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(8,99%,65%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1282,22 +1200,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
 }
 
 .c2 {
-  color: hsla(8,99%,65%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -1308,7 +1211,8 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -1325,24 +1229,6 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
 
 exports[`<BaseButton /> should render disabled negative intent low contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1389,8 +1275,21 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(9,91%,56%,0.32);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1412,22 +1311,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
 }
 
 .c2 {
-  color: hsla(9,91%,56%,0.32);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -1438,7 +1322,8 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -1455,24 +1340,6 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
 
 exports[`<BaseButton /> should render disabled neutral intent high contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1519,8 +1386,21 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(216,15%,54%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1542,22 +1422,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
 }
 
 .c2 {
-  color: hsla(216,15%,54%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -1568,7 +1433,8 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -1585,24 +1451,6 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
 
 exports[`<BaseButton /> should render disabled neutral intent low contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1649,8 +1497,21 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(216,44%,23%,0.32);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1672,22 +1533,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
 }
 
 .c2 {
-  color: hsla(216,44%,23%,0.32);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -1698,7 +1544,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -1715,24 +1562,6 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
 
 exports[`<BaseButton /> should render disabled notice intent high contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1779,8 +1608,21 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(35,84%,54%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1802,22 +1644,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
 }
 
 .c2 {
-  color: hsla(35,84%,54%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -1828,7 +1655,8 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -1845,24 +1673,6 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
 
 exports[`<BaseButton /> should render disabled notice intent low contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1909,8 +1719,21 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(36,100%,44%,0.32);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1932,22 +1755,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
 }
 
 .c2 {
-  color: hsla(36,100%,44%,0.32);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -1958,7 +1766,8 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -1975,24 +1784,6 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
 
 exports[`<BaseButton /> should render disabled positive intent high contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -2039,8 +1830,21 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(149,99%,35%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2062,22 +1866,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
 }
 
 .c2 {
-  color: hsla(149,99%,35%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -2088,7 +1877,8 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -2105,24 +1895,6 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
 
 exports[`<BaseButton /> should render disabled positive intent low contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -2169,8 +1941,21 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(155,100%,31%,0.32);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2192,22 +1977,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
 }
 
 .c2 {
-  color: hsla(155,100%,31%,0.32);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -2218,7 +1988,8 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -2235,24 +2006,6 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
 
 exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -2299,8 +2052,21 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(218,19%,81%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2322,22 +2088,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
 }
 
 .c2 {
-  color: hsla(218,19%,81%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -2348,7 +2099,8 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -2365,24 +2117,6 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
 
 exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -2429,8 +2163,21 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(218,19%,81%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2452,22 +2199,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
 }
 
 .c2 {
-  color: hsla(218,19%,81%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -2478,7 +2210,8 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -2559,8 +2292,21 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(180,100%,97%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2582,22 +2328,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
 }
 
 .c2 {
-  color: hsla(180,100%,97%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -2607,7 +2338,8 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -2624,24 +2356,6 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
 
 exports[`<BaseButton /> should render information intent low contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -2688,8 +2402,21 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(195,100%,31%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2711,22 +2438,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
 }
 
 .c2 {
-  color: hsla(195,100%,31%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -2736,7 +2448,8 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -2753,24 +2466,6 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
 
 exports[`<BaseButton /> should render large size button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 48px;
   width: auto;
   cursor: pointer;
@@ -2817,8 +2512,21 @@ exports[`<BaseButton /> should render large size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2840,22 +2548,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
 }
 
 .c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -2865,7 +2558,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -2882,24 +2576,6 @@ exports[`<BaseButton /> should render large size button 1`] = `
 
 exports[`<BaseButton /> should render medium size button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -2946,8 +2622,21 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2969,22 +2658,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 }
 
 .c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -2994,7 +2668,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -3011,24 +2686,6 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 
 exports[`<BaseButton /> should render negative intent high contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3075,8 +2732,21 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(0,100%,97%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3098,22 +2768,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
 }
 
 .c2 {
-  color: hsla(0,100%,97%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -3123,7 +2778,8 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -3140,24 +2796,6 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
 
 exports[`<BaseButton /> should render negative intent low contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3204,8 +2842,21 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(8,73%,47%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3227,22 +2878,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
 }
 
 .c2 {
-  color: hsla(8,73%,47%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -3252,7 +2888,8 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -3269,24 +2906,6 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
 
 exports[`<BaseButton /> should render neutral intent high contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3333,8 +2952,21 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(220,27%,98%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3356,22 +2988,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
 }
 
 .c2 {
-  color: hsla(220,27%,98%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -3381,7 +2998,8 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -3398,24 +3016,6 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
 
 exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3462,8 +3062,21 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3485,22 +3098,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 }
 
 .c2 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -3510,7 +3108,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -3527,24 +3126,6 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 
 exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3591,8 +3172,21 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(32,100%,94%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3614,22 +3208,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 }
 
 .c2 {
-  color: hsla(32,100%,94%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -3639,7 +3218,8 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -3656,24 +3236,6 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 
 exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3720,8 +3282,21 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(38,97%,38%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3743,22 +3318,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 }
 
 .c2 {
-  color: hsla(38,97%,38%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -3768,7 +3328,8 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -3785,24 +3346,6 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 
 exports[`<BaseButton /> should render positive intent high contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3849,8 +3392,21 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(107,100%,96%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3872,22 +3428,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
 }
 
 .c2 {
-  color: hsla(107,100%,96%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -3897,7 +3438,8 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -3914,24 +3456,6 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
 
 exports[`<BaseButton /> should render positive intent low contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3978,8 +3502,21 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4001,22 +3538,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
 }
 
 .c2 {
-  color: hsla(160,100%,26%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -4026,7 +3548,8 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -4043,24 +3566,6 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
 
 exports[`<BaseButton /> should render secondary variant button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -4107,8 +3612,21 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(213,89%,56%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4130,22 +3648,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
 }
 
 .c2 {
-  color: hsla(213,89%,56%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -4155,7 +3658,8 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -4172,24 +3676,6 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
 
 exports[`<BaseButton /> should render small size button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 32px;
   width: auto;
   cursor: pointer;
@@ -4236,8 +3722,21 @@ exports[`<BaseButton /> should render small size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4259,22 +3758,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
 }
 
 .c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -4284,7 +3768,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -4301,24 +3786,6 @@ exports[`<BaseButton /> should render small size button 1`] = `
 
 exports[`<BaseButton /> should render tertiary variant button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -4365,8 +3832,21 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(216,33%,29%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4388,22 +3868,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
 }
 
 .c2 {
-  color: hsla(216,33%,29%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -4413,7 +3878,8 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
@@ -4430,24 +3896,6 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
 
 exports[`<BaseButton /> should render xsmall size button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 28px;
   width: auto;
   cursor: pointer;
@@ -4494,8 +3942,21 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c3 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 .c1 {
-  opacity: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4517,22 +3978,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
 }
 
 .c2 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+  opacity: 1;
 }
 
 <div>
@@ -4542,7 +3988,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
         class="c2 c3"
