@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.13.1
+
+### Patch Changes
+
+- 985f82a: refactor: use Box component on BaseButton
+
 ## 0.13.0
 
 ### Minor Changes
