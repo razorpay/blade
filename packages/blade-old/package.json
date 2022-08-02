@@ -68,7 +68,7 @@
     "@rollup/plugin-node-resolve": "7.1.1",
     "@storybook/addon-actions": "5.3.9",
     "@storybook/addon-docs": "5.3.9",
-    "@storybook/addon-knobs": "5.3.9",
+    "@storybook/addon-knobs": "6.4.0",
     "@storybook/addon-links": "5.3.8",
     "@storybook/addon-ondevice-knobs": "5.3.8",
     "@storybook/addon-ondevice-notes": "5.3.8",
