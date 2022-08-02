@@ -43,17 +43,12 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -69,7 +64,12 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -109,10 +109,6 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -168,17 +164,12 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -194,7 +185,12 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -234,10 +230,6 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -293,17 +285,12 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -319,7 +306,12 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -333,57 +325,74 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       ]
     }
   >
-    <RNSVGSvgView
-      accessibilityElementsHidden={true}
-      align="xMidYMid"
-      bbHeight="20px"
-      bbWidth="20px"
-      fill="none"
-      focusable={false}
-      height="20px"
-      importantForAccessibility="no-hide-descendants"
-      meetOrSlice={0}
-      minX={0}
-      minY={0}
+    <View
+      alignItems="center"
+      display="flex"
+      justifyContent="center"
+      paddingRight="spacing.2"
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
-            "borderWidth": 0,
-          },
-          Object {
-            "flex": 0,
-            "height": 20,
-            "width": 20,
+            "alignItems": "center",
+            "display": "flex",
+            "justifyContent": "center",
+            "paddingRight": 8,
           },
         ]
       }
-      vbHeight={24}
-      vbWidth={24}
-      width="20px"
     >
-      <RNSVGGroup
-        fill={null}
-        propList={
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        align="xMidYMid"
+        bbHeight="20px"
+        bbWidth="20px"
+        fill="none"
+        focusable={false}
+        height="20px"
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
           Array [
-            "fill",
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": 20,
+              "width": 20,
+            },
           ]
         }
+        vbHeight={24}
+        vbWidth={24}
+        width="20px"
       >
-        <RNSVGPath
-          clipRule={0}
-          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-          fill={4294967295}
-          fillRule={0}
+        <RNSVGGroup
+          fill={null}
           propList={
             Array [
               "fill",
-              "fillRule",
             ]
           }
-        />
-      </RNSVGGroup>
-    </RNSVGSvgView>
+        >
+          <RNSVGPath
+            clipRule={0}
+            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            fill={4294967295}
+            fillRule={0}
+            propList={
+              Array [
+                "fill",
+                "fillRule",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <Text
       color="hsla(0, 0%, 100%, 1)"
       fontFamily="Lato"
@@ -410,10 +419,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 8,
-            "paddingRight": 0,
           },
         ]
       }
@@ -469,17 +474,12 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -495,7 +495,12 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -509,57 +514,74 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       ]
     }
   >
-    <RNSVGSvgView
-      accessibilityElementsHidden={true}
-      align="xMidYMid"
-      bbHeight="20px"
-      bbWidth="20px"
-      fill="none"
-      focusable={false}
-      height="20px"
-      importantForAccessibility="no-hide-descendants"
-      meetOrSlice={0}
-      minX={0}
-      minY={0}
+    <View
+      alignItems="center"
+      display="flex"
+      justifyContent="center"
+      paddingRight="spacing.2"
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
-            "borderWidth": 0,
-          },
-          Object {
-            "flex": 0,
-            "height": 20,
-            "width": 20,
+            "alignItems": "center",
+            "display": "flex",
+            "justifyContent": "center",
+            "paddingRight": 8,
           },
         ]
       }
-      vbHeight={24}
-      vbWidth={24}
-      width="20px"
     >
-      <RNSVGGroup
-        fill={null}
-        propList={
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        align="xMidYMid"
+        bbHeight="20px"
+        bbWidth="20px"
+        fill="none"
+        focusable={false}
+        height="20px"
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
           Array [
-            "fill",
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": 20,
+              "width": 20,
+            },
           ]
         }
+        vbHeight={24}
+        vbWidth={24}
+        width="20px"
       >
-        <RNSVGPath
-          clipRule={0}
-          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-          fill={4294967295}
-          fillRule={0}
+        <RNSVGGroup
+          fill={null}
           propList={
             Array [
               "fill",
-              "fillRule",
             ]
           }
-        />
-      </RNSVGGroup>
-    </RNSVGSvgView>
+        >
+          <RNSVGPath
+            clipRule={0}
+            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            fill={4294967295}
+            fillRule={0}
+            propList={
+              Array [
+                "fill",
+                "fillRule",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
     <Text
       color="hsla(0, 0%, 100%, 1)"
       fontFamily="Lato"
@@ -586,10 +608,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 8,
-            "paddingRight": 0,
           },
         ]
       }
@@ -645,17 +663,12 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -671,7 +684,12 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -712,10 +730,6 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             "textAlign": "center",
             "textDecorationLine": "none",
           },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 8,
-          },
         ]
       }
       textAlign="center"
@@ -723,57 +737,68 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     >
       Pay Now
     </Text>
-    <RNSVGSvgView
-      accessibilityElementsHidden={true}
-      align="xMidYMid"
-      bbHeight="20px"
-      bbWidth="20px"
-      fill="none"
-      focusable={false}
-      height="20px"
-      importantForAccessibility="no-hide-descendants"
-      meetOrSlice={0}
-      minX={0}
-      minY={0}
+    <View
+      paddingLeft="spacing.2"
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
-            "borderWidth": 0,
-          },
-          Object {
-            "flex": 0,
-            "height": 20,
-            "width": 20,
+            "paddingLeft": 8,
           },
         ]
       }
-      vbHeight={24}
-      vbWidth={24}
-      width="20px"
     >
-      <RNSVGGroup
-        fill={null}
-        propList={
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        align="xMidYMid"
+        bbHeight="20px"
+        bbWidth="20px"
+        fill="none"
+        focusable={false}
+        height="20px"
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
           Array [
-            "fill",
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": 20,
+              "width": 20,
+            },
           ]
         }
+        vbHeight={24}
+        vbWidth={24}
+        width="20px"
       >
-        <RNSVGPath
-          clipRule={0}
-          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-          fill={4294967295}
-          fillRule={0}
+        <RNSVGGroup
+          fill={null}
           propList={
             Array [
               "fill",
-              "fillRule",
             ]
           }
-        />
-      </RNSVGGroup>
-    </RNSVGSvgView>
+        >
+          <RNSVGPath
+            clipRule={0}
+            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            fill={4294967295}
+            fillRule={0}
+            propList={
+              Array [
+                "fill",
+                "fillRule",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
   </View>
 </View>
 `;
@@ -821,17 +846,12 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -847,7 +867,12 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -861,57 +886,74 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       ]
     }
   >
-    <RNSVGSvgView
-      accessibilityElementsHidden={true}
-      align="xMidYMid"
-      bbHeight="20px"
-      bbWidth="20px"
-      fill="none"
-      focusable={false}
-      height="20px"
-      importantForAccessibility="no-hide-descendants"
-      meetOrSlice={0}
-      minX={0}
-      minY={0}
+    <View
+      alignItems="center"
+      display="flex"
+      justifyContent="center"
+      paddingRight="spacing.2"
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
-            "borderWidth": 0,
-          },
-          Object {
-            "flex": 0,
-            "height": 20,
-            "width": 20,
+            "alignItems": "center",
+            "display": "flex",
+            "justifyContent": "center",
+            "paddingRight": 8,
           },
         ]
       }
-      vbHeight={24}
-      vbWidth={24}
-      width="20px"
     >
-      <RNSVGGroup
-        fill={null}
-        propList={
+      <RNSVGSvgView
+        accessibilityElementsHidden={true}
+        align="xMidYMid"
+        bbHeight="20px"
+        bbWidth="20px"
+        fill="none"
+        focusable={false}
+        height="20px"
+        importantForAccessibility="no-hide-descendants"
+        meetOrSlice={0}
+        minX={0}
+        minY={0}
+        style={
           Array [
-            "fill",
+            Object {
+              "backgroundColor": "transparent",
+              "borderWidth": 0,
+            },
+            Object {
+              "flex": 0,
+              "height": 20,
+              "width": 20,
+            },
           ]
         }
+        vbHeight={24}
+        vbWidth={24}
+        width="20px"
       >
-        <RNSVGPath
-          clipRule={0}
-          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-          fill={4294967295}
-          fillRule={0}
+        <RNSVGGroup
+          fill={null}
           propList={
             Array [
               "fill",
-              "fillRule",
             ]
           }
-        />
-      </RNSVGGroup>
-    </RNSVGSvgView>
+        >
+          <RNSVGPath
+            clipRule={0}
+            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            fill={4294967295}
+            fillRule={0}
+            propList={
+              Array [
+                "fill",
+                "fillRule",
+              ]
+            }
+          />
+        </RNSVGGroup>
+      </RNSVGSvgView>
+    </View>
   </View>
 </View>
 `;
@@ -959,17 +1001,12 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(216, 19%, 89%, 1)",
         "borderColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -985,7 +1022,12 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -1025,10 +1067,6 @@ exports[`<BaseButton /> should render disabled button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -1084,17 +1122,12 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(193, 100%, 35%, 1)",
         "borderColor": "hsla(187, 68%, 52%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -1110,7 +1143,12 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -1150,10 +1188,6 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -1209,17 +1243,12 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
         "borderColor": "hsla(193, 100%, 35%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -1235,7 +1264,12 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -1275,10 +1309,6 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -1334,17 +1364,12 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(8, 73%, 47%, 1)",
         "borderColor": "hsla(8, 99%, 65%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -1360,7 +1385,12 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -1400,10 +1430,6 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -1459,17 +1485,12 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
         "borderColor": "hsla(9, 91%, 56%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -1485,7 +1506,12 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -1525,10 +1551,6 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -1584,17 +1606,12 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(216, 33%, 29%, 1)",
         "borderColor": "hsla(216, 15%, 54%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -1610,7 +1627,12 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -1650,10 +1672,6 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -1709,17 +1727,12 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
         "borderColor": "hsla(216, 44%, 23%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -1735,7 +1748,12 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -1775,10 +1793,6 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -1834,17 +1848,12 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(38, 97%, 38%, 1)",
         "borderColor": "hsla(35, 84%, 54%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -1860,7 +1869,12 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -1900,10 +1914,6 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -1959,17 +1969,12 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
         "borderColor": "hsla(36, 100%, 44%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -1985,7 +1990,12 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -2025,10 +2035,6 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -2084,17 +2090,12 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(160, 100%, 26%, 1)",
         "borderColor": "hsla(149, 99%, 35%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -2110,7 +2111,12 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -2150,10 +2156,6 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -2209,17 +2211,12 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
         "borderColor": "hsla(155, 100%, 31%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -2235,7 +2232,12 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -2275,10 +2277,6 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -2334,17 +2332,12 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0)",
         "borderColor": "hsla(218, 19%, 81%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -2360,7 +2353,12 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -2400,10 +2398,6 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -2459,17 +2453,12 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "not-allowed",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -2485,7 +2474,12 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -2525,10 +2519,6 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -2584,17 +2574,12 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(193, 100%, 35%, 1)",
         "borderColor": "hsla(180, 100%, 97%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -2610,7 +2595,12 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -2650,10 +2640,6 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -2709,17 +2695,12 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
         "borderColor": "hsla(193, 100%, 35%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -2735,7 +2716,12 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -2775,10 +2761,6 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -2834,17 +2816,12 @@ exports[`<BaseButton /> should render large size button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 48,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -2860,7 +2837,12 @@ exports[`<BaseButton /> should render large size button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -2900,10 +2882,6 @@ exports[`<BaseButton /> should render large size button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -2959,17 +2937,12 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -2985,7 +2958,12 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -3025,10 +3003,6 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -3084,17 +3058,12 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(8, 73%, 47%, 1)",
         "borderColor": "hsla(0, 100%, 97%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -3110,7 +3079,12 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -3150,10 +3124,6 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -3209,17 +3179,12 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
         "borderColor": "hsla(9, 91%, 56%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -3235,7 +3200,12 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -3275,10 +3245,6 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -3334,17 +3300,12 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(216, 33%, 29%, 1)",
         "borderColor": "hsla(214, 18%, 69%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -3360,7 +3321,12 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -3400,10 +3366,6 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -3459,17 +3421,12 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
         "borderColor": "hsla(216, 44%, 23%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -3485,7 +3442,12 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -3525,10 +3487,6 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -3584,17 +3542,12 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(38, 97%, 38%, 1)",
         "borderColor": "hsla(32, 100%, 94%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -3610,7 +3563,12 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -3650,10 +3608,6 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -3709,17 +3663,12 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
         "borderColor": "hsla(36, 100%, 44%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -3735,7 +3684,12 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -3775,10 +3729,6 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -3834,17 +3784,12 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(160, 100%, 26%, 1)",
         "borderColor": "hsla(107, 100%, 96%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -3860,7 +3805,12 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -3900,10 +3850,6 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -3959,17 +3905,12 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
         "borderColor": "hsla(155, 100%, 31%, 0.32)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -3985,7 +3926,12 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -4025,10 +3971,6 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -4084,17 +4026,12 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(218, 89%, 51%, 0)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -4110,7 +4047,12 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -4150,10 +4092,6 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -4209,17 +4147,12 @@ exports[`<BaseButton /> should render small size button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 32,
         "paddingBottom": 0,
         "paddingLeft": 12,
@@ -4235,7 +4168,12 @@ exports[`<BaseButton /> should render small size button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -4275,10 +4213,6 @@ exports[`<BaseButton /> should render small size button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -4334,17 +4268,12 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 36,
         "paddingBottom": 0,
         "paddingLeft": 20,
@@ -4360,7 +4289,12 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -4400,10 +4334,6 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
@@ -4459,17 +4389,12 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   style={
     Array [
       Object {
-        "alignItems": "center",
-        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
         "borderStyle": "solid",
         "borderWidth": 1,
         "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
         "minHeight": 28,
         "paddingBottom": 0,
         "paddingLeft": 8,
@@ -4485,7 +4410,12 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   }
 >
   <View
+    alignItems="center"
+    alignSelf="center"
+    display="flex"
+    flexDirection="row"
     isHidden={false}
+    justifyContent="center"
     style={
       Array [
         Object {
@@ -4525,10 +4455,6 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             "paddingTop": 0,
             "textAlign": "center",
             "textDecorationLine": "none",
-          },
-          Object {
-            "paddingLeft": 0,
-            "paddingRight": 0,
           },
         ]
       }
