@@ -46,6 +46,7 @@ const nativeExtensions = [
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
 const exportCategories = ['components', 'tokens', 'utils'];
+const themeBundleCategories = ['tokens', 'utils'];
 
 const aliases = pluginAlias({
   entries: [
@@ -123,9 +124,35 @@ const getDeclarationsConfig = ({ exportCategory }) => ({
   ],
 });
 
+const getCSSVariablesConfig = ({ exportCategory }) => ({
+  input: `src/${exportCategory}/index.ts`,
+  output: {
+    file: `${outputRootDirectory}/js-bundle-for-css/${exportCategory}Bundle.js`,
+    format: 'cjs',
+  },
+  plugins: [
+    pluginPeerDepsExternal(),
+    pluginResolve({ extensions: webExtensions }),
+    pluginCommonjs(),
+    pluginBabel({
+      exclude: 'node_modules/**',
+      babelHelpers: 'runtime',
+      envName: 'production',
+      extensions: webExtensions,
+    }),
+    aliases,
+  ],
+});
+
 const config = () => {
   const framework = process.env.FRAMEWORK;
+  const generateCSSVariables = process.env.GENERATE_CSS_VARIABLES;
 
+  if (generateCSSVariables == 'true' && framework === 'REACT') {
+    return themeBundleCategories
+      .map((exportCategory) => [getCSSVariablesConfig({ exportCategory })])
+      .flat();
+  }
   if (framework === 'REACT') {
     return exportCategories.map((exportCategory) => [getWebConfig({ exportCategory })]).flat();
   }

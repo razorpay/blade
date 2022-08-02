@@ -19,12 +19,13 @@ type SurfaceColors = `surface.text.${DotNotationColorStringToken<
 type ActionColors = `action.text.${DotNotationColorStringToken<Theme['colors']['action']['text']>}`;
 
 export type BaseTextProps = {
+  id?: string;
   color?: ActionColors | FeedbackColors | SurfaceColors | FeedbackActionColors;
   fontFamily?: keyof Theme['typography']['fonts']['family'];
   fontSize?: keyof Theme['typography']['fonts']['size'];
   fontWeight?: keyof Theme['typography']['fonts']['weight'];
   fontStyle?: 'italic' | 'normal';
-  textDecorationLine?: 'line-through' | 'none';
+  textDecorationLine?: 'line-through' | 'none' | 'underline';
   lineHeight?: keyof Theme['typography']['lineHeights'];
   as?: 'code' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   textAlign?: 'center' | 'justify' | 'left' | 'right';
@@ -36,6 +37,7 @@ export type BaseTextProps = {
 };
 
 const BaseText = ({
+  id,
   color = 'surface.text.normal.lowContrast',
   fontFamily = 'text',
   fontSize = 200,
@@ -72,6 +74,7 @@ const BaseText = ({
       numberOfLines={truncateAfterLines}
       className={className}
       style={style}
+      id={id}
       {...makeAccessible(accessibilityProps)}
     >
       {children}
