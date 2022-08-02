@@ -98,7 +98,11 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -208,7 +212,11 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -353,7 +361,11 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
         </svg>
       </div>
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c4"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -498,7 +510,11 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
         </svg>
       </div>
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c4"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -612,7 +628,11 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -864,7 +884,11 @@ exports[`<BaseButton /> should render disabled button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.primary.disabled"
         font-size="100"
         font-weight="bold"
@@ -975,7 +999,11 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.information.action.text.primary.disabled.highContrast"
         font-size="100"
         font-weight="bold"
@@ -1086,7 +1114,11 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.information.action.text.primary.disabled.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -1215,7 +1247,11 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.negative.action.text.primary.disabled.highContrast"
         font-size="100"
         font-weight="bold"
@@ -1326,7 +1362,11 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.negative.action.text.primary.disabled.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -1437,7 +1477,11 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.neutral.action.text.primary.disabled.highContrast"
         font-size="100"
         font-weight="bold"
@@ -1548,7 +1592,11 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.neutral.action.text.primary.disabled.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -1659,7 +1707,11 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.notice.action.text.primary.disabled.highContrast"
         font-size="100"
         font-weight="bold"
@@ -1770,7 +1822,11 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.notice.action.text.primary.disabled.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -1881,7 +1937,11 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.positive.action.text.primary.disabled.highContrast"
         font-size="100"
         font-weight="bold"
@@ -1992,7 +2052,11 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.positive.action.text.primary.disabled.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -2103,7 +2167,11 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.secondary.disabled"
         font-size="100"
         font-weight="bold"
@@ -2214,7 +2282,11 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.tertiary.disabled"
         font-size="100"
         font-weight="bold"
@@ -2342,7 +2414,11 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.information.action.text.primary.default.highContrast"
         font-size="100"
         font-weight="bold"
@@ -2452,7 +2528,11 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.information.action.text.primary.default.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -2562,7 +2642,11 @@ exports[`<BaseButton /> should render large size button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.primary.default"
         font-size="200"
         font-weight="bold"
@@ -2672,7 +2756,11 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -2782,7 +2870,11 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.negative.action.text.primary.default.highContrast"
         font-size="100"
         font-weight="bold"
@@ -2892,7 +2984,11 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.negative.action.text.primary.default.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -3002,7 +3098,11 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.neutral.action.text.primary.default.highContrast"
         font-size="100"
         font-weight="bold"
@@ -3112,7 +3212,11 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.neutral.action.text.primary.default.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -3222,7 +3326,11 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.notice.action.text.primary.default.highContrast"
         font-size="100"
         font-weight="bold"
@@ -3332,7 +3440,11 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.notice.action.text.primary.default.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -3442,7 +3554,11 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.positive.action.text.primary.default.highContrast"
         font-size="100"
         font-weight="bold"
@@ -3552,7 +3668,11 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="feedback.positive.action.text.primary.default.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -3662,7 +3782,11 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.secondary.default"
         font-size="100"
         font-weight="bold"
@@ -3772,7 +3896,11 @@ exports[`<BaseButton /> should render small size button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.primary.default"
         font-size="75"
         font-weight="bold"
@@ -3882,7 +4010,11 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.tertiary.default"
         font-size="100"
         font-weight="bold"
@@ -3992,7 +4124,11 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       display="flex"
     >
       <div
+<<<<<<< HEAD
         class="c2 c3"
+=======
+        class="c3"
+>>>>>>> 03cf92c7 (fix(Typography): expose text styles)
         color="action.text.primary.default"
         font-size="75"
         font-weight="bold"
