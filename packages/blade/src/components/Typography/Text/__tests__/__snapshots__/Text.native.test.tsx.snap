@@ -2,12 +2,12 @@
 
 exports[`<Text /> should render Text with default properties 1`] = `
 <Text
-  color="hsla(217, 56%, 17%, 1)"
-  fontFamily="Lato"
-  fontSize="15px"
+  color="surface.text.normal.lowContrast"
+  fontFamily="text"
+  fontSize={100}
   fontStyle="normal"
-  fontWeight={400}
-  lineHeight="24px"
+  fontWeight="regular"
+  lineHeight="l"
   style={
     Array [
       Object {
@@ -31,8 +31,6 @@ exports[`<Text /> should render Text with default properties 1`] = `
       Object {},
     ]
   }
-  textAlign="left"
-  textDecorationLine="none"
 >
   Displaying some text
 </Text>
@@ -40,12 +38,12 @@ exports[`<Text /> should render Text with default properties 1`] = `
 
 exports[`<Text /> should render Text with variant "body" 1`] = `
 <Text
-  color="hsla(217, 56%, 17%, 1)"
-  fontFamily="Lato"
-  fontSize="15px"
+  color="surface.text.normal.lowContrast"
+  fontFamily="text"
+  fontSize={100}
   fontStyle="normal"
-  fontWeight={700}
-  lineHeight="24px"
+  fontWeight="bold"
+  lineHeight="l"
   numberOfLines={3}
   style={
     Array [
@@ -72,8 +70,6 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
       },
     ]
   }
-  textAlign="left"
-  textDecorationLine="none"
 >
   Displaying some text
 </Text>
@@ -81,12 +77,12 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 
 exports[`<Text /> should render Text with variant "body" and contrast "high" 1`] = `
 <Text
-  color="hsla(0, 0%, 100%, 1)"
-  fontFamily="Lato"
-  fontSize="15px"
+  color="surface.text.normal.highContrast"
+  fontFamily="text"
+  fontSize={100}
   fontStyle="normal"
-  fontWeight={700}
-  lineHeight="24px"
+  fontWeight="bold"
+  lineHeight="l"
   numberOfLines={3}
   style={
     Array [
@@ -113,8 +109,6 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
       },
     ]
   }
-  textAlign="left"
-  textDecorationLine="none"
 >
   Displaying some text
 </Text>
@@ -122,12 +116,12 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
 
 exports[`<Text /> should render Text with variant "body" and size "small" 1`] = `
 <Text
-  color="hsla(217, 56%, 17%, 1)"
-  fontFamily="Lato"
-  fontSize="12px"
+  color="surface.text.normal.lowContrast"
+  fontFamily="text"
+  fontSize={75}
   fontStyle="normal"
-  fontWeight={700}
-  lineHeight="16px"
+  fontWeight="bold"
+  lineHeight="s"
   numberOfLines={3}
   style={
     Array [
@@ -154,8 +148,6 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
       },
     ]
   }
-  textAlign="left"
-  textDecorationLine="none"
 >
   Displaying some text
 </Text>
@@ -163,12 +155,12 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
 
 exports[`<Text /> should render Text with variant "caption" 1`] = `
 <Text
-  color="hsla(217, 56%, 17%, 1)"
-  fontFamily="Lato"
-  fontSize="15px"
+  color="surface.text.normal.lowContrast"
+  fontFamily="text"
+  fontSize={100}
   fontStyle="normal"
-  fontWeight={700}
-  lineHeight="24px"
+  fontWeight="bold"
+  lineHeight="l"
   style={
     Array [
       Object {
@@ -192,8 +184,6 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
       Object {},
     ]
   }
-  textAlign="left"
-  textDecorationLine="none"
 >
   Displaying some text
 </Text>

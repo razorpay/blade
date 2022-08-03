@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseText from '../';
+import { BaseText } from '../';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());

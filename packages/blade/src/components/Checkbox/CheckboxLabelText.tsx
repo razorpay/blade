@@ -1,4 +1,4 @@
-import BaseText from '../Typography/BaseText';
+import { BaseText } from '~components/Typography/BaseText';
 
 const CheckboxLabelText = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (

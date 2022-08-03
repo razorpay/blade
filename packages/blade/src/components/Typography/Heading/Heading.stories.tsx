@@ -3,7 +3,7 @@ import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@st
 import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import type { HeadingProps } from './';
-import HeadingComponent from './';
+import { Heading as HeadingComponent } from './';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): ReactElement => {
