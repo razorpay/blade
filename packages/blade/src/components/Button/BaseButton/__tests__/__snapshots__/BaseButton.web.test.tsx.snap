@@ -98,7 +98,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -208,7 +208,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -353,7 +353,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
         </svg>
       </div>
       <div
-        class="c2 c3"
+        class="c4"
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -498,7 +498,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
         </svg>
       </div>
       <div
-        class="c2 c3"
+        class="c4"
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -612,7 +612,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -864,7 +864,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.disabled"
         font-size="100"
         font-weight="bold"
@@ -975,7 +975,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.information.action.text.primary.disabled.highContrast"
         font-size="100"
         font-weight="bold"
@@ -1086,7 +1086,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.information.action.text.primary.disabled.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -1100,24 +1100,6 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
 
 exports[`<BaseButton /> should render disabled negative intent high contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -1215,7 +1197,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.negative.action.text.primary.disabled.highContrast"
         font-size="100"
         font-weight="bold"
@@ -1326,7 +1308,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.negative.action.text.primary.disabled.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -1437,7 +1419,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.neutral.action.text.primary.disabled.highContrast"
         font-size="100"
         font-weight="bold"
@@ -1548,7 +1530,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.neutral.action.text.primary.disabled.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -1659,7 +1641,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.notice.action.text.primary.disabled.highContrast"
         font-size="100"
         font-weight="bold"
@@ -1770,7 +1752,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.notice.action.text.primary.disabled.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -1881,7 +1863,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.positive.action.text.primary.disabled.highContrast"
         font-size="100"
         font-weight="bold"
@@ -1992,7 +1974,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.positive.action.text.primary.disabled.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -2103,7 +2085,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.secondary.disabled"
         font-size="100"
         font-weight="bold"
@@ -2214,7 +2196,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.tertiary.disabled"
         font-size="100"
         font-weight="bold"
@@ -2228,24 +2210,6 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
 
 exports[`<BaseButton /> should render information intent high contrast button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -2342,7 +2306,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.information.action.text.primary.default.highContrast"
         font-size="100"
         font-weight="bold"
@@ -2452,7 +2416,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.information.action.text.primary.default.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -2562,7 +2526,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="200"
         font-weight="bold"
@@ -2672,7 +2636,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -2782,7 +2746,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.negative.action.text.primary.default.highContrast"
         font-size="100"
         font-weight="bold"
@@ -2892,7 +2856,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.negative.action.text.primary.default.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -3002,7 +2966,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.neutral.action.text.primary.default.highContrast"
         font-size="100"
         font-weight="bold"
@@ -3112,7 +3076,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.neutral.action.text.primary.default.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -3222,7 +3186,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.notice.action.text.primary.default.highContrast"
         font-size="100"
         font-weight="bold"
@@ -3332,7 +3296,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.notice.action.text.primary.default.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -3442,7 +3406,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.positive.action.text.primary.default.highContrast"
         font-size="100"
         font-weight="bold"
@@ -3552,7 +3516,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="feedback.positive.action.text.primary.default.lowContrast"
         font-size="100"
         font-weight="bold"
@@ -3662,7 +3626,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.secondary.default"
         font-size="100"
         font-weight="bold"
@@ -3772,7 +3736,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="75"
         font-weight="bold"
@@ -3882,7 +3846,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.tertiary.default"
         font-size="100"
         font-weight="bold"
@@ -3992,7 +3956,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="75"
         font-weight="bold"
