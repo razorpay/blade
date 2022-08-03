@@ -64,7 +64,7 @@
     "@babel/runtime": "7.9.2",
     "@react-native-community/cli-platform-android": "3.1.4",
     "@rollup/plugin-commonjs": "21.1.0",
-    "@rollup/plugin-json": "4.0.2",
+    "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "7.1.1",
     "@storybook/addon-actions": "5.3.9",
     "@storybook/addon-docs": "5.3.9",
