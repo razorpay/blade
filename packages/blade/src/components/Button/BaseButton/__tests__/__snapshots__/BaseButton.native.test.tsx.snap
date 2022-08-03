@@ -43,6 +43,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -65,8 +66,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -74,9 +75,11 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -164,6 +167,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -186,8 +190,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -195,9 +199,11 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -285,6 +291,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -307,8 +314,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -316,9 +323,11 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -474,6 +483,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -496,8 +506,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -505,9 +515,11 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -663,6 +675,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -685,8 +698,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -694,9 +707,11 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -846,6 +861,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -868,8 +884,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -877,9 +893,11 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -890,14 +908,12 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       alignItems="center"
       display="flex"
       justifyContent="center"
-      paddingRight="spacing.2"
       style={
         Array [
           Object {
             "alignItems": "center",
             "display": "flex",
             "justifyContent": "center",
-            "paddingRight": 8,
           },
         ]
       }
@@ -1001,6 +1017,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(216, 19%, 89%, 1)",
         "borderColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 2,
@@ -1023,8 +1040,8 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1032,9 +1049,11 @@ exports[`<BaseButton /> should render disabled button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1122,6 +1141,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(193, 100%, 35%, 1)",
         "borderColor": "hsla(187, 68%, 52%, 1)",
         "borderRadius": 2,
@@ -1144,8 +1164,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1153,9 +1173,11 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1243,6 +1265,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
         "borderColor": "hsla(193, 100%, 35%, 0.32)",
         "borderRadius": 2,
@@ -1265,8 +1288,8 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1274,9 +1297,11 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1364,6 +1389,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(8, 73%, 47%, 1)",
         "borderColor": "hsla(8, 99%, 65%, 1)",
         "borderRadius": 2,
@@ -1386,8 +1412,8 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1395,9 +1421,11 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1485,6 +1513,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
         "borderColor": "hsla(9, 91%, 56%, 0.32)",
         "borderRadius": 2,
@@ -1507,8 +1536,8 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1516,9 +1545,11 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1606,6 +1637,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(216, 33%, 29%, 1)",
         "borderColor": "hsla(216, 15%, 54%, 1)",
         "borderRadius": 2,
@@ -1628,8 +1660,8 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1637,9 +1669,11 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1727,6 +1761,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
         "borderColor": "hsla(216, 44%, 23%, 0.32)",
         "borderRadius": 2,
@@ -1749,8 +1784,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1758,9 +1793,11 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1848,6 +1885,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(38, 97%, 38%, 1)",
         "borderColor": "hsla(35, 84%, 54%, 1)",
         "borderRadius": 2,
@@ -1870,8 +1908,8 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1879,9 +1917,11 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1969,6 +2009,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
         "borderColor": "hsla(36, 100%, 44%, 0.32)",
         "borderRadius": 2,
@@ -1991,8 +2032,8 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2000,9 +2041,11 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -2090,6 +2133,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(160, 100%, 26%, 1)",
         "borderColor": "hsla(149, 99%, 35%, 1)",
         "borderRadius": 2,
@@ -2112,8 +2156,8 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2121,9 +2165,11 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -2211,6 +2257,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
         "borderColor": "hsla(155, 100%, 31%, 0.32)",
         "borderRadius": 2,
@@ -2233,8 +2280,8 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2242,9 +2289,11 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -2332,6 +2381,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0)",
         "borderColor": "hsla(218, 19%, 81%, 1)",
         "borderRadius": 2,
@@ -2354,8 +2404,8 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2363,9 +2413,11 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -2453,6 +2505,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 2,
@@ -2475,8 +2528,8 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2484,9 +2537,11 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -2574,6 +2629,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(193, 100%, 35%, 1)",
         "borderColor": "hsla(180, 100%, 97%, 1)",
         "borderRadius": 2,
@@ -2596,8 +2652,8 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2605,9 +2661,11 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -2695,6 +2753,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
         "borderColor": "hsla(193, 100%, 35%, 0.32)",
         "borderRadius": 2,
@@ -2717,8 +2776,8 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2726,9 +2785,11 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -2816,6 +2877,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -2838,8 +2900,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2847,9 +2909,11 @@ exports[`<BaseButton /> should render large size button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -2937,6 +3001,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -2959,8 +3024,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -2968,9 +3033,11 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -3058,6 +3125,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(8, 73%, 47%, 1)",
         "borderColor": "hsla(0, 100%, 97%, 1)",
         "borderRadius": 2,
@@ -3080,8 +3148,8 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3089,9 +3157,11 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -3179,6 +3249,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
         "borderColor": "hsla(9, 91%, 56%, 0.32)",
         "borderRadius": 2,
@@ -3201,8 +3272,8 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3210,9 +3281,11 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -3300,6 +3373,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(216, 33%, 29%, 1)",
         "borderColor": "hsla(214, 18%, 69%, 1)",
         "borderRadius": 2,
@@ -3322,8 +3396,8 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3331,9 +3405,11 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -3421,6 +3497,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
         "borderColor": "hsla(216, 44%, 23%, 0.32)",
         "borderRadius": 2,
@@ -3443,8 +3520,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3452,9 +3529,11 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -3542,6 +3621,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(38, 97%, 38%, 1)",
         "borderColor": "hsla(32, 100%, 94%, 1)",
         "borderRadius": 2,
@@ -3564,8 +3644,8 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3573,9 +3653,11 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -3663,6 +3745,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
         "borderColor": "hsla(36, 100%, 44%, 0.32)",
         "borderRadius": 2,
@@ -3685,8 +3768,8 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3694,9 +3777,11 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -3784,6 +3869,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(160, 100%, 26%, 1)",
         "borderColor": "hsla(107, 100%, 96%, 1)",
         "borderRadius": 2,
@@ -3806,8 +3892,8 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3815,9 +3901,11 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -3905,6 +3993,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
         "borderColor": "hsla(155, 100%, 31%, 0.32)",
         "borderRadius": 2,
@@ -3927,8 +4016,8 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -3936,9 +4025,11 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -4026,6 +4117,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(218, 89%, 51%, 0)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -4048,8 +4140,8 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -4057,9 +4149,11 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -4147,6 +4241,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -4169,8 +4264,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -4178,9 +4273,11 @@ exports[`<BaseButton /> should render small size button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -4268,6 +4365,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 2,
@@ -4290,8 +4388,8 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -4299,9 +4397,11 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -4389,6 +4489,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -4411,8 +4512,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -4420,9 +4521,11 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
