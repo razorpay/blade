@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.13.2
+
+### Patch Changes
+
+- 17b2c71: fix: button styling for native
+
 ## 0.13.1
 
 ### Patch Changes
