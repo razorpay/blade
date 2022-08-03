@@ -48,17 +48,17 @@ import { Alert, Link } from '@razorpay/blade';
 
 We'll expose an `Alert` component with the following API:
 
-| Prop          | Type                                                        | Default     | Description                                                                                | Required |
-| ------------- | ----------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------ | -------- |
-| description   | `string`, `JSX`                                             | `undefined` | Body content                                                                               | ✅       |
-| title         | `string`                                                    | `undefined` | A brief heading                                                                            |          |
-| isDismissable | `boolean`                                                   | `true`      | Shows a dismiss button                                                                     |          |
-| onDismiss     | `function`                                                  | `undefined` | Callback when the dismiss button is pressed                                                |          |
-| contrast      | `high`, `low`                                               | `low`       | Can be set to `high` for more prominent look _(not related to a11y)_                       |          |
-| isFullWidth   | `boolean`                                                   | `false`     | Spans the entire width of container, otherwise max width is restricted to 584px by default |          |
-| variant       | `info`, `positive`, `notice`, `negative`                    | `info`      | Sets the color tone of entire alert. Icon is set automatically based on variant            |          |
-| isBorderless  | `boolean`                                                   | `false`     | Removes borders and border radii, useful for creating a full bleed layout                  |          |
-| actions       | `{ primary: PrimaryAction, secondary: SecondaryAction }` \* | `{}`        | Renders a primary action button and a secondary action link button                         |          |
+| Prop          | Type                                                        | Default       | Description                                                                                | Required |
+| ------------- | ----------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------ | -------- |
+| description   | `string`, `JSX`                                             | `undefined`   | Body content                                                                               | ✅       |
+| title         | `string`                                                    | `undefined`   | A brief heading                                                                            |          |
+| isDismissable | `boolean`                                                   | `true`        | Shows a dismiss button                                                                     |          |
+| onDismiss     | `function`                                                  | `undefined`   | Callback when the dismiss button is pressed                                                |          |
+| contrast      | `high`, `low`                                               | `low`         | Can be set to `high` for more prominent look _(not related to a11y)_                       |          |
+| isFullWidth   | `boolean`                                                   | `false`       | Spans the entire width of container, otherwise max width is restricted to 584px by default |          |
+| variant       | `information`, `positive`, `notice`, `negative`             | `information` | Sets the color tone of entire alert. Icon is set automatically based on variant            |          |
+| isBorderless  | `boolean`                                                   | `false`       | Removes borders and border radii, useful for creating a full bleed layout                  |          |
+| actions       | `{ primary: PrimaryAction, secondary: SecondaryAction }` \* | `{}`          | Renders a primary action button and a secondary action link button                         |          |
 
 `PrimaryAction` and `SecondaryAction` will accept objects with the following keys:
 
