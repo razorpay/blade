@@ -23,6 +23,9 @@ export type BaseTextProps = {
   fontStyle?: 'italic' | 'normal';
   textDecorationLine?: 'line-through' | 'none' | 'underline';
   lineHeight?: keyof Theme['typography']['lineHeights'];
+  /**
+   * Web only
+   */
   as?: 'code' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   textAlign?: 'center' | 'justify' | 'left' | 'right';
   truncateAfterLines?: number;
@@ -30,6 +33,9 @@ export type BaseTextProps = {
   style?: React.CSSProperties;
   children: React.ReactNode;
   accessibilityProps?: Partial<AccessibilityProps>;
+  /**
+   * React Native only
+   */
   numberOfLines?: number;
 };
 
