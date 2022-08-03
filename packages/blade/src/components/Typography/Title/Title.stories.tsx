@@ -10,7 +10,7 @@ import {
 import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import type { TitleProps } from './';
-import TitleComponent from './';
+import { Title as TitleComponent } from './';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): ReactElement => {

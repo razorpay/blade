@@ -8,7 +8,7 @@ import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import Box from '~components/Box';
 import type { BaseTextProps } from '~components/Typography/BaseText';
-import BaseText from '~components/Typography/BaseText';
+import { BaseText } from '~components/Typography/BaseText';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import { makeAccessible, getIn } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
