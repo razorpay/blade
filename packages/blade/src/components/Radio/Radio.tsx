@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon';
+import { useRadioGroupContext } from './RadioGroup/RadioContext';
 import { FormHintText } from '~components/Form/FormHintText';
 import Box from '~components/Box';
 import { CheckboxLabel } from '~components/Checkbox/CheckboxLabel';
@@ -86,17 +87,35 @@ const Radio = ({
   helpText,
   validationState,
 }: RadioProps): React.ReactElement => {
+  const groupProps = useRadioGroupContext();
+
+  const _validationState = validationState ?? groupProps?.validationState;
+  const _hasError = _validationState === 'error';
+  const _isDisabled = isDisabled ?? groupProps?.isDisabled;
+  const _name = groupProps?.name ?? name;
+  const _isChecked = groupProps?.state?.isChecked(value!) ?? isChecked;
+  const showHelpText = !_hasError && helpText;
+
+  const handleChange: OnChange = ({ isChecked, event, value }) => {
+    if (isChecked) {
+      groupProps?.state?.setValue(value!);
+    } else {
+      groupProps?.state?.removeValue();
+    }
+
+    onChange?.({ isChecked, event, value });
+  };
+
   const { state, ids, inputProps } = useRadio({
     defaultChecked,
-    isChecked,
-    isDisabled,
+    isChecked: _isChecked,
+    hasError: _hasError,
+    isDisabled: _isDisabled,
     isRequired,
-    name,
+    name: _name,
     value,
-    onChange,
+    onChange: handleChange,
   });
-  const _hasError = validationState === 'error';
-  const showHelpText = !_hasError && helpText;
 
   return (
     <CheckboxLabel inputProps={state.isReactNative ? inputProps : {}}>
@@ -106,7 +125,7 @@ const Radio = ({
         isNegative={_hasError}
         inputProps={inputProps}
       />
-      <RadioIcon isChecked={state.isChecked} isDisabled={isDisabled} isNegative={_hasError} />
+      <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={_hasError} />
       <Box>
         <CheckboxLabelText>{children}</CheckboxLabelText>
         {showHelpText && (
