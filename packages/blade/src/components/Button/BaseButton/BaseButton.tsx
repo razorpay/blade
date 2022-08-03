@@ -144,7 +144,7 @@ const getProps = ({
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
-    iconPadding: hasIcon ? `spacing.${textPadding[size]}` : undefined,
+    iconPadding: hasIcon && children?.trim() ? `spacing.${textPadding[size]}` : undefined,
     iconColor: getColorToken({
       property: 'icon',
       variant,
@@ -354,7 +354,7 @@ const BaseButton = ({
         flexDirection="row"
         alignItems="center"
         justifyContent="center"
-        alignSelf="center"
+        flex={1}
         isHidden={isLoading}
       >
         {Icon && iconPosition == 'left' ? (
