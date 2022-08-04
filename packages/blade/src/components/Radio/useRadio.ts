@@ -44,12 +44,15 @@ const useRadio = ({
     }
 
     setRadioStateChange((checked) => {
-      onChange?.({
-        isChecked: !checked,
-        event: event as React.ChangeEvent,
-        value,
-      });
-      return !checked;
+      if (checked === false) {
+        onChange?.({
+          isChecked: true,
+          event: event as React.ChangeEvent,
+          value,
+        });
+        return true;
+      }
+      return checked;
     });
   };
 
