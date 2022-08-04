@@ -38,8 +38,7 @@ const StyledClickable = styled.button<StyledClickableProps>((props) => {
     },
 
     '&:active': {
-      //   color: linkColorToken.active[contrastToken],
-      color: 'hotpink',
+      color: linkColorToken.active[contrastToken],
     },
   };
 });
