@@ -66,12 +66,11 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
     }
   >
     <Text
-      color="hsla(216, 27%, 36%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="surface.text.subtle.lowContrast"
+      fontFamily="text"
+      fontSize={100}
+      fontWeight="regular"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -94,8 +93,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           },
         ]
       }
-      textAlign="left"
-      textDecorationLine="none"
     >
       Remember password
     </Text>
@@ -170,12 +167,11 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
     }
   >
     <Text
-      color="hsla(216, 27%, 36%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="surface.text.subtle.lowContrast"
+      fontFamily="text"
+      fontSize={100}
+      fontWeight="regular"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -198,8 +194,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           },
         ]
       }
-      textAlign="left"
-      textDecorationLine="none"
     >
       Remember password
     </Text>
@@ -273,12 +267,11 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     }
   >
     <Text
-      color="hsla(216, 27%, 36%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="surface.text.subtle.lowContrast"
+      fontFamily="text"
+      fontSize={100}
+      fontWeight="regular"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -301,8 +294,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           },
         ]
       }
-      textAlign="left"
-      textDecorationLine="none"
     >
       Remember password
     </Text>

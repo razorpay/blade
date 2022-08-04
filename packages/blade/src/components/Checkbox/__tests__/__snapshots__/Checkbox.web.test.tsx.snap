@@ -129,11 +129,10 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
     >
       <div
         class="c4"
-        color="hsla(216, 27%, 36%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="400"
+        color="surface.text.subtle.lowContrast"
+        font-family="text"
+        font-size="100"
+        font-weight="regular"
       >
         Remember password
       </div>
@@ -263,11 +262,10 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
     >
       <div
         class="c4"
-        color="hsla(216, 27%, 36%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="400"
+        color="surface.text.subtle.lowContrast"
+        font-family="text"
+        font-size="100"
+        font-weight="regular"
       >
         Remember password
       </div>
@@ -396,11 +394,10 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     >
       <div
         class="c4"
-        color="hsla(216, 27%, 36%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="400"
+        color="surface.text.subtle.lowContrast"
+        font-family="text"
+        font-size="100"
+        font-weight="regular"
       >
         Remember password
       </div>
@@ -557,11 +554,10 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
     >
       <div
         class="c5"
-        color="hsla(216, 27%, 36%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="400"
+        color="surface.text.subtle.lowContrast"
+        font-family="text"
+        font-size="100"
+        font-weight="regular"
       >
         Remember password
       </div>

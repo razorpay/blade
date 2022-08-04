@@ -2,24 +2,6 @@
 
 exports[`<Button /> should render button with default properties 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -66,29 +48,7 @@ exports[`<Button /> should render button with default properties 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -102,41 +62,14 @@ exports[`<Button /> should render button with default properties 1`] = `
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-<div>
-  <button
-    class="c0"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<Button /> should render button with full width 1`] = `
-.c0 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -148,9 +81,37 @@ exports[`<Button /> should render button with full width 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c3"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> should render button with full width 1`] = `
+.c0 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -197,29 +158,7 @@ exports[`<Button /> should render button with full width 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -233,9 +172,29 @@ exports[`<Button /> should render button with full width 1`] = `
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 {
+  opacity: 1;
 }
 
 <div>
@@ -245,15 +204,14 @@ exports[`<Button /> should render button with full width 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
-        class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        class="c3"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -264,24 +222,6 @@ exports[`<Button /> should render button with full width 1`] = `
 
 exports[`<Button /> should render button with icon with default iconPosition 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -328,29 +268,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c4 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -364,9 +282,45 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   padding: 0;
 }
 
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 .c3 {
-  padding-left: 8px;
-  padding-right: 0px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 8px;
+}
+
+.c2 {
+  opacity: 1;
 }
 
 <div>
@@ -376,29 +330,33 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
-      <svg
-        aria-hidden="true"
-        fill="none"
-        height="20px"
-        viewBox="0 0 24 24"
-        width="20px"
-      >
-        <path
-          clip-rule="evenodd"
-          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-          fill="hsla(0, 0%, 100%, 1)"
-          fill-rule="evenodd"
-        />
-      </svg>
       <div
-        class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        class="c3"
+        display="flex"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="20px"
+          viewBox="0 0 24 24"
+          width="20px"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            fill="hsla(0, 0%, 100%, 1)"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="c4"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -409,24 +367,6 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
 
 exports[`<Button /> should render button with icon with right iconPosition 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -473,29 +413,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -509,55 +427,14 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 8px;
-}
-
-<div>
-  <button
-    class="c0"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
-      >
-        Pay Now
-      </div>
-      <svg
-        aria-hidden="true"
-        fill="none"
-        height="20px"
-        viewBox="0 0 24 24"
-        width="20px"
-      >
-        <path
-          clip-rule="evenodd"
-          d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-          fill="hsla(0, 0%, 100%, 1)"
-          fill-rule="evenodd"
-        />
-      </svg>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<Button /> should render disabled button 1`] = `
-.c0 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -569,9 +446,59 @@ exports[`<Button /> should render disabled button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+}
+
+.c4 {
+  padding-left: 8px;
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c3"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
+      >
+        Pay Now
+      </div>
+      <div
+        class="c4"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="20px"
+          viewBox="0 0 24 24"
+          width="20px"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            fill="hsla(0, 0%, 100%, 1)"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> should render disabled button 1`] = `
+.c0 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -618,29 +545,7 @@ exports[`<Button /> should render disabled button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -654,9 +559,29 @@ exports[`<Button /> should render disabled button 1`] = `
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 {
+  opacity: 1;
 }
 
 <div>
@@ -667,15 +592,14 @@ exports[`<Button /> should render disabled button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
-        class="c2 c3"
-        color="hsla(216, 16%, 60%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        class="c3"
+        color="action.text.primary.disabled"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -686,24 +610,6 @@ exports[`<Button /> should render disabled button 1`] = `
 
 exports[`<Button /> should render disabled secondary variant button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -750,29 +656,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -786,9 +670,29 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 {
+  opacity: 1;
 }
 
 <div>
@@ -799,15 +703,14 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
-        class="c2 c3"
-        color="hsla(218, 19%, 81%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        class="c3"
+        color="action.text.secondary.disabled"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -818,24 +721,6 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
 
 exports[`<Button /> should render disabled tertiary variant button 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
@@ -882,29 +767,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -918,42 +781,14 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-<div>
-  <button
-    class="c0"
-    disabled=""
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-        color="hsla(218, 19%, 81%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<Button /> should render large size button 1`] = `
-.c0 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -965,9 +800,38 @@ exports[`<Button /> should render large size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c3"
+        color="action.text.tertiary.disabled"
+        font-size="100"
+        font-weight="bold"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> should render large size button 1`] = `
+.c0 {
   min-height: 48px;
   width: auto;
   cursor: pointer;
@@ -1014,29 +878,7 @@ exports[`<Button /> should render large size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -1050,41 +892,14 @@ exports[`<Button /> should render large size button 1`] = `
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-<div>
-  <button
-    class="c0"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="1rem"
-        font-style="normal"
-        font-weight="700"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<Button /> should render medium size button 1`] = `
-.c0 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1096,9 +911,37 @@ exports[`<Button /> should render medium size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c3"
+        color="action.text.primary.default"
+        font-size="200"
+        font-weight="bold"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> should render medium size button 1`] = `
+.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -1145,29 +988,7 @@ exports[`<Button /> should render medium size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1181,41 +1002,14 @@ exports[`<Button /> should render medium size button 1`] = `
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-<div>
-  <button
-    class="c0"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<Button /> should render secondary variant button 1`] = `
-.c0 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1227,9 +1021,37 @@ exports[`<Button /> should render secondary variant button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c3"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> should render secondary variant button 1`] = `
+.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -1276,29 +1098,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(213,89%,56%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1312,41 +1112,14 @@ exports[`<Button /> should render secondary variant button 1`] = `
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-<div>
-  <button
-    class="c0"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-        color="hsla(213, 89%, 56%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<Button /> should render small size button 1`] = `
-.c0 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1358,9 +1131,37 @@ exports[`<Button /> should render small size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c3"
+        color="action.text.secondary.default"
+        font-size="100"
+        font-weight="bold"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> should render small size button 1`] = `
+.c0 {
   min-height: 32px;
   width: auto;
   cursor: pointer;
@@ -1407,29 +1208,7 @@ exports[`<Button /> should render small size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1443,41 +1222,14 @@ exports[`<Button /> should render small size button 1`] = `
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-<div>
-  <button
-    class="c0"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.75rem"
-        font-style="normal"
-        font-weight="700"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<Button /> should render tertiary variant button 1`] = `
-.c0 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1489,9 +1241,37 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c3"
+        color="action.text.primary.default"
+        font-size="75"
+        font-weight="bold"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> should render tertiary variant button 1`] = `
+.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -1538,29 +1318,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(216,33%,29%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1574,41 +1332,14 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-<div>
-  <button
-    class="c0"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1"
-    >
-      <div
-        class="c2 c3"
-        color="hsla(216, 33%, 29%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<Button /> should render xsmall size button 1`] = `
-.c0 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1620,9 +1351,37 @@ exports[`<Button /> should render xsmall size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      display="flex"
+    >
+      <div
+        class="c3"
+        color="action.text.tertiary.default"
+        font-size="100"
+        font-weight="bold"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> should render xsmall size button 1`] = `
+.c0 {
   min-height: 28px;
   width: auto;
   cursor: pointer;
@@ -1669,29 +1428,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1 {
-  opacity: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c2 {
+.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1705,9 +1442,29 @@ exports[`<Button /> should render xsmall size button 1`] = `
   padding: 0;
 }
 
-.c3 {
-  padding-left: 0px;
-  padding-right: 0px;
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 {
+  opacity: 1;
 }
 
 <div>
@@ -1717,15 +1474,14 @@ exports[`<Button /> should render xsmall size button 1`] = `
     type="button"
   >
     <div
-      class="c1"
+      class="c1 c2"
+      display="flex"
     >
       <div
-        class="c2 c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.75rem"
-        font-style="normal"
-        font-weight="700"
+        class="c3"
+        color="action.text.primary.default"
+        font-size="75"
+        font-weight="bold"
       >
         PAY NOW
       </div>

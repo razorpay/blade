@@ -1,18 +1,18 @@
 import type { ReactElement, SyntheticEvent } from 'react';
 import { useState } from 'react';
 import type { CSSObject } from 'styled-components';
-import type { DurationString, EasingString } from '../../../tokens/global/motion';
-import type { LinkActionStates } from '../../../tokens/theme/theme';
-import { makeAccessible, getIn } from '../../../utils';
-import type { DotNotationSpacingStringToken } from '../../../_helpers/types';
-import type { Theme } from '../../BladeProvider';
-import { useTheme } from '../../BladeProvider';
-import Box from '../../Box';
-import type { IconComponent, IconProps } from '../../Icons';
-import type { BaseTextProps } from '../../Typography/BaseText';
-import BaseText from '../../Typography/BaseText';
 import StyledBaseLink from './StyledBaseLink';
 import useInteraction from './useInteraction';
+import type { IconComponent, IconProps } from '~components/Icons';
+import type { Theme } from '~components/BladeProvider';
+import { useTheme } from '~components/BladeProvider';
+import Box from '~components/Box';
+import type { BaseTextProps } from '~components/Typography/BaseText';
+import { BaseText } from '~components/Typography/BaseText';
+import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import { makeAccessible, getIn } from '~utils';
+import type { LinkActionStates } from '~tokens/theme/theme';
+import type { DurationString, EasingString } from '~tokens/global/motion';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';

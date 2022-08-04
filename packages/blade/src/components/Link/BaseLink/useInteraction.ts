@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { useState } from 'react';
-import type { ActionStates } from '../../../tokens/theme/theme';
+import type { ActionStates } from '~tokens/theme/theme';
 
 const useInteraction = (): {
   onMouseEnter: () => void;
