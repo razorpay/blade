@@ -16,8 +16,8 @@ Badges are used to show small amount of color coded metadata, which are ideal fo
 | contrast | `low`, `high` | `low` | The contrast of the badge to be rendered. |  |
 | size | `medium`, `small` | `medium` | The size of the badge to be rendered. |  |
 | icon | `Icon` | `undefined` | The Blade `Icon` component to be rendered for the badge. |  |
-| labelStyle | `italic`, `normal` | `normal` | The font style of the badge's label. |  |
-| labelWeight | `bold`, `regular` | `regular` | The font weight of the badge's label. |  |
+| fontStyle | `italic`, `normal` | `normal` | The font style of the badge's font. |  |
+| fontWeight | `bold`, `regular` | `regular` | The font weight of the badge's font. |  |
 
 ### Sample Usage
 ```jsx
@@ -28,8 +28,8 @@ import { Badge } from '@razorpay/components';
   contrast='high'
   icon={InfoIcon} 
   size='large' 
-  labelStyle='italic' 
-  labelWeight='bold'
+  fontStyle='italic' 
+  fontWeight='bold'
 >
   New
 </Badge>
@@ -37,9 +37,9 @@ import { Badge } from '@razorpay/components';
 
 ## Open Questions
 #### Dev
-- Should we call it `labelWeight`, `labelStyle` or `fontWeight`, `fontStyle` or `textWeight`, `textStyle`?
+- ~Should we call it `labelWeight`, `labelStyle` or `fontWeight`, `fontStyle` or `textWeight`, `textStyle`?~ `fontStyle` & `fontWeight` to keep it closer to css properties.
 - ~Should we call it `variant` or `intent`?~ Answered in a [section below](#intent-prop)
-- What should be the default `variant`? Kept it as `neutral` for now since it seems more _neutral_ and appropriate
+- What should be the default `intent`? Kept it as `neutral` for now since it seems more _neutral_ and appropriate
 - Scope of A11y?
   - NA
 
