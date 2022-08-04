@@ -196,7 +196,7 @@ const Checkbox = ({
           isNegative={_hasError}
         />
         <Box>
-          <CheckboxLabelText>{children}</CheckboxLabelText>
+          <CheckboxLabelText isDisabled={_isDisabled}>{children}</CheckboxLabelText>
           {showSupportingText && (
             <SupportingText id={ids?.helpTextId} variant="help">
               {helpText}
