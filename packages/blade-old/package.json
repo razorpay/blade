@@ -79,7 +79,7 @@
     "@storybook/theming": "5.3.9",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.4.0",
-    "@testing-library/react-native": "5.0.3",
+    "@testing-library/react-native": "11.0.0",
     "@testing-library/user-event": "7.1.2",
     "@types/jest": "24.9.0",
     "@types/react": "16.14.0",
