@@ -43,7 +43,7 @@ const CheckboxGroupTemplate: ComponentStory<typeof RadioGroupComponent> = ({
   ...args
 }) => {
   return (
-    <RadioGroupComponent name="fruits" {...args} defaultValue="apple" label="Select fruits">
+    <RadioGroupComponent {...args}>
       <RadioComponent value="apple">Apple</RadioComponent>
       <RadioComponent value="mango">Mango</RadioComponent>
       <RadioComponent value="orange">Orange</RadioComponent>

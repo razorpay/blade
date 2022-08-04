@@ -1,0 +1,665 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RadioGroup /> should render with help text 1`] = `
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-width: 1px;
+  border-style: solid;
+  margin: 0px;
+  margin-top: 3px;
+  border-radius: 9999px;
+  margin-right: 8px;
+  background-color: hsla(220,27%,98%,1);
+  border-color: hsla(216,19%,89%,1);
+}
+
+.c2 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c9 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c10 {
+  color: hsla(216,16%,60%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.6875rem;
+  font-weight: 400;
+  font-style: italic;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  gap: 4px;
+}
+
+.c3 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c7 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c7:focus + div {
+  outline: 1px solid white;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c7:hover + div,
+.c7:focus + div {
+  background-color: hsla(216,19%,89%,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+<div>
+  <div
+    aria-labelledby="radio-group-15-label"
+    class="c0"
+    display="flex"
+    role="group"
+  >
+    <span
+      id="radio-group-15-label"
+      style="width: auto;"
+    >
+      <div
+        class="c1"
+        display="flex"
+      >
+        <div
+          class="c2"
+          color="hsla(216, 27%, 36%, 1)"
+          font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+          font-size="0.75rem"
+          font-style="normal"
+          font-weight="700"
+        >
+          Select fruits
+          <div
+            class="c3"
+          >
+            <p
+              class="c4 Text__StyledText-wkh56f-0"
+              color="hsla(217, 56%, 17%, 1)"
+              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+              font-size="0.875rem"
+              font-style="normal"
+              font-weight="400"
+            >
+              , Select one
+            </p>
+          </div>
+        </div>
+      </div>
+    </span>
+    <div
+      class=""
+    >
+      <div
+        class="c5"
+        display="flex"
+      >
+        <label
+          class="c6"
+        >
+          <input
+            aria-checked="false"
+            aria-describedby="radio-16-helptext-17"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c7"
+            name="radio-group-15"
+            role="radio"
+            type="radio"
+            value="apple"
+          />
+          <div
+            class="c8"
+          />
+          <div
+            class=""
+          >
+            <div
+              class="c9"
+              color="hsla(216, 27%, 36%, 1)"
+              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+              font-size="0.875rem"
+              font-style="normal"
+              font-weight="400"
+            >
+              Apple
+            </div>
+          </div>
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-checked="false"
+            aria-describedby="radio-18-helptext-19"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c7"
+            name="radio-group-15"
+            role="radio"
+            type="radio"
+            value="mango"
+          />
+          <div
+            class="c8"
+          />
+          <div
+            class=""
+          >
+            <div
+              class="c9"
+              color="hsla(216, 27%, 36%, 1)"
+              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+              font-size="0.875rem"
+              font-style="normal"
+              font-weight="400"
+            >
+              Mango
+            </div>
+          </div>
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-checked="false"
+            aria-describedby="radio-20-helptext-21"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c7"
+            name="radio-group-15"
+            role="radio"
+            type="radio"
+            value="orange"
+          />
+          <div
+            class="c8"
+          />
+          <div
+            class=""
+          >
+            <div
+              class="c9"
+              color="hsla(216, 27%, 36%, 1)"
+              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+              font-size="0.875rem"
+              font-style="normal"
+              font-weight="400"
+            >
+              Orange
+            </div>
+          </div>
+        </label>
+      </div>
+      <span
+        style="display: flex; flex-direction: row; align-items: center;"
+      >
+        <span
+          class="c10"
+          color="hsla(216, 16%, 60%, 1)"
+          font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+          font-size="0.6875rem"
+          font-style="italic"
+          font-weight="400"
+        >
+          Select one
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<RadioGroup /> should render with label 1`] = `
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-width: 1px;
+  border-style: solid;
+  margin: 0px;
+  margin-top: 3px;
+  border-radius: 9999px;
+  margin-right: 8px;
+  background-color: hsla(220,27%,98%,1);
+  border-color: hsla(216,19%,89%,1);
+}
+
+.c2 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c9 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  gap: 4px;
+}
+
+.c3 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c7 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c7:focus + div {
+  outline: 1px solid white;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c7:hover + div,
+.c7:focus + div {
+  background-color: hsla(216,19%,89%,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+<div>
+  <div
+    aria-labelledby="radio-group-7-label"
+    class="c0"
+    display="flex"
+    role="group"
+  >
+    <span
+      id="radio-group-7-label"
+      style="width: auto;"
+    >
+      <div
+        class="c1"
+        display="flex"
+      >
+        <div
+          class="c2"
+          color="hsla(216, 27%, 36%, 1)"
+          font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+          font-size="0.75rem"
+          font-style="normal"
+          font-weight="700"
+        >
+          Select fav fruit
+          <div
+            class="c3"
+          >
+            <p
+              class="c4 Text__StyledText-wkh56f-0"
+              color="hsla(217, 56%, 17%, 1)"
+              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+              font-size="0.875rem"
+              font-style="normal"
+              font-weight="400"
+            >
+              , 
+            </p>
+          </div>
+        </div>
+      </div>
+    </span>
+    <div
+      class=""
+    >
+      <div
+        class="c5"
+        display="flex"
+      >
+        <label
+          class="c6"
+        >
+          <input
+            aria-checked="false"
+            aria-describedby="radio-1-helptext-2"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c7"
+            name="radio-group-7"
+            role="radio"
+            type="radio"
+            value="apple"
+          />
+          <div
+            class="c8"
+          />
+          <div
+            class=""
+          >
+            <div
+              class="c9"
+              color="hsla(216, 27%, 36%, 1)"
+              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+              font-size="0.875rem"
+              font-style="normal"
+              font-weight="400"
+            >
+              Apple
+            </div>
+          </div>
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-checked="false"
+            aria-describedby="radio-3-helptext-4"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c7"
+            name="radio-group-7"
+            role="radio"
+            type="radio"
+            value="mango"
+          />
+          <div
+            class="c8"
+          />
+          <div
+            class=""
+          >
+            <div
+              class="c9"
+              color="hsla(216, 27%, 36%, 1)"
+              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+              font-size="0.875rem"
+              font-style="normal"
+              font-weight="400"
+            >
+              Mango
+            </div>
+          </div>
+        </label>
+        <label
+          class="c6"
+        >
+          <input
+            aria-checked="false"
+            aria-describedby="radio-5-helptext-6"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c7"
+            name="radio-group-7"
+            role="radio"
+            type="radio"
+            value="orange"
+          />
+          <div
+            class="c8"
+          />
+          <div
+            class=""
+          >
+            <div
+              class="c9"
+              color="hsla(216, 27%, 36%, 1)"
+              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
+              font-size="0.875rem"
+              font-style="normal"
+              font-weight="400"
+            >
+              Orange
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;

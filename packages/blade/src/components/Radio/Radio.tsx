@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
+import isUndefined from 'lodash/isUndefined';
+import isEmpty from 'lodash/isEmpty';
 import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
@@ -89,6 +91,31 @@ const Radio = ({
 }: RadioProps): React.ReactElement => {
   const groupProps = useRadioGroupContext();
 
+  // ban certain props in radio while inside group
+  const hasValidationState = !isUndefined(validationState);
+  const hasName = !isUndefined(name);
+  const hasDefaultChecked = !isUndefined(defaultChecked);
+  const hasIsChecked = !isUndefined(isChecked);
+  const hasOnChange = !isUndefined(onChange);
+  if (
+    (hasValidationState || hasName || hasDefaultChecked || hasIsChecked || hasOnChange) &&
+    !isEmpty(groupProps)
+  ) {
+    const props = [
+      hasValidationState ? 'validationState' : undefined,
+      hasName ? 'name' : undefined,
+      hasDefaultChecked ? 'defaultChecked' : undefined,
+      hasIsChecked ? 'isChecked' : undefined,
+      hasOnChange ? 'onChange' : undefined,
+    ]
+      .filter(Boolean)
+      .join(',');
+
+    throw new Error(
+      `[Blade Radio]: Cannot set \`${props}\` on <Radio /> when it's inside <RadioGroup />, Please set it on the <RadioGroup /> itself`,
+    );
+  }
+
   const _validationState = validationState ?? groupProps?.validationState;
   const _hasError = _validationState === 'error';
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
@@ -118,7 +145,9 @@ const Radio = ({
   });
 
   return (
+    // this
     <RadioLabel inputProps={state.isReactNative ? inputProps : {}}>
+      {/* this */}
       <RadioInput
         isChecked={state.isChecked}
         isDisabled={isDisabled}
@@ -127,6 +156,7 @@ const Radio = ({
       />
       <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={_hasError} />
       <Box>
+        {/* this */}
         <RadioLabelText>{children}</RadioLabelText>
         {showHelpText && (
           <FormHintText id={ids?.helpTextId} variant="help">
