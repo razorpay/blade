@@ -16,7 +16,7 @@ This document outlines the API of `Alert` component.
 >
 > 1. color on banking theme in high contrast
 > 2. a11y contrast ratio for notice alerts in high contrast
-> 3. the borderless variant mentioned in full bleed layout shouldn't have any borders and border radii
+> 3. the borderless intent mentioned in full bleed layout shouldn't have any borders and border radii
 
 ## API
 
@@ -56,7 +56,7 @@ We'll expose an `Alert` component with the following API:
 | onDismiss     | `function`                                                  | `undefined`   | Callback when the dismiss button is pressed                                                |          |
 | contrast      | `high`, `low`                                               | `low`         | Can be set to `high` for more prominent look _(not related to a11y)_                       |          |
 | isFullWidth   | `boolean`                                                   | `false`       | Spans the entire width of container, otherwise max width is restricted to 584px by default |          |
-| variant       | `information`, `positive`, `notice`, `negative`             | `information` | Sets the color tone of entire alert. Icon is set automatically based on variant            |          |
+| intent        | `information`, `positive`, `notice`, `negative`             | `information` | Sets the color tone of entire alert. Icon is set automatically based on intent             |          |
 | isBorderless  | `boolean`                                                   | `false`       | Removes borders and border radii, useful for creating a full bleed layout                  |          |
 | actions       | `{ primary: PrimaryAction, secondary: SecondaryAction }` \* | `{}`          | Renders a primary action button and a secondary action link button                         |          |
 
@@ -94,8 +94,8 @@ Renders and accepts a subset of `Link` (button) props as keys:
 
 Web:
 
-- `notice` and `negative` variants will have an [`alert` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role), this is to communicate important and time sensitive message. Additionally for `notice` variant we'll set [`aria-live="polite"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) to not interrupt the user
-- Other variants will have a [`status` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) which is for non critical changes
+- `notice` and `negative` intents will have an [`alert` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role), this is to communicate important and time sensitive message. Additionally for `notice` intent we'll set [`aria-live="polite"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) to not interrupt the user
+- Other intents will have a [`status` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) which is for non critical changes
 - The dismiss button will have [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) as "Dismiss alert"
 
 Native:
@@ -113,7 +113,7 @@ Some example usage patterns of `Alert`.
 
 ```jsx
 <Alert
-  variant="notice"
+  intent="notice"
   description="The payment was made 6 months ago, therefore you can’t issue refund to this merchant."
 />
 ```
@@ -143,7 +143,7 @@ This full bleed layout works for all desktop, mobile and native when the `isBord
 
 ## Open questions
 
-**Q1.** Should we use a different variant naming convention in code like `success`, `warn`, `info`, `error`? Currently this is same as design
+**Q1.** Should we use a different intent naming convention in code like `success`, `warn`, `info`, `error`? Currently this is same as design
 
 **A1.** It makes more sense to keep the terminologies similar in both design and code (because designs are what gets translated into code). [Related discussion](https://github.com/razorpay/blade/pull/573#discussion_r929998203).
 
@@ -154,6 +154,10 @@ This full bleed layout works for all desktop, mobile and native when the `isBord
 **Q3.** Should we make alerts focussable so they're discoverable by tabbing? It would mean also showing a visible keyboard focus indicator. Not doing this currently because I can't think of possible usecases right now, maybe we can revisit this later if / when needed.
 
 **A3.** TBD
+
+**Q4.** Whether to use `intent` or `variant`?
+
+**A4.** The rationale to use `intent` is because it signifies what the alert is meant for (success, error et al.). Also, we might need to extend alerts later to have different _variants_ like outline, ghost, etc. for which having a `variants` prop reserved for later would make more sense. There are some alternate terminology instead of `intent` that could be considered for example `colorScheme`.
 
 ## Alternatives
 
