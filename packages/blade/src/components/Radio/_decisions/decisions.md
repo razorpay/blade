@@ -1,4 +1,10 @@
-# Checkbox Decisions <!-- omit in toc -->
+# Radio Decisions <!-- omit in toc -->
+
+Radio is used to present each item in a list of options where users must make a single selection.
+
+This document outlines the API of `Radio` & `RadioGroup` component.
+
+<img src="./radio_thumbnail.png" alt="Radio component thumbnail" />
 
 - [Design](#design)
 - [`Radio` API](#radio-api)
@@ -11,9 +17,9 @@
 
 ## Design
 
-[Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709) to all variants of the Checkbox component
+- [Figma Link - Radio](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709)
 
-## `Radio` API
+## `Radio`
 
 | Prop                | Type                                    | Default     | Description                                                                                                                                                    | Required |
 | ------------------- | --------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -24,27 +30,26 @@
 | isDisabled          | `boolean`                               | `false`     | Control whether the radio is disabled or not.                                                                                                                  |          |
 | isRequired          | `boolean`                               | `false`     | Control whether the radio is required or not.                                                                                                                  |          |
 | helpText            | `string`                                | `undefined` | The helper text to be rendered                                                                                                                                 |          |
-| validationState     | `'none' \| 'error'`                      | `none`      | Control whether the radio is invalid or not.                                                                                                                   |          |
+| validationState     | `'none' \| 'error'`                     | `none`      | Control whether the radio is invalid or not.                                                                                                                   |          |
 | name (html native)  | `string`                                | `undefined` | The name of the input field in a radio, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)                     |          |
 | value (html native) | `string`                                | `undefined` | The value of the input field in a radio, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#value)             |          |
 
+## `RadioGroup`
 
-## `RadioGroup` API
-
-| Prop               | Type                                    | Default     | Description                                                                                                                      | Required |
-| ------------------ | --------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| children           | `React.ReactNode`                       | `undefined` | Accepts multiple radios                                                                                                          | ✅       |
-| label              | `string`                                | `undefined` | The label of the group                                                                                                           | ✅       |
-| labelPosition      | `top \| left`                           | `top`       | The position of the rendered label                                                                                               |          |
-| defaultValue       | `string`                                | `undefined` | The initial value of the radio group                                                                                             |          |
-| value              | `string`                                | `undefined` | The value of the radio, if present will act as [controlled component](https://reactjs.org/docs/forms.html#controlled-components) |          |
-| onChange           | `({ value: string, name: string }) => void`               | `undefined` | The function to be called when any radio's state changes                                                                         |          |
-| name               | `string`                                | `undefined` | The name of the radio group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)  |          |
-| isDisabled         | `boolean`                               | `false`     | Control whether the radio group is disabled or not.                                                                              |          |
-| helpText           | `string`                                | `undefined` | The helper text to be rendered                                                                                                   |          |
-| errorText          | `string`                                | `undefined` | The error text to be rendered                                                                                                    |          |
-| validationState    | `'none' \| 'error'`                     | `none`      | Control whether the radio group is invalid or not.                                                                               |          |
-| necessityIndicator | `'optional' \| 'required' \| 'none'` | `none` | Renders `${label} (optional)` for `optional` and `${label} *` for `required`. if set to `none` renders nothing                |          |
+| Prop               | Type                                        | Default     | Description                                                                                                                      | Required |
+| ------------------ | ------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| children           | `React.ReactNode`                           | `undefined` | Accepts multiple radios                                                                                                          | ✅       |
+| label              | `string`                                    | `undefined` | The label of the group                                                                                                           | ✅       |
+| labelPosition      | `top \| left`                               | `top`       | The position of the rendered label                                                                                               |          |
+| defaultValue       | `string`                                    | `undefined` | The initial value of the radio group                                                                                             |          |
+| value              | `string`                                    | `undefined` | The value of the radio, if present will act as [controlled component](https://reactjs.org/docs/forms.html#controlled-components) |          |
+| onChange           | `({ value: string, name: string }) => void` | `undefined` | The function to be called when any radio's state changes                                                                         |          |
+| name               | `string`                                    | `undefined` | The name of the radio group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)  |          |
+| isDisabled         | `boolean`                                   | `false`     | Control whether the radio group is disabled or not.                                                                              |          |
+| helpText           | `string`                                    | `undefined` | The helper text to be rendered                                                                                                   |          |
+| errorText          | `string`                                    | `undefined` | The error text to be rendered                                                                                                    |          |
+| validationState    | `'none' \| 'error'`                         | `none`      | Control whether the radio group is invalid or not.                                                                               |          |
+| necessityIndicator | `'optional' \| 'required' \| 'none'`        | `none`      | Renders `${label} (optional)` for `optional` and `${label} *` for `required`. if set to `none` renders nothing                   |          |
 
 ### Examples:
 
@@ -58,8 +63,9 @@
   defaultValue="anurag"
 >
   <Radio value="anurag">Anurag</Radio>
-  <Radio value="kamlesh">Kamlesh</Radio>
   <Radio value="chaitanya">Chaitanya</Radio>
+  <Radio value="divyanshu">Divyanshu</Radio>
+  <Radio value="kamlesh">Kamlesh</Radio>
 </RadioGroup>
 ```
 
@@ -77,18 +83,24 @@ const Controlled = () => {
       onChange={setSelected}
     >
       <Radio value="anurag">Anurag</Radio>
-      <Radio value="kamlesh">Kamlesh</Radio>
       <Radio value="chaitanya">Chaitanya</Radio>
+      <Radio value="divyanshu">Divyanshu</Radio>
+      <Radio value="kamlesh">Kamlesh</Radio>
     </RadioGroup>
   );
 };
 
 const Uncontrolled = () => {
   return (
-    <RadioGroup name="developers" label="Developers (uncontrolled)" defaultValue="chaitanya">
+    <RadioGroup 
+      name="developers" 
+      label="Developers (uncontrolled)" 
+      defaultValue="chaitanya"
+    >
       <Radio value="anurag">Anurag</Radio>
-      <Radio value="kamlesh">Kamlesh</Radio>
       <Radio value="chaitanya">Chaitanya</Radio>
+      <Radio value="divyanshu">Divyanshu</Radio>
+      <Radio value="kamlesh">Kamlesh</Radio>
     </RadioGroup>
   );
 };
