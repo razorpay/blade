@@ -47,6 +47,7 @@ const useRadioGroup = ({
     onChange: (value: string) => onChange?.({ value, name: fallbackName }),
   });
 
+  // FIX React native bug, where it unchecks the radio on clicking it again
   const state = React.useMemo<State>(() => {
     return {
       value: checkedValue,

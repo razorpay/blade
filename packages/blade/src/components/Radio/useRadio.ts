@@ -2,10 +2,10 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
-import { useControllableState } from '../../hooks/useControllable';
-import { useId } from '../../hooks/useId';
-import { getPlatformType, makeAccessible } from '../../utils';
 import type { RadioProps } from './Radio';
+import { useControllableState } from '~src/hooks/useControllable';
+import { useId } from '~src/hooks/useId';
+import { getPlatformType, makeAccessible } from '~src/utils';
 
 type UseRadioProps = Pick<
   RadioProps,
