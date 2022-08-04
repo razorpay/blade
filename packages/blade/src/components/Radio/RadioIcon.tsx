@@ -4,7 +4,7 @@ import React from 'react';
 import { useTheme } from '~components/BladeProvider';
 import Svg from '~components/Icons/_Svg';
 import { getIn } from '~utils';
-import { CheckboxIconWrapper } from '~components/Checkbox/CheckboxIcon/CheckboxIconWrapper';
+import { CheckboxIconWrapper as RadioIconWrapper } from '~components/Checkbox/CheckboxIcon/CheckboxIconWrapper';
 import Circle from '~components/Icons/_Svg/Circle';
 
 const CheckedIcon = ({ color }: { color: string }) => {
@@ -30,7 +30,7 @@ const RadioIcon = ({ isChecked, isDisabled, isNegative, isFocused }: RadioIconPr
   const iconColor = isDisabled ? disabledIconColor : defaultIconColor;
 
   return (
-    <CheckboxIconWrapper
+    <RadioIconWrapper
       isFullRounded={true}
       isFocused={isFocused}
       isDisabled={isDisabled}
@@ -38,7 +38,7 @@ const RadioIcon = ({ isChecked, isDisabled, isNegative, isFocused }: RadioIconPr
       isChecked={!!isChecked}
     >
       {isChecked ? <CheckedIcon color={iconColor} /> : null}
-    </CheckboxIconWrapper>
+    </RadioIconWrapper>
   );
 };
 

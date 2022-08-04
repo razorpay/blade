@@ -5,9 +5,9 @@ import { RadioIcon } from './RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
 import { FormHintText } from '~components/Form/FormHintText';
 import Box from '~components/Box';
-import { CheckboxLabel } from '~components/Checkbox/CheckboxLabel';
-import { CheckboxInput } from '~components/Checkbox/CheckboxInput';
-import { CheckboxLabelText } from '~components/Checkbox/CheckboxLabelText';
+import { CheckboxLabel as RadioLabel } from '~components/Checkbox/CheckboxLabel';
+import { CheckboxInput as RadioInput } from '~components/Checkbox/CheckboxInput';
+import { CheckboxLabelText as RadioLabelText } from '~components/Checkbox/CheckboxLabelText';
 
 type OnChange = ({
   isChecked,
@@ -118,8 +118,8 @@ const Radio = ({
   });
 
   return (
-    <CheckboxLabel inputProps={state.isReactNative ? inputProps : {}}>
-      <CheckboxInput
+    <RadioLabel inputProps={state.isReactNative ? inputProps : {}}>
+      <RadioInput
         isChecked={state.isChecked}
         isDisabled={isDisabled}
         isNegative={_hasError}
@@ -127,14 +127,14 @@ const Radio = ({
       />
       <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={_hasError} />
       <Box>
-        <CheckboxLabelText>{children}</CheckboxLabelText>
+        <RadioLabelText>{children}</RadioLabelText>
         {showHelpText && (
           <FormHintText id={ids?.helpTextId} variant="help">
             {helpText}
           </FormHintText>
         )}
       </Box>
-    </CheckboxLabel>
+    </RadioLabel>
   );
 };
 

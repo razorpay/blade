@@ -44,6 +44,8 @@ const useRadio = ({
     }
 
     setRadioStateChange((checked) => {
+      // Prevent radio to be unchecked when clicked again
+      // Once checked radios don't act as toggle buttons
       if (checked === false) {
         onChange?.({
           isChecked: true,
