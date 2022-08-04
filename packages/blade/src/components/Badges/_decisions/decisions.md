@@ -44,9 +44,9 @@ import { Badge } from '@razorpay/components';
   - NA
 
 #### Design
-- Do we need badges where the text can overflow? Ref: [Mantine Badge](https://mantine.dev/core/badge/#full-width-and-overflow)
-- Do we need to support icon only badges?
-- Should we auto-capitalize label when `labelWeight` is bold?
+- ~Do we need badges where the text can overflow? Ref: [Mantine Badge](https://mantine.dev/core/badge/#full-width-and-overflow)~ Yes. We will have a max-width. Design will get back to us with a value.
+- ~Do we need to support icon only badges?~ No, we will not have icon only badges
+- ~Should we auto-capitalize label when `labelWeight` is bold?~ No, we should leave it to the consumer to capitalize it if needed.
 
 ## Discussions
 ### `variant` prop
