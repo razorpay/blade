@@ -4,7 +4,7 @@ Radio is used to present each item in a list of options where users must make a 
 
 This document outlines the API of `Radio` & `RadioGroup` component.
 
-<img src="./radio_thumbnail.png" alt="Radio component thumbnail" />
+<img src="./radio_thumbnail.png" alt="Radio component thumbnail" width="380" />
 
 - [Design](#design)
 - [`Radio` API](#radio-api)
