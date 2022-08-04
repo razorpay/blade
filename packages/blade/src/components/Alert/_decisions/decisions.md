@@ -14,9 +14,7 @@ This document outlines the API of `Alert` component.
 >
 > The following needs work:
 >
-> 1. color on banking theme in high contrast
-> 2. a11y contrast ratio for notice alerts in high contrast
-> 3. the borderless intent mentioned in full bleed layout shouldn't have any borders and border radii
+> 1. the borderless intent mentioned in full bleed layout shouldn't have any borders and border radii
 
 ## API
 
