@@ -157,6 +157,10 @@ This full bleed layout works for all desktop, mobile and native when the `isBord
 
 **A4.** The rationale to use `intent` is because it signifies what the alert is meant for (success, error et al.). Also, we might need to extend alerts later to have different _variants_ like outline, ghost, etc. for which having a `variants` prop reserved for later would make more sense. There are some alternate terminology instead of `intent` that could be considered for example `colorScheme`.
 
+**Q5.** How would `Link` look in high contrast alerts? The existing ones in blue will not look quite good.
+
+**A5.** To be taken up separately as an enhancement.
+
 ## Alternatives
 
 An alternate API with compound components pattern was considered:
