@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.13.4
+
+### Patch Changes
+
+- 2778973: chore: add appropriate types for onClick of Button & BaseButton
+
 ## 0.13.3
 
 ### Patch Changes
