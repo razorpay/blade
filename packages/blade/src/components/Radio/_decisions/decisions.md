@@ -21,17 +21,13 @@ This document outlines the API of `Radio` & `RadioGroup` component.
 
 ## `Radio`
 
+> Note: Radio component can't be used outside of RadioGroup.
+
 | Prop                | Type                                    | Default     | Description                                                                                                                                                    | Required |
 | ------------------- | --------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | children            | `string`                                | `undefined` | The text to be rendered as RadioLabel                                                                                                                          | ✅       |
-| isChecked           | `boolean`                               | `false`     | state of the radio, if explicitly set the radio will become [controlled component](https://reactjs.org/docs/forms.html#controlled-components)                  |          |
-| defaultChecked      | `boolean`                               | `false`     | default state of the radio, if isChecked is not provided the radio will become [uncontrolled component](https://reactjs.org/docs/uncontrolled-components.html) |          |
-| onChange            | `({ event, isChecked, value }) => void` | `undefined` | The function to be called when the radio state changes.                                                                                                        |          |
 | isDisabled          | `boolean`                               | `false`     | Control whether the radio is disabled or not.                                                                                                                  |          |
-| isRequired          | `boolean`                               | `false`     | Control whether the radio is required or not.                                                                                                                  |          |
 | helpText            | `string`                                | `undefined` | The helper text to be rendered                                                                                                                                 |          |
-| validationState     | `'none' \| 'error'`                     | `none`      | Control whether the radio is invalid or not.                                                                                                                   |          |
-| name (html native)  | `string`                                | `undefined` | The name of the input field in a radio, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)                     |          |
 | value (html native) | `string`                                | `undefined` | The value of the input field in a radio, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#value)             |          |
 
 ## `RadioGroup`
