@@ -1,6 +1,14 @@
 import type { ReactElement } from 'react';
-import type { IconComponent } from '../Icons';
-import { Text } from '~components/Typography';
+import { StyledBadge } from './StyledBadge';
+import { minHeight as badgeMinHeight, textSize as badgeTextSize } from './badgeTokens';
+import type { IconComponent, IconProps } from '~components/Icons';
+import type { BaseTextProps } from '~components/Typography/BaseText';
+import { BaseText } from '~components/Typography/BaseText';
+import type { Theme } from '~components/BladeProvider';
+import { useTheme } from '~components/BladeProvider';
+import { getIn, makeBorderSize, makeSize } from '~utils';
+import Box from '~components/Box';
+import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
 type BadgeProps = {
   children: string;
@@ -12,17 +20,115 @@ type BadgeProps = {
   fontWeight?: 'regular' | 'bold';
 };
 
+type BadgeStyleProps = {
+  backgroundColor: string;
+  borderColor: string;
+  borderWidth: string;
+  textColor: BaseTextProps['color'];
+  textSize: BaseTextProps['fontSize'];
+  iconColor: IconProps['color'];
+  iconSize: IconProps['size'];
+  minHeight: string;
+  iconSpacing: DotNotationSpacingStringToken;
+  borderRadius: string;
+};
+
+const getProps = ({
+  variant,
+  contrast,
+  size,
+  hasIcon,
+  theme,
+}: {
+  variant: NonNullable<BadgeProps['variant']>;
+  contrast: NonNullable<BadgeProps['contrast']>;
+  size: NonNullable<BadgeProps['size']>;
+  hasIcon?: boolean;
+  theme: Theme;
+}): BadgeStyleProps => {
+  const props: BadgeStyleProps = {
+    backgroundColor: getIn(theme, `colors.feedback.background.${variant}.${contrast}Contrast`),
+    borderColor: getIn(theme, `colors.feedback.border.${variant}.${contrast}Contrast`),
+    borderWidth: makeBorderSize(theme.border.width.thin),
+    borderRadius: makeBorderSize(theme.border.radius.max),
+    textColor: `feedback.text.${variant}.${contrast}Contrast`,
+    textSize: badgeTextSize[size],
+    iconColor: `feedback.icon.${variant}.${contrast}Contrast`,
+    iconSize: 'xsmall',
+    minHeight: makeSize(badgeMinHeight[size]),
+    iconSpacing: hasIcon ? 'spacing.1' : 'spacing.0',
+  };
+  return props;
+};
+
 const Badge = ({
   children,
-  contrast,
-  fontStyle,
-  fontWeight,
-  icon,
-  size,
-  variant,
+  contrast = 'low',
+  fontStyle = 'normal',
+  fontWeight = 'regular',
+  icon: Icon,
+  size = 'medium',
+  variant = 'neutral',
 }: BadgeProps): ReactElement => {
-  console.log('unused props', contrast, fontStyle, fontWeight, icon, size, variant);
-  return <Text>{children}</Text>;
+  if (!children.trim()) {
+    throw new Error(`[Blade: Badge]: Text as children is required for Badge.`);
+  }
+
+  const { theme } = useTheme();
+  const {
+    backgroundColor,
+    minHeight,
+    borderColor,
+    borderRadius,
+    borderWidth,
+    iconColor,
+    iconSize,
+    iconSpacing,
+    textColor,
+    textSize,
+  } = getProps({
+    variant,
+    contrast,
+    size,
+    hasIcon: Boolean(Icon),
+    theme,
+  });
+  return (
+    <StyledBadge
+      backgroundColor={backgroundColor}
+      minHeight={minHeight}
+      borderColor={borderColor}
+      borderRadius={borderRadius}
+      borderWidth={borderWidth}
+    >
+      <Box
+        paddingRight="spacing.2"
+        paddingLeft="spacing.2"
+        display="flex"
+        flex={1}
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        {Icon ? (
+          <Box paddingRight={iconSpacing} display="flex">
+            <Icon color={iconColor} size={iconSize} />
+          </Box>
+        ) : null}
+        <BaseText
+          fontSize={textSize}
+          fontStyle={fontStyle}
+          fontWeight={fontWeight}
+          lineHeight="s"
+          color={textColor}
+          textAlign="center"
+          numberOfLines={1}
+        >
+          {children}
+        </BaseText>
+      </Box>
+    </StyledBadge>
+  );
 };
 
 export { Badge, BadgeProps };

@@ -23,10 +23,13 @@ argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
 
 const getStories = () => {
   return [
+    require('../../src/components/Badge/Badge.stories.tsx'),
     require('../../src/components/Button/Button/Button.stories.tsx'),
     require('../../src/components/Checkbox/Checkbox.stories.tsx'),
     require('../../src/components/Checkbox/CheckboxGroup.stories.tsx'),
     require('../../src/components/Icons/Icons.stories.tsx'),
+    require('../../src/components/Link/BaseLink/BaseLink.stories.tsx'),
+    require('../../src/components/Link/Link/Link.stories.tsx'),
     require('../../src/components/SkipNav/SkipNav.stories.tsx'),
     require('../../src/components/Typography/BaseText/BaseText.stories.tsx'),
     require('../../src/components/Typography/Heading/Heading.stories.tsx'),
@@ -36,8 +39,6 @@ const getStories = () => {
     require('../../src/storybook-recipes/AccessibilityInterop/AccessibilityInteropDemo.stories.tsx'),
     require('../../src/storybook-recipes/SimpleCardWithTokens/CardWithTokens.stories.tsx'),
     require('../../src/components/Button/BaseButton/BaseButton.stories.internal.tsx'),
-    require('../../src/components/Link/BaseLink/BaseLink.stories.tsx'),
-    require('../../src/components/Link/Link/Link.stories.tsx'),
   ];
 };
 
