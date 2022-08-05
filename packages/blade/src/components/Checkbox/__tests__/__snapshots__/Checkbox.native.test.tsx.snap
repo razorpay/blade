@@ -41,9 +41,12 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
       ]
     }
   >
-    <View
-      isChecked={false}
-      isNegative={false}
+    <Text
+      color="surface.text.subtle.lowContrast"
+      fontFamily="text"
+      fontSize={100}
+      fontWeight="regular"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -62,13 +65,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             "marginTop": 3,
             "width": 16,
           },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {},
         ]
       }
     >
@@ -152,10 +148,12 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
       ]
     }
   >
-    <View
-      isChecked={false}
-      isDisabled={true}
-      isNegative={false}
+    <Text
+      color="surface.text.subtle.lowContrast"
+      fontFamily="text"
+      fontSize={100}
+      fontWeight="regular"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -174,13 +172,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             "marginTop": 3,
             "width": 16,
           },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {},
         ]
       }
     >
@@ -264,9 +255,12 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       ]
     }
   >
-    <View
-      isChecked={false}
-      isNegative={true}
+    <Text
+      color="surface.text.subtle.lowContrast"
+      fontFamily="text"
+      fontSize={100}
+      fontWeight="regular"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -285,13 +279,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             "marginTop": 3,
             "width": 16,
           },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {},
         ]
       }
     >

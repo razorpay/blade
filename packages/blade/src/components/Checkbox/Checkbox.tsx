@@ -9,7 +9,7 @@ import { CheckboxLabelText } from './CheckboxLabelText';
 import { useCheckbox } from './useCheckbox';
 import { isEmpty } from '~utils';
 import Box from '~components/Box';
-import BaseText from '~components/Typography/BaseText';
+import { BaseText } from '~components/Typography/BaseText';
 import { FormHintText } from '~components/Form';
 
 type OnChange = ({

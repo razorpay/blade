@@ -8,7 +8,10 @@ import { useTheme } from '~components/BladeProvider';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'onClick' | 'accessibilityProps'>
->((props) => getStyledBaseButtonStyles(props));
+>((props) => ({
+  ...getStyledBaseButtonStyles(props),
+  alignSelf: 'center',
+}));
 
 const StyledBaseButton = ({
   onClick,

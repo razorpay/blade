@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import BaseText from '../BaseText';
+import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/BaseText';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
@@ -45,7 +45,7 @@ const getProps = ({
   return props;
 };
 
-const Title = ({
+export const Title = ({
   variant = 'small',
   type = 'normal',
   contrast = 'low',
@@ -54,5 +54,3 @@ const Title = ({
   const props = getProps({ variant, type, contrast });
   return <BaseText {...props}>{children}</BaseText>;
 };
-
-export default Title;

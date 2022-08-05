@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { testID } from '~utils';
-import BaseText from '~components/Typography/BaseText';
+import { BaseText } from '~components/Typography/BaseText';
 import { screenReaderStyles } from '~components/VisuallyHidden/ScreenReaderStyles';
 
 const fallbackId = 'blade-skip-nav';
