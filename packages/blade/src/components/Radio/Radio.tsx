@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
-import isUndefined from 'lodash/isUndefined';
 import isEmpty from 'lodash/isEmpty';
+import type { OnChange } from './useRadio';
 import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
@@ -11,34 +11,7 @@ import { CheckboxLabel as RadioLabel } from '~components/Checkbox/CheckboxLabel'
 import { CheckboxInput as RadioInput } from '~components/Checkbox/CheckboxInput';
 import { CheckboxLabelText as RadioLabelText } from '~components/Checkbox/CheckboxLabelText';
 
-type OnChange = ({
-  isChecked,
-  event,
-  value,
-}: {
-  isChecked: boolean;
-  event?: React.ChangeEvent;
-  value?: string;
-}) => void;
-
 type RadioProps = {
-  /**
-   * If `true`, The Radio will be checked. This also makes the Radio controlled
-   * Use `onChange` to update its value
-   *
-   * @default false
-   */
-  isChecked?: boolean;
-  /**
-   * If `true`, the Radio will be initially checked. This also makes the Radio uncontrolled
-   *
-   * @default false
-   */
-  defaultChecked?: boolean;
-  /**
-   * The callback invoked when the checked state of the `Radio` changes.
-   */
-  onChange?: OnChange;
   /**
    * Sets the label text of the Radio
    */
@@ -47,11 +20,6 @@ type RadioProps = {
    * Help text for the Radio
    */
   helpText?: string;
-  /**
-   * The name of the input field in a Radio
-   * (Useful for form submission).
-   */
-  name?: string;
   /**
    * The value to be used in the Radio input.
    * This is the value that will be returned on form submission.
@@ -63,100 +31,54 @@ type RadioProps = {
    * @default false
    */
   isDisabled?: boolean;
-  /**
-   * If `true`, the Radio input is marked as required,
-   * and `required` attribute will be added
-   *
-   * @default false
-   */
-  isRequired?: boolean;
-  /**
-   * If `error`, the Radio input is marked as invalid,
-   * and `invalid` attribute will be added
-   */
-  validationState?: 'error' | 'none';
 };
 
-const Radio = ({
-  defaultChecked,
-  isChecked,
-  isDisabled,
-  isRequired,
-  name,
-  value,
-  onChange,
-  children,
-  helpText,
-  validationState,
-}: RadioProps): React.ReactElement => {
+const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.ReactElement => {
   const groupProps = useRadioGroupContext();
+  const isInsideGroup = !isEmpty(groupProps);
 
-  // ban certain props in radio while inside group
-  const hasValidationState = !isUndefined(validationState);
-  const hasName = !isUndefined(name);
-  const hasDefaultChecked = !isUndefined(defaultChecked);
-  const hasIsChecked = !isUndefined(isChecked);
-  const hasOnChange = !isUndefined(onChange);
-  if (
-    (hasValidationState || hasName || hasDefaultChecked || hasIsChecked || hasOnChange) &&
-    !isEmpty(groupProps)
-  ) {
-    const props = [
-      hasValidationState ? 'validationState' : undefined,
-      hasName ? 'name' : undefined,
-      hasDefaultChecked ? 'defaultChecked' : undefined,
-      hasIsChecked ? 'isChecked' : undefined,
-      hasOnChange ? 'onChange' : undefined,
-    ]
-      .filter(Boolean)
-      .join(',');
-
-    throw new Error(
-      `[Blade Radio]: Cannot set \`${props}\` on <Radio /> when it's inside <RadioGroup />, Please set it on the <RadioGroup /> itself`,
-    );
+  if (!isInsideGroup) {
+    throw new Error('[Blade Radio]: Cannot use <Radio /> outside of <RadioGroup />');
   }
 
-  const _validationState = validationState ?? groupProps?.validationState;
-  const _hasError = _validationState === 'error';
+  const isChecked = groupProps?.state?.isChecked(value!);
+  const defaultChecked =
+    groupProps?.defaultValue === undefined ? undefined : groupProps?.defaultValue === value;
+  const validationState = groupProps?.validationState;
+  const hasError = validationState === 'error';
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
-  const _name = groupProps?.name ?? name;
-  const _isChecked = groupProps?.state?.isChecked(value!) ?? isChecked;
-  const showHelpText = !_hasError && helpText;
+  const name = groupProps?.name;
+  const showHelpText = !hasError && helpText;
 
-  const handleChange: OnChange = ({ isChecked, event, value }) => {
+  const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
       groupProps?.state?.setValue(value!);
     } else {
       groupProps?.state?.removeValue();
     }
-
-    onChange?.({ isChecked, event, value });
   };
 
   const { state, ids, inputProps } = useRadio({
     defaultChecked,
-    isChecked: _isChecked,
-    hasError: _hasError,
+    isChecked,
+    hasError,
     isDisabled: _isDisabled,
-    isRequired,
-    name: _name,
+    isRequired: groupProps.neccessityIndicator === 'required',
+    name,
     value,
     onChange: handleChange,
   });
 
   return (
-    // this
     <RadioLabel inputProps={state.isReactNative ? inputProps : {}}>
-      {/* this */}
       <RadioInput
         isChecked={state.isChecked}
-        isDisabled={isDisabled}
-        isNegative={_hasError}
+        isDisabled={_isDisabled}
+        isNegative={hasError}
         inputProps={inputProps}
       />
-      <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={_hasError} />
+      <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={hasError} />
       <Box>
-        {/* this */}
         <RadioLabelText>{children}</RadioLabelText>
         {showHelpText && (
           <FormHintText id={ids?.helpTextId} variant="help">

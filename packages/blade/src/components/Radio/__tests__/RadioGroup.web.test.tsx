@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable @typescript-eslint/no-implicit-any-catch */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import userEvents from '@testing-library/user-event';
 import React from 'react';
@@ -187,26 +185,5 @@ describe('<RadioGroup />', () => {
     expect(getByLabelText('Apple')).toHaveFocus();
     expect(fn).toBeCalledWith('apple');
     expect(getByTestId('values')).toHaveTextContent('apple');
-  });
-});
-
-describe('<RadioGroup /> runtime errors', () => {
-  it('should throw error if defaultChecked,isChecked,onChange is passed to checkboxes', () => {
-    const labelText = 'Select fruit';
-    try {
-      renderWithTheme(
-        <RadioGroup label={labelText}>
-          <Radio onChange={() => null} defaultChecked isChecked value="apple">
-            Apple
-          </Radio>
-          <Radio value="mango">Mango</Radio>
-          <Radio value="orange">Orange</Radio>
-        </RadioGroup>,
-      );
-    } catch (err: any) {
-      expect(err.message).toBe(
-        "[Blade Radio]: Cannot set `defaultChecked,isChecked,onChange` on <Radio /> when it's inside <RadioGroup />, Please set it on the <RadioGroup /> itself",
-      );
-    }
   });
 });

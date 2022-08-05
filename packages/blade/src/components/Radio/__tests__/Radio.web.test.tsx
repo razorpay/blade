@@ -4,7 +4,6 @@ import userEvents from '@testing-library/user-event';
 import React from 'react';
 import { Radio } from '../Radio';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import { Button } from '~components/Button';
 
 describe('<Radio />', () => {
   it('should render radio with label', () => {
@@ -20,15 +19,6 @@ describe('<Radio />', () => {
     const helpText = 'This has to be checked';
     const { getByText } = renderWithTheme(<Radio helpText={helpText}>{labelText}</Radio>);
     expect(getByText(helpText)).toBeInTheDocument();
-  });
-
-  it('should set error state with validationState', () => {
-    const labelText = 'Select fruit';
-    const { container, getByRole } = renderWithTheme(
-      <Radio validationState="error">{labelText}</Radio>,
-    );
-    expect(container).toMatchSnapshot();
-    expect(getByRole('radio', { hidden: true })).toBeInvalid();
   });
 
   it('should set disabled state with isDisabled', () => {
@@ -62,70 +52,5 @@ describe('<Radio />', () => {
     expect(getByRole('radio', { hidden: true })).toBeChecked();
     await user.keyboard('[Space]');
     expect(getByRole('radio', { hidden: true })).toBeChecked();
-  });
-
-  it('should set defaultChecked', () => {
-    const labelText = 'Select fruit';
-    const { getByRole } = renderWithTheme(<Radio defaultChecked>{labelText}</Radio>);
-
-    expect(getByRole('radio', { hidden: true })).toBeChecked();
-  });
-
-  it('should support isChecked prop', async () => {
-    const user = userEvents.setup();
-    const labelText = 'Select fruit';
-    const { getByRole, getByLabelText } = renderWithTheme(<Radio isChecked>{labelText}</Radio>);
-
-    expect(getByRole('radio', { hidden: true })).toBeChecked();
-    // should not toggle
-    await user.click(getByLabelText(labelText));
-    expect(getByRole('radio', { hidden: true })).toBeChecked();
-  });
-
-  it('should support uncontrolled state', async () => {
-    const user = userEvents.setup();
-    const checkFn = jest.fn();
-    const labelText = 'Select fruit';
-    const { getByRole, getByLabelText } = renderWithTheme(
-      <Radio defaultChecked={false} onChange={checkFn} value="apple">
-        {labelText}
-      </Radio>,
-    );
-
-    expect(getByRole('radio', { hidden: true })).not.toBeChecked();
-    expect(checkFn).not.toBeCalled();
-    await user.click(getByLabelText(labelText));
-    expect(getByRole('radio', { hidden: true })).toBeChecked();
-    expect(checkFn).toBeCalledWith(
-      expect.objectContaining({
-        isChecked: true,
-        value: 'apple',
-      }),
-    );
-    expect(checkFn.mock.calls[0][0].event).not.toBeUndefined();
-  });
-
-  it('should support controlled state', async () => {
-    const user = userEvents.setup();
-    const labelText = 'Select fruit';
-    const Example = () => {
-      const [checked, setChecked] = React.useState(false);
-      return (
-        <>
-          <Radio isChecked={checked} onChange={({ isChecked }) => setChecked(isChecked)}>
-            {labelText}
-          </Radio>
-          <Button onClick={() => setChecked((prev) => !prev)}>toggle</Button>
-          <p data-testid="state">{checked ? 'checked' : 'unchecked'}</p>
-        </>
-      );
-    };
-    const { getByTestId, getByRole } = renderWithTheme(<Example />);
-
-    expect(getByTestId('state')).toHaveTextContent('unchecked');
-    await user.click(getByRole('button'));
-    expect(getByTestId('state')).toHaveTextContent('checked');
-    await user.click(getByRole('button'));
-    expect(getByTestId('state')).toHaveTextContent('unchecked');
   });
 });
