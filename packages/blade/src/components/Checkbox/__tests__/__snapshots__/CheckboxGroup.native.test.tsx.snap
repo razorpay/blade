@@ -151,297 +151,321 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       }
     >
       <View
-        accessibilityDescribedBy="checkbox-1-helptext-3"
-        accessibilityErrorMessage="checkbox-1-errortext-2"
-        accessibilityInvalid={false}
-        accessibilityRequired={false}
-        accessibilityRole="checkbox"
-        accessibilityState={
-          Object {
-            "checked": false,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Array [
-            Object {
-              "display": "flex",
-              "flexDirection": "row",
-            },
+            Object {},
           ]
         }
-        value="apple"
       >
         <View
-          isChecked={false}
-          isNegative={false}
+          accessibilityDescribedBy="checkbox-1-helptext-3"
+          accessibilityErrorMessage="checkbox-1-errortext-2"
+          accessibilityInvalid={false}
+          accessibilityRequired={false}
+          accessibilityRole="checkbox"
+          accessibilityState={
+            Object {
+              "checked": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 2,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "width": 16,
+                "flexDirection": "row",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
+          value="apple"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
+                  "alignItems": "center",
+                  "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                  "borderColor": "hsla(216, 19%, 89%, 1)",
+                  "borderRadius": 2,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "display": "flex",
+                  "height": 16,
+                  "justifyContent": "center",
                   "marginBottom": 0,
                   "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "marginRight": 8,
+                  "marginTop": 3,
+                  "width": 16,
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
-            Apple
-          </Text>
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Apple
+            </Text>
+          </View>
         </View>
       </View>
       <View
-        accessibilityDescribedBy="checkbox-4-helptext-6"
-        accessibilityErrorMessage="checkbox-4-errortext-5"
-        accessibilityInvalid={false}
-        accessibilityRequired={false}
-        accessibilityRole="checkbox"
-        accessibilityState={
-          Object {
-            "checked": false,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Array [
-            Object {
-              "display": "flex",
-              "flexDirection": "row",
-            },
+            Object {},
           ]
         }
-        value="mango"
       >
         <View
-          isChecked={false}
-          isNegative={false}
+          accessibilityDescribedBy="checkbox-4-helptext-6"
+          accessibilityErrorMessage="checkbox-4-errortext-5"
+          accessibilityInvalid={false}
+          accessibilityRequired={false}
+          accessibilityRole="checkbox"
+          accessibilityState={
+            Object {
+              "checked": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 2,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "width": 16,
+                "flexDirection": "row",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
+          value="mango"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
+                  "alignItems": "center",
+                  "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                  "borderColor": "hsla(216, 19%, 89%, 1)",
+                  "borderRadius": 2,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "display": "flex",
+                  "height": 16,
+                  "justifyContent": "center",
                   "marginBottom": 0,
                   "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "marginRight": 8,
+                  "marginTop": 3,
+                  "width": 16,
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
-            Mango
-          </Text>
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Mango
+            </Text>
+          </View>
         </View>
       </View>
       <View
-        accessibilityDescribedBy="checkbox-7-helptext-9"
-        accessibilityErrorMessage="checkbox-7-errortext-8"
-        accessibilityInvalid={false}
-        accessibilityRequired={false}
-        accessibilityRole="checkbox"
-        accessibilityState={
-          Object {
-            "checked": false,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Array [
-            Object {
-              "display": "flex",
-              "flexDirection": "row",
-            },
+            Object {},
           ]
         }
-        value="orange"
       >
         <View
-          isChecked={false}
-          isNegative={false}
+          accessibilityDescribedBy="checkbox-7-helptext-9"
+          accessibilityErrorMessage="checkbox-7-errortext-8"
+          accessibilityInvalid={false}
+          accessibilityRequired={false}
+          accessibilityRole="checkbox"
+          accessibilityState={
+            Object {
+              "checked": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 2,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "width": 16,
+                "flexDirection": "row",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
+          value="orange"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
+                  "alignItems": "center",
+                  "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                  "borderColor": "hsla(216, 19%, 89%, 1)",
+                  "borderRadius": 2,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "display": "flex",
+                  "height": 16,
+                  "justifyContent": "center",
                   "marginBottom": 0,
                   "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "marginRight": 8,
+                  "marginTop": 3,
+                  "width": 16,
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
-            Orange
-          </Text>
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Orange
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -600,300 +624,334 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       }
     >
       <View
-        accessibilityDescribedBy="checkbox-22-helptext-24"
-        accessibilityErrorMessage="checkbox-22-errortext-23"
-        accessibilityInvalid={false}
-        accessibilityRequired={false}
-        accessibilityRole="checkbox"
-        accessibilityState={
-          Object {
-            "checked": false,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Array [
-            Object {
-              "display": "flex",
-              "flexDirection": "row",
-            },
+            Object {},
           ]
         }
-        value="apple"
       >
         <View
-          isChecked={false}
-          isNegative={false}
+          accessibilityDescribedBy="checkbox-22-helptext-24"
+          accessibilityErrorMessage="checkbox-22-errortext-23"
+          accessibilityInvalid={false}
+          accessibilityRequired={false}
+          accessibilityRole="checkbox"
+          accessibilityState={
+            Object {
+              "checked": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 2,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "width": 16,
+                "flexDirection": "row",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
+          value="apple"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
+                  "alignItems": "center",
+                  "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                  "borderColor": "hsla(216, 19%, 89%, 1)",
+                  "borderRadius": 2,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "display": "flex",
+                  "height": 16,
+                  "justifyContent": "center",
                   "marginBottom": 0,
                   "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "marginRight": 8,
+                  "marginTop": 3,
+                  "width": 16,
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
-            Apple
-          </Text>
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Apple
+            </Text>
+          </View>
         </View>
       </View>
       <View
-        accessibilityDescribedBy="checkbox-25-helptext-27"
-        accessibilityErrorMessage="checkbox-25-errortext-26"
-        accessibilityInvalid={false}
-        accessibilityRequired={false}
-        accessibilityRole="checkbox"
-        accessibilityState={
-          Object {
-            "checked": false,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Array [
-            Object {
-              "display": "flex",
-              "flexDirection": "row",
-            },
+            Object {},
           ]
         }
-        value="mango"
       >
         <View
-          isChecked={false}
-          isNegative={false}
+          accessibilityDescribedBy="checkbox-25-helptext-27"
+          accessibilityErrorMessage="checkbox-25-errortext-26"
+          accessibilityInvalid={false}
+          accessibilityRequired={false}
+          accessibilityRole="checkbox"
+          accessibilityState={
+            Object {
+              "checked": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 2,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "width": 16,
+                "flexDirection": "row",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
+          value="mango"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
+                  "alignItems": "center",
+                  "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                  "borderColor": "hsla(216, 19%, 89%, 1)",
+                  "borderRadius": 2,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "display": "flex",
+                  "height": 16,
+                  "justifyContent": "center",
                   "marginBottom": 0,
                   "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "marginRight": 8,
+                  "marginTop": 3,
+                  "width": 16,
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
-            Mango
-          </Text>
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Mango
+            </Text>
+          </View>
         </View>
       </View>
       <View
-        accessibilityDescribedBy="checkbox-28-helptext-30"
-        accessibilityErrorMessage="checkbox-28-errortext-29"
-        accessibilityInvalid={false}
-        accessibilityRequired={false}
-        accessibilityRole="checkbox"
-        accessibilityState={
-          Object {
-            "checked": false,
-            "disabled": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Array [
-            Object {
-              "display": "flex",
-              "flexDirection": "row",
-            },
+            Object {},
           ]
         }
-        value="orange"
       >
         <View
-          isChecked={false}
-          isNegative={false}
+          accessibilityDescribedBy="checkbox-28-helptext-30"
+          accessibilityErrorMessage="checkbox-28-errortext-29"
+          accessibilityInvalid={false}
+          accessibilityRequired={false}
+          accessibilityRole="checkbox"
+          accessibilityState={
+            Object {
+              "checked": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 2,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "width": 16,
+                "flexDirection": "row",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
+          value="orange"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
+                  "alignItems": "center",
+                  "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                  "borderColor": "hsla(216, 19%, 89%, 1)",
+                  "borderRadius": 2,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "display": "flex",
+                  "height": 16,
+                  "justifyContent": "center",
                   "marginBottom": 0,
                   "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "marginRight": 8,
+                  "marginTop": 3,
+                  "width": 16,
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
-            Orange
-          </Text>
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Orange
+            </Text>
+          </View>
         </View>
       </View>
     </View>
+    <View
+      marginTop="spacing.1"
+      style={
+        Array [
+          Object {
+            "marginTop": 4,
+          },
+        ]
+      }
+    />
     <View
       style={
         Object {

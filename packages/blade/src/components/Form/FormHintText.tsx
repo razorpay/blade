@@ -4,23 +4,86 @@
 import React from 'react';
 import { CheckIcon, InfoIcon } from '..';
 import { FormHintTextWrapper } from './FormHintTextWrapper';
+import type { BaseTextProps } from '~components/Typography/BaseText';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 
-type FormHintTextProps = {
+type HintTextProps = {
+  icon: React.ElementType;
+  children: string;
   id?: string;
-  children: React.ReactNode;
-  variant: 'help' | 'error' | 'success';
+  color: BaseTextProps['color'];
+};
+
+const HintText = ({ icon: Icon, children, id, color }: HintTextProps) => {
+  const isReactNative = getPlatformType() === 'react-native';
+
+  return (
+    <>
+      <Box marginTop="spacing.1" />
+      <FormHintTextWrapper>
+        <Icon />
+        <BaseText
+          id={id}
+          as={isReactNative ? undefined : 'span'}
+          color={color}
+          fontSize={50}
+          lineHeight="s"
+          fontStyle="italic"
+          fontFamily="text"
+        >
+          {children}
+        </BaseText>
+      </FormHintTextWrapper>
+    </>
+  );
+};
+
+type FormHintTextProps = {
+  state: 'help' | 'error' | 'success';
+  /**
+   * Help text for the group
+   */
+  helpText?: string;
+  /**
+   * Error text for the group
+   *
+   * Renders when `state` is set to 'error'
+   */
+  errorText?: string;
+  /**
+   * Success text for the group
+   *
+   * Renders when `state` is set to 'success'
+   */
+  successText?: string;
+  /**
+   * Sets the id on errorText.
+   * Needed for accessibility reasons.
+   */
+  errorTextId?: string;
+  /**
+   * Sets the id on helpText.
+   * Needed for accessibility reasons.
+   */
+  helpTextId?: string;
+  /**
+   * Sets the id on successText.
+   * Needed for accessibility reasons.
+   */
+  successTextId?: string;
 };
 
 const FormHintText = ({
-  id,
-  children,
-  variant = 'help',
+  state,
+  errorText,
+  successText,
+  helpText,
+  helpTextId,
+  errorTextId,
+  successTextId,
 }: FormHintTextProps): React.ReactElement => {
-  const isReactNative = getPlatformType() === 'react-native';
-
   const colors = {
     help: 'surface.text.muted.lowContrast',
     error: 'feedback.text.negative.lowContrast',
@@ -42,23 +105,31 @@ const FormHintText = ({
       </>
     ),
   };
-  const Icon = Icons[variant];
+
+  const Icon = Icons[state];
+  const showError = state === 'error' && errorText;
+  const showSuccess = state === 'success' && successText;
+  const showHelp = !showError && helpText;
 
   return (
-    <FormHintTextWrapper>
-      <Icon />
-      <BaseText
-        id={id}
-        as={isReactNative ? undefined : 'span'}
-        color={colors[variant]}
-        fontSize={50}
-        lineHeight="s"
-        fontStyle="italic"
-        fontFamily="text"
-      >
-        {children}
-      </BaseText>
-    </FormHintTextWrapper>
+    <>
+      {showHelp && (
+        <HintText id={helpTextId} icon={Icon} color={colors[state]}>
+          {helpText}
+        </HintText>
+      )}
+      {showError && (
+        <HintText id={errorTextId} icon={Icon} color={colors[state]}>
+          {errorText}
+        </HintText>
+      )}
+
+      {showSuccess && (
+        <HintText id={successTextId} icon={Icon} color={colors[state]}>
+          {successText}
+        </HintText>
+      )}
+    </>
   );
 };
 
