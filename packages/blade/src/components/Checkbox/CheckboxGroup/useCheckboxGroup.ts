@@ -55,7 +55,7 @@ const useCheckboxGroup = ({
           return;
         }
 
-        setValue(value);
+        setValue(() => value);
       },
       isChecked(value: string) {
         return checkedValues.includes(value);
@@ -65,7 +65,7 @@ const useCheckboxGroup = ({
           return;
         }
         if (!checkedValues.includes(value)) {
-          setValue(checkedValues.concat(value));
+          setValue(() => checkedValues.concat(value));
         }
       },
       removeValue(value: string) {
@@ -73,7 +73,7 @@ const useCheckboxGroup = ({
           return;
         }
         if (checkedValues.includes(value)) {
-          setValue(checkedValues.filter((existingValue) => existingValue !== value));
+          setValue(() => checkedValues.filter((existingValue) => existingValue !== value));
         }
       },
     };
