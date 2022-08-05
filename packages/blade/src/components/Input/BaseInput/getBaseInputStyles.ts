@@ -3,11 +3,17 @@ import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeBorderSize, makeSpace } from '~utils';
 
-const getBaseInputStyles = ({ theme }: { theme: Theme }): CSSObject => ({
+const getBaseInputStyles = ({
+  isDisabled,
+  theme,
+}: {
+  isDisabled?: boolean;
+  theme: Theme;
+}): CSSObject => ({
   ...getTextStyles({
     size: 'medium',
     variant: 'body',
-    type: 'subtle',
+    type: isDisabled ? 'placeholder' : 'subtle',
     weight: 'regular',
     contrast: 'low',
     theme,
@@ -20,7 +26,7 @@ const getBaseInputStyles = ({ theme }: { theme: Theme }): CSSObject => ({
   borderTopLeftRadius: makeBorderSize(theme.border.radius.small),
   borderTopRightRadius: makeBorderSize(theme.border.radius.small),
   borderBottomWidth: makeBorderSize(theme.border.width.thin),
-  borderBottomColor: theme.colors.brand.gray[400],
+  borderBottomColor: isDisabled ? theme.colors.brand.gray[300] : theme.colors.brand.gray[400],
   width: '100%',
 });
 

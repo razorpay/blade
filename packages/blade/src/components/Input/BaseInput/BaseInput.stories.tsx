@@ -1,7 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
-import type { BaseInputProps } from './BaseInput';
+import React from 'react';
+import type { BaseInputProps } from './baseInputHelpers';
 import { BaseInput as BaseInputComponent } from './BaseInput';
 
 export default {
@@ -14,6 +15,8 @@ export default {
     labelPosition: 'top',
     name: 'fullName',
     type: 'text',
+    isDisabled: false,
+    onChange: undefined,
   },
   parameters: {
     docs: {
@@ -44,3 +47,32 @@ const BaseInputTemplate: ComponentStory<typeof BaseInputComponent> = (args) => {
 export const BaseInput = BaseInputTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 BaseInput.storyName = 'BaseInput';
+
+const UncontrolledBaseInputTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+  return (
+    <BaseInput
+      label="First Name"
+      defaultValue="John Ives"
+      name="fullName"
+      onChange={({ name, value }): void => console.log({ name, value })}
+    />
+  );
+};
+export const UncontrolledBaseInput = UncontrolledBaseInputTemplate.bind({});
+
+const ControlledBaseInputTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+  const [inputValue, setInputValue] = React.useState('');
+
+  return (
+    <BaseInput
+      label="First Name"
+      value={inputValue}
+      name="fullName"
+      onChange={({ name, value }): void => {
+        console.log(`sending ${name}:${value} to analytics service`);
+        setInputValue(value ?? '');
+      }}
+    />
+  );
+};
+export const ControlledBaseInput = ControlledBaseInputTemplate.bind({});
