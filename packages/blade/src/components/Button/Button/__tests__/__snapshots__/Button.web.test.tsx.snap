@@ -98,7 +98,7 @@ exports[`<Button /> should render button with default properties 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -208,7 +208,7 @@ exports[`<Button /> should render button with full width 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -353,7 +353,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
         </svg>
       </div>
       <div
-        class="c2 c3"
+        class="c4"
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -467,7 +467,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -596,7 +596,7 @@ exports[`<Button /> should render disabled button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.disabled"
         font-size="100"
         font-weight="bold"
@@ -707,7 +707,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.secondary.disabled"
         font-size="100"
         font-weight="bold"
@@ -818,7 +818,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.tertiary.disabled"
         font-size="100"
         font-weight="bold"
@@ -928,7 +928,7 @@ exports[`<Button /> should render large size button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="200"
         font-weight="bold"
@@ -1038,7 +1038,7 @@ exports[`<Button /> should render medium size button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="100"
         font-weight="bold"
@@ -1148,7 +1148,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.secondary.default"
         font-size="100"
         font-weight="bold"
@@ -1258,7 +1258,7 @@ exports[`<Button /> should render small size button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="75"
         font-weight="bold"
@@ -1368,7 +1368,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.tertiary.default"
         font-size="100"
         font-weight="bold"
@@ -1478,7 +1478,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
       display="flex"
     >
       <div
-        class="c2 c3"
+        class="c3"
         color="action.text.primary.default"
         font-size="75"
         font-weight="bold"

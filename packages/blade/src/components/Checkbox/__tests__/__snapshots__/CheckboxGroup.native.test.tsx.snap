@@ -191,18 +191,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
           value="apple"
         >
-<<<<<<< HEAD
           <View
             isChecked={false}
             isNegative={false}
-=======
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
             style={
               Array [
                 Object {
@@ -223,7 +214,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 },
               ]
             }
-<<<<<<< HEAD
           />
           <View
             style={
@@ -231,8 +221,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 Object {},
               ]
             }
-=======
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
           >
             <Text
               color="surface.text.subtle.lowContrast"
@@ -309,18 +297,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
           value="mango"
         >
-<<<<<<< HEAD
           <View
             isChecked={false}
             isNegative={false}
-=======
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
             style={
               Array [
                 Object {
@@ -341,7 +320,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 },
               ]
             }
-<<<<<<< HEAD
           />
           <View
             style={
@@ -349,8 +327,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 Object {},
               ]
             }
-=======
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
           >
             <Text
               color="surface.text.subtle.lowContrast"
@@ -427,18 +403,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
           value="orange"
         >
-<<<<<<< HEAD
           <View
             isChecked={false}
             isNegative={false}
-=======
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
             style={
               Array [
                 Object {
@@ -459,7 +426,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 },
               ]
             }
-<<<<<<< HEAD
           />
           <View
             style={
@@ -467,8 +433,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 Object {},
               ]
             }
-=======
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
           >
             <Text
               color="surface.text.subtle.lowContrast"
@@ -700,18 +664,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
           value="apple"
         >
-<<<<<<< HEAD
           <View
             isChecked={false}
             isNegative={false}
-=======
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
             style={
               Array [
                 Object {
@@ -732,7 +687,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 },
               ]
             }
-<<<<<<< HEAD
           />
           <View
             style={
@@ -740,8 +694,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 Object {},
               ]
             }
-=======
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
           >
             <Text
               color="surface.text.subtle.lowContrast"
@@ -818,18 +770,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
           value="mango"
         >
-<<<<<<< HEAD
           <View
             isChecked={false}
             isNegative={false}
-=======
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
             style={
               Array [
                 Object {
@@ -850,7 +793,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 },
               ]
             }
-<<<<<<< HEAD
           />
           <View
             style={
@@ -858,8 +800,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 Object {},
               ]
             }
-=======
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
           >
             <Text
               color="surface.text.subtle.lowContrast"
@@ -936,18 +876,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
           value="orange"
         >
-<<<<<<< HEAD
           <View
             isChecked={false}
             isNegative={false}
-=======
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
             style={
               Array [
                 Object {
@@ -968,7 +899,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 },
               ]
             }
-<<<<<<< HEAD
           />
           <View
             style={
@@ -976,8 +906,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 Object {},
               ]
             }
-=======
->>>>>>> 1b11dc8c (fix(Typography): expose text styles)
           >
             <Text
               color="surface.text.subtle.lowContrast"

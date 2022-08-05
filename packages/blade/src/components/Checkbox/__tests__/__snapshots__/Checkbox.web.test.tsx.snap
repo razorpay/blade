@@ -128,19 +128,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
         />
       </div>
       <div
-        class="c3"
-        style="opacity: 0; position: absolute; display: flex;"
-      />
-    </div>
-    <div
-      class="Boxweb__Box-xvyj85-0"
-    >
-      <div
-        class="c4"
-        color="surface.text.subtle.lowContrast"
-        font-family="text"
-        font-size="100"
-        font-weight="regular"
+        class="Boxweb__Box-xvyj85-0"
       >
         <div
           class="c4"
@@ -277,19 +265,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
         />
       </div>
       <div
-        class="c3"
-        style="opacity: 0; position: absolute; display: flex;"
-      />
-    </div>
-    <div
-      class="Boxweb__Box-xvyj85-0"
-    >
-      <div
-        class="c4"
-        color="surface.text.subtle.lowContrast"
-        font-family="text"
-        font-size="100"
-        font-weight="regular"
+        class="Boxweb__Box-xvyj85-0"
       >
         <div
           class="c4"
@@ -425,19 +401,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         />
       </div>
       <div
-        class="c3"
-        style="opacity: 0; position: absolute; display: flex;"
-      />
-    </div>
-    <div
-      class="Boxweb__Box-xvyj85-0"
-    >
-      <div
-        class="c4"
-        color="surface.text.subtle.lowContrast"
-        font-family="text"
-        font-size="100"
-        font-weight="regular"
+        class="Boxweb__Box-xvyj85-0"
       >
         <div
           class="c4"
@@ -601,11 +565,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
         </div>
       </div>
       <div
-        class="c5"
-        color="surface.text.subtle.lowContrast"
-        font-family="text"
-        font-size="100"
-        font-weight="regular"
+        class="Boxweb__Box-xvyj85-0"
       >
         <div
           class="c5"
