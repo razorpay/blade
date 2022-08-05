@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.13.3
+
+### Patch Changes
+
+- 3ea6d6c: fix(blade): fixes checkbox helptext and errortext alignment for individual checkboxes
+
 ## 0.13.2
 
 ### Patch Changes
