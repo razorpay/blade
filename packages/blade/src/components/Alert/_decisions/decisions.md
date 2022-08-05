@@ -10,12 +10,6 @@ This document outlines the API of `Alert` component.
 
 - [Figma - Alerts](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6824%3A0)
 
-> **Note**
->
-> The following needs work:
->
-> 1. the borderless intent mentioned in full bleed layout shouldn't have any borders and border radii
-
 ## API
 
 Annotated component with props:
