@@ -3,9 +3,8 @@ import { CheckboxGroupContent } from './CheckboxGroupContent';
 import { CheckboxGroupField } from './CheckboxGroupField';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
-import { FormLabelText } from '~components/Form/FormLabelText';
+import { FormLabelText, FormHintText } from '~components/Form';
 import Box from '~components/Box';
-import { FormHintText } from '~components/Form/FormHintText';
 
 type CheckboxGroupProps = {
   /**

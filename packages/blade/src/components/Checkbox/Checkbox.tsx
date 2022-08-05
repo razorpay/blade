@@ -9,9 +9,8 @@ import { CheckboxLabelText } from './CheckboxLabelText';
 import { useCheckbox } from './useCheckbox';
 import { isEmpty } from '~utils';
 import Box from '~components/Box';
-import { FormHintTextWrapper } from '~components/Form/FormHintTextWrapper.web';
 import BaseText from '~components/Typography/BaseText';
-import { FormHintText } from '~components/Form/FormHintText';
+import { FormHintText } from '~components/Form';
 
 type OnChange = ({
   isChecked,
@@ -195,19 +194,17 @@ const Checkbox = ({
         <Box>
           <CheckboxLabelText isDisabled={_isDisabled}>{children}</CheckboxLabelText>
           {showSupportingText && (
-            <FormHintTextWrapper>
-              <BaseText
-                id={ids?.helpTextId}
-                as={state.isReactNative ? undefined : 'span'}
-                color="surface.text.muted.lowContrast"
-                fontSize={50}
-                lineHeight="s"
-                fontStyle="italic"
-                fontFamily="text"
-              >
-                {helpText}
-              </BaseText>
-            </FormHintTextWrapper>
+            <BaseText
+              id={ids?.helpTextId}
+              as={state.isReactNative ? undefined : 'span'}
+              color="surface.text.muted.lowContrast"
+              fontSize={50}
+              lineHeight="s"
+              fontStyle="italic"
+              fontFamily="text"
+            >
+              {helpText}
+            </BaseText>
           )}
         </Box>
       </CheckboxLabel>
