@@ -3,9 +3,9 @@
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { useControllableState } from '../../hooks/useControllable';
-import { useId } from '../../hooks/useId';
 import { getPlatformType, makeAccessible } from '../../utils';
 import type { CheckboxProps } from './Checkbox';
+import { useFormId } from '~src/hooks/useFormId';
 
 type UseCheckboxProps = Pick<
   CheckboxProps,
@@ -85,9 +85,7 @@ const useCheckbox = ({
     setChecked: setCheckboxStateChange,
   };
 
-  const idBase = useId('checkbox');
-  const errorTextId = useId(`${idBase}-errortext`);
-  const helpTextId = useId(`${idBase}-helptext`);
+  const { inputId, errorTextId, helpTextId } = useFormId('checkbox');
 
   const accessibilityProps = makeAccessible({
     role: 'checkbox',
@@ -114,7 +112,7 @@ const useCheckbox = ({
 
   return {
     state,
-    ids: { errorTextId, helpTextId },
+    ids: { inputId, errorTextId, helpTextId },
     inputProps: {
       ref: inputRef,
       onChange: handleOnChange,
