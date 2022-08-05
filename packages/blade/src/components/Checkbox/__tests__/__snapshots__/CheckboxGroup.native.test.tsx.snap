@@ -191,12 +191,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
           value="apple"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
@@ -217,14 +214,20 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
             <Text
-              color="hsla(216, 27%, 36%, 1)"
-              fontFamily="Lato"
-              fontSize="15px"
-              fontStyle="normal"
-              fontWeight={400}
-              lineHeight="24px"
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
               style={
                 Array [
                   Object {
@@ -247,8 +250,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   },
                 ]
               }
-              textAlign="left"
-              textDecorationLine="none"
             >
               Apple
             </Text>
@@ -296,12 +297,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
           value="mango"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
@@ -322,14 +320,20 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
             <Text
-              color="hsla(216, 27%, 36%, 1)"
-              fontFamily="Lato"
-              fontSize="15px"
-              fontStyle="normal"
-              fontWeight={400}
-              lineHeight="24px"
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
               style={
                 Array [
                   Object {
@@ -352,8 +356,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   },
                 ]
               }
-              textAlign="left"
-              textDecorationLine="none"
             >
               Mango
             </Text>
@@ -401,12 +403,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
           value="orange"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
@@ -427,14 +426,20 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
             <Text
-              color="hsla(216, 27%, 36%, 1)"
-              fontFamily="Lato"
-              fontSize="15px"
-              fontStyle="normal"
-              fontWeight={400}
-              lineHeight="24px"
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
               style={
                 Array [
                   Object {
@@ -457,8 +462,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   },
                 ]
               }
-              textAlign="left"
-              textDecorationLine="none"
             >
               Orange
             </Text>
@@ -661,12 +664,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
           value="apple"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
@@ -687,14 +687,20 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
             <Text
-              color="hsla(216, 27%, 36%, 1)"
-              fontFamily="Lato"
-              fontSize="15px"
-              fontStyle="normal"
-              fontWeight={400}
-              lineHeight="24px"
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
               style={
                 Array [
                   Object {
@@ -717,8 +723,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   },
                 ]
               }
-              textAlign="left"
-              textDecorationLine="none"
             >
               Apple
             </Text>
@@ -766,12 +770,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
           value="mango"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
@@ -792,14 +793,20 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
             <Text
-              color="hsla(216, 27%, 36%, 1)"
-              fontFamily="Lato"
-              fontSize="15px"
-              fontStyle="normal"
-              fontWeight={400}
-              lineHeight="24px"
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
               style={
                 Array [
                   Object {
@@ -822,8 +829,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   },
                 ]
               }
-              textAlign="left"
-              textDecorationLine="none"
             >
               Mango
             </Text>
@@ -871,12 +876,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
           value="orange"
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            isChecked={false}
+            isNegative={false}
             style={
               Array [
                 Object {
@@ -897,14 +899,20 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 },
               ]
             }
+          />
+          <View
+            style={
+              Array [
+                Object {},
+              ]
+            }
           >
             <Text
-              color="hsla(216, 27%, 36%, 1)"
-              fontFamily="Lato"
-              fontSize="15px"
-              fontStyle="normal"
-              fontWeight={400}
-              lineHeight="24px"
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
               style={
                 Array [
                   Object {
@@ -927,8 +935,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   },
                 ]
               }
-              textAlign="left"
-              textDecorationLine="none"
             >
               Orange
             </Text>

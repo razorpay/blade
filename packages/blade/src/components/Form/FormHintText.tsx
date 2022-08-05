@@ -4,9 +4,41 @@
 import React from 'react';
 import { CheckIcon, InfoIcon } from '..';
 import { FormHintTextWrapper } from './FormHintTextWrapper';
+import type { BaseTextProps } from '~components/Typography/BaseText';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
 import Box from '~components/Box';
+
+type HintTextProps = {
+  icon: React.ElementType;
+  children: string;
+  id?: string;
+  color: BaseTextProps['color'];
+};
+
+const HintText = ({ icon: Icon, children, id, color }: HintTextProps) => {
+  const isReactNative = getPlatformType() === 'react-native';
+
+  return (
+    <>
+      <Box marginTop="spacing.1" />
+      <FormHintTextWrapper>
+        <Icon />
+        <BaseText
+          id={id}
+          as={isReactNative ? undefined : 'span'}
+          color={color}
+          fontSize={50}
+          lineHeight="s"
+          fontStyle="italic"
+          fontFamily="text"
+        >
+          {children}
+        </BaseText>
+      </FormHintTextWrapper>
+    </>
+  );
+};
 
 type FormHintTextProps = {
   state: 'help' | 'error' | 'success';
@@ -52,8 +84,6 @@ const FormHintText = ({
   errorTextId,
   successTextId,
 }: FormHintTextProps): React.ReactElement => {
-  const isReactNative = getPlatformType() === 'react-native';
-
   const colors = {
     help: 'surface.text.muted.lowContrast',
     error: 'feedback.text.negative.lowContrast',
@@ -75,6 +105,7 @@ const FormHintText = ({
       </>
     ),
   };
+
   const Icon = Icons[state];
   const showError = state === 'error' && errorText;
   const showSuccess = state === 'success' && successText;
@@ -83,62 +114,20 @@ const FormHintText = ({
   return (
     <>
       {showHelp && (
-        <>
-          <Box marginTop="spacing.1" />
-          <FormHintTextWrapper>
-            <Icon />
-            <BaseText
-              id={helpTextId}
-              as={isReactNative ? undefined : 'span'}
-              color={colors[state]}
-              fontSize={50}
-              lineHeight="s"
-              fontStyle="italic"
-              fontFamily="text"
-            >
-              {helpText}
-            </BaseText>
-          </FormHintTextWrapper>
-        </>
+        <HintText id={helpTextId} icon={Icon} color={colors[state]}>
+          {helpText}
+        </HintText>
       )}
       {showError && (
-        <>
-          <Box marginTop="spacing.1" />
-          <FormHintTextWrapper>
-            <Icon />
-            <BaseText
-              id={errorTextId}
-              as={isReactNative ? undefined : 'span'}
-              color={colors[state]}
-              fontSize={50}
-              lineHeight="s"
-              fontStyle="italic"
-              fontFamily="text"
-            >
-              {errorText}
-            </BaseText>
-          </FormHintTextWrapper>
-        </>
+        <HintText id={errorTextId} icon={Icon} color={colors[state]}>
+          {errorText}
+        </HintText>
       )}
 
       {showSuccess && (
-        <>
-          <Box marginTop="spacing.1" />
-          <FormHintTextWrapper>
-            <Icon />
-            <BaseText
-              id={successTextId}
-              as={isReactNative ? undefined : 'span'}
-              color={colors[state]}
-              fontSize={50}
-              lineHeight="s"
-              fontStyle="italic"
-              fontFamily="text"
-            >
-              {successText}
-            </BaseText>
-          </FormHintTextWrapper>
-        </>
+        <HintText id={successTextId} icon={Icon} color={colors[state]}>
+          {successText}
+        </HintText>
       )}
     </>
   );

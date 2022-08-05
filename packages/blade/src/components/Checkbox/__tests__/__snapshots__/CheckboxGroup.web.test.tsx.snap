@@ -277,27 +277,14 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               />
             </div>
             <div
-              class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="surface.text.subtle.lowContrast"
-              font-family="text"
-              font-size="100"
-              font-weight="regular"
+              class=""
             >
               <div
                 class="c10"
-                color="hsla(216, 27%, 36%, 1)"
-                font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-                font-size="0.875rem"
-                font-style="normal"
-                font-weight="400"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
               >
                 Apple
               </div>
@@ -349,27 +336,14 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               />
             </div>
             <div
-              class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="surface.text.subtle.lowContrast"
-              font-family="text"
-              font-size="100"
-              font-weight="regular"
+              class=""
             >
               <div
                 class="c10"
-                color="hsla(216, 27%, 36%, 1)"
-                font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-                font-size="0.875rem"
-                font-style="normal"
-                font-weight="400"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
               >
                 Mango
               </div>
@@ -421,27 +395,14 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               />
             </div>
             <div
-              class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="surface.text.subtle.lowContrast"
-              font-family="text"
-              font-size="100"
-              font-weight="regular"
+              class=""
             >
               <div
                 class="c10"
-                color="hsla(216, 27%, 36%, 1)"
-                font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-                font-size="0.875rem"
-                font-style="normal"
-                font-weight="400"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
               >
                 Orange
               </div>
@@ -456,7 +417,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
         style="display: flex; flex-direction: row; align-items: center;"
       >
         <span
-          class="c11"
+          class="c12"
           color="surface.text.muted.lowContrast"
           font-family="text"
           font-size="50"
@@ -729,27 +690,14 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               />
             </div>
             <div
-              class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="surface.text.subtle.lowContrast"
-              font-family="text"
-              font-size="100"
-              font-weight="regular"
+              class=""
             >
               <div
                 class="c10"
-                color="hsla(216, 27%, 36%, 1)"
-                font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-                font-size="0.875rem"
-                font-style="normal"
-                font-weight="400"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
               >
                 Apple
               </div>
@@ -801,27 +749,14 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               />
             </div>
             <div
-              class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="surface.text.subtle.lowContrast"
-              font-family="text"
-              font-size="100"
-              font-weight="regular"
+              class=""
             >
               <div
                 class="c10"
-                color="hsla(216, 27%, 36%, 1)"
-                font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-                font-size="0.875rem"
-                font-style="normal"
-                font-weight="400"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
               >
                 Mango
               </div>
@@ -873,27 +808,14 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               />
             </div>
             <div
-              class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="surface.text.subtle.lowContrast"
-              font-family="text"
-              font-size="100"
-              font-weight="regular"
+              class=""
             >
               <div
                 class="c10"
-                color="hsla(216, 27%, 36%, 1)"
-                font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-                font-size="0.875rem"
-                font-style="normal"
-                font-weight="400"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
               >
                 Orange
               </div>
