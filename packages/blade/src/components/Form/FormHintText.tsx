@@ -9,15 +9,48 @@ import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 
 type FormHintTextProps = {
-  id?: string;
-  children: React.ReactNode;
-  variant: 'help' | 'error' | 'success';
+  state: 'help' | 'error' | 'success';
+  /**
+   * Help text for the group
+   */
+  helpText?: string;
+  /**
+   * Error text for the group
+   *
+   * Renders when `state` is set to 'error'
+   */
+  errorText?: string;
+  /**
+   * Success text for the group
+   *
+   * Renders when `state` is set to 'success'
+   */
+  successText?: string;
+  /**
+   * Sets the id on errorText.
+   * Needed for accessibility reasons.
+   */
+  errorTextId?: string;
+  /**
+   * Sets the id on helpText.
+   * Needed for accessibility reasons.
+   */
+  helpTextId?: string;
+  /**
+   * Sets the id on successText.
+   * Needed for accessibility reasons.
+   */
+  successTextId?: string;
 };
 
 const FormHintText = ({
-  id,
-  children,
-  variant = 'help',
+  state,
+  errorText,
+  successText,
+  helpText,
+  helpTextId,
+  errorTextId,
+  successTextId,
 }: FormHintTextProps): React.ReactElement => {
   const isReactNative = getPlatformType() === 'react-native';
 
@@ -42,23 +75,72 @@ const FormHintText = ({
       </>
     ),
   };
-  const Icon = Icons[variant];
+  const Icon = Icons[state];
+  const showError = state === 'error' && errorText;
+  const showSuccess = state === 'success' && successText;
+  const showHelp = !showError && helpText;
 
   return (
-    <FormHintTextWrapper>
-      <Icon />
-      <BaseText
-        id={id}
-        as={isReactNative ? undefined : 'span'}
-        color={colors[variant]}
-        fontSize={50}
-        lineHeight="s"
-        fontStyle="italic"
-        fontFamily="text"
-      >
-        {children}
-      </BaseText>
-    </FormHintTextWrapper>
+    <>
+      {showHelp && (
+        <>
+          <Box marginTop="spacing.1" />
+          <FormHintTextWrapper>
+            <Icon />
+            <BaseText
+              id={helpTextId}
+              as={isReactNative ? undefined : 'span'}
+              color={colors[state]}
+              fontSize={50}
+              lineHeight="s"
+              fontStyle="italic"
+              fontFamily="text"
+            >
+              {helpText}
+            </BaseText>
+          </FormHintTextWrapper>
+        </>
+      )}
+      {showError && (
+        <>
+          <Box marginTop="spacing.1" />
+          <FormHintTextWrapper>
+            <Icon />
+            <BaseText
+              id={errorTextId}
+              as={isReactNative ? undefined : 'span'}
+              color={colors[state]}
+              fontSize={50}
+              lineHeight="s"
+              fontStyle="italic"
+              fontFamily="text"
+            >
+              {errorText}
+            </BaseText>
+          </FormHintTextWrapper>
+        </>
+      )}
+
+      {showSuccess && (
+        <>
+          <Box marginTop="spacing.1" />
+          <FormHintTextWrapper>
+            <Icon />
+            <BaseText
+              id={successTextId}
+              as={isReactNative ? undefined : 'span'}
+              color={colors[state]}
+              fontSize={50}
+              lineHeight="s"
+              fontStyle="italic"
+              fontFamily="text"
+            >
+              {successText}
+            </BaseText>
+          </FormHintTextWrapper>
+        </>
+      )}
+    </>
   );
 };
 
