@@ -1,12 +1,20 @@
 import { BaseText } from '~components/Typography/BaseText';
 
-const CheckboxLabelText = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+const CheckboxLabelText = ({
+  children,
+  isDisabled,
+}: {
+  children: React.ReactNode;
+  isDisabled?: boolean;
+}): React.ReactElement => {
   return (
     <BaseText
       lineHeight="l"
       fontFamily="text"
       fontWeight="regular"
-      color="surface.text.subtle.lowContrast"
+      color={
+        isDisabled ? 'surface.text.placeholder.lowContrast' : 'surface.text.subtle.lowContrast'
+      }
       fontSize={100}
     >
       {children}
