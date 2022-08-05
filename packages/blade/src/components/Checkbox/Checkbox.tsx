@@ -10,7 +10,7 @@ import { useCheckbox } from './useCheckbox';
 import { isEmpty } from '~utils';
 import { FormHintText as SupportingText } from '~components/Form/FormHintText';
 import Box from '~components/Box';
-import { FormGroup } from '~components/Form/FormGroup';
+import { FormHint } from '~components/Form/FormHint';
 
 type OnChange = ({
   isChecked,
@@ -177,11 +177,7 @@ const Checkbox = ({
   });
 
   return (
-    <FormGroup
-      errorText={errorText}
-      errorTextId={ids?.errorTextId}
-      state={validationState === 'error' ? 'error' : 'help'}
-    >
+    <Box>
       <CheckboxLabel inputProps={state.isReactNative ? inputProps : {}}>
         <CheckboxInput
           isChecked={state.isChecked || Boolean(isIndeterminate)}
@@ -204,7 +200,12 @@ const Checkbox = ({
           )}
         </Box>
       </CheckboxLabel>
-    </FormGroup>
+      <FormHint
+        errorText={errorText}
+        errorTextId={ids?.errorTextId}
+        state={validationState === 'error' ? 'error' : 'help'}
+      />
+    </Box>
   );
 };
 

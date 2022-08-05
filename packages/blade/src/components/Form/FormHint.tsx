@@ -2,8 +2,7 @@ import React from 'react';
 import { FormHintText } from './FormHintText';
 import Box from '~components/Box';
 
-// TODO: Extend further to support `success`
-type FormGroupProps = {
+type FormHintProps = {
   /**
    * If set to `error`, the form group will render the errorText,
    */
@@ -39,13 +38,9 @@ type FormGroupProps = {
    * Needed for accessibility reasons.
    */
   successTextId?: string;
-  /**
-   * Content of FormGroup
-   */
-  children: React.ReactNode;
 };
 
-const FormGroup = ({
+const FormHint = ({
   state,
   errorText,
   errorTextId,
@@ -53,16 +48,13 @@ const FormGroup = ({
   helpTextId,
   successText,
   successTextId,
-  children,
-}: FormGroupProps): React.ReactElement => {
+}: FormHintProps): React.ReactElement => {
   const showError = state === 'error' && errorText;
   const showSuccess = state === 'success' && successText;
   const showHelp = !showError && helpText;
 
   return (
-    <Box>
-      {children}
-
+    <>
       {showHelp && (
         <>
           <Box marginTop="spacing.1" />
@@ -88,8 +80,8 @@ const FormGroup = ({
           </FormHintText>
         </>
       )}
-    </Box>
+    </>
   );
 };
 
-export { FormGroup };
+export { FormHint };
