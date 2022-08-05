@@ -113,6 +113,25 @@ describe('<BaseButton />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
+  it('should call function on click of button variant of link with event callback ', () => {
+    const buttonText = 'Pay Now';
+    const onClick = jest.fn();
+    const { getByRole } = renderWithTheme(<BaseButton onClick={onClick}>{buttonText}</BaseButton>);
+    const button = getByRole('button');
+    const eventData = {
+      nativeEvent: {
+        locationX: 8,
+        locationY: 4.5,
+        pageX: 24,
+        pageY: 49.5,
+      },
+    };
+
+    fireEvent.press(button, eventData);
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledWith(eventData);
+  });
+
   it('should render secondary variant button', () => {
     const buttonText = 'Pay Now';
     const { toJSON } = renderWithTheme(<BaseButton variant="secondary">{buttonText}</BaseButton>);
