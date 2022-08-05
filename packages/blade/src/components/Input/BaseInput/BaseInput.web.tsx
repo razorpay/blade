@@ -66,10 +66,11 @@ export const BaseInput = ({
    * <FormHintText helptext="Enter your first and last name"/>
    */
   return (
-    <Box>
+    <Box display="flex" flexDirection="column">
       <FormLabelText neccessityIndicator={neccessityIndicator} id="input" position={labelPosition}>
         {label}
       </FormLabelText>
+      <Box paddingBottom="spacing.1" />
       <StyledBaseInput
         label="abc"
         name={name}

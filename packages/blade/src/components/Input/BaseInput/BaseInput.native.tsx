@@ -5,6 +5,8 @@ import type { BaseInputProps } from './baseInputHelpers';
 import { useInput } from './baseInputHelpers';
 import getBaseInputStyles from './getBaseInputStyles';
 import type { Theme } from '~components/BladeProvider';
+import { FormLabelText } from '~components/Form';
+import Box from '~components/Box';
 
 export const StyledBaseInput = styled.TextInput<
   BaseInputProps & { isFocussed: boolean; theme: Theme }
@@ -34,28 +36,30 @@ export const BaseInput = ({
   value,
   onChange,
   isDisabled,
+  neccessityIndicator,
 }: BaseInputProps): ReactElement => {
   const [isFocussed, setIsFocussed] = useState(false);
   const { handleOnChange } = useInput({ defaultValue, value, onChange });
 
-  console.log({
-    label,
-    labelPosition,
-  });
-
   return (
-    <StyledBaseInput
-      label="abc"
-      name={name}
-      type={type}
-      defaultValue={defaultValue}
-      value={value}
-      placeholder={placeholder}
-      isFocussed={isFocussed}
-      editable={!isDisabled}
-      onFocus={(): void => setIsFocussed(true)}
-      onBlur={(): void => setIsFocussed(false)}
-      onChangeText={(text): void => handleOnChange({ inputName: name, inputValue: text })}
-    />
+    <Box display="flex" flexDirection="column">
+      <FormLabelText neccessityIndicator={neccessityIndicator} id="input" position={labelPosition}>
+        {label}
+      </FormLabelText>
+      <Box paddingBottom="spacing.1" />
+      <StyledBaseInput
+        label="abc"
+        name={name}
+        type={type}
+        defaultValue={defaultValue}
+        value={value}
+        placeholder={placeholder}
+        isFocussed={isFocussed}
+        editable={!isDisabled}
+        onFocus={(): void => setIsFocussed(true)}
+        onBlur={(): void => setIsFocussed(false)}
+        onChangeText={(text): void => handleOnChange({ inputName: name, inputValue: text })}
+      />
+    </Box>
   );
 };
