@@ -24,7 +24,7 @@ type RadioProps = {
    * The value to be used in the Radio input.
    * This is the value that will be returned on form submission.
    */
-  value?: string;
+  value: string;
   /**
    * If `true`, the Radio will be disabled
    *
@@ -41,7 +41,7 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
     throw new Error('[Blade Radio]: Cannot use <Radio /> outside of <RadioGroup />');
   }
 
-  const isChecked = groupProps?.state?.isChecked(value!);
+  const isChecked = groupProps?.state?.isChecked(value);
   const defaultChecked =
     groupProps?.defaultValue === undefined ? undefined : groupProps?.defaultValue === value;
   const validationState = groupProps?.validationState;

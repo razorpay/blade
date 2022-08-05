@@ -2,85 +2,52 @@
 
 exports[`<Radio /> should render radio with label 1`] = `
 <View
-  accessibilityDescribedBy="radio-1-helptext-2"
-  accessibilityInvalid={false}
-  accessibilityRequired={false}
-  accessibilityRole="radio"
-  accessibilityState={
-    Object {
-      "checked": false,
-      "disabled": false,
-    }
-  }
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
+  accessibilityLabelledBy="radio-group-3-label"
+  display="flex"
+  flexDirection="column"
   style={
     Array [
       Object {
         "display": "flex",
-        "flexDirection": "row",
+        "flexDirection": "column",
       },
     ]
   }
 >
   <View
-    isChecked={false}
-    isFullRounded={true}
-    isNegative={false}
+    alignItems="center"
+    display="flex"
+    flexDirection="row"
+    flexWrap="wrap"
+    gap="spacing.0"
     style={
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "hsla(220, 27%, 98%, 1)",
-          "borderColor": "hsla(216, 19%, 89%, 1)",
-          "borderRadius": 9999,
-          "borderStyle": "solid",
-          "borderWidth": 1,
           "display": "flex",
-          "height": 16,
-          "justifyContent": "center",
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 8,
-          "marginTop": 3,
-          "width": 16,
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+          "gap": 0,
         },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {},
       ]
     }
   >
     <Text
       color="hsla(216, 27%, 36%, 1)"
       fontFamily="Lato"
-      fontSize="15px"
+      fontSize="12px"
       fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      fontWeight={700}
+      lineHeight="16px"
       style={
         Array [
           Object {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 12,
             "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 24,
+            "fontWeight": "700",
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -97,94 +64,252 @@ exports[`<Radio /> should render radio with label 1`] = `
       textAlign="left"
       textDecorationLine="none"
     >
-      Remember password
+      Radio group
+      <View
+        style={
+          Array [
+            Object {
+              "borderColor": "black",
+              "borderStyle": "solid",
+              "borderWidth": 0,
+              "clip": "rect(0 0 0 0)",
+              "clipPath": "inset(50%)",
+              "height": 1,
+              "marginBottom": -1,
+              "marginLeft": 0,
+              "marginRight": -1,
+              "marginTop": 0,
+              "overflow": "hidden",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+              "wordWrap": "normal",
+            },
+          ]
+        }
+      >
+        <Text
+          color="hsla(217, 56%, 17%, 1)"
+          fontFamily="Lato"
+          fontSize="15px"
+          fontStyle="normal"
+          fontWeight={400}
+          lineHeight="24px"
+          style={
+            Array [
+              Object {
+                "color": "hsla(217, 56%, 17%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 15,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 24,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+              Object {},
+            ]
+          }
+          textAlign="left"
+          textDecorationLine="none"
+        >
+          , 
+        </Text>
+      </View>
     </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      display="flex"
+      flexDirection="column"
+      gap="spacing.1"
+      marginBottom="spacing.1"
+      marginTop="spacing.1"
+      style={
+        Array [
+          Object {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 4,
+            "marginBottom": 4,
+            "marginTop": 4,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityDescribedBy="radio-1-helptext-2"
+        accessibilityInvalid={false}
+        accessibilityRequired={false}
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+            "disabled": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        name="radio-group-3"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+        value="a"
+      >
+        <View
+          isChecked={false}
+          isFullRounded={true}
+          isNegative={false}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                "borderColor": "hsla(216, 19%, 89%, 1)",
+                "borderRadius": 9999,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "display": "flex",
+                "height": 16,
+                "justifyContent": "center",
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 8,
+                "marginTop": 3,
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
+          <Text
+            color="hsla(216, 27%, 36%, 1)"
+            fontFamily="Lato"
+            fontSize="15px"
+            fontStyle="normal"
+            fontWeight={400}
+            lineHeight="24px"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(216, 27%, 36%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            textAlign="left"
+            textDecorationLine="none"
+          >
+            Remember password
+          </Text>
+        </View>
+      </View>
+    </View>
   </View>
 </View>
 `;
 
 exports[`<Radio /> should set disabled state with isDisabled 1`] = `
 <View
-  accessibilityDescribedBy="radio-9-helptext-10"
-  accessibilityInvalid={false}
-  accessibilityRequired={false}
-  accessibilityRole="radio"
-  accessibilityState={
-    Object {
-      "checked": false,
-      "disabled": true,
-    }
-  }
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
+  accessibilityLabelledBy="radio-group-10-label"
+  display="flex"
+  flexDirection="column"
   style={
     Array [
       Object {
         "display": "flex",
-        "flexDirection": "row",
+        "flexDirection": "column",
       },
     ]
   }
 >
   <View
-    isChecked={false}
-    isDisabled={true}
-    isFullRounded={true}
-    isNegative={false}
+    alignItems="center"
+    display="flex"
+    flexDirection="row"
+    flexWrap="wrap"
+    gap="spacing.0"
     style={
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "hsla(220, 30%, 96%, 1)",
-          "borderColor": "hsla(220, 30%, 96%, 1)",
-          "borderRadius": 9999,
-          "borderStyle": "solid",
-          "borderWidth": 1,
           "display": "flex",
-          "height": 16,
-          "justifyContent": "center",
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 8,
-          "marginTop": 3,
-          "width": 16,
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+          "gap": 0,
         },
-      ]
-    }
-  />
-  <View
-    style={
-      Array [
-        Object {},
       ]
     }
   >
     <Text
       color="hsla(216, 27%, 36%, 1)"
       fontFamily="Lato"
-      fontSize="15px"
+      fontSize="12px"
       fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      fontWeight={700}
+      lineHeight="16px"
       style={
         Array [
           Object {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Lato",
-            "fontSize": 15,
+            "fontSize": 12,
             "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 24,
+            "fontWeight": "700",
+            "lineHeight": 16,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -201,70 +326,72 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
       textAlign="left"
       textDecorationLine="none"
     >
-      Remember password
+      Radio group
+      <View
+        style={
+          Array [
+            Object {
+              "borderColor": "black",
+              "borderStyle": "solid",
+              "borderWidth": 0,
+              "clip": "rect(0 0 0 0)",
+              "clipPath": "inset(50%)",
+              "height": 1,
+              "marginBottom": -1,
+              "marginLeft": 0,
+              "marginRight": -1,
+              "marginTop": 0,
+              "overflow": "hidden",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+              "wordWrap": "normal",
+            },
+          ]
+        }
+      >
+        <Text
+          color="hsla(217, 56%, 17%, 1)"
+          fontFamily="Lato"
+          fontSize="15px"
+          fontStyle="normal"
+          fontWeight={400}
+          lineHeight="24px"
+          style={
+            Array [
+              Object {
+                "color": "hsla(217, 56%, 17%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 15,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 24,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+              Object {},
+            ]
+          }
+          textAlign="left"
+          textDecorationLine="none"
+        >
+          , 
+        </Text>
+      </View>
     </Text>
   </View>
-</View>
-`;
-
-exports[`<Radio /> should set error state with validationState 1`] = `
-<View
-  accessibilityDescribedBy="radio-7-helptext-8"
-  accessibilityInvalid={true}
-  accessibilityRequired={false}
-  accessibilityRole="radio"
-  accessibilityState={
-    Object {
-      "checked": false,
-      "disabled": false,
-    }
-  }
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    Array [
-      Object {
-        "display": "flex",
-        "flexDirection": "row",
-      },
-    ]
-  }
->
-  <View
-    isChecked={false}
-    isFullRounded={true}
-    isNegative={true}
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-          "borderColor": "hsla(8, 73%, 47%, 1)",
-          "borderRadius": 9999,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "display": "flex",
-          "height": 16,
-          "justifyContent": "center",
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 8,
-          "marginTop": 3,
-          "width": 16,
-        },
-      ]
-    }
-  />
   <View
     style={
       Array [
@@ -272,40 +399,128 @@ exports[`<Radio /> should set error state with validationState 1`] = `
       ]
     }
   >
-    <Text
-      color="hsla(216, 27%, 36%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+    <View
+      display="flex"
+      flexDirection="column"
+      gap="spacing.1"
+      marginBottom="spacing.1"
+      marginTop="spacing.1"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 15,
-            "fontStyle": "normal",
-            "fontWeight": "400",
-            "lineHeight": 24,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textAlign": "left",
-            "textDecorationLine": "none",
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 4,
+            "marginBottom": 4,
+            "marginTop": 4,
           },
         ]
       }
-      textAlign="left"
-      textDecorationLine="none"
     >
-      Remember password
-    </Text>
+      <View
+        accessibilityDescribedBy="radio-11-helptext-12"
+        accessibilityInvalid={false}
+        accessibilityRequired={false}
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+            "disabled": true,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        name="radio-group-10"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+        value="a"
+      >
+        <View
+          isChecked={false}
+          isDisabled={true}
+          isFullRounded={true}
+          isNegative={false}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "hsla(220, 30%, 96%, 1)",
+                "borderColor": "hsla(220, 30%, 96%, 1)",
+                "borderRadius": 9999,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "display": "flex",
+                "height": 16,
+                "justifyContent": "center",
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 8,
+                "marginTop": 3,
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
+          <Text
+            color="hsla(216, 27%, 36%, 1)"
+            fontFamily="Lato"
+            fontSize="15px"
+            fontStyle="normal"
+            fontWeight={400}
+            lineHeight="24px"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(216, 27%, 36%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+            textAlign="left"
+            textDecorationLine="none"
+          >
+            Remember password
+          </Text>
+        </View>
+      </View>
+    </View>
   </View>
 </View>
 `;

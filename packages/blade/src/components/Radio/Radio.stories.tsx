@@ -42,9 +42,7 @@ const RadioTemplate: ComponentStory<typeof RadioGroupComponent> = ({ children, .
   return (
     <RadioGroupComponent {...args}>
       <RadioComponent value="apple">Apple</RadioComponent>
-      <RadioComponent isDisabled value="mango">
-        Mango
-      </RadioComponent>
+      <RadioComponent value="mango">Mango</RadioComponent>
       <RadioComponent value="orange">Orange</RadioComponent>
     </RadioGroupComponent>
   );

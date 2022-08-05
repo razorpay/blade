@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 import React from 'react';
+import isUndefined from 'lodash/isUndefined';
 import type { RadioGroupProps } from './RadioGroup';
 import type { RadioGroupContextType } from './RadioContext';
 import { useControllableState } from '~src/hooks/useControllable';
@@ -69,6 +70,7 @@ const useRadioGroup = ({
         setValue(undefined);
       },
       isChecked(value: string) {
+        if (isUndefined(value) || isUndefined(checkedValue)) return false;
         return checkedValue === value;
       },
     };
