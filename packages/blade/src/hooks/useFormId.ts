@@ -1,24 +1,22 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useId } from './useId';
 
-type UseFormIdReturn = {
-  inputId: string | undefined;
-  errorTextId: string | undefined;
-  helpTextId: string | undefined;
-  successTextId: string | undefined;
-};
-
-const useFormId = (prefix: string): UseFormIdReturn => {
-  const idBase = useId(prefix);
-  const inputId = useId(`${idBase}-input`);
-  const errorTextId = useId(`${idBase}-errortext`);
-  const helpTextId = useId(`${idBase}-helptext`);
-  const successTextId = useId(`${idBase}-successtext`);
+const useFormId = (prefix: string) => {
+  const baseId = useId(prefix);
+  const inputId = useId(`${baseId}-input`);
+  const errorTextId = useId(`${baseId}-errortext`);
+  const helpTextId = useId(`${baseId}-helptext`);
+  const successTextId = useId(`${baseId}-successtext`);
+  const labelId = useId(`${baseId}-label`);
 
   return {
+    baseId,
     inputId,
     errorTextId,
     helpTextId,
     successTextId,
+    labelId,
   };
 };
 
