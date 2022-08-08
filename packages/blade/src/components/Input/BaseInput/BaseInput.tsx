@@ -1,22 +1,10 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-
-/**
- * <TextInput
-  label="Enter Name"
-  labelPosition="left"
-  placeholder="Enter your name"
-  icon={UserIcon}
-  showClearButton
-  helpText="Enter first name and last name. Eg: Kamlesh Chandnani"
-  errorText="Name cannot be blank"
-  successText="Name validated"
-  validationState={inputValue.length < 10 ? 'error' : 'success'}
-/>
- */
-
 import React from 'react';
+import type { ReactElement } from 'react';
+import { StyledBaseInput } from './StyledBaseInput';
+import Box from '~components/Box';
+import { FormHintText, FormLabelText } from '~components/Form';
 import type { FormLabelTextProps } from '~components/Form/FormLabelText';
+import { getPlatformType } from '~utils';
 import type { FormHintTextProps } from '~components/Form/FormHintText';
 
 export type HandleOnChange = ({
@@ -24,11 +12,12 @@ export type HandleOnChange = ({
   inputValue,
 }: {
   inputName?: string;
-  inputValue?: string;
+  inputValue?: React.ChangeEvent<HTMLInputElement> | string;
 }) => void;
 
 export type OnChange = ({ name, value }: { name?: string; value?: string }) => void;
 
+// TODO: need to abstract for generic use
 type InputLabelProps = {
   /**
    * Label to be shown for the input field
@@ -44,6 +33,7 @@ type InputLabelProps = {
   neccessityIndicator?: FormLabelTextProps['neccessityIndicator'];
 };
 
+// TODO: need to abstract for generic use
 type InputValidationProps = {
   /**
    * Help text for the input
@@ -111,11 +101,13 @@ export type BaseInputProps = InputLabelProps &
     isRequired?: boolean;
   };
 
-export const useInput = ({
+const useInput = ({
   value,
   defaultValue,
   onChange,
-}: Pick<BaseInputProps, 'value' | 'defaultValue' | 'onChange'>) => {
+}: Pick<BaseInputProps, 'value' | 'defaultValue' | 'onChange'>): {
+  handleOnChange: HandleOnChange;
+} => {
   if (value && defaultValue) {
     throw new Error(
       `[Blade Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
@@ -124,7 +116,19 @@ export const useInput = ({
 
   const handleOnChange: HandleOnChange = React.useCallback(
     ({ inputName, inputValue }) => {
-      onChange?.({ name: inputName, value: inputValue });
+      let _inputValue = '';
+
+      if (getPlatformType() === 'react-native' && typeof inputValue === 'string') {
+        _inputValue = inputValue;
+      } else if (typeof inputValue !== 'string') {
+        // it's weird but TS forced me to write this much code where I could have just done "getPlatformType() === 'react-native' ? inputValue : inputValue?.target.value" :(
+        _inputValue = inputValue?.target.value ?? '';
+      }
+
+      onChange?.({
+        name: inputName,
+        value: _inputValue,
+      });
     },
     [onChange],
   );
@@ -152,4 +156,48 @@ export const getHintType = ({
   }
 
   return 'help';
+};
+
+export const BaseInput = ({
+  label,
+  labelPosition = 'top',
+  placeholder,
+  type = 'text',
+  defaultValue,
+  name,
+  value,
+  onChange,
+  isDisabled,
+  neccessityIndicator,
+  validationState,
+  errorText,
+  helpText,
+  successText,
+  isRequired,
+}: BaseInputProps): ReactElement => {
+  const { handleOnChange } = useInput({ defaultValue, value, onChange });
+  return (
+    <Box display="flex" flexDirection="column">
+      <FormLabelText neccessityIndicator={neccessityIndicator} id="input" position={labelPosition}>
+        {label}
+      </FormLabelText>
+      <StyledBaseInput
+        name={name}
+        type={type}
+        defaultValue={defaultValue}
+        value={value}
+        placeholder={placeholder}
+        isDisabled={isDisabled}
+        validationState={validationState}
+        isRequired={isRequired}
+        handleOnChange={handleOnChange}
+      />
+      <FormHintText
+        state={getHintType({ _validationState: validationState, _helpText: helpText })}
+        errorText={errorText}
+        helpText={helpText}
+        successText={successText}
+      />
+    </Box>
+  );
 };

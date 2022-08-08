@@ -1,5 +1,5 @@
 import type { CSSObject } from 'styled-components';
-import type { BaseInputProps } from './baseInputHelpers';
+import type { BaseInputProps } from './BaseInput';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeBorderSize, makeSpace } from '~utils';
