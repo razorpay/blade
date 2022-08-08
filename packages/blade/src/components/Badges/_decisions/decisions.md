@@ -16,7 +16,6 @@ Badges are used to show small amount of color coded metadata, which are ideal fo
 | contrast | `low`, `high` | `low` | The contrast of the badge to be rendered. |  |
 | size | `medium`, `small` | `medium` | The size of the badge to be rendered. |  |
 | icon | `Icon` | `undefined` | The Blade `Icon` component to be rendered for the badge. |  |
-| fontStyle | `italic`, `normal` | `normal` | The font style of the badge's font. |  |
 | fontWeight | `bold`, `regular` | `regular` | The font weight of the badge's font. |  |
 
 ### Sample Usage
@@ -28,7 +27,6 @@ import { Badge, InfoIcon } from '@razorpay/components';
   contrast='high'
   icon={InfoIcon} 
   size='large' 
-  fontStyle='italic' 
   fontWeight='bold'
 >
   New
