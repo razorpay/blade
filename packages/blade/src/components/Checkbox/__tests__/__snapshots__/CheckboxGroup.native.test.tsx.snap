@@ -158,8 +158,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-1-helptext-4"
-          accessibilityErrorMessage="checkbox-1-errortext-3"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"
@@ -264,8 +262,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-7-helptext-10"
-          accessibilityErrorMessage="checkbox-7-errortext-9"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"
@@ -370,8 +366,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-13-helptext-16"
-          accessibilityErrorMessage="checkbox-13-errortext-15"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"
@@ -631,8 +625,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-55-helptext-58"
-          accessibilityErrorMessage="checkbox-55-errortext-57"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"
@@ -737,8 +729,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-61-helptext-64"
-          accessibilityErrorMessage="checkbox-61-errortext-63"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"
@@ -843,8 +833,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-67-helptext-70"
-          accessibilityErrorMessage="checkbox-67-errortext-69"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"
