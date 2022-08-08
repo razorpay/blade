@@ -77,11 +77,49 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   transition-duration: 70ms;
 }
 
-.c6 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  gap: 4px;
+}
+
+.c11 {
+  margin-top: 4px;
 }
 
 .c2 {
@@ -140,49 +178,11 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 0px;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  gap: 4px;
-}
-
-.c11 {
-  margin-top: 4px;
 }
 
 <div>
@@ -240,9 +240,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-55-helptext-58"
               aria-disabled="false"
-              aria-errormessage="checkbox-55-errortext-57"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
@@ -299,9 +297,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-61-helptext-64"
               aria-disabled="false"
-              aria-errormessage="checkbox-61-errortext-63"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
@@ -358,9 +354,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-67-helptext-70"
               aria-disabled="false"
-              aria-errormessage="checkbox-67-errortext-69"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
@@ -508,11 +502,45 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   transition-duration: 70ms;
 }
 
-.c6 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  gap: 4px;
 }
 
 .c2 {
@@ -557,45 +585,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 0px;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  gap: 4px;
 }
 
 <div>
@@ -653,9 +647,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-1-helptext-4"
               aria-disabled="false"
-              aria-errormessage="checkbox-1-errortext-3"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
@@ -712,9 +704,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-7-helptext-10"
               aria-disabled="false"
-              aria-errormessage="checkbox-7-errortext-9"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
@@ -771,9 +761,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-13-helptext-16"
               aria-disabled="false"
-              aria-errormessage="checkbox-13-errortext-15"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
