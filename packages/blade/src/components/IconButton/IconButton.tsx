@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
-import type { IconComponent } from '..';
 
+import type { IconComponent } from '..';
 import StyledIconButton from './StyledIconButton.web';
 import { makeAccessible } from '~utils';
 

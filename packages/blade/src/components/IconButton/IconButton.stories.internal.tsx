@@ -5,7 +5,7 @@ import { Highlight } from '@storybook/design-system';
 
 import type { IconButtonProps } from './IconButton';
 import IconButtonComponent from './IconButton';
-import { CloseIcon } from '~components/Icons';
+import iconMap from '~components/Icons/iconMap';
 
 const Page = (): ReactElement => {
   return (
@@ -34,11 +34,15 @@ const meta: Meta<IconButtonProps> = {
   args: {
     size: 'medium',
     contrast: 'low',
-    icon: CloseIcon,
     accessibilityLabel: 'Close',
   },
   argTypes: {
     onClick: { action: 'onClick' },
+    icon: {
+      name: 'icon',
+      type: 'select',
+      options: Object.keys(iconMap),
+    },
   },
   parameters: {
     docs: {
@@ -47,8 +51,13 @@ const meta: Meta<IconButtonProps> = {
   },
 };
 
-const IconButtonTemplate: ComponentStory<typeof IconButtonComponent> = ({ ...args }) => {
-  return <IconButtonComponent {...args} />;
+const IconButtonTemplate: ComponentStory<typeof IconButtonComponent> = ({
+  icon = 'CloseIcon',
+  ...args
+}) => {
+  const IconComponent = iconMap[(icon as unknown) as string];
+
+  return <IconButtonComponent icon={IconComponent} {...args} />;
 };
 
 export const IconButton = IconButtonTemplate.bind({});
