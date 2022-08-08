@@ -21,7 +21,7 @@ Badges are used to show small amount of color coded metadata, which are ideal fo
 
 ### Sample Usage
 ```jsx
-import { Badge } from '@razorpay/components';
+import { Badge, InfoIcon } from '@razorpay/components';
 
 <Badge 
   variant='positive'
