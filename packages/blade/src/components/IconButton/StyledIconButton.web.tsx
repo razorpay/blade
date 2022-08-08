@@ -22,11 +22,6 @@ const StyledClickable = styled.button<StyledClickableProps>((props) => {
     color: linkColorToken.default[contrastToken],
     transition: `all ${motionToken.duration.xquick} ${motionToken.easing.standard.effective}`,
 
-    'svg, path': {
-      // todo: should be ideally set in Icon component
-      fill: 'currentColor',
-    },
-
     '&:hover': {
       color: linkColorToken.hover[contrastToken],
     },
