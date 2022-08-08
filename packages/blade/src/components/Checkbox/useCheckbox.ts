@@ -17,7 +17,10 @@ type UseCheckboxProps = Pick<
   | 'onChange'
   | 'name'
   | 'value'
-> & { hasError?: boolean };
+> & {
+  hasError?: boolean;
+  hasHelperText?: boolean;
+};
 
 /**
  * indeterminate is not a HTML input element prop,
@@ -38,6 +41,7 @@ const useCheckbox = ({
   isDisabled,
   isRequired,
   hasError,
+  hasHelperText,
   onChange,
   name,
   value,
@@ -94,9 +98,8 @@ const useCheckbox = ({
     invalid: Boolean(hasError),
     disabled: Boolean(isDisabled),
     checked: checkboxState,
-    // TODO: only apply if errorText is present
-    errorMessage: errorTextId,
-    describedBy: helpTextId,
+    ...(hasError ? { errorMessage: errorTextId } : {}),
+    ...(hasHelperText ? { describedBy: helpTextId } : {}),
   });
 
   if (isReactNative) {

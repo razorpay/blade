@@ -109,8 +109,7 @@ const FormHint = ({
   const Icon = Icons[state];
   const showError = state === 'error' && errorText;
   const showSuccess = state === 'success' && successText;
-  // TODO: add condition for !success
-  const showHelp = !showError && helpText;
+  const showHelp = !showError && !showSuccess && helpText;
 
   return (
     <>

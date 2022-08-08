@@ -7,7 +7,6 @@ const StyledSelectorLabel = styled.label({
   display: 'flex',
 });
 
-// TODO: Abstract this to "SelectorLabel" / "SelectorTitle" / "SelectorSupportText"
 const SelectorLabel = ({ children }: SelectorLabelProps): React.ReactElement => {
   return <StyledSelectorLabel>{children}</StyledSelectorLabel>;
 };

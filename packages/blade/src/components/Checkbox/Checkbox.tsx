@@ -169,6 +169,7 @@ const Checkbox = ({
     isChecked: _isChecked,
     isIndeterminate,
     hasError: _hasError,
+    hasHelperText: Boolean(showSupportingText),
     isDisabled: _isDisabled,
     isRequired,
     name: _name,
