@@ -3,7 +3,7 @@ import { CheckboxGroupContent } from './CheckboxGroupContent';
 import { CheckboxGroupField } from './CheckboxGroupField';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
-import { FormLabelText, FormHintText } from '~components/Form';
+import { FormLabelText, FormHint } from '~components/Form';
 import Box from '~components/Box';
 
 type CheckboxGroupProps = {
@@ -113,7 +113,7 @@ const CheckboxGroup = ({
         </FormLabelText>
         <Box>
           <CheckboxGroupContent>{children}</CheckboxGroupContent>
-          <FormHintText
+          <FormHint
             errorText={errorText}
             helpText={helpText}
             state={validationState === 'error' ? 'error' : 'help'}

@@ -10,7 +10,7 @@ import { useCheckbox } from './useCheckbox';
 import { isEmpty } from '~utils';
 import Box from '~components/Box';
 import { BaseText } from '~components/Typography/BaseText';
-import { FormHintText } from '~components/Form';
+import { FormHint } from '~components/Form';
 
 type OnChange = ({
   isChecked,
@@ -208,7 +208,7 @@ const Checkbox = ({
           )}
         </Box>
       </CheckboxLabel>
-      <FormHintText
+      <FormHint
         errorText={errorText}
         errorTextId={ids?.errorTextId}
         state={validationState === 'error' ? 'error' : 'help'}
