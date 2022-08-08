@@ -2,28 +2,22 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components/native';
 import type { BaseInputProps } from './baseInputHelpers';
-import { useInput } from './baseInputHelpers';
+import { getHintType, useInput } from './baseInputHelpers';
+
 import getBaseInputStyles from './getBaseInputStyles';
 import type { Theme } from '~components/BladeProvider';
-import { FormLabelText } from '~components/Form';
+import { FormHintText, FormLabelText } from '~components/Form';
 import Box from '~components/Box';
 
 export const StyledBaseInput = styled.TextInput<
-  BaseInputProps & { isFocussed: boolean; theme: Theme }
+  BaseInputProps & { isFocused: boolean; theme: Theme }
 >((props) => ({
-  ...getBaseInputStyles({ isDisabled: !props.editable, theme: props.theme }),
-  backgroundColor: props.isFocussed
-    ? props.theme.colors.brand.primary[300]
-    : props.theme.colors.brand.gray[200],
-  borderBottomColor: (function getBorderBottomColor(): string {
-    if (props.isFocussed) {
-      return props.theme.colors.brand.primary[500];
-    }
-    if (!props.editable) {
-      return props.theme.colors.brand.gray[300];
-    }
-    return props.theme.colors.brand.gray[400];
-  })(),
+  ...getBaseInputStyles({
+    theme: props.theme,
+    isFocused: props.isFocused,
+    isDisabled: !props.editable,
+    validationState: props.validationState,
+  }),
 }));
 
 export const BaseInput = ({
@@ -37,8 +31,12 @@ export const BaseInput = ({
   onChange,
   isDisabled,
   neccessityIndicator,
+  validationState,
+  errorText,
+  helpText,
+  successText,
 }: BaseInputProps): ReactElement => {
-  const [isFocussed, setIsFocussed] = useState(false);
+  const [isFocused, setisFocused] = useState(false);
   const { handleOnChange } = useInput({ defaultValue, value, onChange });
 
   return (
@@ -54,11 +52,18 @@ export const BaseInput = ({
         defaultValue={defaultValue}
         value={value}
         placeholder={placeholder}
-        isFocussed={isFocussed}
+        isFocused={isFocused}
         editable={!isDisabled}
-        onFocus={(): void => setIsFocussed(true)}
-        onBlur={(): void => setIsFocussed(false)}
+        onFocus={(): void => setisFocused(true)}
+        onBlur={(): void => setisFocused(false)}
+        validationState={validationState}
         onChangeText={(text): void => handleOnChange({ inputName: name, inputValue: text })}
+      />
+      <FormHintText
+        state={getHintType({ _validationState: validationState, _helpText: helpText })}
+        errorText={errorText}
+        helpText={helpText}
+        successText={successText}
       />
     </Box>
   );

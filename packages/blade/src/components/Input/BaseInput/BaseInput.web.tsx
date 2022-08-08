@@ -1,15 +1,21 @@
 import styled from 'styled-components';
 import type { ReactElement } from 'react';
-import getBaseInputStyles from './getBaseInputStyles';
+import getBaseInputStyles, { getInputBackgroundAndBorderStyles } from './getBaseInputStyles';
 import type { BaseInputProps } from './baseInputHelpers';
-import { useInput } from './baseInputHelpers';
+import { getHintType, useInput } from './baseInputHelpers';
+
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { FormLabelText } from '~components/Form/FormLabelText';
 import Box from '~components/Box';
+import { FormHintText } from '~components/Form';
 
 // omitting our consumer `onChange` prop since the types are conflicting with the default onChange of HTML
 const StyledBaseInput = styled.input<Omit<BaseInputProps, 'onChange'>>((props) => ({
-  ...getBaseInputStyles({ isDisabled: props.disabled, theme: props.theme }),
+  ...getBaseInputStyles({
+    isDisabled: props.disabled,
+    theme: props.theme,
+    validationState: props.validationState,
+  }),
   '::placeholder': getTextStyles({
     size: 'medium',
     variant: 'body',
@@ -19,8 +25,12 @@ const StyledBaseInput = styled.input<Omit<BaseInputProps, 'onChange'>>((props) =
     theme: props.theme,
   }),
   ':focus': {
-    backgroundColor: props.theme.colors.brand.primary[300],
-    borderBottomColor: props.theme.colors.brand.primary[500],
+    ...getInputBackgroundAndBorderStyles({
+      theme: props.theme,
+      isFocused: true,
+      isDisabled: props.disabled,
+      validationState: props.validationState,
+    }),
     outline: 'none',
   },
   borderTopStyle: 'hidden',
@@ -40,6 +50,10 @@ export const BaseInput = ({
   onChange,
   isDisabled,
   neccessityIndicator,
+  validationState,
+  errorText,
+  helpText,
+  successText,
 }: BaseInputProps): ReactElement => {
   const { handleOnChange } = useInput({ defaultValue, value, onChange });
   /**
@@ -79,9 +93,16 @@ export const BaseInput = ({
         value={value}
         placeholder={placeholder}
         disabled={isDisabled}
+        validationState={validationState}
         onChange={(event): void =>
           handleOnChange({ inputName: name, inputValue: event?.target.value })
         }
+      />
+      <FormHintText
+        state={getHintType({ _validationState: validationState, _helpText: helpText })}
+        errorText={errorText}
+        helpText={helpText}
+        successText={successText}
       />
     </Box>
   );

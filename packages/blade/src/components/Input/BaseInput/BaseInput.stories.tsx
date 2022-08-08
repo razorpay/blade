@@ -9,7 +9,7 @@ export default {
   title: 'Components/Input/BaseInput (Internal)',
   component: BaseInputComponent,
   args: {
-    defaultValue: 'Kamlesh Chandnani',
+    defaultValue: undefined,
     label: 'Enter Name',
     placeholder: 'Enter your first and last name',
     labelPosition: 'top',
@@ -17,6 +17,10 @@ export default {
     type: 'text',
     isDisabled: false,
     onChange: undefined,
+    validationState: 'none',
+    helpText: undefined,
+    errorText: undefined,
+    successText: undefined,
   },
   parameters: {
     docs: {
@@ -47,6 +51,27 @@ const BaseInputTemplate: ComponentStory<typeof BaseInputComponent> = (args) => {
 export const BaseInput = BaseInputTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 BaseInput.storyName = 'BaseInput';
+
+export const BaseInputHelpText = BaseInputTemplate.bind({});
+BaseInputHelpText.storyName = 'BaseInput with Help Text';
+BaseInputHelpText.args = {
+  helpText: 'Please enter first and last name',
+};
+
+export const BaseInputError = BaseInputTemplate.bind({});
+BaseInputError.storyName = 'BaseInput with error';
+BaseInputError.args = {
+  validationState: 'error',
+  helpText: 'Name is not valid',
+};
+
+export const BaseInputSuccess = BaseInputTemplate.bind({});
+BaseInputSuccess.storyName = 'BaseInput with success';
+BaseInputSuccess.args = {
+  defaultValue: 'John Ives',
+  validationState: 'success',
+  helpText: 'Name validated',
+};
 
 const UncontrolledBaseInputTemplate: ComponentStory<typeof BaseInputComponent> = () => {
   return (

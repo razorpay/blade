@@ -17,6 +17,8 @@
 
 import React from 'react';
 import type { FormLabelTextProps } from '~components/Form/FormLabelText';
+import type { FormHintTextProps } from '~components/Form/FormHintText';
+
 export type HandleOnChange = ({
   inputName,
   inputValue,
@@ -124,4 +126,26 @@ export const useInput = ({
   );
 
   return { handleOnChange };
+};
+
+export const getHintType = ({
+  _validationState,
+  _helpText,
+}: {
+  _validationState: BaseInputProps['validationState'];
+  _helpText: BaseInputProps['helpText'];
+}): FormHintTextProps['state'] => {
+  if (_validationState === 'error') {
+    return 'error';
+  }
+
+  if (_validationState === 'success') {
+    return 'success';
+  }
+
+  if (_helpText) {
+    return 'help';
+  }
+
+  return 'help';
 };
