@@ -54,6 +54,7 @@ export const BaseInput = ({
   errorText,
   helpText,
   successText,
+  isRequired,
 }: BaseInputProps): ReactElement => {
   const { handleOnChange } = useInput({ defaultValue, value, onChange });
   /**
@@ -94,6 +95,7 @@ export const BaseInput = ({
         placeholder={placeholder}
         disabled={isDisabled}
         validationState={validationState}
+        required={isRequired}
         onChange={(event): void =>
           handleOnChange({ inputName: name, inputValue: event?.target.value })
         }

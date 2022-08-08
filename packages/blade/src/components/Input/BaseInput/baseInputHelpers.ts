@@ -105,6 +105,10 @@ export type BaseInputProps = InputLabelProps &
      * Used to disable the input field
      */
     isDisabled?: boolean;
+    /**
+     * If true, the input is marked as required, and `required` attribute will be added
+     */
+    isRequired?: boolean;
   };
 
 export const useInput = ({

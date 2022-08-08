@@ -21,6 +21,7 @@ export default {
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
+    isRequired: false,
   },
   parameters: {
     docs: {
