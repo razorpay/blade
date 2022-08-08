@@ -37,7 +37,7 @@ import { Badge, InfoIcon } from '@razorpay/components';
 #### Dev
 - ~Should we call it `labelWeight`, `labelStyle` or `fontWeight`, `fontStyle` or `textWeight`, `textStyle`?~ `fontStyle` & `fontWeight` to keep it closer to css properties.
 - ~Should we call it `variant` or `intent`?~ Answered in a [section below](#variant-prop)
-- What should be the default `intent`? Kept it as `neutral` for now since it seems more _neutral_ and appropriate
+- What should be the default `variant`? Kept it as `neutral` for now since it seems more _neutral_ and appropriate
 - Scope of A11y?
   - NA
 
