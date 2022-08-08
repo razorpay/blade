@@ -2,6 +2,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useId } from './useId';
 
+/**
+ * hook to generate unique ids for a form element
+ *
+ * @param prefix prefix to append before the id
+ */
 const useFormId = (prefix: string) => {
   const baseId = useId(prefix);
   const inputId = useId(`${baseId}-input`);
