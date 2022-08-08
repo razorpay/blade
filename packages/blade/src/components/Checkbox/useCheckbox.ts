@@ -94,6 +94,7 @@ const useCheckbox = ({
     invalid: Boolean(hasError),
     disabled: Boolean(isDisabled),
     checked: checkboxState,
+    // TODO: only apply if errorText is present
     errorMessage: errorTextId,
     describedBy: helpTextId,
   });

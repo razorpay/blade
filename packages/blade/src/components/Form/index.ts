@@ -1,2 +1,2 @@
 export { FormHint } from './FormHint';
-export { FormLabelText } from './FormLabelText';
+export { FormLabel } from './FormLabel';

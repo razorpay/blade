@@ -109,6 +109,7 @@ const FormHint = ({
   const Icon = Icons[state];
   const showError = state === 'error' && errorText;
   const showSuccess = state === 'success' && successText;
+  // TODO: add condition for !success
   const showHelp = !showError && helpText;
 
   return (
@@ -118,6 +119,7 @@ const FormHint = ({
           {helpText}
         </HintText>
       )}
+
       {showError && (
         <HintText id={errorTextId} icon={Icon} color={colors[state]}>
           {errorText}

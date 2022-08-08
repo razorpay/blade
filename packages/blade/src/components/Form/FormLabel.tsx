@@ -6,7 +6,8 @@ import { getPlatformType, useBreakpoint } from '~utils';
 import Box from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 
-type FormLabelTextProps = {
+type CommonProps = {
+  as: 'span' | 'label';
   position?: 'top' | 'left';
   neccessityIndicator?: 'required' | 'optional' | 'none';
   accessibillityText?: string;
@@ -14,13 +15,28 @@ type FormLabelTextProps = {
   id: string;
 };
 
-const FormLabelText = ({
+type LabelProps = CommonProps & {
+  htmlFor: string;
+  as: 'label';
+};
+
+type SpanProps = CommonProps & {
+  as: 'span';
+  htmlFor?: undefined;
+};
+
+type FormLabelProps = LabelProps | SpanProps;
+
+// TODO: Add margin bottom after label.
+const FormLabel = ({
+  as = 'span',
   position = 'top',
   neccessityIndicator = 'none',
   accessibillityText,
   children,
   id,
-}: FormLabelTextProps): React.ReactElement => {
+  htmlFor,
+}: FormLabelProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isDesktop = matchedDeviceType === 'desktop';
@@ -92,13 +108,14 @@ const FormLabelText = ({
     return textNode;
   }
 
+  const Component = as;
   // only set 120px label when device is desktop
   const width = position === 'left' && isDesktop ? '120px' : 'auto';
   return (
-    <span style={{ width }} id={id}>
+    <Component htmlFor={htmlFor} style={{ width }} id={id}>
       {textNode}
-    </span>
+    </Component>
   );
 };
 
-export { FormLabelText };
+export { FormLabel };

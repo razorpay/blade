@@ -3,7 +3,7 @@ import { CheckboxGroupContent } from './CheckboxGroupContent';
 import { CheckboxGroupField } from './CheckboxGroupField';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
-import { FormLabelText, FormHint } from '~components/Form';
+import { FormLabel, FormHint } from '~components/Form';
 import Box from '~components/Box';
 
 type CheckboxGroupProps = {
@@ -103,14 +103,15 @@ const CheckboxGroup = ({
   return (
     <CheckboxGroupProvider value={contextValue}>
       <CheckboxGroupField labelledBy={ids.labelId}>
-        <FormLabelText
+        <FormLabel
+          as="span"
           neccessityIndicator={neccessityIndicator}
           position={labelPosition}
           id={ids.labelId}
           accessibillityText={accessibillityText}
         >
           {label}
-        </FormLabelText>
+        </FormLabel>
         <Box>
           <CheckboxGroupContent>{children}</CheckboxGroupContent>
           <FormHint
