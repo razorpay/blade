@@ -76,7 +76,7 @@ const Controlled = () => {
       name="developers"
       label="Developers (controlled)"
       value={selected}
-      onChange={setSelected}
+      onChange={({ value }) => setSelected(value)}
     >
       <Radio value="anurag">Anurag</Radio>
       <Radio value="chaitanya">Chaitanya</Radio>
