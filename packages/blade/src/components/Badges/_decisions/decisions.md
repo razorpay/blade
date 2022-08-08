@@ -62,6 +62,8 @@ import { Badge, InfoIcon } from '@razorpay/components';
 - But having `intent` accept semantic only(`positive`, `negative`, `notice`, `information`, & `neutral`) values on BaseButton, BaseLink & Alert and accepting semantic + non-semantic(`purple`, `indigo` or whatever new requirement comes in) values on Badge did not make sense. For such free form values, `variant` prop would make more sense.
 - Now we concluded to use the `variant` prop that accepts semantic + non-semantic values. We would follow this rule: If the prop accepts semantic only values then we would `intent` but if the prop accepts semantic as well as non-semantic values, we would use `variant`
 - The tradeoff right now is that until we get more requirements for non-semantic values, we would have a `variant` prop on Badge that accepts `positive`, `negative`, `notice`, `information`, & `neutral` but we are future-proofing the component by leaving room to accept more non-semantic values.
+### `fontStyle` prop
+- Removed support for `fontStyle` prop as a design decision
 
 ## References
 - [Reshaped](https://reshaped.so/content/docs/components/badge)
