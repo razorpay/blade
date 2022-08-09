@@ -8,9 +8,9 @@ import { useCheckbox } from './useCheckbox';
 import { isEmpty } from '~utils';
 import Box from '~components/Box';
 import { FormHint } from '~components/Form';
-import { SelectorLabel } from '~components/Form/SelectorLabel';
-import { SelectorTitle } from '~components/Form/SelectorTitle';
-import { SelectorSupportText } from '~components/Form/SelectorSupportText';
+import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
+import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
+import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 
 type OnChange = ({
   isChecked,
@@ -202,7 +202,7 @@ const Checkbox = ({
       <FormHint
         errorText={errorText}
         errorTextId={ids?.errorTextId}
-        state={validationState === 'error' ? 'error' : 'help'}
+        type={validationState === 'error' ? 'error' : 'help'}
       />
     </Box>
   );

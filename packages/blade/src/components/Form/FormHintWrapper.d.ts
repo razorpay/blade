@@ -1,1 +1,1 @@
-export * from './FormHintWrapper.web';
+export { FormHintWrapper } from './FormHintWrapper.web';

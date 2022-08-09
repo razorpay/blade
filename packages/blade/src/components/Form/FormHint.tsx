@@ -41,7 +41,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps) => {
 };
 
 type FormHintProps = {
-  state: 'help' | 'error' | 'success';
+  type: 'help' | 'error' | 'success';
   /**
    * Help text for the group
    */
@@ -76,7 +76,7 @@ type FormHintProps = {
 };
 
 const FormHint = ({
-  state,
+  type,
   errorText,
   successText,
   helpText,
@@ -106,27 +106,27 @@ const FormHint = ({
     ),
   };
 
-  const Icon = Icons[state];
-  const showError = state === 'error' && errorText;
-  const showSuccess = state === 'success' && successText;
+  const Icon = Icons[type];
+  const showError = type === 'error' && errorText;
+  const showSuccess = type === 'success' && successText;
   const showHelp = !showError && !showSuccess && helpText;
 
   return (
     <>
       {showHelp && (
-        <HintText id={helpTextId} icon={Icon} color={colors[state]}>
+        <HintText id={helpTextId} icon={Icon} color={colors[type]}>
           {helpText}
         </HintText>
       )}
 
       {showError && (
-        <HintText id={errorTextId} icon={Icon} color={colors[state]}>
+        <HintText id={errorTextId} icon={Icon} color={colors[type]}>
           {errorText}
         </HintText>
       )}
 
       {showSuccess && (
-        <HintText id={successTextId} icon={Icon} color={colors[state]}>
+        <HintText id={successTextId} icon={Icon} color={colors[type]}>
           {successText}
         </HintText>
       )}

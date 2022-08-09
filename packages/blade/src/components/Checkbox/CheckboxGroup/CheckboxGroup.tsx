@@ -117,7 +117,7 @@ const CheckboxGroup = ({
           <FormHint
             errorText={errorText}
             helpText={helpText}
-            state={validationState === 'error' ? 'error' : 'help'}
+            type={validationState === 'error' ? 'error' : 'help'}
           />
         </Box>
       </CheckboxGroupField>
