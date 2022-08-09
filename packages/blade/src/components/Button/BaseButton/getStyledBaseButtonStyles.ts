@@ -17,11 +17,6 @@ const getBaseButtonStyles = ({
   StyledBaseButtonProps,
   'children' | 'onClick' | 'accessibilityProps' | 'accessibilityLabel'
 >): CSSObject => ({
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  alignSelf: 'center',
   minHeight,
   width: isFullWidth ? '100%' : 'auto',
   cursor: disabled ? 'not-allowed' : 'pointer',

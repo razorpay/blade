@@ -83,62 +83,65 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 }
 
 <div>
-  <label
-    class="c0"
+  <div
+    class="Boxweb__Box-xvyj85-0"
   >
-    <input
-      aria-checked="false"
-      aria-describedby="checkbox-1-helptext-3"
-      aria-disabled="false"
-      aria-errormessage="checkbox-1-errortext-2"
-      aria-hidden="true"
-      aria-invalid="false"
-      aria-required="false"
-      class="c1"
-      role="checkbox"
-      type="checkbox"
-      value=""
-    />
-    <div
-      class="c2"
+    <label
+      class="c0"
     >
-      <div
-        class=""
-        style="opacity: 0; position: absolute; display: flex;"
-      >
-        <svg
-          aria-hidden="true"
-          fill="none"
-          height="16px"
-          viewBox="0 0 16 16"
-          width="16px"
-        >
-          <path
-            d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-            fill="hsla(220, 27%, 98%, 1)"
-          />
-        </svg>
-      </div>
-      <div
-        class="c3"
-        style="opacity: 0; position: absolute; display: flex;"
+      <input
+        aria-checked="false"
+        aria-describedby="checkbox-1-helptext-3"
+        aria-disabled="false"
+        aria-errormessage="checkbox-1-errortext-2"
+        aria-hidden="true"
+        aria-invalid="false"
+        aria-required="false"
+        class="c1"
+        role="checkbox"
+        type="checkbox"
+        value=""
       />
-    </div>
-    <div
-      class="Boxweb__Box-xvyj85-0"
-    >
       <div
-        class="c4"
-        color="hsla(216, 27%, 36%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="400"
+        class="c2"
       >
-        Remember password
+        <div
+          class=""
+          style="opacity: 0; position: absolute; display: flex;"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="16px"
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+              fill="hsla(220, 27%, 98%, 1)"
+            />
+          </svg>
+        </div>
+        <div
+          class="c3"
+          style="opacity: 0; position: absolute; display: flex;"
+        />
       </div>
-    </div>
-  </label>
+      <div
+        class="Boxweb__Box-xvyj85-0"
+      >
+        <div
+          class="c4"
+          color="surface.text.subtle.lowContrast"
+          font-family="text"
+          font-size="100"
+          font-weight="regular"
+        >
+          Remember password
+        </div>
+      </div>
+    </label>
+  </div>
 </div>
 `;
 
@@ -202,7 +205,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 }
 
 .c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 400;
@@ -216,63 +219,66 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 }
 
 <div>
-  <label
-    class="c0"
+  <div
+    class="Boxweb__Box-xvyj85-0"
   >
-    <input
-      aria-checked="false"
-      aria-describedby="checkbox-13-helptext-15"
-      aria-disabled="true"
-      aria-errormessage="checkbox-13-errortext-14"
-      aria-hidden="true"
-      aria-invalid="false"
-      aria-required="false"
-      class="c1"
-      disabled=""
-      role="checkbox"
-      type="checkbox"
-      value=""
-    />
-    <div
-      class="c2"
+    <label
+      class="c0"
     >
-      <div
-        class=""
-        style="opacity: 0; position: absolute; display: flex;"
-      >
-        <svg
-          aria-hidden="true"
-          fill="none"
-          height="16px"
-          viewBox="0 0 16 16"
-          width="16px"
-        >
-          <path
-            d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-            fill="hsla(214, 18%, 69%, 1)"
-          />
-        </svg>
-      </div>
-      <div
-        class="c3"
-        style="opacity: 0; position: absolute; display: flex;"
+      <input
+        aria-checked="false"
+        aria-describedby="checkbox-13-helptext-15"
+        aria-disabled="true"
+        aria-errormessage="checkbox-13-errortext-14"
+        aria-hidden="true"
+        aria-invalid="false"
+        aria-required="false"
+        class="c1"
+        disabled=""
+        role="checkbox"
+        type="checkbox"
+        value=""
       />
-    </div>
-    <div
-      class="Boxweb__Box-xvyj85-0"
-    >
       <div
-        class="c4"
-        color="hsla(216, 27%, 36%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="400"
+        class="c2"
       >
-        Remember password
+        <div
+          class=""
+          style="opacity: 0; position: absolute; display: flex;"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="16px"
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+              fill="hsla(214, 18%, 69%, 1)"
+            />
+          </svg>
+        </div>
+        <div
+          class="c3"
+          style="opacity: 0; position: absolute; display: flex;"
+        />
       </div>
-    </div>
-  </label>
+      <div
+        class="Boxweb__Box-xvyj85-0"
+      >
+        <div
+          class="c4"
+          color="surface.text.placeholder.lowContrast"
+          font-family="text"
+          font-size="100"
+          font-weight="regular"
+        >
+          Remember password
+        </div>
+      </div>
+    </label>
+  </div>
 </div>
 `;
 
@@ -350,62 +356,65 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 }
 
 <div>
-  <label
-    class="c0"
+  <div
+    class="Boxweb__Box-xvyj85-0"
   >
-    <input
-      aria-checked="false"
-      aria-describedby="checkbox-10-helptext-12"
-      aria-disabled="false"
-      aria-errormessage="checkbox-10-errortext-11"
-      aria-hidden="true"
-      aria-invalid="true"
-      aria-required="false"
-      class="c1"
-      role="checkbox"
-      type="checkbox"
-      value=""
-    />
-    <div
-      class="c2"
+    <label
+      class="c0"
     >
-      <div
-        class=""
-        style="opacity: 0; position: absolute; display: flex;"
-      >
-        <svg
-          aria-hidden="true"
-          fill="none"
-          height="16px"
-          viewBox="0 0 16 16"
-          width="16px"
-        >
-          <path
-            d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-            fill="hsla(220, 27%, 98%, 1)"
-          />
-        </svg>
-      </div>
-      <div
-        class="c3"
-        style="opacity: 0; position: absolute; display: flex;"
+      <input
+        aria-checked="false"
+        aria-describedby="checkbox-10-helptext-12"
+        aria-disabled="false"
+        aria-errormessage="checkbox-10-errortext-11"
+        aria-hidden="true"
+        aria-invalid="true"
+        aria-required="false"
+        class="c1"
+        role="checkbox"
+        type="checkbox"
+        value=""
       />
-    </div>
-    <div
-      class="Boxweb__Box-xvyj85-0"
-    >
       <div
-        class="c4"
-        color="hsla(216, 27%, 36%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="400"
+        class="c2"
       >
-        Remember password
+        <div
+          class=""
+          style="opacity: 0; position: absolute; display: flex;"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="16px"
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+              fill="hsla(220, 27%, 98%, 1)"
+            />
+          </svg>
+        </div>
+        <div
+          class="c3"
+          style="opacity: 0; position: absolute; display: flex;"
+        />
       </div>
-    </div>
-  </label>
+      <div
+        class="Boxweb__Box-xvyj85-0"
+      >
+        <div
+          class="c4"
+          color="surface.text.subtle.lowContrast"
+          font-family="text"
+          font-size="100"
+          font-weight="regular"
+        >
+          Remember password
+        </div>
+      </div>
+    </label>
+  </div>
 </div>
 `;
 
@@ -497,75 +506,78 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
 }
 
 <div>
-  <label
-    class="c0"
+  <div
+    class="Boxweb__Box-xvyj85-0"
   >
-    <input
-      aria-checked="true"
-      aria-describedby="checkbox-58-helptext-60"
-      aria-disabled="false"
-      aria-errormessage="checkbox-58-errortext-59"
-      aria-hidden="true"
-      aria-invalid="false"
-      aria-required="false"
-      checked=""
-      class="c1"
-      role="checkbox"
-      type="checkbox"
-      value=""
-    />
-    <div
-      class="c2"
+    <label
+      class="c0"
     >
+      <input
+        aria-checked="true"
+        aria-describedby="checkbox-58-helptext-60"
+        aria-disabled="false"
+        aria-errormessage="checkbox-58-errortext-59"
+        aria-hidden="true"
+        aria-invalid="false"
+        aria-required="false"
+        checked=""
+        class="c1"
+        role="checkbox"
+        type="checkbox"
+        value=""
+      />
       <div
-        class="c3"
-        style="opacity: 1; position: absolute; display: flex;"
+        class="c2"
       >
-        <svg
-          aria-hidden="true"
-          fill="none"
-          height="16px"
-          viewBox="0 0 16 16"
-          width="16px"
+        <div
+          class="c3"
+          style="opacity: 1; position: absolute; display: flex;"
         >
-          <path
-            d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-            fill="hsla(220, 27%, 98%, 1)"
-          />
-        </svg>
-      </div>
-      <div
-        class="c4"
-        style="opacity: 0; position: absolute; display: flex;"
-      >
-        <svg
-          aria-hidden="true"
-          fill="none"
-          height="16px"
-          viewBox="0 0 16 16"
-          width="16px"
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="16px"
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+              fill="hsla(220, 27%, 98%, 1)"
+            />
+          </svg>
+        </div>
+        <div
+          class="c4"
+          style="opacity: 0; position: absolute; display: flex;"
         >
-          <path
-            d="M12.3536 4.64645C12.5488 4.84171 12.5488 5.15829 12.3536 5.35355L6.85355 10.8536C6.65829 11.0488 6.34171 11.0488 6.14645 10.8536L3.64645 8.35355C3.45118 8.15829 3.45118 7.84171 3.64645 7.64645C3.84171 7.45118 4.15829 7.45118 4.35355 7.64645L6.5 9.79289L11.6464 4.64645C11.8417 4.45118 12.1583 4.45118 12.3536 4.64645Z"
-            fill="hsla(220, 27%, 98%, 1)"
-          />
-        </svg>
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="16px"
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M12.3536 4.64645C12.5488 4.84171 12.5488 5.15829 12.3536 5.35355L6.85355 10.8536C6.65829 11.0488 6.34171 11.0488 6.14645 10.8536L3.64645 8.35355C3.45118 8.15829 3.45118 7.84171 3.64645 7.64645C3.84171 7.45118 4.15829 7.45118 4.35355 7.64645L6.5 9.79289L11.6464 4.64645C11.8417 4.45118 12.1583 4.45118 12.3536 4.64645Z"
+              fill="hsla(220, 27%, 98%, 1)"
+            />
+          </svg>
+        </div>
       </div>
-    </div>
-    <div
-      class="Boxweb__Box-xvyj85-0"
-    >
       <div
-        class="c5"
-        color="hsla(216, 27%, 36%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="400"
+        class="Boxweb__Box-xvyj85-0"
       >
-        Remember password
+        <div
+          class="c5"
+          color="surface.text.subtle.lowContrast"
+          font-family="text"
+          font-size="100"
+          font-weight="regular"
+        >
+          Remember password
+        </div>
       </div>
-    </div>
-  </label>
+    </label>
+  </div>
 </div>
 `;

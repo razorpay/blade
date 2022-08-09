@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from '../';
+import { Title } from '../';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 

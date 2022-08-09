@@ -1,8 +1,8 @@
 import { fireEvent } from '@testing-library/react';
-import assertAccessible from '../../../../_helpers/testing/assertAccessible.web';
-import renderWithTheme from '../../../../_helpers/testing/renderWithTheme.web';
-import { InfoIcon } from '../../../Icons';
 import Link from '../Link';
+import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import { InfoIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
