@@ -1,5 +1,4 @@
 import React from 'react';
-import { CheckboxGroupContent } from './CheckboxGroupContent';
 import { CheckboxGroupField } from './CheckboxGroupField';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
@@ -113,7 +112,9 @@ const CheckboxGroup = ({
           {label}
         </FormLabel>
         <Box>
-          <CheckboxGroupContent>{children}</CheckboxGroupContent>
+          <Box display="flex" flexDirection="column" gap="spacing.1">
+            {children}
+          </Box>
           <FormHint
             errorText={errorText}
             helpText={helpText}

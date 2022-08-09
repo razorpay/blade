@@ -27,7 +27,6 @@ type SpanProps = CommonProps & {
 
 type FormLabelProps = LabelProps | SpanProps;
 
-// TODO: Add margin bottom after label.
 const FormLabel = ({
   as = 'span',
   position = 'top',
@@ -105,15 +104,16 @@ const FormLabel = ({
 
   // What harm can it do?
   if (isReactNative) {
-    return textNode;
+    return <Box marginBottom="spacing.1">{textNode}</Box>;
   }
 
   const Component = as;
   // only set 120px label when device is desktop
   const width = position === 'left' && isDesktop ? '120px' : 'auto';
+
   return (
     <Component htmlFor={htmlFor} style={{ width }} id={id}>
-      {textNode}
+      <Box marginBottom="spacing.1">{textNode}</Box>
     </Component>
   );
 };
