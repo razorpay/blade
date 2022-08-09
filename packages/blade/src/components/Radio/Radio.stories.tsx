@@ -40,30 +40,11 @@ export default {
 
 const RadioTemplate: ComponentStory<typeof RadioGroupComponent> = ({ children, ...args }) => {
   return (
-    <>
-      <RadioGroupComponent {...args} defaultValue="6">
-        <RadioComponent value="1">Default</RadioComponent>
-        <RadioComponent value="2">Hover</RadioComponent>
-        <RadioComponent value="3">Focus</RadioComponent>
-        <RadioComponent value="4">Selected</RadioComponent>
-        <RadioComponent isDisabled value="5">
-          Disabled
-        </RadioComponent>
-        <RadioComponent isDisabled value="6">
-          Disabled
-        </RadioComponent>
-      </RadioGroupComponent>
-
-      <RadioGroupComponent {...args} validationState="error" defaultValue="2">
-        <RadioComponent value="1">Negative 1</RadioComponent>
-        <RadioComponent value="2">Negative 2</RadioComponent>
-      </RadioGroupComponent>
-
-      <RadioGroupComponent {...args} defaultValue="1">
-        <RadioComponent value="1">Apple</RadioComponent>
-        <RadioComponent value="2">Mango</RadioComponent>
-      </RadioGroupComponent>
-    </>
+    <RadioGroupComponent {...args}>
+      <RadioComponent value="apple">Apple</RadioComponent>
+      <RadioComponent value="mango">Mango</RadioComponent>
+      <RadioComponent value="orange">Orange</RadioComponent>
+    </RadioGroupComponent>
   );
 };
 
