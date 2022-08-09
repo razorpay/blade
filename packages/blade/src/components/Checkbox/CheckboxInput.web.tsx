@@ -32,6 +32,7 @@ const getHoverStyles = ({
   const backgroundColor = variants.default.background[checked];
 
   return {
+    borderColor: getIn(theme, backgroundColor),
     backgroundColor: getIn(theme, backgroundColor),
     transitionTimingFunction: theme.motion.easing.standard.effective as string,
     transitionDuration: makeMotionTime(theme.motion.duration['2xquick']),

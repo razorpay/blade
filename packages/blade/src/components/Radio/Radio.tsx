@@ -3,7 +3,7 @@ import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import type { OnChange } from './useRadio';
 import { useRadio } from './useRadio';
-import { RadioIcon } from './RadioIcon';
+import { RadioIcon } from './RadioIcon/RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
 import { FormHintText } from '~components/Form/FormHintText';
 import Box from '~components/Box';
