@@ -39,20 +39,17 @@ const variants = {
 const RadioIcon = ({ isChecked, isDisabled, isNegative }: RadioIconProps) => {
   const { theme } = useTheme();
 
-  const state = Boolean(isChecked) ? 'checked' : 'unchecked';
+  const checked = Boolean(isChecked);
+  const state = checked ? 'checked' : 'unchecked';
   let variant: 'default' | 'disabled' | 'negative' = 'default';
   if (isDisabled) variant = 'disabled';
   if (isNegative) variant = 'negative';
   const dotColor = getIn(theme, variants[state][variant]);
 
   return (
-    <RadioIconWrapper isDisabled={isDisabled} isNegative={isNegative} isChecked={!!isChecked}>
-      <Fade show={Boolean(isChecked)} styles={{ position: 'absolute', display: 'flex' }}>
-        {isChecked ? (
-          <CheckedIcon dotColor={dotColor} />
-        ) : (
-          <CheckedIcon noDot dotColor={dotColor} />
-        )}
+    <RadioIconWrapper isDisabled={isDisabled} isNegative={isNegative} isChecked={checked}>
+      <Fade show={checked} styles={{ position: 'absolute', display: 'flex' }}>
+        <CheckedIcon dotColor={dotColor} />
       </Fade>
     </RadioIconWrapper>
   );

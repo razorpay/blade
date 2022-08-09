@@ -25559,6 +25559,13 @@ use-latest@^1.0.0:
   dependencies:
     use-isomorphic-layout-effect "^1.0.0"
 
+use-presence@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/use-presence/-/use-presence-1.1.0.tgz#890b82e656f3a72fc15ee61be521ae1062afcedc"
+  integrity sha512-Tol+g7q81LLjhFMvrzhKXa4CCyZ0Tg4MRcPC2eSqdDLGQEA1MnjNc/jMFDKSB8CZDFchd7FOsq33glZyFX3zuw==
+  dependencies:
+    tslib "^2.0.0"
+
 use-sidecar@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/use-sidecar/-/use-sidecar-1.0.5.tgz#ffff2a17c1df42e348624b699ba6e5c220527f2b"

@@ -1,7 +1,7 @@
 import type { CSSObject } from 'styled-components';
 import type { RadioIconProps } from './RadioIcon';
 import type { Theme } from '~components/BladeProvider';
-import { getIn, makeSize, makeSpace } from '~utils';
+import { getIn, makeMotionTime, makeSize, makeSpace } from '~utils';
 
 const variants = {
   default: {
@@ -67,6 +67,8 @@ const getRadioIconWrapperStyles = ({
     marginRight: makeSpace(theme.spacing[2]),
     backgroundColor: getIn(theme, backgroundColor),
     borderColor: getIn(theme, borderColor),
+    transitionDuration: makeMotionTime(theme.motion.duration.xquick),
+    transitionTimingFunction: theme.motion.easing.exit.attentive as string,
   };
 };
 
