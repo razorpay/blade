@@ -29,10 +29,10 @@ describe('<IconButton />', () => {
   });
 
   it('should have a11y label', () => {
-    const onClick = jest.fn();
+    const noop = () => {};
     const a11yLabel = 'Close modal';
     const { getByA11yLabel } = renderWithTheme(
-      <IconButton accessibilityLabel={a11yLabel} icon={CloseIcon} onClick={onClick} />,
+      <IconButton accessibilityLabel={a11yLabel} icon={CloseIcon} onClick={noop} />,
     );
     const iconButton = getByA11yLabel(a11yLabel);
 
