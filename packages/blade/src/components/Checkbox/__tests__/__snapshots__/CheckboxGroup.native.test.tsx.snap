@@ -2,7 +2,7 @@
 
 exports[`<CheckboxGroup /> should render with label 1`] = `
 <View
-  accessibilityLabelledBy="checkbox-group-10-label"
+  accessibilityLabelledBy="checkbox-group-19-label-24"
   display="flex"
   flexDirection="column"
   style={
@@ -15,115 +15,126 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    flexWrap="wrap"
-    gap="spacing.0"
+    marginBottom="spacing.1"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "display": "flex",
-          "flexDirection": "row",
-          "flexWrap": "wrap",
-          "gap": 0,
+          "marginBottom": 4,
         },
       ]
     }
   >
-    <Text
-      color="surface.text.subtle.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontWeight="bold"
-      lineHeight="s"
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="spacing.0"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textAlign": "left",
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 0,
           },
         ]
       }
     >
-      Select fruits
-      <View
+      <Text
+        color="surface.text.subtle.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontWeight="bold"
+        lineHeight="s"
         style={
           Array [
             Object {
-              "borderColor": "black",
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "clip": "rect(0 0 0 0)",
-              "clipPath": "inset(50%)",
-              "height": 1,
-              "marginBottom": -1,
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 16,
+              "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": -1,
+              "marginRight": 0,
               "marginTop": 0,
-              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-              "wordWrap": "normal",
+              "textAlign": "left",
+              "textDecorationLine": "none",
             },
           ]
         }
       >
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        Select fruits
+        <View
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "clip": "rect(0 0 0 0)",
+                "clipPath": "inset(50%)",
+                "height": 1,
+                "marginBottom": -1,
                 "marginLeft": 0,
-                "marginRight": 0,
+                "marginRight": -1,
                 "marginTop": 0,
+                "overflow": "hidden",
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textAlign": "left",
-                "textDecorationLine": "none",
+                "position": "absolute",
+                "whiteSpace": "nowrap",
+                "width": 1,
+                "wordWrap": "normal",
               },
-              Object {},
             ]
           }
         >
-          , 
-        </Text>
-      </View>
-    </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            , 
+          </Text>
+        </View>
+      </Text>
+    </View>
   </View>
   <View
     style={
@@ -136,16 +147,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       display="flex"
       flexDirection="column"
       gap="spacing.1"
-      marginBottom="spacing.1"
-      marginTop="spacing.1"
       style={
         Array [
           Object {
             "display": "flex",
             "flexDirection": "column",
             "gap": 4,
-            "marginBottom": 4,
-            "marginTop": 4,
           },
         ]
       }
@@ -158,8 +165,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-1-helptext-3"
-          accessibilityErrorMessage="checkbox-1-errortext-2"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"
@@ -264,8 +269,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-4-helptext-6"
-          accessibilityErrorMessage="checkbox-4-errortext-5"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"
@@ -370,8 +373,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-7-helptext-9"
-          accessibilityErrorMessage="checkbox-7-errortext-8"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"
@@ -475,7 +476,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 
 exports[`<CheckboxGroup /> should render with label 2`] = `
 <View
-  accessibilityLabelledBy="checkbox-group-21-label"
+  accessibilityLabelledBy="checkbox-group-49-label-54"
   display="flex"
   flexDirection="column"
   style={
@@ -488,115 +489,126 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    flexWrap="wrap"
-    gap="spacing.0"
+    marginBottom="spacing.1"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "display": "flex",
-          "flexDirection": "row",
-          "flexWrap": "wrap",
-          "gap": 0,
+          "marginBottom": 4,
         },
       ]
     }
   >
-    <Text
-      color="surface.text.subtle.lowContrast"
-      fontFamily="text"
-      fontSize={75}
-      fontWeight="bold"
-      lineHeight="s"
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="spacing.0"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textAlign": "left",
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 0,
           },
         ]
       }
     >
-      Select fruits
-      <View
+      <Text
+        color="surface.text.subtle.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontWeight="bold"
+        lineHeight="s"
         style={
           Array [
             Object {
-              "borderColor": "black",
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "clip": "rect(0 0 0 0)",
-              "clipPath": "inset(50%)",
-              "height": 1,
-              "marginBottom": -1,
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 16,
+              "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": -1,
+              "marginRight": 0,
               "marginTop": 0,
-              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-              "wordWrap": "normal",
+              "textAlign": "left",
+              "textDecorationLine": "none",
             },
           ]
         }
       >
-        <Text
-          color="surface.text.normal.lowContrast"
-          fontFamily="text"
-          fontSize={100}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight="l"
+        Select fruits
+        <View
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "clip": "rect(0 0 0 0)",
+                "clipPath": "inset(50%)",
+                "height": 1,
+                "marginBottom": -1,
                 "marginLeft": 0,
-                "marginRight": 0,
+                "marginRight": -1,
                 "marginTop": 0,
+                "overflow": "hidden",
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textAlign": "left",
-                "textDecorationLine": "none",
+                "position": "absolute",
+                "whiteSpace": "nowrap",
+                "width": 1,
+                "wordWrap": "normal",
               },
-              Object {},
             ]
           }
         >
-          , Select one
-        </Text>
-      </View>
-    </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            , Select one
+          </Text>
+        </View>
+      </Text>
+    </View>
   </View>
   <View
     style={
@@ -609,16 +621,12 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       display="flex"
       flexDirection="column"
       gap="spacing.1"
-      marginBottom="spacing.1"
-      marginTop="spacing.1"
       style={
         Array [
           Object {
             "display": "flex",
             "flexDirection": "column",
             "gap": 4,
-            "marginBottom": 4,
-            "marginTop": 4,
           },
         ]
       }
@@ -631,8 +639,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-22-helptext-24"
-          accessibilityErrorMessage="checkbox-22-errortext-23"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"
@@ -737,8 +743,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-25-helptext-27"
-          accessibilityErrorMessage="checkbox-25-errortext-26"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"
@@ -843,8 +847,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         }
       >
         <View
-          accessibilityDescribedBy="checkbox-28-helptext-30"
-          accessibilityErrorMessage="checkbox-28-errortext-29"
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityRole="checkbox"

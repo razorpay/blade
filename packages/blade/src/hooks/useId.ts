@@ -40,7 +40,7 @@ const useId = (prefix?: string, idProp?: string) => {
   }, []);
 
   const id = uid != null ? uid.toString() : undefined;
-  return prefix ? `${prefix}-${id}` : id;
+  return prefix ? `${prefix}-${id}` : id!;
 };
 
 export { useId };

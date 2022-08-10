@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CheckboxGroup /> should render with help text 1`] = `
-.c8 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26,12 +26,12 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   border-color: hsla(216,19%,89%,1);
 }
 
-.c9 {
+.c10 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c3 {
+.c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -47,7 +47,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c7 {
+.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -63,81 +63,18 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c7:focus + div {
+.c8:focus + div {
   outline: 1px solid white;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c7:hover + div,
-.c7:focus + div {
+.c8:hover + div,
+.c8:focus + div {
   background-color: hsla(216,19%,89%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
   transition-duration: 70ms;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c4 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c10 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c12 {
-  color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.6875rem;
-  font-weight: 400;
-  font-style: italic;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
 }
 
 .c0 {
@@ -151,6 +88,10 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 }
 
 .c1 {
+  margin-bottom: 4px;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -168,7 +109,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   gap: 0px;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -176,51 +117,116 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  margin-top: 4px;
-  margin-bottom: 4px;
   gap: 4px;
 }
 
-.c11 {
+.c12 {
   margin-top: 4px;
+}
+
+.c3 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c11 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c13 {
+  color: hsla(216,16%,60%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.6875rem;
+  font-weight: 400;
+  font-style: italic;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 <div>
   <div
-    aria-labelledby="checkbox-group-21-label"
+    aria-labelledby="checkbox-group-49-label-54"
     class="c0"
     display="flex"
     role="group"
   >
     <span
-      id="checkbox-group-21-label"
+      id="checkbox-group-49-label-54"
       style="width: auto;"
     >
       <div
         class="c1"
-        display="flex"
       >
         <div
           class="c2"
-          color="surface.text.subtle.lowContrast"
-          font-family="text"
-          font-size="75"
-          font-weight="bold"
+          display="flex"
         >
-          Select fruits
           <div
             class="c3"
+            color="surface.text.subtle.lowContrast"
+            font-family="text"
+            font-size="75"
+            font-weight="bold"
           >
-            <p
-              class="c4 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
+            Select fruits
+            <div
+              class="c4"
             >
-              , Select one
-            </p>
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                , Select one
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -229,30 +235,28 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
       class=""
     >
       <div
-        class="c5"
+        class="c6"
         display="flex"
       >
         <div
           class=""
         >
           <label
-            class="c6"
+            class="c7"
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-22-helptext-24"
               aria-disabled="false"
-              aria-errormessage="checkbox-22-errortext-23"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
-              class="c7"
+              class="c8"
               role="checkbox"
               type="checkbox"
               value="apple"
             />
             <div
-              class="c8"
+              class="c9"
             >
               <div
                 class=""
@@ -272,7 +276,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                 </svg>
               </div>
               <div
-                class="c9"
+                class="c10"
                 style="opacity: 0; position: absolute; display: flex;"
               />
             </div>
@@ -280,7 +284,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               class=""
             >
               <div
-                class="c10"
+                class="c11"
                 color="surface.text.subtle.lowContrast"
                 font-family="text"
                 font-size="100"
@@ -295,23 +299,21 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           class=""
         >
           <label
-            class="c6"
+            class="c7"
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-25-helptext-27"
               aria-disabled="false"
-              aria-errormessage="checkbox-25-errortext-26"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
-              class="c7"
+              class="c8"
               role="checkbox"
               type="checkbox"
               value="mango"
             />
             <div
-              class="c8"
+              class="c9"
             >
               <div
                 class=""
@@ -331,7 +333,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                 </svg>
               </div>
               <div
-                class="c9"
+                class="c10"
                 style="opacity: 0; position: absolute; display: flex;"
               />
             </div>
@@ -339,7 +341,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               class=""
             >
               <div
-                class="c10"
+                class="c11"
                 color="surface.text.subtle.lowContrast"
                 font-family="text"
                 font-size="100"
@@ -354,23 +356,21 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           class=""
         >
           <label
-            class="c6"
+            class="c7"
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-28-helptext-30"
               aria-disabled="false"
-              aria-errormessage="checkbox-28-errortext-29"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
-              class="c7"
+              class="c8"
               role="checkbox"
               type="checkbox"
               value="orange"
             />
             <div
-              class="c8"
+              class="c9"
             >
               <div
                 class=""
@@ -390,7 +390,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                 </svg>
               </div>
               <div
-                class="c9"
+                class="c10"
                 style="opacity: 0; position: absolute; display: flex;"
               />
             </div>
@@ -398,7 +398,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               class=""
             >
               <div
-                class="c10"
+                class="c11"
                 color="surface.text.subtle.lowContrast"
                 font-family="text"
                 font-size="100"
@@ -411,13 +411,13 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
         </div>
       </div>
       <div
-        class="c11"
+        class="c12"
       />
       <span
         style="display: flex; flex-direction: row; align-items: center;"
       >
         <span
-          class="c12"
+          class="c13"
           color="surface.text.muted.lowContrast"
           font-family="text"
           font-size="50"
@@ -432,7 +432,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 `;
 
 exports[`<CheckboxGroup /> should render with label 1`] = `
-.c8 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -457,12 +457,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   border-color: hsla(216,19%,89%,1);
 }
 
-.c9 {
+.c10 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c3 {
+.c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -478,7 +478,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c7 {
+.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -494,67 +494,18 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c7:focus + div {
+.c8:focus + div {
   outline: 1px solid white;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c7:hover + div,
-.c7:focus + div {
+.c8:hover + div,
+.c8:focus + div {
   background-color: hsla(216,19%,89%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
   transition-duration: 70ms;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c4 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c10 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
 }
 
 .c0 {
@@ -568,6 +519,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 }
 
 .c1 {
+  margin-bottom: 4px;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -585,7 +540,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   gap: 0px;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -593,47 +548,98 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  margin-top: 4px;
-  margin-bottom: 4px;
   gap: 4px;
+}
+
+.c3 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c11 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 <div>
   <div
-    aria-labelledby="checkbox-group-10-label"
+    aria-labelledby="checkbox-group-19-label-24"
     class="c0"
     display="flex"
     role="group"
   >
     <span
-      id="checkbox-group-10-label"
+      id="checkbox-group-19-label-24"
       style="width: auto;"
     >
       <div
         class="c1"
-        display="flex"
       >
         <div
           class="c2"
-          color="surface.text.subtle.lowContrast"
-          font-family="text"
-          font-size="75"
-          font-weight="bold"
+          display="flex"
         >
-          Select fruits
           <div
             class="c3"
+            color="surface.text.subtle.lowContrast"
+            font-family="text"
+            font-size="75"
+            font-weight="bold"
           >
-            <p
-              class="c4 Text__StyledText-wkh56f-0"
-              color="surface.text.normal.lowContrast"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
+            Select fruits
+            <div
+              class="c4"
             >
-              , 
-            </p>
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                , 
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -642,30 +648,28 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       class=""
     >
       <div
-        class="c5"
+        class="c6"
         display="flex"
       >
         <div
           class=""
         >
           <label
-            class="c6"
+            class="c7"
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-1-helptext-3"
               aria-disabled="false"
-              aria-errormessage="checkbox-1-errortext-2"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
-              class="c7"
+              class="c8"
               role="checkbox"
               type="checkbox"
               value="apple"
             />
             <div
-              class="c8"
+              class="c9"
             >
               <div
                 class=""
@@ -685,7 +689,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </svg>
               </div>
               <div
-                class="c9"
+                class="c10"
                 style="opacity: 0; position: absolute; display: flex;"
               />
             </div>
@@ -693,7 +697,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               class=""
             >
               <div
-                class="c10"
+                class="c11"
                 color="surface.text.subtle.lowContrast"
                 font-family="text"
                 font-size="100"
@@ -708,23 +712,21 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           class=""
         >
           <label
-            class="c6"
+            class="c7"
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-4-helptext-6"
               aria-disabled="false"
-              aria-errormessage="checkbox-4-errortext-5"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
-              class="c7"
+              class="c8"
               role="checkbox"
               type="checkbox"
               value="mango"
             />
             <div
-              class="c8"
+              class="c9"
             >
               <div
                 class=""
@@ -744,7 +746,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </svg>
               </div>
               <div
-                class="c9"
+                class="c10"
                 style="opacity: 0; position: absolute; display: flex;"
               />
             </div>
@@ -752,7 +754,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               class=""
             >
               <div
-                class="c10"
+                class="c11"
                 color="surface.text.subtle.lowContrast"
                 font-family="text"
                 font-size="100"
@@ -767,23 +769,21 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           class=""
         >
           <label
-            class="c6"
+            class="c7"
           >
             <input
               aria-checked="false"
-              aria-describedby="checkbox-7-helptext-9"
               aria-disabled="false"
-              aria-errormessage="checkbox-7-errortext-8"
               aria-hidden="true"
               aria-invalid="false"
               aria-required="false"
-              class="c7"
+              class="c8"
               role="checkbox"
               type="checkbox"
               value="orange"
             />
             <div
-              class="c8"
+              class="c9"
             >
               <div
                 class=""
@@ -803,7 +803,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </svg>
               </div>
               <div
-                class="c9"
+                class="c10"
                 style="opacity: 0; position: absolute; display: flex;"
               />
             </div>
@@ -811,7 +811,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               class=""
             >
               <div
-                class="c10"
+                class="c11"
                 color="surface.text.subtle.lowContrast"
                 font-family="text"
                 font-size="100"
