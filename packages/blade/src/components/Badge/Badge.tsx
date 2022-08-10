@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import { StyledBadge } from './StyledBadge';
+import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
@@ -40,9 +41,10 @@ const Badge = ({
   if (!children?.trim()) {
     throw new Error('[Blade: Badge]: Text as children is required for Badge.');
   }
+  const { platform } = useTheme();
 
   return (
-    <StyledBadge variant={variant} contrast={contrast} size={size}>
+    <StyledBadge variant={variant} contrast={contrast} size={size} platform={platform}>
       <Box
         paddingRight="spacing.2"
         paddingLeft="spacing.2"
