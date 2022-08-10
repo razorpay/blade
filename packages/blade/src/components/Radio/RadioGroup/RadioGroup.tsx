@@ -3,9 +3,8 @@ import { RadioGroupProvider } from './RadioContext';
 import { RadioGroupContent } from './RadioGroupContent';
 import { RadioGroupField } from './RadioGroupField';
 import { useRadioGroup } from './useRadioGroup';
-import { FormLabelText } from '~components/Form/FormLabelText';
-import { FormHintText } from '~components/Form/FormHintText';
 import Box from '~components/Box';
+import { FormHint, FormLabel } from '~components/Form';
 
 type RadioGroupProps = {
   /**
@@ -104,18 +103,22 @@ const RadioGroup = ({
   return (
     <RadioGroupProvider value={contextValue}>
       <RadioGroupField labelledBy={ids.labelId}>
-        <FormLabelText
+        <FormLabel
+          as="span"
           neccessityIndicator={neccessityIndicator}
           position={labelPosition}
           id={ids.labelId}
           accessibillityText={accessibillityText}
         >
           {label}
-        </FormLabelText>
+        </FormLabel>
         <Box>
           <RadioGroupContent>{children}</RadioGroupContent>
-          {showError && <FormHintText variant="error">{errorText}</FormHintText>}
-          {showHelpText && <FormHintText variant="help">{helpText}</FormHintText>}
+          <FormHint
+            type={validationState === 'error' ? 'error' : 'help'}
+            errorText={errorText}
+            helpText={helpText}
+          />
         </Box>
       </RadioGroupField>
     </RadioGroupProvider>

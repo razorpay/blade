@@ -56,12 +56,8 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
     }
   >
     <Text
-      color="hsla(268, 100%, 79%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="action.text.link.visited"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -149,12 +145,8 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
     }
   >
     <Text
-      color="hsla(213, 89%, 56%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="action.text.link.default"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -242,12 +234,8 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
     }
   >
     <Text
-      color="hsla(213, 89%, 56%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="action.text.link.default"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -335,12 +323,8 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
     }
   >
     <Text
-      color="hsla(218, 19%, 81%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="action.text.link.disabled"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -428,12 +412,8 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
     }
   >
     <Text
-      color="hsla(180, 100%, 97%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.information.action.text.link.default.highContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -521,12 +501,8 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
     }
   >
     <Text
-      color="hsla(195, 100%, 31%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.information.action.text.link.default.lowContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -614,12 +590,8 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
     }
   >
     <Text
-      color="hsla(0, 100%, 97%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.negative.action.text.link.default.highContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -707,12 +679,8 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
     }
   >
     <Text
-      color="hsla(8, 73%, 47%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.negative.action.text.link.default.lowContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -800,12 +768,8 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
     }
   >
     <Text
-      color="hsla(220, 27%, 98%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.neutral.action.text.link.default.highContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -893,12 +857,8 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
     }
   >
     <Text
-      color="hsla(216, 27%, 36%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.neutral.action.text.link.default.lowContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -986,12 +946,8 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
     }
   >
     <Text
-      color="hsla(32, 100%, 94%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.notice.action.text.link.default.highContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -1079,12 +1035,8 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
     }
   >
     <Text
-      color="hsla(38, 97%, 38%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.notice.action.text.link.default.lowContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -1172,12 +1124,8 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
     }
   >
     <Text
-      color="hsla(107, 100%, 96%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.positive.action.text.link.default.highContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -1265,12 +1213,8 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
     }
   >
     <Text
-      color="hsla(160, 100%, 26%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.positive.action.text.link.default.lowContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -1442,12 +1386,8 @@ exports[`<BaseLink /> should render icon only link 1`] = `
       </RNSVGSvgView>
     </View>
     <Text
-      color="hsla(213, 89%, 56%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="action.text.link.default"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -1533,12 +1473,8 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
     }
   >
     <Text
-      color="hsla(180, 100%, 97%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.information.action.text.link.default.highContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -1626,12 +1562,8 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
     }
   >
     <Text
-      color="hsla(195, 100%, 31%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.information.action.text.link.default.lowContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -1719,12 +1651,8 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
     }
   >
     <Text
-      color="hsla(213, 89%, 56%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="action.text.link.default"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -1896,12 +1824,8 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
       </RNSVGSvgView>
     </View>
     <Text
-      color="hsla(213, 89%, 56%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="action.text.link.default"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -2073,12 +1997,8 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
       </RNSVGSvgView>
     </View>
     <Text
-      color="hsla(213, 89%, 56%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="action.text.link.default"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -2166,12 +2086,8 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
     }
   >
     <Text
-      color="hsla(213, 89%, 56%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="action.text.link.default"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -2343,12 +2259,8 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
     }
   >
     <Text
-      color="hsla(0, 100%, 97%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.negative.action.text.link.default.highContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -2436,12 +2348,8 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
     }
   >
     <Text
-      color="hsla(8, 73%, 47%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.negative.action.text.link.default.lowContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -2529,12 +2437,8 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
     }
   >
     <Text
-      color="hsla(220, 27%, 98%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.neutral.action.text.link.default.highContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -2622,12 +2526,8 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
     }
   >
     <Text
-      color="hsla(216, 27%, 36%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.neutral.action.text.link.default.lowContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -2715,12 +2615,8 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
     }
   >
     <Text
-      color="hsla(32, 100%, 94%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.notice.action.text.link.default.highContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -2808,12 +2704,8 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
     }
   >
     <Text
-      color="hsla(38, 97%, 38%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.notice.action.text.link.default.lowContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -2901,12 +2793,8 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
     }
   >
     <Text
-      color="hsla(107, 100%, 96%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.positive.action.text.link.default.highContrast"
+      fontSize={100}
       style={
         Array [
           Object {
@@ -2994,12 +2882,8 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
     }
   >
     <Text
-      color="hsla(160, 100%, 26%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={400}
-      lineHeight="24px"
+      color="feedback.positive.action.text.link.default.lowContrast"
+      fontSize={100}
       style={
         Array [
           Object {

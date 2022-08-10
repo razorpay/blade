@@ -126,6 +126,31 @@ describe('<BaseButton />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
+  it('should call function on click of button with event callback', () => {
+    const buttonText = 'Pay Now';
+    const onClick = jest.fn();
+    const { getByRole } = renderWithTheme(<BaseButton onClick={onClick}>{buttonText}</BaseButton>);
+    const button = getByRole('button');
+    fireEvent(
+      button,
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        screenX: 20,
+        screenY: 20,
+      }),
+    );
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toBeCalledWith(
+      expect.objectContaining({
+        bubbles: true,
+        cancelable: true,
+        screenX: 20,
+        screenY: 20,
+      }),
+    );
+  });
+
   it('should render secondary variant button', () => {
     const buttonText = 'Pay Now';
     const { container } = renderWithTheme(

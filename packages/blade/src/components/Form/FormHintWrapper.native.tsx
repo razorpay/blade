@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-const FormHintTextWrapper = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+const FormHintWrapper = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
     <View
       style={{
@@ -15,4 +15,4 @@ const FormHintTextWrapper = ({ children }: { children: React.ReactNode }): React
   );
 };
 
-export { FormHintTextWrapper };
+export { FormHintWrapper };
