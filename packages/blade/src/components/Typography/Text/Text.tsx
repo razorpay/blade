@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { ReactElement } from 'react';
 import styled from 'styled-components';
-import BaseText from '../BaseText';
-import type { BaseTextProps } from '../BaseText/BaseText';
+import { BaseText } from '../BaseText';
+import type { BaseTextProps } from '../BaseText';
 import type { Theme } from '~components/BladeProvider';
 import { getPlatformType } from '~utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
@@ -14,7 +14,7 @@ type TextCommonProps = {
   children: React.ReactNode;
 };
 
-type TextVariant = 'body' | 'caption';
+export type TextVariant = 'body' | 'caption';
 
 type TextBodyVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'body'>;
@@ -46,7 +46,7 @@ type TextForwardedAs = {
   forwardedAs?: BaseTextProps['as'];
 };
 
-const getProps = <T extends { variant: TextVariant }>({
+const getTextProps = <T extends { variant: TextVariant }>({
   variant,
   type,
   weight,
@@ -118,9 +118,9 @@ const Text = <T extends { variant: TextVariant }>({
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
     truncateAfterLines,
-    ...getProps({ variant, type, weight, size, contrast }),
+    ...getTextProps({ variant, type, weight, size, contrast }),
   };
   return <StyledText {...props}>{children}</StyledText>;
 };
 
-export default Text;
+export { Text, getTextProps };

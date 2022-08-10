@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import type { ReactElement } from 'react';
+import type { ReactElement, MouseEvent } from 'react';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
@@ -18,7 +18,7 @@ import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import { makeAccessible, usePrevious, makeSize, makeSpace, makeBorderSize, getIn } from '~utils';
-import BaseText from '~components/Typography/BaseText';
+import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
 import Spinner from '~components/Spinner';
@@ -30,7 +30,7 @@ type BaseButtonCommonProps = {
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
-  onClick?: () => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
   accessibilityLabel?: string;
@@ -144,7 +144,7 @@ const getProps = ({
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
-    iconPadding: hasIcon ? `spacing.${textPadding[size]}` : undefined,
+    iconPadding: hasIcon && children?.trim() ? `spacing.${textPadding[size]}` : undefined,
     iconColor: getColorToken({
       property: 'icon',
       variant,
@@ -354,7 +354,7 @@ const BaseButton = ({
         flexDirection="row"
         alignItems="center"
         justifyContent="center"
-        alignSelf="center"
+        flex={1}
         isHidden={isLoading}
       >
         {Icon && iconPosition == 'left' ? (

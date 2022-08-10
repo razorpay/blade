@@ -56,7 +56,7 @@ const useRadioGroup = ({
           return;
         }
 
-        setValue(value);
+        setValue(() => value);
       },
       removeValue() {
         if (isDisabled) {

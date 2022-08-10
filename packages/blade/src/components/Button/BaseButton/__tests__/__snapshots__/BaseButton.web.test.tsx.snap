@@ -67,6 +67,9 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -78,9 +81,6 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -99,11 +99,9 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     >
       <div
         class="c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -179,6 +177,9 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -190,9 +191,6 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -211,11 +209,9 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     >
       <div
         class="c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -291,6 +287,9 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -302,9 +301,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c3 {
@@ -358,11 +354,9 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       </div>
       <div
         class="c4"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -438,6 +432,9 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -449,9 +446,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c3 {
@@ -505,11 +499,9 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       </div>
       <div
         class="c4"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -585,6 +577,9 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -596,9 +591,6 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c4 {
@@ -621,11 +613,9 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     >
       <div
         class="c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -705,6 +695,9 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -716,9 +709,6 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c3 {
@@ -734,7 +724,6 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
 }
 
 .c2 {
@@ -842,6 +831,9 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -853,9 +845,6 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -875,11 +864,9 @@ exports[`<BaseButton /> should render disabled button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(216, 16%, 60%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.disabled"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -955,6 +942,9 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -966,9 +956,6 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -988,11 +975,9 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
     >
       <div
         class="c3"
-        color="hsla(187, 68%, 52%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.information.action.text.primary.disabled.highContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1068,6 +1053,9 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1079,9 +1067,6 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -1101,11 +1086,9 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
     >
       <div
         class="c3"
-        color="hsla(193, 100%, 35%, 0.32)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.information.action.text.primary.disabled.lowContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1181,6 +1164,9 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1192,9 +1178,6 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -1214,11 +1197,9 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
     >
       <div
         class="c3"
-        color="hsla(8, 99%, 65%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.negative.action.text.primary.disabled.highContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1294,6 +1275,9 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1305,9 +1289,6 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -1327,11 +1308,9 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
     >
       <div
         class="c3"
-        color="hsla(9, 91%, 56%, 0.32)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.negative.action.text.primary.disabled.lowContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1407,6 +1386,9 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1418,9 +1400,6 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -1440,11 +1419,9 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
     >
       <div
         class="c3"
-        color="hsla(216, 15%, 54%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.neutral.action.text.primary.disabled.highContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1520,6 +1497,9 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1531,9 +1511,6 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -1553,11 +1530,9 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
     >
       <div
         class="c3"
-        color="hsla(216, 44%, 23%, 0.32)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.neutral.action.text.primary.disabled.lowContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1633,6 +1608,9 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1644,9 +1622,6 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -1666,11 +1641,9 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
     >
       <div
         class="c3"
-        color="hsla(35, 84%, 54%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.notice.action.text.primary.disabled.highContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1746,6 +1719,9 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1757,9 +1733,6 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -1779,11 +1752,9 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
     >
       <div
         class="c3"
-        color="hsla(36, 100%, 44%, 0.32)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.notice.action.text.primary.disabled.lowContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1859,6 +1830,9 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1870,9 +1844,6 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -1892,11 +1863,9 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
     >
       <div
         class="c3"
-        color="hsla(149, 99%, 35%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.positive.action.text.primary.disabled.highContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -1972,6 +1941,9 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1983,9 +1955,6 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -2005,11 +1974,9 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
     >
       <div
         class="c3"
-        color="hsla(155, 100%, 31%, 0.32)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.positive.action.text.primary.disabled.lowContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2085,6 +2052,9 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2096,9 +2066,6 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -2118,11 +2085,9 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(218, 19%, 81%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.secondary.disabled"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2198,6 +2163,9 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2209,9 +2177,6 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -2231,11 +2196,9 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(218, 19%, 81%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.tertiary.disabled"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2311,6 +2274,9 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2322,9 +2288,6 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -2343,11 +2306,9 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
     >
       <div
         class="c3"
-        color="hsla(180, 100%, 97%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.information.action.text.primary.default.highContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2423,6 +2384,9 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2434,9 +2398,6 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -2455,11 +2416,9 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
     >
       <div
         class="c3"
-        color="hsla(195, 100%, 31%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.information.action.text.primary.default.lowContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2535,6 +2494,9 @@ exports[`<BaseButton /> should render large size button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2546,9 +2508,6 @@ exports[`<BaseButton /> should render large size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -2567,11 +2526,9 @@ exports[`<BaseButton /> should render large size button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="1rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="200"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2647,6 +2604,9 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2658,9 +2618,6 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -2679,11 +2636,9 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2759,6 +2714,9 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2770,9 +2728,6 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -2791,11 +2746,9 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
     >
       <div
         class="c3"
-        color="hsla(0, 100%, 97%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.negative.action.text.primary.default.highContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2871,6 +2824,9 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2882,9 +2838,6 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -2903,11 +2856,9 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
     >
       <div
         class="c3"
-        color="hsla(8, 73%, 47%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.negative.action.text.primary.default.lowContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -2983,6 +2934,9 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -2994,9 +2948,6 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -3015,11 +2966,9 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
     >
       <div
         class="c3"
-        color="hsla(220, 27%, 98%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.neutral.action.text.primary.default.highContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3095,6 +3044,9 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3106,9 +3058,6 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -3127,11 +3076,9 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(216, 27%, 36%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.neutral.action.text.primary.default.lowContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3207,6 +3154,9 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3218,9 +3168,6 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -3239,11 +3186,9 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(32, 100%, 94%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.notice.action.text.primary.default.highContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3319,6 +3264,9 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3330,9 +3278,6 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -3351,11 +3296,9 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(38, 97%, 38%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.notice.action.text.primary.default.lowContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3431,6 +3374,9 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3442,9 +3388,6 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -3463,11 +3406,9 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
     >
       <div
         class="c3"
-        color="hsla(107, 100%, 96%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.positive.action.text.primary.default.highContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3543,6 +3484,9 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3554,9 +3498,6 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -3575,11 +3516,9 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
     >
       <div
         class="c3"
-        color="hsla(160, 100%, 26%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="feedback.positive.action.text.primary.default.lowContrast"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3655,6 +3594,9 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3666,9 +3608,6 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -3687,11 +3626,9 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(213, 89%, 56%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.secondary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3767,6 +3704,9 @@ exports[`<BaseButton /> should render small size button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3778,9 +3718,6 @@ exports[`<BaseButton /> should render small size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -3799,11 +3736,9 @@ exports[`<BaseButton /> should render small size button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.75rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="75"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3879,6 +3814,9 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -3890,9 +3828,6 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -3911,11 +3846,9 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(216, 33%, 29%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.875rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.tertiary.default"
+        font-size="100"
+        font-weight="bold"
       >
         Pay Now
       </div>
@@ -3991,6 +3924,9 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -4002,9 +3938,6 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .c2 {
@@ -4023,11 +3956,9 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     >
       <div
         class="c3"
-        color="hsla(0, 0%, 100%, 1)"
-        font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-        font-size="0.75rem"
-        font-style="normal"
-        font-weight="700"
+        color="action.text.primary.default"
+        font-size="75"
+        font-weight="bold"
       >
         PAY NOW
       </div>

@@ -1,17 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react-hooks/exhaustive-deps */
-import isFunction from 'lodash/isFunction';
 import * as React from 'react';
-
-/**
- * React hook for detecting controlled props
- */
-export function useControllableProp<T>(prop: T | undefined, state: T) {
-  const { current: isControlled } = React.useRef(prop !== undefined);
-  const value = isControlled && typeof prop !== 'undefined' ? prop : state;
-  return [isControlled, value] as const;
-}
 
 type UseControllableStateProps<T> = {
   /**
@@ -42,16 +32,17 @@ export function useControllableState<T>(props: UseControllableStateProps<T>) {
   const { value: valueProp, defaultValue, onChange } = props;
 
   const [valueState, setValue] = React.useState(defaultValue as T);
-  const [isControlled, value] = useControllableProp(valueProp, valueState);
+  const { current: isControlled } = React.useRef(valueProp !== undefined);
+  const value = isControlled && typeof valueProp !== 'undefined' ? valueProp : valueState;
 
   const updateValue = React.useCallback(
-    (next: React.SetStateAction<T>) => {
-      const nextValue = isFunction(next) ? next(value) : next;
+    (next: (prevState: T) => T) => {
+      const nextValue = next(value);
       if (!isControlled) setValue(nextValue);
       onChange?.(nextValue);
     },
     [onChange, value],
   );
 
-  return [value, updateValue] as [T, React.Dispatch<React.SetStateAction<T>>];
+  return [value, updateValue] as [T, (next: (prevState: T) => T) => void];
 }

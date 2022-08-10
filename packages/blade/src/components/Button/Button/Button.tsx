@@ -1,3 +1,4 @@
+import type { MouseEvent } from 'react';
 import BaseButton from '../BaseButton';
 import type { IconComponent } from '~components/Icons';
 
@@ -9,7 +10,7 @@ type ButtonCommonProps = {
   isFullWidth?: boolean;
   isLoading?: boolean;
   accessibilityLabel?: string;
-  onClick?: () => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   type?: 'button' | 'reset' | 'submit';
 };
 
