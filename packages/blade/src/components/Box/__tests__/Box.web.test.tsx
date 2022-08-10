@@ -1,4 +1,4 @@
-import Box from '..';
+import Box from '../Box';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('<Box />', () => {
@@ -17,6 +17,7 @@ describe('<Box />', () => {
         maxHeight={56}
         minWidth={48}
         maxWidth={56}
+        overflow="hidden"
       />,
     );
     expect(container).toMatchSnapshot();

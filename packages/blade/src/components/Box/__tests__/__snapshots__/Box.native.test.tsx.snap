@@ -10,6 +10,7 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
   maxWidth={56}
   minHeight={48}
   minWidth={48}
+  overflow="hidden"
   paddingBottom="spacing.3"
   paddingLeft="spacing.4"
   paddingRight="spacing.5"
@@ -25,6 +26,7 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
         "maxWidth": 56,
         "minHeight": 48,
         "minWidth": 48,
+        "overflow": "hidden",
         "paddingBottom": 12,
         "paddingLeft": 16,
         "paddingRight": 20,

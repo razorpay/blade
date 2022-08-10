@@ -17,6 +17,7 @@ describe('<Box />', () => {
         maxHeight={56}
         minWidth={48}
         maxWidth={56}
+        overflow="hidden"
       />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
