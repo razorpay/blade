@@ -1,7 +1,7 @@
 import type { CSSObject } from 'styled-components';
 import type { RadioIconProps } from './RadioIcon';
 import type { Theme } from '~components/BladeProvider';
-import { getIn, makeMotionTime, makeSize, makeSpace } from '~utils';
+import { getIn, getPlatformType, makeMotionTime, makeSize, makeSpace } from '~utils';
 
 const variants = {
   default: {
@@ -36,9 +36,7 @@ const variants = {
   },
 };
 
-export type RadioRectProps = Omit<RadioIconProps, 'state'> & {
-  isChecked: boolean;
-};
+export type RadioRectProps = RadioIconProps;
 
 const getRadioIconWrapperStyles = ({
   theme,
@@ -46,6 +44,7 @@ const getRadioIconWrapperStyles = ({
   isDisabled,
   isNegative,
 }: RadioRectProps & { theme: Theme }): CSSObject => {
+  const isReactNative = getPlatformType() === 'react-native';
   let variant: 'default' | 'disabled' | 'negative' = 'default';
   if (isDisabled) variant = 'disabled';
   if (isNegative) variant = 'negative';
@@ -68,7 +67,9 @@ const getRadioIconWrapperStyles = ({
     backgroundColor: getIn(theme, backgroundColor),
     borderColor: getIn(theme, borderColor),
     transitionDuration: makeMotionTime(theme.motion.duration.xquick),
-    transitionTimingFunction: theme.motion.easing.exit.attentive as string,
+    ...(!isReactNative && {
+      transitionTimingFunction: theme.motion.easing.exit.attentive as string,
+    }),
   };
 };
 

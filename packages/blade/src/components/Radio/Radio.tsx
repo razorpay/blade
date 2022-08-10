@@ -5,11 +5,11 @@ import type { OnChange } from './useRadio';
 import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon/RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
-import { SelectorLabel } from '~components/Form/Selector/SelectorLabel.web';
+import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import Box from '~components/Box';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
-import { CheckboxInput as RadioInput } from '~components/Checkbox/CheckboxInput';
+import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 
 type RadioProps = {
   /**
@@ -71,7 +71,7 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
 
   return (
     <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
-      <RadioInput
+      <SelectorInput
         isChecked={state.isChecked}
         isDisabled={_isDisabled}
         isNegative={hasError}

@@ -1,10 +1,10 @@
 import React from 'react';
 import { RadioGroupProvider } from './RadioContext';
 import { RadioGroupContent } from './RadioGroupContent';
-import { RadioGroupField } from './RadioGroupField';
 import { useRadioGroup } from './useRadioGroup';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
+import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 
 type RadioGroupProps = {
   /**
@@ -102,7 +102,7 @@ const RadioGroup = ({
 
   return (
     <RadioGroupProvider value={contextValue}>
-      <RadioGroupField labelledBy={ids.labelId}>
+      <SelectorGroupField position={labelPosition} labelledBy={ids.labelId}>
         <FormLabel
           as="span"
           neccessityIndicator={neccessityIndicator}
@@ -120,7 +120,7 @@ const RadioGroup = ({
             helpText={helpText}
           />
         </Box>
-      </RadioGroupField>
+      </SelectorGroupField>
     </RadioGroupProvider>
   );
 };
