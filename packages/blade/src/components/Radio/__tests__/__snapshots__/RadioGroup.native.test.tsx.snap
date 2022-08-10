@@ -191,7 +191,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
       >
         <View
           isChecked={false}
-          isFullRounded={true}
           isNegative={false}
           style={
             Array [
@@ -209,6 +208,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 "marginLeft": 0,
                 "marginRight": 8,
                 "marginTop": 3,
+                "transitionDuration": 150,
+                "transitionTimingFunction": "0.7 0 0.5 1",
                 "width": 16,
               },
             ]
@@ -293,7 +294,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
       >
         <View
           isChecked={false}
-          isFullRounded={true}
           isNegative={false}
           style={
             Array [
@@ -311,6 +311,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 "marginLeft": 0,
                 "marginRight": 8,
                 "marginTop": 3,
+                "transitionDuration": 150,
+                "transitionTimingFunction": "0.7 0 0.5 1",
                 "width": 16,
               },
             ]
@@ -395,7 +397,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
       >
         <View
           isChecked={false}
-          isFullRounded={true}
           isNegative={false}
           style={
             Array [
@@ -413,6 +414,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 "marginLeft": 0,
                 "marginRight": 8,
                 "marginTop": 3,
+                "transitionDuration": 150,
+                "transitionTimingFunction": "0.7 0 0.5 1",
                 "width": 16,
               },
             ]
@@ -701,7 +704,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
       >
         <View
           isChecked={false}
-          isFullRounded={true}
           isNegative={false}
           style={
             Array [
@@ -719,6 +721,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 "marginLeft": 0,
                 "marginRight": 8,
                 "marginTop": 3,
+                "transitionDuration": 150,
+                "transitionTimingFunction": "0.7 0 0.5 1",
                 "width": 16,
               },
             ]
@@ -803,7 +807,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
       >
         <View
           isChecked={false}
-          isFullRounded={true}
           isNegative={false}
           style={
             Array [
@@ -821,6 +824,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 "marginLeft": 0,
                 "marginRight": 8,
                 "marginTop": 3,
+                "transitionDuration": 150,
+                "transitionTimingFunction": "0.7 0 0.5 1",
                 "width": 16,
               },
             ]
@@ -905,7 +910,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
       >
         <View
           isChecked={false}
-          isFullRounded={true}
           isNegative={false}
           style={
             Array [
@@ -923,6 +927,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 "marginLeft": 0,
                 "marginRight": 8,
                 "marginTop": 3,
+                "transitionDuration": 150,
+                "transitionTimingFunction": "0.7 0 0.5 1",
                 "width": 16,
               },
             ]
