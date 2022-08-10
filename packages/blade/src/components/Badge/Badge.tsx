@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { StyledBadge } from './StyledBadge';
 import type { IconComponent } from '~components/Icons';
 import { BaseText } from '~components/Typography/BaseText';
-
 import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 

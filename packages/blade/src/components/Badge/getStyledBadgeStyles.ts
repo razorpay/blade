@@ -9,8 +9,8 @@ const getStyledBadgeStyles = ({ theme, variant, contrast, size }: StyledBadgePro
   borderColor: theme.colors.feedback.border[variant][`${contrast}Contrast`],
   borderWidth: makeBorderSize(theme.border.width.thin),
   borderRadius: makeBorderSize(theme.border.radius.max),
-  display: 'flex',
   maxWidth: makeSize(maxWidth),
+  display: 'flex',
   flexWrap: 'nowrap',
 });
 
