@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { StyledBadge } from './StyledBadge';
-import { minHeight as badgeMinHeight, textSize as badgeTextSize } from './badgeTokens';
+import { minHeight as badgeMinHeight } from './badgeTokens';
 import type { IconComponent, IconProps } from '~components/Icons';
 import type { BaseTextProps } from '~components/Typography/BaseText';
 import { BaseText } from '~components/Typography/BaseText';
@@ -16,7 +16,6 @@ type BadgeProps = {
   contrast?: 'low' | 'high';
   size?: 'small' | 'medium';
   icon?: IconComponent;
-  fontStyle?: 'normal' | 'italic';
   fontWeight?: 'regular' | 'bold';
 };
 
@@ -26,6 +25,7 @@ type BadgeStyleProps = {
   borderWidth: string;
   textColor: BaseTextProps['color'];
   textSize: BaseTextProps['fontSize'];
+  lineHeight: BaseTextProps['lineHeight'];
   iconColor: IconProps['color'];
   iconSize: IconProps['size'];
   minHeight: string;
@@ -52,7 +52,8 @@ const getProps = ({
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderRadius: makeBorderSize(theme.border.radius.max),
     textColor: `feedback.text.${variant}.${contrast}Contrast`,
-    textSize: badgeTextSize[size],
+    textSize: 75,
+    lineHeight: 's',
     iconColor: `feedback.icon.${variant}.${contrast}Contrast`,
     iconSize: 'xsmall',
     minHeight: makeSize(badgeMinHeight[size]),
@@ -64,7 +65,6 @@ const getProps = ({
 const Badge = ({
   children,
   contrast = 'low',
-  fontStyle = 'normal',
   fontWeight = 'regular',
   icon: Icon,
   size = 'medium',
@@ -86,6 +86,7 @@ const Badge = ({
     iconSpacing,
     textColor,
     textSize,
+    lineHeight,
   } = getProps({
     variant,
     contrast,
@@ -117,9 +118,8 @@ const Badge = ({
         ) : null}
         <BaseText
           fontSize={textSize}
-          fontStyle={fontStyle}
           fontWeight={fontWeight}
-          lineHeight="s"
+          lineHeight={lineHeight}
           color={textColor}
           textAlign="center"
           numberOfLines={1}

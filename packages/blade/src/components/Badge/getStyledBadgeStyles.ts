@@ -1,5 +1,6 @@
 import type { CSSObject } from 'styled-components';
 import type { StyledBadgeProps } from './StyledBadge.d';
+import { makeSize } from '~utils';
 
 const getStyledBadgeStyles = ({
   backgroundColor,
@@ -14,7 +15,7 @@ const getStyledBadgeStyles = ({
   borderRadius,
   borderWidth,
   display: 'flex',
-  maxWidth: '100px',
+  maxWidth: makeSize(100),
   flexWrap: 'nowrap',
 });
 

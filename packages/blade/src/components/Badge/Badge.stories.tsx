@@ -9,6 +9,10 @@ export default {
   component: BadgeComponent,
   args: {
     children: 'Label',
+    variant: 'neutral',
+    fontWeight: 'regular',
+    contrast: 'low',
+    size: 'small',
   },
   argTypes: {
     icon: {
