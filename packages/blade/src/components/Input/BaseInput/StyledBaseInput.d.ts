@@ -2,6 +2,8 @@ import type { BaseInputProps } from './BaseInput';
 
 export type StyledBaseInputProps = {
   handleOnChange?: HandleOnChange;
+  hasLeadingIcon?: boolean;
+  hasTrailingIcon?: boolean;
 } & Pick<
   BaseInputProps,
   | 'id'

@@ -66,7 +66,7 @@ const getBaseInputStyles = ({
   ...getInputBackgroundAndBorderStyles({ theme, isFocused, isDisabled, validationState }),
   paddingTop: makeSpace(theme.spacing[2]),
   paddingBottom: makeSpace(theme.spacing[2]),
-  paddingLeft: makeSpace(theme.spacing[3]),
+  paddingLeft: '44px',
   paddingRight: makeSpace(theme.spacing[3]),
   width: '100%',
 });

@@ -41,6 +41,12 @@ const getBoxStyles = ({
   minWidth,
   maxHeight,
   maxWidth,
+  position,
+  transform,
+  top,
+  left,
+  right,
+  bottom,
 }: BoxProps & { theme: Theme }): CSSObject => ({
   display,
   flex,
@@ -63,6 +69,12 @@ const getBoxStyles = ({
   minWidth: minWidth ? makeSize(minWidth) : undefined,
   maxHeight: maxHeight ? makeSize(maxHeight) : undefined,
   maxWidth: maxWidth ? makeSize(maxWidth) : undefined,
+  position,
+  transform,
+  top,
+  left,
+  right,
+  bottom,
 });
 
 export default getBoxStyles;

@@ -8,6 +8,10 @@ import type { FormLabelProps } from '~components/Form/FormLabel';
 import type { FormHintProps } from '~components/Form/FormHint';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
+import type { IconComponent } from '~components/Icons';
+import { InfoIcon, CloseIcon, CreditCardIcon } from '~components/Icons';
+
+import { Text } from '~components/Typography';
 
 export type HandleOnChange = ({
   name,
@@ -105,6 +109,38 @@ export type BaseInputProps = InputLabelProps &
      * If true, the input is marked as required, and `required` attribute will be added
      */
     isRequired?: boolean;
+    /**
+     * Icon to be shown at the start of the input field
+     */
+    leadingIcon?: IconComponent;
+    /**
+     * Prefix symbol to be displayed at the beginning of the input field
+     */
+    prefix?: string;
+    /**
+     * Decides whether to render a clear icon button
+     */
+    showClearButton?: boolean;
+    /**
+     * Event handler to handle the onClick event for clear button.
+     */
+    onClearButtonClick?: () => void;
+    /**
+     * Decides whether to show a loading spinner for the input field.
+     */
+    isLoading?: boolean;
+    /**
+     * Suffix symbol to be displayed at the beginning of the input field
+     */
+    suffix?: string;
+    /**
+     * Icon to be displayed at the end of the input field
+     */
+    trailingIcon?: IconComponent;
+    /**
+     * Displays the character counter under the input field
+     */
+    maxCharacters?: number;
   };
 
 const useInput = ({
@@ -204,18 +240,60 @@ export const BaseInput = ({
         >
           {label}
         </FormLabel>
-        <StyledBaseInput
-          id={inputId}
-          name={name}
-          type={type}
-          defaultValue={defaultValue}
-          value={value}
-          placeholder={placeholder}
-          isDisabled={isDisabled}
-          validationState={validationState}
-          isRequired={isRequired}
-          handleOnChange={handleOnChange}
-        />
+        <Box position="relative">
+          <Box
+            position="absolute"
+            paddingLeft="spacing.3"
+            transform="translateY(-50%)"
+            display="flex"
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            top="50%"
+          >
+            <CreditCardIcon color="feedback.icon.neutral.lowContrast" size="small" />
+            <Box paddingLeft="spacing.1">
+              <Text size="medium" variant="body" weight="regular" contrast="low">
+                $
+              </Text>
+            </Box>
+          </Box>
+          <StyledBaseInput
+            id={inputId}
+            name={name}
+            type={type}
+            defaultValue={defaultValue}
+            value={value}
+            placeholder={placeholder}
+            isDisabled={isDisabled}
+            validationState={validationState}
+            isRequired={isRequired}
+            handleOnChange={handleOnChange}
+            hasLeadingIcon={true}
+          />
+          <Box
+            position="absolute"
+            paddingLeft="spacing.2"
+            paddingRight="spacing.3"
+            display="flex"
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            transform="translateY(-50%)"
+            top="50%"
+            right="0"
+          >
+            <CloseIcon color="feedback.icon.neutral.lowContrast" size="small" />
+            <Box paddingLeft="spacing.1">
+              <Text size="medium" variant="body" weight="regular" contrast="low">
+                .00
+              </Text>
+            </Box>
+            <Box paddingLeft="spacing.1" display="flex">
+              <InfoIcon color="feedback.icon.neutral.lowContrast" size="small" />
+            </Box>
+          </Box>
+        </Box>
       </Box>
       <Box marginLeft={isLabelLeftPositioned ? 120 : 'auto'}>
         <FormHint

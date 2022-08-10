@@ -23,6 +23,12 @@ export type BoxProps = {
   minWidth?: number;
   maxHeight?: number;
   maxWidth?: number;
+  position?: CSSObject['position'];
+  transform?: CSSObject['transform'];
+  top?: CSSObject['top'];
+  left?: CSSObject['left'];
+  right?: CSSObject['right'];
+  bottom?: CSSObject['bottom'];
 };
 
 export { default } from './Box.web';
