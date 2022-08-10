@@ -3,7 +3,7 @@
 /* eslint-disable react/display-name */
 import React from 'react';
 import { CheckIcon, InfoIcon } from '..';
-import { FormHintTextWrapper } from './FormHintTextWrapper';
+import { FormHintWrapper } from './FormHintWrapper';
 import type { BaseTextProps } from '~components/Typography/BaseText';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
@@ -22,7 +22,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps) => {
   return (
     <>
       <Box marginTop="spacing.1" />
-      <FormHintTextWrapper>
+      <FormHintWrapper>
         <Icon />
         <BaseText
           id={id}
@@ -35,13 +35,13 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps) => {
         >
           {children}
         </BaseText>
-      </FormHintTextWrapper>
+      </FormHintWrapper>
     </>
   );
 };
 
-type FormHintTextProps = {
-  state: 'help' | 'error' | 'success';
+type FormHintProps = {
+  type: 'help' | 'error' | 'success';
   /**
    * Help text for the group
    */
@@ -75,15 +75,15 @@ type FormHintTextProps = {
   successTextId?: string;
 };
 
-const FormHintText = ({
-  state,
+const FormHint = ({
+  type,
   errorText,
   successText,
   helpText,
   helpTextId,
   errorTextId,
   successTextId,
-}: FormHintTextProps): React.ReactElement => {
+}: FormHintProps): React.ReactElement => {
   const colors = {
     help: 'surface.text.muted.lowContrast',
     error: 'feedback.text.negative.lowContrast',
@@ -106,26 +106,27 @@ const FormHintText = ({
     ),
   };
 
-  const Icon = Icons[state];
-  const showError = state === 'error' && errorText;
-  const showSuccess = state === 'success' && successText;
-  const showHelp = !showError && helpText;
+  const Icon = Icons[type];
+  const showError = type === 'error' && errorText;
+  const showSuccess = type === 'success' && successText;
+  const showHelp = !showError && !showSuccess && helpText;
 
   return (
     <>
       {showHelp && (
-        <HintText id={helpTextId} icon={Icon} color={colors[state]}>
+        <HintText id={helpTextId} icon={Icon} color={colors[type]}>
           {helpText}
         </HintText>
       )}
+
       {showError && (
-        <HintText id={errorTextId} icon={Icon} color={colors[state]}>
+        <HintText id={errorTextId} icon={Icon} color={colors[type]}>
           {errorText}
         </HintText>
       )}
 
       {showSuccess && (
-        <HintText id={successTextId} icon={Icon} color={colors[state]}>
+        <HintText id={successTextId} icon={Icon} color={colors[type]}>
           {successText}
         </HintText>
       )}
@@ -133,4 +134,4 @@ const FormHintText = ({
   );
 };
 
-export { FormHintText };
+export { FormHint };
