@@ -4,13 +4,13 @@ import isUndefined from 'lodash/isUndefined';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { CheckboxInput } from './CheckboxInput';
-import { CheckboxLabel } from './CheckboxLabel';
-import { CheckboxLabelText } from './CheckboxLabelText';
 import { useCheckbox } from './useCheckbox';
 import { isEmpty } from '~utils';
 import Box from '~components/Box';
-import { BaseText } from '~components/Typography/BaseText';
-import { FormHintText } from '~components/Form';
+import { FormHint } from '~components/Form';
+import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
+import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
+import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 
 type OnChange = ({
   isChecked,
@@ -169,6 +169,7 @@ const Checkbox = ({
     isChecked: _isChecked,
     isIndeterminate,
     hasError: _hasError,
+    hasHelperText: Boolean(showSupportingText),
     isDisabled: _isDisabled,
     isRequired,
     name: _name,
@@ -178,7 +179,7 @@ const Checkbox = ({
 
   return (
     <Box>
-      <CheckboxLabel inputProps={state.isReactNative ? inputProps : {}}>
+      <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
         <CheckboxInput
           isChecked={state.isChecked || Boolean(isIndeterminate)}
           isDisabled={_isDisabled}
@@ -192,26 +193,16 @@ const Checkbox = ({
           isNegative={_hasError}
         />
         <Box>
-          <CheckboxLabelText isDisabled={_isDisabled}>{children}</CheckboxLabelText>
+          <SelectorTitle isDisabled={_isDisabled}>{children}</SelectorTitle>
           {showSupportingText && (
-            <BaseText
-              id={ids?.helpTextId}
-              as={state.isReactNative ? undefined : 'span'}
-              color="surface.text.muted.lowContrast"
-              fontSize={50}
-              lineHeight="s"
-              fontStyle="italic"
-              fontFamily="text"
-            >
-              {helpText}
-            </BaseText>
+            <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
           )}
         </Box>
-      </CheckboxLabel>
-      <FormHintText
+      </SelectorLabel>
+      <FormHint
         errorText={errorText}
         errorTextId={ids?.errorTextId}
-        state={validationState === 'error' ? 'error' : 'help'}
+        type={validationState === 'error' ? 'error' : 'help'}
       />
     </Box>
   );
