@@ -45,7 +45,7 @@ const StyledIconButton = ({
       onPress={onClick}
       onPressIn={() => setIsPressed(true)}
       onPressOut={() => setIsPressed(false)}
-      {...makeAccessible({ label: accessibilityLabel })}
+      {...makeAccessible({ label: accessibilityLabel, role: 'button' })}
     >
       <Icon size={size} color={iconColorToken} />
     </StyledPressable>
