@@ -1,8 +1,7 @@
 import type { ReactElement } from 'react';
 
 import type { IconComponent } from '..';
-import StyledIconButton from './StyledIconButton.web';
-import { makeAccessible } from '~utils';
+import StyledIconButton from './StyledIconButton';
 
 export type IconButtonProps = {
   /**
@@ -10,8 +9,21 @@ export type IconButtonProps = {
    */
   icon: IconComponent;
   onClick: () => void;
+
+  /**
+   * Icon size
+   *
+   * @default 'medium'
+   */
   size?: 'medium' | 'large'; // todo: discrepancy in size between code and figma
+
+  /**
+   * Icon contrast
+   *
+   * @default 'low'
+   */
   contrast?: 'low' | 'high';
+
   /**
    * Sets aria-label to help users know what the action does, eg 'Dismiss alert'
    */
@@ -22,7 +34,7 @@ export type IconButtonProps = {
  * Internal component for making clickable icons
  */
 const IconButton = ({
-  icon: Icon,
+  icon,
   onClick,
   size = 'medium',
   contrast = 'low',
@@ -32,10 +44,10 @@ const IconButton = ({
     <StyledIconButton
       onClick={onClick}
       contrast={contrast}
-      {...makeAccessible({ label: accessibilityLabel })}
-    >
-      <Icon size={size} color="currentColor" />
-    </StyledIconButton>
+      size={size}
+      icon={icon}
+      accessibilityLabel={accessibilityLabel}
+    />
   );
 };
 

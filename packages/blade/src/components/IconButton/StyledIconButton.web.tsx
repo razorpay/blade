@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
-type StyledClickableProps = {
-  contrast: 'low' | 'high';
+import type { ReactElement } from 'react';
+import type { StyledIconButtonProps } from './StyledIconButton.d';
+import { makeAccessible } from '~utils';
+import type { ColorContrastTypes } from '~tokens/theme/theme';
+
+type StyledButtonProps = {
+  contrast: ColorContrastTypes;
 };
 
-const StyledClickable = styled.button<StyledClickableProps>((props) => {
+const StyledButton = styled.button<StyledButtonProps>((props) => {
   const { theme, contrast } = props;
   const linkColorToken = theme.colors.feedback.neutral.action.icon.link; // todo: should be from surfaceAction
   const contrastToken = contrast === 'high' ? 'highContrast' : 'lowContrast';
@@ -38,4 +43,20 @@ const StyledClickable = styled.button<StyledClickableProps>((props) => {
   };
 });
 
-export default StyledClickable;
+const StyledIconButton = ({
+  icon: Icon,
+  onClick,
+  size,
+  contrast,
+  accessibilityLabel,
+}: StyledIconButtonProps): ReactElement => (
+  <StyledButton
+    onClick={onClick}
+    contrast={contrast}
+    {...makeAccessible({ label: accessibilityLabel })}
+  >
+    <Icon size={size} color="currentColor" />
+  </StyledButton>
+);
+
+export default StyledIconButton;

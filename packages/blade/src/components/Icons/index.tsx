@@ -16,6 +16,9 @@ type ActionIconColors = `action.icon.${DotNotationColorStringToken<
 
 export type IconSize = 'large' | 'medium' | 'small' | 'xlarge' | 'xsmall' | 'xxsmall';
 export type IconProps = {
+  /**
+   * Color token (not to be confused with actual hsla value)
+   */
   color: ActionIconColors | FeedbackIconColors | FeedbackActionIconColors | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
   size: IconSize;
 };
