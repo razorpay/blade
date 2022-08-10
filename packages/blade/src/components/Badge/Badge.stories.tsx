@@ -119,9 +119,15 @@ const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...a
   return (
     <Box display="flex" flexDirection="column">
       <BladeText>Low Contrast</BladeText>
-      <Box display="flex" flexDirection="row" paddingTop="spacing.2" paddingBottom="spacing.2">
+      <Box
+        display="flex"
+        flexDirection="row"
+        paddingTop="spacing.2"
+        paddingBottom="spacing.4"
+        flexWrap="wrap"
+      >
         {variants.map((variant) => (
-          <Box key={variant} paddingRight="spacing.2">
+          <Box key={variant} paddingRight="spacing.2" paddingTop="spacing.1">
             <BadgeComponent {...args} variant={variant} contrast="low">
               {getLabel(variant)}
             </BadgeComponent>
@@ -129,9 +135,15 @@ const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...a
         ))}
       </Box>
       <BladeText>High Contrast</BladeText>
-      <Box display="flex" flexDirection="row" paddingTop="spacing.2" paddingBottom="spacing.2">
+      <Box
+        display="flex"
+        flexDirection="row"
+        paddingTop="spacing.2"
+        paddingBottom="spacing.4"
+        flexWrap="wrap"
+      >
         {variants.map((variant) => (
-          <Box key={variant} paddingRight="spacing.2">
+          <Box key={variant} paddingRight="spacing.2" paddingTop="spacing.1">
             <BadgeComponent {...args} variant={variant} contrast="high">
               {getLabel(variant)}
             </BadgeComponent>

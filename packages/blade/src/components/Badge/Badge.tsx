@@ -85,8 +85,8 @@ const Badge = ({
   size = 'medium',
   variant = 'neutral',
 }: BadgeProps): ReactElement => {
-  if (!children.trim()) {
-    throw new Error(`[Blade: Badge]: Text as children is required for Badge.`);
+  if (!children?.trim()) {
+    throw new Error('[Blade: Badge]: Text as children is required for Badge.');
   }
 
   const { theme } = useTheme();
