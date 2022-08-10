@@ -1,4 +1,6 @@
 import type { ReactElement } from 'react';
+import type { CSSObject } from 'styled-components';
+import styled from 'styled-components';
 import { StyledBadge } from './StyledBadge';
 import { minHeight as badgeMinHeight } from './badgeTokens';
 import type { IconComponent, IconProps } from '~components/Icons';
@@ -6,7 +8,7 @@ import type { BaseTextProps } from '~components/Typography/BaseText';
 import { BaseText } from '~components/Typography/BaseText';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import { getIn, makeBorderSize, makeSize } from '~utils';
+import { getIn, getPlatformType, makeBorderSize, makeSize } from '~utils';
 import Box from '~components/Box';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
@@ -62,6 +64,19 @@ const getProps = ({
   return props;
 };
 
+const StyledBaseText = styled(BaseText)(
+  (): CSSObject => {
+    if (getPlatformType() !== 'react-native') {
+      return {
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+      };
+    }
+    return {};
+  },
+);
+
 const Badge = ({
   children,
   contrast = 'low',
@@ -110,22 +125,23 @@ const Badge = ({
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
+        overflow="hidden"
       >
         {Icon ? (
           <Box paddingRight={iconSpacing} display="flex">
             <Icon color={iconColor} size={iconSize} />
           </Box>
         ) : null}
-        <BaseText
+        <StyledBaseText
           fontSize={textSize}
           fontWeight={fontWeight}
           lineHeight={lineHeight}
           color={textColor}
           textAlign="center"
-          numberOfLines={1}
+          truncateAfterLines={1}
         >
           {children}
-        </BaseText>
+        </StyledBaseText>
       </Box>
     </StyledBadge>
   );
