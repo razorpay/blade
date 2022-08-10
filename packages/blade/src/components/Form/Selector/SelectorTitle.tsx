@@ -1,6 +1,6 @@
 import { BaseText } from '~components/Typography/BaseText';
 
-const CheckboxLabelText = ({
+const SelectorTitle = ({
   children,
   isDisabled,
 }: {
@@ -22,4 +22,4 @@ const CheckboxLabelText = ({
   );
 };
 
-export { CheckboxLabelText };
+export { SelectorTitle };

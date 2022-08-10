@@ -8,7 +8,7 @@ import type { CheckboxGroupProps } from './CheckboxGroup';
 import type { CheckboxGroupContextType } from './CheckboxGroupContext';
 import { useControllableState } from '~src/hooks/useControllable';
 import { useTheme } from '~components/BladeProvider';
-import { useId } from '~src/hooks/useId';
+import { useFormId } from '~src/hooks/useFormId';
 
 type UseCheckboxGroupProps = Pick<
   CheckboxGroupProps,
@@ -39,8 +39,7 @@ const useCheckboxGroup = ({
   name,
 }: UseCheckboxGroupProps) => {
   const { platform } = useTheme();
-  const idBase = useId('checkbox-group');
-  const labelId = `${idBase}-label`;
+  const { labelId } = useFormId('checkbox-group');
   const [checkedValues, setValue] = useControllableState({
     value,
     defaultValue: defaultValue || [],
