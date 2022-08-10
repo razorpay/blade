@@ -24,6 +24,10 @@ exports[`<Radio /> should render radio with label 1`] = `
   margin-right: 8px;
   background-color: hsla(220,27%,98%,1);
   border-color: hsla(216,19%,89%,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.7,0,0.5,1);
+  transition-timing-function: cubic-bezier(0.7,0,0.5,1);
 }
 
 .c2 {
@@ -148,6 +152,7 @@ exports[`<Radio /> should render radio with label 1`] = `
 
 .c7:hover + div,
 .c7:focus + div {
+  border-color: hsla(216,19%,89%,1);
   background-color: hsla(216,19%,89%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -274,6 +279,10 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   margin-right: 8px;
   background-color: hsla(220,30%,96%,1);
   border-color: hsla(220,30%,96%,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.7,0,0.5,1);
+  transition-timing-function: cubic-bezier(0.7,0,0.5,1);
 }
 
 .c2 {

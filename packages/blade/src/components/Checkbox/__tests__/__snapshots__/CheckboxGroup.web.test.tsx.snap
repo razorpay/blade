@@ -70,6 +70,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 
 .c7:hover + div,
 .c7:focus + div {
+  border-color: hsla(216,19%,89%,1);
   background-color: hsla(216,19%,89%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -487,6 +488,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 
 .c7:hover + div,
 .c7:focus + div {
+  border-color: hsla(216,19%,89%,1);
   background-color: hsla(216,19%,89%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);

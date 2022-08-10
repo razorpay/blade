@@ -191,7 +191,6 @@ exports[`<Radio /> should render radio with label 1`] = `
       >
         <View
           isChecked={false}
-          isFullRounded={true}
           isNegative={false}
           style={
             Array [
@@ -209,6 +208,8 @@ exports[`<Radio /> should render radio with label 1`] = `
                 "marginLeft": 0,
                 "marginRight": 8,
                 "marginTop": 3,
+                "transitionDuration": 150,
+                "transitionTimingFunction": "0.7 0 0.5 1",
                 "width": 16,
               },
             ]
@@ -454,7 +455,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
         <View
           isChecked={false}
           isDisabled={true}
-          isFullRounded={true}
           isNegative={false}
           style={
             Array [
@@ -472,6 +472,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                 "marginLeft": 0,
                 "marginRight": 8,
                 "marginTop": 3,
+                "transitionDuration": 150,
+                "transitionTimingFunction": "0.7 0 0.5 1",
                 "width": 16,
               },
             ]
