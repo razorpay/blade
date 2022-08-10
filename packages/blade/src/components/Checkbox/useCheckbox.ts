@@ -3,9 +3,9 @@
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { useControllableState } from '../../hooks/useControllable';
-import { useId } from '../../hooks/useId';
 import { getPlatformType, makeAccessible } from '../../utils';
 import type { CheckboxProps } from './Checkbox';
+import { useFormId } from '~src/hooks/useFormId';
 
 type UseCheckboxProps = Pick<
   CheckboxProps,
@@ -17,7 +17,10 @@ type UseCheckboxProps = Pick<
   | 'onChange'
   | 'name'
   | 'value'
-> & { hasError?: boolean };
+> & {
+  hasError?: boolean;
+  hasHelperText?: boolean;
+};
 
 /**
  * indeterminate is not a HTML input element prop,
@@ -38,6 +41,7 @@ const useCheckbox = ({
   isDisabled,
   isRequired,
   hasError,
+  hasHelperText,
   onChange,
   name,
   value,
@@ -85,9 +89,7 @@ const useCheckbox = ({
     setChecked: setCheckboxStateChange,
   };
 
-  const idBase = useId('checkbox');
-  const errorTextId = useId(`${idBase}-errortext`);
-  const helpTextId = useId(`${idBase}-helptext`);
+  const { inputId, errorTextId, helpTextId } = useFormId('checkbox');
 
   const accessibilityProps = makeAccessible({
     role: 'checkbox',
@@ -96,8 +98,8 @@ const useCheckbox = ({
     invalid: Boolean(hasError),
     disabled: Boolean(isDisabled),
     checked: checkboxState,
-    errorMessage: errorTextId,
-    describedBy: helpTextId,
+    ...(hasError ? { errorMessage: errorTextId } : {}),
+    ...(hasHelperText ? { describedBy: helpTextId } : {}),
   });
 
   if (isReactNative) {
@@ -114,7 +116,7 @@ const useCheckbox = ({
 
   return {
     state,
-    ids: { errorTextId, helpTextId },
+    ids: { inputId, errorTextId, helpTextId },
     inputProps: {
       ref: inputRef,
       onChange: handleOnChange,

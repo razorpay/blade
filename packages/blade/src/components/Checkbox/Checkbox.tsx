@@ -4,12 +4,13 @@ import isUndefined from 'lodash/isUndefined';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { CheckboxInput } from './CheckboxInput';
-import { CheckboxLabel } from './CheckboxLabel';
-import { CheckboxLabelText } from './CheckboxLabelText';
 import { useCheckbox } from './useCheckbox';
 import { isEmpty } from '~utils';
-import { FormHintText } from '~components/Form/FormHintText';
 import Box from '~components/Box';
+import { FormHint } from '~components/Form';
+import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
+import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
+import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 
 type OnChange = ({
   isChecked,
@@ -151,8 +152,7 @@ const Checkbox = ({
 
   // only show error when the self validation is set to error
   // Since we don't want to show errorText inside the group
-  const showError = validationState === 'error' && errorText;
-  const showHelpText = !showError && helpText;
+  const showSupportingText = validationState !== 'error' && helpText;
 
   const handleChange: OnChange = ({ isChecked, event, value }) => {
     if (isChecked) {
@@ -169,6 +169,7 @@ const Checkbox = ({
     isChecked: _isChecked,
     isIndeterminate,
     hasError: _hasError,
+    hasHelperText: Boolean(showSupportingText),
     isDisabled: _isDisabled,
     isRequired,
     name: _name,
@@ -177,33 +178,33 @@ const Checkbox = ({
   });
 
   return (
-    <CheckboxLabel inputProps={state.isReactNative ? inputProps : {}}>
-      <CheckboxInput
-        isChecked={state.isChecked || Boolean(isIndeterminate)}
-        isDisabled={_isDisabled}
-        isNegative={_hasError}
-        inputProps={inputProps}
+    <Box>
+      <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
+        <CheckboxInput
+          isChecked={state.isChecked || Boolean(isIndeterminate)}
+          isDisabled={_isDisabled}
+          isNegative={_hasError}
+          inputProps={inputProps}
+        />
+        <CheckboxIcon
+          isChecked={state.isChecked}
+          isIndeterminate={isIndeterminate}
+          isDisabled={_isDisabled}
+          isNegative={_hasError}
+        />
+        <Box>
+          <SelectorTitle isDisabled={_isDisabled}>{children}</SelectorTitle>
+          {showSupportingText && (
+            <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
+          )}
+        </Box>
+      </SelectorLabel>
+      <FormHint
+        errorText={errorText}
+        errorTextId={ids?.errorTextId}
+        type={validationState === 'error' ? 'error' : 'help'}
       />
-      <CheckboxIcon
-        isChecked={state.isChecked}
-        isIndeterminate={isIndeterminate}
-        isDisabled={_isDisabled}
-        isNegative={_hasError}
-      />
-      <Box>
-        <CheckboxLabelText>{children}</CheckboxLabelText>
-        {showError && (
-          <FormHintText id={ids?.errorTextId} variant="error">
-            {errorText}
-          </FormHintText>
-        )}
-        {showHelpText && (
-          <FormHintText id={ids?.helpTextId} variant="help">
-            {helpText}
-          </FormHintText>
-        )}
-      </Box>
-    </CheckboxLabel>
+    </Box>
   );
 };
 

@@ -2,12 +2,11 @@
 
 exports[`<BaseText /> should render regular text 1`] = `
 <Text
-  color="hsla(0, 0%, 100%, 1)"
-  fontFamily="Lato"
-  fontSize="11px"
-  fontStyle="normal"
-  fontWeight={400}
-  lineHeight="18px"
+  color="surface.text.normal.highContrast"
+  fontFamily="text"
+  fontSize={25}
+  fontWeight="regular"
+  lineHeight="m"
   style={
     Array [
       Object {
@@ -30,8 +29,6 @@ exports[`<BaseText /> should render regular text 1`] = `
       },
     ]
   }
-  textAlign="left"
-  textDecorationLine="none"
 >
   Displaying some text
 </Text>
@@ -39,12 +36,12 @@ exports[`<BaseText /> should render regular text 1`] = `
 
 exports[`<BaseText /> should render text in italics style with line-through 1`] = `
 <Text
-  color="hsla(0, 0%, 100%, 1)"
-  fontFamily="Lato"
-  fontSize="11px"
+  color="surface.text.normal.highContrast"
+  fontFamily="text"
+  fontSize={25}
   fontStyle="italic"
-  fontWeight={400}
-  lineHeight="18px"
+  fontWeight="regular"
+  lineHeight="m"
   style={
     Array [
       Object {
@@ -67,7 +64,6 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
       },
     ]
   }
-  textAlign="left"
   textDecorationLine="line-through"
 >
   Displaying some text
@@ -76,12 +72,6 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
 
 exports[`<BaseText /> should render text with default properties 1`] = `
 <Text
-  color="hsla(217, 56%, 17%, 1)"
-  fontFamily="Lato"
-  fontSize="17px"
-  fontStyle="normal"
-  fontWeight={400}
-  lineHeight="24px"
   style={
     Array [
       Object {
@@ -104,8 +94,6 @@ exports[`<BaseText /> should render text with default properties 1`] = `
       },
     ]
   }
-  textAlign="left"
-  textDecorationLine="none"
 >
   Displaying some text
 </Text>

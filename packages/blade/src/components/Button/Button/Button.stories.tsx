@@ -6,7 +6,7 @@ import { Highlight, Link } from '@storybook/design-system';
 import styled from 'styled-components';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
-import BaseText from '~components/Typography/BaseText';
+import { BaseText } from '~components/Typography/BaseText';
 import { CreditCardIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import iconMap from '~components/Icons/iconMap';
@@ -217,6 +217,13 @@ IconLeftButton.parameters = {
     description: {
       story: 'Primary, Secondary & Tertiary buttons with an Icon on Left',
     },
+    source: {
+      code: `<Button variant='primary' icon={CreditCardIcon} iconPosition='left'>Pay Now</Button>
+      \n<Button variant='secondary' icon={CreditCardIcon} iconPosition='left'>Pay Now</Button>
+      \n<Button variant='tertiary' icon={CreditCardIcon} iconPosition='left'>Pay Now</Button>`,
+      language: 'jsx',
+      type: 'code',
+    },
   },
 };
 
@@ -231,6 +238,13 @@ IconRightButton.parameters = {
     description: {
       story: 'Primary, Secondary & Tertiary buttons with an Icon on Right',
     },
+    source: {
+      code: `<Button variant='primary' icon={CreditCardIcon} iconPosition='right'>Pay Now</Button>
+      \n<Button variant='secondary' icon={CreditCardIcon} iconPosition='right'>Pay Now</Button>
+      \n<Button variant='tertiary' icon={CreditCardIcon} iconPosition='right'>Pay Now</Button>`,
+      language: 'jsx',
+      type: 'code',
+    },
   },
 };
 
@@ -244,6 +258,13 @@ IconOnlyButton.parameters = {
   docs: {
     description: {
       story: 'Primary, Secondary & Tertiary buttons with only an Icon',
+    },
+    source: {
+      code: `<Button variant='primary' icon={CreditCardIcon}  />
+      \n<Button variant='secondary' icon={CreditCardIcon} />
+      \n<Button variant='tertiary' icon={CreditCardIcon} />`,
+      language: 'jsx',
+      type: 'code',
     },
   },
 };
