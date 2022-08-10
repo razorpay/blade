@@ -2,11 +2,11 @@
 import React from 'react';
 import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon';
-import { FormHintText } from '~components/Form/FormHintText';
 import Box from '~components/Box';
-import { CheckboxLabel } from '~components/Checkbox/CheckboxLabel';
 import { CheckboxInput } from '~components/Checkbox/CheckboxInput';
-import { CheckboxLabelText } from '~components/Checkbox/CheckboxLabelText';
+import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
+import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
+import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 
 type OnChange = ({
   isChecked,
@@ -99,7 +99,7 @@ const Radio = ({
   const showHelpText = !_hasError && helpText;
 
   return (
-    <CheckboxLabel inputProps={state.isReactNative ? inputProps : {}}>
+    <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
       <CheckboxInput
         isChecked={state.isChecked}
         isDisabled={isDisabled}
@@ -108,14 +108,10 @@ const Radio = ({
       />
       <RadioIcon isChecked={state.isChecked} isDisabled={isDisabled} isNegative={_hasError} />
       <Box>
-        <CheckboxLabelText>{children}</CheckboxLabelText>
-        {showHelpText && (
-          <FormHintText id={ids?.helpTextId} variant="help">
-            {helpText}
-          </FormHintText>
-        )}
+        <SelectorTitle>{children}</SelectorTitle>
+        {showHelpText && <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>}
       </Box>
-    </CheckboxLabel>
+    </SelectorLabel>
   );
 };
 

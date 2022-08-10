@@ -43,6 +43,7 @@ exports[`<Button /> should render button with default properties 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -65,8 +66,8 @@ exports[`<Button /> should render button with default properties 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -74,9 +75,11 @@ exports[`<Button /> should render button with default properties 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -84,12 +87,10 @@ exports[`<Button /> should render button with default properties 1`] = `
     }
   >
     <Text
-      color="hsla(0, 0%, 100%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="24px"
+      color="action.text.primary.default"
+      fontSize={100}
+      fontWeight="bold"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -113,7 +114,6 @@ exports[`<Button /> should render button with default properties 1`] = `
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -164,6 +164,7 @@ exports[`<Button /> should render button with full width 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -186,8 +187,8 @@ exports[`<Button /> should render button with full width 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -195,9 +196,11 @@ exports[`<Button /> should render button with full width 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -205,12 +208,10 @@ exports[`<Button /> should render button with full width 1`] = `
     }
   >
     <Text
-      color="hsla(0, 0%, 100%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="24px"
+      color="action.text.primary.default"
+      fontSize={100}
+      fontWeight="bold"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -234,7 +235,6 @@ exports[`<Button /> should render button with full width 1`] = `
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -285,6 +285,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -307,8 +308,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -316,9 +317,11 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -394,12 +397,10 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       </RNSVGSvgView>
     </View>
     <Text
-      color="hsla(0, 0%, 100%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="24px"
+      color="action.text.primary.default"
+      fontSize={100}
+      fontWeight="bold"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -423,7 +424,6 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -474,6 +474,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -496,8 +497,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -505,9 +506,11 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -515,12 +518,10 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     }
   >
     <Text
-      color="hsla(0, 0%, 100%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="24px"
+      color="action.text.primary.default"
+      fontSize={100}
+      fontWeight="bold"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -544,7 +545,6 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -657,6 +657,7 @@ exports[`<Button /> should render disabled button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(216, 19%, 89%, 1)",
         "borderColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 2,
@@ -679,8 +680,8 @@ exports[`<Button /> should render disabled button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -688,9 +689,11 @@ exports[`<Button /> should render disabled button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -698,12 +701,10 @@ exports[`<Button /> should render disabled button 1`] = `
     }
   >
     <Text
-      color="hsla(216, 16%, 60%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="24px"
+      color="action.text.primary.disabled"
+      fontSize={100}
+      fontWeight="bold"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -727,7 +728,6 @@ exports[`<Button /> should render disabled button 1`] = `
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -778,6 +778,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0)",
         "borderColor": "hsla(218, 19%, 81%, 1)",
         "borderRadius": 2,
@@ -800,8 +801,8 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -809,9 +810,11 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -819,12 +822,10 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
     }
   >
     <Text
-      color="hsla(218, 19%, 81%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="24px"
+      color="action.text.secondary.disabled"
+      fontSize={100}
+      fontWeight="bold"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -848,7 +849,6 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -899,6 +899,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 2,
@@ -921,8 +922,8 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -930,9 +931,11 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -940,12 +943,10 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
     }
   >
     <Text
-      color="hsla(218, 19%, 81%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="24px"
+      color="action.text.tertiary.disabled"
+      fontSize={100}
+      fontWeight="bold"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -969,7 +970,6 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -1020,6 +1020,7 @@ exports[`<Button /> should render large size button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -1042,8 +1043,8 @@ exports[`<Button /> should render large size button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1051,9 +1052,11 @@ exports[`<Button /> should render large size button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1061,12 +1064,10 @@ exports[`<Button /> should render large size button 1`] = `
     }
   >
     <Text
-      color="hsla(0, 0%, 100%, 1)"
-      fontFamily="Lato"
-      fontSize="17px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="18px"
+      color="action.text.primary.default"
+      fontSize={200}
+      fontWeight="bold"
+      lineHeight="m"
       style={
         Array [
           Object {
@@ -1090,7 +1091,6 @@ exports[`<Button /> should render large size button 1`] = `
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -1141,6 +1141,7 @@ exports[`<Button /> should render medium size button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -1163,8 +1164,8 @@ exports[`<Button /> should render medium size button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1172,9 +1173,11 @@ exports[`<Button /> should render medium size button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1182,12 +1185,10 @@ exports[`<Button /> should render medium size button 1`] = `
     }
   >
     <Text
-      color="hsla(0, 0%, 100%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="24px"
+      color="action.text.primary.default"
+      fontSize={100}
+      fontWeight="bold"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -1211,7 +1212,6 @@ exports[`<Button /> should render medium size button 1`] = `
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -1262,6 +1262,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(218, 89%, 51%, 0)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -1284,8 +1285,8 @@ exports[`<Button /> should render secondary variant button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1293,9 +1294,11 @@ exports[`<Button /> should render secondary variant button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1303,12 +1306,10 @@ exports[`<Button /> should render secondary variant button 1`] = `
     }
   >
     <Text
-      color="hsla(213, 89%, 56%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="24px"
+      color="action.text.secondary.default"
+      fontSize={100}
+      fontWeight="bold"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -1332,7 +1333,6 @@ exports[`<Button /> should render secondary variant button 1`] = `
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -1383,6 +1383,7 @@ exports[`<Button /> should render small size button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -1405,8 +1406,8 @@ exports[`<Button /> should render small size button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1414,9 +1415,11 @@ exports[`<Button /> should render small size button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1424,12 +1427,10 @@ exports[`<Button /> should render small size button 1`] = `
     }
   >
     <Text
-      color="hsla(0, 0%, 100%, 1)"
-      fontFamily="Lato"
-      fontSize="12px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="16px"
+      color="action.text.primary.default"
+      fontSize={75}
+      fontWeight="bold"
+      lineHeight="s"
       style={
         Array [
           Object {
@@ -1453,7 +1454,6 @@ exports[`<Button /> should render small size button 1`] = `
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -1504,6 +1504,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(0, 0%, 100%, 1)",
         "borderColor": "hsla(216, 19%, 89%, 1)",
         "borderRadius": 2,
@@ -1526,8 +1527,8 @@ exports[`<Button /> should render tertiary variant button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1535,9 +1536,11 @@ exports[`<Button /> should render tertiary variant button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1545,12 +1548,10 @@ exports[`<Button /> should render tertiary variant button 1`] = `
     }
   >
     <Text
-      color="hsla(216, 33%, 29%, 1)"
-      fontFamily="Lato"
-      fontSize="15px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="24px"
+      color="action.text.tertiary.default"
+      fontSize={100}
+      fontWeight="bold"
+      lineHeight="l"
       style={
         Array [
           Object {
@@ -1574,7 +1575,6 @@ exports[`<Button /> should render tertiary variant button 1`] = `
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       Pay Now
     </Text>
@@ -1625,6 +1625,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
   style={
     Array [
       Object {
+        "alignSelf": "center",
         "backgroundColor": "hsla(213, 89%, 56%, 1)",
         "borderColor": "hsla(213, 89%, 56%, 1)",
         "borderRadius": 2,
@@ -1647,8 +1648,8 @@ exports[`<Button /> should render xsmall size button 1`] = `
 >
   <View
     alignItems="center"
-    alignSelf="center"
     display="flex"
+    flex={1}
     flexDirection="row"
     isHidden={false}
     justifyContent="center"
@@ -1656,9 +1657,11 @@ exports[`<Button /> should render xsmall size button 1`] = `
       Array [
         Object {
           "alignItems": "center",
-          "alignSelf": "center",
           "display": "flex",
+          "flexBasis": 0,
           "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
           "justifyContent": "center",
           "opacity": 1,
         },
@@ -1666,12 +1669,10 @@ exports[`<Button /> should render xsmall size button 1`] = `
     }
   >
     <Text
-      color="hsla(0, 0%, 100%, 1)"
-      fontFamily="Lato"
-      fontSize="12px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="16px"
+      color="action.text.primary.default"
+      fontSize={75}
+      fontWeight="bold"
+      lineHeight="s"
       style={
         Array [
           Object {
@@ -1695,7 +1696,6 @@ exports[`<Button /> should render xsmall size button 1`] = `
         ]
       }
       textAlign="center"
-      textDecorationLine="none"
     >
       PAY NOW
     </Text>

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CheckboxGroup /> should render with help text 1`] = `
-.c8 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26,12 +26,12 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   border-color: hsla(216,19%,89%,1);
 }
 
-.c9 {
+.c10 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c3 {
+.c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -47,7 +47,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c7 {
+.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -63,13 +63,13 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c7:focus + div {
+.c8:focus + div {
   outline: 1px solid white;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c7:hover + div,
-.c7:focus + div {
+.c8:hover + div,
+.c8:focus + div {
   background-color: hsla(216,19%,89%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -77,14 +77,54 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   transition-duration: 70ms;
 }
 
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0px;
+}
+
 .c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.c2 {
+.c12 {
+  margin-top: 4px;
+}
+
+.c3 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -98,22 +138,8 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c4 {
+.c5 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c10 {
-  color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 400;
@@ -127,6 +153,20 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 }
 
 .c11 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c13 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -140,84 +180,53 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 0px;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  gap: 4px;
 }
 
 <div>
   <div
-    aria-labelledby="checkbox-group-21-label"
+    aria-labelledby="checkbox-group-49-label-54"
     class="c0"
     display="flex"
     role="group"
   >
     <span
-      id="checkbox-group-21-label"
+      id="checkbox-group-49-label-54"
       style="width: auto;"
     >
       <div
         class="c1"
-        display="flex"
       >
         <div
           class="c2"
-          color="hsla(216, 27%, 36%, 1)"
-          font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-          font-size="0.75rem"
-          font-style="normal"
-          font-weight="700"
+          display="flex"
         >
-          Select fruits
           <div
             class="c3"
+            color="surface.text.subtle.lowContrast"
+            font-family="text"
+            font-size="75"
+            font-weight="bold"
           >
-            <p
-              class="c4 Text__StyledText-wkh56f-0"
-              color="hsla(217, 56%, 17%, 1)"
-              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-              font-size="0.875rem"
-              font-style="normal"
-              font-weight="400"
+            Select fruits
+            <div
+              class="c4"
             >
-              , Select one
-            </p>
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                , Select one
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -226,188 +235,193 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
       class=""
     >
       <div
-        class="c5"
+        class="c6"
         display="flex"
       >
-        <label
-          class="c6"
+        <div
+          class=""
         >
-          <input
-            aria-checked="false"
-            aria-describedby="checkbox-22-helptext-24"
-            aria-disabled="false"
-            aria-errormessage="checkbox-22-errortext-23"
-            aria-hidden="true"
-            aria-invalid="false"
-            aria-required="false"
+          <label
             class="c7"
-            role="checkbox"
-            type="checkbox"
-            value="apple"
-          />
-          <div
-            class="c8"
           >
-            <div
-              class=""
-              style="opacity: 0; position: absolute; display: flex;"
-            >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                height="16px"
-                viewBox="0 0 16 16"
-                width="16px"
-              >
-                <path
-                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-                  fill="hsla(220, 27%, 98%, 1)"
-                />
-              </svg>
-            </div>
+            <input
+              aria-checked="false"
+              aria-disabled="false"
+              aria-hidden="true"
+              aria-invalid="false"
+              aria-required="false"
+              class="c8"
+              role="checkbox"
+              type="checkbox"
+              value="apple"
+            />
             <div
               class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="hsla(216, 27%, 36%, 1)"
-              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-              font-size="0.875rem"
-              font-style="normal"
-              font-weight="400"
             >
-              Apple
+              <div
+                class=""
+                style="opacity: 0; position: absolute; display: flex;"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                    fill="hsla(220, 27%, 98%, 1)"
+                  />
+                </svg>
+              </div>
+              <div
+                class="c10"
+                style="opacity: 0; position: absolute; display: flex;"
+              />
             </div>
-          </div>
-        </label>
-        <label
-          class="c6"
-        >
-          <input
-            aria-checked="false"
-            aria-describedby="checkbox-25-helptext-27"
-            aria-disabled="false"
-            aria-errormessage="checkbox-25-errortext-26"
-            aria-hidden="true"
-            aria-invalid="false"
-            aria-required="false"
-            class="c7"
-            role="checkbox"
-            type="checkbox"
-            value="mango"
-          />
-          <div
-            class="c8"
-          >
             <div
               class=""
-              style="opacity: 0; position: absolute; display: flex;"
             >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                height="16px"
-                viewBox="0 0 16 16"
-                width="16px"
+              <div
+                class="c11"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
               >
-                <path
-                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-                  fill="hsla(220, 27%, 98%, 1)"
-                />
-              </svg>
+                Apple
+              </div>
             </div>
+          </label>
+        </div>
+        <div
+          class=""
+        >
+          <label
+            class="c7"
+          >
+            <input
+              aria-checked="false"
+              aria-disabled="false"
+              aria-hidden="true"
+              aria-invalid="false"
+              aria-required="false"
+              class="c8"
+              role="checkbox"
+              type="checkbox"
+              value="mango"
+            />
             <div
               class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="hsla(216, 27%, 36%, 1)"
-              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-              font-size="0.875rem"
-              font-style="normal"
-              font-weight="400"
             >
-              Mango
+              <div
+                class=""
+                style="opacity: 0; position: absolute; display: flex;"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                    fill="hsla(220, 27%, 98%, 1)"
+                  />
+                </svg>
+              </div>
+              <div
+                class="c10"
+                style="opacity: 0; position: absolute; display: flex;"
+              />
             </div>
-          </div>
-        </label>
-        <label
-          class="c6"
-        >
-          <input
-            aria-checked="false"
-            aria-describedby="checkbox-28-helptext-30"
-            aria-disabled="false"
-            aria-errormessage="checkbox-28-errortext-29"
-            aria-hidden="true"
-            aria-invalid="false"
-            aria-required="false"
-            class="c7"
-            role="checkbox"
-            type="checkbox"
-            value="orange"
-          />
-          <div
-            class="c8"
-          >
             <div
               class=""
-              style="opacity: 0; position: absolute; display: flex;"
             >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                height="16px"
-                viewBox="0 0 16 16"
-                width="16px"
+              <div
+                class="c11"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
               >
-                <path
-                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-                  fill="hsla(220, 27%, 98%, 1)"
-                />
-              </svg>
+                Mango
+              </div>
             </div>
+          </label>
+        </div>
+        <div
+          class=""
+        >
+          <label
+            class="c7"
+          >
+            <input
+              aria-checked="false"
+              aria-disabled="false"
+              aria-hidden="true"
+              aria-invalid="false"
+              aria-required="false"
+              class="c8"
+              role="checkbox"
+              type="checkbox"
+              value="orange"
+            />
             <div
               class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="hsla(216, 27%, 36%, 1)"
-              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-              font-size="0.875rem"
-              font-style="normal"
-              font-weight="400"
             >
-              Orange
+              <div
+                class=""
+                style="opacity: 0; position: absolute; display: flex;"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                    fill="hsla(220, 27%, 98%, 1)"
+                  />
+                </svg>
+              </div>
+              <div
+                class="c10"
+                style="opacity: 0; position: absolute; display: flex;"
+              />
             </div>
-          </div>
-        </label>
+            <div
+              class=""
+            >
+              <div
+                class="c11"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
+              >
+                Orange
+              </div>
+            </div>
+          </label>
+        </div>
       </div>
+      <div
+        class="c12"
+      />
       <span
         style="display: flex; flex-direction: row; align-items: center;"
       >
         <span
-          class="c11"
-          color="hsla(216, 16%, 60%, 1)"
-          font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-          font-size="0.6875rem"
+          class="c13"
+          color="surface.text.muted.lowContrast"
+          font-family="text"
+          font-size="50"
           font-style="italic"
-          font-weight="400"
         >
           Select one
         </span>
@@ -418,7 +432,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 `;
 
 exports[`<CheckboxGroup /> should render with label 1`] = `
-.c8 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -443,12 +457,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   border-color: hsla(216,19%,89%,1);
 }
 
-.c9 {
+.c10 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c3 {
+.c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -464,7 +478,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c7 {
+.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -480,67 +494,18 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c7:focus + div {
+.c8:focus + div {
   outline: 1px solid white;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c7:hover + div,
-.c7:focus + div {
+.c8:hover + div,
+.c8:focus + div {
   background-color: hsla(216,19%,89%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
   transition-duration: 70ms;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c4 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c10 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
 }
 
 .c0 {
@@ -554,6 +519,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 }
 
 .c1 {
+  margin-bottom: 4px;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -571,7 +540,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   gap: 0px;
 }
 
-.c5 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -579,48 +548,98 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  margin-top: 4px;
-  margin-bottom: 4px;
   gap: 4px;
+}
+
+.c3 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c11 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 <div>
   <div
-    aria-labelledby="checkbox-group-10-label"
+    aria-labelledby="checkbox-group-19-label-24"
     class="c0"
     display="flex"
     role="group"
   >
     <span
-      id="checkbox-group-10-label"
+      id="checkbox-group-19-label-24"
       style="width: auto;"
     >
       <div
         class="c1"
-        display="flex"
       >
         <div
           class="c2"
-          color="hsla(216, 27%, 36%, 1)"
-          font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-          font-size="0.75rem"
-          font-style="normal"
-          font-weight="700"
+          display="flex"
         >
-          Select fruits
           <div
             class="c3"
+            color="surface.text.subtle.lowContrast"
+            font-family="text"
+            font-size="75"
+            font-weight="bold"
           >
-            <p
-              class="c4 Text__StyledText-wkh56f-0"
-              color="hsla(217, 56%, 17%, 1)"
-              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-              font-size="0.875rem"
-              font-style="normal"
-              font-weight="400"
+            Select fruits
+            <div
+              class="c4"
             >
-              , 
-            </p>
+              <p
+                class="c5 Text__StyledText-wkh56f-0"
+                color="surface.text.normal.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-style="normal"
+                font-weight="regular"
+              >
+                , 
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -629,177 +648,180 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       class=""
     >
       <div
-        class="c5"
+        class="c6"
         display="flex"
       >
-        <label
-          class="c6"
+        <div
+          class=""
         >
-          <input
-            aria-checked="false"
-            aria-describedby="checkbox-1-helptext-3"
-            aria-disabled="false"
-            aria-errormessage="checkbox-1-errortext-2"
-            aria-hidden="true"
-            aria-invalid="false"
-            aria-required="false"
+          <label
             class="c7"
-            role="checkbox"
-            type="checkbox"
-            value="apple"
-          />
-          <div
-            class="c8"
           >
-            <div
-              class=""
-              style="opacity: 0; position: absolute; display: flex;"
-            >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                height="16px"
-                viewBox="0 0 16 16"
-                width="16px"
-              >
-                <path
-                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-                  fill="hsla(220, 27%, 98%, 1)"
-                />
-              </svg>
-            </div>
+            <input
+              aria-checked="false"
+              aria-disabled="false"
+              aria-hidden="true"
+              aria-invalid="false"
+              aria-required="false"
+              class="c8"
+              role="checkbox"
+              type="checkbox"
+              value="apple"
+            />
             <div
               class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="hsla(216, 27%, 36%, 1)"
-              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-              font-size="0.875rem"
-              font-style="normal"
-              font-weight="400"
             >
-              Apple
+              <div
+                class=""
+                style="opacity: 0; position: absolute; display: flex;"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                    fill="hsla(220, 27%, 98%, 1)"
+                  />
+                </svg>
+              </div>
+              <div
+                class="c10"
+                style="opacity: 0; position: absolute; display: flex;"
+              />
             </div>
-          </div>
-        </label>
-        <label
-          class="c6"
-        >
-          <input
-            aria-checked="false"
-            aria-describedby="checkbox-4-helptext-6"
-            aria-disabled="false"
-            aria-errormessage="checkbox-4-errortext-5"
-            aria-hidden="true"
-            aria-invalid="false"
-            aria-required="false"
-            class="c7"
-            role="checkbox"
-            type="checkbox"
-            value="mango"
-          />
-          <div
-            class="c8"
-          >
             <div
               class=""
-              style="opacity: 0; position: absolute; display: flex;"
             >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                height="16px"
-                viewBox="0 0 16 16"
-                width="16px"
+              <div
+                class="c11"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
               >
-                <path
-                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-                  fill="hsla(220, 27%, 98%, 1)"
-                />
-              </svg>
+                Apple
+              </div>
             </div>
+          </label>
+        </div>
+        <div
+          class=""
+        >
+          <label
+            class="c7"
+          >
+            <input
+              aria-checked="false"
+              aria-disabled="false"
+              aria-hidden="true"
+              aria-invalid="false"
+              aria-required="false"
+              class="c8"
+              role="checkbox"
+              type="checkbox"
+              value="mango"
+            />
             <div
               class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="hsla(216, 27%, 36%, 1)"
-              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-              font-size="0.875rem"
-              font-style="normal"
-              font-weight="400"
             >
-              Mango
+              <div
+                class=""
+                style="opacity: 0; position: absolute; display: flex;"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                    fill="hsla(220, 27%, 98%, 1)"
+                  />
+                </svg>
+              </div>
+              <div
+                class="c10"
+                style="opacity: 0; position: absolute; display: flex;"
+              />
             </div>
-          </div>
-        </label>
-        <label
-          class="c6"
-        >
-          <input
-            aria-checked="false"
-            aria-describedby="checkbox-7-helptext-9"
-            aria-disabled="false"
-            aria-errormessage="checkbox-7-errortext-8"
-            aria-hidden="true"
-            aria-invalid="false"
-            aria-required="false"
-            class="c7"
-            role="checkbox"
-            type="checkbox"
-            value="orange"
-          />
-          <div
-            class="c8"
-          >
             <div
               class=""
-              style="opacity: 0; position: absolute; display: flex;"
             >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                height="16px"
-                viewBox="0 0 16 16"
-                width="16px"
+              <div
+                class="c11"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
               >
-                <path
-                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-                  fill="hsla(220, 27%, 98%, 1)"
-                />
-              </svg>
+                Mango
+              </div>
             </div>
+          </label>
+        </div>
+        <div
+          class=""
+        >
+          <label
+            class="c7"
+          >
+            <input
+              aria-checked="false"
+              aria-disabled="false"
+              aria-hidden="true"
+              aria-invalid="false"
+              aria-required="false"
+              class="c8"
+              role="checkbox"
+              type="checkbox"
+              value="orange"
+            />
             <div
               class="c9"
-              style="opacity: 0; position: absolute; display: flex;"
-            />
-          </div>
-          <div
-            class=""
-          >
-            <div
-              class="c10"
-              color="hsla(216, 27%, 36%, 1)"
-              font-family="Lato, -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\""
-              font-size="0.875rem"
-              font-style="normal"
-              font-weight="400"
             >
-              Orange
+              <div
+                class=""
+                style="opacity: 0; position: absolute; display: flex;"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                    fill="hsla(220, 27%, 98%, 1)"
+                  />
+                </svg>
+              </div>
+              <div
+                class="c10"
+                style="opacity: 0; position: absolute; display: flex;"
+              />
             </div>
-          </div>
-        </label>
+            <div
+              class=""
+            >
+              <div
+                class="c11"
+                color="surface.text.subtle.lowContrast"
+                font-family="text"
+                font-size="100"
+                font-weight="regular"
+              >
+                Orange
+              </div>
+            </div>
+          </label>
+        </div>
       </div>
     </div>
   </div>

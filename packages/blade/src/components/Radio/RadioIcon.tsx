@@ -23,7 +23,7 @@ export type RadioIconProps = {
   isChecked?: boolean;
 };
 
-const RadioIcon = ({ isChecked, isDisabled, isNegative, isFocused }: RadioIconProps) => {
+const RadioIcon = ({ isChecked, isDisabled, isNegative }: RadioIconProps) => {
   const { theme } = useTheme();
   const defaultIconColor = getIn(theme, 'colors.brand.primary.200');
   const disabledIconColor = getIn(theme, 'colors.brand.gray.500');
@@ -32,7 +32,6 @@ const RadioIcon = ({ isChecked, isDisabled, isNegative, isFocused }: RadioIconPr
   return (
     <CheckboxIconWrapper
       isFullRounded={true}
-      isFocused={isFocused}
       isDisabled={isDisabled}
       isNegative={isNegative}
       isChecked={!!isChecked}
