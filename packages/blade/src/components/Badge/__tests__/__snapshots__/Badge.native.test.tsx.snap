@@ -2,11 +2,8 @@
 
 exports[`<Badge /> should render Badge with Icon 1`] = `
 <View
-  backgroundColor="hsla(216, 44%, 23%, 0.09)"
-  borderColor="hsla(216, 44%, 23%, 0.32)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="low"
+  size="medium"
   style={
     Array [
       Object {
@@ -22,6 +19,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
       },
     ]
   }
+  variant="neutral"
 >
   <View
     alignItems="center"
@@ -170,11 +168,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 
 exports[`<Badge /> should render Badge with bold font 1`] = `
 <View
-  backgroundColor="hsla(216, 44%, 23%, 0.09)"
-  borderColor="hsla(216, 44%, 23%, 0.32)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="low"
+  size="medium"
   style={
     Array [
       Object {
@@ -190,6 +185,7 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
       },
     ]
   }
+  variant="neutral"
 >
   <View
     alignItems="center"
@@ -256,11 +252,8 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 
 exports[`<Badge /> should render Badge with default props 1`] = `
 <View
-  backgroundColor="hsla(216, 44%, 23%, 0.09)"
-  borderColor="hsla(216, 44%, 23%, 0.32)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="low"
+  size="medium"
   style={
     Array [
       Object {
@@ -276,6 +269,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
       },
     ]
   }
+  variant="neutral"
 >
   <View
     alignItems="center"
@@ -342,11 +336,8 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 <View
-  backgroundColor="hsla(193, 100%, 35%, 1)"
-  borderColor="hsla(193, 100%, 35%, 1)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="high"
+  size="medium"
   style={
     Array [
       Object {
@@ -362,6 +353,7 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
       },
     ]
   }
+  variant="information"
 >
   <View
     alignItems="center"
@@ -428,11 +420,8 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 <View
-  backgroundColor="hsla(8, 73%, 47%, 1)"
-  borderColor="hsla(8, 73%, 47%, 1)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="high"
+  size="medium"
   style={
     Array [
       Object {
@@ -448,6 +437,7 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
       },
     ]
   }
+  variant="negative"
 >
   <View
     alignItems="center"
@@ -514,11 +504,8 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 <View
-  backgroundColor="hsla(216, 33%, 29%, 1)"
-  borderColor="hsla(216, 33%, 29%, 1)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="high"
+  size="medium"
   style={
     Array [
       Object {
@@ -534,6 +521,7 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
       },
     ]
   }
+  variant="neutral"
 >
   <View
     alignItems="center"
@@ -600,11 +588,8 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 <View
-  backgroundColor="hsla(38, 97%, 38%, 1)"
-  borderColor="hsla(38, 97%, 38%, 1)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="high"
+  size="medium"
   style={
     Array [
       Object {
@@ -620,6 +605,7 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
       },
     ]
   }
+  variant="notice"
 >
   <View
     alignItems="center"
@@ -686,11 +672,8 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 <View
-  backgroundColor="hsla(160, 100%, 26%, 1)"
-  borderColor="hsla(160, 100%, 26%, 1)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="high"
+  size="medium"
   style={
     Array [
       Object {
@@ -706,6 +689,7 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
       },
     ]
   }
+  variant="positive"
 >
   <View
     alignItems="center"
@@ -772,11 +756,8 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 <View
-  backgroundColor="hsla(193, 100%, 35%, 0.09)"
-  borderColor="hsla(193, 100%, 35%, 0.32)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="low"
+  size="medium"
   style={
     Array [
       Object {
@@ -792,6 +773,7 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
       },
     ]
   }
+  variant="information"
 >
   <View
     alignItems="center"
@@ -858,11 +840,8 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 <View
-  backgroundColor="hsla(9, 91%, 56%, 0.09)"
-  borderColor="hsla(9, 91%, 56%, 0.32)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="low"
+  size="medium"
   style={
     Array [
       Object {
@@ -878,6 +857,7 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
       },
     ]
   }
+  variant="negative"
 >
   <View
     alignItems="center"
@@ -944,11 +924,8 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 <View
-  backgroundColor="hsla(216, 44%, 23%, 0.09)"
-  borderColor="hsla(216, 44%, 23%, 0.32)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="low"
+  size="medium"
   style={
     Array [
       Object {
@@ -964,6 +941,7 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
       },
     ]
   }
+  variant="neutral"
 >
   <View
     alignItems="center"
@@ -1030,11 +1008,8 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 <View
-  backgroundColor="hsla(36, 100%, 44%, 0.09)"
-  borderColor="hsla(36, 100%, 44%, 0.32)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="low"
+  size="medium"
   style={
     Array [
       Object {
@@ -1050,6 +1025,7 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
       },
     ]
   }
+  variant="notice"
 >
   <View
     alignItems="center"
@@ -1116,11 +1092,8 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 <View
-  backgroundColor="hsla(155, 100%, 31%, 0.09)"
-  borderColor="hsla(155, 100%, 31%, 0.32)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="low"
+  size="medium"
   style={
     Array [
       Object {
@@ -1136,6 +1109,7 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
       },
     ]
   }
+  variant="positive"
 >
   <View
     alignItems="center"
@@ -1202,11 +1176,8 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 
 exports[`<Badge /> should render medium size Badge 1`] = `
 <View
-  backgroundColor="hsla(216, 44%, 23%, 0.09)"
-  borderColor="hsla(216, 44%, 23%, 0.32)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="24px"
+  contrast="low"
+  size="medium"
   style={
     Array [
       Object {
@@ -1222,6 +1193,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
       },
     ]
   }
+  variant="neutral"
 >
   <View
     alignItems="center"
@@ -1288,11 +1260,8 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 
 exports[`<Badge /> should render small size Badge 1`] = `
 <View
-  backgroundColor="hsla(216, 44%, 23%, 0.09)"
-  borderColor="hsla(216, 44%, 23%, 0.32)"
-  borderRadius="9999px"
-  borderWidth="1px"
-  minHeight="20px"
+  contrast="low"
+  size="small"
   style={
     Array [
       Object {
@@ -1308,6 +1277,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
       },
     ]
   }
+  variant="neutral"
 >
   <View
     alignItems="center"

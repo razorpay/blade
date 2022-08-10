@@ -11,9 +11,9 @@ import {
 import capitalize from 'lodash/capitalize';
 import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
-import { InfoIcon } from '..';
 import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
+import { InfoIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
 import Box from '~components/Box';
 import { Text as BladeText } from '~components/Typography';
@@ -50,7 +50,7 @@ const Page = (): ReactElement => {
       <br />
       <br />
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Badge } from '@razorpay/blade/components' \nimport type { BadgeProps } from '@razorpay/blade/components'`}</Highlight>
+      <Highlight language="tsx">{`import { Badge } from '@razorpay/blade/components'; \nimport type { BadgeProps } from '@razorpay/blade/components';`}</Highlight>
       <Title>Example</Title>
       <Subtitle>
         This is the default badge. You can change the properties of this button using the controls
@@ -100,7 +100,6 @@ Badge.args = {
   contrast: 'low',
   size: 'small',
 };
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Badge.storyName = 'Default';
 
 const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...args }) => {

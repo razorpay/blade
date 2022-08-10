@@ -7,4 +7,6 @@ const minHeight: Record<NonNullable<BadgeProps['size']>, BadgeMinHeight> = {
   medium: 24,
 };
 
-export { minHeight };
+const maxWidth = 100;
+
+export { minHeight, maxWidth };
