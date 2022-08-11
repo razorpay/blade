@@ -103,13 +103,7 @@ Badge.args = {
 Badge.storyName = 'Default';
 
 const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...args }) => {
-  const variants: Array<NonNullable<BadgeProps['variant']>> = [
-    'positive',
-    'negative',
-    'notice',
-    'information',
-    'neutral',
-  ];
+  const variants = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
 
   const getLabel = (label: string): string => {
     return args.fontWeight === 'bold' ? label.toUpperCase() : capitalize(label);
