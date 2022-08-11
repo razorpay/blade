@@ -9,11 +9,40 @@ import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 
 type BadgeProps = {
+  /**
+   * Sets the label for the badge.
+   *
+   */
   children: string;
+  /**
+   * Sets the variant of the badge.
+   *
+   * @default 'neutral'
+   */
   variant?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  /**
+   * Sets the contrast of the badge.
+   *
+   * @default 'low'
+   */
   contrast?: 'low' | 'high';
+  /**
+   * Sets the size of the badge.
+   *
+   * @default 'medium'
+   */
   size?: 'small' | 'medium';
+  /**
+   * Icon to be displayed in the badge.
+   * Accepts a component of type `IconComponent` from Blade.
+   *
+   */
   icon?: IconComponent;
+  /**
+   * Sets the fontWeight of the label.
+   *
+   * @default 'regular'
+   */
   fontWeight?: 'regular' | 'bold';
 };
 
