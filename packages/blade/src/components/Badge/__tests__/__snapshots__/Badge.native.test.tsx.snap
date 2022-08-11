@@ -3,6 +3,7 @@
 exports[`<Badge /> should render Badge with Icon 1`] = `
 <View
   contrast="low"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -169,6 +170,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 exports[`<Badge /> should render Badge with bold font 1`] = `
 <View
   contrast="low"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -253,6 +255,7 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 exports[`<Badge /> should render Badge with default props 1`] = `
 <View
   contrast="low"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -337,6 +340,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 <View
   contrast="high"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -421,6 +425,7 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 <View
   contrast="high"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -505,6 +510,7 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 <View
   contrast="high"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -589,6 +595,7 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 <View
   contrast="high"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -673,6 +680,7 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 <View
   contrast="high"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -757,6 +765,7 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 <View
   contrast="low"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -841,6 +850,7 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 <View
   contrast="low"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -925,6 +935,7 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 <View
   contrast="low"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -1009,6 +1020,7 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 <View
   contrast="low"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -1093,6 +1105,7 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 <View
   contrast="low"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -1177,6 +1190,7 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 exports[`<Badge /> should render medium size Badge 1`] = `
 <View
   contrast="low"
+  platform="onMobile"
   size="medium"
   style={
     Array [
@@ -1261,6 +1275,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 exports[`<Badge /> should render small size Badge 1`] = `
 <View
   contrast="low"
+  platform="onMobile"
   size="small"
   style={
     Array [
