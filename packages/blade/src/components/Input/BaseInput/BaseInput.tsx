@@ -3,10 +3,11 @@ import type { ReactElement } from 'react';
 import { StyledBaseInput } from './StyledBaseInput';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
-import { getPlatformType } from '~utils';
+import { getPlatformType, useBreakpoint } from '~utils';
 import type { FormLabelProps } from '~components/Form/FormLabel';
 import type { FormHintProps } from '~components/Form/FormHint';
 import { useFormId } from '~components/Form/useFormId';
+import { useTheme } from '~components/BladeProvider';
 
 export type HandleOnChange = ({
   inputName,
@@ -180,16 +181,19 @@ export const BaseInput = ({
   successText,
   isRequired,
 }: BaseInputProps): ReactElement => {
+  const { theme } = useTheme();
   const { handleOnChange } = useInput({ defaultValue, value, onChange });
   const { labelId, inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
 
   return (
     <>
       <Box
         display="flex"
-        flexDirection={labelPosition === 'left' ? 'row' : 'column'}
-        justifyContent={labelPosition === 'left' ? 'center' : 'normal'}
-        alignItems={labelPosition === 'left' ? 'center' : 'normal'}
+        flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
+        justifyContent={isLabelLeftPositioned ? 'center' : 'normal'}
+        alignItems={isLabelLeftPositioned ? 'center' : 'normal'}
       >
         <FormLabel
           as="label"
@@ -213,7 +217,7 @@ export const BaseInput = ({
           handleOnChange={handleOnChange}
         />
       </Box>
-      <Box marginLeft={labelPosition === 'left' ? 120 : 'auto'}>
+      <Box marginLeft={isLabelLeftPositioned ? 120 : 'auto'}>
         <FormHint
           type={getHintType({ _validationState: validationState, hasHelpText: Boolean(helpText) })}
           helpText={helpText}
