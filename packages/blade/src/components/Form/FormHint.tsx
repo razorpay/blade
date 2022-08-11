@@ -1,6 +1,5 @@
-/* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/display-name */
+import type { ReactElement } from 'react';
 import React from 'react';
 import { CheckIcon, InfoIcon } from '..';
 import { FormHintWrapper } from './FormHintWrapper';
@@ -16,7 +15,7 @@ type HintTextProps = {
   color: BaseTextProps['color'];
 };
 
-const HintText = ({ icon: Icon, children, id, color }: HintTextProps) => {
+const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElement => {
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
@@ -40,7 +39,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps) => {
   );
 };
 
-type FormHintProps = {
+export type FormHintProps = {
   type: 'help' | 'error' | 'success';
   /**
    * Help text for the group
@@ -75,11 +74,27 @@ type FormHintProps = {
   successTextId?: string;
 };
 
+const Icons = {
+  help: (): null => null,
+  error: (): ReactElement => (
+    <>
+      <InfoIcon color="feedback.icon.negative.lowContrast" size="xsmall" />
+      <Box marginRight="spacing.1" />
+    </>
+  ),
+  success: (): ReactElement => (
+    <>
+      <CheckIcon color="feedback.icon.positive.lowContrast" size="xsmall" />
+      <Box marginRight="spacing.1" />
+    </>
+  ),
+};
+
 const FormHint = ({
   type,
+  helpText,
   errorText,
   successText,
-  helpText,
   helpTextId,
   errorTextId,
   successTextId,
@@ -89,22 +104,6 @@ const FormHint = ({
     error: 'feedback.text.negative.lowContrast',
     success: 'feedback.text.positive.lowContrast',
   } as const;
-
-  const Icons = {
-    help: () => null,
-    error: () => (
-      <>
-        <InfoIcon color="feedback.icon.negative.lowContrast" size="xsmall" />
-        <Box marginRight="spacing.1" />
-      </>
-    ),
-    success: () => (
-      <>
-        <CheckIcon color="feedback.icon.positive.lowContrast" size="xsmall" />
-        <Box marginRight="spacing.1" />
-      </>
-    ),
-  };
 
   const Icon = Icons[type];
   const showError = type === 'error' && errorText;

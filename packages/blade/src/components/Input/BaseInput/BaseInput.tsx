@@ -2,10 +2,11 @@ import React from 'react';
 import type { ReactElement } from 'react';
 import { StyledBaseInput } from './StyledBaseInput';
 import Box from '~components/Box';
-import { FormHintText, FormLabelText } from '~components/Form';
-import type { FormLabelTextProps } from '~components/Form/FormLabelText';
+import { FormHint, FormLabel } from '~components/Form';
 import { getPlatformType } from '~utils';
-import type { FormHintTextProps } from '~components/Form/FormHintText';
+import type { FormLabelProps } from '~components/Form/FormLabel';
+import type { FormHintProps } from '~components/Form/FormHint';
+import { useFormId } from '~components/Form/useFormId';
 
 export type HandleOnChange = ({
   inputName,
@@ -26,11 +27,11 @@ type InputLabelProps = {
   /**
    * Desktop only prop. on Mobile by default the label will be on top
    */
-  labelPosition?: FormLabelTextProps['position'];
+  labelPosition?: FormLabelProps['position'];
   /**
    * Displays `(optional)` when `optional` is passed or `*` when `required` is passed
    */
-  neccessityIndicator?: FormLabelTextProps['neccessityIndicator'];
+  neccessityIndicator?: FormLabelProps['neccessityIndicator'];
 };
 
 // TODO: need to abstract for generic use
@@ -63,6 +64,10 @@ type InputValidationProps = {
 
 export type BaseInputProps = InputLabelProps &
   InputValidationProps & {
+    /**
+     * ID that will be used for accessibility
+     */
+    id: string;
     /**
      * Placeholder text to be displayed inside the input field
      */
@@ -138,11 +143,11 @@ const useInput = ({
 
 export const getHintType = ({
   _validationState,
-  _helpText,
+  hasHelpText,
 }: {
   _validationState: BaseInputProps['validationState'];
-  _helpText: BaseInputProps['helpText'];
-}): FormHintTextProps['state'] => {
+  hasHelpText: boolean;
+}): FormHintProps['type'] => {
   if (_validationState === 'error') {
     return 'error';
   }
@@ -151,7 +156,7 @@ export const getHintType = ({
     return 'success';
   }
 
-  if (_helpText) {
+  if (hasHelpText) {
     return 'help';
   }
 
@@ -176,28 +181,49 @@ export const BaseInput = ({
   isRequired,
 }: BaseInputProps): ReactElement => {
   const { handleOnChange } = useInput({ defaultValue, value, onChange });
+  const { labelId, inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
+
   return (
-    <Box display="flex" flexDirection="column">
-      <FormLabelText neccessityIndicator={neccessityIndicator} id="input" position={labelPosition}>
-        {label}
-      </FormLabelText>
-      <StyledBaseInput
-        name={name}
-        type={type}
-        defaultValue={defaultValue}
-        value={value}
-        placeholder={placeholder}
-        isDisabled={isDisabled}
-        validationState={validationState}
-        isRequired={isRequired}
-        handleOnChange={handleOnChange}
-      />
-      <FormHintText
-        state={getHintType({ _validationState: validationState, _helpText: helpText })}
-        errorText={errorText}
-        helpText={helpText}
-        successText={successText}
-      />
-    </Box>
+    <>
+      <Box
+        display="flex"
+        flexDirection={labelPosition === 'left' ? 'row' : 'column'}
+        justifyContent={labelPosition === 'left' ? 'center' : 'normal'}
+        alignItems={labelPosition === 'left' ? 'center' : 'normal'}
+      >
+        <FormLabel
+          as="label"
+          neccessityIndicator={neccessityIndicator}
+          id={labelId}
+          position={labelPosition}
+          htmlFor={inputId}
+        >
+          {label}
+        </FormLabel>
+        <StyledBaseInput
+          id={inputId}
+          name={name}
+          type={type}
+          defaultValue={defaultValue}
+          value={value}
+          placeholder={placeholder}
+          isDisabled={isDisabled}
+          validationState={validationState}
+          isRequired={isRequired}
+          handleOnChange={handleOnChange}
+        />
+      </Box>
+      <Box marginLeft={labelPosition === 'left' ? 120 : 'auto'}>
+        <FormHint
+          type={getHintType({ _validationState: validationState, hasHelpText: Boolean(helpText) })}
+          helpText={helpText}
+          errorText={errorText}
+          successText={successText}
+          helpTextId={helpTextId}
+          errorTextId={errorTextId}
+          successTextId={successTextId}
+        />
+      </Box>
+    </>
   );
 };

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { useId } from './useId';
+import { useId } from '~src/hooks/useId';
 
 /**
  * hook to generate unique ids for a form element

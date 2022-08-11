@@ -4,7 +4,7 @@ import type { BoxProps } from './Box';
 import { getIn, makeSize, makeSpace } from '~utils';
 
 // allows 'auto' as spacing value
-const getAutoSpacingValue = <T extends string | undefined>({
+const getAutoSpacingValue = <T extends string | number | undefined>({
   value,
   theme,
 }: {
@@ -12,6 +12,9 @@ const getAutoSpacingValue = <T extends string | undefined>({
   theme: Theme;
 }): string | undefined => {
   if (value === 'auto') return 'auto';
+  if (typeof value === 'number') {
+    return makeSpace(value);
+  }
   return value ? makeSpace(getIn(theme, value)) : undefined;
 };
 
@@ -21,6 +24,7 @@ const getBoxStyles = ({
   flex,
   flexWrap,
   flexDirection,
+  flexGrow,
   alignItems,
   justifyContent,
   alignSelf,
@@ -41,6 +45,7 @@ const getBoxStyles = ({
   display,
   flex,
   flexWrap,
+  flexGrow,
   flexDirection,
   alignItems,
   justifyContent,

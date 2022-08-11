@@ -9,6 +9,7 @@ export default {
   title: 'Components/Input/BaseInput (Internal)',
   component: BaseInputComponent,
   args: {
+    id: 'base-input',
     defaultValue: undefined,
     label: 'Enter Name',
     placeholder: 'Enter your first and last name',
@@ -77,6 +78,7 @@ BaseInputSuccess.args = {
 const UncontrolledBaseInputTemplate: ComponentStory<typeof BaseInputComponent> = () => {
   return (
     <BaseInput
+      id="base-input"
       label="First Name"
       defaultValue="John Ives"
       name="fullName"
@@ -91,6 +93,7 @@ const ControlledBaseInputTemplate: ComponentStory<typeof BaseInputComponent> = (
 
   return (
     <BaseInput
+      id="base-input"
       label="First Name"
       value={inputValue}
       name="fullName"

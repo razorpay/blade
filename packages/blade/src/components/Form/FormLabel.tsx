@@ -25,7 +25,7 @@ type SpanProps = CommonProps & {
   htmlFor?: undefined;
 };
 
-type FormLabelProps = LabelProps | SpanProps;
+export type FormLabelProps = LabelProps | SpanProps;
 
 const FormLabel = ({
   as = 'span',
@@ -43,6 +43,12 @@ const FormLabel = ({
 
   // TODO: replace with <Text /> when #548 merges
   let neccessityLabel: React.ReactNode = null;
+
+  if (!isDesktop && position === 'left') {
+    console.warn(
+      '[Blade: FormLabel]: Expected value `top` for label position on mobile device. Received `left`, falling back to `top`',
+    );
+  }
 
   if (neccessityIndicator === 'optional') {
     neccessityLabel = (
@@ -112,7 +118,7 @@ const FormLabel = ({
   const width = position === 'left' && isDesktop ? '120px' : 'auto';
 
   return (
-    <Component htmlFor={htmlFor} style={{ width }} id={id}>
+    <Component htmlFor={htmlFor} style={{ width, flexShrink: 0 }} id={id}>
       <Box marginBottom="spacing.1">{textNode}</Box>
     </Component>
   );

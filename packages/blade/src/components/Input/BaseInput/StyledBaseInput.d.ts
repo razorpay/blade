@@ -4,8 +4,9 @@ export type StyledBaseInputProps = {
   handleOnChange?: HandleOnChange;
 } & Pick<
   BaseInputProps,
-  | 'type'
+  | 'id'
   | 'name'
+  | 'type'
   | 'placeholder'
   | 'defaultValue'
   | 'value'
