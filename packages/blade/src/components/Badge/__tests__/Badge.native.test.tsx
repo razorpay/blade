@@ -11,6 +11,7 @@ describe('<Badge />', () => {
     const { toJSON } = renderWithTheme(<Badge>{label}</Badge>);
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should throw an error when no children are passed', () => {
     try {
       // @ts-expect-error testing failure case when there is no children passed
@@ -21,26 +22,31 @@ describe('<Badge />', () => {
       }
     }
   });
+
   it('should render small size Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(<Badge size="small">{label}</Badge>);
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render medium size Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(<Badge size="medium">{label}</Badge>);
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render Badge with Icon', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(<Badge icon={InfoIcon}>{label}</Badge>);
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render Badge with bold font', () => {
     const label = 'LABEL';
     const { toJSON } = renderWithTheme(<Badge fontWeight="bold">{label}</Badge>);
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render low contrast positive variant Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
@@ -50,6 +56,7 @@ describe('<Badge />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render high contrast positive variant Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
@@ -59,6 +66,7 @@ describe('<Badge />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render low contrast negative variant Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
@@ -68,6 +76,7 @@ describe('<Badge />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render high contrast negative variant Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
@@ -77,6 +86,7 @@ describe('<Badge />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render low contrast notice variant Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
@@ -86,6 +96,7 @@ describe('<Badge />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render high contrast notice variant Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
@@ -95,6 +106,7 @@ describe('<Badge />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render low contrast information variant Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
@@ -104,6 +116,7 @@ describe('<Badge />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render high contrast information variant Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
@@ -113,6 +126,7 @@ describe('<Badge />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render low contrast neutral variant Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
@@ -122,6 +136,7 @@ describe('<Badge />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
   it('should render high contrast neutral variant Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
