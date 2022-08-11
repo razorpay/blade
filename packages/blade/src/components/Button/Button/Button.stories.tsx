@@ -11,6 +11,7 @@ import { CreditCardIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import iconMap from '~components/Icons/iconMap';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import Box from '~components/Box';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -277,7 +278,9 @@ const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
   return (
     <>
       <ButtonComponent {...args} isLoading={loading} />
+      <Box marginTop="spacing.2" />
       <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
+      <Box marginTop="spacing.2" />
       <ButtonComponent size="small" variant="secondary" onClick={toggle}>
         Toggle loading
       </ButtonComponent>
