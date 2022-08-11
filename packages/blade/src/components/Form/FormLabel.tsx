@@ -2,7 +2,7 @@ import React from 'react';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { BaseText } from '~components/Typography/BaseText';
-import { getPlatformType, useBreakpoint } from '~utils';
+import { getPlatformType, makeSpace, useBreakpoint } from '~utils';
 import Box from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 
@@ -104,7 +104,11 @@ const FormLabel = ({
 
   // What harm can it do?
   if (isReactNative) {
-    return <Box marginBottom="spacing.1">{textNode}</Box>;
+    return (
+      <Box marginRight="spacing.4" marginBottom="spacing.1">
+        {textNode}
+      </Box>
+    );
   }
 
   const Component = as;
@@ -112,10 +116,12 @@ const FormLabel = ({
   const width = position === 'left' && isDesktop ? '120px' : 'auto';
 
   return (
-    <Component htmlFor={htmlFor} style={{ width }} id={id}>
-      <Box paddingBottom="spacing.1" paddingTop="spacing.1">
-        {textNode}
-      </Box>
+    <Component
+      htmlFor={htmlFor}
+      style={{ width, marginRight: makeSpace(theme.spacing[4]) }}
+      id={id}
+    >
+      <Box marginBottom="spacing.1">{textNode}</Box>
     </Component>
   );
 };

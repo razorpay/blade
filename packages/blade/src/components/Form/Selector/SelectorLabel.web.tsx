@@ -4,11 +4,12 @@ import styled from 'styled-components';
 import type { SelectorLabelProps } from './SelectorLabel.d';
 import { makeSpace } from '~utils';
 
-const StyledSelectorLabel = styled.label(({ theme }) => ({
+const StyledSelectorLabel = styled.label({
   display: 'flex',
-  marginTop: makeSpace(theme.spacing[1]),
-  marginBottom: makeSpace(theme.spacing[1]),
-}));
+  // TODO: We don't have 2px spacing token
+  marginTop: makeSpace(2),
+  marginBottom: makeSpace(2),
+});
 
 const SelectorLabel = ({ children }: SelectorLabelProps): React.ReactElement => {
   return <StyledSelectorLabel>{children}</StyledSelectorLabel>;
