@@ -187,6 +187,10 @@ const BaseLink = ({
   intent,
   contrast = 'low',
   accessibilityLabel,
+  // @ts-expect-error avoiding exposing to public
+  className,
+  // @ts-expect-error avoiding exposing to public
+  style,
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
@@ -248,6 +252,8 @@ const BaseLink = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       setCurrentInteraction={setCurrentInteraction}
+      className={className}
+      style={style}
     >
       <Box display="flex" flexDirection="row" className="content-container" alignItems="center">
         {Icon && iconPosition == 'left' ? (
