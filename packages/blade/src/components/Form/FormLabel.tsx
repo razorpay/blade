@@ -88,11 +88,11 @@ const FormLabel = ({
       flexWrap="wrap"
     >
       <BaseText
-        lineHeight="s"
+        lineHeight={position === 'left' ? 'l' : 's'}
         fontFamily="text"
         fontWeight="bold"
         color="surface.text.subtle.lowContrast"
-        fontSize={75}
+        fontSize={position === 'left' ? 100 : 75}
       >
         {children}
         {computedAccessibilityNode}
@@ -113,7 +113,9 @@ const FormLabel = ({
 
   return (
     <Component htmlFor={htmlFor} style={{ width }} id={id}>
-      <Box marginBottom="spacing.1">{textNode}</Box>
+      <Box paddingBottom="spacing.1" paddingTop="spacing.1">
+        {textNode}
+      </Box>
     </Component>
   );
 };

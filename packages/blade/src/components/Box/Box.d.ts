@@ -17,7 +17,7 @@ export type BoxProps = {
   marginBottom?: DotNotationSpacingStringToken | 'auto';
   marginLeft?: DotNotationSpacingStringToken | 'auto';
   marginRight?: DotNotationSpacingStringToken | 'auto';
-  gap?: DotNotationSpacingStringToken | 'auto';
+  gap?: DotNotationSpacingStringToken | 'auto' | number;
   minHeight?: number;
   minWidth?: number;
   maxHeight?: number;
