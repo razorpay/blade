@@ -29,7 +29,7 @@ const Page = (): ReactElement => {
 };
 
 const meta: Meta<IconButtonProps> = {
-  title: 'Components/IconButton (Internal)',
+  title: 'Components/Button/IconButton (Internal)',
   component: IconButtonComponent,
   args: {
     size: 'medium',

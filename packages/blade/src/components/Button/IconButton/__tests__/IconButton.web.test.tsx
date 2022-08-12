@@ -3,7 +3,7 @@
 
 import userEvent from '@testing-library/user-event';
 
-import IconButton from '../';
+import IconButton from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 import { CloseIcon } from '~components/Icons';
