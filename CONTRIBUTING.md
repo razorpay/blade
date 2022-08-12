@@ -36,13 +36,13 @@ These steps should get you up and started for local development setup. Please en
   brew install watchman
   ```
 
-- Install [XCode](https://reactnative.dev/docs/environment-setup#xcode).
+- Install [Xcode](https://reactnative.dev/docs/environment-setup#xcode).
 
   > **Note:**
   >
-  > Sometimes it can take a very long time for XCode to install. Check [here](https://apple.stackexchange.com/questions/427640/mac-app-store-xcode-download-stuck-at-installing) for troubleshooting.
+  > Sometimes it can take a very long time for Xcode to install. Check [here](https://apple.stackexchange.com/questions/427640/mac-app-store-xcode-download-stuck-at-installing) for troubleshooting.
 
-- Install an iOS simulator in XCode: Xcode > Preferences > Components.
+- Install an iOS simulator in Xcode: Xcode > Preferences > Components.
 
   > **Note:**
   >
