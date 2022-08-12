@@ -37,6 +37,7 @@ const getBoxStyles = ({
   marginLeft,
   marginRight,
   gap,
+  width,
   minHeight,
   minWidth,
   maxHeight,
@@ -47,6 +48,7 @@ const getBoxStyles = ({
   left,
   right,
   bottom,
+  zIndex,
 }: BoxProps & { theme: Theme }): CSSObject => ({
   display,
   flex,
@@ -65,6 +67,7 @@ const getBoxStyles = ({
   marginLeft: getSpacingValue({ value: marginLeft, theme }),
   marginRight: getSpacingValue({ value: marginRight, theme }),
   gap: getSpacingValue({ value: gap, theme }),
+  width,
   minHeight: minHeight ? makeSize(minHeight) : undefined,
   minWidth: minWidth ? makeSize(minWidth) : undefined,
   maxHeight: maxHeight ? makeSize(maxHeight) : undefined,
@@ -75,6 +78,7 @@ const getBoxStyles = ({
   left,
   right,
   bottom,
+  zIndex,
 });
 
 export default getBoxStyles;

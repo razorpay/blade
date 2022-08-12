@@ -4,6 +4,7 @@ import { Highlight } from '@storybook/design-system';
 import React from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInput as BaseInputComponent } from './BaseInput';
+import iconMap from '~components/Icons/iconMap';
 
 export default {
   title: 'Components/Input/BaseInput (Internal)',
@@ -23,6 +24,22 @@ export default {
     errorText: undefined,
     successText: undefined,
     isRequired: false,
+    leadingIcon: undefined,
+    prefix: '',
+    suffix: '',
+    trailingIcon: undefined,
+  },
+  argTypes: {
+    leadingIcon: {
+      name: 'leadingIcon',
+      type: 'select',
+      options: Object.keys(iconMap),
+    },
+    trailingIcon: {
+      name: 'trailingIcon',
+      type: 'select',
+      options: Object.keys(iconMap),
+    },
   },
   parameters: {
     docs: {
@@ -46,8 +63,18 @@ export default {
   },
 } as Meta<BaseInputProps>;
 
-const BaseInputTemplate: ComponentStory<typeof BaseInputComponent> = (args) => {
-  return <BaseInputComponent {...args} />;
+const BaseInputTemplate: ComponentStory<typeof BaseInputComponent> = ({
+  leadingIcon,
+  trailingIcon,
+  ...args
+}) => {
+  return (
+    <BaseInputComponent
+      {...args}
+      leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+      trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+    />
+  );
 };
 
 export const BaseInput = BaseInputTemplate.bind({});

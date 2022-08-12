@@ -2,7 +2,7 @@ import type { CSSObject } from 'styled-components';
 import type { BaseInputProps } from './BaseInput';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
-import { makeBorderSize, makeSpace } from '~utils';
+import { getPlatformType, makeBorderSize, makeSpace } from '~utils';
 
 type GetInputStyles = Pick<BaseInputProps, 'isDisabled' | 'validationState'> & {
   isFocused?: boolean;
@@ -54,21 +54,27 @@ const getBaseInputStyles = ({
   isFocused,
   isDisabled,
   validationState,
-}: GetInputStyles): CSSObject => ({
-  ...getTextStyles({
-    size: 'medium',
-    variant: 'body',
-    type: isDisabled ? 'placeholder' : 'subtle',
-    weight: 'regular',
-    contrast: 'low',
-    theme,
-  }),
-  ...getInputBackgroundAndBorderStyles({ theme, isFocused, isDisabled, validationState }),
-  paddingTop: makeSpace(theme.spacing[2]),
-  paddingBottom: makeSpace(theme.spacing[2]),
-  paddingLeft: '44px',
-  paddingRight: makeSpace(theme.spacing[3]),
-  width: '100%',
-});
+}: GetInputStyles): CSSObject => {
+  const isReactNative = getPlatformType() === 'react-native';
+
+  return {
+    ...getTextStyles({
+      size: 'medium',
+      variant: 'body',
+      type: isDisabled ? 'placeholder' : 'subtle',
+      weight: 'regular',
+      contrast: 'low',
+      theme,
+    }),
+    ...getInputBackgroundAndBorderStyles({ theme, isFocused, isDisabled, validationState }),
+    paddingTop: makeSpace(theme.spacing[2]),
+    paddingBottom: makeSpace(theme.spacing[2]),
+    paddingLeft: makeSpace(theme.spacing[3]),
+    paddingRight: makeSpace(theme.spacing[3]),
+    width: '100%',
+    ...(isReactNative ? { lineHeight: undefined } : {}),
+    ...(isReactNative ? { height: '36px' } : {}),
+  };
+};
 
 export default getBaseInputStyles;

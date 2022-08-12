@@ -1,6 +1,7 @@
 import React from 'react';
-import type { ReactElement } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import { StyledBaseInput } from './StyledBaseInput';
+import { BaseInputVisuals } from './BaseInputVisuals';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
 import { getPlatformType, useBreakpoint } from '~utils';
@@ -9,9 +10,14 @@ import type { FormHintProps } from '~components/Form/FormHint';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
-import { InfoIcon, CloseIcon, CreditCardIcon } from '~components/Icons';
 
-import { Text } from '~components/Typography';
+/**
+ * Remaining things for Slots
+ * 1. compute padding left and right
+ * 2. compute padding left and right with prefix and suffix as dynamic things
+ * 3. make interaction element work
+ * 4. remove hardcoding from the input styles for native - done
+ */
 
 export type HandleOnChange = ({
   name,
@@ -117,14 +123,15 @@ export type BaseInputProps = InputLabelProps &
      * Prefix symbol to be displayed at the beginning of the input field
      */
     prefix?: string;
-    /**
-     * Decides whether to render a clear icon button
-     */
-    showClearButton?: boolean;
-    /**
-     * Event handler to handle the onClick event for clear button.
-     */
-    onClearButtonClick?: () => void;
+    interactionElement?: ReactNode;
+    // /**
+    //  * Decides whether to render a clear icon button
+    //  */
+    // showClearButton?: boolean;
+    // /**
+    //  * Event handler to handle the onClick event for clear button.
+    //  */
+    // onClearButtonClick?: () => void;
     /**
      * Decides whether to show a loading spinner for the input field.
      */
@@ -179,17 +186,17 @@ const useInput = ({
 };
 
 export const getHintType = ({
-  _validationState,
+  validationState,
   hasHelpText,
 }: {
-  _validationState: BaseInputProps['validationState'];
+  validationState: BaseInputProps['validationState'];
   hasHelpText: boolean;
 }): FormHintProps['type'] => {
-  if (_validationState === 'error') {
+  if (validationState === 'error') {
     return 'error';
   }
 
-  if (_validationState === 'success') {
+  if (validationState === 'success') {
     return 'success';
   }
 
@@ -216,6 +223,11 @@ export const BaseInput = ({
   helpText,
   successText,
   isRequired,
+  leadingIcon,
+  prefix,
+  interactionElement,
+  suffix,
+  trailingIcon,
 }: BaseInputProps): ReactElement => {
   const { theme } = useTheme();
   const { handleOnChange } = useInput({ defaultValue, value, onChange });
@@ -228,8 +240,8 @@ export const BaseInput = ({
       <Box
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
-        justifyContent={isLabelLeftPositioned ? 'center' : 'normal'}
-        alignItems={isLabelLeftPositioned ? 'center' : 'normal'}
+        justifyContent={isLabelLeftPositioned ? 'center' : undefined}
+        alignItems={isLabelLeftPositioned ? 'center' : undefined}
       >
         <FormLabel
           as="label"
@@ -240,24 +252,8 @@ export const BaseInput = ({
         >
           {label}
         </FormLabel>
-        <Box position="relative">
-          <Box
-            position="absolute"
-            paddingLeft="spacing.3"
-            transform="translateY(-50%)"
-            display="flex"
-            flexDirection="row"
-            justifyContent="center"
-            alignItems="center"
-            top="50%"
-          >
-            <CreditCardIcon color="feedback.icon.neutral.lowContrast" size="small" />
-            <Box paddingLeft="spacing.1">
-              <Text size="medium" variant="body" weight="regular" contrast="low">
-                $
-              </Text>
-            </Box>
-          </Box>
+        <Box position="relative" width="100%">
+          <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} />
           <StyledBaseInput
             id={inputId}
             name={name}
@@ -271,33 +267,16 @@ export const BaseInput = ({
             handleOnChange={handleOnChange}
             hasLeadingIcon={true}
           />
-          <Box
-            position="absolute"
-            paddingLeft="spacing.2"
-            paddingRight="spacing.3"
-            display="flex"
-            flexDirection="row"
-            justifyContent="center"
-            alignItems="center"
-            transform="translateY(-50%)"
-            top="50%"
-            right="0"
-          >
-            <CloseIcon color="feedback.icon.neutral.lowContrast" size="small" />
-            <Box paddingLeft="spacing.1">
-              <Text size="medium" variant="body" weight="regular" contrast="low">
-                .00
-              </Text>
-            </Box>
-            <Box paddingLeft="spacing.1" display="flex">
-              <InfoIcon color="feedback.icon.neutral.lowContrast" size="small" />
-            </Box>
-          </Box>
+          <BaseInputVisuals
+            interactionElement={interactionElement}
+            suffix={suffix}
+            trailingIcon={trailingIcon}
+          />
         </Box>
       </Box>
-      <Box marginLeft={isLabelLeftPositioned ? 120 : 'auto'}>
+      <Box marginLeft={isLabelLeftPositioned ? 120 : undefined}>
         <FormHint
-          type={getHintType({ _validationState: validationState, hasHelpText: Boolean(helpText) })}
+          type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
           helpText={helpText}
           errorText={errorText}
           successText={successText}

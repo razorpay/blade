@@ -19,6 +19,7 @@ export type BoxProps = {
   marginLeft?: DotNotationSpacingStringToken | 'auto' | number;
   marginRight?: DotNotationSpacingStringToken | 'auto' | number;
   gap?: DotNotationSpacingStringToken | 'auto';
+  width?: CSSObject['width'];
   minHeight?: number;
   minWidth?: number;
   maxHeight?: number;
@@ -29,6 +30,7 @@ export type BoxProps = {
   left?: CSSObject['left'];
   right?: CSSObject['right'];
   bottom?: CSSObject['bottom'];
+  zIndex?: CSSObject['zIndex'];
 };
 
 export { default } from './Box.web';
