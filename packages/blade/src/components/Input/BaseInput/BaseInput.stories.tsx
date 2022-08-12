@@ -5,6 +5,7 @@ import React from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInput as BaseInputComponent } from './BaseInput';
 import iconMap from '~components/Icons/iconMap';
+import { InfoIcon } from '~components/Icons';
 
 export default {
   title: 'Components/Input/BaseInput (Internal)',
@@ -26,6 +27,7 @@ export default {
     isRequired: false,
     leadingIcon: undefined,
     prefix: '',
+    interactionElement: <InfoIcon size="small" color="feedback.icon.neutral.lowContrast" />,
     suffix: '',
     trailingIcon: undefined,
   },

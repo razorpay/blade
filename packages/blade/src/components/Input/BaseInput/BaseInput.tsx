@@ -15,7 +15,7 @@ import type { IconComponent } from '~components/Icons';
  * Remaining things for Slots
  * 1. compute padding left and right
  * 2. compute padding left and right with prefix and suffix as dynamic things
- * 3. make interaction element work
+ * 3. make interaction element work - done
  * 4. remove hardcoding from the input styles for native - done
  */
 
@@ -132,10 +132,10 @@ export type BaseInputProps = InputLabelProps &
     //  * Event handler to handle the onClick event for clear button.
     //  */
     // onClearButtonClick?: () => void;
-    /**
-     * Decides whether to show a loading spinner for the input field.
-     */
-    isLoading?: boolean;
+    // /**
+    //  * Decides whether to show a loading spinner for the input field.
+    //  */
+    // isLoading?: boolean;
     /**
      * Suffix symbol to be displayed at the beginning of the input field
      */
