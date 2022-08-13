@@ -17,7 +17,7 @@ describe('<IconButton />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should handle callback', () => {
+  it('should handle onClick', () => {
     const onClick = jest.fn();
     const { getByRole } = renderWithTheme(
       <IconButton accessibilityLabel="Close" icon={CloseIcon} onClick={onClick} />,

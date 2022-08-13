@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 
-import type { IconComponent } from '../..';
 import StyledIconButton from './StyledIconButton';
+import type { IconComponent } from '~components/Icons';
 
 export type IconButtonProps = {
   /**

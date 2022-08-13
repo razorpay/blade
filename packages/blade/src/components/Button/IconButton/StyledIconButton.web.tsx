@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import type { ReactElement } from 'react';
 import type { StyledIconButtonProps } from './StyledIconButton.d';
-import { makeAccessible } from '~utils';
+import { makeAccessible, makeMotionTime } from '~utils';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
 
 type StyledButtonProps = {
@@ -25,7 +25,9 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
     alignItems: 'center',
     justifyContent: 'center',
     color: linkColorToken.default[contrastToken],
-    transition: `all ${motionToken.duration.xquick} ${motionToken.easing.standard.effective}`,
+    transitionProperty: 'color, box-shadow',
+    transitionDuration: makeMotionTime(motionToken.duration.xquick),
+    transitionTimingFunction: motionToken.easing.standard.effective as string,
 
     '&:hover': {
       color: linkColorToken.hover[contrastToken],

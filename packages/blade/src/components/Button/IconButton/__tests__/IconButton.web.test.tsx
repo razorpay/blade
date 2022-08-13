@@ -18,7 +18,7 @@ describe('<IconButton />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should handle callback', async () => {
+  it('should handle onClick', async () => {
     const user = userEvent.setup();
     const onClick = jest.fn();
     const { getByRole } = renderWithTheme(

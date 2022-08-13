@@ -26,7 +26,7 @@ type StyledPressableProps = {
 };
 
 const StyledPressable = styled.Pressable<StyledPressableProps>({
-  alignSelf: 'flex-start', // ensure button only takes needed width
+  alignSelf: 'center', // ensure button only takes needed width
 });
 
 const StyledIconButton = ({
