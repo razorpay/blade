@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 0.13.5
+
+### Patch Changes
+
+- 7909d7c: fix(blade): Checkbox design changes
+
 ## 0.13.4
 
 ### Patch Changes
