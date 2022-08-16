@@ -13,8 +13,8 @@ import type { IconComponent } from '~components/Icons';
 
 /**
  * Remaining things for Slots
- * 1. compute padding left and right
- * 2. compute padding left and right with prefix and suffix as dynamic things
+ * 1. compute padding left and right with prefix and suffix as dynamic things
+ * 2. compute padding left and right - done
  * 3. make interaction element work - done
  * 4. remove hardcoding from the input styles for native - done
  */
@@ -253,7 +253,7 @@ export const BaseInput = ({
           {label}
         </FormLabel>
         <Box position="relative" width="100%">
-          <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} />
+          <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
           <StyledBaseInput
             id={inputId}
             name={name}
@@ -265,12 +265,17 @@ export const BaseInput = ({
             validationState={validationState}
             isRequired={isRequired}
             handleOnChange={handleOnChange}
-            hasLeadingIcon={true}
+            leadingIcon={leadingIcon}
+            prefix={prefix}
+            interactionElement={interactionElement}
+            suffix={suffix}
+            trailingIcon={trailingIcon}
           />
           <BaseInputVisuals
             interactionElement={interactionElement}
             suffix={suffix}
             trailingIcon={trailingIcon}
+            isDisabled={isDisabled}
           />
         </Box>
       </Box>

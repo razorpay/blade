@@ -14,9 +14,13 @@ type ActionIconColors = `action.icon.${DotNotationColorStringToken<
   Theme['colors']['action']['icon']
 >}`;
 
-export type IconSize = 'large' | 'medium' | 'small' | 'xlarge' | 'xsmall' | 'xxsmall';
+type TextIconColors = `surface.text.${DotNotationColorStringToken<
+  Theme['colors']['surface']['text']
+>}`;
+
+export type IconSize = 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 export type IconProps = {
-  color: ActionIconColors | FeedbackIconColors | FeedbackActionIconColors;
+  color: ActionIconColors | FeedbackIconColors | FeedbackActionIconColors | TextIconColors;
   size: IconSize;
 };
 export type IconComponent = React.ComponentType<IconProps>;

@@ -11,6 +11,11 @@ const StyledBaseNativeInput = styled.input<StyledBaseInputProps>((props) => ({
     isDisabled: props.disabled,
     theme: props.theme,
     validationState: props.validationState,
+    leadingIcon: props.leadingIcon,
+    prefix: props.prefix,
+    interactionElement: props.interactionElement,
+    suffix: props.suffix,
+    trailingIcon: props.trailingIcon,
   }),
   '::placeholder': getTextStyles({
     size: 'medium',

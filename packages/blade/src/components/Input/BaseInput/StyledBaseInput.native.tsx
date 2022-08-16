@@ -14,6 +14,11 @@ const StyledNativeBaseInput = styled.TextInput<
     isFocused: props.isFocused,
     isDisabled: !props.editable,
     validationState: props.validationState,
+    leadingIcon: props.leadingIcon,
+    prefix: props.prefix,
+    interactionElement: props.interactionElement,
+    suffix: props.suffix,
+    trailingIcon: props.trailingIcon,
   }),
 }));
 

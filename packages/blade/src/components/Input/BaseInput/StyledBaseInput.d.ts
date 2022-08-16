@@ -15,6 +15,11 @@ export type StyledBaseInputProps = {
   | 'isDisabled'
   | 'isRequired'
   | 'validationState'
+  | 'leadingIcon'
+  | 'prefix'
+  | 'interactionElement'
+  | 'suffix'
+  | 'trailingIcon'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

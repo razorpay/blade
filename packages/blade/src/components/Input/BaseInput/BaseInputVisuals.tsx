@@ -1,9 +1,15 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import Box from '~components/Box';
 import type { BoxProps } from '~components/Box/Box';
 import { Text } from '~components/Typography';
 import { getPlatformType } from '~utils';
+
+type InputVisuals = Pick<
+  BaseInputProps,
+  'leadingIcon' | 'prefix' | 'interactionElement' | 'suffix' | 'trailingIcon' | 'isDisabled'
+>;
 
 const getVisualContainerStyles = ({
   visualSide,
@@ -100,21 +106,41 @@ const getSuffixStyles = ({
   };
 };
 
+export const getInputVisualsToBeRendered = ({
+  leadingIcon,
+  prefix,
+  interactionElement,
+  suffix,
+  trailingIcon,
+}: InputVisuals) => ({
+  hasLeadingIcon: Boolean(leadingIcon),
+  hasPrefix: Boolean(prefix),
+  hasInteractionElement: Boolean(interactionElement),
+  hasSuffix: Boolean(suffix),
+  hasTrailingIcon: Boolean(trailingIcon),
+});
+
 export const BaseInputVisuals = ({
   leadingIcon: LeadingIcon,
   prefix,
   interactionElement,
   suffix,
   trailingIcon: TrailingIcon,
-}: Pick<
-  BaseInputProps,
-  'leadingIcon' | 'prefix' | 'interactionElement' | 'suffix' | 'trailingIcon'
->): ReactElement | null => {
-  const hasLeadingIcon = Boolean(LeadingIcon);
-  const hasPrefix = Boolean(prefix);
-  const hasInteractionElement = Boolean(interactionElement);
-  const hasSuffix = Boolean(suffix);
-  const hasTrailingIcon = Boolean(TrailingIcon);
+  isDisabled,
+}: InputVisuals): ReactElement | null => {
+  const {
+    hasLeadingIcon,
+    hasPrefix,
+    hasInteractionElement,
+    hasSuffix,
+    hasTrailingIcon,
+  } = getInputVisualsToBeRendered({
+    leadingIcon: LeadingIcon,
+    prefix,
+    interactionElement,
+    suffix,
+    trailingIcon: TrailingIcon,
+  });
 
   const hasLeadingVisuals = hasLeadingIcon || hasPrefix;
   const hasTrailingVisuals = hasInteractionElement || hasSuffix || hasTrailingIcon;
@@ -127,12 +153,27 @@ export const BaseInputVisuals = ({
       >
         {hasLeadingIcon ? (
           <Box paddingLeft="spacing.3" display="flex">
-            {LeadingIcon && <LeadingIcon size="small" color="feedback.icon.neutral.lowContrast" />}
+            {LeadingIcon && (
+              <LeadingIcon
+                size="small"
+                color={
+                  isDisabled
+                    ? 'surface.text.placeholder.lowContrast'
+                    : 'surface.text.subtle.lowContrast'
+                }
+              />
+            )}
           </Box>
         ) : null}
         {hasPrefix ? (
           <Box {...getPrefixStyles({ hasLeadingIcon, hasPrefix })}>
-            <Text size="medium" variant="body" weight="regular" contrast="low">
+            <Text
+              size="medium"
+              variant="body"
+              weight="regular"
+              contrast="low"
+              type={isDisabled ? 'placeholder' : 'subtle'}
+            >
               {prefix}
             </Text>
           </Box>
@@ -157,7 +198,13 @@ export const BaseInputVisuals = ({
         ) : null}
         {hasSuffix ? (
           <Box {...getSuffixStyles({ hasTrailingIcon, hasSuffix })}>
-            <Text size="medium" variant="body" weight="regular" contrast="low">
+            <Text
+              size="medium"
+              variant="body"
+              weight="regular"
+              contrast="low"
+              type={isDisabled ? 'placeholder' : 'subtle'}
+            >
               {suffix}
             </Text>
           </Box>
@@ -165,7 +212,14 @@ export const BaseInputVisuals = ({
         {hasTrailingIcon ? (
           <Box paddingRight="spacing.3" display="flex">
             {TrailingIcon && (
-              <TrailingIcon size="small" color="feedback.icon.neutral.lowContrast" />
+              <TrailingIcon
+                size="small"
+                color={
+                  isDisabled
+                    ? 'surface.text.placeholder.lowContrast'
+                    : 'surface.text.subtle.lowContrast'
+                }
+              />
             )}
           </Box>
         ) : null}
