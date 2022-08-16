@@ -2,10 +2,10 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
-import { useControllableState } from '../../hooks/useControllable';
-import { useId } from '../../hooks/useId';
-import { getPlatformType, makeAccessible } from '../../utils';
 import type { RadioProps } from './Radio';
+import { useControllableState } from '~src/hooks/useControllable';
+import { useId } from '~src/hooks/useId';
+import { getPlatformType, makeAccessible } from '~utils';
 
 type UseRadioProps = Pick<
   RadioProps,
@@ -27,11 +27,11 @@ const useRadio = ({
   const isReactNative = getPlatformType() === 'react-native';
   if (isChecked && defaultChecked) {
     throw new Error(
-      `[Blade useRadio] Do not provide both 'isChecked' and 'defaultChecked' to useRadio. Consider if you want this component to be controlled or uncontrolled.`,
+      `[Blade Radio] Do not provide both 'isChecked' and 'defaultChecked' to useRadio. Consider if you want this component to be controlled or uncontrolled.`,
     );
   }
 
-  const [radioState, setRadioStateChange] = useControllableState({
+  const [radioState, setRadioState] = useControllableState({
     value: isChecked,
     defaultValue: defaultChecked ?? false,
   });
@@ -43,7 +43,7 @@ const useRadio = ({
       return;
     }
 
-    setRadioStateChange((checked) => {
+    setRadioState((checked) => {
       onChange?.({
         isChecked: !checked,
         event: event as React.ChangeEvent,
@@ -54,9 +54,8 @@ const useRadio = ({
   };
 
   const state = {
-    isReactNative,
     isChecked: radioState,
-    setChecked: setRadioStateChange,
+    setChecked: setRadioState,
   };
 
   const idBase = useId('radio');

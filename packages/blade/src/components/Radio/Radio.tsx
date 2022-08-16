@@ -7,6 +7,7 @@ import { CheckboxInput } from '~components/Checkbox/CheckboxInput';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
+import { getPlatformType } from '~utils';
 
 type OnChange = ({
   isChecked,
@@ -97,13 +98,14 @@ const Radio = ({
   });
   const _hasError = validationState === 'error';
   const showHelpText = !_hasError && helpText;
+  const isReactNative = getPlatformType() === 'react-native';
 
   return (
-    <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
+    <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
       <CheckboxInput
         isChecked={state.isChecked}
         isDisabled={isDisabled}
-        isNegative={_hasError}
+        isNegative={_hasError} // TODO: rename to hasError
         inputProps={inputProps}
       />
       <RadioIcon isChecked={state.isChecked} isDisabled={isDisabled} isNegative={_hasError} />
