@@ -6,20 +6,8 @@ import type { StyledIconButtonProps } from './StyledIconButton';
 import { makeAccessible } from '~utils';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
 
-type GetIconColorTokenParams = {
-  isPressed: boolean;
-  contrast: ColorContrastTypes;
-};
-
 type State = 'active' | 'default';
 type IconColorToken = `feedback.neutral.action.icon.link.${State}.${ColorContrastTypes}Contrast`;
-
-const getIconColorToken = ({ isPressed, contrast }: GetIconColorTokenParams): IconColorToken => {
-  const contrastType = contrast === 'high' ? 'highContrast' : 'lowContrast';
-  const state = isPressed ? 'active' : 'default';
-
-  return `feedback.neutral.action.icon.link.${state}.${contrastType}`;
-};
 
 type StyledPressableProps = {
   contrast: ColorContrastTypes;
@@ -37,7 +25,13 @@ const StyledIconButton = ({
   accessibilityLabel,
 }: StyledIconButtonProps): ReactElement => {
   const [isPressed, setIsPressed] = useState(false);
-  const iconColorToken = getIconColorToken({ isPressed, contrast });
+  const getIconColorToken = (): IconColorToken => {
+    const contrastType = contrast === 'high' ? 'highContrast' : 'lowContrast';
+    const state = isPressed ? 'active' : 'default';
+
+    return `feedback.neutral.action.icon.link.${state}.${contrastType}`;
+  };
+  const iconColorToken = getIconColorToken();
 
   return (
     <StyledPressable
