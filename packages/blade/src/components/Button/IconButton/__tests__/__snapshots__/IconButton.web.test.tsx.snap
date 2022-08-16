@@ -20,8 +20,12 @@ exports[`<IconButton /> should render 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   color: hsla(216,27%,36%,1);
-  -webkit-transition: all 150 cubic-bezier(0.3,0,0.2,1);
-  transition: all 150 cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c0:hover {

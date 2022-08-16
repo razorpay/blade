@@ -20,7 +20,7 @@ exports[`<IconButton /> should render 1`] = `
   style={
     Array [
       Object {
-        "alignSelf": "flex-start",
+        "alignSelf": "center",
       },
     ]
   }
