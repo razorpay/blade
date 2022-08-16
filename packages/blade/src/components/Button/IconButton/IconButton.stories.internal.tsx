@@ -37,6 +37,7 @@ const meta: Meta<IconButtonProps> = {
     accessibilityLabel: 'Close',
   },
   argTypes: {
+    onClick: { action: 'onClick' },
     icon: {
       name: 'icon',
       type: 'select',
