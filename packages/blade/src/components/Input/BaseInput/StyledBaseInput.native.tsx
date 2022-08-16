@@ -32,7 +32,7 @@ export const StyledBaseInput = ({
       editable={!isDisabled}
       onFocus={(): void => setisFocused(true)}
       onBlur={(): void => setisFocused(false)}
-      onChangeText={(text): void => handleOnChange({ inputName: name, inputValue: text })}
+      onChangeText={(text): void => handleOnChange({ name, value: text })}
       {...props}
     />
   );

@@ -10,11 +10,11 @@ import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 
 export type HandleOnChange = ({
-  inputName,
-  inputValue,
+  name,
+  value,
 }: {
-  inputName?: string;
-  inputValue?: React.ChangeEvent<HTMLInputElement> | string;
+  name?: string;
+  value?: React.ChangeEvent<HTMLInputElement> | string;
 }) => void;
 
 export type OnChange = ({ name, value }: { name?: string; value?: string }) => void;
@@ -57,7 +57,7 @@ type InputValidationProps = {
    * If `error`, the input is marked as invalid,
    * and `invalid` attribute will be added
    *
-   * If `success`, the input is marked as invalid,
+   * If `success`, the input is marked as valid,
    *
    */
   validationState?: 'success' | 'error' | 'none';
@@ -121,19 +121,19 @@ const useInput = ({
   }
 
   const handleOnChange: HandleOnChange = React.useCallback(
-    ({ inputName, inputValue }) => {
-      let _inputValue = '';
+    ({ name, value }) => {
+      let _value = '';
 
-      if (getPlatformType() === 'react-native' && typeof inputValue === 'string') {
-        _inputValue = inputValue;
-      } else if (typeof inputValue !== 'string') {
-        // it's weird but TS forced me to write this much code where I could have just done "getPlatformType() === 'react-native' ? inputValue : inputValue?.target.value" :(
-        _inputValue = inputValue?.target.value ?? '';
+      if (getPlatformType() === 'react-native' && typeof value === 'string') {
+        _value = value;
+      } else if (typeof value !== 'string') {
+        // it's weird but TS forced me to write this much code where I could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" :(
+        _value = value?.target.value ?? '';
       }
 
       onChange?.({
-        name: inputName,
-        value: _inputValue,
+        name,
+        value: _value,
       });
     },
     [onChange],

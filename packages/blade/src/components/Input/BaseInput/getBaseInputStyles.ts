@@ -4,15 +4,17 @@ import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeBorderSize, makeSpace } from '~utils';
 
+type GetInputStyles = Pick<BaseInputProps, 'isDisabled' | 'validationState'> & {
+  isFocused?: boolean;
+  theme: Theme;
+};
+
 export const getInputBackgroundAndBorderStyles = ({
   theme,
   isFocused,
   isDisabled,
   validationState,
-}: Pick<BaseInputProps, 'isDisabled' | 'validationState'> & {
-  isFocused?: boolean;
-  theme: Theme;
-}): CSSObject => {
+}: GetInputStyles): CSSObject => {
   // normal state
   let backgroundColor = theme.colors.brand.gray[200];
   let borderBottomColor = theme.colors.brand.gray[400];
@@ -52,10 +54,7 @@ const getBaseInputStyles = ({
   isFocused,
   isDisabled,
   validationState,
-}: Pick<BaseInputProps, 'isDisabled' | 'validationState'> & {
-  isFocused?: boolean;
-  theme: Theme;
-}): CSSObject => ({
+}: GetInputStyles): CSSObject => ({
   ...getTextStyles({
     size: 'medium',
     variant: 'body',

@@ -4,7 +4,7 @@ import type { BoxProps } from './Box';
 import { getIn, makeSize, makeSpace } from '~utils';
 
 // allows 'auto' as spacing value
-const getAutoSpacingValue = <T extends string | number | undefined>({
+const getSpacingValue = <T extends string | number | undefined>({
   value,
   theme,
 }: {
@@ -50,15 +50,15 @@ const getBoxStyles = ({
   alignItems,
   justifyContent,
   alignSelf,
-  paddingTop: getAutoSpacingValue({ value: paddingTop, theme }),
-  paddingBottom: getAutoSpacingValue({ value: paddingBottom, theme }),
-  paddingLeft: getAutoSpacingValue({ value: paddingLeft, theme }),
-  paddingRight: getAutoSpacingValue({ value: paddingRight, theme }),
-  marginTop: getAutoSpacingValue({ value: marginTop, theme }),
-  marginBottom: getAutoSpacingValue({ value: marginBottom, theme }),
-  marginLeft: getAutoSpacingValue({ value: marginLeft, theme }),
-  marginRight: getAutoSpacingValue({ value: marginRight, theme }),
-  gap: getAutoSpacingValue({ value: gap, theme }),
+  paddingTop: getSpacingValue({ value: paddingTop, theme }),
+  paddingBottom: getSpacingValue({ value: paddingBottom, theme }),
+  paddingLeft: getSpacingValue({ value: paddingLeft, theme }),
+  paddingRight: getSpacingValue({ value: paddingRight, theme }),
+  marginTop: getSpacingValue({ value: marginTop, theme }),
+  marginBottom: getSpacingValue({ value: marginBottom, theme }),
+  marginLeft: getSpacingValue({ value: marginLeft, theme }),
+  marginRight: getSpacingValue({ value: marginRight, theme }),
+  gap: getSpacingValue({ value: gap, theme }),
   minHeight: minHeight ? makeSize(minHeight) : undefined,
   minWidth: minWidth ? makeSize(minWidth) : undefined,
   maxHeight: maxHeight ? makeSize(maxHeight) : undefined,

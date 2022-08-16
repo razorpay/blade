@@ -114,12 +114,13 @@ const FormLabel = ({
   }
 
   const Component = as;
+  const isLabelLeftPositioned = position === 'left';
   // only set 120px label when device is desktop
-  const width = position === 'left' && isDesktop ? '120px' : 'auto';
+  const width = isLabelLeftPositioned && isDesktop ? '120px' : 'auto';
 
   return (
     <Component htmlFor={htmlFor} style={{ width, flexShrink: 0 }} id={id}>
-      <Box marginBottom="spacing.1">{textNode}</Box>
+      <Box marginBottom={isLabelLeftPositioned ? 'spacing.1' : 'spacing.0'}>{textNode}</Box>
     </Component>
   );
 };

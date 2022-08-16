@@ -46,7 +46,7 @@ export const StyledBaseInput = ({
     <StyledBaseNativeInput
       disabled={isDisabled}
       required={isRequired}
-      onChange={(event): void => handleOnChange({ inputName: name, inputValue: event })}
+      onChange={(event): void => handleOnChange({ name, value: event })}
       {...props}
     />
   );
