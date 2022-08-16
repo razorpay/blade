@@ -3,7 +3,7 @@
 
 import { fireEvent } from '@testing-library/react-native';
 
-import IconButton from '..';
+import { IconButton } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { CloseIcon } from '~components/Icons';
 
