@@ -1,7 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { Highlight } from '@storybook/design-system';
 
 import type { IconButtonProps } from './IconButton';
 import IconButtonComponent from './IconButton';
@@ -12,10 +11,10 @@ const Page = (): ReactElement => {
     <>
       <Title />
       <Subtitle>
-        Useful for making clickable icons. For example - close button for modals, inputs, etc.
+        Internal component - useful for making clickable icons. For example - close button for
+        modals, inputs, etc.
       </Subtitle>
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { IconButton } from '@razorpay/blade/components' \nimport type { IconButtonProps } from '@razorpay/blade/components'`}</Highlight>
       <Title>Example</Title>
       <Subtitle>
         You can change the properties of this button using the controls in the table below.
