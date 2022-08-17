@@ -94,8 +94,8 @@ export const getBaseInputStyles = ({
       contrast: 'low',
       theme,
     }),
-    outline: 'none',
-    border: 'none',
+    // take the full available width of parent container for input field
+    flex: 1,
     backgroundColor: 'transparent',
     paddingTop: makeSpace(theme.spacing[2]),
     paddingBottom: makeSpace(theme.spacing[2]),
@@ -105,8 +105,7 @@ export const getBaseInputStyles = ({
       hasInteractionElement || hasSuffix || hasTrailingIcon
         ? makeSpace(theme.spacing[2])
         : makeSpace(theme.spacing[3]),
-    width: '100%',
-    ...(isReactNative ? { lineHeight: undefined } : {}),
-    ...(isReactNative ? { height: '36px' } : {}),
+    ...(isReactNative ? { lineHeight: undefined, height: '36px' } : {}),
+    ...(!isReactNative ? { outline: 'none', border: 'none' } : {}),
   };
 };
