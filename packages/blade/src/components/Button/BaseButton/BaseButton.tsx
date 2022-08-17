@@ -345,7 +345,16 @@ const BaseButton = ({
       motionEasing={motionEasing}
     >
       {isLoading ? (
-        <Box display="flex" justifyContent="center">
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          position="absolute"
+          top={0}
+          left={0}
+          bottom={0}
+          right={0}
+        >
           <StyledSpinner color={iconColor} size={spinnerSize} />
         </Box>
       ) : null}
