@@ -11,9 +11,9 @@ export type BoxProps = {
   alignSelf?: CSSObject['alignSelf'];
   position?: CSSObject['position'];
   top?: CSSObject['top'];
-  left?: CSSObject['left'];
-  bottom?: CSSObject['bottom'];
   right?: CSSObject['right'];
+  bottom?: CSSObject['bottom'];
+  left?: CSSObject['left'];
   paddingTop?: DotNotationSpacingStringToken | 'auto';
   paddingBottom?: DotNotationSpacingStringToken | 'auto';
   paddingLeft?: DotNotationSpacingStringToken | 'auto';
