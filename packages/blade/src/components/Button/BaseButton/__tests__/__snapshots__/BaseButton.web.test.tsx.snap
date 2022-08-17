@@ -20,6 +20,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -130,6 +131,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -240,6 +242,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -385,6 +388,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -530,6 +534,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -662,6 +667,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -784,6 +790,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -895,6 +902,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1006,6 +1014,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1117,6 +1126,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1228,6 +1238,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1339,6 +1350,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1450,6 +1462,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1561,6 +1574,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1672,6 +1686,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1783,6 +1798,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1894,6 +1910,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -2005,6 +2022,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -2116,6 +2134,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -2227,6 +2246,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -2337,6 +2357,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -2447,6 +2468,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -2557,6 +2579,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -2667,6 +2690,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -2777,6 +2801,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -2887,6 +2912,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -2997,6 +3023,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -3107,6 +3134,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -3217,6 +3245,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -3327,6 +3356,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -3437,6 +3467,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -3547,6 +3578,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -3657,6 +3689,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -3767,6 +3800,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -3877,6 +3911,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
