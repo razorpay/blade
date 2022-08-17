@@ -1,12 +1,14 @@
 import paymentTheme from './paymentTheme';
 import bankingTheme from './bankingTheme';
-import type { ThemeTokens } from './theme.d';
+import type { Colors, ThemeTokens } from './theme.d';
 import type { DeepPartial } from '~utils';
 import { isEqual, merge, cloneDeep, isPartialMatchObjectKeys } from '~utils';
 
 type OverrideTheme = {
   baseThemeTokens: ThemeTokens;
   overrides: DeepPartial<ThemeTokens>;
+  baseGlobalTokens?: Colors,
+  overrideGlobalTokens?: DeepPartial<Colors>,
 };
 
 const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeTokens => {

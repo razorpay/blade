@@ -57,7 +57,9 @@
     "chromatic": "npx chromatic"
   },
   "dependencies": {
-    "@babel/runtime": "7.16.5"
+    "@babel/runtime": "7.16.5",
+    "@types/tinycolor2": "1.4.3",
+    "tinycolor2": "1.4.2"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
@@ -132,8 +134,8 @@
     "rollup": "2.61.1",
     "rollup-plugin-dts": "4.0.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
-    "styled-components": "5.3.5",
     "style-dictionary": "3.7.1",
+    "styled-components": "5.3.5",
     "tsconfig-paths-webpack-plugin": "3.5.2"
   },
   "peerDependencies": {
