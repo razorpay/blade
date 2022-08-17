@@ -4,33 +4,17 @@ import type { BaseInputProps } from './BaseInput';
 import Box from '~components/Box';
 import type { BoxProps } from '~components/Box/Box';
 import { Text } from '~components/Typography';
-import { getPlatformType } from '~utils';
 
 type InputVisuals = Pick<
   BaseInputProps,
   'leadingIcon' | 'prefix' | 'interactionElement' | 'suffix' | 'trailingIcon' | 'isDisabled'
 >;
 
-const getVisualContainerStyles = ({
-  visualSide,
-}: {
-  visualSide: 'leading' | 'trailing';
-}): BoxProps => {
-  const isReactNative = getPlatformType() === 'react-native';
-  return {
-    position: 'absolute',
-    // we don't need transform on react-native we can center only with the 'top' property
-    transform: isReactNative ? undefined : 'translateY(-50%)',
-    // On web we control the alignment center with top+transform combination but on native it's only 'top'
-    top: isReactNative ? '15%' : '50%',
-    right: visualSide === 'trailing' ? 0 : undefined,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1,
-  };
-};
+const getVisualContainerStyles = (): BoxProps => ({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+});
 
 const getPrefixStyles = ({
   hasLeadingIcon,
@@ -147,10 +131,7 @@ export const BaseInputVisuals = ({
 
   if (hasLeadingVisuals) {
     return (
-      <Box
-        {...getVisualContainerStyles({ visualSide: 'leading' })}
-        style={{ pointerEvents: 'none' }}
-      >
+      <Box {...getVisualContainerStyles()} style={{ pointerEvents: 'none' }}>
         {hasLeadingIcon ? (
           <Box paddingLeft="spacing.3" display="flex">
             {LeadingIcon && (
@@ -184,10 +165,7 @@ export const BaseInputVisuals = ({
 
   if (hasTrailingVisuals) {
     return (
-      <Box
-        {...getVisualContainerStyles({ visualSide: 'trailing' })}
-        style={{ pointerEvents: 'none' }}
-      >
+      <Box {...getVisualContainerStyles()} style={{ pointerEvents: 'none' }}>
         {hasInteractionElement ? (
           <Box
             {...getInteractionElementStyles({ hasTrailingIcon, hasInteractionElement, hasSuffix })}

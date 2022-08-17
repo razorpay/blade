@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import { StyledBaseInput } from './StyledBaseInput';
 import { BaseInputVisuals } from './BaseInputVisuals';
+import { BaseInputWrapper } from './BaseInputWrapper';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
 import { getPlatformType, useBreakpoint } from '~utils';
@@ -234,6 +235,7 @@ export const BaseInput = ({
   const { labelId, inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
+  const [isFocused, setIsFocused] = useState(false);
 
   return (
     <>
@@ -252,7 +254,11 @@ export const BaseInput = ({
         >
           {label}
         </FormLabel>
-        <Box position="relative" width="100%">
+        <BaseInputWrapper
+          isDisabled={isDisabled}
+          validationState={validationState}
+          isFocused={isFocused}
+        >
           <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
           <StyledBaseInput
             id={inputId}
@@ -270,6 +276,7 @@ export const BaseInput = ({
             interactionElement={interactionElement}
             suffix={suffix}
             trailingIcon={trailingIcon}
+            setIsFocused={setIsFocused}
           />
           <BaseInputVisuals
             interactionElement={interactionElement}
@@ -277,7 +284,7 @@ export const BaseInput = ({
             trailingIcon={trailingIcon}
             isDisabled={isDisabled}
           />
-        </Box>
+        </BaseInputWrapper>
       </Box>
       <Box marginLeft={isLabelLeftPositioned ? 120 : undefined}>
         <FormHint

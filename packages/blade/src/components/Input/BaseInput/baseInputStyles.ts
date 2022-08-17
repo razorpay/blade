@@ -56,89 +56,13 @@ export const getInputBackgroundAndBorderStyles = ({
     borderTopLeftRadius: makeBorderSize(theme.border.radius.small),
     borderTopRightRadius: makeBorderSize(theme.border.radius.small),
     borderBottomWidth: makeBorderSize(theme.border.width.thin),
+    borderBottomStyle: 'solid',
   };
 };
 
-const makePaddingLeft = ({
-  hasLeadingIcon,
-  hasPrefix,
-  spacing,
-}: {
-  hasLeadingIcon: boolean;
-  hasPrefix: boolean;
-  spacing: Theme['spacing'];
-}): string => {
-  let padding = spacing[3];
-
-  if (hasLeadingIcon) {
-    padding += spacing[4];
-  }
-
-  if (hasPrefix) {
-    padding += spacing[2];
-  }
-
-  const leadingVisualsCount = [hasLeadingIcon, hasPrefix].filter(Boolean).length;
-
-  // add the padding for the cursor on the right end if any of the visuals is present
-  if (leadingVisualsCount) {
-    padding += spacing[2];
-  }
-  // add the amount of spacing between leading visuals to the padding
-  if (leadingVisualsCount === 2) {
-    padding += spacing[1];
-  }
-
-  return makeSpace(padding);
-};
-
-const makePaddingRight = ({
-  hasSuffix,
-  hasInteractionElement,
-  hasTrailingIcon,
-  spacing,
-}: {
-  hasSuffix: boolean;
-  hasInteractionElement: boolean;
-  hasTrailingIcon: boolean;
-  spacing: Theme['spacing'];
-}): string => {
-  let padding = spacing[3];
-
-  if (hasInteractionElement) {
-    padding += spacing[4];
-  }
-
-  if (hasSuffix) {
-    padding += spacing[2];
-  }
-
-  if (hasTrailingIcon) {
-    padding += spacing[4];
-  }
-
-  const trailingVisualsCount = [hasInteractionElement, hasSuffix, hasTrailingIcon].filter(Boolean)
-    .length;
-
-  // add the padding for the cursor on the right end if any of the visuals is present
-  if (trailingVisualsCount) {
-    padding += spacing[2];
-  }
-  // add the amount of spacing between trailing visuals to the padding
-  if (trailingVisualsCount == 2) {
-    padding += spacing[1];
-  } else if (trailingVisualsCount == 3) {
-    padding += spacing[2];
-  }
-
-  return makeSpace(padding);
-};
-
-const getBaseInputStyles = ({
+export const getBaseInputStyles = ({
   theme,
-  isFocused,
   isDisabled,
-  validationState,
   leadingIcon,
   prefix,
   interactionElement,
@@ -170,20 +94,19 @@ const getBaseInputStyles = ({
       contrast: 'low',
       theme,
     }),
-    ...getInputBackgroundAndBorderStyles({ theme, isFocused, isDisabled, validationState }),
+    outline: 'none',
+    border: 'none',
+    backgroundColor: 'transparent',
     paddingTop: makeSpace(theme.spacing[2]),
     paddingBottom: makeSpace(theme.spacing[2]),
-    paddingLeft: makePaddingLeft({ hasLeadingIcon, hasPrefix, spacing: theme.spacing }),
-    paddingRight: makePaddingRight({
-      hasInteractionElement,
-      hasSuffix,
-      hasTrailingIcon,
-      spacing: theme.spacing,
-    }),
+    paddingLeft:
+      hasLeadingIcon || hasPrefix ? makeSpace(theme.spacing[2]) : makeSpace(theme.spacing[3]),
+    paddingRight:
+      hasInteractionElement || hasSuffix || hasTrailingIcon
+        ? makeSpace(theme.spacing[2])
+        : makeSpace(theme.spacing[3]),
     width: '100%',
     ...(isReactNative ? { lineHeight: undefined } : {}),
     ...(isReactNative ? { height: '36px' } : {}),
   };
 };
-
-export default getBaseInputStyles;

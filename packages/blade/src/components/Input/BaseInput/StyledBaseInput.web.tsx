@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import type { ReactElement } from 'react';
-import getBaseInputStyles, { getInputBackgroundAndBorderStyles } from './getBaseInputStyles';
+import { getBaseInputStyles } from './baseInputStyles';
 
 import type { StyledBaseInputProps } from './StyledBaseInput.d';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
@@ -26,18 +26,8 @@ const StyledBaseNativeInput = styled.input<StyledBaseInputProps>((props) => ({
     theme: props.theme,
   }),
   ':focus': {
-    ...getInputBackgroundAndBorderStyles({
-      theme: props.theme,
-      isFocused: true,
-      isDisabled: props.disabled,
-      validationState: props.validationState,
-    }),
     outline: 'none',
   },
-  borderTopStyle: 'hidden',
-  borderLeftStyle: 'hidden',
-  borderRightStyle: 'hidden',
-  boxSizing: 'border-box',
 }));
 
 export const StyledBaseInput = ({

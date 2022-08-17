@@ -2,25 +2,23 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components/native';
 import type { StyledBaseInputProps } from './StyledBaseInput.d';
+import { getBaseInputStyles } from './baseInputStyles';
 
-import getBaseInputStyles from './getBaseInputStyles';
-import type { Theme } from '~components/BladeProvider';
-
-const StyledNativeBaseInput = styled.TextInput<
-  StyledBaseInputProps & { isFocused: boolean; theme: Theme }
->((props) => ({
-  ...getBaseInputStyles({
-    theme: props.theme,
-    isFocused: props.isFocused,
-    isDisabled: !props.editable,
-    validationState: props.validationState,
-    leadingIcon: props.leadingIcon,
-    prefix: props.prefix,
-    interactionElement: props.interactionElement,
-    suffix: props.suffix,
-    trailingIcon: props.trailingIcon,
+const StyledNativeBaseInput = styled.TextInput<StyledBaseInputProps & { isFocused: boolean }>(
+  (props) => ({
+    ...getBaseInputStyles({
+      theme: props.theme,
+      isFocused: props.isFocused,
+      isDisabled: !props.editable,
+      validationState: props.validationState,
+      leadingIcon: props.leadingIcon,
+      prefix: props.prefix,
+      interactionElement: props.interactionElement,
+      suffix: props.suffix,
+      trailingIcon: props.trailingIcon,
+    }),
   }),
-}));
+);
 
 export const StyledBaseInput = ({
   name,
@@ -35,8 +33,14 @@ export const StyledBaseInput = ({
     <StyledNativeBaseInput
       isFocused={isFocused}
       editable={!isDisabled}
-      onFocus={(): void => setisFocused(true)}
-      onBlur={(): void => setisFocused(false)}
+      onFocus={(): void => {
+        setisFocused(true);
+        props.setIsFocused(true);
+      }}
+      onBlur={(): void => {
+        setisFocused(false);
+        props.setIsFocused(false);
+      }}
       onChangeText={(text): void => handleOnChange({ name, value: text })}
       {...props}
     />
