@@ -13,35 +13,145 @@ export default {
   args: {
     id: 'base-input',
     defaultValue: undefined,
-    label: 'Enter Name',
     placeholder: 'Enter your first and last name',
-    labelPosition: 'top',
     name: 'fullName',
     type: 'text',
     isDisabled: false,
+    value: undefined,
+    maxCharacters: 9999,
     onChange: undefined,
+    label: 'Enter Name',
+    labelPosition: 'top',
+    neccessityIndicator: undefined,
+    isRequired: false,
     validationState: 'none',
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
-    isRequired: false,
     leadingIcon: undefined,
     prefix: '',
     interactionElement: <CloseIcon size="small" color="surface.text.subtle.lowContrast" />,
-    // interactionElement: undefined,
     suffix: '',
     trailingIcon: undefined,
   },
   argTypes: {
+    id: {
+      table: {
+        category: 'Base Input Props',
+      },
+    },
+    defaultValue: {
+      table: {
+        category: 'Base Input Props',
+      },
+    },
+    placeholder: {
+      table: {
+        category: 'Base Input Props',
+      },
+    },
+    name: {
+      table: {
+        category: 'Base Input Props',
+      },
+    },
+    type: {
+      table: {
+        category: 'Base Input Props',
+      },
+    },
+    isDisabled: {
+      table: {
+        category: 'Base Input Props',
+      },
+    },
+    value: {
+      table: {
+        category: 'Base Input Props',
+      },
+    },
+    maxCharacters: {
+      control: { type: 'number' },
+      table: {
+        category: 'Base Input Props',
+      },
+    },
+    onChange: {
+      table: {
+        category: 'Base Input Props',
+      },
+    },
+    label: {
+      table: {
+        category: 'Label Props',
+      },
+    },
+    labelPosition: {
+      table: {
+        category: 'Label Props',
+      },
+    },
+    neccessityIndicator: {
+      table: {
+        category: 'Validation Props',
+      },
+    },
+    isRequired: {
+      table: {
+        category: 'Validation Props',
+      },
+    },
+    validationState: {
+      table: {
+        category: 'Validation Props',
+      },
+    },
+    helpText: {
+      table: {
+        category: 'Validation Props',
+      },
+    },
+    errorText: {
+      table: {
+        category: 'Validation Props',
+      },
+    },
+    successText: {
+      table: {
+        category: 'Validation Props',
+      },
+    },
     leadingIcon: {
       name: 'leadingIcon',
       type: 'select',
       options: Object.keys(iconMap),
+      table: {
+        category: 'Leading Visual Props',
+      },
+    },
+    prefix: {
+      table: {
+        category: 'Leading Visual Props',
+      },
+    },
+    interactionElement: {
+      table: {
+        category: 'Trailing Visual Props',
+      },
+    },
+    // interactionElement:{},
+    suffix: {
+      table: {
+        category: 'Trailing Visual Props',
+      },
     },
     trailingIcon: {
       name: 'trailingIcon',
       type: 'select',
       options: Object.keys(iconMap),
+      table: {
+        category: 'Trailing Visual Props',
+      },
     },
   },
   parameters: {
