@@ -33,7 +33,7 @@ function useIconProps({
 }: IconProps): { height: string; width: string; iconColor: string } {
   const { theme } = useTheme();
   const { height, width } = getIconDimensions({ size });
-  const iconColor = get(theme.colors, color, '');
+  const iconColor = color === 'currentColor' ? 'currentColor' : get(theme.colors, color, '');
 
   return { height, width, iconColor };
 }
