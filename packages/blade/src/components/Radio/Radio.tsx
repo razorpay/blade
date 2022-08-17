@@ -6,8 +6,9 @@ import { useRadioGroupContext } from './RadioGroup/RadioContext';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel.web';
 import Box from '~components/Box';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
-import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { CheckboxInput as RadioInput } from '~components/Checkbox/CheckboxInput';
+import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
+import { getPlatformType } from '~utils';
 
 type OnChange = ({
   isChecked,
@@ -95,6 +96,7 @@ const Radio = ({
   const _name = groupProps?.name ?? name;
   const _isChecked = groupProps?.state?.isChecked(value!) ?? isChecked;
   const showHelpText = !_hasError && helpText;
+  const isReactNative = getPlatformType() === 'react-native';
 
   const handleChange: OnChange = ({ isChecked, event, value }) => {
     if (isChecked) {
@@ -118,11 +120,11 @@ const Radio = ({
   });
 
   return (
-    <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
+    <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
       <RadioInput
         isChecked={state.isChecked}
         isDisabled={isDisabled}
-        isNegative={_hasError}
+        isNegative={_hasError} // TODO: rename to hasError
         inputProps={inputProps}
       />
       <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={_hasError} />

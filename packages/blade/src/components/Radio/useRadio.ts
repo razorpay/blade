@@ -27,11 +27,11 @@ const useRadio = ({
   const isReactNative = getPlatformType() === 'react-native';
   if (isChecked && defaultChecked) {
     throw new Error(
-      `[Blade useRadio] Do not provide both 'isChecked' and 'defaultChecked' to useRadio. Consider if you want this component to be controlled or uncontrolled.`,
+      `[Blade Radio] Do not provide both 'isChecked' and 'defaultChecked' to useRadio. Consider if you want this component to be controlled or uncontrolled.`,
     );
   }
 
-  const [radioState, setRadioStateChange] = useControllableState({
+  const [radioState, setRadioState] = useControllableState({
     value: isChecked,
     defaultValue: defaultChecked ?? false,
   });
@@ -43,7 +43,7 @@ const useRadio = ({
       return;
     }
 
-    setRadioStateChange((checked) => {
+    setRadioState((checked) => {
       // Prevent radio to be unchecked when clicked again
       // Once checked radios don't act as toggle buttons
       if (checked === false) {
@@ -59,9 +59,8 @@ const useRadio = ({
   };
 
   const state = {
-    isReactNative,
     isChecked: radioState,
-    setChecked: setRadioStateChange,
+    setChecked: setRadioState,
   };
 
   const idBase = useId('radio');
