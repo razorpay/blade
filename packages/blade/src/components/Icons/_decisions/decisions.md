@@ -33,7 +33,7 @@
   ```jsx
   <CreditCardIcon
     color='surface.icon | feedback.icon | action.icon'
-    size=' xsmall | small | medium | large | 2xlarge'
+    size='xsmall | small | medium | large | 2xlarge'
   >
   ```
 - Each icon will have the same `height` & `width` which would be derived from its `size` prop. Here's what each size corresponds to
