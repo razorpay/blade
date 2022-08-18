@@ -823,8 +823,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   borderRadius="2px"
   borderWidth="1px"
   buttonPaddingBottom="0px"
-  buttonPaddingLeft="20px"
-  buttonPaddingRight="20px"
+  buttonPaddingLeft="8px"
+  buttonPaddingRight="8px"
   buttonPaddingTop="0px"
   collapsable={false}
   defaultBackgroundColor="hsla(213, 89%, 56%, 1)"
@@ -861,8 +861,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
         "cursor": "pointer",
         "minHeight": 36,
         "paddingBottom": 0,
-        "paddingLeft": 20,
-        "paddingRight": 20,
+        "paddingLeft": 8,
+        "paddingRight": 8,
         "paddingTop": 0,
         "width": "auto",
       },

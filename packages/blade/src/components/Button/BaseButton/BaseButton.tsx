@@ -4,6 +4,7 @@ import type { ReactElement, MouseEvent } from 'react';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
+  buttonIconOnlyPadding,
   buttonIconOnlySizeToIconSizeMap,
   typography as buttonTypography,
   minHeight as buttonMinHeight,
@@ -145,11 +146,9 @@ const getProps = ({
   intent: BaseButtonProps['intent'];
   contrast: NonNullable<BaseButtonProps['contrast']>;
 }): BaseButtonStyleProps => {
+  const isIconOnly = hasIcon && (!children || children?.trim().length === 0);
   const props: BaseButtonStyleProps = {
-    iconSize:
-      hasIcon && (!children || children?.trim().length === 0)
-        ? buttonIconOnlySizeToIconSizeMap[size]
-        : buttonSizeToIconSizeMap[size],
+    iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
@@ -169,10 +168,18 @@ const getProps = ({
       intent,
       state: 'default',
     }) as BaseTextProps['color'],
-    buttonPaddingTop: makeSpace(theme.spacing[buttonPadding[size].top]),
-    buttonPaddingBottom: makeSpace(theme.spacing[buttonPadding[size].bottom]),
-    buttonPaddingLeft: makeSpace(theme.spacing[buttonPadding[size].left]),
-    buttonPaddingRight: makeSpace(theme.spacing[buttonPadding[size].right]),
+    buttonPaddingTop: isIconOnly
+      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].top])
+      : makeSpace(theme.spacing[buttonPadding[size].top]),
+    buttonPaddingBottom: isIconOnly
+      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].bottom])
+      : makeSpace(theme.spacing[buttonPadding[size].bottom]),
+    buttonPaddingLeft: isIconOnly
+      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].left])
+      : makeSpace(theme.spacing[buttonPadding[size].left]),
+    buttonPaddingRight: isIconOnly
+      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].right])
+      : makeSpace(theme.spacing[buttonPadding[size].right]),
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultBackgroundColor: getIn(
       theme.colors,

@@ -69,6 +69,36 @@ const buttonPadding: Record<
   },
 };
 
+const buttonIconOnlyPadding: Record<
+  NonNullable<BaseButtonProps['size']>,
+  Record<'top' | 'bottom' | 'left' | 'right', keyof Theme['spacing']>
+> = {
+  xsmall: {
+    top: 0,
+    bottom: 0,
+    left: 2, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
+    right: 2, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
+  },
+  small: {
+    top: 0,
+    bottom: 0,
+    left: 2,
+    right: 2,
+  },
+  medium: {
+    top: 0,
+    bottom: 0,
+    left: 2,
+    right: 2,
+  },
+  large: {
+    top: 0,
+    bottom: 0,
+    left: 3,
+    right: 3,
+  },
+};
+
 const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconProps['size']> = {
   xsmall: 'small',
   small: 'small',
@@ -111,4 +141,5 @@ export {
   buttonSizeToSpinnerSizeMap,
   textPadding,
   buttonPadding,
+  buttonIconOnlyPadding,
 };
