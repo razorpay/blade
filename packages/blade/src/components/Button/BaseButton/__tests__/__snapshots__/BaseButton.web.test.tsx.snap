@@ -766,9 +766,9 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
         <svg
           aria-hidden="true"
           fill="none"
-          height="16px"
+          height="20px"
           viewBox="0 0 24 24"
-          width="16px"
+          width="20px"
         >
           <path
             clip-rule="evenodd"

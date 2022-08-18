@@ -912,11 +912,11 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       <RNSVGSvgView
         accessibilityElementsHidden={true}
         align="xMidYMid"
-        bbHeight="16px"
-        bbWidth="16px"
+        bbHeight="20px"
+        bbWidth="20px"
         fill="none"
         focusable={false}
-        height="16px"
+        height="20px"
         importantForAccessibility="no-hide-descendants"
         meetOrSlice={0}
         minX={0}
@@ -929,14 +929,14 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             },
             Object {
               "flex": 0,
-              "height": 16,
-              "width": 16,
+              "height": 20,
+              "width": 20,
             },
           ]
         }
         vbHeight={24}
         vbWidth={24}
-        width="16px"
+        width="20px"
       >
         <RNSVGGroup
           fill={null}

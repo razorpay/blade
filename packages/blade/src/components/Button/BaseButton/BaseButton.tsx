@@ -147,7 +147,7 @@ const getProps = ({
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
     iconSize:
-      hasIcon && children?.trim().length === 0
+      hasIcon && (!children || children?.trim().length === 0)
         ? buttonIconOnlySizeToIconSizeMap[size]
         : buttonSizeToIconSizeMap[size],
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
