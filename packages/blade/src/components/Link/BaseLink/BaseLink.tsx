@@ -258,7 +258,7 @@ const BaseLink = ({
       <Box display="flex" flexDirection="row" className="content-container" alignItems="center">
         {Icon && iconPosition == 'left' ? (
           <Box paddingRight={iconPadding} display="flex" alignItems="center">
-            <Icon color={iconColor} size="xsmall" />
+            <Icon color={iconColor} size="small" />
           </Box>
         ) : null}
         <BaseText
@@ -271,7 +271,7 @@ const BaseLink = ({
         </BaseText>
         {Icon && iconPosition == 'right' ? (
           <Box paddingLeft={iconPadding} display="flex" alignItems="center">
-            <Icon color={iconColor} size="xsmall" />
+            <Icon color={iconColor} size="small" />
           </Box>
         ) : null}
       </Box>

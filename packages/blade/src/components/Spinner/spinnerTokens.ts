@@ -13,17 +13,17 @@ const motion: SpinnerMotion = {
   duration: `duration.2xgentle`,
 };
 
-export type SpinnerSize = 'large' | 'xsmall' | 'xsmall' | 'small' | 'medium';
+export type SpinnerSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 
-type Sizes = 10 | 12 | 16 | 20 | 24 | 32;
+type Sizes = 8 | 12 | 16 | 20 | 24 | 32;
 export const getSpinnerSize = (size: SpinnerSize): MakeSize<Sizes> => {
   const sizeMap = {
-    xxsmall: 8,
-    xsmall: 12,
-    small: 16,
-    medium: 20,
-    large: 24,
-    xlarge: 32,
+    xsmall: 8,
+    small: 12,
+    medium: 16,
+    large: 20,
+    xlarge: 24,
+    '2xlarge': 32,
   } as const;
 
   return makeSize(sizeMap[size]);

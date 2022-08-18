@@ -4,12 +4,12 @@ import { useTheme } from '~components/BladeProvider';
 import { makeSize } from '~utils';
 
 const iconSize = {
-  xxsmall: 8,
-  xsmall: 12,
-  small: 16,
-  medium: 20,
-  large: 24,
-  xlarge: 32,
+  xsmall: 8,
+  small: 12,
+  medium: 16,
+  large: 20,
+  xlarge: 24,
+  '2xlarge': 32,
 } as const;
 
 function useIconProps({
@@ -23,7 +23,7 @@ function useIconProps({
   const { theme } = useTheme();
   const height = makeSize(iconSize[size]);
   const width = makeSize(iconSize[size]);
-  const iconColor = get(theme.colors, color, '');
+  const iconColor = color === 'currentColor' ? 'currentColor' : get(theme.colors, color, '');
 
   return { height, width, iconColor };
 }
