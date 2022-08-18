@@ -345,11 +345,11 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     <RNSVGSvgView
       accessibilityElementsHidden={true}
       align="xMidYMid"
-      bbHeight="8px"
-      bbWidth="8px"
+      bbHeight="12px"
+      bbWidth="12px"
       fill="none"
       focusable={false}
-      height="8px"
+      height="12px"
       importantForAccessibility="no-hide-descendants"
       meetOrSlice={0}
       minX={0}
@@ -362,14 +362,14 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           },
           Object {
             "flex": 0,
-            "height": 8,
-            "width": 8,
+            "height": 12,
+            "width": 12,
           },
         ]
       }
       vbHeight={24}
       vbWidth={24}
-      width="8px"
+      width="12px"
     >
       <RNSVGGroup
         fill={null}
