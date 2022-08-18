@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-
 import React from 'react';
 import type { RadioGroupProps } from './RadioGroup';
 import type { RadioGroupContextType } from './RadioContext';
@@ -28,6 +23,12 @@ export type State = {
   isChecked(value: string): boolean;
 };
 
+type UseRadioGroupReturn = {
+  state: State;
+  contextValue: RadioGroupContextType;
+  ids: { labelId: string };
+};
+
 const useRadioGroup = ({
   value,
   defaultValue,
@@ -36,29 +37,29 @@ const useRadioGroup = ({
   onChange,
   validationState,
   name,
-}: UseRadioGroupProps) => {
+}: UseRadioGroupProps): UseRadioGroupReturn => {
   const { platform } = useTheme();
   const idBase = useId('radio-group');
   const labelId = `${idBase}-label`;
-  const fallbackName = name || idBase;
+  const fallbackName = name ?? idBase;
   const [checkedValue, setValue] = useControllableState({
     value,
     defaultValue,
-    onChange: (value: string) => onChange?.({ value, name: fallbackName }),
+    onChange: (v: string) => onChange?.({ value: v, name: fallbackName }),
   });
 
   // FIX React native bug, where it unchecks the radio on clicking it again
   const state = React.useMemo<State>(() => {
     return {
       value: checkedValue,
-      setValue(value: string) {
+      setValue(v: string): void {
         if (isDisabled) {
           return;
         }
 
-        setValue(() => value);
+        setValue(() => v);
       },
-      removeValue() {
+      removeValue(): void {
         if (isDisabled) {
           return;
         }
@@ -66,8 +67,8 @@ const useRadioGroup = ({
         // @ts-expect-error TODO: fix this
         setValue(undefined);
       },
-      isChecked(value: string) {
-        return checkedValue === value;
+      isChecked(v: string): boolean {
+        return checkedValue === v;
       },
     };
   }, [checkedValue, isDisabled, setValue]);

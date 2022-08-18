@@ -3,7 +3,7 @@ import React from 'react';
 import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
-import { SelectorLabel } from '~components/Form/Selector/SelectorLabel.web';
+import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import Box from '~components/Box';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { CheckboxInput as RadioInput } from '~components/Checkbox/CheckboxInput';
