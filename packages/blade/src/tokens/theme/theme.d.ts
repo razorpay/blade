@@ -15,6 +15,8 @@ export type TextTypes = 'muted' | 'normal' | 'placeholder' | 'subdued' | 'subtle
 
 export type ColorContrastTypes = 'low' | 'high';
 
+export type IntentTypes = 'positive' | 'negative' | 'neutral' | 'notice' | 'information';
+
 export type Shadows = {
   offsetX: {
     level: Record<ShadowLevels, number>;

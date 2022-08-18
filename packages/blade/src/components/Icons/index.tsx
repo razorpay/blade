@@ -42,3 +42,4 @@ export { default as PauseIcon } from './PauseIcon';
 export { default as PlusIcon } from './PlusIcon';
 export { default as RupeeIcon } from './RupeeIcon';
 export { default as TrashIcon } from './TrashIcon';
+export { default as AlertIcon } from './AlertIcon';

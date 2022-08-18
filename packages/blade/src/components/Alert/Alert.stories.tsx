@@ -1,20 +1,41 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { Highlight } from '@storybook/design-system';
+import { Highlight, Link } from '@storybook/design-system';
 
 import type { AlertProps } from './Alert';
 import AlertComponent from './Alert';
-import iconMap from '~components/Icons/iconMap';
+import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): ReactElement => {
+  const figmaURL = useMakeFigmaURL([
+    {
+      themeTokenName: 'paymentTheme',
+      lightModeURL:
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6824%3A61',
+      darkModeURL:
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6824%3A61',
+    },
+    {
+      themeTokenName: 'bankingTheme',
+      lightModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=6824%3A61',
+      darkModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=6824%3A61',
+    },
+  ]);
+
   return (
     <>
       <Title />
       <Subtitle>
-        Useful for making clickable icons. For example - close button for modals, inputs, etc.
+        Alerts are messages that communicate information to users about any significant changes or
+        explanations inside the system in a prominent way.
       </Subtitle>
       <Title>Usage</Title>
+      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
+        View in Figma
+      </Link>
       <Highlight language="tsx">{`import { Alert } from '@razorpay/blade/components' \nimport type { AlertProps } from '@razorpay/blade/components'`}</Highlight>
       <Title>Example</Title>
       <Subtitle>
@@ -29,21 +50,16 @@ const Page = (): ReactElement => {
 };
 
 const meta: Meta<AlertProps> = {
-  title: 'Components/Button/Alert (Internal)',
+  title: 'Components/Alert',
   component: AlertComponent,
   args: {
-    size: 'medium',
-    contrast: 'low',
-    accessibilityLabel: 'Close',
+    title: 'International Payments Only',
+    description:
+      'Currently you can only accept payments in international currencies using PayPal. You cannot accept payments in INR (₹) using PayPal.',
+    isFullWidth: false,
+    isDismissable: true,
   },
-  argTypes: {
-    onClick: { action: 'onClick' },
-    icon: {
-      name: 'icon',
-      type: 'select',
-      options: Object.keys(iconMap),
-    },
-  },
+  argTypes: {},
   parameters: {
     docs: {
       page: Page,
@@ -51,13 +67,8 @@ const meta: Meta<AlertProps> = {
   },
 };
 
-const IconButtonTemplate: ComponentStory<typeof AlertComponent> = ({
-  icon = 'CloseIcon',
-  ...args
-}) => {
-  const IconComponent = iconMap[(icon as unknown) as string];
-
-  return <AlertComponent icon={IconComponent} {...args} />;
+const IconButtonTemplate: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+  return <AlertComponent {...args} />;
 };
 
 export const Alert = IconButtonTemplate.bind({});
