@@ -53,8 +53,8 @@ describe('useIconProps', () => {
       () => useIconProps({ size: 'xxsmall', color: 'feedback.icon.positive.lowContrast' }),
       { wrapper: themeWrapper },
     );
-    expect(result.current.height).toEqual('10px');
-    expect(result.current.width).toEqual('10px');
+    expect(result.current.height).toEqual('8px');
+    expect(result.current.width).toEqual('8px');
     expect(result.current.iconColor).toEqual('hsla(160, 100%, 26%, 1)');
   });
 

@@ -72,18 +72,28 @@ const buttonPadding: Record<
 const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconProps['size']> = {
   xsmall: 'xsmall',
   small: 'xsmall',
+  medium: 'small',
+  large: 'small',
+};
+
+const buttonIconOnlySizeToIconSizeMap: Record<
+  NonNullable<BaseButtonProps['size']>,
+  IconProps['size']
+> = {
+  xsmall: 'small',
+  small: 'small',
   medium: 'medium',
-  large: 'medium',
+  large: 'large',
 };
 
 const buttonSizeToSpinnerSizeMap: Record<
   NonNullable<BaseButtonProps['size']>,
   SpinnerProps['size']
 > = {
-  xsmall: 'xsmall',
-  small: 'xsmall',
+  xsmall: 'small',
+  small: 'small',
   medium: 'medium',
-  large: 'medium',
+  large: 'large',
 };
 
 const textPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['spacing']> = {
@@ -97,6 +107,7 @@ export {
   typography,
   minHeight,
   buttonSizeToIconSizeMap,
+  buttonIconOnlySizeToIconSizeMap,
   buttonSizeToSpinnerSizeMap,
   textPadding,
   buttonPadding,

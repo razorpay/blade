@@ -4,6 +4,7 @@ import type { ReactElement, MouseEvent } from 'react';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
+  buttonIconOnlySizeToIconSizeMap,
   typography as buttonTypography,
   minHeight as buttonMinHeight,
   buttonSizeToIconSizeMap,
@@ -11,6 +12,7 @@ import {
   textPadding,
   buttonPadding,
 } from './buttonTokens';
+
 import type { Theme } from '~components/BladeProvider';
 import type { SpinnerSize } from '~components/Spinner/spinnerTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText';
@@ -144,7 +146,10 @@ const getProps = ({
   contrast: NonNullable<BaseButtonProps['contrast']>;
 }): BaseButtonStyleProps => {
   const props: BaseButtonStyleProps = {
-    iconSize: buttonSizeToIconSizeMap[size],
+    iconSize:
+      hasIcon && children?.trim().length === 0
+        ? buttonIconOnlySizeToIconSizeMap[size]
+        : buttonSizeToIconSizeMap[size],
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
@@ -384,7 +389,7 @@ const BaseButton = ({
           </BaseText>
         ) : null}
         {Icon && iconPosition == 'right' ? (
-          <Box paddingLeft={iconPadding}>
+          <Box paddingLeft={iconPadding} display="flex" justifyContent="center" alignItems="center">
             <Icon size={iconSize} color={iconColor} />
           </Box>
         ) : null}

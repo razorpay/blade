@@ -340,9 +340,9 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
         <svg
           aria-hidden="true"
           fill="none"
-          height="20px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="20px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -449,6 +449,18 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
 }
 
 .c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   padding-left: 8px;
 }
 
@@ -476,13 +488,14 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       </div>
       <div
         class="c4"
+        display="flex"
       >
         <svg
           aria-hidden="true"
           fill="none"
-          height="20px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="20px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
