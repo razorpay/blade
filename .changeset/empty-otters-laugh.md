@@ -1,5 +1,8 @@
 ---
-"@razorpay/blade": minor
+"@razorpay/blade": major
 ---
 
-feat(blade): added radio & radio group component
+feat: add `Radio` & `RadioGroup` component
+
+## ⚠️ Breaking change for `Checkbox`
+- We've renamed the `neccessityIndicator` prop to `necessityIndicator` to fix a spelling error
