@@ -53,7 +53,7 @@ export default {
     label: 'Checkbox Group',
     helpText: undefined,
     isDisabled: false,
-    neccessityIndicator: 'none',
+    necessityIndicator: 'none',
     labelPosition: undefined,
     validationState: undefined,
     errorText: undefined,
@@ -121,13 +121,13 @@ Disabled.args = {
 export const Optional = CheckboxGroupTemplate.bind({});
 Optional.storyName = 'Optional';
 Optional.args = {
-  neccessityIndicator: 'optional',
+  necessityIndicator: 'optional',
 };
 
 export const Required = CheckboxGroupTemplate.bind({});
 Required.storyName = 'Required';
 Required.args = {
-  neccessityIndicator: 'required',
+  necessityIndicator: 'required',
 };
 
 export const LabelPositionLeft = CheckboxGroupTemplate.bind({});
@@ -213,7 +213,7 @@ export const KitchenSink = (): React.ReactElement => {
       </CheckboxGroupComponent>
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
-        neccessityIndicator="required"
+        necessityIndicator="required"
         errorText="Atleast one has to be selected"
         helpText="Select atleast one"
         label="Select your fruit"
@@ -225,7 +225,7 @@ export const KitchenSink = (): React.ReactElement => {
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
         validationState="error"
-        neccessityIndicator="optional"
+        necessityIndicator="optional"
         errorText="Atleast one has to be selected"
         helpText="Select atleast one"
         label="Select your fruit"
@@ -237,7 +237,7 @@ export const KitchenSink = (): React.ReactElement => {
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
         labelPosition="left"
-        neccessityIndicator="optional"
+        necessityIndicator="optional"
         validationState="error"
         errorText="This is invalid"
         helpText="Select atleast one"

@@ -4,13 +4,14 @@
 import React from 'react';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
+import usePresence from 'use-presence';
 import type { FadeProps } from './Fade.d';
 import { useTheme } from '~components/BladeProvider';
 import { makeMotionTime } from '~utils';
 
-const fadeIn = keyframes`
+const scaleIn = keyframes`
   from {
-    transform: scale(.6);
+    transform: scale(.3);
     opacity: 0;
   }
 
@@ -19,7 +20,6 @@ const fadeIn = keyframes`
     opacity: 1;
   }
 `;
-
 const fadeOut = keyframes`
   from {
     transform: scale(1);
@@ -27,7 +27,7 @@ const fadeOut = keyframes`
   }
 
   to {
-    transform: scale(.6);
+    transform: scale(1);
     opacity: 0;
   }
 `;
@@ -46,7 +46,7 @@ const Fade = ({ show, children, styles }: FadeProps) => {
 
   const duration = theme.motion.duration.xquick;
   const enter = css`
-    animation: ${fadeIn} ${makeMotionTime(duration)}
+    animation: ${scaleIn} ${makeMotionTime(duration)}
       ${theme.motion.easing.entrance.effective as string};
   `;
 
@@ -55,19 +55,22 @@ const Fade = ({ show, children, styles }: FadeProps) => {
       ${theme.motion.easing.exit.effective as string};
   `;
 
-  // if show is undefined do not initialize the animation to prevent flash of animation
-  const animation = show === undefined ? null : show ? enter : exit;
+  // usePresence hook waits for the animation to finish before unmounting the component
+  // It's similar to framer-motions usePresence hook
+  // https://www.framer.com/docs/animate-presence/#usepresence
+  const { isMounted, isVisible } = usePresence(!!show, {
+    transitionDuration: duration,
+    initialEnter: true,
+  });
 
   return (
-    <AnimatedFade
-      animationType={animation}
-      style={{
-        opacity: show ? 1 : 0,
-        ...styles,
-      }}
-    >
-      {children}
-    </AnimatedFade>
+    <>
+      {isMounted && (
+        <AnimatedFade animationType={isVisible ? enter : exit} style={styles}>
+          {children}
+        </AnimatedFade>
+      )}
+    </>
   );
 };
 

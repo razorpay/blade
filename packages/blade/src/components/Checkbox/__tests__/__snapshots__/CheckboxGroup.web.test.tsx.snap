@@ -31,52 +31,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c4 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-.c8 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-.c8:focus + div {
-  outline: 1px solid white;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c8:hover + div,
-.c8:focus + div {
-  background-color: hsla(216,19%,89%,1);
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -187,6 +141,53 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   display: flex;
   margin-top: 2px;
   margin-bottom: 2px;
+}
+
+.c4 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c8 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c8:focus + div {
+  outline: 1px solid white;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c8:hover + div,
+.c8:focus + div {
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,19%,89%,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
 }
 
 <div>
@@ -464,52 +465,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c4 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-.c8 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-.c8:focus + div {
-  outline: 1px solid white;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c8:hover + div,
-.c8:focus + div {
-  background-color: hsla(216,19%,89%,1);
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -602,6 +557,53 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   display: flex;
   margin-top: 2px;
   margin-bottom: 2px;
+}
+
+.c4 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c8 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c8:focus + div {
+  outline: 1px solid white;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c8:hover + div,
+.c8:focus + div {
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,19%,89%,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
 }
 
 <div>

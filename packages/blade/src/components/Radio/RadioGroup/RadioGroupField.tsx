@@ -1,18 +1,15 @@
 import React from 'react';
-import { useCheckboxGroupContext } from './CheckboxGroupContext';
+import { useRadioGroupContext } from './RadioContext';
 import { makeAccessible } from '~utils';
 import Box from '~components/Box';
 
-type CheckboxGroupFieldProps = {
+type RadioGroupFieldProps = {
   children: React.ReactNode;
   labelledBy: string;
 };
 
-const CheckboxGroupField = ({
-  children,
-  labelledBy,
-}: CheckboxGroupFieldProps): React.ReactElement => {
-  const { labelPosition } = useCheckboxGroupContext();
+const RadioGroupField = ({ children, labelledBy }: RadioGroupFieldProps): React.ReactElement => {
+  const { labelPosition } = useRadioGroupContext();
 
   return (
     <Box
@@ -25,4 +22,4 @@ const CheckboxGroupField = ({
   );
 };
 
-export { CheckboxGroupField };
+export { RadioGroupField };

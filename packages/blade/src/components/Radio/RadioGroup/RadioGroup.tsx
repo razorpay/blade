@@ -1,47 +1,47 @@
 import React from 'react';
-import { CheckboxGroupProvider } from './CheckboxGroupContext';
-import { useCheckboxGroup } from './useCheckboxGroup';
-import { FormLabel, FormHint } from '~components/Form';
+import { RadioGroupProvider } from './RadioContext';
+import { useRadioGroup } from './useRadioGroup';
 import Box from '~components/Box';
+import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 
-type CheckboxGroupProps = {
+type RadioGroupProps = {
   /**
-   * Accepts multiple checkboxes as children
+   * Accepts multiple radios as children
    */
   children: React.ReactNode;
   /**
-   * Help text of the checkbox group
+   * Help text of the radio group
    */
   helpText?: string;
   /**
-   * Error text of the checkbox group
+   * Error text of the radio group
    * Renders when `validationState` is set to 'error'
    *
    * Overrides helpText
    */
   errorText?: string;
   /**
-   * Sets the error state of the CheckboxGroup
+   * Sets the error state of the radioGroup
    * If set to `error` it will render the `errorText` of the group,
-   * and propagate `invalid` prop to every checkbox
+   * and propagate `invalid` prop to every radio
    */
   validationState?: 'error' | 'none';
   /**
-   * Renders a necessity indicator after CheckboxGroup label
+   * Renders a necessity indicator after radioGroup label
    *
    * If set to `undefined` it renders nothing.
    */
   necessityIndicator?: 'required' | 'optional' | 'none';
   /**
-   * Sets the disabled state of the CheckboxGroup
-   * If set to `true` it propagate down to all the checkboxes
+   * Sets the disabled state of the radioGroup
+   * If set to `true` it propagate down to all the radios
    *
    * @default false
    */
   isDisabled?: boolean;
   /**
-   * Renders the label of the checkbox group
+   * Renders the label of the radio group
    */
   label: string;
   /**
@@ -51,48 +51,48 @@ type CheckboxGroupProps = {
    */
   labelPosition?: 'top' | 'left';
   /**
-   * Initial value of the checkbox group
+   * Initial value of the radio group
    */
-  defaultValue?: string[];
+  defaultValue?: string;
   /**
-   * value of the checkbox group
+   * value of the radio group
    *
    * Use `onChange` to update its value
    */
-  value?: string[];
+  value?: string;
   /**
-   * The callback invoked when any of the checkbox's state changes
+   * The callback invoked when any of the radio's state changes
    */
-  onChange?: ({ name, values }: { name: string; values: string[] }) => void;
+  onChange?: ({ name, value }: { name: string | undefined; value: string }) => void;
   /**
-   * The name of the input field in a checkbox
+   * The name of the input field in a radio
    * (Useful for form submission).
    */
   name?: string;
 };
 
-const CheckboxGroup = ({
+const RadioGroup = ({
   children,
   label,
   helpText,
-  isDisabled,
+  isDisabled = false,
   necessityIndicator = 'none',
   labelPosition = 'top',
-  validationState,
+  validationState = 'none',
   errorText,
   name,
   defaultValue,
   onChange,
   value,
-}: CheckboxGroupProps): React.ReactElement => {
-  const { contextValue, ids } = useCheckboxGroup({
+}: RadioGroupProps): React.ReactElement => {
+  const { contextValue, ids } = useRadioGroup({
     defaultValue,
-    onChange,
-    value,
     isDisabled,
-    name,
     labelPosition,
+    name,
+    onChange,
     validationState,
+    value,
   });
 
   const showError = validationState === 'error' && errorText;
@@ -100,7 +100,7 @@ const CheckboxGroup = ({
   const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
 
   return (
-    <CheckboxGroupProvider value={contextValue}>
+    <RadioGroupProvider value={contextValue}>
       <SelectorGroupField position={labelPosition} labelledBy={ids.labelId}>
         <FormLabel
           as="span"
@@ -116,14 +116,14 @@ const CheckboxGroup = ({
             {children}
           </Box>
           <FormHint
+            type={validationState === 'error' ? 'error' : 'help'}
             errorText={errorText}
             helpText={helpText}
-            type={validationState === 'error' ? 'error' : 'help'}
           />
         </Box>
       </SelectorGroupField>
-    </CheckboxGroupProvider>
+    </RadioGroupProvider>
   );
 };
 
-export { CheckboxGroup, CheckboxGroupProps };
+export { RadioGroup, RadioGroupProps };

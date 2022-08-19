@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Circle /> should render html circle component 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    height="110"
+    viewBox="0 0 100 100"
+    width="400"
+  >
+    <circle
+      cx="200"
+      cy="100"
+      r="4"
+      x="10"
+      y="10"
+    />
+  </svg>
+</div>
+`;
