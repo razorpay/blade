@@ -5,9 +5,9 @@ exports[`<ArrowUpRightIcon /> should render ArrowUpRightIcon 1`] = `
   <svg
     aria-hidden="true"
     fill="none"
-    height="24px"
+    height="20px"
     viewBox="0 0 24 24"
-    width="24px"
+    width="20px"
   >
     <path
       d="M9 5a1 1 0 0 0 0 2h6.586L5.293 17.293a1 1 0 1 0 1.414 1.414L17 8.414V15a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1H9Z"
