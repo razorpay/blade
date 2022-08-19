@@ -35,13 +35,15 @@ export const StyledBaseInput = ({
   isDisabled,
   isRequired,
   handleOnChange,
+  handleOnBlur,
   ...props
 }: StyledBaseInputProps): ReactElement => {
   return (
     <StyledBaseNativeInput
       disabled={isDisabled}
       required={isRequired}
-      onChange={(event): void => handleOnChange({ name, value: event })}
+      onChange={(event): void => handleOnChange?.({ name, value: event })}
+      onBlur={(event): void => handleOnBlur?.({ name, value: event })}
       {...props}
     />
   );

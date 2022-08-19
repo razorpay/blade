@@ -1,8 +1,9 @@
 import type { Dispatch, SetStateAction } from 'react';
-import type { BaseInputProps } from './BaseInput';
+import type { BaseInputProps, HandleOnEvent } from './BaseInput';
 
 export type StyledBaseInputProps = {
-  handleOnChange?: HandleOnChange;
+  handleOnChange?: HandleOnEvent;
+  handleOnBlur?: HandleOnEvent;
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
   setIsFocused: Dispatch<SetStateAction<boolean>>;

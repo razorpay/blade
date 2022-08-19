@@ -25,6 +25,7 @@ export const StyledBaseInput = ({
   isRequired,
   isDisabled,
   handleOnChange,
+  handleOnBlur,
   ...props
 }: StyledBaseInputProps): ReactElement => {
   const [isFocused, setisFocused] = useState(false);
@@ -41,7 +42,8 @@ export const StyledBaseInput = ({
         setisFocused(false);
         props.setIsFocused(false);
       }}
-      onChangeText={(text): void => handleOnChange({ name, value: text })}
+      onChangeText={(text): void => handleOnChange?.({ name, value: text })}
+      onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
       {...props}
     />
   );

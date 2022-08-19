@@ -12,15 +12,7 @@ import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
 
-/**
- * Remaining things for Slots
- * 1. compute padding left and right with prefix and suffix as dynamic things
- * 2. compute padding left and right - done
- * 3. make interaction element work - done
- * 4. remove hardcoding from the input styles for native - done
- */
-
-export type HandleOnChange = ({
+export type HandleOnEvent = ({
   name,
   value,
 }: {
@@ -28,7 +20,7 @@ export type HandleOnChange = ({
   value?: React.ChangeEvent<HTMLInputElement> | string;
 }) => void;
 
-export type OnChange = ({ name, value }: { name?: string; value?: string }) => void;
+export type OnEvent = ({ name, value }: { name?: string; value?: string }) => void;
 
 // TODO: need to abstract for generic use
 type InputLabelProps = {
@@ -103,7 +95,13 @@ export type BaseInputProps = InputLabelProps &
     /**
      * The callback function to be invoked when the value of the input field changes
      */
-    onChange?: OnChange;
+    onChange?: OnEvent;
+    /**
+     * The callback function to be invoked when the the input field loses focus
+     *
+     * For React Native this will call `onEndEditing` event since we want to get the last value of the input field
+     */
+    onBlur?: OnEvent;
     /**
      * Used to turn the input field to controlled so user can control the value
      */
@@ -155,8 +153,10 @@ const useInput = ({
   value,
   defaultValue,
   onChange,
-}: Pick<BaseInputProps, 'value' | 'defaultValue' | 'onChange'>): {
-  handleOnChange: HandleOnChange;
+  onBlur,
+}: Pick<BaseInputProps, 'value' | 'defaultValue' | 'onChange' | 'onBlur'>): {
+  handleOnChange: HandleOnEvent;
+  handleOnBlur: HandleOnEvent;
 } => {
   if (value && defaultValue) {
     throw new Error(
@@ -164,7 +164,7 @@ const useInput = ({
     );
   }
 
-  const handleOnChange: HandleOnChange = React.useCallback(
+  const handleOnChange: HandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
 
@@ -183,7 +183,26 @@ const useInput = ({
     [onChange],
   );
 
-  return { handleOnChange };
+  const handleOnBlur: HandleOnEvent = React.useCallback(
+    ({ name, value }) => {
+      let _value = '';
+
+      if (getPlatformType() === 'react-native' && typeof value == 'string') {
+        _value = value;
+      } else if (typeof value !== 'string') {
+        // it's weird but TS forced me to write this much code where I could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" :(
+        _value = value?.target.value ?? '';
+      }
+
+      onBlur?.({
+        name,
+        value: _value,
+      });
+    },
+    [onBlur],
+  );
+
+  return { handleOnChange, handleOnBlur };
 };
 
 export const getHintType = ({
@@ -231,7 +250,7 @@ export const BaseInput = ({
   trailingIcon,
 }: BaseInputProps): ReactElement => {
   const { theme } = useTheme();
-  const { handleOnChange } = useInput({ defaultValue, value, onChange });
+  const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange });
   const { labelId, inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
@@ -271,6 +290,7 @@ export const BaseInput = ({
             validationState={validationState}
             isRequired={isRequired}
             handleOnChange={handleOnChange}
+            handleOnBlur={handleOnBlur}
             leadingIcon={leadingIcon}
             prefix={prefix}
             interactionElement={interactionElement}
