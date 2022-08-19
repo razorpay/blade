@@ -120,14 +120,9 @@ describe('<RadioGroup />', () => {
 
   it('should work in uncontrolled mode', () => {
     const labelText = 'Select fruits';
-    const fn = jest.fn();
+    const onChange = jest.fn();
     const { getByA11yState, getAllByA11yRole } = renderWithTheme(
-      <RadioGroup
-        name="fruits"
-        label={labelText}
-        defaultValue="apple"
-        onChange={({ value }) => fn(value)}
-      >
+      <RadioGroup name="fruits" label={labelText} defaultValue="apple" onChange={onChange}>
         <Radio value="apple">Apple</Radio>
         <Radio value="mango">Mango</Radio>
         <Radio value="orange">Orange</Radio>
@@ -142,24 +137,22 @@ describe('<RadioGroup />', () => {
     const mango = radios.find((radio) => radio.props.value === 'mango');
     const orange = radios.find((radio) => radio.props.value === 'orange');
 
-    // expect(getByRole('radio', { hidden: true, checked: true })).toHaveAttribute('value', 'apple');
-
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
-    expect(fn).not.toBeCalled();
+    expect(onChange).not.toBeCalled();
     fireEvent.press(mango!);
     expect(mango?.props.accessibilityState.checked).toBeTruthy();
-    expect(fn).toBeCalledWith('mango');
+    expect(onChange).toBeCalledWith({ value: 'mango', name: 'fruits' });
     fireEvent.press(orange!);
     expect(orange?.props.accessibilityState.checked).toBeTruthy();
-    expect(fn).toBeCalledWith('orange');
+    expect(onChange).toBeCalledWith({ value: 'orange', name: 'fruits' });
     fireEvent.press(apple!);
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
-    expect(fn).toBeCalledWith('apple');
+    expect(onChange).toBeCalledWith({ value: 'apple', name: 'fruits' });
   });
 
   it('should work in controlled mode', () => {
     const labelText = 'Select fruits';
-    const fn = jest.fn();
+    const onChange = jest.fn();
     const Example = () => {
       const [value, setValue] = React.useState('apple');
       return (
@@ -169,7 +162,7 @@ describe('<RadioGroup />', () => {
             value={value}
             onChange={({ value }) => {
               setValue(value);
-              fn(value);
+              onChange(value);
             }}
           >
             <Radio value="apple">Apple</Radio>
@@ -190,19 +183,17 @@ describe('<RadioGroup />', () => {
     const mango = radios.find((radio) => radio.props.value === 'mango');
     const orange = radios.find((radio) => radio.props.value === 'orange');
 
-    // expect(getByRole('radio', { hidden: true, checked: true })).toHaveAttribute('value', 'apple');
-
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
-    expect(fn).not.toBeCalled();
+    expect(onChange).not.toBeCalled();
     fireEvent.press(mango!);
     expect(mango?.props.accessibilityState.checked).toBeTruthy();
-    expect(fn).toBeCalledWith('mango');
+    expect(onChange).toBeCalledWith('mango');
     fireEvent.press(orange!);
     expect(orange?.props.accessibilityState.checked).toBeTruthy();
-    expect(fn).toBeCalledWith('orange');
+    expect(onChange).toBeCalledWith('orange');
     fireEvent.press(apple!);
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
-    expect(fn).toBeCalledWith('apple');
+    expect(onChange).toBeCalledWith('apple');
     expect(getByTestId('values').children[0]).toBe('apple');
   });
 });
