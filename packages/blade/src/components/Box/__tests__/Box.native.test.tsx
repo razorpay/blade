@@ -22,6 +22,7 @@ describe('<Box />', () => {
         right={0}
         bottom={0}
         left={0}
+        overflow="hidden"
       />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();

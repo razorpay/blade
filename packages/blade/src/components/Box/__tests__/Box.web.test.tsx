@@ -1,4 +1,4 @@
-import Box from '..';
+import Box from '../Box';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('<Box />', () => {
@@ -22,6 +22,7 @@ describe('<Box />', () => {
         right={0}
         bottom={0}
         left={0}
+        overflow="hidden"
       />,
     );
     expect(container).toMatchSnapshot();
