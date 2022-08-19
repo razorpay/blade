@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 0.13.6
+
+### Patch Changes
+
+- b365464: fix: button spinner layout
+- f3abfbe: feat(Icons): add new icons
+
 ## 0.13.5
 
 ### Patch Changes
