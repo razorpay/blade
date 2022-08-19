@@ -26,8 +26,11 @@ export const StyledBaseInput = ({
   isDisabled,
   handleOnChange,
   handleOnBlur,
+  keyboardReturnKeyType,
   ...props
-}: StyledBaseInputProps): ReactElement => {
+}: StyledBaseInputProps & {
+  keyboardReturnKeyType?: Exclude<StyledBaseInputProps['keyboardReturnKeyType'], 'enter'>;
+}): ReactElement => {
   const [isFocused, setisFocused] = useState(false);
 
   return (
@@ -44,6 +47,7 @@ export const StyledBaseInput = ({
       }}
       onChangeText={(text): void => handleOnChange?.({ name, value: text })}
       onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
+      returnKeyType={keyboardReturnKeyType}
       {...props}
     />
   );

@@ -40,6 +40,7 @@ export const StyledBaseInput = ({
   isRequired,
   handleOnChange,
   handleOnBlur,
+  keyboardReturnKeyType,
   ...props
 }: StyledBaseInputProps): ReactElement => {
   return (
@@ -48,6 +49,7 @@ export const StyledBaseInput = ({
       required={isRequired}
       onChange={(event): void => handleOnChange?.({ name, value: event })}
       onBlur={(event): void => handleOnBlur?.({ name, value: event })}
+      enterKeyHint={keyboardReturnKeyType}
       {...props}
     />
   );

@@ -13,6 +13,7 @@ const propsCategory = {
   VALIDATION_PROPS: 'Validation Props',
   LEADING_VISUAL_PROPS: 'Leading Visual Props',
   TRAILING_VISUAL_PROPS: 'Trailing Visual Props',
+  KEYBOARD_PROPS: 'Keyboard Props',
 };
 
 export default {
@@ -28,7 +29,7 @@ export default {
     value: undefined,
     maxCharacters: 9999,
     textAlign: 'left',
-    autoFocus: false,
+    autoFocus: true,
     onChange: undefined,
     onBlur: undefined,
     label: 'Enter Name',
@@ -44,6 +45,7 @@ export default {
     interactionElement: <CloseIcon size="small" color="surface.text.subtle.lowContrast" />,
     suffix: '',
     trailingIcon: undefined,
+    keyboardReturnKeyType: undefined,
   },
   argTypes: {
     id: {
@@ -177,6 +179,11 @@ export default {
       options: Object.keys(iconMap),
       table: {
         category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
+    keyboardReturnKeyType: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
       },
     },
   },

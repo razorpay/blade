@@ -25,6 +25,7 @@ export type StyledBaseInputProps = {
   | 'trailingIcon'
   | 'textAlign'
   | 'autoFocus'
+  | 'keyboardReturnKeyType'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

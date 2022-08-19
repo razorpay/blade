@@ -16,8 +16,8 @@ import type { IconComponent } from '~components/Icons';
  * TODO for keyboard management
  * textAlign - done
  * autoFocus - done
+ * keyboardReturnKeyType - done
  * autofillSuggestionType
- * keyboardReturnKeyType
  * keyboardType
  */
 
@@ -168,6 +168,14 @@ export type BaseInputProps = InputLabelProps &
      * When autofocus is assigned, screen-readers "teleport" their user to the form control without warning them beforehand.
      */
     autoFocus?: boolean;
+    /**
+     * determines what return key to show on keyboard on mobile devices/virtual keyboard
+     * **Note**: Few values are platform dependent and might not render on all the platforms
+     *
+     * `enter` is only available on web
+     * `previous` is only available on native android
+     */
+    keyboardReturnKeyType?: 'enter' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
   };
 
 const useInput = ({
@@ -271,6 +279,7 @@ export const BaseInput = ({
   trailingIcon,
   textAlign,
   autoFocus,
+  keyboardReturnKeyType,
 }: BaseInputProps): ReactElement => {
   const { theme } = useTheme();
   const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange });
@@ -323,6 +332,7 @@ export const BaseInput = ({
             textAlign={textAlign}
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus}
+            keyboardReturnKeyType={keyboardReturnKeyType}
           />
           <BaseInputVisuals
             interactionElement={interactionElement}
