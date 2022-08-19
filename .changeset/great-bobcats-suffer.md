@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": minor
+"@razorpay/blade": major
 ---
 
 fix: icon sizes for `Icon`, `IconButton`, `Button`, `Link` & `Spinner` components
