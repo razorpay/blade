@@ -1,10 +1,51 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
+import { ArgsTable, Primary, PRIMARY_STORY, Stories, Subtitle, Title } from '@storybook/addon-docs';
+import { Highlight, Link } from '@storybook/design-system';
 import { Text } from '../Typography';
 import type { RadioGroupProps } from './RadioGroup/RadioGroup';
 import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
+import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+
+const Page = (): React.ReactElement => {
+  const figmaURL = useMakeFigmaURL([
+    {
+      themeTokenName: 'paymentTheme',
+      lightModeURL:
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709',
+      darkModeURL:
+        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709',
+    },
+  ]);
+
+  return (
+    <>
+      <Title />
+      <Subtitle>
+        Radio & RadioGroup can be used in forms when a user needs to single value from several
+        options.
+      </Subtitle>
+      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
+        View in Figma
+      </Link>
+      <br />
+      <br />
+      <Title>Usage</Title>
+      <Highlight language="tsx">{`import { Radio, RadioGroup } from '@razorpay/blade/components' \nimport type { RadioProps, RadioGroupProps } from '@razorpay/blade/components'`}</Highlight>
+      <Title>Example</Title>
+      <Subtitle>
+        This is the default radio. You can change the properties of this button using the controls
+        in the table below.
+      </Subtitle>
+      <Primary />
+      <Title>Properties</Title>
+      <ArgsTable story={PRIMARY_STORY} />
+      <Stories />
+    </>
+  );
+};
 
 export default {
   title: 'Components/Radio & RadioGroup',
@@ -34,6 +75,11 @@ export default {
       control: {
         type: 'select',
       },
+    },
+  },
+  parameters: {
+    docs: {
+      page: Page,
     },
   },
 } as Meta<RadioGroupProps>;
