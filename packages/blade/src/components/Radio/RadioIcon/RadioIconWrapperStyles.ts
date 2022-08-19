@@ -1,7 +1,14 @@
 import type { CSSObject } from 'styled-components';
 import type { RadioIconProps } from './RadioIcon';
 import type { Theme } from '~components/BladeProvider';
-import { getIn, getPlatformType, makeMotionTime, makeSize, makeSpace } from '~utils';
+import {
+  getIn,
+  getPlatformType,
+  makeBorderSize,
+  makeMotionTime,
+  makeSize,
+  makeSpace,
+} from '~utils';
 
 const variants = {
   default: {
@@ -58,7 +65,7 @@ const getRadioIconWrapperStyles = ({
     justifyContent: 'center',
     width: '16px',
     height: '16px',
-    borderWidth: '1px',
+    borderWidth: makeBorderSize(theme.border.width.thin),
     borderStyle: 'solid',
     margin: makeSpace(theme.spacing[0]),
     marginTop: '3px',
