@@ -10,6 +10,7 @@ import Box from '~components/Box';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
+import { getPlatformType } from '~utils';
 
 type RadioProps = {
   /**
@@ -49,6 +50,7 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
   const name = groupProps?.name;
   const showHelpText = !hasError && helpText;
+  const isReactNative = getPlatformType() === 'react-native';
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
@@ -70,11 +72,11 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
   });
 
   return (
-    <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
+    <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
       <SelectorInput
         isChecked={state.isChecked}
-        isDisabled={_isDisabled}
-        isNegative={hasError}
+        isDisabled={isDisabled}
+        isNegative={hasError} // TODO: rename to hasError
         inputProps={inputProps}
       />
       <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={hasError} />
