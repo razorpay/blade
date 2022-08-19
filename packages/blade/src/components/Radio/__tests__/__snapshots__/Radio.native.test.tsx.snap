@@ -148,17 +148,13 @@ exports[`<Radio /> should render radio with label 1`] = `
     <View
       display="flex"
       flexDirection="column"
-      gap="spacing.1"
-      marginBottom="spacing.1"
-      marginTop="spacing.1"
+      gap={2}
       style={
         Array [
           Object {
             "display": "flex",
             "flexDirection": "column",
-            "gap": 4,
-            "marginBottom": 4,
-            "marginTop": 4,
+            "gap": 2,
           },
         ]
       }
@@ -418,17 +414,13 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
     <View
       display="flex"
       flexDirection="column"
-      gap="spacing.1"
-      marginBottom="spacing.1"
-      marginTop="spacing.1"
+      gap={2}
       style={
         Array [
           Object {
             "display": "flex",
             "flexDirection": "column",
-            "gap": 4,
-            "marginBottom": 4,
-            "marginTop": 4,
+            "gap": 2,
           },
         ]
       }
