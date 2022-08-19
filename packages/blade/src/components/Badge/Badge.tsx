@@ -86,7 +86,7 @@ const Badge = ({
       >
         {Icon ? (
           <Box paddingRight={Boolean(Icon) ? 'spacing.1' : 'spacing.0'} display="flex">
-            <Icon color={`feedback.icon.${variant}.${contrast}Contrast`} size="xsmall" />
+            <Icon color={`feedback.icon.${variant}.${contrast}Contrast`} size="small" />
           </Box>
         ) : null}
         <StyledBaseText
