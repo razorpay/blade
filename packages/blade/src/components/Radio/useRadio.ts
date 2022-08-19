@@ -75,7 +75,7 @@ const useRadio = ({
   const isReactNative = getPlatformType() === 'react-native';
   if (isChecked && defaultChecked) {
     throw new Error(
-      `[Blade Radio] Do not provide both 'isChecked' and 'defaultChecked' to useRadio. Consider if you want this component to be controlled or uncontrolled.`,
+      `[Blade: Radio]: Do not provide both 'isChecked' and 'defaultChecked' to useRadio. Consider if you want this component to be controlled or uncontrolled.`,
     );
   }
 

@@ -66,8 +66,7 @@ const useRadioGroup = ({
           return;
         }
 
-        // @ts-expect-error TODO: fix this
-        setValue(undefined);
+        setValue(undefined!);
       },
       isChecked(v: string): boolean {
         if (isUndefined(v) || isUndefined(checkedValue)) return false;

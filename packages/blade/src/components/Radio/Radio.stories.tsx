@@ -7,7 +7,7 @@ import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
 
 export default {
-  title: 'Components/Radio',
+  title: 'Components/Radio & RadioGroup',
   component: RadioGroupComponent,
   args: {
     label: 'Radio example',
