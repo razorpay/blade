@@ -1,5 +1,45 @@
 # @razorpay/blade
 
+## 1.0.0
+
+### Major Changes
+
+- 51a6787: feat: add `Radio` & `RadioGroup` component
+
+  ## ⚠️ Breaking change for `Checkbox`
+
+  - We've renamed the `neccessityIndicator` prop to `necessityIndicator` to fix a spelling error
+
+- 65834be: fix: icon sizes for `Icon`, `IconButton`, `Button`, `Link` & `Spinner` components
+
+  ### Breaking changes
+
+  **❗️This version introduces a breaking change for the `Icon` component's `size` prop**
+
+  Earlier, the `size` prop had the following size to pixel mapping:
+
+  - **xxsmall:** 10px
+  - **xsmall**: 12px
+  - **small**: 16px
+  - **medium**: 20px
+  - **large**: 24px
+  - **xlarge**: 32px
+
+  Now, the correct `size` prop will have the following size to pixel mapping:
+
+  - **xsmall**: 8px
+  - **small**: 12px
+  - **medium**: 16px
+  - **large**: 20px
+  - **xlarge**: 24px
+  - **2xlarge**: 32px
+
+  > ⚠️ `xxsmall` is not an accepted value anymore. Instead, we have a new acceptable value of `2xlarge`.
+
+### Minor Changes
+
+- 61a17fe: feat: add `Badge` component
+
 ## 0.13.6
 
 ### Patch Changes
