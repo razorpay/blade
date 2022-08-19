@@ -4,7 +4,6 @@
 import React from 'react';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
-import usePresence from 'use-presence';
 import type { FadeProps } from './Fade.d';
 import { useTheme } from '~components/BladeProvider';
 import { makeMotionTime } from '~utils';
@@ -56,19 +55,19 @@ const Fade = ({ show, children, styles }: FadeProps) => {
       ${theme.motion.easing.exit.effective as string};
   `;
 
-  const { isMounted, isVisible } = usePresence(!!show, {
-    transitionDuration: duration,
-    initialEnter: true,
-  });
+  // if show is undefined do not initialize the animation to prevent flash of animation
+  const animation = show === undefined ? null : show ? enter : exit;
 
   return (
-    <>
-      {isMounted && (
-        <AnimatedFade animationType={isVisible ? enter : exit} style={styles}>
-          {children}
-        </AnimatedFade>
-      )}
-    </>
+    <AnimatedFade
+      animationType={animation}
+      style={{
+        opacity: show ? 1 : 0,
+        ...styles,
+      }}
+    >
+      {children}
+    </AnimatedFade>
   );
 };
 

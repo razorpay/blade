@@ -66,7 +66,7 @@ const CheckboxIcon = ({
         show={Boolean(isChecked) && !isIndeterminate}
         styles={{ position: 'absolute', display: 'flex' }}
       >
-        <CheckedIcon color={iconColor} />
+        {isChecked ? <CheckedIcon color={iconColor} /> : null}
       </Fade>
     </CheckboxIconWrapper>
   );
