@@ -134,6 +134,15 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 .c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -148,15 +157,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   width: 1px;
   white-space: nowrap;
   word-wrap: normal;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
 }
 
 .c8 {
@@ -550,6 +550,15 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   padding: 0;
 }
 
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 .c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -564,15 +573,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   width: 1px;
   white-space: nowrap;
   word-wrap: normal;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
 }
 
 .c8 {
