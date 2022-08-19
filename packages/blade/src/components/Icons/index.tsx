@@ -14,7 +14,7 @@ type ActionIconColors = `action.icon.${DotNotationColorStringToken<
   Theme['colors']['action']['icon']
 >}`;
 
-export type IconSize = 'large' | 'medium' | 'small' | 'xlarge' | 'xsmall' | 'xxsmall';
+export type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 export type IconProps = {
   /**
    * Color token (not to be confused with actual hsla value)
