@@ -29,7 +29,7 @@ export default {
     value: undefined,
     maxCharacters: 9999,
     textAlign: 'left',
-    autoFocus: true,
+    autoFocus: false,
     onChange: undefined,
     onBlur: undefined,
     label: 'Enter Name',
