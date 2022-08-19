@@ -16,15 +16,19 @@ const StyledBaseNativeInput = styled.input<StyledBaseInputProps>((props) => ({
     interactionElement: props.interactionElement,
     suffix: props.suffix,
     trailingIcon: props.trailingIcon,
+    textAlign: props.textAlign,
   }),
-  '::placeholder': getTextStyles({
-    size: 'medium',
-    variant: 'body',
-    type: 'placeholder',
-    weight: 'regular',
-    contrast: 'low',
-    theme: props.theme,
-  }),
+  '::placeholder': {
+    ...getTextStyles({
+      size: 'medium',
+      variant: 'body',
+      type: 'placeholder',
+      weight: 'regular',
+      contrast: 'low',
+      theme: props.theme,
+    }),
+    textAlign: props.textAlign,
+  },
   ':focus': {
     outline: 'none',
   },

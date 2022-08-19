@@ -23,6 +23,7 @@ export type StyledBaseInputProps = {
   | 'interactionElement'
   | 'suffix'
   | 'trailingIcon'
+  | 'textAlign'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

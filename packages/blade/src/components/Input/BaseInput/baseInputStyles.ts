@@ -14,6 +14,7 @@ type GetInputStyles = Pick<
   | 'interactionElement'
   | 'suffix'
   | 'trailingIcon'
+  | 'textAlign'
 > & {
   isFocused?: boolean;
   theme: Theme;
@@ -68,6 +69,7 @@ export const getBaseInputStyles = ({
   interactionElement,
   suffix,
   trailingIcon,
+  textAlign,
 }: GetInputStyles): CSSObject => {
   const isReactNative = getPlatformType() === 'react-native';
 
@@ -107,5 +109,6 @@ export const getBaseInputStyles = ({
         : makeSpace(theme.spacing[3]),
     ...(isReactNative ? { lineHeight: undefined, height: '36px' } : {}),
     ...(!isReactNative ? { outline: 'none', border: 'none' } : {}),
+    textAlign,
   };
 };

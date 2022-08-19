@@ -12,6 +12,15 @@ import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
 
+/**
+ * TODO for keyboard management
+ * textAlign - done
+ * autoFocus
+ * autofillSuggestionType
+ * keyboardReturnKeyType
+ * keyboardType
+ */
+
 export type HandleOnEvent = ({
   name,
   value,
@@ -147,6 +156,10 @@ export type BaseInputProps = InputLabelProps &
      * Displays the character counter under the input field
      */
     maxCharacters?: number;
+    /**
+     * alignement of the text inside inputfield
+     */
+    textAlign?: 'left' | 'center' | 'right';
   };
 
 const useInput = ({
@@ -248,6 +261,7 @@ export const BaseInput = ({
   interactionElement,
   suffix,
   trailingIcon,
+  textAlign,
 }: BaseInputProps): ReactElement => {
   const { theme } = useTheme();
   const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange });
@@ -297,6 +311,7 @@ export const BaseInput = ({
             suffix={suffix}
             trailingIcon={trailingIcon}
             setIsFocused={setIsFocused}
+            textAlign={textAlign}
           />
           <BaseInputVisuals
             interactionElement={interactionElement}
