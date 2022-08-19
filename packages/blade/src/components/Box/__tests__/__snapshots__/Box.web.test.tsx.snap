@@ -17,6 +17,11 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   padding-top: 8px;
   padding-bottom: 12px;
   padding-left: 16px;

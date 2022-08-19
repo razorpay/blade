@@ -9,6 +9,11 @@ export type BoxProps = {
   alignItems?: CSSObject['alignItems'];
   justifyContent?: CSSObject['justifyContent'];
   alignSelf?: CSSObject['alignSelf'];
+  position?: CSSObject['position'];
+  top?: CSSObject['top'];
+  right?: CSSObject['right'];
+  bottom?: CSSObject['bottom'];
+  left?: CSSObject['left'];
   paddingTop?: DotNotationSpacingStringToken | 'auto';
   paddingBottom?: DotNotationSpacingStringToken | 'auto';
   paddingLeft?: DotNotationSpacingStringToken | 'auto';
@@ -17,7 +22,7 @@ export type BoxProps = {
   marginBottom?: DotNotationSpacingStringToken | 'auto';
   marginLeft?: DotNotationSpacingStringToken | 'auto';
   marginRight?: DotNotationSpacingStringToken | 'auto';
-  gap?: DotNotationSpacingStringToken | 'auto';
+  gap?: DotNotationSpacingStringToken | 'auto' | number;
   minHeight?: number;
   minWidth?: number;
   maxHeight?: number;

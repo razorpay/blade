@@ -35,6 +35,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
         Object {
           "display": "flex",
           "flexDirection": "row",
+          "marginBottom": 2,
+          "marginTop": 2,
         },
       ]
     }
@@ -141,6 +143,8 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
         Object {
           "display": "flex",
           "flexDirection": "row",
+          "marginBottom": 2,
+          "marginTop": 2,
         },
       ]
     }
@@ -249,6 +253,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         Object {
           "display": "flex",
           "flexDirection": "row",
+          "marginBottom": 2,
+          "marginTop": 2,
         },
       ]
     }

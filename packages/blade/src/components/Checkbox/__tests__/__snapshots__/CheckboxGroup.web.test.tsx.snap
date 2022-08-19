@@ -66,7 +66,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .c11 {
@@ -150,6 +150,8 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c8 {
@@ -192,7 +194,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   >
     <span
       id="checkbox-group-49-label-54"
-      style="width: auto;"
+      style="width: auto; margin-right: 16px;"
     >
       <div
         class="c1"
@@ -427,7 +429,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .c3 {
@@ -493,6 +495,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c8 {
@@ -535,7 +539,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   >
     <span
       id="checkbox-group-19-label-24"
-      style="width: auto;"
+      style="width: auto; margin-right: 16px;"
     >
       <div
         class="c1"

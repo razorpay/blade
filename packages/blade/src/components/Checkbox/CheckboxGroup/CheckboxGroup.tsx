@@ -112,7 +112,7 @@ const CheckboxGroup = ({
           {label}
         </FormLabel>
         <Box>
-          <Box display="flex" flexDirection="column" gap="spacing.1">
+          <Box display="flex" flexDirection="column" gap={2}>
             {children}
           </Box>
           <FormHint
