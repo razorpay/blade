@@ -5,11 +5,12 @@ import type { OnChange } from './useRadio';
 import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
-import { SelectorLabel } from '~components/Form/Selector/SelectorLabel.web';
+import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import Box from '~components/Box';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
-import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { CheckboxInput as RadioInput } from '~components/Checkbox/CheckboxInput';
+import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
+import { getPlatformType } from '~utils';
 
 type RadioProps = {
   /**
@@ -49,6 +50,7 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
   const name = groupProps?.name;
   const showHelpText = !hasError && helpText;
+  const isReactNative = getPlatformType() === 'react-native';
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
@@ -70,11 +72,11 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
   });
 
   return (
-    <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
+    <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
       <RadioInput
         isChecked={state.isChecked}
-        isDisabled={_isDisabled}
-        isNegative={hasError}
+        isDisabled={isDisabled}
+        isNegative={hasError} // TODO: rename to hasError
         inputProps={inputProps}
       />
       <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={hasError} />
