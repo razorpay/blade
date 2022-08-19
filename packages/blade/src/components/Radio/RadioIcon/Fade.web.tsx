@@ -55,6 +55,9 @@ const Fade = ({ show, children, styles }: FadeProps) => {
       ${theme.motion.easing.exit.effective as string};
   `;
 
+  // usePresence hook waits for the animation to finish before unmounting the component
+  // It's similar to framer-motions usePresence hook
+  // https://www.framer.com/docs/animate-presence/#usepresence
   const { isMounted, isVisible } = usePresence(!!show, {
     transitionDuration: duration,
     initialEnter: true,
