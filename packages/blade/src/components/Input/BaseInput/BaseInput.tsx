@@ -15,7 +15,7 @@ import type { IconComponent } from '~components/Icons';
 /**
  * TODO for keyboard management
  * textAlign - done
- * autoFocus
+ * autoFocus - done
  * autofillSuggestionType
  * keyboardReturnKeyType
  * keyboardType
@@ -157,9 +157,17 @@ export type BaseInputProps = InputLabelProps &
      */
     maxCharacters?: number;
     /**
-     * alignement of the text inside inputfield
+     * alignement of the text inside input field
      */
     textAlign?: 'left' | 'center' | 'right';
+    /**
+     * If true, focuses the input field on load
+     *
+     * **Note:**
+     * Automatically focusing a form control can confuse visually-impaired people using screen-reading technology and people with cognitive impairments.
+     * When autofocus is assigned, screen-readers "teleport" their user to the form control without warning them beforehand.
+     */
+    autoFocus?: boolean;
   };
 
 const useInput = ({
@@ -262,6 +270,7 @@ export const BaseInput = ({
   suffix,
   trailingIcon,
   textAlign,
+  autoFocus,
 }: BaseInputProps): ReactElement => {
   const { theme } = useTheme();
   const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange });
@@ -312,6 +321,8 @@ export const BaseInput = ({
             trailingIcon={trailingIcon}
             setIsFocused={setIsFocused}
             textAlign={textAlign}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus={autoFocus}
           />
           <BaseInputVisuals
             interactionElement={interactionElement}

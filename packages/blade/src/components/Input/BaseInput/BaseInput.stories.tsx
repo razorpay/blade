@@ -28,6 +28,7 @@ export default {
     value: undefined,
     maxCharacters: 9999,
     textAlign: 'left',
+    autoFocus: false,
     onChange: undefined,
     onBlur: undefined,
     label: 'Enter Name',
@@ -87,6 +88,11 @@ export default {
       },
     },
     textAlign: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    autoFocus: {
       table: {
         category: propsCategory.BASE_PROPS,
       },

@@ -24,6 +24,7 @@ export type StyledBaseInputProps = {
   | 'suffix'
   | 'trailingIcon'
   | 'textAlign'
+  | 'autoFocus'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';
