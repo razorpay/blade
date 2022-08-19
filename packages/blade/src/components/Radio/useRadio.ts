@@ -2,15 +2,63 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
-import type { RadioProps } from './Radio';
 import { useControllableState } from '~src/hooks/useControllable';
 import { useId } from '~src/hooks/useId';
-import { getPlatformType, makeAccessible } from '~utils';
+import { getPlatformType, makeAccessible } from '~src/utils';
 
-type UseRadioProps = Pick<
-  RadioProps,
-  'isChecked' | 'defaultChecked' | 'isDisabled' | 'isRequired' | 'onChange' | 'name' | 'value'
-> & { hasError?: boolean };
+export type OnChange = ({
+  isChecked,
+  event,
+  value,
+}: {
+  isChecked: boolean;
+  event?: React.ChangeEvent;
+  value?: string;
+}) => void;
+
+type UseRadioProps = {
+  hasError?: boolean;
+  /**
+   * If `true`, The Radio will be checked. This also makes the Radio controlled
+   * Use `onChange` to update its value
+   *
+   * @default false
+   */
+  isChecked?: boolean;
+  /**
+   * If `true`, the Radio will be initially checked. This also makes the Radio uncontrolled
+   *
+   * @default false
+   */
+  defaultChecked?: boolean;
+  /**
+   * The callback invoked when the checked state of the `Radio` changes.
+   */
+  onChange?: OnChange;
+  /**
+   * The name of the input field in a Radio
+   * (Useful for form submission).
+   */
+  name?: string;
+  /**
+   * The value to be used in the Radio input.
+   * This is the value that will be returned on form submission.
+   */
+  value?: string;
+  /**
+   * If `true`, the Radio will be disabled
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
+  /**
+   * If `true`, the Radio input is marked as required,
+   * and `required` attribute will be added
+   *
+   * @default false
+   */
+  isRequired?: boolean;
+};
 
 const useRadio = ({
   isChecked,
@@ -44,12 +92,17 @@ const useRadio = ({
     }
 
     setRadioState((checked) => {
-      onChange?.({
-        isChecked: !checked,
-        event: event as React.ChangeEvent,
-        value,
-      });
-      return !checked;
+      // Prevent radio to be unchecked when clicked again
+      // Once checked radios don't act as toggle buttons
+      if (checked === false) {
+        onChange?.({
+          isChecked: true,
+          event: event as React.ChangeEvent,
+          value,
+        });
+        return true;
+      }
+      return checked;
     });
   };
 

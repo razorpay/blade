@@ -1,41 +1,18 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
+import isEmpty from 'lodash/isEmpty';
+import type { OnChange } from './useRadio';
 import { useRadio } from './useRadio';
-import { RadioIcon } from './RadioIcon';
-import Box from '~components/Box';
-import { CheckboxInput } from '~components/Checkbox/CheckboxInput';
+import { RadioIcon } from './RadioIcon/RadioIcon';
+import { useRadioGroupContext } from './RadioGroup/RadioContext';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
+import Box from '~components/Box';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
+import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getPlatformType } from '~utils';
 
-type OnChange = ({
-  isChecked,
-  event,
-  value,
-}: {
-  isChecked: boolean;
-  event?: React.ChangeEvent;
-  value?: string;
-}) => void;
-
 type RadioProps = {
-  /**
-   * If `true`, The Radio will be checked. This also makes the Radio controlled
-   * Use `onChange` to update its value
-   *
-   * @default false
-   */
-  isChecked?: boolean;
-  /**
-   * If `true`, the Radio will be initially checked. This also makes the Radio uncontrolled
-   *
-   * @default false
-   */
-  defaultChecked?: boolean;
-  /**
-   * The callback invoked when the checked state of the `Radio` changes.
-   */
-  onChange?: OnChange;
   /**
    * Sets the label text of the Radio
    */
@@ -45,69 +22,64 @@ type RadioProps = {
    */
   helpText?: string;
   /**
-   * The name of the input field in a Radio
-   * (Useful for form submission).
-   */
-  name?: string;
-  /**
    * The value to be used in the Radio input.
    * This is the value that will be returned on form submission.
    */
-  value?: string;
+  value: string;
   /**
    * If `true`, the Radio will be disabled
    *
    * @default false
    */
   isDisabled?: boolean;
-  /**
-   * If `true`, the Radio input is marked as required,
-   * and `required` attribute will be added
-   *
-   * @default false
-   */
-  isRequired?: boolean;
-  /**
-   * If `error`, the Radio input is marked as invalid,
-   * and `invalid` attribute will be added
-   */
-  validationState?: 'error' | 'none';
 };
 
-const Radio = ({
-  defaultChecked,
-  isChecked,
-  isDisabled,
-  isRequired,
-  name,
-  value,
-  onChange,
-  children,
-  helpText,
-  validationState,
-}: RadioProps): React.ReactElement => {
+const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.ReactElement => {
+  const groupProps = useRadioGroupContext();
+  const isInsideGroup = !isEmpty(groupProps);
+
+  if (!isInsideGroup) {
+    throw new Error('[Blade Radio]: Cannot use <Radio /> outside of <RadioGroup />');
+  }
+
+  const isChecked = groupProps?.state?.isChecked(value);
+  const defaultChecked =
+    groupProps?.defaultValue === undefined ? undefined : groupProps?.defaultValue === value;
+  const validationState = groupProps?.validationState;
+  const hasError = validationState === 'error';
+  const _isDisabled = isDisabled ?? groupProps?.isDisabled;
+  const name = groupProps?.name;
+  const showHelpText = !hasError && helpText;
+  const isReactNative = getPlatformType() === 'react-native';
+
+  const handleChange: OnChange = ({ isChecked, value }) => {
+    if (isChecked) {
+      groupProps?.state?.setValue(value!);
+    } else {
+      groupProps?.state?.removeValue();
+    }
+  };
+
   const { state, ids, inputProps } = useRadio({
     defaultChecked,
     isChecked,
-    isDisabled,
-    isRequired,
+    hasError,
+    isDisabled: _isDisabled,
+    isRequired: groupProps.neccessityIndicator === 'required',
     name,
     value,
-    onChange,
+    onChange: handleChange,
   });
-  const _hasError = validationState === 'error';
-  const showHelpText = !_hasError && helpText;
-  const isReactNative = getPlatformType() === 'react-native';
 
   return (
     <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
-      <CheckboxInput
+      <SelectorInput
         isChecked={state.isChecked}
         isDisabled={isDisabled}
-        isNegative={_hasError} // TODO: rename to hasError
+        isNegative={hasError} // TODO: rename to hasError
         inputProps={inputProps}
       />
-      <RadioIcon isChecked={state.isChecked} isDisabled={isDisabled} isNegative={_hasError} />
+      <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={hasError} />
       <Box>
         <SelectorTitle>{children}</SelectorTitle>
         {showHelpText && <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>}

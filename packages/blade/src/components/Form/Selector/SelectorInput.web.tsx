@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
-import type { Theme } from '../BladeProvider';
-import type { CheckboxIconProps } from './CheckboxIcon';
-import type { InputProps } from './useCheckbox';
+import type { Theme } from '~components/BladeProvider';
 import { getIn, makeMotionTime } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
 
-type HoverProps = Pick<CheckboxIconProps, 'isNegative' | 'isDisabled'> & {
-  isChecked: boolean;
+type HoverProps = {
+  isChecked?: boolean;
+  isDisabled?: boolean;
+  isNegative?: boolean;
 };
 
 const variants = {
@@ -32,6 +33,7 @@ const getHoverStyles = ({
   const backgroundColor = variants.default.background[checked];
 
   return {
+    borderColor: getIn(theme, backgroundColor),
     backgroundColor: getIn(theme, backgroundColor),
     transitionTimingFunction: theme.motion.easing.standard.effective as string,
     transitionDuration: makeMotionTime(theme.motion.duration['2xquick']),
@@ -50,12 +52,12 @@ const StyledInput = styled.input<HoverProps>(({ theme, isChecked, isDisabled, is
   },
 }));
 
-const CheckboxInput = ({
+const SelectorInput = ({
   inputProps,
   isChecked,
   isDisabled,
   isNegative,
-}: HoverProps & { inputProps: InputProps }): React.ReactElement => {
+}: HoverProps & { inputProps: any }): React.ReactElement => {
   return (
     <StyledInput
       isChecked={isChecked}
@@ -66,4 +68,4 @@ const CheckboxInput = ({
   );
 };
 
-export { CheckboxInput };
+export { SelectorInput };
