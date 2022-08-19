@@ -1,6 +1,5 @@
 import React from 'react';
 import { RadioGroupProvider } from './RadioContext';
-import { RadioGroupContent } from './RadioGroupContent';
 import { useRadioGroup } from './useRadioGroup';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
@@ -113,7 +112,9 @@ const RadioGroup = ({
           {label}
         </FormLabel>
         <Box>
-          <RadioGroupContent>{children}</RadioGroupContent>
+          <Box display="flex" flexDirection="column" gap={2}>
+            {children}
+          </Box>
           <FormHint
             type={validationState === 'error' ? 'error' : 'help'}
             errorText={errorText}
