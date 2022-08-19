@@ -18,7 +18,7 @@ const Fade = ({ children, show, styles }: FadeProps) => {
   const { theme } = useTheme();
 
   const enterEasing = (theme.motion.easing.entrance.effective as unknown) as EasingFn;
-  const leaveEasing = (theme.motion.easing.exit.effective as unknown) as EasingFn;
+  const exitEasing = (theme.motion.easing.exit.effective as unknown) as EasingFn;
   const scaleIn = new Keyframe({
     from: {
       transform: [{ scale: 0.3 }],
@@ -35,11 +35,11 @@ const Fade = ({ children, show, styles }: FadeProps) => {
   const fadeOut = new Keyframe({
     from: {
       opacity: 1,
-      easing: leaveEasing,
+      easing: exitEasing,
     },
     to: {
       opacity: 0,
-      easing: leaveEasing,
+      easing: exitEasing,
     },
   }).duration(theme.motion.duration.quick);
 

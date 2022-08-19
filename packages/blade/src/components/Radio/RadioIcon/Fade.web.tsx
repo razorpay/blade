@@ -50,7 +50,7 @@ const Fade = ({ show, children, styles }: FadeProps) => {
       ${theme.motion.easing.entrance.effective as string};
   `;
 
-  const leave = css`
+  const exit = css`
     animation: ${fadeOut} ${makeMotionTime(duration)}
       ${theme.motion.easing.exit.effective as string};
   `;
@@ -63,7 +63,7 @@ const Fade = ({ show, children, styles }: FadeProps) => {
   return (
     <>
       {isMounted && (
-        <AnimatedFade animationType={isVisible ? enter : leave} style={styles}>
+        <AnimatedFade animationType={isVisible ? enter : exit} style={styles}>
           {children}
         </AnimatedFade>
       )}
