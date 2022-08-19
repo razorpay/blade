@@ -35,6 +35,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c0 {
@@ -198,7 +200,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   >
     <span
       id="radio-group-15-label"
-      style="width: auto;"
+      style="width: auto; margin-right: 16px;"
     >
       <div
         class="c1"
@@ -396,6 +398,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .c0 {
@@ -541,7 +545,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   >
     <span
       id="radio-group-7-label"
-      style="width: auto;"
+      style="width: auto; margin-right: 16px;"
     >
       <div
         class="c1"
