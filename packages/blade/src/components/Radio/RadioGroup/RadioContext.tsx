@@ -13,6 +13,7 @@ export type RadioGroupContextType = Pick<
   | 'defaultValue'
   | 'value'
   | 'onChange'
+  | 'neccessityIndicator'
 > & { state?: State };
 
 const RadioGroupContext = React.createContext<RadioGroupContextType>({});

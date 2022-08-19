@@ -7,3 +7,4 @@ export * from './SkipNav';
 export * from './Typography';
 export * from './VisuallyHidden';
 export * from './Link';
+export * from './Radio';

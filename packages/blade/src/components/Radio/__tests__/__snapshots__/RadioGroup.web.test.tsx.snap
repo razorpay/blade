@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CheckboxGroup /> should render with help text 1`] = `
+exports[`<RadioGroup /> should render with help text 1`] = `
 .c9 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -20,10 +20,21 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   border-style: solid;
   margin: 0px;
   margin-top: 3px;
-  border-radius: 2px;
+  border-radius: 9999px;
   margin-right: 8px;
   background-color: hsla(220,27%,98%,1);
   border-color: hsla(216,19%,89%,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.7,0,0.5,1);
+  transition-timing-function: cubic-bezier(0.7,0,0.5,1);
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -66,6 +77,8 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  margin-top: 4px;
+  margin-bottom: 4px;
   gap: 4px;
 }
 
@@ -145,13 +158,6 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -185,13 +191,13 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 
 <div>
   <div
-    aria-labelledby="checkbox-group-49-label-54"
+    aria-labelledby="radio-group-15-label"
     class="c0"
     display="flex"
     role="group"
   >
     <span
-      id="checkbox-group-49-label-54"
+      id="radio-group-15-label"
       style="width: auto;"
     >
       <div
@@ -234,111 +240,105 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
         class="c6"
         display="flex"
       >
-        <div
-          class=""
+        <label
+          class="c7"
         >
-          <label
-            class="c7"
+          <input
+            aria-checked="false"
+            aria-describedby="radio-16-helptext-17"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c8"
+            name="radio-group-15"
+            role="radio"
+            type="radio"
+            value="apple"
+          />
+          <div
+            class="c9"
+          />
+          <div
+            class=""
           >
-            <input
-              aria-checked="false"
-              aria-disabled="false"
-              aria-hidden="true"
-              aria-invalid="false"
-              aria-required="false"
-              class="c8"
-              role="checkbox"
-              type="checkbox"
-              value="apple"
-            />
             <div
-              class="c9"
-            />
-            <div
-              class=""
+              class="c10"
+              color="surface.text.subtle.lowContrast"
+              font-family="text"
+              font-size="100"
+              font-weight="regular"
             >
-              <div
-                class="c10"
-                color="surface.text.subtle.lowContrast"
-                font-family="text"
-                font-size="100"
-                font-weight="regular"
-              >
-                Apple
-              </div>
+              Apple
             </div>
-          </label>
-        </div>
-        <div
-          class=""
+          </div>
+        </label>
+        <label
+          class="c7"
         >
-          <label
-            class="c7"
+          <input
+            aria-checked="false"
+            aria-describedby="radio-18-helptext-19"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c8"
+            name="radio-group-15"
+            role="radio"
+            type="radio"
+            value="mango"
+          />
+          <div
+            class="c9"
+          />
+          <div
+            class=""
           >
-            <input
-              aria-checked="false"
-              aria-disabled="false"
-              aria-hidden="true"
-              aria-invalid="false"
-              aria-required="false"
-              class="c8"
-              role="checkbox"
-              type="checkbox"
-              value="mango"
-            />
             <div
-              class="c9"
-            />
-            <div
-              class=""
+              class="c10"
+              color="surface.text.subtle.lowContrast"
+              font-family="text"
+              font-size="100"
+              font-weight="regular"
             >
-              <div
-                class="c10"
-                color="surface.text.subtle.lowContrast"
-                font-family="text"
-                font-size="100"
-                font-weight="regular"
-              >
-                Mango
-              </div>
+              Mango
             </div>
-          </label>
-        </div>
-        <div
-          class=""
+          </div>
+        </label>
+        <label
+          class="c7"
         >
-          <label
-            class="c7"
+          <input
+            aria-checked="false"
+            aria-describedby="radio-20-helptext-21"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c8"
+            name="radio-group-15"
+            role="radio"
+            type="radio"
+            value="orange"
+          />
+          <div
+            class="c9"
+          />
+          <div
+            class=""
           >
-            <input
-              aria-checked="false"
-              aria-disabled="false"
-              aria-hidden="true"
-              aria-invalid="false"
-              aria-required="false"
-              class="c8"
-              role="checkbox"
-              type="checkbox"
-              value="orange"
-            />
             <div
-              class="c9"
-            />
-            <div
-              class=""
+              class="c10"
+              color="surface.text.subtle.lowContrast"
+              font-family="text"
+              font-size="100"
+              font-weight="regular"
             >
-              <div
-                class="c10"
-                color="surface.text.subtle.lowContrast"
-                font-family="text"
-                font-size="100"
-                font-weight="regular"
-              >
-                Orange
-              </div>
+              Orange
             </div>
-          </label>
-        </div>
+          </div>
+        </label>
       </div>
       <div
         class="c11"
@@ -361,7 +361,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 </div>
 `;
 
-exports[`<CheckboxGroup /> should render with label 1`] = `
+exports[`<RadioGroup /> should render with label 1`] = `
 .c9 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -381,10 +381,21 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   border-style: solid;
   margin: 0px;
   margin-top: 3px;
-  border-radius: 2px;
+  border-radius: 9999px;
   margin-right: 8px;
   background-color: hsla(220,27%,98%,1);
   border-color: hsla(216,19%,89%,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.7,0,0.5,1);
+  transition-timing-function: cubic-bezier(0.7,0,0.5,1);
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -427,6 +438,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  margin-top: 4px;
+  margin-bottom: 4px;
   gap: 4px;
 }
 
@@ -488,13 +501,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
@@ -528,13 +534,13 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 
 <div>
   <div
-    aria-labelledby="checkbox-group-19-label-24"
+    aria-labelledby="radio-group-7-label"
     class="c0"
     display="flex"
     role="group"
   >
     <span
-      id="checkbox-group-19-label-24"
+      id="radio-group-7-label"
       style="width: auto;"
     >
       <div
@@ -551,7 +557,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             font-size="75"
             font-weight="bold"
           >
-            Select fruits
+            Select fav fruit
             <div
               class="c4"
             >
@@ -577,111 +583,105 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         class="c6"
         display="flex"
       >
-        <div
-          class=""
+        <label
+          class="c7"
         >
-          <label
-            class="c7"
+          <input
+            aria-checked="false"
+            aria-describedby="radio-1-helptext-2"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c8"
+            name="radio-group-7"
+            role="radio"
+            type="radio"
+            value="apple"
+          />
+          <div
+            class="c9"
+          />
+          <div
+            class=""
           >
-            <input
-              aria-checked="false"
-              aria-disabled="false"
-              aria-hidden="true"
-              aria-invalid="false"
-              aria-required="false"
-              class="c8"
-              role="checkbox"
-              type="checkbox"
-              value="apple"
-            />
             <div
-              class="c9"
-            />
-            <div
-              class=""
+              class="c10"
+              color="surface.text.subtle.lowContrast"
+              font-family="text"
+              font-size="100"
+              font-weight="regular"
             >
-              <div
-                class="c10"
-                color="surface.text.subtle.lowContrast"
-                font-family="text"
-                font-size="100"
-                font-weight="regular"
-              >
-                Apple
-              </div>
+              Apple
             </div>
-          </label>
-        </div>
-        <div
-          class=""
+          </div>
+        </label>
+        <label
+          class="c7"
         >
-          <label
-            class="c7"
+          <input
+            aria-checked="false"
+            aria-describedby="radio-3-helptext-4"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c8"
+            name="radio-group-7"
+            role="radio"
+            type="radio"
+            value="mango"
+          />
+          <div
+            class="c9"
+          />
+          <div
+            class=""
           >
-            <input
-              aria-checked="false"
-              aria-disabled="false"
-              aria-hidden="true"
-              aria-invalid="false"
-              aria-required="false"
-              class="c8"
-              role="checkbox"
-              type="checkbox"
-              value="mango"
-            />
             <div
-              class="c9"
-            />
-            <div
-              class=""
+              class="c10"
+              color="surface.text.subtle.lowContrast"
+              font-family="text"
+              font-size="100"
+              font-weight="regular"
             >
-              <div
-                class="c10"
-                color="surface.text.subtle.lowContrast"
-                font-family="text"
-                font-size="100"
-                font-weight="regular"
-              >
-                Mango
-              </div>
+              Mango
             </div>
-          </label>
-        </div>
-        <div
-          class=""
+          </div>
+        </label>
+        <label
+          class="c7"
         >
-          <label
-            class="c7"
+          <input
+            aria-checked="false"
+            aria-describedby="radio-5-helptext-6"
+            aria-disabled="false"
+            aria-hidden="true"
+            aria-invalid="false"
+            aria-required="false"
+            class="c8"
+            name="radio-group-7"
+            role="radio"
+            type="radio"
+            value="orange"
+          />
+          <div
+            class="c9"
+          />
+          <div
+            class=""
           >
-            <input
-              aria-checked="false"
-              aria-disabled="false"
-              aria-hidden="true"
-              aria-invalid="false"
-              aria-required="false"
-              class="c8"
-              role="checkbox"
-              type="checkbox"
-              value="orange"
-            />
             <div
-              class="c9"
-            />
-            <div
-              class=""
+              class="c10"
+              color="surface.text.subtle.lowContrast"
+              font-family="text"
+              font-size="100"
+              font-weight="regular"
             >
-              <div
-                class="c10"
-                color="surface.text.subtle.lowContrast"
-                font-family="text"
-                font-size="100"
-                font-weight="regular"
-              >
-                Orange
-              </div>
+              Orange
             </div>
-          </label>
-        </div>
+          </div>
+        </label>
       </div>
     </div>
   </div>
