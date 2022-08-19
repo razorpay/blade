@@ -28,11 +28,11 @@ type RadioGroupProps = {
    */
   validationState?: 'error' | 'none';
   /**
-   * Renders a neccessity indicator after radioGroup label
+   * Renders a necessity indicator after radioGroup label
    *
    * If set to `undefined` it renders nothing.
    */
-  neccessityIndicator?: 'required' | 'optional' | 'none';
+  necessityIndicator?: 'required' | 'optional' | 'none';
   /**
    * Sets the disabled state of the radioGroup
    * If set to `true` it propagate down to all the radios
@@ -76,7 +76,7 @@ const RadioGroup = ({
   label,
   helpText,
   isDisabled = false,
-  neccessityIndicator = 'none',
+  necessityIndicator = 'none',
   labelPosition = 'top',
   validationState = 'none',
   errorText,
@@ -97,17 +97,17 @@ const RadioGroup = ({
 
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
-  const accessibillityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
+  const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
 
   return (
     <RadioGroupProvider value={contextValue}>
       <SelectorGroupField position={labelPosition} labelledBy={ids.labelId}>
         <FormLabel
           as="span"
-          neccessityIndicator={neccessityIndicator}
+          necessityIndicator={necessityIndicator}
           position={labelPosition}
           id={ids.labelId}
-          accessibillityText={accessibillityText}
+          accessibilityText={accessibilityText}
         >
           {label}
         </FormLabel>

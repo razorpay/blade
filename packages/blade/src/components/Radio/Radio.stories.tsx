@@ -54,7 +54,7 @@ export default {
     label: 'Radio example',
     helpText: undefined,
     isDisabled: false,
-    neccessityIndicator: 'none',
+    necessityIndicator: 'none',
     labelPosition: undefined,
     validationState: undefined,
     errorText: undefined,
@@ -119,13 +119,13 @@ Disabled.args = {
 export const Optional = RadioTemplate.bind({});
 Optional.storyName = 'Optional';
 Optional.args = {
-  neccessityIndicator: 'optional',
+  necessityIndicator: 'optional',
 };
 
 export const Required = RadioTemplate.bind({});
 Required.storyName = 'Required';
 Required.args = {
-  neccessityIndicator: 'required',
+  necessityIndicator: 'required',
 };
 
 export const LabelPositionLeft = RadioTemplate.bind({});
@@ -166,7 +166,7 @@ export const KitchenSink = (): React.ReactElement => {
       </RadioGroupComponent>
       <Text>&nbsp;</Text>
       <RadioGroupComponent
-        neccessityIndicator="required"
+        necessityIndicator="required"
         errorText="Atleast one has to be selected"
         helpText="Select atleast one"
         label="Select your fruit"
@@ -178,7 +178,7 @@ export const KitchenSink = (): React.ReactElement => {
       <Text>&nbsp;</Text>
       <RadioGroupComponent
         validationState="error"
-        neccessityIndicator="optional"
+        necessityIndicator="optional"
         errorText="Atleast one has to be selected"
         helpText="Select atleast one"
         label="Select your fruit"
@@ -190,7 +190,7 @@ export const KitchenSink = (): React.ReactElement => {
       <Text>&nbsp;</Text>
       <RadioGroupComponent
         labelPosition="left"
-        neccessityIndicator="optional"
+        necessityIndicator="optional"
         validationState="error"
         errorText="This is invalid"
         helpText="Select atleast one"

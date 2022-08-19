@@ -65,7 +65,7 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
     isChecked,
     hasError,
     isDisabled: _isDisabled,
-    isRequired: groupProps.neccessityIndicator === 'required',
+    isRequired: groupProps.necessityIndicator === 'required',
     name,
     value,
     onChange: handleChange,
