@@ -17,6 +17,7 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
+  overflow: hidden;
   position: absolute;
   top: 0;
   right: 0;
@@ -36,6 +37,7 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
   <div
     class="c0"
     display="flex"
+    overflow="hidden"
   />
 </div>
 `;

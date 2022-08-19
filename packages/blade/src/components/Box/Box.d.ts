@@ -9,6 +9,7 @@ export type BoxProps = {
   alignItems?: CSSObject['alignItems'];
   justifyContent?: CSSObject['justifyContent'];
   alignSelf?: CSSObject['alignSelf'];
+  overflow?: CSSObject['overflow'];
   position?: CSSObject['position'];
   top?: CSSObject['top'];
   right?: CSSObject['right'];
