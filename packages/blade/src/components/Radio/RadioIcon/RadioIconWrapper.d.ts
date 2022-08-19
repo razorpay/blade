@@ -1,1 +1,1 @@
-export * from './RadioIconWrapper.web';
+export { RadioIconWrapper } from './RadioIconWrapper.web';

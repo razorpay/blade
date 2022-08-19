@@ -8,8 +8,8 @@ import { useRadioGroupContext } from './RadioGroup/RadioContext';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import Box from '~components/Box';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
-import { CheckboxInput as RadioInput } from '~components/Checkbox/CheckboxInput';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
+import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getPlatformType } from '~utils';
 
 type RadioProps = {
@@ -73,7 +73,7 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
 
   return (
     <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
-      <RadioInput
+      <SelectorInput
         isChecked={state.isChecked}
         isDisabled={isDisabled}
         isNegative={hasError} // TODO: rename to hasError

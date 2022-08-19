@@ -8,10 +8,10 @@ import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { getIn } from '~utils';
 
-const CheckedIcon = ({ dotColor, noDot }: { dotColor: string; noDot?: boolean }) => {
+const CheckedIcon = ({ color }: { color: string }) => {
   return (
     <Svg width="16px" height="16px" viewBox="0 0 16 16" fill="none">
-      {!noDot && <Circle cx="8" cy="8" r="4" fill={dotColor} />}
+      <Circle cx="8" cy="8" r="4" fill={color} />
     </Svg>
   );
 };
@@ -49,7 +49,7 @@ const RadioIcon = ({ isChecked, isDisabled, isNegative }: RadioIconProps) => {
   return (
     <RadioIconWrapper isDisabled={isDisabled} isNegative={isNegative} isChecked={checked}>
       <Fade show={checked} styles={{ position: 'absolute', display: 'flex' }}>
-        <CheckedIcon dotColor={dotColor} />
+        <CheckedIcon color={dotColor} />
       </Fade>
     </RadioIconWrapper>
   );
