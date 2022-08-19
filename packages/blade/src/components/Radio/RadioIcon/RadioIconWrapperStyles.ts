@@ -1,7 +1,14 @@
 import type { CSSObject } from 'styled-components';
-import type { CheckboxIconProps } from './CheckboxIcon';
+import type { RadioIconProps } from './RadioIcon';
 import type { Theme } from '~components/BladeProvider';
-import { getIn, makeSize, makeSpace } from '~utils';
+import {
+  getIn,
+  getPlatformType,
+  makeBorderSize,
+  makeMotionTime,
+  makeSize,
+  makeSpace,
+} from '~utils';
 
 const variants = {
   default: {
@@ -30,24 +37,21 @@ const variants = {
       unchecked: 'colors.feedback.border.negative.highContrast',
     },
     background: {
-      checked: 'colors.feedback.background.negative.highContrast',
+      checked: 'colors.feedback.background.negative.lowContrast',
       unchecked: 'colors.feedback.background.negative.lowContrast',
     },
   },
 };
 
-export type CheckboxRectProps = Omit<CheckboxIconProps, 'state'> & {
-  isChecked: boolean;
-  isFullRounded?: boolean;
-};
+export type RadioRectProps = RadioIconProps;
 
-const getCheckboxIconWrapperStyles = ({
+const getRadioIconWrapperStyles = ({
   theme,
-  isFullRounded,
   isChecked,
   isDisabled,
   isNegative,
-}: CheckboxRectProps & { theme: Theme }): CSSObject => {
+}: RadioRectProps & { theme: Theme }): CSSObject => {
+  const isReactNative = getPlatformType() === 'react-native';
   let variant: 'default' | 'disabled' | 'negative' = 'default';
   if (isDisabled) variant = 'disabled';
   if (isNegative) variant = 'negative';
@@ -61,15 +65,19 @@ const getCheckboxIconWrapperStyles = ({
     justifyContent: 'center',
     width: '16px',
     height: '16px',
-    borderWidth: '1px',
+    borderWidth: makeBorderSize(theme.border.width.thin),
     borderStyle: 'solid',
-    margin: '0px',
+    margin: makeSpace(theme.spacing[0]),
     marginTop: '3px',
-    borderRadius: makeSize(isFullRounded ? theme.border.radius.max : theme.border.radius.small),
+    borderRadius: makeSize(theme.border.radius.max),
     marginRight: makeSpace(theme.spacing[2]),
     backgroundColor: getIn(theme, backgroundColor),
     borderColor: getIn(theme, borderColor),
+    transitionDuration: makeMotionTime(theme.motion.duration.xquick),
+    ...(!isReactNative && {
+      transitionTimingFunction: theme.motion.easing.exit.attentive as string,
+    }),
   };
 };
 
-export { getCheckboxIconWrapperStyles };
+export { getRadioIconWrapperStyles };
