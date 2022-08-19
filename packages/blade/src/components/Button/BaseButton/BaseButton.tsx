@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import type { ReactElement } from 'react';
+import type { ReactElement, MouseEvent } from 'react';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
@@ -30,7 +30,7 @@ type BaseButtonCommonProps = {
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
-  onClick?: () => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
   accessibilityLabel?: string;
@@ -68,6 +68,11 @@ type BaseButtonColorTokenModifiers = {
   contrast: BaseButtonProps['contrast'];
 };
 
+/**
+ * All possible icon colors, derived from `IconProps` minus `currentColor` because possible values should only be from tokens
+ */
+type IconColor = Exclude<IconProps['color'], 'currentColor'>;
+
 const getColorToken = ({
   property,
   variant,
@@ -95,7 +100,7 @@ type BaseButtonStyleProps = {
   lineHeight: keyof Theme['typography']['lineHeights'];
   minHeight: `${ButtonMinHeight}px`;
   iconPadding?: DotNotationSpacingStringToken;
-  iconColor: IconProps['color'];
+  iconColor: IconColor;
   textColor: BaseTextProps['color'];
   buttonPaddingTop: SpacingValues;
   buttonPaddingBottom: SpacingValues;
@@ -151,7 +156,7 @@ const getProps = ({
       contrast,
       intent,
       state: 'default',
-    }) as IconProps['color'],
+    }) as IconColor,
     textColor: getColorToken({
       property: 'text',
       variant,
@@ -218,7 +223,7 @@ const getProps = ({
       contrast,
       intent,
       state: 'disabled',
-    }) as IconProps['color'];
+    }) as IconColor;
     props.textColor = getColorToken({
       property: 'text',
       variant,
@@ -345,7 +350,16 @@ const BaseButton = ({
       motionEasing={motionEasing}
     >
       {isLoading ? (
-        <Box display="flex" justifyContent="center">
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          position="absolute"
+          top={0}
+          left={0}
+          bottom={0}
+          right={0}
+        >
           <StyledSpinner color={iconColor} size={spinnerSize} />
         </Box>
       ) : null}

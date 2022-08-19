@@ -1,5 +1,30 @@
 # @razorpay/blade
 
+## 0.13.6
+
+### Patch Changes
+
+- b365464: fix: button spinner layout
+- f3abfbe: feat(Icons): add new icons
+
+## 0.13.5
+
+### Patch Changes
+
+- 7909d7c: fix(blade): Checkbox design changes
+
+## 0.13.4
+
+### Patch Changes
+
+- 2778973: chore: add appropriate types for onClick of Button & BaseButton
+
+## 0.13.3
+
+### Patch Changes
+
+- 3ea6d6c: fix(blade): fixes checkbox helptext and errortext alignment for individual checkboxes
+
 ## 0.13.2
 
 ### Patch Changes

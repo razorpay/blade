@@ -22,12 +22,16 @@ describe('<Checkbox />', () => {
 
   it('should set error state with validationState', () => {
     const labelText = 'Remember password';
-    const { toJSON, getByRole } = renderWithTheme(
-      <Checkbox validationState="error">{labelText}</Checkbox>,
+    const errorText = 'This has to be checked';
+    const { toJSON, getByRole, getByText } = renderWithTheme(
+      <Checkbox validationState="error" errorText={errorText}>
+        {labelText}
+      </Checkbox>,
     );
     expect(toJSON()).toMatchSnapshot();
 
     const checkbox = getByRole('checkbox');
+    expect(getByText(errorText)).toBeTruthy();
     expect(checkbox.findByProps({ accessibilityInvalid: true })).toBeTruthy();
   });
 

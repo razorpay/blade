@@ -57,4 +57,11 @@ describe('useIconProps', () => {
     expect(result.current.width).toEqual('10px');
     expect(result.current.iconColor).toEqual('hsla(160, 100%, 26%, 1)');
   });
+
+  it('should set fill property to currentColor when color is set to currentColor', () => {
+    const { result } = renderHook(() => useIconProps({ size: 'medium', color: 'currentColor' }), {
+      wrapper: themeWrapper,
+    });
+    expect(result.current.iconColor).toEqual('currentColor');
+  });
 });

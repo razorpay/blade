@@ -39,6 +39,7 @@ const getStories = () => {
     require('../../src/storybook-recipes/AccessibilityInterop/AccessibilityInteropDemo.stories.tsx'),
     require('../../src/storybook-recipes/SimpleCardWithTokens/CardWithTokens.stories.tsx'),
     require('../../src/components/Button/BaseButton/BaseButton.stories.internal.tsx'),
+    require('../../src/components/Button/IconButton/IconButton.stories.internal.tsx'),
   ];
 };
 

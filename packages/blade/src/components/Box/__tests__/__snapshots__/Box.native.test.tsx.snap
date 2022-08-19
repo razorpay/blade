@@ -4,8 +4,10 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
 <View
   alignItems="center"
   alignSelf="center"
+  bottom={0}
   display="flex"
   justifyContent="center"
+  left={0}
   maxHeight={56}
   maxWidth={56}
   minHeight={48}
@@ -15,13 +17,17 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
   paddingLeft="spacing.4"
   paddingRight="spacing.5"
   paddingTop="spacing.2"
+  position="absolute"
+  right={0}
   style={
     Array [
       Object {
         "alignItems": "center",
         "alignSelf": "center",
+        "bottom": 0,
         "display": "flex",
         "justifyContent": "center",
+        "left": 0,
         "maxHeight": 56,
         "maxWidth": 56,
         "minHeight": 48,
@@ -31,8 +37,12 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
         "paddingLeft": 16,
         "paddingRight": 20,
         "paddingTop": 8,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
       },
     ]
   }
+  top={0}
 />
 `;
