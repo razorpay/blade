@@ -1,9 +1,9 @@
 import React from 'react';
-import { CheckboxGroupField } from './CheckboxGroupField';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
 import { FormLabel, FormHint } from '~components/Form';
 import Box from '~components/Box';
+import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 
 type CheckboxGroupProps = {
   /**
@@ -101,7 +101,7 @@ const CheckboxGroup = ({
 
   return (
     <CheckboxGroupProvider value={contextValue}>
-      <CheckboxGroupField labelledBy={ids.labelId}>
+      <SelectorGroupField position={labelPosition} labelledBy={ids.labelId}>
         <FormLabel
           as="span"
           neccessityIndicator={neccessityIndicator}
@@ -121,7 +121,7 @@ const CheckboxGroup = ({
             type={validationState === 'error' ? 'error' : 'help'}
           />
         </Box>
-      </CheckboxGroupField>
+      </SelectorGroupField>
     </CheckboxGroupProvider>
   );
 };

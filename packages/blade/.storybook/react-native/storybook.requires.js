@@ -30,7 +30,6 @@ const getStories = () => {
     require('../../src/components/Link/BaseLink/BaseLink.stories.tsx'),
     require('../../src/components/Link/Link/Link.stories.tsx'),
     require('../../src/components/Radio/Radio.stories.tsx'),
-    require('../../src/components/Radio/RadioGroup.stories.tsx'),
     require('../../src/components/SkipNav/SkipNav.stories.tsx'),
     require('../../src/components/Typography/BaseText/BaseText.stories.tsx'),
     require('../../src/components/Typography/Heading/Heading.stories.tsx'),

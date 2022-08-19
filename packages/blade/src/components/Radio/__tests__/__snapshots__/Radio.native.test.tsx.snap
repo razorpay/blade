@@ -15,120 +15,126 @@ exports[`<Radio /> should render radio with label 1`] = `
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    flexWrap="wrap"
-    gap="spacing.0"
+    marginBottom="spacing.1"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "display": "flex",
-          "flexDirection": "row",
-          "flexWrap": "wrap",
-          "gap": 0,
+          "marginBottom": 4,
         },
       ]
     }
   >
-    <Text
-      color="hsla(216, 27%, 36%, 1)"
-      fontFamily="Lato"
-      fontSize="12px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="16px"
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="spacing.0"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textAlign": "left",
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 0,
           },
         ]
       }
-      textAlign="left"
-      textDecorationLine="none"
     >
-      Radio group
-      <View
+      <Text
+        color="surface.text.subtle.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontWeight="bold"
+        lineHeight="s"
         style={
           Array [
             Object {
-              "borderColor": "black",
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "clip": "rect(0 0 0 0)",
-              "clipPath": "inset(50%)",
-              "height": 1,
-              "marginBottom": -1,
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 16,
+              "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": -1,
+              "marginRight": 0,
               "marginTop": 0,
-              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-              "wordWrap": "normal",
+              "textAlign": "left",
+              "textDecorationLine": "none",
             },
           ]
         }
       >
-        <Text
-          color="hsla(217, 56%, 17%, 1)"
-          fontFamily="Lato"
-          fontSize="15px"
-          fontStyle="normal"
-          fontWeight={400}
-          lineHeight="24px"
+        Radio group
+        <View
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "clip": "rect(0 0 0 0)",
+                "clipPath": "inset(50%)",
+                "height": 1,
+                "marginBottom": -1,
                 "marginLeft": 0,
-                "marginRight": 0,
+                "marginRight": -1,
                 "marginTop": 0,
+                "overflow": "hidden",
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textAlign": "left",
-                "textDecorationLine": "none",
+                "position": "absolute",
+                "whiteSpace": "nowrap",
+                "width": 1,
+                "wordWrap": "normal",
               },
-              Object {},
             ]
           }
-          textAlign="left"
-          textDecorationLine="none"
         >
-          , 
-        </Text>
-      </View>
-    </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            , 
+          </Text>
+        </View>
+      </Text>
+    </View>
   </View>
   <View
     style={
@@ -191,7 +197,6 @@ exports[`<Radio /> should render radio with label 1`] = `
       >
         <View
           isChecked={false}
-          isFullRounded={true}
           isNegative={false}
           style={
             Array [
@@ -209,6 +214,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                 "marginLeft": 0,
                 "marginRight": 8,
                 "marginTop": 3,
+                "transitionDuration": 150,
                 "width": 16,
               },
             ]
@@ -222,12 +228,11 @@ exports[`<Radio /> should render radio with label 1`] = `
           }
         >
           <Text
-            color="hsla(216, 27%, 36%, 1)"
-            fontFamily="Lato"
-            fontSize="15px"
-            fontStyle="normal"
-            fontWeight={400}
-            lineHeight="24px"
+            color="surface.text.subtle.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontWeight="regular"
+            lineHeight="l"
             style={
               Array [
                 Object {
@@ -250,8 +255,6 @@ exports[`<Radio /> should render radio with label 1`] = `
                 },
               ]
             }
-            textAlign="left"
-            textDecorationLine="none"
           >
             Remember password
           </Text>
@@ -277,120 +280,126 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   }
 >
   <View
-    alignItems="center"
-    display="flex"
-    flexDirection="row"
-    flexWrap="wrap"
-    gap="spacing.0"
+    marginBottom="spacing.1"
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "display": "flex",
-          "flexDirection": "row",
-          "flexWrap": "wrap",
-          "gap": 0,
+          "marginBottom": 4,
         },
       ]
     }
   >
-    <Text
-      color="hsla(216, 27%, 36%, 1)"
-      fontFamily="Lato"
-      fontSize="12px"
-      fontStyle="normal"
-      fontWeight={700}
-      lineHeight="16px"
+    <View
+      alignItems="center"
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      gap="spacing.0"
       style={
         Array [
           Object {
-            "color": "hsla(216, 27%, 36%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 12,
-            "fontStyle": "normal",
-            "fontWeight": "700",
-            "lineHeight": 16,
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 0,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "textAlign": "left",
-            "textDecorationLine": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 0,
           },
         ]
       }
-      textAlign="left"
-      textDecorationLine="none"
     >
-      Radio group
-      <View
+      <Text
+        color="surface.text.subtle.lowContrast"
+        fontFamily="text"
+        fontSize={75}
+        fontWeight="bold"
+        lineHeight="s"
         style={
           Array [
             Object {
-              "borderColor": "black",
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "clip": "rect(0 0 0 0)",
-              "clipPath": "inset(50%)",
-              "height": 1,
-              "marginBottom": -1,
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 16,
+              "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": -1,
+              "marginRight": 0,
               "marginTop": 0,
-              "overflow": "hidden",
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "absolute",
-              "whiteSpace": "nowrap",
-              "width": 1,
-              "wordWrap": "normal",
+              "textAlign": "left",
+              "textDecorationLine": "none",
             },
           ]
         }
       >
-        <Text
-          color="hsla(217, 56%, 17%, 1)"
-          fontFamily="Lato"
-          fontSize="15px"
-          fontStyle="normal"
-          fontWeight={400}
-          lineHeight="24px"
+        Radio group
+        <View
           style={
             Array [
               Object {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 15,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 24,
-                "marginBottom": 0,
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "clip": "rect(0 0 0 0)",
+                "clipPath": "inset(50%)",
+                "height": 1,
+                "marginBottom": -1,
                 "marginLeft": 0,
-                "marginRight": 0,
+                "marginRight": -1,
                 "marginTop": 0,
+                "overflow": "hidden",
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textAlign": "left",
-                "textDecorationLine": "none",
+                "position": "absolute",
+                "whiteSpace": "nowrap",
+                "width": 1,
+                "wordWrap": "normal",
               },
-              Object {},
             ]
           }
-          textAlign="left"
-          textDecorationLine="none"
         >
-          , 
-        </Text>
-      </View>
-    </Text>
+          <Text
+            color="surface.text.normal.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight="l"
+            style={
+              Array [
+                Object {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 15,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 24,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textAlign": "left",
+                  "textDecorationLine": "none",
+                },
+                Object {},
+              ]
+            }
+          >
+            , 
+          </Text>
+        </View>
+      </Text>
+    </View>
   </View>
   <View
     style={
@@ -454,7 +463,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
         <View
           isChecked={false}
           isDisabled={true}
-          isFullRounded={true}
           isNegative={false}
           style={
             Array [
@@ -472,6 +480,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                 "marginLeft": 0,
                 "marginRight": 8,
                 "marginTop": 3,
+                "transitionDuration": 150,
                 "width": 16,
               },
             ]
@@ -485,12 +494,11 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
           }
         >
           <Text
-            color="hsla(216, 27%, 36%, 1)"
-            fontFamily="Lato"
-            fontSize="15px"
-            fontStyle="normal"
-            fontWeight={400}
-            lineHeight="24px"
+            color="surface.text.subtle.lowContrast"
+            fontFamily="text"
+            fontSize={100}
+            fontWeight="regular"
+            lineHeight="l"
             style={
               Array [
                 Object {
@@ -513,8 +521,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                 },
               ]
             }
-            textAlign="left"
-            textDecorationLine="none"
           >
             Remember password
           </Text>
