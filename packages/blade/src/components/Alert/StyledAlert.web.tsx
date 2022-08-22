@@ -5,21 +5,19 @@ import { makeSpace } from '~utils';
 
 const StyledAlert = styled.div<StyledAlertProps>((props) => {
   const { theme, contrastType, intent, isFullWidth, isBorderless } = props;
+  const _isFullWidth = isFullWidth || isBorderless; // a borderless alert is automatically set to full width
   const feedbackColors = theme.colors.feedback;
-  const surfaceColors = theme.colors.surface;
 
   return {
-    // todo: typography styles - color, size, family, line height
-    // color: surfaceColors.text.subtle[contrastType],
     background: feedbackColors.background[intent][contrastType],
     padding: `${makeSpace(theme.spacing[3])} ${makeSpace(theme.spacing[4])}`,
-    borderRadius: theme.border.radius.medium,
+    borderRadius: isBorderless ? theme.border.radius.none : theme.border.radius.medium,
     borderColor: feedbackColors.border[intent][contrastType],
-    borderWidth: theme.border.width.thin,
+    borderWidth: isBorderless ? theme.border.width.none : theme.border.width.thin,
     borderStyle: 'solid',
     display: 'flex',
     flexDirection: 'row',
-    maxWidth: isFullWidth ? 'auto' : 584,
+    maxWidth: _isFullWidth ? 'auto' : 584,
     alignItems: 'flex-start',
   };
 });

@@ -3,6 +3,7 @@ import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@st
 import type { ReactElement } from 'react';
 import { Highlight, Link } from '@storybook/design-system';
 
+import { Link as LinkComponent } from '../Link';
 import type { AlertProps } from './Alert';
 import AlertComponent from './Alert';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
@@ -58,8 +59,29 @@ const meta: Meta<AlertProps> = {
       'Currently you can only accept payments in international currencies using PayPal. You cannot accept payments in INR (₹) using PayPal.',
     isFullWidth: false,
     isDismissable: true,
+    contrast: 'low',
+    intent: 'information',
+    isBorderless: false,
+    actions: {
+      primary: {
+        text: 'Primary Action',
+        onClick: () => {
+          console.log('Primary action clicked');
+        },
+      },
+      secondary: {
+        text: 'Link',
+        onClick: () => {
+          console.log('Secondary action clicked');
+        },
+        href: 'https://razorpay.com',
+        target: '_blank',
+      },
+    },
   },
-  argTypes: {},
+  argTypes: {
+    onDismiss: { action: 'Dismissed' },
+  },
   parameters: {
     docs: {
       page: Page,

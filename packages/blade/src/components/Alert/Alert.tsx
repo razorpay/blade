@@ -7,6 +7,10 @@ import { makeAccessible } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { Heading, Text } from '~components/Typography';
+import BaseButton from '~components/Button/BaseButton';
+import { BaseLink } from '~components/Link/BaseLink';
+
+type Nullable<Type> = Type | null;
 
 type PrimaryAction = {
   text: string;
@@ -121,7 +125,6 @@ const Alert = ({
   const contrastType = contrast === 'high' ? 'highContrast' : 'lowContrast';
 
   const Icon = intentIconMap[intent];
-  // todo: icon size mismatch in design and code
   const icon = <Icon color={`feedback.icon.${intent}.${contrastType}`} size="large" />;
 
   const _title = title ? (
@@ -132,10 +135,32 @@ const Alert = ({
     </Box>
   ) : null;
 
-  const _description = <Text>{description}</Text>;
+  const _description = <Text contrast={contrast}>{description}</Text>;
 
-  const primaryAction = actions?.primary ? 'gg' : null;
-  const secondaryAction = actions?.secondary ? 'wp' : null;
+  const primaryAction = actions?.primary ? (
+    <Box marginRight="spacing.4" display="inline-flex">
+      <BaseButton onClick={actions.primary.onClick} intent={intent} contrast={contrast}>
+        {actions.primary.text}
+      </BaseButton>
+    </Box>
+  ) : null;
+  const secondaryActionParams: Nullable<Partial<SecondaryActionLinkButton>> = actions?.secondary
+    ? {
+        onClick: actions.secondary.onClick,
+      }
+    : null;
+  if (actions?.secondary && secondaryActionParams && 'href' in actions.secondary) {
+    // type guard with href to ensure this is now a SecondaryActionLinkButton
+    secondaryActionParams.href = actions.secondary.href;
+    secondaryActionParams.target = actions.secondary.target;
+    secondaryActionParams.rel = actions.secondary.rel;
+  }
+  const secondaryAction = actions?.secondary ? (
+    // Todo: Link font weight mismatch
+    <BaseLink contrast={contrast} intent={intent} {...secondaryActionParams}>
+      {actions.secondary.text}
+    </BaseLink>
+  ) : null;
 
   const _actions =
     primaryAction || secondaryAction ? (
@@ -145,7 +170,6 @@ const Alert = ({
       </Box>
     ) : null;
 
-  // todo: icon size mismatch in design and code
   const onClickDismiss = (): void => {
     if (onDismiss) {
       onDismiss();
