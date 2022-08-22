@@ -30,7 +30,7 @@ type OverrideTheme = {
  *       onLight: {
  *         brand: {
  *           primary: {
- *             '500': 'red',
+ *             '500': 'hsla(222, 100%, 96%, 1)',
  *           },
  *         },
  *       },
