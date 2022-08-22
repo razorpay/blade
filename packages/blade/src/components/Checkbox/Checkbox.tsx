@@ -180,23 +180,27 @@ const Checkbox = ({
   return (
     <Box>
       <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
-        <SelectorInput
-          isChecked={state.isChecked || Boolean(isIndeterminate)}
-          isDisabled={_isDisabled}
-          isNegative={_hasError}
-          inputProps={inputProps}
-        />
-        <CheckboxIcon
-          isChecked={state.isChecked}
-          isIndeterminate={isIndeterminate}
-          isDisabled={_isDisabled}
-          isNegative={_hasError}
-        />
-        <Box>
-          <SelectorTitle isDisabled={_isDisabled}>{children}</SelectorTitle>
-          {showSupportingText && (
-            <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
-          )}
+        <Box display="flex" flexDirection="column">
+          <Box display="flex" alignItems="center" flexDirection="row">
+            <SelectorInput
+              isChecked={state.isChecked || Boolean(isIndeterminate)}
+              isDisabled={_isDisabled}
+              isNegative={_hasError}
+              inputProps={inputProps}
+            />
+            <CheckboxIcon
+              isChecked={state.isChecked}
+              isIndeterminate={isIndeterminate}
+              isDisabled={_isDisabled}
+              isNegative={_hasError}
+            />
+            <SelectorTitle isDisabled={_isDisabled}>{children}</SelectorTitle>
+          </Box>
+          <Box marginLeft="spacing.6">
+            {showSupportingText && (
+              <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
+            )}
+          </Box>
         </Box>
       </SelectorLabel>
       <FormHint
