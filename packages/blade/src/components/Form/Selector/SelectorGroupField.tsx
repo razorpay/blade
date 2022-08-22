@@ -21,7 +21,7 @@ const SelectorGroupField = ({
   let labelPosition: CSSObject['flexDirection'] = position === 'top' ? 'column' : 'row';
   if (isReactNative) labelPosition = 'column';
   const role = accessibilityRole === 'group' && isReactNative ? undefined : accessibilityRole;
-  console.log({ role });
+
   return (
     <Box
       display="flex"
