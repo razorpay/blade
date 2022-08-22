@@ -3,8 +3,8 @@ import type { Theme } from '~components/BladeProvider';
 import type { TypographyPlatforms } from '~tokens/global/typography';
 
 export type StyledBadgeProps = {
-  variant: NonNullable<BadgeProps['variant']>;
-  contrast: NonNullable<BadgeProps['contrast']>;
+  backgroundColor: string;
+  borderColor: string;
   size: NonNullable<BadgeProps['size']>;
   platform: TypographyPlatforms;
   theme: Theme;
