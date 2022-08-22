@@ -3,7 +3,6 @@ import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@st
 import type { ReactElement } from 'react';
 import { Highlight, Link } from '@storybook/design-system';
 
-import { Link as LinkComponent } from '../Link';
 import type { AlertProps } from './Alert';
 import AlertComponent from './Alert';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
