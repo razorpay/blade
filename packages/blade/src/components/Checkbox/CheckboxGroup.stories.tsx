@@ -207,9 +207,15 @@ export const KitchenSink = (): React.ReactElement => {
         value={selected}
         onChange={({ values }) => setSelected(values)}
       >
-        <CheckboxComponent value="apple">Apple</CheckboxComponent>
-        <CheckboxComponent value="mango">Mango</CheckboxComponent>
-        <CheckboxComponent value="orange">Orange</CheckboxComponent>
+        <CheckboxComponent helpText="Apples Are 25% Air" value="apple">
+          Apple
+        </CheckboxComponent>
+        <CheckboxComponent helpText="The name “mango” originated in India" value="mango">
+          Mango
+        </CheckboxComponent>
+        <CheckboxComponent helpText="There are over 600 varieties of oranges." value="orange">
+          Orange
+        </CheckboxComponent>
       </CheckboxGroupComponent>
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent

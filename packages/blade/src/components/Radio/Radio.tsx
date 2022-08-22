@@ -73,16 +73,22 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
 
   return (
     <SelectorLabel inputProps={isReactNative ? inputProps : {}}>
-      <SelectorInput
-        isChecked={state.isChecked}
-        isDisabled={isDisabled}
-        isNegative={hasError} // TODO: rename to hasError
-        inputProps={inputProps}
-      />
-      <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={hasError} />
-      <Box>
-        <SelectorTitle>{children}</SelectorTitle>
-        {showHelpText && <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>}
+      <Box display="flex" flexDirection="column">
+        <Box display="flex" alignItems="center" flexDirection="row">
+          <SelectorInput
+            isChecked={state.isChecked}
+            isDisabled={isDisabled}
+            isNegative={hasError} // TODO: rename to hasError
+            inputProps={inputProps}
+          />
+          <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={hasError} />
+          <SelectorTitle>{children}</SelectorTitle>
+        </Box>
+        <Box marginLeft="spacing.6">
+          {showHelpText && (
+            <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
+          )}
+        </Box>
       </Box>
     </SelectorLabel>
   );
