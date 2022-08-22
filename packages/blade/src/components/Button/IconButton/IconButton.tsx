@@ -15,7 +15,7 @@ export type IconButtonProps = {
    *
    * @default 'medium'
    */
-  size?: 'medium' | 'large'; // todo: discrepancy in size between code and figma
+  size?: 'medium' | 'large';
 
   /**
    * Icon contrast

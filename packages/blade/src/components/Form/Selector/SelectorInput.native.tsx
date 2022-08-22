@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 
 // noop in react-native
-const CheckboxInput = (): React.ReactElement => {
+const SelectorInput = (): React.ReactElement => {
   return <></>;
 };
 
-export { CheckboxInput };
+export { SelectorInput };

@@ -29,9 +29,9 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
   return (
     <Box display="flex" alignItems="center" gap="spacing.2">
       {isChecked ? (
-        <EyeIcon color="action.icon.link.active" size="small" />
+        <EyeIcon color="action.icon.link.active" size="medium" />
       ) : (
-        <CloseIcon color="action.icon.link.active" size="small" />
+        <CloseIcon color="action.icon.link.active" size="medium" />
       )}
       <Box
         onKeyDown={handleOnKeyDown}

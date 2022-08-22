@@ -1,5 +1,13 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import {
+  Title,
+  Subtitle,
+  Primary,
+  ArgsTable,
+  Stories,
+  Description,
+  PRIMARY_STORY,
+} from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { Highlight, Link } from '@storybook/design-system';
@@ -53,6 +61,8 @@ const Page = (): ReactElement => {
       <Primary />
       <Title>Properties</Title>
       <ArgsTable story={PRIMARY_STORY} />
+      <Description markdown=">Note: `icon` prop accepts an `IconComponent` of Blade which should be used as:" />
+      <Highlight language="tsx">{`import { Button, CreditCardIcon } from '@razorpay/blade/components'; \n\n &ltButton icon={CreditCardIcon}>Pay Now&lt/Button>`}</Highlight>
       <Stories />
     </>
   );

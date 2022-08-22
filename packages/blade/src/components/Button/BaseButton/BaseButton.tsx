@@ -4,6 +4,8 @@ import type { ReactElement, MouseEvent } from 'react';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
+  buttonIconOnlyPadding,
+  buttonIconOnlySizeToIconSizeMap,
   typography as buttonTypography,
   minHeight as buttonMinHeight,
   buttonSizeToIconSizeMap,
@@ -11,6 +13,7 @@ import {
   textPadding,
   buttonPadding,
 } from './buttonTokens';
+
 import type { Theme } from '~components/BladeProvider';
 import type { SpinnerSize } from '~components/Spinner/spinnerTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText';
@@ -143,8 +146,9 @@ const getProps = ({
   intent: BaseButtonProps['intent'];
   contrast: NonNullable<BaseButtonProps['contrast']>;
 }): BaseButtonStyleProps => {
+  const isIconOnly = hasIcon && (!children || children?.trim().length === 0);
   const props: BaseButtonStyleProps = {
-    iconSize: buttonSizeToIconSizeMap[size],
+    iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
@@ -164,10 +168,18 @@ const getProps = ({
       intent,
       state: 'default',
     }) as BaseTextProps['color'],
-    buttonPaddingTop: makeSpace(theme.spacing[buttonPadding[size].top]),
-    buttonPaddingBottom: makeSpace(theme.spacing[buttonPadding[size].bottom]),
-    buttonPaddingLeft: makeSpace(theme.spacing[buttonPadding[size].left]),
-    buttonPaddingRight: makeSpace(theme.spacing[buttonPadding[size].right]),
+    buttonPaddingTop: isIconOnly
+      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].top])
+      : makeSpace(theme.spacing[buttonPadding[size].top]),
+    buttonPaddingBottom: isIconOnly
+      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].bottom])
+      : makeSpace(theme.spacing[buttonPadding[size].bottom]),
+    buttonPaddingLeft: isIconOnly
+      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].left])
+      : makeSpace(theme.spacing[buttonPadding[size].left]),
+    buttonPaddingRight: isIconOnly
+      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].right])
+      : makeSpace(theme.spacing[buttonPadding[size].right]),
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultBackgroundColor: getIn(
       theme.colors,
@@ -350,7 +362,16 @@ const BaseButton = ({
       motionEasing={motionEasing}
     >
       {isLoading ? (
-        <Box display="flex" justifyContent="center">
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          position="absolute"
+          top={0}
+          left={0}
+          bottom={0}
+          right={0}
+        >
           <StyledSpinner color={iconColor} size={spinnerSize} />
         </Box>
       ) : null}
@@ -384,7 +405,7 @@ const BaseButton = ({
           </BaseText>
         ) : null}
         {Icon && iconPosition == 'right' ? (
-          <Box paddingLeft={iconPadding}>
+          <Box paddingLeft={iconPadding} display="flex" justifyContent="center" alignItems="center">
             <Icon size={iconSize} color={iconColor} />
           </Box>
         ) : null}

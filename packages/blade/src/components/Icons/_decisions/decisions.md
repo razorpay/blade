@@ -33,16 +33,16 @@
   ```jsx
   <CreditCardIcon
     color='surface.icon | feedback.icon | action.icon'
-    size='xxsmall | xsmall | small | medium | large | xlarge'
+    size='xsmall | small | medium | large | 2xlarge'
   >
   ```
 - Each icon will have the same `height` & `width` which would be derived from its `size` prop. Here's what each size corresponds to
-  - xxsmall: `width='10px'`, `height='10px'`
-  - xsmall: `width='12px'`, `height='12px'`
-  - small: `width='16px'`, `height='16px'`
-  - medium: `width='20px'`, `height='20px'`
-  - large: `width='24px'`, `height='24px'`
-  - xlarge: `width='30px'`, `height='30px'`
+  - xsmall: `width='8px'`, `height='8px'`
+  - small: `width='12px'`, `height='12px'`
+  - medium: `width='16px'`, `height='16px'`
+  - large: `width='20px'`, `height='20px'`
+  - xlarge: `width='24px'`, `height='24px'` 
+  - 2xlarge: `width='32px'`, `height='32px'` 
 - For now, we will include a few important icons in blade. We will add more icons later as we get more use-cases. You can find the list of all supported blade icons in the Blade Figma file.
 - For icons that are not supported by Blade (not available on Blade's Figma), consumers would need to create their own custom icons using html svg & `react-native-svg` since we're not exporting `_Svg` to our consumers.
 - We're not exporting `_Svg` to our consumers because we do not see any major value being added by it to our consumers. If we see a lot of demand for cross-platform svg components, we can consider exporting it to our consumers.
