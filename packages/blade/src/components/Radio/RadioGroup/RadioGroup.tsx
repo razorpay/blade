@@ -4,6 +4,7 @@ import { useRadioGroup } from './useRadioGroup';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
+import { getPlatformType } from '~utils';
 
 type RadioGroupProps = {
   /**
@@ -98,10 +99,15 @@ const RadioGroup = ({
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
   const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
+  const isReactNative = getPlatformType() === 'react-native';
 
   return (
     <RadioGroupProvider value={contextValue}>
-      <SelectorGroupField position={labelPosition} labelledBy={ids.labelId}>
+      <SelectorGroupField
+        position={labelPosition}
+        labelledBy={ids.labelId}
+        accessibilityRole={isReactNative ? 'radiogroup' : 'group'}
+      >
         <FormLabel
           as="span"
           necessityIndicator={necessityIndicator}
