@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 1.0.1
+
+### Patch Changes
+
+- ef7f459: fix: font weight of `Link` component
+
 ## 1.0.0
 
 ### Major Changes
@@ -12,7 +18,7 @@
 
 - 65834be: fix: icon sizes for `Icon`, `IconButton`, `Button`, `Link` & `Spinner` components
 
-  ## ⚠️  Breaking changes for `Icon`
+  ## ⚠️ Breaking changes for `Icon`
 
   **❗️This version introduces a breaking change for the `Icon` component's `size` prop**
 
