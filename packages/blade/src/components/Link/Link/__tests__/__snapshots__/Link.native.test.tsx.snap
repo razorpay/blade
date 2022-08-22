@@ -58,6 +58,7 @@ exports[`<Link /> should render button variant of link 1`] = `
     <Text
       color="action.text.link.default"
       fontSize={100}
+      fontWeight="bold"
       style={
         Array [
           Object {
@@ -65,7 +66,7 @@ exports[`<Link /> should render button variant of link 1`] = `
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "700",
             "lineHeight": 24,
             "marginBottom": 0,
             "marginLeft": 0,
@@ -147,6 +148,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
     <Text
       color="action.text.link.disabled"
       fontSize={100}
+      fontWeight="bold"
       style={
         Array [
           Object {
@@ -154,7 +156,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "700",
             "lineHeight": 24,
             "marginBottom": 0,
             "marginLeft": 0,
@@ -236,6 +238,7 @@ exports[`<Link /> should render link with default properties 1`] = `
     <Text
       color="action.text.link.default"
       fontSize={100}
+      fontWeight="bold"
       style={
         Array [
           Object {
@@ -243,7 +246,7 @@ exports[`<Link /> should render link with default properties 1`] = `
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "700",
             "lineHeight": 24,
             "marginBottom": 0,
             "marginLeft": 0,
@@ -409,6 +412,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
     <Text
       color="action.text.link.default"
       fontSize={100}
+      fontWeight="bold"
       style={
         Array [
           Object {
@@ -416,7 +420,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "700",
             "lineHeight": 24,
             "marginBottom": 0,
             "marginLeft": 0,
@@ -582,6 +586,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
     <Text
       color="action.text.link.default"
       fontSize={100}
+      fontWeight="bold"
       style={
         Array [
           Object {
@@ -589,7 +594,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "700",
             "lineHeight": 24,
             "marginBottom": 0,
             "marginLeft": 0,
@@ -671,6 +676,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
     <Text
       color="action.text.link.default"
       fontSize={100}
+      fontWeight="bold"
       style={
         Array [
           Object {
@@ -678,7 +684,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "700",
             "lineHeight": 24,
             "marginBottom": 0,
             "marginLeft": 0,
@@ -928,6 +934,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
     <Text
       color="action.text.link.default"
       fontSize={100}
+      fontWeight="bold"
       style={
         Array [
           Object {
@@ -935,7 +942,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
             "fontFamily": "Lato",
             "fontSize": 15,
             "fontStyle": "normal",
-            "fontWeight": "400",
+            "fontWeight": "700",
             "lineHeight": 24,
             "marginBottom": 0,
             "marginLeft": 0,

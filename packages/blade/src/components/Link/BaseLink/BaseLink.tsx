@@ -272,6 +272,7 @@ const BaseLink = ({
           color={textColor}
           fontSize={100}
           textAlign="center"
+          fontWeight="bold"
         >
           {children}
         </BaseText>
