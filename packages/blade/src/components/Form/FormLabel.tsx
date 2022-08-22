@@ -9,8 +9,8 @@ import { useTheme } from '~components/BladeProvider';
 type CommonProps = {
   as: 'span' | 'label';
   position?: 'top' | 'left';
-  neccessityIndicator?: 'required' | 'optional' | 'none';
-  accessibillityText?: string;
+  necessityIndicator?: 'required' | 'optional' | 'none';
+  accessibilityText?: string;
   children: React.ReactNode;
   id: string;
 };
@@ -30,8 +30,8 @@ type FormLabelProps = LabelProps | SpanProps;
 const FormLabel = ({
   as = 'span',
   position = 'top',
-  neccessityIndicator = 'none',
-  accessibillityText,
+  necessityIndicator = 'none',
+  accessibilityText,
   children,
   id,
   htmlFor,
@@ -42,10 +42,10 @@ const FormLabel = ({
   const isReactNative = getPlatformType() === 'react-native';
 
   // TODO: replace with <Text /> when #548 merges
-  let neccessityLabel: React.ReactNode = null;
+  let necessityLabel: React.ReactNode = null;
 
-  if (neccessityIndicator === 'optional') {
-    neccessityLabel = (
+  if (necessityIndicator === 'optional') {
+    necessityLabel = (
       <BaseText
         lineHeight="s"
         fontFamily="text"
@@ -57,8 +57,8 @@ const FormLabel = ({
       </BaseText>
     );
   }
-  if (neccessityIndicator === 'required') {
-    neccessityLabel = (
+  if (necessityIndicator === 'required') {
+    necessityLabel = (
       <BaseText
         lineHeight="s"
         fontFamily="text"
@@ -74,14 +74,14 @@ const FormLabel = ({
 
   const computedAccessibilityNode = (
     <VisuallyHidden>
-      {neccessityIndicator !== 'none' && <Text>{neccessityIndicator}</Text>}
-      <Text>{accessibillityText}</Text>
+      {necessityIndicator !== 'none' && <Text>{necessityIndicator}</Text>}
+      <Text>{accessibilityText}</Text>
     </VisuallyHidden>
   );
 
   const textNode = (
     <Box
-      gap={neccessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'}
+      gap={necessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'}
       display="flex"
       flexDirection="row"
       alignItems="center"
@@ -98,7 +98,7 @@ const FormLabel = ({
         {computedAccessibilityNode}
       </BaseText>
       {/* TODO: Hide from screen readers to prevent double announcement */}
-      {neccessityLabel}
+      {necessityLabel}
     </Box>
   );
 

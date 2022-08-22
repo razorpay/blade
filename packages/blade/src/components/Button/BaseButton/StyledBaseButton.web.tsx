@@ -10,6 +10,7 @@ const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => (
   transitionProperty: 'background-color, border-color, box-shadow',
   transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
   transitionDuration: makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
+  position: 'relative',
   '&:hover': {
     backgroundColor: props.hoverBackgroundColor,
     borderColor: props.hoverBorderColor,

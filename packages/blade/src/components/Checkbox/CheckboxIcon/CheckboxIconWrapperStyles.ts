@@ -38,10 +38,12 @@ const variants = {
 
 export type CheckboxRectProps = Omit<CheckboxIconProps, 'state'> & {
   isChecked: boolean;
+  isFullRounded?: boolean;
 };
 
 const getCheckboxIconWrapperStyles = ({
   theme,
+  isFullRounded,
   isChecked,
   isDisabled,
   isNegative,
@@ -63,7 +65,7 @@ const getCheckboxIconWrapperStyles = ({
     borderStyle: 'solid',
     margin: '0px',
     marginTop: '3px',
-    borderRadius: makeSize(theme.border.radius.small),
+    borderRadius: makeSize(isFullRounded ? theme.border.radius.max : theme.border.radius.small),
     marginRight: makeSpace(theme.spacing[2]),
     backgroundColor: getIn(theme, backgroundColor),
     borderColor: getIn(theme, borderColor),
