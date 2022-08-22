@@ -33,7 +33,7 @@ const Page = (): ReactElement => {
               onLight: {
                 brand: {
                   primary: {
-                    '500': 'red',
+                    '500': 'hsla(222, 100%, 96%, 1)',
                   },
                 },
               },
@@ -57,7 +57,7 @@ const Page = (): ReactElement => {
 export default {
   title: 'Utilities/overrideTheme',
   args: {
-    hue: 28,
+    hue: 259,
   },
   argTypes: {
     hue: {
@@ -81,9 +81,18 @@ export default {
 const OverrideThemeExample = (props: { hue: number }): React.ReactElement => {
   // Global parameters
   const hue = props.hue;
-  const primaryColor = `hsla(${hue}, 100%, 50%, 1)`;
+  const primaryColor = `hsla(${hue}, 100%, 60%, 1)`;
+  const primaryHover = `hsla(${hue}, 100%, 50%, 1)`;
+  const primaryFocus = `hsla(${hue}, 100%, 50%, 1)`;
+
   const secondaryColor = `hsla(${hue}, 100%, 99%, 1)`;
+  const secondaryHover = `hsla(${hue}, 100%, 95%, 1)`;
+  const secondaryFocus = `hsla(${hue}, 100%, 95%, 1)`;
+
   const tertiaryColor = `hsla(${hue}, 100%, 96%, 1)`;
+  const tertiaryHover = `hsla(${hue}, 100%, 93%, 1)`;
+  const tertiaryFocus = `hsla(${hue}, 100%, 93%, 1)`;
+
   const primaryText = `hsla(${hue}, 100%, 99%, 1)`;
   const focusColor = `hsla(${hue}, 100%, 80%, 1)`;
   const secondaryText = primaryColor;
@@ -111,18 +120,18 @@ const OverrideThemeExample = (props: { hue: number }): React.ReactElement => {
             background: {
               primary: {
                 default: primaryColor,
-                hover: primaryColor,
-                focus: primaryColor,
+                hover: primaryHover,
+                focus: primaryFocus,
               },
               secondary: {
                 default: secondaryColor,
-                hover: secondaryColor,
-                focus: secondaryColor,
+                hover: secondaryHover,
+                focus: secondaryFocus,
               },
               tertiary: {
                 default: tertiaryColor,
-                hover: tertiaryColor,
-                focus: tertiaryColor,
+                hover: tertiaryHover,
+                focus: tertiaryFocus,
               },
             },
             // action's border (button border)
