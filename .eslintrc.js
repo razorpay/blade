@@ -128,6 +128,7 @@ module.exports = {
           },
         ],
         'babel/new-cap': ['error', { capIsNewExceptionPattern: '^styled.' }],
+        'no-shadow': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unused-vars': ['error'],
@@ -142,6 +143,7 @@ module.exports = {
         '@typescript-eslint/unbound-method': 'off',
         '@typescript-eslint/sort-type-union-intersection-members': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-shadow': ['off'],
       },
     },
     {

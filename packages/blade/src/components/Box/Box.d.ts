@@ -6,6 +6,7 @@ export type BoxProps = {
   flex?: CSSObject['flex'];
   flexWrap?: CSSObject['flexWrap'];
   flexDirection?: CSSObject['flexDirection'];
+  flexGrow?: CSSObject['flexGrow'];
   alignItems?: CSSObject['alignItems'];
   justifyContent?: CSSObject['justifyContent'];
   alignSelf?: CSSObject['alignSelf'];
@@ -19,10 +20,10 @@ export type BoxProps = {
   paddingBottom?: DotNotationSpacingStringToken | 'auto';
   paddingLeft?: DotNotationSpacingStringToken | 'auto';
   paddingRight?: DotNotationSpacingStringToken | 'auto';
-  marginTop?: DotNotationSpacingStringToken | 'auto';
-  marginBottom?: DotNotationSpacingStringToken | 'auto';
-  marginLeft?: DotNotationSpacingStringToken | 'auto';
-  marginRight?: DotNotationSpacingStringToken | 'auto';
+  marginTop?: DotNotationSpacingStringToken | 'auto' | number;
+  marginBottom?: DotNotationSpacingStringToken | 'auto' | number;
+  marginLeft?: DotNotationSpacingStringToken | 'auto' | number;
+  marginRight?: DotNotationSpacingStringToken | 'auto' | number;
   gap?: DotNotationSpacingStringToken | 'auto' | number;
   minHeight?: number;
   minWidth?: number;

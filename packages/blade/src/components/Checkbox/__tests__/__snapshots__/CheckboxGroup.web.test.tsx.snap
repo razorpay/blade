@@ -41,7 +41,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 }
 
 .c1 {
-  margin-bottom: 4px;
+  margin-bottom: 0px;
 }
 
 .c2 {
@@ -216,7 +216,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   >
     <span
       id="checkbox-group-49-label-54"
-      style="width: auto; margin-right: 16px;"
+      style="width: auto; flex-shrink: 0; margin-right: 16px;"
     >
       <div
         class="c1"
@@ -519,7 +519,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 }
 
 .c1 {
-  margin-bottom: 4px;
+  margin-bottom: 0px;
 }
 
 .c2 {
@@ -676,7 +676,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   >
     <span
       id="checkbox-group-19-label-24"
-      style="width: auto; margin-right: 16px;"
+      style="width: auto; flex-shrink: 0; margin-right: 16px;"
     >
       <div
         class="c1"

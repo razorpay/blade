@@ -1,73 +1,167 @@
-/**
- * <TextInput
-  label="Enter Name"
-  labelPosition="left"
-  placeholder="Enter your name"
-  icon={UserIcon}
-  showClearButton
-  helpText="Enter first name and last name. Eg: Kamlesh Chandnani"
-  errorText="Name cannot be blank"
-  successText="Name validated"
-  validationState={inputValue.length < 10 ? 'error' : 'success'}
-/>
- */
-
+import React from 'react';
 import type { ReactElement } from 'react';
 import { StyledBaseInput } from './StyledBaseInput';
+import Box from '~components/Box';
+import { FormHint, FormLabel } from '~components/Form';
+import { getPlatformType, useBreakpoint } from '~utils';
+import type { FormLabelProps } from '~components/Form/FormLabel';
+import type { FormHintProps } from '~components/Form/FormHint';
+import { useFormId } from '~components/Form/useFormId';
+import { useTheme } from '~components/BladeProvider';
 
-type HandleOnChange = ({
-  event,
-  inputName,
-  value,
-}: {
-  event?: React.ChangeEvent<HTMLInputElement>;
-  inputName?: string;
-  value?: string;
-}) => void;
-
-type OnChange = ({
-  event,
+export type HandleOnChange = ({
   name,
   value,
 }: {
-  event?: React.ChangeEvent<HTMLInputElement>;
   name?: string;
-  value?: string;
+  value?: React.ChangeEvent<HTMLInputElement> | string;
 }) => void;
 
-type LabelProps = {
+export type OnChange = ({ name, value }: { name?: string; value?: string }) => void;
+
+// TODO: need to abstract for generic use
+type InputLabelProps = {
+  /**
+   * Label to be shown for the input field
+   */
   label: string;
   /**
    * Desktop only prop. on Mobile by default the label will be on top
    */
-  labelPosition?: 'top' | 'left';
+  labelPosition?: FormLabelProps['position'];
+  /**
+   * Displays `(optional)` when `optional` is passed or `*` when `required` is passed
+   */
+  neccessityIndicator?: FormLabelProps['necessityIndicator'];
 };
 
-export type BaseInputProps = LabelProps & {
+// TODO: need to abstract for generic use
+type InputValidationProps = {
   /**
-   * Placeholder text to be displayed inside the input field
+   * Help text for the input
    */
-  placeholder?: string;
+  helpText?: string;
   /**
-   * Type of Input Field to be rendered.
+   * Error text for the input
    *
-   * @default text
+   * Renders when `validationState` is set to 'error'
    */
-  type?: 'text' | 'telephone' | 'email' | 'url' | 'numeric' | 'search';
+  errorText?: string;
   /**
-   * Used to set the default value of input field when it's uncontrolled
-   */
-  defaultValue?: string;
-  /**
-   * The name of the input field.
+   * success text for the input
    *
-   * Useful in form submissions
+   * Renders when `validationState` is set to 'success'
    */
-  name?: string;
+  successText?: string;
   /**
-   * The callback function to be invoked when the value of the input field changes
+   * If `error`, the input is marked as invalid,
+   * and `invalid` attribute will be added
+   *
+   * If `success`, the input is marked as valid,
+   *
    */
-  onChange?: OnChange;
+  validationState?: 'success' | 'error' | 'none';
+};
+
+export type BaseInputProps = InputLabelProps &
+  InputValidationProps & {
+    /**
+     * ID that will be used for accessibility
+     */
+    id: string;
+    /**
+     * Placeholder text to be displayed inside the input field
+     */
+    placeholder?: string;
+    /**
+     * Type of Input Field to be rendered.
+     *
+     * @default text
+     */
+    type?: 'text' | 'telephone' | 'email' | 'url' | 'numeric' | 'search';
+    /**
+     * Used to set the default value of input field when it's uncontrolled
+     */
+    defaultValue?: string;
+    /**
+     * The name of the input field.
+     *
+     * Useful in form submissions
+     */
+    name?: string;
+    /**
+     * The callback function to be invoked when the value of the input field changes
+     */
+    onChange?: OnChange;
+    /**
+     * Used to turn the input field to controlled so user can control the value
+     */
+    value?: string;
+    /**
+     * Used to disable the input field
+     */
+    isDisabled?: boolean;
+    /**
+     * If true, the input is marked as required, and `required` attribute will be added
+     */
+    isRequired?: boolean;
+  };
+
+const useInput = ({
+  value,
+  defaultValue,
+  onChange,
+}: Pick<BaseInputProps, 'value' | 'defaultValue' | 'onChange'>): {
+  handleOnChange: HandleOnChange;
+} => {
+  if (value && defaultValue) {
+    throw new Error(
+      `[Blade Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+    );
+  }
+
+  const handleOnChange: HandleOnChange = React.useCallback(
+    ({ name, value }) => {
+      let _value = '';
+
+      if (getPlatformType() === 'react-native' && typeof value === 'string') {
+        _value = value;
+      } else if (typeof value !== 'string') {
+        // it's weird but TS forced me to write this much code where I could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" :(
+        _value = value?.target.value ?? '';
+      }
+
+      onChange?.({
+        name,
+        value: _value,
+      });
+    },
+    [onChange],
+  );
+
+  return { handleOnChange };
+};
+
+export const getHintType = ({
+  _validationState,
+  hasHelpText,
+}: {
+  _validationState: BaseInputProps['validationState'];
+  hasHelpText: boolean;
+}): FormHintProps['type'] => {
+  if (_validationState === 'error') {
+    return 'error';
+  }
+
+  if (_validationState === 'success') {
+    return 'success';
+  }
+
+  if (hasHelpText) {
+    return 'help';
+  }
+
+  return 'help';
 };
 
 export const BaseInput = ({
@@ -77,25 +171,62 @@ export const BaseInput = ({
   type = 'text',
   defaultValue,
   name,
+  value,
   onChange,
+  isDisabled,
+  neccessityIndicator,
+  validationState,
+  errorText,
+  helpText,
+  successText,
+  isRequired,
 }: BaseInputProps): ReactElement => {
-  console.log({
-    label,
-    labelPosition,
-  });
-
-  const handleOnChange: HandleOnChange = ({ event, inputName, value }) => {
-    console.log({ event, name: inputName, value: event?.target.value });
-    onChange?.({ event, name: inputName, value });
-  };
+  const { theme } = useTheme();
+  const { handleOnChange } = useInput({ defaultValue, value, onChange });
+  const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
 
   return (
-    <StyledBaseInput
-      name={name}
-      type={type}
-      defaultValue={defaultValue}
-      placeholder={placeholder}
-      onChange={(event) => handleOnChange({ event, inputName: name, value: '' })}
-    />
+    <>
+      <Box
+        display="flex"
+        flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
+        justifyContent={isLabelLeftPositioned ? 'center' : undefined}
+        alignItems={isLabelLeftPositioned ? 'center' : undefined}
+      >
+        <FormLabel
+          as="label"
+          necessityIndicator={neccessityIndicator}
+          position={labelPosition}
+          htmlFor={inputId}
+        >
+          {label}
+        </FormLabel>
+        <StyledBaseInput
+          id={inputId}
+          name={name}
+          type={type}
+          defaultValue={defaultValue}
+          value={value}
+          placeholder={placeholder}
+          isDisabled={isDisabled}
+          validationState={validationState}
+          isRequired={isRequired}
+          handleOnChange={handleOnChange}
+        />
+      </Box>
+      <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
+        <FormHint
+          type={getHintType({ _validationState: validationState, hasHelpText: Boolean(helpText) })}
+          helpText={helpText}
+          errorText={errorText}
+          successText={successText}
+          helpTextId={helpTextId}
+          errorTextId={errorTextId}
+          successTextId={successTextId}
+        />
+      </Box>
+    </>
   );
 };

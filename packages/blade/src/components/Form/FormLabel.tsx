@@ -12,7 +12,7 @@ type CommonProps = {
   necessityIndicator?: 'required' | 'optional' | 'none';
   accessibilityText?: string;
   children: React.ReactNode;
-  id: string;
+  id?: string;
 };
 
 type LabelProps = CommonProps & {
@@ -25,7 +25,7 @@ type SpanProps = CommonProps & {
   htmlFor?: undefined;
 };
 
-type FormLabelProps = LabelProps | SpanProps;
+export type FormLabelProps = LabelProps | SpanProps;
 
 const FormLabel = ({
   as = 'span',
@@ -43,6 +43,12 @@ const FormLabel = ({
 
   // TODO: replace with <Text /> when #548 merges
   let necessityLabel: React.ReactNode = null;
+
+  if (!isDesktop && position === 'left') {
+    console.warn(
+      '[Blade: FormLabel]: Expected value `top` for label position on mobile device. Received `left`, falling back to `top`',
+    );
+  }
 
   if (necessityIndicator === 'optional') {
     necessityLabel = (
@@ -112,16 +118,17 @@ const FormLabel = ({
   }
 
   const Component = as;
+  const isLabelLeftPositioned = position === 'left';
   // only set 120px label when device is desktop
-  const width = position === 'left' && isDesktop ? '120px' : 'auto';
+  const width = isLabelLeftPositioned && isDesktop ? '120px' : 'auto';
 
   return (
     <Component
       htmlFor={htmlFor}
-      style={{ width, marginRight: makeSpace(theme.spacing[4]) }}
+      style={{ width, flexShrink: 0, marginRight: makeSpace(theme.spacing[4]) }}
       id={id}
     >
-      <Box marginBottom="spacing.1">{textNode}</Box>
+      <Box marginBottom={isLabelLeftPositioned ? 'spacing.1' : 'spacing.0'}>{textNode}</Box>
     </Component>
   );
 };

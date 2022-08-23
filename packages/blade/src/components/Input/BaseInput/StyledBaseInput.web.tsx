@@ -1,9 +1,17 @@
 import styled from 'styled-components';
-import getBaseInputStyles from './getBaseInputStyles';
+import type { ReactElement } from 'react';
+import getBaseInputStyles, { getInputBackgroundAndBorderStyles } from './getBaseInputStyles';
+
+import type { StyledBaseInputProps } from './StyledBaseInput.d';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 
-export const StyledBaseInput = styled.input((props) => ({
-  ...getBaseInputStyles({ theme: props.theme }),
+// omitting our consumer `onChange` prop since the types are conflicting with the default onChange of HTML
+const StyledBaseNativeInput = styled.input<StyledBaseInputProps>((props) => ({
+  ...getBaseInputStyles({
+    isDisabled: props.disabled,
+    theme: props.theme,
+    validationState: props.validationState,
+  }),
   '::placeholder': getTextStyles({
     size: 'medium',
     variant: 'body',
@@ -13,8 +21,12 @@ export const StyledBaseInput = styled.input((props) => ({
     theme: props.theme,
   }),
   ':focus': {
-    backgroundColor: props.theme.colors.brand.primary[300],
-    borderBottomColor: props.theme.colors.brand.primary[500],
+    ...getInputBackgroundAndBorderStyles({
+      theme: props.theme,
+      isFocused: true,
+      isDisabled: props.disabled,
+      validationState: props.validationState,
+    }),
     outline: 'none',
   },
   borderTopStyle: 'hidden',
@@ -22,3 +34,20 @@ export const StyledBaseInput = styled.input((props) => ({
   borderRightStyle: 'hidden',
   boxSizing: 'border-box',
 }));
+
+export const StyledBaseInput = ({
+  name,
+  isDisabled,
+  isRequired,
+  handleOnChange,
+  ...props
+}: StyledBaseInputProps): ReactElement => {
+  return (
+    <StyledBaseNativeInput
+      disabled={isDisabled}
+      required={isRequired}
+      onChange={(event): void => handleOnChange({ name, value: event })}
+      {...props}
+    />
+  );
+};
