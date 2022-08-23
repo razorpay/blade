@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
 
-import type { IntentTypes } from '~tokens/theme/theme';
+import type { ColorContrast, IntentTypes } from '~tokens/theme/theme';
 
 export type StyledAlertProps = {
   children: ReactNode[];
-  contrastType: 'lowContrast' | 'highContrast';
+  contrastType: keyof ColorContrast;
   intent: Exclude<IntentTypes, 'neutral'>;
   isFullWidth: boolean;
   isBorderless: boolean;

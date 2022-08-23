@@ -5,7 +5,9 @@ import { makeSpace } from '~utils';
 
 const StyledAlert = styled.div<StyledAlertProps>((props) => {
   const { theme, contrastType, intent, isFullWidth, isBorderless } = props;
-  const _isFullWidth = isFullWidth || isBorderless; // a borderless alert is automatically set to full width
+
+  // a borderless alert is automatically set to full width
+  const _isFullWidth = isFullWidth || isBorderless;
   const feedbackColors = theme.colors.feedback;
 
   return {

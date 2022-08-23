@@ -9,6 +9,7 @@ import Box from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
+import type { ColorContrastTypes } from '~tokens/theme/theme';
 
 type Nullable<Type> = Type | null;
 
@@ -63,7 +64,7 @@ export type AlertProps = {
    *
    * @default low
    */
-  contrast?: 'high' | 'low';
+  contrast?: ColorContrastTypes;
 
   /**
    * Makes the Alert span the entire container width, instead of the default max width of `584px`
@@ -122,7 +123,7 @@ const Alert = ({
   actions,
 }: AlertProps): ReactElement | null => {
   const [isVisible, setIsVisible] = useState(true);
-  const contrastType = contrast === 'high' ? 'highContrast' : 'lowContrast';
+  const contrastType = `${contrast}Contrast` as const;
 
   const Icon = intentIconMap[intent];
   const icon = <Icon color={`feedback.icon.${intent}.${contrastType}`} size="large" />;
@@ -144,13 +145,20 @@ const Alert = ({
       </BaseButton>
     </Box>
   ) : null;
+
   const secondaryActionParams: Nullable<Partial<SecondaryActionLinkButton>> = actions?.secondary
     ? {
         onClick: actions.secondary.onClick,
       }
     : null;
+
+  /**
+   * TS assumes only common properties to be present for `SecondaryAction` union type
+   * We add a type guard that checks if href is present on secondary action:
+   * - If yes, then TS can assume it to be `SecondaryActionLinkButton` (href being a required property)
+   * - If no, then it would be `SecondaryActionButton` (and link properties wouldn't be needed)
+   */
   if (actions?.secondary && secondaryActionParams && 'href' in actions.secondary) {
-    // type guard with href to ensure this is now a SecondaryActionLinkButton
     secondaryActionParams.href = actions.secondary.href;
     secondaryActionParams.target = actions.secondary.target;
     secondaryActionParams.rel = actions.secondary.rel;
@@ -188,7 +196,8 @@ const Alert = ({
 
   const a11yProps = makeAccessible({
     role: intent === 'negative' || intent === 'notice' ? 'alert' : 'status',
-    ...(intent === 'notice' && { liveRegion: 'polite' }), // override the implicit live region with role alert
+    // override the implicit live region of role `alert`
+    ...(intent === 'notice' && { liveRegion: 'polite' }),
   });
 
   if (!isVisible) {
