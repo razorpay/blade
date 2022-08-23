@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 1.0.2
+
+### Patch Changes
+
+- 771981c: fix(blade): radio & checkbox icon alignment
+
 ## 1.0.1
 
 ### Patch Changes
