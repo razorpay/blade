@@ -39,9 +39,7 @@ export const StyledBaseInput = ({
       type={type}
       defaultValue={defaultValue}
       placeholder={placeholder}
-      // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
       onFocus={() => setIsFocussed(true)}
-      // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
       onBlur={() => setIsFocussed(false)}
       isFocussed={isFocussed}
     />

@@ -95,7 +95,6 @@ export const BaseInput = ({
       type={type}
       defaultValue={defaultValue}
       placeholder={placeholder}
-      // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
       onChange={(event) => handleOnChange({ event, inputName: name, value: '' })}
     />
   );
