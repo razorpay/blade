@@ -3,6 +3,7 @@
 exports[`<RadioGroup /> should render with help text 1`] = `
 <View
   accessibilityLabelledBy="radio-group-15-label"
+  accessibilityRole="radiogroup"
   display="flex"
   flexDirection="column"
   style={
@@ -196,69 +197,99 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         value="apple"
       >
         <View
-          isChecked={false}
-          isDisabled={false}
-          isNegative={false}
+          display="flex"
+          flexDirection="column"
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 9999,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "transitionDuration": 150,
-                "width": 16,
+                "flexDirection": "column",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            Apple
-          </Text>
+            <View
+              isChecked={false}
+              isDisabled={false}
+              isNegative={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                    "borderColor": "hsla(216, 19%, 89%, 1)",
+                    "borderRadius": 9999,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "display": "flex",
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 8,
+                    "marginTop": 0,
+                    "transitionDuration": 150,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Apple
+            </Text>
+          </View>
+          <View
+            marginLeft="spacing.6"
+            style={
+              Array [
+                Object {
+                  "marginLeft": 24,
+                },
+              ]
+            }
+          />
         </View>
       </View>
       <View
@@ -298,69 +329,99 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         value="mango"
       >
         <View
-          isChecked={false}
-          isDisabled={false}
-          isNegative={false}
+          display="flex"
+          flexDirection="column"
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 9999,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "transitionDuration": 150,
-                "width": 16,
+                "flexDirection": "column",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            Mango
-          </Text>
+            <View
+              isChecked={false}
+              isDisabled={false}
+              isNegative={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                    "borderColor": "hsla(216, 19%, 89%, 1)",
+                    "borderRadius": 9999,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "display": "flex",
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 8,
+                    "marginTop": 0,
+                    "transitionDuration": 150,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Mango
+            </Text>
+          </View>
+          <View
+            marginLeft="spacing.6"
+            style={
+              Array [
+                Object {
+                  "marginLeft": 24,
+                },
+              ]
+            }
+          />
         </View>
       </View>
       <View
@@ -400,69 +461,99 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         value="orange"
       >
         <View
-          isChecked={false}
-          isDisabled={false}
-          isNegative={false}
+          display="flex"
+          flexDirection="column"
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 9999,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "transitionDuration": 150,
-                "width": 16,
+                "flexDirection": "column",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            Orange
-          </Text>
+            <View
+              isChecked={false}
+              isDisabled={false}
+              isNegative={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                    "borderColor": "hsla(216, 19%, 89%, 1)",
+                    "borderRadius": 9999,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "display": "flex",
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 8,
+                    "marginTop": 0,
+                    "transitionDuration": 150,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Orange
+            </Text>
+          </View>
+          <View
+            marginLeft="spacing.6"
+            style={
+              Array [
+                Object {
+                  "marginLeft": 24,
+                },
+              ]
+            }
+          />
         </View>
       </View>
     </View>
@@ -524,6 +615,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 exports[`<RadioGroup /> should render with label 1`] = `
 <View
   accessibilityLabelledBy="radio-group-7-label"
+  accessibilityRole="radiogroup"
   display="flex"
   flexDirection="column"
   style={
@@ -717,69 +809,99 @@ exports[`<RadioGroup /> should render with label 1`] = `
         value="apple"
       >
         <View
-          isChecked={false}
-          isDisabled={false}
-          isNegative={false}
+          display="flex"
+          flexDirection="column"
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 9999,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "transitionDuration": 150,
-                "width": 16,
+                "flexDirection": "column",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            Apple
-          </Text>
+            <View
+              isChecked={false}
+              isDisabled={false}
+              isNegative={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                    "borderColor": "hsla(216, 19%, 89%, 1)",
+                    "borderRadius": 9999,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "display": "flex",
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 8,
+                    "marginTop": 0,
+                    "transitionDuration": 150,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Apple
+            </Text>
+          </View>
+          <View
+            marginLeft="spacing.6"
+            style={
+              Array [
+                Object {
+                  "marginLeft": 24,
+                },
+              ]
+            }
+          />
         </View>
       </View>
       <View
@@ -819,69 +941,99 @@ exports[`<RadioGroup /> should render with label 1`] = `
         value="mango"
       >
         <View
-          isChecked={false}
-          isDisabled={false}
-          isNegative={false}
+          display="flex"
+          flexDirection="column"
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 9999,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "transitionDuration": 150,
-                "width": 16,
+                "flexDirection": "column",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            Mango
-          </Text>
+            <View
+              isChecked={false}
+              isDisabled={false}
+              isNegative={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                    "borderColor": "hsla(216, 19%, 89%, 1)",
+                    "borderRadius": 9999,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "display": "flex",
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 8,
+                    "marginTop": 0,
+                    "transitionDuration": 150,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Mango
+            </Text>
+          </View>
+          <View
+            marginLeft="spacing.6"
+            style={
+              Array [
+                Object {
+                  "marginLeft": 24,
+                },
+              ]
+            }
+          />
         </View>
       </View>
       <View
@@ -921,69 +1073,99 @@ exports[`<RadioGroup /> should render with label 1`] = `
         value="orange"
       >
         <View
-          isChecked={false}
-          isDisabled={false}
-          isNegative={false}
+          display="flex"
+          flexDirection="column"
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
-                "borderRadius": 9999,
-                "borderStyle": "solid",
-                "borderWidth": 1,
                 "display": "flex",
-                "height": 16,
-                "justifyContent": "center",
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 8,
-                "marginTop": 3,
-                "transitionDuration": 150,
-                "width": 16,
+                "flexDirection": "column",
               },
             ]
           }
-        />
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
         >
-          <Text
-            color="surface.text.subtle.lowContrast"
-            fontFamily="text"
-            fontSize={100}
-            fontWeight="regular"
-            lineHeight="l"
+          <View
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
             style={
               Array [
                 Object {
-                  "color": "hsla(216, 27%, 36%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 15,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 24,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textAlign": "left",
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            Orange
-          </Text>
+            <View
+              isChecked={false}
+              isDisabled={false}
+              isNegative={false}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                    "borderColor": "hsla(216, 19%, 89%, 1)",
+                    "borderRadius": 9999,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "display": "flex",
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 8,
+                    "marginTop": 0,
+                    "transitionDuration": 150,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+            <Text
+              color="surface.text.subtle.lowContrast"
+              fontFamily="text"
+              fontSize={100}
+              fontWeight="regular"
+              lineHeight="l"
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 15,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textAlign": "left",
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Orange
+            </Text>
+          </View>
+          <View
+            marginLeft="spacing.6"
+            style={
+              Array [
+                Object {
+                  "marginLeft": 24,
+                },
+              ]
+            }
+          />
         </View>
       </View>
     </View>

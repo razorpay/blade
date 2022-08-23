@@ -1,7 +1,7 @@
 import type { CSSObject } from 'styled-components';
 import type { CheckboxIconProps } from './CheckboxIcon';
 import type { Theme } from '~components/BladeProvider';
-import { getIn, makeSize, makeSpace } from '~utils';
+import { getIn, makeBorderSize, makeSize, makeSpace } from '~utils';
 
 const variants = {
   default: {
@@ -38,12 +38,10 @@ const variants = {
 
 export type CheckboxRectProps = Omit<CheckboxIconProps, 'state'> & {
   isChecked: boolean;
-  isFullRounded?: boolean;
 };
 
 const getCheckboxIconWrapperStyles = ({
   theme,
-  isFullRounded,
   isChecked,
   isDisabled,
   isNegative,
@@ -61,11 +59,10 @@ const getCheckboxIconWrapperStyles = ({
     justifyContent: 'center',
     width: '16px',
     height: '16px',
-    borderWidth: '1px',
+    borderWidth: makeBorderSize(theme.border.width.thin),
     borderStyle: 'solid',
-    margin: '0px',
-    marginTop: '3px',
-    borderRadius: makeSize(isFullRounded ? theme.border.radius.max : theme.border.radius.small),
+    margin: makeSpace(theme.spacing[0]),
+    borderRadius: makeSize(theme.border.radius.small),
     marginRight: makeSpace(theme.spacing[2]),
     backgroundColor: getIn(theme, backgroundColor),
     borderColor: getIn(theme, borderColor),

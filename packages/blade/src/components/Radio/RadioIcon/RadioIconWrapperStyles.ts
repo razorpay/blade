@@ -68,7 +68,6 @@ const getRadioIconWrapperStyles = ({
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderStyle: 'solid',
     margin: makeSpace(theme.spacing[0]),
-    marginTop: '3px',
     borderRadius: makeSize(theme.border.radius.max),
     marginRight: makeSpace(theme.spacing[2]),
     backgroundColor: getIn(theme, backgroundColor),

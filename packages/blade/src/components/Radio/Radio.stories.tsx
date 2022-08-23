@@ -87,7 +87,9 @@ export default {
 const RadioTemplate: ComponentStory<typeof RadioGroupComponent> = ({ children, ...args }) => {
   return (
     <RadioGroupComponent {...args}>
-      <RadioComponent value="apple">Apple</RadioComponent>
+      <RadioComponent helpText="Apples are bad" value="apple">
+        Apple
+      </RadioComponent>
       <RadioComponent value="mango">Mango</RadioComponent>
       <RadioComponent value="orange">Orange</RadioComponent>
     </RadioGroupComponent>
@@ -160,9 +162,15 @@ export const KitchenSink = (): React.ReactElement => {
           console.log(name, value);
         }}
       >
-        <RadioComponent value="apple">Apple</RadioComponent>
-        <RadioComponent value="mango">Mango</RadioComponent>
-        <RadioComponent value="orange">Orange</RadioComponent>
+        <RadioComponent helpText="Apples Are 25% Air" value="apple">
+          Apple
+        </RadioComponent>
+        <RadioComponent helpText="The name “mango” originated in India" value="mango">
+          Mango
+        </RadioComponent>
+        <RadioComponent helpText="There are over 600 varieties of oranges." value="orange">
+          Orange
+        </RadioComponent>
       </RadioGroupComponent>
       <Text>&nbsp;</Text>
       <RadioGroupComponent
