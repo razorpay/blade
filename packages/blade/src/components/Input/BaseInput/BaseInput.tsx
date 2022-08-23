@@ -131,6 +131,11 @@ export type BaseInputProps = InputLabelProps &
      * Prefix symbol to be displayed at the beginning of the input field
      */
     prefix?: string;
+    /**
+     * this is left to the components which is extending BaseInput
+     *
+     * eg: consumers can render a loader or it they could render a clear button
+     */
     interactionElement?: ReactNode;
     // /**
     //  * Decides whether to render a clear icon button
@@ -176,6 +181,40 @@ export type BaseInputProps = InputLabelProps &
      * `previous` is only available on native android
      */
     keyboardReturnKeyType?: 'enter' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
+    /**
+     * **Web only**
+     *
+     * Hints browser to display an appropriate virtual keyboard
+     *
+     *
+     */
+    inputMode?: 'text' | 'search' | 'tel' | 'email' | 'url';
+    /**
+     * determines what autoComplete suggestion type to show
+     *
+     * Internally it'll render platform specific attributes:
+     *
+     * - web: `autocomplete`
+     * - iOS: `textContentType`
+     * - android: `autoComplete`
+     *
+     */
+    autoCompleteSuggestionType?:
+      | 'none'
+      | 'name'
+      | 'email'
+      | 'username'
+      | 'password'
+      | 'newPassword'
+      | 'oneTimeCode'
+      | 'telephone'
+      | 'postalCode'
+      | 'countryName'
+      | 'creditCardNumber'
+      | 'creditCardCSC'
+      | 'creditCardExpiry'
+      | 'creditCardExpiryMonth'
+      | 'creditCardExpiryYear';
   };
 
 const useInput = ({
@@ -280,6 +319,8 @@ export const BaseInput = ({
   textAlign,
   autoFocus,
   keyboardReturnKeyType,
+  inputMode,
+  autoCompleteSuggestionType,
 }: BaseInputProps): ReactElement => {
   const { theme } = useTheme();
   const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange });
@@ -333,6 +374,8 @@ export const BaseInput = ({
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus}
             keyboardReturnKeyType={keyboardReturnKeyType}
+            inputMode={inputMode}
+            autoCompleteSuggestionType={autoCompleteSuggestionType}
           />
           <BaseInputVisuals
             interactionElement={interactionElement}

@@ -34,6 +34,24 @@ const StyledBaseNativeInput = styled.input<StyledBaseInputProps>((props) => ({
   },
 }));
 
+const autoCompleteSuggestionTypeMap = {
+  none: 'off',
+  name: 'name',
+  email: 'email',
+  username: 'username',
+  password: 'current-password',
+  newPassword: 'new-password',
+  oneTimeCode: 'one-time-code',
+  telephone: 'tel',
+  postalCode: 'postal-code',
+  countryName: 'country',
+  creditCardNumber: 'cc-number',
+  creditCardCSC: 'cc-csc',
+  creditCardExpiry: 'cc-exp',
+  creditCardExpiryMonth: 'cc-exp-month',
+  creditCardExpiryYear: 'cc-exp-year',
+};
+
 export const StyledBaseInput = ({
   name,
   isDisabled,
@@ -41,6 +59,7 @@ export const StyledBaseInput = ({
   handleOnChange,
   handleOnBlur,
   keyboardReturnKeyType,
+  autoCompleteSuggestionType,
   ...props
 }: StyledBaseInputProps): ReactElement => {
   return (
@@ -50,6 +69,11 @@ export const StyledBaseInput = ({
       onChange={(event): void => handleOnChange?.({ name, value: event })}
       onBlur={(event): void => handleOnBlur?.({ name, value: event })}
       enterKeyHint={keyboardReturnKeyType}
+      autoComplete={
+        autoCompleteSuggestionType
+          ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
+          : undefined
+      }
       {...props}
     />
   );

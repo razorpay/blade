@@ -46,6 +46,8 @@ export default {
     suffix: '',
     trailingIcon: undefined,
     keyboardReturnKeyType: undefined,
+    inputMode: undefined,
+    autoCompleteSuggestionType: undefined,
   },
   argTypes: {
     id: {
@@ -182,6 +184,16 @@ export default {
       },
     },
     keyboardReturnKeyType: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
+      },
+    },
+    inputMode: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
+      },
+    },
+    autoCompleteSuggestionType: {
       table: {
         category: propsCategory.KEYBOARD_PROPS,
       },

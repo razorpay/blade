@@ -26,6 +26,8 @@ export type StyledBaseInputProps = {
   | 'textAlign'
   | 'autoFocus'
   | 'keyboardReturnKeyType'
+  | 'inputMode'
+  | 'autoCompleteSuggestionType'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';
