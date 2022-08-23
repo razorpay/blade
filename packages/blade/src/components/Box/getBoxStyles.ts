@@ -12,6 +12,10 @@ const getSpacingValue = <T extends string | number | undefined>({
   theme: Theme;
 }): string | undefined => {
   if (value === 'auto') return 'auto';
+  /**
+   * NOTE: don't allow numbers once we have the scale for sizing
+   * DO NOT PUBLISH THIS COMPONENT PUBLICLY WITH THIS PIECE OF CODE ELSE YOU'LL BE OUT OF YOUR JOB
+   */
   if (typeof value === 'number') {
     return makeSpace(value);
   }
