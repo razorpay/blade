@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
+import type { StyledBadgeProps } from './StyledBadge';
 import { StyledBadge } from './StyledBadge';
-import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent, IconProps } from '~components/Icons';
 import type { BaseTextProps } from '~components/Typography/BaseText';
@@ -10,21 +10,6 @@ import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
-import type { DotNotationColorStringToken } from '~src/_helpers/types';
-
-type BadgeBackgroundColors = `badge.background.${DotNotationColorStringToken<
-  Theme['colors']['badge']['background']
->}`;
-type BadgeBorderColors = `badge.border.${DotNotationColorStringToken<
-  Theme['colors']['badge']['border']
->}`;
-
-type FeedbackBackgroundColors = `feedback.background.${DotNotationColorStringToken<
-  Theme['colors']['feedback']['background']
->}`;
-type FeedbackBorderColors = `feedback.border.${DotNotationColorStringToken<
-  Theme['colors']['feedback']['border']
->}`;
 
 type BadgeProps = {
   /**
@@ -67,8 +52,8 @@ type BadgeProps = {
 type ColorProps = {
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
-  backgroundColor: FeedbackBackgroundColors | BadgeBackgroundColors;
-  borderColor: FeedbackBorderColors | BadgeBorderColors;
+  backgroundColor: StyledBadgeProps['backgroundColor'];
+  borderColor: StyledBadgeProps['borderColor'];
 };
 const getColorProps = ({
   variant,
