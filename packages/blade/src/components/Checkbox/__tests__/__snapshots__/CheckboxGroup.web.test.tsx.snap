@@ -676,7 +676,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   >
     <span
       id="checkbox-group-19-label-24"
+<<<<<<< HEAD
       style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+=======
+      style="width: auto; flex-shrink: 0; margin-right: 16px;"
+>>>>>>> dadf963010f8bd9259d8b82e407445f7d36d8177
     >
       <div
         class="c1"
