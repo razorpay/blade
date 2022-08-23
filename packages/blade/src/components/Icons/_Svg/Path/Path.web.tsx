@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import type { PathProps, PreventDashedProps } from './Path.d';
+import type { PathProps, NonDashedProps } from './Path.d';
 
 const Path = <T extends PathProps>({
   d,
@@ -12,7 +12,7 @@ const Path = <T extends PathProps>({
   strokeLinecap,
   strokeLinejoin,
   strokeWidth,
-}: PreventDashedProps<T>): ReactElement => {
+}: NonDashedProps<T>): ReactElement => {
   return (
     <path
       d={d}

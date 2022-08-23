@@ -1,4 +1,4 @@
-export type PreventDashedProps<T> = {
+export type NonDashedProps<T> = {
   [K in keyof T]: K extends `${string}-${string}` ? never : T[K];
 };
 
