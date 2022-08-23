@@ -125,9 +125,9 @@ export type Colors = {
     background: Record<'level1' | 'level2' | 'level3', ColorContrast>;
     border: Record<'normal' | 'subtle', ColorContrast>;
     text: Record<TextTypes, ColorContrast>;
-    // action: {
-    //   icon: Pick<ActionStates, 'link'>;
-    // };
+    action: {
+      icon: ActionStatesWithContrast;
+    };
   };
   overlay: Record<'background', string>;
   action: {
@@ -135,6 +135,20 @@ export type Colors = {
     border: Omit<ActionVariants, 'link'>;
     text: ActionVariants;
     icon: ActionVariants;
+  };
+  badge: {
+    background: {
+      blue: ColorContrast;
+    };
+    border: {
+      blue: ColorContrast;
+    };
+    text: {
+      blue: ColorContrast;
+    };
+    icon: {
+      blue: ColorContrast;
+    };
   };
 };
 

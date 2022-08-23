@@ -49,32 +49,30 @@ const emptyTheme: Theme = {
           highContrast: '',
         },
       },
-      // action: {
-      //   icon: {
-      //     link: {
-      //       default: {
-      //         lowContrast: '',
-      //         highContrast: '',
-      //       },
-      //       hover: {
-      //         lowContrast: '',
-      //         highContrast: '',
-      //       },
-      //       focus: {
-      //         lowContrast: '',
-      //         highContrast: '',
-      //       },
-      //       active: {
-      //         lowContrast: '',
-      //         highContrast: '',
-      //       },
-      //       disabled: {
-      //         lowContrast: '',
-      //         highContrast: '',
-      //       },
-      //     },
-      //   },
-      // },
+      action: {
+        icon: {
+          default: {
+            lowContrast: '',
+            highContrast: '',
+          },
+          hover: {
+            lowContrast: '',
+            highContrast: '',
+          },
+          focus: {
+            lowContrast: '',
+            highContrast: '',
+          },
+          active: {
+            lowContrast: '',
+            highContrast: '',
+          },
+          disabled: {
+            lowContrast: '',
+            highContrast: '',
+          },
+        },
+      },
     },
     overlay: {
       background: '',
@@ -1015,6 +1013,32 @@ const emptyTheme: Theme = {
           active: '',
           disabled: '',
           visited: '',
+        },
+      },
+    },
+    badge: {
+      background: {
+        blue: {
+          lowContrast: '',
+          highContrast: '',
+        },
+      },
+      border: {
+        blue: {
+          lowContrast: '',
+          highContrast: '',
+        },
+      },
+      text: {
+        blue: {
+          lowContrast: '',
+          highContrast: '',
+        },
+      },
+      icon: {
+        blue: {
+          lowContrast: '',
+          highContrast: '',
         },
       },
     },
