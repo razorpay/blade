@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react';
 import { Path as PathNative } from 'react-native-svg';
-import type { PathProps } from './Path.d';
+import type { PathProps, PreventDashedProps } from './Path.d';
 
-const Path = ({
+const Path = <T extends PathProps>({
   d,
   clipPath,
   clipRule,
@@ -13,7 +13,7 @@ const Path = ({
   strokeLinecap,
   strokeLinejoin,
   strokeWidth,
-}: PathProps): ReactElement => {
+}: PreventDashedProps<T>): ReactElement => {
   return (
     <PathNative
       d={d}
