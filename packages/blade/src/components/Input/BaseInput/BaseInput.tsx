@@ -32,7 +32,7 @@ type InputLabelProps = {
   /**
    * Displays `(optional)` when `optional` is passed or `*` when `required` is passed
    */
-  neccessityIndicator?: FormLabelProps['neccessityIndicator'];
+  neccessityIndicator?: FormLabelProps['necessityIndicator'];
 };
 
 // TODO: need to abstract for generic use
@@ -197,7 +197,7 @@ export const BaseInput = ({
       >
         <FormLabel
           as="label"
-          neccessityIndicator={neccessityIndicator}
+          necessityIndicator={neccessityIndicator}
           position={labelPosition}
           htmlFor={inputId}
         >

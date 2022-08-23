@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
@@ -18,6 +19,7 @@ const fadeIn = keyframes`
     opacity: 1;
   }
 `;
+
 const fadeOut = keyframes`
   from {
     transform: scale(1);
@@ -42,18 +44,19 @@ const AnimatedFade = styled.div<{ animationType: FlattenSimpleInterpolation | nu
 const Fade = ({ show, children, styles }: FadeProps) => {
   const { theme } = useTheme();
 
+  const duration = theme.motion.duration.xquick;
   const enter = css`
-    animation: ${fadeIn} ${makeMotionTime(theme.motion.duration.xquick)}
+    animation: ${fadeIn} ${makeMotionTime(duration)}
       ${theme.motion.easing.entrance.effective as string};
   `;
 
-  const leave = css`
-    animation: ${fadeOut} ${makeMotionTime(theme.motion.duration.xquick)}
+  const exit = css`
+    animation: ${fadeOut} ${makeMotionTime(duration)}
       ${theme.motion.easing.exit.effective as string};
   `;
 
   // if show is undefined do not initialize the animation to prevent flash of animation
-  const animation = show === undefined ? null : show ? enter : leave;
+  const animation = show === undefined ? null : show ? enter : exit;
 
   return (
     <AnimatedFade

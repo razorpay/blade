@@ -75,6 +75,7 @@ type BaseLinkStyleProps = {
   as: 'a' | 'button';
   textDecorationLine: 'underline' | 'none';
   iconColor: IconProps['color'];
+  iconSize: IconProps['size'];
   iconPadding: DotNotationSpacingStringToken;
   textColor: BaseTextProps['color'];
   focusRingColor: string;
@@ -128,6 +129,7 @@ const getProps = ({
   contrast,
   isVisited,
   target,
+  hasIcon,
 }: {
   theme: Theme;
   variant: NonNullable<BaseLinkProps['variant']>;
@@ -138,6 +140,7 @@ const getProps = ({
   contrast: NonNullable<BaseLinkProps['contrast']>;
   isVisited: boolean;
   target: BaseLinkProps['target'];
+  hasIcon: boolean;
 }): BaseLinkStyleProps => {
   const isButton = variant === 'button';
   const props: BaseLinkStyleProps = {
@@ -152,6 +155,7 @@ const getProps = ({
       isDisabled,
       isVisited,
     }) as IconProps['color'],
+    iconSize: hasIcon && (!children || children?.trim().length === 0) ? 'medium' : 'small',
     iconPadding: children?.trim() ? 'spacing.1' : 'spacing.0',
     textColor: getColorToken({
       variant,
@@ -187,6 +191,10 @@ const BaseLink = ({
   intent,
   contrast = 'low',
   accessibilityLabel,
+  // @ts-expect-error avoiding exposing to public
+  className,
+  // @ts-expect-error avoiding exposing to public
+  style,
 }: BaseLinkProps): ReactElement => {
   const [isVisited, setIsVisited] = useState(false);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
@@ -201,6 +209,7 @@ const BaseLink = ({
     textDecorationLine,
     iconColor,
     iconPadding,
+    iconSize,
     textColor,
     focusRingColor,
     motionDuration,
@@ -219,6 +228,7 @@ const BaseLink = ({
     contrast,
     isVisited,
     target,
+    hasIcon: Boolean(Icon),
   });
 
   const handleOnClick = (event: SyntheticEvent): void => {
@@ -248,11 +258,13 @@ const BaseLink = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       setCurrentInteraction={setCurrentInteraction}
+      className={className}
+      style={style}
     >
       <Box display="flex" flexDirection="row" className="content-container" alignItems="center">
         {Icon && iconPosition == 'left' ? (
           <Box paddingRight={iconPadding} display="flex" alignItems="center">
-            <Icon color={iconColor} size="xsmall" />
+            <Icon color={iconColor} size={iconSize} />
           </Box>
         ) : null}
         <BaseText
@@ -260,12 +272,13 @@ const BaseLink = ({
           color={textColor}
           fontSize={100}
           textAlign="center"
+          fontWeight="bold"
         >
           {children}
         </BaseText>
         {Icon && iconPosition == 'right' ? (
           <Box paddingLeft={iconPadding} display="flex" alignItems="center">
-            <Icon color={iconColor} size="xsmall" />
+            <Icon color={iconColor} size={iconSize} />
           </Box>
         ) : null}
       </Box>

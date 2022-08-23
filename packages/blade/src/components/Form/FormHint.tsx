@@ -78,13 +78,13 @@ const Icons = {
   help: (): null => null,
   error: (): ReactElement => (
     <>
-      <InfoIcon color="feedback.icon.negative.lowContrast" size="xsmall" />
+      <InfoIcon color="feedback.icon.negative.lowContrast" size="small" />
       <Box marginRight="spacing.1" />
     </>
   ),
   success: (): ReactElement => (
     <>
-      <CheckIcon color="feedback.icon.positive.lowContrast" size="xsmall" />
+      <CheckIcon color="feedback.icon.positive.lowContrast" size="small" />
       <Box marginRight="spacing.1" />
     </>
   ),

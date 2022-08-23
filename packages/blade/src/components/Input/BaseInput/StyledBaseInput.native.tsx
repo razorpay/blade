@@ -30,9 +30,9 @@ export const StyledBaseInput = ({
     <StyledNativeBaseInput
       isFocused={isFocused}
       editable={!isDisabled}
-      onFocus={(): void => setisFocused(true)}
-      onBlur={(): void => setisFocused(false)}
-      onChangeText={(text): void => handleOnChange({ name, value: text })}
+      onFocus={() => setisFocused(true)}
+      onBlur={() => setisFocused(false)}
+      onChangeText={(text) => handleOnChange({ name, value: text })}
       {...props}
     />
   );

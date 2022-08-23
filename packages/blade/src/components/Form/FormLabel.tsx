@@ -2,15 +2,15 @@ import React from 'react';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { BaseText } from '~components/Typography/BaseText';
-import { getPlatformType, useBreakpoint } from '~utils';
+import { getPlatformType, makeSpace, useBreakpoint } from '~utils';
 import Box from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
 
 type CommonProps = {
   as: 'span' | 'label';
   position?: 'top' | 'left';
-  neccessityIndicator?: 'required' | 'optional' | 'none';
-  accessibillityText?: string;
+  necessityIndicator?: 'required' | 'optional' | 'none';
+  accessibilityText?: string;
   children: React.ReactNode;
   id?: string;
 };
@@ -30,8 +30,8 @@ export type FormLabelProps = LabelProps | SpanProps;
 const FormLabel = ({
   as = 'span',
   position = 'top',
-  neccessityIndicator = 'none',
-  accessibillityText,
+  necessityIndicator = 'none',
+  accessibilityText,
   children,
   id,
   htmlFor,
@@ -42,7 +42,7 @@ const FormLabel = ({
   const isReactNative = getPlatformType() === 'react-native';
 
   // TODO: replace with <Text /> when #548 merges
-  let neccessityLabel: React.ReactNode = null;
+  let necessityLabel: React.ReactNode = null;
 
   if (!isDesktop && position === 'left') {
     console.warn(
@@ -50,8 +50,8 @@ const FormLabel = ({
     );
   }
 
-  if (neccessityIndicator === 'optional') {
-    neccessityLabel = (
+  if (necessityIndicator === 'optional') {
+    necessityLabel = (
       <BaseText
         lineHeight="s"
         fontFamily="text"
@@ -63,8 +63,8 @@ const FormLabel = ({
       </BaseText>
     );
   }
-  if (neccessityIndicator === 'required') {
-    neccessityLabel = (
+  if (necessityIndicator === 'required') {
+    necessityLabel = (
       <BaseText
         lineHeight="s"
         fontFamily="text"
@@ -80,37 +80,41 @@ const FormLabel = ({
 
   const computedAccessibilityNode = (
     <VisuallyHidden>
-      {neccessityIndicator !== 'none' && <Text>{neccessityIndicator}</Text>}
-      <Text>{accessibillityText}</Text>
+      {necessityIndicator !== 'none' && <Text>{necessityIndicator}</Text>}
+      <Text>{accessibilityText}</Text>
     </VisuallyHidden>
   );
 
   const textNode = (
     <Box
-      gap={neccessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'}
+      gap={necessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'}
       display="flex"
       flexDirection="row"
       alignItems="center"
       flexWrap="wrap"
     >
       <BaseText
-        lineHeight="s"
+        lineHeight={position === 'left' ? 'l' : 's'}
         fontFamily="text"
         fontWeight="bold"
         color="surface.text.subtle.lowContrast"
-        fontSize={75}
+        fontSize={position === 'left' ? 100 : 75}
       >
         {children}
         {computedAccessibilityNode}
       </BaseText>
       {/* TODO: Hide from screen readers to prevent double announcement */}
-      {neccessityLabel}
+      {necessityLabel}
     </Box>
   );
 
   // What harm can it do?
   if (isReactNative) {
-    return <Box marginBottom="spacing.1">{textNode}</Box>;
+    return (
+      <Box marginRight="spacing.4" marginBottom="spacing.1">
+        {textNode}
+      </Box>
+    );
   }
 
   const Component = as;
@@ -119,7 +123,11 @@ const FormLabel = ({
   const width = isLabelLeftPositioned && isDesktop ? '120px' : 'auto';
 
   return (
-    <Component htmlFor={htmlFor} style={{ width, flexShrink: 0 }} id={id}>
+    <Component
+      htmlFor={htmlFor}
+      style={{ width, flexShrink: 0, marginRight: makeSpace(theme.spacing[4]) }}
+      id={id}
+    >
       <Box marginBottom={isLabelLeftPositioned ? 'spacing.1' : 'spacing.0'}>{textNode}</Box>
     </Component>
   );

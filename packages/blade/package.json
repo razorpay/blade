@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade",
-  "version": "0.13.4",
+  "version": "1.0.2",
   "license": "MIT",
   "engines": {
     "node": ">=14.19.0"
@@ -47,7 +47,7 @@
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
     "test:react": "FRAMEWORK=REACT jest -c ./jest.web.config.js",
     "test:react-native": "FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js",
-    "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native",
+    "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
     "react-native:storybook:android": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-android",
     "react-native:storybook:ios": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-ios",
     "react-native:storybook:start": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
@@ -57,7 +57,8 @@
     "chromatic": "npx chromatic"
   },
   "dependencies": {
-    "@babel/runtime": "7.16.5"
+    "@babel/runtime": "7.16.5",
+    "use-presence": "1.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.5",
@@ -92,7 +93,7 @@
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "5.1.2",
     "@testing-library/react-native": "9.1.0",
-    "@testing-library/user-event": "14.2.0",
+    "@testing-library/user-event": "14.4.1",
     "@types/jest": "26.0.23",
     "@types/jest-axe": "3.5.3",
     "@types/lodash": "4.14.168",
@@ -132,8 +133,8 @@
     "rollup": "2.61.1",
     "rollup-plugin-dts": "4.0.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
-    "styled-components": "5.3.5",
     "style-dictionary": "3.7.1",
+    "styled-components": "5.3.5",
     "tsconfig-paths-webpack-plugin": "3.5.2"
   },
   "peerDependencies": {

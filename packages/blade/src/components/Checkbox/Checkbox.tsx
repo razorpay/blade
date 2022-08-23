@@ -3,7 +3,6 @@ import React from 'react';
 import isUndefined from 'lodash/isUndefined';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
-import { CheckboxInput } from './CheckboxInput';
 import { useCheckbox } from './useCheckbox';
 import { isEmpty } from '~utils';
 import Box from '~components/Box';
@@ -11,6 +10,7 @@ import { FormHint } from '~components/Form';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
+import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 
 type OnChange = ({
   isChecked,
@@ -180,23 +180,27 @@ const Checkbox = ({
   return (
     <Box>
       <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
-        <CheckboxInput
-          isChecked={state.isChecked || Boolean(isIndeterminate)}
-          isDisabled={_isDisabled}
-          isNegative={_hasError}
-          inputProps={inputProps}
-        />
-        <CheckboxIcon
-          isChecked={state.isChecked}
-          isIndeterminate={isIndeterminate}
-          isDisabled={_isDisabled}
-          isNegative={_hasError}
-        />
-        <Box>
-          <SelectorTitle isDisabled={_isDisabled}>{children}</SelectorTitle>
-          {showSupportingText && (
-            <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
-          )}
+        <Box display="flex" flexDirection="column">
+          <Box display="flex" alignItems="center" flexDirection="row">
+            <SelectorInput
+              isChecked={state.isChecked || Boolean(isIndeterminate)}
+              isDisabled={_isDisabled}
+              isNegative={_hasError}
+              inputProps={inputProps}
+            />
+            <CheckboxIcon
+              isChecked={state.isChecked}
+              isIndeterminate={isIndeterminate}
+              isDisabled={_isDisabled}
+              isNegative={_hasError}
+            />
+            <SelectorTitle isDisabled={_isDisabled}>{children}</SelectorTitle>
+          </Box>
+          <Box marginLeft="spacing.6">
+            {showSupportingText && (
+              <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
+            )}
+          </Box>
         </Box>
       </SelectorLabel>
       <FormHint
