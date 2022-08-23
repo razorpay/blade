@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import { StyledBadge } from './StyledBadge';
+import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent, IconProps } from '~components/Icons';
 import type { BaseTextProps } from '~components/Typography/BaseText';
@@ -9,6 +10,21 @@ import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
+import type { DotNotationColorStringToken } from '~src/_helpers/types';
+
+type BadgeBackgroundColors = `badge.background.${DotNotationColorStringToken<
+  Theme['colors']['badge']['background']
+>}`;
+type BadgeBorderColors = `badge.border.${DotNotationColorStringToken<
+  Theme['colors']['badge']['border']
+>}`;
+
+type FeedbackBackgroundColors = `feedback.background.${DotNotationColorStringToken<
+  Theme['colors']['feedback']['background']
+>}`;
+type FeedbackBorderColors = `feedback.border.${DotNotationColorStringToken<
+  Theme['colors']['feedback']['border']
+>}`;
 
 type BadgeProps = {
   /**
@@ -51,8 +67,8 @@ type BadgeProps = {
 type ColorProps = {
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
-  backgroundColor: string;
-  borderColor: string;
+  backgroundColor: FeedbackBackgroundColors | BadgeBackgroundColors;
+  borderColor: FeedbackBorderColors | BadgeBorderColors;
 };
 const getColorProps = ({
   variant,
@@ -61,26 +77,23 @@ const getColorProps = ({
   variant: NonNullable<BadgeProps['variant']>;
   contrast: NonNullable<BadgeProps['contrast']>;
 }): ColorProps => {
-  const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'];
+  // const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'] as const;
   const props: ColorProps = {
     iconColor: 'feedback.icon.neutral.lowContrast',
     textColor: 'feedback.text.neutral.lowContrast',
     backgroundColor: 'feedback.background.neutral.lowContrast',
     borderColor: 'feedback.border.neutral.lowContrast',
   };
-  if (feedbackVariants.includes(variant)) {
-    //@ts-expect-error TODO: fix types
+  if (variant != 'blue') {
     props.iconColor = `feedback.icon.${variant}.${contrast}Contrast`;
-    //@ts-expect-error TODO: fix types
     props.textColor = `feedback.text.${variant}.${contrast}Contrast`;
     props.backgroundColor = `feedback.background.${variant}.${contrast}Contrast`;
     props.borderColor = `feedback.border.${variant}.${contrast}Contrast`;
   } else {
-    //TODO: Use correct colors here
-    props.iconColor = `feedback.icon.positive.highContrast`;
-    props.textColor = `feedback.text.positive.highContrast`;
-    props.backgroundColor = `feedback.background.positive.highContrast`;
-    props.borderColor = `feedback.border.positive.highContrast`;
+    props.iconColor = `badge.icon.${variant}.${contrast}Contrast`;
+    props.textColor = `badge.text.${variant}.${contrast}Contrast`;
+    props.backgroundColor = `badge.background.${variant}.${contrast}Contrast`;
+    props.borderColor = `badge.border.${variant}.${contrast}Contrast`;
   }
   return props;
 };

@@ -339,16 +339,16 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 
 exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.positive.highContrast"
-  borderColor="feedback.border.positive.highContrast"
+  backgroundColor="badge.background.blue.highContrast"
+  borderColor="badge.border.blue.highContrast"
   platform="onMobile"
   size="medium"
   style={
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(160, 100%, 26%, 1)",
-        "borderColor": "hsla(160, 100%, 26%, 1)",
+        "backgroundColor": "hsla(218, 89%, 51%, 1)",
+        "borderColor": "hsla(218, 89%, 51%, 1)",
         "borderRadius": 9999,
         "borderWidth": 1,
         "display": "flex",
@@ -386,7 +386,7 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
     }
   >
     <Text
-      color="feedback.text.positive.highContrast"
+      color="badge.text.blue.highContrast"
       fontSize={75}
       fontWeight="regular"
       lineHeight="s"
@@ -849,16 +849,16 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 <View
-  backgroundColor="feedback.background.positive.highContrast"
-  borderColor="feedback.border.positive.highContrast"
+  backgroundColor="badge.background.blue.lowContrast"
+  borderColor="badge.border.blue.lowContrast"
   platform="onMobile"
   size="medium"
   style={
     Array [
       Object {
         "alignSelf": "center",
-        "backgroundColor": "hsla(160, 100%, 26%, 1)",
-        "borderColor": "hsla(160, 100%, 26%, 1)",
+        "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
+        "borderColor": "hsla(218, 89%, 51%, 0.32)",
         "borderRadius": 9999,
         "borderWidth": 1,
         "display": "flex",
@@ -896,7 +896,7 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
     }
   >
     <Text
-      color="feedback.text.positive.highContrast"
+      color="badge.text.blue.lowContrast"
       fontSize={75}
       fontWeight="regular"
       lineHeight="s"
@@ -904,7 +904,7 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
       style={
         Array [
           Object {
-            "color": "hsla(0, 0%, 100%, 1)",
+            "color": "hsla(218, 89%, 51%, 1)",
             "fontFamily": "Lato",
             "fontSize": 12,
             "fontStyle": "normal",
