@@ -35,7 +35,7 @@ type InputLabelProps = {
   /**
    * Displays `(optional)` when `optional` is passed or `*` when `required` is passed
    */
-  neccessityIndicator?: FormLabelProps['neccessityIndicator'];
+  neccessityIndicator?: FormLabelProps['necessityIndicator'];
 };
 
 // TODO: need to abstract for generic use
@@ -251,7 +251,7 @@ export const BaseInput = ({
 }: BaseInputProps): ReactElement => {
   const { theme } = useTheme();
   const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange });
-  const { labelId, inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
+  const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
   const [isFocused, setIsFocused] = useState(false);
@@ -266,8 +266,7 @@ export const BaseInput = ({
       >
         <FormLabel
           as="label"
-          neccessityIndicator={neccessityIndicator}
-          id={labelId}
+          necessityIndicator={neccessityIndicator}
           position={labelPosition}
           htmlFor={inputId}
         >
@@ -306,7 +305,7 @@ export const BaseInput = ({
           />
         </BaseInputWrapper>
       </Box>
-      <Box marginLeft={isLabelLeftPositioned ? 120 : undefined}>
+      <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
         <FormHint
           type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
           helpText={helpText}

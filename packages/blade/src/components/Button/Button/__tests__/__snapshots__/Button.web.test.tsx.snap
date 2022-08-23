@@ -20,6 +20,7 @@ exports[`<Button /> should render button with default properties 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -130,6 +131,7 @@ exports[`<Button /> should render button with full width 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -240,6 +242,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -340,9 +343,9 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
         <svg
           aria-hidden="true"
           fill="none"
-          height="20px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="20px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -385,6 +388,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -449,6 +453,18 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
 }
 
 .c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   padding-left: 8px;
 }
 
@@ -476,13 +492,14 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       </div>
       <div
         class="c4"
+        display="flex"
       >
         <svg
           aria-hidden="true"
           fill="none"
-          height="20px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="20px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -517,6 +534,7 @@ exports[`<Button /> should render disabled button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -628,6 +646,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -739,6 +758,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -850,6 +870,7 @@ exports[`<Button /> should render large size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -960,6 +981,7 @@ exports[`<Button /> should render medium size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1070,6 +1092,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1180,6 +1203,7 @@ exports[`<Button /> should render small size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1290,6 +1314,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {
@@ -1400,6 +1425,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  position: relative;
 }
 
 .c0:hover {

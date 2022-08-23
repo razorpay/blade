@@ -5,9 +5,9 @@ exports[`<InfoIcon /> should render InfoIcon 1`] = `
   <svg
     aria-hidden="true"
     fill="none"
-    height="24px"
+    height="20px"
     viewBox="0 0 24 24"
-    width="24px"
+    width="20px"
   >
     <path
       d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
