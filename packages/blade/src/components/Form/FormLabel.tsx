@@ -12,7 +12,7 @@ type CommonProps = {
   neccessityIndicator?: 'required' | 'optional' | 'none';
   accessibillityText?: string;
   children: React.ReactNode;
-  id: string;
+  id?: string;
 };
 
 type LabelProps = CommonProps & {

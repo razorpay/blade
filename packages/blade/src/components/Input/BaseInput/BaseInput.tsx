@@ -183,7 +183,7 @@ export const BaseInput = ({
 }: BaseInputProps): ReactElement => {
   const { theme } = useTheme();
   const { handleOnChange } = useInput({ defaultValue, value, onChange });
-  const { labelId, inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
+  const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
 
@@ -198,7 +198,6 @@ export const BaseInput = ({
         <FormLabel
           as="label"
           neccessityIndicator={neccessityIndicator}
-          id={labelId}
           position={labelPosition}
           htmlFor={inputId}
         >
