@@ -12,15 +12,6 @@ import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
 
-/**
- * TODO for keyboard management
- * textAlign - done
- * autoFocus - done
- * keyboardReturnKeyType - done
- * autofillSuggestionType
- * keyboardType
- */
-
 export type HandleOnEvent = ({
   name,
   value,
