@@ -105,7 +105,6 @@ const FormHint = ({
     success: 'feedback.text.positive.lowContrast',
   } as const;
 
-  const Icon = Icons[type];
   const showError = type === 'error' && errorText;
   const showSuccess = type === 'success' && successText;
   const showHelp = !showError && !showSuccess && helpText;
@@ -113,19 +112,19 @@ const FormHint = ({
   return (
     <>
       {showHelp && (
-        <HintText id={helpTextId} icon={Icon} color={colors[type]}>
+        <HintText id={helpTextId} icon={Icons.help} color={colors.help}>
           {helpText}
         </HintText>
       )}
 
       {showError && (
-        <HintText id={errorTextId} icon={Icon} color={colors[type]}>
+        <HintText id={errorTextId} icon={Icons.error} color={colors.error}>
           {errorText}
         </HintText>
       )}
 
       {showSuccess && (
-        <HintText id={successTextId} icon={Icon} color={colors[type]}>
+        <HintText id={successTextId} icon={Icons.success} color={colors.success}>
           {successText}
         </HintText>
       )}

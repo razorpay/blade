@@ -125,7 +125,12 @@ const FormLabel = ({
   return (
     <Component
       htmlFor={htmlFor}
-      style={{ width, flexShrink: 0, marginRight: makeSpace(theme.spacing[4]) }}
+      style={{
+        width,
+        flexShrink: 0,
+        marginRight: makeSpace(theme.spacing[4]),
+        wordBreak: 'break-all',
+      }}
       id={id}
     >
       <Box marginBottom={isLabelLeftPositioned ? 'spacing.1' : 'spacing.0'}>{textNode}</Box>
