@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Path /> should not accept dashed props 1`] = `
+<div>
+  <path
+    d=""
+  />
+</div>
+`;
+
 exports[`<Path /> should render html path component 1`] = `
 <div>
   <svg
