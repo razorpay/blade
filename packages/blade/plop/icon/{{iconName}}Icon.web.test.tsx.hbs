@@ -1,0 +1,11 @@
+import {{iconName}}Icon from '.';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+
+describe('<{{iconName}}Icon />', () => {
+  it('should render {{iconName}}Icon', () => {
+    const { container } = renderWithTheme(
+      <{{iconName}}Icon color="feedback.icon.neutral.lowContrast" size="large" />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+});

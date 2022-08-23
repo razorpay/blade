@@ -20,6 +20,8 @@ import PlusIconComponent from './PlusIcon';
 import RupeeIconComponent from './RupeeIcon';
 import SearchIconComponent from './SearchIcon';
 import TrashIconComponent from './TrashIcon';
+// # append_icon_import
+
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -46,6 +48,7 @@ const iconMap: Record<string, IconComponent> = {
   RupeeIcon: RupeeIconComponent,
   SearchIcon: SearchIconComponent,
   TrashIcon: TrashIconComponent,
+	// # append_icon_map
 };
 
 export default iconMap;

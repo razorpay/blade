@@ -47,3 +47,4 @@ export { default as PlusIcon } from './PlusIcon';
 export { default as RupeeIcon } from './RupeeIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as TrashIcon } from './TrashIcon';
+// # append_icon_export

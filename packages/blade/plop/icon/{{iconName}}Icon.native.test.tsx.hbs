@@ -1,0 +1,11 @@
+import {{iconName}}Icon from '.';
+import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+
+describe('<{{iconName}}Icon />', () => {
+  it('should render {{iconName}}Icon', () => {
+    const renderTree = renderWithTheme(
+      <{{iconName}}Icon color="feedback.icon.neutral.lowContrast" size="large" />,
+    ).toJSON();
+    expect(renderTree).toMatchSnapshot();
+  });
+});
