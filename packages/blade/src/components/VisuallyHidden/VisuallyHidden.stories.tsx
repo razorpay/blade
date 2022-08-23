@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ComponentStory, Meta } from '@storybook/react';
 import {
   Title as StorybookTitle,
@@ -11,6 +12,7 @@ import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import type { VisuallyHiddenProps } from './VisuallyHidden';
 import { VisuallyHidden as VisuallyHiddenComponent } from './VisuallyHidden';
+import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
 
 const Page = (): ReactElement => {
@@ -45,7 +47,7 @@ const Page = (): ReactElement => {
 const VisuallyHiddenStoryMeta: Meta<VisuallyHiddenProps> = {
   title: 'Components/Accessibility/VisuallyHidden',
   component: VisuallyHiddenComponent,
-  args: { children: 'Visually hidden content' },
+  args: { children: 'Toggle dark mode' },
   parameters: {
     docs: {
       page: () => <Page />,
@@ -60,10 +62,10 @@ const VisuallyHiddenTemplate: ComponentStory<typeof VisuallyHiddenComponent> = (
         Enable voiceover and focus on the checkbox to hear its invisible label. You should be able
         to hear "Toggle dark mode" when focused on the checkbox.
       </Text>
-      <VisuallyHiddenComponent>
-        <label htmlFor="darkmode">{args.children}</label>
-      </VisuallyHiddenComponent>
-      <input id="darkmode" type="checkbox" />
+      <Checkbox>
+        {/* @ts-expect-error checkbox label only accepts string, this is just for demo */}
+        <VisuallyHiddenComponent>{args.children}</VisuallyHiddenComponent>
+      </Checkbox>
     </>
   );
 };

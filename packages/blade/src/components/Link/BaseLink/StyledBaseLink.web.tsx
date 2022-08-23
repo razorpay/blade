@@ -3,7 +3,7 @@ import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './StyledBaseLink.d';
 import { getIn, makeBorderSize, makeMotionTime } from '~utils';
 
-const StyledLink = styled.button.attrs((props: StyledBaseLinkProps) => ({
+const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLinkProps) => ({
   ...props.accessibilityProps,
 }))<StyledBaseLinkProps>((props) => ({
   ...getStyledLinkStyles(props),

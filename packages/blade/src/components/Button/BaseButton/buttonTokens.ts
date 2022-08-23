@@ -69,21 +69,61 @@ const buttonPadding: Record<
   },
 };
 
+const buttonIconOnlyPadding: Record<
+  NonNullable<BaseButtonProps['size']>,
+  Record<'top' | 'bottom' | 'left' | 'right', keyof Theme['spacing']>
+> = {
+  xsmall: {
+    top: 0,
+    bottom: 0,
+    left: 2, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
+    right: 2, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
+  },
+  small: {
+    top: 0,
+    bottom: 0,
+    left: 2,
+    right: 2,
+  },
+  medium: {
+    top: 0,
+    bottom: 0,
+    left: 2,
+    right: 2,
+  },
+  large: {
+    top: 0,
+    bottom: 0,
+    left: 3,
+    right: 3,
+  },
+};
+
 const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconProps['size']> = {
-  xsmall: 'xsmall',
-  small: 'xsmall',
+  xsmall: 'small',
+  small: 'small',
   medium: 'medium',
   large: 'medium',
+};
+
+const buttonIconOnlySizeToIconSizeMap: Record<
+  NonNullable<BaseButtonProps['size']>,
+  IconProps['size']
+> = {
+  xsmall: 'medium',
+  small: 'medium',
+  medium: 'large',
+  large: 'xlarge',
 };
 
 const buttonSizeToSpinnerSizeMap: Record<
   NonNullable<BaseButtonProps['size']>,
   SpinnerProps['size']
 > = {
-  xsmall: 'xsmall',
-  small: 'xsmall',
-  medium: 'medium',
-  large: 'medium',
+  xsmall: 'medium',
+  small: 'medium',
+  medium: 'large',
+  large: 'xlarge',
 };
 
 const textPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['spacing']> = {
@@ -97,7 +137,9 @@ export {
   typography,
   minHeight,
   buttonSizeToIconSizeMap,
+  buttonIconOnlySizeToIconSizeMap,
   buttonSizeToSpinnerSizeMap,
   textPadding,
   buttonPadding,
+  buttonIconOnlyPadding,
 };
