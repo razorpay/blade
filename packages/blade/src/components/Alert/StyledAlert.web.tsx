@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import type { StyledAlertProps } from './StyledAlert.d';
 import { makeSpace } from '~utils';
 
+const MAX_WIDTH = 584;
+
 const StyledAlert = styled.div<StyledAlertProps>((props) => {
   const { theme, contrastType, intent, isFullWidth, isBorderless } = props;
 
@@ -19,7 +21,7 @@ const StyledAlert = styled.div<StyledAlertProps>((props) => {
     borderStyle: 'solid',
     display: 'flex',
     flexDirection: 'row',
-    maxWidth: _isFullWidth ? 'auto' : 584,
+    maxWidth: _isFullWidth ? 'auto' : MAX_WIDTH,
     alignItems: 'flex-start',
   };
 });

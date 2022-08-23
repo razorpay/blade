@@ -6,6 +6,7 @@ import { Highlight, Link } from '@storybook/design-system';
 import type { AlertProps } from './Alert';
 import AlertComponent from './Alert';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import { colors } from '~tokens/global';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -88,11 +89,132 @@ const meta: Meta<AlertProps> = {
   },
 };
 
-const IconButtonTemplate: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+const AlertTemplate: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
   return <AlertComponent {...args} />;
 };
 
-export const Alert = IconButtonTemplate.bind({});
-Alert.storyName = 'Alert';
+export const Default = AlertTemplate.bind({});
+
+export const HighContrast = AlertTemplate.bind({});
+HighContrast.args = {
+  contrast: 'high',
+  intent: 'notice',
+};
+HighContrast.parameters = {
+  docs: {
+    description: {
+      story: 'A high contrast Alert for more prominent look',
+    },
+  },
+};
+
+export const WithoutActions = AlertTemplate.bind({});
+WithoutActions.args = {
+  actions: undefined,
+};
+WithoutActions.parameters = {
+  docs: {
+    description: {
+      story: 'Alert can also be used without any actions',
+    },
+  },
+};
+
+export const NonDismissable = AlertTemplate.bind({});
+NonDismissable.args = {
+  isDismissable: false,
+};
+NonDismissable.parameters = {
+  docs: {
+    description: {
+      story: 'Alert can be made non dismissable',
+    },
+  },
+};
+
+export const DescriptionOnly = AlertTemplate.bind({});
+DescriptionOnly.args = {
+  description:
+    'The payment was made 6 months ago, therefore you can’t issue refund to this merchant.',
+  intent: 'notice',
+  actions: undefined,
+  title: undefined,
+};
+DescriptionOnly.parameters = {
+  docs: {
+    description: {
+      story: 'Sometimes a description is enough to set the required context',
+    },
+  },
+};
+
+export const PrimaryActionOnly = AlertTemplate.bind({});
+PrimaryActionOnly.args = {
+  description:
+    'There was some internal error while fetching the merchants list, this might also be due to the poor internet connection.',
+  intent: 'negative',
+  actions: {
+    primary: {
+      text: 'Try Refetching',
+      onClick: () => {
+        console.log('Refetch');
+      },
+    },
+  },
+  title: 'Unable to fetch merchants',
+};
+PrimaryActionOnly.parameters = {
+  docs: {
+    description: {
+      story: 'Just a primary action can be enough in some cases',
+    },
+  },
+};
+
+export const FullWidth = AlertTemplate.bind({});
+FullWidth.args = {
+  description: 'Currently you can only accept payments in international currencies using PayPal.',
+  intent: 'notice',
+  actions: undefined,
+  title: undefined,
+  isFullWidth: true,
+};
+FullWidth.parameters = {
+  docs: {
+    description: {
+      story: 'A full width Alert can be used to span the entire width of its container',
+    },
+  },
+};
+
+export const FullBleed: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+  return (
+    <div
+      style={{
+        background: colors.neutral.blueGrayLight[100],
+        height: 200,
+        position: 'relative',
+      }}
+    >
+      <div style={{ position: 'absolute', width: '100%' }}>
+        <AlertComponent {...args} />
+      </div>
+    </div>
+  );
+};
+FullBleed.args = {
+  description: 'Use vendor payouts to quickly generate invoices.',
+  actions: undefined,
+  title: undefined,
+  isBorderless: true,
+};
+FullBleed.parameters = {
+  docs: {
+    description: {
+      story:
+        'A borderless Alert can be used for full-bleed layouts, this automatically makes the alert full width. You can also wrap the alert and adjust layout with absolute positioning if needed.',
+    },
+  },
+};
 
 export default meta;
