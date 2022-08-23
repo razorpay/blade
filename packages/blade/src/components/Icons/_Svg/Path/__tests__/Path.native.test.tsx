@@ -25,7 +25,7 @@ describe('<Path />', () => {
 
   it('should not accept dashed props', () => {
     // @ts-expect-error no dashed props are accepted
-    const { container } = renderWithTheme(<Path fill-opacity={0} d="" />);
-    expect(container).toMatchSnapshot();
+    const renderTree = renderWithTheme(<Path fill-opacity={0} d="" />).toJSON();
+    expect(renderTree).toMatchSnapshot();
   });
 });
