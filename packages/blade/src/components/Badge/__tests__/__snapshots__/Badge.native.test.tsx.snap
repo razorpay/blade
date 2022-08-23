@@ -337,6 +337,91 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 </View>
 `;
 
+exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
+<View
+  backgroundColor="feedback.background.positive.highContrast"
+  borderColor="feedback.border.positive.highContrast"
+  platform="onMobile"
+  size="medium"
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "hsla(160, 100%, 26%, 1)",
+        "borderColor": "hsla(160, 100%, 26%, 1)",
+        "borderRadius": 9999,
+        "borderWidth": 1,
+        "display": "flex",
+        "flexWrap": "nowrap",
+        "maxWidth": 100,
+        "minHeight": 24,
+      },
+    ]
+  }
+>
+  <View
+    alignItems="center"
+    display="flex"
+    flex={1}
+    flexDirection="row"
+    justifyContent="center"
+    overflow="hidden"
+    paddingLeft="spacing.2"
+    paddingRight="spacing.2"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexBasis": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "paddingLeft": 8,
+          "paddingRight": 8,
+        },
+      ]
+    }
+  >
+    <Text
+      color="feedback.text.positive.highContrast"
+      fontSize={75}
+      fontWeight="regular"
+      lineHeight="s"
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 16,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {},
+        ]
+      }
+      textAlign="center"
+    >
+      Label
+    </Text>
+  </View>
+</View>
+`;
+
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.information.highContrast"
@@ -678,6 +763,91 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
+<View
+  backgroundColor="feedback.background.positive.highContrast"
+  borderColor="feedback.border.positive.highContrast"
+  platform="onMobile"
+  size="medium"
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "hsla(160, 100%, 26%, 1)",
+        "borderColor": "hsla(160, 100%, 26%, 1)",
+        "borderRadius": 9999,
+        "borderWidth": 1,
+        "display": "flex",
+        "flexWrap": "nowrap",
+        "maxWidth": 100,
+        "minHeight": 24,
+      },
+    ]
+  }
+>
+  <View
+    alignItems="center"
+    display="flex"
+    flex={1}
+    flexDirection="row"
+    justifyContent="center"
+    overflow="hidden"
+    paddingLeft="spacing.2"
+    paddingRight="spacing.2"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexBasis": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "paddingLeft": 8,
+          "paddingRight": 8,
+        },
+      ]
+    }
+  >
+    <Text
+      color="feedback.text.positive.highContrast"
+      fontSize={75}
+      fontWeight="regular"
+      lineHeight="s"
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 16,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {},
+        ]
+      }
+      textAlign="center"
+    >
+      Label
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.positive.highContrast"
   borderColor="feedback.border.positive.highContrast"
