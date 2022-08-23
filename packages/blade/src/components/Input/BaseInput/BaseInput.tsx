@@ -192,8 +192,8 @@ export const BaseInput = ({
       <Box
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
-        justifyContent={isLabelLeftPositioned ? 'center' : 'normal'}
-        alignItems={isLabelLeftPositioned ? 'center' : 'normal'}
+        justifyContent={isLabelLeftPositioned ? 'center' : undefined}
+        alignItems={isLabelLeftPositioned ? 'center' : undefined}
       >
         <FormLabel
           as="label"
@@ -216,7 +216,7 @@ export const BaseInput = ({
           handleOnChange={handleOnChange}
         />
       </Box>
-      <Box marginLeft={isLabelLeftPositioned ? 120 : 'auto'}>
+      <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
         <FormHint
           type={getHintType({ _validationState: validationState, hasHelpText: Boolean(helpText) })}
           helpText={helpText}
