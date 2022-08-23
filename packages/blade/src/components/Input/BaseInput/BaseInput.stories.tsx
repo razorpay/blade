@@ -30,7 +30,7 @@ export default {
     successText: undefined,
     leadingIcon: undefined,
     prefix: '',
-    interactionElement: <CloseIcon size="small" color="surface.text.subtle.lowContrast" />,
+    interactionElement: <CloseIcon size="medium" color="surface.text.subtle.lowContrast" />,
     suffix: '',
     trailingIcon: undefined,
   },
@@ -204,7 +204,7 @@ export const BaseInputError = BaseInputTemplate.bind({});
 BaseInputError.storyName = 'BaseInput with error';
 BaseInputError.args = {
   validationState: 'error',
-  helpText: 'Name is not valid',
+  errorText: 'Name is not valid',
 };
 
 export const BaseInputSuccess = BaseInputTemplate.bind({});
@@ -212,7 +212,7 @@ BaseInputSuccess.storyName = 'BaseInput with success';
 BaseInputSuccess.args = {
   defaultValue: 'John Ives',
   validationState: 'success',
-  helpText: 'Name validated',
+  successText: 'Name validated',
 };
 
 const UncontrolledBaseInputTemplate: ComponentStory<typeof BaseInputComponent> = () => {

@@ -52,15 +52,9 @@ const FormLabel = ({
 
   if (necessityIndicator === 'optional') {
     necessityLabel = (
-      <BaseText
-        lineHeight="s"
-        fontFamily="text"
-        fontStyle="italic"
-        fontSize={50}
-        color="surface.text.placeholder.lowContrast"
-      >
+      <Text variant="caption" weight="regular" type="placeholder">
         (optional)
-      </BaseText>
+      </Text>
     );
   }
   if (necessityIndicator === 'required') {
@@ -71,7 +65,7 @@ const FormLabel = ({
         fontStyle="normal"
         fontSize={75}
         fontWeight="bold"
-        color="surface.text.placeholder.lowContrast"
+        color="feedback.text.negative.lowContrast"
       >
         *
       </BaseText>
@@ -93,16 +87,15 @@ const FormLabel = ({
       alignItems="center"
       flexWrap="wrap"
     >
-      <BaseText
-        lineHeight={position === 'left' ? 'l' : 's'}
-        fontFamily="text"
-        fontWeight="bold"
-        color="surface.text.subtle.lowContrast"
-        fontSize={position === 'left' ? 100 : 75}
+      <Text
+        type="subdued"
+        variant="body"
+        size={position === 'left' ? 'medium' : 'small'}
+        weight="bold"
       >
         {children}
         {computedAccessibilityNode}
-      </BaseText>
+      </Text>
       {/* TODO: Hide from screen readers to prevent double announcement */}
       {necessityLabel}
     </Box>
@@ -133,7 +126,7 @@ const FormLabel = ({
       }}
       id={id}
     >
-      <Box marginBottom={isLabelLeftPositioned ? 'spacing.1' : 'spacing.0'}>{textNode}</Box>
+      <Box marginBottom={isLabelLeftPositioned ? 'spacing.0' : 'spacing.1'}>{textNode}</Box>
     </Component>
   );
 };
