@@ -35,7 +35,6 @@ const IndeterminateIcon = ({ color }: { color: string }) => {
 };
 
 export type CheckboxIconProps = {
-  isFocused?: boolean;
   isDisabled?: boolean;
   isNegative?: boolean;
   isChecked?: boolean;
@@ -47,7 +46,6 @@ const CheckboxIcon = ({
   isIndeterminate,
   isDisabled,
   isNegative,
-  isFocused,
 }: CheckboxIconProps) => {
   const { theme } = useTheme();
   const defaultIconColor = getIn(theme, 'colors.brand.gray.200');
@@ -57,7 +55,6 @@ const CheckboxIcon = ({
   return (
     <CheckboxIconWrapper
       isIndeterminate={isIndeterminate}
-      isFocused={isFocused}
       isDisabled={isDisabled}
       isNegative={isNegative}
       isChecked={!!(isChecked || isIndeterminate)}

@@ -12,6 +12,10 @@ const getSpacingValue = <T extends string | number | undefined>({
   theme: Theme;
 }): string | undefined => {
   if (value === 'auto') return 'auto';
+  /**
+   * NOTE: don't allow numbers once we have the scale for sizing
+   * DO NOT PUBLISH THIS COMPONENT PUBLICLY WITH THIS PIECE OF CODE ELSE YOU'LL BE OUT OF YOUR JOB
+   */
   if (typeof value === 'number') {
     return makeSpace(value);
   }
@@ -29,6 +33,7 @@ const getBoxStyles = ({
   alignContent,
   justifyContent,
   alignSelf,
+  overflow,
   paddingTop,
   paddingBottom,
   paddingLeft,
@@ -60,6 +65,12 @@ const getBoxStyles = ({
   alignContent,
   justifyContent,
   alignSelf,
+  overflow,
+  position,
+  top,
+  right,
+  bottom,
+  left,
   paddingTop: getSpacingValue({ value: paddingTop, theme }),
   paddingBottom: getSpacingValue({ value: paddingBottom, theme }),
   paddingLeft: getSpacingValue({ value: paddingLeft, theme }),
@@ -74,12 +85,7 @@ const getBoxStyles = ({
   minWidth: minWidth ? makeSize(minWidth) : undefined,
   maxHeight: maxHeight ? makeSize(maxHeight) : undefined,
   maxWidth: maxWidth ? makeSize(maxWidth) : undefined,
-  position,
   transform,
-  top,
-  left,
-  right,
-  bottom,
   zIndex,
 });
 

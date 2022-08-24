@@ -1,5 +1,13 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import {
+  Title,
+  Subtitle,
+  Primary,
+  ArgsTable,
+  Stories,
+  Description,
+  PRIMARY_STORY,
+} from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { Highlight, Link } from '@storybook/design-system';
@@ -11,6 +19,7 @@ import { CreditCardIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import iconMap from '~components/Icons/iconMap';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import Box from '~components/Box';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -52,6 +61,8 @@ const Page = (): ReactElement => {
       <Primary />
       <Title>Properties</Title>
       <ArgsTable story={PRIMARY_STORY} />
+      <Description markdown=">Note: `icon` prop accepts an `IconComponent` of Blade which should be used as:" />
+      <Highlight language="tsx">{`import { Button, CreditCardIcon } from '@razorpay/blade/components'; \n\n &ltButton icon={CreditCardIcon}>Pay Now&lt/Button>`}</Highlight>
       <Stories />
     </>
   );
@@ -277,7 +288,9 @@ const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
   return (
     <>
       <ButtonComponent {...args} isLoading={loading} />
+      <Box marginTop="spacing.2" />
       <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
+      <Box marginTop="spacing.2" />
       <ButtonComponent size="small" variant="secondary" onClick={toggle}>
         Toggle loading
       </ButtonComponent>

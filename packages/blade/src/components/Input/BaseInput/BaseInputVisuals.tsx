@@ -136,7 +136,7 @@ export const BaseInputVisuals = ({
           <Box paddingLeft="spacing.3" display="flex">
             {LeadingIcon && (
               <LeadingIcon
-                size="small"
+                size="medium"
                 color={
                   isDisabled
                     ? 'surface.text.placeholder.lowContrast'
@@ -191,7 +191,7 @@ export const BaseInputVisuals = ({
           <Box paddingRight="spacing.3" display="flex">
             {TrailingIcon && (
               <TrailingIcon
-                size="small"
+                size="medium"
                 color={
                   isDisabled
                     ? 'surface.text.placeholder.lowContrast'

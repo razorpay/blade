@@ -6148,10 +6148,10 @@
     "@testing-library/dom" "^6.11.0"
     "@types/testing-library__react" "^9.1.2"
 
-"@testing-library/user-event@14.2.0":
-  version "14.2.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-14.2.0.tgz#8293560f8f80a00383d6c755ec3e0b918acb1683"
-  integrity sha512-+hIlG4nJS6ivZrKnOP7OGsDu9Fxmryj9vCl8x0ZINtTJcCHs2zLsYif5GzuRiBF2ck5GZG2aQr7Msg+EHlnYVQ==
+"@testing-library/user-event@14.4.1":
+  version "14.4.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-14.4.1.tgz#dfa1cceef4833f5288a4090d1b85dce5d8dc20b6"
+  integrity sha512-Gr20dje1RaNxZ1ehHGPvFkLswfetBQKCfRD/lo6sUJQ52X2TV/QnqUpkjoShfEebrB2KiTPfQkcONwdQiofLhg==
 
 "@testing-library/user-event@7.1.2":
   version "7.1.2"
@@ -25558,6 +25558,13 @@ use-latest@^1.0.0:
   integrity sha512-d2TEuG6nSLKQLAfW3By8mKr8HurOlTkul0sOpxbClIv4SQ4iOd7BYr7VIzdbktUCnv7dua/60xzd8igMU6jmyw==
   dependencies:
     use-isomorphic-layout-effect "^1.0.0"
+
+use-presence@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/use-presence/-/use-presence-1.1.0.tgz#890b82e656f3a72fc15ee61be521ae1062afcedc"
+  integrity sha512-Tol+g7q81LLjhFMvrzhKXa4CCyZ0Tg4MRcPC2eSqdDLGQEA1MnjNc/jMFDKSB8CZDFchd7FOsq33glZyFX3zuw==
+  dependencies:
+    tslib "^2.0.0"
 
 use-sidecar@^1.0.5:
   version "1.0.5"
