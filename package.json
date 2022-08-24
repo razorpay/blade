@@ -61,7 +61,6 @@
     "stylelint-config-recommended": "5.0.0",
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "1.10.0",
-    "svg-to-jsx": "1.0.4",
     "svgson": "5.2.1",
     "typescript": "4.6.3"
   },

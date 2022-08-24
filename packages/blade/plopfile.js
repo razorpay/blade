@@ -1,4 +1,5 @@
-var fs = require('fs');
+/* eslint-disable import/no-extraneous-dependencies */
+const fs = require('fs');
 const open = require('open');
 const { stringify, parseSync } = require('svgson');
 const { startCase } = require('lodash');
@@ -22,11 +23,11 @@ const transformSvgNode = (node) => {
 /**
  * @param {import("plop").NodePlopAPI} plop
  */
-module.exports = function (plop) {
+module.exports = (plop) => {
   const file = '/tmp/blade-plop-svg.txt';
   fs.writeFileSync(file, '', { encoding: 'utf-8' });
 
-  plop.setActionType('getSvg', function () {
+  plop.setActionType('getSvg', () => {
     return new Promise((resolve) => {
       open(file, { wait: true }).then(() => resolve());
     });
@@ -49,6 +50,7 @@ module.exports = function (plop) {
         type: 'getSvg',
       });
 
+      // populate the template code
       actions.push({
         type: 'addMany',
         templateFiles: 'plop/icon/**',
@@ -58,31 +60,35 @@ module.exports = function (plop) {
         abortOnFail: true,
       });
 
+      // add barell import in index.ts
       actions.push({
         type: 'modify',
         path: 'src/components/Icons/index.tsx',
-        pattern: /(\/\/ # append_icon_export)/ig,
-        template: 'export { default as {{iconName}}Icon } from \'./{{iconName}}Icon\';\n$1'
+        pattern: /(\/\/ # append_icon_export)/gi,
+        template: "export { default as {{iconName}}Icon } from './{{iconName}}Icon';\n$1",
       });
 
+      // modify iconMap imports
       actions.push({
         type: 'modify',
         path: 'src/components/Icons/iconMap.ts',
-        pattern: /(\/\/ # append_icon_import)/ig,
-        template: 'import {{iconName}}IconComponent from \'./{{iconName}}Icon\';\n$1'
+        pattern: /(\/\/ # append_icon_import)/gi,
+        template: "import {{iconName}}IconComponent from './{{iconName}}Icon';\n$1",
       });
 
+      // modify iconMap map
       actions.push({
         type: 'modify',
         path: 'src/components/Icons/iconMap.ts',
-        pattern: /(\/\/ # append_icon_map)/ig,
-        template: '{{iconName}}Icon: {{iconName}}IconComponent,\r\t$1'
+        pattern: /(\/\/ # append_icon_map)/gi,
+        template: '{{iconName}}Icon: {{iconName}}IconComponent,\r\t$1',
       });
 
+      // modify svg -> jsx
       actions.push({
         type: 'modify',
         path: `src/components/Icons/{{iconName}}Icon/{{iconName}}Icon.tsx`,
-        async transform(fileContents, data) {
+        async transform(fileContents) {
           let final = fileContents;
           const svgContents = fs.readFileSync(file, { encoding: 'utf-8' });
 
