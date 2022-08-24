@@ -42,6 +42,7 @@ module.exports = (plop) => {
 
   plop.setActionType('getSvg', () => {
     return new Promise((resolve) => {
+      // open the text file
       open(file, { wait: true }).then(() => resolve());
     });
   });
@@ -59,9 +60,7 @@ module.exports = (plop) => {
       const actions = [];
 
       const { iconName } = answers;
-      actions.push({
-        type: 'getSvg',
-      });
+      actions.push({ type: 'getSvg' });
 
       // populate the template code
       actions.push({
@@ -109,6 +108,7 @@ module.exports = (plop) => {
           // parse svg contents to ast and modify the ast with transformSvgNode
           const svgAst = parseSync(svgContents, {
             camelcase: true,
+            // transform each node and gather imported components
             transformNode: (transformNode) => {
               const { node, components } = transformSvgNode(transformNode);
               importedComponents = [...components];

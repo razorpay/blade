@@ -135,7 +135,7 @@ Run
 yarn workspace @razorpay/blade plop
 ```
 
-This command automate the process of generating boilerplate code and automatically adding neccessary imports & exports. 
+This command automates the process of generating boilerplate code and automatically adds neccessary imports & exports. 
 
 First enter the icon name in Title Case.
 
