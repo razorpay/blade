@@ -6,33 +6,35 @@ import type { StyledBaseInputProps } from './StyledBaseInput.d';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 
 // omitting our consumer `onChange` prop since the types are conflicting with the default onChange of HTML
-const StyledBaseNativeInput = styled.input<StyledBaseInputProps>((props) => ({
-  ...getBaseInputStyles({
-    isDisabled: props.disabled,
-    theme: props.theme,
-    validationState: props.validationState,
-    leadingIcon: props.leadingIcon,
-    prefix: props.prefix,
-    interactionElement: props.interactionElement,
-    suffix: props.suffix,
-    trailingIcon: props.trailingIcon,
-    textAlign: props.textAlign,
-  }),
-  '::placeholder': {
-    ...getTextStyles({
-      size: 'medium',
-      variant: 'body',
-      type: 'placeholder',
-      weight: 'regular',
-      contrast: 'low',
+const StyledBaseNativeInput = styled.input<Omit<StyledBaseInputProps, 'accessibilityProps'>>(
+  (props) => ({
+    ...getBaseInputStyles({
+      isDisabled: props.disabled,
       theme: props.theme,
+      validationState: props.validationState,
+      leadingIcon: props.leadingIcon,
+      prefix: props.prefix,
+      interactionElement: props.interactionElement,
+      suffix: props.suffix,
+      trailingIcon: props.trailingIcon,
+      textAlign: props.textAlign,
     }),
-    textAlign: props.textAlign,
-  },
-  ':focus': {
-    outline: 'none',
-  },
-}));
+    '::placeholder': {
+      ...getTextStyles({
+        size: 'medium',
+        variant: 'body',
+        type: 'placeholder',
+        weight: 'regular',
+        contrast: 'low',
+        theme: props.theme,
+      }),
+      textAlign: props.textAlign,
+    },
+    ':focus': {
+      outline: 'none',
+    },
+  }),
+);
 
 const autoCompleteSuggestionTypeMap = {
   none: 'off',
@@ -60,6 +62,7 @@ export const StyledBaseInput = ({
   handleOnBlur,
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
+  accessibilityProps,
   ...props
 }: StyledBaseInputProps): ReactElement => {
   return (
@@ -75,6 +78,7 @@ export const StyledBaseInput = ({
           : undefined
       }
       {...props}
+      {...accessibilityProps}
     />
   );
 };

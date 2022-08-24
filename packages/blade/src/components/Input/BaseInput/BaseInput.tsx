@@ -5,7 +5,7 @@ import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
-import { getPlatformType, useBreakpoint } from '~utils';
+import { getPlatformType, makeAccessible, useBreakpoint } from '~utils';
 import type { FormLabelProps } from '~components/Form/FormLabel';
 import type { FormHintProps } from '~components/Form/FormHint';
 import { useFormId } from '~components/Form/useFormId';
@@ -286,6 +286,38 @@ export const getHintType = ({
   return 'help';
 };
 
+const getDescribedByElementId = ({
+  validationState,
+  hasErrorText,
+  hasSuccessText,
+  hasHelpText,
+  errorTextId,
+  successTextId,
+  helpTextId,
+}: {
+  validationState: BaseInputProps['validationState'];
+  hasErrorText: boolean;
+  hasSuccessText: boolean;
+  hasHelpText: boolean;
+  errorTextId: string;
+  successTextId: string;
+  helpTextId: string;
+}): string => {
+  if (validationState === 'error' && hasErrorText) {
+    return errorTextId;
+  }
+
+  if (validationState === 'success' && hasSuccessText) {
+    return successTextId;
+  }
+
+  if (hasHelpText) {
+    return helpTextId;
+  }
+
+  return '';
+};
+
 export const BaseInput = ({
   label,
   labelPosition = 'top',
@@ -319,6 +351,20 @@ export const BaseInput = ({
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
   const [isFocused, setIsFocused] = useState(false);
+  const accessibilityProps = makeAccessible({
+    required: Boolean(isRequired),
+    disabled: Boolean(isDisabled),
+    invalid: Boolean(validationState === 'error'),
+    describedBy: getDescribedByElementId({
+      validationState,
+      hasErrorText: Boolean(errorText),
+      hasSuccessText: Boolean(successText),
+      hasHelpText: Boolean(helpText),
+      errorTextId,
+      successTextId,
+      helpTextId,
+    }),
+  });
 
   return (
     <>
@@ -367,6 +413,7 @@ export const BaseInput = ({
             keyboardReturnKeyType={keyboardReturnKeyType}
             inputMode={inputMode}
             autoCompleteSuggestionType={autoCompleteSuggestionType}
+            accessibilityProps={accessibilityProps}
           />
           <BaseInputVisuals
             interactionElement={interactionElement}

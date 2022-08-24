@@ -56,7 +56,7 @@ const autoCompleteSuggestionTypeiOS = {
 } as const;
 
 const StyledNativeBaseInput = styled.TextInput<
-  StyledBaseInputProps & {
+  Omit<StyledBaseInputProps, 'accessibilityProps'> & {
     isFocused: boolean;
     autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
   }
@@ -82,6 +82,7 @@ export const StyledBaseInput = ({
   handleOnBlur,
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
+  accessibilityProps,
   ...props
 }: StyledBaseInputProps & {
   keyboardReturnKeyType?: Exclude<StyledBaseInputProps['keyboardReturnKeyType'], 'enter'>;
@@ -116,6 +117,7 @@ export const StyledBaseInput = ({
           : undefined
       }
       {...props}
+      {...accessibilityProps}
     />
   );
 };

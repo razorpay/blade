@@ -7,6 +7,7 @@ export type StyledBaseInputProps = {
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
   setIsFocused: Dispatch<SetStateAction<boolean>>;
+  accessibilityProps: Record<string, unknown>;
 } & Pick<
   BaseInputProps,
   | 'id'
