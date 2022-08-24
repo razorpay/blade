@@ -49,12 +49,18 @@ type BadgeProps = {
   fontWeight?: 'regular' | 'bold';
 };
 
+const isFeedbackVariant = (variant: string): variant is Feedback => {
+  const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'];
+  return feedbackVariants.includes(variant);
+};
+
 type ColorProps = {
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
   backgroundColor: StyledBadgeProps['backgroundColor'];
   borderColor: StyledBadgeProps['borderColor'];
 };
+
 const getColorProps = ({
   variant,
   contrast,
@@ -69,7 +75,7 @@ const getColorProps = ({
     backgroundColor: 'feedback.background.neutral.lowContrast',
     borderColor: 'feedback.border.neutral.lowContrast',
   };
-  if (variant != 'blue') {
+  if (isFeedbackVariant(variant)) {
     props.iconColor = `feedback.icon.${variant}.${contrast}Contrast`;
     props.textColor = `feedback.text.${variant}.${contrast}Contrast`;
     props.backgroundColor = `feedback.background.${variant}.${contrast}Contrast`;
