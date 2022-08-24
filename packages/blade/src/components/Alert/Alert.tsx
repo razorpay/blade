@@ -1,9 +1,9 @@
-import type { ReactChild, ReactElement } from 'react';
-import { useState } from 'react';
+import type { ReactChild, ReactElement, ReactNode } from 'react';
+import { Fragment, useState } from 'react';
 
 import StyledAlert from './StyledAlert';
 import { AlertIcon, CloseIcon } from '~components/Icons';
-import { makeAccessible } from '~utils';
+import { getPlatformType, makeAccessible } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { Heading, Text } from '~components/Typography';
@@ -103,6 +103,12 @@ export type AlertProps = {
   };
 };
 
+const isReactNative = getPlatformType() === 'react-native';
+
+// Need extra wrappers on React Native only for alignment
+const SecondaryActionWrapper = isReactNative ? Box : Fragment;
+const CloseButtonWrapper = isReactNative ? Box : Fragment;
+
 // todo: add all icons
 const intentIconMap = {
   positive: AlertIcon,
@@ -139,7 +145,7 @@ const Alert = ({
   const _description = <Text contrast={contrast}>{description}</Text>;
 
   const primaryAction = actions?.primary ? (
-    <Box marginRight="spacing.4" display="inline-flex">
+    <Box marginRight="spacing.4" display={isReactNative ? 'flex' : 'inline-flex'}>
       <BaseButton onClick={actions.primary.onClick} intent={intent} contrast={contrast}>
         {actions.primary.text}
       </BaseButton>
@@ -164,15 +170,16 @@ const Alert = ({
     secondaryActionParams.rel = actions.secondary.rel;
   }
   const secondaryAction = actions?.secondary ? (
-    // Todo: Link font weight mismatch
-    <BaseLink contrast={contrast} intent={intent} {...secondaryActionParams}>
-      {actions.secondary.text}
-    </BaseLink>
+    <SecondaryActionWrapper>
+      <BaseLink contrast={contrast} intent={intent} {...secondaryActionParams}>
+        {actions.secondary.text}
+      </BaseLink>
+    </SecondaryActionWrapper>
   ) : null;
 
   const _actions =
     primaryAction || secondaryAction ? (
-      <Box marginTop="spacing.3">
+      <Box marginTop="spacing.3" flexDirection="row" alignItems="center">
         {primaryAction}
         {secondaryAction}
       </Box>
@@ -185,13 +192,15 @@ const Alert = ({
     setIsVisible(false);
   };
   const closeButton = isDismissable ? (
-    <IconButton
-      accessibilityLabel="Dismiss alert"
-      onClick={onClickDismiss}
-      contrast={contrast}
-      size="large"
-      icon={CloseIcon}
-    />
+    <CloseButtonWrapper>
+      <IconButton
+        accessibilityLabel="Dismiss alert"
+        onClick={onClickDismiss}
+        contrast={contrast}
+        size="large"
+        icon={CloseIcon}
+      />
+    </CloseButtonWrapper>
   ) : null;
 
   const a11yProps = makeAccessible({
