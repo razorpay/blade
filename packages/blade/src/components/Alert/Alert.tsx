@@ -1,4 +1,4 @@
-import type { ReactChild, ReactElement, ReactNode } from 'react';
+import type { ReactChild, ReactElement } from 'react';
 import { Fragment, useState } from 'react';
 
 import StyledAlert from './StyledAlert';
