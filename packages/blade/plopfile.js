@@ -5,7 +5,7 @@ const { stringify, parseSync } = require('svgson');
 const { startCase } = require('lodash');
 const prettier = require('prettier');
 
-const transformSvgNode = (node) => {
+const transformSvgNode = (node, components = new Set()) => {
   if (node.name === 'svg') {
     node.attributes = {
       width: '{width}',
@@ -14,10 +14,23 @@ const transformSvgNode = (node) => {
       fill: 'none',
     };
   }
-  node.name = startCase(node.name);
-  if (node.children) node.children.forEach((child) => transformSvgNode(child));
 
-  return node;
+  // title case component names
+  node.name = startCase(node.name);
+  // gather imported components
+  components.add(node.name);
+
+  // update iconColor in stroke & fill
+  Object.keys(node.attributes).forEach((attribute) => {
+    if (['stroke', 'fill'].includes(attribute) && node.attributes[attribute] !== 'none') {
+      node.attributes[attribute] = `{iconColor}`;
+    }
+  });
+
+  // recursively go to child
+  if (node.children) node.children.forEach((child) => transformSvgNode(child, components));
+
+  return { node, components };
 };
 
 /**
@@ -88,31 +101,42 @@ module.exports = (plop) => {
       actions.push({
         type: 'modify',
         path: `src/components/Icons/{{iconName}}Icon/{{iconName}}Icon.tsx`,
-        async transform(fileContents) {
+        transform(fileContents) {
           let final = fileContents;
-          const svgContents = fs.readFileSync(file, { encoding: 'utf-8' });
+          let importedComponents = [];
 
-          const finalJsx = parseSync(svgContents, {
+          const svgContents = fs.readFileSync(file, { encoding: 'utf-8' });
+          // parse svg contents to ast and modify the ast with transformSvgNode
+          const svgAst = parseSync(svgContents, {
             camelcase: true,
-            transformNode: transformSvgNode,
+            transformNode: (transformNode) => {
+              const { node, components } = transformSvgNode(transformNode);
+              importedComponents = [...components];
+              return node;
+            },
+          });
+
+          // stringify svg ast
+          const svgString = stringify(svgAst, {
+            selfClose: true,
+            // transform jsx props
+            transformAttr: (key, value) => {
+              if (value.startsWith('{')) {
+                return `${key}=${value}`;
+              }
+              return `${key}="${value}"`;
+            },
           });
 
           // replace template svg placeholder
-          final = final.replace(
-            /REPLACE_SVG/g,
-            stringify(finalJsx, {
-              selfClose: true,
-              // handle jsx props
-              transformAttr: (key, value) => {
-                if (value.startsWith('{')) {
-                  return `${key}=${value}`;
-                }
-                return `${key}="${value}"`;
-              },
-            }),
-          );
+          final = final.replace(/REPLACE_SVG/g, svgString);
+          // update imported svg components
+          final = final.replace(/IMPORTED_SVG_COMPONENTS/g, importedComponents.join(', '));
 
-          return prettier.format(final, { parser: 'typescript' });
+          return prettier.format(final, {
+            parser: 'typescript',
+            singleQuote: true,
+          });
         },
       });
 

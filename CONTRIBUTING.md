@@ -1,3 +1,15 @@
+- [Contributing guidelines for `blade`](#contributing-guidelines-for-blade)
+  - [Development setup](#development-setup)
+    - [Prerequisites](#prerequisites)
+    - [Setting up web](#setting-up-web)
+    - [Setting up iOS](#setting-up-ios)
+    - [Setting up Android](#setting-up-android)
+  - [Adding New Icons](#adding-new-icons)
+    - [Step 1 - Copy SVG](#step-1---copy-svg)
+    - [Step 2 - Run Generator](#step-2---run-generator)
+    - [Step 3 - Finalize](#step-3---finalize)
+
+
 # Contributing guidelines for `blade`
 
 ## Development setup
@@ -104,3 +116,48 @@ These steps should get you up and started for local development setup. Please en
   ```
 
 - If the stars aligned correctly, the storybook app should get installed and up and running on the emulator 🎉
+
+## Adding New Icons
+
+First make sure icons which you are adding are reviewed by a designer and works with blade's iconography. 
+
+### Step 1 - Copy SVG
+
+Open figma and copy the icon's svg which you want to add: 
+
+<img width="734" alt="image" src="https://user-images.githubusercontent.com/35374649/186355199-7b9c3b79-2a80-41c7-a094-0cdacdc78390.png">
+
+### Step 2 - Run Generator
+
+Run 
+
+```
+yarn workspace @razorpay/blade plop
+```
+
+This command automate the process of generating boilerplate code and automatically adding neccessary imports & exports. 
+
+First enter the icon name in Title Case.
+
+Then it will open up a text editor where you can paste the copied svg, after saving the file exit the text editor. 
+
+<img width="613" alt="image" src="https://user-images.githubusercontent.com/35374649/186355994-da978c44-07b2-40cc-9ebb-76a5e07b1fcc.png">
+
+90% of the things are done. 
+
+### Step 3 - Finalize
+
+Now you'll see it has created a new icon inside the icons folder. 
+
+> packages/blade/src/components/Icons/HeartIcon
+
+Just make sure everything is working by running the storybook example. 
+
+And also update the snapshots: 
+
+```
+yarn workspace @razorpay/blade test:react -u 
+yarn workspace @razorpay/blade test:react-naitve -u 
+```
+
+And that's it. 

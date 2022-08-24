@@ -48,7 +48,7 @@ const iconMap: Record<string, IconComponent> = {
   RupeeIcon: RupeeIconComponent,
   SearchIcon: SearchIconComponent,
   TrashIcon: TrashIconComponent,
-	// # append_icon_map
+  // # append_icon_map
 };
 
 export default iconMap;
