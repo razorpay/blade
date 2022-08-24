@@ -7,6 +7,7 @@ import type { AlertProps } from './Alert';
 import AlertComponent from './Alert';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import { colors } from '~tokens/global';
+import Box from '~components/Box';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -189,17 +190,11 @@ FullWidth.parameters = {
 
 export const FullBleed: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
   return (
-    <div
-      style={{
-        background: colors.neutral.blueGrayLight[100],
-        height: 200,
-        position: 'relative',
-      }}
-    >
-      <div style={{ position: 'absolute', width: '100%' }}>
+    <Box background={colors.neutral.blueGrayLight[100]} height={200} position="relative">
+      <Box position="absolute" width="100%">
         <AlertComponent {...args} />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 FullBleed.args = {
