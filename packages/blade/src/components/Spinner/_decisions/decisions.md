@@ -14,7 +14,7 @@ A BaseSpinner will contain some extra props like `intent`. This will not be expo
 
 | Prop | Type | Default | Description | Required |
 |---|---|---|---|---|
-| intent | `positive`,`negative`, `notice`, `information`, `neutral` | `undefined` | The intent of the spinner to be rendered. |  |
+| intent | `positive`,`negative`, `notice`, `information`, `neutral` | `undefinedg` | The intent of the spinner to be rendered. |  |
 | contrast | `low`, `high` | `low` | The contrast of the spinner to be rendered. |  |
 | size | `small`, `medium`, `large` | `medium` | The size of the spinner to be rendered. |  |
 | accessibilityLabel | `string` | `"Loading"` | The accessibility label (aria-label) for the spinner. |
@@ -29,7 +29,7 @@ A wrapper around Spinner which will be exposed to the consumer to be used as a S
 |---|---|---|---|---|
 | contrast | `low`, `high` | `low` | The contrast of the spinner to be rendered. |  |
 | size | `small`, `medium`, `large` | `medium` | The size of the spinner to be rendered. |  |
-| accessibilityLabel | `string` | `undefined` | The accessibility label (aria-label) for the spinner. |
+| accessibilityLabel | `string` | `"Loading"` | The accessibility label (aria-label) for the spinner. |
 
 ### Sample Usage
 ```jsx
