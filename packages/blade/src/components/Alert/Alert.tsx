@@ -1,7 +1,7 @@
 import type { ReactChild, ReactElement } from 'react';
 import { Fragment, useState } from 'react';
 
-import StyledAlert from './StyledAlert';
+import { StyledAlert } from './StyledAlert';
 import { AlertIcon, CloseIcon } from '~components/Icons';
 import { getPlatformType, makeAccessible } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
@@ -9,7 +9,7 @@ import Box from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { ColorContrastTypes } from '~tokens/theme/theme';
+import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 
 type Nullable<Type> = Type | null;
 
@@ -78,7 +78,7 @@ export type AlertProps = {
    *
    * @default information
    */
-  intent?: 'positive' | 'negative' | 'information' | 'notice';
+  intent?: Exclude<Feedback, 'neutral'>;
 
   /**
    * Removes border and border radii, useful for creating full bleed layouts. Automatically sets `isFullWidth` to `true` when enabled.
@@ -117,7 +117,7 @@ const intentIconMap = {
   notice: AlertIcon,
 };
 
-const Alert = ({
+export const Alert = ({
   description,
   title,
   isDismissable = true,
@@ -232,5 +232,3 @@ const Alert = ({
     </StyledAlert>
   );
 };
-
-export default Alert;

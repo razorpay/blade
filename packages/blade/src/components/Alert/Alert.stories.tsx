@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 import { Highlight, Link } from '@storybook/design-system';
 
 import type { AlertProps } from './Alert';
-import AlertComponent from './Alert';
+import { Alert as AlertComponent } from './Alert';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 import { colors } from '~tokens/global';
 import Box from '~components/Box';
