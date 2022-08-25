@@ -17,7 +17,7 @@ A BaseSpinner will contain some extra props like `intent`. This will not be expo
 | intent | `positive`,`negative`, `notice`, `information`, `neutral` | `neutral` | The intent of the spinner to be rendered. |  |
 | contrast | `low`, `high` | `low` | The contrast of the spinner to be rendered. |  |
 | size | `small`, `medium`, `large` | `medium` | The size of the spinner to be rendered. |  |
-| accessibilityLabel | `string` | `undefined` | The accessibility label (aria-label) for the spinner. |
+| accessibilityLabel | `string` | `"Loading"` | The accessibility label (aria-label) for the spinner. |
 
 
 ## Spinner
@@ -41,6 +41,17 @@ import { Spinner } from '@razorpay/components';
   accessibilityLabel='Loading'
 />
 ```
+
+### Accessibility
+- We'll accept a prop `accessibilityLabel` which will be passed on as `aria-label` for web & `accessibilityLabel` for native to aide screen readers
+- By default the value of `accessibilityLabel` will be `Loading` and can be overwritten with something more meaningful by the consumer
+- We will also set `aria-live` as `assertive` to inform a user with a screen-reader that something is loading
+- 
+
+
+## Open Questions
+- Should we set `aria-role` as `alert` for accessibility? [Carbon DS](https://carbondesignsystem.com/components/loading/accessibility#how-it-works) does this as well.
+
 
 ## References
 - [Reshaped](https://reshaped.so/content/docs/components/loader)
