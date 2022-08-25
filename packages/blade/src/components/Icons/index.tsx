@@ -49,3 +49,4 @@ export { default as SearchIcon } from './SearchIcon';
 export { default as TrashIcon } from './TrashIcon';
 export { default as AlertTriangleIcon } from './AlertTriangleIcon';
 export { default as AlertOctagonIcon } from './AlertOctagonIcon';
+export { default as CheckCircleIcon } from './CheckCircleIcon';

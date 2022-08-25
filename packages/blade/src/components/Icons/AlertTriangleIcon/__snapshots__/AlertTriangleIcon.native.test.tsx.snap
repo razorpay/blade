@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AlertIcon /> should render AlertIcon 1`] = `
+exports[`<AlertTriangleIcon /> should render AlertTriangleIcon 1`] = `
 <RNSVGSvgView
   accessibilityElementsHidden={true}
   align="xMidYMid"

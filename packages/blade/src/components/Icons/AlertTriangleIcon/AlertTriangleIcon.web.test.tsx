@@ -1,10 +1,10 @@
-import AlertIcon from '.';
+import AlertTriangleIcon from '.';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
-describe('<AlertIcon />', () => {
-  it('should render AlertIcon', () => {
+describe('<AlertTriangleIcon />', () => {
+  it('should render AlertTriangleIcon', () => {
     const { container } = renderWithTheme(
-      <AlertIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <AlertTriangleIcon color="feedback.icon.neutral.lowContrast" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

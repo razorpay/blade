@@ -1,10 +1,10 @@
-import AlertIcon from '.';
+import AlertOctagonIcon from '.';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
-describe('<AlertIcon />', () => {
-  it('should render AlertIcon', () => {
+describe('<AlertOctagonIcon />', () => {
+  it('should render AlertOctagonIcon', () => {
     const renderTree = renderWithTheme(
-      <AlertIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <AlertOctagonIcon color="feedback.icon.neutral.lowContrast" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

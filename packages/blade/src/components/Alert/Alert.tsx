@@ -2,7 +2,7 @@ import type { ReactChild, ReactElement } from 'react';
 import { Fragment, useState } from 'react';
 
 import { StyledAlert } from './StyledAlert';
-import { AlertOctagonIcon, AlertTriangleIcon, CloseIcon } from '~components/Icons';
+import { AlertOctagonIcon, AlertTriangleIcon, CheckCircleIcon, CloseIcon } from '~components/Icons';
 import { getPlatformType, makeAccessible } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
@@ -111,7 +111,7 @@ const CloseButtonWrapper = isReactNative ? Box : Fragment;
 
 // todo: add all icons
 const intentIconMap = {
-  positive: AlertTriangleIcon,
+  positive: CheckCircleIcon,
   negative: AlertOctagonIcon,
   information: AlertOctagonIcon,
   notice: AlertTriangleIcon,
