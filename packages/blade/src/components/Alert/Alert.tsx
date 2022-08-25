@@ -92,9 +92,9 @@ export type AlertProps = {
    */
   actions?: {
     /**
-     * Renders a button
+     * Renders a button (should **always** be present if `secondary` action is being used)
      */
-    primary?: PrimaryAction;
+    primary: PrimaryAction;
 
     /**
      * Renders a Link button
