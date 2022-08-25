@@ -46,7 +46,6 @@ import { Spinner } from '@razorpay/components';
 - We'll accept a prop `accessibilityLabel` which will be passed on as `aria-label` for web & `accessibilityLabel` for native to aide screen readers
 - By default the value of `accessibilityLabel` will be `Loading` and can be overwritten with something more meaningful by the consumer
 - We will also set `aria-live` as `assertive` to inform a user with a screen-reader that something is loading
-- 
 
 
 ## Open Questions
