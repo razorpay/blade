@@ -48,3 +48,4 @@ export { default as RupeeIcon } from './RupeeIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as TrashIcon } from './TrashIcon';
 export { default as AlertTriangleIcon } from './AlertTriangleIcon';
+export { default as AlertOctagonIcon } from './AlertOctagonIcon';
