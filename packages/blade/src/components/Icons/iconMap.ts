@@ -1,5 +1,7 @@
 import ArrowDownIconComponent from './ArrowDownIcon';
+import ArrowLeftIconComponent from './ArrowLeftIcon';
 import ArrowRightIconComponent from './ArrowRightIcon';
+import ArrowUpIconComponent from './ArrowUpIcon';
 import ArrowUpRightIconComponent from './ArrowUpRightIcon';
 import ChevronDownIconComponent from './ChevronDownIcon';
 import ChevronLeftIconComponent from './ChevronLeftIcon';
@@ -24,8 +26,10 @@ import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
 const iconMap: Record<string, IconComponent> = {
+  ArrowLeftIcon: ArrowLeftIconComponent,
   ArrowDownIcon: ArrowDownIconComponent,
   ArrowRightIcon: ArrowRightIconComponent,
+  ArrowUpIcon: ArrowUpIconComponent,
   ArrowUpRightIcon: ArrowUpRightIconComponent,
   ChevronDownIcon: ChevronDownIconComponent,
   ChevronLeftIcon: ChevronLeftIconComponent,
