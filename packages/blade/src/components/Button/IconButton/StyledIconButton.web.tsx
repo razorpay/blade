@@ -9,7 +9,8 @@ type StyledButtonProps = {
   contrast: ColorContrastTypes;
 };
 
-const StyledButton = styled.button<StyledButtonProps>((props) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const StyledButton = styled.button<StyledButtonProps>((props: any) => {
   const { theme, contrast } = props;
   const linkColorToken = theme.colors.feedback.neutral.action.icon.link; // todo: should be from surfaceAction
   const contrastToken = contrast === 'high' ? 'highContrast' : 'lowContrast';

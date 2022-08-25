@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import { getCheckboxAccessibilityProps } from './getCheckboxA11yProps';
 import { makeAccessible } from '~utils';
@@ -39,6 +41,7 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
         {...checkboxAccessibilityProps}
         tabIndex={0}
         style={{
+          // @ts-ignore
           color: disabled
             ? theme.colors.action.text.primary.disabled
             : theme.colors.surface.text.normal.lowContrast,

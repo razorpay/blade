@@ -9,7 +9,6 @@ import {
   PRIMARY_STORY,
 } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { useState } from 'react';
 import { Highlight, Link } from '@storybook/design-system';
 import styled from 'styled-components';
 import type { ButtonProps } from './Button';
@@ -281,17 +280,17 @@ IconOnlyButton.parameters = {
 };
 
 const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
-  const toggle = (): void => setLoading((prev) => !prev);
+  // const toggle = (): void => setLoading((prev) => !prev);
 
   return (
     <>
-      <ButtonComponent {...args} isLoading={loading} />
+      <ButtonComponent {...args} isLoading={false} />
       <Box marginTop="spacing.2" />
       <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
       <Box marginTop="spacing.2" />
-      <ButtonComponent size="small" variant="secondary" onClick={toggle}>
+      <ButtonComponent size="small" variant="secondary" onClick={(e) => console.log(e)}>
         Toggle loading
       </ButtonComponent>
     </>

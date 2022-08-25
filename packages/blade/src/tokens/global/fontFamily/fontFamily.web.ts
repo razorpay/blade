@@ -1,4 +1,4 @@
-import type { FontFamily } from './fontFamily.d';
+import type { FontFamily } from './types';
 
 const fontFamily: FontFamily = {
   text:

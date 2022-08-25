@@ -7,14 +7,14 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import SpinnerIcon from './SpinnerIcon';
-import type { SpinnerProps } from './Spinner';
 import { getSpinnerSize, motion } from './spinnerTokens';
+import type { SpinnerProps } from './Spinner.d';
 import { useTheme } from '~components/BladeProvider';
 import { getIn } from '~utils';
 import type { EasingFunctionFactory } from '~tokens/global/motion';
 
 type WithStyle = {
-  style: Record<string, unknown>;
+  style?: Record<string, unknown>;
 };
 type AnimatedSpinnerProps = {
   children: React.ReactNode;

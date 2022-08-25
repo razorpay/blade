@@ -7,7 +7,8 @@
       "~utils": ["src/utils"],
       "~components/*": ["src/components/*"],
       "~tokens/*": ["src/tokens/*"],
-      "~src/*": ["src/*"],
-    }
+      "~src/*": ["src/*"]
+    },
+    "moduleSuffixes": [".web", ""]
   }
 }

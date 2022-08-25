@@ -1,5 +1,5 @@
 import type { CSSObject } from 'styled-components';
-import type { StyledBaseButtonProps } from './StyledBaseButton';
+import type { StyledBaseButtonProps } from './types';
 
 const getBaseButtonStyles = ({
   defaultBorderColor,

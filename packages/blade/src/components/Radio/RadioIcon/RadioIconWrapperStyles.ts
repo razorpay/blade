@@ -72,7 +72,7 @@ const getRadioIconWrapperStyles = ({
     marginRight: makeSpace(theme.spacing[2]),
     backgroundColor: getIn(theme, backgroundColor),
     borderColor: getIn(theme, borderColor),
-    transitionDuration: makeMotionTime(theme.motion.duration.xquick),
+    transitionDuration: (makeMotionTime(theme.motion.duration.xquick) as unknown) as string,
     ...(!isReactNative && {
       transitionTimingFunction: theme.motion.easing.exit.attentive as string,
     }),

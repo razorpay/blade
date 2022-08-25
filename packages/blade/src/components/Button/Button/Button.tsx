@@ -1,6 +1,7 @@
-import type { MouseEvent } from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import BaseButton from '../BaseButton';
 import type { IconComponent } from '~components/Icons';
+import type { Platform } from '~utils';
 
 type ButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -10,8 +11,12 @@ type ButtonCommonProps = {
   isFullWidth?: boolean;
   isLoading?: boolean;
   accessibilityLabel?: string;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   type?: 'button' | 'reset' | 'submit';
+  // 🔥
+  onClick?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  }>;
 };
 
 /*

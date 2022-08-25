@@ -1,3 +1,3 @@
-export * from './VisuallyHidden.web';
+export * from './VisuallyHidden.native';
 export * from './ScreenReaderStyles';
 export * from './types';

@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
-import type { StyledBaseButtonProps } from './StyledBaseButton';
+import type { StyledBaseButtonProps } from './types';
 import { getIn } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
-  Omit<StyledBaseButtonProps, 'onClick' | 'accessibilityProps'>
+  Omit<StyledBaseButtonProps, 'accessibilityProps'>
 >((props) => ({
   ...getStyledBaseButtonStyles(props),
   alignSelf: 'center',
@@ -86,7 +87,7 @@ const StyledBaseButton = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
     >
-      {({ pressed }): React.ReactNode => {
+      {({ pressed }: { pressed: any }): React.ReactNode => {
         isPressed.value = pressed;
         return children;
       }}

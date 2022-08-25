@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig-generate-types.json",
+  "compilerOptions": {
+    "declarationDir": "build/types/native",
+    "moduleSuffixes": [".native", ""]
+  }
+}

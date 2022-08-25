@@ -4,5 +4,3 @@ export type FontFamily = {
   /** Used for code snippets  */
   code: string;
 };
-
-export { default } from './fontFamily.web';

@@ -2,7 +2,7 @@
 import type { ReactElement } from 'react';
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
-import type { BaseTextProps } from '../BaseText';
+import type { BaseTextProps } from '../BaseText/BaseTextTypes';
 import type { Theme } from '~components/BladeProvider';
 import { getPlatformType } from '~utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';

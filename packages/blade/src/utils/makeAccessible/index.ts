@@ -1,1 +1,1 @@
-export * from './makeAccessible';
+export * from './makeAccessible.web';
