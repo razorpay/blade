@@ -20,7 +20,7 @@ import PlusIconComponent from './PlusIcon';
 import RupeeIconComponent from './RupeeIcon';
 import SearchIconComponent from './SearchIcon';
 import TrashIconComponent from './TrashIcon';
-import AlertIconComponent from './AlertIcon';
+import AlertTriangleIconComponent from './AlertTriangleIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -28,6 +28,7 @@ const iconMap: Record<string, IconComponent> = {
   ArrowDownIcon: ArrowDownIconComponent,
   ArrowRightIcon: ArrowRightIconComponent,
   ArrowUpRightIcon: ArrowUpRightIconComponent,
+  AlertTriangleIcon: AlertTriangleIconComponent,
   ChevronDownIcon: ChevronDownIconComponent,
   ChevronLeftIcon: ChevronLeftIconComponent,
   ChevronRightIcon: ChevronRightIconComponent,
@@ -47,7 +48,6 @@ const iconMap: Record<string, IconComponent> = {
   RupeeIcon: RupeeIconComponent,
   SearchIcon: SearchIconComponent,
   TrashIcon: TrashIconComponent,
-  AlertIcon: AlertIconComponent,
 };
 
 export default iconMap;
