@@ -223,7 +223,7 @@ export const Alert = ({
       {...a11yProps}
     >
       {icon}
-      <Box flex={1} paddingLeft="spacing.3" paddingRight="spacing.3">
+      <Box flex={1} paddingLeft="spacing.3" paddingRight="spacing.1">
         {_title}
         {_description}
         {_actions}
