@@ -204,7 +204,8 @@ const Alert = ({
   ) : null;
 
   const a11yProps = makeAccessible({
-    role: intent === 'negative' || intent === 'notice' ? 'alert' : 'status',
+    // React Native doesn't has status as role
+    role: isReactNative || intent === 'negative' || intent === 'notice' ? 'alert' : 'status',
     // override the implicit live region of role `alert`
     ...(intent === 'notice' && { liveRegion: 'polite' }),
   });
