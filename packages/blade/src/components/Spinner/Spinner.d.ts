@@ -1,10 +1,10 @@
-import type { SpinnerSize } from './spinnerTokens';
-import type { Theme } from '~components/BladeProvider';
-import type { DotNotationColorStringToken } from '~src/_helpers/types';
+import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 
-export { default } from './Spinner.web';
+export * from './Spinner.web';
 
 export type SpinnerProps = {
-  color: DotNotationColorStringToken<Theme['colors']>;
-  size: SpinnerSize;
+  intent?: Feedback;
+  contrast?: ColorContrastTypes;
+  size?: 'small' | 'medium' | 'large';
+  accessibilityLabel?: string;
 };

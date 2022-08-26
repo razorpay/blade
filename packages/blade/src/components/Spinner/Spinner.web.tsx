@@ -1,40 +1,48 @@
-/* eslint-disable @typescript-eslint/no-base-to-string */
 import React from 'react';
-import styled, { css, keyframes } from 'styled-components';
-import SpinnerIcon from './SpinnerIcon';
 import type { SpinnerProps } from './Spinner.d';
-import { getSpinnerSize, motion } from './spinnerTokens';
+import { dimensions } from './spinnerTokens';
+import SpinnerIcon from './SpinnerIcon';
+import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import { getIn, makeMotionTime } from '~utils';
+import { getIn, makeSize } from '~utils';
+import Box from '~components/Box';
 
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
+const getColor = ({
+  contrast,
+  intent,
+  theme,
+}: {
+  contrast: NonNullable<SpinnerProps['contrast']>;
+  intent: SpinnerProps['intent'];
+  theme: Theme;
+}): string => {
+  if (intent) {
+    return getIn(
+      theme.colors,
+      `feedback.${intent}.action.icon.primary.disabled.${contrast}Contrast`,
+    );
+  } else if (contrast == 'low') {
+    return getIn(theme.colors, `brand.gray.700`);
+  } else {
+    return getIn(theme.colors, 'brand.gray.300');
   }
-  to {
-    transform: rotate(360deg);
-  }
-`;
+};
 
-const AnimatedSpinner = styled.div(({ theme }) => {
-  return css`
-    line-height: 0;
-    animation: ${rotate} ${makeMotionTime(getIn(theme.motion, motion.duration))}
-      ${getIn(theme.motion, motion.easing) as string} infinite;
-  `;
-});
-
-type WithClassName = { className?: string };
-const Spinner = ({ color, size, className }: SpinnerProps & WithClassName): React.ReactElement => {
+const Spinner = ({
+  // accessibilityLabel,
+  contrast = 'low',
+  intent,
+  size = 'medium',
+}: SpinnerProps): React.ReactElement => {
   const { theme } = useTheme();
-  const spinnerSize = getSpinnerSize(size);
-  const spinnerColor = getIn(theme.colors, color);
-
   return (
-    <AnimatedSpinner className={className}>
-      <SpinnerIcon color={spinnerColor} size={spinnerSize} />
-    </AnimatedSpinner>
+    <Box>
+      <SpinnerIcon
+        dimensions={makeSize(dimensions[size])}
+        color={getColor({ contrast, intent, theme })}
+      />
+    </Box>
   );
 };
 
-export default Spinner;
+export { Spinner };
