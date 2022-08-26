@@ -12,7 +12,6 @@ type ButtonCommonProps = {
   isLoading?: boolean;
   accessibilityLabel?: string;
   type?: 'button' | 'reset' | 'submit';
-  // 🔥
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;

@@ -1,1 +1,1 @@
-export * from './makeBezier';
+export * from './makeBezier.web';

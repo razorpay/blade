@@ -1,1 +1,1 @@
-export * from './makeTypographySize';
+export * from './makeTypographySize.web';
