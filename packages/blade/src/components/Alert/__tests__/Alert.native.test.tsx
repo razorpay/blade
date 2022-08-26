@@ -12,6 +12,30 @@ describe('<Alert />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render positive intent and full width', () => {
+    const { toJSON } = renderWithTheme(
+      <Alert
+        description="Currently you can only accept payments in international currencies using PayPal."
+        intent="positive"
+        isFullWidth
+      />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render negative intent and borderless', () => {
+    const { toJSON } = renderWithTheme(
+      <Alert
+        description="Currently you can only accept payments in international currencies using PayPal."
+        intent="negative"
+        isBorderless
+      />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should handle onClick on actions', () => {
     const onClickPrimary = jest.fn();
     const onClickSecondary = jest.fn();
