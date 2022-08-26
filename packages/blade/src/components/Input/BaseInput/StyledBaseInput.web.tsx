@@ -6,35 +6,35 @@ import type { StyledBaseInputProps } from './StyledBaseInput.d';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 
 // omitting our consumer `onChange` prop since the types are conflicting with the default onChange of HTML
-const StyledBaseNativeInput = styled.input<Omit<StyledBaseInputProps, 'accessibilityProps'>>(
-  (props) => ({
-    ...getBaseInputStyles({
-      isDisabled: props.disabled,
-      theme: props.theme,
-      validationState: props.validationState,
-      leadingIcon: props.leadingIcon,
-      prefix: props.prefix,
-      interactionElement: props.interactionElement,
-      suffix: props.suffix,
-      trailingIcon: props.trailingIcon,
-      textAlign: props.textAlign,
-    }),
-    '::placeholder': {
-      ...getTextStyles({
-        size: 'medium',
-        variant: 'body',
-        type: 'placeholder',
-        weight: 'regular',
-        contrast: 'low',
-        theme: props.theme,
-      }),
-      textAlign: props.textAlign,
-    },
-    ':focus': {
-      outline: 'none',
-    },
+const StyledBaseNativeInput = styled.input<
+  Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction'>
+>((props) => ({
+  ...getBaseInputStyles({
+    isDisabled: props.disabled,
+    theme: props.theme,
+    validationState: props.validationState,
+    leadingIcon: props.leadingIcon,
+    prefix: props.prefix,
+    interactionElement: props.interactionElement,
+    suffix: props.suffix,
+    trailingIcon: props.trailingIcon,
+    textAlign: props.textAlign,
   }),
-);
+  '::placeholder': {
+    ...getTextStyles({
+      size: 'medium',
+      variant: 'body',
+      type: 'placeholder',
+      weight: 'regular',
+      contrast: 'low',
+      theme: props.theme,
+    }),
+    textAlign: props.textAlign,
+  },
+  ':focus': {
+    outline: 'none',
+  },
+}));
 
 const autoCompleteSuggestionTypeMap = {
   none: 'off',
@@ -63,6 +63,7 @@ export const StyledBaseInput = ({
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
   accessibilityProps,
+  setCurrentInteraction,
   ...props
 }: StyledBaseInputProps): ReactElement => {
   return (
@@ -70,7 +71,11 @@ export const StyledBaseInput = ({
       disabled={isDisabled}
       required={isRequired}
       onChange={(event): void => handleOnChange?.({ name, value: event })}
-      onBlur={(event): void => handleOnBlur?.({ name, value: event })}
+      onBlur={(event): void => {
+        setCurrentInteraction('default');
+        handleOnBlur?.({ name, value: event });
+      }}
+      onFocus={(): void => setCurrentInteraction('focus')}
       enterKeyHint={keyboardReturnKeyType}
       autoComplete={
         autoCompleteSuggestionType

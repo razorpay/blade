@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import { StyledBaseInput } from './StyledBaseInput';
 import { BaseInputVisuals } from './BaseInputVisuals';
@@ -11,6 +11,7 @@ import type { FormHintProps } from '~components/Form/FormHint';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
+import useInteraction from '~components/Link/BaseLink/useInteraction';
 
 export type HandleOnEvent = ({
   name,
@@ -350,7 +351,8 @@ export const BaseInput = ({
   const { labelId, inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
-  const [isFocused, setIsFocused] = useState(false);
+  const { currentInteraction, setCurrentInteraction } = useInteraction();
+
   const accessibilityProps = makeAccessible({
     required: Boolean(isRequired),
     disabled: Boolean(isDisabled),
@@ -373,6 +375,7 @@ export const BaseInput = ({
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
         justifyContent={isLabelLeftPositioned ? 'center' : undefined}
         alignItems={isLabelLeftPositioned ? 'center' : undefined}
+        position="relative"
       >
         <FormLabel
           as="label"
@@ -386,7 +389,7 @@ export const BaseInput = ({
         <BaseInputWrapper
           isDisabled={isDisabled}
           validationState={validationState}
-          isFocused={isFocused}
+          currentInteraction={currentInteraction}
         >
           <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
           <StyledBaseInput
@@ -406,7 +409,6 @@ export const BaseInput = ({
             interactionElement={interactionElement}
             suffix={suffix}
             trailingIcon={trailingIcon}
-            setIsFocused={setIsFocused}
             textAlign={textAlign}
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus}
@@ -414,6 +416,8 @@ export const BaseInput = ({
             inputMode={inputMode}
             autoCompleteSuggestionType={autoCompleteSuggestionType}
             accessibilityProps={accessibilityProps}
+            currentInteraction={currentInteraction}
+            setCurrentInteraction={setCurrentInteraction}
           />
           <BaseInputVisuals
             interactionElement={interactionElement}
