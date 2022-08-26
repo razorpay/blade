@@ -36,7 +36,7 @@ type SecondaryActionLinkButton = {
 
 type SecondaryAction = SecondaryActionButton | SecondaryActionLinkButton;
 
-export type AlertProps = {
+type AlertProps = {
   /**
    * Body content, pass text or JSX. Avoid passing components except `Link` to customize the content.
    */
@@ -117,7 +117,7 @@ const intentIconMap = {
   notice: AlertIcon,
 };
 
-export const Alert = ({
+const Alert = ({
   description,
   title,
   isDismissable = true,
@@ -232,3 +232,5 @@ export const Alert = ({
     </StyledAlert>
   );
 };
+
+export { AlertProps, Alert };
