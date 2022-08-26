@@ -109,7 +109,6 @@ const isReactNative = getPlatformType() === 'react-native';
 const SecondaryActionWrapper = isReactNative ? Box : Fragment;
 const CloseButtonWrapper = isReactNative ? Box : Fragment;
 
-// todo: add all icons
 const intentIconMap = {
   positive: CheckCircleIcon,
   negative: AlertOctagonIcon,
