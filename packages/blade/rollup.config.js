@@ -124,7 +124,10 @@ const getDeclarationsConfig = ({ exportCategory, isNative }) => {
     input: `${outputRootDirectory}/types/${platform}/${exportCategory}/index.d.ts`,
     output: [
       {
-        file: `${outputRootDirectory}/${exportCategory}/index.${platform}.d.ts`,
+        // don't prefix web index export with .web, for backwards compatibility with TS<4.7
+        file: `${outputRootDirectory}/${exportCategory}/${
+          isNative ? 'index.native.d.ts' : 'index.d.ts'
+        }`,
         format: 'esm',
       },
     ],
