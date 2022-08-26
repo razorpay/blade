@@ -1,6 +1,8 @@
-export type NonDashedProps<T> = {
-  [K in keyof T]: K extends `${string}-${string}` ? never : T[K];
-};
+// https://github.com/microsoft/TypeScript/issues/12936#issuecomment-368244671
+export type Exact<T, X extends T> = T &
+  {
+    [K in keyof X]: K extends keyof T ? X[K] : never;
+  };
 
 export type PathProps = {
   clipPath?: string;

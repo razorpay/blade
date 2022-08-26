@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
-import type { PathProps, NonDashedProps } from './Path.d';
+import type { Exact, PathProps } from './Path.d';
 
-const Path = <T extends PathProps>({
+const Path = <Props extends Exact<PathProps, Props>>({
   d,
   clipPath,
   clipRule,
@@ -12,7 +12,7 @@ const Path = <T extends PathProps>({
   strokeLinecap,
   strokeLinejoin,
   strokeWidth,
-}: NonDashedProps<T>): ReactElement => {
+}: Props): ReactElement => {
   return (
     <path
       d={d}
