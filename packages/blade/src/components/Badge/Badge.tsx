@@ -68,7 +68,6 @@ const getColorProps = ({
   variant: NonNullable<BadgeProps['variant']>;
   contrast: NonNullable<BadgeProps['contrast']>;
 }): ColorProps => {
-  // const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'] as const;
   const props: ColorProps = {
     iconColor: 'feedback.icon.neutral.lowContrast',
     textColor: 'feedback.text.neutral.lowContrast',
