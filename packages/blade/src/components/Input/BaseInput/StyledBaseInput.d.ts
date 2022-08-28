@@ -23,6 +23,11 @@ export type StyledBaseInputProps = {
   | 'interactionElement'
   | 'suffix'
   | 'trailingIcon'
+  | 'textAlign'
+  | 'autoFocus'
+  | 'keyboardReturnKeyType'
+  | 'inputMode'
+  | 'autoCompleteSuggestionType'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

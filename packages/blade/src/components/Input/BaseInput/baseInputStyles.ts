@@ -14,6 +14,7 @@ type GetInputStyles = Pick<
   | 'interactionElement'
   | 'suffix'
   | 'trailingIcon'
+  | 'textAlign'
 > & {
   isFocused?: boolean;
   theme: Theme;
@@ -68,6 +69,7 @@ export const getBaseInputStyles = ({
   interactionElement,
   suffix,
   trailingIcon,
+  textAlign,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
@@ -103,5 +105,6 @@ export const getBaseInputStyles = ({
       hasInteractionElement || hasSuffix || hasTrailingIcon
         ? makeSpace(theme.spacing[2])
         : makeSpace(theme.spacing[3]),
+    textAlign,
   };
 };

@@ -7,6 +7,15 @@ import { BaseInput as BaseInputComponent } from './BaseInput';
 import iconMap from '~components/Icons/iconMap';
 import { CloseIcon } from '~components/Icons';
 
+const propsCategory = {
+  BASE_PROPS: 'Base Input Props',
+  LABEL_PROPS: 'Label Props',
+  VALIDATION_PROPS: 'Validation Props',
+  LEADING_VISUAL_PROPS: 'Leading Visual Props',
+  TRAILING_VISUAL_PROPS: 'Trailing Visual Props',
+  KEYBOARD_PROPS: 'Keyboard Props',
+};
+
 export default {
   title: 'Components/Input/BaseInput (Internal)',
   component: BaseInputComponent,
@@ -19,10 +28,13 @@ export default {
     isDisabled: false,
     value: undefined,
     maxCharacters: 9999,
+    textAlign: 'left',
+    autoFocus: false,
     onChange: undefined,
+    onBlur: undefined,
     label: 'Enter Name',
     labelPosition: 'top',
-    neccessityIndicator: undefined,
+    necessityIndicator: undefined,
     isRequired: false,
     validationState: 'none',
     helpText: undefined,
@@ -33,92 +45,110 @@ export default {
     interactionElement: <CloseIcon size="medium" color="surface.text.subtle.lowContrast" />,
     suffix: '',
     trailingIcon: undefined,
+    keyboardReturnKeyType: undefined,
+    inputMode: undefined,
+    autoCompleteSuggestionType: undefined,
   },
   argTypes: {
     id: {
       table: {
-        category: 'Base Input Props',
+        category: propsCategory.BASE_PROPS,
       },
     },
     defaultValue: {
       table: {
-        category: 'Base Input Props',
+        category: propsCategory.BASE_PROPS,
       },
     },
     placeholder: {
       table: {
-        category: 'Base Input Props',
+        category: propsCategory.BASE_PROPS,
       },
     },
     name: {
       table: {
-        category: 'Base Input Props',
+        category: propsCategory.BASE_PROPS,
       },
     },
     type: {
       table: {
-        category: 'Base Input Props',
+        category: propsCategory.BASE_PROPS,
       },
     },
     isDisabled: {
       table: {
-        category: 'Base Input Props',
+        category: propsCategory.BASE_PROPS,
       },
     },
     value: {
       table: {
-        category: 'Base Input Props',
+        category: propsCategory.BASE_PROPS,
       },
     },
     maxCharacters: {
       control: { type: 'number' },
       table: {
-        category: 'Base Input Props',
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    textAlign: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    autoFocus: {
+      table: {
+        category: propsCategory.BASE_PROPS,
       },
     },
     onChange: {
       table: {
-        category: 'Base Input Props',
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onBlur: {
+      table: {
+        category: propsCategory.BASE_PROPS,
       },
     },
     label: {
       table: {
-        category: 'Label Props',
+        category: propsCategory.LABEL_PROPS,
       },
     },
     labelPosition: {
       table: {
-        category: 'Label Props',
+        category: propsCategory.LABEL_PROPS,
       },
     },
-    neccessityIndicator: {
+    necessityIndicator: {
       table: {
-        category: 'Validation Props',
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
     isRequired: {
       table: {
-        category: 'Validation Props',
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
     validationState: {
       table: {
-        category: 'Validation Props',
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
     helpText: {
       table: {
-        category: 'Validation Props',
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
     errorText: {
       table: {
-        category: 'Validation Props',
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
     successText: {
       table: {
-        category: 'Validation Props',
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
     leadingIcon: {
@@ -126,23 +156,23 @@ export default {
       type: 'select',
       options: Object.keys(iconMap),
       table: {
-        category: 'Leading Visual Props',
+        category: propsCategory.LEADING_VISUAL_PROPS,
       },
     },
     prefix: {
       table: {
-        category: 'Leading Visual Props',
+        category: propsCategory.LEADING_VISUAL_PROPS,
       },
     },
     interactionElement: {
       table: {
-        category: 'Trailing Visual Props',
+        category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
     // interactionElement:{},
     suffix: {
       table: {
-        category: 'Trailing Visual Props',
+        category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
     trailingIcon: {
@@ -150,7 +180,22 @@ export default {
       type: 'select',
       options: Object.keys(iconMap),
       table: {
-        category: 'Trailing Visual Props',
+        category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
+    keyboardReturnKeyType: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
+      },
+    },
+    inputMode: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
+      },
+    },
+    autoCompleteSuggestionType: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
       },
     },
   },

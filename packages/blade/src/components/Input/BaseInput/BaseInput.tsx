@@ -35,7 +35,7 @@ type InputLabelProps = {
   /**
    * Displays `(optional)` when `optional` is passed or `*` when `required` is passed
    */
-  neccessityIndicator?: FormLabelProps['necessityIndicator'];
+  necessityIndicator?: FormLabelProps['necessityIndicator'];
 };
 
 // TODO: need to abstract for generic use
@@ -122,6 +122,11 @@ export type BaseInputProps = InputLabelProps &
      * Prefix symbol to be displayed at the beginning of the input field
      */
     prefix?: string;
+    /**
+     * this is left to the components which is extending BaseInput
+     *
+     * eg: consumers can render a loader or they could render a clear button
+     */
     interactionElement?: ReactNode;
     // /**
     //  * Decides whether to render a clear icon button
@@ -147,7 +152,79 @@ export type BaseInputProps = InputLabelProps &
      * Displays the character counter under the input field
      */
     maxCharacters?: number;
+    /**
+     * alignment of the text inside input field
+     */
+    textAlign?: 'left' | 'center' | 'right';
+    /**
+     * If true, focuses the input field on load
+     *
+     * **Note:**
+     * Automatically focusing a form control can confuse visually-impaired people using screen-reading technology and people with cognitive impairments.
+     * When autofocus is assigned, screen-readers "teleport" their user to the form control without warning them beforehand.
+     */
+    autoFocus?: boolean;
+    /**
+     * determines what return key to show on the keyboard of mobile devices/virtual keyboard
+     * **Note**: Few values are platform dependent and might not render on all the platforms
+     *
+     * `enter` is only available on web
+     * `previous` is only available on native android
+     */
+    keyboardReturnKeyType?: 'enter' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
+    /**
+     * **Web only**
+     *
+     * Hints browser to display an appropriate virtual keyboard
+     *
+     *
+     */
+    inputMode?: 'text' | 'search' | 'tel' | 'email' | 'url';
+    /**
+     * determines what autoComplete suggestion type to show
+     *
+     * Internally it'll render platform specific attributes:
+     *
+     * - web: `autocomplete`
+     * - iOS: `textContentType`
+     * - android: `autoComplete`
+     *
+     */
+    autoCompleteSuggestionType?:
+      | 'none'
+      | 'name'
+      | 'email'
+      | 'username'
+      | 'password'
+      | 'newPassword'
+      | 'oneTimeCode'
+      | 'telephone'
+      | 'postalCode'
+      | 'countryName'
+      | 'creditCardNumber'
+      | 'creditCardCSC'
+      | 'creditCardExpiry'
+      | 'creditCardExpiryMonth'
+      | 'creditCardExpiryYear';
   };
+
+const autoCompleteSuggestionTypeValues = [
+  'none',
+  'name',
+  'email',
+  'username',
+  'password',
+  'newPassword',
+  'oneTimeCode',
+  'telephone',
+  'postalCode',
+  'countryName',
+  'creditCardNumber',
+  'creditCardCSC',
+  'creditCardExpiry',
+  'creditCardExpiryMonth',
+  'creditCardExpiryYear',
+];
 
 const useInput = ({
   value,
@@ -237,7 +314,7 @@ export const BaseInput = ({
   value,
   onChange,
   isDisabled,
-  neccessityIndicator,
+  necessityIndicator,
   validationState,
   errorText,
   helpText,
@@ -248,6 +325,11 @@ export const BaseInput = ({
   interactionElement,
   suffix,
   trailingIcon,
+  textAlign,
+  autoFocus,
+  keyboardReturnKeyType,
+  inputMode,
+  autoCompleteSuggestionType,
 }: BaseInputProps): ReactElement => {
   const { theme } = useTheme();
   const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange });
@@ -255,6 +337,17 @@ export const BaseInput = ({
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
   const [isFocused, setIsFocused] = useState(false);
+
+  if (
+    autoCompleteSuggestionType &&
+    !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
+  ) {
+    throw new Error(
+      `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
+        ', ',
+      )} but received ${autoCompleteSuggestionType}`,
+    );
+  }
 
   return (
     <>
@@ -266,7 +359,7 @@ export const BaseInput = ({
       >
         <FormLabel
           as="label"
-          necessityIndicator={neccessityIndicator}
+          necessityIndicator={necessityIndicator}
           position={labelPosition}
           htmlFor={inputId}
         >
@@ -296,6 +389,12 @@ export const BaseInput = ({
             suffix={suffix}
             trailingIcon={trailingIcon}
             setIsFocused={setIsFocused}
+            textAlign={textAlign}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus={autoFocus}
+            keyboardReturnKeyType={keyboardReturnKeyType}
+            inputMode={inputMode}
+            autoCompleteSuggestionType={autoCompleteSuggestionType}
           />
           <BaseInputVisuals
             interactionElement={interactionElement}
