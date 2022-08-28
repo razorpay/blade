@@ -105,5 +105,6 @@ export const getBaseInputStyles = ({
       hasInteractionElement || hasSuffix || hasTrailingIcon
         ? makeSpace(theme.spacing[2])
         : makeSpace(theme.spacing[3]),
+    textAlign,
   };
 };
