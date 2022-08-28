@@ -237,7 +237,7 @@ const useInput = ({
 } => {
   if (value && defaultValue) {
     throw new Error(
-      `[Blade Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+      `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
     );
   }
 
@@ -404,6 +404,7 @@ export const BaseInput = ({
           />
         </BaseInputWrapper>
       </Box>
+      {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
       <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
         <FormHint
           type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}

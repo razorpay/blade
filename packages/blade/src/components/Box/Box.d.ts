@@ -37,7 +37,6 @@ export type BoxProps = {
   left?: CSSObject['left'];
   right?: CSSObject['right'];
   bottom?: CSSObject['bottom'];
-  zIndex?: CSSObject['zIndex'];
 };
 
 export { default } from './Box.web';

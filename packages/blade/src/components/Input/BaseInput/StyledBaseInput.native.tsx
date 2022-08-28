@@ -72,6 +72,8 @@ const StyledNativeBaseInput = styled.TextInput<
     suffix: props.suffix,
     trailingIcon: props.trailingIcon,
   }),
+  lineHeight: undefined,
+  height: '36px',
 }));
 
 export const StyledBaseInput = ({
