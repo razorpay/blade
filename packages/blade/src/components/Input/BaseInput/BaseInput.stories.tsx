@@ -34,7 +34,7 @@ export default {
     onBlur: undefined,
     label: 'Enter Name',
     labelPosition: 'top',
-    neccessityIndicator: undefined,
+    necessityIndicator: undefined,
     isRequired: false,
     validationState: 'none',
     helpText: undefined,
@@ -121,7 +121,7 @@ export default {
         category: propsCategory.LABEL_PROPS,
       },
     },
-    neccessityIndicator: {
+    necessityIndicator: {
       table: {
         category: propsCategory.VALIDATION_PROPS,
       },

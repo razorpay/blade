@@ -35,7 +35,7 @@ type InputLabelProps = {
   /**
    * Displays `(optional)` when `optional` is passed or `*` when `required` is passed
    */
-  neccessityIndicator?: FormLabelProps['necessityIndicator'];
+  necessityIndicator?: FormLabelProps['necessityIndicator'];
 };
 
 // TODO: need to abstract for generic use
@@ -125,7 +125,7 @@ export type BaseInputProps = InputLabelProps &
     /**
      * this is left to the components which is extending BaseInput
      *
-     * eg: consumers can render a loader or it they could render a clear button
+     * eg: consumers can render a loader or they could render a clear button
      */
     interactionElement?: ReactNode;
     // /**
@@ -153,7 +153,7 @@ export type BaseInputProps = InputLabelProps &
      */
     maxCharacters?: number;
     /**
-     * alignement of the text inside input field
+     * alignment of the text inside input field
      */
     textAlign?: 'left' | 'center' | 'right';
     /**
@@ -165,7 +165,7 @@ export type BaseInputProps = InputLabelProps &
      */
     autoFocus?: boolean;
     /**
-     * determines what return key to show on keyboard on mobile devices/virtual keyboard
+     * determines what return key to show on the keyboard of mobile devices/virtual keyboard
      * **Note**: Few values are platform dependent and might not render on all the platforms
      *
      * `enter` is only available on web
@@ -207,6 +207,24 @@ export type BaseInputProps = InputLabelProps &
       | 'creditCardExpiryMonth'
       | 'creditCardExpiryYear';
   };
+
+const autoCompleteSuggestionTypeValues = [
+  'none',
+  'name',
+  'email',
+  'username',
+  'password',
+  'newPassword',
+  'oneTimeCode',
+  'telephone',
+  'postalCode',
+  'countryName',
+  'creditCardNumber',
+  'creditCardCSC',
+  'creditCardExpiry',
+  'creditCardExpiryMonth',
+  'creditCardExpiryYear',
+];
 
 const useInput = ({
   value,
@@ -296,7 +314,7 @@ export const BaseInput = ({
   value,
   onChange,
   isDisabled,
-  neccessityIndicator,
+  necessityIndicator,
   validationState,
   errorText,
   helpText,
@@ -320,6 +338,17 @@ export const BaseInput = ({
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
   const [isFocused, setIsFocused] = useState(false);
 
+  if (
+    autoCompleteSuggestionType &&
+    !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
+  ) {
+    throw new Error(
+      `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
+        ', ',
+      )} but received ${autoCompleteSuggestionType}`,
+    );
+  }
+
   return (
     <>
       <Box
@@ -330,7 +359,7 @@ export const BaseInput = ({
       >
         <FormLabel
           as="label"
-          necessityIndicator={neccessityIndicator}
+          necessityIndicator={necessityIndicator}
           position={labelPosition}
           htmlFor={inputId}
         >
