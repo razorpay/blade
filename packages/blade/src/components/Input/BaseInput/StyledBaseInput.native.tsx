@@ -17,6 +17,8 @@ const StyledNativeBaseInput = styled.TextInput<StyledBaseInputProps & { isFocuse
       suffix: props.suffix,
       trailingIcon: props.trailingIcon,
     }),
+    lineHeight: undefined,
+    height: '36px',
   }),
 );
 
