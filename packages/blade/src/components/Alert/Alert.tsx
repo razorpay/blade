@@ -2,7 +2,7 @@ import type { ReactChild, ReactElement } from 'react';
 import { Fragment, useState } from 'react';
 
 import { StyledAlert } from './StyledAlert';
-import { AlertIcon, CloseIcon } from '~components/Icons';
+import { AlertOctagonIcon, AlertTriangleIcon, CheckCircleIcon, CloseIcon } from '~components/Icons';
 import { getPlatformType, makeAccessible } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
@@ -92,9 +92,9 @@ type AlertProps = {
    */
   actions?: {
     /**
-     * Renders a button
+     * Renders a button (should **always** be present if `secondary` action is being used)
      */
-    primary?: PrimaryAction;
+    primary: PrimaryAction;
 
     /**
      * Renders a Link button
@@ -109,12 +109,11 @@ const isReactNative = getPlatformType() === 'react-native';
 const SecondaryActionWrapper = isReactNative ? Box : Fragment;
 const CloseButtonWrapper = isReactNative ? Box : Fragment;
 
-// todo: add all icons
 const intentIconMap = {
-  positive: AlertIcon,
-  negative: AlertIcon,
-  information: AlertIcon,
-  notice: AlertIcon,
+  positive: CheckCircleIcon,
+  negative: AlertOctagonIcon,
+  information: AlertOctagonIcon,
+  notice: AlertTriangleIcon,
 };
 
 const Alert = ({
@@ -223,7 +222,7 @@ const Alert = ({
       {...a11yProps}
     >
       {icon}
-      <Box flex={1} paddingLeft="spacing.3" paddingRight="spacing.3">
+      <Box flex={1} paddingLeft="spacing.3" paddingRight="spacing.1">
         {_title}
         {_description}
         {_actions}

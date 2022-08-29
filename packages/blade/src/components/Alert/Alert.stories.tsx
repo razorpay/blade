@@ -188,7 +188,7 @@ FullWidth.parameters = {
   },
 };
 
-export const FullBleed: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+export const Borderless: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
   return (
     <Box background={colors.neutral.blueGrayLight[100]} height={200} position="relative">
       <Box position="absolute" width="100%">
@@ -197,13 +197,13 @@ export const FullBleed: ComponentStory<typeof AlertComponent> = ({ ...args }) =>
     </Box>
   );
 };
-FullBleed.args = {
+Borderless.args = {
   description: 'Use vendor payouts to quickly generate invoices.',
   actions: undefined,
   title: undefined,
   isBorderless: true,
 };
-FullBleed.parameters = {
+Borderless.parameters = {
   docs: {
     description: {
       story:
