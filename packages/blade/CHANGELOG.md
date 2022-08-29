@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 1.1.0
+
+### Minor Changes
+
+- 5f1033c: feat: add `Alert` component :tada:
+
+### Patch Changes
+
+- cd5f61f: feat(tokens): add new tokens
+- e8d932a: feat: add `blue` variant to `Badge`
+- acfd566: feat(icons): arrow up and arrow left
+
 ## 1.0.2
 
 ### Patch Changes
