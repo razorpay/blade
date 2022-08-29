@@ -20,6 +20,8 @@ const StyledBaseNativeInput = styled.input<
     trailingIcon: props.trailingIcon,
     textAlign: props.textAlign,
   }),
+  outline: 'none',
+  border: 'none',
   '::placeholder': {
     ...getTextStyles({
       size: 'medium',
@@ -29,24 +31,12 @@ const StyledBaseNativeInput = styled.input<
       contrast: 'low',
       theme: props.theme,
     }),
+    textAlign: props.textAlign,
+  },
+  ':focus': {
     outline: 'none',
-    border: 'none',
-    '::placeholder': {
-      ...getTextStyles({
-        size: 'medium',
-        variant: 'body',
-        type: 'placeholder',
-        weight: 'regular',
-        contrast: 'low',
-        theme: props.theme,
-      }),
-      textAlign: props.textAlign,
-    },
-    ':focus': {
-      outline: 'none',
-    },
-  }),
-);
+  },
+}));
 
 const autoCompleteSuggestionTypeMap = {
   none: 'off',

@@ -27,7 +27,10 @@ export const getInputBackgroundAndBorderStyles = ({
   isFocused,
   isDisabled,
   validationState,
-}: Pick<GetInputStyles, 'theme' | 'isFocused' | 'isDisabled' | 'validationState'>): CSSObject => {
+}: Pick<
+  GetInputStyles,
+  'theme' | 'isFocused' | 'isDisabled' | 'validationState' | 'isHovered'
+>): CSSObject => {
   // normal state
   let backgroundColor = theme.colors.brand.gray[200];
   let borderBottomColor = theme.colors.brand.gray[400];
@@ -40,7 +43,6 @@ export const getInputBackgroundAndBorderStyles = ({
   // focused state
   if (isFocused) {
     backgroundColor = theme.colors.brand.primary[300];
-    // borderBottomColor = theme.colors.brand.primary[500];
   }
 
   // disabled state
