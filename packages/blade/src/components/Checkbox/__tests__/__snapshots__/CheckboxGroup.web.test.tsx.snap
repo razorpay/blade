@@ -41,7 +41,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 }
 
 .c1 {
-  margin-bottom: 0px;
+  margin-bottom: 4px;
 }
 
 .c2 {
@@ -520,7 +520,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 }
 
 .c1 {
-  margin-bottom: 0px;
+  margin-bottom: 4px;
 }
 
 .c2 {

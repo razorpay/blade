@@ -19,6 +19,8 @@ const StyledBaseNativeInput = styled.input<Omit<StyledBaseInputProps, 'accessibi
       trailingIcon: props.trailingIcon,
       textAlign: props.textAlign,
     }),
+    outline: 'none',
+    border: 'none',
     '::placeholder': {
       ...getTextStyles({
         size: 'medium',
