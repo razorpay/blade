@@ -54,6 +54,15 @@ const autoCompleteSuggestionTypeIOS = {
   creditCardExpiryYear: 'none',
 } as const;
 
+const inputModeToKeyboardTypeMap = {
+  text: 'default',
+  search: 'default',
+  telephone: 'phone-pad',
+  email: 'email-address',
+  url: 'url',
+  decimal: 'decimal-pad',
+};
+
 const StyledNativeBaseInput = styled.TextInput<
   Omit<
     StyledBaseInputProps,
@@ -84,15 +93,16 @@ export const StyledBaseInput = ({
   isDisabled,
   handleOnChange,
   handleOnBlur,
+  keyboardType = 'text',
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
   accessibilityProps,
   currentInteraction,
   setCurrentInteraction,
   ...props
-}: StyledBaseInputProps & {
-  keyboardReturnKeyType?: Exclude<StyledBaseInputProps['keyboardReturnKeyType'], 'enter'>;
-}): ReactElement => {
+}: StyledBaseInputProps): ReactElement => {
+  // don't pass inputMode on React Native even if the consumer put it by mistake
+
   return (
     <StyledNativeBaseInput
       isFocused={currentInteraction === 'focus'}
@@ -105,6 +115,9 @@ export const StyledBaseInput = ({
       }}
       onChangeText={(text): void => handleOnChange?.({ name, value: text })}
       onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
+      // @ts-expect-error styled-components have limited keyboard types('default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad') compared to the actual supported types so ignoring the error.
+      // source: https://reactnative.dev/docs/textinput/#keyboardtype
+      keyboardType={inputModeToKeyboardTypeMap[keyboardType]}
       returnKeyType={keyboardReturnKeyType}
       textContentType={
         autoCompleteSuggestionType

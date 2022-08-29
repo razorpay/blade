@@ -166,21 +166,17 @@ export type BaseInputProps = InputLabelProps &
      */
     autoFocus?: boolean;
     /**
+     * Hints the platform to display an appropriate virtual keyboard
+     */
+    keyboardType?: 'text' | 'search' | 'telephone' | 'email' | 'url' | 'decimal';
+    /**
      * determines what return key to show on the keyboard of mobile devices/virtual keyboard
      * **Note**: Few values are platform dependent and might not render on all the platforms
      *
-     * `enter` is only available on web
+     * `default` is only available on native. it'll be mapped to `enter` for web
      * `previous` is only available on native android
      */
-    keyboardReturnKeyType?: 'enter' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
-    /**
-     * **Web only**
-     *
-     * Hints browser to display an appropriate virtual keyboard
-     *
-     *
-     */
-    inputMode?: 'text' | 'search' | 'tel' | 'email' | 'url';
+    keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
     /**
      * determines what autoComplete suggestion type to show
      *
@@ -346,6 +342,7 @@ export const BaseInput = ({
   name,
   value,
   onChange,
+  onBlur,
   isDisabled,
   necessityIndicator,
   validationState,
@@ -361,11 +358,11 @@ export const BaseInput = ({
   textAlign,
   autoFocus,
   keyboardReturnKeyType,
-  inputMode,
+  keyboardType,
   autoCompleteSuggestionType,
 }: BaseInputProps): ReactElement => {
   const { theme } = useTheme();
-  const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange });
+  const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange, onBlur });
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
@@ -441,7 +438,7 @@ export const BaseInput = ({
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus}
             keyboardReturnKeyType={keyboardReturnKeyType}
-            inputMode={inputMode}
+            keyboardType={keyboardType}
             autoCompleteSuggestionType={autoCompleteSuggestionType}
             accessibilityProps={accessibilityProps}
             currentInteraction={currentInteraction}

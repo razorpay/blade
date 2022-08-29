@@ -62,6 +62,7 @@ export const StyledBaseInput = ({
   isRequired,
   handleOnChange,
   handleOnBlur,
+  keyboardType,
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
   accessibilityProps,
@@ -78,12 +79,13 @@ export const StyledBaseInput = ({
         handleOnBlur?.({ name, value: event });
       }}
       onFocus={(): void => setCurrentInteraction('focus')}
-      enterKeyHint={keyboardReturnKeyType}
+      enterKeyHint={keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType}
       autoComplete={
         autoCompleteSuggestionType
           ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
           : undefined
       }
+      inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
       {...props}
       {...accessibilityProps}
     />
