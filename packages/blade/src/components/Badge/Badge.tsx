@@ -135,7 +135,7 @@ const Badge = ({
         overflow="hidden"
       >
         {Icon ? (
-          <Box paddingRight={Boolean(Icon) ? 'spacing.1' : 'spacing.0'} display="flex">
+          <Box paddingRight={Boolean(Icon) ? 'spacing.2' : 'spacing.0'} display="flex">
             <Icon color={iconColor} size="small" />
           </Box>
         ) : null}

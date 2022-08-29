@@ -118,7 +118,7 @@ const FormLabel = ({
   return (
     <Component
       htmlFor={htmlFor}
-      style={{ width, marginRight: makeSpace(theme.spacing[4]) }}
+      style={{ width, marginRight: makeSpace(theme.spacing[5]) }}
       id={id}
     >
       <Box marginBottom="spacing.2">{textNode}</Box>

@@ -63,7 +63,7 @@ const getCheckboxIconWrapperStyles = ({
     borderStyle: 'solid',
     margin: makeSpace(theme.spacing[0]),
     borderRadius: makeSize(theme.border.radius.small),
-    marginRight: makeSpace(theme.spacing[2]),
+    marginRight: makeSpace(theme.spacing[3]),
     backgroundColor: getIn(theme, backgroundColor),
     borderColor: getIn(theme, borderColor),
   };
