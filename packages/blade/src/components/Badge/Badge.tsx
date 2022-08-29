@@ -125,8 +125,8 @@ const Badge = ({
       platform={platform}
     >
       <Box
-        paddingRight="spacing.2"
-        paddingLeft="spacing.2"
+        paddingRight="spacing.3"
+        paddingLeft="spacing.3"
         display="flex"
         flex={1}
         flexDirection="row"

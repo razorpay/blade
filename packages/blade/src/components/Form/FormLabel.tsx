@@ -105,7 +105,7 @@ const FormLabel = ({
   // What harm can it do?
   if (isReactNative) {
     return (
-      <Box marginRight="spacing.4" marginBottom="spacing.1">
+      <Box marginRight="spacing.5" marginBottom="spacing.2">
         {textNode}
       </Box>
     );
@@ -121,7 +121,7 @@ const FormLabel = ({
       style={{ width, marginRight: makeSpace(theme.spacing[4]) }}
       id={id}
     >
-      <Box marginBottom="spacing.1">{textNode}</Box>
+      <Box marginBottom="spacing.2">{textNode}</Box>
     </Component>
   );
 };

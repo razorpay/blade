@@ -183,11 +183,11 @@ const OverrideThemeExample = (props: { hue: number }): React.ReactElement => {
       <BladeTitle>Blade OverrideTheme Example</BladeTitle>
       <Text>By using overrideTheme() function we can customize blade theme.</Text>
 
-      <Box marginBottom="spacing.4" marginTop="spacing.4" display="flex" alignItems="center">
+      <Box marginBottom="spacing.5" marginTop="spacing.5" display="flex" alignItems="center">
         <Button variant="primary">Primary</Button>
-        <Box marginLeft="spacing.2" />
+        <Box marginLeft="spacing.3" />
         <Button variant="secondary">Secondary</Button>
-        <Box marginLeft="spacing.2" />
+        <Box marginLeft="spacing.3" />
         <Button variant="tertiary">Tertiary</Button>
       </Box>
 

@@ -134,7 +134,7 @@ const Alert = ({
   const icon = <Icon color={`feedback.icon.${intent}.${contrastType}`} size="large" />;
 
   const _title = title ? (
-    <Box marginBottom="spacing.1">
+    <Box marginBottom="spacing.2">
       <Heading variant="small" contrast={contrast}>
         {title}
       </Heading>
@@ -144,7 +144,7 @@ const Alert = ({
   const _description = <Text contrast={contrast}>{description}</Text>;
 
   const primaryAction = actions?.primary ? (
-    <Box marginRight="spacing.4" display={isReactNative ? 'flex' : 'inline-flex'}>
+    <Box marginRight="spacing.5" display={isReactNative ? 'flex' : 'inline-flex'}>
       <BaseButton onClick={actions.primary.onClick} intent={intent} contrast={contrast}>
         {actions.primary.text}
       </BaseButton>
@@ -178,7 +178,7 @@ const Alert = ({
 
   const _actions =
     primaryAction || secondaryAction ? (
-      <Box marginTop="spacing.3" flexDirection="row" alignItems="center">
+      <Box marginTop="spacing.4" flexDirection="row" alignItems="center">
         {primaryAction}
         {secondaryAction}
       </Box>
@@ -222,7 +222,7 @@ const Alert = ({
       {...a11yProps}
     >
       {icon}
-      <Box flex={1} paddingLeft="spacing.3" paddingRight="spacing.1">
+      <Box flex={1} paddingLeft="spacing.4" paddingRight="spacing.2">
         {_title}
         {_description}
         {_actions}
