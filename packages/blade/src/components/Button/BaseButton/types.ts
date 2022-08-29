@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import type { GestureResponderEvent } from 'react-native';
 import type { ButtonMinHeight } from './buttonTokens';
 import type { BaseButtonProps } from './BaseButton';
 import type { DurationString, EasingString } from '~tokens/global/motion';
@@ -7,7 +6,7 @@ import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~toke
 
 export type StyledBaseButtonProps = Omit<
   BaseButtonProps,
-  'icon' | 'children' | 'accessibilityLabel' | 'onClick'
+  'icon' | 'children' | 'accessibilityLabel'
 > & {
   activeBorderColor: string;
   activeBackgroundColor: string;
@@ -31,5 +30,4 @@ export type StyledBaseButtonProps = Omit<
   borderWidth: BorderWidthValues;
   borderRadius: BorderRadiusValues;
   accessibilityProps: Record<string, unknown>;
-  onClick?: (event: GestureResponderEvent) => void;
 };

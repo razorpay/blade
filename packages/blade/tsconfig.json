@@ -9,6 +9,6 @@
       "~tokens/*": ["src/tokens/*"],
       "~src/*": ["src/*"]
     },
-    "moduleSuffixes": [".web", ""]
+    "moduleSuffixes": [".all", ".web", ""]
   }
 }

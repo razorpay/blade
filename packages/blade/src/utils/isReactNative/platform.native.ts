@@ -1,11 +1,21 @@
 /* eslint-disable @typescript-eslint/no-namespace */
+import type { Brand, NativeOrWebBrand, _brand } from './types';
 
 namespace Platform {
-  export type IsReactNative = true;
-  type IfReactNative<If, Else> = IsReactNative extends true ? If : Else;
-  export type Select<Options extends { web: unknown; native: unknown }> = IfReactNative<
-    Options['native'],
-    Options['web']
+  export type Name = 'native';
+  export type Select<Options extends { web: unknown; native: unknown }> = Brand<
+    Options[Name],
+    'platform-native'
+  >;
+
+  export type CastNative<T extends NativeOrWebBrand | undefined> = Extract<
+    T,
+    { [_brand]?: 'platform-native' | 'platform-all' }
+  >;
+
+  export type CastWeb<T extends NativeOrWebBrand | undefined> = Extract<
+    T,
+    { [_brand]?: 'platform-web' | 'platform-all' }
   >;
 }
 
