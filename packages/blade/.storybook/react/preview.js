@@ -2,7 +2,7 @@ import { theme } from './manager';
 import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components/BladeProvider';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
-
+import ErrorBoundary from './ErrorBoundary';
 const { GlobalStyle } = global;
 
 export const parameters = {
@@ -52,7 +52,7 @@ export const decorators = [
       }
     };
     return (
-      <>
+      <ErrorBoundary>
         <GlobalStyle />
         <BladeProvider
           key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
@@ -61,7 +61,7 @@ export const decorators = [
         >
           <Story />
         </BladeProvider>
-      </>
+      </ErrorBoundary>
     );
   },
 ];

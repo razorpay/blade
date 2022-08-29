@@ -16,6 +16,8 @@ type ActionIconColors = `action.icon.${DotNotationColorStringToken<
 
 type TextIconColors = `surface.text.${DotNotationColorStringToken<
   Theme['colors']['surface']['text']
+type BadgeIconColors = `badge.icon.${DotNotationColorStringToken<
+  Theme['colors']['badge']['icon']
 >}`;
 
 export type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
@@ -28,14 +30,17 @@ export type IconProps = {
     | FeedbackIconColors
     | FeedbackActionIconColors
     | TextIconColors
+    | BadgeIconColors
     | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
   size: IconSize;
 };
 export type IconComponent = React.ComponentType<IconProps>;
 
 export { default as ArrowDownIcon } from './ArrowDownIcon';
+export { default as ArrowLeftIcon } from './ArrowLeftIcon';
 export { default as ArrowRightIcon } from './ArrowRightIcon';
 export { default as ArrowUpRightIcon } from './ArrowUpRightIcon';
+export { default as ArrowUpIcon } from './ArrowUpIcon';
 export { default as CheckIcon } from './CheckIcon';
 export { default as ChevronDownIcon } from './ChevronDownIcon';
 export { default as ChevronLeftIcon } from './ChevronLeftIcon';
