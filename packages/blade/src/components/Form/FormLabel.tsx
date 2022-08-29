@@ -81,7 +81,7 @@ const FormLabel = ({
 
   const textNode = (
     <Box
-      gap={necessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'}
+      gap={necessityIndicator === 'optional' ? 'spacing.2' : 'spacing.0'}
       display="flex"
       flexDirection="row"
       alignItems="center"
