@@ -15,7 +15,6 @@ import {
 } from './buttonTokens';
 
 import type { Theme } from '~components/BladeProvider';
-import type { SpinnerSize } from '~components/Spinner/spinnerTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText';
 import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global/motion';
@@ -24,7 +23,8 @@ import { makeAccessible, usePrevious, makeSize, makeSpace, makeBorderSize, getIn
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
-import Spinner from '~components/Spinner';
+import type { SpinnerProps } from '~components/Spinner';
+import { Spinner } from '~components/Spinner';
 import Box from '~components/Box';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
@@ -98,7 +98,7 @@ const getColorToken = ({
 
 type BaseButtonStyleProps = {
   iconSize: IconSize;
-  spinnerSize: SpinnerSize;
+  spinnerSize: SpinnerProps['size'];
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
   minHeight: `${ButtonMinHeight}px`;
@@ -256,10 +256,6 @@ const getProps = ({
   return props;
 };
 
-const StyledSpinner = styled(Spinner)({
-  position: 'absolute',
-});
-
 const ButtonContent = styled(Box)<{ isHidden: boolean }>(({ isHidden }) => ({
   opacity: isHidden ? 0 : 1,
 }));
@@ -372,7 +368,7 @@ const BaseButton = ({
           bottom={0}
           right={0}
         >
-          <StyledSpinner color={iconColor} size={spinnerSize} />
+          <Spinner size={spinnerSize} intent={intent} contrast={contrast} />
         </Box>
       ) : null}
       <ButtonContent

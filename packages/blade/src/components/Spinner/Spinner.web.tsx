@@ -1,10 +1,11 @@
 import React from 'react';
+import styled, { css, keyframes } from 'styled-components';
 import type { SpinnerProps } from './Spinner.d';
 import { dimensions } from './spinnerTokens';
 import SpinnerIcon from './SpinnerIcon';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import { getIn, makeSize } from '~utils';
+import { getIn, makeMotionTime, makeSize } from '~utils';
 import Box from '~components/Box';
 
 const getColor = ({
@@ -28,6 +29,22 @@ const getColor = ({
   }
 };
 
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+const AnimatedSpinner = styled(Box)(({ theme }) => {
+  return css`
+    width: max-content;
+    animation: ${rotate} ${makeMotionTime(theme.motion.duration['2xgentle'])}
+      ${theme.motion.easing.exit.attentive as string} infinite;
+  `;
+});
+
 const Spinner = ({
   // accessibilityLabel,
   contrast = 'low',
@@ -36,12 +53,12 @@ const Spinner = ({
 }: SpinnerProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
-    <Box>
+    <AnimatedSpinner display="flex">
       <SpinnerIcon
         dimensions={makeSize(dimensions[size])}
         color={getColor({ contrast, intent, theme })}
       />
-    </Box>
+    </AnimatedSpinner>
   );
 };
 
