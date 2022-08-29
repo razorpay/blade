@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Checkbox /> should render checkbox with label 1`] = `
-.c2 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -19,19 +19,46 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   border-width: 1px;
   border-style: solid;
   margin: 0px;
-  margin-top: 3px;
   border-radius: 2px;
   margin-right: 8px;
   background-color: hsla(220,27%,98%,1);
   border-color: hsla(216,19%,89%,1);
 }
 
-.c3 {
+.c5 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c4 {
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7 {
+  margin-left: 24px;
+}
+
+.c6 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -54,7 +81,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   margin-bottom: 2px;
 }
 
-.c1 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -70,13 +97,13 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   word-wrap: normal;
 }
 
-.c1:focus + div {
+.c3:focus + div {
   outline: 1px solid white;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c1:hover + div,
-.c1:focus + div {
+.c3:hover + div,
+.c3:focus + div {
   border-color: hsla(216,19%,89%,1);
   background-color: hsla(216,19%,89%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -87,59 +114,70 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 
 <div>
   <div
-    class="Boxweb__Box-xvyj85-0"
+    class=""
   >
     <label
       class="c0"
     >
-      <input
-        aria-checked="false"
-        aria-disabled="false"
-        aria-hidden="true"
-        aria-invalid="false"
-        aria-required="false"
+      <div
         class="c1"
-        role="checkbox"
-        type="checkbox"
-        value=""
-      />
-      <div
-        class="c2"
+        display="flex"
       >
         <div
-          class=""
-          style="opacity: 0; position: absolute; display: flex;"
+          class="c2"
+          display="flex"
         >
-          <svg
+          <input
+            aria-checked="false"
+            aria-disabled="false"
             aria-hidden="true"
-            fill="none"
-            height="16px"
-            viewBox="0 0 16 16"
-            width="16px"
+            aria-invalid="false"
+            aria-required="false"
+            class="c3"
+            role="checkbox"
+            type="checkbox"
+            value=""
+          />
+          <div
+            class="c4"
           >
-            <path
-              d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-              fill="hsla(220, 27%, 98%, 1)"
+            <div
+              class=""
+              style="opacity: 0; position: absolute; display: flex;"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="16px"
+                viewBox="0 0 16 16"
+                width="16px"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                  fill="hsla(220, 27%, 98%, 1)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <div
+              class="c5"
+              style="opacity: 0; position: absolute; display: flex;"
             />
-          </svg>
+          </div>
+          <div
+            class="c6"
+            color="surface.text.subtle.lowContrast"
+            font-family="text"
+            font-size="100"
+            font-weight="regular"
+          >
+            Remember password
+          </div>
         </div>
         <div
-          class="c3"
-          style="opacity: 0; position: absolute; display: flex;"
+          class="c7"
         />
-      </div>
-      <div
-        class="Boxweb__Box-xvyj85-0"
-      >
-        <div
-          class="c4"
-          color="surface.text.subtle.lowContrast"
-          font-family="text"
-          font-size="100"
-          font-weight="regular"
-        >
-          Remember password
-        </div>
       </div>
     </label>
   </div>
@@ -147,7 +185,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 `;
 
 exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
-.c2 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -165,19 +203,46 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   border-width: 1px;
   border-style: solid;
   margin: 0px;
-  margin-top: 3px;
   border-radius: 2px;
   margin-right: 8px;
   background-color: hsla(220,30%,96%,1);
   border-color: hsla(220,30%,96%,1);
 }
 
-.c3 {
+.c5 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c4 {
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7 {
+  margin-left: 24px;
+}
+
+.c6 {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -200,7 +265,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   margin-bottom: 2px;
 }
 
-.c1 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -216,67 +281,78 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c1:focus + div {
+.c3:focus + div {
   outline: 1px solid white;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 <div>
   <div
-    class="Boxweb__Box-xvyj85-0"
+    class=""
   >
     <label
       class="c0"
     >
-      <input
-        aria-checked="false"
-        aria-disabled="true"
-        aria-hidden="true"
-        aria-invalid="false"
-        aria-required="false"
+      <div
         class="c1"
-        disabled=""
-        role="checkbox"
-        type="checkbox"
-        value=""
-      />
-      <div
-        class="c2"
+        display="flex"
       >
         <div
-          class=""
-          style="opacity: 0; position: absolute; display: flex;"
+          class="c2"
+          display="flex"
         >
-          <svg
+          <input
+            aria-checked="false"
+            aria-disabled="true"
             aria-hidden="true"
-            fill="none"
-            height="16px"
-            viewBox="0 0 16 16"
-            width="16px"
+            aria-invalid="false"
+            aria-required="false"
+            class="c3"
+            disabled=""
+            role="checkbox"
+            type="checkbox"
+            value=""
+          />
+          <div
+            class="c4"
           >
-            <path
-              d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-              fill="hsla(214, 18%, 69%, 1)"
+            <div
+              class=""
+              style="opacity: 0; position: absolute; display: flex;"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="16px"
+                viewBox="0 0 16 16"
+                width="16px"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                  fill="hsla(214, 18%, 69%, 1)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <div
+              class="c5"
+              style="opacity: 0; position: absolute; display: flex;"
             />
-          </svg>
+          </div>
+          <div
+            class="c6"
+            color="surface.text.placeholder.lowContrast"
+            font-family="text"
+            font-size="100"
+            font-weight="regular"
+          >
+            Remember password
+          </div>
         </div>
         <div
-          class="c3"
-          style="opacity: 0; position: absolute; display: flex;"
+          class="c7"
         />
-      </div>
-      <div
-        class="Boxweb__Box-xvyj85-0"
-      >
-        <div
-          class="c4"
-          color="surface.text.placeholder.lowContrast"
-          font-family="text"
-          font-size="100"
-          font-weight="regular"
-        >
-          Remember password
-        </div>
       </div>
     </label>
   </div>
@@ -284,7 +360,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 `;
 
 exports[`<Checkbox /> should set error state with validationState 1`] = `
-.c2 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -302,27 +378,54 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   border-width: 1px;
   border-style: solid;
   margin: 0px;
-  margin-top: 3px;
   border-radius: 2px;
   margin-right: 8px;
   background-color: hsla(9,91%,56%,0.09);
   border-color: hsla(8,73%,47%,1);
 }
 
-.c3 {
+.c5 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c5 {
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7 {
+  margin-left: 24px;
+}
+
+.c8 {
   margin-top: 4px;
 }
 
-.c6 {
+.c9 {
   margin-right: 4px;
 }
 
-.c4 {
+.c6 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -336,7 +439,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c10 {
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -359,7 +462,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   margin-bottom: 2px;
 }
 
-.c1 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -375,7 +478,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   word-wrap: normal;
 }
 
-.c1:focus + div {
+.c3:focus + div {
   outline: 1px solid white;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -387,59 +490,70 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     <label
       class="c0"
     >
-      <input
-        aria-checked="false"
-        aria-disabled="false"
-        aria-errormessage="checkbox-19-errortext-21"
-        aria-hidden="true"
-        aria-invalid="true"
-        aria-required="false"
+      <div
         class="c1"
-        role="checkbox"
-        type="checkbox"
-        value=""
-      />
-      <div
-        class="c2"
+        display="flex"
       >
         <div
-          class=""
-          style="opacity: 0; position: absolute; display: flex;"
+          class="c2"
+          display="flex"
         >
-          <svg
+          <input
+            aria-checked="false"
+            aria-disabled="false"
+            aria-errormessage="checkbox-19-errortext-21"
             aria-hidden="true"
-            fill="none"
-            height="16px"
-            viewBox="0 0 16 16"
-            width="16px"
+            aria-invalid="true"
+            aria-required="false"
+            class="c3"
+            role="checkbox"
+            type="checkbox"
+            value=""
+          />
+          <div
+            class="c4"
           >
-            <path
-              d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-              fill="hsla(220, 27%, 98%, 1)"
+            <div
+              class=""
+              style="opacity: 0; position: absolute; display: flex;"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="16px"
+                viewBox="0 0 16 16"
+                width="16px"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                  fill="hsla(220, 27%, 98%, 1)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <div
+              class="c5"
+              style="opacity: 0; position: absolute; display: flex;"
             />
-          </svg>
+          </div>
+          <div
+            class="c6"
+            color="surface.text.subtle.lowContrast"
+            font-family="text"
+            font-size="100"
+            font-weight="regular"
+          >
+            Remember password
+          </div>
         </div>
         <div
-          class="c3"
-          style="opacity: 0; position: absolute; display: flex;"
+          class="c7"
         />
-      </div>
-      <div
-        class=""
-      >
-        <div
-          class="c4"
-          color="surface.text.subtle.lowContrast"
-          font-family="text"
-          font-size="100"
-          font-weight="regular"
-        >
-          Remember password
-        </div>
       </div>
     </label>
     <div
-      class="c5"
+      class="c8"
     />
     <span
       style="display: flex; flex-direction: row; align-items: center;"
@@ -467,10 +581,10 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         />
       </svg>
       <div
-        class="c6"
+        class="c9"
       />
       <span
-        class="c7"
+        class="c10"
         color="feedback.text.negative.lowContrast"
         font-family="text"
         font-size="50"
@@ -485,7 +599,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 `;
 
 exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
-.c2 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -503,24 +617,51 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   border-width: 1px;
   border-style: solid;
   margin: 0px;
-  margin-top: 3px;
   border-radius: 2px;
   margin-right: 8px;
   background-color: hsla(213,89%,56%,1);
   border-color: hsla(213,89%,56%,1);
 }
 
-.c3 {
+.c5 {
   -webkit-animation: byNIqG 150ms cubic-bezier(0,0,0.2,1);
   animation: byNIqG 150ms cubic-bezier(0,0,0.2,1);
 }
 
-.c4 {
+.c6 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c5 {
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8 {
+  margin-left: 24px;
+}
+
+.c7 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -543,7 +684,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   margin-bottom: 2px;
 }
 
-.c1 {
+.c3 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -559,13 +700,13 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   word-wrap: normal;
 }
 
-.c1:focus + div {
+.c3:focus + div {
   outline: 1px solid white;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c1:hover + div,
-.c1:focus + div {
+.c3:hover + div,
+.c3:focus + div {
   border-color: hsla(218,89%,51%,1);
   background-color: hsla(218,89%,51%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -576,73 +717,86 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
 
 <div>
   <div
-    class="Boxweb__Box-xvyj85-0"
+    class=""
   >
     <label
       class="c0"
     >
-      <input
-        aria-checked="true"
-        aria-disabled="false"
-        aria-hidden="true"
-        aria-invalid="false"
-        aria-required="false"
-        checked=""
+      <div
         class="c1"
-        role="checkbox"
-        type="checkbox"
-        value=""
-      />
-      <div
-        class="c2"
+        display="flex"
       >
         <div
-          class="c3"
-          style="opacity: 1; position: absolute; display: flex;"
+          class="c2"
+          display="flex"
         >
-          <svg
+          <input
+            aria-checked="true"
+            aria-disabled="false"
             aria-hidden="true"
-            fill="none"
-            height="16px"
-            viewBox="0 0 16 16"
-            width="16px"
+            aria-invalid="false"
+            aria-required="false"
+            checked=""
+            class="c3"
+            role="checkbox"
+            type="checkbox"
+            value=""
+          />
+          <div
+            class="c4"
           >
-            <path
-              d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
-              fill="hsla(220, 27%, 98%, 1)"
-            />
-          </svg>
+            <div
+              class="c5"
+              style="opacity: 1; position: absolute; display: flex;"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="16px"
+                viewBox="0 0 16 16"
+                width="16px"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                  fill="hsla(220, 27%, 98%, 1)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <div
+              class="c6"
+              style="opacity: 0; position: absolute; display: flex;"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="16px"
+                viewBox="0 0 16 16"
+                width="16px"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M12.3536 4.64645C12.5488 4.84171 12.5488 5.15829 12.3536 5.35355L6.85355 10.8536C6.65829 11.0488 6.34171 11.0488 6.14645 10.8536L3.64645 8.35355C3.45118 8.15829 3.45118 7.84171 3.64645 7.64645C3.84171 7.45118 4.15829 7.45118 4.35355 7.64645L6.5 9.79289L11.6464 4.64645C11.8417 4.45118 12.1583 4.45118 12.3536 4.64645Z"
+                  fill="hsla(220, 27%, 98%, 1)"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="c7"
+            color="surface.text.subtle.lowContrast"
+            font-family="text"
+            font-size="100"
+            font-weight="regular"
+          >
+            Remember password
+          </div>
         </div>
         <div
-          class="c4"
-          style="opacity: 0; position: absolute; display: flex;"
-        >
-          <svg
-            aria-hidden="true"
-            fill="none"
-            height="16px"
-            viewBox="0 0 16 16"
-            width="16px"
-          >
-            <path
-              d="M12.3536 4.64645C12.5488 4.84171 12.5488 5.15829 12.3536 5.35355L6.85355 10.8536C6.65829 11.0488 6.34171 11.0488 6.14645 10.8536L3.64645 8.35355C3.45118 8.15829 3.45118 7.84171 3.64645 7.64645C3.84171 7.45118 4.15829 7.45118 4.35355 7.64645L6.5 9.79289L11.6464 4.64645C11.8417 4.45118 12.1583 4.45118 12.3536 4.64645Z"
-              fill="hsla(220, 27%, 98%, 1)"
-            />
-          </svg>
-        </div>
-      </div>
-      <div
-        class="Boxweb__Box-xvyj85-0"
-      >
-        <div
-          class="c5"
-          color="surface.text.subtle.lowContrast"
-          font-family="text"
-          font-size="100"
-          font-weight="regular"
-        >
-          Remember password
-        </div>
+          class="c8"
+        />
       </div>
     </label>
   </div>

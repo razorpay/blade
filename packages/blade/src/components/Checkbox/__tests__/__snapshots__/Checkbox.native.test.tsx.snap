@@ -42,67 +42,97 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
     }
   >
     <View
-      isChecked={false}
-      isNegative={false}
+      display="flex"
+      flexDirection="column"
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "backgroundColor": "hsla(220, 27%, 98%, 1)",
-            "borderColor": "hsla(216, 19%, 89%, 1)",
-            "borderRadius": 2,
-            "borderStyle": "solid",
-            "borderWidth": 1,
             "display": "flex",
-            "height": 16,
-            "justifyContent": "center",
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 8,
-            "marginTop": 3,
-            "width": 16,
+            "flexDirection": "column",
           },
         ]
       }
-    />
-    <View
-      style={
-        Array [
-          Object {},
-        ]
-      }
     >
-      <Text
-        color="surface.text.subtle.lowContrast"
-        fontFamily="text"
-        fontSize={100}
-        fontWeight="regular"
-        lineHeight="l"
+      <View
+        alignItems="center"
+        display="flex"
+        flexDirection="row"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 15,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "lineHeight": 24,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "left",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        Remember password
-      </Text>
+        <View
+          isChecked={false}
+          isNegative={false}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                "borderColor": "hsla(216, 19%, 89%, 1)",
+                "borderRadius": 2,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "display": "flex",
+                "height": 16,
+                "justifyContent": "center",
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 8,
+                "marginTop": 0,
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <Text
+          color="surface.text.subtle.lowContrast"
+          fontFamily="text"
+          fontSize={100}
+          fontWeight="regular"
+          lineHeight="l"
+          style={
+            Array [
+              Object {
+                "color": "hsla(216, 27%, 36%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 15,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 24,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Remember password
+        </Text>
+      </View>
+      <View
+        marginLeft="spacing.6"
+        style={
+          Array [
+            Object {
+              "marginLeft": 24,
+            },
+          ]
+        }
+      />
     </View>
   </View>
 </View>
@@ -150,68 +180,98 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
     }
   >
     <View
-      isChecked={false}
-      isDisabled={true}
-      isNegative={false}
+      display="flex"
+      flexDirection="column"
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "backgroundColor": "hsla(220, 30%, 96%, 1)",
-            "borderColor": "hsla(220, 30%, 96%, 1)",
-            "borderRadius": 2,
-            "borderStyle": "solid",
-            "borderWidth": 1,
             "display": "flex",
-            "height": 16,
-            "justifyContent": "center",
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 8,
-            "marginTop": 3,
-            "width": 16,
+            "flexDirection": "column",
           },
         ]
       }
-    />
-    <View
-      style={
-        Array [
-          Object {},
-        ]
-      }
     >
-      <Text
-        color="surface.text.placeholder.lowContrast"
-        fontFamily="text"
-        fontSize={100}
-        fontWeight="regular"
-        lineHeight="l"
+      <View
+        alignItems="center"
+        display="flex"
+        flexDirection="row"
         style={
           Array [
             Object {
-              "color": "hsla(214, 18%, 69%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 15,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "lineHeight": 24,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "left",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        Remember password
-      </Text>
+        <View
+          isChecked={false}
+          isDisabled={true}
+          isNegative={false}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "hsla(220, 30%, 96%, 1)",
+                "borderColor": "hsla(220, 30%, 96%, 1)",
+                "borderRadius": 2,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "display": "flex",
+                "height": 16,
+                "justifyContent": "center",
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 8,
+                "marginTop": 0,
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <Text
+          color="surface.text.placeholder.lowContrast"
+          fontFamily="text"
+          fontSize={100}
+          fontWeight="regular"
+          lineHeight="l"
+          style={
+            Array [
+              Object {
+                "color": "hsla(214, 18%, 69%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 15,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 24,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Remember password
+        </Text>
+      </View>
+      <View
+        marginLeft="spacing.6"
+        style={
+          Array [
+            Object {
+              "marginLeft": 24,
+            },
+          ]
+        }
+      />
     </View>
   </View>
 </View>
@@ -260,67 +320,97 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     }
   >
     <View
-      isChecked={false}
-      isNegative={true}
+      display="flex"
+      flexDirection="column"
       style={
         Array [
           Object {
-            "alignItems": "center",
-            "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-            "borderColor": "hsla(8, 73%, 47%, 1)",
-            "borderRadius": 2,
-            "borderStyle": "solid",
-            "borderWidth": 1,
             "display": "flex",
-            "height": 16,
-            "justifyContent": "center",
-            "marginBottom": 0,
-            "marginLeft": 0,
-            "marginRight": 8,
-            "marginTop": 3,
-            "width": 16,
+            "flexDirection": "column",
           },
         ]
       }
-    />
-    <View
-      style={
-        Array [
-          Object {},
-        ]
-      }
     >
-      <Text
-        color="surface.text.subtle.lowContrast"
-        fontFamily="text"
-        fontSize={100}
-        fontWeight="regular"
-        lineHeight="l"
+      <View
+        alignItems="center"
+        display="flex"
+        flexDirection="row"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 15,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "lineHeight": 24,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "left",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        Remember password
-      </Text>
+        <View
+          isChecked={false}
+          isNegative={true}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
+                "borderColor": "hsla(8, 73%, 47%, 1)",
+                "borderRadius": 2,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "display": "flex",
+                "height": 16,
+                "justifyContent": "center",
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 8,
+                "marginTop": 0,
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <Text
+          color="surface.text.subtle.lowContrast"
+          fontFamily="text"
+          fontSize={100}
+          fontWeight="regular"
+          lineHeight="l"
+          style={
+            Array [
+              Object {
+                "color": "hsla(216, 27%, 36%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 15,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 24,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Remember password
+        </Text>
+      </View>
+      <View
+        marginLeft="spacing.6"
+        style={
+          Array [
+            Object {
+              "marginLeft": 24,
+            },
+          ]
+        }
+      />
     </View>
   </View>
   <View

@@ -2,7 +2,8 @@
 
 exports[`<Badge /> should render Badge with Icon 1`] = `
 <View
-  contrast="low"
+  backgroundColor="feedback.background.neutral.lowContrast"
+  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -20,7 +21,6 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
       },
     ]
   }
-  variant="neutral"
 >
   <View
     alignItems="center"
@@ -169,7 +169,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 
 exports[`<Badge /> should render Badge with bold font 1`] = `
 <View
-  contrast="low"
+  backgroundColor="feedback.background.neutral.lowContrast"
+  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -187,7 +188,6 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
       },
     ]
   }
-  variant="neutral"
 >
   <View
     alignItems="center"
@@ -254,7 +254,8 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 
 exports[`<Badge /> should render Badge with default props 1`] = `
 <View
-  contrast="low"
+  backgroundColor="feedback.background.neutral.lowContrast"
+  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -272,7 +273,6 @@ exports[`<Badge /> should render Badge with default props 1`] = `
       },
     ]
   }
-  variant="neutral"
 >
   <View
     alignItems="center"
@@ -337,9 +337,95 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 </View>
 `;
 
+exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
+<View
+  backgroundColor="badge.background.blue.highContrast"
+  borderColor="badge.border.blue.highContrast"
+  platform="onMobile"
+  size="medium"
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "hsla(218, 89%, 51%, 1)",
+        "borderColor": "hsla(218, 89%, 51%, 1)",
+        "borderRadius": 9999,
+        "borderWidth": 1,
+        "display": "flex",
+        "flexWrap": "nowrap",
+        "maxWidth": 100,
+        "minHeight": 24,
+      },
+    ]
+  }
+>
+  <View
+    alignItems="center"
+    display="flex"
+    flex={1}
+    flexDirection="row"
+    justifyContent="center"
+    overflow="hidden"
+    paddingLeft="spacing.2"
+    paddingRight="spacing.2"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexBasis": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "paddingLeft": 8,
+          "paddingRight": 8,
+        },
+      ]
+    }
+  >
+    <Text
+      color="badge.text.blue.highContrast"
+      fontSize={75}
+      fontWeight="regular"
+      lineHeight="s"
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "hsla(0, 0%, 100%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 16,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {},
+        ]
+      }
+      textAlign="center"
+    >
+      Label
+    </Text>
+  </View>
+</View>
+`;
+
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 <View
-  contrast="high"
+  backgroundColor="feedback.background.information.highContrast"
+  borderColor="feedback.border.information.highContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -357,7 +443,6 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
       },
     ]
   }
-  variant="information"
 >
   <View
     alignItems="center"
@@ -424,7 +509,8 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 <View
-  contrast="high"
+  backgroundColor="feedback.background.negative.highContrast"
+  borderColor="feedback.border.negative.highContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -442,7 +528,6 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
       },
     ]
   }
-  variant="negative"
 >
   <View
     alignItems="center"
@@ -509,7 +594,8 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 <View
-  contrast="high"
+  backgroundColor="feedback.background.neutral.highContrast"
+  borderColor="feedback.border.neutral.highContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -527,7 +613,6 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
       },
     ]
   }
-  variant="neutral"
 >
   <View
     alignItems="center"
@@ -594,7 +679,8 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 <View
-  contrast="high"
+  backgroundColor="feedback.background.notice.highContrast"
+  borderColor="feedback.border.notice.highContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -612,7 +698,6 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
       },
     ]
   }
-  variant="notice"
 >
   <View
     alignItems="center"
@@ -679,7 +764,8 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 <View
-  contrast="high"
+  backgroundColor="feedback.background.positive.highContrast"
+  borderColor="feedback.border.positive.highContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -697,7 +783,6 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
       },
     ]
   }
-  variant="positive"
 >
   <View
     alignItems="center"
@@ -762,9 +847,95 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 </View>
 `;
 
+exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
+<View
+  backgroundColor="badge.background.blue.lowContrast"
+  borderColor="badge.border.blue.lowContrast"
+  platform="onMobile"
+  size="medium"
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
+        "borderColor": "hsla(218, 89%, 51%, 0.32)",
+        "borderRadius": 9999,
+        "borderWidth": 1,
+        "display": "flex",
+        "flexWrap": "nowrap",
+        "maxWidth": 100,
+        "minHeight": 24,
+      },
+    ]
+  }
+>
+  <View
+    alignItems="center"
+    display="flex"
+    flex={1}
+    flexDirection="row"
+    justifyContent="center"
+    overflow="hidden"
+    paddingLeft="spacing.2"
+    paddingRight="spacing.2"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexBasis": 0,
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "paddingLeft": 8,
+          "paddingRight": 8,
+        },
+      ]
+    }
+  >
+    <Text
+      color="badge.text.blue.lowContrast"
+      fontSize={75}
+      fontWeight="regular"
+      lineHeight="s"
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "hsla(218, 89%, 51%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 16,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textAlign": "center",
+            "textDecorationLine": "none",
+          },
+          Object {},
+        ]
+      }
+      textAlign="center"
+    >
+      Label
+    </Text>
+  </View>
+</View>
+`;
+
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 <View
-  contrast="low"
+  backgroundColor="feedback.background.information.lowContrast"
+  borderColor="feedback.border.information.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -782,7 +953,6 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
       },
     ]
   }
-  variant="information"
 >
   <View
     alignItems="center"
@@ -849,7 +1019,8 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 <View
-  contrast="low"
+  backgroundColor="feedback.background.negative.lowContrast"
+  borderColor="feedback.border.negative.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -867,7 +1038,6 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
       },
     ]
   }
-  variant="negative"
 >
   <View
     alignItems="center"
@@ -934,7 +1104,8 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 <View
-  contrast="low"
+  backgroundColor="feedback.background.neutral.lowContrast"
+  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -952,7 +1123,6 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
       },
     ]
   }
-  variant="neutral"
 >
   <View
     alignItems="center"
@@ -1019,7 +1189,8 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 <View
-  contrast="low"
+  backgroundColor="feedback.background.notice.lowContrast"
+  borderColor="feedback.border.notice.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -1037,7 +1208,6 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
       },
     ]
   }
-  variant="notice"
 >
   <View
     alignItems="center"
@@ -1104,7 +1274,8 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 <View
-  contrast="low"
+  backgroundColor="feedback.background.positive.lowContrast"
+  borderColor="feedback.border.positive.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -1122,7 +1293,6 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
       },
     ]
   }
-  variant="positive"
 >
   <View
     alignItems="center"
@@ -1189,7 +1359,8 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 
 exports[`<Badge /> should render medium size Badge 1`] = `
 <View
-  contrast="low"
+  backgroundColor="feedback.background.neutral.lowContrast"
+  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -1207,7 +1378,6 @@ exports[`<Badge /> should render medium size Badge 1`] = `
       },
     ]
   }
-  variant="neutral"
 >
   <View
     alignItems="center"
@@ -1274,7 +1444,8 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 
 exports[`<Badge /> should render small size Badge 1`] = `
 <View
-  contrast="low"
+  backgroundColor="feedback.background.neutral.lowContrast"
+  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="small"
   style={
@@ -1292,7 +1463,6 @@ exports[`<Badge /> should render small size Badge 1`] = `
       },
     ]
   }
-  variant="neutral"
 >
   <View
     alignItems="center"
