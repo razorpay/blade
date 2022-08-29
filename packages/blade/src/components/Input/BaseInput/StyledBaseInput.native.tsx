@@ -1,5 +1,4 @@
 import type { ReactElement } from 'react';
-import { useState } from 'react';
 import styled from 'styled-components/native';
 import type { StyledBaseInputProps } from './StyledBaseInput.d';
 import { getBaseInputStyles } from './baseInputStyles';
@@ -56,7 +55,10 @@ const autoCompleteSuggestionTypeIOS = {
 } as const;
 
 const StyledNativeBaseInput = styled.TextInput<
-  StyledBaseInputProps & {
+  Omit<
+    StyledBaseInputProps,
+    'accessibilityProps' | 'setCurrentInteraction' | 'currentInteraction'
+  > & {
     isFocused: boolean;
     autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
   }
@@ -84,23 +86,22 @@ export const StyledBaseInput = ({
   handleOnBlur,
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
+  accessibilityProps,
+  currentInteraction,
+  setCurrentInteraction,
   ...props
 }: StyledBaseInputProps & {
   keyboardReturnKeyType?: Exclude<StyledBaseInputProps['keyboardReturnKeyType'], 'enter'>;
 }): ReactElement => {
-  const [isFocused, setisFocused] = useState(false);
-
   return (
     <StyledNativeBaseInput
-      isFocused={isFocused}
+      isFocused={currentInteraction === 'focus'}
       editable={!isDisabled}
       onFocus={(): void => {
-        setisFocused(true);
-        props.setIsFocused(true);
+        setCurrentInteraction('focus');
       }}
       onBlur={(): void => {
-        setisFocused(false);
-        props.setIsFocused(false);
+        setCurrentInteraction('default');
       }}
       onChangeText={(text): void => handleOnChange?.({ name, value: text })}
       onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
@@ -118,6 +119,7 @@ export const StyledBaseInput = ({
           : undefined
       }
       {...props}
+      {...accessibilityProps}
     />
   );
 };

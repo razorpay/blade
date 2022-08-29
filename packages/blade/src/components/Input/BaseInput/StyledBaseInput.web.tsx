@@ -6,7 +6,9 @@ import type { StyledBaseInputProps } from './StyledBaseInput.d';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 
 // omitting our consumer `onChange` prop since the types are conflicting with the default onChange of HTML
-const StyledBaseNativeInput = styled.input<StyledBaseInputProps>((props) => ({
+const StyledBaseNativeInput = styled.input<
+  Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction'>
+>((props) => ({
   ...getBaseInputStyles({
     isDisabled: props.disabled,
     theme: props.theme,
@@ -20,14 +22,17 @@ const StyledBaseNativeInput = styled.input<StyledBaseInputProps>((props) => ({
   }),
   outline: 'none',
   border: 'none',
-  '::placeholder': getTextStyles({
-    size: 'medium',
-    variant: 'body',
-    type: 'placeholder',
-    weight: 'regular',
-    contrast: 'low',
-    theme: props.theme,
-  }),
+  '::placeholder': {
+    ...getTextStyles({
+      size: 'medium',
+      variant: 'body',
+      type: 'placeholder',
+      weight: 'regular',
+      contrast: 'low',
+      theme: props.theme,
+    }),
+    textAlign: props.textAlign,
+  },
   ':focus': {
     outline: 'none',
   },
@@ -59,6 +64,8 @@ export const StyledBaseInput = ({
   handleOnBlur,
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
+  accessibilityProps,
+  setCurrentInteraction,
   ...props
 }: StyledBaseInputProps): ReactElement => {
   return (
@@ -66,7 +73,11 @@ export const StyledBaseInput = ({
       disabled={isDisabled}
       required={isRequired}
       onChange={(event): void => handleOnChange?.({ name, value: event })}
-      onBlur={(event): void => handleOnBlur?.({ name, value: event })}
+      onBlur={(event): void => {
+        setCurrentInteraction('default');
+        handleOnBlur?.({ name, value: event });
+      }}
+      onFocus={(): void => setCurrentInteraction('focus')}
       enterKeyHint={keyboardReturnKeyType}
       autoComplete={
         autoCompleteSuggestionType
@@ -74,6 +85,7 @@ export const StyledBaseInput = ({
           : undefined
       }
       {...props}
+      {...accessibilityProps}
     />
   );
 };

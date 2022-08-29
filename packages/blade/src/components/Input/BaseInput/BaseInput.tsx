@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import { StyledBaseInput } from './StyledBaseInput';
 import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
-import { getPlatformType, useBreakpoint } from '~utils';
+import { getPlatformType, makeAccessible, useBreakpoint } from '~utils';
 import type { FormLabelProps } from '~components/Form/FormLabel';
 import type { FormHintProps } from '~components/Form/FormHint';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
+import useInteraction from '~components/Link/BaseLink/useInteraction';
 
 export type HandleOnEvent = ({
   name,
@@ -304,6 +305,38 @@ export const getHintType = ({
   return 'help';
 };
 
+const getDescribedByElementId = ({
+  validationState,
+  hasErrorText,
+  hasSuccessText,
+  hasHelpText,
+  errorTextId,
+  successTextId,
+  helpTextId,
+}: {
+  validationState: BaseInputProps['validationState'];
+  hasErrorText: boolean;
+  hasSuccessText: boolean;
+  hasHelpText: boolean;
+  errorTextId: string;
+  successTextId: string;
+  helpTextId: string;
+}): string => {
+  if (validationState === 'error' && hasErrorText) {
+    return errorTextId;
+  }
+
+  if (validationState === 'success' && hasSuccessText) {
+    return successTextId;
+  }
+
+  if (hasHelpText) {
+    return helpTextId;
+  }
+
+  return '';
+};
+
 export const BaseInput = ({
   label,
   labelPosition = 'top',
@@ -336,7 +369,22 @@ export const BaseInput = ({
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
-  const [isFocused, setIsFocused] = useState(false);
+  const { currentInteraction, setCurrentInteraction } = useInteraction();
+
+  const accessibilityProps = makeAccessible({
+    required: Boolean(isRequired),
+    disabled: Boolean(isDisabled),
+    invalid: Boolean(validationState === 'error'),
+    describedBy: getDescribedByElementId({
+      validationState,
+      hasErrorText: Boolean(errorText),
+      hasSuccessText: Boolean(successText),
+      hasHelpText: Boolean(helpText),
+      errorTextId,
+      successTextId,
+      helpTextId,
+    }),
+  });
 
   if (
     autoCompleteSuggestionType &&
@@ -356,6 +404,7 @@ export const BaseInput = ({
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
         justifyContent={isLabelLeftPositioned ? 'center' : undefined}
         alignItems={isLabelLeftPositioned ? 'center' : undefined}
+        position="relative"
       >
         <FormLabel
           as="label"
@@ -368,7 +417,7 @@ export const BaseInput = ({
         <BaseInputWrapper
           isDisabled={isDisabled}
           validationState={validationState}
-          isFocused={isFocused}
+          currentInteraction={currentInteraction}
         >
           <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
           <StyledBaseInput
@@ -388,13 +437,15 @@ export const BaseInput = ({
             interactionElement={interactionElement}
             suffix={suffix}
             trailingIcon={trailingIcon}
-            setIsFocused={setIsFocused}
             textAlign={textAlign}
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus}
             keyboardReturnKeyType={keyboardReturnKeyType}
             inputMode={inputMode}
             autoCompleteSuggestionType={autoCompleteSuggestionType}
+            accessibilityProps={accessibilityProps}
+            currentInteraction={currentInteraction}
+            setCurrentInteraction={setCurrentInteraction}
           />
           <BaseInputVisuals
             interactionElement={interactionElement}

@@ -16,24 +16,33 @@ type GetInputStyles = Pick<
   | 'trailingIcon'
   | 'textAlign'
 > & {
+  isHovered?: boolean;
   isFocused?: boolean;
   theme: Theme;
 };
 
 export const getInputBackgroundAndBorderStyles = ({
   theme,
+  isHovered,
   isFocused,
   isDisabled,
   validationState,
-}: Pick<GetInputStyles, 'theme' | 'isFocused' | 'isDisabled' | 'validationState'>): CSSObject => {
+}: Pick<
+  GetInputStyles,
+  'theme' | 'isFocused' | 'isDisabled' | 'validationState' | 'isHovered'
+>): CSSObject => {
   // normal state
   let backgroundColor = theme.colors.brand.gray[200];
   let borderBottomColor = theme.colors.brand.gray[400];
 
+  //hoverState
+  if (isHovered) {
+    backgroundColor = theme.colors.brand.gray[300];
+  }
+
   // focused state
   if (isFocused) {
     backgroundColor = theme.colors.brand.primary[300];
-    borderBottomColor = theme.colors.brand.primary[500];
   }
 
   // disabled state

@@ -1,12 +1,15 @@
 import type { Dispatch, SetStateAction } from 'react';
 import type { BaseInputProps, HandleOnEvent } from './BaseInput';
+import type { ActionStates } from '~tokens/theme/theme';
 
 export type StyledBaseInputProps = {
   handleOnChange?: HandleOnEvent;
   handleOnBlur?: HandleOnEvent;
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
-  setIsFocused: Dispatch<SetStateAction<boolean>>;
+  accessibilityProps: Record<string, unknown>;
+  currentInteraction: keyof ActionStates;
+  setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
 } & Pick<
   BaseInputProps,
   | 'id'

@@ -23,12 +23,12 @@ argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
 
 const getStories = () => {
   return [
+    require('../../src/components/Input/BaseInput/BaseInput.stories.tsx'),
     require('../../src/components/Badge/Badge.stories.tsx'),
     require('../../src/components/Button/Button/Button.stories.tsx'),
     require('../../src/components/Checkbox/Checkbox.stories.tsx'),
     require('../../src/components/Checkbox/CheckboxGroup.stories.tsx'),
     require('../../src/components/Icons/Icons.stories.tsx'),
-    require('../../src/components/Input/BaseInput/BaseInput.stories.tsx'),
     require('../../src/components/Link/BaseLink/BaseLink.stories.tsx'),
     require('../../src/components/Link/Link/Link.stories.tsx'),
     require('../../src/components/Radio/Radio.stories.tsx'),
