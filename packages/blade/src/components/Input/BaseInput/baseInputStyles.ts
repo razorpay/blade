@@ -3,7 +3,7 @@ import type { BaseInputProps } from './BaseInput';
 import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
-import { getPlatformType, makeBorderSize, makeSpace } from '~utils';
+import { makeBorderSize, makeSpace } from '~utils';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -27,7 +27,7 @@ export const getInputBackgroundAndBorderStyles = ({
   isFocused,
   isDisabled,
   validationState,
-}: GetInputStyles): CSSObject => {
+}: Pick<GetInputStyles, 'theme' | 'isFocused' | 'isDisabled' | 'validationState'>): CSSObject => {
   // normal state
   let backgroundColor = theme.colors.brand.gray[200];
   let borderBottomColor = theme.colors.brand.gray[400];
@@ -78,8 +78,6 @@ export const getBaseInputStyles = ({
   trailingIcon,
   textAlign,
 }: GetInputStyles): CSSObject => {
-  const isReactNative = getPlatformType() === 'react-native';
-
   const {
     hasLeadingIcon,
     hasPrefix,
@@ -114,8 +112,6 @@ export const getBaseInputStyles = ({
       hasInteractionElement || hasSuffix || hasTrailingIcon
         ? makeSpace(theme.spacing[2])
         : makeSpace(theme.spacing[3]),
-    ...(isReactNative ? { lineHeight: undefined, height: '36px' } : {}),
-    ...(!isReactNative ? { outline: 'none', border: 'none' } : {}),
     textAlign,
   };
 };

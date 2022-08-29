@@ -36,7 +36,7 @@ const autoCompleteSuggestionTypeAndroid = {
   creditCardExpiryYear: 'cc-exp-year',
 } as const;
 
-const autoCompleteSuggestionTypeiOS = {
+const autoCompleteSuggestionTypeIOS = {
   none: 'none',
   name: 'name',
   email: 'emailAddress',
@@ -74,6 +74,8 @@ const StyledNativeBaseInput = styled.TextInput<
     suffix: props.suffix,
     trailingIcon: props.trailingIcon,
   }),
+  lineHeight: undefined,
+  height: '36px',
 }));
 
 export const StyledBaseInput = ({
@@ -106,7 +108,7 @@ export const StyledBaseInput = ({
       returnKeyType={keyboardReturnKeyType}
       textContentType={
         autoCompleteSuggestionType
-          ? autoCompleteSuggestionTypeiOS[autoCompleteSuggestionType]
+          ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
           : undefined
       }
       autoCompleteType={

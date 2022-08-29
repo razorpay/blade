@@ -5,9 +5,9 @@ exports[`<TrashIcon /> should render TrashIcon 1`] = `
   <svg
     aria-hidden="true"
     fill="none"
-    height="24px"
+    height="20px"
     viewBox="0 0 24 24"
-    width="24px"
+    width="20px"
   >
     <path
       d="M10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1ZM15 11a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Z"
