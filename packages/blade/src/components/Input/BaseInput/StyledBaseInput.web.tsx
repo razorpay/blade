@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import type { ReactElement } from 'react';
-import getBaseInputStyles, { getInputBackgroundAndBorderStyles } from './getBaseInputStyles';
+import { getBaseInputStyles } from './baseInputStyles';
 
 import type { StyledBaseInputProps } from './StyledBaseInput.d';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
@@ -11,7 +11,15 @@ const StyledBaseNativeInput = styled.input<StyledBaseInputProps>((props) => ({
     isDisabled: props.disabled,
     theme: props.theme,
     validationState: props.validationState,
+    leadingIcon: props.leadingIcon,
+    prefix: props.prefix,
+    interactionElement: props.interactionElement,
+    suffix: props.suffix,
+    trailingIcon: props.trailingIcon,
+    textAlign: props.textAlign,
   }),
+  outline: 'none',
+  border: 'none',
   '::placeholder': getTextStyles({
     size: 'medium',
     variant: 'body',
@@ -21,32 +29,50 @@ const StyledBaseNativeInput = styled.input<StyledBaseInputProps>((props) => ({
     theme: props.theme,
   }),
   ':focus': {
-    ...getInputBackgroundAndBorderStyles({
-      theme: props.theme,
-      isFocused: true,
-      isDisabled: props.disabled,
-      validationState: props.validationState,
-    }),
     outline: 'none',
   },
-  borderTopStyle: 'hidden',
-  borderLeftStyle: 'hidden',
-  borderRightStyle: 'hidden',
-  boxSizing: 'border-box',
 }));
+
+const autoCompleteSuggestionTypeMap = {
+  none: 'off',
+  name: 'name',
+  email: 'email',
+  username: 'username',
+  password: 'current-password',
+  newPassword: 'new-password',
+  oneTimeCode: 'one-time-code',
+  telephone: 'tel',
+  postalCode: 'postal-code',
+  countryName: 'country',
+  creditCardNumber: 'cc-number',
+  creditCardCSC: 'cc-csc',
+  creditCardExpiry: 'cc-exp',
+  creditCardExpiryMonth: 'cc-exp-month',
+  creditCardExpiryYear: 'cc-exp-year',
+};
 
 export const StyledBaseInput = ({
   name,
   isDisabled,
   isRequired,
   handleOnChange,
+  handleOnBlur,
+  keyboardReturnKeyType,
+  autoCompleteSuggestionType,
   ...props
 }: StyledBaseInputProps): ReactElement => {
   return (
     <StyledBaseNativeInput
       disabled={isDisabled}
       required={isRequired}
-      onChange={(event): void => handleOnChange({ name, value: event })}
+      onChange={(event): void => handleOnChange?.({ name, value: event })}
+      onBlur={(event): void => handleOnBlur?.({ name, value: event })}
+      enterKeyHint={keyboardReturnKeyType}
+      autoComplete={
+        autoCompleteSuggestionType
+          ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
+          : undefined
+      }
       {...props}
     />
   );

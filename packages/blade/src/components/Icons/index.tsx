@@ -14,12 +14,21 @@ type ActionIconColors = `action.icon.${DotNotationColorStringToken<
   Theme['colors']['action']['icon']
 >}`;
 
+type TextIconColors = `surface.text.${DotNotationColorStringToken<
+  Theme['colors']['surface']['text']
+>}`;
+
 export type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 export type IconProps = {
   /**
    * Color token (not to be confused with actual hsla value)
    */
-  color: ActionIconColors | FeedbackIconColors | FeedbackActionIconColors | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
+  color:
+    | ActionIconColors
+    | FeedbackIconColors
+    | FeedbackActionIconColors
+    | TextIconColors
+    | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
   size: IconSize;
 };
 export type IconComponent = React.ComponentType<IconProps>;

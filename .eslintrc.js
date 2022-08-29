@@ -144,6 +144,7 @@ module.exports = {
         '@typescript-eslint/sort-type-union-intersection-members': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-shadow': ['off'],
+        '@typescript-eslint/explicit-module-boundary-types': ['off'],
       },
     },
     {

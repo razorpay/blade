@@ -1,10 +1,21 @@
 import type { CSSObject } from 'styled-components';
 import type { BaseInputProps } from './BaseInput';
+import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeBorderSize, makeSpace } from '~utils';
 
-type GetInputStyles = Pick<BaseInputProps, 'isDisabled' | 'validationState'> & {
+type GetInputStyles = Pick<
+  BaseInputProps,
+  | 'isDisabled'
+  | 'validationState'
+  | 'leadingIcon'
+  | 'prefix'
+  | 'interactionElement'
+  | 'suffix'
+  | 'trailingIcon'
+  | 'textAlign'
+> & {
   isFocused?: boolean;
   theme: Theme;
 };
@@ -14,7 +25,7 @@ export const getInputBackgroundAndBorderStyles = ({
   isFocused,
   isDisabled,
   validationState,
-}: GetInputStyles): CSSObject => {
+}: Pick<GetInputStyles, 'theme' | 'isFocused' | 'isDisabled' | 'validationState'>): CSSObject => {
   // normal state
   let backgroundColor = theme.colors.brand.gray[200];
   let borderBottomColor = theme.colors.brand.gray[400];
@@ -46,29 +57,54 @@ export const getInputBackgroundAndBorderStyles = ({
     borderTopLeftRadius: makeBorderSize(theme.border.radius.small),
     borderTopRightRadius: makeBorderSize(theme.border.radius.small),
     borderBottomWidth: makeBorderSize(theme.border.width.thin),
+    borderBottomStyle: 'solid',
   };
 };
 
-const getBaseInputStyles = ({
+export const getBaseInputStyles = ({
   theme,
-  isFocused,
   isDisabled,
-  validationState,
-}: GetInputStyles): CSSObject => ({
-  ...getTextStyles({
-    size: 'medium',
-    variant: 'body',
-    type: isDisabled ? 'placeholder' : 'subtle',
-    weight: 'regular',
-    contrast: 'low',
-    theme,
-  }),
-  ...getInputBackgroundAndBorderStyles({ theme, isFocused, isDisabled, validationState }),
-  paddingTop: makeSpace(theme.spacing[2]),
-  paddingBottom: makeSpace(theme.spacing[2]),
-  paddingLeft: makeSpace(theme.spacing[3]),
-  paddingRight: makeSpace(theme.spacing[3]),
-  width: '100%',
-});
+  leadingIcon,
+  prefix,
+  interactionElement,
+  suffix,
+  trailingIcon,
+  textAlign,
+}: GetInputStyles): CSSObject => {
+  const {
+    hasLeadingIcon,
+    hasPrefix,
+    hasInteractionElement,
+    hasSuffix,
+    hasTrailingIcon,
+  } = getInputVisualsToBeRendered({
+    leadingIcon,
+    prefix,
+    interactionElement,
+    suffix,
+    trailingIcon,
+  });
 
-export default getBaseInputStyles;
+  return {
+    ...getTextStyles({
+      size: 'medium',
+      variant: 'body',
+      type: isDisabled ? 'placeholder' : 'subtle',
+      weight: 'regular',
+      contrast: 'low',
+      theme,
+    }),
+    // take the full available width of parent container for input field
+    flex: 1,
+    backgroundColor: 'transparent',
+    paddingTop: makeSpace(theme.spacing[2]),
+    paddingBottom: makeSpace(theme.spacing[2]),
+    paddingLeft:
+      hasLeadingIcon || hasPrefix ? makeSpace(theme.spacing[2]) : makeSpace(theme.spacing[3]),
+    paddingRight:
+      hasInteractionElement || hasSuffix || hasTrailingIcon
+        ? makeSpace(theme.spacing[2])
+        : makeSpace(theme.spacing[3]),
+    textAlign,
+  };
+};

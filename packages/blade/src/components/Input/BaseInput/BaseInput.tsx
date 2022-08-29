@@ -1,6 +1,8 @@
-import React from 'react';
-import type { ReactElement } from 'react';
+import React, { useState } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import { StyledBaseInput } from './StyledBaseInput';
+import { BaseInputVisuals } from './BaseInputVisuals';
+import { BaseInputWrapper } from './BaseInputWrapper';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
 import { getPlatformType, useBreakpoint } from '~utils';
@@ -8,8 +10,9 @@ import type { FormLabelProps } from '~components/Form/FormLabel';
 import type { FormHintProps } from '~components/Form/FormHint';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
+import type { IconComponent } from '~components/Icons';
 
-export type HandleOnChange = ({
+export type HandleOnEvent = ({
   name,
   value,
 }: {
@@ -17,7 +20,7 @@ export type HandleOnChange = ({
   value?: React.ChangeEvent<HTMLInputElement> | string;
 }) => void;
 
-export type OnChange = ({ name, value }: { name?: string; value?: string }) => void;
+export type OnEvent = ({ name, value }: { name?: string; value?: string }) => void;
 
 // TODO: need to abstract for generic use
 type InputLabelProps = {
@@ -32,7 +35,7 @@ type InputLabelProps = {
   /**
    * Displays `(optional)` when `optional` is passed or `*` when `required` is passed
    */
-  neccessityIndicator?: FormLabelProps['necessityIndicator'];
+  necessityIndicator?: FormLabelProps['necessityIndicator'];
 };
 
 // TODO: need to abstract for generic use
@@ -92,7 +95,13 @@ export type BaseInputProps = InputLabelProps &
     /**
      * The callback function to be invoked when the value of the input field changes
      */
-    onChange?: OnChange;
+    onChange?: OnEvent;
+    /**
+     * The callback function to be invoked when the the input field loses focus
+     *
+     * For React Native this will call `onEndEditing` event since we want to get the last value of the input field
+     */
+    onBlur?: OnEvent;
     /**
      * Used to turn the input field to controlled so user can control the value
      */
@@ -105,22 +114,134 @@ export type BaseInputProps = InputLabelProps &
      * If true, the input is marked as required, and `required` attribute will be added
      */
     isRequired?: boolean;
+    /**
+     * Icon to be shown at the start of the input field
+     */
+    leadingIcon?: IconComponent;
+    /**
+     * Prefix symbol to be displayed at the beginning of the input field
+     */
+    prefix?: string;
+    /**
+     * this is left to the components which is extending BaseInput
+     *
+     * eg: consumers can render a loader or they could render a clear button
+     */
+    interactionElement?: ReactNode;
+    // /**
+    //  * Decides whether to render a clear icon button
+    //  */
+    // showClearButton?: boolean;
+    // /**
+    //  * Event handler to handle the onClick event for clear button.
+    //  */
+    // onClearButtonClick?: () => void;
+    // /**
+    //  * Decides whether to show a loading spinner for the input field.
+    //  */
+    // isLoading?: boolean;
+    /**
+     * Suffix symbol to be displayed at the beginning of the input field
+     */
+    suffix?: string;
+    /**
+     * Icon to be displayed at the end of the input field
+     */
+    trailingIcon?: IconComponent;
+    /**
+     * Displays the character counter under the input field
+     */
+    maxCharacters?: number;
+    /**
+     * alignment of the text inside input field
+     */
+    textAlign?: 'left' | 'center' | 'right';
+    /**
+     * If true, focuses the input field on load
+     *
+     * **Note:**
+     * Automatically focusing a form control can confuse visually-impaired people using screen-reading technology and people with cognitive impairments.
+     * When autofocus is assigned, screen-readers "teleport" their user to the form control without warning them beforehand.
+     */
+    autoFocus?: boolean;
+    /**
+     * determines what return key to show on the keyboard of mobile devices/virtual keyboard
+     * **Note**: Few values are platform dependent and might not render on all the platforms
+     *
+     * `enter` is only available on web
+     * `previous` is only available on native android
+     */
+    keyboardReturnKeyType?: 'enter' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
+    /**
+     * **Web only**
+     *
+     * Hints browser to display an appropriate virtual keyboard
+     *
+     *
+     */
+    inputMode?: 'text' | 'search' | 'tel' | 'email' | 'url';
+    /**
+     * determines what autoComplete suggestion type to show
+     *
+     * Internally it'll render platform specific attributes:
+     *
+     * - web: `autocomplete`
+     * - iOS: `textContentType`
+     * - android: `autoComplete`
+     *
+     */
+    autoCompleteSuggestionType?:
+      | 'none'
+      | 'name'
+      | 'email'
+      | 'username'
+      | 'password'
+      | 'newPassword'
+      | 'oneTimeCode'
+      | 'telephone'
+      | 'postalCode'
+      | 'countryName'
+      | 'creditCardNumber'
+      | 'creditCardCSC'
+      | 'creditCardExpiry'
+      | 'creditCardExpiryMonth'
+      | 'creditCardExpiryYear';
   };
+
+const autoCompleteSuggestionTypeValues = [
+  'none',
+  'name',
+  'email',
+  'username',
+  'password',
+  'newPassword',
+  'oneTimeCode',
+  'telephone',
+  'postalCode',
+  'countryName',
+  'creditCardNumber',
+  'creditCardCSC',
+  'creditCardExpiry',
+  'creditCardExpiryMonth',
+  'creditCardExpiryYear',
+];
 
 const useInput = ({
   value,
   defaultValue,
   onChange,
-}: Pick<BaseInputProps, 'value' | 'defaultValue' | 'onChange'>): {
-  handleOnChange: HandleOnChange;
+  onBlur,
+}: Pick<BaseInputProps, 'value' | 'defaultValue' | 'onChange' | 'onBlur'>): {
+  handleOnChange: HandleOnEvent;
+  handleOnBlur: HandleOnEvent;
 } => {
   if (value && defaultValue) {
     throw new Error(
-      `[Blade Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+      `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
     );
   }
 
-  const handleOnChange: HandleOnChange = React.useCallback(
+  const handleOnChange: HandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
 
@@ -139,21 +260,40 @@ const useInput = ({
     [onChange],
   );
 
-  return { handleOnChange };
+  const handleOnBlur: HandleOnEvent = React.useCallback(
+    ({ name, value }) => {
+      let _value = '';
+
+      if (getPlatformType() === 'react-native' && typeof value == 'string') {
+        _value = value;
+      } else if (typeof value !== 'string') {
+        // it's weird but TS forced me to write this much code where I could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" :(
+        _value = value?.target.value ?? '';
+      }
+
+      onBlur?.({
+        name,
+        value: _value,
+      });
+    },
+    [onBlur],
+  );
+
+  return { handleOnChange, handleOnBlur };
 };
 
 export const getHintType = ({
-  _validationState,
+  validationState,
   hasHelpText,
 }: {
-  _validationState: BaseInputProps['validationState'];
+  validationState: BaseInputProps['validationState'];
   hasHelpText: boolean;
 }): FormHintProps['type'] => {
-  if (_validationState === 'error') {
+  if (validationState === 'error') {
     return 'error';
   }
 
-  if (_validationState === 'success') {
+  if (validationState === 'success') {
     return 'success';
   }
 
@@ -174,18 +314,40 @@ export const BaseInput = ({
   value,
   onChange,
   isDisabled,
-  neccessityIndicator,
+  necessityIndicator,
   validationState,
   errorText,
   helpText,
   successText,
   isRequired,
+  leadingIcon,
+  prefix,
+  interactionElement,
+  suffix,
+  trailingIcon,
+  textAlign,
+  autoFocus,
+  keyboardReturnKeyType,
+  inputMode,
+  autoCompleteSuggestionType,
 }: BaseInputProps): ReactElement => {
   const { theme } = useTheme();
-  const { handleOnChange } = useInput({ defaultValue, value, onChange });
+  const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange });
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
+  const [isFocused, setIsFocused] = useState(false);
+
+  if (
+    autoCompleteSuggestionType &&
+    !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
+  ) {
+    throw new Error(
+      `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
+        ', ',
+      )} but received ${autoCompleteSuggestionType}`,
+    );
+  }
 
   return (
     <>
@@ -197,28 +359,55 @@ export const BaseInput = ({
       >
         <FormLabel
           as="label"
-          necessityIndicator={neccessityIndicator}
+          necessityIndicator={necessityIndicator}
           position={labelPosition}
           htmlFor={inputId}
         >
           {label}
         </FormLabel>
-        <StyledBaseInput
-          id={inputId}
-          name={name}
-          type={type}
-          defaultValue={defaultValue}
-          value={value}
-          placeholder={placeholder}
+        <BaseInputWrapper
           isDisabled={isDisabled}
           validationState={validationState}
-          isRequired={isRequired}
-          handleOnChange={handleOnChange}
-        />
+          isFocused={isFocused}
+        >
+          <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
+          <StyledBaseInput
+            id={inputId}
+            name={name}
+            type={type}
+            defaultValue={defaultValue}
+            value={value}
+            placeholder={placeholder}
+            isDisabled={isDisabled}
+            validationState={validationState}
+            isRequired={isRequired}
+            handleOnChange={handleOnChange}
+            handleOnBlur={handleOnBlur}
+            leadingIcon={leadingIcon}
+            prefix={prefix}
+            interactionElement={interactionElement}
+            suffix={suffix}
+            trailingIcon={trailingIcon}
+            setIsFocused={setIsFocused}
+            textAlign={textAlign}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus={autoFocus}
+            keyboardReturnKeyType={keyboardReturnKeyType}
+            inputMode={inputMode}
+            autoCompleteSuggestionType={autoCompleteSuggestionType}
+          />
+          <BaseInputVisuals
+            interactionElement={interactionElement}
+            suffix={suffix}
+            trailingIcon={trailingIcon}
+            isDisabled={isDisabled}
+          />
+        </BaseInputWrapper>
       </Box>
+      {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
       <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
         <FormHint
-          type={getHintType({ _validationState: validationState, hasHelpText: Boolean(helpText) })}
+          type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
           helpText={helpText}
           errorText={errorText}
           successText={successText}

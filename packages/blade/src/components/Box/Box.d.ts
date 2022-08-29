@@ -8,6 +8,7 @@ export type BoxProps = {
   flexDirection?: CSSObject['flexDirection'];
   flexGrow?: CSSObject['flexGrow'];
   alignItems?: CSSObject['alignItems'];
+  alignContent?: CSSObject['alignContent'];
   justifyContent?: CSSObject['justifyContent'];
   alignSelf?: CSSObject['alignSelf'];
   overflow?: CSSObject['overflow'];
@@ -24,11 +25,18 @@ export type BoxProps = {
   marginBottom?: DotNotationSpacingStringToken | 'auto' | number;
   marginLeft?: DotNotationSpacingStringToken | 'auto' | number;
   marginRight?: DotNotationSpacingStringToken | 'auto' | number;
+  width?: CSSObject['width'];
   gap?: DotNotationSpacingStringToken | 'auto' | number;
   minHeight?: number;
   minWidth?: number;
   maxHeight?: number;
   maxWidth?: number;
+  position?: CSSObject['position'];
+  transform?: CSSObject['transform'];
+  top?: CSSObject['top'];
+  left?: CSSObject['left'];
+  right?: CSSObject['right'];
+  bottom?: CSSObject['bottom'];
 };
 
 export { default } from './Box.web';

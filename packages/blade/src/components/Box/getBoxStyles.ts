@@ -12,6 +12,10 @@ const getSpacingValue = <T extends string | number | undefined>({
   theme: Theme;
 }): string | undefined => {
   if (value === 'auto') return 'auto';
+  /**
+   * NOTE: don't allow numbers once we have the scale for sizing
+   * DO NOT PUBLISH THIS COMPONENT PUBLICLY WITH THIS PIECE OF CODE ELSE YOU'LL BE OUT OF YOUR JOB
+   */
   if (typeof value === 'number') {
     return makeSpace(value);
   }
@@ -26,13 +30,9 @@ const getBoxStyles = ({
   flexDirection,
   flexGrow,
   alignItems,
+  alignContent,
   justifyContent,
   alignSelf,
-  position,
-  top,
-  right,
-  bottom,
-  left,
   overflow,
   paddingTop,
   paddingBottom,
@@ -43,10 +43,17 @@ const getBoxStyles = ({
   marginLeft,
   marginRight,
   gap,
+  width,
   minHeight,
   minWidth,
   maxHeight,
   maxWidth,
+  position,
+  transform,
+  top,
+  left,
+  right,
+  bottom,
 }: BoxProps & { theme: Theme }): CSSObject => ({
   display,
   flex,
@@ -54,6 +61,7 @@ const getBoxStyles = ({
   flexGrow,
   flexDirection,
   alignItems,
+  alignContent,
   justifyContent,
   alignSelf,
   overflow,
@@ -71,10 +79,12 @@ const getBoxStyles = ({
   marginLeft: getSpacingValue({ value: marginLeft, theme }),
   marginRight: getSpacingValue({ value: marginRight, theme }),
   gap: getSpacingValue({ value: gap, theme }),
+  width,
   minHeight: minHeight ? makeSize(minHeight) : undefined,
   minWidth: minWidth ? makeSize(minWidth) : undefined,
   maxHeight: maxHeight ? makeSize(maxHeight) : undefined,
   maxWidth: maxWidth ? makeSize(maxWidth) : undefined,
+  transform,
 });
 
 export default getBoxStyles;
