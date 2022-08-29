@@ -28,6 +28,9 @@ export type BoxProps = {
   minWidth?: number;
   maxHeight?: number;
   maxWidth?: number;
+  background?: CSSObject['background'];
+  height?: CSSObject['height'];
+  width?: CSSObject['width'];
 };
 
 export { default } from './Box.web';

@@ -61,7 +61,7 @@ Renders and accepts a subset of `Button` props as keys:
 | Key       | Type       | Default     | Description | Required |
 | --------- | ---------- | ----------- | ----------- | -------- |
 | `text`    | `string`   | `undefined` | Content     | ✅       |
-| `onClick` | `function` | `undefined` | Callback    |          |
+| `onClick` | `function` | `undefined` | Callback    | ✅       |
 
 ### SecondaryAction
 
