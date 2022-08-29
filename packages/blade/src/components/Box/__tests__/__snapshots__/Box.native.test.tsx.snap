@@ -4,8 +4,10 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
 <View
   alignItems="center"
   alignSelf="center"
+  background="hotpink"
   bottom={0}
   display="flex"
+  height="auto"
   justifyContent="center"
   left={0}
   maxHeight={56}
@@ -24,8 +26,10 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
       Object {
         "alignItems": "center",
         "alignSelf": "center",
+        "backgroundColor": "hotpink",
         "bottom": 0,
         "display": "flex",
+        "height": "auto",
         "justifyContent": "center",
         "left": 0,
         "maxHeight": 56,
@@ -40,9 +44,11 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
         "position": "absolute",
         "right": 0,
         "top": 0,
+        "width": "auto",
       },
     ]
   }
   top={0}
+  width="auto"
 />
 `;

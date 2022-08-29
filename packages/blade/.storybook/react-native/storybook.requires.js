@@ -23,6 +23,7 @@ argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
 
 const getStories = () => {
   return [
+    require('../../src/components/Alert/Alert.stories.tsx'),
     require('../../src/components/Badge/Badge.stories.tsx'),
     require('../../src/components/Button/Button/Button.stories.tsx'),
     require('../../src/components/Checkbox/Checkbox.stories.tsx'),
@@ -39,6 +40,7 @@ const getStories = () => {
     require('../../src/components/VisuallyHidden/VisuallyHidden.stories.tsx'),
     require('../../src/storybook-recipes/AccessibilityInterop/AccessibilityInteropDemo.stories.tsx'),
     require('../../src/storybook-recipes/SimpleCardWithTokens/CardWithTokens.stories.tsx'),
+    require('../../src/tokens/theme/overrideTheme.stories.tsx'),
     require('../../src/components/Button/BaseButton/BaseButton.stories.internal.tsx'),
     require('../../src/components/Button/IconButton/IconButton.stories.internal.tsx'),
   ];
