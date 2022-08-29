@@ -31,13 +31,18 @@ exports[`<Box /> should render Box component with the correct styles 1`] = `
   min-width: 48px;
   max-height: 56px;
   max-width: 56px;
+  background: hotpink;
+  height: auto;
+  width: auto;
 }
 
 <div>
   <div
     class="c0"
     display="flex"
+    height="auto"
     overflow="hidden"
+    width="auto"
   />
 </div>
 `;

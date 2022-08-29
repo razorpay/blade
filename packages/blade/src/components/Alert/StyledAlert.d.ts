@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
 
-import type { ColorContrast, IntentTypes } from '~tokens/theme/theme';
+import type { ColorContrast, Feedback } from '~tokens/theme/theme';
 
 export type StyledAlertProps = {
-  children: ReactNode[];
+  children: ReactNode;
   contrastType: keyof ColorContrast;
-  intent: Exclude<IntentTypes, 'neutral'>;
+  intent: Exclude<Feedback, 'neutral'>;
   isFullWidth: boolean;
   isBorderless: boolean;
 };
 
-export { default } from './StyledAlert.web';
+export { StyledAlert } from './StyledAlert.web';

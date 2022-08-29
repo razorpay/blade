@@ -1,15 +1,15 @@
 import type { ReactChild, ReactElement } from 'react';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
-import StyledAlert from './StyledAlert';
-import { AlertIcon, CloseIcon } from '~components/Icons';
-import { makeAccessible } from '~utils';
+import { StyledAlert } from './StyledAlert';
+import { AlertOctagonIcon, AlertTriangleIcon, CheckCircleIcon, CloseIcon } from '~components/Icons';
+import { getPlatformType, makeAccessible } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { ColorContrastTypes } from '~tokens/theme/theme';
+import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 
 type Nullable<Type> = Type | null;
 
@@ -36,7 +36,7 @@ type SecondaryActionLinkButton = {
 
 type SecondaryAction = SecondaryActionButton | SecondaryActionLinkButton;
 
-export type AlertProps = {
+type AlertProps = {
   /**
    * Body content, pass text or JSX. Avoid passing components except `Link` to customize the content.
    */
@@ -78,7 +78,7 @@ export type AlertProps = {
    *
    * @default information
    */
-  intent?: 'positive' | 'negative' | 'information' | 'notice';
+  intent?: Exclude<Feedback, 'neutral'>;
 
   /**
    * Removes border and border radii, useful for creating full bleed layouts. Automatically sets `isFullWidth` to `true` when enabled.
@@ -92,9 +92,9 @@ export type AlertProps = {
    */
   actions?: {
     /**
-     * Renders a button
+     * Renders a button (should **always** be present if `secondary` action is being used)
      */
-    primary?: PrimaryAction;
+    primary: PrimaryAction;
 
     /**
      * Renders a Link button
@@ -103,12 +103,17 @@ export type AlertProps = {
   };
 };
 
-// todo: add all icons
+const isReactNative = getPlatformType() === 'react-native';
+
+// Need extra wrappers on React Native only for alignment
+const SecondaryActionWrapper = isReactNative ? Box : Fragment;
+const CloseButtonWrapper = isReactNative ? Box : Fragment;
+
 const intentIconMap = {
-  positive: AlertIcon,
-  negative: AlertIcon,
-  information: AlertIcon,
-  notice: AlertIcon,
+  positive: CheckCircleIcon,
+  negative: AlertOctagonIcon,
+  information: AlertOctagonIcon,
+  notice: AlertTriangleIcon,
 };
 
 const Alert = ({
@@ -139,7 +144,7 @@ const Alert = ({
   const _description = <Text contrast={contrast}>{description}</Text>;
 
   const primaryAction = actions?.primary ? (
-    <Box marginRight="spacing.4" display="inline-flex">
+    <Box marginRight="spacing.4" display={isReactNative ? 'flex' : 'inline-flex'}>
       <BaseButton onClick={actions.primary.onClick} intent={intent} contrast={contrast}>
         {actions.primary.text}
       </BaseButton>
@@ -164,15 +169,16 @@ const Alert = ({
     secondaryActionParams.rel = actions.secondary.rel;
   }
   const secondaryAction = actions?.secondary ? (
-    // Todo: Link font weight mismatch
-    <BaseLink contrast={contrast} intent={intent} {...secondaryActionParams}>
-      {actions.secondary.text}
-    </BaseLink>
+    <SecondaryActionWrapper>
+      <BaseLink contrast={contrast} intent={intent} {...secondaryActionParams}>
+        {actions.secondary.text}
+      </BaseLink>
+    </SecondaryActionWrapper>
   ) : null;
 
   const _actions =
     primaryAction || secondaryAction ? (
-      <Box marginTop="spacing.3">
+      <Box marginTop="spacing.3" flexDirection="row" alignItems="center">
         {primaryAction}
         {secondaryAction}
       </Box>
@@ -185,17 +191,20 @@ const Alert = ({
     setIsVisible(false);
   };
   const closeButton = isDismissable ? (
-    <IconButton
-      accessibilityLabel="Dismiss alert"
-      onClick={onClickDismiss}
-      contrast={contrast}
-      size="large"
-      icon={CloseIcon}
-    />
+    <CloseButtonWrapper>
+      <IconButton
+        accessibilityLabel="Dismiss alert"
+        onClick={onClickDismiss}
+        contrast={contrast}
+        size="large"
+        icon={CloseIcon}
+      />
+    </CloseButtonWrapper>
   ) : null;
 
   const a11yProps = makeAccessible({
-    role: intent === 'negative' || intent === 'notice' ? 'alert' : 'status',
+    // React Native doesn't has status as role
+    role: isReactNative || intent === 'negative' || intent === 'notice' ? 'alert' : 'status',
     // override the implicit live region of role `alert`
     ...(intent === 'notice' && { liveRegion: 'polite' }),
   });
@@ -213,7 +222,7 @@ const Alert = ({
       {...a11yProps}
     >
       {icon}
-      <Box flex={1} paddingLeft="spacing.3" paddingRight="spacing.3">
+      <Box flex={1} paddingLeft="spacing.3" paddingRight="spacing.1">
         {_title}
         {_description}
         {_actions}
@@ -223,4 +232,4 @@ const Alert = ({
   );
 };
 
-export default Alert;
+export { AlertProps, Alert };
