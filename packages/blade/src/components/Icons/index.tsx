@@ -14,6 +14,10 @@ type ActionIconColors = `action.icon.${DotNotationColorStringToken<
   Theme['colors']['action']['icon']
 >}`;
 
+type SurfaceActionIconColors = `surface.action.icon.${DotNotationColorStringToken<
+  Theme['colors']['surface']['action']['icon']
+>}`;
+
 type BadgeIconColors = `badge.icon.${DotNotationColorStringToken<
   Theme['colors']['badge']['icon']
 >}`;
@@ -25,6 +29,7 @@ export type IconProps = {
    */
   color:
     | ActionIconColors
+    | SurfaceActionIconColors
     | FeedbackIconColors
     | FeedbackActionIconColors
     | BadgeIconColors
