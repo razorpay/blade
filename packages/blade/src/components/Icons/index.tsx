@@ -16,6 +16,8 @@ type ActionIconColors = `action.icon.${DotNotationColorStringToken<
 
 type TextIconColors = `surface.text.${DotNotationColorStringToken<
   Theme['colors']['surface']['text']
+>}`;
+
 type BadgeIconColors = `badge.icon.${DotNotationColorStringToken<
   Theme['colors']['badge']['icon']
 >}`;
