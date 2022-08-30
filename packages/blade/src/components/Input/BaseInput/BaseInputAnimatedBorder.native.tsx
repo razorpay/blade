@@ -9,24 +9,35 @@ import Animated, {
 
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
+import { getInputBorderBottomColor } from './baseInputStyles';
+import type { BaseInputProps } from './BaseInput';
 import { makeBorderSize } from '~utils';
+import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import type { ActionStates } from '~tokens/theme/theme';
 
-const BaseInputStyledAnimatedBorder = styled(Animated.View)(({ theme }) => ({
+const BaseInputStyledAnimatedBorder = styled(Animated.View)<{
+  theme: Theme;
+  validationState: BaseInputProps['validationState'];
+}>(({ theme, validationState }) => ({
   position: 'absolute',
   bottom: 0,
   left: 0,
   right: 0,
   opacity: 1,
-  backgroundColor: theme.colors.brand.primary[500],
+  backgroundColor: getInputBorderBottomColor({
+    theme,
+    validationState,
+  }),
   height: makeBorderSize(theme.border.width.thin),
 }));
 
 export const BaseInputAnimatedBorder = ({
   currentInteraction,
+  validationState,
 }: {
   currentInteraction: keyof ActionStates;
+  validationState: BaseInputProps['validationState'];
 }): ReactNode => {
   const { theme } = useTheme();
   const borderAnimationEasing = (theme.motion.easing.standard.effective as unknown) as EasingFn;
@@ -63,5 +74,5 @@ export const BaseInputAnimatedBorder = ({
     borderAnimationEasing,
   ]);
 
-  return <BaseInputStyledAnimatedBorder style={animatedStyle} />;
+  return <BaseInputStyledAnimatedBorder style={animatedStyle} validationState={validationState} />;
 };

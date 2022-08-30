@@ -49,6 +49,7 @@ const StyledBaseInputWrapper = styled(Box)<BaseInputWrapperProps>((props) => ({
 
 export const BaseInputWrapper = ({
   children,
+  validationState,
   currentInteraction,
   ...props
 }: BaseInputWrapperProps & {
@@ -60,12 +61,16 @@ export const BaseInputWrapper = ({
         display="flex"
         flexDirection="row"
         width="100%"
+        validationState={validationState}
         currentInteraction={currentInteraction}
         {...props}
       >
         {children}
       </StyledBaseInputWrapper>
-      <BaseInputAnimatedBorder currentInteraction={currentInteraction} />
+      <BaseInputAnimatedBorder
+        currentInteraction={currentInteraction}
+        validationState={validationState}
+      />
     </>
   );
 };

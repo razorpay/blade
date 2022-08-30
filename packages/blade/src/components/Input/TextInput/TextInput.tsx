@@ -35,8 +35,9 @@
  */
 
 import type { ReactElement } from 'react';
-import type { BaseInputProps } from '../BaseInput';
-import { BaseInput } from '../BaseInput';
+import type { BaseInputProps } from '~components/Input/BaseInput';
+import { BaseInput } from '~components/Input/BaseInput';
+import type { IconComponent } from '~components/Icons';
 
 export type TextInputProps = Pick<
   BaseInputProps,
@@ -63,7 +64,7 @@ export type TextInputProps = Pick<
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
 > & {
-  icon?: boolean;
+  icon?: IconComponent;
   showClearButton?: boolean;
   onClearButtonClick?: boolean;
   isLoading?: boolean;
@@ -137,7 +138,7 @@ export const TextInput = ({
   helpText,
   successText,
   isRequired,
-  // icon,
+  icon,
   prefix,
   // showClearButton,
   // onClearButtonClick,
@@ -165,7 +166,7 @@ export const TextInput = ({
       helpText={helpText}
       successText={successText}
       isRequired={isRequired}
-      // leadingIcon={icon}
+      leadingIcon={icon}
       prefix={prefix}
       // showClearButton={showClearButton}
       // onClearButtonClick={onClearButtonClick}

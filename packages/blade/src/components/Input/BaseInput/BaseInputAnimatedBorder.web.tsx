@@ -1,6 +1,8 @@
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import type { ReactElement } from 'react';
 import styled, { css, keyframes } from 'styled-components';
+import type { BaseInputProps } from './BaseInput';
+import { getInputBorderBottomColor } from './baseInputStyles';
 import Box from '~components/Box';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import type { Theme } from '~components/BladeProvider';
@@ -30,13 +32,25 @@ to {
 `;
 
 const BaseInputStyledAnimatedBorder = styled(Box)(
-  ({ theme, animation }: { theme: Theme; animation: FlattenSimpleInterpolation | null }) => css`
+  ({
+    theme,
+    animation,
+    validationState,
+  }: {
+    theme: Theme;
+    animation: FlattenSimpleInterpolation | null;
+    validationState: BaseInputProps['validationState'];
+  }) => css`
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     opacity: 0;
-    background-color: ${theme.colors.brand.primary[500]};
+    /* background-color: ${theme.colors.brand.primary[500]}; */
+    background-color: ${getInputBorderBottomColor({
+      theme,
+      validationState,
+    })};
     border-width: ${makeBorderSize(theme.border.width.thin)};
     height: ${makeBorderSize(theme.border.width.thin)};
     ${animation}
@@ -45,8 +59,10 @@ const BaseInputStyledAnimatedBorder = styled(Box)(
 
 export const BaseInputAnimatedBorder = ({
   currentInteraction,
+  validationState,
 }: {
   currentInteraction: keyof ActionStates;
+  validationState: BaseInputProps['validationState'];
 }): ReactElement => {
   const { theme } = useTheme();
 
@@ -67,5 +83,7 @@ export const BaseInputAnimatedBorder = ({
     borderAnimation = borderAnimationOnBlur;
   }
 
-  return <BaseInputStyledAnimatedBorder animation={borderAnimation} />;
+  return (
+    <BaseInputStyledAnimatedBorder animation={borderAnimation} validationState={validationState} />
+  );
 };

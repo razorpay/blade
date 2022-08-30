@@ -5,7 +5,7 @@ import { Highlight } from '@storybook/design-system';
 import React from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
-// import iconMap from '~components/Icons/iconMap';
+import iconMap from '~components/Icons/iconMap';
 // import { CloseIcon } from '~components/Icons';
 
 const propsCategory = {
@@ -29,7 +29,7 @@ export default {
     value: undefined,
     maxCharacters: 9999,
     textAlign: 'left',
-    autoFocus: true,
+    autoFocus: false,
     onChange: undefined,
     onBlur: undefined,
     label: 'Enter Name',
@@ -40,7 +40,7 @@ export default {
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
-    // leadingIcon: undefined,
+    icon: undefined,
     prefix: '',
     // interactionElement: <CloseIcon size="medium" color="surface.text.subtle.lowContrast" />,
     suffix: '',
@@ -145,14 +145,14 @@ export default {
         category: propsCategory.VALIDATION_PROPS,
       },
     },
-    // leadingIcon: {
-    //   name: 'leadingIcon',
-    //   type: 'select',
-    //   options: Object.keys(iconMap),
-    //   table: {
-    //     category: propsCategory.LEADING_VISUAL_PROPS,
-    //   },
-    // },
+    icon: {
+      name: 'icon',
+      type: 'select',
+      options: Object.keys(iconMap),
+      table: {
+        category: propsCategory.LEADING_VISUAL_PROPS,
+      },
+    },
     prefix: {
       table: {
         category: propsCategory.LEADING_VISUAL_PROPS,
@@ -211,14 +211,14 @@ export default {
 } as Meta<TextInputProps>;
 
 const TextInputTemplate: ComponentStory<typeof TextInputComponent> = ({
-  // leadingIcon,
+  icon,
   // trailingIcon,
   ...args
 }) => {
   return (
     <TextInputComponent
       {...args}
-      // leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+      icon={iconMap[(icon as unknown) as string]}
       // trailingIcon={iconMap[(trailingIcon as unknown) as string]}
     />
   );
@@ -249,31 +249,33 @@ TextInputSuccess.args = {
   successText: 'Name validated',
 };
 
-// const UncontrolledTextInputTemplate: ComponentStory<typeof TextInputComponent> = () => {
-//   return (
-//     <TextInput
-//       label="First Name"
-//       defaultValue="John Ives"
-//       name="fullName"
-//       onChange={({ name, value }): void => console.log({ name, value })}
-//     />
-//   );
-// };
-// export const UncontrolledTextInput = UncontrolledTextInputTemplate.bind({});
+const UncontrolledTextInputTemplate: ComponentStory<typeof TextInputComponent> = () => {
+  return (
+    <TextInput
+      label="First Name"
+      placeholder="Enter your first and last name"
+      defaultValue="John Ives"
+      name="fullName"
+      onChange={({ name, value }): void => console.log({ name, value })}
+    />
+  );
+};
+export const UncontrolledTextInput = UncontrolledTextInputTemplate.bind({});
 
-// const ControlledTextInputTemplate: ComponentStory<typeof TextInputComponent> = () => {
-//   const [inputValue, setInputValue] = React.useState('');
+const ControlledTextInputTemplate: ComponentStory<typeof TextInputComponent> = () => {
+  const [inputValue, setInputValue] = React.useState('');
 
-//   return (
-//     <TextInput
-//       label="First Name"
-//       value={inputValue}
-//       name="fullName"
-//       onChange={({ name, value }): void => {
-//         console.log(`sending ${name}:${value} to analytics service`);
-//         setInputValue(value ?? '');
-//       }}
-//     />
-//   );
-// };
-// export const ControlledTextInput = ControlledTextInputTemplate.bind({});
+  return (
+    <TextInput
+      label="First Name"
+      placeholder="Enter your first and last name"
+      value={inputValue}
+      name="fullName"
+      onChange={({ name, value }): void => {
+        console.log(`sending ${name}:${value} to analytics service`);
+        setInputValue(value ?? '');
+      }}
+    />
+  );
+};
+export const ControlledTextInput = ControlledTextInputTemplate.bind({});

@@ -43,6 +43,7 @@ export const getInputBackgroundAndBorderStyles = ({
   // focused state
   if (isFocused) {
     backgroundColor = theme.colors.brand.primary[300];
+    // borderBottomColor = theme.colors.brand.primary[500];
   }
 
   // disabled state
@@ -54,10 +55,10 @@ export const getInputBackgroundAndBorderStyles = ({
   // validation state
   if (validationState === 'error') {
     backgroundColor = theme.colors.feedback.background.negative.lowContrast;
-    borderBottomColor = theme.colors.feedback.border.negative.highContrast;
+    // borderBottomColor = theme.colors.feedback.border.negative.highContrast;
   } else if (validationState === 'success') {
     backgroundColor = theme.colors.feedback.background.positive.lowContrast;
-    borderBottomColor = theme.colors.feedback.border.positive.highContrast;
+    // borderBottomColor = theme.colors.feedback.border.positive.highContrast;
   }
 
   return {
@@ -68,6 +69,24 @@ export const getInputBackgroundAndBorderStyles = ({
     borderBottomWidth: makeBorderSize(theme.border.width.thin),
     borderBottomStyle: 'solid',
   };
+};
+
+export const getInputBorderBottomColor = ({
+  theme,
+  validationState,
+}: {
+  theme: Theme;
+  validationState: BaseInputProps['validationState'];
+}): string => {
+  let borderBottomColor = theme.colors.brand.primary[500];
+
+  if (validationState === 'error') {
+    borderBottomColor = theme.colors.feedback.border.negative.highContrast;
+  } else if (validationState === 'success') {
+    borderBottomColor = theme.colors.feedback.border.positive.highContrast;
+  }
+
+  return borderBottomColor;
 };
 
 export const getBaseInputStyles = ({
