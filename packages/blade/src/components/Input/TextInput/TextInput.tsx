@@ -29,15 +29,20 @@
  *
  * @todo
  * - create a map of type to keyboard and autosuggestion props and keyboardType - done
+ * - add icon prop - done
  * - manage the state for clear button
  * - implement maxCharacters
  *
  */
 
-import type { ReactElement } from 'react';
+import React, { useState } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import { BaseInput } from '~components/Input/BaseInput';
 import type { IconComponent } from '~components/Icons';
+import { InfoIcon, CloseIcon } from '~components/Icons';
+import { IconButton } from '~components/Button/IconButton';
+import { isEmpty } from '~utils';
 
 export type TextInputProps = Pick<
   BaseInputProps,
@@ -64,10 +69,22 @@ export type TextInputProps = Pick<
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
 > & {
-  icon?: IconComponent;
+  /**
+   * Decides whether to render a clear icon button
+   */
   showClearButton?: boolean;
-  onClearButtonClick?: boolean;
+  /**
+   * Event handler to handle the onClick event for clear button.
+   */
+  onClearButtonClick?: () => void;
+  /**
+   * Decides whether to show a loading spinner for the input field.
+   */
   isLoading?: boolean;
+  /**
+   * Icon that will be rendered at the beginning of the input field
+   */
+  icon?: IconComponent;
 };
 
 type TextInputKeyboardAndAutoComplete = Pick<
@@ -140,24 +157,66 @@ export const TextInput = ({
   isRequired,
   icon,
   prefix,
-  // showClearButton,
-  // onClearButtonClick,
-  // isLoading,
+  showClearButton,
+  onClearButtonClick,
+  isLoading,
   suffix,
   autoFocus,
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
 }: TextInputProps): ReactElement => {
+  const textInputRef = React.useRef<HTMLInputElement>(null);
+  const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
+
+  const renderInteractionElement = (): ReactNode => {
+    if (isLoading) {
+      return <InfoIcon size="medium" color="surface.text.subtle.lowContrast" />;
+    }
+
+    if (shouldShowClearButton) {
+      return (
+        <IconButton
+          size="medium"
+          icon={CloseIcon}
+          onClick={() => {
+            if (isEmpty(value) && textInputRef.current) {
+              // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
+              textInputRef.current.value = '';
+            }
+            // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
+            onClearButtonClick?.();
+          }}
+          accessibilityLabel="Clear Input Content"
+        />
+      );
+    }
+
+    return null;
+  };
+
   return (
     <BaseInput
       id="textinput"
+      ref={textInputRef}
       label={label}
       labelPosition={labelPosition}
       placeholder={placeholder}
       defaultValue={defaultValue}
       value={value}
       name={name}
-      onChange={onChange}
+      onChange={({ name, value }) => {
+        if (showClearButton && value?.length) {
+          // show the clear button when the user starts typing in
+          setShouldShowClearButton(true);
+        }
+
+        if (shouldShowClearButton && !value?.length) {
+          // hide the clear button when the input field is empty
+          setShouldShowClearButton(false);
+        }
+
+        onChange?.({ name, value });
+      }}
       onBlur={onBlur}
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
@@ -168,9 +227,7 @@ export const TextInput = ({
       isRequired={isRequired}
       leadingIcon={icon}
       prefix={prefix}
-      // showClearButton={showClearButton}
-      // onClearButtonClick={onClearButtonClick}
-      // isLoading={isLoading}
+      interactionElement={renderInteractionElement()}
       suffix={suffix}
       // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus={autoFocus}

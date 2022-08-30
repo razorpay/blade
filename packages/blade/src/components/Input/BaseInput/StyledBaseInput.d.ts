@@ -24,6 +24,7 @@ export type StyledBaseInputProps = Pick<
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
 > & {
+  handleOnFocus?: HandleOnEvent;
   handleOnChange?: HandleOnEvent;
   handleOnBlur?: HandleOnEvent;
   hasLeadingIcon?: boolean;

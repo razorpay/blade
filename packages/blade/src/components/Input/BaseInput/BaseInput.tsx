@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { StyledBaseInput } from './StyledBaseInput';
 import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
@@ -94,6 +94,10 @@ export type BaseInputProps = InputLabelProps &
      */
     name?: string;
     /**
+     * The callback function to be invoked when the input field gets focus
+     */
+    onFocus?: OnEvent;
+    /**
      * The callback function to be invoked when the value of the input field changes
      */
     onChange?: OnEvent;
@@ -129,18 +133,6 @@ export type BaseInputProps = InputLabelProps &
      * eg: consumers can render a loader or they could render a clear button
      */
     interactionElement?: ReactNode;
-    // /**
-    //  * Decides whether to render a clear icon button
-    //  */
-    // showClearButton?: boolean;
-    // /**
-    //  * Event handler to handle the onClick event for clear button.
-    //  */
-    // onClearButtonClick?: () => void;
-    // /**
-    //  * Decides whether to show a loading spinner for the input field.
-    //  */
-    // isLoading?: boolean;
     /**
      * Suffix symbol to be displayed at the beginning of the input field
      */
@@ -226,9 +218,11 @@ const autoCompleteSuggestionTypeValues = [
 const useInput = ({
   value,
   defaultValue,
+  onFocus,
   onChange,
   onBlur,
-}: Pick<BaseInputProps, 'value' | 'defaultValue' | 'onChange' | 'onBlur'>): {
+}: Pick<BaseInputProps, 'value' | 'defaultValue' | 'onFocus' | 'onChange' | 'onBlur'>): {
+  handleOnFocus: HandleOnEvent;
   handleOnChange: HandleOnEvent;
   handleOnBlur: HandleOnEvent;
 } => {
@@ -237,6 +231,25 @@ const useInput = ({
       `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
     );
   }
+
+  const handleOnFocus: HandleOnEvent = React.useCallback(
+    ({ name, value }) => {
+      let _value = '';
+
+      if (getPlatformType() === 'react-native' && typeof value === 'string') {
+        _value = value;
+      } else if (typeof value !== 'string') {
+        // it's weird but TS forced me to write this much code where I could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" :(
+        _value = value?.target.value ?? '';
+      }
+
+      onFocus?.({
+        name,
+        value: _value,
+      });
+    },
+    [onFocus],
+  );
 
   const handleOnChange: HandleOnEvent = React.useCallback(
     ({ name, value }) => {
@@ -276,7 +289,7 @@ const useInput = ({
     [onBlur],
   );
 
-  return { handleOnChange, handleOnBlur };
+  return { handleOnFocus, handleOnChange, handleOnBlur };
 };
 
 export const getHintType = ({
@@ -333,137 +346,151 @@ const getDescribedByElementId = ({
   return '';
 };
 
-export const BaseInput = ({
-  label,
-  labelPosition = 'top',
-  placeholder,
-  type = 'text',
-  defaultValue,
-  name,
-  value,
-  onChange,
-  onBlur,
-  isDisabled,
-  necessityIndicator,
-  validationState,
-  errorText,
-  helpText,
-  successText,
-  isRequired,
-  leadingIcon,
-  prefix,
-  interactionElement,
-  suffix,
-  trailingIcon,
-  textAlign,
-  autoFocus,
-  keyboardReturnKeyType,
-  keyboardType,
-  autoCompleteSuggestionType,
-}: BaseInputProps): ReactElement => {
-  const { theme } = useTheme();
-  const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange, onBlur });
-  const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
-  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
-  const { currentInteraction, setCurrentInteraction } = useInteraction();
-
-  const accessibilityProps = makeAccessible({
-    required: Boolean(isRequired),
-    disabled: Boolean(isDisabled),
-    invalid: Boolean(validationState === 'error'),
-    describedBy: getDescribedByElementId({
+export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
+  (
+    {
+      label,
+      labelPosition = 'top',
+      placeholder,
+      type = 'text',
+      defaultValue,
+      name,
+      value,
+      onFocus,
+      onChange,
+      onBlur,
+      isDisabled,
+      necessityIndicator,
       validationState,
-      hasErrorText: Boolean(errorText),
-      hasSuccessText: Boolean(successText),
-      hasHelpText: Boolean(helpText),
-      errorTextId,
-      successTextId,
-      helpTextId,
-    }),
-  });
+      errorText,
+      helpText,
+      successText,
+      isRequired,
+      leadingIcon,
+      prefix,
+      interactionElement,
+      suffix,
+      trailingIcon,
+      textAlign,
+      autoFocus,
+      keyboardReturnKeyType,
+      keyboardType,
+      autoCompleteSuggestionType,
+    },
+    ref,
+  ) => {
+    const { theme } = useTheme();
+    const { handleOnFocus, handleOnChange, handleOnBlur } = useInput({
+      defaultValue,
+      value,
+      onFocus,
+      onChange,
+      onBlur,
+    });
+    const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
+    const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+    const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
+    const { currentInteraction, setCurrentInteraction } = useInteraction();
 
-  if (
-    autoCompleteSuggestionType &&
-    !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
-  ) {
-    throw new Error(
-      `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
-        ', ',
-      )} but received ${autoCompleteSuggestionType}`,
-    );
-  }
+    const accessibilityProps = makeAccessible({
+      required: Boolean(isRequired),
+      disabled: Boolean(isDisabled),
+      invalid: Boolean(validationState === 'error'),
+      describedBy: getDescribedByElementId({
+        validationState,
+        hasErrorText: Boolean(errorText),
+        hasSuccessText: Boolean(successText),
+        hasHelpText: Boolean(helpText),
+        errorTextId,
+        successTextId,
+        helpTextId,
+      }),
+    });
 
-  return (
-    <>
-      <Box
-        display="flex"
-        flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
-        justifyContent={isLabelLeftPositioned ? 'center' : undefined}
-        alignItems={isLabelLeftPositioned ? 'center' : undefined}
-        position="relative"
-      >
-        <FormLabel
-          as="label"
-          necessityIndicator={necessityIndicator}
-          position={labelPosition}
-          htmlFor={inputId}
+    if (
+      autoCompleteSuggestionType &&
+      !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
+    ) {
+      throw new Error(
+        `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
+          ', ',
+        )} but received ${autoCompleteSuggestionType}`,
+      );
+    }
+
+    return (
+      <>
+        <Box
+          display="flex"
+          flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
+          justifyContent={isLabelLeftPositioned ? 'center' : undefined}
+          alignItems={isLabelLeftPositioned ? 'center' : undefined}
+          position="relative"
         >
-          {label}
-        </FormLabel>
-        <BaseInputWrapper
-          isDisabled={isDisabled}
-          validationState={validationState}
-          currentInteraction={currentInteraction}
-        >
-          <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
-          <StyledBaseInput
-            id={inputId}
-            name={name}
-            type={type}
-            defaultValue={defaultValue}
-            value={value}
-            placeholder={placeholder}
+          <FormLabel
+            as="label"
+            necessityIndicator={necessityIndicator}
+            position={labelPosition}
+            htmlFor={inputId}
+          >
+            {label}
+          </FormLabel>
+          <BaseInputWrapper
             isDisabled={isDisabled}
             validationState={validationState}
-            isRequired={isRequired}
-            handleOnChange={handleOnChange}
-            handleOnBlur={handleOnBlur}
-            leadingIcon={leadingIcon}
-            prefix={prefix}
-            interactionElement={interactionElement}
-            suffix={suffix}
-            trailingIcon={trailingIcon}
-            textAlign={textAlign}
-            // eslint-disable-next-line jsx-a11y/no-autofocus
-            autoFocus={autoFocus}
-            keyboardReturnKeyType={keyboardReturnKeyType}
-            keyboardType={keyboardType}
-            autoCompleteSuggestionType={autoCompleteSuggestionType}
-            accessibilityProps={accessibilityProps}
             currentInteraction={currentInteraction}
-            setCurrentInteraction={setCurrentInteraction}
+          >
+            <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
+            <StyledBaseInput
+              id={inputId}
+              ref={ref}
+              name={name}
+              type={type}
+              defaultValue={defaultValue}
+              value={value}
+              placeholder={placeholder}
+              isDisabled={isDisabled}
+              validationState={validationState}
+              isRequired={isRequired}
+              handleOnFocus={handleOnFocus}
+              handleOnChange={handleOnChange}
+              handleOnBlur={handleOnBlur}
+              leadingIcon={leadingIcon}
+              prefix={prefix}
+              interactionElement={interactionElement}
+              suffix={suffix}
+              trailingIcon={trailingIcon}
+              textAlign={textAlign}
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus={autoFocus}
+              keyboardReturnKeyType={keyboardReturnKeyType}
+              keyboardType={keyboardType}
+              autoCompleteSuggestionType={autoCompleteSuggestionType}
+              accessibilityProps={accessibilityProps}
+              currentInteraction={currentInteraction}
+              setCurrentInteraction={setCurrentInteraction}
+            />
+            <BaseInputVisuals
+              interactionElement={interactionElement}
+              suffix={suffix}
+              trailingIcon={trailingIcon}
+              isDisabled={isDisabled}
+            />
+          </BaseInputWrapper>
+        </Box>
+        {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
+        <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
+          <FormHint
+            type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
+            helpText={helpText}
+            errorText={errorText}
+            successText={successText}
+            helpTextId={helpTextId}
+            errorTextId={errorTextId}
+            successTextId={successTextId}
           />
-          <BaseInputVisuals
-            interactionElement={interactionElement}
-            suffix={suffix}
-            trailingIcon={trailingIcon}
-            isDisabled={isDisabled}
-          />
-        </BaseInputWrapper>
-      </Box>
-      {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
-      <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
-        <FormHint
-          type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
-          helpText={helpText}
-          errorText={errorText}
-          successText={successText}
-          helpTextId={helpTextId}
-          errorTextId={errorTextId}
-          successTextId={successTextId}
-        />
-      </Box>
-    </>
-  );
-};
+        </Box>
+      </>
+    );
+  },
+);

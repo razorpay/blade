@@ -1,5 +1,6 @@
+/* eslint-disable react/display-name */
+import React from 'react';
 import styled from 'styled-components';
-import type { ReactElement } from 'react';
 import { getBaseInputStyles } from './baseInputStyles';
 
 import type { StyledBaseInputProps } from './StyledBaseInput.d';
@@ -56,38 +57,48 @@ const autoCompleteSuggestionTypeMap = {
   creditCardExpiryYear: 'cc-exp-year',
 };
 
-export const StyledBaseInput = ({
-  name,
-  isDisabled,
-  isRequired,
-  handleOnChange,
-  handleOnBlur,
-  keyboardType,
-  keyboardReturnKeyType,
-  autoCompleteSuggestionType,
-  accessibilityProps,
-  setCurrentInteraction,
-  ...props
-}: StyledBaseInputProps): ReactElement => {
-  return (
-    <StyledBaseNativeInput
-      disabled={isDisabled}
-      required={isRequired}
-      onChange={(event): void => handleOnChange?.({ name, value: event })}
-      onBlur={(event): void => {
-        setCurrentInteraction('default');
-        handleOnBlur?.({ name, value: event });
-      }}
-      onFocus={(): void => setCurrentInteraction('focus')}
-      enterKeyHint={keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType}
-      autoComplete={
-        autoCompleteSuggestionType
-          ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
-          : undefined
-      }
-      inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
-      {...props}
-      {...accessibilityProps}
-    />
-  );
-};
+export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInputProps>(
+  (
+    {
+      name,
+      isDisabled,
+      isRequired,
+      handleOnFocus,
+      handleOnChange,
+      handleOnBlur,
+      keyboardType,
+      keyboardReturnKeyType,
+      autoCompleteSuggestionType,
+      accessibilityProps,
+      setCurrentInteraction,
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <StyledBaseNativeInput
+        ref={ref}
+        disabled={isDisabled}
+        required={isRequired}
+        onChange={(event): void => handleOnChange?.({ name, value: event })}
+        onBlur={(event): void => {
+          setCurrentInteraction('default');
+          handleOnBlur?.({ name, value: event });
+        }}
+        onFocus={(event): void => {
+          setCurrentInteraction('focus');
+          handleOnFocus?.({ name, value: event });
+        }}
+        enterKeyHint={keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType}
+        autoComplete={
+          autoCompleteSuggestionType
+            ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
+            : undefined
+        }
+        inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
+        {...props}
+        {...accessibilityProps}
+      />
+    );
+  },
+);

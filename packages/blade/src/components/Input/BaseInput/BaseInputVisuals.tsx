@@ -131,7 +131,7 @@ export const BaseInputVisuals = ({
 
   if (hasLeadingVisuals) {
     return (
-      <Box {...getVisualContainerStyles()} style={{ pointerEvents: 'none' }}>
+      <Box {...getVisualContainerStyles()}>
         {hasLeadingIcon ? (
           <Box paddingLeft="spacing.3" display="flex">
             {LeadingIcon && (
@@ -165,7 +165,7 @@ export const BaseInputVisuals = ({
 
   if (hasTrailingVisuals) {
     return (
-      <Box {...getVisualContainerStyles()} style={{ pointerEvents: 'none' }}>
+      <Box {...getVisualContainerStyles()}>
         {hasInteractionElement ? (
           <Box
             {...getInteractionElementStyles({ hasTrailingIcon, hasInteractionElement, hasSuffix })}

@@ -30,6 +30,7 @@ export default {
     maxCharacters: 9999,
     textAlign: 'left',
     autoFocus: false,
+    onFocus: undefined,
     onChange: undefined,
     onBlur: undefined,
     label: 'Enter Name',
@@ -97,6 +98,11 @@ export default {
       },
     },
     autoFocus: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onFocus: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
