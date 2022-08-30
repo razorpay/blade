@@ -5,6 +5,8 @@ import type { ReactElement } from 'react';
 import type { SpinnerProps } from './Spinner';
 import { Spinner as SpinnerComponent } from './Spinner';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import Box from '~components/Box';
+import { Text } from '~components/Typography';
 
 const Page = (): ReactElement => {
   const figmaURL = useMakeFigmaURL([
@@ -17,8 +19,10 @@ const Page = (): ReactElement => {
     },
     {
       themeTokenName: 'bankingTheme',
-      lightModeURL: '',
-      darkModeURL: '',
+      lightModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11506%3A284715',
+      darkModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11506%3A284715',
     },
   ]);
 
@@ -64,3 +68,48 @@ const SpinnerTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) =
 
 export const Spinner = SpinnerTemplate.bind({});
 Spinner.storyName = 'Default';
+
+const SpinnerSizesTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+  return (
+    <Box>
+      <Box marginBottom="spacing.3">
+        <Text>Small</Text>
+        <Box marginBottom="spacing.2" />
+        <SpinnerComponent {...args} size="small" />
+      </Box>
+      <Box marginBottom="spacing.3">
+        <Text>Medium</Text>
+        <Box marginBottom="spacing.2" />
+        <SpinnerComponent {...args} size="medium" />
+      </Box>
+      <Box marginBottom="spacing.3">
+        <Text>Large</Text>
+        <Box marginBottom="spacing.2" />
+        <SpinnerComponent {...args} size="large" />
+      </Box>
+    </Box>
+  );
+};
+
+export const SpinnerSizes = SpinnerSizesTemplate.bind({});
+SpinnerSizes.storyName = 'Sizes';
+
+const SpinnerContrastTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+  return (
+    <Box>
+      <Box marginBottom="spacing.3">
+        <Text>Low Contrast</Text>
+        <Box marginBottom="spacing.2" />
+        <SpinnerComponent {...args} contrast="low" />
+      </Box>
+      <Box marginBottom="spacing.3">
+        <Text>High Contrast</Text>
+        <Box marginBottom="spacing.2" />
+        <SpinnerComponent {...args} contrast="high" />
+      </Box>
+    </Box>
+  );
+};
+
+export const SpinnerContrasts = SpinnerContrastTemplate.bind({});
+SpinnerContrasts.storyName = 'Contrasts';

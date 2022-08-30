@@ -17,8 +17,10 @@ const Page = (): ReactElement => {
     },
     {
       themeTokenName: 'bankingTheme',
-      lightModeURL: '',
-      darkModeURL: '',
+      lightModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11506%3A284715',
+      darkModeURL:
+        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11506%3A284715',
     },
   ]);
 

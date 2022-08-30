@@ -7,7 +7,11 @@ type SpinnerProps = {
   accessibilityLabel?: string;
 };
 
-const Spinner = ({ accessibilityLabel, contrast, size }: SpinnerProps): React.ReactElement => {
+const Spinner = ({
+  accessibilityLabel = 'Loading',
+  contrast = 'low',
+  size = 'medium',
+}: SpinnerProps): React.ReactElement => {
   return <BaseSpinner accessibilityLabel={accessibilityLabel} contrast={contrast} size={size} />;
 };
 
