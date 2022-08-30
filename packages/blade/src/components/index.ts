@@ -6,6 +6,7 @@ export * from './Icons';
 export * from './Link';
 export * from './LiveAnnouncer';
 export * from './Radio';
+export * from './Spinner';
 export * from './SkipNav';
 export * from './Typography';
 export * from './VisuallyHidden';

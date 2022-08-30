@@ -23,8 +23,8 @@ import { makeAccessible, usePrevious, makeSize, makeSpace, makeBorderSize, getIn
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
-import type { SpinnerProps } from '~components/Spinner';
-import { Spinner } from '~components/Spinner';
+import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
+import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import Box from '~components/Box';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 
@@ -98,7 +98,7 @@ const getColorToken = ({
 
 type BaseButtonStyleProps = {
   iconSize: IconSize;
-  spinnerSize: SpinnerProps['size'];
+  spinnerSize: BaseSpinnerProps['size'];
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
   minHeight: `${ButtonMinHeight}px`;
@@ -368,7 +368,7 @@ const BaseButton = ({
           bottom={0}
           right={0}
         >
-          <Spinner size={spinnerSize} intent={intent} contrast={contrast} />
+          <BaseSpinner size={spinnerSize} intent={intent} contrast={contrast} />
         </Box>
       ) : null}
       <ButtonContent

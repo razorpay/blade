@@ -7,7 +7,7 @@ import { useTheme } from '~components/BladeProvider';
 import { getIn, makeSize } from '~utils';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 
-type SpinnerProps = {
+type BaseSpinnerProps = {
   intent?: Feedback;
   contrast?: ColorContrastTypes;
   size?: 'small' | 'medium' | 'large';
@@ -19,8 +19,8 @@ const getColor = ({
   intent,
   theme,
 }: {
-  contrast: NonNullable<SpinnerProps['contrast']>;
-  intent: SpinnerProps['intent'];
+  contrast: NonNullable<BaseSpinnerProps['contrast']>;
+  intent: BaseSpinnerProps['intent'];
   theme: Theme;
 }): string => {
   if (intent) {
@@ -35,12 +35,12 @@ const getColor = ({
   }
 };
 
-const Spinner = ({
+const BaseSpinner = ({
   accessibilityLabel,
   contrast = 'low',
   intent,
   size = 'medium',
-}: SpinnerProps): React.ReactElement => {
+}: BaseSpinnerProps): React.ReactElement => {
   console.log('unused props', accessibilityLabel);
   const { theme } = useTheme();
   return (
@@ -53,4 +53,4 @@ const Spinner = ({
   );
 };
 
-export { Spinner, SpinnerProps };
+export { BaseSpinner, BaseSpinnerProps };
