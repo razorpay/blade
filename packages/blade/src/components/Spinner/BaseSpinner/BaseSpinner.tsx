@@ -9,9 +9,23 @@ import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 
 type BaseSpinnerProps = {
   intent?: Feedback;
+  /**
+   * Sets the contrast of the spinner.
+   *
+   * @default 'low'
+   */
   contrast?: ColorContrastTypes;
+  /**
+   * Sets the size of the spinner.
+   *
+   * @default 'medium'
+   */
   size?: 'small' | 'medium' | 'large';
-  accessibilityLabel?: string;
+  /**
+   * Sets the aria-label for web & accessibilityLabel react-native.
+   *
+   */
+  accessibilityLabel: string;
 };
 
 const getColor = ({
