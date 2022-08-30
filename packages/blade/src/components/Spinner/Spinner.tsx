@@ -1,12 +1,18 @@
 import React from 'react';
-import styled, { css, keyframes } from 'styled-components';
-import type { SpinnerProps } from './Spinner.d';
 import { dimensions } from './spinnerTokens';
 import SpinnerIcon from './SpinnerIcon';
+import { SpinningBox } from './SpinningBox';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import { getIn, makeMotionTime, makeSize } from '~utils';
-import Box from '~components/Box';
+import { getIn, makeSize } from '~utils';
+import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+
+type SpinnerProps = {
+  intent?: Feedback;
+  contrast?: ColorContrastTypes;
+  size?: 'small' | 'medium' | 'large';
+  accessibilityLabel?: string;
+};
 
 const getColor = ({
   contrast,
@@ -29,37 +35,22 @@ const getColor = ({
   }
 };
 
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
-const AnimatedSpinner = styled(Box)(({ theme }) => {
-  return css`
-    width: max-content;
-    animation: ${rotate} ${makeMotionTime(theme.motion.duration['2xgentle'])}
-      ${theme.motion.easing.exit.attentive as string} infinite;
-  `;
-});
-
 const Spinner = ({
-  // accessibilityLabel,
+  accessibilityLabel,
   contrast = 'low',
   intent,
   size = 'medium',
 }: SpinnerProps): React.ReactElement => {
+  console.log('unused props', accessibilityLabel);
   const { theme } = useTheme();
   return (
-    <AnimatedSpinner display="flex">
+    <SpinningBox display="flex">
       <SpinnerIcon
         dimensions={makeSize(dimensions[size])}
         color={getColor({ contrast, intent, theme })}
       />
-    </AnimatedSpinner>
+    </SpinningBox>
   );
 };
 
-export { Spinner };
+export { Spinner, SpinnerProps };

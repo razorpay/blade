@@ -32,6 +32,7 @@ const getStories = () => {
     require('../../src/components/Link/Link/Link.stories.tsx'),
     require('../../src/components/Radio/Radio.stories.tsx'),
     require('../../src/components/SkipNav/SkipNav.stories.tsx'),
+    require('../../src/components/Spinner/Spinner.stories.tsx'),
     require('../../src/components/Typography/BaseText/BaseText.stories.tsx'),
     require('../../src/components/Typography/Heading/Heading.stories.tsx'),
     require('../../src/components/Typography/Text/Text.stories.tsx'),
@@ -39,6 +40,7 @@ const getStories = () => {
     require('../../src/components/VisuallyHidden/VisuallyHidden.stories.tsx'),
     require('../../src/storybook-recipes/AccessibilityInterop/AccessibilityInteropDemo.stories.tsx'),
     require('../../src/storybook-recipes/SimpleCardWithTokens/CardWithTokens.stories.tsx'),
+    require('../../src/tokens/theme/overrideTheme.stories.tsx'),
     require('../../src/components/Button/BaseButton/BaseButton.stories.internal.tsx'),
     require('../../src/components/Button/IconButton/IconButton.stories.internal.tsx'),
   ];

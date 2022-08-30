@@ -1,15 +1,4 @@
-// import type { DotNotationMotionStringToken } from '~src/_helpers/types';
-// import type { Motion } from '~tokens/global';
-
-// export type SpinnerMotion = {
-//   easing: `easing.${DotNotationMotionStringToken<Motion['easing']>}`;
-//   duration: `duration.${keyof Motion['duration']}`;
-// };
-
-// const motion: SpinnerMotion = {
-//   easing: 'easing.standard.attentive',
-//   duration: `duration.2xgentle`,
-// };
+import type { DurationString, EasingString } from '~tokens/global/motion';
 
 const dimensions = {
   small: 16,
@@ -17,4 +6,12 @@ const dimensions = {
   large: 24,
 } as const;
 
-export { dimensions };
+const motion: {
+  duration: DurationString;
+  easing: EasingString;
+} = {
+  duration: 'duration.2xgentle',
+  easing: 'easing.exit.attentive',
+};
+
+export { dimensions, motion };
