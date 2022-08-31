@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import type { ReactElement } from 'react';
-import type { StyledIconButtonProps } from './StyledIconButton.d';
+import type { StyledIconButtonProps } from './types';
 import { makeAccessible, makeMotionTime } from '~utils';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
 
@@ -9,8 +9,7 @@ type StyledButtonProps = {
   contrast: ColorContrastTypes;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const StyledButton = styled.button<StyledButtonProps>((props: any) => {
+const StyledButton = styled.button<StyledButtonProps>((props) => {
   const { theme, contrast } = props;
   const linkColorToken = theme.colors.feedback.neutral.action.icon.link; // todo: should be from surfaceAction
   const contrastToken = contrast === 'high' ? 'highContrast' : 'lowContrast';

@@ -1,5 +1,14 @@
 {
   "extends": "./tsconfig-generate-types.json",
+  "exclude": [
+    "**/**.test.ts",
+    "**/**.test.tsx",
+    "__tests__",
+    "**/**.stories.tsx",
+    "**/**.stories.internal.tsx",
+    "**/**.web.ts",
+    "**/**.web.tsx"
+  ],
   "compilerOptions": {
     "declarationDir": "build/types/native",
     "moduleSuffixes": [".native", ""]

@@ -2,7 +2,7 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components/native';
 
-import type { StyledIconButtonProps } from './StyledIconButton.d';
+import type { StyledIconButtonProps } from './types';
 import { makeAccessible } from '~utils';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
 

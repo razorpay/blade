@@ -87,7 +87,7 @@ const StyledBaseButton = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
     >
-      {({ pressed }: { pressed: any }): React.ReactNode => {
+      {({ pressed }): React.ReactNode => {
         isPressed.value = pressed;
         return children;
       }}

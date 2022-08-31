@@ -7,5 +7,3 @@ export type StyledIconButtonProps = {
   contrast: 'low' | 'high';
   accessibilityLabel: string;
 };
-
-export { default } from './StyledIconButton.web';
