@@ -30,19 +30,21 @@
  * @todo
  * - create a map of type to keyboard and autosuggestion props and keyboardType - done
  * - add icon prop - done
- * - manage the state for clear button
+ * - manage the state for clear button - done
  * - implement maxCharacters
+ * - bug in textfield animation
  *
  */
 
 import React, { useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
+import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '~components/Input/BaseInput';
 import { BaseInput } from '~components/Input/BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { InfoIcon, CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
-import { isEmpty } from '~utils';
+import { getPlatformType, isEmpty } from '~utils';
 
 export type TextInputProps = Pick<
   BaseInputProps,
@@ -138,6 +140,11 @@ const getKeyboardAndAutocompleteProps = ({
   return keyboardAndAutocompleteProps;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNative => {
+  return getPlatformType() === 'react-native';
+};
+
 export const TextInput = ({
   label,
   labelPosition = 'top',
@@ -165,7 +172,7 @@ export const TextInput = ({
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
 }: TextInputProps): ReactElement => {
-  const textInputRef = React.useRef<HTMLInputElement>(null);
+  const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
 
   const renderInteractionElement = (): ReactNode => {
@@ -181,10 +188,15 @@ export const TextInput = ({
           onClick={() => {
             if (isEmpty(value) && textInputRef.current) {
               // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
-              textInputRef.current.value = '';
+              if (isReactNative(textInputRef.current)) {
+                textInputRef.current.clear();
+              } else if (textInputRef.current instanceof HTMLInputElement) {
+                textInputRef.current.value = '';
+              }
             }
             // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
             onClearButtonClick?.();
+            setShouldShowClearButton(false);
           }}
           accessibilityLabel="Clear Input Content"
         />
@@ -197,7 +209,7 @@ export const TextInput = ({
   return (
     <BaseInput
       id="textinput"
-      ref={textInputRef}
+      ref={textInputRef as React.Ref<HTMLInputElement>}
       label={label}
       labelPosition={labelPosition}
       placeholder={placeholder}

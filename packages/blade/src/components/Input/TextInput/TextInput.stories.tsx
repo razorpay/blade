@@ -30,8 +30,12 @@ export default {
     maxCharacters: 9999,
     textAlign: 'left',
     autoFocus: false,
-    onChange: undefined,
-    onBlur: undefined,
+    onChange: ({ name, value }): void => {
+      console.log(`input field ${name} content changed to ${value}`);
+    },
+    onBlur: ({ name, value }): void => {
+      console.log(`input field ${name} content lost focus. The value is ${value}`);
+    },
     label: 'Enter Name',
     labelPosition: 'top',
     necessityIndicator: undefined,
@@ -42,9 +46,8 @@ export default {
     successText: undefined,
     icon: undefined,
     prefix: '',
-    // interactionElement: <CloseIcon size="medium" color="surface.text.subtle.lowContrast" />,
+    showClearButton: true,
     suffix: '',
-    // trailingIcon: undefined,
     keyboardReturnKeyType: undefined,
     autoCompleteSuggestionType: undefined,
   },
@@ -158,11 +161,11 @@ export default {
         category: propsCategory.LEADING_VISUAL_PROPS,
       },
     },
-    // interactionElement: {
-    //   table: {
-    //     category: propsCategory.TRAILING_VISUAL_PROPS,
-    //   },
-    // },
+    showClearButton: {
+      table: {
+        category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
     // interactionElement:{},
     suffix: {
       table: {

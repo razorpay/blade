@@ -30,9 +30,15 @@ export default {
     maxCharacters: 9999,
     textAlign: 'left',
     autoFocus: false,
-    onFocus: undefined,
-    onChange: undefined,
-    onBlur: undefined,
+    onFocus: ({ name, value }): void => {
+      console.log(`input field ${name} recevied focus. The value is ${value}`);
+    },
+    onChange: ({ name, value }): void => {
+      console.log(`input field ${name} content changed to ${value}`);
+    },
+    onBlur: ({ name, value }): void => {
+      console.log(`input field ${name} content lost focus. The value is ${value}`);
+    },
     label: 'Enter Name',
     labelPosition: 'top',
     necessityIndicator: undefined,

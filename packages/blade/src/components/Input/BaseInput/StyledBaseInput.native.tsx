@@ -90,57 +90,59 @@ const StyledNativeBaseInput = styled.TextInput<
 }));
 
 export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>(
-  ({
-    name,
-    isRequired,
-    isDisabled,
-    handleOnFocus,
-    handleOnChange,
-    handleOnBlur,
-    keyboardType = 'text',
-    keyboardReturnKeyType,
-    autoCompleteSuggestionType,
-    accessibilityProps,
-    currentInteraction,
-    setCurrentInteraction,
-    ...props
-  }) =>
-    // ref,
+  (
     {
-      // don't pass inputMode on React Native even if the consumer put it by mistake
-
-      return (
-        <StyledNativeBaseInput
-          isFocused={currentInteraction === 'focus'}
-          editable={!isDisabled}
-          onFocus={(event): void => {
-            handleOnFocus?.({ name, value: event?.nativeEvent.text });
-            setCurrentInteraction('focus');
-          }}
-          onBlur={(): void => {
-            setCurrentInteraction('default');
-          }}
-          onChangeText={(text): void => handleOnChange?.({ name, value: text })}
-          onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
-          // @ts-expect-error styled-components have limited keyboard types('default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad') compared to the actual supported types so ignoring the error.
-          // source: https://reactnative.dev/docs/textinput/#keyboardtype
-          keyboardType={inputModeToKeyboardTypeMap[keyboardType]}
-          returnKeyType={keyboardReturnKeyType}
-          textContentType={
-            autoCompleteSuggestionType
-              ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
-              : undefined
-          }
-          autoCompleteType={
-            autoCompleteSuggestionType
-              ? (autoCompleteSuggestionTypeAndroid[
-                  autoCompleteSuggestionType
-                ] as StyledComponentAutoCompleteAndroid)
-              : undefined
-          }
-          {...props}
-          {...accessibilityProps}
-        />
-      );
+      name,
+      isRequired,
+      isDisabled,
+      handleOnFocus,
+      handleOnChange,
+      handleOnBlur,
+      keyboardType = 'text',
+      keyboardReturnKeyType,
+      autoCompleteSuggestionType,
+      accessibilityProps,
+      currentInteraction,
+      setCurrentInteraction,
+      ...props
     },
+    ref,
+  ) => {
+    return (
+      <StyledNativeBaseInput
+        // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={ref as any}
+        isFocused={currentInteraction === 'focus'}
+        editable={!isDisabled}
+        onFocus={(event): void => {
+          handleOnFocus?.({ name, value: event?.nativeEvent.text });
+          setCurrentInteraction('focus');
+        }}
+        onBlur={(): void => {
+          setCurrentInteraction('default');
+        }}
+        onChangeText={(text): void => handleOnChange?.({ name, value: text })}
+        onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
+        // @ts-expect-error styled-components have limited keyboard types('default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad') compared to the actual supported types so ignoring the error.
+        // source: https://reactnative.dev/docs/textinput/#keyboardtype
+        keyboardType={inputModeToKeyboardTypeMap[keyboardType]}
+        returnKeyType={keyboardReturnKeyType}
+        textContentType={
+          autoCompleteSuggestionType
+            ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
+            : undefined
+        }
+        autoCompleteType={
+          autoCompleteSuggestionType
+            ? (autoCompleteSuggestionTypeAndroid[
+                autoCompleteSuggestionType
+              ] as StyledComponentAutoCompleteAndroid)
+            : undefined
+        }
+        {...props}
+        {...accessibilityProps}
+      />
+    );
+  },
 );
