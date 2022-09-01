@@ -19,8 +19,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElem
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
-    <>
-      <Box marginTop="spacing.1" />
+    <Box marginTop="spacing.1">
       <FormHintWrapper>
         <Icon />
         <BaseText
@@ -35,7 +34,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElem
           {children}
         </BaseText>
       </FormHintWrapper>
-    </>
+    </Box>
   );
 };
 

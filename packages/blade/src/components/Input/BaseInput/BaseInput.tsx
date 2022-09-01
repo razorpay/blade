@@ -12,6 +12,7 @@ import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
 import useInteraction from '~components/Link/BaseLink/useInteraction';
+import { Text } from '~components/Typography';
 
 export type HandleOnEvent = ({
   name,
@@ -128,7 +129,7 @@ export type BaseInputProps = InputLabelProps &
      */
     prefix?: string;
     /**
-     * this is left to the components which is extending BaseInput
+     * Element to be rendered before suffix. this is decided by the component which is extending BaseInput
      *
      * eg: consumers can render a loader or they could render a clear button
      */
@@ -195,6 +196,14 @@ export type BaseInputProps = InputLabelProps &
       | 'creditCardExpiry'
       | 'creditCardExpiryMonth'
       | 'creditCardExpiryYear';
+    /**
+     * Element to be rendered on the trailing slot of input field label
+     */
+    trailingHeaderSlot?: (value: string) => ReactNode;
+    /**
+     * Element to be rendered on the trailing slot of input field footer
+     */
+    trailingFooterSlot?: (value?: string) => ReactNode;
   };
 
 const autoCompleteSuggestionTypeValues = [
@@ -225,12 +234,15 @@ const useInput = ({
   handleOnFocus: HandleOnEvent;
   handleOnChange: HandleOnEvent;
   handleOnBlur: HandleOnEvent;
+  inputValue?: string;
 } => {
   if (value && defaultValue) {
     throw new Error(
       `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
     );
   }
+
+  const [inputValue, setInputValue] = React.useState(defaultValue ?? value);
 
   const handleOnFocus: HandleOnEvent = React.useCallback(
     ({ name, value }) => {
@@ -266,6 +278,7 @@ const useInput = ({
         name,
         value: _value,
       });
+      setInputValue(_value);
     },
     [onChange],
   );
@@ -289,7 +302,7 @@ const useInput = ({
     [onBlur],
   );
 
-  return { handleOnFocus, handleOnChange, handleOnBlur };
+  return { handleOnFocus, handleOnChange, handleOnBlur, inputValue };
 };
 
 export const getHintType = ({
@@ -371,16 +384,19 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       interactionElement,
       suffix,
       trailingIcon,
+      maxCharacters,
       textAlign,
       autoFocus,
       keyboardReturnKeyType,
       keyboardType,
       autoCompleteSuggestionType,
+      // trailingHeaderSlot,
+      trailingFooterSlot,
     },
     ref,
   ) => {
     const { theme } = useTheme();
-    const { handleOnFocus, handleOnChange, handleOnBlur } = useInput({
+    const { handleOnFocus, handleOnChange, handleOnBlur, inputValue } = useInput({
       defaultValue,
       value,
       onFocus,
@@ -407,6 +423,8 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       }),
     });
 
+    const willRenderHintText = Boolean(helpText) || Boolean(successText) || Boolean(errorText);
+
     if (
       autoCompleteSuggestionType &&
       !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
@@ -427,14 +445,23 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
           alignItems={isLabelLeftPositioned ? 'center' : undefined}
           position="relative"
         >
-          <FormLabel
-            as="label"
-            necessityIndicator={necessityIndicator}
-            position={labelPosition}
-            htmlFor={inputId}
+          <Box
+            display="flex"
+            flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
+            justifyContent="space-between"
           >
-            {label}
-          </FormLabel>
+            <FormLabel
+              as="label"
+              necessityIndicator={necessityIndicator}
+              position={labelPosition}
+              htmlFor={inputId}
+            >
+              {label}
+            </FormLabel>
+            <Text variant="caption" weight="regular" type="muted">
+              trailing header
+            </Text>
+          </Box>
           <BaseInputWrapper
             isDisabled={isDisabled}
             validationState={validationState}
@@ -460,6 +487,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               interactionElement={interactionElement}
               suffix={suffix}
               trailingIcon={trailingIcon}
+              maxCharacters={maxCharacters}
               textAlign={textAlign}
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus={autoFocus}
@@ -480,15 +508,22 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         </Box>
         {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
         <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
-          <FormHint
-            type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
-            helpText={helpText}
-            errorText={errorText}
-            successText={successText}
-            helpTextId={helpTextId}
-            errorTextId={errorTextId}
-            successTextId={successTextId}
-          />
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
+          >
+            <FormHint
+              type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
+              helpText={helpText}
+              errorText={errorText}
+              successText={successText}
+              helpTextId={helpTextId}
+              errorTextId={errorTextId}
+              successTextId={successTextId}
+            />
+            {trailingFooterSlot?.(inputValue)}
+          </Box>
         </Box>
       </>
     );

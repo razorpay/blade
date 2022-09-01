@@ -95,6 +95,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       name,
       isRequired,
       isDisabled,
+      maxCharacters,
       handleOnFocus,
       handleOnChange,
       handleOnBlur,
@@ -115,6 +116,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         ref={ref as any}
         isFocused={currentInteraction === 'focus'}
         editable={!isDisabled}
+        maxLength={maxCharacters}
         onFocus={(event): void => {
           handleOnFocus?.({ name, value: event?.nativeEvent.text });
           setCurrentInteraction('focus');

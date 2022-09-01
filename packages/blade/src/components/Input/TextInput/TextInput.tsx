@@ -45,6 +45,8 @@ import type { IconComponent } from '~components/Icons';
 import { InfoIcon, CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import { getPlatformType, isEmpty } from '~utils';
+import { CharacterCounter } from '~components/Form/CharacterCounter';
+import Box from '~components/Box';
 
 export type TextInputProps = Pick<
   BaseInputProps,
@@ -153,6 +155,7 @@ export const TextInput = ({
   defaultValue,
   name,
   value,
+  maxCharacters,
   onChange,
   onBlur,
   isDisabled,
@@ -216,6 +219,7 @@ export const TextInput = ({
       defaultValue={defaultValue}
       value={value}
       name={name}
+      maxCharacters={maxCharacters}
       onChange={({ name, value }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in
@@ -232,15 +236,22 @@ export const TextInput = ({
       onBlur={onBlur}
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
-      validationState={validationState}
-      errorText={errorText}
-      helpText={helpText}
-      successText={successText}
       isRequired={isRequired}
       leadingIcon={icon}
       prefix={prefix}
       interactionElement={renderInteractionElement()}
       suffix={suffix}
+      validationState={validationState}
+      errorText={errorText}
+      helpText={helpText}
+      successText={successText}
+      trailingFooterSlot={(value) => {
+        return maxCharacters ? (
+          <Box marginTop="spacing.1">
+            <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
+          </Box>
+        ) : null;
+      }}
       // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus={autoFocus}
       {...getKeyboardAndAutocompleteProps({

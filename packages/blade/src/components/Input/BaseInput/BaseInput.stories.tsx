@@ -5,12 +5,13 @@ import React from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInput as BaseInputComponent } from './BaseInput';
 import iconMap from '~components/Icons/iconMap';
-import { CloseIcon } from '~components/Icons';
+import Box from '~components/Box';
+import { CharacterCounter } from '~components/Form/CharacterCounter';
 
 const propsCategory = {
   BASE_PROPS: 'Base Input Props',
-  LABEL_PROPS: 'Label Props',
-  VALIDATION_PROPS: 'Validation Props',
+  HEADER_PROPS: 'Header Props',
+  FOOTER_PROPS: 'Footer Props',
   LEADING_VISUAL_PROPS: 'Leading Visual Props',
   TRAILING_VISUAL_PROPS: 'Trailing Visual Props',
   KEYBOARD_PROPS: 'Keyboard Props',
@@ -41,15 +42,17 @@ export default {
     },
     label: 'Enter Name',
     labelPosition: 'top',
+    trailingHeaderSlot: undefined,
     necessityIndicator: undefined,
     isRequired: false,
     validationState: 'none',
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
+    trailingFooterSlot: undefined,
     leadingIcon: undefined,
     prefix: '',
-    interactionElement: <CloseIcon size="medium" color="surface.text.subtle.lowContrast" />,
+    interactionElement: undefined,
     suffix: '',
     trailingIcon: undefined,
     keyboardReturnKeyType: undefined,
@@ -125,42 +128,52 @@ export default {
     },
     label: {
       table: {
-        category: propsCategory.LABEL_PROPS,
+        category: propsCategory.HEADER_PROPS,
       },
     },
     labelPosition: {
       table: {
-        category: propsCategory.LABEL_PROPS,
+        category: propsCategory.HEADER_PROPS,
       },
     },
     necessityIndicator: {
       table: {
-        category: propsCategory.VALIDATION_PROPS,
+        category: propsCategory.HEADER_PROPS,
+      },
+    },
+    trailingHeaderSlot: {
+      table: {
+        category: propsCategory.HEADER_PROPS,
       },
     },
     isRequired: {
       table: {
-        category: propsCategory.VALIDATION_PROPS,
+        category: propsCategory.FOOTER_PROPS,
       },
     },
     validationState: {
       table: {
-        category: propsCategory.VALIDATION_PROPS,
+        category: propsCategory.FOOTER_PROPS,
       },
     },
     helpText: {
       table: {
-        category: propsCategory.VALIDATION_PROPS,
+        category: propsCategory.FOOTER_PROPS,
       },
     },
     errorText: {
       table: {
-        category: propsCategory.VALIDATION_PROPS,
+        category: propsCategory.FOOTER_PROPS,
       },
     },
     successText: {
       table: {
-        category: propsCategory.VALIDATION_PROPS,
+        category: propsCategory.FOOTER_PROPS,
+      },
+    },
+    trailingFooterSlot: {
+      table: {
+        category: propsCategory.FOOTER_PROPS,
       },
     },
     leadingIcon: {
@@ -272,7 +285,28 @@ BaseInputSuccess.args = {
   successText: 'Name validated',
 };
 
-const UncontrolledBaseInputTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+const BaseInputMaxCharactersTemplate: ComponentStory<typeof BaseInputComponent> = ({
+  maxCharacters,
+}) => {
+  return (
+    <BaseInput
+      id="base-input"
+      label="First Name"
+      defaultValue="John Ives"
+      name="fullName"
+      maxCharacters={maxCharacters}
+      trailingFooterSlot={(value) => (
+        <Box marginTop="spacing.1">
+          <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters ?? 0} />
+        </Box>
+      )}
+      onChange={({ name, value }): void => console.log({ name, value })}
+    />
+  );
+};
+export const BaseInputMaxCharacters = BaseInputMaxCharactersTemplate.bind({});
+
+const BaseInputUncontrolledTemplate: ComponentStory<typeof BaseInputComponent> = () => {
   return (
     <BaseInput
       id="base-input"
@@ -283,9 +317,9 @@ const UncontrolledBaseInputTemplate: ComponentStory<typeof BaseInputComponent> =
     />
   );
 };
-export const UncontrolledBaseInput = UncontrolledBaseInputTemplate.bind({});
+export const BaseInputUncontrolled = BaseInputUncontrolledTemplate.bind({});
 
-const ControlledBaseInputTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+const BaseInputControlledTemplate: ComponentStory<typeof BaseInputComponent> = () => {
   const [inputValue, setInputValue] = React.useState('');
 
   return (
@@ -301,4 +335,4 @@ const ControlledBaseInputTemplate: ComponentStory<typeof BaseInputComponent> = (
     />
   );
 };
-export const ControlledBaseInput = ControlledBaseInputTemplate.bind({});
+export const BaseInputControlled = BaseInputControlledTemplate.bind({});

@@ -6,7 +6,6 @@ import React from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
-// import { CloseIcon } from '~components/Icons';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -27,7 +26,7 @@ export default {
     type: 'url',
     isDisabled: false,
     value: undefined,
-    maxCharacters: 9999,
+    maxCharacters: undefined,
     textAlign: 'left',
     autoFocus: false,
     onChange: ({ name, value }): void => {
@@ -166,20 +165,11 @@ export default {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
-    // interactionElement:{},
     suffix: {
       table: {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
-    // trailingIcon: {
-    //   name: 'trailingIcon',
-    //   type: 'select',
-    //   options: Object.keys(iconMap),
-    //   table: {
-    //     category: propsCategory.TRAILING_VISUAL_PROPS,
-    //   },
-    // },
     keyboardReturnKeyType: {
       table: {
         category: propsCategory.KEYBOARD_PROPS,
@@ -213,18 +203,8 @@ export default {
   },
 } as Meta<TextInputProps>;
 
-const TextInputTemplate: ComponentStory<typeof TextInputComponent> = ({
-  icon,
-  // trailingIcon,
-  ...args
-}) => {
-  return (
-    <TextInputComponent
-      {...args}
-      icon={iconMap[(icon as unknown) as string]}
-      // trailingIcon={iconMap[(trailingIcon as unknown) as string]}
-    />
-  );
+const TextInputTemplate: ComponentStory<typeof TextInputComponent> = ({ icon, ...args }) => {
+  return <TextInputComponent {...args} icon={iconMap[(icon as unknown) as string]} />;
 };
 
 export const TextInput = TextInputTemplate.bind({});
@@ -252,7 +232,20 @@ TextInputSuccess.args = {
   successText: 'Name validated',
 };
 
-const UncontrolledTextInputTemplate: ComponentStory<typeof TextInputComponent> = () => {
+const TextInputMaxCharactersTemplate: ComponentStory<typeof TextInputComponent> = () => {
+  return (
+    <TextInput
+      label="First Name"
+      defaultValue="John Ives"
+      name="fullName"
+      maxCharacters={10}
+      onChange={({ name, value }): void => console.log({ name, value })}
+    />
+  );
+};
+export const TextInputMaxCharacters = TextInputMaxCharactersTemplate.bind({});
+
+const TextInputUncontrolledTemplate: ComponentStory<typeof TextInputComponent> = () => {
   return (
     <TextInput
       label="First Name"
@@ -263,9 +256,9 @@ const UncontrolledTextInputTemplate: ComponentStory<typeof TextInputComponent> =
     />
   );
 };
-export const UncontrolledTextInput = UncontrolledTextInputTemplate.bind({});
+export const TextInputUncontrolled = TextInputUncontrolledTemplate.bind({});
 
-const ControlledTextInputTemplate: ComponentStory<typeof TextInputComponent> = () => {
+const TextInputControlledTemplate: ComponentStory<typeof TextInputComponent> = () => {
   const [inputValue, setInputValue] = React.useState('');
 
   return (
@@ -281,4 +274,4 @@ const ControlledTextInputTemplate: ComponentStory<typeof TextInputComponent> = (
     />
   );
 };
-export const ControlledTextInput = ControlledTextInputTemplate.bind({});
+export const TextInputControlled = TextInputControlledTemplate.bind({});

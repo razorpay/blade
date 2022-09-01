@@ -18,6 +18,7 @@ export type StyledBaseInputProps = Pick<
   | 'interactionElement'
   | 'suffix'
   | 'trailingIcon'
+  | 'maxCharacters'
   | 'textAlign'
   | 'autoFocus'
   | 'keyboardType'

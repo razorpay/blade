@@ -63,6 +63,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
       name,
       isDisabled,
       isRequired,
+      maxCharacters,
       handleOnFocus,
       handleOnChange,
       handleOnBlur,
@@ -80,6 +81,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
         ref={ref}
         disabled={isDisabled}
         required={isRequired}
+        maxLength={maxCharacters}
         onChange={(event): void => handleOnChange?.({ name, value: event })}
         onBlur={(event): void => {
           setCurrentInteraction('default');
