@@ -8,6 +8,7 @@ import type { Brand, IsFunction, NativeOrWebBrand, _brand } from './types';
 
 namespace Platform {
   export type Name = 'web' | 'native';
+  // Unionify both web & native types, this will help us blade developers internally
   export type Select<Options extends { web: any; native: any }> = IsFunction<
     Options['native']
   > extends true

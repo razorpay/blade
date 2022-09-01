@@ -264,7 +264,6 @@ const BaseLink = ({
       className={className}
       style={style}
     >
-      {/* @ts-ignore */}
       <Box display="flex" flexDirection="row" className="content-container" alignItems="center">
         {Icon && iconPosition == 'left' ? (
           <Box paddingRight={iconPadding} display="flex" alignItems="center">

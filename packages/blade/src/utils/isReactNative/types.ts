@@ -6,7 +6,6 @@
 export declare const _brand: unique symbol;
 /**
  * Brands a type making them act as nominal
- * Default name is set to DefaultName for convenience
  */
 export type Brand<Type, Name extends string> = Type & { [_brand]?: Name };
 

@@ -28,4 +28,5 @@ export type BoxProps = {
   minWidth?: number;
   maxHeight?: number;
   maxWidth?: number;
+  className?: string;
 };
