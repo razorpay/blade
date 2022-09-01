@@ -20,14 +20,28 @@ type SpinnerProps = {
    * @default 'Loading'
    */
   accessibilityLabel?: string;
+  /**
+   * Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
+   *
+   *  @default 'assertive'
+   */
+  accessibilityLiveRegion?: 'off' | 'assertive' | 'polite';
 };
 
 const Spinner = ({
   accessibilityLabel = 'Loading',
+  accessibilityLiveRegion = 'assertive',
   contrast = 'low',
   size = 'medium',
 }: SpinnerProps): React.ReactElement => {
-  return <BaseSpinner accessibilityLabel={accessibilityLabel} contrast={contrast} size={size} />;
+  return (
+    <BaseSpinner
+      accessibilityLabel={accessibilityLabel}
+      accessibilityLiveRegion={accessibilityLiveRegion}
+      contrast={contrast}
+      size={size}
+    />
+  );
 };
 
 export { Spinner, SpinnerProps };

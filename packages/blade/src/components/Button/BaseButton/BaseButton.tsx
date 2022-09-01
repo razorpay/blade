@@ -368,7 +368,14 @@ const BaseButton = ({
           bottom={0}
           right={0}
         >
-          <BaseSpinner size={spinnerSize} intent={intent} contrast={contrast} />
+          <BaseSpinner
+            accessibilityLabel="Loading"
+            // since we're announcing the start and stop of loading using `announce`, we don't need this to be a liveRegion
+            accessibilityLiveRegion="off"
+            size={spinnerSize}
+            intent={intent}
+            contrast={contrast}
+          />
         </Box>
       ) : null}
       <ButtonContent
