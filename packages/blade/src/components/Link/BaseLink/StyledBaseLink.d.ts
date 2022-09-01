@@ -20,5 +20,3 @@ export type StyledBaseLinkProps = {
   setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
   accessibilityProps: Record<string, unknown>;
 };
-
-export { default } from './StyledBaseLink.web';

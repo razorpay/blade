@@ -7,5 +7,3 @@ export type RectProps = {
   x?: string;
   y?: string;
 };
-
-export { default } from './Rect.web';

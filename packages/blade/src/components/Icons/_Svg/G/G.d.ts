@@ -5,5 +5,3 @@ export type GProps = {
   clipPath?: string;
   fill?: string;
 };
-
-export { default } from './G.web';

@@ -29,5 +29,3 @@ export type BoxProps = {
   maxHeight?: number;
   maxWidth?: number;
 };
-
-export { default } from './Box.web';

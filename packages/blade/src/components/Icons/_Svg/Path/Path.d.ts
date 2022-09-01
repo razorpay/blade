@@ -14,5 +14,3 @@ export type PathProps = {
   strokeLinejoin?: 'bevel' | 'miter' | 'round';
   strokeWidth?: string;
 };
-
-export { default } from './Path.web';

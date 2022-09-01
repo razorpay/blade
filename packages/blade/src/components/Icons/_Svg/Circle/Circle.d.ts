@@ -7,5 +7,3 @@ export type CircleProps = {
   x?: string;
   y?: string;
 };
-
-export { default } from './Circle.web';

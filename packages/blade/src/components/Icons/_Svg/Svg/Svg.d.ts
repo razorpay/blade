@@ -5,5 +5,3 @@ export type SvgProps = {
   viewBox: string;
   width: string;
 };
-
-export { default } from './Svg.web';
