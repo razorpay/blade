@@ -199,7 +199,7 @@ const LinkWithVariantTemplate: ComponentStory<typeof LinkComponent> = ({
 }) => {
   return (
     <>
-      <Box paddingBottom="spacing.2">
+      <Box paddingBottom="spacing.3">
         <BaseText fontWeight="bold">Anchor</BaseText>
       </Box>
       <LinkComponent
@@ -212,7 +212,7 @@ const LinkWithVariantTemplate: ComponentStory<typeof LinkComponent> = ({
       >
         {children}
       </LinkComponent>
-      <Box paddingTop="spacing.3" paddingBottom="spacing.2">
+      <Box paddingTop="spacing.4" paddingBottom="spacing.3">
         <BaseText fontWeight="bold">Button</BaseText>
       </Box>
       <LinkComponent icon={icon} iconPosition={iconPosition} variant="button">

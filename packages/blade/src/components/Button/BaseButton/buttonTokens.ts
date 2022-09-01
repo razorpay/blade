@@ -46,26 +46,26 @@ const buttonPadding: Record<
   xsmall: {
     top: 0,
     bottom: 0,
-    left: 2,
-    right: 2,
+    left: 3,
+    right: 3,
   },
   small: {
     top: 0,
     bottom: 0,
-    left: 3,
-    right: 3,
+    left: 4,
+    right: 4,
   },
   medium: {
     top: 0,
     bottom: 0,
-    left: 5,
-    right: 5,
+    left: 6,
+    right: 6,
   },
   large: {
     top: 0,
     bottom: 0,
-    left: 5,
-    right: 5,
+    left: 6,
+    right: 6,
   },
 };
 
@@ -76,26 +76,26 @@ const buttonIconOnlyPadding: Record<
   xsmall: {
     top: 0,
     bottom: 0,
-    left: 2, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
-    right: 2, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
+    left: 4, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
+    right: 4, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
   },
   small: {
     top: 0,
     bottom: 0,
-    left: 2,
-    right: 2,
+    left: 3,
+    right: 3,
   },
   medium: {
     top: 0,
     bottom: 0,
-    left: 2,
-    right: 2,
+    left: 3,
+    right: 3,
   },
   large: {
     top: 0,
     bottom: 0,
-    left: 3,
-    right: 3,
+    left: 4,
+    right: 4,
   },
 };
 
@@ -127,10 +127,10 @@ const buttonSizeToSpinnerSizeMap: Record<
 };
 
 const textPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['spacing']> = {
-  xsmall: 1,
-  small: 1,
-  medium: 2,
-  large: 2,
+  xsmall: 2,
+  small: 2,
+  medium: 3,
+  large: 3,
 };
 
 export {
