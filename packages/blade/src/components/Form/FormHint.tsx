@@ -21,7 +21,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps) => {
 
   return (
     <>
-      <Box marginTop="spacing.1" />
+      <Box marginTop="spacing.2" />
       <FormHintWrapper>
         <Icon />
         <BaseText
@@ -95,13 +95,13 @@ const FormHint = ({
     error: () => (
       <>
         <InfoIcon color="feedback.icon.negative.lowContrast" size="small" />
-        <Box marginRight="spacing.1" />
+        <Box marginRight="spacing.2" />
       </>
     ),
     success: () => (
       <>
         <CheckIcon color="feedback.icon.positive.lowContrast" size="small" />
-        <Box marginRight="spacing.1" />
+        <Box marginRight="spacing.2" />
       </>
     ),
   };

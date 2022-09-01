@@ -74,16 +74,16 @@ const SkipNavTemplate: ComponentStory<typeof SkipNavLink> = () => {
       <Box>
         <SkipNavContent />
         <Text>Main content of the page</Text>
-        <Box marginTop="spacing.1" />
-        <Box gap="spacing.1" display="flex">
+        <Box marginTop="spacing.2" />
+        <Box gap="spacing.2" display="flex">
           <Button size="small">Button 1</Button>
           <Button size="small">Button 2</Button>
         </Box>
         <SkipNavContent id="second" />
-        <Box marginTop="spacing.1" />
+        <Box marginTop="spacing.2" />
         <Text>Second Main content of the page</Text>
-        <Box marginTop="spacing.1" />
-        <Box gap="spacing.1" display="flex">
+        <Box marginTop="spacing.2" />
+        <Box gap="spacing.2" display="flex">
           <Button size="small">Button 3</Button>
           <Button size="small">Button 4</Button>
         </Box>

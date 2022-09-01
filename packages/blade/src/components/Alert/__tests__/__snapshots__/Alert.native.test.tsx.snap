@@ -98,8 +98,8 @@ exports[`<Alert /> should render 1`] = `
   </RNSVGSvgView>
   <View
     flex={1}
-    paddingLeft="spacing.3"
-    paddingRight="spacing.1"
+    paddingLeft="spacing.4"
+    paddingRight="spacing.2"
     style={
       Array [
         Object {
@@ -328,8 +328,8 @@ exports[`<Alert /> should render negative intent and borderless 1`] = `
   </RNSVGSvgView>
   <View
     flex={1}
-    paddingLeft="spacing.3"
-    paddingRight="spacing.1"
+    paddingLeft="spacing.4"
+    paddingRight="spacing.2"
     style={
       Array [
         Object {
@@ -562,8 +562,8 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   </RNSVGSvgView>
   <View
     flex={1}
-    paddingLeft="spacing.3"
-    paddingRight="spacing.1"
+    paddingLeft="spacing.4"
+    paddingRight="spacing.2"
     style={
       Array [
         Object {
