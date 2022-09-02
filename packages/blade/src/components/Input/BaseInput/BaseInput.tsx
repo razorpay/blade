@@ -259,7 +259,7 @@ const useInput = ({
       if (getPlatformType() === 'react-native' && typeof value === 'string') {
         _value = value;
       } else if (typeof value !== 'string') {
-        // it's weird but TS forced me to write this much code where I could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" :(
+        // Could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" but TS doesn't understands that
         _value = value?.target.value ?? '';
       }
 
@@ -278,7 +278,7 @@ const useInput = ({
       if (getPlatformType() === 'react-native' && typeof value === 'string') {
         _value = value;
       } else if (typeof value !== 'string') {
-        // it's weird but TS forced me to write this much code where I could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" :(
+        // Could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" but TS doesn't understands that
         _value = value?.target.value ?? '';
       }
 
@@ -298,7 +298,7 @@ const useInput = ({
       if (getPlatformType() === 'react-native' && typeof value == 'string') {
         _value = value;
       } else if (typeof value !== 'string') {
-        // it's weird but TS forced me to write this much code where I could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" :(
+        // Could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" but TS doesn't understands that
         _value = value?.target.value ?? '';
       }
 

@@ -1,41 +1,3 @@
-/**
- * @props
- * type
- * label
- * labelposition
- * placeholder
- * value
- * defaultValue
- * name
- * onchange
- * onblur
- * isDisabled
- * isRequired
- * necessityIndicator
- * showClearButton -> interactionElement
- * onClearButtonClickedx
- * icon -> leftIcon
- * prefix
- * suffix
- * isLoading -> interactionElement
- * maxcharacters
- * validationState
- * helpText
- * errorText
- * successText
- * autoFocus
- * autoFillSuggestionType -> if not provided fallback to default map above
- * keyboradreturnkeytype -> if not provided fallback to default map above
- *
- * @todo
- * - create a map of type to keyboard and autosuggestion props and keyboardType - done
- * - add icon prop - done
- * - manage the state for clear button - done
- * - implement maxCharacters
- * - bug in textfield animation
- *
- */
-
 import React, { useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
@@ -142,6 +104,7 @@ const getKeyboardAndAutocompleteProps = ({
   return keyboardAndAutocompleteProps;
 };
 
+// need to do this to tell TS to infer type as TextInput of React Native and make it believe that `ref.current.clear()` exists
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNative => {
   return getPlatformType() === 'react-native';
@@ -247,7 +210,7 @@ export const TextInput = ({
       successText={successText}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
-          <Box marginTop="spacing.1">
+          <Box marginTop="spacing.2">
             <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
           </Box>
         ) : null;

@@ -191,7 +191,7 @@ export default {
             other input fields like TextInput, PasswordInput, CardInput, OTPInput
           </Subtitle>
           <Title>Usage</Title>
-          <Highlight language="tsx">{`import { BaseText } from '@razorpay/blade/components' \nimport type { BaseTextProps } from '@razorpay/blade/components'`}</Highlight>
+          <Highlight language="tsx">{`import { TextInput } from '@razorpay/blade/components' \nimport type { TextInputProps } from '@razorpay/blade/components'`}</Highlight>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>

@@ -46,7 +46,6 @@ const BaseInputStyledAnimatedBorder = styled(Box)(
     left: 0;
     right: 0;
     opacity: 0;
-    /* background-color: ${theme.colors.brand.primary[500]}; */
     background-color: ${getInputBorderBottomColor({
       theme,
       validationState,
