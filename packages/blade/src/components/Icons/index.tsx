@@ -14,6 +14,10 @@ type ActionIconColors = `action.icon.${DotNotationColorStringToken<
   Theme['colors']['action']['icon']
 >}`;
 
+type TextIconColors = `surface.text.${DotNotationColorStringToken<
+  Theme['colors']['surface']['text']
+>}`;
+
 type SurfaceActionIconColors = `surface.action.icon.${DotNotationColorStringToken<
   Theme['colors']['surface']['action']['icon']
 >}`;
@@ -32,6 +36,7 @@ export type IconProps = {
     | SurfaceActionIconColors
     | FeedbackIconColors
     | FeedbackActionIconColors
+    | TextIconColors
     | BadgeIconColors
     | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
   size: IconSize;

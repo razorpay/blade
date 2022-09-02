@@ -45,15 +45,16 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       }
     >
       <Text
-        color="surface.text.subtle.lowContrast"
+        color="surface.text.subdued.lowContrast"
         fontFamily="text"
         fontSize={75}
+        fontStyle="normal"
         fontWeight="bold"
         lineHeight="s"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 18%, 45%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
@@ -70,6 +71,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               "textAlign": "left",
               "textDecorationLine": "none",
             },
+            Object {},
           ]
         }
       >
@@ -617,15 +619,16 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       }
     >
       <Text
-        color="surface.text.subtle.lowContrast"
+        color="surface.text.subdued.lowContrast"
         fontFamily="text"
         fontSize={75}
+        fontStyle="normal"
         fontWeight="bold"
         lineHeight="s"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 18%, 45%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
@@ -642,6 +645,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               "textAlign": "left",
               "textDecorationLine": "none",
             },
+            Object {},
           ]
         }
       >
