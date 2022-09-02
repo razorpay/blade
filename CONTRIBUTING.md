@@ -124,5 +124,4 @@ These steps should get you up and started for local development setup. Please en
 
 - VSCode auto imports can sometimes mess things up due to import aliases and `.web` / `.native` extensions. If something is breaking weirdly after adding / importing a new module this might be related
 - Ensure you're not using any `.web`, `.native` files directly in respective imports in `.web` / `.native` modules. For example, if you end up importing a `.web` module accidentally in a `.native` module, you might see a blank component being rendered or module not found error
-- When you create an isomorphic file (`.web`, `.native`) you also need to create a `.d.ts` file so TS understands how to derive types on these two extensions
 - If you forget to import types inside a `.d.ts` file, sometimes TS won't complain and it can throw the typecheck logic in other modules off
