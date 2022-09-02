@@ -1,16 +1,16 @@
 name: Security Checks
 on:
   workflow_dispatch:
-  pull_request: {}
+  pull_request: { }
   push:
-    branches: ["master"]
+    branches: [ "master" ]
   schedule:
     - cron: '30 20 * * *'
 jobs:
   semgrep:
     if: (github.actor != 'dependabot[bot]')
     name: Scan
-    runs-on: [ubuntu-latest]                               # nosemgrep : semgrep.dev/s/swati31196:github_provided_runner
+    runs-on: [ ubuntu-latest ]                               # nosemgrep : semgrep.dev/s/swati31196:github_provided_runner
     steps:
       - uses: actions/checkout@v2
       - uses: returntocorp/semgrep-action@v1
@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Set github commit id
         run: |
-          if [ "${{ github.event_name }}" = "push" ] || [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ] ; then
             echo "githubCommit=${{ github.sha }}" >> $GITHUB_ENV
           fi
           exit 0
