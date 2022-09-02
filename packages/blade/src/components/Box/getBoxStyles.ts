@@ -14,7 +14,7 @@ const getSpacingValue = <SpacingValue extends string | number | undefined>({
   if (value === 'auto') return 'auto';
   /**
    * NOTE: don't allow numbers once we have the scale for sizing
-   * DO NOT PUBLISH THIS COMPONENT PUBLICLY WITH THIS PIECE OF CODE ELSE YOU'LL BE OUT OF YOUR JOB
+   * DO NOT PUBLISH THIS COMPONENT PUBLICLY WITH THIS PIECE OF CODE
    */
   if (typeof value === 'number') {
     return makeSpace(value);
