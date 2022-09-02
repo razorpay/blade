@@ -6,6 +6,9 @@ import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<Radio />', () => {
   it('should render radio with label', () => {
     const labelText = 'Select fruit';
