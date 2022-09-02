@@ -39,6 +39,7 @@ export type BoxProps = {
   right?: CSSObject['right'];
   bottom?: CSSObject['bottom'];
   background?: CSSObject['background'];
+  background?: CSSObject['background'];
 };
 
 export { default } from './Box.web';
