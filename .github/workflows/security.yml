@@ -30,6 +30,7 @@ jobs:
     steps:
       - name: Set github commit id
         run: |
+          echo "${{ github.event_name }}"
           if [ "${{ github.event_name }}" = "push" ] || [ "${{ github.event_name }}" = "schedule" ]; then
             echo "githubCommit=${{ github.sha }}" >> $GITHUB_ENV
           fi
