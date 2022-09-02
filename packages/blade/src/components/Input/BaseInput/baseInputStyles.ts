@@ -106,14 +106,14 @@ export const getBaseInputStyles = ({
     // take the full available width of parent container for input field
     flex: 1,
     backgroundColor: 'transparent',
-    paddingTop: makeSpace(theme.spacing[2]),
-    paddingBottom: makeSpace(theme.spacing[2]),
+    paddingTop: makeSpace(theme.spacing[3]),
+    paddingBottom: makeSpace(theme.spacing[3]),
     paddingLeft:
-      hasLeadingIcon || hasPrefix ? makeSpace(theme.spacing[2]) : makeSpace(theme.spacing[3]),
+      hasLeadingIcon || hasPrefix ? makeSpace(theme.spacing[3]) : makeSpace(theme.spacing[4]),
     paddingRight:
       hasInteractionElement || hasSuffix || hasTrailingIcon
-        ? makeSpace(theme.spacing[2])
-        : makeSpace(theme.spacing[3]),
+        ? makeSpace(theme.spacing[3])
+        : makeSpace(theme.spacing[4]),
     textAlign,
   };
 };
