@@ -6,7 +6,6 @@ import { getBaseInputStyles } from './baseInputStyles';
 import type { StyledBaseInputProps } from './StyledBaseInput.d';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 
-// omitting our consumer `onChange` prop since the types are conflicting with the default onChange of HTML
 const StyledBaseNativeInput = styled.input<
   Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction'>
 >((props) => ({
@@ -97,7 +96,6 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
             ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
             : undefined
         }
-        inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
         {...props}
         {...accessibilityProps}
       />

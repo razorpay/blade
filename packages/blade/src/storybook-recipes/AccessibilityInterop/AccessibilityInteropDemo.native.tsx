@@ -22,7 +22,7 @@ const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: bool
   };
 
   return (
-    <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.2">
+    <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
       {isChecked ? (
         <EyeIcon color="action.icon.link.active" size="small" />
       ) : (

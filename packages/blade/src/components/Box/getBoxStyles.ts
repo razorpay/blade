@@ -4,17 +4,17 @@ import type { BoxProps } from './Box';
 import { getIn, makeSize, makeSpace } from '~utils';
 
 // allows 'auto' as spacing value
-const getSpacingValue = <T extends string | number | undefined>({
+const getSpacingValue = <SpacingValue extends string | number | undefined>({
   value,
   theme,
 }: {
-  value: T;
+  value: SpacingValue;
   theme: Theme;
 }): string | undefined => {
   if (value === 'auto') return 'auto';
   /**
    * NOTE: don't allow numbers once we have the scale for sizing
-   * DO NOT PUBLISH THIS COMPONENT PUBLICLY WITH THIS PIECE OF CODE ELSE YOU'LL BE OUT OF YOUR JOB
+   * DO NOT PUBLISH THIS COMPONENT PUBLICLY WITH THIS PIECE OF CODE
    */
   if (typeof value === 'number') {
     return makeSpace(value);
@@ -44,6 +44,7 @@ const getBoxStyles = ({
   marginRight,
   gap,
   width,
+  height,
   minHeight,
   minWidth,
   maxHeight,
@@ -54,6 +55,7 @@ const getBoxStyles = ({
   left,
   right,
   bottom,
+  background,
 }: BoxProps & { theme: Theme }): CSSObject => ({
   display,
   flex,
@@ -80,11 +82,13 @@ const getBoxStyles = ({
   marginRight: getSpacingValue({ value: marginRight, theme }),
   gap: getSpacingValue({ value: gap, theme }),
   width,
+  height,
   minHeight: minHeight ? makeSize(minHeight) : undefined,
   minWidth: minWidth ? makeSize(minWidth) : undefined,
   maxHeight: maxHeight ? makeSize(maxHeight) : undefined,
   maxWidth: maxWidth ? makeSize(maxWidth) : undefined,
   transform,
+  background,
 });
 
 export default getBoxStyles;

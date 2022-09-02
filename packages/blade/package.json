@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "license": "MIT",
   "engines": {
     "node": ">=14.19.0"
@@ -58,7 +58,6 @@
   },
   "dependencies": {
     "@babel/runtime": "7.16.5",
-    "outdent": "0.8.0",
     "use-presence": "1.1.0"
   },
   "devDependencies": {
@@ -124,6 +123,7 @@
     "metro-react-native-babel-preset": "0.66.2",
     "moniker": "0.1.2",
     "npm-run-all": "4.1.5",
+    "outdent": "0.8.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.66.4",

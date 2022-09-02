@@ -12,10 +12,10 @@ type SkipNavLinkProps = {
 
 const StyledLink = styled(BaseLink)(({ theme }) => ({
   ...screenReaderStyles,
-  top: theme.spacing[4],
-  left: theme.spacing[4],
+  top: theme.spacing[5],
+  left: theme.spacing[5],
   ':focus': {
-    padding: theme.spacing[1],
+    padding: theme.spacing[2],
     clip: 'auto',
     clipPath: 'unset',
     width: 'auto',

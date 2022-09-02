@@ -296,7 +296,7 @@ const BaseInputMaxCharactersTemplate: ComponentStory<typeof BaseInputComponent> 
       name="fullName"
       maxCharacters={maxCharacters}
       trailingFooterSlot={(value) => (
-        <Box marginTop="spacing.1">
+        <Box marginTop="spacing.2">
           <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters ?? 0} />
         </Box>
       )}

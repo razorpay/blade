@@ -18,6 +18,10 @@ type TextIconColors = `surface.text.${DotNotationColorStringToken<
   Theme['colors']['surface']['text']
 >}`;
 
+type SurfaceActionIconColors = `surface.action.icon.${DotNotationColorStringToken<
+  Theme['colors']['surface']['action']['icon']
+>}`;
+
 type BadgeIconColors = `badge.icon.${DotNotationColorStringToken<
   Theme['colors']['badge']['icon']
 >}`;
@@ -29,6 +33,7 @@ export type IconProps = {
    */
   color:
     | ActionIconColors
+    | SurfaceActionIconColors
     | FeedbackIconColors
     | FeedbackActionIconColors
     | TextIconColors
@@ -63,3 +68,6 @@ export { default as PlusIcon } from './PlusIcon';
 export { default as RupeeIcon } from './RupeeIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as TrashIcon } from './TrashIcon';
+export { default as AlertTriangleIcon } from './AlertTriangleIcon';
+export { default as AlertOctagonIcon } from './AlertOctagonIcon';
+export { default as CheckCircleIcon } from './CheckCircleIcon';

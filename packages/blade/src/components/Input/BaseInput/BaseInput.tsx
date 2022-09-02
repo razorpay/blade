@@ -11,7 +11,7 @@ import type { FormHintProps } from '~components/Form/FormHint';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
-import useInteraction from '~components/Link/BaseLink/useInteraction';
+import useInteraction from '~src/hooks/useInteraction';
 import { Text } from '~components/Typography';
 
 export type HandleOnEvent = ({
@@ -31,7 +31,7 @@ type InputLabelProps = {
    */
   label: string;
   /**
-   * Desktop only prop. on Mobile by default the label will be on top
+   * Desktop only prop. Default value on mobile will be `top`
    */
   labelPosition?: FormLabelProps['position'];
   /**
@@ -129,7 +129,7 @@ export type BaseInputProps = InputLabelProps &
      */
     prefix?: string;
     /**
-     * Element to be rendered before suffix. this is decided by the component which is extending BaseInput
+     * Element to be rendered before suffix. This is decided by the component which is extending BaseInput
      *
      * eg: consumers can render a loader or they could render a clear button
      */
@@ -170,6 +170,14 @@ export type BaseInputProps = InputLabelProps &
      * `previous` is only available on native android
      */
     keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
+    /**
+     * **Web only**
+     *
+     * Hints browser to display an appropriate virtual keyboard
+     *
+     *
+     */
+    inputMode?: 'text' | 'search' | 'telephone' | 'email' | 'url';
     /**
      * determines what autoComplete suggestion type to show
      *
@@ -369,6 +377,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       defaultValue,
       name,
       value,
+      inputMode,
       onFocus,
       onChange,
       onBlur,
@@ -475,6 +484,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               type={type}
               defaultValue={defaultValue}
               value={value}
+              inputMode={inputMode === 'telephone' ? 'tel' : inputMode}
               placeholder={placeholder}
               isDisabled={isDisabled}
               validationState={validationState}

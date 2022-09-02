@@ -2,7 +2,17 @@ import type { Dispatch, SetStateAction } from 'react';
 import type { BaseInputProps, HandleOnEvent } from './BaseInput';
 import type { ActionStates } from '~tokens/theme/theme';
 
-export type StyledBaseInputProps = Pick<
+export type StyledBaseInputProps = {
+  inputMode?: Extract<BaseInputProps['inputMode'], 'text' | 'search' | 'email' | 'url'> | 'tel';
+  handleOnFocus?: HandleOnEvent;
+  handleOnChange?: HandleOnEvent;
+  handleOnBlur?: HandleOnEvent;
+  hasLeadingIcon?: boolean;
+  hasTrailingIcon?: boolean;
+  accessibilityProps: Record<string, unknown>;
+  currentInteraction: keyof ActionStates;
+  setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
+} & Pick<
   BaseInputProps,
   | 'id'
   | 'name'
@@ -24,15 +34,5 @@ export type StyledBaseInputProps = Pick<
   | 'keyboardType'
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
-> & {
-  handleOnFocus?: HandleOnEvent;
-  handleOnChange?: HandleOnEvent;
-  handleOnBlur?: HandleOnEvent;
-  hasLeadingIcon?: boolean;
-  hasTrailingIcon?: boolean;
-  accessibilityProps: Record<string, unknown>;
-  currentInteraction: keyof ActionStates;
-  setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
-};
-
+>;
 export { StyledBaseInput } from './StyledBaseInput.web';

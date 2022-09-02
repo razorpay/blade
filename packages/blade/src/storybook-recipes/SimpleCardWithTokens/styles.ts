@@ -11,7 +11,7 @@ const StyledCard = ({ theme, isNative }: WithTheme & { isNative: boolean }) => `
   font-family: ${theme.typography.fonts.family.text};
   background-color: ${theme.colors.surface.background.level2.lowContrast};
   border-radius: ${theme.border.radius.medium}px;
-  padding: ${theme.spacing[5]}px;
+  padding: ${theme.spacing[6]}px;
   display: flex;
   flex-direction: column;
   ${
@@ -36,8 +36,8 @@ const LeadBold = ({ theme }: WithTheme) => `
 
 const DisplayLarge = ({ theme }: WithTheme) => `
   font-family: ${theme.typography.fonts.family.text};
-  margin-top: ${theme.spacing[1]}px;
-  margin-bottom: ${theme.spacing[6]}px;
+  margin-top: ${theme.spacing[2]}px;
+  margin-bottom: ${theme.spacing[7]}px;
   font-size: ${theme.typography.fonts.size[600]}px;
   font-weight: ${theme.typography.fonts.weight.bold};
   line-height: 42px;
@@ -45,7 +45,7 @@ const DisplayLarge = ({ theme }: WithTheme) => `
 `;
 
 const DisplayMedium = ({ theme }: WithTheme) => `
-  margin-top: ${theme.spacing[1]}px;
+  margin-top: ${theme.spacing[2]}px;
   font-size: ${theme.typography.fonts.size[600]}px;
   font-weight: ${theme.typography.fonts.weight.bold};
   line-height: 38px;
@@ -53,8 +53,8 @@ const DisplayMedium = ({ theme }: WithTheme) => `
 `;
 
 const CaptionRegular = ({ theme }: WithTheme) => `
-  margin-top: ${theme.spacing[1]}px;
-  margin-right: ${theme.spacing[2]}px;
+  margin-top: ${theme.spacing[2]}px;
+  margin-right: ${theme.spacing[3]}px;
   font-size: ${theme.typography.fonts.size[75]}px;
   font-weight: ${theme.typography.fonts.weight.regular};
   line-height: 16px;
@@ -62,8 +62,8 @@ const CaptionRegular = ({ theme }: WithTheme) => `
 `;
 
 const CaptionBold = ({ theme }: WithTheme) => `
-  margin-top: ${theme.spacing[1]}px;
-  margin-right: ${theme.spacing[2]}px;
+  margin-top: ${theme.spacing[2]}px;
+  margin-right: ${theme.spacing[3]}px;
   font-size: ${theme.typography.fonts.size[75]}px;
   font-weight: ${theme.typography.fonts.weight.bold};
   line-height: 16px;
@@ -71,9 +71,9 @@ const CaptionBold = ({ theme }: WithTheme) => `
 `;
 
 const AlertInformation = ({ theme }: WithTheme) => `
-  margin-top: ${theme.spacing[5]}px;
+  margin-top: ${theme.spacing[6]}px;
   background-color: ${theme.colors.feedback.background.information.lowContrast};
-  padding: ${theme.spacing[1]}px ${theme.spacing[2]}px;
+  padding: ${theme.spacing[2]}px ${theme.spacing[3]}px;
   font-size: ${theme.typography.fonts.size[75]}px;
   font-weight: ${theme.typography.fonts.weight.regular};
   line-height: 16px;
@@ -81,8 +81,8 @@ const AlertInformation = ({ theme }: WithTheme) => `
 `;
 
 const Divider = ({ theme }: WithTheme) => `
-  margin-top:  ${theme.spacing[4]}px;
-  margin-bottom:  ${theme.spacing[3]}px;
+  margin-top:  ${theme.spacing[5]}px;
+  margin-bottom:  ${theme.spacing[4]}px;
   border: 1px solid ${theme.colors.surface.border.subtle.lowContrast};
 `;
 

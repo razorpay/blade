@@ -196,7 +196,7 @@ const Checkbox = ({
             />
             <SelectorTitle isDisabled={_isDisabled}>{children}</SelectorTitle>
           </Box>
-          <Box marginLeft="spacing.6">
+          <Box marginLeft="spacing.7">
             {showSupportingText && (
               <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
             )}

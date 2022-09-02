@@ -9,7 +9,7 @@ import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 
 type HintTextProps = {
-  icon: React.ElementType;
+  icon?: React.ElementType;
   children: string;
   id?: string;
   color: BaseTextProps['color'];
@@ -19,9 +19,9 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElem
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
-    <Box marginTop="spacing.1">
+    <Box marginTop="spacing.2">
       <FormHintWrapper>
-        <Icon />
+        {Icon ? <Icon /> : null}
         <BaseText
           id={id}
           as={isReactNative ? undefined : 'span'}
@@ -74,17 +74,16 @@ export type FormHintProps = {
 };
 
 const Icons = {
-  help: (): null => null,
   error: (): ReactElement => (
     <>
       <InfoIcon color="feedback.icon.negative.lowContrast" size="small" />
-      <Box marginRight="spacing.1" />
+      <Box marginRight="spacing.2" />
     </>
   ),
   success: (): ReactElement => (
     <>
       <CheckIcon color="feedback.icon.positive.lowContrast" size="small" />
-      <Box marginRight="spacing.1" />
+      <Box marginRight="spacing.2" />
     </>
   ),
 };
@@ -111,7 +110,7 @@ const FormHint = ({
   return (
     <>
       {showHelp && (
-        <HintText id={helpTextId} icon={Icons.help} color={colors.help}>
+        <HintText id={helpTextId} color={colors.help}>
           {helpText}
         </HintText>
       )}

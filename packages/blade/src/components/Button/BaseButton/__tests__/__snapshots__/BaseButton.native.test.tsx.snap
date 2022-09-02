@@ -332,7 +332,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       alignItems="center"
       display="flex"
       justifyContent="center"
-      paddingRight="spacing.2"
+      paddingRight="spacing.3"
       style={
         Array [
           Object {
@@ -521,7 +521,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       alignItems="center"
       display="flex"
       justifyContent="center"
-      paddingRight="spacing.2"
+      paddingRight="spacing.3"
       style={
         Array [
           Object {
@@ -741,7 +741,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       alignItems="center"
       display="flex"
       justifyContent="center"
-      paddingLeft="spacing.2"
+      paddingLeft="spacing.3"
       style={
         Array [
           Object {

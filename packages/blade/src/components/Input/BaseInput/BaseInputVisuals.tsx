@@ -25,13 +25,13 @@ const getPrefixStyles = ({
 }): BoxProps => {
   if (hasPrefix && hasLeadingIcon) {
     return {
-      paddingLeft: 'spacing.1',
+      paddingLeft: 'spacing.2',
     };
   }
 
   if (hasPrefix && !hasLeadingIcon) {
     return {
-      paddingLeft: 'spacing.3',
+      paddingLeft: 'spacing.4',
     };
   }
 
@@ -51,13 +51,13 @@ const getInteractionElementStyles = ({
 }): BoxProps => {
   if (hasInteractionElement && (hasSuffix || hasTrailingIcon)) {
     return {
-      paddingRight: 'spacing.1',
+      paddingRight: 'spacing.2',
     };
   }
 
   if (hasInteractionElement && !hasSuffix && !hasTrailingIcon) {
     return {
-      paddingRight: 'spacing.3',
+      paddingRight: 'spacing.4',
     };
   }
 
@@ -75,13 +75,13 @@ const getSuffixStyles = ({
 }): BoxProps => {
   if (hasSuffix && hasTrailingIcon) {
     return {
-      paddingRight: 'spacing.1',
+      paddingRight: 'spacing.2',
     };
   }
 
   if (hasSuffix && !hasTrailingIcon) {
     return {
-      paddingRight: 'spacing.3',
+      paddingRight: 'spacing.4',
     };
   }
 
@@ -133,7 +133,7 @@ export const BaseInputVisuals = ({
     return (
       <Box {...getVisualContainerStyles()}>
         {hasLeadingIcon ? (
-          <Box paddingLeft="spacing.3" display="flex">
+          <Box paddingLeft="spacing.4" display="flex">
             {LeadingIcon && (
               <LeadingIcon
                 size="medium"
@@ -188,7 +188,7 @@ export const BaseInputVisuals = ({
           </Box>
         ) : null}
         {hasTrailingIcon ? (
-          <Box paddingRight="spacing.3" display="flex">
+          <Box paddingRight="spacing.4" display="flex">
             {TrailingIcon && (
               <TrailingIcon
                 size="medium"
