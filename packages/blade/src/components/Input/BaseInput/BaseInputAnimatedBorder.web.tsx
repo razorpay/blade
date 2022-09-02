@@ -63,7 +63,7 @@ export const BaseInputAnimatedBorder = ({
   let borderAnimation = null;
   if (currentInteraction === 'focus') {
     borderAnimation = borderAnimationOnFocus;
-  } else if (currentInteraction === 'default') {
+  } else {
     borderAnimation = borderAnimationOnBlur;
   }
 

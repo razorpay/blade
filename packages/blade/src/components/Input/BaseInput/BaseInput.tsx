@@ -5,13 +5,13 @@ import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
-import { getPlatformType, makeAccessible, useBreakpoint } from '~utils';
+import { getPlatformType, makeAccessible } from '~utils';
 import type { FormLabelProps } from '~components/Form/FormLabel';
 import type { FormHintProps } from '~components/Form/FormHint';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
-import useInteraction from '~components/Link/BaseLink/useInteraction';
+import useInteraction from '~src/hooks/useInteraction';
 
 export type HandleOnEvent = ({
   name,
@@ -30,7 +30,7 @@ type InputLabelProps = {
    */
   label: string;
   /**
-   * Desktop only prop. on Mobile by default the label will be on top
+   * Desktop only prop. Default value on mobile will be `top`
    */
   labelPosition?: FormLabelProps['position'];
   /**
@@ -180,7 +180,7 @@ export type BaseInputProps = InputLabelProps &
      *
      *
      */
-    inputMode?: 'text' | 'search' | 'tel' | 'email' | 'url';
+    inputMode?: 'text' | 'search' | 'telephone' | 'email' | 'url';
     /**
      * determines what autoComplete suggestion type to show
      *
@@ -364,11 +364,10 @@ export const BaseInput = ({
   inputMode,
   autoCompleteSuggestionType,
 }: BaseInputProps): ReactElement => {
-  const { theme } = useTheme();
+  const { platform } = useTheme();
   const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange });
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
-  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
+  const isLabelLeftPositioned = labelPosition === 'left' && platform === 'onDesktop';
   const { currentInteraction, setCurrentInteraction } = useInteraction();
 
   const accessibilityProps = makeAccessible({
@@ -441,7 +440,7 @@ export const BaseInput = ({
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus}
             keyboardReturnKeyType={keyboardReturnKeyType}
-            inputMode={inputMode}
+            inputMode={inputMode === 'telephone' ? 'tel' : inputMode}
             autoCompleteSuggestionType={autoCompleteSuggestionType}
             accessibilityProps={accessibilityProps}
             currentInteraction={currentInteraction}

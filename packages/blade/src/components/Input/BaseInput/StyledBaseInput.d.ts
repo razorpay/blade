@@ -3,6 +3,7 @@ import type { BaseInputProps, HandleOnEvent } from './BaseInput';
 import type { ActionStates } from '~tokens/theme/theme';
 
 export type StyledBaseInputProps = {
+  inputMode?: Extract<BaseInputProps['inputMode'], 'text' | 'search' | 'email' | 'url'> | 'tel';
   handleOnChange?: HandleOnEvent;
   handleOnBlur?: HandleOnEvent;
   hasLeadingIcon?: boolean;
@@ -29,7 +30,6 @@ export type StyledBaseInputProps = {
   | 'textAlign'
   | 'autoFocus'
   | 'keyboardReturnKeyType'
-  | 'inputMode'
   | 'autoCompleteSuggestionType'
 >;
 

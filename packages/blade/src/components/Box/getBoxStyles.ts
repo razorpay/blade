@@ -4,11 +4,11 @@ import type { BoxProps } from './Box';
 import { getIn, makeSize, makeSpace } from '~utils';
 
 // allows 'auto' as spacing value
-const getSpacingValue = <T extends string | number | undefined>({
+const getSpacingValue = <SpacingValue extends string | number | undefined>({
   value,
   theme,
 }: {
-  value: T;
+  value: SpacingValue;
   theme: Theme;
 }): string | undefined => {
   if (value === 'auto') return 'auto';
