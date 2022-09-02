@@ -84,7 +84,7 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
           <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={hasError} />
           <SelectorTitle>{children}</SelectorTitle>
         </Box>
-        <Box marginLeft="spacing.6">
+        <Box marginLeft="spacing.7">
           {showHelpText && (
             <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
           )}

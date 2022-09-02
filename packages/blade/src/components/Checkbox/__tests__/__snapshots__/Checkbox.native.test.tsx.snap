@@ -124,7 +124,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
         </Text>
       </View>
       <View
-        marginLeft="spacing.6"
+        marginLeft="spacing.7"
         style={
           Array [
             Object {
@@ -263,7 +263,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
         </Text>
       </View>
       <View
-        marginLeft="spacing.6"
+        marginLeft="spacing.7"
         style={
           Array [
             Object {
@@ -402,7 +402,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         </Text>
       </View>
       <View
-        marginLeft="spacing.6"
+        marginLeft="spacing.7"
         style={
           Array [
             Object {
@@ -414,7 +414,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     </View>
   </View>
   <View
-    marginTop="spacing.1"
+    marginTop="spacing.2"
     style={
       Array [
         Object {
@@ -502,7 +502,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       </RNSVGGroup>
     </RNSVGSvgView>
     <View
-      marginRight="spacing.1"
+      marginRight="spacing.2"
       style={
         Array [
           Object {

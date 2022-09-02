@@ -156,7 +156,7 @@ const getProps = ({
       isVisited,
     }) as IconProps['color'],
     iconSize: hasIcon && (!children || children?.trim().length === 0) ? 'medium' : 'small',
-    iconPadding: children?.trim() ? 'spacing.1' : 'spacing.0',
+    iconPadding: children?.trim() ? 'spacing.2' : 'spacing.0',
     textColor: getColorToken({
       variant,
       intent,

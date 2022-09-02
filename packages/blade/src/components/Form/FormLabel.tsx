@@ -81,7 +81,7 @@ const FormLabel = ({
 
   const textNode = (
     <Box
-      gap={necessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'}
+      gap={necessityIndicator === 'optional' ? 'spacing.2' : 'spacing.0'}
       display="flex"
       flexDirection="row"
       alignItems="center"
@@ -104,7 +104,7 @@ const FormLabel = ({
   // What harm can it do?
   if (isReactNative) {
     return (
-      <Box marginRight="spacing.4" marginBottom="spacing.1">
+      <Box marginRight="spacing.5" marginBottom="spacing.2">
         {textNode}
       </Box>
     );
@@ -121,12 +121,12 @@ const FormLabel = ({
       style={{
         width,
         flexShrink: 0,
-        marginRight: makeSpace(theme.spacing[4]),
+        marginRight: makeSpace(theme.spacing[5]),
         wordBreak: 'break-all',
       }}
       id={id}
     >
-      <Box marginBottom={isLabelLeftPositioned ? 'spacing.0' : 'spacing.1'}>{textNode}</Box>
+      <Box marginBottom={isLabelLeftPositioned ? 'spacing.0' : 'spacing.2'}>{textNode}</Box>
     </Component>
   );
 };

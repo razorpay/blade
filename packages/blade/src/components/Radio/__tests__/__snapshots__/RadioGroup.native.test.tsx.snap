@@ -16,8 +16,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   }
 >
   <View
-    marginBottom="spacing.1"
-    marginRight="spacing.4"
+    marginBottom="spacing.2"
+    marginRight="spacing.5"
     style={
       Array [
         Object {
@@ -283,7 +283,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             </Text>
           </View>
           <View
-            marginLeft="spacing.6"
+            marginLeft="spacing.7"
             style={
               Array [
                 Object {
@@ -415,7 +415,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             </Text>
           </View>
           <View
-            marginLeft="spacing.6"
+            marginLeft="spacing.7"
             style={
               Array [
                 Object {
@@ -547,7 +547,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             </Text>
           </View>
           <View
-            marginLeft="spacing.6"
+            marginLeft="spacing.7"
             style={
               Array [
                 Object {
@@ -560,7 +560,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
       </View>
     </View>
     <View
-      marginTop="spacing.1"
+      marginTop="spacing.2"
       style={
         Array [
           Object {
@@ -630,8 +630,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
   }
 >
   <View
-    marginBottom="spacing.1"
-    marginRight="spacing.4"
+    marginBottom="spacing.2"
+    marginRight="spacing.5"
     style={
       Array [
         Object {
@@ -897,7 +897,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             </Text>
           </View>
           <View
-            marginLeft="spacing.6"
+            marginLeft="spacing.7"
             style={
               Array [
                 Object {
@@ -1029,7 +1029,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             </Text>
           </View>
           <View
-            marginLeft="spacing.6"
+            marginLeft="spacing.7"
             style={
               Array [
                 Object {
@@ -1161,7 +1161,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             </Text>
           </View>
           <View
-            marginLeft="spacing.6"
+            marginLeft="spacing.7"
             style={
               Array [
                 Object {

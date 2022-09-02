@@ -20,7 +20,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElem
 
   return (
     <>
-      <Box marginTop="spacing.1" />
+      <Box marginTop="spacing.2" />
       <FormHintWrapper>
         {Icon ? <Icon /> : null}
         <BaseText
@@ -78,13 +78,13 @@ const Icons = {
   error: (): ReactElement => (
     <>
       <InfoIcon color="feedback.icon.negative.lowContrast" size="small" />
-      <Box marginRight="spacing.1" />
+      <Box marginRight="spacing.2" />
     </>
   ),
   success: (): ReactElement => (
     <>
       <CheckIcon color="feedback.icon.positive.lowContrast" size="small" />
-      <Box marginRight="spacing.1" />
+      <Box marginRight="spacing.2" />
     </>
   ),
 };
