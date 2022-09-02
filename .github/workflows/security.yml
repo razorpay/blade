@@ -30,8 +30,7 @@ jobs:
     steps:
       - name: Set github commit id
         run: |
-          echo "${{ github.event_name }}"
-          if [ "${{ github.event_name }}" = "push" ] || [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ github.event_name }}" = "push" ] || [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ] ; then
             echo "githubCommit=${{ github.sha }}" >> $GITHUB_ENV
           fi
           exit 0
