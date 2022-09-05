@@ -8,6 +8,10 @@
 
   ## Breaking changes
 
+> **Note**
+>
+> This breaking change affects you only if you're using the tokens directly somewhere. If you're only using the components then nothing needs to be updated at your end.
+
   - Added 2px token, thus all spacing tokens have shifted by 1 step.
 
   ## Migration steps
