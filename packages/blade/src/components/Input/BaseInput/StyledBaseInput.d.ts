@@ -4,7 +4,6 @@ import type { FormInputHandleOnEvent } from '~components/Form';
 import type { ActionStates } from '~tokens/theme/theme';
 
 export type StyledBaseInputProps = {
-  inputMode?: Extract<BaseInputProps['inputMode'], 'text' | 'search' | 'email' | 'url'> | 'tel';
   handleOnFocus?: FormInputHandleOnEvent;
   handleOnChange?: FormInputHandleOnEvent;
   handleOnBlur?: FormInputHandleOnEvent;

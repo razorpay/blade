@@ -110,6 +110,10 @@ export type BaseInputProps = FormInputLabelProps &
     autoFocus?: boolean;
     /**
      * Hints the platform to display an appropriate virtual keyboard
+     *
+     * **Native:** Passes as is the `keyboardType` attribute
+     *
+     * **Web:** Passes the value to the `inputMode` attribute
      */
     keyboardType?: 'text' | 'search' | 'telephone' | 'email' | 'url' | 'decimal';
     /**
@@ -120,14 +124,6 @@ export type BaseInputProps = FormInputLabelProps &
      * `previous` is only available on native android
      */
     keyboardReturnKeyType?: 'default' | 'go' | 'done' | 'next' | 'previous' | 'search' | 'send';
-    /**
-     * **Web only**
-     *
-     * Hints browser to display an appropriate virtual keyboard
-     *
-     *
-     */
-    inputMode?: 'text' | 'search' | 'telephone' | 'email' | 'url';
     /**
      * determines what autoComplete suggestion type to show
      *
@@ -327,7 +323,6 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       defaultValue,
       name,
       value,
-      inputMode,
       onFocus,
       onChange,
       onBlur,
@@ -432,7 +427,6 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               type={type}
               defaultValue={defaultValue}
               value={value}
-              inputMode={inputMode === 'telephone' ? 'tel' : inputMode}
               placeholder={placeholder}
               isDisabled={isDisabled}
               validationState={validationState}

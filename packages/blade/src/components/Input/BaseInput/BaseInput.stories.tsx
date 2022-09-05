@@ -56,7 +56,6 @@ export default {
     suffix: '',
     trailingIcon: undefined,
     keyboardReturnKeyType: undefined,
-    inputMode: undefined,
     autoCompleteSuggestionType: undefined,
   },
   argTypes: {
@@ -213,7 +212,7 @@ export default {
         category: propsCategory.KEYBOARD_PROPS,
       },
     },
-    inputMode: {
+    keyboardtype: {
       table: {
         category: propsCategory.KEYBOARD_PROPS,
       },

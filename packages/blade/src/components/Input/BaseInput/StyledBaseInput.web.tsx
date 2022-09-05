@@ -81,6 +81,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
         disabled={isDisabled}
         required={isRequired}
         maxLength={maxCharacters}
+        inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
         onChange={(event): void => handleOnChange?.({ name, value: event })}
         onBlur={(event): void => {
           setCurrentInteraction('default');

@@ -56,7 +56,7 @@ const autoCompleteSuggestionTypeIOS = {
   creditCardExpiryYear: 'none',
 } as const;
 
-const inputModeToKeyboardTypeMap = {
+const KeyboardTypeToNativeValuesMap = {
   text: 'default',
   search: 'default',
   telephone: 'phone-pad',
@@ -128,7 +128,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
         // @ts-expect-error styled-components have limited keyboard types('default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad') compared to the actual supported types so ignoring the error.
         // source: https://reactnative.dev/docs/textinput/#keyboardtype
-        keyboardType={inputModeToKeyboardTypeMap[keyboardType]}
+        keyboardType={KeyboardTypeToNativeValuesMap[keyboardType]}
         returnKeyType={keyboardReturnKeyType}
         textContentType={
           autoCompleteSuggestionType
