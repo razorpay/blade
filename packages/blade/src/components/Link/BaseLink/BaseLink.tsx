@@ -260,7 +260,7 @@ const BaseLink = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       setCurrentInteraction={setCurrentInteraction}
-      // @ts-ignore
+      // @ts-ignore Because we avoided exposing className to public
       className={className}
       style={style}
     >

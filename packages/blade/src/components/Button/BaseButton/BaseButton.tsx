@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import type { ReactElement } from 'react';

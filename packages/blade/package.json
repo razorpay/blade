@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade",
-  "version": "1.0.2-ts-test-3",
+  "version": "1.0.2",
   "license": "MIT",
   "engines": {
     "node": ">=14.19.0"
