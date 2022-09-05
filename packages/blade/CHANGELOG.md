@@ -12,7 +12,7 @@
 
   ## Migration steps
 
-  Shifted every spacing tokens by +1
+  Shift every spacing token other than the first one (`0th` index) by +1
 
   ```diff
   - <div style={{ margin: theme.spacing[1] }} />
