@@ -12,7 +12,6 @@ import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
 import useInteraction from '~src/hooks/useInteraction';
-import { Text } from '~components/Typography';
 
 export type HandleOnEvent = ({
   name,
@@ -207,7 +206,7 @@ export type BaseInputProps = InputLabelProps &
     /**
      * Element to be rendered on the trailing slot of input field label
      */
-    trailingHeaderSlot?: (value: string) => ReactNode;
+    trailingHeaderSlot?: (value?: string) => ReactNode;
     /**
      * Element to be rendered on the trailing slot of input field footer
      */
@@ -399,7 +398,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       keyboardReturnKeyType,
       keyboardType,
       autoCompleteSuggestionType,
-      // trailingHeaderSlot,
+      trailingHeaderSlot,
       trailingFooterSlot,
     },
     ref,
@@ -467,9 +466,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             >
               {label}
             </FormLabel>
-            <Text variant="caption" weight="regular" type="muted">
-              trailing header
-            </Text>
+            {trailingHeaderSlot?.(inputValue)}
           </Box>
           <BaseInputWrapper
             isDisabled={isDisabled}
