@@ -9,6 +9,8 @@
       "~tokens/*": ["src/tokens/*"],
       "~src/*": ["src/*"]
     },
+    // In Blade side we are targetting `.web` types
+    // We can't add both `.native` & `.web` at once.
     "moduleSuffixes": [".all", ".web", ""]
   }
 }
