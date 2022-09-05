@@ -44,7 +44,7 @@ const SpinningBox = ({ children }: { children: React.ReactNode }): React.ReactEl
 
   return (
     <Box alignSelf="center">
-      <Animated.View style={[animatedStyles, {}]}>{children}</Animated.View>
+      <Animated.View style={animatedStyles}>{children}</Animated.View>
     </Box>
   );
 };
