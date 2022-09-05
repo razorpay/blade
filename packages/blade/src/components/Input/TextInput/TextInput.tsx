@@ -143,6 +143,7 @@ export const TextInput = ({
 
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
+      // @TODO replace with spinner once it's ready
       return <InfoIcon size="medium" color="surface.text.subtle.lowContrast" />;
     }
 
@@ -156,8 +157,10 @@ export const TextInput = ({
               // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
               if (isReactNative(textInputRef.current)) {
                 textInputRef.current.clear();
+                textInputRef.current.focus();
               } else if (textInputRef.current instanceof HTMLInputElement) {
                 textInputRef.current.value = '';
+                textInputRef.current.focus();
               }
             }
             // if the input field is controlled just call the click handler and the value change shall be left upto the consumer

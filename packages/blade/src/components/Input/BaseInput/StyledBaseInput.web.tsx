@@ -82,6 +82,12 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
         required={isRequired}
         maxLength={maxCharacters}
         inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
+        enterKeyHint={keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType}
+        autoComplete={
+          autoCompleteSuggestionType
+            ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
+            : undefined
+        }
         onChange={(event): void => handleOnChange?.({ name, value: event })}
         onBlur={(event): void => {
           setCurrentInteraction('default');
@@ -91,12 +97,6 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
           setCurrentInteraction('active');
           handleOnFocus?.({ name, value: event });
         }}
-        enterKeyHint={keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType}
-        autoComplete={
-          autoCompleteSuggestionType
-            ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
-            : undefined
-        }
         {...props}
         {...accessibilityProps}
       />
