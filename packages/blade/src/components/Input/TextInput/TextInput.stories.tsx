@@ -187,8 +187,8 @@ export default {
         <>
           <Title />
           <Subtitle>
-            The TextInput component is a component that will be used as a base to build all the
-            other input fields like TextInput, PasswordInput, CardInput, OTPInput
+            The TextInput component is a component that can be used to input name, email, telephone,
+            url, search or plain text.
           </Subtitle>
           <Title>Usage</Title>
           <Highlight language="tsx">{`import { TextInput } from '@razorpay/blade/components' \nimport type { TextInputProps } from '@razorpay/blade/components'`}</Highlight>
