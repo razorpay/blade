@@ -1,4 +1,4 @@
-// THIS .all file is special only for platform.ts file. Do not use anywhere else
+// This `.all` file is special only for platform.ts file. Do not use anywhere else
 // This file only contains type level code and putting any runtime code will cause errors since our
 // bundler is not setup to handle this extension.
 

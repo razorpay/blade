@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// export type Brand<Base, Branding, ReservedName extends string = '__type__'> = Base &
-//   { [K in ReservedName]?: Branding };
 
 export declare const _brand: unique symbol;
 /**
