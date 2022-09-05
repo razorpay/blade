@@ -18,6 +18,9 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-label="Loading"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -64,6 +67,9 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-label="Loading"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -110,6 +116,9 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-label="Loading"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -156,6 +165,9 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-label="Loading"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -202,6 +214,9 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-label="Loading"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -248,6 +263,9 @@ exports[`<Spinner /> should render small size Spinner 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-label="Loading"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >

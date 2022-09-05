@@ -18,6 +18,8 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -64,6 +66,8 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -110,6 +114,8 @@ exports[`<BaseSpinner /> should render high contrast information intent BaseSpin
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -156,6 +162,8 @@ exports[`<BaseSpinner /> should render high contrast negative intent BaseSpinner
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -202,6 +210,8 @@ exports[`<BaseSpinner /> should render high contrast neutral intent BaseSpinner 
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -248,6 +258,8 @@ exports[`<BaseSpinner /> should render high contrast notice intent BaseSpinner 1
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -294,6 +306,8 @@ exports[`<BaseSpinner /> should render high contrast positive intent BaseSpinner
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -340,6 +354,8 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -386,6 +402,8 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -432,6 +450,8 @@ exports[`<BaseSpinner /> should render low contrast information intent BaseSpinn
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -478,6 +498,8 @@ exports[`<BaseSpinner /> should render low contrast negative intent BaseSpinner 
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -524,6 +546,8 @@ exports[`<BaseSpinner /> should render low contrast neutral intent BaseSpinner 1
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -570,6 +594,8 @@ exports[`<BaseSpinner /> should render low contrast notice intent BaseSpinner 1`
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -616,6 +642,8 @@ exports[`<BaseSpinner /> should render low contrast positive intent BaseSpinner 
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -662,6 +690,8 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >
@@ -708,6 +738,8 @@ exports[`<BaseSpinner /> should render small size BaseSpinner 1`] = `
 
 <div>
   <div
+    aria-atomic="true"
+    aria-live="assertive"
     class="c0 c1"
     display="flex"
   >

@@ -3001,16 +3001,13 @@ exports[`<BaseButton /> should render loading button 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
-              "transform": Array [
-                Object {
-                  "rotateZ": "0deg",
-                },
-              ],
-            },
-            Object {},
-          ]
+          Object {
+            "transform": Array [
+              Object {
+                "rotateZ": "0deg",
+              },
+            ],
+          }
         }
       >
         <RNSVGSvgView

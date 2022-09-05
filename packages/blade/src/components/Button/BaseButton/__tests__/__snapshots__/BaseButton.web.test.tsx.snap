@@ -220,6 +220,9 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
       display="flex"
     >
       <div
+        aria-atomic="true"
+        aria-label="Loading"
+        aria-live="off"
         class="c6 c7"
         display="flex"
       >
