@@ -1,5 +1,28 @@
 # @razorpay/blade
 
+## 2.0.0
+
+### Major Changes
+
+- cc4355a: feat(blade): added 2px spacing token
+
+  ## Breaking changes
+
+  - Added 2px token, thus all spacing tokens have shifted by 1 step.
+
+  ## Migration steps
+
+  Shifted every spacing tokens by +1
+
+  ```diff
+  - <div style={{ margin: theme.spacing[1] }} />
+  + <div style={{ margin: theme.spacing[2] }} />
+  ```
+
+### Patch Changes
+
+- a402ef1: feat(icons): add `RefreshLeft` icon
+
 ## 1.1.0
 
 ### Minor Changes
