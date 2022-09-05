@@ -6,69 +6,20 @@ import { BaseInputWrapper } from './BaseInputWrapper';
 import Box from '~components/Box';
 import { FormHint, FormLabel } from '~components/Form';
 import { getPlatformType, makeAccessible, useBreakpoint } from '~utils';
-import type { FormLabelProps } from '~components/Form/FormLabel';
+import type {
+  FormInputLabelProps,
+  FormInputValidationProps,
+  FormInputHandleOnEvent,
+  FormInputOnEvent,
+} from '~components/Form';
 import type { FormHintProps } from '~components/Form/FormHint';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
 import useInteraction from '~src/hooks/useInteraction';
 
-export type HandleOnEvent = ({
-  name,
-  value,
-}: {
-  name?: string;
-  value?: React.ChangeEvent<HTMLInputElement> | string;
-}) => void;
-
-export type OnEvent = ({ name, value }: { name?: string; value?: string }) => void;
-
-// TODO: need to abstract for generic use
-type InputLabelProps = {
-  /**
-   * Label to be shown for the input field
-   */
-  label: string;
-  /**
-   * Desktop only prop. Default value on mobile will be `top`
-   */
-  labelPosition?: FormLabelProps['position'];
-  /**
-   * Displays `(optional)` when `optional` is passed or `*` when `required` is passed
-   */
-  necessityIndicator?: FormLabelProps['necessityIndicator'];
-};
-
-// TODO: need to abstract for generic use
-type InputValidationProps = {
-  /**
-   * Help text for the input
-   */
-  helpText?: string;
-  /**
-   * Error text for the input
-   *
-   * Renders when `validationState` is set to 'error'
-   */
-  errorText?: string;
-  /**
-   * success text for the input
-   *
-   * Renders when `validationState` is set to 'success'
-   */
-  successText?: string;
-  /**
-   * If `error`, the input is marked as invalid,
-   * and `invalid` attribute will be added
-   *
-   * If `success`, the input is marked as valid,
-   *
-   */
-  validationState?: 'success' | 'error' | 'none';
-};
-
-export type BaseInputProps = InputLabelProps &
-  InputValidationProps & {
+export type BaseInputProps = FormInputLabelProps &
+  FormInputValidationProps & {
     /**
      * ID that will be used for accessibility
      */
@@ -96,17 +47,17 @@ export type BaseInputProps = InputLabelProps &
     /**
      * The callback function to be invoked when the input field gets focus
      */
-    onFocus?: OnEvent;
+    onFocus?: FormInputOnEvent;
     /**
      * The callback function to be invoked when the value of the input field changes
      */
-    onChange?: OnEvent;
+    onChange?: FormInputOnEvent;
     /**
      * The callback function to be invoked when the the input field loses focus
      *
      * For React Native this will call `onEndEditing` event since we want to get the last value of the input field
      */
-    onBlur?: OnEvent;
+    onBlur?: FormInputOnEvent;
     /**
      * Used to turn the input field to controlled so user can control the value
      */
@@ -238,9 +189,9 @@ const useInput = ({
   onChange,
   onBlur,
 }: Pick<BaseInputProps, 'value' | 'defaultValue' | 'onFocus' | 'onChange' | 'onBlur'>): {
-  handleOnFocus: HandleOnEvent;
-  handleOnChange: HandleOnEvent;
-  handleOnBlur: HandleOnEvent;
+  handleOnFocus: FormInputHandleOnEvent;
+  handleOnChange: FormInputHandleOnEvent;
+  handleOnBlur: FormInputHandleOnEvent;
   inputValue?: string;
 } => {
   if (value && defaultValue) {
@@ -251,7 +202,7 @@ const useInput = ({
 
   const [inputValue, setInputValue] = React.useState(defaultValue ?? value);
 
-  const handleOnFocus: HandleOnEvent = React.useCallback(
+  const handleOnFocus: FormInputHandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
 
@@ -270,7 +221,7 @@ const useInput = ({
     [onFocus],
   );
 
-  const handleOnChange: HandleOnEvent = React.useCallback(
+  const handleOnChange: FormInputHandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
 
@@ -290,7 +241,7 @@ const useInput = ({
     [onChange],
   );
 
-  const handleOnBlur: HandleOnEvent = React.useCallback(
+  const handleOnBlur: FormInputHandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
 

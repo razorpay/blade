@@ -41,7 +41,6 @@ const FormLabel = ({
   const isDesktop = matchedDeviceType === 'desktop';
   const isReactNative = getPlatformType() === 'react-native';
 
-  // TODO: replace with <Text /> when #548 merges
   let necessityLabel: React.ReactNode = null;
 
   if (!isDesktop && position === 'left') {
