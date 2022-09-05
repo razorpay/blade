@@ -53,7 +53,7 @@ export const BaseInputAnimatedBorder = ({
   });
 
   useEffect(() => {
-    if (currentInteraction == 'focus') {
+    if (currentInteraction == 'active') {
       widthTrigger.value = 0;
       opacityTrigger.value = 1;
       widthTrigger.value = withTiming(1, {

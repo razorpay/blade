@@ -1,3 +1,4 @@
+import React from 'react';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import type { ReactElement } from 'react';
 import styled, { css, keyframes } from 'styled-components';
@@ -38,7 +39,7 @@ const BaseInputStyledAnimatedBorder = styled(Box)(
     validationState,
   }: {
     theme: Theme;
-    animation: FlattenSimpleInterpolation | null;
+    animation?: FlattenSimpleInterpolation;
     validationState: BaseInputProps['validationState'];
   }) => css`
     position: absolute;
@@ -74,15 +75,18 @@ export const BaseInputAnimatedBorder = ({
     animation: ${fadeOutBorder} ${makeMotionTime(theme.motion.duration.xquick)}
       ${theme.motion.easing.standard.effective as string} forwards;
   `;
-
-  let borderAnimation = null;
-  if (currentInteraction === 'focus') {
-    borderAnimation = borderAnimationOnFocus;
-  } else {
-    borderAnimation = borderAnimationOnBlur;
+  // need ref because we don't have `blur` as an interaction which means the exit animation would run on default as well as blur event
+  const borderAnimation = React.useRef<FlattenSimpleInterpolation>();
+  if (currentInteraction === 'active') {
+    borderAnimation.current = borderAnimationOnFocus;
+  } else if (borderAnimation.current && currentInteraction === 'default') {
+    borderAnimation.current = borderAnimationOnBlur;
   }
 
   return (
-    <BaseInputStyledAnimatedBorder animation={borderAnimation} validationState={validationState} />
+    <BaseInputStyledAnimatedBorder
+      animation={borderAnimation.current}
+      validationState={validationState}
+    />
   );
 };

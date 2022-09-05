@@ -114,12 +114,12 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
-        isFocused={currentInteraction === 'focus'}
+        isFocused={currentInteraction === 'active'}
         editable={!isDisabled}
         maxLength={maxCharacters}
         onFocus={(event): void => {
           handleOnFocus?.({ name, value: event?.nativeEvent.text });
-          setCurrentInteraction('focus');
+          setCurrentInteraction('active');
         }}
         onBlur={(): void => {
           setCurrentInteraction('default');

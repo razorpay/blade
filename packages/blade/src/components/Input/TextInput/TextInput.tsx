@@ -210,7 +210,7 @@ export const TextInput = ({
       successText={successText}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
-          <Box marginTop="spacing.2">
+          <Box marginTop="spacing.2" marginRight="spacing.1">
             <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
           </Box>
         ) : null;

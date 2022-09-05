@@ -15,7 +15,7 @@ type BaseInputWrapperProps = Pick<BaseInputProps, 'isDisabled' | 'validationStat
 const StyledBaseInputWrapper = styled(Box)<BaseInputWrapperProps>((props) => ({
   ...getInputBackgroundAndBorderStyles({
     theme: props.theme,
-    isFocused: props.currentInteraction === 'focus',
+    isFocused: props.currentInteraction === 'active',
     isDisabled: props.isDisabled,
     validationState: props.validationState,
   }),
@@ -26,7 +26,7 @@ const StyledBaseInputWrapper = styled(Box)<BaseInputWrapperProps>((props) => ({
           ...getInputBackgroundAndBorderStyles({
             theme: props.theme,
             isHovered: true,
-            isFocused: props.currentInteraction === 'focus',
+            isFocused: props.currentInteraction === 'active',
             isDisabled: props.isDisabled,
             validationState: props.validationState,
           }),
@@ -40,7 +40,7 @@ const StyledBaseInputWrapper = styled(Box)<BaseInputWrapperProps>((props) => ({
       : {
           ...getInputBackgroundAndBorderStyles({
             theme: props.theme,
-            isFocused: props.currentInteraction === 'focus',
+            isFocused: props.currentInteraction === 'active',
             isDisabled: props.isDisabled,
             validationState: props.validationState,
           }),

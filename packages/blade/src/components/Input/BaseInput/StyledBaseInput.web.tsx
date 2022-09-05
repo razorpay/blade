@@ -87,7 +87,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
           handleOnBlur?.({ name, value: event });
         }}
         onFocus={(event): void => {
-          setCurrentInteraction('focus');
+          setCurrentInteraction('active');
           handleOnFocus?.({ name, value: event });
         }}
         enterKeyHint={keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType}
