@@ -13,10 +13,13 @@ type SurfaceColors = `surface.text.${DotNotationColorStringToken<
   Theme['colors']['surface']['text']
 >}`;
 type ActionColors = `action.text.${DotNotationColorStringToken<Theme['colors']['action']['text']>}`;
+type BadgeTextColors = `badge.text.${DotNotationColorStringToken<
+  Theme['colors']['badge']['text']
+>}`;
 
 export type BaseTextProps = {
   id?: string;
-  color?: ActionColors | FeedbackColors | SurfaceColors | FeedbackActionColors;
+  color?: ActionColors | FeedbackColors | SurfaceColors | FeedbackActionColors | BadgeTextColors;
   fontFamily?: keyof Theme['typography']['fonts']['family'];
   fontSize?: keyof Theme['typography']['fonts']['size'];
   fontWeight?: keyof Theme['typography']['fonts']['weight'];

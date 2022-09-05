@@ -1,3 +1,4 @@
+export * from './Alert';
 export * from './Badge';
 export * from './BladeProvider';
 export * from './Button';

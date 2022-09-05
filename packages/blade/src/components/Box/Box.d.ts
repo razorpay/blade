@@ -6,7 +6,9 @@ export type BoxProps = {
   flex?: CSSObject['flex'];
   flexWrap?: CSSObject['flexWrap'];
   flexDirection?: CSSObject['flexDirection'];
+  flexGrow?: CSSObject['flexGrow'];
   alignItems?: CSSObject['alignItems'];
+  alignContent?: CSSObject['alignContent'];
   justifyContent?: CSSObject['justifyContent'];
   alignSelf?: CSSObject['alignSelf'];
   overflow?: CSSObject['overflow'];
@@ -19,15 +21,24 @@ export type BoxProps = {
   paddingBottom?: DotNotationSpacingStringToken | 'auto';
   paddingLeft?: DotNotationSpacingStringToken | 'auto';
   paddingRight?: DotNotationSpacingStringToken | 'auto';
-  marginTop?: DotNotationSpacingStringToken | 'auto';
-  marginBottom?: DotNotationSpacingStringToken | 'auto';
-  marginLeft?: DotNotationSpacingStringToken | 'auto';
-  marginRight?: DotNotationSpacingStringToken | 'auto';
+  marginTop?: DotNotationSpacingStringToken | 'auto' | number;
+  marginBottom?: DotNotationSpacingStringToken | 'auto' | number;
+  marginLeft?: DotNotationSpacingStringToken | 'auto' | number;
+  marginRight?: DotNotationSpacingStringToken | 'auto' | number;
+  width?: CSSObject['width'];
+  height?: CSSObject['height'];
   gap?: DotNotationSpacingStringToken | 'auto' | number;
   minHeight?: number;
   minWidth?: number;
   maxHeight?: number;
   maxWidth?: number;
+  position?: CSSObject['position'];
+  transform?: CSSObject['transform'];
+  top?: CSSObject['top'];
+  left?: CSSObject['left'];
+  right?: CSSObject['right'];
+  bottom?: CSSObject['bottom'];
+  background?: CSSObject['background'];
 };
 
 export { default } from './Box.web';

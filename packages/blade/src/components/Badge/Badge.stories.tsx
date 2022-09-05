@@ -103,7 +103,7 @@ Badge.args = {
 Badge.storyName = 'Default';
 
 const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...args }) => {
-  const variants = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
+  const variants = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
 
   const getLabel = (label: string): string => {
     return args.fontWeight === 'bold' ? label.toUpperCase() : capitalize(label);
@@ -115,12 +115,12 @@ const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...a
       <Box
         display="flex"
         flexDirection="row"
-        paddingTop="spacing.2"
-        paddingBottom="spacing.4"
+        paddingTop="spacing.3"
+        paddingBottom="spacing.5"
         flexWrap="wrap"
       >
         {variants.map((variant) => (
-          <Box key={variant} paddingRight="spacing.2" paddingTop="spacing.1">
+          <Box key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
             <BadgeComponent {...args} variant={variant} contrast="low">
               {getLabel(variant)}
             </BadgeComponent>
@@ -131,12 +131,12 @@ const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...a
       <Box
         display="flex"
         flexDirection="row"
-        paddingTop="spacing.2"
-        paddingBottom="spacing.4"
+        paddingTop="spacing.3"
+        paddingBottom="spacing.5"
         flexWrap="wrap"
       >
         {variants.map((variant) => (
-          <Box key={variant} paddingRight="spacing.2" paddingTop="spacing.1">
+          <Box key={variant} paddingRight="spacing.3" paddingTop="spacing.2">
             <BadgeComponent {...args} variant={variant} contrast="high">
               {getLabel(variant)}
             </BadgeComponent>

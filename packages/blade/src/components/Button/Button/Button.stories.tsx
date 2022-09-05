@@ -288,9 +288,9 @@ const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
   return (
     <>
       <ButtonComponent {...args} isLoading={loading} />
-      <Box marginTop="spacing.2" />
+      <Box marginTop="spacing.3" />
       <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
-      <Box marginTop="spacing.2" />
+      <Box marginTop="spacing.3" />
       <ButtonComponent size="small" variant="secondary" onClick={toggle}>
         Toggle loading
       </ButtonComponent>
