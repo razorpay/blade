@@ -9,6 +9,7 @@ import type { ActionStates } from '~tokens/theme/theme';
 
 type BaseInputWrapperProps = Pick<BaseInputProps, 'isDisabled' | 'validationState'> & {
   isFocused?: boolean;
+  isLabelLeftPositioned?: boolean;
   currentInteraction: keyof ActionStates;
 };
 
@@ -51,6 +52,7 @@ export const BaseInputWrapper = ({
   children,
   validationState,
   currentInteraction,
+  isLabelLeftPositioned,
   ...props
 }: BaseInputWrapperProps & {
   children: ReactNode;
@@ -70,6 +72,7 @@ export const BaseInputWrapper = ({
       <BaseInputAnimatedBorder
         currentInteraction={currentInteraction}
         validationState={validationState}
+        isLabelLeftPositioned={isLabelLeftPositioned}
       />
     </>
   );

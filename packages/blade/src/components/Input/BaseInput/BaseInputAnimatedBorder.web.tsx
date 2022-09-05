@@ -32,12 +32,21 @@ to {
 `;
 
 const BaseInputStyledAnimatedBorder = styled(Box)(
-  ({ theme, animation }: { theme: Theme; animation?: FlattenSimpleInterpolation }) => css`
+  ({
+    theme,
+    animation,
+    isLabelLeftPositioned,
+  }: {
+    theme: Theme;
+    animation?: FlattenSimpleInterpolation;
+    isLabelLeftPositioned?: boolean;
+  }) => css`
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     opacity: 0;
+    margin-left: ${isLabelLeftPositioned ? '136px' : 0};
     background-color: ${theme.colors.brand.primary[500]};
     border-width: ${makeBorderSize(theme.border.width.thin)};
     height: ${makeBorderSize(theme.border.width.thin)};
@@ -48,9 +57,11 @@ const BaseInputStyledAnimatedBorder = styled(Box)(
 export const BaseInputAnimatedBorder = ({
   currentInteraction,
   validationState,
+  isLabelLeftPositioned,
 }: {
   currentInteraction: keyof ActionStates;
   validationState: BaseInputProps['validationState'];
+  isLabelLeftPositioned?: boolean;
 }): ReactElement => {
   const { theme } = useTheme();
 
@@ -75,5 +86,10 @@ export const BaseInputAnimatedBorder = ({
     borderAnimation.current = borderAnimationOnBlur;
   }
 
-  return <BaseInputStyledAnimatedBorder animation={borderAnimation.current} />;
+  return (
+    <BaseInputStyledAnimatedBorder
+      animation={borderAnimation.current}
+      isLabelLeftPositioned={isLabelLeftPositioned}
+    />
+  );
 };

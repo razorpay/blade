@@ -132,18 +132,16 @@ export const BaseInputVisuals = ({
   if (hasLeadingVisuals) {
     return (
       <Box {...getVisualContainerStyles()}>
-        {hasLeadingIcon ? (
+        {LeadingIcon ? (
           <Box paddingLeft="spacing.4" display="flex">
-            {LeadingIcon && (
-              <LeadingIcon
-                size="medium"
-                color={
-                  isDisabled
-                    ? 'surface.text.placeholder.lowContrast'
-                    : 'surface.text.subtle.lowContrast'
-                }
-              />
-            )}
+            <LeadingIcon
+              size="medium"
+              color={
+                isDisabled
+                  ? 'surface.text.placeholder.lowContrast'
+                  : 'surface.text.subtle.lowContrast'
+              }
+            />
           </Box>
         ) : null}
         {hasPrefix ? (
@@ -187,9 +185,9 @@ export const BaseInputVisuals = ({
             </Text>
           </Box>
         ) : null}
-        {hasTrailingIcon ? (
+        {TrailingIcon ? (
           <Box paddingRight="spacing.4" display="flex">
-            {TrailingIcon && (
+            {
               <TrailingIcon
                 size="medium"
                 color={
@@ -198,7 +196,7 @@ export const BaseInputVisuals = ({
                     : 'surface.text.subtle.lowContrast'
                 }
               />
-            )}
+            }
           </Box>
         ) : null}
       </Box>
