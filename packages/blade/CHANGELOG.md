@@ -6,7 +6,7 @@
 
 - cc4355a: feat(blade): added 2px spacing token
 
-  ## Breaking changes
+  #### Breaking changes
 
 > **Note**
 >
