@@ -14,7 +14,7 @@
 
   - Added 2px token, thus all spacing tokens have shifted by 1 step.
 
-  ## Migration steps
+  #### Migration steps
 
   Shift every spacing token other than the first one (`0th` index) by +1
 
