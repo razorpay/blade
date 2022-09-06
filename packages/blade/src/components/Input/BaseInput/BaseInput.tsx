@@ -363,9 +363,10 @@ export const BaseInput = ({
   keyboardReturnKeyType,
   inputMode,
   autoCompleteSuggestionType,
+  onBlur,
 }: BaseInputProps): ReactElement => {
   const { platform } = useTheme();
-  const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange });
+  const { handleOnChange, handleOnBlur } = useInput({ defaultValue, value, onChange, onBlur });
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
   const isLabelLeftPositioned = labelPosition === 'left' && platform === 'onDesktop';
   const { currentInteraction, setCurrentInteraction } = useInteraction();
