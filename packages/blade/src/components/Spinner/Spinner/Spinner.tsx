@@ -1,5 +1,6 @@
 import { BaseSpinner } from '../BaseSpinner';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
+import type { AccessibilityProps } from '~utils';
 
 type SpinnerProps = {
   /**
@@ -25,7 +26,7 @@ type SpinnerProps = {
    *
    *  @default 'assertive'
    */
-  accessibilityLiveRegion?: 'off' | 'assertive' | 'polite';
+  accessibilityLiveRegion?: AccessibilityProps['liveRegion'];
 };
 
 const Spinner = ({

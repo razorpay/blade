@@ -4,6 +4,7 @@ import SpinnerIcon from './SpinnerIcon';
 import { SpinningBox } from './SpinningBox';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
+import type { AccessibilityProps } from '~utils';
 import { getIn, makeAccessible, makeSize } from '~utils';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 
@@ -31,7 +32,7 @@ type BaseSpinnerProps = {
    *
    *  @default 'assertive'
    */
-  accessibilityLiveRegion?: 'off' | 'assertive' | 'polite';
+  accessibilityLiveRegion?: AccessibilityProps['liveRegion'];
 };
 
 const getColor = ({

@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { motion } from './spinnerTokens';
+import { motion as spinnerMotion } from './spinnerTokens';
 import Box from '~components/Box';
 import { getIn, makeMotionTime } from '~utils';
 
@@ -15,8 +15,8 @@ const rotate = keyframes`
 const SpinningBox = styled(Box)(({ theme }) => {
   return css`
     width: max-content;
-    animation: ${rotate} ${makeMotionTime(getIn(theme.motion, motion.duration))}
-      ${getIn(theme.motion, motion.easing)} infinite;
+    animation: ${rotate} ${makeMotionTime(getIn(theme.motion, spinnerMotion.duration))}
+      ${getIn(theme.motion, spinnerMotion.easing)} infinite;
   `;
 });
 
