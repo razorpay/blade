@@ -1,5 +1,6 @@
 import { BaseSpinner } from '../BaseSpinner';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 
 describe('<BaseSpinner />', () => {
   it('should render BaseSpinner with default props', () => {
@@ -108,5 +109,10 @@ describe('<BaseSpinner />', () => {
       <BaseSpinner accessibilityLabel="Loading" intent="neutral" contrast="high" />,
     );
     expect(container).toMatchSnapshot();
+  });
+
+  it('should not have accessibility violations', async () => {
+    const { container } = renderWithTheme(<BaseSpinner accessibilityLabel="Loading" />);
+    await assertAccessible(container);
   });
 });

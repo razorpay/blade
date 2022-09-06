@@ -4,7 +4,6 @@ import SpinnerIcon from './SpinnerIcon';
 import { SpinningBox } from './SpinningBox';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import type { AccessibilityProps } from '~utils';
 import { getIn, makeAccessible, makeSize } from '~utils';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 
@@ -27,12 +26,6 @@ type BaseSpinnerProps = {
    *
    */
   accessibilityLabel: string;
-  /**
-   * Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
-   *
-   *  @default 'assertive'
-   */
-  accessibilityLiveRegion?: AccessibilityProps['liveRegion'];
 };
 
 const getColor = ({
@@ -61,7 +54,6 @@ const BaseSpinner = ({
   contrast = 'low',
   intent,
   size = 'medium',
-  accessibilityLiveRegion = 'assertive',
 }: BaseSpinnerProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
@@ -69,8 +61,7 @@ const BaseSpinner = ({
       display="flex"
       {...makeAccessible({
         label: accessibilityLabel,
-        liveRegion: accessibilityLiveRegion,
-        atomic: true,
+        role: 'progressbar',
       })}
     >
       <SpinnerIcon
