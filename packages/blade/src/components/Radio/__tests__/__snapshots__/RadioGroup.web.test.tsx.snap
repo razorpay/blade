@@ -387,20 +387,21 @@ exports[`<RadioGroup /> should render with help text 1`] = `
       </div>
       <div
         class="c13"
-      />
-      <span
-        style="display: flex; flex-direction: row; align-items: center;"
       >
         <span
-          class="c14"
-          color="surface.text.muted.lowContrast"
-          font-family="text"
-          font-size="50"
-          font-style="italic"
+          style="display: flex; flex-direction: row; align-items: center; word-break: break-all;"
         >
-          Select one
+          <span
+            class="c14"
+            color="surface.text.muted.lowContrast"
+            font-family="text"
+            font-size="50"
+            font-style="italic"
+          >
+            Select one
+          </span>
         </span>
-      </span>
+      </div>
     </div>
   </div>
 </div>

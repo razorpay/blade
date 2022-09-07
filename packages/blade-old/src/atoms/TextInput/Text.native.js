@@ -9,11 +9,11 @@ import isEmpty from '../../_helpers/isEmpty';
 const styles = {
   color({ disabled, errorText }) {
     if (disabled) {
-      return 'shade.930';
+      return 'shade.940';
     } else if (!isEmpty(errorText)) {
       return 'negative.900';
     } else {
-      return 'shade.950';
+      return 'shade.960';
     }
   },
 };

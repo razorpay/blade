@@ -6,9 +6,9 @@ import Animated, {
   interpolate,
   withTiming,
 } from 'react-native-reanimated';
-
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
+import type { BaseInputProps } from './BaseInput';
 import { makeBorderSize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import type { ActionStates } from '~tokens/theme/theme';
@@ -25,8 +25,10 @@ const BaseInputStyledAnimatedBorder = styled(Animated.View)(({ theme }) => ({
 
 export const BaseInputAnimatedBorder = ({
   currentInteraction,
+  validationState,
 }: {
   currentInteraction: keyof ActionStates;
+  validationState: BaseInputProps['validationState'];
 }): ReactNode => {
   const { theme } = useTheme();
   const borderAnimationEasing = (theme.motion.easing.standard.effective as unknown) as EasingFn;
@@ -42,14 +44,18 @@ export const BaseInputAnimatedBorder = ({
   });
 
   useEffect(() => {
-    if (currentInteraction == 'focus') {
+    if (
+      currentInteraction == 'active' &&
+      validationState !== 'error' &&
+      validationState !== 'success'
+    ) {
       widthTrigger.value = 0;
       opacityTrigger.value = 1;
       widthTrigger.value = withTiming(1, {
         duration: theme.motion.duration.moderate,
         easing: borderAnimationEasing,
       });
-    } else {
+    } else if (currentInteraction === 'default') {
       opacityTrigger.value = withTiming(0, {
         duration: theme.motion.duration.xquick,
         easing: borderAnimationEasing,
@@ -61,6 +67,7 @@ export const BaseInputAnimatedBorder = ({
     widthTrigger,
     theme.motion.duration,
     borderAnimationEasing,
+    validationState,
   ]);
 
   return <BaseInputStyledAnimatedBorder style={animatedStyle} />;
