@@ -13,20 +13,32 @@ describe('<BaseInput />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render success validation state', () => {
-    const { container } = renderWithTheme(
-      <BaseInput label="Enter name" id="name" validationState="success" successText="Success" />,
+  it('should display success validation state', () => {
+    const label = 'Enter name';
+    const { getByText, getByLabelText } = renderWithTheme(
+      <BaseInput label={label} id="name" validationState="success" successText="Success" />,
     );
 
-    expect(container).toMatchSnapshot();
+    const input = getByLabelText(label);
+    const successText = getByText('Success');
+
+    expect(successText).toBeTruthy();
+    expect(input).toHaveAccessibleDescription('Success');
+    expect(input).toBeValid();
   });
 
-  it('should render error validation state', () => {
-    const { container } = renderWithTheme(
-      <BaseInput label="Enter name" id="name" validationState="error" errorText="Error" />,
+  it('should display error validation state', () => {
+    const label = 'Enter name';
+    const { getByText, getByLabelText } = renderWithTheme(
+      <BaseInput label={label} id="name" validationState="error" errorText="Error" />,
     );
 
-    expect(container).toMatchSnapshot();
+    const input = getByLabelText(label);
+    const errorText = getByText('Error');
+
+    expect(errorText).toBeTruthy();
+    expect(input).toHaveAccessibleDescription('Error');
+    expect(input).toBeInvalid();
   });
 
   it('should render with icons', () => {
@@ -147,11 +159,19 @@ describe('<BaseInput />', () => {
         id="name"
         isRequired
         helpText="First name and last name"
+        defaultValue="Divyanshu"
         validationState="none"
       />,
     );
 
     const input = getByRole('textbox');
-    await assertAccessible(input);
+    expect(input).toBeRequired();
+    expect(input).not.toBeInvalid();
+    expect(input).toBeEnabled();
+
+    // There's some issue in jest-axe so we mock this function
+    window.getComputedStyle = jest.fn();
+    await assertAccessible(input, {});
+    jest.clearAllMocks();
   });
 });
