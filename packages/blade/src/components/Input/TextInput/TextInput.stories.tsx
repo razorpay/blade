@@ -1,39 +1,34 @@
+/* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
 import React from 'react';
-import type { BaseInputProps } from './BaseInput';
-import { BaseInput as BaseInputComponent } from './BaseInput';
+import type { TextInputProps } from './TextInput';
+import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
-import Box from '~components/Box';
-import { CharacterCounter } from '~components/Form/CharacterCounter';
 
 const propsCategory = {
-  BASE_PROPS: 'Base Input Props',
-  HEADER_PROPS: 'Header Props',
-  FOOTER_PROPS: 'Footer Props',
+  BASE_PROPS: 'Text Input Props',
+  LABEL_PROPS: 'Label Props',
+  VALIDATION_PROPS: 'Validation Props',
   LEADING_VISUAL_PROPS: 'Leading Visual Props',
   TRAILING_VISUAL_PROPS: 'Trailing Visual Props',
   KEYBOARD_PROPS: 'Keyboard Props',
 };
 
 export default {
-  title: 'Components/Input/BaseInput (Internal)',
-  component: BaseInputComponent,
+  title: 'Components/Input/TextInput',
+  component: TextInputComponent,
   args: {
-    id: 'base-input',
     defaultValue: undefined,
     placeholder: 'Enter your first and last name',
     name: 'fullName',
-    type: 'text',
+    type: 'url',
     isDisabled: false,
     value: undefined,
-    maxCharacters: 9999,
+    maxCharacters: undefined,
     textAlign: 'left',
     autoFocus: false,
-    onFocus: ({ name, value }): void => {
-      console.log(`input field ${name} recevied focus. The value is ${value}`);
-    },
     onChange: ({ name, value }): void => {
       console.log(`input field ${name} content changed to ${value}`);
     },
@@ -42,28 +37,20 @@ export default {
     },
     label: 'Enter Name',
     labelPosition: 'top',
-    trailingHeaderSlot: undefined,
     necessityIndicator: undefined,
     isRequired: false,
     validationState: 'none',
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
-    trailingFooterSlot: undefined,
-    leadingIcon: undefined,
+    icon: undefined,
     prefix: '',
-    interactionElement: undefined,
+    showClearButton: true,
     suffix: '',
-    trailingIcon: undefined,
     keyboardReturnKeyType: undefined,
     autoCompleteSuggestionType: undefined,
   },
   argTypes: {
-    id: {
-      table: {
-        category: propsCategory.BASE_PROPS,
-      },
-    },
     defaultValue: {
       table: {
         category: propsCategory.BASE_PROPS,
@@ -110,11 +97,6 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
-    onFocus: {
-      table: {
-        category: propsCategory.BASE_PROPS,
-      },
-    },
     onChange: {
       table: {
         category: propsCategory.BASE_PROPS,
@@ -127,56 +109,46 @@ export default {
     },
     label: {
       table: {
-        category: propsCategory.HEADER_PROPS,
+        category: propsCategory.LABEL_PROPS,
       },
     },
     labelPosition: {
       table: {
-        category: propsCategory.HEADER_PROPS,
+        category: propsCategory.LABEL_PROPS,
       },
     },
     necessityIndicator: {
       table: {
-        category: propsCategory.HEADER_PROPS,
-      },
-    },
-    trailingHeaderSlot: {
-      table: {
-        category: propsCategory.HEADER_PROPS,
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
     isRequired: {
       table: {
-        category: propsCategory.FOOTER_PROPS,
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
     validationState: {
       table: {
-        category: propsCategory.FOOTER_PROPS,
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
     helpText: {
       table: {
-        category: propsCategory.FOOTER_PROPS,
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
     errorText: {
       table: {
-        category: propsCategory.FOOTER_PROPS,
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
     successText: {
       table: {
-        category: propsCategory.FOOTER_PROPS,
+        category: propsCategory.VALIDATION_PROPS,
       },
     },
-    trailingFooterSlot: {
-      table: {
-        category: propsCategory.FOOTER_PROPS,
-      },
-    },
-    leadingIcon: {
-      name: 'leadingIcon',
+    icon: {
+      name: 'icon',
       type: 'select',
       options: Object.keys(iconMap),
       table: {
@@ -188,31 +160,17 @@ export default {
         category: propsCategory.LEADING_VISUAL_PROPS,
       },
     },
-    interactionElement: {
+    showClearButton: {
       table: {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
-    // interactionElement:{},
     suffix: {
       table: {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
-    trailingIcon: {
-      name: 'trailingIcon',
-      type: 'select',
-      options: Object.keys(iconMap),
-      table: {
-        category: propsCategory.TRAILING_VISUAL_PROPS,
-      },
-    },
     keyboardReturnKeyType: {
-      table: {
-        category: propsCategory.KEYBOARD_PROPS,
-      },
-    },
-    keyboardtype: {
       table: {
         category: propsCategory.KEYBOARD_PROPS,
       },
@@ -229,11 +187,11 @@ export default {
         <>
           <Title />
           <Subtitle>
-            The BaseInput component is a component that will be used as a base to build all the
-            other input fields like TextInput, PasswordInput, CardInput, OTPInput
+            The TextInput component is a component that can be used to input name, email, telephone,
+            url, search or plain text.
           </Subtitle>
           <Title>Usage</Title>
-          <Highlight language="tsx">{`import { BaseInput } from '@razorpay/blade/components' \nimport type { BaseInputProps } from '@razorpay/blade/components'`}</Highlight>
+          <Highlight language="tsx">{`import { TextInput } from '@razorpay/blade/components' \nimport type { TextInputProps } from '@razorpay/blade/components'`}</Highlight>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
@@ -243,88 +201,70 @@ export default {
       ),
     },
   },
-} as Meta<BaseInputProps>;
+} as Meta<TextInputProps>;
 
-const BaseInputTemplate: ComponentStory<typeof BaseInputComponent> = ({
-  leadingIcon,
-  trailingIcon,
-  ...args
-}) => {
-  return (
-    <BaseInputComponent
-      {...args}
-      leadingIcon={iconMap[(leadingIcon as unknown) as string]}
-      trailingIcon={iconMap[(trailingIcon as unknown) as string]}
-    />
-  );
+const TextInputTemplate: ComponentStory<typeof TextInputComponent> = ({ icon, ...args }) => {
+  return <TextInputComponent {...args} icon={iconMap[(icon as unknown) as string]} />;
 };
 
-export const BaseInput = BaseInputTemplate.bind({});
+export const TextInput = TextInputTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-BaseInput.storyName = 'BaseInput';
+TextInput.storyName = 'TextInput';
 
-export const BaseInputHelpText = BaseInputTemplate.bind({});
-BaseInputHelpText.storyName = 'BaseInput with Help Text';
-BaseInputHelpText.args = {
+export const TextInputHelpText = TextInputTemplate.bind({});
+TextInputHelpText.storyName = 'TextInput with Help Text';
+TextInputHelpText.args = {
   helpText: 'Please enter first and last name',
 };
 
-export const BaseInputError = BaseInputTemplate.bind({});
-BaseInputError.storyName = 'BaseInput with error';
-BaseInputError.args = {
+export const TextInputError = TextInputTemplate.bind({});
+TextInputError.storyName = 'TextInput with error';
+TextInputError.args = {
   validationState: 'error',
   errorText: 'Name is not valid',
 };
 
-export const BaseInputSuccess = BaseInputTemplate.bind({});
-BaseInputSuccess.storyName = 'BaseInput with success';
-BaseInputSuccess.args = {
+export const TextInputSuccess = TextInputTemplate.bind({});
+TextInputSuccess.storyName = 'TextInput with success';
+TextInputSuccess.args = {
   defaultValue: 'John Ives',
   validationState: 'success',
   successText: 'Name validated',
 };
 
-const BaseInputMaxCharactersTemplate: ComponentStory<typeof BaseInputComponent> = ({
-  maxCharacters,
-}) => {
+const TextInputMaxCharactersTemplate: ComponentStory<typeof TextInputComponent> = () => {
   return (
-    <BaseInput
-      id="base-input"
+    <TextInput
       label="First Name"
       defaultValue="John Ives"
       name="fullName"
-      maxCharacters={maxCharacters}
-      trailingFooterSlot={(value) => (
-        <Box marginTop="spacing.2">
-          <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters ?? 0} />
-        </Box>
-      )}
+      maxCharacters={10}
       onChange={({ name, value }): void => console.log({ name, value })}
     />
   );
 };
-export const BaseInputMaxCharacters = BaseInputMaxCharactersTemplate.bind({});
+export const TextInputMaxCharacters = TextInputMaxCharactersTemplate.bind({});
 
-const BaseInputUncontrolledTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+const TextInputUncontrolledTemplate: ComponentStory<typeof TextInputComponent> = () => {
   return (
-    <BaseInput
-      id="base-input"
+    <TextInput
       label="First Name"
+      placeholder="Enter your first and last name"
       defaultValue="John Ives"
       name="fullName"
       onChange={({ name, value }): void => console.log({ name, value })}
     />
   );
 };
-export const BaseInputUncontrolled = BaseInputUncontrolledTemplate.bind({});
+export const TextInputUncontrolled = TextInputUncontrolledTemplate.bind({});
 
-const BaseInputControlledTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+const TextInputControlledTemplate: ComponentStory<typeof TextInputComponent> = () => {
   const [inputValue, setInputValue] = React.useState('');
 
   return (
-    <BaseInput
-      id="base-input"
+    <TextInput
       label="First Name"
+      placeholder="Enter your first and last name"
       value={inputValue}
       name="fullName"
       onChange={({ name, value }): void => {
@@ -334,4 +274,4 @@ const BaseInputControlledTemplate: ComponentStory<typeof BaseInputComponent> = (
     />
   );
 };
-export const BaseInputControlled = BaseInputControlledTemplate.bind({});
+export const TextInputControlled = TextInputControlledTemplate.bind({});
