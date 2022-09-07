@@ -2,4 +2,5 @@
 "@razorpay/blade": minor
 ---
 
-feat: add `Spinner` and `BaseSpinner` components
+feat: add `Spinner` component
+- Also adds an internal `BaseSpinner` component
