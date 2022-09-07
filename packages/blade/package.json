@@ -97,7 +97,7 @@
     "@types/jest": "26.0.23",
     "@types/jest-axe": "3.5.3",
     "@types/lodash": "4.14.168",
-    "@types/react": "17.0.3",
+    "@types/react": "17.0.38",
     "@types/react-native": "0.66.9",
     "@types/react-test-renderer": "17.0.1",
     "@types/styled-components": "5.1.25",

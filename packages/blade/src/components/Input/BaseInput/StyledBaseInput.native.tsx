@@ -1,5 +1,6 @@
-import type { ReactElement } from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
+import type { TextInput } from 'react-native';
 import type { StyledBaseInputProps } from './StyledBaseInput.d';
 import { getBaseInputStyles } from './baseInputStyles';
 
@@ -54,6 +55,15 @@ const autoCompleteSuggestionTypeIOS = {
   creditCardExpiryYear: 'none',
 } as const;
 
+const KeyboardTypeToNativeValuesMap = {
+  text: 'default',
+  search: 'default',
+  telephone: 'phone-pad',
+  email: 'email-address',
+  url: 'url',
+  decimal: 'decimal-pad',
+};
+
 const StyledNativeBaseInput = styled.TextInput<
   Omit<
     StyledBaseInputProps,
@@ -78,48 +88,63 @@ const StyledNativeBaseInput = styled.TextInput<
   height: '36px',
 }));
 
-export const StyledBaseInput = ({
-  name,
-  isRequired,
-  isDisabled,
-  handleOnChange,
-  handleOnBlur,
-  keyboardReturnKeyType,
-  autoCompleteSuggestionType,
-  accessibilityProps,
-  currentInteraction,
-  setCurrentInteraction,
-  ...props
-}: StyledBaseInputProps & {
-  keyboardReturnKeyType?: Exclude<StyledBaseInputProps['keyboardReturnKeyType'], 'enter'>;
-}): ReactElement => {
-  return (
-    <StyledNativeBaseInput
-      isFocused={currentInteraction === 'focus'}
-      editable={!isDisabled}
-      onFocus={(): void => {
-        setCurrentInteraction('focus');
-      }}
-      onBlur={(): void => {
-        setCurrentInteraction('default');
-      }}
-      onChangeText={(text): void => handleOnChange?.({ name, value: text })}
-      onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
-      returnKeyType={keyboardReturnKeyType}
-      textContentType={
-        autoCompleteSuggestionType
-          ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
-          : undefined
-      }
-      autoCompleteType={
-        autoCompleteSuggestionType
-          ? (autoCompleteSuggestionTypeAndroid[
-              autoCompleteSuggestionType
-            ] as StyledComponentAutoCompleteAndroid)
-          : undefined
-      }
-      {...props}
-      {...accessibilityProps}
-    />
-  );
-};
+export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>(
+  (
+    {
+      name,
+      isRequired,
+      isDisabled,
+      maxCharacters,
+      handleOnFocus,
+      handleOnChange,
+      handleOnBlur,
+      keyboardType = 'text',
+      keyboardReturnKeyType,
+      autoCompleteSuggestionType,
+      accessibilityProps,
+      currentInteraction,
+      setCurrentInteraction,
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <StyledNativeBaseInput
+        // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={ref as any}
+        isFocused={currentInteraction === 'active'}
+        editable={!isDisabled}
+        maxLength={maxCharacters}
+        onFocus={(event): void => {
+          handleOnFocus?.({ name, value: event?.nativeEvent.text });
+          setCurrentInteraction('active');
+        }}
+        onBlur={(): void => {
+          setCurrentInteraction('default');
+        }}
+        onChangeText={(text): void => handleOnChange?.({ name, value: text })}
+        onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
+        // @ts-expect-error styled-components have limited keyboard types('default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad') compared to the actual supported types so ignoring the error.
+        // source: https://reactnative.dev/docs/textinput/#keyboardtype
+        keyboardType={KeyboardTypeToNativeValuesMap[keyboardType]}
+        returnKeyType={keyboardReturnKeyType}
+        textContentType={
+          autoCompleteSuggestionType
+            ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
+            : undefined
+        }
+        autoCompleteType={
+          autoCompleteSuggestionType
+            ? (autoCompleteSuggestionTypeAndroid[
+                autoCompleteSuggestionType
+              ] as StyledComponentAutoCompleteAndroid)
+            : undefined
+        }
+        {...props}
+        {...accessibilityProps}
+      />
+    );
+  },
+);
+StyledBaseInput.displayName = 'StyledBaseInput';
