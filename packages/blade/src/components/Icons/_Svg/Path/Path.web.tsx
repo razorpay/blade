@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import type { PathProps, NonDashedProps } from './Path.d';
+import type { PathProps, NonDashedProps } from './types';
 
 const Path = <T extends PathProps>({
   d,

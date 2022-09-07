@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { Path as PathNative } from 'react-native-svg';
-import type { NonDashedProps, PathProps } from './Path.d';
+import type { NonDashedProps, PathProps } from './types';
 
 const Path = <T extends PathProps>({
   d,
