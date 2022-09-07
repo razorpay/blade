@@ -1,8 +1,9 @@
 import userEvent from '@testing-library/user-event';
 
+import type { ReactElement } from 'react';
+import { useState } from 'react';
 import { BaseInput } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import ThemeWrapper from '~src/_helpers/testing/themeWrapper';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 import { CloseIcon, EyeIcon } from '~components/Icons';
 
@@ -16,7 +17,14 @@ describe('<BaseInput />', () => {
   it('should display success validation state', () => {
     const label = 'Enter name';
     const { getByText, getByLabelText } = renderWithTheme(
-      <BaseInput label={label} id="name" validationState="success" successText="Success" />,
+      <BaseInput
+        label={label}
+        id="name"
+        validationState="success"
+        successText="Success"
+        helpText="Help"
+        errorText="Error"
+      />,
     );
 
     const input = getByLabelText(label);
@@ -30,7 +38,14 @@ describe('<BaseInput />', () => {
   it('should display error validation state', () => {
     const label = 'Enter name';
     const { getByText, getByLabelText } = renderWithTheme(
-      <BaseInput label={label} id="name" validationState="error" errorText="Error" />,
+      <BaseInput
+        label={label}
+        id="name"
+        validationState="error"
+        errorText="Error"
+        helpText="Help"
+        successText="Success"
+      />,
     );
 
     const input = getByLabelText(label);
@@ -114,6 +129,22 @@ describe('<BaseInput />', () => {
     expect(onBlur).toHaveBeenCalledWith({ name: 'name', value: userName });
   });
 
+  it('should be focussable', async () => {
+    const user = userEvent.setup();
+    const label = 'Enter name';
+    const userName = 'Divyanshu';
+
+    const { getByLabelText } = renderWithTheme(
+      <BaseInput label={label} id="name" name="name" defaultValue={userName} />,
+    );
+
+    const input = getByLabelText(label);
+
+    expect(input).not.toHaveFocus();
+    await user.tab();
+    expect(input).toHaveFocus();
+  });
+
   it('should set value as an uncontrolled input', async () => {
     const user = userEvent.setup();
     const label = 'Enter name';
@@ -131,25 +162,32 @@ describe('<BaseInput />', () => {
     expect(input).toHaveValue(valueFinal);
   });
 
-  it('should set value as a controlled input', () => {
+  it('should set value as a controlled input', async () => {
+    const user = userEvent.setup();
     const label = 'Enter name';
     const valueInitial = 'Divyanshu';
     const valueFinal = 'Divyanshu Maithani';
 
-    const { getByLabelText, rerender } = renderWithTheme(
-      <BaseInput label={label} id="name" value={valueInitial} />,
-    );
+    const ControlledInputExample = (): ReactElement => {
+      const [value, setValue] = useState<string | undefined>(valueInitial);
+
+      return (
+        <BaseInput
+          label={label}
+          id="name"
+          value={value}
+          onChange={({ value }) => setValue(value)}
+        />
+      );
+    };
+
+    const { getByLabelText } = renderWithTheme(<ControlledInputExample />);
 
     const input = getByLabelText(label);
     expect(input).toHaveValue(valueInitial);
 
-    // simulate a controlled input by updating value prop
-    rerender(
-      <ThemeWrapper>
-        <BaseInput label={label} id="name" value={valueFinal} />
-      </ThemeWrapper>,
-    );
-    expect(getByLabelText(label)).toHaveValue(valueFinal);
+    await user.type(input, ' Maithani');
+    expect(input).toHaveValue(valueFinal);
   });
 
   it('should pass a11y', async () => {
