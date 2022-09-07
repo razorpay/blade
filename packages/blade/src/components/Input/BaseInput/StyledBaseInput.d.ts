@@ -1,11 +1,12 @@
 import type { Dispatch, SetStateAction } from 'react';
-import type { BaseInputProps, HandleOnEvent } from './BaseInput';
+import type { BaseInputProps } from './BaseInput';
+import type { FormInputHandleOnEvent } from '~components/Form';
 import type { ActionStates } from '~tokens/theme/theme';
 
 export type StyledBaseInputProps = {
-  inputMode?: Extract<BaseInputProps['inputMode'], 'text' | 'search' | 'email' | 'url'> | 'tel';
-  handleOnChange?: HandleOnEvent;
-  handleOnBlur?: HandleOnEvent;
+  handleOnFocus?: FormInputHandleOnEvent;
+  handleOnChange?: FormInputHandleOnEvent;
+  handleOnBlur?: FormInputHandleOnEvent;
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
   accessibilityProps: Record<string, unknown>;
@@ -27,10 +28,11 @@ export type StyledBaseInputProps = {
   | 'interactionElement'
   | 'suffix'
   | 'trailingIcon'
+  | 'maxCharacters'
   | 'textAlign'
   | 'autoFocus'
+  | 'keyboardType'
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
 >;
-
 export { StyledBaseInput } from './StyledBaseInput.web';

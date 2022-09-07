@@ -1,6 +1,8 @@
+import React from 'react';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import type { ReactElement } from 'react';
 import styled, { css, keyframes } from 'styled-components';
+import type { BaseInputProps } from './BaseInput';
 import Box from '~components/Box';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import type { Theme } from '~components/BladeProvider';
@@ -30,12 +32,21 @@ to {
 `;
 
 const BaseInputStyledAnimatedBorder = styled(Box)(
-  ({ theme, animation }: { theme: Theme; animation: FlattenSimpleInterpolation | null }) => css`
+  ({
+    theme,
+    animation,
+    isLabelLeftPositioned,
+  }: {
+    theme: Theme;
+    animation?: FlattenSimpleInterpolation;
+    isLabelLeftPositioned?: boolean;
+  }) => css`
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     opacity: 0;
+    margin-left: ${isLabelLeftPositioned ? '136px' : 0};
     background-color: ${theme.colors.brand.primary[500]};
     border-width: ${makeBorderSize(theme.border.width.thin)};
     height: ${makeBorderSize(theme.border.width.thin)};
@@ -45,8 +56,12 @@ const BaseInputStyledAnimatedBorder = styled(Box)(
 
 export const BaseInputAnimatedBorder = ({
   currentInteraction,
+  validationState,
+  isLabelLeftPositioned,
 }: {
   currentInteraction: keyof ActionStates;
+  validationState: BaseInputProps['validationState'];
+  isLabelLeftPositioned?: boolean;
 }): ReactElement => {
   const { theme } = useTheme();
 
@@ -59,13 +74,22 @@ export const BaseInputAnimatedBorder = ({
     animation: ${fadeOutBorder} ${makeMotionTime(theme.motion.duration.xquick)}
       ${theme.motion.easing.standard.effective as string} forwards;
   `;
-
-  let borderAnimation = null;
-  if (currentInteraction === 'focus') {
-    borderAnimation = borderAnimationOnFocus;
-  } else {
-    borderAnimation = borderAnimationOnBlur;
+  // need ref because we don't have `blur` as an interaction which means the exit animation would run on default as well as blur event
+  const borderAnimation = React.useRef<FlattenSimpleInterpolation>();
+  if (
+    currentInteraction === 'active' &&
+    validationState !== 'error' &&
+    validationState !== 'success'
+  ) {
+    borderAnimation.current = borderAnimationOnFocus;
+  } else if (borderAnimation.current && currentInteraction === 'default') {
+    borderAnimation.current = borderAnimationOnBlur;
   }
 
-  return <BaseInputStyledAnimatedBorder animation={borderAnimation} />;
+  return (
+    <BaseInputStyledAnimatedBorder
+      animation={borderAnimation.current}
+      isLabelLeftPositioned={isLabelLeftPositioned}
+    />
+  );
 };
