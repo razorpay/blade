@@ -6,7 +6,7 @@ import Animated, { Keyframe } from 'react-native-reanimated';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components/native';
 import { useTheme } from '../../BladeProvider';
-import type { FadeProps } from './Fade.d';
+import type { FadeProps } from './types';
 
 const StyledFade = styled(Animated.View)<{ styles: CSSObject }>(({ styles }) => {
   return {

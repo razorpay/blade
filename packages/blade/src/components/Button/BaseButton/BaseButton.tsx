@@ -27,7 +27,7 @@ import { announce } from '~components/LiveAnnouncer';
 import Spinner from '~components/Spinner';
 import Box from '~components/Box';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
-import type { BaseTextProps } from '~components/Typography/BaseText/BaseTextTypes';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';

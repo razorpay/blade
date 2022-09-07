@@ -1,7 +1,7 @@
 import type { BaseButtonProps } from './BaseButton';
 import type { Theme } from '~components/BladeProvider';
 import type { IconProps } from '~components/Icons';
-import type { SpinnerProps } from '~components/Spinner/Spinner.d';
+import type { SpinnerProps } from '~components/Spinner/types';
 
 export type ButtonMinHeight = 28 | 32 | 36 | 48;
 

@@ -14,7 +14,6 @@ export type StyledBaseLinkProps = {
   onClick?: (e: SyntheticEvent) => void;
   focusRingColor: string;
   disabled: boolean;
-  cursor: CSSObject['cursor'];
   motionDuration: DurationString;
   motionEasing: EasingString;
   setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;

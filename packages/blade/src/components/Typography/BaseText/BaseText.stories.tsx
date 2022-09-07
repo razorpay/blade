@@ -2,7 +2,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
 import { BaseText as BaseTextComponent } from './BaseText';
-import type { BaseTextProps } from './BaseTextTypes';
+import type { BaseTextProps } from './types';
 
 export default {
   title: 'Components/Typography/BaseText (Internal)',

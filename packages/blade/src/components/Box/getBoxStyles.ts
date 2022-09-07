@@ -1,5 +1,5 @@
 import type { CSSObject } from 'styled-components';
-import type { BoxProps } from './Box.d';
+import type { BoxProps } from './types';
 import { getIn, makeSize, makeSpace } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 

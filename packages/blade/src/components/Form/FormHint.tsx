@@ -7,7 +7,7 @@ import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 import { CheckIcon, InfoIcon } from '~components/Icons';
-import type { BaseTextProps } from '~components/Typography/BaseText/BaseTextTypes';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type HintTextProps = {
   icon: React.ElementType;

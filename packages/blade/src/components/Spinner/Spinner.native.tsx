@@ -8,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import SpinnerIcon from './SpinnerIcon';
 import { getSpinnerSize, motion } from './spinnerTokens';
-import type { SpinnerProps } from './Spinner.d';
+import type { SpinnerProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { getIn } from '~utils';
 import type { EasingFunctionFactory } from '~tokens/global/motion';

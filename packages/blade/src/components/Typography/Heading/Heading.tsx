@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
-import type { BaseTextProps } from '../BaseText/BaseTextTypes';
+import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
 import type { Theme } from '~components/BladeProvider';

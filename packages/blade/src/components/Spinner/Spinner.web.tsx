@@ -2,7 +2,7 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import SpinnerIcon from './SpinnerIcon';
-import type { SpinnerProps } from './Spinner.d';
+import type { SpinnerProps } from './types';
 import { getSpinnerSize, motion } from './spinnerTokens';
 import { useTheme } from '~components/BladeProvider';
 import { getIn, makeMotionTime } from '~utils';

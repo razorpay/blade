@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import getStyledLinkStyles from './getStyledLinkStyles';
-import type { StyledBaseLinkProps } from './StyledBaseLink.d';
+import type { StyledBaseLinkProps } from './types';
 import { getIn, makeBorderSize, makeMotionTime } from '~utils';
 
 const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLinkProps) => ({
