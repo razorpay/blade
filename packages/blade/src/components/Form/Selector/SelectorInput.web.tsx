@@ -36,7 +36,7 @@ const getHoverStyles = ({
     borderColor: getIn(theme, backgroundColor),
     backgroundColor: getIn(theme, backgroundColor),
     transitionTimingFunction: theme.motion.easing.standard.effective as string,
-    transitionDuration: (makeMotionTime(theme.motion.duration['2xquick']) as unknown) as string,
+    transitionDuration: makeMotionTime(theme.motion.duration['2xquick']),
   };
 };
 
