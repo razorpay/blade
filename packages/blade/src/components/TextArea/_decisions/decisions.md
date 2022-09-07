@@ -51,12 +51,16 @@ A textarea field is an input field that allow users to input custom text entries
 
 ## Open Questions: 
 
-- [ ] Should the `onClearButton` by default clear the TextArea contents? Or should users handle that logic?
-- [ ] Does the `maxCharacters` just a suggestion or a hard limit? Like if it's set to 20 can users go above 20, like Twitter? 
-- [ ] If the above is true, Should the textarea become invalid when `maxCharacters` count is exceeded? 
-- [ ] How will the `maxLines` behave? In design we set it to minimum of 2 and maximum of 5 lines, when we add `maxLines={4}` will it stay in `2` lines by default and then grow as needed based on the text content? or should it be just `4` lines. If it just stays in `4` lines no matter what then `numberOfLines` or `rows` (native html attribute like) would be a better name.
-- [ ] In design we have that small resize handler on the bottom right corner of the textarea what would happen when user tries to resize the textarea given that we also want to enforce `maxLines`
-
+- [x] Should the `onClearButton` by default clear the TextArea contents? Or should users handle that logic?
+  - If the input is controlled then let the user handle the logic, if uncontrolled clear the contentes.
+- [x] Does the `maxCharacters` just a suggestion or a hard limit? Like if it's set to 20 can users go above 20, like Twitter? 
+  - it's a hard limit unlike twitter. it basically sets maxLength on the input field natively
+- [x] If the above is true, Should the textarea become invalid when `maxCharacters` count is exceeded? 
+  - Above is not true.
+- [x] How will the `maxLines` behave? In design we set it to minimum of 2 and maximum of 5 lines, when we add `maxLines={4}` will it stay in `2` lines by default and then grow as needed based on the text content? or should it be just `4` lines. If it just stays in `4` lines no matter what then `numberOfLines` or `rows` (native html attribute like) would be a better name.
+  - The textarea won't grow, It'll stay same as set by the prop exactly
+- [x] In design we have that small resize handler on the bottom right corner of the textarea what would happen when user tries to resize the textarea given that we also want to enforce `maxLines`
+  - We discussed to descope this for now because of trailing visual elements and it's visual issues
 
 ## References
 
