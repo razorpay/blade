@@ -41,8 +41,7 @@ const SpinningBox = ({ children }: { children: React.ReactNode }): React.ReactEl
     return (): void => {
       cancelAnimation(rotation);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [duration, easing, rotation]);
 
   return (
     <Box alignSelf="center">
