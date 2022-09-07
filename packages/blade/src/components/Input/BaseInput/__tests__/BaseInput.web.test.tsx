@@ -166,12 +166,12 @@ describe('<BaseInput />', () => {
 
     const input = getByRole('textbox');
     expect(input).toBeRequired();
-    expect(input).not.toBeInvalid();
+    expect(input).toBeValid();
     expect(input).toBeEnabled();
 
     // There's some issue in jest-axe so we mock this function
     window.getComputedStyle = jest.fn();
-    await assertAccessible(input, {});
+    await assertAccessible(input);
     jest.clearAllMocks();
   });
 });
