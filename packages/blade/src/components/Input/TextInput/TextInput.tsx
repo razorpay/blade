@@ -59,7 +59,7 @@ type TextInputKeyboardAndAutoComplete = Pick<
 >;
 
 const getKeyboardAndAutocompleteProps = ({
-  type,
+  type = 'text',
   keyboardReturnKeyType,
   autoCompleteSuggestionType,
 }: TextInputKeyboardAndAutoComplete): TextInputKeyboardAndAutoComplete => {
@@ -70,35 +70,54 @@ const getKeyboardAndAutocompleteProps = ({
     autoCompleteSuggestionType: 'none',
   };
 
-  if (type === 'text') {
-    keyboardAndAutocompleteProps.keyboardType = 'text';
-    keyboardAndAutocompleteProps.keyboardReturnKeyType = keyboardReturnKeyType ?? 'default';
-    keyboardAndAutocompleteProps.autoCompleteSuggestionType = autoCompleteSuggestionType ?? 'none';
-  } else if (type === 'telephone') {
-    keyboardAndAutocompleteProps.keyboardType = 'telephone';
-    keyboardAndAutocompleteProps.keyboardReturnKeyType = keyboardReturnKeyType ?? 'done';
-    keyboardAndAutocompleteProps.autoCompleteSuggestionType =
-      autoCompleteSuggestionType ?? 'telephone';
-  } else if (type === 'email') {
-    keyboardAndAutocompleteProps.keyboardType = 'email';
-    keyboardAndAutocompleteProps.keyboardReturnKeyType = keyboardReturnKeyType ?? 'done';
-    keyboardAndAutocompleteProps.autoCompleteSuggestionType = autoCompleteSuggestionType ?? 'email';
-  } else if (type === 'url') {
-    keyboardAndAutocompleteProps.keyboardType = 'url';
-    keyboardAndAutocompleteProps.keyboardReturnKeyType = keyboardReturnKeyType ?? 'go';
-    keyboardAndAutocompleteProps.autoCompleteSuggestionType = autoCompleteSuggestionType ?? 'none';
-  } else if (type === 'numeric') {
-    keyboardAndAutocompleteProps.type = 'text';
+  const keyboardConfigMap = {
+    text: {
+      keyboardType: 'text',
+      keyboardReturnKeyType: 'default',
+      autoCompleteSuggestionType: 'none',
+    },
+    telephone: {
+      keyboardType: 'telephone',
+      keyboardReturnKeyType: 'done',
+      autoCompleteSuggestionType: 'telephone',
+    },
+    email: {
+      keyboardType: 'email',
+      keyboardReturnKeyType: 'done',
+      autoCompleteSuggestionType: 'email',
+    },
+    url: {
+      keyboardType: 'url',
+      keyboardReturnKeyType: 'go',
+      autoCompleteSuggestionType: 'none',
+    },
+    numeric: {
+      keyboardType: 'decimal',
+      keyboardReturnKeyType: 'done',
+      autoCompleteSuggestionType: 'none',
+    },
+    search: {
+      keyboardType: 'search',
+      keyboardReturnKeyType: 'search',
+      autoCompleteSuggestionType: 'none',
+    },
+  } as const;
+
+  const keyboardConfig = keyboardConfigMap[type];
+
+  keyboardAndAutocompleteProps.keyboardType = keyboardConfig.keyboardType;
+
+  keyboardAndAutocompleteProps.keyboardReturnKeyType =
+    keyboardReturnKeyType ?? keyboardConfig.keyboardReturnKeyType;
+
+  keyboardAndAutocompleteProps.autoCompleteSuggestionType =
+    autoCompleteSuggestionType ?? keyboardConfig.autoCompleteSuggestionType;
+
+  if (type === 'numeric') {
     /* the default keyboardType:numeric shows alphanumeric keyboard on iOS but number pad on android. making it type:text and keyboardType:decimal fixes this on all platforms.
      * source: https://css-tricks.com/everything-you-ever-wanted-to-know-about-keyboardType/#aa-decimal
      */
-    keyboardAndAutocompleteProps.keyboardType = 'decimal';
-    keyboardAndAutocompleteProps.keyboardReturnKeyType = keyboardReturnKeyType ?? 'done';
-    keyboardAndAutocompleteProps.autoCompleteSuggestionType = autoCompleteSuggestionType ?? 'none';
-  } else if (type === 'search') {
-    keyboardAndAutocompleteProps.keyboardType = 'search';
-    keyboardAndAutocompleteProps.keyboardReturnKeyType = keyboardReturnKeyType ?? 'search';
-    keyboardAndAutocompleteProps.autoCompleteSuggestionType = autoCompleteSuggestionType ?? 'none';
+    keyboardAndAutocompleteProps.type = 'text';
   }
 
   return keyboardAndAutocompleteProps;

@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import React from 'react';
 import styled from 'styled-components/native';
 import type { TextInput } from 'react-native';
@@ -148,3 +147,4 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
     );
   },
 );
+StyledBaseInput.displayName = 'StyledBaseInput';

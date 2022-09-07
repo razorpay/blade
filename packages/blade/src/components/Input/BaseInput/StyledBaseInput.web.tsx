@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import React from 'react';
 import styled from 'styled-components';
 import { getBaseInputStyles } from './baseInputStyles';
@@ -103,3 +102,4 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
     );
   },
 );
+StyledBaseInput.displayName = 'StyledBaseInput';

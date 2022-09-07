@@ -6,18 +6,14 @@ import Animated, {
   interpolate,
   withTiming,
 } from 'react-native-reanimated';
-
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { makeBorderSize } from '~utils';
-import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import type { ActionStates } from '~tokens/theme/theme';
 
-const BaseInputStyledAnimatedBorder = styled(Animated.View)<{
-  theme: Theme;
-}>(({ theme }) => ({
+const BaseInputStyledAnimatedBorder = styled(Animated.View)(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
   left: 0,
@@ -48,7 +44,6 @@ export const BaseInputAnimatedBorder = ({
   });
 
   useEffect(() => {
-    console.log({ currentInteraction, validationState });
     if (
       currentInteraction == 'active' &&
       validationState !== 'error' &&
