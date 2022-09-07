@@ -12,6 +12,10 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
   animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
 }
@@ -60,6 +64,10 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
   animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
 }
@@ -108,6 +116,10 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
   animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
 }
@@ -156,6 +168,10 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
   animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
 }
@@ -204,6 +220,10 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
   animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
 }
@@ -252,6 +272,10 @@ exports[`<Spinner /> should render small size Spinner 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
   animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
 }
