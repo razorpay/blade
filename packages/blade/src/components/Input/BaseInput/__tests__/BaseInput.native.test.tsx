@@ -62,8 +62,8 @@ describe('<BaseInput />', () => {
 
   it('should be focussed when autoFocus flag is passed', () => {
     const placeholder = 'First last';
-    // eslint-disable-next-line jsx-a11y/no-autofocus
     const { getByPlaceholderText } = renderWithTheme(
+      // eslint-disable-next-line jsx-a11y/no-autofocus
       <BaseInput label="Enter name" placeholder={placeholder} id="name" autoFocus />,
     );
 
@@ -137,7 +137,7 @@ describe('<BaseInput />', () => {
     getByDisplayValue(valueFinal);
   });
 
-  it('should pass a11y', async () => {
+  it('should pass a11y', () => {
     // todo: tests should be updated for improved a11y after https://github.com/razorpay/blade/issues/696
     const placeholder = 'First Last';
     const { getByPlaceholderText } = renderWithTheme(
