@@ -1,6 +1,6 @@
 import { fireEvent } from '@testing-library/react-native';
 import type { ReactElement } from 'react';
-import { useState } from 'react';
+import React from 'react';
 
 import { TextArea } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
@@ -94,7 +94,7 @@ describe('<TextArea />', () => {
     const valueFinal = 'Divyanshu Maithani';
 
     const ControlledInputExample = (): ReactElement => {
-      const [value, setValue] = useState<string | undefined>(valueInitial);
+      const [value, setValue] = React.useState<string | undefined>(valueInitial);
 
       return (
         <TextArea label="Enter name" value={value} onChange={({ value }) => setValue(value)} />
