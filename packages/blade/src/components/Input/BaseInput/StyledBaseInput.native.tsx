@@ -86,7 +86,7 @@ const StyledNativeBaseInput = styled.TextInput<
   }),
   lineHeight: undefined,
   textAlignVertical: 'top',
-  height: `${props.theme.typography.lineHeights.xl * (props.numberOfLines || 0)}px`,
+  height: `${props.theme.typography.lineHeights.xl * (props.numberOfLines ?? 0)}px`,
 }));
 
 export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>(
