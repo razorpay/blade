@@ -97,6 +97,7 @@ const TextArea = ({
               }
               // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
               onClearButtonClick?.();
+              inputRef?.current?.focus();
               setShouldShowClearButton(false);
             }}
           />
