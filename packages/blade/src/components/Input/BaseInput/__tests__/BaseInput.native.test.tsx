@@ -1,5 +1,6 @@
 import { fireEvent } from '@testing-library/react-native';
-import { ReactElement, useState } from 'react';
+import type { ReactElement } from 'react';
+import { useState } from 'react';
 
 import { BaseInput } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
