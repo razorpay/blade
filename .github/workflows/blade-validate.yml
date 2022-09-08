@@ -31,3 +31,6 @@ jobs:
       - name: Run TypeScript Checks
         run: yarn typecheck
         working-directory: packages/blade
+      - name: Build Blade
+        run: yarn build
+        working-directory: packages/blade
