@@ -49,6 +49,8 @@ const FormLabel = ({
     );
   }
 
+  const isLabelLeftPositioned = position === 'left' && isDesktop;
+
   if (necessityIndicator === 'optional') {
     necessityLabel = (
       <Text variant="caption" weight="regular" type="placeholder">
@@ -89,7 +91,7 @@ const FormLabel = ({
       <Text
         type="subdued"
         variant="body"
-        size={position === 'left' ? 'medium' : 'small'}
+        size={isLabelLeftPositioned ? 'medium' : 'small'}
         weight="bold"
       >
         {children}
@@ -110,7 +112,6 @@ const FormLabel = ({
   }
 
   const Component = as;
-  const isLabelLeftPositioned = position === 'left';
   // only set 120px label when device is desktop
   const width = isLabelLeftPositioned && isDesktop ? '120px' : 'auto';
 

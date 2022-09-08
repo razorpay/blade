@@ -6,6 +6,7 @@ import React from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput as TextInputComponent } from './TextInput';
 import iconMap from '~components/Icons/iconMap';
+import Box from '~components/Box';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -282,3 +283,81 @@ const TextInputControlledTemplate: ComponentStory<typeof TextInputComponent> = (
   );
 };
 export const TextInputControlled = TextInputControlledTemplate.bind({});
+
+const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = () => {
+  return (
+    <>
+      <Box display="flex" gap="spacing.5">
+        <TextInput
+          showClearButton
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+        />
+
+        <TextInput
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          defaultValue="Anurag"
+        />
+
+        <TextInput
+          validationState="error"
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          defaultValue="Anurag"
+          errorText="Name is invalid"
+        />
+
+        <TextInput
+          validationState="success"
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          defaultValue="Anurag"
+          successText="Name is valid"
+        />
+      </Box>
+      <Box display="flex" flexDirection="column" gap="spacing.5">
+        <TextInput
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          maxCharacters={100}
+        />
+
+        <TextInput label="First Name" placeholder="Enter your first" name="fullName" />
+
+        <TextInput
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          labelPosition="left"
+        />
+
+        <TextInput
+          necessityIndicator="optional"
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          labelPosition="left"
+          maxCharacters={100}
+        />
+
+        <TextInput
+          necessityIndicator="required"
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          labelPosition="left"
+          maxCharacters={100}
+          validationState="none"
+          helpText="Write your message"
+        />
+      </Box>
+    </>
+  );
+};
+export const TextAreaKitchenSink = TextAreaKitchenSinkTemplate.bind({});

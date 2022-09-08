@@ -401,9 +401,10 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     }
 
     const isTextArea = as === 'textarea';
+    const isReactNative = getPlatformType() === 'react-native';
 
     return (
-      <>
+      <Box>
         <Box
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
@@ -438,7 +439,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <StyledBaseInput
-              as={as}
+              as={isReactNative ? undefined : as}
               id={inputId}
               ref={ref}
               name={name}
@@ -496,7 +497,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             {trailingFooterSlot?.(inputValue)}
           </Box>
         </Box>
-      </>
+      </Box>
     );
   },
 );

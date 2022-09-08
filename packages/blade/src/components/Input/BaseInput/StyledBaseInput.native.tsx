@@ -85,7 +85,8 @@ const StyledNativeBaseInput = styled.TextInput<
     trailingIcon: props.trailingIcon,
   }),
   lineHeight: undefined,
-  height: '36px',
+  textAlignVertical: 'top',
+  height: `${props.theme.typography.lineHeights.xl * (props.numberOfLines || 0)}px`,
 }));
 
 export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>(
@@ -114,6 +115,8 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
+        multiline={Boolean(numberOfLines)}
+        numberOfLines={numberOfLines}
         isFocused={currentInteraction === 'active'}
         editable={!isDisabled}
         maxLength={maxCharacters}

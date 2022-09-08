@@ -5,6 +5,7 @@ import { Highlight } from '@storybook/design-system';
 import React from 'react';
 import type { TextAreaProps } from './TextArea';
 import { TextArea as TextAreaComponent } from './TextArea';
+import Box from '~components/Box';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -74,7 +75,7 @@ export default {
       },
     },
     numberOfLines: {
-      control: { type: 'number' },
+      control: { type: 'range', min: 2, max: 5, step: 1 },
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -191,6 +192,12 @@ TextAreaSuccess.args = {
   successText: 'Name validated',
 };
 
+export const TextAreaNumberOfLines = TextAreaTemplate.bind({});
+TextAreaNumberOfLines.storyName = 'TextArea number of lines';
+TextAreaNumberOfLines.args = {
+  numberOfLines: 4,
+};
+
 const TextAreaMaxCharactersTemplate: ComponentStory<typeof TextAreaComponent> = () => {
   return (
     <TextArea
@@ -234,3 +241,87 @@ const TextAreaControlledTemplate: ComponentStory<typeof TextAreaComponent> = () 
   );
 };
 export const TextAreaControlled = TextAreaControlledTemplate.bind({});
+
+const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = () => {
+  return (
+    <>
+      <Box display="flex" gap="spacing.5">
+        <TextArea
+          showClearButton
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+        />
+
+        <TextArea
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          defaultValue="Anurag"
+        />
+
+        <TextArea
+          validationState="error"
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          defaultValue="Anurag"
+          errorText="Name is invalid"
+        />
+
+        <TextArea
+          validationState="success"
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          defaultValue="Anurag"
+          successText="Name is valid"
+        />
+      </Box>
+      <Box display="flex" flexDirection="column" gap="spacing.5">
+        <TextArea
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          maxCharacters={100}
+        />
+
+        <TextArea
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          numberOfLines={4}
+        />
+
+        <TextArea
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          labelPosition="left"
+        />
+
+        <TextArea
+          necessityIndicator="optional"
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          labelPosition="left"
+          maxCharacters={100}
+        />
+
+        <TextArea
+          necessityIndicator="required"
+          label="First Name"
+          placeholder="Enter your first"
+          name="fullName"
+          labelPosition="left"
+          numberOfLines={3}
+          maxCharacters={100}
+          validationState="none"
+          helpText="Write your message"
+        />
+      </Box>
+    </>
+  );
+};
+export const TextAreaKitchenSink = TextAreaKitchenSinkTemplate.bind({});
