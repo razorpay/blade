@@ -356,7 +356,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       autoCompleteSuggestionType,
       trailingHeaderSlot,
       trailingFooterSlot,
-      numberOfLines = 2,
+      numberOfLines,
     },
     ref,
   ) => {
@@ -417,7 +417,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
             justifyContent="space-between"
-            alignSelf="flex-start"
+            alignSelf={isTextArea ? 'flex-start' : undefined}
             marginTop={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
             marginBottom={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
           >
@@ -470,6 +470,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               currentInteraction={currentInteraction}
               setCurrentInteraction={setCurrentInteraction}
               numberOfLines={numberOfLines}
+              isTextArea={isTextArea}
             />
             <BaseInputVisuals
               interactionElement={interactionElement}

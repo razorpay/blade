@@ -69,6 +69,7 @@ const StyledNativeBaseInput = styled.TextInput<
     StyledBaseInputProps,
     'accessibilityProps' | 'setCurrentInteraction' | 'currentInteraction'
   > & {
+    isTextArea?: boolean;
     isFocused: boolean;
     autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
   }
@@ -86,7 +87,9 @@ const StyledNativeBaseInput = styled.TextInput<
   }),
   lineHeight: undefined,
   textAlignVertical: 'top',
-  height: `${props.theme.typography.lineHeights.xl * (props.numberOfLines ?? 0)}px`,
+  height: props.isTextArea
+    ? `${props.theme.typography.lineHeights.xl * (props.numberOfLines ?? 0)}px`
+    : '36px',
 }));
 
 export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>(
@@ -106,6 +109,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       currentInteraction,
       setCurrentInteraction,
       numberOfLines,
+      isTextArea,
       ...props
     },
     ref,
@@ -145,6 +149,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
               ] as StyledComponentAutoCompleteAndroid)
             : undefined
         }
+        isTextArea={isTextArea}
         {...props}
         {...accessibilityProps}
       />
