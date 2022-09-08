@@ -1,5 +1,11 @@
 # @razorpay/blade-old
 
+## 2.3.4
+
+### Patch Changes
+
+- 1417e90: changed native text-input helptext color
+
 ## 2.3.3
 
 ### Patch Changes
