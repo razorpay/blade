@@ -2,9 +2,12 @@ import { fireEvent } from '@testing-library/react-native';
 
 import { BaseInput } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
-import ThemeWrapper from '~src/_helpers/testing/themeWrapper';
 import { CloseIcon, EyeIcon } from '~components/Icons';
+import { Button } from '~components/Button';
+import { createRef } from 'react';
+import { act } from 'react-test-renderer';
 
+// todo: tests should be updated for improved a11y after https://github.com/razorpay/blade/issues/696
 describe('<BaseInput />', () => {
   it('should render', () => {
     const { toJSON } = renderWithTheme(<BaseInput label="Enter name" id="name" />);
@@ -12,20 +15,38 @@ describe('<BaseInput />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render success validation state', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseInput label="Enter name" id="name" validationState="success" successText="Success" />,
+  it('should display success validation state', () => {
+    const { getByText } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        id="name"
+        validationState="success"
+        successText="Success"
+        helpText="Help"
+        errorText="Error"
+      />,
     );
 
-    expect(toJSON()).toMatchSnapshot();
+    const successText = getByText('Success');
+
+    expect(successText).toBeTruthy();
   });
 
-  it('should render error validation state', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseInput label="Enter name" id="name" validationState="error" errorText="Error" />,
+  it('should display error validation state', () => {
+    const { getByText } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        id="name"
+        validationState="error"
+        errorText="Error"
+        successText="Success"
+        helpText="Help"
+      />,
     );
 
-    expect(toJSON()).toMatchSnapshot();
+    const errorText = getByText('Error');
+
+    expect(errorText).toBeTruthy();
   });
 
   it('should render with icons', () => {
@@ -43,113 +64,69 @@ describe('<BaseInput />', () => {
   });
 
   it('should be focussed when autoFocus flag is passed', () => {
-    const label = 'Enter name';
-    const placeholder = 'First Last';
+    const placeholder = 'First last';
     // eslint-disable-next-line jsx-a11y/no-autofocus
     const { getByPlaceholderText } = renderWithTheme(
-      <BaseInput label={label} placeholder={placeholder} id="name" autoFocus />,
+      <BaseInput label="Enter name" placeholder={placeholder} id="name" autoFocus />,
     );
 
     const input = getByPlaceholderText(placeholder);
-    expect(input).toHaveFocus();
+
+    // we assume auto focus is working with this prop in place, no simple way of asserting on focus otherwise
+    // @ts-expect-error TS typings not being picked from library
+    expect(input).toHaveProp('autoFocus', true);
   });
 
   it('should be disabled when isDisabled flag is passed', () => {
-    const label = 'Enter name';
-    const { getByLabelText } = renderWithTheme(<BaseInput label={label} id="name" isDisabled />);
+    const placeholder = 'First last';
+    const { getByPlaceholderText } = renderWithTheme(
+      <BaseInput label="Enter name" placeholder={placeholder} id="name" isDisabled />,
+    );
 
-    const input = getByLabelText(label);
+    const input = getByPlaceholderText(placeholder);
     expect(input).toBeDisabled();
   });
 
   it('should handle onChange', () => {
-    const label = 'Enter name';
+    const placeholder = 'First Last';
     const onChange = jest.fn();
     const userName = 'Divyanshu';
 
-    const { getByLabelText } = renderWithTheme(
-      <BaseInput label={label} id="name" name="name" onChange={onChange} />,
+    const { getByPlaceholderText } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        placeholder={placeholder}
+        id="name"
+        name="name"
+        onChange={onChange}
+      />,
     );
 
-    const input = getByLabelText(label);
+    const input = getByPlaceholderText(placeholder);
     fireEvent.changeText(input, userName);
 
-    // should be called for each keystroke
-    expect(onChange).toHaveBeenCalledTimes(userName.length);
-    expect(onChange).toHaveBeenLastCalledWith({ name: 'name', value: userName });
+    // changeText changes entire text at once
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith({ name: 'name', value: userName });
   });
 
-  //   it('should handle onBlur', () => {
-  //     const label = 'Enter name';
-  //     const userName = 'Divyanshu';
-  //     const onBlur = jest.fn();
+  it('should set value as an uncontrolled input', () => {
+    const placeholder = 'First Last';
+    const valueInitial = 'Divyanshu';
+    const valueFinal = 'Divyanshu Maithani';
 
-  //     renderWithTheme(
-  //       <BaseInput
-  //         label={label}
-  //         id="name"
-  //         name="name"
-  //         defaultValue={userName}
-  //         // eslint-disable-next-line jsx-a11y/no-autofocus
-  //         autoFocus
-  //         onBlur={onBlur}
-  //       />,
-  //     );
+    const { getByDisplayValue, getByPlaceholderText } = renderWithTheme(
+      <BaseInput label="Enter name" placeholder={placeholder} id="name" defaultValue={valueInitial} />,
+    );
 
-  //     // shifts user focus and therefore blurs the focussed input
-  //     fireEvent.
-  //     expect(onBlur).toHaveBeenCalledTimes(1);
-  //     expect(onBlur).toHaveBeenCalledWith({ name: 'name', value: userName });
-  //   });
+    const inputInitial = getByDisplayValue(valueInitial);
+    expect(inputInitial).toBeTruthy;
 
-  //   it('should set value as an uncontrolled input', () => {
-  //     const label = 'Enter name';
-  //     const valueInitial = 'Divyanshu';
-  //     const valueFinal = 'Divyanshu Maithani';
-
-  //     const { getByLabelText } = renderWithTheme(
-  //       <BaseInput label={label} id="name" defaultValue={valueInitial} />,
-  //     );
-
-  //     const input = getByLabelText(label);
-  //     expect(input).toHaveValue(valueInitial);
-
-  //     user.type(input, ' Maithani');
-  //     expect(input).toHaveValue(valueFinal);
-  //   });
-
-  //   it('should set value as a controlled input', () => {
-  //     const label = 'Enter name';
-  //     const valueInitial = 'Divyanshu';
-  //     const valueFinal = 'Divyanshu Maithani';
-
-  //     const { getByLabelText, rerender } = renderWithTheme(
-  //       <BaseInput label={label} id="name" value={valueInitial} />,
-  //     );
-
-  //     const input = getByLabelText(label);
-  //     expect(input).toHaveValue(valueInitial);
-
-  //     // simulate a controlled input by updating value prop
-  //     rerender(
-  //       <ThemeWrapper>
-  //         <BaseInput label={label} id="name" value={valueFinal} />
-  //       </ThemeWrapper>,
-  //     );
-  //     expect(getByLabelText(label)).toHaveValue(valueFinal);
-  //   });
-
-  //   it('should pass a11y', () => {
-  //     const { getByRole } = renderWithTheme(
-  //       <BaseInput
-  //         label="Enter name"
-  //         id="name"
-  //         isRequired
-  //         helpText="First name and last name"
-  //         validationState="none"
-  //       />,
-  //     );
-
-  //     const input = getByRole('textbox');
-  //   });
+    fireEvent.changeText(inputInitial, valueFinal);
+    fireEvent.changeText(inputInitial, 'valueFinal');
+    fireEvent.changeText(inputInitial, 'Divyanshu Maithani');
+    getByDisplayValue(valueInitial)
+    const inputFinal = getByDisplayValue('Divyanshu Maithani')
+    expect(inputFinal).toBeTruthy();
+  });
 });

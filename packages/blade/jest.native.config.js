@@ -22,6 +22,7 @@ module.exports = {
     'node_modules/(?!(react-native.*|@react-native.*|@?react-navigation.*|@?react-navigation-stack)/)',
   ],
   setupFiles: ['./jest-setup.native.js'],
+  setupFilesAfterEnv: ["@testing-library/jest-native/extend-expect"],
   moduleNameMapper: {
     '^\\~src/(.*)': '<rootDir>/src/$1',
     '^\\~components/(.*)': '<rootDir>/src/components/$1',
