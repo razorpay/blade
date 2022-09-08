@@ -14,6 +14,8 @@ export type StyledBaseInputProps = {
   setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
 } & Pick<
   BaseInputProps,
+  | 'as'
+  | 'numberOfLines'
   | 'id'
   | 'name'
   | 'type'

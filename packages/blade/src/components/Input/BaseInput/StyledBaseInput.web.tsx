@@ -70,6 +70,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
       autoCompleteSuggestionType,
       accessibilityProps,
       setCurrentInteraction,
+      numberOfLines,
       ...props
     },
     ref,
@@ -80,6 +81,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
         disabled={isDisabled}
         required={isRequired}
         maxLength={maxCharacters}
+        rows={numberOfLines}
         inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
         enterKeyHint={keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType}
         autoComplete={

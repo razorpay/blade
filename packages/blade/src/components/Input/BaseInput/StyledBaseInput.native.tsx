@@ -104,6 +104,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       accessibilityProps,
       currentInteraction,
       setCurrentInteraction,
+      numberOfLines,
       ...props
     },
     ref,
