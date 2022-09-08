@@ -89,12 +89,14 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
             ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
             : undefined
         }
-        onChange={(event): void => handleOnChange?.({ name, value: event })}
-        onBlur={(event): void => {
+        onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+          handleOnChange?.({ name, value: event })
+        }
+        onBlur={(event: React.ChangeEvent<HTMLInputElement>): void => {
           setCurrentInteraction('default');
           handleOnBlur?.({ name, value: event });
         }}
-        onFocus={(event): void => {
+        onFocus={(event: React.ChangeEvent<HTMLInputElement>): void => {
           setCurrentInteraction('active');
           handleOnFocus?.({ name, value: event });
         }}

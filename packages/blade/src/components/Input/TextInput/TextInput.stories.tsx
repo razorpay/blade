@@ -205,14 +205,7 @@ export default {
 } as Meta<TextInputProps>;
 
 const TextInputTemplate: ComponentStory<typeof TextInputComponent> = ({ icon, ...args }) => {
-  return (
-    <TextInputComponent
-      {...args}
-      icon={iconMap[(icon as unknown) as string]}
-      defaultValue="hello world"
-      showClearButton
-    />
-  );
+  return <TextInputComponent {...args} icon={iconMap[(icon as unknown) as string]} />;
 };
 
 export const TextInput = TextInputTemplate.bind({});
