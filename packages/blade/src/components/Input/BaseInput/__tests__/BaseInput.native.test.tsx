@@ -1,13 +1,10 @@
 import { fireEvent } from '@testing-library/react-native';
+import { ReactElement, useState } from 'react';
 
 import { BaseInput } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { CloseIcon, EyeIcon } from '~components/Icons';
-import { Button } from '~components/Button';
-import { createRef } from 'react';
-import { act } from 'react-test-renderer';
 
-// todo: tests should be updated for improved a11y after https://github.com/razorpay/blade/issues/696
 describe('<BaseInput />', () => {
   it('should render', () => {
     const { toJSON } = renderWithTheme(<BaseInput label="Enter name" id="name" />);
@@ -110,23 +107,52 @@ describe('<BaseInput />', () => {
     expect(onChange).toHaveBeenCalledWith({ name: 'name', value: userName });
   });
 
-  it('should set value as an uncontrolled input', () => {
-    const placeholder = 'First Last';
+  /**
+   * No tests for uncontrolled input because react-native-testing-library doesn't support it
+   * https://github.com/callstack/react-native-testing-library/issues/978#issuecomment-1203256954
+   */
+  it('should set value as a controlled input', () => {
     const valueInitial = 'Divyanshu';
     const valueFinal = 'Divyanshu Maithani';
 
-    const { getByDisplayValue, getByPlaceholderText } = renderWithTheme(
-      <BaseInput label="Enter name" placeholder={placeholder} id="name" defaultValue={valueInitial} />,
+    const ControlledInputExample = (): ReactElement => {
+      const [value, setValue] = useState<string | undefined>(valueInitial);
+
+      return (
+        <BaseInput
+          label="Enter name"
+          id="name"
+          value={value}
+          onChange={({ value }) => setValue(value)}
+        />
+      );
+    };
+
+    const { getByDisplayValue } = renderWithTheme(<ControlledInputExample />);
+
+    const input = getByDisplayValue(valueInitial);
+
+    fireEvent.changeText(input, valueFinal);
+
+    getByDisplayValue(valueFinal);
+  });
+
+  it('should pass a11y', async () => {
+    // todo: tests should be updated for improved a11y after https://github.com/razorpay/blade/issues/696
+    const placeholder = 'First Last';
+    const { getByPlaceholderText } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        placeholder={placeholder}
+        id="name"
+        isRequired
+        helpText="First name and last name"
+        defaultValue="Divyanshu"
+        validationState="none"
+      />,
     );
 
-    const inputInitial = getByDisplayValue(valueInitial);
-    expect(inputInitial).toBeTruthy;
-
-    fireEvent.changeText(inputInitial, valueFinal);
-    fireEvent.changeText(inputInitial, 'valueFinal');
-    fireEvent.changeText(inputInitial, 'Divyanshu Maithani');
-    getByDisplayValue(valueInitial)
-    const inputFinal = getByDisplayValue('Divyanshu Maithani')
-    expect(inputFinal).toBeTruthy();
+    const input = getByPlaceholderText(placeholder);
+    expect(input).toBeEnabled();
   });
 });
