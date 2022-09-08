@@ -1,21 +1,22 @@
 import React from 'react';
 import type { ReactNode } from 'react';
-import { StyledBaseInput } from './StyledBaseInput';
-import { BaseInputVisuals } from './BaseInputVisuals';
-import { BaseInputWrapper } from './BaseInputWrapper';
-import Box from '~components/Box';
-import { FormHint, FormLabel } from '~components/Form';
-import { getPlatformType, makeAccessible, useBreakpoint } from '~utils';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
   FormInputHandleOnEvent,
   FormInputOnEvent,
-} from '~components/Form';
-import type { FormHintProps } from '~components/Form/FormHint';
+  FormHintProps,
+} from '../../Form';
+import { StyledBaseInput } from './StyledBaseInput';
+import { BaseInputVisuals } from './BaseInputVisuals';
+import { BaseInputWrapper } from './BaseInputWrapper';
+import { FormHint, FormLabel } from '~components/Form';
+import type { IconComponent } from '~components/Icons';
+import Box from '~components/Box';
+
+import { getPlatformType, makeAccessible, useBreakpoint } from '~utils';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
-import type { IconComponent } from '~components/Icons';
 import useInteraction from '~src/hooks/useInteraction';
 
 export type BaseInputProps = FormInputLabelProps &

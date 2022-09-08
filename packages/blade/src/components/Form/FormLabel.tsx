@@ -25,7 +25,22 @@ type SpanProps = CommonProps & {
   htmlFor?: undefined;
 };
 
-export type FormLabelProps = LabelProps | SpanProps;
+type FormLabelProps = LabelProps | SpanProps;
+
+export type FormInputLabelProps = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Desktop only prop. Default value on mobile will be `top`
+   */
+  labelPosition?: 'left' | 'top';
+  /**
+   * Displays `(optional)` when `optional` is passed or `*` when `required` is passed
+   */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+};
 
 const FormLabel = ({
   as = 'span',
