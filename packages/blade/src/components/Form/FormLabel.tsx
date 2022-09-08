@@ -58,12 +58,6 @@ const FormLabel = ({
 
   let necessityLabel: React.ReactNode = null;
 
-  if (!isDesktop && position === 'left') {
-    console.warn(
-      '[Blade: FormLabel]: Expected value `top` for label position on mobile device. Received `left`, falling back to `top`',
-    );
-  }
-
   const isLabelLeftPositioned = position === 'left' && isDesktop;
 
   if (necessityIndicator === 'optional') {

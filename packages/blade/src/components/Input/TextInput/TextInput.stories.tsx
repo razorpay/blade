@@ -277,7 +277,7 @@ const TextInputControlledTemplate: ComponentStory<typeof TextInputComponent> = (
 };
 export const TextInputControlled = TextInputControlledTemplate.bind({});
 
-const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = () => {
+const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = () => {
   return (
     <>
       <Box display="flex" gap="spacing.5">
@@ -353,4 +353,4 @@ const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = (
     </>
   );
 };
-export const TextAreaKitchenSink = TextAreaKitchenSinkTemplate.bind({});
+export const TextInputKitchenSink = TextInputKitchenSinkTemplate.bind({});
