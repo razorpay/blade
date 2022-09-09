@@ -26,7 +26,7 @@ type SpinnerProps = {
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * Sets the aria-label for web & accessibilityLabel react-native. Uses `label` as its value if it exists otherwise falls back to "Loading"
+   * Sets the aria-label for web & accessibilityLabel for react-native. Uses `label` as its value if it exists otherwise falls back to "Loading"
    *
    * @default 'Loading'
    */
