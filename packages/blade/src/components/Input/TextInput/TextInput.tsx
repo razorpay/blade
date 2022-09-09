@@ -159,7 +159,7 @@ export const TextInput = ({
 }: TextInputProps): ReactElement => {
   const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(
-    Boolean(defaultValue) ?? false,
+    Boolean(defaultValue ?? value) ?? false,
   );
 
   const renderInteractionElement = (): ReactNode => {

@@ -16,6 +16,7 @@ import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 describe('<TextInput />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(<TextInput label="Enter name" />);
+
     expect(container).toMatchSnapshot();
   });
 
@@ -86,8 +87,10 @@ describe('<TextInput />', () => {
     );
     const prefix = getByText('https://');
     expect(prefix).toBeVisible();
+
     const suffix = getByText('.com');
     expect(suffix).toBeVisible();
+
     expect(container).toMatchSnapshot();
   });
 
@@ -97,6 +100,7 @@ describe('<TextInput />', () => {
     const { getByLabelText } = renderWithTheme(<TextInput label={label} autoFocus />);
 
     const input = getByLabelText(label);
+
     expect(input).toHaveFocus();
   });
 
@@ -105,6 +109,7 @@ describe('<TextInput />', () => {
     const { getByLabelText } = renderWithTheme(<TextInput label={label} isDisabled />);
 
     const input = getByLabelText(label);
+
     expect(input).toBeDisabled();
   });
 
@@ -145,11 +150,12 @@ describe('<TextInput />', () => {
 
     // shifts user focus and therefore blurs the focussed input
     await user.tab();
+
     expect(onBlur).toHaveBeenCalledTimes(1);
     expect(onBlur).toHaveBeenCalledWith({ name: 'name', value: userName });
   });
 
-  it('should be focussable', async () => {
+  it('should be focusable', async () => {
     const user = userEvent.setup();
     const label = 'Enter name';
     const userName = 'Kamlesh';
@@ -161,6 +167,7 @@ describe('<TextInput />', () => {
     const input = getByLabelText(label);
 
     expect(input).not.toHaveFocus();
+
     await user.tab();
     expect(input).toHaveFocus();
   });
@@ -219,9 +226,11 @@ describe('<TextInput />', () => {
 
     const input = getByLabelText(label);
     expect(input).toHaveValue('Kamlesh');
+
     const clearButton = getByRole('button');
     await user.click(clearButton);
     expect(onClearButtonClick).toHaveBeenCalledTimes(1);
+
     expect(input).toHaveValue('');
     expect(input).toHaveFocus();
   });
@@ -237,15 +246,20 @@ describe('<TextInput />', () => {
 
     const input = getByLabelText(label);
     expect(input).toHaveValue('');
+
     let clearButton = queryByRole('button');
     expect(clearButton).toBeFalsy();
+
     await user.tab();
     expect(input).toHaveFocus();
+
     await user.type(input, 'Kamlesh');
     expect(input).toHaveValue('Kamlesh');
+
     clearButton = getByRole('button');
     await user.click(clearButton);
     expect(onClearButtonClick).toHaveBeenCalledTimes(1);
+
     expect(input).toHaveFocus();
     expect(input).toHaveValue('');
   });
@@ -262,6 +276,7 @@ describe('<TextInput />', () => {
     );
 
     const input = getByRole('textbox');
+
     expect(input).toBeRequired();
     expect(input).toBeValid();
     expect(input).toBeEnabled();
@@ -278,6 +293,7 @@ describe('<TextInput />', () => {
     const { getByLabelText } = renderWithTheme(<TextInput label={label} type="text" />);
 
     const input = getByLabelText(label);
+
     expect(input).toHaveAttribute('type', 'text');
     expect(input).toHaveAttribute('inputMode', 'text');
     expect(input).toHaveAttribute('enterKeyHint', 'enter');
@@ -290,6 +306,7 @@ describe('<TextInput />', () => {
     const { getByLabelText } = renderWithTheme(<TextInput label={label} type="telephone" />);
 
     const input = getByLabelText(label);
+
     expect(input).toHaveAttribute('type', 'tel');
     expect(input).toHaveAttribute('inputMode', 'tel');
     expect(input).toHaveAttribute('enterKeyHint', 'done');
@@ -302,6 +319,7 @@ describe('<TextInput />', () => {
     const { getByLabelText } = renderWithTheme(<TextInput label={label} type="email" />);
 
     const input = getByLabelText(label);
+
     expect(input).toHaveAttribute('type', 'email');
     expect(input).toHaveAttribute('inputMode', 'email');
     expect(input).toHaveAttribute('enterKeyHint', 'done');
@@ -314,6 +332,7 @@ describe('<TextInput />', () => {
     const { getByLabelText } = renderWithTheme(<TextInput label={label} type="url" />);
 
     const input = getByLabelText(label);
+
     expect(input).toHaveAttribute('type', 'url');
     expect(input).toHaveAttribute('inputMode', 'url');
     expect(input).toHaveAttribute('enterKeyHint', 'go');
@@ -326,6 +345,7 @@ describe('<TextInput />', () => {
     const { getByLabelText } = renderWithTheme(<TextInput label={label} type="numeric" />);
 
     const input = getByLabelText(label);
+
     expect(input).toHaveAttribute('type', 'text');
     expect(input).toHaveAttribute('inputMode', 'decimal');
     expect(input).toHaveAttribute('enterKeyHint', 'done');
@@ -338,6 +358,7 @@ describe('<TextInput />', () => {
     const { getByLabelText } = renderWithTheme(<TextInput label={label} type="search" />);
 
     const input = getByLabelText(label);
+
     expect(input).toHaveAttribute('type', 'search');
     expect(input).toHaveAttribute('inputMode', 'search');
     expect(input).toHaveAttribute('enterKeyHint', 'search');

@@ -241,7 +241,6 @@ const useInput = ({
   const handleOnBlur: FormInputHandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
-
       if (getPlatformType() === 'react-native' && typeof value == 'string') {
         _value = value;
       } else if (typeof value !== 'string') {

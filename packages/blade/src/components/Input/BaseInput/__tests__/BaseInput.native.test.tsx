@@ -47,6 +47,22 @@ describe('<BaseInput />', () => {
     expect(errorText).toBeTruthy();
   });
 
+  it('should display help text', () => {
+    const { getByText } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        id="name"
+        errorText="Error"
+        successText="Success"
+        helpText="Help"
+      />,
+    );
+
+    const helpText = getByText('Help');
+
+    expect(helpText).toBeTruthy();
+  });
+
   it('should render with icons', () => {
     const { toJSON } = renderWithTheme(
       <BaseInput
@@ -106,6 +122,29 @@ describe('<BaseInput />', () => {
     // changeText changes entire text at once
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith({ name: 'name', value: userName });
+  });
+
+  it('should handle onBlur', () => {
+    const placeholder = 'First Last';
+    const onBlur = jest.fn();
+    const userName = 'Divyanshu';
+
+    const { getByPlaceholderText } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        placeholder={placeholder}
+        id="name"
+        name="name"
+        onBlur={onBlur}
+      />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+
+    // shifts user focus and therefore blurs the focussed input
+    fireEvent(input, 'onEndEditing', { nativeEvent: { text: userName } });
+    expect(onBlur).toHaveBeenCalledTimes(1);
+    expect(onBlur).toHaveBeenCalledWith({ name: 'name', value: userName });
   });
 
   /**
