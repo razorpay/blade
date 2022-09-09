@@ -9,9 +9,6 @@ import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
-afterAll(() => jest.restoreAllMocks());
-
 /**  @TODO: add test case for isLoading once spinner https://github.com/razorpay/blade/pull/685 is merged
  * 1. either of isLoading or clearbutton should be shown at a time
  * 2. if isLoading then the input should be disabled
