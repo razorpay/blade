@@ -36,6 +36,7 @@
     "typecheck": "tsc",
     "prepublish": "yarn build",
     "build": "run-s build:*",
+    "clearCache": "jest --clearCache",
     "build:clean": "rm -rf build",
     "build:generate-types": "tsc -p ./tsconfig-generate-types.json",
     "build:generate-css-variables": "GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",

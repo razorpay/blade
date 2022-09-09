@@ -1,5 +1,4 @@
 // TODO disable this rule for non-react-native files
-/* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
 import userEvent from '@testing-library/user-event';
 
 import type { ReactElement } from 'react';
@@ -8,6 +7,9 @@ import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
 
 /**  @TODO: add test case for isLoading once spinner https://github.com/razorpay/blade/pull/685 is merged
  * 1. either of isLoading or clearbutton should be shown at a time
@@ -208,6 +210,16 @@ describe('<TextInput />', () => {
 
     await user.type(input, ' Chandnani');
     expect(input).toHaveValue(valueFinal);
+  });
+
+  it('should throw error when both value and defaultValue are passed', () => {
+    expect(() =>
+      renderWithTheme(
+        <TextInput label="Enter name" defaultValue="Kamlesh" value="Kamlesh Chandnani" />,
+      ),
+    ).toThrow(
+      `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+    );
   });
 
   it('should clear input with defaultValue on clear buton click', async () => {

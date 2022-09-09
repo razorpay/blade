@@ -33,6 +33,7 @@ describe('<BaseButton />', () => {
       }
     }
   });
+
   it('should render xsmall size button', () => {
     const buttonText = 'Pay Now';
     const { container } = renderWithTheme(<BaseButton size="xsmall">{buttonText}</BaseButton>);

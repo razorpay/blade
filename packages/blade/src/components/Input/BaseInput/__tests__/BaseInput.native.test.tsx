@@ -6,6 +6,9 @@ import { BaseInput } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { CloseIcon, EyeIcon } from '~components/Icons';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<BaseInput />', () => {
   it('should render', () => {
     const { toJSON } = renderWithTheme(<BaseInput label="Enter name" id="name" />);
@@ -175,6 +178,21 @@ describe('<BaseInput />', () => {
     fireEvent.changeText(input, valueFinal);
 
     getByDisplayValue(valueFinal);
+  });
+
+  it('should throw error when both value and defaultValue are passed', () => {
+    expect(() =>
+      renderWithTheme(
+        <BaseInput
+          id="name"
+          label="Enter name"
+          defaultValue="Divyanshu"
+          value="Divyanshu Maithani"
+        />,
+      ),
+    ).toThrow(
+      `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+    );
   });
 
   it('should pass a11y', () => {
