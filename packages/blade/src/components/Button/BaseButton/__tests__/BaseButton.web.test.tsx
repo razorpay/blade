@@ -399,11 +399,12 @@ describe('<BaseButton />', () => {
       );
     };
 
-    const { getByText } = renderWithTheme(<ButtonLoading />);
+    const { getByText, container } = renderWithTheme(<ButtonLoading />);
     const loadingButton = getByText(/toggle loading/i);
 
     await user.click(loadingButton);
     expect(getByText(/Started loading/i)).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
     await user.click(loadingButton);
     expect(getByText(/Stopped loading/i)).toBeInTheDocument();
   });
