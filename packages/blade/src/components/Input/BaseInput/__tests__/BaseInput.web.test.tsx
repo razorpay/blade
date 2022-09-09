@@ -56,6 +56,20 @@ describe('<BaseInput />', () => {
     expect(input).toBeInvalid();
   });
 
+  it('should display help text', () => {
+    const label = 'Enter name';
+    const { getByText, getByLabelText } = renderWithTheme(
+      <BaseInput label={label} id="name" errorText="Error" helpText="Help" successText="Success" />,
+    );
+
+    const input = getByLabelText(label);
+    const HelpText = getByText('Help');
+
+    expect(HelpText).toBeTruthy();
+    expect(input).toHaveAccessibleDescription('Help');
+    expect(input).toBeValid();
+  });
+
   it('should render with icons', () => {
     const { container } = renderWithTheme(
       <BaseInput
