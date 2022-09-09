@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 2.2.0
+
+### Minor Changes
+
+- 7c272be: feat: add `Spinner` component
+  - Also adds an internal `BaseSpinner` component
+
 ## 2.1.0
 
 ### Minor Changes
