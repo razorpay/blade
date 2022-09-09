@@ -6,9 +6,22 @@ import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import { getIn, makeAccessible, makeSize } from '~utils';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import Box from '~components/Box';
+import { Text } from '~components/Typography';
 
 type BaseSpinnerProps = {
   intent?: Feedback;
+  /**
+   * Sets the label of the spinner.
+   *
+   * @default 'right'
+   */
+  label?: string;
+  /**
+   * Sets the label of the spinner.
+   *
+   */
+  labelPosition?: 'right' | 'bottom';
   /**
    * Sets the contrast of the spinner.
    *
@@ -50,6 +63,8 @@ const getColor = ({
 };
 
 const BaseSpinner = ({
+  label,
+  labelPosition = 'right',
   accessibilityLabel,
   contrast = 'low',
   intent,
@@ -57,18 +72,34 @@ const BaseSpinner = ({
 }: BaseSpinnerProps): React.ReactElement => {
   const { theme } = useTheme();
   return (
-    <SpinningBox
-      display="flex"
-      {...makeAccessible({
-        label: accessibilityLabel,
-        role: 'progressbar',
-      })}
-    >
-      <SpinnerIcon
-        dimensions={makeSize(dimensions[size])}
-        color={getColor({ contrast, intent, theme })}
-      />
-    </SpinningBox>
+    <Box display="flex">
+      <Box
+        display="flex"
+        alignItems="center"
+        flexDirection={labelPosition === 'right' ? 'row' : 'column'}
+        {...makeAccessible({
+          label: accessibilityLabel,
+          role: 'progressbar',
+        })}
+      >
+        <SpinningBox>
+          <SpinnerIcon
+            dimensions={makeSize(dimensions[size])}
+            color={getColor({ contrast, intent, theme })}
+          />
+        </SpinningBox>
+        {label && label.trim().length > 0 ? (
+          <Box
+            marginLeft={labelPosition === 'right' ? 'spacing.3' : 'spacing.0'}
+            marginTop={labelPosition === 'bottom' ? 'spacing.3' : 'spacing.0'}
+          >
+            <Text variant="body" weight="regular" type="subdued" size="small" contrast={contrast}>
+              {label}
+            </Text>
+          </Box>
+        ) : null}
+      </Box>
+    </Box>
   );
 };
 

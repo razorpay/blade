@@ -43,6 +43,30 @@ describe('<BaseSpinner />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render low contrast BaseSpinner with right label', () => {
+    const { container } = renderWithTheme(
+      <BaseSpinner
+        accessibilityLabel="Loading"
+        contrast="low"
+        label="Loading"
+        labelPosition="right"
+      />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render high contrast BaseSpinner with bottom label', () => {
+    const { container } = renderWithTheme(
+      <BaseSpinner
+        accessibilityLabel="Loading"
+        contrast="high"
+        label="Loading"
+        labelPosition="bottom"
+      />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render low contrast positive intent BaseSpinner', () => {
     const { container } = renderWithTheme(
       <BaseSpinner accessibilityLabel="Loading" intent="positive" contrast="low" />,

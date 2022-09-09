@@ -34,6 +34,30 @@ describe('<BaseSpinner />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render low contrast BaseSpinner with right label', () => {
+    const { toJSON } = renderWithTheme(
+      <BaseSpinner
+        accessibilityLabel="Loading"
+        contrast="low"
+        label="Loading"
+        labelPosition="right"
+      />,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render high contrast BaseSpinner with bottom label', () => {
+    const { toJSON } = renderWithTheme(
+      <BaseSpinner
+        accessibilityLabel="Loading"
+        contrast="high"
+        label="Loading"
+        labelPosition="bottom"
+      />,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render low contrast positive intent BaseSpinner', () => {
     const { toJSON } = renderWithTheme(
       <BaseSpinner accessibilityLabel="Loading" intent="positive" contrast="low" />,
