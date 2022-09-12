@@ -1,4 +1,3 @@
-// TODO disable this rule for non-react-native files
 import type { ReactElement } from 'react';
 import { fireEvent } from '@testing-library/react-native';
 import { useState } from 'react';
