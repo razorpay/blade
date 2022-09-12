@@ -11,7 +11,7 @@ const motion: {
   easing: EasingString;
 } = {
   duration: 'duration.2xgentle',
-  easing: 'easing.exit.attentive',
+  easing: 'easing.standard.attentive',
 };
 
 export { dimensions, motion };
