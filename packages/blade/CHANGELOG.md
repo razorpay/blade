@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 2.2.2
+
+### Patch Changes
+
+- a8c5c08: tests: add tests for `TextInput`
+  fix: render clear button on mount when the `defaultValue` or `value` is passed
+
 ## 2.2.1
 
 ### Patch Changes
