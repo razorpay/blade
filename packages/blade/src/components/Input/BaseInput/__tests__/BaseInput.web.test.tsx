@@ -7,6 +7,9 @@ import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 import { CloseIcon, EyeIcon } from '~components/Icons';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<BaseInput />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(<BaseInput label="Enter name" id="name" />);
@@ -54,6 +57,20 @@ describe('<BaseInput />', () => {
     expect(errorText).toBeTruthy();
     expect(input).toHaveAccessibleDescription('Error');
     expect(input).toBeInvalid();
+  });
+
+  it('should display help text', () => {
+    const label = 'Enter name';
+    const { getByText, getByLabelText } = renderWithTheme(
+      <BaseInput label={label} id="name" errorText="Error" helpText="Help" successText="Success" />,
+    );
+
+    const input = getByLabelText(label);
+    const HelpText = getByText('Help');
+
+    expect(HelpText).toBeTruthy();
+    expect(input).toHaveAccessibleDescription('Help');
+    expect(input).toBeValid();
   });
 
   it('should render with icons', () => {
@@ -188,6 +205,21 @@ describe('<BaseInput />', () => {
 
     await user.type(input, ' Maithani');
     expect(input).toHaveValue(valueFinal);
+  });
+
+  it('should throw error when both value and defaultValue are passed', () => {
+    expect(() =>
+      renderWithTheme(
+        <BaseInput
+          id="name"
+          label="Enter name"
+          defaultValue="Divyanshu"
+          value="Divyanshu Maithani"
+        />,
+      ),
+    ).toThrow(
+      `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+    );
   });
 
   it('should pass a11y', async () => {

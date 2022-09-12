@@ -16,6 +16,8 @@ module.exports = {
     'no-console': 'off',
     'import/no-cycle': 'error',
     'react-native-a11y/has-accessibility-hint': 'off',
+    // need to turn this off because this rule is also being triggered on the web files as well
+    'react-native-a11y/has-valid-accessibility-descriptors': 'off',
     // we need to disable these rules because with makeAccessible function
     // eslint is not smart enough to statically detect that we set the role
     'jsx-a11y/no-static-element-interactions': 'off',
