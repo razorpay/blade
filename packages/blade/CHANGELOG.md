@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 2.2.1
+
+### Patch Changes
+
+- 4b6bfda: fix: update spinner easing
+
 ## 2.2.0
 
 ### Minor Changes
