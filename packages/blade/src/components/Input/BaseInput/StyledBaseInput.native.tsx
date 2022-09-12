@@ -129,16 +129,16 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         // source: https://reactnative.dev/docs/textinput/#keyboardtype
         keyboardType={KeyboardTypeToNativeValuesMap[keyboardType]}
         returnKeyType={keyboardReturnKeyType}
-        textContentType={
-          autoCompleteSuggestionType
-            ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
-            : undefined
-        }
         autoCompleteType={
           autoCompleteSuggestionType
             ? (autoCompleteSuggestionTypeAndroid[
                 autoCompleteSuggestionType
               ] as StyledComponentAutoCompleteAndroid)
+            : undefined
+        }
+        textContentType={
+          autoCompleteSuggestionType
+            ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
             : undefined
         }
         {...props}
