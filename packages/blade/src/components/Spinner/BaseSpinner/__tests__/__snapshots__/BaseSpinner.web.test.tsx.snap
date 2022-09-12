@@ -30,8 +30,8 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -105,8 +105,8 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -185,8 +185,8 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 .c4 {
@@ -288,8 +288,8 @@ exports[`<BaseSpinner /> should render high contrast information intent BaseSpin
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -363,8 +363,8 @@ exports[`<BaseSpinner /> should render high contrast negative intent BaseSpinner
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -438,8 +438,8 @@ exports[`<BaseSpinner /> should render high contrast neutral intent BaseSpinner 
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -513,8 +513,8 @@ exports[`<BaseSpinner /> should render high contrast notice intent BaseSpinner 1
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -588,8 +588,8 @@ exports[`<BaseSpinner /> should render high contrast positive intent BaseSpinner
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -663,8 +663,8 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -738,8 +738,8 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -818,8 +818,8 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 .c4 {
@@ -921,8 +921,8 @@ exports[`<BaseSpinner /> should render low contrast information intent BaseSpinn
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -996,8 +996,8 @@ exports[`<BaseSpinner /> should render low contrast negative intent BaseSpinner 
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -1071,8 +1071,8 @@ exports[`<BaseSpinner /> should render low contrast neutral intent BaseSpinner 1
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -1146,8 +1146,8 @@ exports[`<BaseSpinner /> should render low contrast notice intent BaseSpinner 1`
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -1221,8 +1221,8 @@ exports[`<BaseSpinner /> should render low contrast positive intent BaseSpinner 
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -1296,8 +1296,8 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -1371,8 +1371,8 @@ exports[`<BaseSpinner /> should render small size BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.7,0,0.5,1) infinite;
+  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
