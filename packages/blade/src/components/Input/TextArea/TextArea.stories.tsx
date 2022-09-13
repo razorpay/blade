@@ -1,4 +1,3 @@
-/* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
@@ -8,7 +7,7 @@ import { TextArea as TextAreaComponent } from './TextArea';
 import Box from '~components/Box';
 
 const propsCategory = {
-  BASE_PROPS: 'Text Input Props',
+  BASE_PROPS: 'TextArea Props',
   LABEL_PROPS: 'Label Props',
   VALIDATION_PROPS: 'Validation Props',
   TRAILING_VISUAL_PROPS: 'Trailing Visual Props',
@@ -19,8 +18,8 @@ export default {
   component: TextAreaComponent,
   args: {
     defaultValue: undefined,
-    placeholder: 'Enter your first and last name',
-    name: 'fullName',
+    placeholder: 'Enter Description',
+    name: 'description',
     isDisabled: false,
     value: undefined,
     maxCharacters: undefined,
@@ -31,7 +30,7 @@ export default {
     onBlur: ({ name, value }): void => {
       console.log(`input field ${name} content lost focus. The value is ${value}`);
     },
-    label: 'Enter Name',
+    label: 'Description',
     labelPosition: 'top',
     necessityIndicator: undefined,
     isRequired: false,
@@ -39,7 +38,7 @@ export default {
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
-    showClearButton: true,
+    showClearButton: undefined,
     numberOfLines: 2,
   },
   argTypes: {
@@ -147,8 +146,7 @@ export default {
         <>
           <Title />
           <Subtitle>
-            The TextArea component is a component that can be used to input name, email, telephone,
-            url, search or plain text.
+            The TextArea component lets you enter long form text which spans over multiple lines.
           </Subtitle>
           <Title>Usage</Title>
           <Highlight language="tsx">{`import { TextArea } from '@razorpay/blade/components' \nimport type { TextAreaProps } from '@razorpay/blade/components'`}</Highlight>
@@ -174,22 +172,22 @@ TextArea.storyName = 'TextArea';
 export const TextAreaHelpText = TextAreaTemplate.bind({});
 TextAreaHelpText.storyName = 'TextArea with Help Text';
 TextAreaHelpText.args = {
-  helpText: 'Please enter first and last name',
+  helpText: 'Add a message here',
 };
 
 export const TextAreaError = TextAreaTemplate.bind({});
 TextAreaError.storyName = 'TextArea with error';
 TextAreaError.args = {
   validationState: 'error',
-  errorText: 'Name is not valid',
+  errorText: 'Invalid message',
 };
 
 export const TextAreaSuccess = TextAreaTemplate.bind({});
 TextAreaSuccess.storyName = 'TextArea with success';
 TextAreaSuccess.args = {
-  defaultValue: 'John Ives',
+  defaultValue: 'TextArea content',
   validationState: 'success',
-  successText: 'Name validated',
+  successText: 'Validated',
 };
 
 export const TextAreaNumberOfLines = TextAreaTemplate.bind({});
@@ -201,9 +199,9 @@ TextAreaNumberOfLines.args = {
 const TextAreaMaxCharactersTemplate: ComponentStory<typeof TextAreaComponent> = () => {
   return (
     <TextArea
-      label="First Name"
-      defaultValue="John Ives"
-      name="fullName"
+      label="Description"
+      defaultValue="Textarea content"
+      name="description"
       maxCharacters={10}
       onChange={({ name, value }): void => console.log({ name, value })}
     />
@@ -214,10 +212,10 @@ export const TextAreaMaxCharacters = TextAreaMaxCharactersTemplate.bind({});
 const TextAreaUncontrolledTemplate: ComponentStory<typeof TextAreaComponent> = () => {
   return (
     <TextArea
-      label="First Name"
-      placeholder="Enter your first and last name"
-      defaultValue="John Ives"
-      name="fullName"
+      label="Description"
+      placeholder="Enter description"
+      defaultValue="Textarea content"
+      name="description"
       onChange={({ name, value }): void => console.log({ name, value })}
     />
   );
@@ -229,10 +227,10 @@ const TextAreaControlledTemplate: ComponentStory<typeof TextAreaComponent> = () 
 
   return (
     <TextArea
-      label="First Name"
-      placeholder="Enter your first and last name"
+      label="Description"
+      placeholder="Enter Description"
       value={inputValue}
-      name="fullName"
+      name="description"
       onChange={({ name, value }): void => {
         console.log(`sending ${name}:${value} to analytics service`);
         setInputValue(value ?? '');
@@ -248,72 +246,72 @@ const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = ()
       <Box display="flex" gap="spacing.5">
         <TextArea
           showClearButton
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
         />
 
         <TextArea
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           defaultValue="Anurag"
         />
 
         <TextArea
           validationState="error"
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           defaultValue="Anurag"
           errorText="Name is invalid"
         />
 
         <TextArea
           validationState="success"
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           defaultValue="Anurag"
           successText="Name is valid"
         />
       </Box>
       <Box display="flex" flexDirection="column" gap="spacing.5">
         <TextArea
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           maxCharacters={100}
         />
 
         <TextArea
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           numberOfLines={4}
         />
 
         <TextArea
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           labelPosition="left"
         />
 
         <TextArea
           necessityIndicator="optional"
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           labelPosition="left"
           maxCharacters={100}
         />
 
         <TextArea
           necessityIndicator="required"
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           labelPosition="left"
           numberOfLines={3}
           maxCharacters={100}

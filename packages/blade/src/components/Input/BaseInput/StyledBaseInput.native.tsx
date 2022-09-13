@@ -119,7 +119,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
-        multiline={Boolean(numberOfLines)}
+        multiline={isTextArea}
         numberOfLines={numberOfLines}
         isFocused={currentInteraction === 'active'}
         editable={!isDisabled}

@@ -69,13 +69,10 @@ const TextArea = ({
   numberOfLines = 2,
 }: TextAreaProps): React.ReactElement => {
   const inputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
-  const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
 
-  React.useEffect(() => {
-    if (showClearButton && (value?.length || defaultValue?.length)) {
-      setShouldShowClearButton(true);
-    }
-  }, [value, defaultValue, showClearButton]);
+  const [shouldShowClearButton, setShouldShowClearButton] = React.useState<boolean>(
+    Boolean(showClearButton && (value?.length || defaultValue?.length)),
+  );
 
   const renderInteractionElement = (): React.ReactNode => {
     if (shouldShowClearButton) {
@@ -150,7 +147,7 @@ const TextArea = ({
           </Box>
         ) : null;
       }}
-      id=""
+      id="textarea"
     />
   );
 };
