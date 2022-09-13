@@ -4,7 +4,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-namespace */
-import type { Brand, IsBothFunction, NativeOrWebBrand, _brand } from './types';
+import type { Brand, IsBothFunction, NativeOrWebBrand } from './types';
 
 namespace Platform {
   export type Name = 'web' | 'native';
@@ -20,12 +20,12 @@ namespace Platform {
 
   export type CastNative<T extends NativeOrWebBrand | undefined> = Extract<
     T,
-    { [_brand]?: 'platform-native' | 'platform-all' }
+    { __brand__?: 'platform-native' | 'platform-all' }
   >;
 
   export type CastWeb<T extends NativeOrWebBrand | undefined> = Extract<
     T,
-    { [_brand]?: 'platform-web' | 'platform-all' }
+    { __brand__?: 'platform-web' | 'platform-all' }
   >;
 }
 

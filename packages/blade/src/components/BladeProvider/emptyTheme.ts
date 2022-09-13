@@ -1,3 +1,5 @@
+// TODO: test this better
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Theme } from './';
 
 const emptyTheme: Theme = {
@@ -1085,20 +1087,20 @@ const emptyTheme: Theme = {
     },
     easing: {
       standard: {
-        attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)',
-        effective: 'cubic-bezier(0.3, 0, 0.2, 1)',
-        revealing: 'cubic-bezier(0.5, 0, 0, 1)',
-        wary: 'cubic-bezier(1, 0.5, 0, 0.5)',
+        attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)' as any,
+        effective: 'cubic-bezier(0.3, 0, 0.2, 1)' as any,
+        revealing: 'cubic-bezier(0.5, 0, 0, 1)' as any,
+        wary: 'cubic-bezier(1, 0.5, 0, 0.5)' as any,
       },
       entrance: {
-        attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)',
-        effective: 'cubic-bezier(0, 0, 0.2, 1)',
-        revealing: 'cubic-bezier(0, 0, 0, 1)',
+        attentive: 'cubic-bezier(0.5, 0, 0.3, 1.5)' as any,
+        effective: 'cubic-bezier(0, 0, 0.2, 1)' as any,
+        revealing: 'cubic-bezier(0, 0, 0, 1)' as any,
       },
       exit: {
-        attentive: 'cubic-bezier(0.7, 0, 0.5, 1)',
-        effective: 'cubic-bezier(0.17, 0, 1, 1)',
-        revealing: 'cubic-bezier(0.5, 0, 1, 1)',
+        attentive: 'cubic-bezier(0.7, 0, 0.5, 1)' as any,
+        effective: 'cubic-bezier(0.17, 0, 1, 1)' as any,
+        revealing: 'cubic-bezier(0.5, 0, 1, 1)' as any,
       },
     },
   },
