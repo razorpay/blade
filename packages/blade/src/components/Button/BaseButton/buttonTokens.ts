@@ -120,10 +120,10 @@ const buttonSizeToSpinnerSizeMap: Record<
   NonNullable<BaseButtonProps['size']>,
   SpinnerProps['size']
 > = {
-  xsmall: 'medium',
+  xsmall: 'small',
   small: 'medium',
-  medium: 'large',
-  large: 'xlarge',
+  medium: 'medium',
+  large: 'large',
 };
 
 const textPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['spacing']> = {

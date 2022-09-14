@@ -6,6 +6,9 @@ import { BaseInput } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { CloseIcon, EyeIcon } from '~components/Icons';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<BaseInput />', () => {
   it('should render', () => {
     const { toJSON } = renderWithTheme(<BaseInput label="Enter name" id="name" />);
@@ -45,6 +48,22 @@ describe('<BaseInput />', () => {
     const errorText = getByText('Error');
 
     expect(errorText).toBeTruthy();
+  });
+
+  it('should display help text', () => {
+    const { getByText } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        id="name"
+        errorText="Error"
+        successText="Success"
+        helpText="Help"
+      />,
+    );
+
+    const helpText = getByText('Help');
+
+    expect(helpText).toBeTruthy();
   });
 
   it('should render with icons', () => {
@@ -108,6 +127,29 @@ describe('<BaseInput />', () => {
     expect(onChange).toHaveBeenCalledWith({ name: 'name', value: userName });
   });
 
+  it('should handle onBlur', () => {
+    const placeholder = 'First Last';
+    const onBlur = jest.fn();
+    const userName = 'Divyanshu';
+
+    const { getByPlaceholderText } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        placeholder={placeholder}
+        id="name"
+        name="name"
+        onBlur={onBlur}
+      />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+
+    // shifts user focus and therefore blurs the focussed input
+    fireEvent(input, 'onEndEditing', { nativeEvent: { text: userName } });
+    expect(onBlur).toHaveBeenCalledTimes(1);
+    expect(onBlur).toHaveBeenCalledWith({ name: 'name', value: userName });
+  });
+
   /**
    * No tests for uncontrolled input because react-native-testing-library doesn't support it
    * https://github.com/callstack/react-native-testing-library/issues/978#issuecomment-1203256954
@@ -136,6 +178,21 @@ describe('<BaseInput />', () => {
     fireEvent.changeText(input, valueFinal);
 
     getByDisplayValue(valueFinal);
+  });
+
+  it('should throw error when both value and defaultValue are passed', () => {
+    expect(() =>
+      renderWithTheme(
+        <BaseInput
+          id="name"
+          label="Enter name"
+          defaultValue="Divyanshu"
+          value="Divyanshu Maithani"
+        />,
+      ),
+    ).toThrow(
+      `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+    );
   });
 
   it('should pass a11y', () => {
