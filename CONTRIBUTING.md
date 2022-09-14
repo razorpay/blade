@@ -38,13 +38,13 @@ These steps should get you up and started for local development setup. Please en
 
 - Install [Xcode](https://reactnative.dev/docs/environment-setup#xcode).
 
-  > **Note:**
+  > **Note**
   >
   > Sometimes it can take a very long time for Xcode to install. Check [here](https://apple.stackexchange.com/questions/427640/mac-app-store-xcode-download-stuck-at-installing) for troubleshooting.
 
-- Install an iOS simulator in Xcode: Xcode > Preferences > Components.
+- Install an iOS 13 simulator in Xcode: Xcode > Preferences > Platforms.
 
-  > **Note:**
+  > **Note**
   >
   > Sometimes this can get stuck or take a very long time. Check [here](https://stackoverflow.com/questions/29058229/download-xcode-simulator-directly) for troubleshooting.
 
@@ -56,7 +56,7 @@ These steps should get you up and started for local development setup. Please en
 
 - Install pods. This can be done by running `pod install` in the `ios/` directory for Intel machine. For M1, things might not work out of box.
 
-  > **Note:**
+  > **Note**
   >
   > Follow the note [here](https://reactnative.dev/docs/environment-setup#cocoapods) if you're using M1
 
@@ -76,7 +76,9 @@ These steps should get you up and started for local development setup. Please en
   >
   > You don't need to build the app everytime (only when you're changing native dependencies), once the app is built you can just start the storybook server and open the app directly on your simulator
 
-- If the stars aligned correctly, the storybook app should get installed and up and running on the simulator. If not, please refer to the official [guide](https://reactnative.dev/docs/environment-setup) for any deviations.
+- If the stars aligned correctly, the storybook app should get installed and up and running on the simulator. If not, please refer to the official [guide](https://reactnative.dev/docs/environment-setup) for any deviations. 
+
+*The storybook can take some time to open after simulator starts. Don't worry, it will start after few minutes (hopefully 🤞).*
 
 ### Setting up Android
 
@@ -102,6 +104,10 @@ These steps should get you up and started for local development setup. Please en
   ```sh
   yarn react-native:storybook:android
   ```
+
+  > **Note**
+  >
+  > Make sure `$ANDROID_SDK_ROOT` is added before running the above command, you can run `echo $ANDROID_SDK_ROOT` in same terminal to confirm. (You can run `source ~/.zshrc` or `source ~/.bash_profile` depending on where you added the variables)
 
 - If the stars aligned correctly, the storybook app should get installed and up and running on the emulator 🎉
 
