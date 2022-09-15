@@ -9,10 +9,10 @@ describe('<Box />', () => {
         justifyContent="center"
         alignItems="center"
         alignSelf="center"
-        paddingTop="spacing.2"
-        paddingBottom="spacing.3"
-        paddingLeft="spacing.4"
-        paddingRight="spacing.5"
+        paddingTop="spacing.3"
+        paddingBottom="spacing.4"
+        paddingLeft="spacing.5"
+        paddingRight="spacing.6"
         minHeight={48}
         maxHeight={56}
         minWidth={48}
@@ -23,6 +23,9 @@ describe('<Box />', () => {
         bottom={0}
         left={0}
         overflow="hidden"
+        background="hotpink"
+        height="auto"
+        width="auto"
       />,
     );
     expect(container).toMatchSnapshot();

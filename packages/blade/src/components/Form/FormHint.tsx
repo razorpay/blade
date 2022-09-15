@@ -1,6 +1,5 @@
-/* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/display-name */
+import type { ReactElement } from 'react';
 import React from 'react';
 import { FormHintWrapper } from './FormHintWrapper';
 import { BaseText } from '~components/Typography/BaseText';
@@ -10,20 +9,19 @@ import { CheckIcon, InfoIcon } from '~components/Icons';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type HintTextProps = {
-  icon: React.ElementType;
+  icon?: React.ElementType;
   children: string;
   id?: string;
   color: BaseTextProps['color'];
 };
 
-const HintText = ({ icon: Icon, children, id, color }: HintTextProps) => {
+const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElement => {
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
-    <>
-      <Box marginTop="spacing.1" />
+    <Box marginTop="spacing.2">
       <FormHintWrapper>
-        <Icon />
+        {Icon ? <Icon /> : null}
         <BaseText
           id={id}
           as={isReactNative ? undefined : 'span'}
@@ -36,11 +34,11 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps) => {
           {children}
         </BaseText>
       </FormHintWrapper>
-    </>
+    </Box>
   );
 };
 
-type FormHintProps = {
+export type FormHintProps = {
   type: 'help' | 'error' | 'success';
   /**
    * Help text for the group
@@ -75,11 +73,26 @@ type FormHintProps = {
   successTextId?: string;
 };
 
+const Icons = {
+  error: (): ReactElement => (
+    <>
+      <InfoIcon color="feedback.icon.negative.lowContrast" size="small" />
+      <Box marginRight="spacing.2" />
+    </>
+  ),
+  success: (): ReactElement => (
+    <>
+      <CheckIcon color="feedback.icon.positive.lowContrast" size="small" />
+      <Box marginRight="spacing.2" />
+    </>
+  ),
+};
+
 const FormHint = ({
   type,
+  helpText,
   errorText,
   successText,
-  helpText,
   helpTextId,
   errorTextId,
   successTextId,
@@ -90,23 +103,6 @@ const FormHint = ({
     success: 'feedback.text.positive.lowContrast',
   } as const;
 
-  const Icons = {
-    help: () => null,
-    error: () => (
-      <>
-        <InfoIcon color="feedback.icon.negative.lowContrast" size="small" />
-        <Box marginRight="spacing.1" />
-      </>
-    ),
-    success: () => (
-      <>
-        <CheckIcon color="feedback.icon.positive.lowContrast" size="small" />
-        <Box marginRight="spacing.1" />
-      </>
-    ),
-  };
-
-  const Icon = Icons[type];
   const showError = type === 'error' && errorText;
   const showSuccess = type === 'success' && successText;
   const showHelp = !showError && !showSuccess && helpText;
@@ -114,19 +110,19 @@ const FormHint = ({
   return (
     <>
       {showHelp && (
-        <HintText id={helpTextId} icon={Icon} color={colors[type]}>
+        <HintText id={helpTextId} color={colors.help}>
           {helpText}
         </HintText>
       )}
 
       {showError && (
-        <HintText id={errorTextId} icon={Icon} color={colors[type]}>
+        <HintText id={errorTextId} icon={Icons.error} color={colors.error}>
           {errorText}
         </HintText>
       )}
 
       {showSuccess && (
-        <HintText id={successTextId} icon={Icon} color={colors[type]}>
+        <HintText id={successTextId} icon={Icons.success} color={colors.success}>
           {successText}
         </HintText>
       )}

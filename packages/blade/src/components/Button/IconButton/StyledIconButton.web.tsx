@@ -11,7 +11,7 @@ type StyledButtonProps = {
 
 const StyledButton = styled.button<StyledButtonProps>((props) => {
   const { theme, contrast } = props;
-  const linkColorToken = theme.colors.feedback.neutral.action.icon.link; // todo: should be from surfaceAction
+  const iconColorToken = theme.colors.surface.action.icon;
   const contrastToken = contrast === 'high' ? 'highContrast' : 'lowContrast';
   const motionToken = theme.motion;
 
@@ -24,23 +24,23 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: linkColorToken.default[contrastToken],
+    color: iconColorToken.default[contrastToken],
     transitionProperty: 'color, box-shadow',
     transitionDuration: makeMotionTime(motionToken.duration.xquick),
     transitionTimingFunction: motionToken.easing.standard.effective as string,
 
     '&:hover': {
-      color: linkColorToken.hover[contrastToken],
+      color: iconColorToken.hover[contrastToken],
     },
 
     '&:focus': {
       outline: 'none',
       boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-      color: linkColorToken.focus[contrastToken],
+      color: iconColorToken.focus[contrastToken],
     },
 
     '&:active': {
-      color: linkColorToken.active[contrastToken],
+      color: iconColorToken.active[contrastToken],
     },
   };
 });

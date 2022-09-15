@@ -29,7 +29,7 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
   };
 
   return (
-    <Box display="flex" alignItems="center" gap="spacing.2">
+    <Box display="flex" alignItems="center" gap="spacing.3">
       {isChecked ? (
         <EyeIcon color="action.icon.link.active" size="medium" />
       ) : (
@@ -62,7 +62,7 @@ const AccessibilityInteropDemo = (): React.ReactElement => {
   return (
     <>
       <h3 id="id-group-label">Fruits</h3>
-      <Box marginBottom="spacing.1" />
+      <Box marginBottom="spacing.2" />
       <div {...checkboxGroupA11y}>
         <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
           <li>

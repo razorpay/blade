@@ -8,7 +8,7 @@ import type { CheckboxGroupProps } from './CheckboxGroup';
 import type { CheckboxGroupContextType } from './CheckboxGroupContext';
 import { useControllableState } from '~src/hooks/useControllable';
 import { useTheme } from '~components/BladeProvider';
-import { useFormId } from '~src/hooks/useFormId';
+import { useFormId } from '~components/Form/useFormId';
 
 type UseCheckboxGroupProps = Pick<
   CheckboxGroupProps,

@@ -1,5 +1,100 @@
 # @razorpay/blade
 
+## 2.2.2
+
+### Patch Changes
+
+- a8c5c08: tests: add tests for `TextInput`
+  fix: render clear button on mount when the `defaultValue` or `value` is passed
+
+## 2.2.1
+
+### Patch Changes
+
+- 4b6bfda: fix: update spinner easing
+
+## 2.2.0
+
+### Minor Changes
+
+- 7c272be: feat: add `Spinner` component
+  - Also adds an internal `BaseSpinner` component
+
+## 2.1.0
+
+### Minor Changes
+
+- a6bf780: feat(TextInput): add TextInput Field
+
+  ### This release publishes **`TextField`** Input
+
+  #### [Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A210737)
+
+  #### Capabilities
+
+  - Support for various `type` of TextInput i.e `'text' | 'telephone' | 'email' | 'url' | 'numeric' | 'search'`
+  - Automatically decide `keyboardType`, `keyboardReturnKeyType`, `autoCompleteSuggestionType` based on `type` attribute alone
+
+  ![image](https://user-images.githubusercontent.com/11384858/188391913-d45e40b4-1b92-4fab-8bf8-8d49891929f8.png)
+
+  - Max characters to be accepted by the input field which will in turn also render a counter
+    ![image](https://user-images.githubusercontent.com/11384858/188390436-2854807d-5fb0-42de-8171-3ba61be4b9f6.png)
+
+  - Clear the content of the input field with the help of a clear button
+    ![image](https://user-images.githubusercontent.com/11384858/188391183-8e262200-7424-4a80-a5fe-1c7166be26ce.png)
+
+  - Attach `prefix` and `suffix` to the input field
+  - Fully Accessible
+
+### Patch Changes
+
+- a8c7620: ## Internal changes
+
+  tests(BaseInput): add web tests and fix onBlur
+
+  - Adds `onBlur`
+
+- 1417e90: changed native text-input helptext color
+
+## 2.0.0
+
+### Major Changes
+
+- cc4355a: feat(blade): added 2px spacing token
+
+  #### Breaking changes
+
+> **Note**
+>
+> This breaking change affects you only if you're using the tokens directly somewhere. If you're only using the components then nothing needs to be updated at your end.
+
+- Added 2px token, thus all spacing tokens have shifted by 1 step.
+
+#### Migration steps
+
+Shift every spacing token other than the first one (`0th` index) by +1
+
+```diff
+- <div style={{ margin: theme.spacing[1] }} />
++ <div style={{ margin: theme.spacing[2] }} />
+```
+
+### Patch Changes
+
+- a402ef1: feat(icons): add `RefreshLeft` icon
+
+## 1.1.0
+
+### Minor Changes
+
+- 5f1033c: feat: add `Alert` component :tada:
+
+### Patch Changes
+
+- cd5f61f: feat(tokens): add new tokens
+- e8d932a: feat: add `blue` variant to `Badge`
+- acfd566: feat(icons): arrow up and arrow left
+
 ## 1.0.2
 
 ### Patch Changes

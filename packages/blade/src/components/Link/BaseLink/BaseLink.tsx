@@ -4,7 +4,7 @@ import type { ReactElement, SyntheticEvent } from 'react';
 import { useState } from 'react';
 import type { CSSObject } from 'styled-components';
 import StyledBaseLink from './StyledBaseLink';
-import useInteraction from './useInteraction';
+import useInteraction from '~src/hooks/useInteraction';
 import type { IconComponent, IconProps } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
@@ -158,7 +158,7 @@ const getProps = ({
       isVisited,
     }) as IconProps['color'],
     iconSize: hasIcon && (!children || children?.trim().length === 0) ? 'medium' : 'small',
-    iconPadding: children?.trim() ? 'spacing.1' : 'spacing.0',
+    iconPadding: children?.trim() ? 'spacing.2' : 'spacing.0',
     textColor: getColorToken({
       variant,
       intent,
