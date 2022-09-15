@@ -1,6 +1,9 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
+  typescript: {
+    check: false,
+  },
   refs: {
     '@storybook/design-system': { disable: true },
   },
