@@ -9,5 +9,3 @@ export type StyledAlertProps = {
   isFullWidth: boolean;
   isBorderless: boolean;
 };
-
-export { StyledAlert } from './StyledAlert.web';

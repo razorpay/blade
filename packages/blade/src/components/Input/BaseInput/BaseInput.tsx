@@ -423,7 +423,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <StyledBaseInput
               id={inputId}
-              ref={ref}
+              ref={ref as never}
               name={name}
               type={type}
               defaultValue={defaultValue}

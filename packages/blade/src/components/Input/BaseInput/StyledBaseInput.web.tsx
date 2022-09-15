@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { getBaseInputStyles } from './baseInputStyles';
 
-import type { StyledBaseInputProps } from './StyledBaseInput.d';
+import type { StyledBaseInputProps } from './types';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 
 const StyledBaseNativeInput = styled.input<
