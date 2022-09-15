@@ -2,10 +2,15 @@
 import type { Brand, NativeOrWebBrand } from './types';
 
 namespace Platform {
-  export type Name = 'native';
+  export type Name = 'web';
+  /**
+   * Right now, the module resolution is set to resolve `.web` files,
+   *
+   * Thus Platform.Select<> type will return the `web` type
+   */
   export type Select<Options extends { web: unknown; native: unknown }> = Brand<
     Options[Name],
-    'platform-native'
+    'platform-web'
   >;
 
   export type CastNative<T extends NativeOrWebBrand | undefined> = Extract<

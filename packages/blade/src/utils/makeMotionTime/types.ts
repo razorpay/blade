@@ -1,4 +1,4 @@
-import type { Platform } from '../isReactNative/index.all';
+import type { Platform } from '~utils';
 
 type MakeMotionTime<Value extends number> = Platform.Select<{
   native: number;

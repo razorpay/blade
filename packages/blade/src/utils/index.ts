@@ -20,4 +20,4 @@ export * from './useBreakpoint';
 export * from './useColorScheme';
 export * from './usePrevious';
 export * from './isEmpty';
-export * from './isReactNative';
+export * from './platform';
