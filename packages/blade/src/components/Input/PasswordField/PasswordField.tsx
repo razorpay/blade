@@ -7,6 +7,8 @@ import Box from '~components/Box';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
 
+type Maybe<Type> = Type | undefined;
+
 type PasswordFieldExtraProps = {
   /**
    * Shows a reveal button to toggle password visibility
@@ -14,6 +16,31 @@ type PasswordFieldExtraProps = {
    * @default true
    */
   showRevealButton?: boolean;
+
+  /**
+   * Displays asterisk (`*`) when `isRequired` is enabled
+   *
+   * @default none
+   */
+  necessityIndicator?: Exclude<BaseInputProps['necessityIndicator'], 'optional'>;
+
+  /**
+   * Determines what autoComplete suggestion type to show. Defaults to using platform heuristics.
+   *
+   * It's not recommended to turn this off in favor of safe password practices.
+   * Providing `password` or `newPassword` is more informative to the platform for browser autofill or password managers.
+   *
+   * Internally it'll render platform specific attributes:
+   *
+   * - web: `autocomplete`
+   * - iOS: `textContentType`
+   * - android: `autoComplete`
+   *
+   */
+  autoCompleteSuggestionType?: Extract<
+    BaseInputProps['autoCompleteSuggestionType'],
+    'none' | 'password' | 'newPassword'
+  >;
 };
 
 type PasswordFieldProps = Pick<
@@ -26,10 +53,20 @@ type PasswordFieldProps = Pick<
   | 'errorText'
   | 'successText'
   | 'helpText'
+  | 'isDisabled'
+  | 'defaultValue'
+  | 'placeholder'
+  | 'isRequired'
+  | 'value'
+  | 'onChange'
+  | 'onBlur'
+  | 'onFocus'
+  | 'name'
+  | 'autoFocus'
+  | 'keyboardReturnKeyType'
+  | 'autoCompleteSuggestionType'
 > &
   PasswordFieldExtraProps;
-
-type Maybe<Type> = Type | undefined;
 
 const PasswordField = ({
   id,
@@ -41,6 +78,19 @@ const PasswordField = ({
   errorText,
   successText,
   helpText,
+  isDisabled = false,
+  defaultValue,
+  placeholder,
+  isRequired = false,
+  necessityIndicator = 'none',
+  value,
+  onChange,
+  onFocus,
+  onBlur,
+  name,
+  autoFocus = false,
+  keyboardReturnKeyType = 'done',
+  autoCompleteSuggestionType,
 }: PasswordFieldProps): ReactElement => {
   const [isRevealed, setIsRevealed] = useState(false);
 
@@ -78,6 +128,20 @@ const PasswordField = ({
       errorText={errorText}
       successText={successText}
       helpText={helpText}
+      isDisabled={isDisabled}
+      defaultValue={defaultValue}
+      placeholder={placeholder}
+      isRequired={isRequired}
+      necessityIndicator={necessityIndicator}
+      value={value}
+      onChange={onChange}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      name={name}
+      // eslint-disable-next-line jsx-a11y/no-autofocus
+      autoFocus={autoFocus}
+      autoCompleteSuggestionType={autoCompleteSuggestionType}
+      keyboardReturnKeyType={keyboardReturnKeyType}
     />
   );
 };

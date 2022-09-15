@@ -1,6 +1,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
+import { useState } from 'react';
 import { Highlight, Link } from '@storybook/design-system';
 
 import type { PasswordFieldProps } from './PasswordField';
@@ -48,15 +49,44 @@ const Page = (): ReactElement => {
   );
 };
 
+const propsCategory = {
+  BASE_PROPS: 'Password Field Props',
+  LABEL_PROPS: 'Label Props',
+  VALIDATION_PROPS: 'Validation Props',
+};
+
 const meta: Meta<PasswordFieldProps> = {
   title: 'Components/Input/PasswordField',
   component: PasswordField,
   args: {
     id: 'password',
     label: 'Enter password',
-    helpText: 'We recommend setting a strong password',
+    name: 'password',
+    helpText: 'We recommend having at least 8 characters in your password',
+    placeholder: 'Enter a strong password',
   },
-  argTypes: {},
+  argTypes: {
+    id: { table: { category: propsCategory.BASE_PROPS } },
+    autoFocus: { table: { category: propsCategory.BASE_PROPS } },
+    label: { table: { category: propsCategory.LABEL_PROPS } },
+    labelPosition: { table: { category: propsCategory.LABEL_PROPS } },
+    name: { table: { category: propsCategory.BASE_PROPS } },
+    placeholder: { table: { category: propsCategory.BASE_PROPS } },
+    maxCharacters: { table: { category: propsCategory.BASE_PROPS } },
+    isDisabled: { table: { category: propsCategory.BASE_PROPS } },
+    isRequired: { table: { category: propsCategory.BASE_PROPS } },
+    necessityIndicator: { table: { category: propsCategory.BASE_PROPS } },
+    defaultValue: { table: { category: propsCategory.BASE_PROPS } },
+    showRevealButton: { table: { category: propsCategory.BASE_PROPS } },
+    validationState: { table: { category: propsCategory.VALIDATION_PROPS } },
+    helpText: { table: { category: propsCategory.VALIDATION_PROPS } },
+    successText: { table: { category: propsCategory.VALIDATION_PROPS } },
+    errorText: { table: { category: propsCategory.VALIDATION_PROPS } },
+    value: { table: { category: propsCategory.BASE_PROPS } },
+    onChange: { action: 'Changed', table: { category: propsCategory.BASE_PROPS } },
+    onFocus: { action: 'Focussed', table: { category: propsCategory.BASE_PROPS } },
+    onBlur: { action: 'Blurred', table: { category: propsCategory.BASE_PROPS } },
+  },
   parameters: {
     docs: {
       page: Page,
@@ -69,6 +99,19 @@ const PasswordFieldTemplate: ComponentStory<typeof PasswordField> = ({ ...args }
 };
 
 export const Default = PasswordFieldTemplate.bind({});
+
+export const AutoComplete = PasswordFieldTemplate.bind({});
+AutoComplete.args = {
+  autoCompleteSuggestionType: 'newPassword',
+};
+AutoComplete.parameters = {
+  docs: {
+    description: {
+      story:
+        '`autoCompleteSuggestionType` can be used to tell the platform if the input field is being used for inputting new password or current password. This provides hints to browser autofill and password managers.',
+    },
+  },
+};
 
 export const MaxCharacters = PasswordFieldTemplate.bind({});
 MaxCharacters.args = {
@@ -119,6 +162,57 @@ LabelAtLeft.parameters = {
   docs: {
     description: {
       story: '`labelPosition` can be used to adjust the positioning of input label',
+    },
+  },
+};
+
+export const Disabled = PasswordFieldTemplate.bind({});
+Disabled.args = {
+  isDisabled: true,
+  defaultValue: 'My_Strong#Password!',
+};
+Disabled.parameters = {
+  docs: {
+    description: {
+      story:
+        '`isDisabled` can be used to make the password field read only (disabled for user input), `defaultValue` can be used to pass an initial value',
+    },
+  },
+};
+
+export const Required = PasswordFieldTemplate.bind({});
+Required.args = {
+  isRequired: true,
+  necessityIndicator: 'required',
+};
+Required.parameters = {
+  docs: {
+    description: {
+      story:
+        '`isRequired` can be used to make the password field required for form submission, `necessityIndicator` can be used to show a visual cue by passing `required` as value',
+    },
+  },
+};
+
+export const ControlledInput = (): ReactElement => {
+  const [state, setState] = useState<string | undefined>('');
+  return (
+    <PasswordField
+      id="controlled-password-field"
+      label="Controlled PasswordField"
+      helpText="See the console for output"
+      value={state}
+      onChange={({ value }) => {
+        console.log('Controlled Input Value:', value);
+        setState(value);
+      }}
+    />
+  );
+};
+ControlledInput.parameters = {
+  docs: {
+    description: {
+      story: '`value` and `onChange` can be used to make the input field controlled',
     },
   },
 };
