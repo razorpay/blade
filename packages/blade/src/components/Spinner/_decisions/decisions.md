@@ -18,6 +18,8 @@ A BaseSpinner will contain some extra props like `intent`. This will not be expo
 | intent | `positive`,`negative`, `notice`, `information`, `neutral` | `undefined` | The intent of the spinner to be rendered. |  |
 | contrast | `low`, `high` | `low` | The contrast of the spinner to be rendered. |  |
 | size | `small`, `medium`, `large` | `medium` | The size of the spinner to be rendered. |  |
+| label | `string` | `undefined` | The label of the spinner to be rendered. |  |
+| labelPosition | `right`, `bottom` | `right` | The position of the rendered label. |  |
 
 
 ## Spinner
@@ -30,6 +32,9 @@ A wrapper around Spinner which will be exposed to the consumer to be used as a S
 | accessibilityLabel | `string` | `"Loading"` | The accessibility label (aria-label) for the spinner. |
 | contrast | `low`, `high` | `low` | The contrast of the spinner to be rendered. |  |
 | size | `small`, `medium`, `large` | `medium` | The size of the spinner to be rendered. |  |
+| label | `string` | `undefined` | The label of the spinner to be rendered. |  |
+| labelPosition | `right`, `bottom` | `right` | The position of the rendered label. |  |
+
 
 ### Sample Usage
 ```jsx
@@ -49,7 +54,7 @@ import { Spinner } from '@razorpay/components';
 
 
 ## Open Questions
-- Should we set `aria-role` as `alert` for accessibility? [Carbon DS](https://carbondesignsystem.com/components/loading/accessibility#how-it-works) does this as well.
+- ~Should we set `aria-role` as `alert` for accessibility? [Carbon DS](https://carbondesignsystem.com/components/loading/accessibility#how-it-works) does this as well.~ We'll be setting the `aria-role` as `progressbar`
 
 
 ## References
