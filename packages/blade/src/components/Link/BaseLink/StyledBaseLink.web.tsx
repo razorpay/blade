@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './types';
-import { getIn, makeBorderSize, makeMotionTime } from '~utils';
+import { castWebType, getIn, makeBorderSize, makeMotionTime } from '~utils';
 
 const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLinkProps) => ({
   ...props.accessibilityProps,
@@ -11,7 +11,7 @@ const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLi
   borderRadius: makeBorderSize(props.theme.border.radius.small),
   transitionProperty: 'box-shadow',
   transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
-  transitionDuration: makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
+  transitionDuration: castWebType(makeMotionTime(getIn(props.theme.motion, props.motionDuration))),
   '.content-container': {
     width: 'max-content',
     borderRadius: makeBorderSize(props.theme.border.radius.small),
@@ -24,7 +24,9 @@ const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLi
   '*': {
     transitionProperty: 'color, fill',
     transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
-    transitionDuration: makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
+    transitionDuration: castWebType(
+      makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
+    ),
   },
 }));
 

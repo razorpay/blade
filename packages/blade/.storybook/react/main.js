@@ -1,8 +1,12 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   typescript: {
-    check: false,
+    check: true,
+    checkOptions: {
+      tsconfig: path.resolve('./tsconfig-typecheck.web.json'),
+    },
   },
   refs: {
     '@storybook/design-system': { disable: true },
@@ -46,6 +50,11 @@ module.exports = {
         extensions: config.resolve.extensions,
       }),
     ];
+
+    // const tsConfigIndex = config.plugins.findIndex(
+    //   (v) => v.constructor.name === 'ForkTsCheckerWebpackPlugin',
+    // );
+    // config.plugins.splice(tsConfigIndex, 1);
 
     // Return the altered config
     return {
