@@ -60,7 +60,7 @@ These steps should get you up and started for local development setup. Please en
   >
   > Follow the note [here](https://reactnative.dev/docs/environment-setup#cocoapods) if you're using M1
 
-- `cd` back to `packages/blade`. Start storybook dev-server for ios-
+- `cd` back to `packages/blade`. Start storybook dev-server for ios:
 
   ```sh
   yarn start:ios
