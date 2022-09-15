@@ -242,7 +242,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     "marginLeft": 0,
                     "marginRight": 8,
                     "marginTop": 0,
-                    "transitionDuration": 150,
                     "width": 16,
                   },
                 ]
@@ -374,7 +373,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     "marginLeft": 0,
                     "marginRight": 8,
                     "marginTop": 0,
-                    "transitionDuration": 150,
                     "width": 16,
                   },
                 ]
@@ -506,7 +504,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     "marginLeft": 0,
                     "marginRight": 8,
                     "marginTop": 0,
-                    "transitionDuration": 150,
                     "width": 16,
                   },
                 ]
@@ -854,7 +851,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     "marginLeft": 0,
                     "marginRight": 8,
                     "marginTop": 0,
-                    "transitionDuration": 150,
                     "width": 16,
                   },
                 ]
@@ -986,7 +982,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     "marginLeft": 0,
                     "marginRight": 8,
                     "marginTop": 0,
-                    "transitionDuration": 150,
                     "width": 16,
                   },
                 ]
@@ -1118,7 +1113,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     "marginLeft": 0,
                     "marginRight": 8,
                     "marginTop": 0,
-                    "transitionDuration": 150,
                     "width": 16,
                   },
                 ]

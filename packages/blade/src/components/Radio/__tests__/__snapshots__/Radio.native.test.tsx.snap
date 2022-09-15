@@ -242,7 +242,6 @@ exports[`<Radio /> should render radio with label 1`] = `
                     "marginLeft": 0,
                     "marginRight": 8,
                     "marginTop": 0,
-                    "transitionDuration": 150,
                     "width": 16,
                   },
                 ]
@@ -539,7 +538,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                     "marginLeft": 0,
                     "marginRight": 8,
                     "marginTop": 0,
-                    "transitionDuration": 150,
                     "width": 16,
                   },
                 ]
