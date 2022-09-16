@@ -615,12 +615,12 @@ exports[`<BaseInput /> should render with icons 1`] = `
       class="c0"
       display="flex"
     >
-      <label
-        for="input-field-31-input-32"
-        style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
+      <div
+        class="c1"
+        display="flex"
       >
         <label
-          for="input-field-25-input-26"
+          for="input-field-31-input-32"
           style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
         >
           <div
@@ -691,22 +691,17 @@ exports[`<BaseInput /> should render with icons 1`] = `
             </svg>
           </div>
         </div>
-      </div>
-      <input
-        aria-describedby=""
-        aria-disabled="false"
-        aria-invalid="false"
-        aria-required="false"
-        class="c11"
-        id="input-field-31-input-32"
-        placeholder="First Last"
-        type="text"
-        value=""
-      />
-      <div
-        class="c9"
-        display="flex"
-      >
+        <input
+          aria-describedby=""
+          aria-disabled="false"
+          aria-invalid="false"
+          aria-required="false"
+          class="c11"
+          id="input-field-31-input-32"
+          placeholder="First Last"
+          type="text"
+          value=""
+        />
         <div
           class="c9"
           display="flex"
