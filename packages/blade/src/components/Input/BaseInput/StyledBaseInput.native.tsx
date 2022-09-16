@@ -104,6 +104,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       accessibilityProps,
       currentInteraction,
       setCurrentInteraction,
+      type,
       ...props
     },
     ref,
@@ -141,6 +142,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
               ] as StyledComponentAutoCompleteAndroid)
             : undefined
         }
+        secureTextEntry={type === 'password'}
         {...props}
         {...accessibilityProps}
       />

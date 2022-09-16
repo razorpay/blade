@@ -30,6 +30,8 @@ type PasswordFieldExtraProps = {
    * It's not recommended to turn this off in favor of safe password practices.
    * Providing `password` or `newPassword` is more informative to the platform for browser autofill or password managers.
    *
+   * **Note**: Using `newPassword` on iOS has some [known issue](https://github.com/facebook/react-native/issues/21911) on React Native
+   *
    * Internally it'll render platform specific attributes:
    *
    * - web: `autocomplete`

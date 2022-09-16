@@ -108,7 +108,7 @@ AutoComplete.parameters = {
   docs: {
     description: {
       story:
-        '`autoCompleteSuggestionType` can be used to tell the platform if the input field is being used for inputting new password or current password. This provides hints to browser autofill and password managers.',
+        '`autoCompleteSuggestionType` can be used to tell the platform if the input field is being used for inputting new password or current password. This provides hints to browser autofill and password managers. **Note:** there is a [known issue](https://github.com/facebook/react-native/issues/21911) for iOS.',
     },
   },
 };
