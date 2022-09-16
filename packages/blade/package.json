@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade",
-  "version": "2.1.0",
+  "version": "2.2.2",
   "license": "MIT",
   "engines": {
     "node": ">=14.19.0"
@@ -36,6 +36,7 @@
     "typecheck": "tsc",
     "prepublish": "yarn build",
     "build": "run-s build:*",
+    "clearCache": "jest --clearCache",
     "build:clean": "rm -rf build",
     "build:generate-types": "tsc -p ./tsconfig-generate-types.json",
     "build:generate-css-variables": "GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
@@ -54,6 +55,11 @@
     "react": "yarn run react:storybook",
     "react:storybook": "FRAMEWORK=REACT start-storybook -c ./.storybook/react -p 9009",
     "react:storybook:build": "FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site",
+    "start:ios": "run-p react-native:storybook:start react-native:storybook:ios",
+    "start:android": "run-p react-native:storybook:start react-native:storybook:android",
+    "start:native": "run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
+    "start:web": "yarn react",
+    "start:all": "run-p start:native start:web",
     "chromatic": "npx chromatic"
   },
   "dependencies": {

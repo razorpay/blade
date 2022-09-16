@@ -104,6 +104,20 @@ describe('<BaseButton />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render loading button', () => {
+    const buttonText = 'Pay Now';
+    const onClick = jest.fn();
+    const { toJSON, getByText } = renderWithTheme(
+      <BaseButton isLoading={true} onClick={onClick}>
+        {buttonText}
+      </BaseButton>,
+    );
+    const button = getByText(buttonText);
+    fireEvent.press(button);
+    expect(onClick).toHaveBeenCalledTimes(0);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should call function on click', () => {
     const buttonText = 'Pay Now';
     const onClick = jest.fn();

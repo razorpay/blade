@@ -80,7 +80,7 @@ export type BaseInputProps = FormInputLabelProps &
      */
     leadingIcon?: IconComponent;
     /**
-     * Prefix symbol to be displayed at the beginning of the input field
+     * Prefix symbol to be displayed at the beginning of the input field. If leadingIcon is provided it'll be placed after it
      */
     prefix?: string;
     /**
@@ -90,7 +90,7 @@ export type BaseInputProps = FormInputLabelProps &
      */
     interactionElement?: ReactNode;
     /**
-     * Suffix symbol to be displayed at the beginning of the input field
+     * Suffix symbol to be displayed at the end of the input field. If trailingIcon is provided it'll be placed before it
      */
     suffix?: string;
     /**
@@ -249,7 +249,6 @@ const useInput = ({
   const handleOnBlur: FormInputHandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
-
       if (getPlatformType() === 'react-native' && typeof value == 'string') {
         _value = value;
       } else if (typeof value !== 'string') {

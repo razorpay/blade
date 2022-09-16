@@ -1,5 +1,25 @@
 # @razorpay/blade
 
+## 2.2.2
+
+### Patch Changes
+
+- a8c5c08: tests: add tests for `TextInput`
+  fix: render clear button on mount when the `defaultValue` or `value` is passed
+
+## 2.2.1
+
+### Patch Changes
+
+- 4b6bfda: fix: update spinner easing
+
+## 2.2.0
+
+### Minor Changes
+
+- 7c272be: feat: add `Spinner` component
+  - Also adds an internal `BaseSpinner` component
+
 ## 2.1.0
 
 ### Minor Changes
