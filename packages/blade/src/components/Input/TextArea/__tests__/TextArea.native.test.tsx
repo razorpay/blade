@@ -5,6 +5,9 @@ import React from 'react';
 import { TextArea } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
+beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+afterAll(() => jest.restoreAllMocks());
+
 describe('<TextArea />', () => {
   it('should render', () => {
     const { toJSON } = renderWithTheme(<TextArea label="Enter name" />);
@@ -42,6 +45,16 @@ describe('<TextArea />', () => {
     const errorText = getByText('Error');
 
     expect(errorText).toBeTruthy();
+  });
+
+  it('should display help text', () => {
+    const { getByText } = renderWithTheme(
+      <TextArea label="Enter name" successText="Success" errorText="Error" helpText="Help" />,
+    );
+
+    const helpText = getByText('Help');
+
+    expect(helpText).toBeTruthy();
   });
 
   it('should be focussed when autoFocus flag is passed', () => {
@@ -108,6 +121,86 @@ describe('<TextArea />', () => {
     fireEvent.changeText(input, valueFinal);
 
     getByDisplayValue(valueFinal);
+  });
+
+  it('should throw error when both value and defaultValue are passed', () => {
+    expect(() =>
+      renderWithTheme(
+        <TextArea label="Enter name" defaultValue="Kamlesh" value="Kamlesh Chandnani" />,
+      ),
+    ).toThrow(
+      `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+    );
+  });
+
+  /**
+   * can't check clear button for uncontroled input with default value
+   *  https://github.com/callstack/react-native-testing-library/issues/978#issuecomment-1203256954
+   */
+
+  it('should clear input on clear buton click', () => {
+    const valueInitial = 'Kamlesh';
+    const valueFinal = '';
+
+    const ControlledInput = (): ReactElement => {
+      const [value, setValue] = React.useState<string | undefined>(valueInitial);
+
+      return (
+        <TextArea
+          label="Enter name"
+          value={value}
+          showClearButton
+          onClearButtonClick={() => setValue(valueFinal)}
+        />
+      );
+    };
+
+    const { getByDisplayValue, getByRole } = renderWithTheme(<ControlledInput />);
+
+    const input = getByDisplayValue(valueInitial);
+    expect(input).toBeTruthy();
+
+    const clearButton = getByRole('button');
+    fireEvent.press(clearButton);
+
+    expect(getByDisplayValue(valueFinal)).toBeTruthy();
+  });
+
+  it('should only show clear buton when the user type in something', () => {
+    const valueInitial = '';
+    const valueFinal = 'Kamlesh';
+
+    const ControlledInput = (): ReactElement => {
+      const [value, setValue] = React.useState<string | undefined>(valueInitial);
+
+      return (
+        <TextArea
+          label="Enter name"
+          value={value}
+          onChange={() => setValue(valueFinal)}
+          showClearButton
+          onClearButtonClick={() => setValue(valueInitial)}
+        />
+      );
+    };
+
+    const { getByDisplayValue, getByRole, queryByRole } = renderWithTheme(<ControlledInput />);
+
+    const input = getByDisplayValue(valueInitial);
+
+    expect(input).toBeTruthy();
+
+    let clearButton = queryByRole('button');
+    expect(clearButton).toBeFalsy();
+
+    fireEvent.changeText(input, valueFinal);
+
+    expect(getByDisplayValue(valueFinal)).toBeTruthy();
+
+    clearButton = getByRole('button');
+    fireEvent.press(clearButton);
+
+    expect(getByDisplayValue(valueInitial)).toBeTruthy();
   });
 
   it('should pass a11y', () => {
