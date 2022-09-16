@@ -123,6 +123,20 @@ describe('<TextArea />', () => {
     expect(input).toBeInvalid();
   });
 
+  it('should display help text', () => {
+    const label = 'Enter name';
+    const { getByText, getByLabelText } = renderWithTheme(
+      <TextArea label="Enter name" successText="Success" errorText="Error" helpText="Help" />,
+    );
+
+    const input = getByLabelText(label);
+    const helpText = getByText('Help');
+
+    expect(helpText).toBeTruthy();
+    expect(input).toHaveAccessibleDescription('Help');
+    expect(input).toBeValid();
+  });
+
   it('should be focussed when autoFocus flag is passed', () => {
     const label = 'Enter name';
     // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -232,7 +246,36 @@ describe('<TextArea />', () => {
     expect(input).toHaveValue(valueInitial);
 
     await user.type(input, ' Maithani');
-    expect(getByLabelText(label)).toHaveValue(valueFinal);
+    expect(input).toHaveValue(valueFinal);
+  });
+
+  it('should only show clear buton when the user type in something', async () => {
+    const user = userEvent.setup();
+    const label = 'Enter name';
+    const onClearButtonClick = jest.fn();
+
+    const { getByLabelText, getByRole, queryByRole } = renderWithTheme(
+      <TextArea label={label} showClearButton onClearButtonClick={onClearButtonClick} />,
+    );
+
+    const input = getByLabelText(label);
+    expect(input).toHaveValue('');
+
+    let clearButton = queryByRole('button');
+    expect(clearButton).toBeFalsy();
+
+    await user.tab();
+    expect(input).toHaveFocus();
+
+    await user.type(input, 'Kamlesh');
+    expect(input).toHaveValue('Kamlesh');
+
+    clearButton = getByRole('button');
+    await user.click(clearButton);
+    expect(onClearButtonClick).toHaveBeenCalledTimes(1);
+
+    expect(input).toHaveFocus();
+    expect(input).toHaveValue('');
   });
 
   it('should pass a11y', async () => {
