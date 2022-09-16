@@ -106,7 +106,7 @@ Another option would be having a `size` prop that would lead us to have a "large
 
   ```jsx
   <Text
-    variant=" medium | large | caption"
+    variant="body | caption"
     weight="regular | bold"
     size="small | medium"
     type="normal | subtle | subdued | muted | placeholder"
@@ -130,7 +130,7 @@ Type of `children: React.ReactNode`
   Text will internally use `BaseText` to render. Natively we'll use html `<code></code>` tag for web and native `<Text></Text>` react-native to render the code text.
 
   ```jsx
-  <Code variant="large | caption" type="normal | subtle | subdued | muted | placeholder">
+  <Code variant="large | medium" type="normal | subtle | subdued | muted | placeholder">
     SENTRY_AUTH_TOKEN:xyz
   </Code>
   ```
