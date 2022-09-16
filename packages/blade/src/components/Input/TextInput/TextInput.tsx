@@ -172,7 +172,9 @@ export const TextInput = ({
   autoCompleteSuggestionType,
 }: TextInputProps): ReactElement => {
   const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
-  const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
+  const [shouldShowClearButton, setShouldShowClearButton] = useState(
+    Boolean(defaultValue ?? value) ?? false,
+  );
 
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {

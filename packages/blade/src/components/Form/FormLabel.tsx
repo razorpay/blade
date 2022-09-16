@@ -11,7 +11,7 @@ type CommonProps = {
   position?: 'top' | 'left';
   necessityIndicator?: 'required' | 'optional' | 'none';
   accessibilityText?: string;
-  children: React.ReactNode;
+  children: string;
   id?: string;
 };
 

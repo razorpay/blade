@@ -130,11 +130,6 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         // source: https://reactnative.dev/docs/textinput/#keyboardtype
         keyboardType={KeyboardTypeToNativeValuesMap[keyboardType]}
         returnKeyType={keyboardReturnKeyType}
-        textContentType={
-          autoCompleteSuggestionType
-            ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
-            : undefined
-        }
         autoCompleteType={
           autoCompleteSuggestionType
             ? (autoCompleteSuggestionTypeAndroid[
@@ -143,6 +138,11 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
             : undefined
         }
         secureTextEntry={type === 'password'}
+        textContentType={
+          autoCompleteSuggestionType
+            ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]
+            : undefined
+        }
         {...props}
         {...accessibilityProps}
       />

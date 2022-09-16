@@ -6,7 +6,7 @@ import type { StyledBaseInputProps } from './StyledBaseInput.d';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 
 const StyledBaseNativeInput = styled.input<
-  Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction'>
+  Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
 >((props) => ({
   ...getBaseInputStyles({
     isDisabled: props.disabled,
@@ -70,6 +70,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
       autoCompleteSuggestionType,
       accessibilityProps,
       setCurrentInteraction,
+      type,
       ...props
     },
     ref,
@@ -77,6 +78,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
     return (
       <StyledBaseNativeInput
         ref={ref}
+        type={type === 'telephone' ? 'tel' : type}
         disabled={isDisabled}
         required={isRequired}
         maxLength={maxCharacters}
