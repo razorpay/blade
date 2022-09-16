@@ -181,7 +181,7 @@ describe('<TextArea />', () => {
     expect(onBlur).toHaveBeenCalledWith({ name: 'name', value: userName });
   });
 
-  it('should be focussable', async () => {
+  it('should be focusable', async () => {
     const user = userEvent.setup();
     const label = 'Enter name';
     const userName = 'Divyanshu';
@@ -223,21 +223,16 @@ describe('<TextArea />', () => {
     const ControlledInputExample = (): ReactElement => {
       const [value, setValue] = React.useState<string | undefined>(valueInitial);
 
-      return (
-        <>
-          <TextArea label={label} value={value} onChange={({ value }) => setValue(value)} />
-          <p data-testid="input-value">{value}</p>
-        </>
-      );
+      return <TextArea label={label} value={value} onChange={({ value }) => setValue(value)} />;
     };
 
-    const { getByLabelText, getByTestId } = renderWithTheme(<ControlledInputExample />);
+    const { getByLabelText } = renderWithTheme(<ControlledInputExample />);
 
     const input = getByLabelText(label);
     expect(input).toHaveValue(valueInitial);
 
     await user.type(input, ' Maithani');
-    expect(getByTestId('input-value')).toHaveTextContent(valueFinal);
+    expect(getByLabelText(label)).toHaveValue(valueFinal);
   });
 
   it('should pass a11y', async () => {
