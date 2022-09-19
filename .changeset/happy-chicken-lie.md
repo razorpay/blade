@@ -9,7 +9,7 @@ feat(blade): Improve platform types with TS 4.7
 Migration Steps
 
 1. Upgrade to TypeScript 4.7+
-2. Depending on your app platform change the moduleSuffixes config in `tsconfig`
+2. In `tsconfig.json` add `moduleSuffix: ['.web', '']` or `moduleSuffix: ['.native', '']` (depending on the platform)
 
 ```js
 {
