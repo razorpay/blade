@@ -8,6 +8,8 @@ This doc talks about the API decisions for `OTPInput`.
 - [Keyboard return key types for web and native](#keyboard-return-key-types-for-web-and-native)
 - [OTP SMS auto-read feature](#otp-sms-auto-read-feature)
   - [Web](#web)
+  - [Native Android](#native-android)
+  - [Native iOS](#native-ios)
 - [Open questions](#open-questions)
 
 ## OTPInput API
@@ -67,13 +69,28 @@ This doc talks about the API decisions for `OTPInput`.
 ## OTP SMS auto-read feature
 ### Web
 - OTP SMS auto-read support can be added via [WebOTP API](https://web.dev/web-otp/).
-- To make it work, we must set up our backend service to ensure the SMS is sent to the customer in a specific format.
-- This format differs if the request is coming from a cross-origin.
+- To make it work, we must set up our backend service to ensure the SMS is sent to the customer in a [specific format](https://web.dev/web-otp/#format).
+- This [format differs](https://web.dev/web-otp/#use-webotp-from-a-cross-origin-iframe) if the request is coming from a cross-origin.
 - Different clients could have different requirements for gracefully aborting the SMS reader function call of [`navigator.credentials.get`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get) for cases when OTP is submitted before being read by the SMS reader. We evaluated giving the consumers of blade an option to pass `AbortController` as a prop so that we give the consumers control over handling the abortion of the function.
 - There are some [caveats and edge-cases](https://web.dev/web-otp/#no-dialog) within which this feature might not work as intended.
-- As a conclusion, we decided to not support SMS auto-read out-of-the-box for the OTPInputField since this involves getting the product & backend teams aligned on the other aspects needed to make this feature work, the flakiness introduced by incorrect handling of `AbortController` by the consumer and the caveats and edge-cases associated with the WebOTP API itself.
+- As a conclusion, we decided to not support SMS auto-read out-of-the-box since this involves getting the product & backend teams aligned on the other aspects needed to make this feature work, the flakiness introduced by incorrect handling of `AbortController` by the consumer and the caveats and edge-cases associated with the WebOTP API itself.
 - We will ensure proper annotations for the InputField that is required for the consumer to implement the feature themselves. The end-state of the OTPInputField will be such that it would allow the consumers to implement the SMS auto-read feature without any friction from Blade.
 
+### Native Android
+- Android requires us to integrate with [SMS Retriever API](https://developers.google.com/identity/sms-retriever/overview).
+- To make it work, we must set up our backend service to ensure the SMS is sent to the customer in a [specific format](https://developers.google.com/identity/sms-retriever/verify#1_construct_a_verification_message) (different from the format that web requires).
+- There is a library available for react native that's a wrapper around it: [react-native-otp-verify](https://github.com/faizalshap/react-native-otp-verify).
+- This would require our consumers to integrate this library before they could consume the OTPInputField component.
+- If certain team decides against using this feature, they might still end up being forced to install this library since our component would require it.
+- There are certain edge-cases identified by our mobile teams with resending OTP which required them to call the OTP listener multiple times. To support such cases, we might need to expose the otp listener function to the consumer in some way or handle these edge-cases as they pop-up internally.
+- As a conclusion, we decided to not support SMS auto-read out-of-the-box since this requires integrating an additional library for a single component whose feature may or may not be supported by the product & backend teams.
+- We will ensure proper annotations for the InputField that is required for the consumer to implement the feature themselves. The end-state of the OTPInputField will be such that it would allow the consumers to implement the SMS auto-read feature without any friction from Blade.
+
+### Native iOS
+- iOS doesn't support auto-reading & auto-filling OTPs that are sent via SMS.
+- Instead, iOS automatically copies the latest received OTP to the user's clipboard.
+- This copied OTP is prompted to the user when the user clicks on the OTP Input Field as long as the input is annotated appropriately.
+- We will ensure proper annotations for the InputField that is required for the consumer to implement the feature themselves. The end-state of the OTPInputField will be such that it would allow the consumers to implement the SMS auto-read feature without any friction from Blade.
 
 ## Open questions
 
