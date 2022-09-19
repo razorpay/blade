@@ -268,7 +268,7 @@ exports[`<TextArea /> should render 1`] = `
         display="flex"
       >
         <label
-          for="input-field-1-input-2"
+          for="textarea-1-input-2"
           style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
         >
           <div
@@ -315,7 +315,7 @@ exports[`<TextArea /> should render 1`] = `
           aria-invalid="false"
           aria-required="false"
           class="c9"
-          id="input-field-1-input-2"
+          id="textarea-1-input-2"
           rows="2"
           type="text"
         />
@@ -604,7 +604,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
         display="flex"
       >
         <label
-          for="input-field-79-input-80"
+          for="textarea-79-input-80"
           style="width: auto; flex-shrink: 0; margin-right: 16px; word-break: break-all;"
         >
           <div
@@ -651,7 +651,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
           aria-invalid="false"
           aria-required="false"
           class="c9"
-          id="input-field-79-input-80"
+          id="textarea-79-input-80"
           rows="3"
           type="text"
         />
