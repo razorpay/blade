@@ -34,11 +34,23 @@ Tips:
 1. If you have platform specific types or files ensure they are properly suffixed `.native` & `.web`
 2. If you don't have `filename.web.ts` suffix then unsuffixed `filename.ts` will picked up.
 
-### Writing Types For Components
+## Writing Types For Components
 
-To ease the pain of writing cross-platform types we've added few utilities `Platform.Select`, `Platform.CastWe` `Platform.CastNative`
+Table Of Content: 
 
-When writing cross-platform component which has no platform suffix and you need to switch between types on correct platform use the `Platform.Select` utility.
+- Writing Polymorphic Types
+  - Using Platform.Select
+  - Casting platform types
+
+### Writing Polymorphic Types
+
+<!-- To ease the pain of writing cross-platform types we've added few utilities `Platform.Select`, `Platform.CastWe` `Platform.CastNative` -->
+
+1. Using Platform.Select
+
+The `Platform.Select<>` can be used to write types based on which which platfrom being used. 
+
+When writing cross-platform component which has no platform suffix and you need to switch between types on correct platform, You can use the `Platform.Select` utility for this: 
 
 ```tsx
 // blade internal
@@ -48,22 +60,28 @@ type ButtonProps = {
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
   }>;
 }
+const Button = (props: ButtonProps) => <></>
 
-const Button = (props: ButtonProps) => {
-  return <>
-}
+// consumer end: 
+// on native `event` is GestureResponderEvent
+<Button onClick={event => {}} />
 
-// consumer end: on native `e` is GestureResponderEvent
-<Button onClick={e => {}} />
-
-// consumer end: on web `e` is MouseEvent
-<Button onClick={e => {}} />
+// consumer end: 
+// on web `event` is MouseEvent
+<Button onClick={event => {}} />
 ```
 
-In rare cases we need to cast to web or native types to ensure there are no platform specific erorrs, especially happens with `styled-component` types in those cases use `Platform.Cast*` types.
+2. Casting platform types
+
+In rare cases we need to cast to `web` or `native` types to ensure there are no platform specific erorrs, especially happens with `styled-component` types. In these cases we have two options: 
+
+- Type level `Platform.Cast*` utilites.
+- or `castWebType`, `castNativeType` functions.
 
 ```ts
-// blade internal: 
+import {Platform, castWebType, castNativeType} from '~utils';
+
+// blade internal component type: 
 type ButtonProps = {
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
@@ -71,14 +89,33 @@ type ButtonProps = {
   }>;
 }
 
-// blade internal: web.ts
-const Styled = styled.div();
-<Styled onClick={onClick as Platform.CastNative<typeof onClick>} />
+// Option 1: with `Platform.Cast` utilities
+// web.ts
+<Button onClick={onClick as Platform.CastWeb<typeof onClick>} />
+//               ^ (event: React.MouseEvent<HTMLButtonElement>) => void
 
-// blade internal: native.ts
-const Styled = styled.div();
-<Styled onClick={onClick as Platform.CastWeb<typeof onClick>} />
+// native.ts
+<Button onClick={onClick as Platform.CastNative<typeof onClick>} />
+//               ^ (event: GestureResponderEvent) => void
+
+
+// Option 2: with `castType` utilities
+// web.ts
+<Button onClick={castWebType(onClick)} />
+//               ^ (event: React.MouseEvent<HTMLButtonElement>) => void
+
+// native.ts
+<Button onClick={castNativeType(onClick)} />
+//               ^ (event: GestureResponderEvent) => void
 ```
+
+It is recommended that you use `castWebType` and `castNativeType`, 
+The benefit to using the functions is that 
+
+- No need to again pass the variable with `typeof variable`
+- No need to do `as unknown as Platform.CastWeb` in certain cases
+
+-----
 
 **Module Resolution Examples:**
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { ReactNode } from 'react';
 import type {
@@ -423,7 +424,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <StyledBaseInput
               id={inputId}
-              ref={ref as never}
+              ref={ref as any}
               name={name}
               type={type}
               defaultValue={defaultValue}

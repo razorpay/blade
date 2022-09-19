@@ -51,11 +51,6 @@ module.exports = {
       }),
     ];
 
-    // const tsConfigIndex = config.plugins.findIndex(
-    //   (v) => v.constructor.name === 'ForkTsCheckerWebpackPlugin',
-    // );
-    // config.plugins.splice(tsConfigIndex, 1);
-
     // Return the altered config
     return {
       ...config,
