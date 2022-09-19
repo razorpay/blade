@@ -1,23 +1,24 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Code } from './Code';
+import { Text } from '../Text';
+import { Code as CodeComponent } from './Code';
 
-const TextStoryMeta: Meta = {
+const CodeStoryMeta: Meta = {
   title: 'Components/Typography/Code',
-  component: Code,
+  component: CodeComponent,
   args: {
-    variant: 'body',
-    weight: 'regular',
     size: 'medium',
-    type: 'normal',
+    type: 'subtle',
     children: 'SENTRY_AUTH_TOKEN',
-    truncateAfterLines: 3,
-    contrast: 'low',
   },
 };
 
-const CodeTemplate: ComponentStory<typeof Code> = (args) => {
-  return <Code {...args}>{args.children}</Code>;
-};
+const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
+  <Text>
+    Lorem ipsum normal text <CodeComponent {...args} /> something something
+    <br />
+    also something something else lorem ipsum
+  </Text>
+);
 
-export default TextStoryMeta;
-export const CodeExport = CodeTemplate.bind({});
+export default CodeStoryMeta;
+export const Code = CodeTemplate.bind({});

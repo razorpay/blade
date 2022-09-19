@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'styled-components';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps as BaseTextPropsWithChildren } from '../BaseText';
+import type { TextTypes } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
 import type { ThemeContext } from '~components/BladeProvider/useTheme';
 import { getPlatformType } from '~utils';
@@ -16,8 +17,8 @@ const getCodeStyles = (
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
 
   const baseTextProps: BaseTextProps = {
-    color: 'surface.text.subtle.lowContrast', // update as per type
-    fontFamily: 'code', // check fontFamily with saurav
+    color: `surface.text.${codeProps.type ?? 'subtle'}.lowContrast`,
+    fontFamily: 'code',
     fontSize: 75,
     as: isPlatformWeb ? 'code' : undefined,
     style: {
@@ -27,23 +28,23 @@ const getCodeStyles = (
     },
   };
 
-  if (codeProps.variant === 'large') {
+  if (codeProps.size === 'large') {
     baseTextProps.fontSize = 100;
-    (baseTextProps.style as CSSProperties).padding = `0px ${codeProps.theme.spacing[2]}px`;
+    (baseTextProps.style as CSSProperties).padding = `${codeProps.theme.spacing[0]}px ${codeProps.theme.spacing[2]}px`;
   }
 
   return baseTextProps;
 };
 
-type CodeProps = {
+export type CodeProps = {
   children: string;
-  variant?: 'large' | 'medium';
-  // Add `type`
+  size?: 'large' | 'medium';
+  type?: TextTypes;
 };
 
-function Code({ children, variant = 'medium' }: CodeProps): JSX.Element {
+function Code({ children, size = 'medium', type = 'subtle' }: CodeProps): JSX.Element {
   const { theme } = useTheme();
-  const baseTextProps = getCodeStyles({ variant, theme });
+  const baseTextProps = getCodeStyles({ theme, size, type });
   return <BaseText {...baseTextProps}>{children}</BaseText>; // Use `<Text />` view on React Native
 }
 
