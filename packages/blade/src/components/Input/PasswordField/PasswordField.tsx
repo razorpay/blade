@@ -7,8 +7,6 @@ import Box from '~components/Box';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
 
-type Maybe<Type> = Type | undefined;
-
 type PasswordFieldExtraProps = {
   /**
    * Shows a reveal button to toggle password visibility
@@ -108,7 +106,7 @@ const PasswordField = ({
     />
   ) : null;
 
-  const trailingFooterSlot = (value: Maybe<string>): Maybe<ReactNode> =>
+  const trailingFooterSlot = (value?: string): ReactNode =>
     maxCharacters ? (
       <Box marginTop="spacing.2" marginRight="spacing.1">
         <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
