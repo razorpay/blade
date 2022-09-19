@@ -6,6 +6,8 @@ This doc talks about the API decisions for `OTPInput`.
 - [OTPInput API](#otpinput-api)
   - [Sample Usage](#sample-usage)
 - [Keyboard return key types for web and native](#keyboard-return-key-types-for-web-and-native)
+- [OTP SMS auto-read feature](#otp-sms-auto-read-feature)
+  - [Web](#web)
 - [Open questions](#open-questions)
 
 ## OTPInput API
@@ -60,6 +62,17 @@ This doc talks about the API decisions for `OTPInput`.
 | <kbd>Previous</kbd> | `enterkeyhint="previous"` | `returnKeyType="previous"`(android only) |
 | <kbd>Search</kbd>   | `enterkeyhint="search"`   | `returnKeyType="search"`                 |
 | <kbd>Send</kbd>     | `enterkeyhint="send"`     | `returnKeyType="send"`                   |
+
+
+## OTP SMS auto-read feature
+### Web
+- OTP SMS auto-read support can be added via [WebOTP API](https://web.dev/web-otp/).
+- To make it work, we must set up our backend service to ensure the SMS is sent to the customer in a specific format.
+- This format differs if the request is coming from a cross-origin.
+- Different clients could have different requirements for gracefully aborting the SMS reader function call of [`navigator.credentials.get`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get) for cases when OTP is submitted before being read by the SMS reader. We evaluated giving the consumers of blade an option to pass `AbortController` as a prop so that we give the consumers control over handling the abortion of the function.
+- There are some [caveats and edge-cases](https://web.dev/web-otp/#no-dialog) within which this feature might not work as intended.
+- As a conclusion, we decided to not support SMS auto-read out-of-the-box for the OTPInputField since this involves getting the product & backend teams aligned on the other aspects needed to make this feature work, the flakiness introduced by incorrect handling of `AbortController` by the consumer and the caveats and edge-cases associated with the WebOTP API itself.
+- We will ensure proper annotations for the InputField that is required for the consumer to implement the feature themselves. The end-state of the OTPInputField will be such that it would allow the consumers to implement the SMS auto-read feature without any friction from Blade.
 
 
 ## Open questions
