@@ -193,6 +193,7 @@ Array [
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
+        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -218,7 +219,6 @@ Array [
             },
           ]
         }
-        type="text"
       />
     </View>
     <View
@@ -555,6 +555,7 @@ Array [
         onEndEditing={[Function]}
         onFocus={[Function]}
         placeholder="First Last"
+        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -581,7 +582,6 @@ Array [
           ]
         }
         trailingIcon={[Function]}
-        type="text"
       />
       <View
         alignItems="center"

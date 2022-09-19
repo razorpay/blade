@@ -196,6 +196,7 @@ Array [
         onEndEditing={[Function]}
         onFocus={[Function]}
         returnKeyType="default"
+        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -222,7 +223,6 @@ Array [
           ]
         }
         textContentType="none"
-        type="text"
       />
     </View>
     <View
@@ -613,6 +613,7 @@ Array [
         placeholder="something"
         prefix="https://"
         returnKeyType="go"
+        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -640,7 +641,6 @@ Array [
         }
         suffix=".com"
         textContentType="none"
-        type="url"
       />
       <View
         alignItems="center"
