@@ -10,7 +10,6 @@ This doc talks about the API decisions for `OTPInput`.
   - [Web](#web)
   - [Native Android](#native-android)
   - [Native iOS](#native-ios)
-- [Open questions](#open-questions)
 
 ## OTPInput API
 
@@ -91,6 +90,3 @@ This doc talks about the API decisions for `OTPInput`.
 - Instead, iOS automatically copies the latest received OTP to the user's clipboard.
 - This copied OTP is prompted to the user when the user clicks on the OTP Input Field as long as the input is annotated appropriately.
 - We will ensure proper annotations for the InputField that is required for the consumer to implement the feature themselves. The end-state of the OTPInputField will be such that it would allow the consumers to implement the SMS auto-read feature without any friction from Blade.
-
-## Open questions
-
