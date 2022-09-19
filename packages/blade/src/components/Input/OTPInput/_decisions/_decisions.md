@@ -32,7 +32,7 @@ This doc talks about the API decisions for `OTPInput`.
 
 | Prop | Type | Required | Default | Description |
 |---|---|---|---|---|
-| otpLength | `4`, `6`  | | Determines the length of the OTP input. |
+| otpLength | `4`, `6`  | No | `4` | Determines the length of the OTP input. |
 | label | `string` | Yes |  | Determines the label of the input field. Also used as `aria-label` |
 | labelPosition | `top`, `left` | No | `top` | Used to identify if the label of the input field will be placed on the top of the input field or left. `left` is only available for large screen devices. When position is `left` then the width of the label is fixed to `120px` and the content is aligned left. |
 | necessityIndicator | `optional`, `required` | No |  | Indicator to be shown next to the label for emphasizing the necessity of the field. if `optional` is provided then it'll show `${label} (optional)` and if `required` is provided then it'll show `${label} *` |
