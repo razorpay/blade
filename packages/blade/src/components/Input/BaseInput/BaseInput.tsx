@@ -356,6 +356,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       trailingHeaderSlot,
       trailingFooterSlot,
       numberOfLines,
+      id,
     },
     ref,
   ) => {
@@ -367,7 +368,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onChange,
       onBlur,
     });
-    const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
+    const { inputId, helpTextId, errorTextId, successTextId } = useFormId(id);
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
     const { currentInteraction, setCurrentInteraction } = useInteraction();

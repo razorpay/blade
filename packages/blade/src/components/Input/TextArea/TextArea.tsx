@@ -108,6 +108,7 @@ const TextArea = ({
   return (
     <BaseInput
       as="textarea"
+      id="textarea"
       autoFocus={autoFocus}
       ref={inputRef as React.Ref<HTMLInputElement>}
       label={label}
@@ -147,7 +148,6 @@ const TextArea = ({
           </Box>
         ) : null;
       }}
-      id="textarea"
     />
   );
 };
