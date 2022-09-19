@@ -59,14 +59,12 @@ const meta: Meta<PasswordFieldProps> = {
   title: 'Components/Input/PasswordField',
   component: PasswordField,
   args: {
-    id: 'password',
     label: 'Enter password',
     name: 'password',
     helpText: 'We recommend having at least 8 characters in your password',
     placeholder: 'Enter a strong password',
   },
   argTypes: {
-    id: { table: { category: propsCategory.BASE_PROPS } },
     autoFocus: { table: { category: propsCategory.BASE_PROPS } },
     label: { table: { category: propsCategory.LABEL_PROPS } },
     labelPosition: { table: { category: propsCategory.LABEL_PROPS } },
@@ -198,7 +196,6 @@ export const ControlledInput = (): ReactElement => {
   const [state, setState] = useState<string | undefined>('');
   return (
     <PasswordField
-      id="controlled-password-field"
       label="Controlled PasswordField"
       helpText="See the console for output"
       value={state}

@@ -28,7 +28,6 @@ We'll expose an `PasswordField` component with the following API:
 
 | Prop                       | Type                                     | Default     | Description                                                                                                         | Required |
 | -------------------------- | ---------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------- | -------- |
-| id                         | `string`                                 | `undefined` | Unique identifier for a11y                                                                                          | ✅       |
 | label                      | `string`                                 | `undefined` | Label for the input field                                                                                           | ✅       |
 | name                       | `string`                                 | `undefined` | `name` attribute for input field, useful for form submission                                                        |          |
 | labelPosition              | `top`, `left`                            | `top`       | Position for the input label, `left` works only for larger screen size (fixed at `120px` width)                     |          |

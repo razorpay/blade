@@ -47,7 +47,6 @@ type PasswordFieldExtraProps = {
 
 type PasswordFieldProps = Pick<
   BaseInputProps,
-  | 'id'
   | 'label'
   | 'labelPosition'
   | 'maxCharacters'
@@ -71,7 +70,6 @@ type PasswordFieldProps = Pick<
   PasswordFieldExtraProps;
 
 const PasswordField = ({
-  id,
   label,
   labelPosition = 'top',
   showRevealButton = true,
@@ -119,7 +117,7 @@ const PasswordField = ({
 
   return (
     <BaseInput
-      id={id}
+      id="password-field"
       label={label}
       labelPosition={labelPosition}
       type={type}
