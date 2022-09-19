@@ -46,7 +46,7 @@ This doc talks about the API decisions for `OTPInput`.
 | isRequired | `boolean` | No | `false` | Marks the input field as required. if the errorText is provided then that will be shown if the field is required and not filled, else `${label} is required` |
 | autoFocus | `boolean` | No | `false` | The autofocus global attribute is a Boolean attribute indicating that an element should be focused on page load. [Web Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus), [Native Reference](https://reactnative.dev/docs/textinput#autofocus) |
 | keyboardReturnKeyType. [Check this table for full reference](#keyboard-return-key-types-for-web-and-native) | `default`, `go`, `done`, `next`, `search`, `send` | No | Closest based on the `type` attribute | Determines how the return key should look on the keyboard on mobile devices or virtual keyboard |
-| onOTPFilled | `({otp})=> void` | No |  | Callback function when all fields of the OTPInput are filled |
+| onOTPFilled | `({ name, value })=> {}` | No |  | Callback function when all fields of the OTPInput are filled |
 
 
 ## Keyboard return key types for web and native
