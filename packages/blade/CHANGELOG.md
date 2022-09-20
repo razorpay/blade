@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 2.3.0
+
+### Minor Changes
+
+- 887cd11: feat(blade): added TextArea component
+
 ## 2.2.2
 
 ### Patch Changes
