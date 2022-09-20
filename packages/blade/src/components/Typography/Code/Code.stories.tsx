@@ -1,6 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Text } from '../Text';
 import { Code as CodeComponent } from './Code';
+import type { CodeProps } from './Code';
+import Box from '~components/Box';
 
 const CodeStoryMeta: Meta = {
   title: 'Components/Typography/Code',
@@ -21,3 +23,37 @@ const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
 
 export default CodeStoryMeta;
 export const Code = CodeTemplate.bind({});
+
+const textTypes: CodeProps['type'][] = ['subtle', 'muted', 'normal', 'placeholder', 'subdued'];
+
+const CodeTypeKitchenSink = ({
+  type,
+  size,
+}: {
+  type: CodeProps['type'];
+  size: CodeProps['size'];
+}): JSX.Element => {
+  return (
+    <Box key={type} paddingTop="spacing.2">
+      <Text>
+        This{' '}
+        <CodeComponent type={type} size={size}>
+          {'<Code />'}
+        </CodeComponent>{' '}
+        is {type}
+      </Text>
+    </Box>
+  );
+};
+
+export const SizeMedium = (): JSX.Element[] => {
+  return textTypes.map((codeType) => (
+    <CodeTypeKitchenSink key={codeType} type={codeType} size="medium" />
+  ));
+};
+
+export const SizeLarge = (): JSX.Element[] => {
+  return textTypes.map((codeType) => (
+    <CodeTypeKitchenSink key={codeType} type={codeType} size="large" />
+  ));
+};

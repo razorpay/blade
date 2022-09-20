@@ -49,7 +49,9 @@ const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
  * In web, you can use it inside `Text` component or individually. The component is set to display `inline-block`
  *
  * ```tsx
- * <Text>Lorem ipsum <Code>SENTRY_TOKEN</Code> normal text</Text>
+ * <Text>
+ *  Lorem ipsum <Code>SENTRY_TOKEN</Code> normal text
+ * </Text>
  * ```
  *
  * ### In React Native
