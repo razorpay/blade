@@ -97,14 +97,15 @@ const PasswordField = ({
   const type = isRevealed ? 'text' : 'password';
 
   const revealButtonIcon = isRevealed ? EyeOffIcon : EyeIcon;
-  const revealButton = showRevealButton ? (
-    <IconButton
-      size="medium"
-      icon={revealButtonIcon}
-      onClick={toggleIsRevealed}
-      accessibilityLabel={accessibilityLabel}
-    />
-  ) : null;
+  const revealButton =
+    showRevealButton && !isDisabled ? (
+      <IconButton
+        size="medium"
+        icon={revealButtonIcon}
+        onClick={toggleIsRevealed}
+        accessibilityLabel={accessibilityLabel}
+      />
+    ) : null;
 
   const trailingFooterSlot = (value?: string): ReactNode =>
     maxCharacters ? (
