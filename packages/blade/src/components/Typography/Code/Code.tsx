@@ -1,51 +1,81 @@
-import type { CSSProperties } from 'styled-components';
+import styled from 'styled-components';
 import { BaseText } from '../BaseText';
-import type { BaseTextProps as BaseTextPropsWithChildren } from '../BaseText';
+import Box from '~components/Box';
 import type { TextTypes } from '~tokens/theme/theme';
-import { useTheme } from '~components/BladeProvider';
-import type { ThemeContext } from '~components/BladeProvider/useTheme';
 import { getPlatformType } from '~utils';
-
-// @TODO
-// - check comments
-// - Test on native
-
-type BaseTextProps = Omit<BaseTextPropsWithChildren, 'children'>;
-const getCodeStyles = (
-  codeProps: Omit<CodeProps, 'children'> & { theme: ThemeContext['theme'] },
-): BaseTextProps => {
-  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
-
-  const baseTextProps: BaseTextProps = {
-    color: `surface.text.${codeProps.type ?? 'subtle'}.lowContrast`,
-    fontFamily: 'code',
-    fontSize: 75,
-    as: isPlatformWeb ? 'code' : undefined,
-    style: {
-      padding: `${codeProps.theme.spacing[1]}px ${codeProps.theme.spacing[3]}px`,
-      backgroundColor: codeProps.theme.colors.brand.gray[300],
-      borderRadius: `${codeProps.theme.border.radius.medium}px`,
-    },
-  };
-
-  if (codeProps.size === 'large') {
-    baseTextProps.fontSize = 100;
-    (baseTextProps.style as CSSProperties).padding = `${codeProps.theme.spacing[0]}px ${codeProps.theme.spacing[2]}px`;
-  }
-
-  return baseTextProps;
-};
 
 export type CodeProps = {
   children: string;
+  /**
+   * Decides the fontSize and padding of Code
+   *
+   * @default medium
+   */
   size?: 'large' | 'medium';
+  /**
+   * Decides the visibility and color of Code
+   */
   type?: TextTypes;
 };
 
-function Code({ children, size = 'medium', type = 'subtle' }: CodeProps): JSX.Element {
-  const { theme } = useTheme();
-  const baseTextProps = getCodeStyles({ theme, size, type });
-  return <BaseText {...baseTextProps}>{children}</BaseText>; // Use `<Text />` view on React Native
-}
+type CodeContainerProps = {
+  size: CodeProps['size'];
+  children: React.ReactNode;
+};
+
+const platformType = getPlatformType();
+const isPlatformWeb = platformType === 'browser' || platformType === 'node';
+
+export const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
+  const padding =
+    props.size === 'large'
+      ? `${props.theme.spacing[0]}px ${props.theme.spacing[2]}px`
+      : `${props.theme.spacing[1]}px ${props.theme.spacing[3]}px`;
+  return {
+    padding,
+    backgroundColor: props.theme.colors.brand.gray[300],
+    borderRadius: props.theme.border.radius.medium,
+    display: isPlatformWeb ? 'inline-block' : undefined,
+  };
+});
+
+/**
+ * Code component can be used for displaying token, variable names, or inlined code snippets.
+ *
+ * ## Usage
+ *
+ * ### In Web
+ * In web, you can use it inside `Text` component or individually. The component is set to display `inline-block`
+ *
+ * ```tsx
+ * <Text>Lorem ipsum <Code>SENTRY_TOKEN</Code> normal text</Text>
+ * ```
+ *
+ * ### In React Native
+ *
+ * In React Native, you would have to align it using flex to make sure the Code and the surrounding text is correctly aligned
+ *
+ * ```tsx
+ *  <Box flexWrap="wrap" flexDirection="row" alignItems="flex-start">
+ *   <Text>Lorem ipsum </Text>
+ *   <Code>SENTRY_TOKEN</Code>
+ *   <Text> normal text</Text>
+ * </Box>
+ * ```
+ */
+const Code = ({ children, size = 'medium', type = 'subtle' }: CodeProps): JSX.Element => {
+  return (
+    <CodeContainer size={size}>
+      <BaseText
+        color={`surface.text.${type ?? 'subtle'}.lowContrast`}
+        fontFamily="code"
+        fontSize={size === 'large' ? 100 : 75}
+        as={isPlatformWeb ? 'code' : undefined}
+      >
+        {children}
+      </BaseText>
+    </CodeContainer>
+  );
+};
 
 export { Code };
