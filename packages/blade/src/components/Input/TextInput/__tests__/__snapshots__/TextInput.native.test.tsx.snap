@@ -208,6 +208,7 @@ exports[`<TextInput /> should render 1`] = `
         onEndEditing={[Function]}
         onFocus={[Function]}
         returnKeyType="default"
+        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -637,6 +638,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         placeholder="something"
         prefix="https://"
         returnKeyType="go"
+        secureTextEntry={false}
         style={
           Array [
             Object {

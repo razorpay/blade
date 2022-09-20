@@ -145,7 +145,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
               ] as StyledComponentAutoCompleteAndroid)
             : undefined
         }
-        secureTextEntry={type === 'password' ? true : undefined}
+        secureTextEntry={type === 'password'}
         isTextArea={isTextArea}
         textContentType={
           autoCompleteSuggestionType
