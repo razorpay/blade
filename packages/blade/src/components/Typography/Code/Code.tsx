@@ -65,7 +65,7 @@ export const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
  */
 const Code = ({ children, size = 'medium', type = 'subtle' }: CodeProps): JSX.Element => {
   return (
-    <CodeContainer size={size}>
+    <CodeContainer size={size} as={isPlatformWeb ? 'span' : undefined}>
       <BaseText
         color={`surface.text.${type ?? 'subtle'}.lowContrast`}
         fontFamily="code"
