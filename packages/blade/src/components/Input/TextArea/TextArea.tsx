@@ -2,8 +2,8 @@
 import React from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import { CloseIcon } from '../../Icons';
-import type { BaseInputProps } from '~components/Input/BaseInput';
-import { BaseInput } from '~components/Input/BaseInput';
+import type { BaseInputProps } from '../BaseInput';
+import { BaseInput } from '../BaseInput';
 import { IconButton } from '~components/Button/IconButton';
 import Box from '~components/Box';
 import { getPlatformType, isEmpty } from '~utils';

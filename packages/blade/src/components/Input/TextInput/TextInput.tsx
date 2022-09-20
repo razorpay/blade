@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
-import { BaseInput } from '~components/Input/BaseInput';
+import { BaseInput } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { InfoIcon, CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
