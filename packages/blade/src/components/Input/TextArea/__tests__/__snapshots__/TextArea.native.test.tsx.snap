@@ -237,7 +237,6 @@ exports[`<TextArea /> should render 1`] = `
             },
           ]
         }
-        type="text"
       />
     </View>
     <View
