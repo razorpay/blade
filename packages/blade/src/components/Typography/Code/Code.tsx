@@ -2,22 +2,9 @@ import styled from 'styled-components';
 import { BaseText } from '../BaseText';
 import Box from '~components/Box';
 import type { TextTypes } from '~tokens/theme/theme';
-import { getPlatformType } from '~utils';
+import { getPlatformType, makeSpace } from '~utils';
 
 export type CodeProps = {
-  /**
-   * children only supports string.
-   *
-   * ```tsx
-   * // ❌ Bad
-   * <Code><Box>something</Box></Code>
-   * ```
-   *
-   *```tsx
-   * // ✅ Good
-   * <Code>something</Code>
-   * ```
-   */
   children: string;
   /**
    * Decides the fontSize and padding of Code
@@ -35,7 +22,6 @@ export type CodeProps = {
 
 type CodeContainerProps = {
   size: CodeProps['size'];
-  children: React.ReactNode;
 };
 
 const platformType = getPlatformType();
@@ -44,8 +30,8 @@ const isPlatformWeb = platformType === 'browser' || platformType === 'node';
 const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
   const padding =
     props.size === 'large'
-      ? `${props.theme.spacing[0]}px ${props.theme.spacing[2]}px`
-      : `${props.theme.spacing[1]}px ${props.theme.spacing[3]}px`;
+      ? `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[2])}`
+      : `${makeSpace(props.theme.spacing[1])} ${makeSpace(props.theme.spacing[3])}`;
   return {
     padding,
     backgroundColor: props.theme.colors.brand.gray[300],
@@ -82,7 +68,7 @@ const Code = ({ children, size = 'medium', type = 'subtle' }: CodeProps): JSX.El
   return (
     <CodeContainer size={size} as={isPlatformWeb ? 'span' : undefined}>
       <BaseText
-        color={`surface.text.${type ?? 'subtle'}.lowContrast`}
+        color={`surface.text.${type}.lowContrast`}
         fontFamily="code"
         fontSize={size === 'large' ? 100 : 75}
         as={isPlatformWeb ? 'code' : undefined}
