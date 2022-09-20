@@ -63,7 +63,6 @@ type PasswordFieldProps = Pick<
   | 'name'
   | 'autoFocus'
   | 'keyboardReturnKeyType'
-  | 'autoCompleteSuggestionType'
 > &
   PasswordFieldExtraProps;
 
