@@ -55,11 +55,6 @@
     "react": "yarn run react:storybook",
     "react:storybook": "FRAMEWORK=REACT start-storybook -c ./.storybook/react -p 9009",
     "react:storybook:build": "FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site",
-    "start:ios": "run-p react-native:storybook:start react-native:storybook:ios",
-    "start:android": "run-p react-native:storybook:start react-native:storybook:android",
-    "start:native": "run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
-    "start:web": "yarn react",
-    "start:all": "run-p start:native start:web",
     "chromatic": "npx chromatic"
   },
   "dependencies": {
