@@ -41,7 +41,7 @@ type CodeContainerProps = {
 const platformType = getPlatformType();
 const isPlatformWeb = platformType === 'browser' || platformType === 'node';
 
-export const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
+const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
   const padding =
     props.size === 'large'
       ? `${props.theme.spacing[0]}px ${props.theme.spacing[2]}px`
