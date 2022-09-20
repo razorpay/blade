@@ -5,6 +5,19 @@ import type { TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
 
 export type CodeProps = {
+  /**
+   * children only supports string.
+   *
+   * ```tsx
+   * // ❌ Bad
+   * <Code><Box>something</Box></Code>
+   * ```
+   *
+   *```tsx
+   * // ✅ Good
+   * <Code>something</Code>
+   * ```
+   */
   children: string;
   /**
    * Decides the fontSize and padding of Code
@@ -14,6 +27,8 @@ export type CodeProps = {
   size?: 'large' | 'medium';
   /**
    * Decides the visibility and color of Code
+   *
+   * @default subtle
    */
   type?: TextTypes;
 };
