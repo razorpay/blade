@@ -196,7 +196,6 @@ Array [
         onEndEditing={[Function]}
         onFocus={[Function]}
         returnKeyType="default"
-        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -613,7 +612,6 @@ Array [
         placeholder="something"
         prefix="https://"
         returnKeyType="go"
-        secureTextEntry={false}
         style={
           Array [
             Object {

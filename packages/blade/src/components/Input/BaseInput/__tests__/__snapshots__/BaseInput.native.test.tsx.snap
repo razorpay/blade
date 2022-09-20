@@ -193,7 +193,6 @@ Array [
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
-        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -555,7 +554,6 @@ Array [
         onEndEditing={[Function]}
         onFocus={[Function]}
         placeholder="First Last"
-        secureTextEntry={false}
         style={
           Array [
             Object {
