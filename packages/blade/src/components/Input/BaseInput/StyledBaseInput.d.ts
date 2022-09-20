@@ -12,8 +12,11 @@ export type StyledBaseInputProps = {
   accessibilityProps: Record<string, unknown>;
   currentInteraction: keyof ActionStates;
   setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
+  isTextArea?: boolean;
 } & Pick<
   BaseInputProps,
+  | 'as'
+  | 'numberOfLines'
   | 'id'
   | 'name'
   | 'type'
