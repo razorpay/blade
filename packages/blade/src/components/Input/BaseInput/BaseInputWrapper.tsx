@@ -11,6 +11,7 @@ type BaseInputWrapperProps = Pick<BaseInputProps, 'isDisabled' | 'validationStat
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
   currentInteraction: keyof ActionStates;
+  isTextArea?: boolean;
 };
 
 const StyledBaseInputWrapper = styled(Box)<BaseInputWrapperProps>((props) => ({
@@ -53,6 +54,7 @@ export const BaseInputWrapper = ({
   validationState,
   currentInteraction,
   isLabelLeftPositioned,
+  isTextArea,
   ...props
 }: BaseInputWrapperProps & {
   children: ReactNode;
@@ -63,6 +65,7 @@ export const BaseInputWrapper = ({
         display="flex"
         flexDirection="row"
         width="100%"
+        alignItems={isTextArea ? 'flex-start' : undefined}
         validationState={validationState}
         currentInteraction={currentInteraction}
         {...props}

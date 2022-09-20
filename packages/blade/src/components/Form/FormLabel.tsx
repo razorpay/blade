@@ -58,11 +58,7 @@ const FormLabel = ({
 
   let necessityLabel: React.ReactNode = null;
 
-  if (!isDesktop && position === 'left') {
-    console.warn(
-      '[Blade: FormLabel]: Expected value `top` for label position on mobile device. Received `left`, falling back to `top`',
-    );
-  }
+  const isLabelLeftPositioned = position === 'left' && isDesktop;
 
   if (necessityIndicator === 'optional') {
     necessityLabel = (
@@ -104,7 +100,7 @@ const FormLabel = ({
       <Text
         type="subdued"
         variant="body"
-        size={position === 'left' ? 'medium' : 'small'}
+        size={isLabelLeftPositioned ? 'medium' : 'small'}
         weight="bold"
       >
         {children}
@@ -125,7 +121,6 @@ const FormLabel = ({
   }
 
   const Component = as;
-  const isLabelLeftPositioned = position === 'left';
   // only set 120px label when device is desktop
   const width = isLabelLeftPositioned && isDesktop ? '120px' : 'auto';
 
