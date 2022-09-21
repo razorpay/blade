@@ -21,29 +21,24 @@ export type OTPInputProps = Pick<
   | 'isRequired'
   | 'autoFocus'
   | 'keyboardReturnKeyType'
->;
+> & {
+  otpLength: 4 | 6;
+};
 
-const OTPInput = (props: OTPInputProps): React.ReactElement => {
-  console.log('🚀 ~ file: OTPInput.tsx ~ line 28 ~ OTPInput ~ props', props);
+const OTPInput = ({ otpLength = 4 }: OTPInputProps): React.ReactElement => {
+  const inputs = [];
+
+  for (let i = 0; i < otpLength; i++) {
+    inputs.push(
+      <Box flex={1} paddingLeft={i == 0 ? 'spacing.0' : 'spacing.3'}>
+        <BaseInput label="" id="otp-input-1" textAlign="center" maxCharacters={1} />
+      </Box>,
+    );
+  }
   return (
     // TODO: Use proper maxWidth for the component
     <Box display="flex" flexDirection="row" maxWidth={400}>
-      <Box flex={1}>
-        <BaseInput label="" id="otp-input-1" textAlign="center" maxCharacters={1} />
-      </Box>
-      <Box paddingLeft="spacing.3" />
-      <Box flex={1}>
-        <BaseInput label="" id="otp-input-2" textAlign="center" maxCharacters={1} />
-      </Box>
-      <Box paddingLeft="spacing.3" />
-      <Box flex={1}>
-        <BaseInput label="" id="otp-input-3" textAlign="center" maxCharacters={1} />
-      </Box>
-      <Box paddingLeft="spacing.3" />
-      <Box flex={1}>
-        <BaseInput label="" id="otp-input-4" textAlign="center" maxCharacters={1} />
-      </Box>
-      <Box paddingLeft="spacing.3" />
+      {inputs}
     </Box>
   );
 };
