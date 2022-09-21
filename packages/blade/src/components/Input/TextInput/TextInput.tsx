@@ -10,6 +10,9 @@ import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import Box from '~components/Box';
 
+// Users should use PasswordField for input type password
+type Type = Exclude<BaseInputProps['type'], 'password'>;
+
 export type TextInputProps = Pick<
   BaseInputProps,
   | 'label'
@@ -20,7 +23,6 @@ export type TextInputProps = Pick<
   | 'errorText'
   | 'successText'
   | 'placeholder'
-  | 'type'
   | 'defaultValue'
   | 'name'
   | 'onChange'
@@ -39,24 +41,36 @@ export type TextInputProps = Pick<
    * Decides whether to render a clear icon button
    */
   showClearButton?: boolean;
+
   /**
    * Event handler to handle the onClick event for clear button.
    */
   onClearButtonClick?: () => void;
+
   /**
    * Decides whether to show a loading spinner for the input field.
    */
   isLoading?: boolean;
+
   /**
    * Icon that will be rendered at the beginning of the input field
    */
   icon?: IconComponent;
+
+  /**
+   * Type of Input Field to be rendered. Use `PasswordField` for type `password`
+   *
+   * @default text
+   */
+  type?: Type;
 };
 
 type TextInputKeyboardAndAutoComplete = Pick<
   BaseInputProps,
-  'type' | 'keyboardType' | 'keyboardReturnKeyType' | 'autoCompleteSuggestionType'
->;
+  'keyboardType' | 'keyboardReturnKeyType' | 'autoCompleteSuggestionType'
+> & {
+  type: Type;
+};
 
 const getKeyboardAndAutocompleteProps = ({
   type = 'text',

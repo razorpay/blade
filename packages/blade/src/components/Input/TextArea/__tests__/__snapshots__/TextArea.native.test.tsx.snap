@@ -211,6 +211,7 @@ exports[`<TextArea /> should render 1`] = `
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
+        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -237,7 +238,6 @@ exports[`<TextArea /> should render 1`] = `
             },
           ]
         }
-        type="text"
       />
     </View>
     <View
