@@ -1,4 +1,4 @@
-import type { AccessibilityMap } from './makeAccessible.d';
+import type { AccessibilityMap } from './types';
 
 export const accessibilityValue = {
   valueMax: 'aria-valuemax',

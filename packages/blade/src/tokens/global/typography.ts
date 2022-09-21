@@ -1,5 +1,5 @@
-import type { FontFamily } from './fontFamily';
 import fontFamily from './fontFamily';
+import type { FontFamily } from './fontFamily/types';
 
 type FontWeight = {
   regular: 400;

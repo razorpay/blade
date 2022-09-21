@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import type { Exact, PathProps } from './Path.d';
+import type { Exact, PathProps } from './types';
 
 const Path = <Props extends Exact<PathProps, Props>>({
   d,

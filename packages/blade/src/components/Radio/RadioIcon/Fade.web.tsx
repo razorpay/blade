@@ -5,7 +5,7 @@ import React from 'react';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import usePresence from 'use-presence';
-import type { FadeProps } from './Fade.d';
+import type { FadeProps } from './types';
 import { useTheme } from '~components/BladeProvider';
 import { makeMotionTime } from '~utils';
 

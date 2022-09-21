@@ -121,6 +121,10 @@ These steps should get you up and started for local development setup. Please en
   ```
 - You can use `yarn start:all` command to run storybooks on all platforms like web, android, and ios (better to not use it in development though to avoid stressing your laptop)
 
+## TypeScript Guide
+
+[Writing Cross-Platform TypeScript In Blade](./rfcs/writing-cross-platform-typescript.md)
+
 ## Troubleshooting guidelines
 
 - VSCode auto imports can sometimes mess things up due to import aliases and `.web` / `.native` extensions. If something is breaking weirdly after adding / importing a new module this might be related
