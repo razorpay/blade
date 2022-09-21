@@ -23,6 +23,10 @@ import useInteraction from '~src/hooks/useInteraction';
 export type BaseInputProps = FormInputLabelProps &
   FormInputValidationProps & {
     /**
+     * Determines if it needs to be rendered as input or textarea
+     */
+    as?: 'input' | 'textarea';
+    /**
      * ID that will be used for accessibility
      */
     id: string;
@@ -35,7 +39,7 @@ export type BaseInputProps = FormInputLabelProps &
      *
      * @default text
      */
-    type?: 'text' | 'telephone' | 'email' | 'url' | 'numeric' | 'search';
+    type?: 'text' | 'telephone' | 'email' | 'url' | 'numeric' | 'search' | 'password';
     /**
      * Used to set the default value of input field when it's uncontrolled
      */
@@ -160,6 +164,10 @@ export type BaseInputProps = FormInputLabelProps &
      * Element to be rendered on the trailing slot of input field footer
      */
     trailingFooterSlot?: (value?: string) => ReactNode;
+    /**
+     * Sets the textarea's number of lines
+     */
+    numberOfLines?: 2 | 3 | 4 | 5;
   };
 
 const autoCompleteSuggestionTypeValues = [
@@ -317,6 +325,7 @@ const getDescribedByElementId = ({
 export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
   (
     {
+      as = 'input',
       label,
       labelPosition = 'top',
       placeholder,
@@ -347,6 +356,8 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       autoCompleteSuggestionType,
       trailingHeaderSlot,
       trailingFooterSlot,
+      numberOfLines,
+      id,
     },
     ref,
   ) => {
@@ -358,7 +369,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onChange,
       onBlur,
     });
-    const { inputId, helpTextId, errorTextId, successTextId } = useFormId('input-field');
+    const { inputId, helpTextId, errorTextId, successTextId } = useFormId(id);
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
     const { currentInteraction, setCurrentInteraction } = useInteraction();
@@ -391,8 +402,11 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       );
     }
 
+    const isTextArea = as === 'textarea';
+    const isReactNative = getPlatformType() === 'react-native';
+
     return (
-      <>
+      <Box>
         <Box
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
@@ -404,6 +418,9 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             display="flex"
             flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
             justifyContent="space-between"
+            alignSelf={isTextArea ? 'flex-start' : undefined}
+            marginTop={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
+            marginBottom={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
           >
             <FormLabel
               as="label"
@@ -416,6 +433,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             {trailingHeaderSlot?.(inputValue)}
           </Box>
           <BaseInputWrapper
+            isTextArea={isTextArea}
             isDisabled={isDisabled}
             validationState={validationState}
             currentInteraction={currentInteraction}
@@ -423,6 +441,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <StyledBaseInput
+              as={isReactNative ? undefined : as}
               id={inputId}
               ref={ref as any}
               name={name}
@@ -451,6 +470,8 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               accessibilityProps={accessibilityProps}
               currentInteraction={currentInteraction}
               setCurrentInteraction={setCurrentInteraction}
+              numberOfLines={numberOfLines}
+              isTextArea={isTextArea}
             />
             <BaseInputVisuals
               interactionElement={interactionElement}
@@ -479,7 +500,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             {trailingFooterSlot?.(inputValue)}
           </Box>
         </Box>
-      </>
+      </Box>
     );
   },
 );
