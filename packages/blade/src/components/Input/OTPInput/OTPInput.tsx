@@ -27,11 +27,24 @@ export type OTPInputProps = Pick<
 
 const OTPInput = ({ otpLength = 4 }: OTPInputProps): React.ReactElement => {
   const inputs = [];
-
+  const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   for (let i = 0; i < otpLength; i++) {
+    const ref = React.createRef<HTMLInputElement>();
+    inputRefs.push(ref);
     inputs.push(
-      <Box flex={1} paddingLeft={i == 0 ? 'spacing.0' : 'spacing.3'}>
-        <BaseInput label="" id="otp-input-1" textAlign="center" maxCharacters={1} />
+      <Box flex={1} paddingLeft={i == 0 ? 'spacing.0' : 'spacing.3'} key={`otp-input-${i}`}>
+        <BaseInput
+          label=""
+          id={`otp-input-${i}`}
+          textAlign="center"
+          maxCharacters={1}
+          ref={ref}
+          onChange={({ value }) => {
+            if (value && value.length === 1) {
+              inputRefs[i + 1]?.current?.focus();
+            }
+          }}
+        />
       </Box>,
     );
   }
