@@ -69,6 +69,7 @@ const StyledNativeBaseInput = styled.TextInput<
     StyledBaseInputProps,
     'accessibilityProps' | 'setCurrentInteraction' | 'currentInteraction'
   > & {
+    isTextArea?: boolean;
     isFocused: boolean;
     autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
   }
@@ -85,7 +86,10 @@ const StyledNativeBaseInput = styled.TextInput<
     trailingIcon: props.trailingIcon,
   }),
   lineHeight: undefined,
-  height: '36px',
+  textAlignVertical: 'top',
+  height: props.isTextArea
+    ? `${props.theme.typography.lineHeights.xl * (props.numberOfLines ?? 0)}px`
+    : '36px',
 }));
 
 export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>(
@@ -105,6 +109,8 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       currentInteraction,
       setCurrentInteraction,
       type,
+      numberOfLines,
+      isTextArea,
       ...props
     },
     ref,
@@ -114,6 +120,8 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
+        multiline={isTextArea}
+        numberOfLines={numberOfLines}
         isFocused={currentInteraction === 'active'}
         editable={!isDisabled}
         maxLength={maxCharacters}
@@ -138,6 +146,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
             : undefined
         }
         secureTextEntry={type === 'password'}
+        isTextArea={isTextArea}
         textContentType={
           autoCompleteSuggestionType
             ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]

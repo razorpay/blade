@@ -63,6 +63,7 @@ type PasswordFieldProps = Pick<
   | 'name'
   | 'autoFocus'
   | 'keyboardReturnKeyType'
+  | 'autoCompleteSuggestionType'
 > &
   PasswordFieldExtraProps;
 
@@ -90,20 +91,25 @@ const PasswordField = ({
   autoCompleteSuggestionType,
 }: PasswordFieldProps): ReactElement => {
   const [isRevealed, setIsRevealed] = useState(false);
+  const isEnabled = !isDisabled;
+
+  // If input is disabled reveal button shouldn't be present and input should be masked
+  const isRevealedAndEnabled = isRevealed && isEnabled;
 
   const toggleIsRevealed = (): void => setIsRevealed((revealed) => !revealed);
-  const accessibilityLabel = isRevealed ? 'Hide password' : 'Show password';
-  const type = isRevealed ? 'text' : 'password';
+  const accessibilityLabel = isRevealedAndEnabled ? 'Hide password' : 'Show password';
+  const type = isRevealedAndEnabled ? 'text' : 'password';
 
-  const revealButtonIcon = isRevealed ? EyeOffIcon : EyeIcon;
-  const revealButton = showRevealButton ? (
-    <IconButton
-      size="medium"
-      icon={revealButtonIcon}
-      onClick={toggleIsRevealed}
-      accessibilityLabel={accessibilityLabel}
-    />
-  ) : null;
+  const revealButtonIcon = isRevealedAndEnabled ? EyeOffIcon : EyeIcon;
+  const revealButton =
+    showRevealButton && !isDisabled ? (
+      <IconButton
+        size="medium"
+        icon={revealButtonIcon}
+        onClick={toggleIsRevealed}
+        accessibilityLabel={accessibilityLabel}
+      />
+    ) : null;
 
   const trailingFooterSlot = (value?: string): ReactNode =>
     maxCharacters ? (

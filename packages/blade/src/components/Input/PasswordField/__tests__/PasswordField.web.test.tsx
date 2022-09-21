@@ -130,15 +130,18 @@ describe('<PasswordField />', () => {
     const label = 'Enter password';
     const userPassword = 'Divyanshu$123';
 
-    const { getByLabelText } = renderWithTheme(
+    const { getByLabelText, getByRole } = renderWithTheme(
       <PasswordField label={label} name="password" defaultValue={userPassword} />,
     );
 
     const input = getByLabelText(label);
+    const revealButton = getByRole('button');
 
     expect(input).not.toHaveFocus();
     await user.tab();
     expect(input).toHaveFocus();
+    await user.tab();
+    expect(revealButton).toHaveFocus();
   });
 
   it('should set value as an uncontrolled input', async () => {
