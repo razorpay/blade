@@ -31,6 +31,7 @@ const getStories = () => {
     require('../../src/components/Icons/Icons.stories.tsx'),
     require('../../src/components/Input/BaseInput/BaseInput.stories.tsx'),
     require('../../src/components/Input/PasswordField/PasswordField.stories.tsx'),
+    require('../../src/components/Input/TextArea/TextArea.stories.tsx'),
     require('../../src/components/Input/TextInput/TextInput.stories.tsx'),
     require('../../src/components/Link/BaseLink/BaseLink.stories.tsx'),
     require('../../src/components/Link/Link/Link.stories.tsx'),

@@ -3,7 +3,7 @@ import type { BaseInputProps } from './BaseInput';
 import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
-import { makeBorderSize, makeSpace } from '~utils';
+import { getPlatformType, makeBorderSize, makeSpace } from '~utils';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -94,6 +94,8 @@ export const getBaseInputStyles = ({
     trailingIcon,
   });
 
+  const isReactNative = getPlatformType() === 'react-native';
+
   return {
     ...getTextStyles({
       size: 'medium',
@@ -115,5 +117,6 @@ export const getBaseInputStyles = ({
         ? makeSpace(theme.spacing[3])
         : makeSpace(theme.spacing[4]),
     textAlign,
+    ...(isReactNative ? {} : { resize: 'none' }),
   };
 };

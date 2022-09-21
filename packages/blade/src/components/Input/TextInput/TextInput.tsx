@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
-import { BaseInput } from '~components/Input/BaseInput';
+import { BaseInput } from '../BaseInput';
 import type { IconComponent } from '~components/Icons';
 import { InfoIcon, CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
@@ -200,6 +200,7 @@ export const TextInput = ({
             }
             // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
             onClearButtonClick?.();
+            textInputRef?.current?.focus();
             setShouldShowClearButton(false);
           }}
           accessibilityLabel="Clear Input Content"

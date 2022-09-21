@@ -1,34 +1,28 @@
-/* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
 import React from 'react';
-import type { TextInputProps } from './TextInput';
-import { TextInput as TextInputComponent } from './TextInput';
-import iconMap from '~components/Icons/iconMap';
+import type { TextAreaProps } from './TextArea';
+import { TextArea as TextAreaComponent } from './TextArea';
 import Box from '~components/Box';
 
 const propsCategory = {
-  BASE_PROPS: 'Text Input Props',
+  BASE_PROPS: 'TextArea Props',
   LABEL_PROPS: 'Label Props',
   VALIDATION_PROPS: 'Validation Props',
-  LEADING_VISUAL_PROPS: 'Leading Visual Props',
   TRAILING_VISUAL_PROPS: 'Trailing Visual Props',
-  KEYBOARD_PROPS: 'Keyboard Props',
 };
 
 export default {
-  title: 'Components/Input/TextInput',
-  component: TextInputComponent,
+  title: 'Components/Input/TextArea',
+  component: TextAreaComponent,
   args: {
     defaultValue: undefined,
-    placeholder: 'Enter your first and last name',
-    name: 'fullName',
-    type: 'url',
+    placeholder: 'Enter Description',
+    name: 'description',
     isDisabled: false,
     value: undefined,
     maxCharacters: undefined,
-    textAlign: 'left',
     autoFocus: false,
     onChange: ({ name, value }): void => {
       console.log(`input field ${name} content changed to ${value}`);
@@ -36,7 +30,7 @@ export default {
     onBlur: ({ name, value }): void => {
       console.log(`input field ${name} content lost focus. The value is ${value}`);
     },
-    label: 'Enter Name',
+    label: 'Description',
     labelPosition: 'top',
     necessityIndicator: undefined,
     isRequired: false,
@@ -44,12 +38,8 @@ export default {
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
-    icon: undefined,
-    prefix: '',
-    showClearButton: true,
-    suffix: '',
-    keyboardReturnKeyType: undefined,
-    autoCompleteSuggestionType: undefined,
+    showClearButton: undefined,
+    numberOfLines: 2,
   },
   argTypes: {
     defaultValue: {
@@ -63,11 +53,6 @@ export default {
       },
     },
     name: {
-      table: {
-        category: propsCategory.BASE_PROPS,
-      },
-    },
-    type: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -88,7 +73,8 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
-    textAlign: {
+    numberOfLines: {
+      control: { type: 'range', min: 2, max: 5, step: 1 },
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -148,37 +134,9 @@ export default {
         category: propsCategory.VALIDATION_PROPS,
       },
     },
-    icon: {
-      name: 'icon',
-      type: 'select',
-      options: Object.keys(iconMap),
-      table: {
-        category: propsCategory.LEADING_VISUAL_PROPS,
-      },
-    },
-    prefix: {
-      table: {
-        category: propsCategory.LEADING_VISUAL_PROPS,
-      },
-    },
     showClearButton: {
       table: {
         category: propsCategory.TRAILING_VISUAL_PROPS,
-      },
-    },
-    suffix: {
-      table: {
-        category: propsCategory.TRAILING_VISUAL_PROPS,
-      },
-    },
-    keyboardReturnKeyType: {
-      table: {
-        category: propsCategory.KEYBOARD_PROPS,
-      },
-    },
-    autoCompleteSuggestionType: {
-      table: {
-        category: propsCategory.KEYBOARD_PROPS,
       },
     },
   },
@@ -188,11 +146,10 @@ export default {
         <>
           <Title />
           <Subtitle>
-            The TextInput component is a component that can be used to input name, email, telephone,
-            url, search or plain text.
+            The TextArea component lets you enter long form text which spans over multiple lines.
           </Subtitle>
           <Title>Usage</Title>
-          <Highlight language="tsx">{`import { TextInput } from '@razorpay/blade/components' \nimport type { TextInputProps } from '@razorpay/blade/components'`}</Highlight>
+          <Highlight language="tsx">{`import { TextArea } from '@razorpay/blade/components' \nimport type { TextAreaProps } from '@razorpay/blade/components'`}</Highlight>
           <Title>Example</Title>
           <Primary />
           <Title>Properties</Title>
@@ -202,72 +159,78 @@ export default {
       ),
     },
   },
-} as Meta<TextInputProps>;
+} as Meta<TextAreaProps>;
 
-const TextInputTemplate: ComponentStory<typeof TextInputComponent> = ({ icon, ...args }) => {
-  return <TextInputComponent {...args} icon={iconMap[(icon as unknown) as string]} />;
+const TextAreaTemplate: ComponentStory<typeof TextAreaComponent> = ({ ...args }) => {
+  return <TextAreaComponent {...args} />;
 };
 
-export const TextInput = TextInputTemplate.bind({});
+export const TextArea = TextAreaTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-TextInput.storyName = 'TextInput';
+TextArea.storyName = 'TextArea';
 
-export const TextInputHelpText = TextInputTemplate.bind({});
-TextInputHelpText.storyName = 'TextInput with Help Text';
-TextInputHelpText.args = {
-  helpText: 'Please enter first and last name',
+export const TextAreaHelpText = TextAreaTemplate.bind({});
+TextAreaHelpText.storyName = 'TextArea with Help Text';
+TextAreaHelpText.args = {
+  helpText: 'Add a message here',
 };
 
-export const TextInputError = TextInputTemplate.bind({});
-TextInputError.storyName = 'TextInput with error';
-TextInputError.args = {
+export const TextAreaError = TextAreaTemplate.bind({});
+TextAreaError.storyName = 'TextArea with error';
+TextAreaError.args = {
   validationState: 'error',
-  errorText: 'Name is not valid',
+  errorText: 'Invalid message',
 };
 
-export const TextInputSuccess = TextInputTemplate.bind({});
-TextInputSuccess.storyName = 'TextInput with success';
-TextInputSuccess.args = {
-  defaultValue: 'John Ives',
+export const TextAreaSuccess = TextAreaTemplate.bind({});
+TextAreaSuccess.storyName = 'TextArea with success';
+TextAreaSuccess.args = {
+  defaultValue: 'TextArea content',
   validationState: 'success',
-  successText: 'Name validated',
+  successText: 'Validated',
 };
 
-const TextInputMaxCharactersTemplate: ComponentStory<typeof TextInputComponent> = () => {
+export const TextAreaNumberOfLines = TextAreaTemplate.bind({});
+TextAreaNumberOfLines.storyName = 'TextArea number of lines';
+TextAreaNumberOfLines.args = {
+  numberOfLines: 4,
+};
+
+const TextAreaMaxCharactersTemplate: ComponentStory<typeof TextAreaComponent> = () => {
   return (
-    <TextInput
-      label="First Name"
-      defaultValue="John Ives"
-      name="fullName"
+    <TextArea
+      label="Description"
+      defaultValue="Textarea content"
+      name="description"
       maxCharacters={10}
       onChange={({ name, value }): void => console.log({ name, value })}
     />
   );
 };
-export const TextInputMaxCharacters = TextInputMaxCharactersTemplate.bind({});
+export const TextAreaMaxCharacters = TextAreaMaxCharactersTemplate.bind({});
 
-const TextInputUncontrolledTemplate: ComponentStory<typeof TextInputComponent> = () => {
+const TextAreaUncontrolledTemplate: ComponentStory<typeof TextAreaComponent> = () => {
   return (
-    <TextInput
-      label="First Name"
-      placeholder="Enter your first and last name"
-      defaultValue="John Ives"
-      name="fullName"
+    <TextArea
+      label="Description"
+      placeholder="Enter description"
+      defaultValue="Textarea content"
+      name="description"
       onChange={({ name, value }): void => console.log({ name, value })}
     />
   );
 };
-export const TextInputUncontrolled = TextInputUncontrolledTemplate.bind({});
+export const TextAreaUncontrolled = TextAreaUncontrolledTemplate.bind({});
 
-const TextInputControlledTemplate: ComponentStory<typeof TextInputComponent> = () => {
+const TextAreaControlledTemplate: ComponentStory<typeof TextAreaComponent> = () => {
   const [inputValue, setInputValue] = React.useState('');
 
   return (
-    <TextInput
-      label="First Name"
-      placeholder="Enter your first and last name"
+    <TextArea
+      label="Description"
+      placeholder="Enter Description"
       value={inputValue}
-      name="fullName"
+      name="description"
       onChange={({ name, value }): void => {
         console.log(`sending ${name}:${value} to analytics service`);
         setInputValue(value ?? '');
@@ -275,76 +238,82 @@ const TextInputControlledTemplate: ComponentStory<typeof TextInputComponent> = (
     />
   );
 };
-export const TextInputControlled = TextInputControlledTemplate.bind({});
+export const TextAreaControlled = TextAreaControlledTemplate.bind({});
 
-const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = () => {
+const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = () => {
   return (
     <>
       <Box display="flex" gap="spacing.5">
-        <TextInput
+        <TextArea
           showClearButton
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
         />
 
-        <TextInput
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+        <TextArea
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           defaultValue="Anurag"
         />
 
-        <TextInput
+        <TextArea
           validationState="error"
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           defaultValue="Anurag"
           errorText="Name is invalid"
         />
 
-        <TextInput
+        <TextArea
           validationState="success"
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           defaultValue="Anurag"
           successText="Name is valid"
         />
       </Box>
       <Box display="flex" flexDirection="column" gap="spacing.5">
-        <TextInput
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+        <TextArea
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           maxCharacters={100}
         />
 
-        <TextInput label="First Name" placeholder="Enter your first" name="fullName" />
+        <TextArea
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
+          numberOfLines={4}
+        />
 
-        <TextInput
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+        <TextArea
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           labelPosition="left"
         />
 
-        <TextInput
+        <TextArea
           necessityIndicator="optional"
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           labelPosition="left"
           maxCharacters={100}
         />
 
-        <TextInput
+        <TextArea
           necessityIndicator="required"
-          label="First Name"
-          placeholder="Enter your first"
-          name="fullName"
+          label="Description"
+          placeholder="Enter Description"
+          name="description"
           labelPosition="left"
+          numberOfLines={3}
           maxCharacters={100}
           validationState="none"
           helpText="Write your message"
@@ -353,4 +322,4 @@ const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = 
     </>
   );
 };
-export const TextInputKitchenSink = TextInputKitchenSinkTemplate.bind({});
+export const TextAreaKitchenSink = TextAreaKitchenSinkTemplate.bind({});
