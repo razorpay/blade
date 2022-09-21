@@ -4,7 +4,7 @@ import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
 import Box from '~components/Box';
-import { getPlatformType, makeMotionTime } from '~utils';
+import { castWebType, getPlatformType, makeMotionTime } from '~utils';
 import type { ActionStates } from '~tokens/theme/theme';
 
 type BaseInputWrapperProps = Pick<BaseInputProps, 'isDisabled' | 'validationState'> & {
@@ -33,8 +33,8 @@ const StyledBaseInputWrapper = styled(Box)<BaseInputWrapperProps>((props) => ({
             validationState: props.validationState,
           }),
           transitionProperty: 'background-color',
-          transitionDuration: makeMotionTime(props.theme.motion.duration.xquick),
-          transitionTimingFunction: props.theme.motion.easing.standard.effective as string,
+          transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
+          transitionTimingFunction: castWebType(props.theme.motion.easing.standard.effective),
         },
   ':focus-within':
     getPlatformType() === 'react-native'

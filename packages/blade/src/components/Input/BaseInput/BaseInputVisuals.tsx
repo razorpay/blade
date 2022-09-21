@@ -2,8 +2,8 @@
 import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import Box from '~components/Box';
-import type { BoxProps } from '~components/Box/Box';
 import { Text } from '~components/Typography';
+import type { BoxProps } from '~components/Box/types';
 
 type InputVisuals = Pick<
   BaseInputProps,

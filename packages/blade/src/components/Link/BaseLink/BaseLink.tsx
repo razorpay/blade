@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ReactElement, SyntheticEvent } from 'react';
 import { useState } from 'react';
 import type { CSSObject } from 'styled-components';
@@ -7,12 +9,12 @@ import type { IconComponent, IconProps } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import Box from '~components/Box';
-import type { BaseTextProps } from '~components/Typography/BaseText';
 import { BaseText } from '~components/Typography/BaseText';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import { makeAccessible, getIn } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -258,6 +260,7 @@ const BaseLink = ({
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       setCurrentInteraction={setCurrentInteraction}
+      // @ts-ignore Because we avoided exposing className to public
       className={className}
       style={style}
     >

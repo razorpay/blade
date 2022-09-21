@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
-import type { StyledBaseButtonProps } from './StyledBaseButton.d';
-import { getIn, makeMotionTime } from '~utils';
+import type { StyledBaseButtonProps } from './types';
+import { castWebType, getIn, makeMotionTime } from '~utils';
 
 const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => ({
   ...props.accessibilityProps,
@@ -9,7 +9,7 @@ const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => (
   ...getStyledBaseButtonStyles(props),
   transitionProperty: 'background-color, border-color, box-shadow',
   transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
-  transitionDuration: makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
+  transitionDuration: castWebType(makeMotionTime(getIn(props.theme.motion, props.motionDuration))),
   position: 'relative',
   '&:hover': {
     backgroundColor: props.hoverBackgroundColor,
@@ -27,7 +27,9 @@ const StyledBaseButton = styled.button.attrs((props: StyledBaseButtonProps) => (
   },
   '*': {
     transitionProperty: 'color, fill',
-    transitionDuration: makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
+    transitionDuration: castWebType(
+      makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
+    ),
     transitionTimingFunction: getIn(props.theme.motion, props.motionEasing),
   },
 }));

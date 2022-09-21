@@ -3,7 +3,7 @@
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
-import { getIn, makeMotionTime } from '~utils';
+import { castWebType, getIn, makeMotionTime } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
 
 type HoverProps = {
@@ -36,7 +36,7 @@ const getHoverStyles = ({
     borderColor: getIn(theme, backgroundColor),
     backgroundColor: getIn(theme, backgroundColor),
     transitionTimingFunction: theme.motion.easing.standard.effective as string,
-    transitionDuration: makeMotionTime(theme.motion.duration['2xquick']),
+    transitionDuration: castWebType(makeMotionTime(theme.motion.duration['2xquick'])),
   };
 };
 

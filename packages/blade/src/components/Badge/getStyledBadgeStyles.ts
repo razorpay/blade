@@ -1,5 +1,5 @@
 import type { CSSObject } from 'styled-components';
-import type { StyledBadgeProps } from './StyledBadge.d';
+import type { StyledBadgeProps } from './types';
 import { maxWidth, minHeight } from './badgeTokens';
 import { getIn, makeBorderSize, makeSize } from '~utils';
 

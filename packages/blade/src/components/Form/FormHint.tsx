@@ -1,12 +1,12 @@
 /* eslint-disable react/display-name */
 import type { ReactElement } from 'react';
 import React from 'react';
-import { CheckIcon, InfoIcon } from '..';
 import { FormHintWrapper } from './FormHintWrapper';
-import type { BaseTextProps } from '~components/Typography/BaseText';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
 import Box from '~components/Box';
+import { CheckIcon, InfoIcon } from '~components/Icons';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type HintTextProps = {
   icon?: React.ElementType;
