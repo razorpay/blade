@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import type { GProps } from './G.d';
+import type { GProps } from './types';
 
 const G = ({ clipPath, fill, children }: GProps): ReactElement => {
   return (

@@ -1,7 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-no-useless-fragment */
 
+type HoverProps = {
+  isChecked?: boolean;
+  isDisabled?: boolean;
+  isNegative?: boolean;
+};
 // noop in react-native
-const SelectorInput = (): React.ReactElement => {
+const SelectorInput = (_props: HoverProps & { inputProps?: any }): React.ReactElement => {
   return <></>;
 };
 

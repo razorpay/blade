@@ -1,15 +1,15 @@
 import type { ReactElement } from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
-import type { StyledBadgeProps } from './StyledBadge';
+import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent, IconProps } from '~components/Icons';
-import type { BaseTextProps } from '~components/Typography/BaseText';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type BadgeProps = {
   /**

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { screenReaderStyles } from './ScreenReaderStyles';
-import type { VisuallyHiddenProps } from './VisuallyHidden.d';
+import type { VisuallyHiddenProps } from './types';
 
 const StyledVisuallyHidden = styled.div(screenReaderStyles);
 

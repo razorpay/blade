@@ -6,7 +6,7 @@ import Animated, {
   interpolate,
   withTiming,
 } from 'react-native-reanimated';
-import type { ReactNode } from 'react';
+import type { ReactElement } from 'react';
 import { useEffect } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { makeBorderSize } from '~utils';
@@ -26,10 +26,12 @@ const BaseInputStyledAnimatedBorder = styled(Animated.View)(({ theme }) => ({
 export const BaseInputAnimatedBorder = ({
   currentInteraction,
   validationState,
+  isLabelLeftPositioned: _,
 }: {
   currentInteraction: keyof ActionStates;
   validationState: BaseInputProps['validationState'];
-}): ReactNode => {
+  isLabelLeftPositioned?: boolean;
+}): ReactElement => {
   const { theme } = useTheme();
   const borderAnimationEasing = (theme.motion.easing.standard.effective as unknown) as EasingFn;
 

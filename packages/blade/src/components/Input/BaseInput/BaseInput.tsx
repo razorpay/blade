@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { ReactNode } from 'react';
 import type {
@@ -442,7 +443,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             <StyledBaseInput
               as={isReactNative ? undefined : as}
               id={inputId}
-              ref={ref}
+              ref={ref as any}
               name={name}
               type={type}
               defaultValue={defaultValue}
