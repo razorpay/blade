@@ -65,6 +65,8 @@ This doc talks about the API decisions for `OTPInput`.
 
 
 ## OTP SMS auto-read feature
+We've also created a [more detailed internal doc](https://docs.google.com/document/d/1y-ZXZBgxNPuIz4_7mUUoKK4YHK5f9oPzOjbfcDu4dpE) while we were exploring options for this feature.
+
 ### Web
 - OTP SMS auto-read support can be added via [WebOTP API](https://web.dev/web-otp/).
 - To make it work, we must set up our backend service to ensure the SMS is sent to the customer in a [specific format](https://web.dev/web-otp/#format).
