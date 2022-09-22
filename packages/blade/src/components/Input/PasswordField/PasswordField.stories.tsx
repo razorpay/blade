@@ -81,6 +81,8 @@ const meta: Meta<PasswordFieldProps> = {
     successText: { table: { category: propsCategory.VALIDATION_PROPS } },
     errorText: { table: { category: propsCategory.VALIDATION_PROPS } },
     value: { table: { category: propsCategory.BASE_PROPS } },
+    keyboardReturnKeyType: { table: { category: propsCategory.BASE_PROPS } },
+    autoCompleteSuggestionType: { table: { category: propsCategory.BASE_PROPS } },
     onChange: { action: 'Changed', table: { category: propsCategory.BASE_PROPS } },
     onFocus: { action: 'Focussed', table: { category: propsCategory.BASE_PROPS } },
     onBlur: { action: 'Blurred', table: { category: propsCategory.BASE_PROPS } },
