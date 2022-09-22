@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 2.5.0
+
+### Minor Changes
+
+- d0017cd: feat(PasswordField): add final export :tada:
+  - adds a new `PasswordField` component
+
 ## 2.4.0
 
 ### Minor Changes
