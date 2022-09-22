@@ -136,6 +136,7 @@ exports[`<TextArea /> should render 1`] = `
   resize: none;
   outline: none;
   border: none;
+  cursor: auto;
 }
 
 .c9::-webkit-input-placeholder {
@@ -472,6 +473,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   resize: none;
   outline: none;
   border: none;
+  cursor: auto;
 }
 
 .c9::-webkit-input-placeholder {
