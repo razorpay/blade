@@ -9,9 +9,7 @@
   "workspaces": {
     "packages": [
       "packages/blade",
-      "packages/blade-old",
-      "packages/tools/*",
-      "packages/types"
+      "packages/tools/*"
     ],
     "nohoist": [
       "**"
