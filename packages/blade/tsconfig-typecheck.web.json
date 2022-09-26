@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig-generate-types.web.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "emitDeclarationOnly": false
+  }
+}

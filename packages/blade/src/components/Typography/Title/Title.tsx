@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
-import type { BaseTextProps } from '../BaseText/BaseText';
+import type { BaseTextProps } from '../BaseText/types';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getPlatformType } from '~utils';
 

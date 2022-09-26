@@ -1,7 +1,7 @@
 import type { CSSObject } from 'styled-components';
-import type { Theme } from '..';
-import type { BoxProps } from './Box';
+import type { BoxProps } from './types';
 import { getIn, makeSize, makeSpace } from '~utils';
+import type { Theme } from '~components/BladeProvider';
 
 // allows 'auto' as spacing value
 const getSpacingValue = <SpacingValue extends string | number | undefined>({

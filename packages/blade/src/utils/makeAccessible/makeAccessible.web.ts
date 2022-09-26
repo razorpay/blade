@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { accessibilityMap } from './accessibilityMapWeb';
-import type { AccessibilityMap, AccessibilityProps } from './makeAccessible.d';
+import type { AccessibilityMap, AccessibilityProps } from './types';
 
 export const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, any> = {};

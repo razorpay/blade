@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import type { SvgProps } from './Svg.d';
+import type { SvgProps } from './types';
 import { makeAccessible } from '~utils';
 
 const Svg = ({ children, height, viewBox, width, fill }: SvgProps): ReactElement => {
