@@ -129,6 +129,7 @@ exports[`<BaseInput /> should render 1`] = `
   resize: none;
   outline: none;
   border: none;
+  cursor: auto;
 }
 
 .c9::-webkit-input-placeholder {
@@ -488,6 +489,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   resize: none;
   outline: none;
   border: none;
+  cursor: auto;
 }
 
 .c11::-webkit-input-placeholder {
