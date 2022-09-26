@@ -3,7 +3,7 @@ import type { GestureResponderEvent } from 'react-native';
 import { Linking } from 'react-native';
 import styled from 'styled-components/native';
 import getStyledLinkStyles from './getStyledLinkStyles';
-import type { StyledBaseLinkProps } from './StyledBaseLink.d';
+import type { StyledBaseLinkProps } from './types';
 
 const StyledNativeLink = styled.Pressable({
   ...getStyledLinkStyles({}),

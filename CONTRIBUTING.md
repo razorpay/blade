@@ -19,7 +19,7 @@ These steps should get you up and started for local development setup. Please en
 - Run storybook for web:
 
   ```sh
-  yarn react
+  yarn start:web
   ```
 
 - That's it!
@@ -60,16 +60,10 @@ These steps should get you up and started for local development setup. Please en
   >
   > Follow the note [here](https://reactnative.dev/docs/environment-setup#cocoapods) if you're using M1
 
-- `cd` back to `packages/blade`. Start the storybook server for React Native:
+- `cd` back to `packages/blade`. Start storybook dev-server for ios:
 
   ```sh
-  yarn react-native:storybook:start
-  ```
-
-- Keep the process running and in a new tab or terminal window start the storybook app on iOS:
-
-  ```sh
-  yarn react-native:storybook:ios
+  yarn start:ios
   ```
 
   > **Tip:**
@@ -93,17 +87,17 @@ These steps should get you up and started for local development setup. Please en
   >
   > At times, you might run into some weird issues during installation. Sometimes restarting your computer does the trick. You can also `cd` into the `android` directory and run `./gradlew clean` to clean up cache and built files when retrying installation or running the app.
 
-- `cd` back to `packages/blade`. Start the storybook server for React Native:
+- `cd` back to `packages/blade`. Start the storybook dev-server for android:
 
   ```sh
-  yarn react-native:storybook:start
+  yarn start:android
   ```
 
-- Start up the emulator from Android Studio (sometimes it doesn't auto boot). Keep the process running and in a new tab or terminal window start the storybook app on Android:
-
-  ```sh
-  yarn react-native:storybook:android
-  ```
+  > **Note**
+  >
+  > If you already have `yarn start:ios` running, you might have to close it since `yarn start:android` will try to run react-native server on the same port and fail with port taken error.
+  > 
+  > If you want to run both, android and ios at the same time, you can use `yarn start:native` instead.
 
   > **Note**
   >
@@ -125,6 +119,11 @@ These steps should get you up and started for local development setup. Please en
     }
   }
   ```
+- You can use `yarn start:all` command to run storybooks on all platforms like web, android, and ios (better to not use it in development though to avoid stressing your laptop)
+
+## TypeScript Guide
+
+[Writing Cross-Platform TypeScript In Blade](./rfcs/writing-cross-platform-typescript.md)
 
 ## Troubleshooting guidelines
 

@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { Svg as SvgNative } from 'react-native-svg';
-import type { SvgProps } from './Svg.d';
+import type { SvgProps } from './types';
 import { makeAccessible } from '~utils';
 
 const Svg = ({ children, height, viewBox, width, fill }: SvgProps): ReactElement => {

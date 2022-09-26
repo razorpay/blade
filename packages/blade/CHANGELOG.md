@@ -1,5 +1,44 @@
 # @razorpay/blade
 
+## 2.5.0
+
+### Minor Changes
+
+- d0017cd: feat(PasswordField): add final export :tada:
+  - adds a new `PasswordField` component
+
+## 2.4.0
+
+### Minor Changes
+
+- bf92637: feat(blade): Improve platform types with TS 4.7
+
+  ### Added support for platform dependant types
+
+  Migration Steps
+
+  1. Upgrade to TypeScript 4.7+
+  2. In `tsconfig.json` add `moduleSuffix: ['.web', '']` or `moduleSuffix: ['.native', '']` (depending on the platform)
+
+  ```js
+  {
+    "compilerOptions": {
+      // For react-native use `.native`
+      // For web use `.web` extension
+      "moduleSuffixes": [".web", ""]
+    }
+  }
+  ```
+
+  > **Note**:
+  > if you are on <TS 4.7 or don't specify the `moduleSuffixes` blade will fallback to resolving `web` types
+
+## 2.3.0
+
+### Minor Changes
+
+- 887cd11: feat(blade): added TextArea component
+
 ## 2.2.2
 
 ### Patch Changes

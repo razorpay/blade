@@ -4,13 +4,14 @@ import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
 import Box from '~components/Box';
-import { getPlatformType, makeMotionTime } from '~utils';
+import { castWebType, getPlatformType, makeMotionTime } from '~utils';
 import type { ActionStates } from '~tokens/theme/theme';
 
 type BaseInputWrapperProps = Pick<BaseInputProps, 'isDisabled' | 'validationState'> & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
   currentInteraction: keyof ActionStates;
+  isTextArea?: boolean;
 };
 
 const StyledBaseInputWrapper = styled(Box)<BaseInputWrapperProps>((props) => ({
@@ -32,8 +33,8 @@ const StyledBaseInputWrapper = styled(Box)<BaseInputWrapperProps>((props) => ({
             validationState: props.validationState,
           }),
           transitionProperty: 'background-color',
-          transitionDuration: makeMotionTime(props.theme.motion.duration.xquick),
-          transitionTimingFunction: props.theme.motion.easing.standard.effective as string,
+          transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
+          transitionTimingFunction: castWebType(props.theme.motion.easing.standard.effective),
         },
   ':focus-within':
     getPlatformType() === 'react-native'
@@ -53,6 +54,7 @@ export const BaseInputWrapper = ({
   validationState,
   currentInteraction,
   isLabelLeftPositioned,
+  isTextArea,
   ...props
 }: BaseInputWrapperProps & {
   children: ReactNode;
@@ -63,6 +65,7 @@ export const BaseInputWrapper = ({
         display="flex"
         flexDirection="row"
         width="100%"
+        alignItems={isTextArea ? 'flex-start' : undefined}
         validationState={validationState}
         currentInteraction={currentInteraction}
         {...props}
