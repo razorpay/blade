@@ -107,18 +107,6 @@ These steps should get you up and started for local development setup. Please en
 
 ## Tips
 
-- If you're using vscode and would like to exclude `blade-old` or other directories (say native directories) from polluting your file explorer / switcher and search you can exclude those directories by adding the following in your `settings.json` config:
-
-  ```json
-  {
-    "files.exclude": {
-      "**/packages/blade-old/**": true
-    },
-    "search.exclude": {
-      "**/packages/blade-old/**": true
-    }
-  }
-  ```
 - You can use `yarn start:all` command to run storybooks on all platforms like web, android, and ios (better to not use it in development though to avoid stressing your laptop)
 
 ## TypeScript Guide
