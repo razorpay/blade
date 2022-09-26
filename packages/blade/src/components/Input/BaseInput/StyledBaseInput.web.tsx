@@ -35,6 +35,7 @@ const StyledBaseNativeInput = styled.input<
   ':focus': {
     outline: 'none',
   },
+  cursor: props.disabled ? 'not-allowed' : 'auto',
 }));
 
 const autoCompleteSuggestionTypeMap = {
