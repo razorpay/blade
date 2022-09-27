@@ -7,6 +7,7 @@ export type StyledBaseInputProps = {
   handleOnFocus?: FormInputHandleOnEvent;
   handleOnChange?: FormInputHandleOnEvent;
   handleOnBlur?: FormInputHandleOnEvent;
+  handleOnKeyDown?: KeyboardEventHandler<HTMLInputElement>;
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
   accessibilityProps: Record<string, unknown>;

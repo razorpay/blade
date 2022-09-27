@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ReactNode } from 'react';
+import type { ReactNode, KeyboardEventHandler } from 'react';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -57,6 +57,10 @@ export type BaseInputProps = FormInputLabelProps &
      * The callback function to be invoked when the value of the input field changes
      */
     onChange?: FormInputOnEvent;
+    /**
+     * The callback function to be invoked when the value of the keydown events
+     */
+    onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
     /**
      * The callback function to be invoked when the the input field loses focus
      *
@@ -335,6 +339,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onFocus,
       onChange,
       onBlur,
+      onKeyDown,
       isDisabled,
       necessityIndicator,
       validationState,
@@ -403,7 +408,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
 
     const isTextArea = as === 'textarea';
     const isReactNative = getPlatformType() === 'react-native';
-
+    console.log(`value of ${id}`, value);
     return (
       <Box>
         <Box
@@ -454,6 +459,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               handleOnFocus={handleOnFocus}
               handleOnChange={handleOnChange}
               handleOnBlur={handleOnBlur}
+              handleOnKeyDown={onKeyDown}
               leadingIcon={leadingIcon}
               prefix={prefix}
               interactionElement={interactionElement}
