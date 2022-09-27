@@ -2,6 +2,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Text } from '../Text';
 import { Code as CodeComponent } from './Code';
 import type { CodeProps } from './Code';
+import { textTypes } from './__tests__/CodeTypesContainer';
 import Box from '~components/Box';
 
 const CodeStoryMeta: Meta = {
@@ -23,8 +24,6 @@ const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
 
 export default CodeStoryMeta;
 export const Code = CodeTemplate.bind({});
-
-const textTypes: CodeProps['type'][] = ['subtle', 'muted', 'normal', 'placeholder', 'subdued'];
 
 const CodeTypeKitchenSink = ({
   type,
