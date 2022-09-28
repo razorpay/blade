@@ -63,7 +63,6 @@ const OTPInput = ({ otpLength = 4 }: OTPInputProps): React.ReactElement => {
   ): void => {
     const { key, code } = event;
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
-      console.log('IN');
       if (event.preventDefault) {
         event.preventDefault();
       }
