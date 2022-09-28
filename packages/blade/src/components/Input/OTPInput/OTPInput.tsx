@@ -1,8 +1,8 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import type { KeyboardEvent } from 'react';
+import React, { useState } from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import Box from '~components/Box';
-import type { FormInputOnEvent } from '~components/Form';
 
 export type OTPInputProps = Pick<
   BaseInputProps,
@@ -32,54 +32,78 @@ const OTPInput = ({ otpLength = 4 }: OTPInputProps): React.ReactElement => {
   const inputs = [];
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(''));
-  console.log('🚀 ~ file: OTPInput.tsx ~ line 32 ~ OTPInput ~ otpValue', otpValue);
-  const onChangeHandler = ({ value }: { value?: string }, i: number): void => {
-    console.log('onChange', value);
-    const newOtpValue = otpValue.slice();
 
-    newOtpValue[i] = value?.trim().length === 1 ? value.trim() : '';
-    console.log('value set', newOtpValue);
+  const setOtpValueByIndex = ({ value, index }: { value: string; index: number }): void => {
+    const newOtpValue = Array.from(otpValue);
+    newOtpValue[index] = value;
     setOtpValue(newOtpValue);
+  };
+
+  const focusOnOtpByIndex = ({ index }: { index: number }): void => {
+    inputRefs[index]?.current?.focus();
+    if (inputRefs[index]?.current?.select) inputRefs[index]?.current?.select();
+  };
+
+  const handleOnChange = (
+    { value }: { value?: string; name?: string },
+    currentOtpIndex: number,
+  ): void => {
+    if (value && value === ' ') {
+      return;
+    }
+    setOtpValueByIndex({ value: value?.trim() ?? '', index: currentOtpIndex });
     if (value && value.trim().length === 1) {
-      inputRefs[i + 1]?.current?.focus();
-      inputRefs[i + 1]?.current?.select();
+      focusOnOtpByIndex({ index: currentOtpIndex + 1 });
     }
   };
-  for (let i = 0; i < otpLength; i++) {
+
+  const handleOnKeyDown = (
+    event: KeyboardEvent<HTMLInputElement>,
+    currentOtpIndex: number,
+  ): void => {
+    const { key, code } = event;
+    if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
+      console.log('IN');
+      if (event.preventDefault) {
+        event.preventDefault();
+      }
+      setOtpValueByIndex({ value: '', index: currentOtpIndex });
+      focusOnOtpByIndex({ index: currentOtpIndex - 1 });
+    } else if (key === 'ArrowLeft' || code === 'ArrowLeft') {
+      if (event.preventDefault) {
+        event.preventDefault();
+      }
+      focusOnOtpByIndex({ index: currentOtpIndex - 1 });
+    } else if (key === 'ArrowRight' || code === 'ArrowRight') {
+      if (event.preventDefault) {
+        event.preventDefault();
+      }
+      focusOnOtpByIndex({ index: currentOtpIndex + 1 });
+    } else if (key === ' ' || code === 'Space') {
+      if (event.preventDefault) {
+        event.preventDefault();
+      }
+    }
+  };
+
+  for (let currentOtpIndex = 0; currentOtpIndex < otpLength; currentOtpIndex++) {
     const ref = React.createRef<HTMLInputElement>();
     inputRefs.push(ref);
     inputs.push(
-      <Box flex={1} paddingLeft={i == 0 ? 'spacing.0' : 'spacing.3'} key={`otp-input-${i}`}>
+      <Box
+        flex={1}
+        paddingLeft={currentOtpIndex == 0 ? 'spacing.0' : 'spacing.3'}
+        key={`otp-input-${currentOtpIndex}`}
+      >
         <BaseInput
           label=""
-          id={`otp-input-${i}`}
+          id={`otp-input-${currentOtpIndex}`}
           textAlign="center"
           ref={ref}
-          value={otpValue[i]}
+          value={otpValue[currentOtpIndex]}
           maxCharacters={1}
-          onChange={(event) => onChangeHandler(event, i)}
-          onKeyDown={(e) => {
-            console.log('🚀 Key DOWN', e.code, e.key);
-            if (e.code === 'Backspace') {
-              e.preventDefault();
-              const newOtpValue = otpValue.slice();
-              newOtpValue[i] = '';
-              setOtpValue(newOtpValue);
-              // setOtpValue(otpValue);
-              inputRefs[i - 1]?.current?.focus();
-              inputRefs[i - 1]?.current?.select();
-            } else if (e.code === 'Delete' || e.key === 'Delete') {
-              e.preventDefault();
-              const newOtpValue = otpValue.slice();
-              newOtpValue[i] = '';
-              setOtpValue(newOtpValue);
-              // setOtpValue(otpValue);
-              inputRefs[i - 1]?.current?.focus();
-              inputRefs[i - 1]?.current?.select();
-            } else if (e.key === ' ' || e.key === 'Spacebar' || e.key === 'Space') {
-              e.preventDefault();
-            }
-          }}
+          onChange={(formEvent) => handleOnChange(formEvent, currentOtpIndex)}
+          onKeyDown={(keyboardEvent) => handleOnKeyDown(keyboardEvent, currentOtpIndex)}
         />
       </Box>,
     );

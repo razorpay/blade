@@ -408,7 +408,6 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
 
     const isTextArea = as === 'textarea';
     const isReactNative = getPlatformType() === 'react-native';
-    console.log(`value of ${id}`, value);
     return (
       <Box>
         <Box
