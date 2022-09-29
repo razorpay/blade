@@ -16,6 +16,8 @@ const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
   // For React Native, use flex to align items correctly
   <Text>
     Lorem ipsum normal text <CodeComponent {...args} /> component
+    <br />
+    Lorem ipsum normal text <CodeComponent {...args} /> component
   </Text>
 );
 
