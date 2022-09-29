@@ -1,8 +1,10 @@
 import type { KeyboardEvent } from 'react';
 import React, { useState } from 'react';
+
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import Box from '~components/Box';
+import { getPlatformType } from '~utils';
 
 export type OTPInputProps = Pick<
   BaseInputProps,
@@ -26,12 +28,15 @@ export type OTPInputProps = Pick<
   otpLength: 4 | 6;
 };
 
+const isReactNative = getPlatformType() === 'react-native';
+
 const otpToArray = (code?: string): string[] => code?.split('') ?? [];
 
-const OTPInput = ({ otpLength = 4 }: OTPInputProps): React.ReactElement => {
+const OTPInput = ({ otpLength = 4, value: inputValue }: OTPInputProps): React.ReactElement => {
   const inputs = [];
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
-  const [otpValue, setOtpValue] = useState<string[]>(otpToArray(''));
+  const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
+  console.log('🚀 ~ file: OTPInput.tsx ~ line 39 ~ OTPInput ~ otpValue', otpValue);
 
   const setOtpValueByIndex = ({ value, index }: { value: string; index: number }): void => {
     const newOtpValue = Array.from(otpValue);
@@ -41,7 +46,9 @@ const OTPInput = ({ otpLength = 4 }: OTPInputProps): React.ReactElement => {
 
   const focusOnOtpByIndex = ({ index }: { index: number }): void => {
     inputRefs[index]?.current?.focus();
-    if (inputRefs[index]?.current?.select) inputRefs[index]?.current?.select();
+    if (!isReactNative) {
+      inputRefs[index]?.current?.select();
+    }
   };
 
   const handleOnChange = (
@@ -63,29 +70,32 @@ const OTPInput = ({ otpLength = 4 }: OTPInputProps): React.ReactElement => {
   ): void => {
     const { key, code } = event;
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
-      if (event.preventDefault) {
+      if (!isReactNative) {
         event.preventDefault();
       }
       setOtpValueByIndex({ value: '', index: currentOtpIndex });
       focusOnOtpByIndex({ index: currentOtpIndex - 1 });
     } else if (key === 'ArrowLeft' || code === 'ArrowLeft') {
-      if (event.preventDefault) {
+      if (!isReactNative) {
         event.preventDefault();
       }
       focusOnOtpByIndex({ index: currentOtpIndex - 1 });
     } else if (key === 'ArrowRight' || code === 'ArrowRight') {
-      if (event.preventDefault) {
+      if (!isReactNative) {
         event.preventDefault();
       }
       focusOnOtpByIndex({ index: currentOtpIndex + 1 });
     } else if (key === ' ' || code === 'Space') {
-      if (event.preventDefault) {
+      if (!isReactNative) {
         event.preventDefault();
       }
     }
   };
 
   for (let currentOtpIndex = 0; currentOtpIndex < otpLength; currentOtpIndex++) {
+    const currentValue = inputValue
+      ? otpToArray(inputValue)[currentOtpIndex] || ''
+      : otpValue[currentOtpIndex] || '';
     const ref = React.createRef<HTMLInputElement>();
     inputRefs.push(ref);
     inputs.push(
@@ -99,7 +109,7 @@ const OTPInput = ({ otpLength = 4 }: OTPInputProps): React.ReactElement => {
           id={`otp-input-${currentOtpIndex}`}
           textAlign="center"
           ref={ref}
-          value={otpValue[currentOtpIndex]}
+          value={currentValue}
           maxCharacters={1}
           onChange={(formEvent) => handleOnChange(formEvent, currentOtpIndex)}
           onKeyDown={(keyboardEvent) => handleOnKeyDown(keyboardEvent, currentOtpIndex)}
