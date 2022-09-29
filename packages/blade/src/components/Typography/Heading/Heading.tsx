@@ -23,6 +23,9 @@ type HeadingNormalVariant = HeadingCommonProps & {
 
 type HeadingSubHeadingVariant = HeadingCommonProps & {
   variant?: Extract<HeadingVariant, 'subheading'>;
+  /**
+   * `size` cannot be used with variant="subheading". Either change to variant="regular" or remove size prop
+   */
   size?: undefined;
   weight?: keyof Pick<Theme['typography']['fonts']['weight'], 'bold'>;
 };
