@@ -5,6 +5,7 @@ import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import Box from '~components/Box';
 import { getPlatformType } from '~utils';
+import { FormLabel } from '~components/Form';
 
 export type OTPInputProps = Pick<
   BaseInputProps,
@@ -36,10 +37,13 @@ const OTPInput = ({
   placeholder,
   isDisabled,
   autoFocus,
+  label,
+  labelPosition,
 }: OTPInputProps): React.ReactElement => {
   const inputs = [];
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
+  const isLabelLeftPositioned = labelPosition === 'left';
 
   const setOtpValueByIndex = ({ value, index }: { value: string; index: number }): string => {
     const newOtpValue = Array.from(otpValue);
@@ -149,8 +153,20 @@ const OTPInput = ({
   }
   return (
     // TODO: Use proper maxWidth for the component
-    <Box display="flex" flexDirection="row" maxWidth={400}>
-      {inputs}
+    <Box>
+      <Box
+        display="flex"
+        flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
+        alignItems={isLabelLeftPositioned ? 'center' : undefined}
+        position="relative"
+      >
+        <FormLabel as="label" position={labelPosition} htmlFor="otp-input-0">
+          {label}
+        </FormLabel>
+        <Box display="flex" flexDirection="row" maxWidth={400}>
+          {inputs}
+        </Box>
+      </Box>
     </Box>
   );
 };
