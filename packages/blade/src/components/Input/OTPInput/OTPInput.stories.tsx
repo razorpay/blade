@@ -21,7 +21,6 @@ export default {
     name: 'description',
     isDisabled: false,
     value: undefined,
-    maxCharacters: undefined,
     autoFocus: false,
     onChange: ({ name, value }): void => {
       console.log(`input field ${name} content changed to ${value}`);
@@ -34,8 +33,6 @@ export default {
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
-    showClearButton: undefined,
-    numberOfLines: 2,
   },
   argTypes: {
     defaultValue: {
@@ -63,29 +60,12 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
-    maxCharacters: {
-      control: { type: 'number' },
-      table: {
-        category: propsCategory.BASE_PROPS,
-      },
-    },
-    numberOfLines: {
-      control: { type: 'range', min: 2, max: 5, step: 1 },
-      table: {
-        category: propsCategory.BASE_PROPS,
-      },
-    },
     autoFocus: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
     },
     onChange: {
-      table: {
-        category: propsCategory.BASE_PROPS,
-      },
-    },
-    onBlur: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -101,11 +81,6 @@ export default {
       },
     },
     necessityIndicator: {
-      table: {
-        category: propsCategory.VALIDATION_PROPS,
-      },
-    },
-    isRequired: {
       table: {
         category: propsCategory.VALIDATION_PROPS,
       },
@@ -128,11 +103,6 @@ export default {
     successText: {
       table: {
         category: propsCategory.VALIDATION_PROPS,
-      },
-    },
-    showClearButton: {
-      table: {
-        category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
   },

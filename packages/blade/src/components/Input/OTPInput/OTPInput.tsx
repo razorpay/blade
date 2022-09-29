@@ -10,7 +10,6 @@ export type OTPInputProps = Pick<
   BaseInputProps,
   | 'label'
   | 'labelPosition'
-  | 'necessityIndicator'
   | 'validationState'
   | 'helpText'
   | 'errorText'
@@ -35,6 +34,8 @@ const OTPInput = ({
   value: inputValue,
   onChange,
   placeholder,
+  isDisabled,
+  autoFocus,
 }: OTPInputProps): React.ReactElement => {
   const inputs = [];
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
@@ -129,6 +130,8 @@ const OTPInput = ({
         key={`otp-input-${currentOtpIndex}`}
       >
         <BaseInput
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus={autoFocus && currentOtpIndex === 0}
           label=""
           id={`otp-input-${currentOtpIndex}`}
           textAlign="center"
@@ -137,8 +140,9 @@ const OTPInput = ({
           maxCharacters={1}
           onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex })}
           onKeyDown={(keyboardEvent) => handleOnKeyDown(keyboardEvent, currentOtpIndex)}
-          isRequired
+          isDisabled={isDisabled}
           placeholder={Array.from(placeholder ?? '')[currentOtpIndex] ?? ''}
+          isRequired
         />
       </Box>,
     );
