@@ -46,13 +46,12 @@ const Page = (): ReactElement => {
   );
 };
 
-const HeadingStoryMeta: Meta<
-  HeadingProps<{ variant: 'small' | 'medium' | 'large' | 'subheading' }>
-> = {
+const HeadingStoryMeta: Meta<HeadingProps<{ variant: 'regular' | 'subheading' }>> = {
   title: 'Components/Typography/Heading',
   component: HeadingComponent,
   args: {
-    variant: 'large',
+    variant: 'regular',
+    size: 'large',
     type: 'normal',
     children: 'Get Started With Payment Gateway',
     weight: 'bold',

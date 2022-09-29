@@ -135,7 +135,7 @@ const Alert = ({
 
   const _title = title ? (
     <Box marginBottom="spacing.2">
-      <Heading variant="small" contrast={contrast}>
+      <Heading size="small" contrast={contrast}>
         {title}
       </Heading>
     </Box>

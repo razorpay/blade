@@ -15,10 +15,10 @@ describe('<Heading />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "small" and contrast "high"', () => {
+  it('should render Heading with size "small" and contrast "high"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { container, getByRole, getByText } = renderWithTheme(
-      <Heading type="normal" variant="small" weight="regular" contrast="high">
+      <Heading type="normal" size="small" weight="regular" contrast="high">
         {displayText}
       </Heading>,
     );
@@ -27,10 +27,10 @@ describe('<Heading />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "small"', () => {
+  it('should render Heading with size "small"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { container, getByRole, getByText } = renderWithTheme(
-      <Heading type="normal" variant="small" weight="regular">
+      <Heading type="normal" size="small" weight="regular">
         {displayText}
       </Heading>,
     );
@@ -39,10 +39,10 @@ describe('<Heading />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "medium"', () => {
+  it('should render Heading with size "medium"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { container, getByRole, getByText } = renderWithTheme(
-      <Heading type="muted" variant="medium" weight="regular">
+      <Heading type="muted" size="medium" weight="regular">
         {displayText}
       </Heading>,
     );
@@ -51,10 +51,10 @@ describe('<Heading />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "large"', () => {
+  it('should render Heading with size "large"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { container, getByRole, getByText } = renderWithTheme(
-      <Heading type="subdued" variant="large" weight="regular">
+      <Heading type="subdued" size="large" weight="regular">
         {displayText}
       </Heading>,
     );
