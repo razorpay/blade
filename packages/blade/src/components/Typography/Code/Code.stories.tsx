@@ -2,7 +2,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Text } from '../Text';
 import { Code as CodeComponent } from './Code';
 import type { CodeProps } from './Code';
-import { textTypes } from './__tests__/CodeTypesContainer';
+import { textTypes } from './testing-utils/CodeTypesContainer';
 import Box from '~components/Box';
 
 const CodeStoryMeta: Meta = {
@@ -18,6 +18,8 @@ const CodeStoryMeta: Meta = {
 const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
   // For React Native, use flex to align items correctly
   <Text>
+    Lorem ipsum normal text <CodeComponent {...args} /> component
+    <br />
     Lorem ipsum normal text <CodeComponent {...args} /> component
   </Text>
 );

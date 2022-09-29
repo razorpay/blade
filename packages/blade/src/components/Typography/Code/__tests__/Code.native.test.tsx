@@ -1,6 +1,6 @@
 import React from 'react';
 import { Code } from '../Code';
-import { CodeTypesContainer } from './CodeTypesContainer';
+import { CodeTypesContainer } from '../testing-utils/CodeTypesContainer';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<Code />', () => {

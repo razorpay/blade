@@ -37,6 +37,7 @@ const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
     backgroundColor: props.theme.colors.brand.gray[300],
     borderRadius: props.theme.border.radius.medium,
     display: isPlatformWeb ? 'inline-block' : undefined,
+    lineHeight: 1,
   };
 });
 
@@ -74,6 +75,7 @@ const Code = ({ children, size = 'medium', type = 'subtle' }: CodeProps): JSX.El
         fontFamily="code"
         fontSize={size === 'large' ? 100 : 75}
         as={isPlatformWeb ? 'code' : undefined}
+        lineHeight="s"
       >
         {children}
       </BaseText>
