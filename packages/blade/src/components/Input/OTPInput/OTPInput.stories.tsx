@@ -17,7 +17,7 @@ export default {
   component: OTPInputComponent,
   args: {
     defaultValue: undefined,
-    placeholder: 'Enter Description',
+    placeholder: '••••••',
     name: 'description',
     isDisabled: false,
     value: undefined,
@@ -25,9 +25,6 @@ export default {
     autoFocus: false,
     onChange: ({ name, value }): void => {
       console.log(`input field ${name} content changed to ${value}`);
-    },
-    onBlur: ({ name, value }): void => {
-      console.log(`input field ${name} content lost focus. The value is ${value}`);
     },
     label: 'Description',
     labelPosition: 'top',

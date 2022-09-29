@@ -1,5 +1,5 @@
 import type { KeyboardEvent } from 'react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
@@ -15,15 +15,13 @@ export type OTPInputProps = Pick<
   | 'helpText'
   | 'errorText'
   | 'successText'
-  | 'defaultValue'
   | 'name'
   | 'onChange'
-  | 'onBlur'
   | 'value'
   | 'isDisabled'
-  | 'isRequired'
   | 'autoFocus'
   | 'keyboardReturnKeyType'
+  | 'placeholder'
 > & {
   otpLength: 4 | 6;
 };
@@ -32,16 +30,21 @@ const isReactNative = getPlatformType() === 'react-native';
 
 const otpToArray = (code?: string): string[] => code?.split('') ?? [];
 
-const OTPInput = ({ otpLength = 4, value: inputValue }: OTPInputProps): React.ReactElement => {
+const OTPInput = ({
+  otpLength = 4,
+  value: inputValue,
+  onChange,
+  placeholder,
+}: OTPInputProps): React.ReactElement => {
   const inputs = [];
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
-  console.log('🚀 ~ file: OTPInput.tsx ~ line 39 ~ OTPInput ~ otpValue', otpValue);
 
-  const setOtpValueByIndex = ({ value, index }: { value: string; index: number }): void => {
+  const setOtpValueByIndex = ({ value, index }: { value: string; index: number }): string => {
     const newOtpValue = Array.from(otpValue);
     newOtpValue[index] = value;
     setOtpValue(newOtpValue);
+    return newOtpValue.join('');
   };
 
   const focusOnOtpByIndex = ({ index }: { index: number }): void => {
@@ -51,14 +54,35 @@ const OTPInput = ({ otpLength = 4, value: inputValue }: OTPInputProps): React.Re
     }
   };
 
-  const handleOnChange = (
-    { value }: { value?: string; name?: string },
-    currentOtpIndex: number,
-  ): void => {
+  useEffect(() => {
+    if (onChange) {
+      onChange({ name: '', value: otpValue.join('') });
+    }
+  }, [otpValue, onChange]);
+
+  const handleOnChange = ({
+    value,
+    currentOtpIndex,
+  }: {
+    value?: string;
+    name?: string;
+    currentOtpIndex: number;
+  }): void => {
     if (value && value === ' ') {
       return;
     }
-    setOtpValueByIndex({ value: value?.trim() ?? '', index: currentOtpIndex });
+
+    if (inputValue && inputValue.length > 0) {
+      const newOtpValue = Array.from(inputValue);
+      newOtpValue[currentOtpIndex] = value ?? '';
+      setOtpValue(newOtpValue);
+    } else {
+      setOtpValueByIndex({
+        value: value?.trim() ?? '',
+        index: currentOtpIndex,
+      });
+    }
+
     if (value && value.trim().length === 1) {
       focusOnOtpByIndex({ index: currentOtpIndex + 1 });
     }
@@ -73,7 +97,7 @@ const OTPInput = ({ otpLength = 4, value: inputValue }: OTPInputProps): React.Re
       if (!isReactNative) {
         event.preventDefault();
       }
-      setOtpValueByIndex({ value: '', index: currentOtpIndex });
+      handleOnChange({ value: '', currentOtpIndex });
       focusOnOtpByIndex({ index: currentOtpIndex - 1 });
     } else if (key === 'ArrowLeft' || code === 'ArrowLeft') {
       if (!isReactNative) {
@@ -111,8 +135,10 @@ const OTPInput = ({ otpLength = 4, value: inputValue }: OTPInputProps): React.Re
           ref={ref}
           value={currentValue}
           maxCharacters={1}
-          onChange={(formEvent) => handleOnChange(formEvent, currentOtpIndex)}
+          onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex })}
           onKeyDown={(keyboardEvent) => handleOnKeyDown(keyboardEvent, currentOtpIndex)}
+          isRequired
+          placeholder={Array.from(placeholder ?? '')[currentOtpIndex] ?? ''}
         />
       </Box>,
     );
