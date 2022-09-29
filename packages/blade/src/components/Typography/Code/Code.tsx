@@ -78,7 +78,6 @@ const Code = ({ children, size = 'small' }: CodeProps): JSX.Element => {
         fontFamily="code"
         fontSize={getCodeFontSize(size)}
         as={isPlatformWeb ? 'code' : undefined}
-        lineHeight="s"
       >
         {children}
       </BaseText>
