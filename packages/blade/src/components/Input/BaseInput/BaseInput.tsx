@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ReactNode, KeyboardEventHandler } from 'react';
+import type { ReactNode, KeyboardEventHandler, ClipboardEventHandler } from 'react';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -61,6 +61,10 @@ export type BaseInputProps = FormInputLabelProps &
      * The callback function to be invoked when the value of the keydown events
      */
     onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+    /**
+     * The callback function to be invoked when the value of the keydown events
+     */
+    onPaste?: ClipboardEventHandler<HTMLInputElement>;
     /**
      * The callback function to be invoked when the the input field loses focus
      *
@@ -340,6 +344,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onChange,
       onBlur,
       onKeyDown,
+      onPaste,
       isDisabled,
       necessityIndicator,
       validationState,
@@ -459,6 +464,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               handleOnChange={handleOnChange}
               handleOnBlur={handleOnBlur}
               handleOnKeyDown={onKeyDown}
+              handleOnPaste={onPaste}
               leadingIcon={leadingIcon}
               prefix={prefix}
               interactionElement={interactionElement}

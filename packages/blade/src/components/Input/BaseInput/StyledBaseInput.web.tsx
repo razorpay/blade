@@ -66,6 +66,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
       handleOnChange,
       handleOnBlur,
       handleOnKeyDown,
+      handleOnPaste,
       keyboardType,
       keyboardReturnKeyType,
       autoCompleteSuggestionType,
@@ -104,6 +105,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
           handleOnFocus?.({ name, value: event });
         }}
         onKeyDown={handleOnKeyDown}
+        onPaste={handleOnPaste}
         {...props}
         {...accessibilityProps}
       />

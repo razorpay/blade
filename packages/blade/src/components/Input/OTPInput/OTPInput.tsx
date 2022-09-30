@@ -1,11 +1,12 @@
 import type { KeyboardEvent } from 'react';
 import React, { useEffect, useState } from 'react';
-
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
+import { getHintType } from '../BaseInput/BaseInput';
 import Box from '~components/Box';
 import { getPlatformType } from '~utils';
-import { FormLabel } from '~components/Form';
+import { FormHint, FormLabel } from '~components/Form';
+import { useFormId } from '~components/Form/useFormId';
 
 export type OTPInputProps = Pick<
   BaseInputProps,
@@ -21,7 +22,9 @@ export type OTPInputProps = Pick<
   | 'isDisabled'
   | 'autoFocus'
   | 'keyboardReturnKeyType'
+  | 'keyboardType'
   | 'placeholder'
+  | 'id'
 > & {
   otpLength: 4 | 6;
 };
@@ -39,11 +42,19 @@ const OTPInput = ({
   autoFocus,
   label,
   labelPosition,
+  validationState,
+  helpText,
+  errorText,
+  successText,
+  id,
+  keyboardType = 'decimal',
 }: OTPInputProps): React.ReactElement => {
   const inputs = [];
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
+  console.log('🚀 ~ file: OTPInput.tsx ~ line 54 ~ otpValue', otpValue);
   const isLabelLeftPositioned = labelPosition === 'left';
+  const { inputId, helpTextId, errorTextId, successTextId } = useFormId(id);
 
   const setOtpValueByIndex = ({ value, index }: { value: string; index: number }): string => {
     const newOtpValue = Array.from(otpValue);
@@ -103,11 +114,13 @@ const OTPInput = ({
         event.preventDefault();
       }
       handleOnChange({ value: '', currentOtpIndex });
+
       focusOnOtpByIndex({ index: currentOtpIndex - 1 });
     } else if (key === 'ArrowLeft' || code === 'ArrowLeft') {
       if (!isReactNative) {
         event.preventDefault();
       }
+
       focusOnOtpByIndex({ index: currentOtpIndex - 1 });
     } else if (key === 'ArrowRight' || code === 'ArrowRight') {
       if (!isReactNative) {
@@ -131,22 +144,28 @@ const OTPInput = ({
       <Box
         flex={1}
         paddingLeft={currentOtpIndex == 0 ? 'spacing.0' : 'spacing.3'}
-        key={`otp-input-${currentOtpIndex}`}
+        key={`${inputId}-${currentOtpIndex}`}
       >
         <BaseInput
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus && currentOtpIndex === 0}
           label=""
-          id={`otp-input-${currentOtpIndex}`}
+          id={`${inputId}-${currentOtpIndex}`}
           textAlign="center"
           ref={ref}
           value={currentValue}
           maxCharacters={1}
+          onPaste={(e) => {
+            const pastedData = e.clipboardData.getData('text/plain');
+            setOtpValue(Array.from(pastedData));
+          }}
           onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex })}
           onKeyDown={(keyboardEvent) => handleOnKeyDown(keyboardEvent, currentOtpIndex)}
           isDisabled={isDisabled}
           placeholder={Array.from(placeholder ?? '')[currentOtpIndex] ?? ''}
           isRequired
+          autoCompleteSuggestionType="oneTimeCode"
+          keyboardType={keyboardType}
         />
       </Box>,
     );
@@ -166,6 +185,17 @@ const OTPInput = ({
         <Box display="flex" flexDirection="row" maxWidth={400}>
           {inputs}
         </Box>
+      </Box>
+      <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
+        <FormHint
+          type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
+          helpText={helpText}
+          errorText={errorText}
+          successText={successText}
+          helpTextId={helpTextId}
+          errorTextId={errorTextId}
+          successTextId={successTextId}
+        />
       </Box>
     </Box>
   );

@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from 'react';
+import type { ClipboardEventHandler, Dispatch, SetStateAction } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import type { FormInputHandleOnEvent } from '~components/Form';
 import type { ActionStates } from '~tokens/theme/theme';
@@ -8,6 +8,7 @@ export type StyledBaseInputProps = {
   handleOnChange?: FormInputHandleOnEvent;
   handleOnBlur?: FormInputHandleOnEvent;
   handleOnKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+  handleOnPaste?: ClipboardEventHandler<HTMLInputElement>;
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
   accessibilityProps: Record<string, unknown>;

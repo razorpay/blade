@@ -16,7 +16,6 @@ export default {
   title: 'Components/Input/OTPInput',
   component: OTPInputComponent,
   args: {
-    defaultValue: undefined,
     placeholder: '••••••',
     name: 'description',
     isDisabled: false,
@@ -27,19 +26,12 @@ export default {
     },
     label: 'Description',
     labelPosition: 'top',
-    necessityIndicator: undefined,
-    isRequired: false,
     validationState: 'none',
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
   },
   argTypes: {
-    defaultValue: {
-      table: {
-        category: propsCategory.BASE_PROPS,
-      },
-    },
     placeholder: {
       table: {
         category: propsCategory.BASE_PROPS,
@@ -151,7 +143,6 @@ OTPInputError.args = {
 export const OTPInputSuccess = OTPInputTemplate.bind({});
 OTPInputSuccess.storyName = 'OTPInput with success';
 OTPInputSuccess.args = {
-  defaultValue: 'OTPInput content',
   validationState: 'success',
   successText: 'Validated',
 };
@@ -161,7 +152,6 @@ const OTPInputUncontrolledTemplate: ComponentStory<typeof OTPInputComponent> = (
     <OTPInput
       label="Description"
       placeholder="Enter description"
-      defaultValue="Textarea content"
       name="description"
       onChange={({ name, value }): void => console.log({ name, value })}
     />
