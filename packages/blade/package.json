@@ -66,7 +66,8 @@
     "start:native": "run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
     "start:web": "yarn react",
     "start:all": "run-p start:native start:web",
-    "chromatic": "npx chromatic"
+    "chromatic": "npx chromatic",
+    "test-codemod": "jest scripts/migrations/**/*.test.js -c ./jest.web.config.js"
   },
   "dependencies": {
     "@babel/runtime": "7.16.5",
@@ -132,6 +133,7 @@
     "jest-matchmedia-mock": "1.1.0",
     "jest-styled-components": "7.0.8",
     "jest-useragent-mock": "0.1.1",
+    "jscodeshift": "^0.13.1",
     "lodash": "4.17.21",
     "metro-react-native-babel-preset": "0.66.2",
     "moniker": "0.1.2",

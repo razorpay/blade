@@ -22,3 +22,4 @@ packages/blade/utils.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+packages/blade/scripts/migrations/__testfixtures__
