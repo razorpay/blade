@@ -92,6 +92,8 @@ const OTPInput = ({
       const newOtpValue = Array.from(inputValue);
       newOtpValue[currentOtpIndex] = value ?? '';
       setOtpValue(newOtpValue);
+    } else if (value && value.trim().length > 1) {
+      setOtpValue(Array.from(value));
     } else {
       setOtpValueByIndex({
         value: value?.trim() ?? '',
@@ -154,11 +156,7 @@ const OTPInput = ({
           textAlign="center"
           ref={ref}
           value={currentValue}
-          maxCharacters={1}
-          onPaste={(e) => {
-            const pastedData = e.clipboardData.getData('text/plain');
-            setOtpValue(Array.from(pastedData));
-          }}
+          maxCharacters={otpValue[currentOtpIndex]?.length > 0 ? 1 : undefined}
           onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex })}
           onKeyDown={(keyboardEvent) => handleOnKeyDown(keyboardEvent, currentOtpIndex)}
           isDisabled={isDisabled}
