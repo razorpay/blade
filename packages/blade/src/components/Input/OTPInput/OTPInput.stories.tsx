@@ -9,30 +9,45 @@ const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
   LABEL_PROPS: 'Label Props',
   VALIDATION_PROPS: 'Validation Props',
-  TRAILING_VISUAL_PROPS: 'Trailing Visual Props',
+  KEYBOARD_PROPS: 'Keyboard Props',
 };
 
 export default {
   title: 'Components/Input/OTPInput',
   component: OTPInputComponent,
   args: {
+    id: 'otp-input',
     placeholder: '••••••',
-    name: 'description',
+    name: 'otp',
     isDisabled: false,
     value: undefined,
     autoFocus: false,
     onChange: ({ name, value }): void => {
       console.log(`input field ${name} content changed to ${value}`);
     },
-    label: 'Description',
+    onOTPFilled: ({ name, value }): void => {
+      console.log(`otp field ${name} filled with ${value}`);
+    },
+    label: 'One Time Password',
     labelPosition: 'top',
     validationState: 'none',
+    otpLength: 4,
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
   },
   argTypes: {
+    id: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     placeholder: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    otpLength: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -62,6 +77,11 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
+    onOTPFilled: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     label: {
       table: {
         category: propsCategory.LABEL_PROPS,
@@ -72,9 +92,14 @@ export default {
         category: propsCategory.LABEL_PROPS,
       },
     },
-    necessityIndicator: {
+    keyboardReturnKeyType: {
       table: {
-        category: propsCategory.VALIDATION_PROPS,
+        category: propsCategory.KEYBOARD_PROPS,
+      },
+    },
+    keyboardType: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
       },
     },
     validationState: {
@@ -150,6 +175,7 @@ OTPInputSuccess.args = {
 const OTPInputUncontrolledTemplate: ComponentStory<typeof OTPInputComponent> = () => {
   return (
     <OTPInput
+      id="otp"
       label="Description"
       placeholder="Enter description"
       name="description"
@@ -164,6 +190,7 @@ const OTPInputControlledTemplate: ComponentStory<typeof OTPInputComponent> = () 
 
   return (
     <OTPInput
+      id="otp"
       label="Description"
       placeholder="Enter Description"
       value={inputValue}

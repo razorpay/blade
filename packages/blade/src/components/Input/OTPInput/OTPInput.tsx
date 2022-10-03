@@ -5,6 +5,7 @@ import { BaseInput } from '../BaseInput';
 import { getHintType } from '../BaseInput/BaseInput';
 import Box from '~components/Box';
 import { getPlatformType } from '~utils';
+import type { FormInputOnEvent } from '~components/Form';
 import { FormHint, FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';
 
@@ -26,7 +27,8 @@ export type OTPInputProps = Pick<
   | 'placeholder'
   | 'id'
 > & {
-  otpLength: 4 | 6;
+  otpLength?: 4 | 6;
+  onOTPFilled?: FormInputOnEvent;
 };
 
 const isReactNative = getPlatformType() === 'react-native';
@@ -34,20 +36,23 @@ const isReactNative = getPlatformType() === 'react-native';
 const otpToArray = (code?: string): string[] => code?.split('') ?? [];
 
 const OTPInput = ({
-  otpLength = 4,
-  value: inputValue,
-  onChange,
-  placeholder,
-  isDisabled,
   autoFocus,
+  errorText,
+  helpText,
+  id,
+  isDisabled,
+  keyboardReturnKeyType,
+  keyboardType = 'decimal',
   label,
   labelPosition,
-  validationState,
-  helpText,
-  errorText,
+  name,
+  onChange,
+  onOTPFilled,
+  otpLength = 4,
+  placeholder,
   successText,
-  id,
-  keyboardType = 'decimal',
+  validationState,
+  value: inputValue,
 }: OTPInputProps): React.ReactElement => {
   const inputs = [];
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
@@ -72,16 +77,26 @@ const OTPInput = ({
 
   useEffect(() => {
     if (onChange) {
-      onChange({ name: '', value: otpValue.join('') });
+      onChange({ name, value: otpValue.join('') });
     }
-  }, [otpValue, onChange]);
+  }, [otpValue, onChange, name]);
+
+  useEffect(() => {
+    if (inputValue) {
+      if (inputValue.length >= otpLength && onOTPFilled) {
+        console.log('OTP FILLED');
+        onOTPFilled({ value: inputValue.slice(0, otpLength), name });
+      }
+    } else if (otpValue.join('').length >= otpLength && onOTPFilled) {
+      onOTPFilled({ value: otpValue.slice(0, otpLength).join(''), name });
+    }
+  }, [otpValue, otpLength, name, inputValue, onOTPFilled]);
 
   const handleOnChange = ({
     value,
     currentOtpIndex,
   }: {
     value?: string;
-    name?: string;
     currentOtpIndex: number;
   }): void => {
     if (value && value === ' ') {
@@ -164,6 +179,7 @@ const OTPInput = ({
           isRequired
           autoCompleteSuggestionType="oneTimeCode"
           keyboardType={keyboardType}
+          keyboardReturnKeyType={keyboardReturnKeyType}
         />
       </Box>,
     );
