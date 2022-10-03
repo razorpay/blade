@@ -28,7 +28,7 @@ export default {
     onOTPFilled: ({ name, value }): void => {
       console.log(`otp field ${name} filled with ${value}`);
     },
-    label: 'One Time Password',
+    label: 'Enter OTP',
     labelPosition: 'top',
     validationState: 'none',
     otpLength: 4,

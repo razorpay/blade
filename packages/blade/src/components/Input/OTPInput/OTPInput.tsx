@@ -167,6 +167,7 @@ const OTPInput = ({
         flex={1}
         paddingLeft={currentOtpIndex == 0 ? 'spacing.0' : 'spacing.3'}
         key={`${inputId}-${currentOtpIndex}`}
+        maxWidth={100}
       >
         <BaseInput
           // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -203,7 +204,7 @@ const OTPInput = ({
         <FormLabel as="label" position={labelPosition} htmlFor="otp-input-0">
           {label}
         </FormLabel>
-        <Box display="flex" flexDirection="row" maxWidth={400}>
+        <Box display="flex" flexDirection="row">
           {inputs}
         </Box>
       </Box>
