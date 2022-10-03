@@ -7,7 +7,49 @@ The text component is categorised into multiple parts
 - Code - Public Component
 
 Here's how the hierarchy will looks like
-![Component Breakdown](./component-breakdown.png)
+
+```mermaid
+classDiagram
+  BaseText <|-- Text
+  BaseText <|-- Title
+  BaseText <|-- Heading
+  BaseText <|-- Code
+  BaseText : Internal Component
+  BaseText : color = "surface.text | feedback.text | button.text"
+  BaseText : fontFamily = "fontfamily.name"
+  BaseText : fontSize = "fontSize.name"
+  BaseText : fontWeight = "fontWeight.name"
+  BaseText : lineWeight = "lineWeight"
+  BaseText : letterSpacing = "letterSpacing"
+  BaseText : formatting = "bold | italic | strike"
+  BaseText : as = "h1 - h6 | p | span"
+
+  class Text {
+    variant = "body | caption"
+    weight = "regular | bold"
+    size = "small | medium"
+    type = "normal | subtle | subdued | muted | placeholder"
+    contrast = "low | high"
+    truncateAfterLines = 3
+  }
+
+  class Title {
+    size = "small | medium | large"
+    type = "normal | subtle | subdued | muted | placeholder"
+    contrast = "low | high"
+  }
+
+  class Heading {
+    variant = "regular | subheading"
+    size = "small | medium | large"
+    type = "normal | subtle | subdued | muted | placeholder"
+    contrast = "low | high"
+  }
+
+  class Code {
+    size = "small | medium"
+  }
+```
 
 The APIs for all the above component will look something like below
 
@@ -54,7 +96,7 @@ Type of `children: React.ReactNode`
 
   ```jsx
   <Title
-    variant="small | medium | large"
+    size="small | medium | large"
     type="normal | subtle | subdued | muted | placeholder"
     contrast="low | high"
   >
@@ -76,7 +118,8 @@ Type of `children: string`
 
   ```jsx
   <Heading
-    variant="small | medium | large | subheading"
+    variant="regular | subheading"
+    size="small | medium | large"
     type="normal | subtle | subdued | muted | placeholder"
     contrast="low | high"
   >
