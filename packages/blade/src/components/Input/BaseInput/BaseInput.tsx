@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ReactNode, KeyboardEventHandler, ClipboardEventHandler } from 'react';
+import type { ReactNode } from 'react';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -18,6 +18,7 @@ import { getPlatformType, makeAccessible, useBreakpoint } from '~utils';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~src/hooks/useInteraction';
+import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 
 export type BaseInputProps = FormInputLabelProps &
   FormInputValidationProps & {
@@ -58,13 +59,13 @@ export type BaseInputProps = FormInputLabelProps &
      */
     onChange?: FormInputOnEvent;
     /**
-     * The callback function to be invoked when the value of the keydown events
+     * The callback function to be invoked when the value of the input field has any input
      */
-    onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+    onInput?: FormInputOnEvent;
     /**
      * The callback function to be invoked when the value of the keydown events
      */
-    onPaste?: ClipboardEventHandler<HTMLInputElement>;
+    onKeyDown?: FormInputHandleOnKeyDownEvent;
     /**
      * The callback function to be invoked when the the input field loses focus
      *
@@ -201,10 +202,17 @@ const useInput = ({
   onFocus,
   onChange,
   onBlur,
-}: Pick<BaseInputProps, 'value' | 'defaultValue' | 'onFocus' | 'onChange' | 'onBlur'>): {
+  onInput,
+  onKeyDown,
+}: Pick<
+  BaseInputProps,
+  'value' | 'defaultValue' | 'onFocus' | 'onChange' | 'onBlur' | 'onInput' | 'onKeyDown'
+>): {
   handleOnFocus: FormInputHandleOnEvent;
   handleOnChange: FormInputHandleOnEvent;
   handleOnBlur: FormInputHandleOnEvent;
+  handleOnInput: FormInputHandleOnEvent;
+  handleOnKeyDown: FormInputHandleOnKeyDownEvent;
   inputValue?: string;
 } => {
   if (value && defaultValue) {
@@ -272,7 +280,45 @@ const useInput = ({
     [onBlur],
   );
 
-  return { handleOnFocus, handleOnChange, handleOnBlur, inputValue };
+  const handleOnInput: FormInputHandleOnEvent = React.useCallback(
+    ({ name, value }) => {
+      let _value = '';
+      console.log('inside handleOnInput');
+      if (getPlatformType() === 'react-native' && typeof value == 'string') {
+        _value = value;
+      } else if (typeof value !== 'string') {
+        // Could have just done "getPlatformType() === 'react-native' ? value : value?.target.value" but TS doesn't understands that
+        _value = value?.target.value ?? '';
+      }
+
+      onInput?.({
+        name,
+        value: _value,
+      });
+    },
+    [onInput],
+  );
+
+  const handleOnKeyDown: FormInputHandleOnKeyDownEvent = React.useCallback(
+    ({ name, event }) => {
+      onKeyDown?.({
+        name,
+        key: event.key,
+        code: event.code,
+        event,
+      });
+    },
+    [onKeyDown],
+  );
+
+  return {
+    handleOnFocus,
+    handleOnChange,
+    handleOnBlur,
+    handleOnInput,
+    handleOnKeyDown,
+    inputValue,
+  };
 };
 
 export const getHintType = ({
@@ -342,9 +388,9 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       value,
       onFocus,
       onChange,
+      onInput,
       onBlur,
       onKeyDown,
-      onPaste,
       isDisabled,
       necessityIndicator,
       validationState,
@@ -371,12 +417,21 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     ref,
   ) => {
     const { theme } = useTheme();
-    const { handleOnFocus, handleOnChange, handleOnBlur, inputValue } = useInput({
+    const {
+      handleOnFocus,
+      handleOnChange,
+      handleOnBlur,
+      handleOnInput,
+      handleOnKeyDown,
+      inputValue,
+    } = useInput({
       defaultValue,
       value,
       onFocus,
       onChange,
       onBlur,
+      onInput,
+      onKeyDown,
     });
     const { inputId, helpTextId, errorTextId, successTextId } = useFormId(id);
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -463,8 +518,8 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               handleOnFocus={handleOnFocus}
               handleOnChange={handleOnChange}
               handleOnBlur={handleOnBlur}
-              handleOnKeyDown={onKeyDown}
-              handleOnPaste={onPaste}
+              handleOnInput={handleOnInput}
+              handleOnKeyDown={handleOnKeyDown}
               leadingIcon={leadingIcon}
               prefix={prefix}
               interactionElement={interactionElement}

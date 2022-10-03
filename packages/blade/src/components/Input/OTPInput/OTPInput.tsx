@@ -1,4 +1,3 @@
-import type { KeyboardEvent } from 'react';
 import React, { useEffect, useState } from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
@@ -8,6 +7,7 @@ import { getPlatformType } from '~utils';
 import type { FormInputOnEvent } from '~components/Form';
 import { FormHint, FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';
+import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 export type OTPInputProps = Pick<
   BaseInputProps,
@@ -57,7 +57,6 @@ const OTPInput = ({
   const inputs = [];
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
-  console.log('🚀 ~ file: OTPInput.tsx ~ line 54 ~ otpValue', otpValue);
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId(id);
 
@@ -68,7 +67,7 @@ const OTPInput = ({
     return newOtpValue.join('');
   };
 
-  const focusOnOtpByIndex = ({ index }: { index: number }): void => {
+  const focusOnOtpByIndex = (index: number): void => {
     inputRefs[index]?.current?.focus();
     if (!isReactNative) {
       inputRefs[index]?.current?.select();
@@ -84,7 +83,6 @@ const OTPInput = ({
   useEffect(() => {
     if (inputValue) {
       if (inputValue.length >= otpLength && onOTPFilled) {
-        console.log('OTP FILLED');
         onOTPFilled({ value: inputValue.slice(0, otpLength), name });
       }
     } else if (otpValue.join('').length >= otpLength && onOTPFilled) {
@@ -115,35 +113,42 @@ const OTPInput = ({
         index: currentOtpIndex,
       });
     }
+  };
 
+  const handleOnInput = ({
+    value,
+    currentOtpIndex,
+  }: {
+    value?: string;
+    currentOtpIndex: number;
+  }): void => {
     if (value && value.trim().length === 1) {
-      focusOnOtpByIndex({ index: currentOtpIndex + 1 });
+      focusOnOtpByIndex(++currentOtpIndex);
     }
   };
 
-  const handleOnKeyDown = (
-    event: KeyboardEvent<HTMLInputElement>,
-    currentOtpIndex: number,
-  ): void => {
-    const { key, code } = event;
+  const handleOnKeyDown = ({
+    key,
+    code,
+    event,
+    currentOtpIndex,
+  }: FormInputOnKeyDownEvent & { currentOtpIndex: number }): void => {
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
       if (!isReactNative) {
         event.preventDefault();
       }
       handleOnChange({ value: '', currentOtpIndex });
-
-      focusOnOtpByIndex({ index: currentOtpIndex - 1 });
+      focusOnOtpByIndex(--currentOtpIndex);
     } else if (key === 'ArrowLeft' || code === 'ArrowLeft') {
       if (!isReactNative) {
         event.preventDefault();
       }
-
-      focusOnOtpByIndex({ index: currentOtpIndex - 1 });
+      focusOnOtpByIndex(--currentOtpIndex);
     } else if (key === 'ArrowRight' || code === 'ArrowRight') {
       if (!isReactNative) {
         event.preventDefault();
       }
-      focusOnOtpByIndex({ index: currentOtpIndex + 1 });
+      focusOnOtpByIndex(++currentOtpIndex);
     } else if (key === ' ' || code === 'Space') {
       if (!isReactNative) {
         event.preventDefault();
@@ -173,7 +178,8 @@ const OTPInput = ({
           value={currentValue}
           maxCharacters={otpValue[currentOtpIndex]?.length > 0 ? 1 : undefined}
           onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex })}
-          onKeyDown={(keyboardEvent) => handleOnKeyDown(keyboardEvent, currentOtpIndex)}
+          onInput={(formEvent) => handleOnInput({ ...formEvent, currentOtpIndex })}
+          onKeyDown={(keyboardEvent) => handleOnKeyDown({ ...keyboardEvent, currentOtpIndex })}
           isDisabled={isDisabled}
           placeholder={Array.from(placeholder ?? '')[currentOtpIndex] ?? ''}
           isRequired

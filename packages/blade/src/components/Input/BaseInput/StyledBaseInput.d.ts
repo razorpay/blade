@@ -2,12 +2,14 @@ import type { ClipboardEventHandler, Dispatch, SetStateAction } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import type { FormInputHandleOnEvent } from '~components/Form';
 import type { ActionStates } from '~tokens/theme/theme';
+import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 
 export type StyledBaseInputProps = {
   handleOnFocus?: FormInputHandleOnEvent;
   handleOnChange?: FormInputHandleOnEvent;
   handleOnBlur?: FormInputHandleOnEvent;
-  handleOnKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+  handleOnKeyDown?: FormInputHandleOnKeyDownEvent;
+  handleOnInput?: FormInputHandleOnEvent;
   handleOnPaste?: ClipboardEventHandler<HTMLInputElement>;
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
