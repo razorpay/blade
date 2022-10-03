@@ -186,6 +186,7 @@ const OTPInput = ({
           autoCompleteSuggestionType="oneTimeCode"
           keyboardType={keyboardType}
           keyboardReturnKeyType={keyboardReturnKeyType}
+          validationState={validationState}
         />
       </Box>,
     );

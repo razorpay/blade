@@ -176,9 +176,8 @@ const OTPInputUncontrolledTemplate: ComponentStory<typeof OTPInputComponent> = (
   return (
     <OTPInput
       id="otp"
-      label="Description"
-      placeholder="Enter description"
-      name="description"
+      label="Enter OTP"
+      name="otp"
       onChange={({ name, value }): void => console.log({ name, value })}
     />
   );
@@ -186,20 +185,6 @@ const OTPInputUncontrolledTemplate: ComponentStory<typeof OTPInputComponent> = (
 export const OTPInputUncontrolled = OTPInputUncontrolledTemplate.bind({});
 
 const OTPInputControlledTemplate: ComponentStory<typeof OTPInputComponent> = () => {
-  const [inputValue, setInputValue] = React.useState('');
-
-  return (
-    <OTPInput
-      id="otp"
-      label="Description"
-      placeholder="Enter Description"
-      value={inputValue}
-      name="description"
-      onChange={({ name, value }): void => {
-        console.log(`sending ${name}:${value} to analytics service`);
-        setInputValue(value ?? '');
-      }}
-    />
-  );
+  return <OTPInput id="otp" label="Enter OTP" value="1234" name="otp" />;
 };
 export const OTPInputControlled = OTPInputControlledTemplate.bind({});

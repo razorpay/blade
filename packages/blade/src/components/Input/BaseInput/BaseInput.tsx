@@ -283,7 +283,6 @@ const useInput = ({
   const handleOnInput: FormInputHandleOnEvent = React.useCallback(
     ({ name, value }) => {
       let _value = '';
-      console.log('inside handleOnInput');
       if (getPlatformType() === 'react-native' && typeof value == 'string') {
         _value = value;
       } else if (typeof value !== 'string') {
