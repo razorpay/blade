@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { getStyledBadgeStyles } from './getStyledBadgeStyles';
-import type { StyledBadgeProps } from './StyledBadge.d';
+import type { StyledBadgeProps } from './types';
 
 const StyledBadge = styled.View<StyledBadgeProps>((props) => ({
   ...getStyledBadgeStyles(props),

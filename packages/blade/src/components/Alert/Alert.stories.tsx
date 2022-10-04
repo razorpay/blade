@@ -40,9 +40,7 @@ const Page = (): ReactElement => {
       </Link>
       <Highlight language="tsx">{`import { Alert } from '@razorpay/blade/components' \nimport type { AlertProps } from '@razorpay/blade/components'`}</Highlight>
       <Title>Example</Title>
-      <Subtitle>
-        You can change the properties of this button using the controls in the table below.
-      </Subtitle>
+      <Subtitle>You can change the properties using the controls in the table below.</Subtitle>
       <Primary />
       <Title>Properties</Title>
       <ArgsTable story={PRIMARY_STORY} />

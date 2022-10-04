@@ -1,4 +1,4 @@
-import { makeAccessible } from '../makeAccessible';
+import { makeAccessible } from '..';
 
 describe('makeAccessible', () => {
   it('should return correct accessibility attributes for flat accessibility keys', () => {

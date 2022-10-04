@@ -7,7 +7,10 @@
       "~utils": ["src/utils"],
       "~components/*": ["src/components/*"],
       "~tokens/*": ["src/tokens/*"],
-      "~src/*": ["src/*"],
-    }
+      "~src/*": ["src/*"]
+    },
+    // In Blade side we are targetting `.web` types
+    // We can't add both `.native` & `.web` at once.
+    "moduleSuffixes": [".all", ".web", ""]
   }
 }

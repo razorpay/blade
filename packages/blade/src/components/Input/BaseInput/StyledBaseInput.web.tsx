@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { getBaseInputStyles } from './baseInputStyles';
 
-import type { StyledBaseInputProps } from './StyledBaseInput.d';
+import type { StyledBaseInputProps } from './types';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 
 const StyledBaseNativeInput = styled.input<
@@ -35,6 +35,7 @@ const StyledBaseNativeInput = styled.input<
   ':focus': {
     outline: 'none',
   },
+  cursor: props.disabled ? 'not-allowed' : 'auto',
 }));
 
 const autoCompleteSuggestionTypeMap = {
@@ -70,6 +71,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
       autoCompleteSuggestionType,
       accessibilityProps,
       setCurrentInteraction,
+      numberOfLines,
       type,
       ...props
     },
@@ -82,6 +84,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
         disabled={isDisabled}
         required={isRequired}
         maxLength={maxCharacters}
+        rows={numberOfLines}
         inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
         enterKeyHint={keyboardReturnKeyType === 'default' ? 'enter' : keyboardReturnKeyType}
         autoComplete={
@@ -89,12 +92,14 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
             ? autoCompleteSuggestionTypeMap[autoCompleteSuggestionType]
             : undefined
         }
-        onChange={(event): void => handleOnChange?.({ name, value: event })}
-        onBlur={(event): void => {
+        onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+          handleOnChange?.({ name, value: event })
+        }
+        onBlur={(event: React.ChangeEvent<HTMLInputElement>): void => {
           setCurrentInteraction('default');
           handleOnBlur?.({ name, value: event });
         }}
-        onFocus={(event): void => {
+        onFocus={(event: React.ChangeEvent<HTMLInputElement>): void => {
           setCurrentInteraction('active');
           handleOnFocus?.({ name, value: event });
         }}
