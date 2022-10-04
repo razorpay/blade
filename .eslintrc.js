@@ -16,6 +16,8 @@ module.exports = {
     'no-console': 'off',
     'import/no-cycle': 'error',
     'react-native-a11y/has-accessibility-hint': 'off',
+    // need to turn this off because this rule is also being triggered on the web files as well
+    'react-native-a11y/has-valid-accessibility-descriptors': 'off',
     // we need to disable these rules because with makeAccessible function
     // eslint is not smart enough to statically detect that we set the role
     'jsx-a11y/no-static-element-interactions': 'off',
@@ -128,6 +130,11 @@ module.exports = {
           },
         ],
         'babel/new-cap': ['error', { capIsNewExceptionPattern: '^styled.' }],
+        'no-shadow': 'off',
+        'import/named': 'off',
+        'import/namespace': 'off',
+        'import/default': 'off',
+        'import/no-named-as-default-member': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unused-vars': ['error'],
@@ -142,6 +149,9 @@ module.exports = {
         '@typescript-eslint/unbound-method': 'off',
         '@typescript-eslint/sort-type-union-intersection-members': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
+        'react-native-a11y/has-valid-accessibility-live-region': 'off',
+        '@typescript-eslint/no-shadow': ['off'],
+        '@typescript-eslint/explicit-module-boundary-types': ['off'],
       },
     },
     {

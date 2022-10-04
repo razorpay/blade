@@ -153,8 +153,10 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
                 width="16px"
               >
                 <path
+                  clip-rule="evenodd"
                   d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
                   fill="hsla(220, 27%, 98%, 1)"
+                  fill-rule="evenodd"
                 />
               </svg>
             </div>
@@ -326,8 +328,10 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
                 width="16px"
               >
                 <path
+                  clip-rule="evenodd"
                   d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
                   fill="hsla(214, 18%, 69%, 1)"
+                  fill-rule="evenodd"
                 />
               </svg>
             </div>
@@ -521,8 +525,10 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
                 width="16px"
               >
                 <path
+                  clip-rule="evenodd"
                   d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
                   fill="hsla(220, 27%, 98%, 1)"
+                  fill-rule="evenodd"
                 />
               </svg>
             </div>
@@ -548,46 +554,47 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     </label>
     <div
       class="c8"
-    />
-    <span
-      style="display: flex; flex-direction: row; align-items: center;"
     >
-      <svg
-        aria-hidden="true"
-        fill="none"
-        height="12px"
-        viewBox="0 0 24 24"
-        width="12px"
-      >
-        <path
-          d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-          fill="hsla(8, 73%, 47%, 1)"
-        />
-        <path
-          d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-          fill="hsla(8, 73%, 47%, 1)"
-        />
-        <path
-          clip-rule="evenodd"
-          d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-          fill="hsla(8, 73%, 47%, 1)"
-          fill-rule="evenodd"
-        />
-      </svg>
-      <div
-        class="c9"
-      />
       <span
-        class="c10"
-        color="feedback.text.negative.lowContrast"
-        font-family="text"
-        font-size="50"
-        font-style="italic"
-        id="checkbox-19-errortext-21"
+        style="display: flex; flex-direction: row; align-items: center; word-break: break-all;"
       >
-        This has to be checked
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="12px"
+          viewBox="0 0 24 24"
+          width="12px"
+        >
+          <path
+            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+            fill="hsla(8, 73%, 47%, 1)"
+          />
+          <path
+            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+            fill="hsla(8, 73%, 47%, 1)"
+          />
+          <path
+            clip-rule="evenodd"
+            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+            fill="hsla(8, 73%, 47%, 1)"
+            fill-rule="evenodd"
+          />
+        </svg>
+        <div
+          class="c9"
+        />
+        <span
+          class="c10"
+          color="feedback.text.negative.lowContrast"
+          font-family="text"
+          font-size="50"
+          font-style="italic"
+          id="checkbox-19-errortext-21"
+        >
+          This has to be checked
+        </span>
       </span>
-    </span>
+    </div>
   </div>
 </div>
 `;
@@ -751,8 +758,10 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
                 width="16px"
               >
                 <path
+                  clip-rule="evenodd"
                   d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
                   fill="hsla(220, 27%, 98%, 1)"
+                  fill-rule="evenodd"
                 />
               </svg>
             </div>
@@ -768,8 +777,10 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
                 width="16px"
               >
                 <path
+                  clip-rule="evenodd"
                   d="M12.3536 4.64645C12.5488 4.84171 12.5488 5.15829 12.3536 5.35355L6.85355 10.8536C6.65829 11.0488 6.34171 11.0488 6.14645 10.8536L3.64645 8.35355C3.45118 8.15829 3.45118 7.84171 3.64645 7.64645C3.84171 7.45118 4.15829 7.45118 4.35355 7.64645L6.5 9.79289L11.6464 4.64645C11.8417 4.45118 12.1583 4.45118 12.3536 4.64645Z"
                   fill="hsla(220, 27%, 98%, 1)"
+                  fill-rule="evenodd"
                 />
               </svg>
             </div>

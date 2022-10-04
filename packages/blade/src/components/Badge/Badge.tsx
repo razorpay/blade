@@ -1,12 +1,15 @@
 import type { ReactElement } from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
+import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
 import { useTheme } from '~components/BladeProvider';
-import type { IconComponent } from '~components/Icons';
+import type { IconComponent, IconProps } from '~components/Icons';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
 import Box from '~components/Box';
+import type { Feedback } from '~tokens/theme/theme';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type BadgeProps = {
   /**
@@ -19,7 +22,7 @@ type BadgeProps = {
    *
    * @default 'neutral'
    */
-  variant?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  variant?: Feedback | 'blue';
   /**
    * Sets the contrast of the badge.
    *
@@ -44,6 +47,45 @@ type BadgeProps = {
    * @default 'regular'
    */
   fontWeight?: 'regular' | 'bold';
+};
+
+const isFeedbackVariant = (variant: string): variant is Feedback => {
+  const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'];
+  return feedbackVariants.includes(variant);
+};
+
+type ColorProps = {
+  iconColor: IconProps['color'];
+  textColor: BaseTextProps['color'];
+  backgroundColor: StyledBadgeProps['backgroundColor'];
+  borderColor: StyledBadgeProps['borderColor'];
+};
+
+const getColorProps = ({
+  variant,
+  contrast,
+}: {
+  variant: NonNullable<BadgeProps['variant']>;
+  contrast: NonNullable<BadgeProps['contrast']>;
+}): ColorProps => {
+  const props: ColorProps = {
+    iconColor: 'feedback.icon.neutral.lowContrast',
+    textColor: 'feedback.text.neutral.lowContrast',
+    backgroundColor: 'feedback.background.neutral.lowContrast',
+    borderColor: 'feedback.border.neutral.lowContrast',
+  };
+  if (isFeedbackVariant(variant)) {
+    props.iconColor = `feedback.icon.${variant}.${contrast}Contrast`;
+    props.textColor = `feedback.text.${variant}.${contrast}Contrast`;
+    props.backgroundColor = `feedback.background.${variant}.${contrast}Contrast`;
+    props.borderColor = `feedback.border.${variant}.${contrast}Contrast`;
+  } else {
+    props.iconColor = `badge.icon.${variant}.${contrast}Contrast`;
+    props.textColor = `badge.text.${variant}.${contrast}Contrast`;
+    props.backgroundColor = `badge.background.${variant}.${contrast}Contrast`;
+    props.borderColor = `badge.border.${variant}.${contrast}Contrast`;
+  }
+  return props;
 };
 
 const StyledBaseText = styled(BaseText)(
@@ -71,12 +113,20 @@ const Badge = ({
     throw new Error('[Blade: Badge]: Text as children is required for Badge.');
   }
   const { platform } = useTheme();
-
+  const { backgroundColor, borderColor, iconColor, textColor } = getColorProps({
+    variant,
+    contrast,
+  });
   return (
-    <StyledBadge variant={variant} contrast={contrast} size={size} platform={platform}>
+    <StyledBadge
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}
+      size={size}
+      platform={platform}
+    >
       <Box
-        paddingRight="spacing.2"
-        paddingLeft="spacing.2"
+        paddingRight="spacing.3"
+        paddingLeft="spacing.3"
         display="flex"
         flex={1}
         flexDirection="row"
@@ -85,15 +135,15 @@ const Badge = ({
         overflow="hidden"
       >
         {Icon ? (
-          <Box paddingRight={Boolean(Icon) ? 'spacing.1' : 'spacing.0'} display="flex">
-            <Icon color={`feedback.icon.${variant}.${contrast}Contrast`} size="small" />
+          <Box paddingRight={Boolean(Icon) ? 'spacing.2' : 'spacing.0'} display="flex">
+            <Icon color={iconColor} size="small" />
           </Box>
         ) : null}
         <StyledBaseText
           fontSize={75}
           fontWeight={fontWeight}
           lineHeight="s"
-          color={`feedback.text.${variant}.${contrast}Contrast`}
+          color={textColor}
           textAlign="center"
           truncateAfterLines={1}
         >

@@ -2,12 +2,12 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components/native';
 
-import type { StyledIconButtonProps } from './StyledIconButton';
+import type { StyledIconButtonProps } from './types';
 import { makeAccessible } from '~utils';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
 
 type State = 'active' | 'default';
-type IconColorToken = `feedback.neutral.action.icon.link.${State}.${ColorContrastTypes}Contrast`;
+type IconColorToken = `surface.action.icon.${State}.${ColorContrastTypes}Contrast`;
 
 type StyledPressableProps = {
   contrast: ColorContrastTypes;
@@ -29,7 +29,7 @@ const StyledIconButton = ({
     const contrastType = contrast === 'high' ? 'highContrast' : 'lowContrast';
     const state = isPressed ? 'active' : 'default';
 
-    return `feedback.neutral.action.icon.link.${state}.${contrastType}`;
+    return `surface.action.icon.${state}.${contrastType}`;
   };
   const iconColorToken = getIconColorToken();
 

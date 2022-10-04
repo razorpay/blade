@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import { getCheckboxAccessibilityProps } from './getCheckboxA11yProps';
 import { makeAccessible } from '~utils';
@@ -27,7 +29,7 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
   };
 
   return (
-    <Box display="flex" alignItems="center" gap="spacing.2">
+    <Box display="flex" alignItems="center" gap="spacing.3">
       {isChecked ? (
         <EyeIcon color="action.icon.link.active" size="medium" />
       ) : (
@@ -39,6 +41,7 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
         {...checkboxAccessibilityProps}
         tabIndex={0}
         style={{
+          // @ts-ignore
           color: disabled
             ? theme.colors.action.text.primary.disabled
             : theme.colors.surface.text.normal.lowContrast,
@@ -59,7 +62,7 @@ const AccessibilityInteropDemo = (): React.ReactElement => {
   return (
     <>
       <h3 id="id-group-label">Fruits</h3>
-      <Box marginBottom="spacing.1" />
+      <Box marginBottom="spacing.2" />
       <div {...checkboxGroupA11y}>
         <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
           <li>

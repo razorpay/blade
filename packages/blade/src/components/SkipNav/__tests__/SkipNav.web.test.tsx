@@ -1,6 +1,6 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
-import { SkipNavContent, SkipNavLink } from '../SkipNav.web';
+import { SkipNavContent, SkipNavLink } from '../SkipNav';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 
 describe('<SkipNav />', () => {

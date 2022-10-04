@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import styled from 'styled-components/native';
 import getBaseTextStyles from './getBaseTextStyles';
-import type { BaseTextProps, StyledBaseTextProps } from './BaseTextTypes';
+import type { BaseTextProps, StyledBaseTextProps } from './types';
 import { makeAccessible } from '~utils';
 
 const StyledBaseText = styled.Text<StyledBaseTextProps>(

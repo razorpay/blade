@@ -146,4 +146,24 @@ describe('<Badge />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
   });
+
+  it('should render low contrast blue variant Badge', () => {
+    const label = 'Label';
+    const { toJSON } = renderWithTheme(
+      <Badge variant="blue" contrast="low">
+        {label}
+      </Badge>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render high contrast blue variant Badge', () => {
+    const label = 'Label';
+    const { toJSON } = renderWithTheme(
+      <Badge variant="blue" contrast="high">
+        {label}
+      </Badge>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
 });

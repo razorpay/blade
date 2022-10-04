@@ -15,8 +15,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   }
 >
   <View
-    marginBottom="spacing.1"
-    marginRight="spacing.4"
+    marginBottom="spacing.2"
+    marginRight="spacing.5"
     style={
       Array [
         Object {
@@ -45,15 +45,16 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       }
     >
       <Text
-        color="surface.text.subtle.lowContrast"
+        color="surface.text.subdued.lowContrast"
         fontFamily="text"
         fontSize={75}
+        fontStyle="normal"
         fontWeight="bold"
         lineHeight="s"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 18%, 45%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
@@ -70,6 +71,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               "textAlign": "left",
               "textDecorationLine": "none",
             },
+            Object {},
           ]
         }
       >
@@ -283,7 +285,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               </Text>
             </View>
             <View
-              marginLeft="spacing.6"
+              marginLeft="spacing.7"
               style={
                 Array [
                   Object {
@@ -419,7 +421,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               </Text>
             </View>
             <View
-              marginLeft="spacing.6"
+              marginLeft="spacing.7"
               style={
                 Array [
                   Object {
@@ -555,7 +557,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               </Text>
             </View>
             <View
-              marginLeft="spacing.6"
+              marginLeft="spacing.7"
               style={
                 Array [
                   Object {
@@ -587,8 +589,8 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
   }
 >
   <View
-    marginBottom="spacing.1"
-    marginRight="spacing.4"
+    marginBottom="spacing.2"
+    marginRight="spacing.5"
     style={
       Array [
         Object {
@@ -617,15 +619,16 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       }
     >
       <Text
-        color="surface.text.subtle.lowContrast"
+        color="surface.text.subdued.lowContrast"
         fontFamily="text"
         fontSize={75}
+        fontStyle="normal"
         fontWeight="bold"
         lineHeight="s"
         style={
           Array [
             Object {
-              "color": "hsla(216, 27%, 36%, 1)",
+              "color": "hsla(217, 18%, 45%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
               "fontStyle": "normal",
@@ -642,6 +645,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               "textAlign": "left",
               "textDecorationLine": "none",
             },
+            Object {},
           ]
         }
       >
@@ -855,7 +859,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               </Text>
             </View>
             <View
-              marginLeft="spacing.6"
+              marginLeft="spacing.7"
               style={
                 Array [
                   Object {
@@ -991,7 +995,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               </Text>
             </View>
             <View
-              marginLeft="spacing.6"
+              marginLeft="spacing.7"
               style={
                 Array [
                   Object {
@@ -1127,7 +1131,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
               </Text>
             </View>
             <View
-              marginLeft="spacing.6"
+              marginLeft="spacing.7"
               style={
                 Array [
                   Object {
@@ -1141,7 +1145,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       </View>
     </View>
     <View
-      marginTop="spacing.1"
+      marginTop="spacing.2"
       style={
         Array [
           Object {
@@ -1149,47 +1153,48 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           },
         ]
       }
-    />
-    <View
-      style={
-        Object {
-          "alignItems": "center",
-          "display": "flex",
-          "flexDirection": "row",
-        }
-      }
     >
-      <Text
-        color="surface.text.muted.lowContrast"
-        fontFamily="text"
-        fontSize={50}
-        fontStyle="italic"
-        lineHeight="s"
+      <View
         style={
-          Array [
-            Object {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 11,
-              "fontStyle": "italic",
-              "fontWeight": "400",
-              "lineHeight": 16,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "left",
-              "textDecorationLine": "none",
-            },
-          ]
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          }
         }
       >
-        Select one
-      </Text>
+        <Text
+          color="surface.text.muted.lowContrast"
+          fontFamily="text"
+          fontSize={50}
+          fontStyle="italic"
+          lineHeight="s"
+          style={
+            Array [
+              Object {
+                "color": "hsla(216, 16%, 60%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 11,
+                "fontStyle": "italic",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "left",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Select one
+        </Text>
+      </View>
     </View>
   </View>
 </View>
