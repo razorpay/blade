@@ -40,6 +40,7 @@ const getStories = () => {
     require('../../src/components/Spinner/BaseSpinner/BaseSpinner.stories.tsx'),
     require('../../src/components/Spinner/Spinner/Spinner.stories.tsx'),
     require('../../src/components/Typography/BaseText/BaseText.stories.tsx'),
+    require('../../src/components/Typography/Code/Code.stories.tsx'),
     require('../../src/components/Typography/Heading/Heading.stories.tsx'),
     require('../../src/components/Typography/Text/Text.stories.tsx'),
     require('../../src/components/Typography/Title/Title.stories.tsx'),
