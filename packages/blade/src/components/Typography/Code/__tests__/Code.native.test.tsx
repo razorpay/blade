@@ -1,6 +1,5 @@
 import React from 'react';
 import { Code } from '../Code';
-import { CodeTypesContainer } from '../testing-utils/CodeTypesContainer';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
 describe('<Code />', () => {
@@ -11,12 +10,12 @@ describe('<Code />', () => {
   });
 
   it('should render large Code with different types', () => {
-    const { toJSON } = renderWithTheme(<CodeTypesContainer size="large" />);
+    const { toJSON } = renderWithTheme(<Code size="small">SMALL</Code>);
     expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render medium Code with different types', () => {
-    const { toJSON } = renderWithTheme(<CodeTypesContainer size="medium" />);
+    const { toJSON } = renderWithTheme(<Code size="medium">MEDIUM</Code>);
     expect(toJSON()).toMatchSnapshot();
   });
 });
