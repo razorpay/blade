@@ -64,7 +64,7 @@ export type BaseInputProps = FormInputLabelProps &
      */
     onInput?: FormInputOnEvent;
     /**
-     * The callback function to be invoked when the value of the keydown events
+     * The callback function to be invoked whenever there is a keyDown event
      */
     onKeyDown?: FormInputHandleOnKeyDownEvent;
     /**

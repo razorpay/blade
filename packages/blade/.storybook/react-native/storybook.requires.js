@@ -23,7 +23,6 @@ argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
 
 const getStories = () => {
   return [
-    require('../../src/components/Input/OTPInput/OTPInput.stories.tsx'),
     require('../../src/components/Alert/Alert.stories.tsx'),
     require('../../src/components/Badge/Badge.stories.tsx'),
     require('../../src/components/Button/Button/Button.stories.tsx'),
@@ -31,6 +30,7 @@ const getStories = () => {
     require('../../src/components/Checkbox/CheckboxGroup.stories.tsx'),
     require('../../src/components/Icons/Icons.stories.tsx'),
     require('../../src/components/Input/BaseInput/BaseInput.stories.tsx'),
+    require('../../src/components/Input/OTPInput/OTPInput.stories.tsx'),
     require('../../src/components/Input/PasswordField/PasswordField.stories.tsx'),
     require('../../src/components/Input/TextArea/TextArea.stories.tsx'),
     require('../../src/components/Input/TextInput/TextInput.stories.tsx'),
