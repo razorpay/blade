@@ -162,25 +162,17 @@ const OTPInput = ({
     currentOtpIndex,
   }: FormInputOnKeyDownEvent & { currentOtpIndex: number }): void => {
     if (key === 'Backspace' || code === 'Backspace' || code === 'Delete' || key === 'Delete') {
-      if (!isReactNative) {
-        event.preventDefault();
-      }
+      event.preventDefault?.();
       handleOnChange({ value: '', currentOtpIndex });
       focusOnOtpByIndex(--currentOtpIndex);
     } else if (key === 'ArrowLeft' || code === 'ArrowLeft') {
-      if (!isReactNative) {
-        event.preventDefault();
-      }
+      event.preventDefault?.();
       focusOnOtpByIndex(--currentOtpIndex);
     } else if (key === 'ArrowRight' || code === 'ArrowRight') {
-      if (!isReactNative) {
-        event.preventDefault();
-      }
+      event.preventDefault?.();
       focusOnOtpByIndex(++currentOtpIndex);
     } else if (key === ' ' || code === 'Space') {
-      if (!isReactNative) {
-        event.preventDefault();
-      }
+      event.preventDefault?.();
     }
   };
 
@@ -193,7 +185,7 @@ const OTPInput = ({
         flex={1}
         paddingLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
         key={`${inputId}-${index}`}
-        maxWidth={100}
+        maxWidth={100} // TODO: Get the correct value for this from design
       >
         <BaseInput
           // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -212,7 +204,7 @@ const OTPInput = ({
           }
           isDisabled={isDisabled}
           placeholder={Array.from(placeholder ?? '')[index] ?? ''}
-          isRequired
+          isRequired={true}
           autoCompleteSuggestionType="oneTimeCode"
           keyboardType={keyboardType}
           keyboardReturnKeyType={keyboardReturnKeyType}
@@ -222,7 +214,6 @@ const OTPInput = ({
     );
   }
   return (
-    // TODO: Use proper maxWidth for the component
     <>
       <Box
         display="flex"
@@ -237,6 +228,8 @@ const OTPInput = ({
           {inputs}
         </Box>
       </Box>
+      {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
+      {/*Refer `BaseInput`'s implementation of FormHint which uses similar logic */}
       <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
         <FormHint
           type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
