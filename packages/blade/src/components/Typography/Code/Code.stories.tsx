@@ -1,16 +1,13 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Text } from '../Text';
 import { Code as CodeComponent } from './Code';
-import type { CodeProps } from './Code';
-import { textTypes } from './testing-utils/CodeTypesContainer';
 import Box from '~components/Box';
 
 const CodeStoryMeta: Meta = {
   title: 'Components/Typography/Code',
   component: CodeComponent,
   args: {
-    size: 'medium',
-    type: 'subtle',
+    size: 'small',
     children: 'SENTRY_AUTH_TOKEN',
   },
 };
@@ -25,34 +22,27 @@ const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
 export default CodeStoryMeta;
 export const Code = CodeTemplate.bind({});
 
-const CodeTypeKitchenSink = ({
-  type,
-  size,
-}: {
-  type: CodeProps['type'];
-  size: CodeProps['size'];
-}): JSX.Element => {
+export const SizeMedium = (): JSX.Element => {
+  return <CodeComponent size="medium">mediumCode</CodeComponent>;
+};
+
+export const SizeSmall = (): JSX.Element => {
+  return <CodeComponent size="small">smallCode</CodeComponent>;
+};
+
+export const ParagraphUse = (): JSX.Element => {
   return (
-    <Box key={type} paddingTop="spacing.2">
-      <Text>
-        This{' '}
-        <CodeComponent type={type} size={size}>
-          {'<Code />'}
-        </CodeComponent>{' '}
-        is {type}
-      </Text>
-    </Box>
+    <>
+      <Box>
+        <Text>
+          Lorem ipsum normal text <CodeComponent>CODE</CodeComponent> component
+        </Text>
+      </Box>
+      <Box>
+        <Text>
+          Blade is Super Cool DS <CodeComponent>CODE</CodeComponent> component
+        </Text>
+      </Box>
+    </>
   );
-};
-
-export const SizeMedium = (): JSX.Element[] => {
-  return textTypes.map((codeType) => (
-    <CodeTypeKitchenSink key={codeType} type={codeType} size="medium" />
-  ));
-};
-
-export const SizeLarge = (): JSX.Element[] => {
-  return textTypes.map((codeType) => (
-    <CodeTypeKitchenSink key={codeType} type={codeType} size="large" />
-  ));
 };

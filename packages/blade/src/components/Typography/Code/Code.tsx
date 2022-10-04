@@ -1,23 +1,17 @@
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
 import Box from '~components/Box';
-import type { TextTypes } from '~tokens/theme/theme';
-import { getPlatformType, makeSpace } from '~utils';
+import { getPlatformType, makeSpace, makeTypographySize } from '~utils';
+import type { FontSize } from '~tokens/global/typography';
 
 export type CodeProps = {
   children: string;
   /**
    * Decides the fontSize and padding of Code
    *
-   * @default medium
+   * @default small
    */
-  size?: 'large' | 'medium';
-  /**
-   * Decides the visibility and color of Code
-   *
-   * @default subtle
-   */
-  type?: TextTypes;
+  size?: 'small' | 'medium';
 };
 
 type CodeContainerProps = {
@@ -27,16 +21,26 @@ type CodeContainerProps = {
 const platformType = getPlatformType();
 const isPlatformWeb = platformType === 'browser' || platformType === 'node';
 
+const getCodeFontSize = (size: CodeProps['size']): keyof FontSize => {
+  switch (size) {
+    case 'medium':
+      return 100;
+
+    default:
+      return 75;
+  }
+};
+
 const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
-  const padding =
-    props.size === 'large'
-      ? `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[2])}`
-      : `${makeSpace(props.theme.spacing[1])} ${makeSpace(props.theme.spacing[3])}`;
+  const padding = `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[2])}`;
   return {
     padding,
-    backgroundColor: props.theme.colors.brand.gray[300],
+    backgroundColor: props.theme.colors.brand.gray[400],
     borderRadius: props.theme.border.radius.medium,
     display: isPlatformWeb ? 'inline-block' : undefined,
+    // Removing the line height of container to remove extra surrounding space in background
+    // The text itself will still have the normal lineHeight
+    lineHeight: makeTypographySize(props.theme.typography.lineHeights.s),
   };
 });
 
@@ -66,13 +70,13 @@ const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
  * </Box>
  * ```
  */
-const Code = ({ children, size = 'medium', type = 'subtle' }: CodeProps): JSX.Element => {
+const Code = ({ children, size = 'small' }: CodeProps): JSX.Element => {
   return (
     <CodeContainer size={size} as={isPlatformWeb ? 'span' : undefined}>
       <BaseText
-        color={`surface.text.${type}.lowContrast`}
+        color="surface.text.subtle.lowContrast"
         fontFamily="code"
-        fontSize={size === 'large' ? 100 : 75}
+        fontSize={getCodeFontSize(size)}
         as={isPlatformWeb ? 'code' : undefined}
       >
         {children}
