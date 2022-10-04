@@ -6,6 +6,7 @@ export * from './Checkbox';
 export * from './Icons';
 export * from './Input/TextInput';
 export * from './Input/TextArea';
+export * from './Input/OTPInput';
 export * from './Link';
 export * from './LiveAnnouncer';
 export * from './Radio';
