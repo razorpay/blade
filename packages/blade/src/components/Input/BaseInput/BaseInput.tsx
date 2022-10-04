@@ -176,6 +176,10 @@ export type BaseInputProps = FormInputLabelProps &
      * Sets the textarea's number of lines
      */
     numberOfLines?: 2 | 3 | 4 | 5;
+    /**
+     * Sets the accessibility label for the input
+     */
+    accessibilityLabel?: string;
   };
 
 const autoCompleteSuggestionTypeValues = [
@@ -412,6 +416,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       trailingFooterSlot,
       numberOfLines,
       id,
+      accessibilityLabel,
     },
     ref,
   ) => {
@@ -450,6 +455,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         successTextId,
         helpTextId,
       }),
+      label: accessibilityLabel,
     });
 
     const willRenderHintText = Boolean(helpText) || Boolean(successText) || Boolean(errorText);

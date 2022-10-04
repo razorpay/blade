@@ -156,33 +156,34 @@ const OTPInput = ({
     }
   };
 
-  for (let currentOtpIndex = 0; currentOtpIndex < otpLength; currentOtpIndex++) {
-    const currentValue = inputValue
-      ? otpToArray(inputValue)[currentOtpIndex] || ''
-      : otpValue[currentOtpIndex] || '';
+  for (let index = 0; index < otpLength; index++) {
+    const currentValue = inputValue ? otpToArray(inputValue)[index] || '' : otpValue[index] || '';
     const ref = React.createRef<HTMLInputElement>();
     inputRefs.push(ref);
     inputs.push(
       <Box
         flex={1}
-        paddingLeft={currentOtpIndex == 0 ? 'spacing.0' : 'spacing.3'}
-        key={`${inputId}-${currentOtpIndex}`}
+        paddingLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
+        key={`${inputId}-${index}`}
         maxWidth={100}
       >
         <BaseInput
           // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus={autoFocus && currentOtpIndex === 0}
+          autoFocus={autoFocus && index === 0}
+          accessibilityLabel={`${index === 0 ? label : ''} character ${index + 1}`}
           label=""
-          id={`${inputId}-${currentOtpIndex}`}
+          id={`${inputId}-${index}`}
           textAlign="center"
           ref={ref}
           value={currentValue}
-          maxCharacters={otpValue[currentOtpIndex]?.length > 0 ? 1 : undefined}
-          onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex })}
-          onInput={(formEvent) => handleOnInput({ ...formEvent, currentOtpIndex })}
-          onKeyDown={(keyboardEvent) => handleOnKeyDown({ ...keyboardEvent, currentOtpIndex })}
+          maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
+          onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex: index })}
+          onInput={(formEvent) => handleOnInput({ ...formEvent, currentOtpIndex: index })}
+          onKeyDown={(keyboardEvent) =>
+            handleOnKeyDown({ ...keyboardEvent, currentOtpIndex: index })
+          }
           isDisabled={isDisabled}
-          placeholder={Array.from(placeholder ?? '')[currentOtpIndex] ?? ''}
+          placeholder={Array.from(placeholder ?? '')[index] ?? ''}
           isRequired
           autoCompleteSuggestionType="oneTimeCode"
           keyboardType={keyboardType}
