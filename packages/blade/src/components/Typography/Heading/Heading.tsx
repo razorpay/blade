@@ -17,6 +17,10 @@ type HeadingCommonProps = {
 
 type HeadingNormalVariant = HeadingCommonProps & {
   variant?: Exclude<HeadingVariant, 'subheading'>;
+  /**
+   *
+   * @default small
+   */
   size?: HeadingSize;
   weight?: keyof Theme['typography']['fonts']['weight'];
 };

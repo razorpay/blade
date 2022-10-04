@@ -57,6 +57,11 @@ const HeadingStoryMeta: Meta<HeadingProps<{ variant: 'regular' | 'subheading' }>
     weight: 'bold',
     contrast: 'low',
   },
+  argTypes: {
+    size: {
+      description: 'Decides size of the Heading',
+    },
+  },
   parameters: {
     docs: {
       page: () => <Page />,
