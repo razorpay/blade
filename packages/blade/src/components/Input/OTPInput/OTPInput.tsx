@@ -39,6 +39,9 @@ export type OTPInputProps = Pick<
 
 const isReactNative = getPlatformType() === 'react-native';
 
+/**
+ *  Converts a string value of otp to array if passed otherwise returns an array of 6 empty strings
+ */
 const otpToArray = (code?: string): string[] => code?.split('') ?? Array(6).fill('');
 
 const OTPInput = ({
@@ -65,6 +68,28 @@ const OTPInput = ({
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
 
+  useEffect(() => {
+    // Effect for calling `onChange` callback
+    onChange?.({ name, value: otpValue.join('') });
+  }, [otpValue, onChange, name]);
+
+  useEffect(() => {
+    // Effect for calling `onOTPFilled` callback
+    if (inputValue && inputValue.length >= otpLength) {
+      // callback for when the OTPInput is controlled and inputValue reaches the same or greater length as the otpLength
+      onOTPFilled?.({ value: inputValue.slice(0, otpLength), name });
+    } else if (!inputValue && otpValue.join('').length >= otpLength) {
+      // callback for when the OTPInput is uncontrolled and otpValue stored in state reaches the same or greater length as the otpLength
+      onOTPFilled?.({ value: otpValue.slice(0, otpLength).join(''), name });
+    }
+  }, [otpValue, otpLength, name, inputValue, onOTPFilled]);
+
+  /**
+   * Changes the value of the otp at a given index and updates the otpValue stored in state
+   *
+   * @param {{ value: string; index: number }} { value, index }
+   * @returns {string} updated otpValue
+   */
   const setOtpValueByIndex = ({ value, index }: { value: string; index: number }): string => {
     const newOtpValue = Array.from(otpValue);
     newOtpValue[index] = value;
@@ -72,28 +97,18 @@ const OTPInput = ({
     return newOtpValue.join('');
   };
 
+  /**
+   * Sets focus to the desired otp input by index
+   *
+   * @param {number} index the index of the otp input to be focused
+   */
   const focusOnOtpByIndex = (index: number): void => {
     inputRefs[index]?.current?.focus();
     if (!isReactNative) {
+      // React Native doesn't support imperatively selecting the value of input
       inputRefs[index]?.current?.select();
     }
   };
-
-  useEffect(() => {
-    if (onChange) {
-      onChange({ name, value: otpValue.join('') });
-    }
-  }, [otpValue, onChange, name]);
-
-  useEffect(() => {
-    if (inputValue) {
-      if (inputValue.length >= otpLength && onOTPFilled) {
-        onOTPFilled({ value: inputValue.slice(0, otpLength), name });
-      }
-    } else if (otpValue.join('').length >= otpLength && onOTPFilled) {
-      onOTPFilled({ value: otpValue.slice(0, otpLength).join(''), name });
-    }
-  }, [otpValue, otpLength, name, inputValue, onOTPFilled]);
 
   const handleOnChange = ({
     value,
@@ -103,16 +118,23 @@ const OTPInput = ({
     currentOtpIndex: number;
   }): void => {
     if (value && value === ' ') {
+      // React native doesn't support `event.preventDefault()` hence have to add this check to ensure that empty space is not allowed
       return;
     }
 
     if (inputValue && inputValue.length > 0) {
+      // When OTPInput is controlled, set the otpValue as the consumer passed `inputValue` and append the value on current index based on user's input.
+      // User's input will not reflect on the otp but will trigger `onChange` callback with the user's input appended so that the consumer can take appropriate action.
       const newOtpValue = Array.from(inputValue);
       newOtpValue[currentOtpIndex] = value ?? '';
       setOtpValue(newOtpValue);
     } else if (value && value.trim().length > 1) {
+      // When the entered value is more that 1 character (when value is pasted), set the otpValue to the newly received value.
+      // Could have used `onPaste` for web to achieve this but 1. React Native doesn't support onPaste and 2. Safari's autofill on web doesn't trigger onPaste
       setOtpValue(Array.from(value));
     } else if (otpValue[currentOtpIndex] !== value?.trim()) {
+      // Set the value at the current index to the entered value
+      // only as long as its not the same as the already existing value (this prevents `onChange` being triggered unnecessarily)
       setOtpValueByIndex({
         value: value?.trim() ?? '',
         index: currentOtpIndex,
@@ -127,6 +149,7 @@ const OTPInput = ({
     value?: string;
     currentOtpIndex: number;
   }): void => {
+    // Moves focus to next input whenever a value is entered in the current input
     if (value && value.trim().length === 1) {
       focusOnOtpByIndex(++currentOtpIndex);
     }
