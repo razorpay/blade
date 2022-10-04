@@ -33,7 +33,7 @@ export type OTPInputProps = Pick<
 
 const isReactNative = getPlatformType() === 'react-native';
 
-const otpToArray = (code?: string): string[] => code?.split('') ?? [];
+const otpToArray = (code?: string): string[] => code?.split('') ?? Array(6).fill('');
 
 const OTPInput = ({
   autoFocus,
@@ -107,7 +107,7 @@ const OTPInput = ({
       setOtpValue(newOtpValue);
     } else if (value && value.trim().length > 1) {
       setOtpValue(Array.from(value));
-    } else {
+    } else if (otpValue[currentOtpIndex] !== value?.trim()) {
       setOtpValueByIndex({
         value: value?.trim() ?? '',
         index: currentOtpIndex,
