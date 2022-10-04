@@ -67,7 +67,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
   };
 
   if (variant === 'regular') {
-    if (size === 'small') {
+    if (!size || size === 'small') {
       props.fontSize = 200;
       props.lineHeight = '2xl';
       props.as = isPlatformWeb ? 'h6' : undefined;
@@ -84,6 +84,11 @@ const getProps = <T extends { variant: HeadingVariant }>({
     if (weight === 'regular') {
       throw new Error(`[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`);
     }
+    if (size) {
+      throw new Error(
+        `[Blade: Heading]: size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop`,
+      );
+    }
     props.fontSize = 75;
     props.lineHeight = 's';
     props.as = isPlatformWeb ? 'h6' : undefined;
@@ -94,7 +99,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
 
 export const Heading = <T extends { variant: HeadingVariant }>({
   variant = 'regular',
-  size = 'small',
+  size, // Not setting default value since the `size` should be undefined with variant="subheading"
   type = 'normal',
   weight = 'bold',
   contrast = 'low',

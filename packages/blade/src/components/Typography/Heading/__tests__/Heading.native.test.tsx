@@ -85,4 +85,22 @@ describe('<Heading />', () => {
       }
     }
   });
+
+  it('should throw error when variant is "subheading" but weight "regular" is passed', () => {
+    try {
+      const displayText = 'Get Started With Payment Gateway';
+      renderWithTheme(
+        // @ts-expect-error testing failure case when size is passed with variant='subheading'
+        <Heading type="normal" variant="subheading" size="small">
+          {displayText}
+        </Heading>,
+      );
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        expect(error.message).toMatchInlineSnapshot(
+          `"[Blade: Heading]: size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop"`,
+        );
+      }
+    }
+  });
 });

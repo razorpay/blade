@@ -93,6 +93,24 @@ describe('<Heading />', () => {
     }
   });
 
+  it('should throw error when variant is "subheading" but size is defined', () => {
+    try {
+      const displayText = 'Get Started With Payment Gateway';
+      renderWithTheme(
+        // @ts-expect-error testing failure case when size is passed with variant='subheading'
+        <Heading type="normal" variant="subheading" size="large">
+          {displayText}
+        </Heading>,
+      );
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        expect(error.message).toMatchInlineSnapshot(
+          `"[Blade: Heading]: size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop"`,
+        );
+      }
+    }
+  });
+
   it('should be accessible', async () => {
     const { container } = renderWithTheme(<Heading>Text content</Heading>);
     await assertAccessible(container);
