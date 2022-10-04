@@ -4,7 +4,7 @@
 
 feat(Typography): make `size` prop consistent for `Heading`, `Title`, and `Text`
 
-> **Note**
+> **Warning**
 >
 > Breaking Change!
 > This is a breaking change for apps that are using `Title` or `Heading` component from blade. Rest of the apps can upgrade without any migrations.
