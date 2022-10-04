@@ -10,8 +10,8 @@ import {
 } from '@storybook/addon-docs';
 import { Highlight, Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
-import type { VisuallyHiddenProps } from './VisuallyHidden';
 import { VisuallyHidden as VisuallyHiddenComponent } from './VisuallyHidden';
+import type { VisuallyHiddenProps } from './types';
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
 

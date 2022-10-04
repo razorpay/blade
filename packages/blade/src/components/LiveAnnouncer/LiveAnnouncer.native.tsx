@@ -1,5 +1,5 @@
 import { AccessibilityInfo } from 'react-native';
-import type { Assertiveness } from './LiveAnnouncer.d';
+import type { Assertiveness } from './types';
 
 export function announce(message: string, _assertiveness: Assertiveness = 'assertive'): void {
   AccessibilityInfo.announceForAccessibility(message);

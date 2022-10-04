@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { G as GNative } from 'react-native-svg';
-import type { GProps } from './G.d';
+import type { GProps } from './types';
 
 const G = ({ clipPath, fill, children }: GProps): ReactElement => {
   return (

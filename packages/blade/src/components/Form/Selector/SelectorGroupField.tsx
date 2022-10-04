@@ -1,8 +1,8 @@
 import React from 'react';
 import type { CSSObject } from 'styled-components';
-import type { AriaRoles } from '~utils';
 import { getPlatformType, makeAccessible } from '~utils';
 import Box from '~components/Box';
+import type { AriaRoles } from '~utils';
 
 type SelectorGroupFieldProps = {
   children: React.ReactNode;

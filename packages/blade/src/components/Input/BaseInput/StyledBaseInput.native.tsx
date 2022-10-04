@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import type { TextInput } from 'react-native';
-import type { StyledBaseInputProps } from './StyledBaseInput.d';
+import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
 
 type StyledComponentAutoCompleteAndroid =
@@ -110,6 +110,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       accessibilityProps,
       currentInteraction,
       setCurrentInteraction,
+      type,
       numberOfLines,
       isTextArea,
       ...props
@@ -156,6 +157,7 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
               ] as StyledComponentAutoCompleteAndroid)
             : undefined
         }
+        secureTextEntry={type === 'password'}
         isTextArea={isTextArea}
         textContentType={
           autoCompleteSuggestionType

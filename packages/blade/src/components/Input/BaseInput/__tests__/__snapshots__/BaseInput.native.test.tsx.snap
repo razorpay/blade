@@ -205,6 +205,7 @@ exports[`<BaseInput /> should render 1`] = `
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
+        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -231,7 +232,6 @@ exports[`<BaseInput /> should render 1`] = `
             },
           ]
         }
-        type="text"
       />
     </View>
     <View
@@ -580,6 +580,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         onEndEditing={[Function]}
         onFocus={[Function]}
         placeholder="First Last"
+        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -607,7 +608,6 @@ exports[`<BaseInput /> should render with icons 1`] = `
           ]
         }
         trailingIcon={[Function]}
-        type="text"
       />
       <View
         alignItems="center"

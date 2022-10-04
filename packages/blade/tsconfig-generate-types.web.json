@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig-generate-types.json",
+  "exclude": [
+    "**/**.test.ts",
+    "**/**.test.tsx",
+    "__tests__",
+    "**/**.stories.tsx",
+    "**/**.stories.internal.tsx",
+    "**/**.native.ts",
+    "**/**.native.tsx"
+  ],
+  "compilerOptions": {
+    "declarationDir": "build/types/web",
+    "moduleSuffixes": [".web", ""]
+  }
+}

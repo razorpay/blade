@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { ReactNode } from 'react';
 import type {
@@ -39,7 +40,7 @@ export type BaseInputProps = FormInputLabelProps &
      *
      * @default text
      */
-    type?: 'text' | 'telephone' | 'email' | 'url' | 'numeric' | 'search';
+    type?: 'text' | 'telephone' | 'email' | 'url' | 'numeric' | 'search' | 'password';
     /**
      * Used to set the default value of input field when it's uncontrolled
      */
@@ -511,7 +512,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             <StyledBaseInput
               as={isReactNative ? undefined : as}
               id={inputId}
-              ref={ref}
+              ref={ref as any}
               name={name}
               type={type}
               defaultValue={defaultValue}

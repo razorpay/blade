@@ -9,14 +9,12 @@ import Animated, {
 } from 'react-native-reanimated';
 import { motion as spinnerMotion } from './spinnerTokens';
 import { useTheme } from '~components/BladeProvider';
-import { getIn, makeMotionTime } from '~utils';
+import { castNativeType, getIn, makeMotionTime } from '~utils';
 import Box from '~components/Box';
 
 const SpinningBox = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { theme } = useTheme();
-  const duration = (makeMotionTime(
-    getIn(theme.motion, spinnerMotion.duration),
-  ) as unknown) as number;
+  const duration = castNativeType(makeMotionTime(getIn(theme.motion, spinnerMotion.duration)));
   const easing = getIn(theme.motion, spinnerMotion.easing) as EasingFunctionFactory;
 
   const rotation = useSharedValue(0);

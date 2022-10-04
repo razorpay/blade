@@ -1,5 +1,5 @@
 import type { CSSObject } from 'styled-components';
-import type { StyledBaseTextProps } from './BaseTextTypes';
+import type { StyledBaseTextProps } from './types';
 import { getIn, makeTypographySize } from '~utils';
 
 const getBaseTextStyles = ({

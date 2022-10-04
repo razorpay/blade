@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import type { ReactElement, MouseEvent } from 'react';
+import type { ReactElement } from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
@@ -13,12 +14,11 @@ import {
   textPadding,
   buttonPadding,
 } from './buttonTokens';
-
 import type { Theme } from '~components/BladeProvider';
-import type { BaseTextProps } from '~components/Typography/BaseText';
 import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
+import type { Platform } from '~utils';
 import { makeAccessible, usePrevious, makeSize, makeSpace, makeBorderSize, getIn } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
@@ -27,13 +27,17 @@ import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import Box from '~components/Box';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  }>;
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
   accessibilityLabel?: string;

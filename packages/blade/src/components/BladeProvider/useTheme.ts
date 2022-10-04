@@ -1,7 +1,6 @@
 import { useContext, createContext } from 'react';
 import type { UseColorScheme } from '../../utils/useColorScheme';
 import type { TypographyPlatforms } from '../../tokens/global/typography';
-import emptyTheme from './emptyTheme';
 import type { Theme } from './';
 
 export type ThemeContext = UseColorScheme & {
@@ -10,7 +9,8 @@ export type ThemeContext = UseColorScheme & {
 };
 
 export const ThemeContext = createContext<ThemeContext>({
-  theme: emptyTheme,
+  // @ts-expect-error set null
+  theme: null,
   colorScheme: 'light',
   platform: 'onDesktop',
   setColorScheme: () => null,
@@ -18,6 +18,9 @@ export const ThemeContext = createContext<ThemeContext>({
 
 const useTheme = (): ThemeContext => {
   const themeContext = useContext<ThemeContext>(ThemeContext);
+  if (!themeContext.theme) {
+    throw new Error(`[@razorpay/blade:BladeProvider]: BladeProvider is missing theme`);
+  }
   if (themeContext === undefined) {
     throw new Error(`[@razorpay/blade:BladeProvider]: useTheme must be used within BladeProvider`);
   }
