@@ -48,7 +48,7 @@ const OTPInput = ({
   name,
   onChange,
   onOTPFilled,
-  otpLength = 4,
+  otpLength = 6,
   placeholder,
   successText,
   validationState,
@@ -195,14 +195,14 @@ const OTPInput = ({
   }
   return (
     // TODO: Use proper maxWidth for the component
-    <Box>
+    <>
       <Box
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
         alignItems={isLabelLeftPositioned ? 'center' : undefined}
         position="relative"
       >
-        <FormLabel as="label" position={labelPosition} htmlFor="otp-input-0">
+        <FormLabel as="label" position={labelPosition}>
           {label}
         </FormLabel>
         <Box display="flex" flexDirection="row">
@@ -220,7 +220,7 @@ const OTPInput = ({
           successTextId={successTextId}
         />
       </Box>
-    </Box>
+    </>
   );
 };
 

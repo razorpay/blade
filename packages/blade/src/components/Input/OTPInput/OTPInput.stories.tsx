@@ -31,7 +31,7 @@ export default {
     label: 'Enter OTP',
     labelPosition: 'top',
     validationState: 'none',
-    otpLength: 4,
+    otpLength: 6,
     helpText: undefined,
     errorText: undefined,
     successText: undefined,
