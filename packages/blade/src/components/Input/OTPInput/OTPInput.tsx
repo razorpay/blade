@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { getHintType } from '../BaseInput/BaseInput';
+import type { FormInputOnEvent } from '../../Form';
+import { FormHint, FormLabel } from '../../Form';
+import { useFormId } from '../../Form/useFormId';
+import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import Box from '~components/Box';
 import { getPlatformType } from '~utils';
-import type { FormInputOnEvent } from '~components/Form';
-import { FormHint, FormLabel } from '~components/Form';
-import { useFormId } from '~components/Form/useFormId';
-import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 
 export type OTPInputProps = Pick<
   BaseInputProps,
