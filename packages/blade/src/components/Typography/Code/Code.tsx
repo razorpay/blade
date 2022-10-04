@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { BaseText } from '../BaseText';
 import Box from '~components/Box';
 import { getPlatformType, makeSpace, makeTypographySize } from '~utils';
+import type { FontSize } from '~tokens/global/typography';
 
 export type CodeProps = {
   children: string;
@@ -19,6 +20,16 @@ type CodeContainerProps = {
 
 const platformType = getPlatformType();
 const isPlatformWeb = platformType === 'browser' || platformType === 'node';
+
+const getCodeFontSize = (size: CodeProps['size']): keyof FontSize => {
+  switch (size) {
+    case 'medium':
+      return 100;
+
+    default:
+      return 75;
+  }
+};
 
 const CodeContainer = styled(Box)<CodeContainerProps>((props) => {
   const padding = `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[2])}`;
@@ -65,7 +76,7 @@ const Code = ({ children, size = 'small' }: CodeProps): JSX.Element => {
       <BaseText
         color="surface.text.subtle.lowContrast"
         fontFamily="code"
-        fontSize={size === 'small' ? 75 : 100}
+        fontSize={getCodeFontSize(size)}
         as={isPlatformWeb ? 'code' : undefined}
       >
         {children}
