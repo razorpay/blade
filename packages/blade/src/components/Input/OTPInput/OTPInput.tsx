@@ -25,9 +25,15 @@ export type OTPInputProps = Pick<
   | 'keyboardReturnKeyType'
   | 'keyboardType'
   | 'placeholder'
-  | 'id'
 > & {
+  /**
+   * Determines the number of input fields to show for the OTP
+   * @default 6
+   */
   otpLength?: 4 | 6;
+  /**
+   * The callback function to be invoked when all the values of the OTPInput are filled
+   */
   onOTPFilled?: FormInputOnEvent;
 };
 
@@ -39,7 +45,6 @@ const OTPInput = ({
   autoFocus,
   errorText,
   helpText,
-  id,
   isDisabled,
   keyboardReturnKeyType,
   keyboardType = 'decimal',
@@ -58,7 +63,7 @@ const OTPInput = ({
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
   const isLabelLeftPositioned = labelPosition === 'left';
-  const { inputId, helpTextId, errorTextId, successTextId } = useFormId(id);
+  const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
 
   const setOtpValueByIndex = ({ value, index }: { value: string; index: number }): string => {
     const newOtpValue = Array.from(otpValue);

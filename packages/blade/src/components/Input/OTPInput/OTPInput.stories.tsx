@@ -16,7 +16,6 @@ export default {
   title: 'Components/Input/OTPInput',
   component: OTPInputComponent,
   args: {
-    id: 'otp-input',
     placeholder: '••••••',
     name: 'otp',
     isDisabled: false,
@@ -37,11 +36,6 @@ export default {
     successText: undefined,
   },
   argTypes: {
-    id: {
-      table: {
-        category: propsCategory.BASE_PROPS,
-      },
-    },
     placeholder: {
       table: {
         category: propsCategory.BASE_PROPS,
@@ -129,7 +123,9 @@ export default {
         <>
           <Title />
           <Subtitle>
-            The OTPInput component lets you enter long form text which spans over multiple lines.
+            A one-time password (OTP), also known as a one-time PIN, one-time authorization code
+            (OTAC) or dynamic password, is a password that is valid for only one login session or a
+            transaction. These are a group of inputs and can be either 4 or 6 characters long.
           </Subtitle>
           <Title>Usage</Title>
           <Highlight language="tsx">{`import { OTPInput } from '@razorpay/blade/components' \nimport type { OTPInputProps } from '@razorpay/blade/components'`}</Highlight>
@@ -151,6 +147,12 @@ const OTPInputTemplate: ComponentStory<typeof OTPInputComponent> = ({ ...args })
 export const OTPInput = OTPInputTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 OTPInput.storyName = 'OTPInput';
+
+export const OTPInput4Fields = OTPInputTemplate.bind({});
+OTPInput4Fields.storyName = 'OTPInput with 4 Fields';
+OTPInput4Fields.args = {
+  otpLength: 4,
+};
 
 export const OTPInputHelpText = OTPInputTemplate.bind({});
 OTPInputHelpText.storyName = 'OTPInput with Help Text';
@@ -175,7 +177,6 @@ OTPInputSuccess.args = {
 const OTPInputUncontrolledTemplate: ComponentStory<typeof OTPInputComponent> = () => {
   return (
     <OTPInput
-      id="otp"
       label="Enter OTP"
       name="otp"
       onChange={({ name, value }): void => console.log({ name, value })}
@@ -185,6 +186,6 @@ const OTPInputUncontrolledTemplate: ComponentStory<typeof OTPInputComponent> = (
 export const OTPInputUncontrolled = OTPInputUncontrolledTemplate.bind({});
 
 const OTPInputControlledTemplate: ComponentStory<typeof OTPInputComponent> = () => {
-  return <OTPInput id="otp" label="Enter OTP" value="1234" name="otp" />;
+  return <OTPInput label="Enter OTP" value="123456" name="otp" />;
 };
 export const OTPInputControlled = OTPInputControlledTemplate.bind({});

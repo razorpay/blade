@@ -16,7 +16,7 @@ type CommonProps = {
 };
 
 type LabelProps = CommonProps & {
-  htmlFor: string;
+  htmlFor?: string;
   as: 'label';
 };
 
