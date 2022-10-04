@@ -299,11 +299,11 @@ const useInput = ({
   );
 
   const handleOnKeyDown: FormInputHandleOnKeyDownEvent = React.useCallback(
-    ({ name, event }) => {
+    ({ name, key, code, event }) => {
       onKeyDown?.({
         name,
-        key: event.key,
-        code: event.code,
+        key,
+        code,
         event,
       });
     },
