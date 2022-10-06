@@ -24,6 +24,19 @@ describe('<OTPInput />', () => {
     expect(allInputs[0]).toHaveFocus();
   });
 
+  it('should have hidden input for form submissions', () => {
+    const label = 'Enter OTP';
+    const name = 'otpInput';
+    const value = '123456';
+    const { getByLabelText } = renderWithTheme(
+      <OTPInput label={label} name={name} value="123456" />,
+    );
+    const input = getByLabelText(label);
+    expect(input).toHaveAttribute('hidden', '');
+    expect(input).toHaveAttribute('name', name);
+    expect(input).toHaveAttribute('value', value);
+  });
+
   it('should be disabled when isDisabled flag is passed', () => {
     const label = 'Enter OTP';
     const { getAllByLabelText } = renderWithTheme(<OTPInput label={label} isDisabled />);
