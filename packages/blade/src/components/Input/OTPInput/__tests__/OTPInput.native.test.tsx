@@ -70,7 +70,7 @@ describe('<OTPInput />', () => {
     expect(onOTPFilled).toHaveBeenLastCalledWith({ name: 'otp', value: otp });
   });
 
-  it('should set value as an uncontrolled input', async () => {
+  it('should set value as an uncontrolled input', () => {
     const label = 'Enter OTP';
     const otp = '123456';
 
