@@ -68,11 +68,6 @@ const OTPInput = ({
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
 
   useEffect(() => {
-    // Effect for calling `onChange` callback
-    onChange?.({ name, value: otpValue.join('') });
-  }, [otpValue, onChange, name]);
-
-  useEffect(() => {
     // Effect for calling `onOTPFilled` callback
     if (inputValue && inputValue.length >= otpLength) {
       // callback for when the OTPInput is controlled and inputValue reaches the same or greater length as the otpLength
@@ -127,17 +122,20 @@ const OTPInput = ({
       const newOtpValue = Array.from(inputValue);
       newOtpValue[currentOtpIndex] = value ?? '';
       setOtpValue(newOtpValue);
+      onChange?.({ name, value: newOtpValue.join('') });
     } else if (value && value.trim().length > 1) {
       // When the entered value is more that 1 character (when value is pasted), set the otpValue to the newly received value.
       // Could have used `onPaste` for web to achieve this but 1. React Native doesn't support onPaste and 2. Safari's autofill on web doesn't trigger onPaste
       setOtpValue(Array.from(value));
+      onChange?.({ name, value: value.trim().slice(0, otpLength) });
     } else if (otpValue[currentOtpIndex] !== value?.trim()) {
       // Set the value at the current index to the entered value
       // only as long as its not the same as the already existing value (this prevents `onChange` being triggered unnecessarily)
-      setOtpValueByIndex({
+      const newValue = setOtpValueByIndex({
         value: value?.trim() ?? '',
         index: currentOtpIndex,
       });
+      onChange?.({ name, value: newValue });
     }
   };
 
@@ -206,7 +204,8 @@ const OTPInput = ({
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus && index === 0}
             accessibilityLabel={`${index === 0 ? label : ''} character ${index + 1}`}
-            label=""
+            label={label}
+            hideLabelText={true}
             id={`${inputId}-${index}`}
             textAlign="center"
             ref={ref}
@@ -224,6 +223,10 @@ const OTPInput = ({
             keyboardType={keyboardType}
             keyboardReturnKeyType={keyboardReturnKeyType}
             validationState={validationState}
+            successText={successText}
+            errorText={errorText}
+            helpText={helpText}
+            hideFormHint={true}
           />
         </Box>,
       );

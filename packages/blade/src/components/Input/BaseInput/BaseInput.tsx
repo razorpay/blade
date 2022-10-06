@@ -181,6 +181,14 @@ export type BaseInputProps = FormInputLabelProps &
      * Sets the accessibility label for the input
      */
     accessibilityLabel?: string;
+    /**
+     * Hides the label text
+     */
+    hideLabelText?: boolean;
+    /**
+     * Hides the form hint text
+     */
+    hideFormHint?: boolean;
   };
 
 const autoCompleteSuggestionTypeValues = [
@@ -418,6 +426,8 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       numberOfLines,
       id,
       accessibilityLabel,
+      hideLabelText,
+      hideFormHint,
     },
     ref,
   ) => {
@@ -483,24 +493,26 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
           alignItems={isLabelLeftPositioned ? 'center' : undefined}
           position="relative"
         >
-          <Box
-            display="flex"
-            flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
-            justifyContent="space-between"
-            alignSelf={isTextArea ? 'flex-start' : undefined}
-            marginTop={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
-            marginBottom={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
-          >
-            <FormLabel
-              as="label"
-              necessityIndicator={necessityIndicator}
-              position={labelPosition}
-              htmlFor={inputId}
+          {!hideLabelText && (
+            <Box
+              display="flex"
+              flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
+              justifyContent="space-between"
+              alignSelf={isTextArea ? 'flex-start' : undefined}
+              marginTop={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
+              marginBottom={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
             >
-              {label}
-            </FormLabel>
-            {trailingHeaderSlot?.(inputValue)}
-          </Box>
+              <FormLabel
+                as="label"
+                necessityIndicator={necessityIndicator}
+                position={labelPosition}
+                htmlFor={inputId}
+              >
+                {label}
+              </FormLabel>
+              {trailingHeaderSlot?.(inputValue)}
+            </Box>
+          )}
           <BaseInputWrapper
             isTextArea={isTextArea}
             isDisabled={isDisabled}
@@ -553,24 +565,26 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
           </BaseInputWrapper>
         </Box>
         {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
-        <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
-          <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
-          >
-            <FormHint
-              type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
-              helpText={helpText}
-              errorText={errorText}
-              successText={successText}
-              helpTextId={helpTextId}
-              errorTextId={errorTextId}
-              successTextId={successTextId}
-            />
-            {trailingFooterSlot?.(inputValue)}
+        {!hideFormHint && (
+          <Box marginLeft={isLabelLeftPositioned ? 136 : 0}>
+            <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
+            >
+              <FormHint
+                type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
+                helpText={helpText}
+                errorText={errorText}
+                successText={successText}
+                helpTextId={helpTextId}
+                errorTextId={errorTextId}
+                successTextId={successTextId}
+              />
+              {trailingFooterSlot?.(inputValue)}
+            </Box>
           </Box>
-        </Box>
+        )}
       </Box>
     );
   },
