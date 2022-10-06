@@ -62,7 +62,6 @@ const OTPInput = ({
   validationState,
   value: inputValue,
 }: OTPInputProps): React.ReactElement => {
-  const inputs = [];
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
   const isLabelLeftPositioned = labelPosition === 'left';
@@ -176,43 +175,62 @@ const OTPInput = ({
     }
   };
 
-  for (let index = 0; index < otpLength; index++) {
-    const currentValue = inputValue ? otpToArray(inputValue)[index] || '' : otpValue[index] || '';
-    const ref = React.createRef<HTMLInputElement>();
-    inputRefs.push(ref);
-    inputs.push(
-      <Box
-        flex={1}
-        paddingLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
-        key={`${inputId}-${index}`}
-        maxWidth={100} // TODO: Get the correct value for this from design
-      >
-        <BaseInput
-          // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus={autoFocus && index === 0}
-          accessibilityLabel={`${index === 0 ? label : ''} character ${index + 1}`}
-          label=""
-          id={`${inputId}-${index}`}
-          textAlign="center"
-          ref={ref}
-          value={currentValue}
-          maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
-          onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex: index })}
-          onInput={(formEvent) => handleOnInput({ ...formEvent, currentOtpIndex: index })}
-          onKeyDown={(keyboardEvent) =>
-            handleOnKeyDown({ ...keyboardEvent, currentOtpIndex: index })
-          }
-          isDisabled={isDisabled}
-          placeholder={Array.from(placeholder ?? '')[index] ?? ''}
-          isRequired={true}
-          autoCompleteSuggestionType="oneTimeCode"
-          keyboardType={keyboardType}
-          keyboardReturnKeyType={keyboardReturnKeyType}
-          validationState={validationState}
+  const getHiddenInput = (): React.ReactNode => {
+    if (!isReactNative) {
+      return (
+        <input
+          hidden={true}
+          id={inputId}
+          name={name}
+          value={inputValue ?? otpValue.join('') ?? ''}
         />
-      </Box>,
-    );
-  }
+      );
+    }
+    return null;
+  };
+
+  const getOTPInputFields = (): React.ReactNode => {
+    const inputs = [];
+    for (let index = 0; index < otpLength; index++) {
+      const currentValue = inputValue ? otpToArray(inputValue)[index] || '' : otpValue[index] || '';
+      const ref = React.createRef<HTMLInputElement>();
+      inputRefs.push(ref);
+      inputs.push(
+        <Box
+          flex={1}
+          paddingLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
+          key={`${inputId}-${index}`}
+          maxWidth={100} // TODO: Get the correct value for this from design
+        >
+          <BaseInput
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus={autoFocus && index === 0}
+            accessibilityLabel={`${index === 0 ? label : ''} character ${index + 1}`}
+            label=""
+            id={`${inputId}-${index}`}
+            textAlign="center"
+            ref={ref}
+            value={currentValue}
+            maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
+            onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex: index })}
+            onInput={(formEvent) => handleOnInput({ ...formEvent, currentOtpIndex: index })}
+            onKeyDown={(keyboardEvent) =>
+              handleOnKeyDown({ ...keyboardEvent, currentOtpIndex: index })
+            }
+            isDisabled={isDisabled}
+            placeholder={Array.from(placeholder ?? '')[index] ?? ''}
+            isRequired={true}
+            autoCompleteSuggestionType="oneTimeCode"
+            keyboardType={keyboardType}
+            keyboardReturnKeyType={keyboardReturnKeyType}
+            validationState={validationState}
+          />
+        </Box>,
+      );
+    }
+    return inputs;
+  };
+
   return (
     <>
       <Box
@@ -221,11 +239,12 @@ const OTPInput = ({
         alignItems={isLabelLeftPositioned ? 'center' : undefined}
         position="relative"
       >
-        <FormLabel as="label" position={labelPosition}>
+        <FormLabel as="label" position={labelPosition} htmlFor={inputId}>
           {label}
         </FormLabel>
         <Box display="flex" flexDirection="row">
-          {inputs}
+          {getHiddenInput()}
+          {getOTPInputFields()}
         </Box>
       </Box>
       {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}

@@ -82,6 +82,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
     return (
       <StyledBaseNativeInput
         ref={ref}
+        name={name}
         type={type === 'telephone' ? 'tel' : type}
         disabled={isDisabled}
         required={isRequired}
