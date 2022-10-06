@@ -39,7 +39,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
 </div>
 `;
 
-exports[`<Code /> should render medium Code with different types 1`] = `
+exports[`<Code /> should render medium Code 1`] = `
 .c1 {
   color: hsla(216,27%,36%,1);
   font-family: monospace;
@@ -78,7 +78,7 @@ exports[`<Code /> should render medium Code with different types 1`] = `
 </div>
 `;
 
-exports[`<Code /> should render small Code with different types 1`] = `
+exports[`<Code /> should render small Code 1`] = `
 .c1 {
   color: hsla(216,27%,36%,1);
   font-family: monospace;
