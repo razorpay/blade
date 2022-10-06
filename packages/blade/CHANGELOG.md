@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 2.5.1
+
+### Patch Changes
+
+- 0ce8390: fix(BaseInput): use cursor not-allowed for disabled inputs
+
 ## 2.5.0
 
 ### Minor Changes
