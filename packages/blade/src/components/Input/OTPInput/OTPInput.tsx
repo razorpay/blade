@@ -44,6 +44,20 @@ const isReactNative = getPlatformType() === 'react-native';
  */
 const otpToArray = (code?: string): string[] => code?.split('') ?? Array(6).fill('');
 
+/**
+ * OTPInput component can be used for accepting OTPs sent to users for authentication/verification purposes.
+ *
+ * ## Usage
+ *
+ * ```tsx
+ *   <OTPInput
+ *     label="Enter OTP"
+ *     name="otpInput"
+ *     onChange={({ name, value }): void => console.log({ name, value })}
+ *     onOTPFilled={({ name, value }): void => console.log({ name, value })}
+ *   />
+ * ```
+ */
 const OTPInput = ({
   autoFocus,
   errorText,
