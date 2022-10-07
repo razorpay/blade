@@ -16,7 +16,7 @@ export default {
   title: 'Components/Input/OTPInput',
   component: OTPInputComponent,
   args: {
-    placeholder: '••••••',
+    placeholder: '',
     name: 'otp',
     isDisabled: false,
     value: undefined,
