@@ -46,7 +46,7 @@ This doc talks about the API decisions for `OTPInput`.
 | isDisabled | `boolean` | No | `false` | Marks the input field as disabled. It'll also set `aria-disabled` to true and hence the input field will loose keyboard focus. |
 | autoFocus | `boolean` | No | `false` | The autofocus global attribute is a Boolean attribute indicating that an element should be focused on page load. [Web Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus), [Native Reference](https://reactnative.dev/docs/textinput#autofocus) |
 | keyboardReturnKeyType. [Check this table for full reference](#keyboard-return-key-types-for-web-and-native) | `default`, `go`, `done`, `next`, `search`, `send` | No | Closest based on the `type` attribute | Determines how the return key should look on the keyboard on mobile devices or virtual keyboard |
-
+| keyboardType | `text`, `search`, `telephone`, `email`, `url`, `decimal` | No | `decimal` | Keyboard to be shown for specific input types |
 
 ## Keyboard return key types for web and native
 
