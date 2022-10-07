@@ -46,6 +46,19 @@
 
 - e16c154: feat(PasswordInput)!: rename from `PasswordField` to `PasswordInput`
 
+  #### Migration
+  
+  > **Warning**
+  >
+  > Breaking change!
+  
+  Rename occurences of `PasswordField` to `PasswordInput`, no changes in the API.
+  
+  ```diff
+  - PasswordField
+  + PasswordInput
+  ```
+
 ### Minor Changes
 
 - eeba339: feat(Code): add `<Code />` component :shipit:
