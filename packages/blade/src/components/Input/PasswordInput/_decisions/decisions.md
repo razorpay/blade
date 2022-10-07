@@ -1,30 +1,30 @@
-# PasswordField
+# PasswordInput
 
-PasswordField is an input field for entering passwords. The input is masked by default. On mobile devices the last typed letter is shown for a brief moment. The masking can be toggled using an optional reveal button.
+PasswordInput is an input field for entering passwords. The input is masked by default. On mobile devices the last typed letter is shown for a brief moment. The masking can be toggled using an optional reveal button.
 
-This document outlines the API of `PasswordField` component.
+This document outlines the API of `PasswordInput` component.
 
-<img src="./passwordfield-thumbnail.png" width="380" alt="" />
+<img src="./passwordinput-thumbnail.png" width="380" alt="" />
 
 ## Design
 
-- [Figma - PasswordField](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A110176)
+- [Figma - PasswordInput](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A110176)
 
 ## API
 
-`PasswordField` is a wrapper over `BaseInput` fine tuned for entering passwords. Majority of API decisions are covered in `BaseInput` and `TextInput` decisions doc.
+`PasswordInput` is a wrapper over `BaseInput` fine tuned for entering passwords. Majority of API decisions are covered in `BaseInput` and `TextInput` decisions doc.
 
 Sample usage:
 
 ```jsx
-import { PasswordField } from '@razorpay/blade';
+import { PasswordInput } from '@razorpay/blade';
 
-<PasswordField id="password" name="password" label="Label" />;
+<PasswordInput id="password" name="password" label="Label" />;
 ```
 
-### PasswordField
+### PasswordInput
 
-We'll expose an `PasswordField` component with the following API:
+We'll expose an `PasswordInput` component with the following API:
 
 | Prop                       | Type                                     | Default     | Description                                                                                                         | Required |
 | -------------------------- | ---------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------- | -------- |

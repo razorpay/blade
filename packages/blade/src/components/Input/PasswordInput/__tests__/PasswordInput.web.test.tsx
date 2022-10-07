@@ -2,13 +2,13 @@ import userEvent from '@testing-library/user-event';
 
 import type { ReactElement } from 'react';
 import { useState } from 'react';
-import { PasswordField } from '..';
+import { PasswordInput } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 
-describe('<PasswordField />', () => {
+describe('<PasswordInput />', () => {
   it('should render', () => {
-    const { container } = renderWithTheme(<PasswordField label="Enter password" />);
+    const { container } = renderWithTheme(<PasswordInput label="Enter password" />);
 
     expect(container).toMatchSnapshot();
   });
@@ -16,7 +16,7 @@ describe('<PasswordField />', () => {
   it('should display success validation state', () => {
     const label = 'Enter password';
     const { getByText, getByLabelText } = renderWithTheme(
-      <PasswordField
+      <PasswordInput
         label={label}
         validationState="success"
         successText="Success"
@@ -36,7 +36,7 @@ describe('<PasswordField />', () => {
   it('should display error validation state', () => {
     const label = 'Enter password';
     const { getByText, getByLabelText } = renderWithTheme(
-      <PasswordField
+      <PasswordInput
         label={label}
         validationState="error"
         errorText="Error"
@@ -56,7 +56,7 @@ describe('<PasswordField />', () => {
   it('should display help text', () => {
     const label = 'Enter password';
     const { getByText, getByLabelText } = renderWithTheme(
-      <PasswordField label={label} errorText="Error" helpText="Help" successText="Success" />,
+      <PasswordInput label={label} errorText="Error" helpText="Help" successText="Success" />,
     );
 
     const input = getByLabelText(label);
@@ -70,7 +70,7 @@ describe('<PasswordField />', () => {
   it('should be focussed when autoFocus flag is passed', () => {
     const label = 'Enter password';
     // eslint-disable-next-line jsx-a11y/no-autofocus
-    const { getByLabelText } = renderWithTheme(<PasswordField label={label} autoFocus />);
+    const { getByLabelText } = renderWithTheme(<PasswordInput label={label} autoFocus />);
 
     const input = getByLabelText(label);
     expect(input).toHaveFocus();
@@ -78,7 +78,7 @@ describe('<PasswordField />', () => {
 
   it('should be disabled when isDisabled flag is passed', () => {
     const label = 'Enter password';
-    const { getByLabelText } = renderWithTheme(<PasswordField label={label} isDisabled />);
+    const { getByLabelText } = renderWithTheme(<PasswordInput label={label} isDisabled />);
 
     const input = getByLabelText(label);
     expect(input).toBeDisabled();
@@ -91,7 +91,7 @@ describe('<PasswordField />', () => {
     const userPassword = 'Divyanshu$123';
 
     const { getByLabelText } = renderWithTheme(
-      <PasswordField label={label} name="password" onChange={onChange} />,
+      <PasswordInput label={label} name="password" onChange={onChange} />,
     );
 
     const input = getByLabelText(label);
@@ -109,7 +109,7 @@ describe('<PasswordField />', () => {
     const onBlur = jest.fn();
 
     renderWithTheme(
-      <PasswordField
+      <PasswordInput
         label={label}
         name="password"
         defaultValue={userPassword}
@@ -131,7 +131,7 @@ describe('<PasswordField />', () => {
     const userPassword = 'Divyanshu$123';
 
     const { getByLabelText, getByRole } = renderWithTheme(
-      <PasswordField label={label} name="password" defaultValue={userPassword} />,
+      <PasswordInput label={label} name="password" defaultValue={userPassword} />,
     );
 
     const input = getByLabelText(label);
@@ -151,7 +151,7 @@ describe('<PasswordField />', () => {
     const valueFinal = 'Divyanshu$123';
 
     const { getByLabelText } = renderWithTheme(
-      <PasswordField label={label} defaultValue={valueInitial} />,
+      <PasswordInput label={label} defaultValue={valueInitial} />,
     );
 
     const input = getByLabelText(label);
@@ -171,7 +171,7 @@ describe('<PasswordField />', () => {
       const [value, setValue] = useState<string | undefined>(valueInitial);
 
       return (
-        <PasswordField label={label} value={value} onChange={({ value }) => setValue(value)} />
+        <PasswordInput label={label} value={value} onChange={({ value }) => setValue(value)} />
       );
     };
 
@@ -190,7 +190,7 @@ describe('<PasswordField />', () => {
     const userPassword = 'Divyanshu$123';
 
     const { getByLabelText, getByRole } = renderWithTheme(
-      <PasswordField label={label} name="password" defaultValue={userPassword} />,
+      <PasswordInput label={label} name="password" defaultValue={userPassword} />,
     );
 
     const input = getByLabelText(label);
@@ -207,7 +207,7 @@ describe('<PasswordField />', () => {
 
   it('should pass a11y', async () => {
     const { getByLabelText, getByRole } = renderWithTheme(
-      <PasswordField
+      <PasswordInput
         label="Enter password"
         isRequired
         helpText="Use a strong password"

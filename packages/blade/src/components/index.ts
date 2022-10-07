@@ -5,7 +5,7 @@ export * from './Button';
 export * from './Checkbox';
 export * from './Icons';
 export * from './Input/TextInput';
-export * from './Input/PasswordField';
+export * from './Input/PasswordInput';
 export * from './Input/TextArea';
 export * from './Input/OTPInput';
 export * from './Link';
