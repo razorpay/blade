@@ -10,7 +10,7 @@ import { getPlatformType, isEmpty } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import Box from '~components/Box';
 
-// Users should use PasswordField for input type password
+// Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
 
 export type TextInputProps = Pick<
@@ -58,7 +58,7 @@ export type TextInputProps = Pick<
   icon?: IconComponent;
 
   /**
-   * Type of Input Field to be rendered. Use `PasswordField` for type `password`
+   * Type of Input Field to be rendered. Use `PasswordInput` for type `password`
    *
    * @default text
    */

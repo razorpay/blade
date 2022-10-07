@@ -7,7 +7,7 @@ import Box from '~components/Box';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
 
-type PasswordFieldExtraProps = {
+type PasswordInputExtraProps = {
   /**
    * Shows a reveal button to toggle password visibility
    *
@@ -43,7 +43,7 @@ type PasswordFieldExtraProps = {
   >;
 };
 
-type PasswordFieldProps = Pick<
+type PasswordInputProps = Pick<
   BaseInputProps,
   | 'label'
   | 'labelPosition'
@@ -65,9 +65,9 @@ type PasswordFieldProps = Pick<
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
 > &
-  PasswordFieldExtraProps;
+  PasswordInputExtraProps;
 
-const PasswordField = ({
+const PasswordInput = ({
   label,
   labelPosition = 'top',
   showRevealButton = true,
@@ -89,7 +89,7 @@ const PasswordField = ({
   autoFocus = false,
   keyboardReturnKeyType = 'done',
   autoCompleteSuggestionType,
-}: PasswordFieldProps): ReactElement => {
+}: PasswordInputProps): ReactElement => {
   const [isRevealed, setIsRevealed] = useState(false);
   const isEnabled = !isDisabled;
 
@@ -149,4 +149,4 @@ const PasswordField = ({
   );
 };
 
-export { PasswordFieldProps, PasswordField };
+export { PasswordInputProps, PasswordInput };
