@@ -2,19 +2,19 @@ import { fireEvent } from '@testing-library/react-native';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 
-import { PasswordField } from '..';
+import { PasswordInput } from '..';
 import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 
-describe('<PasswordField />', () => {
+describe('<PasswordInput />', () => {
   it('should render', () => {
-    const { toJSON } = renderWithTheme(<PasswordField label="Enter password" />);
+    const { toJSON } = renderWithTheme(<PasswordInput label="Enter password" />);
 
     expect(toJSON()).toMatchSnapshot();
   });
 
   it('should display success validation state', () => {
     const { getByText } = renderWithTheme(
-      <PasswordField
+      <PasswordInput
         label="Enter password"
         validationState="success"
         successText="Success"
@@ -28,7 +28,7 @@ describe('<PasswordField />', () => {
 
   it('should display error validation state', () => {
     const { getByText } = renderWithTheme(
-      <PasswordField
+      <PasswordInput
         label="Enter password"
         validationState="error"
         errorText="Error"
@@ -42,7 +42,7 @@ describe('<PasswordField />', () => {
 
   it('should display help text', () => {
     const { getByText } = renderWithTheme(
-      <PasswordField
+      <PasswordInput
         label="Enter password"
         errorText="Error"
         successText="Success"
@@ -57,7 +57,7 @@ describe('<PasswordField />', () => {
     const placeholder = 'Password';
     const { getByPlaceholderText } = renderWithTheme(
       // eslint-disable-next-line jsx-a11y/no-autofocus
-      <PasswordField label="Enter password" placeholder={placeholder} autoFocus />,
+      <PasswordInput label="Enter password" placeholder={placeholder} autoFocus />,
     );
 
     const input = getByPlaceholderText(placeholder);
@@ -70,7 +70,7 @@ describe('<PasswordField />', () => {
   it('should be disabled when isDisabled flag is passed', () => {
     const placeholder = 'Password';
     const { getByPlaceholderText } = renderWithTheme(
-      <PasswordField label="Enter password" placeholder={placeholder} isDisabled />,
+      <PasswordInput label="Enter password" placeholder={placeholder} isDisabled />,
     );
 
     const input = getByPlaceholderText(placeholder);
@@ -83,7 +83,7 @@ describe('<PasswordField />', () => {
     const userPassword = 'Divyanshu$123';
 
     const { getByPlaceholderText } = renderWithTheme(
-      <PasswordField
+      <PasswordInput
         label="Enter password"
         placeholder={placeholder}
         name="password"
@@ -105,7 +105,7 @@ describe('<PasswordField />', () => {
     const userPassword = 'Divyanshu$123';
 
     const { getByPlaceholderText } = renderWithTheme(
-      <PasswordField
+      <PasswordInput
         label="Enter password"
         placeholder={placeholder}
         name="password"
@@ -133,7 +133,7 @@ describe('<PasswordField />', () => {
       const [value, setValue] = useState<string | undefined>(valueInitial);
 
       return (
-        <PasswordField
+        <PasswordInput
           label="Enter password"
           value={value}
           onChange={({ value }) => setValue(value)}
@@ -155,7 +155,7 @@ describe('<PasswordField />', () => {
     const userPassword = 'Divyanshu$123';
 
     const { getByPlaceholderText, getByRole, getByLabelText } = renderWithTheme(
-      <PasswordField
+      <PasswordInput
         label="Enter password"
         placeholder={placeholder}
         defaultValue={userPassword}
@@ -180,7 +180,7 @@ describe('<PasswordField />', () => {
     // todo: tests should be updated for improved a11y after https://github.com/razorpay/blade/issues/696
     const placeholder = 'Password';
     const { getByPlaceholderText } = renderWithTheme(
-      <PasswordField
+      <PasswordInput
         label="Enter name"
         placeholder={placeholder}
         isRequired
