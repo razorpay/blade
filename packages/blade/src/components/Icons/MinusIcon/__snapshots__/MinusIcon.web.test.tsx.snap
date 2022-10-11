@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MinusIcon /> should render MinusIcon 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    fill="none"
+    height="20px"
+    viewBox="0 0 16 2"
+    width="20px"
+  >
+    <path
+      clip-rule="evenodd"
+      d="M0 1C0 0.447715 0.447715 0 1 0H15C15.5523 0 16 0.447715 16 1C16 1.55228 15.5523 2 15 2H1C0.447715 2 0 1.55228 0 1Z"
+      fill="hsla(216, 27%, 36%, 1)"
+      fill-rule="evenodd"
+    />
+  </svg>
+</div>
+`;
