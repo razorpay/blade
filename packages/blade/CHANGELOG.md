@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.1.0
+
+### Minor Changes
+
+- c3d9d2f: feat: add OTPInput component
+
 ## 3.0.0
 
 ### Major Changes
@@ -47,13 +53,13 @@
 - e16c154: feat(PasswordInput)!: rename from `PasswordField` to `PasswordInput`
 
   #### Migration
-  
+
   > **Warning**
   >
   > Breaking change!
-  
+
   Rename occurences of `PasswordField` to `PasswordInput`, no changes in the API.
-  
+
   ```diff
   - PasswordField
   + PasswordInput
