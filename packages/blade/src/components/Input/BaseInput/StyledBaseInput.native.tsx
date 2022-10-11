@@ -102,6 +102,8 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       handleOnFocus,
       handleOnChange,
       handleOnBlur,
+      handleOnInput,
+      handleOnKeyDown,
       keyboardType = 'text',
       keyboardReturnKeyType,
       autoCompleteSuggestionType,
@@ -132,8 +134,18 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         onBlur={(): void => {
           setCurrentInteraction('default');
         }}
-        onChangeText={(text): void => handleOnChange?.({ name, value: text })}
+        onChangeText={(text): void => {
+          handleOnChange?.({ name, value: text });
+          handleOnInput?.({ name, value: text });
+        }}
         onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
+        onKeyPress={(event): void => {
+          handleOnKeyDown?.({
+            name,
+            key: event?.nativeEvent.key,
+            event: (event as unknown) as React.KeyboardEvent<HTMLInputElement>, // TODO: handle platform specific type
+          });
+        }}
         // @ts-expect-error styled-components have limited keyboard types('default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad') compared to the actual supported types so ignoring the error.
         // source: https://reactnative.dev/docs/textinput/#keyboardtype
         keyboardType={KeyboardTypeToNativeValuesMap[keyboardType]}
