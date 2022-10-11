@@ -1,3 +1,5 @@
+import type { KeyboardEvent } from 'react';
+
 export type FormInputHandleOnEvent = ({
   name,
   value,
@@ -7,6 +9,20 @@ export type FormInputHandleOnEvent = ({
 }) => void;
 
 export type FormInputOnEvent = ({ name, value }: { name?: string; value?: string }) => void;
+
+export type FormInputHandleOnKeyDownEvent = ({
+  name,
+  key,
+  code,
+  event,
+}: FormInputOnKeyDownEvent) => void;
+
+export type FormInputOnKeyDownEvent = {
+  name?: string;
+  key?: string;
+  code?: string;
+  event: KeyboardEvent<HTMLInputElement>;
+};
 
 export type FormInputValidationProps = {
   /**
