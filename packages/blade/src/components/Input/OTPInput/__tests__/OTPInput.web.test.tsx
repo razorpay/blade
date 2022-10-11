@@ -116,6 +116,26 @@ describe('<OTPInput />', () => {
       expect(input).toHaveValue(Array.from(otp)[index]);
     });
   });
+  it('should change focus with arrow keys and tab key', async () => {
+    const user = userEvent.setup();
+    const label = 'Enter OTP';
+
+    const { getAllByLabelText } = renderWithTheme(
+      // eslint-disable-next-line jsx-a11y/no-autofocus
+      <OTPInput label={label} name="otp" autoFocus={true} />,
+    );
+
+    const allInputs = getAllByLabelText(/character/);
+    expect(allInputs[0]).toHaveFocus();
+    await user.keyboard('{ArrowRight}');
+    expect(allInputs[1]).toHaveFocus();
+    await user.keyboard('{ArrowLeft}');
+    expect(allInputs[0]).toHaveFocus();
+    await user.keyboard('{Tab}');
+    expect(allInputs[1]).toHaveFocus();
+    await user.keyboard('{Shift>1}{Tab}');
+    expect(allInputs[0]).toHaveFocus();
+  });
 
   it('should pass a11y', async () => {
     const { getAllByLabelText } = renderWithTheme(
