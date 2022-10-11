@@ -116,6 +116,7 @@ describe('<OTPInput />', () => {
       expect(input).toHaveValue(Array.from(otp)[index]);
     });
   });
+
   it('should change focus with arrow keys and tab key', async () => {
     const user = userEvent.setup();
     const label = 'Enter OTP';
@@ -135,6 +136,28 @@ describe('<OTPInput />', () => {
     expect(allInputs[1]).toHaveFocus();
     await user.keyboard('{Shift>1}{Tab}');
     expect(allInputs[0]).toHaveFocus();
+  });
+
+  it('should change focus to previous tab on backspace and delete keys', async () => {
+    const user = userEvent.setup();
+    const label = 'Enter OTP';
+    const otp = '123456';
+
+    const { getAllByLabelText } = renderWithTheme(
+      // eslint-disable-next-line jsx-a11y/no-autofocus
+      <OTPInput label={label} name="otp" />,
+    );
+
+    const allInputs = getAllByLabelText(/character/);
+    await user.type(allInputs[0], otp);
+    await user.click(allInputs[5]);
+    expect(allInputs[5]).toHaveFocus();
+    await user.keyboard('{Backspace}');
+    expect(allInputs[5]).toHaveValue('');
+    expect(allInputs[4]).toHaveFocus();
+    await user.keyboard('{Delete}');
+    expect(allInputs[4]).toHaveValue('');
+    expect(allInputs[3]).toHaveFocus();
   });
 
   it('should pass a11y', async () => {
