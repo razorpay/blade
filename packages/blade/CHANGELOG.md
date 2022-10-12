@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.1.1
+
+### Patch Changes
+
+- aee7e57: feat(Icons): add MinusIcon
+
 ## 3.1.0
 
 ### Minor Changes
