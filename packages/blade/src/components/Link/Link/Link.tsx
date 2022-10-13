@@ -43,6 +43,7 @@ type LinkAnchorVariantProps = LinkPropsWithOrWithoutIcon & {
   target?: string;
   rel?: string;
   isDisabled?: undefined;
+  type?: never;
 };
 
 /*
@@ -54,6 +55,7 @@ type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
   href?: undefined;
   target?: undefined;
   rel?: undefined;
+  type?: 'button' | 'reset' | 'submit';
 };
 
 /*
@@ -72,11 +74,12 @@ const Link = ({
   target,
   rel,
   accessibilityLabel,
+  type,
 }: LinkProps): ReactElement => {
   return (
     <BaseLink
       {...(icon ? { icon, children } : { children })}
-      {...(variant === 'anchor' ? { variant, href, target, rel } : { variant, isDisabled })}
+      {...(variant === 'anchor' ? { variant, href, target, rel } : { variant, isDisabled, type })}
       iconPosition={iconPosition}
       onClick={onClick}
       accessibilityLabel={accessibilityLabel}
