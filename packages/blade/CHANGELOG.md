@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.1.2
+
+### Patch Changes
+
+- ba0c74d: fix: use the correct maxWidth for OTPInput
+
 ## 3.1.1
 
 ### Patch Changes
