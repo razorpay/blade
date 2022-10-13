@@ -154,16 +154,16 @@ Array [
     >
       <View
         flex={1}
-        maxWidth={100}
-        paddingLeft="spacing.0"
+        marginLeft="spacing.0"
+        maxWidth={40}
         style={
           Array [
             Object {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-              "maxWidth": 100,
-              "paddingLeft": 0,
+              "marginLeft": 0,
+              "maxWidth": 40,
             },
           ]
         }
@@ -290,16 +290,16 @@ Array [
       </View>
       <View
         flex={1}
-        maxWidth={100}
-        paddingLeft="spacing.3"
+        marginLeft="spacing.3"
+        maxWidth={40}
         style={
           Array [
             Object {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-              "maxWidth": 100,
-              "paddingLeft": 8,
+              "marginLeft": 8,
+              "maxWidth": 40,
             },
           ]
         }
@@ -426,16 +426,16 @@ Array [
       </View>
       <View
         flex={1}
-        maxWidth={100}
-        paddingLeft="spacing.3"
+        marginLeft="spacing.3"
+        maxWidth={40}
         style={
           Array [
             Object {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-              "maxWidth": 100,
-              "paddingLeft": 8,
+              "marginLeft": 8,
+              "maxWidth": 40,
             },
           ]
         }
@@ -562,16 +562,16 @@ Array [
       </View>
       <View
         flex={1}
-        maxWidth={100}
-        paddingLeft="spacing.3"
+        marginLeft="spacing.3"
+        maxWidth={40}
         style={
           Array [
             Object {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-              "maxWidth": 100,
-              "paddingLeft": 8,
+              "marginLeft": 8,
+              "maxWidth": 40,
             },
           ]
         }
@@ -698,16 +698,16 @@ Array [
       </View>
       <View
         flex={1}
-        maxWidth={100}
-        paddingLeft="spacing.3"
+        marginLeft="spacing.3"
+        maxWidth={40}
         style={
           Array [
             Object {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-              "maxWidth": 100,
-              "paddingLeft": 8,
+              "marginLeft": 8,
+              "maxWidth": 40,
             },
           ]
         }
@@ -834,16 +834,16 @@ Array [
       </View>
       <View
         flex={1}
-        maxWidth={100}
-        paddingLeft="spacing.3"
+        marginLeft="spacing.3"
+        maxWidth={40}
         style={
           Array [
             Object {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
-              "maxWidth": 100,
-              "paddingLeft": 8,
+              "marginLeft": 8,
+              "maxWidth": 40,
             },
           ]
         }

@@ -8,6 +8,7 @@ import { useFormId } from '../../Form/useFormId';
 import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import Box from '~components/Box';
 import { getPlatformType } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 export type OTPInputProps = Pick<
   BaseInputProps,
@@ -80,6 +81,7 @@ const OTPInput = ({
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
+  const { platform } = useTheme();
 
   useEffect(() => {
     // Effect for calling `onOTPFilled` callback
@@ -210,9 +212,9 @@ const OTPInput = ({
       inputs.push(
         <Box
           flex={1}
-          paddingLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
+          marginLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
           key={`${inputId}-${index}`}
-          maxWidth={100} // TODO: Get the correct value for this from design
+          maxWidth={platform === 'onDesktop' ? 36 : 40} // TODO: use size tokens
         >
           <BaseInput
             // eslint-disable-next-line jsx-a11y/no-autofocus
