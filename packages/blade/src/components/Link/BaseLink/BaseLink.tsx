@@ -55,6 +55,7 @@ type BaseLinkAnchorVariantProps = BaseLinkPropsWithOrWithoutIcon & {
   target?: string;
   rel?: string;
   isDisabled?: undefined;
+  type?: never;
 };
 
 /*
@@ -66,6 +67,7 @@ type BaseLinkButtonVariantProps = BaseLinkPropsWithOrWithoutIcon & {
   href?: undefined;
   target?: undefined;
   rel?: undefined;
+  type?: 'button' | 'reset' | 'submit';
 };
 
 /*
@@ -185,6 +187,7 @@ const BaseLink = ({
   icon: Icon,
   iconPosition = 'left',
   isDisabled = false,
+  type,
   onClick,
   variant = 'anchor',
   href,
@@ -255,6 +258,7 @@ const BaseLink = ({
       rel={rel ?? defaultRel}
       onClick={handleOnClick}
       disabled={disabled}
+      type={type}
       cursor={cursor}
       focusRingColor={focusRingColor}
       motionDuration={motionDuration}
