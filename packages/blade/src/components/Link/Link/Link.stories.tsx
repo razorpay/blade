@@ -143,7 +143,6 @@ export const LinkButton = LinkTemplate.bind({});
 LinkButton.storyName = 'Link Button';
 LinkButton.args = {
   variant: 'button',
-  type: 'submit',
 };
 LinkButton.parameters = {
   docs: {
