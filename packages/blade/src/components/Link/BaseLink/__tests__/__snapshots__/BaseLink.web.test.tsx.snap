@@ -167,6 +167,7 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
     class="c0"
     cursor="pointer"
     role="button"
+    type="button"
   >
     <div
       class="c1 content-container"
@@ -258,6 +259,7 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
     class="c0"
     cursor="pointer"
     role="button"
+    type="button"
   >
     <div
       class="c1 content-container"
@@ -350,6 +352,7 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
     cursor="not-allowed"
     disabled=""
     role="button"
+    type="button"
   >
     <div
       class="c1 content-container"

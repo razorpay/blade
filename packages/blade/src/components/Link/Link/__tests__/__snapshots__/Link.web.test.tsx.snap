@@ -73,6 +73,7 @@ exports[`<Link /> should render button variant of link 1`] = `
     class="c0"
     cursor="pointer"
     role="button"
+    type="button"
   >
     <div
       class="c1 content-container"
@@ -165,6 +166,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
     cursor="not-allowed"
     disabled=""
     role="button"
+    type="button"
   >
     <div
       class="c1 content-container"
