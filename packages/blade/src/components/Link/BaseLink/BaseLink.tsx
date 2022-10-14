@@ -55,7 +55,6 @@ type BaseLinkAnchorVariantProps = BaseLinkPropsWithOrWithoutIcon & {
   target?: string;
   rel?: string;
   isDisabled?: undefined;
-  type?: never;
 };
 
 /*
@@ -67,7 +66,6 @@ type BaseLinkButtonVariantProps = BaseLinkPropsWithOrWithoutIcon & {
   href?: undefined;
   target?: undefined;
   rel?: undefined;
-  type?: 'button' | 'reset' | 'submit';
 };
 
 /*
@@ -89,6 +87,7 @@ type BaseLinkStyleProps = {
   disabled: boolean;
   role: 'button' | 'link';
   defaultRel: BaseLinkProps['rel'];
+  type?: 'button';
 };
 
 const getColorToken = ({
@@ -145,6 +144,7 @@ const getProps = ({
   isVisited: boolean;
   target: BaseLinkProps['target'];
   hasIcon: boolean;
+  type?: 'button';
 }): BaseLinkStyleProps => {
   const isButton = variant === 'button';
   const props: BaseLinkStyleProps = {
@@ -177,6 +177,7 @@ const getProps = ({
     disabled: isButton && isDisabled,
     role: isButton ? 'button' : 'link',
     defaultRel: target && target === '_blank' ? 'noreferrer noopener' : undefined,
+    type: isButton ? 'button' : undefined,
   };
 
   return props;
@@ -187,7 +188,6 @@ const BaseLink = ({
   icon: Icon,
   iconPosition = 'left',
   isDisabled = false,
-  type,
   onClick,
   variant = 'anchor',
   href,
@@ -223,6 +223,7 @@ const BaseLink = ({
     disabled,
     role,
     defaultRel,
+    type,
   } = getProps({
     theme,
     variant,
