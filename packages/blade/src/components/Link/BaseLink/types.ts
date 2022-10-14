@@ -18,4 +18,5 @@ export type StyledBaseLinkProps = {
   motionEasing: EasingString;
   setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
   accessibilityProps: Record<string, unknown>;
+  type?: 'button';
 };
