@@ -144,7 +144,6 @@ const getProps = ({
   isVisited: boolean;
   target: BaseLinkProps['target'];
   hasIcon: boolean;
-  type?: 'button';
 }): BaseLinkStyleProps => {
   const isButton = variant === 'button';
   const props: BaseLinkStyleProps = {
