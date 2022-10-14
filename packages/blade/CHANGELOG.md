@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.1.3
+
+### Patch Changes
+
+- 2576ce3: fix(link): add type prop for button variant
+
 ## 3.1.2
 
 ### Patch Changes
