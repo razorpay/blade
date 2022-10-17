@@ -3,7 +3,6 @@
 exports[`<Badge /> should render Badge with Icon 1`] = `
 <View
   backgroundColor="feedback.background.neutral.lowContrast"
-  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -11,9 +10,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-        "borderColor": "hsla(216, 44%, 23%, 0.32)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -170,7 +167,6 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 exports[`<Badge /> should render Badge with bold font 1`] = `
 <View
   backgroundColor="feedback.background.neutral.lowContrast"
-  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -178,9 +174,7 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-        "borderColor": "hsla(216, 44%, 23%, 0.32)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -255,7 +249,6 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 exports[`<Badge /> should render Badge with default props 1`] = `
 <View
   backgroundColor="feedback.background.neutral.lowContrast"
-  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -263,9 +256,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-        "borderColor": "hsla(216, 44%, 23%, 0.32)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -340,7 +331,6 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 <View
   backgroundColor="badge.background.blue.highContrast"
-  borderColor="badge.border.blue.highContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -348,9 +338,7 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(218, 89%, 51%, 1)",
-        "borderColor": "hsla(218, 89%, 51%, 1)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -425,7 +413,6 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.information.highContrast"
-  borderColor="feedback.border.information.highContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -433,9 +420,7 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(193, 100%, 35%, 1)",
-        "borderColor": "hsla(193, 100%, 35%, 1)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -510,7 +495,6 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.negative.highContrast"
-  borderColor="feedback.border.negative.highContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -518,9 +502,7 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(8, 73%, 47%, 1)",
-        "borderColor": "hsla(8, 73%, 47%, 1)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -595,7 +577,6 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.neutral.highContrast"
-  borderColor="feedback.border.neutral.highContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -603,9 +584,7 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(216, 33%, 29%, 1)",
-        "borderColor": "hsla(216, 33%, 29%, 1)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -680,7 +659,6 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.notice.highContrast"
-  borderColor="feedback.border.notice.highContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -688,9 +666,7 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(38, 97%, 38%, 1)",
-        "borderColor": "hsla(38, 97%, 38%, 1)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -765,7 +741,6 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.positive.highContrast"
-  borderColor="feedback.border.positive.highContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -773,9 +748,7 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(160, 100%, 26%, 1)",
-        "borderColor": "hsla(160, 100%, 26%, 1)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -850,7 +823,6 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 <View
   backgroundColor="badge.background.blue.lowContrast"
-  borderColor="badge.border.blue.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -858,9 +830,7 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
-        "borderColor": "hsla(218, 89%, 51%, 0.32)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -935,7 +905,6 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.information.lowContrast"
-  borderColor="feedback.border.information.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -943,9 +912,7 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-        "borderColor": "hsla(193, 100%, 35%, 0.32)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -1020,7 +987,6 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.negative.lowContrast"
-  borderColor="feedback.border.negative.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -1028,9 +994,7 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-        "borderColor": "hsla(9, 91%, 56%, 0.32)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -1105,7 +1069,6 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.neutral.lowContrast"
-  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -1113,9 +1076,7 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-        "borderColor": "hsla(216, 44%, 23%, 0.32)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -1190,7 +1151,6 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.notice.lowContrast"
-  borderColor="feedback.border.notice.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -1198,9 +1158,7 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-        "borderColor": "hsla(36, 100%, 44%, 0.32)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -1275,7 +1233,6 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 <View
   backgroundColor="feedback.background.positive.lowContrast"
-  borderColor="feedback.border.positive.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -1283,9 +1240,7 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-        "borderColor": "hsla(155, 100%, 31%, 0.32)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -1360,7 +1315,6 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 exports[`<Badge /> should render medium size Badge 1`] = `
 <View
   backgroundColor="feedback.background.neutral.lowContrast"
-  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="medium"
   style={
@@ -1368,9 +1322,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-        "borderColor": "hsla(216, 44%, 23%, 0.32)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
@@ -1445,7 +1397,6 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 exports[`<Badge /> should render small size Badge 1`] = `
 <View
   backgroundColor="feedback.background.neutral.lowContrast"
-  borderColor="feedback.border.neutral.lowContrast"
   platform="onMobile"
   size="small"
   style={
@@ -1453,9 +1404,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
       Object {
         "alignSelf": "center",
         "backgroundColor": "hsla(216, 44%, 23%, 0.09)",
-        "borderColor": "hsla(216, 44%, 23%, 0.32)",
         "borderRadius": 9999,
-        "borderWidth": 1,
         "display": "flex",
         "flexWrap": "nowrap",
         "maxWidth": 100,
