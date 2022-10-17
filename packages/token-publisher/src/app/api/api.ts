@@ -40,6 +40,7 @@ export const uploadTokens = async ({
     ]);
     const isRequestSuccess = responses.every((response) => response.status === 204);
     if (isRequestSuccess) {
+      // nosemgrep
       parent.postMessage(
         {
           pluginMessage: {
@@ -52,6 +53,7 @@ export const uploadTokens = async ({
     } else {
       responses.forEach(async (response) => {
         const responseJson = await response.json();
+        // nosemgrep
         parent.postMessage(
           {
             pluginMessage: {

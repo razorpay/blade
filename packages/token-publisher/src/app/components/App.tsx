@@ -24,6 +24,7 @@ const App = (): ReactElement => {
   }, [themeColorTokens, personalAccessToken]);
 
   const onCancel = React.useCallback(() => {
+    // nosemgrep
     parent.postMessage({ pluginMessage: { type: 'closePlugin' } }, '*');
   }, []);
 
@@ -46,7 +47,7 @@ const App = (): ReactElement => {
           <a
             href="https://github.com/settings/tokens/new?scopes=repo,workflow,write:packages,read:repo_hook,write:packages"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             Generate here
           </a>
