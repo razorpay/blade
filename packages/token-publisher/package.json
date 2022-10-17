@@ -1,7 +1,7 @@
 {
 	"name": "token-publisher",
 	"version": "1.0.0",
-	"description": "This plugin template uses Typescript. If you are familiar with Javascript, Typescript will look very familiar. In fact, valid Javascript code is already valid Typescript code.",
+	"description": "A Figma plugin to publish tokens from Figma to GitHub.",
 	"license": "ISC",
 	"scripts": {
 		"build": "webpack --mode=production",
