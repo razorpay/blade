@@ -5,7 +5,6 @@ import type { StyledBadgeProps } from './types';
 const StyledBadge = styled.div<StyledBadgeProps>((props) => ({
   ...getStyledBadgeStyles(props),
   width: 'fit-content',
-  borderStyle: 'solid',
 }));
 
 export { StyledBadge };
