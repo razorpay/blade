@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Code /> should render Code with default properties 1`] = `
+<View
+  size="small"
+  style={
+    Array [
+      Object {
+        "backgroundColor": "hsla(216, 19%, 89%, 1)",
+        "borderRadius": 4,
+        "lineHeight": 16,
+        "paddingBottom": 0,
+        "paddingLeft": 4,
+        "paddingRight": 4,
+        "paddingTop": 0,
+      },
+    ]
+  }
+>
+  <Text
+    color="surface.text.subtle.lowContrast"
+    fontFamily="code"
+    fontSize={75}
+    style={
+      Array [
+        Object {
+          "color": "hsla(216, 27%, 36%, 1)",
+          "fontFamily": "Courier",
+          "fontSize": 12,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    TEST_TOKEN
+  </Text>
+</View>
+`;
+
+exports[`<Code /> should render medium Code 1`] = `
+<View
+  size="medium"
+  style={
+    Array [
+      Object {
+        "backgroundColor": "hsla(216, 19%, 89%, 1)",
+        "borderRadius": 4,
+        "lineHeight": 16,
+        "paddingBottom": 0,
+        "paddingLeft": 4,
+        "paddingRight": 4,
+        "paddingTop": 0,
+      },
+    ]
+  }
+>
+  <Text
+    color="surface.text.subtle.lowContrast"
+    fontFamily="code"
+    fontSize={100}
+    style={
+      Array [
+        Object {
+          "color": "hsla(216, 27%, 36%, 1)",
+          "fontFamily": "Courier",
+          "fontSize": 15,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    MEDIUM
+  </Text>
+</View>
+`;
+
+exports[`<Code /> should render small Code 1`] = `
+<View
+  size="small"
+  style={
+    Array [
+      Object {
+        "backgroundColor": "hsla(216, 19%, 89%, 1)",
+        "borderRadius": 4,
+        "lineHeight": 16,
+        "paddingBottom": 0,
+        "paddingLeft": 4,
+        "paddingRight": 4,
+        "paddingTop": 0,
+      },
+    ]
+  }
+>
+  <Text
+    color="surface.text.subtle.lowContrast"
+    fontFamily="code"
+    fontSize={75}
+    style={
+      Array [
+        Object {
+          "color": "hsla(216, 27%, 36%, 1)",
+          "fontFamily": "Courier",
+          "fontSize": 12,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "lineHeight": 24,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textAlign": "left",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    SMALL
+  </Text>
+</View>
+`;
