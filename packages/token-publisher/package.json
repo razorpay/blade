@@ -1,5 +1,6 @@
 {
 	"name": "token-publisher",
+	"private": "true",
 	"version": "1.0.0",
 	"description": "A Figma plugin to publish tokens from Figma to GitHub.",
 	"license": "ISC",
