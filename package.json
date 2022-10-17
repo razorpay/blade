@@ -10,8 +10,7 @@
     "packages": [
       "packages/blade",
       "packages/blade-old",
-      "packages/tools/*",
-      "packages/types"
+      "packages/token-publisher"
     ],
     "nohoist": [
       "**"
