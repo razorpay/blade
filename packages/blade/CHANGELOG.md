@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.1.4
+
+### Patch Changes
+
+- f0b901d: chore: remove border from Badge component
+
 ## 3.1.3
 
 ### Patch Changes
