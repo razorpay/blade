@@ -62,6 +62,7 @@ export default {
     defaultValue: undefined,
     onChange: undefined,
     value: undefined,
+    size: 'medium',
   },
   argTypes: {
     value: {
@@ -86,29 +87,11 @@ export default {
 
 const RadioTemplate: ComponentStory<typeof RadioGroupComponent> = ({ children, ...args }) => {
   return (
-    <>
-      <RadioGroupComponent {...args} defaultValue="apple">
-        <RadioComponent helpText="Apples are bad" value="apple">
-          Apple
-        </RadioComponent>
-        <RadioComponent value="mango">Mango</RadioComponent>
-        <RadioComponent value="orange">Orange</RadioComponent>
-      </RadioGroupComponent>
-      <br />
-      <RadioGroupComponent {...args} defaultValue="disabled-selected">
-        <RadioComponent value="disabled" isDisabled>
-          Option
-        </RadioComponent>
-        <RadioComponent value="disabled-selected" isDisabled>
-          Option
-        </RadioComponent>
-      </RadioGroupComponent>
-      <br />
-      <RadioGroupComponent {...args} validationState="error" defaultValue="error-selected">
-        <RadioComponent value="error">Option</RadioComponent>
-        <RadioComponent value="error-selected">Option</RadioComponent>
-      </RadioGroupComponent>
-    </>
+    <RadioGroupComponent {...args}>
+      <RadioComponent value="apple">Apple</RadioComponent>
+      <RadioComponent value="mango">Mango</RadioComponent>
+      <RadioComponent value="orange">Orange</RadioComponent>
+    </RadioGroupComponent>
   );
 };
 
@@ -144,6 +127,12 @@ export const Required = RadioTemplate.bind({});
 Required.storyName = 'Required';
 Required.args = {
   necessityIndicator: 'required',
+};
+
+export const Small = RadioTemplate.bind({});
+Small.storyName = 'Small';
+Small.args = {
+  size: 'small',
 };
 
 export const LabelPositionLeft = RadioTemplate.bind({});

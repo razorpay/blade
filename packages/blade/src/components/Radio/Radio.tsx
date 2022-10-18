@@ -101,7 +101,9 @@ const Radio = ({
             isDisabled={_isDisabled}
             isNegative={hasError}
           />
-          <SelectorTitle size={_size}>{children}</SelectorTitle>
+          <SelectorTitle size={_size} isDisabled={_isDisabled}>
+            {children}
+          </SelectorTitle>
         </Box>
         <Box marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
           {showHelpText && (

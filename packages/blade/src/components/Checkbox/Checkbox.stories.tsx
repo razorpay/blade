@@ -63,6 +63,7 @@ export default {
     errorText: undefined,
     labelPosition: 'top',
     children: 'Toggle checkbox',
+    size: 'medium',
   },
   argTypes: {},
   parameters: {
@@ -102,6 +103,12 @@ ErrorText.storyName = 'ErrorText';
 ErrorText.args = {
   validationState: 'error',
   errorText: 'Checkbox error text',
+};
+
+export const Small = CheckboxTemplate.bind({});
+Small.storyName = 'Small';
+Small.args = {
+  size: 'small',
 };
 
 export const Indeterminate = CheckboxTemplate.bind({});

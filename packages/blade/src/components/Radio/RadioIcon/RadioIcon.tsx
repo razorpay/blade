@@ -19,7 +19,7 @@ export type RadioIconProps = {
 const CheckedIcon = ({ color, size }: { color: string; size: RadioIconProps['size'] }) => {
   const width = radioSizes.icon[size].width;
   const height = radioSizes.icon[size].height;
-  const radius = radioSizes.icon[size].radius;
+  const radius = radioSizes.icon[size].dotRadius;
   const viewBox = `0 0 ${width} ${height}`;
   const cx = `${width / 2}`;
   const cy = `${height / 2}`;

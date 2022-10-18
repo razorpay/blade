@@ -89,6 +89,12 @@ type CheckboxProps = {
    * and `invalid` attribute will be added
    */
   validationState?: 'error' | 'none';
+  /**
+   * Size of the radios
+   *
+   * @default "medium"
+   */
+  size?: 'small' | 'medium';
 };
 
 const Checkbox = ({
@@ -104,6 +110,7 @@ const Checkbox = ({
   children,
   helpText,
   errorText,
+  size = 'medium',
 }: CheckboxProps): React.ReactElement => {
   const groupProps = useCheckboxGroupContext();
 
@@ -149,6 +156,8 @@ const Checkbox = ({
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
   const _name = name ?? groupProps?.name;
   const _isChecked = isChecked ?? groupProps?.state?.isChecked(value!);
+  const _size = groupProps.size ?? size;
+  const isSmall = _size === 'small';
 
   // only show error when the self validation is set to error
   // Since we don't want to show errorText inside the group
@@ -189,14 +198,17 @@ const Checkbox = ({
               inputProps={inputProps}
             />
             <CheckboxIcon
+              size={_size}
               isChecked={state.isChecked}
               isIndeterminate={isIndeterminate}
               isDisabled={_isDisabled}
               isNegative={_hasError}
             />
-            <SelectorTitle isDisabled={_isDisabled}>{children}</SelectorTitle>
+            <SelectorTitle size={_size} isDisabled={_isDisabled}>
+              {children}
+            </SelectorTitle>
           </Box>
-          <Box marginLeft="spacing.7">
+          <Box marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
             {showSupportingText && (
               <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
             )}
