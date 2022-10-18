@@ -4,39 +4,6 @@ import type { CheckboxIconProps } from './CheckboxIcon';
 import type { Theme } from '~components/BladeProvider';
 import { getIn, makeBorderSize, makeSize, makeSpace } from '~utils';
 
-// const variants = {
-//   default: {
-//     border: {
-//       checked: 'colors.brand.primary.500',
-//       unchecked: 'colors.brand.gray.400',
-//     },
-//     background: {
-//       checked: 'colors.brand.primary.500',
-//       unchecked: 'colors.brand.gray.200',
-//     },
-//   },
-//   disabled: {
-//     border: {
-//       checked: 'colors.brand.gray.300',
-//       unchecked: 'colors.brand.gray.300',
-//     },
-//     background: {
-//       checked: 'colors.brand.gray.300',
-//       unchecked: 'colors.brand.gray.300',
-//     },
-//   },
-//   negative: {
-//     border: {
-//       checked: 'colors.feedback.border.negative.highContrast',
-//       unchecked: 'colors.feedback.border.negative.highContrast',
-//     },
-//     background: {
-//       checked: 'colors.feedback.background.negative.highContrast',
-//       unchecked: 'colors.feedback.background.negative.lowContrast',
-//     },
-//   },
-// };
-
 export type CheckboxRectProps = Omit<CheckboxIconProps, 'state'> & {
   isChecked: boolean;
 };
