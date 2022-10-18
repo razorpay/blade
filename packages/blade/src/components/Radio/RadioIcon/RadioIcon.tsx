@@ -1,42 +1,37 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
+import { radioIconColors, radioSizes } from '../radioTokens';
+import type { RadioProps } from '../Radio';
 import { RadioIconWrapper } from './RadioIconWrapper';
 import { Fade } from './Fade';
 import { useTheme } from '~components/BladeProvider';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
-import { getIn } from '~utils';
-
-const CheckedIcon = ({ color }: { color: string }) => {
-  return (
-    <Svg width="16px" height="16px" viewBox="0 0 16 16" fill="none">
-      <Circle cx="8" cy="8" r="4" fill={color} />
-    </Svg>
-  );
-};
+import { getIn, makeSpace } from '~utils';
 
 export type RadioIconProps = {
   isDisabled?: boolean;
   isNegative?: boolean;
   isChecked?: boolean;
+} & Required<Pick<RadioProps, 'size'>>;
+
+const CheckedIcon = ({ color, size }: { color: string; size: RadioIconProps['size'] }) => {
+  const width = radioSizes.icon[size].width;
+  const height = radioSizes.icon[size].height;
+  const radius = radioSizes.icon[size].radius;
+  const viewBox = `0 0 ${width} ${height}`;
+  const cx = `${width / 2}`;
+  const cy = `${height / 2}`;
+
+  return (
+    <Svg width={makeSpace(width)} height={makeSpace(height)} viewBox={viewBox} fill="none">
+      <Circle cx={cx} cy={cy} r={`${radius}`} fill={color} />
+    </Svg>
+  );
 };
 
-// Radio icon center dot color
-const variants = {
-  unchecked: {
-    default: 'colors.brand.gray.200',
-    disabled: 'colors.brand.gray.300',
-    negative: 'colors.feedback.background.negative.lowContrast',
-  },
-  checked: {
-    default: 'colors.brand.gray.200',
-    disabled: 'colors.brand.gray.400',
-    negative: 'colors.feedback.background.negative.highContrast',
-  },
-};
-
-const RadioIcon = ({ isChecked, isDisabled, isNegative }: RadioIconProps) => {
+const RadioIcon = ({ isChecked, isDisabled, isNegative, size }: RadioIconProps) => {
   const { theme } = useTheme();
 
   const checked = Boolean(isChecked);
@@ -44,12 +39,17 @@ const RadioIcon = ({ isChecked, isDisabled, isNegative }: RadioIconProps) => {
   let variant: 'default' | 'disabled' | 'negative' = 'default';
   if (isDisabled) variant = 'disabled';
   if (isNegative) variant = 'negative';
-  const dotColor = getIn(theme, variants[state][variant]);
+  const dotColor = getIn(theme, radioIconColors.variants[variant].dot[state]);
 
   return (
-    <RadioIconWrapper isDisabled={isDisabled} isNegative={isNegative} isChecked={checked}>
+    <RadioIconWrapper
+      size={size}
+      isDisabled={isDisabled}
+      isNegative={isNegative}
+      isChecked={checked}
+    >
       <Fade show={checked} styles={{ position: 'absolute', display: 'flex' }}>
-        <CheckedIcon color={dotColor} />
+        <CheckedIcon size={size} color={dotColor} />
       </Fade>
     </RadioIconWrapper>
   );

@@ -32,9 +32,21 @@ type RadioProps = {
    * @default false
    */
   isDisabled?: boolean;
+  /**
+   * Size of the radios
+   *
+   * @default "medium"
+   */
+  size?: 'small' | 'medium';
 };
 
-const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.ReactElement => {
+const Radio = ({
+  value,
+  children,
+  helpText,
+  isDisabled,
+  size = 'medium',
+}: RadioProps): React.ReactElement => {
   const groupProps = useRadioGroupContext();
   const isInsideGroup = !isEmpty(groupProps);
 
@@ -51,6 +63,8 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
   const name = groupProps?.name;
   const showHelpText = !hasError && helpText;
   const isReactNative = getPlatformType() === 'react-native';
+  const _size = groupProps.size ?? size;
+  const isSmall = _size === 'small';
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
@@ -81,10 +95,15 @@ const Radio = ({ value, children, helpText, isDisabled }: RadioProps): React.Rea
             isNegative={hasError} // TODO: rename to hasError
             inputProps={inputProps}
           />
-          <RadioIcon isChecked={state.isChecked} isDisabled={_isDisabled} isNegative={hasError} />
-          <SelectorTitle>{children}</SelectorTitle>
+          <RadioIcon
+            size={_size}
+            isChecked={state.isChecked}
+            isDisabled={_isDisabled}
+            isNegative={hasError}
+          />
+          <SelectorTitle size={_size}>{children}</SelectorTitle>
         </Box>
-        <Box marginLeft="spacing.7">
+        <Box marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
           {showHelpText && (
             <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
           )}

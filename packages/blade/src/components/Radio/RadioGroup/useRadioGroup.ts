@@ -16,6 +16,7 @@ type UseRadioGroupProps = Pick<
   | 'defaultValue'
   | 'onChange'
   | 'necessityIndicator'
+  | 'size'
 >;
 
 export type State = {
@@ -40,6 +41,7 @@ const useRadioGroup = ({
   validationState,
   necessityIndicator,
   name,
+  size,
 }: UseRadioGroupProps): UseRadioGroupReturn => {
   const { platform } = useTheme();
   const idBase = useId('radio-group');
@@ -83,6 +85,7 @@ const useRadioGroup = ({
       labelPosition: platform === 'onMobile' ? 'top' : labelPosition,
       name: fallbackName,
       state,
+      size,
     };
   }, [
     validationState,
@@ -92,6 +95,7 @@ const useRadioGroup = ({
     state,
     fallbackName,
     necessityIndicator,
+    size,
   ]);
 
   return { state, contextValue, ids: { labelId } };

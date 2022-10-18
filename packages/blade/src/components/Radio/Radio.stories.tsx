@@ -86,13 +86,29 @@ export default {
 
 const RadioTemplate: ComponentStory<typeof RadioGroupComponent> = ({ children, ...args }) => {
   return (
-    <RadioGroupComponent {...args}>
-      <RadioComponent helpText="Apples are bad" value="apple">
-        Apple
-      </RadioComponent>
-      <RadioComponent value="mango">Mango</RadioComponent>
-      <RadioComponent value="orange">Orange</RadioComponent>
-    </RadioGroupComponent>
+    <>
+      <RadioGroupComponent {...args} defaultValue="apple">
+        <RadioComponent helpText="Apples are bad" value="apple">
+          Apple
+        </RadioComponent>
+        <RadioComponent value="mango">Mango</RadioComponent>
+        <RadioComponent value="orange">Orange</RadioComponent>
+      </RadioGroupComponent>
+      <br />
+      <RadioGroupComponent {...args} defaultValue="disabled-selected">
+        <RadioComponent value="disabled" isDisabled>
+          Option
+        </RadioComponent>
+        <RadioComponent value="disabled-selected" isDisabled>
+          Option
+        </RadioComponent>
+      </RadioGroupComponent>
+      <br />
+      <RadioGroupComponent {...args} validationState="error" defaultValue="error-selected">
+        <RadioComponent value="error">Option</RadioComponent>
+        <RadioComponent value="error-selected">Option</RadioComponent>
+      </RadioGroupComponent>
+    </>
   );
 };
 
@@ -143,11 +159,26 @@ export const KitchenSink = (): React.ReactElement => {
     <>
       <RadioGroupComponent
         helpText="Select atleast one"
-        label="Uncontrolled"
+        label="Medium"
+        defaultValue="orange"
+        onChange={(e) => console.log(e)}
+        size="medium"
+      >
+        <RadioComponent value="apple">Apple</RadioComponent>
+        <RadioComponent value="mango">Mango</RadioComponent>
+        <RadioComponent value="orange">Orange</RadioComponent>
+      </RadioGroupComponent>
+      <Text>&nbsp;</Text>
+      <RadioGroupComponent
+        size="small"
+        helpText="Select atleast one"
+        label="Small"
         defaultValue="orange"
         onChange={(e) => console.log(e)}
       >
-        <RadioComponent value="apple">Apple</RadioComponent>
+        <RadioComponent helpText="Apples are good" value="apple">
+          Apple
+        </RadioComponent>
         <RadioComponent value="mango">Mango</RadioComponent>
         <RadioComponent value="orange">Orange</RadioComponent>
       </RadioGroupComponent>
