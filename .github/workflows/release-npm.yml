@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
+          scope: '@razorpay'
       - name: Setup Cache & Install Dependencies
         uses: bahmutov/npm-install@v1
         with:
