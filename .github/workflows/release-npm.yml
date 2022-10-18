@@ -16,11 +16,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Use Node v14
-        uses: actions/setup-node@v1
+      - name: Use Node v16
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
-          scope: '@razorpay'
+          node-version: 16
       - name: Setup Cache & Install Dependencies
         uses: bahmutov/npm-install@v1
         with:
