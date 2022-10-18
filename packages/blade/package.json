@@ -67,7 +67,7 @@
     "start:web": "yarn react",
     "start:all": "run-p start:native start:web",
     "chromatic": "npx chromatic",
-    "npm-publish": "npm publish --tag next"
+    "npm-publish": "npm publish --tag next --\"@razorpay:registry=https://registry.npmjs.org/\""
   },
   "dependencies": {
     "@babel/runtime": "7.16.5",
