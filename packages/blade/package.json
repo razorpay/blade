@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade",
-  "version": "3.1.4",
+  "version": "3.1.4-npm-publish-test.1",
   "license": "MIT",
   "engines": {
     "node": ">=14.19.0"
@@ -67,7 +67,7 @@
     "start:web": "yarn react",
     "start:all": "run-p start:native start:web",
     "chromatic": "npx chromatic",
-    "npm-publish": "npm publish --dry-run --tag experimental"
+    "npm-publish": "npm publish --tag next"
   },
   "dependencies": {
     "@babel/runtime": "7.16.5",
