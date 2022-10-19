@@ -1779,9 +1779,9 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
         <svg
           aria-hidden="true"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
@@ -1909,9 +1909,9 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
         <svg
           aria-hidden="true"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
@@ -2047,9 +2047,9 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
         <svg
           aria-hidden="true"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
