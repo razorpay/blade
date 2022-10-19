@@ -15,7 +15,7 @@ console.log('[blade]: Publishing on NPM ✨');
 fs.writeFileSync(NPMRC_PATH, npmRcContent);
 
 try {
-  execa.commandSync('npm publish', {
+  execa.commandSync('npm publish --tag next', {
     cwd: BLADE_ROOT,
     stdio: 'inherit',
   });
