@@ -207,6 +207,7 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
             variant="anchor"
             href={href}
             target="_blank"
+            rel="noopener noreferrer"
             size="small"
             icon={DownloadIcon}
           >
@@ -217,6 +218,7 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
           variant="anchor"
           href={href}
           target="_blank"
+          rel="noopener noreferrer"
           size="medium"
           icon={DownloadIcon}
         >
