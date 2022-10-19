@@ -36,4 +36,4 @@ jobs:
       - name: Publish to NPM
         run: yarn publish-npm
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_RAZORPAY_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
