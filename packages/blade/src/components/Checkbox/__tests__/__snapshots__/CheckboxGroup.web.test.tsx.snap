@@ -16,13 +16,12 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   justify-content: center;
   width: 16px;
   height: 16px;
-  border-width: 1px;
+  border-width: 1.5px;
   border-style: solid;
-  margin: 0px;
+  margin: 2px;
   border-radius: 2px;
-  margin-right: 8px;
-  background-color: hsla(220,27%,98%,1);
-  border-color: hsla(216,19%,89%,1);
+  background-color: transparent;
+  border-color: hsla(214,18%,69%,1);
 }
 
 .c11 {
@@ -70,7 +69,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .c8 {
@@ -87,11 +86,15 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   align-items: center;
 }
 
-.c13 {
-  margin-left: 24px;
+.c12 {
+  margin-left: 4px;
 }
 
 .c14 {
+  margin-left: 24px;
+}
+
+.c15 {
   margin-top: 4px;
 }
 
@@ -123,7 +126,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c13 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -137,7 +140,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c15 {
+.c16 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -199,8 +202,8 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 
 .c9:hover + div,
 .c9:focus + div {
-  border-color: hsla(216,19%,89%,1);
-  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(216,44%,23%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -294,15 +297,19 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="16px"
-                      viewBox="0 0 16 16"
-                      width="16px"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      width="12"
                     >
                       <path
                         clip-rule="evenodd"
-                        d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                        d="M2 6C2 5.72386 2.22386 5.5 2.5 5.5H9.5C9.77614 5.5 10 5.72386 10 6C10 6.27614 9.77614 6.5 9.5 6.5H2.5C2.22386 6.5 2 6.27614 2 6Z"
                         fill="hsla(220, 27%, 98%, 1)"
                         fill-rule="evenodd"
+                        stroke="white"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="0.5"
                       />
                     </svg>
                   </div>
@@ -313,6 +320,9 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                 </div>
                 <div
                   class="c12"
+                />
+                <div
+                  class="c13"
                   color="surface.text.subtle.lowContrast"
                   font-family="text"
                   font-size="100"
@@ -322,7 +332,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                 </div>
               </div>
               <div
-                class="c13"
+                class="c14"
               />
             </div>
           </label>
@@ -362,15 +372,19 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="16px"
-                      viewBox="0 0 16 16"
-                      width="16px"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      width="12"
                     >
                       <path
                         clip-rule="evenodd"
-                        d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                        d="M2 6C2 5.72386 2.22386 5.5 2.5 5.5H9.5C9.77614 5.5 10 5.72386 10 6C10 6.27614 9.77614 6.5 9.5 6.5H2.5C2.22386 6.5 2 6.27614 2 6Z"
                         fill="hsla(220, 27%, 98%, 1)"
                         fill-rule="evenodd"
+                        stroke="white"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="0.5"
                       />
                     </svg>
                   </div>
@@ -381,6 +395,9 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                 </div>
                 <div
                   class="c12"
+                />
+                <div
+                  class="c13"
                   color="surface.text.subtle.lowContrast"
                   font-family="text"
                   font-size="100"
@@ -390,7 +407,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                 </div>
               </div>
               <div
-                class="c13"
+                class="c14"
               />
             </div>
           </label>
@@ -430,15 +447,19 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="16px"
-                      viewBox="0 0 16 16"
-                      width="16px"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      width="12"
                     >
                       <path
                         clip-rule="evenodd"
-                        d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                        d="M2 6C2 5.72386 2.22386 5.5 2.5 5.5H9.5C9.77614 5.5 10 5.72386 10 6C10 6.27614 9.77614 6.5 9.5 6.5H2.5C2.22386 6.5 2 6.27614 2 6Z"
                         fill="hsla(220, 27%, 98%, 1)"
                         fill-rule="evenodd"
+                        stroke="white"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="0.5"
                       />
                     </svg>
                   </div>
@@ -449,6 +470,9 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                 </div>
                 <div
                   class="c12"
+                />
+                <div
+                  class="c13"
                   color="surface.text.subtle.lowContrast"
                   font-family="text"
                   font-size="100"
@@ -458,20 +482,20 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                 </div>
               </div>
               <div
-                class="c13"
+                class="c14"
               />
             </div>
           </label>
         </div>
       </div>
       <div
-        class="c14"
+        class="c15"
       >
         <span
           style="display: flex; flex-direction: row; align-items: center; word-break: break-all;"
         >
           <span
-            class="c15"
+            class="c16"
             color="surface.text.muted.lowContrast"
             font-family="text"
             font-size="50"
@@ -502,13 +526,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   justify-content: center;
   width: 16px;
   height: 16px;
-  border-width: 1px;
+  border-width: 1.5px;
   border-style: solid;
-  margin: 0px;
+  margin: 2px;
   border-radius: 2px;
-  margin-right: 8px;
-  background-color: hsla(220,27%,98%,1);
-  border-color: hsla(216,19%,89%,1);
+  background-color: transparent;
+  border-color: hsla(214,18%,69%,1);
 }
 
 .c11 {
@@ -556,7 +579,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .c8 {
@@ -573,7 +596,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   align-items: center;
 }
 
-.c13 {
+.c12 {
+  margin-left: 4px;
+}
+
+.c14 {
   margin-left: 24px;
 }
 
@@ -605,7 +632,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c13 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -667,8 +694,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 
 .c9:hover + div,
 .c9:focus + div {
-  border-color: hsla(216,19%,89%,1);
-  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(216,44%,23%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -762,15 +789,19 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="16px"
-                      viewBox="0 0 16 16"
-                      width="16px"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      width="12"
                     >
                       <path
                         clip-rule="evenodd"
-                        d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                        d="M2 6C2 5.72386 2.22386 5.5 2.5 5.5H9.5C9.77614 5.5 10 5.72386 10 6C10 6.27614 9.77614 6.5 9.5 6.5H2.5C2.22386 6.5 2 6.27614 2 6Z"
                         fill="hsla(220, 27%, 98%, 1)"
                         fill-rule="evenodd"
+                        stroke="white"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="0.5"
                       />
                     </svg>
                   </div>
@@ -781,6 +812,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </div>
                 <div
                   class="c12"
+                />
+                <div
+                  class="c13"
                   color="surface.text.subtle.lowContrast"
                   font-family="text"
                   font-size="100"
@@ -790,7 +824,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </div>
               </div>
               <div
-                class="c13"
+                class="c14"
               />
             </div>
           </label>
@@ -830,15 +864,19 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="16px"
-                      viewBox="0 0 16 16"
-                      width="16px"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      width="12"
                     >
                       <path
                         clip-rule="evenodd"
-                        d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                        d="M2 6C2 5.72386 2.22386 5.5 2.5 5.5H9.5C9.77614 5.5 10 5.72386 10 6C10 6.27614 9.77614 6.5 9.5 6.5H2.5C2.22386 6.5 2 6.27614 2 6Z"
                         fill="hsla(220, 27%, 98%, 1)"
                         fill-rule="evenodd"
+                        stroke="white"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="0.5"
                       />
                     </svg>
                   </div>
@@ -849,6 +887,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </div>
                 <div
                   class="c12"
+                />
+                <div
+                  class="c13"
                   color="surface.text.subtle.lowContrast"
                   font-family="text"
                   font-size="100"
@@ -858,7 +899,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </div>
               </div>
               <div
-                class="c13"
+                class="c14"
               />
             </div>
           </label>
@@ -898,15 +939,19 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="16px"
-                      viewBox="0 0 16 16"
-                      width="16px"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      width="12"
                     >
                       <path
                         clip-rule="evenodd"
-                        d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+                        d="M2 6C2 5.72386 2.22386 5.5 2.5 5.5H9.5C9.77614 5.5 10 5.72386 10 6C10 6.27614 9.77614 6.5 9.5 6.5H2.5C2.22386 6.5 2 6.27614 2 6Z"
                         fill="hsla(220, 27%, 98%, 1)"
                         fill-rule="evenodd"
+                        stroke="white"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="0.5"
                       />
                     </svg>
                   </div>
@@ -917,6 +962,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </div>
                 <div
                   class="c12"
+                />
+                <div
+                  class="c13"
                   color="surface.text.subtle.lowContrast"
                   font-family="text"
                   font-size="100"
@@ -926,7 +974,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 </div>
               </div>
               <div
-                class="c13"
+                class="c14"
               />
             </div>
           </label>
