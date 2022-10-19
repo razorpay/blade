@@ -10,11 +10,12 @@ const npmRcContent = `@razorpay:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:_authToken=\${NPM_TOKEN}
 `;
 
+console.log('[blade]: Publishing on NPM ✨');
+
 fs.writeFileSync(NPMRC_PATH, npmRcContent);
 
-// @TODO: remove --tag next
 try {
-  execa.commandSync('npm publish --tag next --dry-run', {
+  execa.commandSync('npm publish', {
     cwd: BLADE_ROOT,
     stdio: 'inherit',
   });
