@@ -16,7 +16,7 @@ describe('<Title />', () => {
   it('should render Title with variant "small" and contrast "high"', () => {
     const displayText = 'Displaying Landing Screen Title';
     const { toJSON, getByText } = renderWithTheme(
-      <Title type="normal" variant="small" contrast="high">
+      <Title type="normal" size="small" contrast="high">
         {displayText}
       </Title>,
     );
@@ -27,7 +27,7 @@ describe('<Title />', () => {
   it('should render Title with variant "small"', () => {
     const displayText = 'Displaying Landing Screen Title';
     const { toJSON, getByText } = renderWithTheme(
-      <Title type="normal" variant="small">
+      <Title type="normal" size="small">
         {displayText}
       </Title>,
     );
@@ -38,7 +38,7 @@ describe('<Title />', () => {
   it('should render Title with variant "medium"', () => {
     const displayText = 'Displaying Landing Screen Title';
     const { toJSON, getByText } = renderWithTheme(
-      <Title type="muted" variant="medium">
+      <Title type="muted" size="medium">
         {displayText}
       </Title>,
     );
@@ -49,7 +49,7 @@ describe('<Title />', () => {
   it('should render Title with variant "large"', () => {
     const displayText = 'Displaying Landing Screen Title';
     const { toJSON, getByText } = renderWithTheme(
-      <Title type="subdued" variant="large">
+      <Title type="subdued" size="large">
         {displayText}
       </Title>,
     );

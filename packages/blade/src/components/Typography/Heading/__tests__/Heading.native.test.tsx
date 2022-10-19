@@ -13,10 +13,10 @@ describe('<Heading />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "small" and contrast "high"', () => {
+  it('should render Heading with size "small" and contrast "high"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading type="normal" variant="small" weight="regular" contrast="high">
+      <Heading type="normal" size="small" weight="regular" contrast="high">
         {displayText}
       </Heading>,
     );
@@ -24,10 +24,10 @@ describe('<Heading />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "small"', () => {
+  it('should render Heading with size "small"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading type="normal" variant="small" weight="regular">
+      <Heading type="normal" size="small" weight="regular">
         {displayText}
       </Heading>,
     );
@@ -35,10 +35,10 @@ describe('<Heading />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "medium"', () => {
+  it('should render Heading with size "medium"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading type="muted" variant="medium" weight="regular">
+      <Heading type="muted" size="medium" weight="regular">
         {displayText}
       </Heading>,
     );
@@ -46,10 +46,10 @@ describe('<Heading />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "large"', () => {
+  it('should render Heading with size "large"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading type="subdued" variant="large" weight="regular">
+      <Heading type="subdued" size="large" weight="regular">
         {displayText}
       </Heading>,
     );
@@ -81,6 +81,24 @@ describe('<Heading />', () => {
       if (error instanceof Error) {
         expect(error.message).toEqual(
           `[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`,
+        );
+      }
+    }
+  });
+
+  it('should throw error when variant is "subheading" but weight "regular" is passed', () => {
+    try {
+      const displayText = 'Get Started With Payment Gateway';
+      renderWithTheme(
+        // @ts-expect-error testing failure case when size is passed with variant='subheading'
+        <Heading type="normal" variant="subheading" size="small">
+          {displayText}
+        </Heading>,
+      );
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        expect(error.message).toMatchInlineSnapshot(
+          `"[Blade: Heading]: size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop"`,
         );
       }
     }

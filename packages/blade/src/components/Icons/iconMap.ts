@@ -27,6 +27,7 @@ import AlertOctagonIconComponent from './AlertOctagonIcon';
 import CheckIconComponent from './CheckIcon';
 import CheckCircleIconComponent from './CheckCircleIcon';
 import RefreshLeftIconComponent from './RefreshLeftIcon';
+import MinusIconComponent from './MinusIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -54,6 +55,7 @@ const iconMap: Record<string, IconComponent> = {
   HistoryIcon: HistoryIconComponent,
   HomeIcon: HomeIconComponent,
   InfoIcon: InfoIconComponent,
+  MinusIcon: MinusIconComponent,
   PauseIcon: PauseIconComponent,
   PlusIcon: PlusIconComponent,
   RupeeIcon: RupeeIconComponent,

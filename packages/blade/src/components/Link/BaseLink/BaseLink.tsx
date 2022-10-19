@@ -87,6 +87,7 @@ type BaseLinkStyleProps = {
   disabled: boolean;
   role: 'button' | 'link';
   defaultRel: BaseLinkProps['rel'];
+  type?: 'button';
 };
 
 const getColorToken = ({
@@ -175,6 +176,7 @@ const getProps = ({
     disabled: isButton && isDisabled,
     role: isButton ? 'button' : 'link',
     defaultRel: target && target === '_blank' ? 'noreferrer noopener' : undefined,
+    type: isButton ? 'button' : undefined,
   };
 
   return props;
@@ -220,6 +222,7 @@ const BaseLink = ({
     disabled,
     role,
     defaultRel,
+    type,
   } = getProps({
     theme,
     variant,
@@ -255,6 +258,7 @@ const BaseLink = ({
       rel={rel ?? defaultRel}
       onClick={handleOnClick}
       disabled={disabled}
+      type={type}
       cursor={cursor}
       focusRingColor={focusRingColor}
       motionDuration={motionDuration}

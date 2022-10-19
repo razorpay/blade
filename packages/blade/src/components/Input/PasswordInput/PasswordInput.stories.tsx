@@ -4,8 +4,8 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { Highlight, Link } from '@storybook/design-system';
 
-import type { PasswordFieldProps } from './PasswordField';
-import { PasswordField } from './PasswordField';
+import type { PasswordInputProps } from './PasswordInput';
+import { PasswordInput } from './PasswordInput';
 import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
 
 const Page = (): ReactElement => {
@@ -30,7 +30,7 @@ const Page = (): ReactElement => {
     <>
       <Title />
       <Subtitle>
-        Password Field is an input field for entering passwords. The input is masked by default. On
+        PasswordInput is an input field for entering passwords. The input is masked by default. On
         mobile devices the last typed letter is shown for a brief moment. The masking can be toggled
         using an optional reveal button.
       </Subtitle>
@@ -38,7 +38,7 @@ const Page = (): ReactElement => {
       <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
         View in Figma
       </Link>
-      <Highlight language="tsx">{`import { PasswordField } from '@razorpay/blade/components' \nimport type { PasswordFieldProps } from '@razorpay/blade/components'`}</Highlight>
+      <Highlight language="tsx">{`import { PasswordInput } from '@razorpay/blade/components' \nimport type { PasswordInputProps } from '@razorpay/blade/components'`}</Highlight>
       <Title>Example</Title>
       <Subtitle>You can change the properties using the controls in the table below.</Subtitle>
       <Primary />
@@ -50,14 +50,14 @@ const Page = (): ReactElement => {
 };
 
 const propsCategory = {
-  BASE_PROPS: 'Password Field Props',
+  BASE_PROPS: 'Password Input Props',
   LABEL_PROPS: 'Label Props',
   VALIDATION_PROPS: 'Validation Props',
 };
 
-const meta: Meta<PasswordFieldProps> = {
-  title: 'Components/Input/PasswordField',
-  component: PasswordField,
+const meta: Meta<PasswordInputProps> = {
+  title: 'Components/Input/PasswordInput',
+  component: PasswordInput,
   args: {
     label: 'Enter password',
     name: 'password',
@@ -94,13 +94,13 @@ const meta: Meta<PasswordFieldProps> = {
   },
 };
 
-const PasswordFieldTemplate: ComponentStory<typeof PasswordField> = ({ ...args }) => {
-  return <PasswordField {...args} />;
+const PasswordInputTemplate: ComponentStory<typeof PasswordInput> = ({ ...args }) => {
+  return <PasswordInput {...args} />;
 };
 
-export const Default = PasswordFieldTemplate.bind({});
+export const Default = PasswordInputTemplate.bind({});
 
-export const AutoComplete = PasswordFieldTemplate.bind({});
+export const AutoComplete = PasswordInputTemplate.bind({});
 AutoComplete.args = {
   autoCompleteSuggestionType: 'newPassword',
 };
@@ -113,7 +113,7 @@ AutoComplete.parameters = {
   },
 };
 
-export const MaxCharacters = PasswordFieldTemplate.bind({});
+export const MaxCharacters = PasswordInputTemplate.bind({});
 MaxCharacters.args = {
   maxCharacters: 16,
 };
@@ -126,7 +126,7 @@ MaxCharacters.parameters = {
   },
 };
 
-export const ErrorState = PasswordFieldTemplate.bind({});
+export const ErrorState = PasswordInputTemplate.bind({});
 ErrorState.args = {
   validationState: 'error',
   errorText: 'Error',
@@ -140,7 +140,7 @@ ErrorState.parameters = {
   },
 };
 
-export const SuccessState = PasswordFieldTemplate.bind({});
+export const SuccessState = PasswordInputTemplate.bind({});
 SuccessState.args = {
   validationState: 'success',
   successText: 'Success',
@@ -154,7 +154,7 @@ SuccessState.parameters = {
   },
 };
 
-export const LabelAtLeft = PasswordFieldTemplate.bind({});
+export const LabelAtLeft = PasswordInputTemplate.bind({});
 LabelAtLeft.args = {
   labelPosition: 'left',
 };
@@ -166,7 +166,7 @@ LabelAtLeft.parameters = {
   },
 };
 
-export const Disabled = PasswordFieldTemplate.bind({});
+export const Disabled = PasswordInputTemplate.bind({});
 Disabled.args = {
   isDisabled: true,
   defaultValue: 'My_Strong#Password!',
@@ -175,12 +175,12 @@ Disabled.parameters = {
   docs: {
     description: {
       story:
-        '`isDisabled` can be used to make the password field read only (disabled for user input), `defaultValue` can be used to pass an initial value',
+        '`isDisabled` can be used to make the password input field read only (disabled for user input), `defaultValue` can be used to pass an initial value',
     },
   },
 };
 
-export const Required = PasswordFieldTemplate.bind({});
+export const Required = PasswordInputTemplate.bind({});
 Required.args = {
   isRequired: true,
   necessityIndicator: 'required',
@@ -189,7 +189,7 @@ Required.parameters = {
   docs: {
     description: {
       story:
-        '`isRequired` can be used to make the password field required for form submission, `necessityIndicator` can be used to show a visual cue by passing `required` as value',
+        '`isRequired` can be used to make the password input field required for form submission, `necessityIndicator` can be used to show a visual cue by passing `required` as value',
     },
   },
 };
@@ -197,8 +197,8 @@ Required.parameters = {
 export const ControlledInput = (): ReactElement => {
   const [state, setState] = useState<string | undefined>('');
   return (
-    <PasswordField
-      label="Controlled PasswordField"
+    <PasswordInput
+      label="Controlled PasswordInput"
       helpText="See the console for output"
       value={state}
       onChange={({ value }) => {

@@ -205,6 +205,7 @@ exports[`<BaseInput /> should render 1`] = `
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
+        onKeyPress={[Function]}
         secureTextEntry={false}
         style={
           Array [
@@ -229,6 +230,7 @@ exports[`<BaseInput /> should render 1`] = `
               "paddingTop": 8,
               "textAlignVertical": "top",
               "textDecorationLine": "none",
+              "width": "100%",
             },
           ]
         }
@@ -579,6 +581,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
+        onKeyPress={[Function]}
         placeholder="First Last"
         secureTextEntry={false}
         style={
@@ -604,6 +607,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               "paddingTop": 8,
               "textAlignVertical": "top",
               "textDecorationLine": "none",
+              "width": "100%",
             },
           ]
         }

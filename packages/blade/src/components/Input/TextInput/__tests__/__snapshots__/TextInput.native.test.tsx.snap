@@ -207,6 +207,7 @@ exports[`<TextInput /> should render 1`] = `
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
+        onKeyPress={[Function]}
         returnKeyType="default"
         secureTextEntry={false}
         style={
@@ -232,6 +233,7 @@ exports[`<TextInput /> should render 1`] = `
               "paddingTop": 8,
               "textAlignVertical": "top",
               "textDecorationLine": "none",
+              "width": "100%",
             },
           ]
         }
@@ -635,6 +637,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
+        onKeyPress={[Function]}
         placeholder="something"
         prefix="https://"
         returnKeyType="go"
@@ -662,6 +665,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               "paddingTop": 8,
               "textAlignVertical": "top",
               "textDecorationLine": "none",
+              "width": "100%",
             },
           ]
         }
