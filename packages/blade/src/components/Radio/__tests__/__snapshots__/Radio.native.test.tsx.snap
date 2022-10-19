@@ -151,13 +151,13 @@ exports[`<Radio /> should render radio with label 1`] = `
     <View
       display="flex"
       flexDirection="column"
-      gap={2}
+      gap="spacing.3"
       style={
         Array [
           Object {
             "display": "flex",
             "flexDirection": "column",
-            "gap": 2,
+            "gap": 8,
           },
         ]
       }
@@ -228,23 +228,34 @@ exports[`<Radio /> should render radio with label 1`] = `
               isChecked={false}
               isDisabled={false}
               isNegative={false}
+              size="medium"
               style={
                 Array [
                   Object {
                     "alignItems": "center",
-                    "backgroundColor": "hsla(220, 27%, 98%, 1)",
-                    "borderColor": "hsla(216, 19%, 89%, 1)",
+                    "backgroundColor": "transparent",
+                    "borderColor": "hsla(214, 18%, 69%, 1)",
                     "borderRadius": 9999,
                     "borderStyle": "solid",
-                    "borderWidth": 1,
+                    "borderWidth": 1.5,
                     "display": "flex",
                     "height": 16,
                     "justifyContent": "center",
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 8,
-                    "marginTop": 0,
+                    "marginBottom": 2,
+                    "marginLeft": 2,
+                    "marginRight": 2,
+                    "marginTop": 2,
                     "width": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              marginLeft="spacing.2"
+              style={
+                Array [
+                  Object {
+                    "marginLeft": 4,
                   },
                 ]
               }
@@ -449,13 +460,13 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
     <View
       display="flex"
       flexDirection="column"
-      gap={2}
+      gap="spacing.3"
       style={
         Array [
           Object {
             "display": "flex",
             "flexDirection": "column",
-            "gap": 2,
+            "gap": 8,
           },
         ]
       }
@@ -526,29 +537,40 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
               isChecked={false}
               isDisabled={true}
               isNegative={false}
+              size="medium"
               style={
                 Array [
                   Object {
                     "alignItems": "center",
-                    "backgroundColor": "hsla(220, 30%, 96%, 1)",
-                    "borderColor": "hsla(220, 30%, 96%, 1)",
+                    "backgroundColor": "transparent",
+                    "borderColor": "hsla(216, 44%, 23%, 0.18)",
                     "borderRadius": 9999,
                     "borderStyle": "solid",
-                    "borderWidth": 1,
+                    "borderWidth": 1.5,
                     "display": "flex",
                     "height": 16,
                     "justifyContent": "center",
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 8,
-                    "marginTop": 0,
+                    "marginBottom": 2,
+                    "marginLeft": 2,
+                    "marginRight": 2,
+                    "marginTop": 2,
                     "width": 16,
                   },
                 ]
               }
             />
+            <View
+              marginLeft="spacing.2"
+              style={
+                Array [
+                  Object {
+                    "marginLeft": 4,
+                  },
+                ]
+              }
+            />
             <Text
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.placeholder.lowContrast"
               fontFamily="text"
               fontSize={100}
               fontWeight="regular"
@@ -556,7 +578,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "hsla(216, 27%, 36%, 1)",
+                    "color": "hsla(214, 18%, 69%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 15,
                     "fontStyle": "normal",
