@@ -36,4 +36,4 @@ jobs:
       - name: Publish to NPM Registry
         run: yarn publish-npm
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
