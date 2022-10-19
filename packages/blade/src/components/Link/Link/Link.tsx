@@ -11,6 +11,13 @@ type LinkCommonProps = {
   href?: string;
   target?: string;
   accessibilityLabel?: string;
+
+  /**
+   * Sets the size of the link
+   *
+   * @default medium
+   */
+  size?: 'small' | 'medium';
 };
 
 /*
@@ -72,6 +79,7 @@ const Link = ({
   target,
   rel,
   accessibilityLabel,
+  size = 'medium',
 }: LinkProps): ReactElement => {
   return (
     <BaseLink
@@ -80,6 +88,7 @@ const Link = ({
       iconPosition={iconPosition}
       onClick={onClick}
       accessibilityLabel={accessibilityLabel}
+      size={size}
     />
   );
 };
