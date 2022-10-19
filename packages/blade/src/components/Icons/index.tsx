@@ -73,3 +73,8 @@ export { default as AlertOctagonIcon } from './AlertOctagonIcon';
 export { default as CheckCircleIcon } from './CheckCircleIcon';
 export { default as RefreshLeftIcon } from './RefreshLeftIcon';
 export { default as MinusIcon } from './MinusIcon';
+export { default as RotateCounterClockWiseIcon } from './RotateCounterClockWiseIcon';
+export { default as TrendingUpIcon } from './TrendingUpIcon';
+export { default as TrendingDownIcon } from './TrendingDownIcon';
+export { default as HelpCircleIcon } from './HelpCircleIcon';
+export { default as ExternalLinkIcon } from './ExternalLinkIcon';
