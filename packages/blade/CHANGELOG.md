@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.1.5
+
+### Patch Changes
+
+- a539fe5: feat(tokens): add new tokens
+
 ## 3.1.4
 
 ### Patch Changes
