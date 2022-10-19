@@ -97,6 +97,8 @@ const colors: ColorsWithModes = {
         500: globalColors.neutral.navyGrayLight[500],
         600: globalColors.neutral.navyGrayLight[600],
         700: globalColors.neutral.navyGrayLight[800],
+        a50: globalColors.neutral.navyGrayLight.a50,
+        a100: globalColors.neutral.navyGrayLight.a100,
       },
       secondary: { 500: globalColors.chromatic.cider[600] },
     },
@@ -1137,6 +1139,8 @@ const colors: ColorsWithModes = {
         500: globalColors.neutral.navyGrayDark[500],
         600: globalColors.neutral.navyGrayDark[400],
         700: globalColors.neutral.navyGrayDark[200],
+        a50: globalColors.neutral.navyGrayDark.a50,
+        a100: globalColors.neutral.navyGrayDark.a100,
       },
       secondary: { 500: globalColors.chromatic.cider[600] },
     },
@@ -1191,7 +1195,7 @@ const colors: ColorsWithModes = {
           highContrast: globalColors.neutral.navyGrayDark[800],
         },
         positive: {
-          lowContrast: globalColors.chromatic.emerald[300],
+          lowContrast: globalColors.chromatic.emerald[500],
           highContrast: globalColors.neutral.navyGrayDark[0],
         },
         negative: {
@@ -1213,7 +1217,7 @@ const colors: ColorsWithModes = {
           highContrast: globalColors.neutral.navyGrayDark[800],
         },
         positive: {
-          lowContrast: globalColors.chromatic.emerald[300],
+          lowContrast: globalColors.chromatic.emerald[500],
           highContrast: globalColors.neutral.navyGrayDark[0],
         },
         negative: {
@@ -1426,19 +1430,19 @@ const colors: ColorsWithModes = {
           text: {
             primary: {
               default: {
-                lowContrast: globalColors.chromatic.emerald[300],
+                lowContrast: globalColors.chromatic.emerald[500],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               hover: {
-                lowContrast: globalColors.chromatic.emerald[300],
+                lowContrast: globalColors.chromatic.emerald[500],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               focus: {
-                lowContrast: globalColors.chromatic.emerald[300],
+                lowContrast: globalColors.chromatic.emerald[500],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               active: {
-                lowContrast: globalColors.chromatic.emerald[300],
+                lowContrast: globalColors.chromatic.emerald[500],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               disabled: {
@@ -1448,19 +1452,19 @@ const colors: ColorsWithModes = {
             },
             link: {
               default: {
-                lowContrast: globalColors.chromatic.emerald[300],
+                lowContrast: globalColors.chromatic.emerald[500],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               hover: {
-                lowContrast: globalColors.chromatic.emerald[400],
+                lowContrast: globalColors.chromatic.emerald[600],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               focus: {
-                lowContrast: globalColors.chromatic.emerald[500],
+                lowContrast: globalColors.chromatic.emerald[700],
                 highContrast: globalColors.chromatic.emerald[100],
               },
               active: {
-                lowContrast: globalColors.chromatic.emerald[500],
+                lowContrast: globalColors.chromatic.emerald[700],
                 highContrast: globalColors.chromatic.emerald[100],
               },
               disabled: {
@@ -1472,19 +1476,19 @@ const colors: ColorsWithModes = {
           icon: {
             primary: {
               default: {
-                lowContrast: globalColors.chromatic.emerald[300],
+                lowContrast: globalColors.chromatic.emerald[500],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               hover: {
-                lowContrast: globalColors.chromatic.emerald[300],
+                lowContrast: globalColors.chromatic.emerald[500],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               focus: {
-                lowContrast: globalColors.chromatic.emerald[300],
+                lowContrast: globalColors.chromatic.emerald[500],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               active: {
-                lowContrast: globalColors.chromatic.emerald[300],
+                lowContrast: globalColors.chromatic.emerald[500],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               disabled: {
@@ -1494,19 +1498,19 @@ const colors: ColorsWithModes = {
             },
             link: {
               default: {
-                lowContrast: globalColors.chromatic.emerald[300],
+                lowContrast: globalColors.chromatic.emerald[500],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               hover: {
-                lowContrast: globalColors.chromatic.emerald[400],
+                lowContrast: globalColors.chromatic.emerald[600],
                 highContrast: globalColors.chromatic.emerald[50],
               },
               focus: {
-                lowContrast: globalColors.chromatic.emerald[500],
+                lowContrast: globalColors.chromatic.emerald[700],
                 highContrast: globalColors.chromatic.emerald[100],
               },
               active: {
-                lowContrast: globalColors.chromatic.emerald[500],
+                lowContrast: globalColors.chromatic.emerald[700],
                 highContrast: globalColors.chromatic.emerald[100],
               },
               disabled: {
