@@ -35,9 +35,10 @@ const getHoverStyles = ({
 
   const checked = isChecked ? 'checked' : 'unchecked';
   const backgroundColor = variants.default.background[checked];
+  const borderColor = variants.default.border[checked];
 
   return {
-    borderColor: getIn(theme, backgroundColor),
+    borderColor: getIn(theme, borderColor),
     backgroundColor: getIn(theme, backgroundColor),
     transitionTimingFunction: theme.motion.easing.standard.effective as string,
     transitionDuration: castWebType(makeMotionTime(theme.motion.duration['2xquick'])),

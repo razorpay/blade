@@ -91,7 +91,7 @@ const Radio = ({
         <Box display="flex" alignItems="center" flexDirection="row">
           <SelectorInput
             isChecked={state.isChecked}
-            isDisabled={isDisabled}
+            isDisabled={_isDisabled}
             isNegative={hasError} // TODO: rename to hasError
             inputProps={inputProps}
           />
