@@ -1,6 +1,6 @@
 name: Release Blade
 
-on: 
+on:
   push:
     branches: [master]
 
@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Use Node v14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 14
       - name: Setup Cache & Install Dependencies
@@ -31,5 +31,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
         with:
           publish: yarn release
-          commit: "build(blade): update version"
-          title: "build(blade): update version"
+          commit: 'build(blade): update version'
+          title: 'build(blade): update version'
+      - name: Publish to NPM Registry
+        run: yarn publish-npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_RAZORPAY_TOKEN }}

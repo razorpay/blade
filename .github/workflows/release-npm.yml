@@ -19,15 +19,11 @@ jobs:
       - name: Use Node v16
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 14
       - name: Setup Cache & Install Dependencies
         uses: bahmutov/npm-install@v1
         with:
           install-command: yarn --frozen-lockfile
-      - name: Publish to NPM
-        run: yarn release-npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_RAZORPAY_TOKEN }}
       # - name: Create Release Pull Request & Publish packages
       #   id: changesets
       #   uses: changesets/action@master
@@ -37,3 +33,7 @@ jobs:
       #     publish: yarn release
       #     commit: 'build(blade): update version'
       #     title: 'build(blade): update version'
+      - name: Publish to NPM
+        run: yarn publish-npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_RAZORPAY_TOKEN }}
