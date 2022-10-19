@@ -2,7 +2,7 @@ name: Release Blade
 
 on:
   push:
-    branches: [master]
+    branches: [saurabh/feat/publish-to-npm]
 
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
