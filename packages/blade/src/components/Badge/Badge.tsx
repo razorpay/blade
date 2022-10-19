@@ -1,15 +1,15 @@
 import type { ReactElement } from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
-import type { StyledBadgeProps } from './StyledBadge';
+import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
 import { useTheme } from '~components/BladeProvider';
 import type { IconComponent, IconProps } from '~components/Icons';
-import type { BaseTextProps } from '~components/Typography/BaseText';
 import { BaseText } from '~components/Typography/BaseText';
 import { getPlatformType } from '~utils';
 import Box from '~components/Box';
 import type { Feedback } from '~tokens/theme/theme';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 type BadgeProps = {
   /**
@@ -58,7 +58,6 @@ type ColorProps = {
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
   backgroundColor: StyledBadgeProps['backgroundColor'];
-  borderColor: StyledBadgeProps['borderColor'];
 };
 
 const getColorProps = ({
@@ -72,18 +71,15 @@ const getColorProps = ({
     iconColor: 'feedback.icon.neutral.lowContrast',
     textColor: 'feedback.text.neutral.lowContrast',
     backgroundColor: 'feedback.background.neutral.lowContrast',
-    borderColor: 'feedback.border.neutral.lowContrast',
   };
   if (isFeedbackVariant(variant)) {
     props.iconColor = `feedback.icon.${variant}.${contrast}Contrast`;
     props.textColor = `feedback.text.${variant}.${contrast}Contrast`;
     props.backgroundColor = `feedback.background.${variant}.${contrast}Contrast`;
-    props.borderColor = `feedback.border.${variant}.${contrast}Contrast`;
   } else {
     props.iconColor = `badge.icon.${variant}.${contrast}Contrast`;
     props.textColor = `badge.text.${variant}.${contrast}Contrast`;
     props.backgroundColor = `badge.background.${variant}.${contrast}Contrast`;
-    props.borderColor = `badge.border.${variant}.${contrast}Contrast`;
   }
   return props;
 };
@@ -113,17 +109,12 @@ const Badge = ({
     throw new Error('[Blade: Badge]: Text as children is required for Badge.');
   }
   const { platform } = useTheme();
-  const { backgroundColor, borderColor, iconColor, textColor } = getColorProps({
+  const { backgroundColor, iconColor, textColor } = getColorProps({
     variant,
     contrast,
   });
   return (
-    <StyledBadge
-      backgroundColor={backgroundColor}
-      borderColor={borderColor}
-      size={size}
-      platform={platform}
-    >
+    <StyledBadge backgroundColor={backgroundColor} size={size} platform={platform}>
       <Box
         paddingRight="spacing.3"
         paddingLeft="spacing.3"

@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BaseInput /> should render 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="column"
@@ -20,12 +26,16 @@ Array [
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
+      marginBottom="spacing.0"
+      marginTop="spacing.0"
       style={
         Array [
           Object {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "space-between",
+            "marginBottom": 0,
+            "marginTop": 0,
           },
         ]
       }
@@ -186,13 +196,17 @@ Array [
           }
         }
         editable={true}
-        id="input-field-1-input-2"
+        id="name-1-input-2"
         isFocused={false}
+        isTextArea={false}
         keyboardType="default"
+        multiline={false}
         onBlur={[Function]}
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
+        onKeyPress={[Function]}
+        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -214,11 +228,12 @@ Array [
               "paddingLeft": 12,
               "paddingRight": 12,
               "paddingTop": 8,
+              "textAlignVertical": "top",
               "textDecorationLine": "none",
+              "width": "100%",
             },
           ]
         }
-        type="text"
       />
     </View>
     <View
@@ -240,7 +255,7 @@ Array [
         ]
       }
     />
-  </View>,
+  </View>
   <View
     marginLeft={0}
     style={
@@ -265,12 +280,18 @@ Array [
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<BaseInput /> should render with icons 1`] = `
-Array [
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
   <View
     display="flex"
     flexDirection="column"
@@ -289,12 +310,16 @@ Array [
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
+      marginBottom="spacing.0"
+      marginTop="spacing.0"
       style={
         Array [
           Object {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "space-between",
+            "marginBottom": 0,
+            "marginTop": 0,
           },
         ]
       }
@@ -546,15 +571,19 @@ Array [
           }
         }
         editable={true}
-        id="input-field-31-input-32"
+        id="name-31-input-32"
         isFocused={false}
+        isTextArea={false}
         keyboardType="default"
         leadingIcon={[Function]}
+        multiline={false}
         onBlur={[Function]}
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
+        onKeyPress={[Function]}
         placeholder="First Last"
+        secureTextEntry={false}
         style={
           Array [
             Object {
@@ -576,12 +605,13 @@ Array [
               "paddingLeft": 8,
               "paddingRight": 8,
               "paddingTop": 8,
+              "textAlignVertical": "top",
               "textDecorationLine": "none",
+              "width": "100%",
             },
           ]
         }
         trailingIcon={[Function]}
-        type="text"
       />
       <View
         alignItems="center"
@@ -679,7 +709,7 @@ Array [
         ]
       }
     />
-  </View>,
+  </View>
   <View
     marginLeft={0}
     style={
@@ -704,6 +734,6 @@ Array [
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

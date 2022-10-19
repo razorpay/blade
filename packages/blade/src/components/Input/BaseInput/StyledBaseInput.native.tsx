@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import type { TextInput } from 'react-native';
-import type { StyledBaseInputProps } from './StyledBaseInput.d';
+import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
 
 type StyledComponentAutoCompleteAndroid =
@@ -69,6 +69,7 @@ const StyledNativeBaseInput = styled.TextInput<
     StyledBaseInputProps,
     'accessibilityProps' | 'setCurrentInteraction' | 'currentInteraction'
   > & {
+    isTextArea?: boolean;
     isFocused: boolean;
     autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
   }
@@ -85,7 +86,10 @@ const StyledNativeBaseInput = styled.TextInput<
     trailingIcon: props.trailingIcon,
   }),
   lineHeight: undefined,
-  height: '36px',
+  textAlignVertical: 'top',
+  height: props.isTextArea
+    ? `${props.theme.typography.lineHeights.xl * (props.numberOfLines ?? 0)}px`
+    : '36px',
 }));
 
 export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>(
@@ -98,12 +102,17 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
       handleOnFocus,
       handleOnChange,
       handleOnBlur,
+      handleOnInput,
+      handleOnKeyDown,
       keyboardType = 'text',
       keyboardReturnKeyType,
       autoCompleteSuggestionType,
       accessibilityProps,
       currentInteraction,
       setCurrentInteraction,
+      type,
+      numberOfLines,
+      isTextArea,
       ...props
     },
     ref,
@@ -113,6 +122,8 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
+        multiline={isTextArea}
+        numberOfLines={numberOfLines}
         isFocused={currentInteraction === 'active'}
         editable={!isDisabled}
         maxLength={maxCharacters}
@@ -123,8 +134,18 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
         onBlur={(): void => {
           setCurrentInteraction('default');
         }}
-        onChangeText={(text): void => handleOnChange?.({ name, value: text })}
+        onChangeText={(text): void => {
+          handleOnChange?.({ name, value: text });
+          handleOnInput?.({ name, value: text });
+        }}
         onEndEditing={(event): void => handleOnBlur?.({ name, value: event?.nativeEvent.text })}
+        onKeyPress={(event): void => {
+          handleOnKeyDown?.({
+            name,
+            key: event?.nativeEvent.key,
+            event: (event as unknown) as React.KeyboardEvent<HTMLInputElement>, // TODO: handle platform specific type
+          });
+        }}
         // @ts-expect-error styled-components have limited keyboard types('default' | 'email-address' | 'numeric' | 'phone-pad' | 'number-pad' | 'decimal-pad') compared to the actual supported types so ignoring the error.
         // source: https://reactnative.dev/docs/textinput/#keyboardtype
         keyboardType={KeyboardTypeToNativeValuesMap[keyboardType]}
@@ -136,6 +157,8 @@ export const StyledBaseInput = React.forwardRef<TextInput, StyledBaseInputProps>
               ] as StyledComponentAutoCompleteAndroid)
             : undefined
         }
+        secureTextEntry={type === 'password'}
+        isTextArea={isTextArea}
         textContentType={
           autoCompleteSuggestionType
             ? autoCompleteSuggestionTypeIOS[autoCompleteSuggestionType]

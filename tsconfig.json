@@ -2,7 +2,6 @@
   "exclude": [
     "node_modules",
     "packages/blade-old/**",
-    "packages/tools/figma-plugin-version-history/**"
   ] /* Enable incremental compilation */,
   "include": ["packages"],
   "compilerOptions": {

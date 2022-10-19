@@ -32,6 +32,7 @@ import TrendingUpIconComponent from './TrendingUpIcon';
 import TrendingDownIconComponent from './TrendingDownIcon';
 import HelpCircleIconComponent from './HelpCircleIcon';
 import ExternalLinkIconComponent from './ExternalLinkIcon';
+import MinusIconComponent from './MinusIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -61,6 +62,7 @@ const iconMap: Record<string, IconComponent> = {
   HistoryIcon: HistoryIconComponent,
   HomeIcon: HomeIconComponent,
   InfoIcon: InfoIconComponent,
+  MinusIcon: MinusIconComponent,
   PauseIcon: PauseIconComponent,
   PlusIcon: PlusIconComponent,
   RupeeIcon: RupeeIconComponent,

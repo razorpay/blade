@@ -2,6 +2,7 @@ import type { CSSObject } from 'styled-components';
 import type { RadioIconProps } from './RadioIcon';
 import type { Theme } from '~components/BladeProvider';
 import {
+  castWebType,
   getIn,
   getPlatformType,
   makeBorderSize,
@@ -72,9 +73,9 @@ const getRadioIconWrapperStyles = ({
     marginRight: makeSpace(theme.spacing[3]),
     backgroundColor: getIn(theme, backgroundColor),
     borderColor: getIn(theme, borderColor),
-    transitionDuration: makeMotionTime(theme.motion.duration.xquick),
     ...(!isReactNative && {
-      transitionTimingFunction: theme.motion.easing.exit.attentive as string,
+      transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
+      transitionTimingFunction: castWebType(theme.motion.easing.exit.attentive),
     }),
   };
 };
