@@ -14,8 +14,9 @@ fs.writeFileSync(NPMRC_PATH, npmRcContent);
 
 // @TODO: remove --tag next
 try {
-  execa.commandSync('npm publish --tag next', {
+  execa.commandSync('npm publish --tag next --dry-run', {
     cwd: BLADE_ROOT,
+    stdio: 'inherit',
   });
 } finally {
   fs.rmSync(NPMRC_PATH);
