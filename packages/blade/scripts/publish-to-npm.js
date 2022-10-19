@@ -16,7 +16,6 @@ fs.writeFileSync(NPMRC_PATH, npmRcContent);
 try {
   execa.commandSync('npm publish --tag next', {
     cwd: BLADE_ROOT,
-    env: { NPM_TOKEN: process.env.NPM_TOKEN },
   });
 } finally {
   fs.rmSync(NPMRC_PATH);
