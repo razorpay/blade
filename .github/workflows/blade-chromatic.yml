@@ -3,6 +3,7 @@ name: Blade Chromatic
 on: push
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
   chromatic-deployment:
