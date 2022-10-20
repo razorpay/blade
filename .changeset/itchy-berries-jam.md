@@ -1,5 +1,5 @@
 ---
-'@razorpay/blade': major
+'@razorpay/blade': minor
 ---
 
 added RotateCounterClockWiseIcon, TrendingUpIcon, TrendingDownIcon, ExternalLinkIcon, HelpCircleIcon
