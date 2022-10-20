@@ -2,7 +2,7 @@ name: Release Blade
 
 on:
   push:
-    branches: [master]
+    branches: [saurabh/feat/publish-to-npm]
 
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
@@ -24,13 +24,17 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           install-command: yarn --frozen-lockfile
-      - name: Create Release Pull Request & Publish packages
-        id: changesets
-        uses: changesets/action@master
+      - name: Publish to NPM Registry
+        run: yarn publish-npm
         env:
-          GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        with:
-          publish: yarn release
-          commit: 'build(blade): update version'
-          title: 'build(blade): update version'
+      # - name: Create Release Pull Request & Publish packages
+      #   id: changesets
+      #   uses: changesets/action@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #   with:
+      #     publish: yarn release
+      #     commit: 'build(blade): update version'
+      #     title: 'build(blade): update version'
