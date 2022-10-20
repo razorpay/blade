@@ -103,4 +103,23 @@ describe('<Alert />', () => {
 
     await assertAccessible(alert);
   });
+
+  it('should throw an error if secondary action is defined without primary action', async () => {
+    const onClickSecondary = jest.fn();
+    try {
+      renderWithTheme(
+        <Alert
+          description="Currently you can only accept payments in international currencies using PayPal."
+          // @ts-expect-error testing failure case when there is no primary action passed
+          actions={{
+            secondary: { text: 'Link', onClick: onClickSecondary },
+          }}
+        />,
+      );
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        expect(error.message).toEqual('[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.');
+      }
+    }
+  })
 });
