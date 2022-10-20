@@ -106,7 +106,7 @@ describe('<Alert />', () => {
 
   it('should throw an error if secondary action is defined without primary action', async () => {
     const onClickSecondary = jest.fn();
-    try {
+    expect(() =>
       renderWithTheme(
         <Alert
           description="Currently you can only accept payments in international currencies using PayPal."
@@ -115,11 +115,9 @@ describe('<Alert />', () => {
             secondary: { text: 'Link', onClick: onClickSecondary },
           }}
         />,
-      );
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        expect(error.message).toEqual('[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.');
-      }
-    }
+      )
+    ).toThrow(
+      `[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.`,
+    );
   })
 });
