@@ -23,7 +23,7 @@
 		"html-webpack-inline-source-plugin": "0.0.10",
 		"html-webpack-plugin": "3.2.0",
 		"js-string-compression": "1.0.1",
-		"set-value": "3.0.2",
+		"set-value": "4.1.0",
 		"style-loader": "2.0.0",
 		"ts-loader": "8.0.11",
 		"typescript": "4.1.2",
