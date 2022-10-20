@@ -104,7 +104,7 @@ describe('<Alert />', () => {
     await assertAccessible(alert);
   });
 
-  it('should throw an error if secondary action is defined without primary action', async () => {
+  it('should throw an error if secondary action is defined without primary action', () => {
     const onClickSecondary = jest.fn();
     expect(() =>
       renderWithTheme(
@@ -115,9 +115,7 @@ describe('<Alert />', () => {
             secondary: { text: 'Link', onClick: onClickSecondary },
           }}
         />,
-      )
-    ).toThrow(
-      `[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.`,
-    );
-  })
+      ),
+    ).toThrow(`[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.`);
+  });
 });

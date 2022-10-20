@@ -128,7 +128,9 @@ const Alert = ({
   actions,
 }: AlertProps): ReactElement | null => {
   if (!actions?.primary && actions?.secondary) {
-    throw new Error('[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.');
+    throw new Error(
+      '[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.',
+    );
   }
   const [isVisible, setIsVisible] = useState(true);
   const contrastType = `${contrast}Contrast` as const;
