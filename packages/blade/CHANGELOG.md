@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.1.6
+
+### Patch Changes
+
+- 66d3184: Update few tokens value which was typo on figma
+
 ## 3.1.5
 
 ### Patch Changes
