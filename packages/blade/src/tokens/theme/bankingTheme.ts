@@ -25,12 +25,12 @@ const colors: ColorsWithModes = {
       },
       border: {
         normal: {
-          lowContrast: globalColors.neutral.navyGrayLight[400],
-          highContrast: globalColors.neutral.navyGrayLight[400],
+          lowContrast: globalColors.neutral.navyGrayLight.a100,
+          highContrast: globalColors.neutral.navyGrayLight.a100,
         },
         subtle: {
-          lowContrast: globalColors.neutral.navyGrayLight[800],
-          highContrast: globalColors.neutral.navyGrayLight[800],
+          lowContrast: globalColors.neutral.navyGrayLight.a50,
+          highContrast: globalColors.neutral.navyGrayLight.a50,
         },
       },
       text: {
@@ -1067,12 +1067,12 @@ const colors: ColorsWithModes = {
       },
       border: {
         normal: {
-          lowContrast: globalColors.neutral.navyGrayDark[600],
-          highContrast: globalColors.neutral.navyGrayDark[600],
+          lowContrast: globalColors.neutral.navyGrayDark.a100,
+          highContrast: globalColors.neutral.navyGrayDark.a100,
         },
         subtle: {
-          lowContrast: globalColors.neutral.navyGrayDark[500],
-          highContrast: globalColors.neutral.navyGrayDark[500],
+          lowContrast: globalColors.neutral.navyGrayDark.a50,
+          highContrast: globalColors.neutral.navyGrayDark.a50,
         },
       },
       text: {
@@ -1203,7 +1203,7 @@ const colors: ColorsWithModes = {
           highContrast: globalColors.neutral.navyGrayDark[0],
         },
         notice: {
-          lowContrast: globalColors.chromatic.crimson[400],
+          lowContrast: globalColors.chromatic.cider[400],
           highContrast: globalColors.neutral.navyGrayDark[0],
         },
         information: {
