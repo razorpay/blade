@@ -16,6 +16,16 @@ describe('<Link />', () => {
     expect(getByText('Learn More')).toBeInTheDocument();
   });
 
+  it('should render with small size', () => {
+    const linkText = 'Learn More';
+    const { container } = renderWithTheme(
+      <Link icon={InfoIcon} size="small">
+        {linkText}
+      </Link>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render link with an href, target and rel', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
