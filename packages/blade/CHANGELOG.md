@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 3.2.0
+
+### Minor Changes
+
+- f7e8941: added RotateCounterClockWiseIcon, TrendingUpIcon, TrendingDownIcon, ExternalLinkIcon, HelpCircleIcon
+
 ## 3.1.6
 
 ### Patch Changes
