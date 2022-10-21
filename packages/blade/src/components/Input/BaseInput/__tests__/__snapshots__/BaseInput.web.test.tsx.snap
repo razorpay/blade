@@ -126,9 +126,11 @@ exports[`<BaseInput /> should render 1`] = `
   padding-bottom: 8px;
   padding-left: 12px;
   padding-right: 12px;
+  width: 100%;
   resize: none;
   outline: none;
   border: none;
+  cursor: auto;
 }
 
 .c9::-webkit-input-placeholder {
@@ -485,9 +487,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding-bottom: 8px;
   padding-left: 8px;
   padding-right: 8px;
+  width: 100%;
   resize: none;
   outline: none;
   border: none;
+  cursor: auto;
 }
 
 .c11::-webkit-input-placeholder {

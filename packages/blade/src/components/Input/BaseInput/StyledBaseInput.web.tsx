@@ -35,6 +35,7 @@ const StyledBaseNativeInput = styled.input<
   ':focus': {
     outline: 'none',
   },
+  cursor: props.disabled ? 'not-allowed' : 'auto',
 }));
 
 const autoCompleteSuggestionTypeMap = {
@@ -65,6 +66,8 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
       handleOnFocus,
       handleOnChange,
       handleOnBlur,
+      handleOnInput,
+      handleOnKeyDown,
       keyboardType,
       keyboardReturnKeyType,
       autoCompleteSuggestionType,
@@ -79,6 +82,7 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
     return (
       <StyledBaseNativeInput
         ref={ref}
+        name={name}
         type={type === 'telephone' ? 'tel' : type}
         disabled={isDisabled}
         required={isRequired}
@@ -101,6 +105,12 @@ export const StyledBaseInput = React.forwardRef<HTMLInputElement, StyledBaseInpu
         onFocus={(event: React.ChangeEvent<HTMLInputElement>): void => {
           setCurrentInteraction('active');
           handleOnFocus?.({ name, value: event });
+        }}
+        onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
+          handleOnInput?.({ name, value: event });
+        }}
+        onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
+          handleOnKeyDown?.({ name, key: event.key, code: event.code, event });
         }}
         {...props}
         {...accessibilityProps}

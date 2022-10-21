@@ -212,7 +212,7 @@ export default {
         category: propsCategory.KEYBOARD_PROPS,
       },
     },
-    keyboardtype: {
+    keyboardType: {
       table: {
         category: propsCategory.KEYBOARD_PROPS,
       },

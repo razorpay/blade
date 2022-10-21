@@ -59,7 +59,7 @@ const TitleStoryMeta: Meta<TitleProps> = {
   title: 'Components/Typography/Title',
   component: TitleComponent,
   args: {
-    variant: 'large',
+    size: 'large',
     type: 'normal',
     children: 'Power your finance, grow your business',
     contrast: 'low',

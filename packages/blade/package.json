@@ -1,6 +1,6 @@
 {
   "name": "@razorpay/blade",
-  "version": "2.5.0",
+  "version": "3.3.0",
   "license": "MIT",
   "engines": {
     "node": ">=14.19.0"
@@ -66,7 +66,8 @@
     "start:native": "run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
     "start:web": "yarn react",
     "start:all": "run-p start:native start:web",
-    "chromatic": "npx chromatic"
+    "chromatic": "npx chromatic",
+    "publish-npm": "node ./scripts/publish-to-npm.js"
   },
   "dependencies": {
     "@babel/runtime": "7.16.5",

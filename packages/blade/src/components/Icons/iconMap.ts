@@ -27,6 +27,12 @@ import AlertOctagonIconComponent from './AlertOctagonIcon';
 import CheckIconComponent from './CheckIcon';
 import CheckCircleIconComponent from './CheckCircleIcon';
 import RefreshLeftIconComponent from './RefreshLeftIcon';
+import RotateCounterClockWiseIconComponent from './RotateCounterClockWiseIcon';
+import TrendingUpIconComponent from './TrendingUpIcon';
+import TrendingDownIconComponent from './TrendingDownIcon';
+import HelpCircleIconComponent from './HelpCircleIcon';
+import ExternalLinkIconComponent from './ExternalLinkIcon';
+import MinusIconComponent from './MinusIcon';
 import type { IconComponent } from '.';
 
 // add new icons here to make them visible in storybook
@@ -49,17 +55,23 @@ const iconMap: Record<string, IconComponent> = {
   DollarIcon: DollarIconComponent,
   DownloadIcon: DownloadIconComponent,
   EditIcon: EditIconComponent,
+  ExternalLinkIcon: ExternalLinkIconComponent,
   EyeIcon: EyeIconComponent,
   EyeOffIcon: EyeOffIconComponent,
+  HelpCircleIcon: HelpCircleIconComponent,
   HistoryIcon: HistoryIconComponent,
   HomeIcon: HomeIconComponent,
   InfoIcon: InfoIconComponent,
+  MinusIcon: MinusIconComponent,
   PauseIcon: PauseIconComponent,
   PlusIcon: PlusIconComponent,
   RupeeIcon: RupeeIconComponent,
   SearchIcon: SearchIconComponent,
   TrashIcon: TrashIconComponent,
   RefreshLeftIcon: RefreshLeftIconComponent,
+  RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
+  TrendingUpIcon: TrendingUpIconComponent,
+  TrendingDownIcon: TrendingDownIconComponent,
 };
 
 export default iconMap;

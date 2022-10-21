@@ -211,6 +211,7 @@ exports[`<TextArea /> should render 1`] = `
         onChangeText={[Function]}
         onEndEditing={[Function]}
         onFocus={[Function]}
+        onKeyPress={[Function]}
         secureTextEntry={false}
         style={
           Array [
@@ -235,6 +236,7 @@ exports[`<TextArea /> should render 1`] = `
               "paddingTop": 8,
               "textAlignVertical": "top",
               "textDecorationLine": "none",
+              "width": "100%",
             },
           ]
         }
