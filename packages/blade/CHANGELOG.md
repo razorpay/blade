@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 3.3.0
+
+### Minor Changes
+
+- 37c00c0: feat: publish `@razorpay/blade` package on NPM
+
+  _No changes are required for consumer. We will be publishing on both, github package registry and npm._
+
 ## 3.2.0
 
 ### Minor Changes
