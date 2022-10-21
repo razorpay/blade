@@ -7,6 +7,7 @@ This doc talks about the API decisions for `BaseInput` element.
 - [BaseInput API](#baseinput-api)
 - [The blueprint layout of icons, prefix, suffix and loader](#the-blueprint-layout-of-icons-prefix-suffix-and-loader)
 - [Keyboard return key types for web and Native](#keyboard-return-key-types-for-web-and-native)
+- [Why we are not having `keyboardType='numeric'`?](#why-we-are-not-having-keyboardtypenumeric)
 - [Notes](#notes)
 - [Open questions](#open-questions)
 - [Discussion Notes](#discussion-notes)
@@ -66,6 +67,10 @@ The BaseInput is the underlying input field that will in turn be used to render 
 | <kbd>Previous</kbd> | `enterkeyhint="previous"` | `returnKeyType="previous"`(android only) |
 | <kbd>Search</kbd>   | `enterkeyhint="search"`   | `returnKeyType="search"`                 |
 | <kbd>Send</kbd>     | `enterkeyhint="send"`     | `returnKeyType="send"`                   |
+
+## Why we are not having `keyboardType='numeric'`?
+
+The numeric and decimal attribute values produce identical keyboards on Android. On iOS, however, numeric displays a keyboard that shows both numbers and punctuation, while decimal shows a focused grid of numbers that almost looks exactly like the tel input type, only without extraneous telephone-number focused options. That’s why it’s my preference for most types of number inputs. [Reference](https://css-tricks.com/better-form-inputs-for-better-mobile-user-experiences/)
 
 ## Notes
 
