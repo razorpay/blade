@@ -19,4 +19,5 @@ export type StyledBaseLinkProps = {
   setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
   accessibilityProps: Record<string, unknown>;
   type?: 'button';
+  size?: 'small' | 'medium';
 };

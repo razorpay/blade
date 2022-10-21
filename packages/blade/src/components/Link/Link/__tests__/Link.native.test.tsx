@@ -20,6 +20,16 @@ describe('<Link />', () => {
     expect(getByText('Learn More')).toBeTruthy();
   });
 
+  it('should render with small size', () => {
+    const linkText = 'Learn More';
+    const { toJSON } = renderWithTheme(
+      <Link icon={InfoIcon} size="small">
+        {linkText}
+      </Link>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should render open href URL on press', async () => {
     const linkText = 'Learn More';
     const { getByText } = renderWithTheme(<Link href="https://www.google.com/">{linkText}</Link>);
