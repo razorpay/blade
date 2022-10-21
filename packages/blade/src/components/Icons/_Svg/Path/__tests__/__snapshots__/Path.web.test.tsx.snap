@@ -4,6 +4,7 @@ exports[`<Path /> should not accept dashed props 1`] = `
 <div>
   <path
     d=""
+    is="x3d"
   />
 </div>
 `;
@@ -18,16 +19,17 @@ exports[`<Path /> should render html path component 1`] = `
     width="40px"
   >
     <path
-      clip-path="#id1"
-      clip-rule="evenodd"
+      clipPath="#id1"
+      clipRule="evenodd"
       d="M2 2h2v2H2V2"
       fill="#000"
-      fill-opacity="0.5"
-      fill-rule="nonzero"
+      fillOpacity="0.5"
+      fillRule="nonzero"
+      is="x3d"
       stroke="#1212"
-      stroke-linecap="square"
-      stroke-linejoin="bevel"
-      stroke-width="2px"
+      strokeLinecap="square"
+      strokeLinejoin="bevel"
+      strokeWidth="2px"
     />
   </svg>
 </div>

@@ -17,6 +17,7 @@ describe('<Path />', () => {
           strokeLinecap="square"
           strokeLinejoin="bevel"
           strokeWidth="2px"
+          is="x3d"
         />
       </Svg>,
     );
@@ -25,7 +26,7 @@ describe('<Path />', () => {
 
   it('should not accept dashed props', () => {
     // @ts-expect-error no dashed props are accepted
-    const { container } = renderWithTheme(<Path fill-opacity={0} d="" />);
+    const { container } = renderWithTheme(<Path fill-opacity={0} d="" is="x3d" />);
     expect(container).toMatchSnapshot();
   });
 });
