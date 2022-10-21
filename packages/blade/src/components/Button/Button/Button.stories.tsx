@@ -88,6 +88,7 @@ export default {
       name: 'icon',
       type: 'select',
       options: Object.keys(iconMap),
+      mapping: iconMap,
     },
   },
   parameters: {
@@ -97,14 +98,11 @@ export default {
   },
 } as Meta<ButtonProps>;
 
-const ButtonTemplate: ComponentStory<typeof ButtonComponent> = ({ icon, children, ...args }) => {
-  const IconComponent = iconMap[(icon as unknown) as string];
-
-  return (
-    <ButtonComponent icon={IconComponent} {...args}>
-      {children}
-    </ButtonComponent>
-  );
+const ButtonTemplate: ComponentStory<typeof ButtonComponent> = ({
+  children = 'Button',
+  ...args
+}) => {
+  return <ButtonComponent {...args}>{children}</ButtonComponent>;
 };
 
 const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
@@ -299,16 +297,10 @@ const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
 };
 
 const ButtonLoadingTemplate: ComponentStory<typeof ButtonComponent> = ({
-  icon,
-  children,
+  children = 'Button',
   ...args
 }) => {
-  const IconComponent = iconMap[(icon as unknown) as string];
-  return (
-    <ButtonLoadingExample icon={IconComponent} {...args}>
-      {children}
-    </ButtonLoadingExample>
-  );
+  return <ButtonLoadingExample {...args}>{children}</ButtonLoadingExample>;
 };
 
 export const ButtonLoading = ButtonLoadingTemplate.bind({});
