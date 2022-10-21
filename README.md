@@ -33,7 +33,7 @@ This package is under active development.
 > The blade-old package has been moved to it's own repo.
 > [github.com/razorpay/blade-old](https://github.com/razorpay/blade-old)
 > 
-> It is under **maintenance** and it won't have any major releases. It will be **deprecated** once the newer version (`@razorpay/blade`) is ready for a stable release. 
+> It is under **maintenance** and it won't have any major releases.
 
 
 ## 📝 License
