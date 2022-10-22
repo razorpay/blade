@@ -87,7 +87,7 @@ Reusable components candidate
 - [x] Do we have icon which is clickable so we can put it under textfield?
   - We don't have need to create one
 - [x] motion for the textfield animation in active state
-- [x] Do we have a usecase of using textfield without label or form level things?
+- [x] Do we have a use case of using textfield without label or form level things?
   - Not right now. we'll mark label as required field for now
 - [x] fullWidth input field do we have a use case?
   - TextField will always be 100% width of the container

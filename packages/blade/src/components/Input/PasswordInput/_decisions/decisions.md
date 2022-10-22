@@ -33,7 +33,7 @@ We'll expose an `PasswordInput` component with the following API:
 | labelPosition              | `top`, `left`                            | `top`       | Position for the input label, `left` works only for larger screen size (fixed at `120px` width)                     |          |
 | showRevealButton           | `boolean`                                | `true`      | Shows a reveal button to toggle visibility                                                                          |          |
 | maxCharacters              | `number`                                 | `undefined` | Restricts max characters and shows a character counter under the input                                              |          |
-| validationState            | `error` , `success`, `none`              | `none`      | Styles the input and decides whether to show `errorText`, `successText` or `helpText` repectively                   |          |
+| validationState            | `error` , `success`, `none`              | `none`      | Styles the input and decides whether to show `errorText`, `successText` or `helpText` respectively                   |          |
 | errorText                  | `string`                                 | `undefined` | Displays a hint below the input in `error` validation state                                                         |          |
 | successText                | `string`                                 | `undefined` | Displays a hint below the input in `success` validation state                                                       |          |
 | helpText                   | `string`                                 | `undefined` | Displays a hint below the input in `none` validation state                                                          |          |
@@ -72,6 +72,6 @@ We'll expose an `PasswordInput` component with the following API:
 
 ## Open questions
 
-Q1. Does the password toggle button qualify for a disclosure pattern? I couldn't find anything significant on such a usecase. Content visibility toggles (like FAQ sections) do qualify for such a pattern but not sure if password fits the usecase because content is already on the screen, we just change the masked text to actual? For such a pattern we would need `aria-controls` and `aria-expanded` to be implemented correctly.
+Q1. Does the password toggle button qualify for a disclosure pattern? I couldn't find anything significant on such a use case. Content visibility toggles (like FAQ sections) do qualify for such a pattern but not sure if password fits the use case because content is already on the screen, we just change the masked text to actual? For such a pattern we would need `aria-controls` and `aria-expanded` to be implemented correctly.
 
 A1. Skipping for now.

@@ -65,17 +65,17 @@ The mobile keyboard type will be automatically determined based on the `type` at
 ## Web & React Native Attributes for showing keyboard types and autocomplete suggestions based on input `type` attribute
 
 - The keyboard type will be automatically decided based on the `type` attribute defined by the user.
-- Based on the `type` attribute we'll also try to decide the type of autocomplete suggestion, but it can be overriden to make it more specific based on consumer's use cases. For eg: the plain text field can be used for many purpose and the consumer might need control over `autocomplete` suggestions to be displayed based on the context its used in.
+- Based on the `type` attribute we'll also try to decide the type of autocomplete suggestion, but it can be overridden to make it more specific based on consumer's use cases. For eg: the plain text field can be used for many purpose and the consumer might need control over `autocomplete` suggestions to be displayed based on the context its used in.
 - Based on the `type` attribute we'll also determine the `keyboardReturnKeyType` but again this can be fine tuned by the consumers based on the contextual use cases.
 
 | type    | web attributes                                                                                                                                                                          | react-native attributes                                                               |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | text    | `inputmode="text"`, `autocomplete="off"`(can be set to valid options for autocomplete based on the context where the plain text is being use for eg: `name`,`username`,`country`, etc.) | `keyboardType="default"`                                                              |
 | search  | `inputmode="search"`, `autocomplete="off"`(can give option to consumer to configure this with more options which are contextual), `enterkeyhint="search"`                               | `keyboardType="default"`, `returnKeyType="search"`                                    |
-| tel     | `inputmode="tel"`, `autocomplete="tel"`, `enterkeyhint="done"`(can be overriden by consumers)                                                                                           | `keyboardType="phone-pad"`, `returnKeyType="done"`(can be overriden by consumers)     |
-| email   | `inputmode="email"`, `autocomplete="email"`, `enterkeyhint="done"`(can be overriden by consumers)                                                                                       | `keyboardType="email-address"`, `returnKeyType="done"`(can be overriden by consumers) |
-| url     | `inputmode="url"`, `autocomplete="off"`, `enterkeyhint="done"`(can be overriden by consumers)                                                                                           | `keyboardType="url"`, `returnKeyType="done"`(can be overriden by consumers)           |
-| numeric | `type="text"`, `inputmode="decimal"`, `autocomplete="off"`, `enterkeyhint="done"`(can be overriden by consumers)                                                                        | `keyboardType="decimal-pad"`, `returnKeyType="done"`(can be overriden by consumers)   |
+| tel     | `inputmode="tel"`, `autocomplete="tel"`, `enterkeyhint="done"`(can be overridden by consumers)                                                                                           | `keyboardType="phone-pad"`, `returnKeyType="done"`(can be overridden by consumers)     |
+| email   | `inputmode="email"`, `autocomplete="email"`, `enterkeyhint="done"`(can be overridden by consumers)                                                                                       | `keyboardType="email-address"`, `returnKeyType="done"`(can be overridden by consumers) |
+| url     | `inputmode="url"`, `autocomplete="off"`, `enterkeyhint="done"`(can be overridden by consumers)                                                                                           | `keyboardType="url"`, `returnKeyType="done"`(can be overridden by consumers)           |
+| numeric | `type="text"`, `inputmode="decimal"`, `autocomplete="off"`, `enterkeyhint="done"`(can be overridden by consumers)                                                                        | `keyboardType="decimal-pad"`, `returnKeyType="done"`(can be overridden by consumers)   |
 
 ## Keyboard return key types for web and Native
 
@@ -109,7 +109,7 @@ Reusable components candidate
 - [x] Do we have icon which is clickable so we can put it under textfield?
   - We don't have need to create one
 - [x] motion for the textfield animation in active state
-- [x] Do we have a usecase of using textfield without label or form level things?
+- [x] Do we have a use case of using textfield without label or form level things?
   - Not right now. we'll mark label as required field for now
 - [x] fullWidth input field do we have a use case?
   - TextField will always be 100% width of the container
