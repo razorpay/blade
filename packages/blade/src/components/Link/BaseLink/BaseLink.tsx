@@ -15,6 +15,7 @@ import { makeAccessible, getIn } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString } from '~tokens/global/motion';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import iconMap from '~components/Icons/iconMap';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -218,6 +219,13 @@ const BaseLink = ({
       `[Blade: BaseLink]: At least one of icon or text is required to render a link.`,
     );
   }
+
+  if (Icon && !Object.values(iconMap).includes(Icon)) {
+    throw new Error(
+      `[Blade: BaseLink]: Invalid usage of icon prop. Please use one of the icon components provided by Blade.`,
+    );
+  }
+
   const {
     as,
     textDecorationLine,

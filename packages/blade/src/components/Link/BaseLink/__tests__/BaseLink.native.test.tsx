@@ -378,4 +378,16 @@ describe('<BaseLink />', () => {
     const link = getByRole('link');
     expect(link.findByProps({ accessibilityLabel: 'Info' })).toBeTruthy();
   });
+
+  it('should throw an error if icon prop usage is invalid', () => {
+    expect(() =>
+      renderWithTheme(
+        <BaseLink
+          icon={() => <InfoIcon size="small" color="feedback.icon.positive.lowContrast" />}
+        />,
+      ),
+    ).toThrow(
+      `[Blade: BaseLink]: Invalid usage of icon prop. Please use one of the icon components provided by Blade.`,
+    );
+  });
 });

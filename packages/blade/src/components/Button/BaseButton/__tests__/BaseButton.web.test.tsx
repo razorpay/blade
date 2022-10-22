@@ -419,4 +419,16 @@ describe('<BaseButton />', () => {
     );
     await assertAccessible(container);
   });
+
+  it('should throw an error if icon prop usage is invalid', () => {
+    expect(() =>
+      renderWithTheme(
+        <BaseButton
+          icon={() => <CreditCardIcon size="small" color="feedback.icon.positive.lowContrast" />}
+        />,
+      ),
+    ).toThrow(
+      `[Blade: BaseButton]: Invalid usage of icon prop. Please use one of the icon components provided by Blade.`,
+    );
+  });
 });
