@@ -12,7 +12,6 @@ const Path = <Props extends Exact<PathProps, Props>>({
   strokeLinecap,
   strokeLinejoin,
   strokeWidth,
-  is,
 }: Props): ReactElement => {
   return (
     <path
@@ -26,8 +25,6 @@ const Path = <Props extends Exact<PathProps, Props>>({
       strokeLinecap={strokeLinecap}
       strokeLinejoin={strokeLinejoin}
       strokeWidth={strokeWidth}
-      // @ts-expect-error allows browser to recognise x3dom elements
-      is={is}
     />
   );
 };

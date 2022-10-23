@@ -2,10 +2,17 @@
 
 exports[`<Path /> should not accept dashed props 1`] = `
 <div>
-  <path
-    d=""
-    is="x3d"
-  />
+  <svg
+    aria-hidden="true"
+    fill="none"
+    height="40px"
+    viewBox="0 0 6 6"
+    width="40px"
+  >
+    <path
+      d=""
+    />
+  </svg>
 </div>
 `;
 
@@ -19,17 +26,16 @@ exports[`<Path /> should render html path component 1`] = `
     width="40px"
   >
     <path
-      clipPath="#id1"
-      clipRule="evenodd"
+      clip-path="#id1"
+      clip-rule="evenodd"
       d="M2 2h2v2H2V2"
       fill="#000"
-      fillOpacity="0.5"
-      fillRule="nonzero"
-      is="x3d"
+      fill-opacity="0.5"
+      fill-rule="nonzero"
       stroke="#1212"
-      strokeLinecap="square"
-      strokeLinejoin="bevel"
-      strokeWidth="2px"
+      stroke-linecap="square"
+      stroke-linejoin="bevel"
+      stroke-width="2px"
     />
   </svg>
 </div>
