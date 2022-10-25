@@ -151,9 +151,9 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
               <svg
                 aria-hidden="true"
                 fill="none"
-                height="12"
+                height="12px"
                 viewBox="0 0 12 12"
-                width="12"
+                width="12px"
               >
                 <path
                   clip-rule="evenodd"
@@ -336,9 +336,9 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
               <svg
                 aria-hidden="true"
                 fill="none"
-                height="12"
+                height="12px"
                 viewBox="0 0 12 12"
-                width="12"
+                width="12px"
               >
                 <path
                   clip-rule="evenodd"
@@ -543,9 +543,9 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
               <svg
                 aria-hidden="true"
                 fill="none"
-                height="12"
+                height="12px"
                 viewBox="0 0 12 12"
-                width="12"
+                width="12px"
               >
                 <path
                   clip-rule="evenodd"
@@ -786,9 +786,9 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
               <svg
                 aria-hidden="true"
                 fill="none"
-                height="12"
+                height="12px"
                 viewBox="0 0 12 12"
-                width="12"
+                width="12px"
               >
                 <path
                   clip-rule="evenodd"
@@ -809,9 +809,9 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
               <svg
                 aria-hidden="true"
                 fill="none"
-                height="12"
+                height="12px"
                 viewBox="0 0 12 12"
-                width="12"
+                width="12px"
               >
                 <path
                   clip-rule="evenodd"

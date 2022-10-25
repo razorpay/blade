@@ -297,9 +297,9 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="12"
+                      height="12px"
                       viewBox="0 0 12 12"
-                      width="12"
+                      width="12px"
                     >
                       <path
                         clip-rule="evenodd"
@@ -372,9 +372,9 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="12"
+                      height="12px"
                       viewBox="0 0 12 12"
-                      width="12"
+                      width="12px"
                     >
                       <path
                         clip-rule="evenodd"
@@ -447,9 +447,9 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="12"
+                      height="12px"
                       viewBox="0 0 12 12"
-                      width="12"
+                      width="12px"
                     >
                       <path
                         clip-rule="evenodd"
@@ -789,9 +789,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="12"
+                      height="12px"
                       viewBox="0 0 12 12"
-                      width="12"
+                      width="12px"
                     >
                       <path
                         clip-rule="evenodd"
@@ -864,9 +864,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="12"
+                      height="12px"
                       viewBox="0 0 12 12"
-                      width="12"
+                      width="12px"
                     >
                       <path
                         clip-rule="evenodd"
@@ -939,9 +939,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     <svg
                       aria-hidden="true"
                       fill="none"
-                      height="12"
+                      height="12px"
                       viewBox="0 0 12 12"
-                      width="12"
+                      width="12px"
                     >
                       <path
                         clip-rule="evenodd"
