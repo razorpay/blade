@@ -1,4 +1,4 @@
-import { theme } from './manager';
+import { theme, hiddenStoryStyle } from './manager';
 import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components/BladeProvider';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
@@ -43,6 +43,7 @@ export const parameters = {
 
 export const decorators = [
   (Story, context) => {
+    hiddenStoryStyle.disabled = context.globals.showInternalComponents
     const getThemeTokens = () => {
       if (context.globals.themeTokenName === 'paymentTheme') {
         return paymentTheme;

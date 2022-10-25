@@ -44,7 +44,7 @@ export const theme = {
 
 const ADDON_ID = 'internal-components-addon';
 const TOOL_ID = 'internal-components-tool';
-const hiddenStoryStyle = document.createElement('style');
+export const hiddenStoryStyle = document.createElement('style');
 hiddenStoryStyle.textContent = `
   [id*='internal'] {
     display: none !important;
