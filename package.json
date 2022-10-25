@@ -9,7 +9,7 @@
   "workspaces": {
     "packages": [
       "packages/blade",
-      "packages/blade-old",
+      "packages/tools/*",
       "packages/token-publisher"
     ],
     "nohoist": [

@@ -6,6 +6,6 @@
     "**/storybook-recipes",
     "packages/blade/src/components/index.ts",
     "@testing-library/user-event/dist/types/**",
-    "@storybook/*",
+    "@storybook/*"
   ]
 }
