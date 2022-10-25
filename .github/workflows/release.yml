@@ -34,3 +34,7 @@ jobs:
           publish: yarn release
           commit: 'build(blade): update version'
           title: 'build(blade): update version'
+
+      - name: Publish to public npm registry
+        if: steps.changesets.outputs.published == 'true'
+        run: yarn publish-npm
