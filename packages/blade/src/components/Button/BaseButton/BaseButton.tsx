@@ -28,7 +28,7 @@ import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import Box from '~components/Box';
 import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import iconMap from '~components/Icons/iconMap';
+import { iconMapKeys } from '~components/Icons/iconMap';
 
 type BaseButtonCommonProps = {
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -288,7 +288,7 @@ const BaseButton = ({
     );
   }
 
-  if (Icon && !Object.values(iconMap).includes(Icon)) {
+  if (Icon && (typeof Icon !== 'function' || !iconMapKeys.includes(Icon.name))) {
     throw new Error(
       `[Blade: BaseButton]: Invalid usage of icon prop. Please use one of the icon components provided by Blade.`,
     );

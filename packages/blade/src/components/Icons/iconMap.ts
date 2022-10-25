@@ -74,4 +74,6 @@ const iconMap: Record<string, IconComponent> = {
   TrendingDownIcon: TrendingDownIconComponent,
 };
 
+export const iconMapKeys = Object.keys(iconMap);
+
 export default iconMap;
