@@ -52,48 +52,45 @@ const CheckedIcon = ({ color, size }: { color: string; size: 'small' | 'medium' 
   return <Icon color={color} />;
 };
 
-const IndeterminateIconMedium = ({ color }: { color: string }) => {
-  return (
-    <Svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M2 6C2 5.72386 2.22386 5.5 2.5 5.5H9.5C9.77614 5.5 10 5.72386 10 6C10 6.27614 9.77614 6.5 9.5 6.5H2.5C2.22386 6.5 2 6.27614 2 6Z"
-        fill={color}
-        stroke="white"
-        strokeWidth="0.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </Svg>
-  );
-};
-
-const IndeterminateIconSmall = ({ color }: { color: string }) => {
-  return (
-    <Svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
-        fill={color}
-        stroke="white"
-        strokeWidth="0.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </Svg>
-  );
-};
-
 const IndeterminateIcon = ({ color, size }: { color: string; size: 'small' | 'medium' }) => {
-  const icons = {
-    small: IndeterminateIconSmall,
-    medium: IndeterminateIconMedium,
+  const path = {
+    medium:
+      'M2 6C2 5.72386 2.22386 5.5 2.5 5.5H9.5C9.77614 5.5 10 5.72386 10 6C10 6.27614 9.77614 6.5 9.5 6.5H2.5C2.22386 6.5 2 6.27614 2 6Z',
+    small:
+      'M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z',
+  };
+  const dims = {
+    small: {
+      width: 8,
+      height: 8,
+      viewBox: '0 0 8 8',
+    },
+    medium: {
+      width: 12,
+      height: 12,
+      viewBox: '0 0 12 12',
+    },
   };
 
-  const Icon = icons[size];
-  return <Icon color={color} />;
+  const width = `${dims[size].width}px`;
+  const height = `${dims[size].height}px`;
+  const viewBox = dims[size].viewBox;
+  const d = path[size];
+
+  return (
+    <Svg width={width} height={height} viewBox={viewBox} fill="none">
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d={d}
+        fill={color}
+        stroke="white"
+        strokeWidth="0.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
 };
 
 export type CheckboxIconProps = {
