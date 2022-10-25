@@ -13,7 +13,6 @@ packages/blade/tokens.js
 packages/blade/tokens.d.ts
 packages/blade/utils.js
 packages/blade/utils.d.ts
-packages/blade-old/scripts/icon-migrate-codemod
 
 #temporary ignore
 packages/tools/figma-plugin-version-history
